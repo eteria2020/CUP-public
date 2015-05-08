@@ -22,17 +22,6 @@ return array(
                     ),
                 ),
             ),
-            'carsharing' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{carsharing}',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'carsharing',
-                    ),
-                ]
-            ],
             'cosae' => [
                 'type' => 'Segment',
                 'options' => [
@@ -181,6 +170,11 @@ return array(
             'Application\Controller\User' => 'Application\Controller\UserController'
         ),
     ),
+    'view_helpers' => [
+        'factories' => [
+            'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
+        ]
+    ],
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
