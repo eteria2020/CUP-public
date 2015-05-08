@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'multilanguage' => [
+        'allowed_locales' => [
+            'en_US'
+        ]
+    ]
+];
