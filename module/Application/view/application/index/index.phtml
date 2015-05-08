@@ -1,44 +1,393 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+<!-- module-slider-place -->
+<div class="module-slider-place padding-top padding-bottom">
+
+    <!-- content -->
+    <div class="content clearfix">
+
+        <h1 class="module-main-title text-align-center"><?= $this->translate('Dove ti serve l\'auto?'); ?></h1>
+
+        <!-- slider-place -->
+        <div class="slider slider-place">
+
+            <!-- block-item-place -->
+            <div class="block-item-place slide">
+
+                <img src="<?= $this->basePath('img/firenze.jpg'); ?>" alt="" />
+
+                <h2 class="block-title text-align-center"><?= $this->translate('Firenze'); ?></h2>
+
+                    <a href="" class="link-to-continue"><?= $this->translate('Continua'); ?></a>
+
+            </div>
+            <!-- block-item-place -->
+
+            <!-- block-item-place -->
+            <div class="block-item-place slide">
+
+                <img src="<?= $this->basePath('img/firenze.jpg'); ?>" alt="" />
+
+                <h2 class="block-title text-align-center"><?= $this->translate('Pisa'); ?></h2>
+
+                <a href="" class="link-to-continue"><?= $this->translate('Continua'); ?></a>
+
+            </div>
+            <!-- block-item-place -->
+
+            <!-- block-item-place -->
+            <div class="block-item-place slide">
+
+                <img src="<?= $this->basePath('img/firenze.jpg'); ?>" alt="" />
+
+                <h2 class="block-title text-align-center"><?= $this->translate('Milano'); ?></h2>
+
+                <a href="" class="link-to-continue"><?= $this->translate('Continua'); ?></a>
+
+            </div>
+            <!-- block-item-place -->
+
+            <!-- block-item-place -->
+            <div class="block-item-place slide">
+
+                <img src="<?= $this->basePath('img/firenze.jpg'); ?>" alt="" />
+
+                <h2 class="block-title text-align-center"><?= $this->translate('Napoli'); ?></h2>
+
+                <a href="" class="link-to-continue"><?= $this->translate('Continua'); ?></a>
+
+            </div>
+            <!-- block-item-place -->
+
+            <!-- block-item-place -->
+            <div class="block-item-place slide">
+
+                <img src="<?= $this->basePath('img/firenze.jpg'); ?>" alt="" />
+
+                <h2 class="block-title text-align-center"><?= $this->translate('Roma'); ?></h2>
+
+                <a href="" class="link-to-continue"><?= $this->translate('Continua'); ?></a>
+
+            </div>
+            <!-- block-item-place -->
+
+        </div>
+        <!-- slider-place -->
+
+    </div>
+    <!-- content -->
+
 </div>
+<!-- module-slider-place -->
 
-<div class="row">
+<!-- module-car-map -->
+<div class="module-car-map">
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
-            </div>
-        </div>
+    <script>
+        jQuery(function($) {
+            // Asynchronously Load the map API
+            var script = document.createElement('script');
+            script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+            document.body.appendChild(script);
+        });
+
+        function initialize() {
+            var map;
+            // Set the latitude & longitude for our location (London Eye)
+            var myLatlng = new google.maps.LatLng(45.4627338,9.1777323);
+            var mapOptions = {
+                center: myLatlng, // Set our point as the centre location
+                zoom: 16, // Set the zoom level
+                scrollwheel: false,
+                mapTypeId: 'roadmap' // set the default map type
+            };
+
+            // Display a map on the page
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            // Allow our satellite view have a tilted display (This only works for certain locations)
+            map.setTilt(45);
+
+            // Add a marker to the map based on our coordinates
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Property GeoLocation'
+            });
+        }
+    </script>
+
+    <div id="map_wrapper">
+        <div id="map_canvas" class="mapping"></div>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
-            </div>
-        </div>
+    <!-- block-map-tool-filter -->
+    <div class="block-map-tool-filter margin-right margin-top g-top g-right">
+        <ul>
+            <li><a href=""><i class="icon-car-in-circle-ct2"><?= $this->translate('auto'); ?></i></a></li>
+            <li><a href=""><i class="icon-energy-in-circle-ct2"><?= $this->translate('rifornimenti'); ?></i></a></li>
+        </ul>
     </div>
+    <!-- block-map-tool-filter -->
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
-            </div>
+    <!-- module-map-tool-search -->
+    <div class="module-map-tool-search bg-ct2 g-bottom g-left">
+
+        <!-- block-switch-user -->
+        <div class="block-switch-user">
+            <ul>
+                <li>
+                    <a class="js-show-element"><i class="fa fa-user"></i> <?= $this->translate('Privato'); ?> <i class="fa fa-caret-down"></i></a>
+                    <ul class="hidden js-collapse-box">
+                        <li><a href=""><?= $this->translate('Azienda'); ?></a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
+        <!-- block-switch-user -->
+
+        <!-- block-find -->
+        <div class="block-find">
+            <form>
+                <p>
+                    <label><i class="fa fa-map-marker"></i> <?= $this->translate('Dove sono?'); ?></label>
+                    <input type="text" name="" value="" placeholder="<?= $this->translate('es: Milano'); ?>" >
+                    <input type="submit" class="" name="" value="">
+                </p>
+            </form>
+        </div>
+        <!-- block-find -->
+
     </div>
+    <!-- module-map-tool-search -->
+
+    <!-- module-map-tool -->
+    <div class="module-map-tool bg-ct2 g-bottom g-right">
+
+        <!-- block-list-map-tool -->
+        <div class="block-list-map-tool">
+            <ul>
+                <li>
+                    <a class="js-toggle-map-height" >
+                        <span class="block-info-1"><?= $this->translate('Riduci la mappa'); ?></span>
+                        <span class="block-info-2"><?= $this->translate('Estendi la mappa'); ?></span> <i class="fa fa-angle-up"></i>
+                    </a>
+                </li>
+                <li><a><i class="fa fa-plus-circle"></i></a></li>
+                <li><a><i class="fa fa-minus-circle"></i></a></li>
+            </ul>
+        </div>
+        <!-- block-list-map-tool -->
+
+    </div>
+    <!-- module-map-tool -->
+
 </div>
+<!-- module-car-map -->
+
+<!-- main -->
+<div id="main">
+
+    <!-- content -->
+    <div class="content padding-top clearfix">
+
+        <!-- module-list-archive-faq -->
+        <section class="module-list-archive-faq margin-bottom">
+
+            <h1 class="block-title"><?= $this->translate('FAQ'); ?></h1>
+            <h2 class="block-sub-title"><?= $this->translate('Le domande più frequenti'); ?></h2>
+
+            <!-- slider -->
+            <div class="slider single-item-autoplay">
+
+                <!-- slide -->
+                <div class="slide">
+
+                    <!-- block-item-faq -->
+                    <article class="block-item-faq">
+
+                        <h1 class="block-title"><?= $this->translate('Titolo della domanda'); ?></h1>
+
+                        <p>
+                            <?= $this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
+                                Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh...');
+                            ?>
+                        </p>
+                        <span class="link-to-read-more"><a href=""><?= $this->translate('Leggi ancora'); ?></a></span>
+
+                    </article>
+                    <!-- block-item-faq -->
+
+                </div>
+                <!-- slide -->
+
+                <!-- slide -->
+                <div class="slide">
+
+                    <!-- block-item-faq -->
+                    <article class="block-item-faq">
+
+                        <h1 class="block-title">Titolo della domanda</h1>
+
+                        <p>
+                            <?= $this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
+                                Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh...');
+                            ?>
+                        </p>
+                        <span class="link-to-read-more"><a href=""><?= $this->translate('Leggi ancora'); ?></a></span>
+
+                    </article>
+                    <!-- block-item-faq -->
+
+                </div>
+                <!-- slide -->
+
+                <!-- slide -->
+                <div class="slide">
+
+                    <!-- block-item-faq -->
+                    <article class="block-item-faq">
+
+                        <h1 class="block-title">Titolo della domanda</h1>
+
+                        <p>
+                            <?= $this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
+                                Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh...');
+                            ?>
+                        </p>
+                        <span class="link-to-read-more"><a href=""><?= $this->translate('Leggi ancora'); ?></a></span>
+
+                    </article>
+                    <!-- block-item-faq -->
+
+                </div>
+                <!-- slide -->
+
+            </div>
+            <!-- slider -->
+
+        </section>
+        <!-- module-list-archive-faq -->
+
+        <!-- module-wrapper-button -->
+        <div class="module-wrapper-button margin-bottom content-align-center">
+            <a href="<?= $this->url('signup') ?>" class="btn-link x-large ct2"><?= $this->translate('Registrati subito'); ?> <i class="fa fa-plus-circle"></i></a>
+        </div>
+        <!-- module-wrapper-button -->
+
+    </div>
+    <!-- content -->
+
+    <!-- module-preview-section -->
+    <div class="module-preview-section padding-top padding-bottom bg-ct3">
+
+        <!-- content -->
+        <article class="content clearfix">
+
+            <!-- block-text -->
+            <div class="block-text bw-f w-2-3">
+
+                <h1 class="block-title"><?= $this->translate('500 auto a tua disposizione'); ?></h1>
+                <h2 class="block-sub-title"><?= $this->translate('Elettriche, Ecologiche, Economiche'); ?></h2>
+
+                <p>
+                    <?= $this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra.');
+                    ?>
+                </p>
+                <p>
+                    <?= $this->translate('Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
+                        Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh.');
+                    ?>
+                </p>
+
+            </div>
+            <!-- block-text -->
+
+            <!-- module-car-point -->
+            <aside class="module-car-point bw-f w-1-3 last">
+                <h1 class="block-title"><?= $this->translate('Share’nGo Point'); ?></h1>
+                <h2 class="block-sub-title"><?= $this->translate('Tutte per uno, uno per tutte!'); ?></h2>
+
+                <div class="slider nav-bottom single-item">
+
+                    <!-- block-car-point-info -->
+                    <div class="slide block-car-point-info">
+                        <h2 class="block-title"><?= $this->translate('Share’nGo Point c/o Share’nGo Srl'); ?></h2>
+                        <span class="map-pointer"><a href=""><?= $this->translate('Vedi in mappa'); ?></a></span>
+                        <div class="block-car-point-info-text">
+                            <p><i class="fa fa-map-marker"></i> <?= $this->translate('Via Ugo Iginio Tarchetti, 7 20121, Milano'); ?></p>
+                            <p><i class="fa fa-clock-o"></i> <?= $this->translate('Orari: lunedì - sabato: 10.00 – 18.00'); ?></p>
+                        </div>
+                    </div>
+                    <!-- block-car-point-info -->
+
+                    <!-- block-car-point-info -->
+                    <div class="slide block-car-point-info">
+                        <h2 class="block-title"><?= $this->translate('Share’nGo Point c/o Share’nGo Srl'); ?></h2>
+                        <span class="map-pointer"><a href=""><?= $this->translate('Vedi in mappa'); ?></a></span>
+                        <div class="block-car-point-info-text">
+                            <p><i class="fa fa-map-marker"></i> <?= $this->translate('Via Ugo Iginio Tarchetti, 7 20121, Milano'); ?></p>
+                            <p><i class="fa fa-clock-o"></i> <?= $this->translate('Orari: lunedì - sabato: 10.00 – 18.00'); ?></p>
+                        </div>
+                    </div>
+                    <!-- block-car-point-info -->
+
+                    <!-- block-car-point-info -->
+                    <div class="slide block-car-point-info">
+                        <h2 class="block-title"><?= $this->translate('Share’nGo Point c/o Share’nGo Srl'); ?></h2>
+                        <span class="map-pointer"><a href=""><?= $this->translate('Vedi in mappa'); ?></a></span>
+                        <div class="block-car-point-info-text">
+                            <p><i class="fa fa-map-marker"></i> <?= $this->translate('Via Ugo Iginio Tarchetti, 7 20121, Milano'); ?></p>
+                            <p><i class="fa fa-clock-o"></i> <?= $this->translate('Orari: lunedì - sabato: 10.00 – 18.00'); ?></p>
+                        </div>
+                    </div>
+                    <!-- block-car-point-info -->
+
+                </div>
+
+            </aside>
+            <!-- module-car-point -->
+
+        </article>
+        <!-- content -->
+
+    </div>
+    <!-- module-preview-section -->
+
+    <!-- module-preview-section -->
+    <div class="module-preview-section">
+
+        <!-- content -->
+        <div class="content">
+
+            <!-- block-text -->
+            <div class="block-text padding-top">
+                <img src="<?= $this->basePath('img/nrm-img.jpg'); ?>" class="alignleft" alt="" >
+                <h1 class="block-title"><?= $this->translate('Mobilit&agrave; Elettrica Condivisa'); ?></h1>
+                <h2 class="block-sub-title"><?= $this->translate('Ecologici, agili, interconnessi...'); ?></h2>
+                <p>
+                    <?= $this->translate('Milano è una città tanto bella quanto caotica: con il car sharing Share’nGo ce l’hai a portata di mano.');
+                    ?>
+                </p>
+                <p>
+                    <?= $this->translate('Paghi solo quello che utilizzi e puoi muoverti liberamente per la città iniziando e terminando il noleggio dell’auto parcheggiando dove più ti è comodo, anche su strisce gialle e blu.');
+                    ?>
+                </p>
+                <p>
+                    <?= $this->translate('Entrare nel mondo di Share’nGo è facilissimo: ti basta registrarti e recarti presso uno dei nostri Twist Point per ritirare la tua personale Share\'nGo Card.');
+                    ?>
+                </p>
+            </div>
+            <!-- block-text -->
+
+            <!-- module-wrapper-button -->
+            <div class="module-wrapper-button margin-bottom content-align-center">
+                <a href="<?= $this->url('signup') ?>" class="btn-link x-large ct2"><?= $this->translate('Registrati subito'); ?> <i class="fa fa-plus-circle"></i></a>
+            </div>
+            <!-- module-wrapper-button -->
+
+        </div>
+        <!-- content -->
+
+    </div>
+    <!-- module-preview-section -->
+
+</div>
+<!-- main -->

@@ -18,4 +18,54 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function carsharingAction()
+    {
+        return new ViewModel();
+    }
+
+    public function cosaeAction()
+    {
+        return new ViewModel();
+    }
+
+    public function quantocostaAction()
+    {
+        return new ViewModel();
+    }
+
+    public function comefunzionaAction()
+    {
+        return new ViewModel();
+    }
+
+    public function faqAction()
+    {
+        return new ViewModel();
+    }
+
+    public function contattiAction()
+    {
+        return new ViewModel();
+    }
+
+    public function cookiesAction()
+    {
+        return new ViewModel();
+    }
+
+    public function notelegaliAction()
+    {
+        return new ViewModel();
+    }
+
+    public function privacyAction()
+    {
+        return new ViewModel();
+    }
+
+    public function callcenterAction()
+    {
+        return new ViewModel();
+    }
 }

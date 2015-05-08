@@ -16,11 +16,144 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
                         'action'     => 'index',
                     ),
                 ),
             ),
+            'carsharing' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{carsharing}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'carsharing',
+                    ),
+                ]
+            ],
+            'cosae' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{cosa-e-sharengo}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'cosae',
+                    ),
+                ]
+            ],
+            'quantocosta' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{quantocosta}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'quantocosta',
+                    ),
+                ]
+            ],
+            'comefunziona' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{comefunziona}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'comefunziona',
+                    ),
+                ]
+            ],
+            'faq' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{faq}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'faq',
+                    ),
+                ]
+            ],
+            'contatti' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{contatti}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'contatti',
+                    ),
+                ]
+            ],
+            'login' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{login}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'login',
+                    ),
+                ]
+            ],
+            'signup' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'signup',
+                    ),
+                ]
+            ],
+            'cookies' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{cookies}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'cookies',
+                    ),
+                ]
+            ],
+            'notelegali' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{notelegali}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'notelegali',
+                    ),
+                ]
+            ],
+            'privacy' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{privacy}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'privacy',
+                    ),
+                ]
+            ],
+            'callcenter' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{callcenter}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'callcenter',
+                    ),
+                ]
+            ]
         ),
     ),
     'service_manager' => array(
@@ -44,7 +177,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\User' => 'Application\Controller\UserController'
         ),
     ),
     'view_manager' => array(

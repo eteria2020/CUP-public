@@ -1,55 +1,187 @@
 <?php echo $this->doctype(); ?>
 
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->translate('Share\'NGo - the new mobility'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
+            ->appendName('description', '')
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
 
-        <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath('css/style.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+        <?php echo $this->headLink([
+                'rel' => 'shortcut icon',
+                'type' => 'image/vnd.microsoft.icon',
+                'href' => $this->basePath() . '/img/favicon.ico'
+            ])
+            ->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300')
+            ->appendStylesheet($this->basePath('css/styles.css'), 'screen')
+            ->appendStylesheet($this->basePath('css/print.css'), 'print')
+            ->appendStylesheet($this->basePath('css/ie8.css'), 'screen', 'lte IE 8')
+            ->appendStylesheet('http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css')
+        ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery.min.js'))
-            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath('js/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js')
+            ->appendScript('window.jQuery || document.write(\'<script src="js/vendor/jquery-1.8.2.min.js"><\/script>\')')
+            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
+            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
+            ->appendFile($this->basePath('js/jquery.backgroundSize.js'), 'text/javascript', ['conditional' => 'lte IE 8'])
+            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
         ; ?>
 
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
+        <!--[IE 9]>
+            <p class="chromeframe"><?= $this->translate('Stai usando un browser <strong>non supportato</strong>. Per favore <a href="http://browsehappy.com/">aggiorna il tuo browser</a> o <a href="http://www.google.com/chromeframe/?redirect=true">attiva Google Chrome Frame</a> per far diventare pi&ugrave; potente il tuo browser.'); ?></p>
+        <![endif]-->
+
+        <!-- outer -->
+        <div id="outer">
+            <!-- header -->
+            <header id="header" class="emotional-header clearfix">
+
+                <!-- show-nav-for-iphone -->
+                <button type="button" class="show-nav-for-iphone" data-toggle="collapse" data-target="#nav">
+                    <i class="fa fa-align-justify"></i>
+                </button><!-- show-nav-for-iphone -->
+
+                <!-- site-link -->
+                <a href="<?= $this->url('home'); ?>" id="site-link">
+                    <h2><?= $this->translate('Share\'NGo - the new mobility'); ?></h2>
+                </a><!-- site-link -->
+
+                <!-- module-wrapper-menu -->
+                <div class="module-wrapper-menu clearfix">
+
+                    <!-- block-menu-languages -->
+                    <div class="block-languages block-menu">
+                        <ul>
+                            <li>
+                                <a class="js-show-element">
+                                    <?= $this->translate('Italiano'); ?>
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="js-collapse-box block-available-languages hidden">
+                                    <li><a href=""><?= $this->translate('Inglese'); ?></a></li>
+                                    <li><a href=""><?= $this->translate('Francese'); ?></a></li>
+                                    <li><a href=""><?= $this->translate('Tedesco'); ?></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- block-menu-languages -->
+
+                    <!-- nav-collapse -->
+                    <div id="nav" class="nav-collapse collapse">
+
+                        <!-- nav -->
+                        <nav id="menu" class="block-menu block-navigation-menu">
+                            <h1 class="hidden"><?= $this->translate('Navigazione principale'); ?></h1>
+                            <ul>
+                                <li><a href="<?= $this->url('carsharing') ?>"><?= $this->translate('Car sharing'); ?></a></li>
+                                <li><a href="<?= $this->url('cosae') ?>"><?= $this->translate('Cosa &egrave; Sharengo?'); ?></a></li>
+                                <li><a href="<?= $this->url('quantocosta') ?>"><?= $this->translate('Quanto costa'); ?></a></li>
+                                <li><a href="<?= $this->url('comefunziona') ?>"><?= $this->translate('Come funziona'); ?></a></li>
+                                <li><a href="<?= $this->url('faq') ?>"><?= $this->translate('Faq'); ?></a></li>
+                                <li><a href="<?= $this->url('contatti') ?>"><?= $this->translate('Contatti'); ?></a></li>
+                            </ul>
+                        </nav>
+                        <!-- nav -->
+
+                    </div>
+                    <!-- nav-collapse -->
+
+                    <!-- block-user-action -->
+                    <div class="block-user-action block-menu">
+                        <ul>
+                            <li><a href="<?= $this->url('login') ?>"><i class="fa fa-user"></i><?= $this->translate('Login'); ?></a></li>
+                            <li><a href="<?= $this->url('signup') ?>"><i class="fa fa-user-plus"></i><?= $this->translate('Registrati'); ?></a></li>
+                        </ul>
+                    </div>
+                    <!-- block-menu-languages -->
+
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
-        <div class="container">
+                <!-- module-wrapper-menu -->
+
+            </header>
+            <!-- header -->
+
             <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+        </div>
+        <!-- outer -->
+
+        <!-- footer -->
+        <footer id="footer">
+            <!-- content -->
+            <div class="content clearfix">
+
+                <!-- block-footer -->
+                <div class="block-footer bw-f w-1-3">
+
+                    <p>
+                        <?= $this->translate('<span class="font-weight bold">Share \'N Go</span> <br>è un servizio di C.S.Group s.r.l.'); ?><br>
+                        <?= $this->translate('<span class="font-weight semibold">Sede Legale:</span><br>Via dei Pelaghi 162, 57124 - Livorno (LI)<br>Codice Fiscale e Partita IVA n. 01769950492<br>Telefono: <a href="tel:05020091"> 050 20091</a>');
+                        ?><br>
+                        <?= $this->translate('<span class="font-weight semibold">Sede operativa:</span><br>    Piazzale D’Ascanio C., 1 - 56121 Pisa (PI)');
+                        ?>
+                    </p>
+
+                </div>
+                <!-- block-footer -->
+
+                <!-- block-footer -->
+                <div class="block-footer bw-f w-1-3">
+
+                    <ul class="simple-list">
+                        <li><a href="<?= $this->url('cookies') ?>"><?= $this->translate('Cookies'); ?></a></li>
+                        <li><a href="<?= $this->url('notelegali') ?>"><?= $this->translate('Note legali'); ?></a></li>
+                        <li><a href="<?= $this->url('privacy') ?>"><?= $this->translate('Politiche di privacy'); ?></a></li>
+                        <li><a href="<?= $this->url('notelegali') ?>"><?= $this->translate('Avvertenze Legali'); ?></a></li>
+                        <li><a href="<?= $this->url('contatti') ?>"><?= $this->translate('Contatti'); ?></a></li>
+                        <li><a href="<?= $this->url('faq') ?>"><?= $this->translate('Faq'); ?></a></li>
+                    </ul>
+
+                </div>
+                <!-- block-footer -->
+
+                <!-- block-footer -->
+                <div class="block-footer last bw-f w-1-3">
+
+                    <ul class="simple-list">
+                        <li><a href="<?= $this->url('callcenter') ?>"><?= $this->translate('Call center'); ?></a></li>
+                        <li><a href="<?= $this->url('callcenter') ?>"><?= $this->translate('Servizi clienti'); ?></a></li>
+                    </ul>
+
+                </div>
+                <!-- block-footer -->
+
+                <div class="badge-green-number">
+                    <h2 class="block-title"><i class="fa fa-phone-square"></i> <?= $this->translate('Numero verde'); ?></h2>
+                    <a href="tel:800900930">800 900 930</a>
+                </div>
+
+            </div>
+            <!-- content -->
+        </footer>
+        <!-- footer -->
+
+        <?php
+            $this->inlineScript()
+                ->appendFile($this->basePath('js/respond.min.js'))
+                ->appendFile($this->basePath('js/bootstrap.min.js'))
+                ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.min.js')
+                ->appendFile($this->basePath('js/slick-script.js'))
+                ->appendFile($this->basePath('js/main.js'));
+            echo $this->inlineScript()
+        ?>
     </body>
 </html>
