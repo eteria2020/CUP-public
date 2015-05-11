@@ -58,7 +58,7 @@ class DetectLocaleService
      */
     private function getLocaleFromLanguage($lang)
     {
-        $allowedLocales = $config['multilanguage']['allowed_locales'];
+        $allowedLocales = $this->config['multilanguage']['allowed_locales'];
 
         foreach ($allowedLocales as $locale) {
             if ($lang == substr($locale, 0, 2)) {
