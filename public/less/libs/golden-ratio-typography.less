@@ -1,0 +1,80 @@
+/* golden ratio typography 
+rhythm based on Chris Pearson formulas http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+*/
+ 
+html {
+  font-size:@font-size-main-text;
+}
+
+/**
+LESS CSS mixins for a golden ratio typography rhythm based on Chris Pearson formulas http://www.pearsonified.com/2011/12/golden-ratio-typography.php	
+**/
+
+/** required: value in pixel with no units ***/
+@line-width:50;
+@phi: (1 + sqrt(5)) / 2;
+@xoo: 1 / (2 * @phi);
+@primary-font-size: round(sqrt(@line-width) / @phi);
+
+/**
+http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
+**/
+.line-height(@font-size,@line-width){
+	@x1:sqrt(@line-width) / @phi;
+	@x2:@font-size * (@phi - @xoo * (1 - (@line-width / pow(@font-size * @phi, 2))));
+	line-height:@x2/@x1;
+}
+
+.golden-text(@font-size, @base-font-size) {
+	font-size: 0rem + @font-size/@base-font-size;
+	@current-font-size:@font-size;
+	.line-height(@current-font-size,@line-width);
+}
+
+
+.content-text() {
+	.golden-text(@primary-font-size,@primary-font-size);
+}
+
+
+.title() {
+	@current-font-size: round(@primary-font-size*pow(@phi, 2));
+	.golden-text(@current-font-size, @primary-font-size);	 
+}
+
+
+.headline() {
+	 @current-font-size: round(@primary-font-size*@phi);
+	.golden-text(@current-font-size, @primary-font-size);
+
+}
+
+ .sub-headline() {
+	 @current-font-size: round(@primary-font-size * sqrt(@phi));
+	.golden-text(@current-font-size, @primary-font-size);
+}
+
+.secondary-text() {
+	 @current-font-size:round(@primary-font-size/ sqrt(@phi));
+	.golden-text(@current-font-size, @primary-font-size);
+}
+
+	
+h1.title{
+	.title();
+}
+
+h1 {
+	.headline();
+}
+
+h2 {
+	.sub-headline();
+}
+h3, p, ul, ol, label, dd, dt {
+	.content-text();
+
+}
+h4 {
+	.secondary-text();
+}

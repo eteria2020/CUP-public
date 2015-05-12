@@ -263,7 +263,7 @@ class Customers
     /**
      * @var boolean
      *
-     * @ORM\Column(name="registration_completed", type="boolean", options={"default"=false})
+     * @ORM\Column(name="registration_completed", type="boolean", nullable=true)
      */
     private $registrationCompleted;
 
@@ -1096,29 +1096,5 @@ class Customers
     public function getDriverLicenseName()
     {
         return $this->driverLicenseName;
-    }
-
-    /**
-     * Set registrationCompleted
-     *
-     * @param boolean $registrationCompleted
-     *
-     * @return Customers
-     */
-    public function setRegistrationCompleted($registrationCompleted)
-    {
-        $this->registrationCompleted = $registrationCompleted;
-
-        return $this;
-    }
-
-    /**
-     * Get registrationCompleted
-     *
-     * @return boolean
-     */
-    public function getRegistrationCompleted()
-    {
-        return $this->registrationCompleted;
     }
 }

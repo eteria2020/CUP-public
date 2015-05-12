@@ -19,9 +19,9 @@ class RegistrationForm2Factory implements FactoryInterface
         $translator = $serviceLocator->get('Translator');
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
-        $mondoService = $serviceLocator->get('TwistCore\Service\MondoService');
-        $customerService = $serviceLocator->get('TwistCore\Service\CustomerService');
-        $driverFieldset = new DriverFieldset($translator, $hydrator, $mondoService, $customerService);
+        $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
+        $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
+        $driverFieldset = new DriverFieldset($translator, $hydrator, $countriesService, $customersService);
 
         return new RegistrationForm2($translator, $driverFieldset);
     }

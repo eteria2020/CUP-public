@@ -1,0 +1,327 @@
+/* set global rule */
+
+/* body and html */
+
+body {
+	background-color:@bg-body;
+	font-family: @font1;
+	font-size:@font-size-main-text;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	}
+
+* {
+	.box-sizing();
+	}
+
+html, body {	
+    height:100%;
+	min-height:100%;
+	}
+	
+body>#outer {
+    height:auto;
+    min-height:90%;
+	}
+	
+body>#footer {
+    height:auto;
+    min-height:10%;
+	}	
+	
+.content {
+	.content-width();
+	margin:0 auto;
+	position:relative;
+	}
+
+/* selection */
+
+::selection {
+	background:@ct2; /* Safari */
+	color:@white;
+	}
+::-moz-selection {
+	background:@ct2; /* Firefox */
+	color:@white;
+}
+
+/* various */
+
+.clearboth {
+	clear:both;
+}			
+	
+.disabled {
+	.disabled();
+    .opacity(.8);
+}
+
+.red, .error {
+	color:#E64135;
+	}
+
+.hide { position: absolute; top: -9999px; left: -9999px; }		
+
+/* simple transition effect */
+.g-op-tr {
+    .transition(.2s);
+        
+    &:hover {
+        .opacity();
+    }
+}
+
+/* img */
+	
+img.placeholder {	
+	display:inline-block;
+	background:#fff url(../../placeholder.jpg) no-repeat;
+	background-position:center;
+	background-size:80px;
+}			
+
+.placelholder(@color:@color-main-text);		
+	
+img {
+	max-width:100%;
+	}
+	
+img.pull-left {
+	margin-right:@mdo-gr-s;
+}
+
+img.pull-right {
+	margin-left:@mdo-gr-s;
+}	
+		
+.no-img-display {
+	img {display:none!important;}
+}		
+		
+/* figure */
+.figure {
+background:@white url(../images/simple-icon/ico-zoom.png) center no-repeat;
+	
+	.transition();
+
+	&:hover {
+		.opacity();
+		}
+	
+	img {
+						
+		&:hover {
+			
+			.opacity();
+			}
+			
+	}
+
+}
+
+/* position */
+
+.g-top {
+	top:0;
+    position: absolute;
+}	
+.g-right {
+	right:0;
+    position: absolute;
+}
+.g-left {
+	left:0;
+    position: absolute;
+}
+.g-bottom {
+	bottom:0;
+    position: absolute;
+}
+	
+.auto-margin {
+	display:block!important;
+	margin:0 auto!important;
+	float:none!important;
+} 		
+	
+/* main padding */
+	
+.padding-top {
+	padding-top:@main-distance-object;	
+}
+
+.padding-left {
+	padding-left:@main-distance-object;	
+}
+
+.padding-right {
+	padding-right:@main-distance-object;	
+}
+
+.padding-bottom {
+	padding-bottom:@main-distance-object;
+}	
+
+/* reset padding */
+
+.reset-padding-top {
+	padding-top:0;	
+}
+
+.reset-padding-bottom {
+	padding-bottom:0;
+}
+
+.reset-padding-left {
+	padding-left:0;
+}
+
+.reset-padding-right {
+	padding-right:0;
+}
+
+/* main margin */
+
+.margin-top {
+	margin-top:@main-distance-object;	
+}
+
+.margin-bottom {
+	margin-bottom:@main-distance-object;	
+}
+
+.margin-left {
+	margin-left:@main-distance-object;	
+}
+
+.margin-right {
+	margin-right:@main-distance-object;	
+}
+
+/* reset margin */
+
+.reset-margin-top {
+	margin-top:0;
+}
+
+.reset-margin-bottom {
+	margin-bottom:0;
+}
+
+.reset-margin-left {
+	margin-left:0;
+}
+
+.reset-margin-right {
+	margin-right:0;
+}
+
+/* block theme bg */
+.bg-ct1 {
+    background:@ct1;
+    
+    * {
+        color:@white;
+    }
+    
+}
+.bg-ct2 {
+    background:@ct2;
+    
+    * {
+        color:@white;
+    }
+    
+}
+.bg-ct3 {
+    background:@ct3;
+    
+    * {
+        color:@white;
+    }
+    
+}
+.bg-ct4 {
+    background:@ct4;
+    
+    * {
+        color:@black;
+    }
+    
+}
+		
+/* input */
+
+#main, .module-modal {
+
+	input[type="text"], select, input[type="password"], input[type="email"], input[type="date"] {
+		.input-style(100%);		
+		}
+    
+    select {
+        padding-top:4px;
+    }
+		
+	input[type="submit"],
+	button, input[type="reset"] {
+		.button-style(auto);	
+		}	
+	textarea {
+		.input-style (100%);
+        height:250px;
+		}	
+	
+}	
+	
+.show-nav-for-iphone {
+	display:none;
+	}	
+	
+/* formMaMa */
+.form-box {	
+	width:100%;
+	margin-top:30px;
+	
+	h2 {
+		text-transform:uppercase;	
+	}
+}
+
+/* badge-green-number */
+.badge-green-number {
+    background:@ct2;
+    padding:@mdo-gr-s / @gr;
+    border:1px solid @white;
+    .border-radius(4px);
+    
+    a {
+        font-weight: 700;
+        .title()!important;
+         line-height: 1em!important;
+        text-decoration: none!important;
+        
+        &:hover {
+            color:@white!important;
+        }
+        
+    }
+    
+    .block-title {
+        .sub-headline()!important;
+        line-height: 1em;
+        .pmr();
+        
+        .fa {
+            font-size: 25px!important;
+        }
+        
+    }
+    
+}
+
+.ui-datepicker {
+    .ui-datepicker-prev, .ui-datepicker-next {
+        display: none;
+    }
+}

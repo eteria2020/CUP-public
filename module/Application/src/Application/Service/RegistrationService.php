@@ -10,7 +10,7 @@ use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\TransportInterface;
 use Zend\Mvc\I18n\Translator;
-use Zend\Mvc\Service\ViewHelperManager;
+use Zend\View\HelperPluginManager;
 use Doctrine\ORM\EntityManager;
 
 final class RegistrationService
@@ -46,17 +46,12 @@ final class RegistrationService
     private $emailSettings;
 
     /**
-     * @var array
-     */
-    private $websiteSettings;
-
-    /**
      * @var \Zend\Mvc\I18n\Translator
      */
     private $translator;
 
     /**
-     * @var \Zend\Mvc\Service\ViewHelperManager
+     * @var \Zend\View\HelperPluginManager
      */
     private $viewHelperManager;
 
@@ -67,9 +62,8 @@ final class RegistrationService
         AbstractHydrator $hydrator,
         TransportInterface $emailTransport,
         array $emailSettings,
-        array $websiteSettings,
         Translator $translator,
-        ViewHelperManager $viewHelperManager
+        HelperPluginManager $viewHelperManager
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -77,7 +71,6 @@ final class RegistrationService
         $this->hydrator = $hydrator;
         $this->emailTransport = $emailTransport;
         $this->emailSettings = $emailSettings;
-        $this->websiteSettings = $websiteSettings;
         $this->translator = $translator;
         $this->viewHelperManager = $viewHelperManager;
     }
@@ -102,14 +95,9 @@ final class RegistrationService
 
     public function formatData($data)
     {
-        /*if (is_array($data['patTipo'])) {
-            $data['patTipo'] = implode(' ', $data['patTipo']);
-        }
+        $data['driverLicenseCategory'] = '{' .$data['driverLicenseCategory']. '}';
+        $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
-        $data['inserito'] = $this->microNow();
-        $data['email'] = strtoupper($data['email']);
-        $data['cf'] = strtoupper($data['cf']);
-        $data['patNumero'] = strtoupper($data['patNumero']);*/
 
         return $data;
     }
@@ -130,7 +118,7 @@ final class RegistrationService
     {
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])
-            ->setTo($this->emailSettings['twistNotices'])
+            ->setTo($this->emailSettings['sharengoNotices'])
             ->setSubject("NUOVA REGISTRAZIONE DA SITO")
             ->setReplyTo($this->emailSettings['replyTo'])
             ->setBody(json_encode($data))
@@ -156,40 +144,31 @@ final class RegistrationService
 
     public function saveData($data)
     {
-        /*$clientiTempRepository = $this->entityManager->getRepository('\TwistCore\Entity\ClientiTemp');
-        $alreadyCliente = $clientiTempRepository->findBy([
-            'email' => $data['email']
-        ]);
+        $customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
 
         $this->entityManager->getConnection()->beginTransaction();
 
         try {
-            if ($alreadyCliente) {
-                $this->entityManager->remove($alreadyCliente[0]);
-            }
+            $customer = new Customers();
+            $customer = $this->hydrator->hydrate($data, $customer);
 
-            $clienteTemp = new ClientiTemp();
-            $clienteTemp = $this->hydrator->hydrate($data, $clienteTemp);
-
-            $this->entityManager->persist($clienteTemp);
+            $this->entityManager->persist($customer);
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
         } catch (\Exception $e) {
             $this->entityManager->getConnection()->rollback();
             throw $e;
-        }*/
+        }
     }
 
     public function sendEmail($email, $surname, $hash)
     {
-        /*$url = $this->viewHelperManager->get('url');
+        $url = $this->viewHelperManager->get('url');
 
         $message = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.txt'),
             $surname,
-            'https://'.$this->websiteSettings['hostname'].$url('index/signup_insert').'?user='.$hash,
-            $this->websiteSettings['hostname'],
-            $this->emailSettings['replyTo']
+            'https://www.sharengo.eu/'.$url('index/signup_insert').'?user='.$hash //FIX hostname!
         );
 
         $mail = (new Message())
@@ -206,14 +185,14 @@ final class RegistrationService
 
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])
-            ->setTo($this->emailSettings['twistNotices'])
+            ->setTo($this->emailSettings['sharengoNotices'])
             ->setSubject("MAIL NUOVA REGISTRAZIONE DA SITO")
             ->setReplyTo($this->emailSettings['replyTo'])
             ->setBody($message)
             ->setEncoding("UTF-8");
         $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
 
-        $this->emailTransport->send($mail);*/
+        $this->emailTransport->send($mail);
     }
 
     public function removeSessionData()
@@ -224,14 +203,13 @@ final class RegistrationService
 
     public function registerUser($hash)
     {
-        /*$clientiTemp = $this->entityManager->getRepository('\TwistCore\Entity\ClientiTemp');
-        $customer = $this->entityManager->getRepository('\TwistCore\Entity\Customer');
+        $customers = $this->entityManager->getRepository('\TwistCore\Entity\Customers');
 
-        $clienteTemp = $clientiTemp->findBy([
+        $customer = $clientiTemp->findBy([
             'hash' => $hash
         ]);
 
-        if (empty($clienteTemp)) {
+        if (empty($customer)) {
             $message = $this->translator->translate('PREREGISTRAZIONE SCADUTA');
         } else {
             $clienteTemp = $clienteTemp[0];

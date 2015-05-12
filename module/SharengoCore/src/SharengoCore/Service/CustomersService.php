@@ -42,12 +42,12 @@ class CustomersService
     public function findByTaxCode($taxCode)
     {
         return $this->clientRepository->findBy([
-            'cf' => $taxCode
+            'taxCode' => $taxCode
         ]);
     }
 
     public function findByDriversLicense($driversLicense)
     {
-        return $this->clientRepository->findByCI('patente', $driversLicense);
+        return $this->clientRepository->findByCI('driverLicense', $driversLicense);
     }
 }

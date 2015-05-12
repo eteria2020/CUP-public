@@ -1,0 +1,130 @@
+/* START define & width for layout adapt */
+
+.grid(@col, @span, @margin) {
+    width: ((100% - (@margin * (@col - 1))) / @col * @span) + (@margin * (@span - 1));
+    margin-right: @margin; 
+}
+
+@gutter-large-screen:3%; /* margine tra gli elementi per schermi con larghezza minima >= al max-width impostato */
+@gutter-small-screen:1.5%; /* margine aggiuntivo che si va a sommare al margine di default (@gutter-large-screen) tra gli elementi per schermi con larghezza minima <= al max-width impostato */
+
+.w-1-4, .width_1_4 {
+	  
+		@media (max-width: @max-width) {
+		  .grid(4, 1, @gutter-large-screen + @gutter-small-screen);
+		}
+
+		@media (min-width: @max-width) {
+		  .grid(4, 1, @gutter-large-screen);		  
+		}
+
+		 &.no-gutter {
+		  .grid(4, 1,0%);
+		 }		  
+	  }	 	  
+	  
+.w-2-4, .width_2_4 {
+	  
+		@media (max-width: @max-width) {
+		.grid(4, 2, @gutter-large-screen + @gutter-small-screen);
+		}
+		
+		@media (min-width: @max-width) {
+		.grid(4, 2, @gutter-large-screen);
+		}
+		
+		&.no-gutter {
+		  .grid(4,2,0%);
+		}
+		
+	 }	
+	  
+.w-3-4, .width_3_4 {
+	  
+		@media (max-width: @max-width) {
+		.grid(4, 3, @gutter-large-screen + @gutter-small-screen);
+		}
+  
+		@media (min-width: @max-width) {
+		 .grid(4, 3, @gutter-large-screen); 
+		}
+		
+		&.no-gutter {
+		  .grid(4,3,0%);
+		}
+	  
+	  }		  
+	  
+.w-1-3, .width_1_3 {
+	  
+		@media (max-width: @max-width) {		  
+		.grid(3, 1, @gutter-large-screen + @gutter-small-screen);
+		}
+		
+		@media (min-width: @max-width) {			 
+		.grid(3, 1, @gutter-large-screen); 
+		}
+		
+		 &.no-gutter {
+		 .grid(3,1,0%);
+		 }
+	  
+	  }	
+	  
+.w-2-3, .width_2_3 {
+	  
+	  	@media (max-width: @max-width) {	  
+		.grid(3, 2, @gutter-large-screen + @gutter-small-screen);		  
+		}
+		  
+		@media (min-width: @max-width) {			 
+		.grid(3, 2, @gutter-large-screen);		   
+	    }		  
+	  
+	  	&.no-gutter {
+		.grid(3,2,0%);
+		}
+	  
+	  }	
+	  
+.w-4-4, .width_4_4, .width_full {
+	  .grid(1, 1, 0);
+	  }	  
+	  
+.bw-f, .block-width {
+	float:left;
+	.box-sizing();	
+	
+	&:last-child, &.last {
+		margin-right:0;
+		}
+	
+	}	
+	
+/* aspect ratio */
+/* server per applicare ai div che non hanno ne min-height ne height, un'altezza fluida che si regola in % */
+.aspect-ratio-height {
+	padding-bottom:25%;
+	}		
+	
+/* define width */
+.content-width() {
+	
+	.box-sizing();
+	
+	/* desktop view */
+	@media (min-width: @max-width) {
+	max-width:@max-width;
+	}
+	
+	/* desktop view */
+	@media (max-width: @max-width) {
+	max-width:980px;
+	}
+	
+	 /* tablet view */
+	@media (max-width: 979px) {
+	max-width:980px;
+	}
+	
+}

@@ -10,4 +10,12 @@ namespace SharengoCore\Entity\Repository;
  */
 class CustomersRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByCI($field, $value)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT c FROM \SharengoCore\Entity\Customers c WHERE UPPER(c.'.$field.') = UPPER(:value)');
+        $query->setParameter('value', $value);
+
+        return $query->getResult();
+    }
 }

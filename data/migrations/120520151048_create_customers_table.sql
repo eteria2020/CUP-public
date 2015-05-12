@@ -18,6 +18,7 @@ CREATE TABLE customers (
     province text,
     town text,
     address text,
+    address_info text,
     zip_code text,
     phone text,
     mobile text,
@@ -28,7 +29,7 @@ CREATE TABLE customers (
     pin varchar(4),
     notes text,
     card_code text,
-    inserted_ts timestamp with time zone,
+    inserted_ts timestamp with time zone DEFAULT now(),
     update_id bigint,
-    update_ts timestamp with time zone
+    update_ts bigint
 )

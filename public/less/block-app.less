@@ -1,0 +1,38 @@
+/* block-avatar-app */
+.block-avatar-app {
+    img {
+        .border-radius(4px);
+        border: 1px solid darken(@main-border-color,20%);
+    }
+}
+
+/* block-nav-app */
+.block-nav-app {
+    ul {
+        .pmr();
+        
+        li {
+            display: block;
+            
+            a {
+                display: block;
+                color:@white;
+                text-decoration: none;
+                text-transform: uppercase;
+                padding:(@mdo-gr-s / @gr) @mdo;
+                border-bottom:1px solid fade(@white,20%);
+                
+                .fa {
+                    margin-right:@mdo-gr-s / @gr;
+                }
+                
+                &:hover, &.active {
+                    background:@ct2;
+                }
+                
+            }
+            
+        }
+        
+    }
+}

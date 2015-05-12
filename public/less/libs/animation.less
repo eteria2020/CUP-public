@@ -1,0 +1,44 @@
+/* 
+https://github.com/protonet/jquery.inview
+LIB JS js/jquery.inview.js
+ACTION JS js/main.js
+STATE JS CAN YOU CONTROL IN CSS
+.js-simple-animation
+.js-show-from-top
+.js-show-from-bottom
+.js-show-from-left
+.js-show-from-tight
+.js-atomic-animation
+ACTIVATE STATE
+.on
+*/
+
+@media (min-width: 980px) {
+.animation {
+	.opacity(0);
+	.transition();			
+		
+	&.on {
+		.opacity(1);						
+		}	
+		
+	&.time-delay1 {
+		.transition-delay(@time:1s);	
+	}
+	
+	&.time-delay2 {
+		.transition-delay(@time:1.5s);	
+	}
+	
+	&.time-delay3 {
+		.transition-delay(@time:2s);	
+	}		
+
+}
+
+/* custom */
+
+/* es. .div.animation.js-show-from-top {border:1px solid red;} .div.animation.js-show-from-top.on {border:1px solid green;} */
+
+
+}

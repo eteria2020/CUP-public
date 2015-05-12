@@ -1,0 +1,106 @@
+/* module-heading-app */
+.module-heading-app {
+    padding:0 @mdo-gr-s;
+    background:@ct3;
+    min-height: 41px;
+    border-bottom: 1px solid @white;
+    padding-top:8px;
+    position: relative;
+    margin-right:-@mdo;
+    
+    .block-user-info-app {
+        color:@white;
+        position: absolute;
+        right: 0;
+        top:0;
+        padding-top:6px;
+        .transition(.2s);
+        padding-right:@mdo;
+        
+        p {
+            .pmr();
+            color:@white;
+        }
+        
+    }
+    
+    .module-main-title {
+        .headline();
+        .pmr();
+        line-height: 1em;
+        color:@white;
+        text-transform: uppercase;
+    }
+    
+}
+
+/* module-wrapper-app */
+.module-wrapper-app {
+    position: relative;
+    width: 100%;
+    height: 100%;   
+    .transition(.2s);
+        
+    &.hide-side-bar {
+        padding-left: 0;
+        
+        .module-column-app {
+            &.side-sx {
+                margin-left:-@width-side-sx;
+            }
+            &.side-dx {                
+            }
+            .module-heading-app {
+                
+                .module-main-title {
+                    padding-left:40px!important;           
+                }
+                
+                .block-user-info-app {
+                    margin-right: 0;
+                }
+            }
+        }
+        
+    }
+    
+}
+
+/* module-column-app */
+.module-column-app {
+    height: 100%;
+    position: relative;
+    
+    &.side-sx {        
+        background:@ct3;
+        width:@width-side-sx;
+        border-right:1px solid @white;
+        .transition(.2s);
+        float: left;
+        position: relative;
+        z-index:5;
+    }
+    &.side-dx {
+        width: 100%;       
+        .transition(.2s);
+        padding-right:@mdo; 
+        
+        .module-main-title {
+            padding-left:@width-side-sx + 40px!important; 
+            .transition(.2s);
+        }
+                
+        .module-column-app-content {
+            overflow: auto;
+            background:#efefef;
+            padding-bottom:@mdo;
+            padding-left:40px;
+        }
+        
+    }
+}
+
+/* module-car-map-app */
+.module-car-map-app {
+}
+

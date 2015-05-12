@@ -1,0 +1,113 @@
+/* © MaMaStudiOs Less Kit - www.mamastudios.com */
+/*
+* Import libraries 
+*/
+@import "libs/normalize.less";
+@import "libs/h5bp.less";
+@import "libs/bootstrap.less";
+@import "libs/mixins.less";
+@import "libs/wp-default.less";
+@import "libs/animation.less";
+@import "libs/golden-ratio-typography.less";
+@import "libs/plugin.less";
+@import "font-awesome/font-awesome.less";
+/* add at your selector .icon-font-awesome(); + icon code. es: content: @fa-var-volume-down;  */
+/* !! see example in: icon.less */
+
+@import "global.less"; /* general class and element */
+@import "typography.less"; /* text formatting */
+@import "icon.less"; /* icon define sprite images */
+@import "structure.less"; /* main structure */
+@import "block.less"; /* define single box element */
+@import "module.less"; /* define wrapper multi box element */
+@import "block-width.less"; /* fluid width grid */
+
+/* app */
+@import "global-app.less"; /* app */
+@import "block-app.less"; /* block app */
+@import "module-app.less"; /* module app */
+
+@import "images.less"; /* sprite */
+@import "mobile.less"; /* responsive */
+@import "mobile-app.less"; /* responsive app */
+//@import "addons.less"; /* extra class */
+
+/**
+ * Sprite
+ * per MacBook Air: glue images --img=../images  --less=.
+ * per iMac: glue images --css=. --img=../images --less
+ *
+ * per display retina le immagini devono essere il doppio: http://glue.readthedocs.org/en/latest/ratios.html
+ poi basta aggiungere dopo --less questo comando --retina 
+ */
+
+/****************************/
+/* define variable template */
+/****************************/
+
+/* distanza tra gli oggetti */
+/* per applicare golden ratio basta moltiplicare o dividere per @gr, es. margin-left:@mdo / @gr; */
+@main-distance-object:20px; 
+
+/* dimensione testo principale */
+/* se hai importato golden-ratio-typography.less"; il font size dei vari selettori avviene in modo automatico secondo il rapporto della sezione aurea */
+@font-size-main-text:16px;
+
+/* dimensione massima contenitore */
+@max-width:1100px;
+@width-side-sx:230px;
+
+/****************************/
+/* define font family */
+/****************************/
+@font1:'Open Sans', sans-serif;
+@font2:'Open Sans', sans-serif;
+
+/****************************/
+/* define lib color */
+/****************************/
+@black:#000;
+@gray:#333;
+@white:#fff;
+@color-light-white:fade(@white,30%);
+@color-light-black:fade(@black,30%);
+
+/****************************/
+/* define theme color */
+/****************************/
+@color-theme-1:#000;
+@color-theme-2:#43A34C;
+@color-theme-3:#1A1919;
+@color-theme-4:#FEEF66;
+@ct4:@color-theme-4;
+
+/****************************/
+/* define border */
+/****************************/
+@solid:solid;
+@main-border-color:#ccc;
+
+/****************************/
+/* define selector color */
+/****************************/
+@color-main-text:@black;
+@color-highlight:@ct2;
+@color-link:@ct2;
+@color-text-header:@white;
+
+/****************************/
+/* define bg color */
+/****************************/
+@bg-body:@white;
+
+/****************************/
+/* define button */
+/****************************/
+@btn-tag-cloud:@black;
+@btn-text-tag-cloud:@white;
+@btn-tag-cloud-hover:@white;
+@btn-text-tag-cloud-hover:@white;
+
+/****************************/
+/* custom for this project */
+/****************************/

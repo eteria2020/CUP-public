@@ -21,7 +21,12 @@
                 'href' => $this->basePath() . '/img/favicon.ico'
             ])
             ->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300')
-            ->appendStylesheet($this->basePath('css/styles.css'), 'screen')
+            //->appendStylesheet($this->basePath('css/styles.css'), 'screen')
+            ->appendStylesheet([
+                'rel' => 'stylesheet/less',
+                'href' => $this->basePath('less/styles.less'),
+                'type' => 'text/css'],
+            'screen')
             ->appendStylesheet($this->basePath('css/print.css'), 'print')
             ->appendStylesheet($this->basePath('css/ie8.css'), 'screen', 'lte IE 8')
             ->appendStylesheet('http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css')
@@ -29,13 +34,14 @@
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-            ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js')
-            ->appendScript('window.jQuery || document.write(\'<script src="js/vendor/jquery-1.8.2.min.js"><\/script>\')')
+            ->prependScript('window.jQuery || document.write(\'<script src="js/vendor/jquery-1.8.2.min.js"><\/script>\')')
+            ->prependFile('http://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js')
+            ->prependFile('http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
             ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
             ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
             ->appendFile($this->basePath('js/jquery.backgroundSize.js'), 'text/javascript', ['conditional' => 'lte IE 8'])
             ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+            ->appendFile('https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js')
         ; ?>
 
     </head>

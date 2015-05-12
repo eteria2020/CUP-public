@@ -17,6 +17,6 @@ class CountriesRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('c.code')
             ->getQuery();
 
-        return $provinces->getResult();
+        return $countries->getResult();
     }
 }

@@ -34,9 +34,21 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Email',
             'attributes' => [
                 'id' => 'email',
-                'maxlength' => 64,
-                'placeholder' => 'name@name.ext'
+                'placeholder' => 'Digita la tua email',
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Email')
+            ]
+        ]);
 
+        $this->add([
+            'name' => 'email2',
+            'type' => 'Zend\Form\Element\Email',
+            'attributes' => [
+                'id' => 'email2',
+                'placeholder' => 'Inserisci di nuovo la email',
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Email')
@@ -48,7 +60,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Password',
             'attributes' => [
                 'id' => 'password',
-                'placeholder' => '********'
+                'placeholder' => 'Imposta la tua password',
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Password')
@@ -60,46 +73,35 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Password',
             'attributes' => [
                 'id' => 'password2',
-                'placeholder' => '********'
+                'placeholder' => 'Inserisci di nuovo la password',
+                'class' => 'required'
 
             ]
         ]);
 
         $this->add([
-            'name' => 'pin',
-            'type' => 'Zend\Form\Element\Text',
+            'name' => 'gender',
+            'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'pin',
-                'maxlength' => 4,
-                'placeholder' => $translator->translate('Es. 0000')
-            ],
-            'options' => [
-                'label' => $translator->translate('Codice Pin (4 cifre)')
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'sesso',
-            'type' => 'Zend\Form\Element\Radio',
-            'attributes' => [
-                'id' => 'sesso'
+                'id' => 'gender'
             ],
             'options' => [
                 'label' => $translator->translate('Titolo'),
                 'value_options' => [
-                    '0' => $translator->translate('Signore'),
-                    '1' => $translator->translate('Signora')
+                    'male' => $translator->translate('Sig.'),
+                    'female' => $translator->translate('Sig.ra')
                 ]
             ]
         ]);
 
         $this->add([
-            'name' => 'nome',
+            'name' => 'name',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'nome',
+                'id' => 'name',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Nome')
+                'placeholder' => $translator->translate('Nome'),
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Nome')
@@ -107,12 +109,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'cognome',
+            'name' => 'surname',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'cognome',
+                'id' => 'surname',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Cognome')
+                'placeholder' => $translator->translate('Cognome'),
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Cognome')
@@ -120,12 +123,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'dataNascita',
+            'name' => 'birthDate',
             'type' => 'Zend\Form\Element\Date',
             'attributes' => [
-                'id' => 'dataNascita',
+                'id' => 'birthDate',
+                'placeholder' => $translator->translate('gg/mm/aaaa'),
+                'class' => 'required datepicker-date',
                 'max' => date_create()->format('Y-m-d'),
-                'placeholder' => $translator->translate('gg/mm/aaaa')
             ],
             'options' => [
                 'label' => $translator->translate('Data di nascita')
@@ -133,10 +137,11 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'statoNascita',
+            'name' => 'birthCountry',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'statoNascita'
+                'id' => 'birthCountry',
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Stato di nascita'),
@@ -145,25 +150,26 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'provinciaNascita',
-            'type' => 'Zend\Form\Element\Select',
+            'name' => 'birthProvince',
+            'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'provinciaNascita',
-                'placeholder' => $translator->translate('Provincia di nascita (EE = estero)')
+                'id' => 'birthProvince',
+                'placeholder' => $translator->translate('EE = estero'),
+                'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Provincia di nascita (EE = estero)'),
-                'value_options' => $italiaService->getAllProvinces()
+                'label' => $translator->translate('Provincia di nascita (EE = estero)')
             ]
         ]);
 
         $this->add([
-            'name' => 'cittaNascita',
+            'name' => 'birthTown',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'cittaNascita',
+                'id' => 'birthTown',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Luogo di nascita')
+                'placeholder' => $translator->translate('Luogo di nascita'),
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Comune di nascita'),
@@ -171,12 +177,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'resIndirizzo',
+            'name' => 'address',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'resIndirizzo',
+                'id' => 'address',
                 'maxlength' => 64,
                 'placeholder' => $translator->translate('Via e numero civico'),
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Via e numero civico'),
@@ -184,10 +191,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'resInfo',
+            'name' => 'addressInfo',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'resInfo',
+                'id' => 'addressInfo',
                 'maxlength' => 64,
                 'placeholder' => $translator->translate('Informazioni aggiuntive'),
             ],
@@ -197,12 +204,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'resCap',
+            'name' => 'zipCode',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'resCap',
+                'id' => 'zipCode',
                 'maxlength' => 12,
                 'placeholder' => $translator->translate('CAP'),
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('CAP'),
@@ -210,12 +218,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'resCitta',
+            'name' => 'town',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'resCitta',
+                'id' => 'town',
                 'maxlength' => 16,
                 'placeholder' => $translator->translate('Città'),
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Città'),
@@ -223,10 +232,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'lingua',
+            'name' => 'language',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'lingua'
+                'id' => 'language'
             ],
             'options' => [
                 'label' => $translator->translate('Lingua preferita'),
@@ -244,12 +253,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'cf',
+            'name' => 'taxCode',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'cf',
+                'id' => 'taxCode',
                 'maxlength' => 16,
-                'placeholder' => 'XXXXXXXXXXXXXXXX'
+                'placeholder' => 'XXXXXXXXXXXXXXXX',
+                'class' => 'required'
             ],
             'options' => [
                 'label' => $translator->translate('Codice fiscale'),
@@ -257,10 +267,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'piva',
+            'name' => 'vat',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'piva',
+                'id' => 'vat',
                 'maxlength' => 13,
                 'placeholder' => 'ITNNNNNNNNNNN'
             ],
@@ -270,10 +280,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'cellulare',
+            'name' => 'mobile',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'cellulare',
+                'id' => 'mobile',
                 'maxlength' => 13,
                 'placeholder' => $translator->translate('Cellulare'),
             ],
@@ -283,10 +293,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'telefono',
+            'name' => 'phone',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'telefono',
+                'id' => 'phone',
                 'maxlength' => 13,
                 'placeholder' => $translator->translate('Telefono'),
             ],
@@ -311,10 +321,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'articolo1',
+            'name' => 'generalConditions',
             'type' => 'Zend\Form\Element\Radio',
             'attributes' => [
-                'id' => 'articolo1'
+                'id' => 'generalConditions'
             ],
             'options' => [
                 'label' => $translator->translate('Condizioni generali di contratto'),
@@ -326,10 +336,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'articolo2',
+            'name' => 'specialConditions',
             'type' => 'Zend\Form\Element\Radio',
             'attributes' => [
-                'id' => 'articolo2'
+                'id' => 'specialConditions'
             ],
             'options' => [
                 'label' => $translator->translate('Condizioni speciali di contratto'),
@@ -354,7 +364,22 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'Application\Form\Validator\DuplicateEmail',
                         'options' => [
-                            'customerService' => $this->customerService
+                            'customerService' => $this->customersService
+                        ]
+                    ]
+                ]
+            ],
+            'email2' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'EmailAddress',
+                        'break_chain_on_failure' => true
+                    ],
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'email'
                         ]
                     ]
                 ]
@@ -370,8 +395,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 8,
-                            'max' => 16
+                            'min' => 8
                         ]
                     ]
                 ]
@@ -387,8 +411,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 8,
-                            'max' => 16
+                            'min' => 8
                         ],
                         'break_chain_on_failure' => true
                     ],
@@ -400,23 +423,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'pin' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 4,
-                            'max' => 4
-                        ],
-                        'break_chain_on_failure' => true
-                    ],
-                    [
-                        'name' => 'Digits'
-                    ]
-                ]
-            ],
-            'nome' => [
+            'name' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -424,7 +431,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'cognome' => [
+            'surname' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -432,7 +439,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'dataNascita' => [
+            'birthDate' => [
                 'required' => true,
                 'validators' => [
                     [
@@ -440,7 +447,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'cittaNascita' => [
+            'birthTown' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -448,13 +455,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'statoNascita' => [
+            'birthCountry' => [
                 'required' => true
             ],
-            'provinciaNascita' => [
-                'required' => true
-            ],
-            'resIndirizzo' => [
+            'birthProvince' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -462,7 +466,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'resCap' => [
+            'address' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -470,7 +474,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'resCitta' => [
+            'zipCode' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -478,7 +482,15 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'cf' => [
+            'town' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
+            ],
+            'taxCode' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -489,12 +501,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'Application\Form\Validator\DuplicateTaxCode',
                         'options' => [
-                            'customerService' => $this->customerService
+                            'customerService' => $this->customersService
                         ]
                     ]
                 ]
             ],
-            'piva' => [
+            'vat' => [
                 'required' => false,
                 'filters' => [
                     [
@@ -511,7 +523,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'cellulare' => [
+            'mobile' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -527,7 +539,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'telefono' => [
+            'phone' => [
                 'required' => false,
                 'filters' => [
                     [
@@ -551,7 +563,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'articolo1' => [
+            'generalConditions' => [
                 'required' => true,
                 'validators' => [
                     [
@@ -559,7 +571,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'articolo2' => [
+            'specialConditions' => [
                 'required' => true,
                 'validators' => [
                     [

@@ -99,21 +99,23 @@ return array(
                     ),
                 ]
             ],
-            'sign-up-2' => [
+            'signup-2' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{sign-up-2}',
+                    'route' => '/{signup-2}',
                     'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup2'
                     ]
                 ]
             ],
-            'sign-up-3' => [
+            'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{sign-up-3}',
+                    'route' => '/{signup-3}',
                     'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup3'
                     ]
@@ -125,7 +127,7 @@ return array(
                     'route' => '/{cookies}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
+                        'controller' => 'Index',
                         'action'     => 'cookies',
                     ),
                 ]
@@ -136,7 +138,7 @@ return array(
                     'route' => '/{notelegali}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
+                        'controller' => 'Index',
                         'action'     => 'notelegali',
                     ),
                 ]
@@ -147,7 +149,7 @@ return array(
                     'route' => '/{privacy}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
+                        'controller' => 'Index',
                         'action'     => 'privacy',
                     ),
                 ]
@@ -158,7 +160,7 @@ return array(
                     'route' => '/{callcenter}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
+                        'controller' => 'Index',
                         'action'     => 'callcenter',
                     ),
                 ]
