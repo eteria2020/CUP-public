@@ -5,8 +5,8 @@ namespace SharengoCore;
 return [
     'service_manager' => [
         'factories' => [
-            'TwistCore\Service\CustomerService' => 'TwistCore\Service\CustomerServiceFactory',
-            'TwistCore\Service\CountriesService' => 'TwistCore\Service\CountriesServiceFactory',
+            'SharengoCore\Service\CustomersService' => 'SharengoCore\Service\CustomersServiceFactory',
+            'SharengoCore\Service\CountriesService' => 'SharengoCore\Service\CountriesServiceFactory',
         ]
     ],
     'doctrine' => [
