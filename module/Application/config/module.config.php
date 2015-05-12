@@ -99,6 +99,26 @@ return array(
                     ),
                 ]
             ],
+            'sign-up-2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{sign-up-2}',
+                    'defaults' => [
+                        'controller' => 'User',
+                        'action' => 'signup2'
+                    ]
+                ]
+            ],
+            'sign-up-3' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{sign-up-3}',
+                    'defaults' => [
+                        'controller' => 'User',
+                        'action' => 'signup3'
+                    ]
+                ]
+            ],
             'cookies' => [
                 'type' => 'Segment',
                 'options' => [
@@ -153,6 +173,11 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'factories' => [
+            'RegistrationService' => 'Application\Service\RegistrationServiceFactory',
+            'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
+            'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory'
+        ]
     ),
     'translator' => array(
         'locale' => 'it_IT',
@@ -164,12 +189,14 @@ return array(
             ),
         ),
     ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\User' => 'Application\Controller\UserController'
-        ),
-    ),
+    'controllers' => [
+        'invokables' => [
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
+        ],
+        'factories' => [
+            'Application\Controller\User' => 'Application\Controller\UserControllerFactory'
+        ],
+    ],
     'view_helpers' => [
         'factories' => [
             'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
