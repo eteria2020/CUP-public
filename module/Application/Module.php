@@ -19,6 +19,14 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        /*$em = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager');
+        $platform = $em->getConnection()->getDatabasePlatform();
+        $platform->registerDoctrineTypeMapping('gender', 'string');
+        $platform->registerDoctrineTypeMapping('_text', 'string');
+
+        $config = $em->getConnection()->getConfiguration();
+        $config->setFilterSchemaAssetsExpression('/^(countries)$/');*/
     }
 
     public function getConfig()
