@@ -121,6 +121,17 @@ return array(
                     ]
                 ]
             ],
+            'signup_insert' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup-insert}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signupinsert'
+                    ]
+                ]
+            ],
             'cookies' => [
                 'type' => 'Segment',
                 'options' => [

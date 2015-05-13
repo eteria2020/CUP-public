@@ -2,9 +2,7 @@
 
 namespace Application\Service;
 
-//use TwistCore\Entity\Repository\ClientiTempRepository;
-//use TwistCore\Entity\ClientiTemp;
-use TwistCore\Entity\Customer;
+use SharengoCore\Entity\Customers;
 use Zend\Form\Form;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\Mail\Message;
@@ -77,8 +75,8 @@ final class RegistrationService
 
     public function retrieveData()
     {
-        $dataForm1 = $this->form1->getRegisteredData()->toArray();
-        $dataForm2 = $this->form2->getRegisteredData()->toArray();
+        $dataForm1 = $this->form1->getRegisteredData()->toArray(); //use hydration
+        $dataForm2 = $this->form2->getRegisteredData()->toArray(); //use hydration
 
         $data = [];
 
@@ -95,24 +93,12 @@ final class RegistrationService
 
     public function formatData($data)
     {
-        $data['driverLicenseCategory'] = '{' .$data['driverLicenseCategory']. '}';
+        $data['driverLicenseCategories'] = '{' .$data['driverLicenseCategories']. '}';
         $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
 
         return $data;
     }
-
-    /*private function microNow()
-    {
-        $micro  = microtime();
-        $time   = explode(" ", $micro);
-        $now    = explode(".", $time[0]);
-        $now1   = substr($now[1], 0);   // isola la parte decimale
-        $now2   = substr($now1, 0, 6);  // tiene solo 3 decimali
-
-        $date   = date("Y-m-d H:i:s.").$now2;
-        return $date;
-    }*/
 
     public function notifySharengoByMail($data)
     {
@@ -132,7 +118,7 @@ final class RegistrationService
     {
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])
-            ->setTo($this->emailSettings['twistNotices'])
+            ->setTo($this->emailSettings['sharengoNotices'])
             ->setSubject("ERRORE NUOVA REGISTRAZIONE DA SITO")
             ->setReplyTo($this->emailSettings['replyTo'])
             ->setBody($message)
@@ -164,11 +150,12 @@ final class RegistrationService
     public function sendEmail($email, $surname, $hash)
     {
         $url = $this->viewHelperManager->get('url');
+        $serverUrl = $this->viewHelperManager->get('serverUrl');
 
         $message = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.txt'),
             $surname,
-            'https://www.sharengo.eu/'.$url('index/signup_insert').'?user='.$hash //FIX hostname!
+            $serverUrl().$url('signup_insert').'?user='.$hash
         );
 
         $mail = (new Message())
@@ -203,32 +190,23 @@ final class RegistrationService
 
     public function registerUser($hash)
     {
-        $customers = $this->entityManager->getRepository('\TwistCore\Entity\Customers');
+        $customers = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
 
-        $customer = $clientiTemp->findBy([
+        $customer = $customers->findBy([
             'hash' => $hash
         ]);
 
         if (empty($customer)) {
             $message = $this->translator->translate('PREREGISTRAZIONE SCADUTA');
         } else {
-            $clienteTemp = $clienteTemp[0];
-            $customer = $customer->findByEmailOrTaxCode(
-                $clienteTemp->getEmail(),
-                $clienteTemp->getCf()
-            );
-
-            if (!empty($customer)) {
+            $customer = $customer[0];
+            if ($customer->getRegistrationCompleted()) {
                 $message = $this->translator->translate("UTENTE GIA' REGISTRATO");
             } else {
                 $this->entityManager->getConnection()->beginTransaction();
 
                 try {
-                    $this->entityManager->remove($clienteTemp);
-
-                    $customer = new Customer();
-                    $data = $this->createCustomerFromTemp($clienteTemp);
-                    $customer = $this->hydrator->hydrate($data, $customer);
+                    $customer->setRegistrationCompleted(true);
 
                     $this->entityManager->persist($customer);
                     $this->entityManager->flush();
@@ -242,41 +220,6 @@ final class RegistrationService
             }
         }
 
-        return $message;*/
+        return $message;
     }
-
-    /*private function createCustomerFromTemp(ClientiTemp $clienteTemp)
-    {
-        return [
-            'email' => $clienteTemp->getEmail(),
-            'pin' => $clienteTemp->getPin(),
-            'sesso' => $clienteTemp->getSesso(),
-            'nome' => $clienteTemp->getNome(),
-            'cognome' => $clienteTemp->getCognome(),
-            'dataDiNascita' => $clienteTemp->getDataNascita(),
-            'cittaNascita' => $clienteTemp->getCittaNascita(),
-            'statoNascita' => $clienteTemp->getStatoNascita(),
-            'via' => $clienteTemp->getResIndirizzo(),
-            'info' => $clienteTemp->getResInfo(),
-            'cap' => $clienteTemp->getResCap(),
-            'citta' => $clienteTemp->getResCitta(),
-            'lingua' => $clienteTemp->getLingua(),
-            'cf' => $clienteTemp->getCf(),
-            'piva' => $clienteTemp->getPiva(),
-            'cellulare' => $clienteTemp->getCellulare(),
-            'telefono' => $clienteTemp->getTelefono(),
-            'studente' => $clienteTemp->getStudente(),
-            'matricola' => $clienteTemp->getMatricola(),
-            'universita' => $clienteTemp->getUniversita(),
-            'patente' => $clienteTemp->getPatNumero(),
-            'patenteUfficio' => $clienteTemp->getPatUfficio(),
-            'patenteRilascio' => $clienteTemp->getPatRilascio(),
-            'patenteNome' => $clienteTemp->getPatNome(),
-            'patenteNazione' => $clienteTemp->getPatNazione(),
-            'scadenzaPatente' => $clienteTemp->getPatScadenza(),
-            'tipoPatente' => $clienteTemp->getPatTipo(),
-            'timeInserimento' => $this->microNow(),
-            'password' => $clienteTemp->getPassword()
-        ];
-    }*/
 }

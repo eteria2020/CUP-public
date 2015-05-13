@@ -265,7 +265,14 @@ class Customers
      *
      * @ORM\Column(name="registration_completed", type="boolean", options={"default"=false})
      */
-    private $registrationCompleted;
+    private $registrationCompleted = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hash", type="text", nullable=true)
+     */
+    private $hash;
 
     public function toArray()
     {
@@ -1120,5 +1127,29 @@ class Customers
     public function getRegistrationCompleted()
     {
         return $this->registrationCompleted;
+    }
+
+    /**
+     * Set hash
+     *
+     * @param string $hash
+     *
+     * @return Customers
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+
+        return $this;
+    }
+
+    /**
+     * Get hash
+     *
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
     }
 }

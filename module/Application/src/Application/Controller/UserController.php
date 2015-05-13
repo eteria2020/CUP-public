@@ -115,10 +115,10 @@ class UserController extends AbstractActionController
             $this->registrationService->removeSessionData();
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage());
-            return $this->redirect()->toRoute('index/signup-2', array('lang' => $this->languageService->getLanguage()));
+            return $this->redirect()->toRoute('signup-2', array('lang' => $this->languageService->getLanguage()));
         }
 
-        return $this->redirect()->toRoute('index/signup-3', array('lang' => $this->languageService->getLanguage()));
+        return $this->redirect()->toRoute('signup-3', array('lang' => $this->languageService->getLanguage()));
     }
 
     private function signupForm($form)
@@ -131,5 +131,17 @@ class UserController extends AbstractActionController
     public function signup3Action()
     {
         return new ViewModel();
+    }
+
+    public function signupinsertAction()
+    {
+        $hash = $this->params()->fromQuery('user');
+
+        $message = $this->registrationService->registerUser($hash);
+
+        $this->flashMessenger()->addMessage($message);
+
+        return new ViewModel();
+        //return $this->redirect()->toRoute('login', array('lang' => $this->languageService->getLanguage()));
     }
 }
