@@ -21,12 +21,13 @@
                 'href' => $this->basePath() . '/img/favicon.ico'
             ])
             ->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300')
-            //->appendStylesheet($this->basePath('css/styles.css'), 'screen')
-            ->appendStylesheet([
+            ->appendStylesheet($this->basePath('css/styles.css'), 'screen')
+            ->appendStylesheet($this->basePath('css/addons.css'), 'screen')
+            /*->appendStylesheet([
                 'rel' => 'stylesheet/less',
                 'href' => $this->basePath('less/styles.less'),
                 'type' => 'text/css'],
-            'screen')
+            'screen')*/
             ->appendStylesheet($this->basePath('css/print.css'), 'print')
             ->appendStylesheet($this->basePath('css/ie8.css'), 'screen', 'lte IE 8')
             ->appendStylesheet('http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css')
