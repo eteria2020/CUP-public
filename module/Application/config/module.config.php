@@ -237,16 +237,6 @@ return array(
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
         ]
     ),
-    'translator' => array(
-        'locale' => 'it_IT',
-        'translation_file_patterns' => array(
-            array(
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
     'controllers' => [
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController'
