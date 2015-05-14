@@ -2,6 +2,10 @@
     background: #fff url(../images/bg/bg-emotional-header.jpg) center -30px no-repeat;
 }
 
+#registration-form ul.errors li, #registration-form-2 ul.errors li {
+    list-style-type: none;
+    color: red;
+}
 
 #footer .badge-green-number {
     width: 280px;

@@ -1,11 +1,3 @@
-<?php
-    /*$this->headScript()
-        ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
-        ->appendFile($this->basePath('js/ui.datepicker-it.js'));
-    $this->headLink()
-        ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));*/
-?>
-
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
@@ -48,7 +40,7 @@
                 <?php
                     $email = $this->form->get('user')->get('email');
                     echo $this->formElement($email);
-                    echo $this->formElementErrors($email);
+                    echo $this->formElementErrors($email, array('class' => 'errors'));
                 ?>
             </p>
         </div>
@@ -58,7 +50,7 @@
                 <?php
                     $email2 = $this->form->get('user')->get('email2');
                     echo $this->formElement($email2);
-                    echo $this->formElementErrors($email2);
+                    echo $this->formElementErrors($email2, array('class' => 'errors'));
                 ?>
             </p>
         </div>
@@ -74,7 +66,7 @@
             <?php
                 $password = $this->form->get('user')->get('password');
                 echo $this->formElement($password);
-                echo $this->formElementErrors($password);
+                echo $this->formElementErrors($password, array('class' => 'errors'));
             ?>
         </p>
     </div>
@@ -84,7 +76,7 @@
             <?php
                 $password2 = $this->form->get('user')->get('password2');
                 echo $this->formElement($password2);
-                echo $this->formElementErrors($password2);
+                echo $this->formElementErrors($password2, array('class' => 'errors'));
             ?>
         </p>
     </div>
@@ -104,7 +96,7 @@
         <?php
             $gender = $this->form->get('user')->get('gender');
             echo $this->formElement($gender);
-            echo $this->formElementErrors($gender);
+            echo $this->formElementErrors($gender, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -116,7 +108,7 @@
         <?php
             $name = $this->form->get('user')->get('name');
             echo $this->formElement($name);
-            echo $this->formElementErrors($name);
+            echo $this->formElementErrors($name, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -126,7 +118,7 @@
         <?php
             $surname = $this->form->get('user')->get('surname');
             echo $this->formElement($surname);
-            echo $this->formElementErrors($surname);
+            echo $this->formElementErrors($surname, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -144,7 +136,7 @@
         <?php
             $birthDate = $this->form->get('user')->get('birthDate');
             echo $this->formElement($birthDate);
-            echo $this->formElementErrors($birthDate);
+            echo $this->formElementErrors($birthDate, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -154,7 +146,7 @@
         <?php
             $birthCountry = $this->form->get('user')->get('birthCountry');
             echo $this->formElement($birthCountry);
-            echo $this->formElementErrors($birthCountry);
+            echo $this->formElementErrors($birthCountry, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -164,7 +156,7 @@
         <?php
             $birthProvince = $this->form->get('user')->get('birthProvince');
             echo $this->formElement($birthProvince);
-            echo $this->formElementErrors($birthProvince);
+            echo $this->formElementErrors($birthProvince, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -181,7 +173,7 @@
         <?php
             $birthTown = $this->form->get('user')->get('birthTown');
             echo $this->formElement($birthTown);
-            echo $this->formElementErrors($birthTown);
+            echo $this->formElementErrors($birthTown, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -193,7 +185,7 @@
         <?php
             $address = $this->form->get('user')->get('address');
             echo $this->formElement($address);
-            echo $this->formElementErrors($address);
+            echo $this->formElementErrors($address, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -203,7 +195,7 @@
         <?php
             $zipCode = $this->form->get('user')->get('zipCode');
             echo $this->formElement($zipCode);
-            echo $this->formElementErrors($zipCode);
+            echo $this->formElementErrors($zipCode, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -221,7 +213,7 @@
         <?php
             $town = $this->form->get('user')->get('town');
             echo $this->formElement($town);
-            echo $this->formElementErrors($town);
+            echo $this->formElementErrors($town, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -231,7 +223,7 @@
         <?php
             $addressInfo = $this->form->get('user')->get('addressInfo');
             echo $this->formElement($addressInfo);
-            echo $this->formElementErrors($addressInfo);
+            echo $this->formElementErrors($addressInfo, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -247,7 +239,7 @@
         <?php
             $taxCode = $this->form->get('user')->get('taxCode');
             echo $this->formElement($taxCode);
-            echo $this->formElementErrors($taxCode);
+            echo $this->formElementErrors($taxCode, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -257,7 +249,7 @@
         <?php
             $vat = $this->form->get('user')->get('vat');
             echo $this->formElement($vat);
-            echo $this->formElementErrors($vat);
+            echo $this->formElementErrors($vat, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -273,7 +265,7 @@
         <?php
             $mobile = $this->form->get('user')->get('mobile');
             echo $this->formElement($mobile);
-            echo $this->formElementErrors($mobile);
+            echo $this->formElementErrors($mobile, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -283,7 +275,7 @@
         <?php
             $phone = $this->form->get('user')->get('mobile');
             echo $this->formElement($phone);
-            echo $this->formElementErrors($phone);
+            echo $this->formElementErrors($phone, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -303,7 +295,7 @@
         <?php
             $language = $this->form->get('user')->get('language');
             echo $this->formElement($language);
-            echo $this->formElementErrors($language);
+            echo $this->formElementErrors($language, array('class' => 'errors'));
         ?>
     </p>
 </div>
@@ -333,7 +325,7 @@
                         <input type='radio' name="<?php echo $privacy->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo $value; ?>
                     </label>
                 <?php endforeach; ?>
-            <?php echo $this->formElementErrors($privacy, array('class' => 'error-sign-up')); ?>
+            <?php echo $this->formElementErrors($privacy, array('class' => 'errors')); ?>
         </p>
     </div>
 
@@ -365,7 +357,7 @@
                     <input type='radio' name="<?php echo $generalConditions->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo $value; ?>
                 </label>
             <?php endforeach; ?>
-        <?php echo $this->formElementErrors($generalConditions, array('class' => 'error-sign-up')); ?>
+        <?php echo $this->formElementErrors($generalConditions, array('class' => 'errors')); ?>
     </p>
 </div>
 
@@ -404,7 +396,7 @@
                     <input type='radio' name="<?php echo $specialConditions->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo $value; ?>
                 </label>
             <?php endforeach; ?>
-        <?php echo $this->formElementErrors($specialConditions, array('class' => 'error-sign-up')); ?>
+        <?php echo $this->formElementErrors($specialConditions, array('class' => 'errors')); ?>
     </p>
 </div>
 
@@ -426,18 +418,3 @@
 
 </div>
                <!-- main -->
-
-<?php
-    /*$this->inlineScript()->captureStart();
-    echo <<<JS
-        $(document).ready(function() {
-            $( ".datepicker-date" ).datepicker({
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-100:+0"
-            });
-        });
-JS;
-    $this->inlineScript()->captureEnd();*/
-?>
