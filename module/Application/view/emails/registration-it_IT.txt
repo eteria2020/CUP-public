@@ -5,7 +5,7 @@ Gentile Sig. %1$s
 
 grazie per essersi iscritto a Sharengo!
 
-ATTIVARE  LA REGISTRAZIONE: per completare l’iscrizione cliccare sul seguente link ed effettuare l'accesso all'area:
+ATTIVARE  LA REGISTRAZIONE: per completare l'iscrizione cliccare sul seguente link ed effettuare l'accesso all'area:
 
 
 %2$s

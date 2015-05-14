@@ -53,6 +53,12 @@ final class RegistrationService
      */
     private $viewHelperManager;
 
+    /**
+     *
+     * @var \SharengoCore\Entity\Repository\CustomersRepository
+     */
+    private $customersRepository;
+
     public function __construct(
         Form $form1,
         Form $form2,
@@ -71,6 +77,8 @@ final class RegistrationService
         $this->emailSettings = $emailSettings;
         $this->translator = $translator;
         $this->viewHelperManager = $viewHelperManager;
+
+        $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
     }
 
     public function retrieveData()
@@ -130,8 +138,6 @@ final class RegistrationService
 
     public function saveData($data)
     {
-        $customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
-
         $this->entityManager->getConnection()->beginTransaction();
 
         try {
@@ -188,11 +194,16 @@ final class RegistrationService
         $this->form2->clearRegisteredData();
     }
 
+    public function getUserFromHash($hash) {
+        return $this->customersRepository->findOneBy([
+            'hash' => $hash
+        ]);
+    }
+    
     public function registerUser($hash)
     {
-        $customers = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
-
-        $customer = $customers->findBy([
+        
+        $customer = $this->customersRepository->findBy([
             'hash' => $hash
         ]);
 

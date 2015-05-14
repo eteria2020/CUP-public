@@ -138,10 +138,19 @@ class UserController extends AbstractActionController
         $hash = $this->params()->fromQuery('user');
 
         $message = $this->registrationService->registerUser($hash);
+        $email = '';
+        $enablePayment = false;
 
-        $this->flashMessenger()->addMessage($message);
+        $user = $this->registrationService->getUserFromHash($hash);
+        
+        if (null != $user) {
+            $urlencodedEmail = urlencode($user->getEmail());
+            $enablePayment = !$user->getFirstPaymentCompleted();
+        }
 
-        return new ViewModel();
-        //return $this->redirect()->toRoute('login', array('lang' => $this->languageService->getLanguage()));
+        return new ViewModel(array('message' => $message,
+                                   'enable_payment' => $enablePayment,
+                                   'email' => $urlencodedEmail));
     }
+    
 }

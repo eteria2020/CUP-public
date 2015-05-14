@@ -175,7 +175,51 @@ return array(
                         'action'     => 'callcenter',
                     ),
                 ]
-            ]
+            ],
+            'pay' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pay}/:email',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Payment',
+                        'action'     => 'pay',
+                    ),
+                ]
+            ],
+            'pay-return' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pay-return}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Payment',
+                        'action'     => 'pay-return',
+                    ),
+                ]
+            ],
+            'pay-error' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pay-error}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Payment',
+                        'action'     => 'pay-error',
+                    ),
+                ]
+            ],
+            'pay-success' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pay-success}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Payment',
+                        'action'     => 'pay-success',
+                    ),
+                ]
+            ],
         ),
     ),
     'service_manager' => array(
@@ -189,7 +233,8 @@ return array(
         'factories' => [
             'RegistrationService' => 'Application\Service\RegistrationServiceFactory',
             'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
-            'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory'
+            'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
+            'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
         ]
     ),
     'translator' => array(
@@ -207,7 +252,8 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController'
         ],
         'factories' => [
-            'Application\Controller\User' => 'Application\Controller\UserControllerFactory'
+            'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
+            'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory'
         ],
     ],
     'view_helpers' => [

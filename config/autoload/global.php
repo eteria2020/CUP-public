@@ -12,5 +12,7 @@
  */
 
 return array(
-    // ...
+    'sharengo' => [
+        'card-cost' => 10
+    ]
 );

@@ -274,6 +274,13 @@ class Customers
      */
     private $hash;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="first_payment_completed", type="boolean", options={"default"=false})
+     */
+    private $firstPaymentCompleted = false;
+
     public function toArray()
     {
         return get_object_vars($this);
@@ -1151,5 +1158,29 @@ class Customers
     public function getHash()
     {
         return $this->hash;
+    }
+
+    /**
+     * Set firstPaymentCompleted
+     *
+     * @param boolean $firstPaymentCompleted
+     *
+     * @return Customers
+     */
+    public function setFirstPaymentCompleted($firstPaymentCompleted)
+    {
+        $this->firstPaymentCompleted = $firstPaymentCompleted;
+
+        return $this;
+    }
+
+    /**
+     * Get firstPaymentCompleted
+     *
+     * @return boolean
+     */
+    public function getFirstPaymentCompleted()
+    {
+        return $this->firstPaymentCompleted;
     }
 }

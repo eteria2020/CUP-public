@@ -23,22 +23,10 @@
  <!-- block-form -->
  <div class="block-form w-3-4 auto-margin clearfix">
 
-     <div class="block-form-section content-align-center margin-bottom">
-         <h2><i class="fa fa-thumbs-up"></i> <?= $this->message ?></h2>
-     </div>
-
-     <?php if ($this->enable_payment) { ?>
      <div class="margin-bottom">
-        <h1><?= $this->translate('Completa l\'attivazione del servizio')?></h1>
-        <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via PayPal.')?></p>
+        <h1><?= $this->translate('Attivazione completata')?></h1>
+        <p><?= $this->translate('Ti confermiamo la ricezione del pagamento')?></p>
      </div>
-
-
-     <div class="module-wrapper-button margin-bottom content-align-center">
-         <a href="<?= $this->url('pay', array('email' => $this->email)) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento di 10€'); ?> <i class="fa fa-plus-circle"></i></a>
-     </div>
-
-     <?php } ?>
 
 </div>
 <!-- block-form -->

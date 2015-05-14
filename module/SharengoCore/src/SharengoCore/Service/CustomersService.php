@@ -2,6 +2,9 @@
 
 namespace SharengoCore\Service;
 
+use SharengoCore\Entity\Customers;
+
+
 class CustomersService
 {
 
@@ -32,10 +35,18 @@ class CustomersService
         return $this->clientRepository->getUserByEmailPassword($s_username, $s_password);
 
     }
+
     public function findByEmail($email)
     {
         return $this->clientRepository->findBy([
             'email' => $email
+        ]);
+    }
+
+    public function findById($id)
+    {
+        return $this->clientRepository->findOneBy([
+            'id' => $id
         ]);
     }
 
@@ -49,5 +60,14 @@ class CustomersService
     public function findByDriversLicense($driversLicense)
     {
         return $this->clientRepository->findByCI('driverLicense', $driversLicense);
+    }
+
+    public function confirmFirstPaymentCompleted(Customers $customer) {
+
+        $customer->setFirstPaymentCompleted(true);
+
+        $this->entityManager->persist($customer);
+        $this->entityManager->flush($customer);
+
     }
 }
