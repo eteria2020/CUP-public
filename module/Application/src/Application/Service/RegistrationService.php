@@ -7,6 +7,7 @@ use Zend\Form\Form;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\TransportInterface;
+use Zend\Mime;
 use Zend\Mvc\I18n\Translator;
 use Zend\View\HelperPluginManager;
 use Doctrine\ORM\EntityManager;
@@ -158,11 +159,18 @@ final class RegistrationService
         $url = $this->viewHelperManager->get('url');
         $serverUrl = $this->viewHelperManager->get('serverUrl');
 
-        $message = sprintf(
+        $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.txt'),
             $surname,
             $serverUrl().$url('signup_insert').'?user='.$hash
         );
+
+        $text = new Mime\Part($content);
+        $text->type = Mime\Mime::TYPE_TEXT;
+        $text->charset = 'utf-8';
+
+        $mimeMessage = new Mime\Message();
+        $mimeMessage->setParts([$text]);
 
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])
@@ -170,7 +178,7 @@ final class RegistrationService
             ->setSubject("SHARENGO: CONFERMA REGISTRAZIONE E ATTIVAZIONE")
             ->setReplyTo($this->emailSettings['replyTo'])
             ->setBcc($this->emailSettings['registrationBcc'])
-            ->setBody($message)
+            ->setBody($mimeMessage)
             ->setEncoding("UTF-8");
         $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
 
@@ -181,7 +189,7 @@ final class RegistrationService
             ->setTo($this->emailSettings['sharengoNotices'])
             ->setSubject("MAIL NUOVA REGISTRAZIONE DA SITO")
             ->setReplyTo($this->emailSettings['replyTo'])
-            ->setBody($message)
+            ->setBody($mimeMessage)
             ->setEncoding("UTF-8");
         $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
 

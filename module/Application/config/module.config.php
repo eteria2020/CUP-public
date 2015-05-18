@@ -246,6 +246,7 @@ return array(
             'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
             'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
+            'PaymentService' => 'Application\Service\PaymentServiceFactory'
         ]
     ),
     'controllers' => [
