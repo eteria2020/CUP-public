@@ -320,7 +320,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
             'name' => 'generalConditions',
             'type' => 'Zend\Form\Element\Radio',
             'attributes' => [
@@ -333,7 +333,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     '1' => $translator->translate('Non accetto')
                 ]
             ]
-        ]);
+        ]);*/
 
         $this->add([
             'name' => 'specialConditions',
@@ -563,14 +563,14 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'generalConditions' => [
+            /*'generalConditions' => [
                 'required' => true,
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\OptionAccepted'
                     ]
                 ]
-            ],
+            ],*/
             'specialConditions' => [
                 'required' => true,
                 'validators' => [
