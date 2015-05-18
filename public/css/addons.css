@@ -10,3 +10,33 @@
 #footer .badge-green-number {
     width: 280px;
 }
+
+#main .block-wrapper-button a.reset {
+    background: #999;
+    color: #fff;
+    line-height: 1em;
+    height: 40px;
+    display: inline-block;
+    padding: 12px 20px 10px 20px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid #255b2a;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    backface-visibility: hidden;
+    webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+}
+
+#main .block-wrapper-button a.reset:hover {
+    box-shadow: 0 0 8px #999;
+    -moz-box-shadow: 0 0 8px #999;
+    -webkit-box-shadow: 0 0 8px #999;
+}
