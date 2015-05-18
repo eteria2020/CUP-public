@@ -99,6 +99,17 @@ return array(
                     ),
                 ]
             ],
+            'signup-score' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup-score}/:email',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'signup-score',
+                    ),
+                ]
+            ],
             'signup-2' => [
                 'type' => 'Segment',
                 'options' => [
@@ -246,7 +257,8 @@ return array(
             'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
             'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
-            'PaymentService' => 'Application\Service\PaymentServiceFactory'
+            'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
+            'PaymentService' => 'Application\Service\PaymentServiceFactory',
         ]
     ),
     'controllers' => [
