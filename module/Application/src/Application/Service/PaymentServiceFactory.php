@@ -6,7 +6,7 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Mail\Transport\Sendmail;
 
-class RegistrationServiceFactory implements FactoryInterface
+class PaymentServiceFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -19,9 +19,12 @@ class RegistrationServiceFactory implements FactoryInterface
         $emailTransport = new Sendmail();
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
 
-        return new RegistrationService(
+        $translationService = $serviceLocator->get('Translator');
+
+        return new PaymentService(
             $emailTransport,
-            $emailSettings
+            $emailSettings,
+            $translationService
         );
     }
 }

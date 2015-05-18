@@ -17,7 +17,8 @@ class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
 
@@ -29,9 +30,15 @@ class Module
         $config = $em->getConnection()->getConfiguration();
         //$config->setFilterSchemaAssetsExpression('/^(countries)$/');*/
 
-        $eventManager->attach(
+        $eventManager->getSharedManager()->attach(
+            'Application\Controller\PaymentController',
             'successfulPayment',
-            [$this, 'successfulPayment']
+            function (EventInterface $e) use ($serviceManager) {
+                $params = $e->getParams();
+
+                $paymentService = $serviceManager->get('PaymentService');
+                $paymentService->sendCompletionEmail($params['customer']);
+            }
         );
     }
 

@@ -3,6 +3,9 @@
 namespace Application\Service;
 
 use Zend\Mail\Transport\TransportInterface;
+use Zend\Mvc\I18n\Translator;
+use Zend\Mime;
+use Zend\Mail\Message;
 
 final class PaymentService
 {
@@ -11,12 +14,24 @@ final class PaymentService
      */
     private $emailTransport;
 
+    /**
+     * @var array
+     */
     private $emailSettings;
 
-    public function __construct(TransportInterface $emailTransport, array $emailSettings)
-    {
+    /**
+     * @var Translator
+     */
+    private $translator;
+
+    public function __construct(
+        TransportInterface $emailTransport,
+        array $emailSettings,
+        Translator $translator
+    ) {
         $this->emailTransport = $emailTransport;
         $this->emailSettings = $emailSettings;
+        $this->translator = $translator;
     }
 
     public function sendCompletionEmail($customer)
@@ -24,14 +39,15 @@ final class PaymentService
         $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.txt'),
             $customer->getName(),
-            $customer->getPin()
+            $customer->getSurname()/*,
+            $customer->getPin()*/
         );
 
         $text = new Mime\Part($content);
         $text->type = Mime\Mime::TYPE_TEXT;
         $text->charset = 'utf-8';
 
-        $fileContent1 = file_get_contents(__DIR__.'/../../../../../public/pdf/Contratto_Sharengo.pdf');
+        /*$fileContent1 = file_get_contents(__DIR__.'/../../../../../public/pdf/Contratto_Sharengo.pdf');
         $attachment1 = new Mime\Part($fileContent1);
         $attachment1->type = 'application/pdf';
         $attachment1->filename = 'Contratto_Sharengo.pdf';
@@ -50,10 +66,10 @@ final class PaymentService
         $attachment3->type = 'application/pdf';
         $attachment3->filename = 'Regolamento_Sharengo.pdf';
         $attachment3->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
-        $attachment3->encoding = Mime\Mime::ENCODING_BASE64;
+        $attachment3->encoding = Mime\Mime::ENCODING_BASE64;*/
 
         $mimeMessage = new Mime\Message();
-        $mimeMessage->setParts([$text, $attachment1, $attachment2, $attachment3]);
+        $mimeMessage->setParts([$text/*, $attachment1, $attachment2, $attachment3*/]);
 
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])

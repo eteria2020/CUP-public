@@ -1,13 +1,13 @@
-Ciao %1$s,
+Ciao %1$s %2$s,
 
-ti diamo il benvenuto nella community di SHARE’NGO.
+ti diamo il benvenuto tra gli Equomobili, la community di SHAREN'GO, confermandoti l'accredito dei 500 minuti compresi con la tua registrazione.
 
-Il tuo PIN è: %2$s
-Dovrai digitare questo codice ogni volta che sali a bordo. Il navigatore te lo chiederà per attivare l’uso dell’auto.
+Il servizio sarà attivo a Milano il 15 giugno e nelle prossime settimane ti invieremo le COndizioni Generali di Contratto, il Regolamento e le modalità di utilizzazione dell'Equomobile.
 
-Salva il Pin e memorizzalo in luogo sicuro. Senza questo codice non potrai usare l’auto.
-Il PIN è strettamente personale e non trasferibile a terzi.
+Riceverai anche il tuo PIN RISERVATO che ti servirà per prenotare e utilizzare una delle nostre auto.
 
-In allegato troverai le Condizioni Generali di Contratto, il Regolamento e l’Informativa Privacy.
+Grazie e a presto
 
-Buon viaggio con la tua EQUOMOBILE.
+Barbara Bacci
+Community Manager
+SHARE'NGO Milano
