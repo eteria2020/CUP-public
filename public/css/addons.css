@@ -40,3 +40,16 @@
     -moz-box-shadow: 0 0 8px #999;
     -webkit-box-shadow: 0 0 8px #999;
 }
+
+.module-car-map #map-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(25, 25, 25, .85);;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+    padding-top: 250px;
+}

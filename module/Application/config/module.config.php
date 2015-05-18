@@ -220,6 +220,17 @@ return array(
                     ),
                 ]
             ],
+            'cars' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/cars',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Cars',
+                        'action'     => 'positions',
+                    ]
+                ]
+            ]
         ),
     ),
     'service_manager' => array(
@@ -239,7 +250,8 @@ return array(
     ),
     'controllers' => [
         'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Cars' => 'Application\Controller\CarsController'
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
@@ -266,6 +278,9 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+        'strategies' => [
+            'ViewJsonStrategy'
+        ]
     ),
     // Placeholder for console routes
     'console' => array(

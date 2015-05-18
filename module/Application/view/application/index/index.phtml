@@ -92,26 +92,30 @@
         });
 
         function initialize() {
-            var map;
+            var map,
             // Set the latitude & longitude for our location (London Eye)
-            var myLatlng = new google.maps.LatLng(45.4627338,9.1777323);
-            var mapOptions = {
-                center: myLatlng, // Set our point as the centre location
-                zoom: 16, // Set the zoom level
-                scrollwheel: false,
-                mapTypeId: 'roadmap' // set the default map type
-            };
+                myLatlng = new google.maps.LatLng(45.4627338,9.1777323),
+                mapOptions = {
+                    center: myLatlng, // Set our point as the centre location
+                    zoom: 13, // Set the zoom level
+                    scrollwheel: false,
+                    mapTypeId: 'roadmap' // set the default map type
+                },
+                marker;
 
             // Display a map on the page
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
             // Allow our satellite view have a tilted display (This only works for certain locations)
             map.setTilt(45);
 
-            // Add a marker to the map based on our coordinates
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                title: 'Property GeoLocation'
+            $.get("<?= $this->url('cars'); ?>", function (data) {
+                data.forEach(function (position) {
+                    new google.maps.Marker({
+                        position: new google.maps.LatLng(position[0], position[1]),
+                        map: map,
+                        icon: "<?= $this->basePath('images/marker.png'); ?>"
+                    });
+                });
             });
         }
     </script>
@@ -128,6 +132,10 @@
         </ul>
     </div>
     <!-- block-map-tool-filter -->
+
+    <div id="map-overlay">
+        <?= $this->translate('Stiamo arrivando'); ?>
+    </div>
 
     <!-- module-map-tool-search -->
     <?php /*<div class="module-map-tool-search bg-ct2 g-bottom g-left">
