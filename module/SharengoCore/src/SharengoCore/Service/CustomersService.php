@@ -70,4 +70,14 @@ class CustomersService
         $this->entityManager->flush($customer);
 
     }
+
+    public function setCustomerDiscountRate(Customers $customer, $discount) {
+
+        $customer->setDiscountRate($discount);
+
+        $this->entityManager->persist($customer);
+        $this->entityManager->flush($customer);
+        
+    }
+
 }

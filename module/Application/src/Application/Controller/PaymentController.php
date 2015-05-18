@@ -75,11 +75,7 @@ class PaymentController extends AbstractActionController
             $s_payerId = $I_response->getPayerId();
 
             if ($I_response->isSuccess()) {
-                $eventManager = $this->getEventManager();
-                $eventManager->trigger('successfulPayment', $this, [
-                    'customer' => $customer
-                ]);
-
+                
                 // Redirect to the PayPal express checkout page, using the token.
                 return $this->redirect()->toUrl($s_expresscheckoutEndpoint .'?&cmd=_express-checkout&token=' . $s_token);
 
@@ -124,6 +120,11 @@ class PaymentController extends AbstractActionController
                 if ($I_response->isSuccess()){
 
                     $this->I_customersService->confirmFirstPaymentCompleted($customer);
+
+                    $eventManager = $this->getEventManager();
+                    $eventManager->trigger('successfulPayment', $this, [
+                        'customer' => $customer
+                    ]);
 
                     unset($session->id);
 

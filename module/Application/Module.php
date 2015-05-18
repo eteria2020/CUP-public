@@ -36,8 +36,23 @@ class Module
             function (EventInterface $e) use ($serviceManager) {
                 $params = $e->getParams();
 
+                $customer = $params['customer'];
+
+                // send confirmation email
                 $paymentService = $serviceManager->get('PaymentService');
-                $paymentService->sendCompletionEmail($params['customer']);
+                $paymentService->sendCompletionEmail($customer);
+
+                // store discount rate
+                $profilingPlatformService = $serviceManager->get('ProfilingPlatformService');
+                $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
+
+                try {
+
+                    $discount = $profilingPlatformService->getDiscountByEmail($customer->getEmail());
+                    $customerService->setCustomerDiscountRate($customer, $discount);
+
+                } catch (ProfilingPlatformException $ex) { }
+                
             }
         );
     }
