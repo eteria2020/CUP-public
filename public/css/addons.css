@@ -53,3 +53,9 @@
     font-weight: bold;
     padding-top: 250px;
 }
+
+#registration-form.form-signup a.document-links {
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+}

@@ -319,12 +319,16 @@
 <div class="block-row-field clearfix">
 
  <div class="block-field w-4-4">
-    <textarea class="margin-bottom" disabled>
-        <?= $this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
+    <!--textarea class="margin-bottom" disabled>
+        <?= ''/*$this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
 
         Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
 
-        Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh.'); ?> </textarea>
+        Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh.');*/ ?> </textarea-->
+        <a href="<?= $this->basePath('pdf/Informativa_privacy.pdf'); ?>" class="document-links">
+            <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+        </a>
+
         <p class="text-align-center">
             <?php
                 $privacy = $this->form->get('user')->get('privacy');
@@ -349,13 +353,16 @@
 
  <div class="block-field w-4-4">
 
-     <ol class="auto-margin w-2-4">
+     <!--ol class="auto-margin w-2-4">
          <li><?= $this->translate('Modifica Unilaterale del Contratto, 1.1, 1.2'); ?></li>
          <li><?= $this->translate('Divieto di Utilizzo; 6- Diritto di Recesso'); ?></li>
          <li><?= $this->translate('Clausola Risolutiva Espressa, 7.1'); ?></li>
          <li><?= $this->translate('Chiusura del rapporto'); ?></li>
          <li><?= $this->translate('Miscellanea, 9.2.'); ?> </li>
-     </ol>
+     </ol-->
+    <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links">
+        <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+    </a>
 
      <p class="text-align-center">
         <?php
@@ -381,7 +388,7 @@
 
  <div class="block-field w-4-4">
 
-     <ol class="auto-margin w-2-4">
+     <!--ol class="auto-margin w-2-4">
         <li><?= $this->translate('6. Divieto di utilizzo'); ?></li>
         <li><?= $this->translate(' Accesso al veicolo, 9.2'); ?></li>
         <li><?= $this->translate(' Esenzione di responsabilità'); ?></li>
@@ -394,7 +401,11 @@
         <li><?= $this->translate(' Copertura assicurativa'); ?></li>
         <li><?= $this->translate(' Violazioni del cliente e penali contrattuali'); ?></li>
         <li><?= $this->translate(' Termini e modalità di addebito al cliente'); ?> </li>
-    </ol>
+    </ol-->
+
+    <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
+        <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+    </a>
 
     <p class="text-align-center">
         <?php
