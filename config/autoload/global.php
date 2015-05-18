@@ -14,5 +14,9 @@
 return array(
     'sharengo' => [
         'card-cost' => 10
+    ],
+    'profiling-platform' => [
+        'endpoint' => 'http://www.equomobili.it/',
+        'getdiscount-call' => 'getdiscount.php?email=%s'
     ]
 );

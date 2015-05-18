@@ -281,6 +281,13 @@ class Customers
      */
     private $firstPaymentCompleted = false;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_rate", type="integer", nullable=true)
+     */
+    private $discountRate;
+
     public function toArray()
     {
         return get_object_vars($this);
@@ -1182,5 +1189,29 @@ class Customers
     public function getFirstPaymentCompleted()
     {
         return $this->firstPaymentCompleted;
+    }
+
+    /**
+     * Set discountRate
+     *
+     * @param int $discountRate
+     *
+     * @return Customers
+     */
+    public function setDiscountRate($discountRate)
+    {
+        $this->discountRate = $fdiscountRate;
+
+        return $this;
+    }
+
+    /**
+     * Get discountRate
+     *
+     * @return boolean
+     */
+    public function getDiscountRate()
+    {
+        return $this->discountRate;
     }
 }

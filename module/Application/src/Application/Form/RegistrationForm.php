@@ -6,6 +6,7 @@ use Zend\Form\Form;
 use Zend\Mvc\I18n\Translator;
 use Application\Form\UserFieldset;
 use Zend\Session\Container;
+use SharengoCore\Entity\Customers;
 
 class RegistrationForm extends Form
 {
@@ -41,6 +42,12 @@ class RegistrationForm extends Form
         }
 
         return new Container(self::SESSION_KEY);
+    }
+
+    public function registerCustomerData(Customers $customer)
+    {
+        $container = $this->getContainer();
+        $container->offsetSet(self::FORM_DATA, $customer);
     }
 
     public function registerData()

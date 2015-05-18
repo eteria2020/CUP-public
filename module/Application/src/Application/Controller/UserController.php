@@ -5,8 +5,14 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Form\Form;
+
+
 use Application\Service\RegistrationService;
 use Multilanguage\Service\LanguageService;
+use Application\Service\ProfilingPlaformService;
+use Application\Exception\ProfilingPlatformException;
+use SharengoCore\Service\CustomersService;
+use SharengoCore\Entity\Customers;
 
 class UserController extends AbstractActionController
 {
@@ -26,20 +32,36 @@ class UserController extends AbstractActionController
     private $registrationService;
 
     /**
+     *
+     * @var SharengoCore\Service\CustomersService
+     */
+    private $customersService;
+
+    /**
      * @var \Multilanguage\Service\LanguageService
      */
     private $languageService;
+
+    /**
+     *
+     * @var ProfilingPlaformService
+     */
+    private $profilingPlatformService;
 
     public function __construct(
         Form $form1,
         Form $form2,
         RegistrationService $registrationService,
-        LanguageService $languageService
+        CustomersService $customersService,
+        LanguageService $languageService,
+        ProfilingPlaformService $profilingPlatformService
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
         $this->registrationService = $registrationService;
+        $this->customersService = $customersService;
         $this->languageService = $languageService;
+        $this->profilingPlatformService = $profilingPlatformService;
     }
 
     public function loginAction()
@@ -69,6 +91,49 @@ class UserController extends AbstractActionController
         } else {
             return $this->signupForm($this->form1);
         }
+    }
+
+    public function signupScoreAction() {
+
+        $email = urldecode($this->params('email'));
+
+        $customers = $this->customersService->findByEmail($email);
+        $customer = null;
+        if (count($customers) > 0) {
+            $customer = $customers[0];
+        }
+
+        // Proceed only if it's a new customer for Sharengo platform
+        if (null == $customer) {
+
+            // Customer exists inside profiling platform?
+            try {
+                
+                $discount = $this->profilingPlatformService->getDiscountByEmail($email);
+
+                // fill form data with available infos
+                $customer = new Customers();
+                $customer->setEmail($email);
+                $this->form1->registerRawData($customer);
+
+                return $this->redirect()->toRoute('signup');
+
+            } catch (ProfilingPlatformException $ex) {
+
+                // user not found
+                return $this->redirect()->toRoute('signup');
+                //@todo show a custom page
+
+            }
+            
+        } else {
+            
+            //user already registered
+            return $this->redirect()->toRoute('home');
+            //@todo show a custom page
+
+        }
+
     }
 
     private function proceed($form)
