@@ -59,7 +59,8 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'driverLicenseReleaseDate',
                 'class' => 'required datepicker-date',
-                'max' => date_create()->format('Y-m-d')
+                'max' => date_create()->format('Y-m-d'),
+                'type' => 'text'
             ],
             'options' => [
                 'label' => $translator->translate('Rilasciato il')
@@ -98,7 +99,8 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'driverLicenseExpire',
                 'class' => 'required datepicker-date',
-                'min' => date_create()->format('Y-m-d')
+                'min' => date_create()->format('Y-m-d'),
+                'type' => 'text'
             ],
             'options' => [
                 'label' => $translator->translate('Data di scadenza'),

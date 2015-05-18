@@ -1,5 +1,10 @@
 <?php
     $this->headScript()
+        ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+        ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+    $this->headLink()
+        ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+    $this->inlineScript()
         ->appendFile($this->basePath('js/driver-license-popup.js'));
 ?>
 
@@ -187,3 +192,26 @@
     <!-- modal-overlay -->
 </div>
             <!-- module-modal -->
+
+<?
+    $this->inlineScript()->appendScript(
+        '$(document).ready(function() {
+            $( "#driverLicenseReleaseDate" ).datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                maxDate: "0d"
+            });
+        });
+        $(document).ready(function() {
+            $( "#driverLicenseExpire" ).datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "+0:+100",
+                minDate: "0d"
+            });
+        });'
+    );
+?>

@@ -1,3 +1,11 @@
+<?php
+    $this->headScript()
+        ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+        ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+    $this->headLink()
+        ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+?>
+
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
@@ -418,3 +426,17 @@
 
 </div>
                <!-- main -->
+
+<?
+    $this->inlineScript()->appendScript(
+        '$(document).ready(function() {
+            $( ".datepicker-date" ).datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                maxDate: "0d"
+            });
+        });'
+    );
+?>

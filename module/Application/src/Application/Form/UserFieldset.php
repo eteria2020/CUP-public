@@ -127,9 +127,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Date',
             'attributes' => [
                 'id' => 'birthDate',
-                'placeholder' => $translator->translate('gg/mm/aaaa'),
                 'class' => 'required datepicker-date',
                 'max' => date_create()->format('Y-m-d'),
+                'type' => 'text'
             ],
             'options' => [
                 'label' => $translator->translate('Data di nascita')
