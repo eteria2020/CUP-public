@@ -114,7 +114,7 @@ class UserController extends AbstractActionController
                 // fill form data with available infos
                 $customer = new Customers();
                 $customer->setEmail($email);
-                $this->form1->registerRawData($customer);
+                $this->form1->registerCustomerData($customer);
 
                 return $this->redirect()->toRoute('signup');
 
