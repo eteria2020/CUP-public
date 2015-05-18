@@ -13,6 +13,8 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\EventManager\EventInterface;
 
+use Application\Service\ProfilingPlatformException;
+
 class Module
 {
     public function onBootstrap(MvcEvent $e)
