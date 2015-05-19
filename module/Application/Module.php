@@ -23,6 +23,7 @@ class Module
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $userService = $serviceManager->get('zfcuser_auth_service');
 
         /*$em = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager');
         $platform = $em->getConnection()->getDatabasePlatform();
@@ -54,6 +55,9 @@ class Module
                 } catch (ProfilingPlatformException $ex) { }
             }
         );
+
+        $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
+        $viewModel->loggedUser = $userService->getIdentity();
     }
 
     public function getConfig()

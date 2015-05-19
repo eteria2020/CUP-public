@@ -2,9 +2,16 @@
 return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
+
+        // 3rd party modules
         'DoctrineModule',
         'DoctrineORMModule',
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcUserDoctrineORM',
+        'BjyAuthorize',
 
+        // Our modules
         'Multilanguage',
         'SharengoCore',
         'Application',

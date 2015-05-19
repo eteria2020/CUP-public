@@ -42,9 +42,11 @@
             ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
             ->appendFile($this->basePath('js/jquery.backgroundSize.js'), 'text/javascript', ['conditional' => 'lte IE 8'])
             ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+
             ->appendFile('https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js')
-            ->appendFile($this->basePath('js/jquery.cookiesdirective.js'))
-        ; ?>
+            ->appendFile($this->basePath('js/jquery.cookiesdirective.js'));
+        echo $this->headStyle();
+        ?>
 
     </head>
     <body>
@@ -116,8 +118,13 @@
                     <!-- block-user-action -->
                     <div class="block-user-action block-menu">
                         <ul>
-                            <?php /*<li><a href="<?= $this->url('login') ?>"><i class="fa fa-user"></i><?= $this->translate('Login'); ?></a></li>*/?>
-                            <li><a href="<?= $this->url('signup') ?>"><i class="fa fa-user-plus"></i><?= $this->translate('Registrati'); ?></a></li>
+                            <?php if($this->loggedUser): ?>
+                                <li><a href="#"><?= $this->translate('Benvenuto'); ?> <?php echo $this->loggedUser->getName() ?></a></li>
+                                <li><a href="<?php echo $this->url('logout'); ?>"><?= $this->translate('Logout'); ?></a></li>
+                            <?php else: ?>
+                                <li><a href="<?= $this->url('login') ?>"><i class="fa fa-user"></i><?= $this->translate('Login'); ?></a></li>
+                                <li><a href="<?= $this->url('signup') ?>"><i class="fa fa-user-plus"></i><?= $this->translate('Registrati'); ?></a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                     <!-- block-menu-languages -->

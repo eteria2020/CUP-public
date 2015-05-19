@@ -82,11 +82,23 @@ return array(
                 'options' => [
                     'route' => '/{login}',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
+                        '__NAMESPACE__' => null,
+                        'controller' => 'zfcuser',
                         'action'     => 'login',
                     ),
                 ]
+            ],
+            'logout' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{logout}',
+                    'defaults' => [
+                        '__NAMESPACE__' => null,
+                        'controller' => 'zfcuser',
+                        'action'     => 'logout',
+                    ]
+                ],
+                'may_terminate' => true
             ],
             'signup' => [
                 'type' => 'Segment',
@@ -241,7 +253,18 @@ return array(
                         'action'     => 'positions',
                     ]
                 ]
-            ]
+            ],
+            'area-utente' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{area-utente}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'action' => 'index',
+                        'controller' => 'UserArea',
+                    ]
+                ],
+            ],
         ),
     ),
     'service_manager' => array(
@@ -259,6 +282,9 @@ return array(
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
             'PaymentService' => 'Application\Service\PaymentServiceFactory',
+        ],
+        'invokables' => [
+            'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
         ]
     ),
     'controllers' => [
@@ -268,7 +294,8 @@ return array(
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
-            'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory'
+            'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
+            'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
         ],
     ],
     'view_helpers' => [
@@ -287,6 +314,7 @@ return array(
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'zfc-user/user/login'     => __DIR__ . '/../view/zfc-user/user/login.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -299,6 +327,20 @@ return array(
     'console' => array(
         'router' => array(
             'routes' => array(
+            ),
+        ),
+    ),
+
+    // ACL
+    'bjyauthorize' => array(
+        'guards' => array(
+            'BjyAuthorize\Guard\Controller' => array(
+
+                array('controller' => 'zfcuser', 'roles' => array()),
+                array('controller' => 'Application\Controller\Index', 'roles' => array()),
+                array('controller' => 'Application\Controller\User', 'roles' => array()),
+                array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
+
             ),
         ),
     ),
