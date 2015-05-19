@@ -37,15 +37,31 @@ final class PaymentService
     public function sendCompletionEmail($customer)
     {
         $content = sprintf(
-            file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.txt'),
+            file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
             $customer->getName(),
             $customer->getSurname()/*,
             $customer->getPin()*/
         );
 
         $text = new Mime\Part($content);
-        $text->type = Mime\Mime::TYPE_TEXT;
+        $text->type = Mime\Mime::TYPE_HTML;
         $text->charset = 'utf-8';
+
+        $image1 = file_get_contents(__DIR__.'/../../../../../public/images/banneremail.png');
+        $attachment1 = new Mime\Part($image1);
+        $attachment1->type = Mime\Mime::TYPE_OCTETSTREAM;
+        $attachment1->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
+        $attachment1->encoding = Mime\Mime::ENCODING_BASE64;
+        $attachment1->filename = 'banneremail.png';
+        $attachment1->id = 'banneremail.png';
+
+        $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.png');
+        $attachment2 = new Mime\Part($image2);
+        $attachment2->type = Mime\Mime::TYPE_OCTETSTREAM;
+        $attachment2->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
+        $attachment2->encoding = Mime\Mime::ENCODING_BASE64;
+        $attachment2->filename = 'barbarabacci.png';
+        $attachment2->id = 'barbarabacci.png';
 
         /*$fileContent1 = file_get_contents(__DIR__.'/../../../../../public/pdf/Contratto_Sharengo.pdf');
         $attachment1 = new Mime\Part($fileContent1);
@@ -69,7 +85,7 @@ final class PaymentService
         $attachment3->encoding = Mime\Mime::ENCODING_BASE64;*/
 
         $mimeMessage = new Mime\Message();
-        $mimeMessage->setParts([$text/*, $attachment1, $attachment2, $attachment3*/]);
+        $mimeMessage->setParts([$text, $attachment1, $attachment2]);
 
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])

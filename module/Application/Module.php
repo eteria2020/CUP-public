@@ -49,12 +49,9 @@ class Module
                 $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
 
                 try {
-
                     $discount = $profilingPlatformService->getDiscountByEmail($customer->getEmail());
                     $customerService->setCustomerDiscountRate($customer, $discount);
-
                 } catch (ProfilingPlatformException $ex) { }
-                
             }
         );
     }
