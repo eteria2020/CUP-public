@@ -1,0 +1,1 @@
+ALTER TABLE customers ADD discount_rate INT DEFAULT NULL;
