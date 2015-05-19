@@ -55,13 +55,21 @@ final class PaymentService
         $attachment1->filename = 'banneremail.png';
         $attachment1->id = 'banneremail.png';
 
-        $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.png');
+        $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.jpg');
         $attachment2 = new Mime\Part($image2);
         $attachment2->type = Mime\Mime::TYPE_OCTETSTREAM;
         $attachment2->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
         $attachment2->encoding = Mime\Mime::ENCODING_BASE64;
-        $attachment2->filename = 'barbarabacci.png';
-        $attachment2->id = 'barbarabacci.png';
+        $attachment2->filename = 'barbarabacci.jpg';
+        $attachment2->id = 'barbarabacci.jpg';
+
+        $image3 = file_get_contents(__DIR__.'/../../../../../public/images/like.png');
+        $attachment3 = new Mime\Part($image3);
+        $attachment3->type = Mime\Mime::TYPE_OCTETSTREAM;
+        $attachment3->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
+        $attachment3->encoding = Mime\Mime::ENCODING_BASE64;
+        $attachment3->filename = 'like.png';
+        $attachment3->id = 'like.png';
 
         /*$fileContent1 = file_get_contents(__DIR__.'/../../../../../public/pdf/Contratto_Sharengo.pdf');
         $attachment1 = new Mime\Part($fileContent1);
@@ -85,7 +93,7 @@ final class PaymentService
         $attachment3->encoding = Mime\Mime::ENCODING_BASE64;*/
 
         $mimeMessage = new Mime\Message();
-        $mimeMessage->setParts([$text, $attachment1, $attachment2]);
+        $mimeMessage->setParts([$text, $attachment1, $attachment2, $attachment3]);
 
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])
