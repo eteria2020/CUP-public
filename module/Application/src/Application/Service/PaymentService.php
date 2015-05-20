@@ -47,7 +47,7 @@ final class PaymentService
         $text->type = Mime\Mime::TYPE_HTML;
         $text->charset = 'utf-8';
 
-        $image1 = file_get_contents(__DIR__.'/../../../../../public/images/banneremail.png');
+        $image1 = file_get_contents(__DIR__.'/../../../../../public/images/bannerphono.jpg');
         $attachment1 = new Mime\Part($image1);
         $attachment1->type = Mime\Mime::TYPE_OCTETSTREAM;
         $attachment1->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
@@ -63,7 +63,7 @@ final class PaymentService
         $attachment2->filename = 'barbarabacci.jpg';
         $attachment2->id = 'barbarabacci.jpg';
 
-        $image3 = file_get_contents(__DIR__.'/../../../../../public/images/like.png');
+        $image3 = file_get_contents(__DIR__.'/../../../../../public/images/like.jpg');
         $attachment3 = new Mime\Part($image3);
         $attachment3->type = Mime\Mime::TYPE_OCTETSTREAM;
         $attachment3->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
