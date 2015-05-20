@@ -51,7 +51,11 @@
     text-align: center;
     font-size: 70px;
     font-weight: bold;
-    padding-top: 250px;
+    padding-top: 150px;
+}
+
+.module-car-map #map-overlay a {
+    display: block;
 }
 
 #registration-form.form-signup a.document-links {
