@@ -129,6 +129,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'id' => 'birthDate',
                 'class' => 'required datepicker-date',
                 'max' => date_create()->format('Y-m-d'),
+                'placeholder' => $translator->translate('aaaa-mm-dd'),
                 'type' => 'text'
             ],
             'options' => [
@@ -442,6 +443,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'birthDate' => [
                 'required' => true,
                 'validators' => [
+                    [
+                        'name' => 'Date',
+                        'break_chain_on_failure' => true
+                    ],
                     [
                         'name' => 'Application\Form\Validator\EighteenDate'
                     ]
