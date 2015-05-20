@@ -1,0 +1,69 @@
+<!-- module-section-bookmark -->
+<div class="module-section-bookmark content-align-center">
+    <h1 class="module-main-title"><?= $this->translate('Login'); ?></h1>
+</div>
+<!-- module-section-bookmark -->
+
+<!-- main -->
+<div id="main">
+
+    <!-- content -->
+    <div class="content">
+
+        <?php
+        $form = $this->resetForm;
+
+        $form->prepare();
+        $form->setAttribute('action', $this->url('reset', array('userId' => $this->userId, 'token' => $this->token)));
+        $form->setAttribute('method', 'post');
+        ?>
+
+        <?php echo $this->form()->openTag($form) ?>
+            <!-- block-form -->
+            <div class="block-form w-2-4 auto-margin clearfix">
+
+                <div class="block-form-section content-align-center margin-bottom">
+                    <h5><?php echo sprintf($this->translate('Cambia Password per %s'), $this->escapeHtml($this->email)); ?></h5>
+                </div>
+
+                <!-- block-row-field -->
+                <div class="block-row-field clearfix">
+
+                    <div class="block-field bw-f w-4-4">
+                        <p> <label><?= $this->translate('Nuova Password'); ?></label>
+                            <?php
+                            $newCredential = $form->get('newCredential');
+                            echo $this->formElement($newCredential->setAttribute('class', 'required'));
+                            echo $this->formElementErrors($form->get('newCredential'));
+                            ?>
+                        </p>
+                    </div>
+                </div>
+                <!-- block-row-field -->
+
+                <!-- block-row-field -->
+                <div class="block-row-field clearfix">
+
+                    <div class="block-field bw-f w-4-4">
+                        <p> <label><?= $this->translate('Ripeti Password'); ?></label>
+                            <?php
+                            $newCredentialVerify = $form->get('newCredentialVerify');
+                            echo $this->formElement($newCredentialVerify->setAttribute('class', 'required'));
+                            echo $this->formElementErrors($form->get('newCredentialVerify'));
+                            ?>
+                        </p>
+                    </div>
+
+                </div>
+                <!-- block-row-field -->
+
+                <div class="block-wrapper-button content-align-center">
+                    <input type="submit" name="" value="<?= $this->translate('Salva'); ?>">
+                </div>
+            </div>
+            <!-- block-form -->
+        <?php echo $this->form()->closeTag() ?>
+    </div>
+    <!-- content -->
+</div>
+<!-- main -->

@@ -14,6 +14,8 @@
         "speckcommerce/speck-paypal": "dev-master#bbf9c1adf40f9db288051b8f5d8d9b76ed9ea9f0",
         "zf-commons/zfc-user-doctrine-orm": "1.0.*",
         "bjyoungblood/bjy-authorize": "1.4.0",
-        "zf-commons/zfc-user": "~1.2"
+        "zf-commons/zfc-user": "~1.2",
+        "goalio/goalio-forgotpassword": "^1.0",
+        "goalio/goalio-forgotpassword-doctrine-orm": "^1.0"
     }
 }

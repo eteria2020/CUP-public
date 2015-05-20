@@ -100,6 +100,34 @@ return array(
                 ],
                 'may_terminate' => true
             ],
+            'forgot' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{forgot-password}',
+                    'defaults' => [
+                        '__NAMESPACE__' => null,
+                        'controller' => 'goalioforgotpassword_forgot',
+                        'action' => 'forgot'
+                    ]
+                ],
+                'may_terminate' => true
+            ],
+            'reset' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/{reset-password}/:userId/:token',
+                    'defaults' => array(
+                        '__NAMESPACE__' => null,
+                        'controller' => 'goalioforgotpassword_forgot',
+                        'action'     => 'reset',
+                    ),
+                    'constraints' => array(
+                        'userId'  => '[A-Fa-f0-9]+',
+                        'token' => '[A-F0-9]+',
+                    ),
+                ),
+                'may_terminate' => true
+            ),
             'signup' => [
                 'type' => 'Segment',
                 'options' => [
@@ -285,6 +313,7 @@ return array(
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
+            'goalioforgotpassword_password_service' => 'Application\Service\PasswordService',
         ]
     ),
     'controllers' => [
@@ -337,6 +366,7 @@ return array(
             'BjyAuthorize\Guard\Controller' => array(
 
                 array('controller' => 'zfcuser', 'roles' => array()),
+                array('controller' => 'goalioforgotpassword_forgot', 'roles' => array()),
                 array('controller' => 'Application\Controller\Index', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),

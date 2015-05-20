@@ -10,6 +10,9 @@ return array(
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
+        'GoalioMailService',
+        'GoalioForgotPassword',
+        'GoalioForgotPasswordDoctrineORM',
 
         // Our modules
         'Multilanguage',
