@@ -286,9 +286,9 @@
 </div>
 
 <div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Telefono'); ?></label>
+    <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
         <?php
-            $phone = $this->form->get('user')->get('mobile');
+            $phone = $this->form->get('user')->get('phone');
             echo $this->formElement($phone);
             echo $this->formElementErrors($phone, array('class' => 'errors'));
         ?>
@@ -332,7 +332,7 @@
         Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
 
         Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh.');*/ ?> </textarea-->
-        <a href="<?= $this->basePath('pdf/Informativa_privacy.pdf'); ?>" class="document-links">
+        <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
             <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
         </a>
 
