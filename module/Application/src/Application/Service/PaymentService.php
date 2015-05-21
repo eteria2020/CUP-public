@@ -52,8 +52,8 @@ final class PaymentService
         $attachment1->type = Mime\Mime::TYPE_OCTETSTREAM;
         $attachment1->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
         $attachment1->encoding = Mime\Mime::ENCODING_BASE64;
-        $attachment1->filename = 'banneremail.png';
-        $attachment1->id = 'banneremail.png';
+        $attachment1->filename = 'banneremail.jpg';
+        $attachment1->id = 'banneremail.jpg';
 
         $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.jpg');
         $attachment2 = new Mime\Part($image2);
@@ -68,8 +68,8 @@ final class PaymentService
         $attachment3->type = Mime\Mime::TYPE_OCTETSTREAM;
         $attachment3->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
         $attachment3->encoding = Mime\Mime::ENCODING_BASE64;
-        $attachment3->filename = 'like.png';
-        $attachment3->id = 'like.png';
+        $attachment3->filename = 'like.jpg';
+        $attachment3->id = 'like.jpg';
 
         /*$fileContent1 = file_get_contents(__DIR__.'/../../../../../public/pdf/Contratto_Sharengo.pdf');
         $attachment1 = new Mime\Part($fileContent1);
