@@ -175,6 +175,9 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'Date'
                     ],
+                    [
+                        'name' => 'Application\Form\Validator\OneYearDate'
+                    ]
                 ]
             ],
             'driverLicenseName' => [
@@ -206,7 +209,12 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
             'driverLicenseCategories' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\BLicense'
+                    ]
+                ]
             ]
         ];
     }
