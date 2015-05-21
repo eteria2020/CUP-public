@@ -21,7 +21,8 @@ class RegistrationFormFactory implements FactoryInterface
         $hydrator = new DoctrineHydrator($entityManager);
         $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
-        $userFieldset = new UserFieldset($translator, $hydrator, $countriesService, $customersService);
+        $provincesService = $serviceLocator->get('SharengoCore\Service\ProvincesService');
+        $userFieldset = new UserFieldset($translator, $hydrator, $countriesService, $customersService, $provincesService);
 
         return new RegistrationForm($translator, $userFieldset);
     }

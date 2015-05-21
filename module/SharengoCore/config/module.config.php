@@ -7,6 +7,7 @@ return [
         'factories' => [
             'SharengoCore\Service\CustomersService' => 'SharengoCore\Service\CustomersServiceFactory',
             'SharengoCore\Service\CountriesService' => 'SharengoCore\Service\CountriesServiceFactory',
+            'SharengoCore\Service\ProvincesService' => 'SharengoCore\Service\ProvincesServiceFactory',
         ]
     ],
     'doctrine' => [

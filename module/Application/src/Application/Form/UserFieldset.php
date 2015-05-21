@@ -5,6 +5,8 @@ namespace Application\Form;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\ProvincesService;
+
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
 use Zend\InputFilter\InputFilterProviderInterface;
@@ -17,8 +19,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
-        CountriesService $mondoService,
-        CustomersService $customersService
+        CountriesService $countriesService,
+        CustomersService $customersService,
+        ProvincesService $provincesService
     ) {
         $this->customersService = $customersService;
 
@@ -147,20 +150,20 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Stato di nascita'),
-                'value_options' => $mondoService->getAllCountries()
+                'value_options' => $countriesService->getAllCountries()
             ]
         ]);
 
         $this->add([
             'name' => 'birthProvince',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Select',
             'attributes' => [
                 'id' => 'birthProvince',
-                'placeholder' => $translator->translate('EE = estero'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Provincia di nascita (EE = estero)')
+                'label' => $translator->translate('Provincia di nascita (EE = estero)'),
+                'value_options' => $provincesService->getAllProvinces()
             ]
         ]);
 
