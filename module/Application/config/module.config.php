@@ -310,6 +310,7 @@ return array(
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
             'PaymentService' => 'Application\Service\PaymentServiceFactory',
+            'ProfileForm' => 'Application\Form\ProfileFormFactory',
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',

@@ -2,22 +2,122 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
-
-
-use Application\Service\RegistrationService;
-use Multilanguage\Service\LanguageService;
-use Application\Service\ProfilingPlaformService;
-use Application\Exception\ProfilingPlatformException;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\View\Model\ViewModel;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 
 class UserAreaController extends AbstractActionController
 {
+    const SUCCESS_MESSAGE = 'Operazione eseguita con successo!';
+
+    /**
+     * @var CustomersService
+     */
+    private $I_customersService;
+
+    /*
+    * @var \Zend\Authentication\AuthenticationService
+    */
+    private $userService;
+
+    /**
+     * @var Customers
+     */
+    private $customer;
+
+    /**
+     * @var \Zend\Stdlib\Hydrator\HydratorInterface
+     */
+    private $hydrator;
+
+    /**
+     * @var \Zend\Form\Form
+     */
+    private $profileForm;
+
+    /**
+     * @var
+     */
+    private $typeForm;
+
+    /**
+     * @var
+     */
+    private $showError = false;
+
+
+    public function __construct(
+        CustomersService $I_customersService,
+        AuthenticationService $userService,
+        Form $profileForm,
+        HydratorInterface $hydrator
+    ) {
+        $this->I_customersService = $I_customersService;
+        $this->userService = $userService;
+        $this->customer = $userService->getIdentity();
+        $this->profileForm = $profileForm;
+        $this->hydrator = $hydrator;
+    }
+
     public function indexAction()
     {
-        return new ViewModel();
+        $this->setFormsData($this->customer);
+        $editForm = true;
+
+        if ($this->getRequest()->isPost()) {
+            $postData = $this->getRequest()->getPost()->toArray();
+
+            if (isset($postData['customer'])) {
+                $postData['customer']['id'] = $this->userService->getIdentity()->getId();
+                $editForm = $this->processForm($this->profileForm, $postData);
+                $this->typeForm = 'edit-profile';
+            }
+
+            if($editForm) {
+                return $this->redirect()->toRoute('area-utente');
+            }
+        }
+
+        return new ViewModel([
+            'customer'    => $this->customer,
+            'profileForm' => $this->profileForm,
+            'showError'   => $this->showError,
+            'typeForm'    => $this->typeForm
+        ]);
+    }
+
+    private function processForm($form, $data)
+    {
+        $form->setData($data);
+        if ($form->isValid()) {
+
+            $customer = $form->saveData();
+
+            //update the identity in session
+            $this->userService->getStorage()->write($customer);
+
+            //update the data in the form
+            $this->setFormsData($customer);
+
+            //update the data in the view
+            $this->customer = $customer;
+
+            $this->flashMessenger()->addSuccessMessage(self::SUCCESS_MESSAGE);
+
+            return true;
+        }
+
+        $this->showError = true;
+        return false;
+    }
+
+    private function setFormsData(Customers $customer)
+    {
+        $customerData = $this->hydrator->extract($customer);
+        $this->profileForm->setData(['customer' => $customerData]);
     }
 }

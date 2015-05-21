@@ -119,8 +119,7 @@
                     <div class="block-user-action block-menu">
                         <ul>
                             <?php if($this->loggedUser): ?>
-                                <li><a href="#"><?= $this->translate('Benvenuto'); ?> <?php echo $this->loggedUser->getName() ?></a></li>
-                                <li><a href="<?php echo $this->url('logout'); ?>"><?= $this->translate('Logout'); ?></a></li>
+                                <li><a href="<?php echo $this->url('logout'); ?>"><i class="fa fa-user-times"></i> <?= $this->translate('Log out'); ?></a></li>
                             <?php else: ?>
                                 <li><a href="<?= $this->url('login') ?>"><i class="fa fa-user"></i><?= $this->translate('Login'); ?></a></li>
                                 <li><a href="<?= $this->url('signup') ?>"><i class="fa fa-user-plus"></i><?= $this->translate('Registrati'); ?></a></li>
