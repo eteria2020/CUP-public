@@ -52,8 +52,8 @@ final class PaymentService
         $attachment1->type = Mime\Mime::TYPE_OCTETSTREAM;
         $attachment1->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
         $attachment1->encoding = Mime\Mime::ENCODING_BASE64;
-        $attachment1->filename = 'banneremail.jpg';
-        $attachment1->id = 'banneremail.jpg';
+        $attachment1->filename = 'bannerphono.jpg';
+        $attachment1->id = 'bannerphono.jpg';
 
         $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.jpg');
         $attachment2 = new Mime\Part($image2);
