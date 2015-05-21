@@ -197,7 +197,7 @@
     $this->inlineScript()->appendScript(
         '$(document).ready(function() {
             $( "#driverLicenseReleaseDate" ).datepicker({
-                dateFormat: "yy-mm-dd",
+                dateFormat: "dd-mm-yy",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "-100:+0",
@@ -206,7 +206,7 @@
         });
         $(document).ready(function() {
             $( "#driverLicenseExpire" ).datepicker({
-                dateFormat: "yy-mm-dd",
+                dateFormat: "dd-mm-yy",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "+0:+100",

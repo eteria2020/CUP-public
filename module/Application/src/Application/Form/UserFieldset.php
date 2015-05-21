@@ -128,12 +128,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'birthDate',
                 'class' => 'required datepicker-date',
-                'max' => date_create()->format('Y-m-d'),
-                'placeholder' => $translator->translate('aaaa-mm-dd'),
+                'max' => date_create()->format('d-m-Y'),
+                'placeholder' => $translator->translate('dd-mm-aaaa'),
                 'type' => 'text'
             ],
             'options' => [
-                'label' => $translator->translate('Data di nascita')
+                'label' => $translator->translate('Data di nascita'),
+                'format' => 'd-m-Y'
             ]
         ]);
 
@@ -445,6 +446,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'validators' => [
                     [
                         'name' => 'Date',
+                        'options' => [
+                            'format' => 'd-m-Y'
+                        ],
                         'break_chain_on_failure' => true
                     ],
                     [

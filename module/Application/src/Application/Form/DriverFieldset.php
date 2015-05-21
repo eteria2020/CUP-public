@@ -59,12 +59,13 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'driverLicenseReleaseDate',
                 'class' => 'required datepicker-date',
-                'max' => date_create()->format('Y-m-d'),
-                'placeholder' => $translator->translate('aaaa-mm-dd'),
+                'max' => date_create()->format('d-m-Y'),
+                'placeholder' => $translator->translate('dd-mm-aaaa'),
                 'type' => 'text'
             ],
             'options' => [
-                'label' => $translator->translate('Rilasciato il')
+                'label' => $translator->translate('Rilasciato il'),
+                'format' => 'd-m-Y'
             ]
         ]);
 
@@ -100,12 +101,13 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'driverLicenseExpire',
                 'class' => 'required datepicker-date',
-                'min' => date_create()->format('Y-m-d'),
-                'placeholder' => $translator->translate('aaaa-mm-dd'),
+                'min' => date_create()->format('d-m-Y'),
+                'placeholder' => $translator->translate('dd-mm-aaaa'),
                 'type' => 'text'
             ],
             'options' => [
                 'label' => $translator->translate('Data di scadenza'),
+                'format' => 'd-m-Y'
             ]
         ]);
 
@@ -173,7 +175,10 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'Date'
+                        'name' => 'Date',
+                        'options' => [
+                            'format' => 'd-m-Y'
+                        ]
                     ],
                     [
                         'name' => 'Application\Form\Validator\OneYearDate'
@@ -204,7 +209,10 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'Date'
+                        'name' => 'Date',
+                        'options' => [
+                            'format' => 'd-m-Y'
+                        ]
                     ],
                 ]
             ],
