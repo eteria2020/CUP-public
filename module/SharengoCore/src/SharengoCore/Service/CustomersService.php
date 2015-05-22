@@ -38,23 +38,17 @@ class CustomersService
 
     public function findByEmail($email)
     {
-        return $this->clientRepository->findBy([
-            'email' => $email
-        ]);
+        return $this->clientRepository->findByCI('email', $email);
     }
 
     public function findById($id)
     {
-        return $this->clientRepository->findOneBy([
-            'id' => $id
-        ]);
+        return $this->clientRepository->findOneBy('id', $id);
     }
 
     public function findByTaxCode($taxCode)
     {
-        return $this->clientRepository->findBy([
-            'taxCode' => $taxCode
-        ]);
+        return $this->clientRepository->findByCI('taxCode', $taxCode);
     }
 
     public function findByDriversLicense($driversLicense)
