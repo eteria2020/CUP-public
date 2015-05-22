@@ -558,22 +558,21 @@ $this->headLink()
                         <!-- block-form -->
                         <div class="block-form bw-f w-4-4  clearfix">
 
-                            <!--
+
                             <div class="block-form-section content-align-center margin-bottom">
-                                <h2><i class="fa fa-meh-o"></i> Il tuo avatar</h2>
+                                <h2><?= $this->translate("Il tuo sconto"); ?></h2>
                             </div>
 
-                            <!-- block-row-field
+                            <!-- block-row-field-->
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field block-avatar-app content-align-center">
-                                    <img src="_template_style/images/various/avatar.jpg" alt=""  >
+                                    <?php if(is_null($this->customer->getDiscountRate())): ?>
+                                        <p>Vuoi ottenere uno sconto su tutte le tue prossime corse? <a href="http://www.equomobili.it" target="_blank">Clicca qui</a></p>
+                                    <?php else: ?>
+                                        <h1><?= $this->customer->getDiscountRate(); ?></h1>
+                                    <?php endif; ?>
                                 </div>
-
-                                <div class="block-wrapper-button padding-top content-align-center">
-                                    <button>Modifica avatar <i class="fa fa-camera"></i></button>
-                                </div>
-
                             </div>
                             <!-- block-row-field -->
 
