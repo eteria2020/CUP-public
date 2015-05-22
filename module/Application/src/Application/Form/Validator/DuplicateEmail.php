@@ -36,7 +36,7 @@ class DuplicateEmail extends AbstractValidator
     {
         $this->setValue($value);
 
-        $customer = $this->customersService->findByEmail(strtoupper($value));
+        $customer = $this->customersService->findByEmail($value);
 
         if (!empty($customer) && !in_array($customer[0]->getEmail(), $this->emailsToAvoid)) {
             $this->error(self::DUPLICATE);

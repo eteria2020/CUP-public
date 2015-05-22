@@ -38,7 +38,7 @@ class DuplicateTaxCode extends AbstractValidator
     {
         $this->setValue($value);
 
-        $customer = $this->customersService->findByTaxCode(strtoupper($value));
+        $customer = $this->customersService->findByTaxCode($value);
 
         if (!empty($customer)  && !in_array($customer[0]->getTaxCode(), $this->taxCodesToAvoid)) {
             $this->error(self::DUPLICATE);

@@ -24,7 +24,7 @@ class DuplicateDriversLicense extends AbstractValidator
     {
         $this->setValue($value);
 
-        $customer = $this->customerService->findByDriversLicense(strtoupper($value));
+        $customer = $this->customerService->findByDriversLicense($value);
 
         if (!empty($customer)) {
             $this->error(self::DUPLICATE);
