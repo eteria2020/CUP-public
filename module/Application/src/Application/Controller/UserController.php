@@ -108,24 +108,17 @@ class UserController extends AbstractActionController
 
             // Customer exists inside profiling platform?
             try {
-                
-                $discount = $this->profilingPlatformService->getDiscountByEmail($email);
+                //throws an exception if the user doesn't have a discount
+                $this->profilingPlatformService->getDiscountByEmail($email);
 
                 // fill form data with available infos
                 $customer = new Customers();
                 $customer->setEmail($email);
                 $this->form1->registerCustomerData($customer);
 
-                return $this->redirect()->toRoute('signup');
+            } catch (ProfilingPlatformException $ex) {}
 
-            } catch (ProfilingPlatformException $ex) {
-
-                // user not found
-                return $this->redirect()->toRoute('signup');
-                //@todo show a custom page
-
-            }
-            
+            return $this->redirect()->toRoute('signup');
         } else {
             
             //user already registered

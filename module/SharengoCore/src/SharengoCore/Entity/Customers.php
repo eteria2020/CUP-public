@@ -1194,13 +1194,13 @@ class Customers
     /**
      * Set discountRate
      *
-     * @param int $discountRate
+     * @param float $discountRate
      *
      * @return Customers
      */
     public function setDiscountRate($discountRate)
     {
-        $this->discountRate = $fdiscountRate;
+        $this->discountRate = (int) $discountRate;
 
         return $this;
     }
