@@ -40,6 +40,11 @@ class UserAreaController extends AbstractActionController
     private $profileForm;
 
     /**
+     * @var \Zend\Form\Form
+     */
+    private $passwordForm;
+
+    /**
      * @var
      */
     private $typeForm;
@@ -54,12 +59,14 @@ class UserAreaController extends AbstractActionController
         CustomersService $I_customersService,
         AuthenticationService $userService,
         Form $profileForm,
+        Form $passwordForm,
         HydratorInterface $hydrator
     ) {
         $this->I_customersService = $I_customersService;
         $this->userService = $userService;
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
+        $this->passwordForm = $passwordForm;
         $this->hydrator = $hydrator;
     }
 
@@ -71,22 +78,28 @@ class UserAreaController extends AbstractActionController
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPost()->toArray();
 
+
             if (isset($postData['customer'])) {
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
+            } else if (isset($postData['password'])) {
+                $postData['id'] = $this->userService->getIdentity()->getId();
+                $editForm = $this->processForm($this->passwordForm, $postData);
+                $this->typeForm = 'edit-pwd';
             }
 
-            if($editForm) {
+            if ($editForm) {
                 return $this->redirect()->toRoute('area-utente');
             }
         }
 
         return new ViewModel([
-            'customer'    => $this->customer,
-            'profileForm' => $this->profileForm,
-            'showError'   => $this->showError,
-            'typeForm'    => $this->typeForm
+            'customer'     => $this->customer,
+            'profileForm'  => $this->profileForm,
+            'passwordForm' => $this->passwordForm,
+            'showError'    => $this->showError,
+            'typeForm'     => $this->typeForm
         ]);
     }
 
@@ -112,6 +125,7 @@ class UserAreaController extends AbstractActionController
         }
 
         $this->showError = true;
+
         return false;
     }
 

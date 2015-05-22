@@ -85,6 +85,20 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
+            'name' => 'email',
+            'type' => 'Zend\Form\Element\Email',
+            'attributes' => [
+                'id' => 'email',
+                'maxlength' => 64,
+                'placeholder' => 'name@name.ext'
+
+            ],
+            'options' => [
+                'label' => $translator->translate('Email')
+            ]
+        ]);
+
+        $this->add([
             'name' => 'birthDate',
             'type' => 'Zend\Form\Element\Date',
             'attributes' => [
@@ -284,6 +298,24 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'filters' => [
                     [
                         'name' => 'StringTrim'
+                    ]
+                ]
+            ],
+            'email' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'EmailAddress',
+                        'break_chain_on_failure' => true
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\DuplicateEmail',
+                        'options' => [
+                            'customerService' => $this->customersService,
+                            'avoid' => [
+                                $this->userService->getIdentity()->getEmail()
+                            ]
+                        ]
                     ]
                 ]
             ],

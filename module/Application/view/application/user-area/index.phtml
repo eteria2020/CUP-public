@@ -1,3 +1,11 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+?>
+
 <!-- main -->
 <div id="main" class="detect-window-height">
 
@@ -38,46 +46,6 @@
                     <div class="block-form bw-f w-2-3  clearfix">
 
                         <?php echo $this->partial('partials/flash-messages.phtml', array()); ?>
-
-                        <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate("I tuoi dati per l'accesso"); ?></h2>
-                        </div>
-
-                            <!-- block-row-field -->
-                            <div class="block-row-field clearfix">
-
-                                <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate("Email"); ?></label>
-                                        <input type="text" class="required disabled" name="" value="" >
-                                    </p>
-                                </div>
-
-                                <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate("Ripeti email"); ?></label>
-                                        <input type="text" name="" class="required disabled" value="valore" >
-                                    </p>
-                                </div>
-
-                            </div>
-                            <!-- block-row-field -->
-
-                            <!-- block-row-field -->
-                            <div class="block-row-field clearfix">
-
-                                <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate("Password"); ?></label>
-                                        <input type="text" class="required disabled" name="" value="valore" >
-                                    </p>
-                                </div>
-
-                                <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate("Ripeti Password"); ?></label>
-                                        <input type="text" name="" class="required disabled" value="valore" >
-                                    </p>
-                                </div>
-
-                            </div>
-                            <!-- block-row-field -->
 
                             <div class="block-form-section content-align-center margin-bottom">
                                 <h2><i class="fa fa-user"></i><?= $this->translate("I tuoi dati personali"); ?></h2>
@@ -221,6 +189,20 @@
                                 </div>
                                 <!-- block-row-field -->
 
+                                <!-- block-row-field -->
+                                <div class="block-row-field clearfix">
+
+                                    <div class="block-field bw-f w-2-4">
+                                        <p> <label><?= $this->translate("Email"); ?></label>
+                                            <input type="text" name="" class="disabled" value="<?= $this->customer->getEmail(); ?>" >
+                                        </p>
+                                    </div>
+
+                                    <div class="block-field bw-f w-2-4"></div>
+
+                                </div>
+                                <!-- block-row-field -->
+
                                 <div class="block-form-section content-align-center margin-bottom">
                                     <h2><i class="fa fa-language"></i> <?= $this->translate("La lingua preferita"); ?></h2>
                                 </div>
@@ -297,8 +279,8 @@
                                             <p> <label><?= $this->translate("Data di nascita"); ?></label>
                                                 <?php
                                                 $birthDate = $this->profileForm->get('customer')->get('birthDate');
-                                                $birthDate->setValue($this->customer->getBirthDate()->format('d-m-Y'));
-                                                echo $this->formElement($birthDate->setAttribute('class', 'required'));
+                                                $birthDate->setValue($this->customer->getBirthDate()->format('Y-m-d'));
+                                                echo $this->formElement($birthDate->setAttribute('class', 'required datepicker-date'));
                                                 echo $this->formElementErrors($birthDate, array('class' => 'error-sign-up'));
                                                 ?>
                                             </p>
@@ -451,6 +433,24 @@
                                     </div>
                                     <!-- block-row-field -->
 
+                                    <!-- block-row-field -->
+                                    <div class="block-row-field clearfix">
+
+                                        <div class="block-field bw-f w-2-4">
+                                            <p> <label><?= $this->translate("Email"); ?></label>
+                                                <?php
+                                                $email = $this->profileForm->get('customer')->get('email');
+                                                $email->setValue($this->customer->getEmail());
+                                                echo $this->formElement($email->setAttribute('class', 'required'));
+                                                echo $this->formElementErrors($email, array('class' => 'error-sign-up'));
+                                                ?>
+                                            </p>
+                                        </div>
+
+                                        <div class="block-field bw-f w-2-4"></div>
+                                    </div>
+                                    <!-- block-row-field -->
+
                                     <div class="block-form-section content-align-center margin-bottom">
                                         <h2><i class="fa fa-language"></i> <?= $this->translate("La lingua preferita"); ?></h2>
                                     </div>
@@ -477,6 +477,77 @@
 
                                 <?= $this->form()->closeTag(); ?>
                             </div>
+
+                        <div class="block-form-section content-align-center margin-bottom" style="margin-top: 20px;">
+                            <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate("I tuoi dati per l'accesso"); ?></h2>
+                        </div>
+
+                        <div id="viewEditPwd">
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Password"); ?></label>
+                                        <input type="text" class="required disabled" name="" value="********" >
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <div class="block-wrapper-button content-align-center">
+                                <button type="button" id="js-edit-pwd">Modifica Password</button>
+                            </div>
+
+                        </div><!--edir pwd -->
+
+                        <div id="editPwd" style="display: none;">
+
+                            <?php
+                            $this->passwordForm->prepare();
+                            echo $this->form()->openTag($this->passwordForm);
+                            ?>
+
+                                <!-- block-row-field -->
+                                <div class="block-row-field clearfix">
+
+                                    <div class="block-field bw-f w-1-4">
+                                        <p> <label><?= $this->translate("Vecchia Password"); ?></label>
+                                            <?php
+                                            $oldPassword = $this->passwordForm->get('oldPassword');
+                                            echo $this->formElement($oldPassword->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($oldPassword, array('class' => 'error-sign-up'));
+                                            ?>
+                                        </p>
+                                    </div>
+
+                                    <div class="block-field bw-f w-3-4 last">
+
+                                        <div class="block-field bw-f w-2-4">
+                                            <p> <label><?= $this->translate("Password"); ?></label>
+                                                <?php
+                                                $password = $this->passwordForm->get('password');
+                                                echo $this->formElement($password->setAttribute('class', 'required'));
+                                                echo $this->formElementErrors($password, array('class' => 'error-sign-up'));
+                                                ?>
+                                            </p>
+                                        </div>
+
+                                        <div class="block-field bw-f w-2-4">
+                                            <p> <label><?= $this->translate("Ripeti Password"); ?></label>
+                                                <?php
+                                                $password2 = $this->passwordForm->get('password2');
+                                                echo $this->formElement($password2->setAttribute('class', 'required'));
+                                                echo $this->formElementErrors($password2, array('class' => 'error-sign-up'));
+                                                ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div><!-- block-row-field -->
+
+                                <div class="block-wrapper-button content-align-center">
+                                    <button type="submit"><?= $this->translate('Salva modifiche'); ?></button>
+                                </div>
+                            <?= $this->form()->closeTag(); ?>
+                        </div><!-- editPwd -->
 
                     </div>
                     <!-- block-form -->
@@ -548,8 +619,11 @@ if($this->showError) {
         switch(typeForm) {
 
             case 'edit-profile':
-                $('#viewProfile').hide();
-                $('#editProfile').show();
+                $('#viewProfile, #editProfile').toggle();
+            break;
+
+            case 'edit-pwd':
+                $('#viewEditPwd, #editPwd').toggle();
             break;
         }
     });
@@ -562,9 +636,18 @@ JS;
 echo <<<JS
     $(document).ready(function() {
         $("body").attr("class","app");
+        $(".datepicker-date" ).datepicker({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0",
+            maxDate: "0d"
+        });
         $("#js-edit-form").click(function() {
-            $('#viewProfile').hide();
-            $('#editProfile').show();
+            $('#viewProfile, #editProfile').toggle();
+        });
+        $("#js-edit-pwd").click(function() {
+            $('#viewEditPwd, #editPwd').toggle();
         });
     });
 JS;

@@ -311,6 +311,7 @@ return array(
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
             'PaymentService' => 'Application\Service\PaymentServiceFactory',
             'ProfileForm' => 'Application\Form\ProfileFormFactory',
+            'PasswordForm' => 'Application\Form\PasswordFormFactory',
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
