@@ -8,5 +8,5 @@ nbproject
 .settings
 vendor
 
-# SharengoCore lives on its own repository
+// SharengoCore lives on its own repository
 module/SharengoCore
