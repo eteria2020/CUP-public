@@ -99,6 +99,20 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
+            'name' => 'email2',
+            'type' => 'Zend\Form\Element\Email',
+            'attributes' => [
+                'id' => 'email',
+                'maxlength' => 64,
+                'placeholder' => 'name@name.ext'
+
+            ],
+            'options' => [
+                'label' => $translator->translate('Ripeti Email')
+            ]
+        ]);
+
+        $this->add([
             'name' => 'birthDate',
             'type' => 'Zend\Form\Element\Date',
             'attributes' => [
@@ -315,6 +329,21 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                             'avoid' => [
                                 $this->userService->getIdentity()->getEmail()
                             ]
+                        ]
+                    ]
+                ]
+            ],
+            'email2' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'EmailAddress',
+                        'break_chain_on_failure' => true
+                    ],
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'email'
                         ]
                     ]
                 ]

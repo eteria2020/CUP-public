@@ -13,7 +13,7 @@ $settings = array(
      * Default: empty
      */
     'email_from_address' => array(
-        'email' => 'info@sharengo.it',
+        'email' => 'servizioclienti@sharengo.it',
         'name' => 'Sharengo',
     ),
 
