@@ -5,6 +5,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Form\Form;
+use Zend\Session\Container;
 
 
 use Application\Service\RegistrationService;
@@ -93,8 +94,8 @@ class UserController extends AbstractActionController
         }
     }
 
-    public function signupScoreAction() {
-
+    public function signupScoreAction()
+    {
         $email = urldecode($this->params('email'));
 
         $customers = $this->customersService->findByEmail($email);
@@ -116,11 +117,17 @@ class UserController extends AbstractActionController
                 $customer->setEmail($email);
                 $this->form1->registerCustomerData($customer);
 
-            } catch (ProfilingPlatformException $ex) {}
+                // we store in session the information that the user already have a discount, so we can avoid showing him the banner
+                $container = new Container('userDiscount');
+                $container->offsetSet('hasDiscount', true);
+
+            } catch (ProfilingPlatformException $ex) {
+
+            }
 
             return $this->redirect()->toRoute('signup');
         } else {
-            
+
             //user already registered
             return $this->redirect()->toRoute('home');
             //@todo show a custom page
@@ -181,8 +188,12 @@ class UserController extends AbstractActionController
 
     private function signupForm($form)
     {
+        $container = new Container('userDiscount');
+        $hasDiscount = $container->offsetGet('hasDiscount');
+
         return new ViewModel([
-            'form' => $form
+            'form' => $form,
+            'hasDiscount' => $hasDiscount
         ]);
     }
 
@@ -200,7 +211,7 @@ class UserController extends AbstractActionController
         $enablePayment = false;
 
         $user = $this->registrationService->getUserFromHash($hash);
-        
+
         if (null != $user) {
             $urlencodedEmail = urlencode($user->getEmail());
             $enablePayment = !$user->getFirstPaymentCompleted();
@@ -210,5 +221,4 @@ class UserController extends AbstractActionController
                                    'enable_payment' => $enablePayment,
                                    'email' => $urlencodedEmail));
     }
-    
 }
