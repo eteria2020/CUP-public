@@ -139,17 +139,6 @@ return array(
                     ),
                 ]
             ],
-            'signup-score' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{signup-score}/:email',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action'     => 'signup-score',
-                    ),
-                ]
-            ],
             'signup-2' => [
                 'type' => 'Segment',
                 'options' => [
@@ -170,6 +159,28 @@ return array(
                         'controller' => 'User',
                         'action' => 'signup3'
                     ]
+                ]
+            ],
+            'signup-score' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup-score}/:email',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'signup-score',
+                    ),
+                ]
+            ],
+            'signup-score-completion' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup-score-completion}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'signup-score-completion',
+                    ),
                 ]
             ],
             'signup_insert' => [
@@ -367,8 +378,9 @@ return array(
                 array('controller' => 'Application\Controller\Index', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\Cars', 'roles' => array()),
+                array('controller' => 'Application\Controller\Console', 'roles' => array()),
+                array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
-
             ),
         ),
     ),

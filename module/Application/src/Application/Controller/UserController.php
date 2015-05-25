@@ -106,34 +106,53 @@ class UserController extends AbstractActionController
 
         // Proceed only if it's a new customer for Sharengo platform
         if (null == $customer) {
-
-            // Customer exists inside profiling platform?
-            try {
-                //throws an exception if the user doesn't have a discount
-                $this->profilingPlatformService->getDiscountByEmail($email);
-
-                // fill form data with available infos
-                $customer = new Customers();
-                $customer->setEmail($email);
-                $this->form1->registerCustomerData($customer);
-
-                // we store in session the information that the user already have a discount, so we can avoid showing him the banner
-                $container = new Container('userDiscount');
-                $container->offsetSet('hasDiscount', true);
-
-            } catch (ProfilingPlatformException $ex) {
-
-            }
-
-            return $this->redirect()->toRoute('signup');
+            $this->signupScoreUnknown($email);
         } else {
+            $this->signupScoreKnown($customer);
+        }
+    }
 
-            //user already registered
-            return $this->redirect()->toRoute('home');
-            //@todo show a custom page
+    private function signupScoreUnknown($email)
+    {
+        // Customer exists inside profiling platform?
+        try {
+            //throws an exception if the user doesn't have a discount
+            $this->profilingPlatformService->getDiscountByEmail($email);
+
+            // fill form data with available infos
+            $customer = new Customers();
+            $customer->setEmail($email);
+            $this->form1->registerCustomerData($customer);
+
+            // we store in session the information that the user already have a discount, so we can avoid showing him the banner
+            $container = new Container('userDiscount');
+            $container->offsetSet('hasDiscount', true);
+
+        } catch (ProfilingPlatformException $ex) {
 
         }
 
+        return $this->redirect()->toRoute('signup');
+    }
+
+    private function signupScoreKnown($customer)
+    {
+        try {
+            if ($customer->getDiscountRate() == 0) {
+                //throws an exception if the user doesn't have a discount
+                $discount = $this->profilingPlatformService->getDiscountByEmail($customer->getEmail());
+
+                $this->customersService->setCustomerDiscountRate($customer, $discount);
+            }
+        } catch (ProfilingPlatformException $ex) {
+
+        }
+
+        if ($customer->getFirstPaymentCompleted()) {
+            return $this->redirect()->toRoute('signup-score-completion');
+        } else {
+            return $this->redirect()->toRoute('pay', ['email' => $customer->getEmail()]);
+        }
     }
 
     private function proceed($form)
@@ -220,5 +239,10 @@ class UserController extends AbstractActionController
         return new ViewModel(array('message' => $message,
                                    'enable_payment' => $enablePayment,
                                    'email' => $urlencodedEmail));
+    }
+
+    public function signupScoreCompletionAction()
+    {
+        return new ViewModel();
     }
 }
