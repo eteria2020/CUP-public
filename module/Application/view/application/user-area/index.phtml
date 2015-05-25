@@ -203,21 +203,13 @@ $this->headLink()
                                 </div>
                                 <!-- block-row-field -->
 
-                                <div class="block-form-section content-align-center margin-bottom">
-                                    <h2><i class="fa fa-language"></i> <?= $this->translate("La lingua preferita"); ?></h2>
-                                </div>
-
-                                <!-- block-row-field -->
                                 <div class="block-row-field clearfix">
-
-                                    <div class="block-field auto-margin w-1-3">
-                                        <p>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getLanguage(); ?>" >
+                                    <div class="block-field bw-f w-1-4">
+                                        <p> <label><?= $this->translate("Lingua"); ?></label>
+                                            <input type="text" name="" class="required disabled" value="<?= $this->longLanguage($this->customer->getLanguage()); ?>" >
                                         </p>
                                     </div>
-
                                 </div>
-                                <!-- block-row-field -->
 
                                 <div class="block-wrapper-button content-align-center">
                                     <button type="button" id="js-edit-form"><?= $this->translate("Modifica profilo"); ?></button>
@@ -461,15 +453,11 @@ $this->headLink()
                                     </div>
                                     <!-- block-row-field -->
 
-                                    <div class="block-form-section content-align-center margin-bottom">
-                                        <h2><i class="fa fa-language"></i> <?= $this->translate("La lingua preferita"); ?></h2>
-                                    </div>
-
                                     <!-- block-row-field -->
                                     <div class="block-row-field clearfix">
 
-                                        <div class="block-field auto-margin w-1-3">
-                                            <p>
+                                        <div class="block-field bw-f w-1-4">
+                                            <p><label><?= $this->translate("Lingua"); ?></label>
                                                 <?php
                                                 $language = $this->profileForm->get('customer')->get('language');
                                                 $language->setValue($this->customer->getLanguage());
@@ -582,8 +570,8 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field block-avatar-app content-align-center">
-                                    <?php if(is_null($this->customer->getDiscountRate())): ?>
-                                        <p><?= $this->translate('Vuoi ottenere uno sconto su tutte le tue prossime corse?'); ?> <a href="http://www.equomobili.it" target="_blank"><?= $this->translate('Clicca qui'); ?></a></p>
+                                    <?php if(is_null($this->customer->getDiscountRate()) || $this->customer->getDiscountRate() == 0): ?>
+                                        <p><?= $this->translate('Vuoi ottenere uno sconto su tutte le tue prossime corse?'); ?><br><a href="http://www.equomobili.it" target="_blank"><?= $this->translate('Clicca qui'); ?></a></p>
                                     <?php else: ?>
                                     <div style="font-size: 45px !important; font-weight: bold; color: #43A34C;">
                                         <?= $this->customer->getDiscountRate(); ?>%

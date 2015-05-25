@@ -332,6 +332,7 @@ return array(
     'view_helpers' => [
         'factories' => [
             'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
+            'LongLanguage' => 'Application\View\Helper\LongLanguageFactory',
         ]
     ],
     'view_manager' => array(
