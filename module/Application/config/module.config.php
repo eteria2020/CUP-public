@@ -371,6 +371,7 @@ return array(
                 array('controller' => 'goalioforgotpassword_forgot', 'roles' => array()),
                 array('controller' => 'Application\Controller\Index', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
+                array('controller' => 'Application\Controller\Cars', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
 
             ),
