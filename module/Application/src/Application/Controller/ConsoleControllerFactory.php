@@ -10,7 +10,8 @@ class ConsoleControllerfactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
+        $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
 
-        return new ConsoleController($customerService);
+        return new ConsoleController($customerService, $profilingPlatformService);
     }
 }
