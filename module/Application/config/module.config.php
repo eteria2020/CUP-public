@@ -327,6 +327,7 @@ return array(
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
+            'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -355,13 +356,6 @@ return array(
             'ViewJsonStrategy'
         ]
     ),
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-            ),
-        ),
-    ),
 
     // ACL
     'bjyauthorize' => array(
@@ -378,4 +372,22 @@ return array(
             ),
         ),
     ),
+
+    'console' => [
+        'router' => [
+            'routes' => [
+                'get-discounts' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'get discounts',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'get-discounts'
+                        ]
+                    ]
+                ]
+            ],
+        ],
+    ],
 );
