@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f07cd5f1e1d9e309db04dac541e50825",
+    "hash": "100e349aa03917821b7168db831350e9",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -976,6 +976,28 @@
             "time": "2014-09-18 08:30:20"
         },
         {
+            "name": "mvlabs/sharengo-coremodule",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
+                "reference": "a960a1bdaac30f399e9374c483cc084182700691"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SharengoCore": "src/"
+                }
+            },
+            "description": "Core ZF2 module for Sharengo apps",
+            "time": "2015-05-25 12:24:53"
+        },
+        {
             "name": "speckcommerce/speck-paypal",
             "version": "dev-master",
             "source": {
@@ -1431,7 +1453,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "speckcommerce/speck-paypal": 20
+        "speckcommerce/speck-paypal": 20,
+        "mvlabs/sharengo-coremodule": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
