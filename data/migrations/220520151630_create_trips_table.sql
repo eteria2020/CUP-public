@@ -1,0 +1,23 @@
+CREATE TABLE trips (
+    id SERIAL PRIMARY KEY,
+    car_plate text NOT NULL,
+    customer_id int NOT NULL,
+    timestamp_beginning timestamp with time zone NOT NULL,
+    km_beginning int NOT NULL,
+    battery_beginning int NOT NULL,
+    longitude_beginning numeric NOT NULL,
+    latitude_beginning numeric NOT NULL,
+    geo_beginning geometry NOT NULL,
+    beginning_tx timestamp with time zone NOT NULL,
+    address_beginning text,
+    timestamp_end timestamp with time zone NOT NULL,
+    km_end int NOT NULL,
+    battery_end int NOT NULL,
+    longitude_end numeric NOT NULL,
+    latitude_end numeric NOT NULL,
+    geo_end geometry NOT NULL,
+    end_tx timestamp with time zone NOT NULL,
+    address_end text,
+    park_seconds int NOT NULL,
+    payable boolean DEFAULT true
+);
