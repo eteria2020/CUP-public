@@ -303,6 +303,27 @@ return array(
                         'controller' => 'UserArea',
                     ]
                 ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'tariffe' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{tariffe}',
+                            'defaults' => [
+                                'action' => 'rates'
+                            ]
+                        ]
+                    ],
+                    'rates-confirm' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/rates-confirm',
+                            'defaults' => [
+                                'action' => 'rates-confirm'
+                            ]
+                        ]
+                    ]
+                ]
             ],
         ),
     ),
@@ -345,6 +366,9 @@ return array(
         'factories' => [
             'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
             'LongLanguage' => 'Application\View\Helper\LongLanguageFactory',
+        ],
+        'invokables' => [
+            'IsUserArea' => 'Application\View\Helper\IsUserArea'
         ]
     ],
     'view_manager' => array(

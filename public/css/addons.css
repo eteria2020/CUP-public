@@ -63,3 +63,27 @@
     display: block;
     margin-bottom: 20px;
 }
+
+.module-rates table#rates {
+    margin-top: 20px;
+}
+
+.module-rates table#rates td, .module-rates table#rates th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#reprofiling .option {
+    margin: 5px 0;
+    clear: both;
+}
+
+#reprofiling .option span {
+    float: right;
+    width: 95%;
+}
+
+.reprofiling-warning {
+    padding-top: 40px;
+    color: red;
+}

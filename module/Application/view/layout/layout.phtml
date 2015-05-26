@@ -48,7 +48,7 @@
         echo $this->headStyle();
         ?>
     </head>
-    <body>
+    <body <?= $this->isUserArea($this->currentRoute()) ? 'class="app"' : ''; ?>>
         <!--[IE 9]>
             <p class="chromeframe"><?= $this->translate('Stai usando un browser <strong>non supportato</strong>. Per favore <a href="http://browsehappy.com/">aggiorna il tuo browser</a> o <a href="http://www.google.com/chromeframe/?redirect=true">attiva Google Chrome Frame</a> per far diventare pi&ugrave; potente il tuo browser.'); ?></p>
         <![endif]-->

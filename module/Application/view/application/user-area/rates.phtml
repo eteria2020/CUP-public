@@ -1,0 +1,152 @@
+<?php
+    $this->headScript()
+        ->appendFile($this->basePath('js/reprofiling-rates.js'));
+?>
+
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <!--<a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>-->
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'tariffe')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('Tariffe'); ?></h1>
+                <div class="block-user-info-app">
+                    <p class="welcome-message"><?= $this->translate('Ciao'); ?>! <a href="#"> <?= $this->layout()->loggedUser->getName() ?> <?= $this->layout()->loggedUser->getSurname() ?></a></p>
+                </div>
+            </div>
+
+            <!-- module-column-app-content -->
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-rates -->
+                <div class="module-rates clearfix">
+
+                    <!-- block-form -->
+                    <div class="block-form bw-f clearfix">
+
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-user"></i><?= $this->translate("Il tuo piano tariffario personale"); ?></h2>
+                        </div>
+
+                        <? if ($this->customer->getDiscountRate() > 0): ?>
+                            <div>
+                                <?= sprintf($this->translate('LO SCONTO %% CHE HAI OTTENUTO DA SHARE’NGO PROFILANDO IL TUO BISOGNO DI
+MOBILITA’ SU <a href="http:/www.equomobili.it">WWW.EQUOMIBILI.IT</a> E’ DEL %d %% E QUINDI IL TUO PIANO TARIFFARIO
+PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE IL SEGUENTE:'), $this->customer->getDiscountRate()); ?>
+                            </div>
+                        <? else: ?>
+                            <div>
+                                <?= $this->translate('NON RISULTI ANCORA PROFILATO SU <a href="http:/www.equomobili.it">WWW.EQUOMIBILI.IT</a> PER AVERE UNO SCONTO PERSONALIZZATO SUL PIANO TARIFFARIO STANDARD. AL MOMENTO LE TUE TARIFFE SONO:'); ?>
+                            </div>
+                        <? endif; ?>
+                    </div>
+
+                    <!-- block-form -->
+                    <div class="block-form clearfix">
+                        <table id ="rates" class="bw-f w-2-4">
+                            <thead>
+                                <tr>
+                                    <th style="border: none;"></th>
+                                    <th><?= $this->translate('Le tue tariffe') ?></th>
+                                    <th><?= $this->translate('Invece di') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><?= $this->translate('Tariffa base della corsa') ?></td>
+                                    <td>€ <?= round(0.28 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ 0,28</td>
+                                <tr>
+                                <tr>
+                                    <td><?= $this->translate('Tariffa di sosta') ?></td>
+                                    <td>€ <?= round(10 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ 10,00</td>
+                                <tr>
+                                <tr>
+                                    <td><?= $this->translate('Tariffa per 1 ora') ?></td>
+                                    <td>€ <?= round(7.8 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ 7,80</td>
+                                <tr>
+                                <tr>
+                                    <td><?= $this->translate('Tariffa per 1/2 giornata (4H)') ?></td>
+                                    <td>€ <?= round(30 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ 30,00</td>
+                                <tr>
+                                <tr>
+                                    <td><?= $this->translate('Tariffa giornaliera') ?></td>
+                                    <td>€ <?= round(50 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ 50,00</td>
+                                <tr>
+                                <tr>
+                                    <td><?= $this->translate('Tariffa di prenotazione') ?></td>
+                                    <td>€ 0,00</td>
+                                    <td>€ 0,00</td>
+                                <tr>
+                            </tbody>
+                        </table>
+
+                        <div class="bw-f w-2-4">
+                            <ul>
+                                <li><?= $this->translate('Gratuità dei noleggi il giorno del tuo compleanno') ?></li>
+                                <?php if ($this->customer->getGender() === 'female'): ?>
+                                    <li><?= $this->translate('Gratuità delle corse notturne dalle ore 1.00 alle ore 6.00') ?></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <?php if ($this->customer->getReprofilingOption() === 0): ?>
+                        <!-- block-form -->
+                        <div class="block-form clearfix">
+                            <div class="block-form-section content-align-center margin-bottom">
+                                <h2><?= $this->translate("Per favore aiutaci a servirti con attenzione scegliendo una tra queste 3 opzioni"); ?></h2>
+                            </div>
+
+                            <form id="reprofiling">
+                                <div class="option">
+                                    <input type="radio" name="option" value="1">
+                                    <span><?= $this->translate('Confermo l’accettazione del mio piano tariffario personale') ?></span>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" name="option" value="2">
+                                    <span><?= $this->translate('Vorrei ripetere ex-novo la mia profilazione perché non sono certo di avere indicato tutti i miei dati correttamente ( i dati della prima profilazione saranno cancellati)') ?></span>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" name="option" value="3">
+                                    <span><?= $this->translate('Non ho fatto la profilazione su <a href="http://www.equomobili.it">www.equomobili.it</a> e desidero verificare se mi spetta uno sconto sulle tariffe nominali e quindi un Piano Tariffario Personale') ?></span>
+                                </div>
+                            </form>
+
+                            <div class="reprofiling-warning">
+                                <?= $this->translate('Attenzione: eventuali condizioni di miglior favore in futuro ti verranno comunicate via email perché tu possa aggiornare la tua profilazione e il tuo sconto.') ?>
+                            </div>
+
+                            <div class="block-wrapper-button content-align-center">
+                                <button id="reprofiling-confirm" type="button" data-ajax-url="<?= $this->serverUrl().$this->url('area-utente/rates-confirm') ?>"><?= $this->translate('Conferma') ?></button>
+                                </button>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,8 @@ use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
+
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 
@@ -133,5 +135,26 @@ class UserAreaController extends AbstractActionController
     {
         $customerData = $this->hydrator->extract($customer);
         $this->profileForm->setData(['customer' => $customerData]);
+    }
+
+    public function ratesAction()
+    {
+        return new ViewModel([
+            'customer' => $this->customer
+        ]);
+    }
+
+    public function ratesConfirmAction()
+    {
+        $option = $this->params()->fromPost('option');
+
+        $customer = $this->I_customersService->setCustomerReprofilingOption($this->customer, $option);
+
+        //update the identity in session
+        $this->userService->getStorage()->write($customer);
+
+        return new JsonModel([
+            'option' => $option
+        ]);
     }
 }
