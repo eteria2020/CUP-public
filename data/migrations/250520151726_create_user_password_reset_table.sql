@@ -1,0 +1,2 @@
+CREATE TABLE user_password_reset (request_key VARCHAR(32) NOT NULL, user_id INT NOT NULL, request_time TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(request_key));
+CREATE UNIQUE INDEX UNIQ_DA84AD0BA76ED395 ON user_password_reset (user_id);
