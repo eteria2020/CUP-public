@@ -12,6 +12,7 @@ class RegistrationForm2Factory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
+     *
      * @return Application\Form\RegistrationForm2
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
@@ -21,7 +22,14 @@ class RegistrationForm2Factory implements FactoryInterface
         $hydrator = new DoctrineHydrator($entityManager);
         $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
-        $driverFieldset = new DriverFieldset($translator, $hydrator, $countriesService, $customersService);
+        $authorityService = $serviceLocator->get('SharengoCore\Service\AuthorityService');
+        $driverFieldset = new DriverFieldset(
+            $translator,
+            $hydrator,
+            $countriesService,
+            $customersService,
+            $authorityService
+        );
 
         return new RegistrationForm2($translator, $driverFieldset);
     }
