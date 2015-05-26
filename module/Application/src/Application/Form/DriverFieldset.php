@@ -3,6 +3,7 @@
 namespace Application\Form;
 
 use SharengoCore\Entity\Customers;
+use SharengoCore\Service\AuthorityService;
 use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use Zend\Form\Fieldset;
@@ -12,13 +13,17 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 
 class DriverFieldset extends Fieldset implements InputFilterProviderInterface
 {
+    private $authorityService;
+
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
         CountriesService $mondoService,
-        CustomersService $customersService
+        CustomersService $customersService,
+        AuthorityService $authorityService
     ) {
         $this->customersService = $customersService;
+        $this->authorityService = $authorityService;
 
         parent::__construct('driver', [
             'use_as_base_fieldset' => true
@@ -42,15 +47,17 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add([
             'name' => 'driverLicenseAuthority',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Select',
             'attributes' => [
                 'id' => 'driverLicenseAuthority',
                 'placeholder' => 'UCO',
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Rilasciato da (autorità)')
+                'label' => $translator->translate('Rilasciato da (autorità)'),
+                'value_options' => $this->authorityService->getAllAuthorities()
             ]
+
         ]);
 
         $this->add([
@@ -165,8 +172,8 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 4,
-                            'max' => 32
+                            'min' => 2,
+                            'max' => 3
                         ]
                     ]
                 ]
