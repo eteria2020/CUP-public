@@ -19,5 +19,7 @@ CREATE TABLE trips (
     end_tx timestamp with time zone NOT NULL,
     address_end text,
     park_seconds int NOT NULL,
-    payable boolean DEFAULT true
+    payable boolean DEFAULT true,
+    price_cent int NOT NULL,
+    vat_cent int NOT NULL
 );
