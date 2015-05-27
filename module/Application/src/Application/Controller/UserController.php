@@ -141,7 +141,7 @@ class UserController extends AbstractActionController
         $this->customersService->increaseCustomerProfilingCounter($customer);
 
         try {
-            if ($customer->getReprofilingOption() !== 1 && $customer->getProfilingCounter() <= 2) {
+            if ($customer->getReprofilingOption() != 1 && $customer->getProfilingCounter() <= 2) {
                 //throws an exception if the user doesn't have a discount
                 $discount = $this->profilingPlatformService->getDiscountByEmail($customer->getEmail());
 

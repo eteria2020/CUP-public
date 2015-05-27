@@ -113,7 +113,7 @@ PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE IL SEGUENTE:'), $this->cust
                         </div>
                     </div>
 
-                    <?php if ($this->customer->getReprofilingOption() !== 1 && $this->customer->getProfilingCounter() <= 1): ?>
+                    <?php if ($this->customer->getReprofilingOption() != 1 && $this->customer->getProfilingCounter() <= 1): ?>
                         <!-- block-form -->
                         <div class="block-form clearfix">
                             <div class="block-form-section content-align-center margin-bottom">
