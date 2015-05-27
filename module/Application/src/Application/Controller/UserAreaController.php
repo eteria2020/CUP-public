@@ -150,9 +150,6 @@ class UserAreaController extends AbstractActionController
 
         $customer = $this->I_customersService->setCustomerReprofilingOption($this->customer, $option);
 
-        //update the identity in session
-        $this->userService->getStorage()->write($customer);
-
         return new JsonModel([
             'option' => $option
         ]);
