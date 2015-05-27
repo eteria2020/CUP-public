@@ -1,0 +1,76 @@
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <!--<a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>-->
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'dati-pagamento')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('Dati pagamento'); ?></h1>
+                <div class="block-user-info-app">
+                    <p class="welcome-message"><?= $this->translate('Ciao'); ?>! <a href="#"> <?= $this->layout()->loggedUser->getName() ?> <?= $this->layout()->loggedUser->getSurname() ?></a></p>
+                </div>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-manage-card -->
+                <div class="module-manage-card padding-top">
+
+                    <!-- block-form -->
+                    <div class="block-form bw-f w-2-3  clearfix">
+
+                        <?php if($this->customer->getFirstPaymentCompleted()): ?>
+
+                            <div class="block-alert margin-bottom info">
+                                <p>
+                                    <?= $this->translate('Il pagamento della quota di iscrizione è andato a buon fine, grazie'); ?>.
+                                </p>
+                            </div>
+
+                        <?php else: ?>
+
+                            <div class="block-alert margin-bottom info">
+                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?php echo $this->url('pay', array('email' => $this->customer->getEmail())); ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
+                    <!-- block-form -->
+
+                    <!-- block -->
+                    <div class="bw-f w-1-3 last  clearfix">
+
+                    </div>
+                    <!-- block -->
+
+                </div>
+                <!-- module-manage-card -->
+
+            </div>
+            <!-- module-column-app-content -->
+
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->
