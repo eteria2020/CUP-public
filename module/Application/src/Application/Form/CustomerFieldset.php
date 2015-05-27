@@ -415,6 +415,9 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                                 $this->userService->getIdentity()->getTaxCode()
                             ]
                         ]
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\TaxCode'
                     ]
                 ]
             ],

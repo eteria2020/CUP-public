@@ -523,6 +523,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'customerService' => $this->customersService
                         ]
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\TaxCode'
                     ]
                 ]
             ],
