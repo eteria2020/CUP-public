@@ -12,10 +12,15 @@
             <?= $this->translate('Tariffe'); ?>
         </a>
     </li>
+    <li>
+        <a href="<?= $this->url('area-utente/dati-pagamento'); ?>" <?= $this->route === 'dati-pagamento' ? 'class="active"' : '' ?>>
+            <i class="fa fa-credit-card"></i>
+            <?= $this->translate('Dati di pagamento'); ?>
+        </a>
+    </li>
     <!--li><a href=""><i class="icon icon-car-small-fff"></i> <?= $this->translate('Noleggi'); ?></a></li>
     <li><a href=""><i class="fa fa-trophy"></i> <?= $this->translate('Bonus'); ?></a></li>
     <li><a href=""><i class="fa fa-file-o"></i> <?= $this->translate('Fatture'); ?></a></li>
-    <li><a href=""><i class="fa fa-credit-card"></i> <?= $this->translate('Dati di pagamento'); ?></a></li>
     <li><a href=""><i class="fa fa-tachometer"></i> <?= $this->translate('Patente'); ?></a></li>
     <li><a href=""><i class="fa fa-plus"></i> <?= $this->translate('Servizi aggiuntivi'); ?></a></li>
     <li><a href=""><i class="fa fa-map-marker"></i> <?= $this->translate('Posiziona auto'); ?></a></li-->

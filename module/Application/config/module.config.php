@@ -322,6 +322,15 @@ return array(
                                 'action' => 'rates-confirm'
                             ]
                         ]
+                    ],
+                    'dati-pagamento' => [
+                        'type' => 'Literal',
+                        'options' => [
+                            'route' => '/dati-pagamento',
+                            'defaults' => [
+                                'action' => 'dati-pagamento'
+                            ]
+                        ]
                     ]
                 ]
             ],

@@ -157,4 +157,11 @@ class UserAreaController extends AbstractActionController
             'option' => $option
         ]);
     }
+
+    public function datiPagamentoAction()
+    {
+        return new ViewModel([
+            'customer' => $this->customer,
+        ]);
+    }
 }
