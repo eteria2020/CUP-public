@@ -7,7 +7,6 @@ use Zend\Validator\AbstractValidator;
 class TaxCode extends AbstractValidator
 {
     const INVALID = 'taxCode';
-    const NUMBER_CF = 16;
 
     protected $messageTemplates = [
         self::INVALID => "Il codice fiscale non è corretto"
