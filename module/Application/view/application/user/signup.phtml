@@ -301,6 +301,11 @@
 </div>
 <!-- block-row-field -->
 
+<?php
+    $profilingCounter = $this->form->get('user')->get('profilingCounter');
+    echo $this->formElement($profilingCounter);
+?>
+
 <div class="block-form-section content-align-center margin-bottom">
     <h2><i class="fa fa-language"></i> <?= $this->translate('Scegli la lingua preferita'); ?></h2>
 </div>

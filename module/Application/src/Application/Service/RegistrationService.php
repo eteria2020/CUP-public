@@ -105,6 +105,7 @@ final class RegistrationService
         $data['driverLicenseCategories'] = '{' .implode(',', $data['driverLicenseCategories']). '}';
         $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
+        $data['profilingCounter'] = (int) $data['profilingCounter'];
 
         return $data;
     }

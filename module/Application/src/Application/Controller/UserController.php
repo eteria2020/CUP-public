@@ -122,6 +122,7 @@ class UserController extends AbstractActionController
             // fill form data with available infos
             $customer = new Customers();
             $customer->setEmail($email);
+            $customer->setProfilingCounter(1);
             $this->form1->registerCustomerData($customer);
 
             // we store in session the information that the user already have a discount, so we can avoid showing him the banner
@@ -137,8 +138,10 @@ class UserController extends AbstractActionController
 
     private function signupScoreKnown($customer)
     {
+        $this->customersService->increaseCustomerProfilingCounter($customer);
+
         try {
-            if ($customer->getDiscountRate() == 0) {
+            if ($customer->getReprofilingOption() !== 1 && $customer->getProfilingCounter() <= 2) {
                 //throws an exception if the user doesn't have a discount
                 $discount = $this->profilingPlatformService->getDiscountByEmail($customer->getEmail());
 

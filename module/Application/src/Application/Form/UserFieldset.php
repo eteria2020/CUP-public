@@ -354,6 +354,14 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ]
         ]);
+
+        $this->add([
+            'name' => 'profilingCounter',
+            'type' => 'Zend\Form\Element\Hidden',
+            'attributes' => [
+                'id' => 'profilingCounter'
+            ]
+        ]);
     }
 
     public function getInputFilterSpecification()
