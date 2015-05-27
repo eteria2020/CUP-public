@@ -17,7 +17,7 @@ class TaxCode extends AbstractValidator
         $value = strtoupper($value);
         $this->setValue($value);
 
-        if (!preg_match("/^([a-z]{3})([a-z]{3})([0-9]{2})([a,b,c,d,e,h,l,m,p,r,s,t]{1})([0-9]{2})([a-z]{1}[0-9]{3})([a-z]{1})$/i", $value)) {
+        if (!preg_match("/^([a-z]{3})([a-z]{3})([0-9]{2})([abcdehlmprst]{1})([0-9]{2})([a-z]{1}[0-9]{3})([a-z]{1})$/i", $value)) {
             $this->error(self::INVALID);
             return false;
         }
