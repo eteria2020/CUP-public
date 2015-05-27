@@ -6,5 +6,5 @@ CREATE TABLE authority (
 INSERT INTO authority (code, name) VALUES
 ('DTT', 'Dipartimento dei Trasporti Terrestri'),
 ('MC', 'Motorizzazione Civile'),
-('C', 'Comune'),
+('CO', 'Comune'),
 ('AE', 'Altro ente');
