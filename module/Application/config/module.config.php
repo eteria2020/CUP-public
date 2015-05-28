@@ -375,6 +375,7 @@ return array(
         'factories' => [
             'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
             'LongLanguage' => 'Application\View\Helper\LongLanguageFactory',
+            'Config' => 'Application\View\Helper\ConfigFactory'
         ],
         'invokables' => [
             'IsUserArea' => 'Application\View\Helper\IsUserArea'
