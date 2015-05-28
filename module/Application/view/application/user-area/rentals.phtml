@@ -1,0 +1,173 @@
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <!--<a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>-->
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'noleggi')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('NOLEGGI'); ?></h1>
+                <div class="block-user-info-app">
+                    <p class="welcome-message"><?= $this->translate('Ciao'); ?>! <a href="#"> <?= $this->layout()->loggedUser->getName() ?> <?= $this->layout()->loggedUser->getSurname() ?></a></p>
+                </div>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-sharing-resmume -->
+                <div class="module-sharing-resmume padding-top">
+
+                    <!-- block-form
+                    <div class="block-form bw-f w-1-4 clearfix">
+                        <form method="post" action="#">
+
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-4-4">
+                                    <p> <label>Periodo</label>
+                                        <select name="">
+                                            <option>valore</option>
+                                            <option>valore</option>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- block-form -->
+
+                    <?php if(count($this->trips) > 0): ?>
+                    <!-- block-data-table -->
+                    <div class="block-data-table clearfix" style="margin-top: 20px;">
+
+                        <!-- block-data-table-row -->
+                        <div class="block-data-table-row clearfix">
+                            <div class="block-data-table-th cw-1-6">
+                                <?= $this->translate('Data'); ?>
+                            </div>
+                            <div class="block-data-table-th cw-1-6">
+                                <?= $this->translate('Ora'); ?>
+                            </div>
+                            <div class="block-data-table-th cw-1-6">
+                                <?= $this->translate('Partenza'); ?>
+                            </div>
+                            <div class="block-data-table-th cw-1-6">
+                                <?= $this->translate('Netto'); ?> (&euro;)
+                            </div>
+                            <div class="block-data-table-th cw-1-6">
+                                <?= $this->translate('IVA'); ?> (&euro;)
+                            </div>
+                            <div class="block-data-table-th cw-1-6">
+                                <?= $this->translate('Tot'); ?>. (&euro;)
+                            </div>
+                        </div>
+                        <!-- block-data-table-row -->
+
+                        <?php
+                        /** @var \SharengoCore\Entity\Trips $I_trip */
+                        foreach($this->trips as $I_trip): ?>
+
+                            <!-- block-data-table-row-group -->
+                            <div class="block-data-table-row-group clearfix">
+                                <!-- block-data-table-row -->
+                                <div class="block-data-table-row odd clearfix">
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $I_trip->getTimestampBeginning()->format('d.m.Y'); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $I_trip->getTimestampBeginning()->format('H:i'); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $I_trip->getAddressBeginning(); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $I_trip->getPriceCent(); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $I_trip->getVatCent(); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= ($I_trip->getPriceCent() + $I_trip->getVatCent()); ?>
+                                    </div>
+                                </div>
+                                <!-- block-data-table-row -->
+
+                                <!-- block-data-table-row -->
+                                <div class="block-data-table-row data-info clearfix">
+                                    <div class="block-data-table-td cw-1-4">
+                                        <span class="block-data-field">
+                                            <?= $this->translate('Durata noleggio'); ?>:
+                                        </span>
+                                        <?= $this->Minute($I_trip->getTimestampBeginning(), $I_trip->getTimestampEnd()); ?> min
+                                    </div>
+                                    <div class="block-data-table-td cw-1-4">
+                                        <span class="block-data-field">
+                                            <?= $this->translate('Fine noleggo'); ?>:
+                                        </span>
+                                        <?= $I_trip->getTimestampEnd()->format('H:i'); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-4">
+                                        <span class="block-data-field">
+                                            <?= $this->translate('Durata sosta'); ?>:
+                                        </span>
+                                        <?= $I_trip->getParkSeconds(); ?> sec
+                                    </div>
+                                    <div class="block-data-table-td cw-1-4">
+                                        <span class="block-data-field">
+                                            <?= $this->translate('Distanza tot'); ?>:
+                                        </span>
+                                        <?= ($I_trip->getKmEnd() - $I_trip->getKmBeginning()); ?> Km
+                                    </div>
+                                </div>
+                                <!-- block-data-table-row -->
+
+                                <!-- block-data-table-row -->
+                                <div class="block-data-table-row data-info clearfix">
+                                    <div class="block-data-table-td cw-6-6">
+                                        <span class="block-data-field">
+                                            <?= $this->translate('Destinazone'); ?>:
+                                        </span>
+                                        <?= $I_trip->getAddressEnd(); ?>
+                                    </div>
+                                </div>
+                                <!-- block-data-table-row -->
+                            </div>
+                            <!-- block-data-table-row-group -->
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- block-data-table -->
+                    <?php else: ?>
+                        <div class="block-alert margin-bottom info">
+                            <p><?= $this->translate('Non hai ancora effettuato nessun noleggio'); ?>.</p>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+                <!-- module-sharing-resmume -->
+
+            </div>
+            <!-- module-column-app-content -->
+
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->

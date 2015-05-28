@@ -331,6 +331,15 @@ return array(
                                 'action' => 'dati-pagamento'
                             ]
                         ]
+                    ],
+                    'noleggi' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{noleggi}',
+                            'defaults' => [
+                                'action' => 'rentals'
+                            ]
+                        ]
                     ]
                 ]
             ],
@@ -377,7 +386,8 @@ return array(
             'LongLanguage' => 'Application\View\Helper\LongLanguageFactory',
         ],
         'invokables' => [
-            'IsUserArea' => 'Application\View\Helper\IsUserArea'
+            'IsUserArea' => 'Application\View\Helper\IsUserArea',
+            'Minute'     => 'Application\View\Helper\Minute'
         ]
     ],
     'view_manager' => array(

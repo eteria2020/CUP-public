@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use SharengoCore\Service\TripsService;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -20,6 +21,11 @@ class UserAreaController extends AbstractActionController
      * @var CustomersService
      */
     private $I_customersService;
+
+    /**
+     * @var TripsService
+     */
+    private $I_tripsService;
 
     /*
     * @var \Zend\Authentication\AuthenticationService
@@ -56,15 +62,16 @@ class UserAreaController extends AbstractActionController
      */
     private $showError = false;
 
-
     public function __construct(
         CustomersService $I_customersService,
+        TripsService $I_tripsService,
         AuthenticationService $userService,
         Form $profileForm,
         Form $passwordForm,
         HydratorInterface $hydrator
     ) {
         $this->I_customersService = $I_customersService;
+        $this->I_tripsService = $I_tripsService;
         $this->userService = $userService;
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
@@ -159,6 +166,13 @@ class UserAreaController extends AbstractActionController
     {
         return new ViewModel([
             'customer' => $this->customer,
+        ]);
+    }
+
+    public function rentalsAction()
+    {
+        return new ViewModel([
+            'trips' => $this->I_tripsService->getTripsByCustomer($this->customer->getId())
         ]);
     }
 }

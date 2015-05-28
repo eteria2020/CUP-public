@@ -11,6 +11,8 @@ class UserAreaControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $I_customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
+        $I_tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
+
         $userService = $serviceLocator->getServiceLocator()->get('zfcuser_auth_service');
         $profileForm = $serviceLocator->getServiceLocator()->get('ProfileForm');
         $passwordForm = $serviceLocator->getServiceLocator()->get('PasswordForm');
@@ -18,6 +20,7 @@ class UserAreaControllerFactory implements FactoryInterface
 
         return new UserAreaController(
             $I_customerService,
+            $I_tripService,
             $userService,
             $profileForm,
             $passwordForm,
