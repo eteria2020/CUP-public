@@ -18,5 +18,8 @@ return [
         'X-Mailer' => '',
         'sharengoNotices' => '',
         'registrationBcc' => ''
+    ],
+    'googleAnalytics' => [
+        'key' => ''
     ]
 ];
