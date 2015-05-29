@@ -10,6 +10,11 @@ class DuplicateDriversLicense extends AbstractValidator
 
     private $customerService;
 
+    /**
+     * @var array
+     */
+    private $driverLicenseToAvoid = [];
+
     protected $messageTemplates = [
         self::DUPLICATE => "Esiste già un utente con la stessa patente"
     ];
@@ -18,6 +23,9 @@ class DuplicateDriversLicense extends AbstractValidator
     {
         parent::__construct();
         $this->customerService = $options['customerService'];
+        if (isset($options['avoid'])) {
+            $this->driverLicenseToAvoid = $options['avoid'];
+        }
     }
 
     public function isValid($value)
@@ -26,7 +34,7 @@ class DuplicateDriversLicense extends AbstractValidator
 
         $customer = $this->customerService->findByDriversLicense($value);
 
-        if (!empty($customer)) {
+        if (!empty($customer) && !in_array($customer[0]->getDriverLicense(), $this->driverLicenseToAvoid)) {
             $this->error(self::DUPLICATE);
             return false;
         }

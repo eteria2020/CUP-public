@@ -2,7 +2,10 @@
 
 namespace Application\Controller;
 
+
 use SharengoCore\Service\TripsService;
+use Application\Form\DriverLicenseForm;
+
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -58,6 +61,11 @@ class UserAreaController extends AbstractActionController
     private $typeForm;
 
     /**
+     * @var \Zend\Form\Form
+     */
+    private $driverLicenseForm;
+
+    /**
      * @var
      */
     private $showError = false;
@@ -68,6 +76,7 @@ class UserAreaController extends AbstractActionController
         AuthenticationService $userService,
         Form $profileForm,
         Form $passwordForm,
+        Form $driverLicenseForm,
         HydratorInterface $hydrator
     ) {
         $this->I_customersService = $I_customersService;
@@ -76,6 +85,7 @@ class UserAreaController extends AbstractActionController
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
+        $this->driverLicenseForm = $driverLicenseForm;
         $this->hydrator = $hydrator;
     }
 
@@ -173,6 +183,48 @@ class UserAreaController extends AbstractActionController
     {
         return new ViewModel([
             'trips' => $this->I_tripsService->getTripsByCustomer($this->customer->getId())
+        ]);
+    }
+
+    public function drivingLicenceAction()
+    {
+        /** @var DriverLicenseForm $form */
+        $form = $this->driverLicenseForm;
+        $customerData = $this->hydrator->extract($this->customer);
+        $form->setData(['driver' => $customerData]);
+
+        if ($this->getRequest()->isPost()) {
+            $postData = $this->getRequest()->getPost()->toArray();
+            $postData['driver']['id'] = $this->userService->getIdentity()->getId();
+            $form->setData($postData);
+
+            if ($form->isValid()) {
+
+                try {
+
+                    $customer = $form->saveData();
+
+                    $this->userService->getStorage()->write($customer);
+
+                    $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+
+                } catch (\Exception $e) {
+
+                    $this->flashMessenger()->addErrorMessage($e->getMessage());
+
+                }
+
+                return $this->redirect()->toRoute('area-utente/patente');
+            } else {
+
+                $this->showError = true;
+            }
+        }
+
+        return new ViewModel([
+            'customer'          => $this->customer,
+            'driverLicenseForm' => $form,
+            'showError'         => $this->showError,
         ]);
     }
 }

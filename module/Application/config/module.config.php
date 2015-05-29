@@ -340,7 +340,16 @@ return array(
                                 'action' => 'rentals'
                             ]
                         ]
-                    ]
+                    ],
+                    'patente' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{patente}',
+                            'defaults' => [
+                                'action' => 'drivingLicence'
+                            ]
+                        ]
+                    ],
                 ]
             ],
         ),
@@ -354,14 +363,15 @@ return array(
             'translator' => 'MvcTranslator',
         ),
         'factories' => [
-            'RegistrationService' => 'Application\Service\RegistrationServiceFactory',
-            'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
-            'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
-            'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
+            'RegistrationService'      => 'Application\Service\RegistrationServiceFactory',
+            'RegistrationForm'         => 'Application\Form\RegistrationFormFactory',
+            'RegistrationForm2'        => 'Application\Form\RegistrationForm2Factory',
+            'PaypalRequest'            => 'Application\Service\PaypalRequestFactory',
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
-            'PaymentService' => 'Application\Service\PaymentServiceFactory',
-            'ProfileForm' => 'Application\Form\ProfileFormFactory',
-            'PasswordForm' => 'Application\Form\PasswordFormFactory',
+            'PaymentService'           => 'Application\Service\PaymentServiceFactory',
+            'ProfileForm'              => 'Application\Form\ProfileFormFactory',
+            'PasswordForm'             => 'Application\Form\PasswordFormFactory',
+            'DriverLicenseForm'        => 'Application\Form\DriverLicenseFormFactory',
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',

@@ -14,16 +14,19 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 class DriverFieldset extends Fieldset implements InputFilterProviderInterface
 {
     private $authorityService;
+    private $avoid;
 
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
         CountriesService $mondoService,
         CustomersService $customersService,
-        AuthorityService $authorityService
+        AuthorityService $authorityService,
+        $avoidValidatorDriverLicense = null
     ) {
         $this->customersService = $customersService;
         $this->authorityService = $authorityService;
+        $this->avoid = $avoidValidatorDriverLicense;
 
         parent::__construct('driver', [
             'use_as_base_fieldset' => true
@@ -31,6 +34,14 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->setHydrator($hydrator);
         $this->setObject(new Customers());
+
+        $this->add([
+            'name' => 'id',
+            'type' => 'Zend\Form\Element\Hidden',
+            'attributes' => [
+                'id' => 'id'
+            ]
+        ]);
 
         $this->add([
             'name' => 'driverLicense',
@@ -136,6 +147,19 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
 
     public function getInputFilterSpecification()
     {
+        if(is_null($this->avoid)) {
+            $optionValidatorDriverLicense = [
+                'customerService' => $this->customersService
+            ];
+        } else {
+            $optionValidatorDriverLicense = [
+                'customerService' => $this->customersService,
+                'avoid' => [
+                    $this->avoid
+                ]
+            ];
+        }
+
         return [
             'driverLicense' => [
                 'required' => true,
@@ -155,9 +179,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     ],
                     [
                         'name' => 'Application\Form\Validator\DuplicateDriversLicense',
-                        'options' => [
-                            'customerService' => $this->customersService
-                        ]
+                        'options' => $optionValidatorDriverLicense
                     ]
                 ]
             ],
@@ -172,7 +194,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 2,
+                            'min' => 1,
                             'max' => 3
                         ]
                     ]

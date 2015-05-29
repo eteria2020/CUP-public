@@ -16,6 +16,7 @@ class UserAreaControllerFactory implements FactoryInterface
         $userService = $serviceLocator->getServiceLocator()->get('zfcuser_auth_service');
         $profileForm = $serviceLocator->getServiceLocator()->get('ProfileForm');
         $passwordForm = $serviceLocator->getServiceLocator()->get('PasswordForm');
+        $driverLicenseForm = $serviceLocator->getServiceLocator()->get('DriverLicenseForm');
         $hydrator = new Reflection();
 
         return new UserAreaController(
@@ -24,6 +25,7 @@ class UserAreaControllerFactory implements FactoryInterface
             $userService,
             $profileForm,
             $passwordForm,
+            $driverLicenseForm,
             $hydrator
         );
     }
