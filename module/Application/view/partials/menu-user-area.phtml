@@ -18,7 +18,12 @@
             <?= $this->translate('Dati di pagamento'); ?>
         </a>
     </li>
-    <!--li><a href=""><i class="icon icon-car-small-fff"></i> <?= $this->translate('Noleggi'); ?></a></li>
+    <li>
+        <a href="<?= $this->url('area-utente/noleggi'); ?>" <?= $this->route === 'noleggi' ? 'class="active"' : '' ?>>
+            <i class="icon icon-car-small-fff"></i> <?= $this->translate('Noleggi'); ?>
+        </a>
+    </li>
+    <!--
     <li><a href=""><i class="fa fa-trophy"></i> <?= $this->translate('Bonus'); ?></a></li>
     <li><a href=""><i class="fa fa-file-o"></i> <?= $this->translate('Fatture'); ?></a></li>
     <li><a href=""><i class="fa fa-tachometer"></i> <?= $this->translate('Patente'); ?></a></li>
