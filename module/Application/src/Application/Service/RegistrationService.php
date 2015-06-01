@@ -155,13 +155,14 @@ final class RegistrationService
         }
     }
 
-    public function sendEmail($email, $surname, $hash)
+    public function sendEmail($email, $name, $surname, $hash)
     {
         $url = $this->viewHelperManager->get('url');
         $serverUrl = $this->viewHelperManager->get('serverUrl');
 
         $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.txt'),
+            $name,
             $surname,
             $serverUrl().$url('signup_insert').'?user='.$hash
         );

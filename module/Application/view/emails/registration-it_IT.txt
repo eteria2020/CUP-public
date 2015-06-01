@@ -1,14 +1,17 @@
-Messaggio di posta elettronica generato automaticamente.
+Ciao %1$s %2$s
 
+Ti diamo il benvenuto tra gli Equomobili , la community di SHARE’NGO.
 
-Gentile Sig. %1$s
+ATTIVA LA TUA REGISTRAZIONE: per completare l'iscrizione clicca sul seguente link:
 
-grazie per essersi iscritto a Sharengo!
+%3$s
 
-ATTIVARE  LA REGISTRAZIONE: per completare l'iscrizione cliccare sul seguente link ed effettuare l'accesso all'area:
+Il servizio sarà attivo a Milano dal 15 giugno e nei prossimi giorni ti invieremo le Condizioni Generali di Contratto, il Regolamento e le modalità di utilizzazione dell’Equomobile.
 
+Riceverai anche le informazioni per completare il pagamento dell’iscrizione e ottenere l’accredito dei primi 500 minuti di noleggio gratuiti.
 
-%2$s
+Grazie e a presto
 
-Cordiali Saluti,
-Sharengo Servizio Clienti
+Barbara Bacci
+Community Manager
+SHARE’NGO MILANO
