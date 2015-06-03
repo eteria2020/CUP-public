@@ -32,14 +32,4 @@ class DriverLicenseForm extends Form
             ]
         ]);
     }
-
-    public function saveData()
-    {
-        $customer = $this->getData();
-        $customer->setDriverLicenseCategories('{' .implode(',', $customer->getDriverLicenseCategories()). '}');
-        $this->entityManager->persist($customer);
-        $this->entityManager->flush();
-
-        return $customer;
-    }
 }

@@ -202,9 +202,7 @@ class UserAreaController extends AbstractActionController
 
                 try {
 
-                    $customer = $form->saveData();
-
-                    $this->userService->getStorage()->write($customer);
+                    $this->I_customersService->saveDriverLicense($form->getData());
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 

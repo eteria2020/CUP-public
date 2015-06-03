@@ -277,6 +277,39 @@ $this->headLink()
 
 </div>
 <!-- main -->
+
+
+<!-- module-modal -->
+<div class="module-modal" style="height:2400px; display: none;">
+    <!-- modal-overlay -->
+    <div class="modal-overlay">
+        <!-- module-pop-up -->
+        <div class="module-pop-up" style="margin:180px auto;">
+
+            <a class="btn-close"><i class="fa fa-close"></i></a>
+
+            <!-- module-pop-up-content -->
+            <div class="module-pop-up-content">
+
+                <!-- block-pop-up-generic-content -->
+                <div class="block-pop-up-generic-content">
+                    <img src="<?= $this->basePath('images/patente-fac-simile.jpg'); ?>" alt="">
+                    <p>
+                        <?= $this->translate('5. Numero Patente<br>4. Data di rilascio<br>4c. Autorit&agrave; di rilascio<br>'); ?>
+                    </p>
+                </div>
+                <!-- block-pop-up-generic-content -->
+
+            </div>
+            <!-- module-pop-up-content -->
+
+        </div>
+        <!-- module-pop-up -->
+    </div>
+    <!-- modal-overlay -->
+</div>
+<!-- module-modal -->
+
 <?php
 if($this->showError) {
     $this->inlineScript()->captureStart();
@@ -292,6 +325,12 @@ JS;
 <?php $this->inlineScript()->captureStart();
 echo <<<JS
     $(document).ready(function() {
+
+        $('i, .btn-close i.fa.fa-close').click(function (e) {
+            e.preventDefault();
+            $('.module-modal').toggle();
+        });
+
         $("#driverLicenseReleaseDate" ).datepicker({
             dateFormat: "dd-mm-yy",
             changeMonth: true,
