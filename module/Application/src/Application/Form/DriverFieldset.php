@@ -182,6 +182,9 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true,
                 'validators' => [
                     [
+                        'name' => 'Application\Form\Validator\DateFormat'
+                    ],
+                    [
                         'name' => 'Date',
                         'options' => [
                             'format' => 'd-m-Y'
@@ -215,6 +218,9 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'driverLicenseExpire' => [
                 'required' => true,
                 'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\DateFormat'
+                    ],
                     [
                         'name' => 'Date',
                         'options' => [

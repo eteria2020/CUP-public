@@ -352,6 +352,9 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true,
                 'validators' => [
                     [
+                        'name' => 'Application\Form\Validator\DateFormat'
+                    ],
+                    [
                         'name' => 'Application\Form\Validator\EighteenDate'
                     ]
                 ]

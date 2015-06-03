@@ -456,6 +456,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true,
                 'validators' => [
                     [
+                        'name' => 'Application\Form\Validator\DateFormat'
+                    ],
+                    [
                         'name' => 'Date',
                         'options' => [
                             'format' => 'd-m-Y'
