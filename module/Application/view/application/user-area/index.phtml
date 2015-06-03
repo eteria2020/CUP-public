@@ -299,7 +299,7 @@ $this->headLink()
                                             <p> <label><?= $this->translate("Data di nascita"); ?></label>
                                                 <?php
                                                 $birthDate = $this->profileForm->get('customer')->get('birthDate');
-                                                $birthDate->setValue($this->customer->getBirthDate()->format('Y-m-d'));
+                                                $birthDate->setValue($this->customer->getBirthDate()->format('d-m-Y'));
                                                 echo $this->formElement($birthDate->setAttribute('class', 'required datepicker-date'));
                                                 echo $this->formElementErrors($birthDate, array('class' => 'error-sign-up'));
                                                 ?>
@@ -641,7 +641,7 @@ JS;
 echo <<<JS
     $(document).ready(function() {
         $(".datepicker-date" ).datepicker({
-            dateFormat: "yy-mm-dd",
+            dateFormat: "dd-mm-yy",
             changeMonth: true,
             changeYear: true,
             yearRange: "-100:+0",
