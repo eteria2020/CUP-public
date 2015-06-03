@@ -161,18 +161,34 @@ final class RegistrationService
         $serverUrl = $this->viewHelperManager->get('serverUrl');
 
         $content = sprintf(
-            file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.txt'),
+            file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.html'),
             $name,
             $surname,
             $serverUrl().$url('signup_insert').'?user='.$hash
         );
 
         $text = new Mime\Part($content);
-        $text->type = Mime\Mime::TYPE_TEXT;
+        $text->type = Mime\Mime::TYPE_HTML;
         $text->charset = 'utf-8';
 
+        $image1 = file_get_contents(__DIR__.'/../../../../../public/images/bannerphono.jpg');
+        $attachment1 = new Mime\Part($image1);
+        $attachment1->type = Mime\Mime::TYPE_OCTETSTREAM;
+        $attachment1->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
+        $attachment1->encoding = Mime\Mime::ENCODING_BASE64;
+        $attachment1->filename = 'bannerphono.jpg';
+        $attachment1->id = 'bannerphono.jpg';
+
+        $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.jpg');
+        $attachment2 = new Mime\Part($image2);
+        $attachment2->type = Mime\Mime::TYPE_OCTETSTREAM;
+        $attachment2->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
+        $attachment2->encoding = Mime\Mime::ENCODING_BASE64;
+        $attachment2->filename = 'barbarabacci.jpg';
+        $attachment2->id = 'barbarabacci.jpg';
+
         $mimeMessage = new Mime\Message();
-        $mimeMessage->setParts([$text]);
+        $mimeMessage->setParts([$text, $attachment1, $attachment2]);
 
         $mail = (new Message())
             ->setFrom($this->emailSettings['from'])
