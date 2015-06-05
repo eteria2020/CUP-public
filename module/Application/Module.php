@@ -25,14 +25,6 @@ class Module
         $moduleRouteListener->attach($eventManager);
         $userService = $serviceManager->get('zfcuser_auth_service');
 
-        $em = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager');
-        $platform = $em->getConnection()->getDatabasePlatform();
-        $platform->registerDoctrineTypeMapping('gender', 'string');
-        $platform->registerDoctrineTypeMapping('car_status', 'string');
-        $platform->registerDoctrineTypeMapping('cleanliness', 'string');
-        $platform->registerDoctrineTypeMapping('_text', 'string');
-        $platform->registerDoctrineTypeMapping('geometry', 'string');
-
         /*$config = $em->getConnection()->getConfiguration();
         $config->setFilterSchemaAssetsExpression('/^(trips)$/');*/
 
