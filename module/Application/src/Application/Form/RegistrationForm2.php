@@ -13,6 +13,8 @@ class RegistrationForm2 extends Form
 
     const FORM_DATA = 'driverData';
 
+    private $container;
+
     public function __construct(
         Translator $translator,
         DriverFieldset $driverFieldset
@@ -34,7 +36,7 @@ class RegistrationForm2 extends Form
 
     private function getContainer()
     {
-        if ($this->container) {
+        if (isset($this->container)) {
             return $this->container;
         }
 

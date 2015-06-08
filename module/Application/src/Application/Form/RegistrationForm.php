@@ -37,7 +37,7 @@ class RegistrationForm extends Form
 
     private function getContainer()
     {
-        if ($this->container) {
+        if (isset($this->container)) {
             return $this->container;
         }
 
