@@ -249,6 +249,9 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                             'format' => 'd-m-Y'
                         ]
                     ],
+                    [
+                        'name' => 'Application\Form\Validator\DateFromToday'
+                    ]
                 ]
             ],
             'driverLicenseCategories' => [
