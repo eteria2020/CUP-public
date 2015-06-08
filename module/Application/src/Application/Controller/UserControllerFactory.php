@@ -15,7 +15,16 @@ class UserControllerfactory implements FactoryInterface
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $languageService = $serviceLocator->getServiceLocator()->get('LanguageService');
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
+        $translationService = $serviceLocator->getServiceLocator()->get('Translator');
 
-        return new UserController($form1, $form2, $registrationService, $customerService, $languageService, $profilingPlatformService);
+        return new UserController(
+            $form1,
+            $form2,
+            $registrationService,
+            $customerService,
+            $languageService,
+            $profilingPlatformService,
+            $translationService
+        );
     }
 }

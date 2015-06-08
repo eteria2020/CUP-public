@@ -82,10 +82,22 @@ final class RegistrationService
         $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
     }
 
+    /**
+     * returns an array with the data of the user, or null if the data expired
+     *
+     * @return array|null
+     */
     public function retrieveData()
     {
-        $dataForm1 = $this->form1->getRegisteredData()->toArray(); //use hydration
-        $dataForm2 = $this->form2->getRegisteredData()->toArray(); //use hydration
+        $dataForm1 = $this->form1->getRegisteredData();
+        $dataForm2 = $this->form2->getRegisteredData();
+
+        if (empty($dataForm1) || empty($dataForm2)) {
+            return null;
+        } else {
+            $dataForm1 = $this->hydrator->extract($dataForm1);
+            $dataForm2 = $this->hydrator->extract($dataForm2);
+        }
 
         $data = [];
 

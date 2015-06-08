@@ -15,6 +15,7 @@
 <!-- main -->
 <div id="main">
     <div class="content">
+        <?php echo $this->partial('partials/flash-messages.phtml', array()); ?>
         <?php if (!$this->hasDiscount): ?>
             <div class="block-form w-3-4 auto-margin clearfix">
                 <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">

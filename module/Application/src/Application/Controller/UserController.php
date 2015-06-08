@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Form\Form;
 use Zend\Session\Container;
+use Zend\Mvc\I18n\Translator;
 
 
 use Application\Service\RegistrationService;
@@ -44,10 +45,14 @@ class UserController extends AbstractActionController
     private $languageService;
 
     /**
-     *
      * @var ProfilingPlaformService
      */
     private $profilingPlatformService;
+
+    /**
+     * @var \Zend\Mvc\I18n\Translator
+     */
+    private $translator;
 
     public function __construct(
         Form $form1,
@@ -55,7 +60,8 @@ class UserController extends AbstractActionController
         RegistrationService $registrationService,
         CustomersService $customersService,
         LanguageService $languageService,
-        ProfilingPlaformService $profilingPlatformService
+        ProfilingPlaformService $profilingPlatformService,
+        Translator $translator
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -63,6 +69,7 @@ class UserController extends AbstractActionController
         $this->customersService = $customersService;
         $this->languageService = $languageService;
         $this->profilingPlatformService = $profilingPlatformService;
+        $this->translator = $translator;
     }
 
     public function loginAction()
@@ -194,6 +201,13 @@ class UserController extends AbstractActionController
         $form->registerData();
 
         $data = $this->registrationService->retrieveData();
+
+        // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
+        if (empty($data)) {
+            $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
+            $this->flashMessenger()->addErrorMessage($message);
+            return $this->redirect()->toRoute('signup', array('lang' => $this->languageService->getLanguage()));
+        }
         $data = $this->registrationService->formatData($data);
         try {
             $this->registrationService->notifySharengoByMail($data);
