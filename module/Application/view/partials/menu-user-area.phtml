@@ -13,6 +13,12 @@
         </a>
     </li>
     <li>
+        <a href="<?= $this->url('area-utente/pin'); ?>" <?= $this->route === 'pin' ? 'class="active"' : '' ?>>
+            <!-- <i class="fa fa-credit-card"></i> -->
+            <?= $this->translate('PIN'); ?>
+        </a>
+    </li>
+    <li>
         <a href="<?= $this->url('area-utente/dati-pagamento'); ?>" <?= $this->route === 'dati-pagamento' ? 'class="active"' : '' ?>>
             <i class="fa fa-credit-card"></i>
             <?= $this->translate('Dati di pagamento'); ?>
