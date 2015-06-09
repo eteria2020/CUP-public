@@ -1,0 +1,1 @@
+UPDATE countries SET name = 'Citt&agrave; del vaticano' WHERE code = 'va';
