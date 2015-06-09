@@ -981,7 +981,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "88e5dbb4e93039ce3e401292b50c9786652fb1a4"
+                "reference": "91b236036dce0139760ca15e4c9c93d7e5cf2e48"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -995,7 +995,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-06-03 14:49:09"
+            "time": "2015-06-09 07:36:01"
         },
         {
             "name": "speckcommerce/speck-paypal",
