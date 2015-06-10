@@ -23,9 +23,7 @@
 
             <div class="module-heading-app">
                 <h1 class="module-main-title"><?= $this->translate('PIN'); ?></h1>
-                <div class="block-user-info-app">
-                    <p class="welcome-message"><?= $this->translate('Ciao'); ?>! <a href="#"> <?= $this->layout()->loggedUser->getName() ?> <?= $this->layout()->loggedUser->getSurname() ?></a></p>
-                </div>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
             <div class="module-column-app-content clearfix">
