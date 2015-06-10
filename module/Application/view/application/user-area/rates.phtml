@@ -40,23 +40,10 @@
                 <div class="module-rates clearfix">
 
                     <!-- block-form -->
-                    <div class="block-form bw-f clearfix">
-
+                    <div class="block-form clearfix">
                         <div class="block-form-section content-align-center margin-bottom">
                             <h2><i class="fa fa-user"></i><?= $this->translate("Il tuo piano tariffario personale"); ?></h2>
                         </div>
-
-                        <? if ($this->customer->getDiscountRate() > 0): ?>
-                            <div>
-                                <?= sprintf($this->translate('LO SCONTO %% CHE HAI OTTENUTO DA SHARE’NGO PROFILANDO IL TUO BISOGNO DI
-MOBILITA’ SU <a href="http://www.equomobili.it">WWW.EQUOMOBILI.IT</a> E’ DEL %d %% E QUINDI IL TUO PIANO TARIFFARIO
-PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE IL SEGUENTE:'), $this->customer->getDiscountRate()); ?>
-                            </div>
-                        <? else: ?>
-                            <div>
-                                <?= $this->translate('NON RISULTI ANCORA PROFILATO SU <a href="http:/www.equomobili.it">WWW.EQUOMIBILI.IT</a> PER AVERE UNO SCONTO PERSONALIZZATO SUL PIANO TARIFFARIO STANDARD. AL MOMENTO LE TUE TARIFFE SONO:'); ?>
-                            </div>
-                        <? endif; ?>
                     </div>
 
                     <!-- block-form -->
@@ -103,21 +90,37 @@ PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE IL SEGUENTE:'), $this->cust
                             </tbody>
                         </table>
 
-                        <div class="bw-f w-2-4">
-                            <ul>
-                                <li><?= $this->translate('Gratuità dei noleggi il giorno del tuo compleanno') ?></li>
-                                <?php if ($this->customer->getGender() === 'female'): ?>
-                                    <li><?= $this->translate('Gratuità delle corse notturne dalle ore 1.00 alle ore 6.00') ?></li>
-                                <?php endif; ?>
-                            </ul>
+                        <div class="bw-f w-2-4" style="margin-top: 13px;">
+
+                            <? if ($this->customer->getDiscountRate() > 0): ?>
+                                <div>
+                                    <?= sprintf($this->translate('LO SCONTO %% CHE HAI OTTENUTO DA SHARE’NGO PROFILANDO IL TUO BISOGNO DI
+MOBILITA’ SU <a href="http://www.equomobili.it">WWW.EQUOMOBILI.IT</a> E’ DEL %d %% E QUINDI IL TUO PIANO TARIFFARIO
+PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE IL SEGUENTE:'), $this->customer->getDiscountRate()); ?>
+                                </div>
+                            <? else: ?>
+                                <div>
+                                    <?= $this->translate('NON RISULTI ANCORA PROFILATO SU <a href="http:/www.equomobili.it">WWW.EQUOMIBILI.IT</a> PER AVERE UNO SCONTO PERSONALIZZATO SUL PIANO TARIFFARIO STANDARD. AL MOMENTO LE TUE TARIFFE SONO:'); ?>
+                                </div>
+                            <? endif; ?>
+
                         </div>
                     </div>
+
+                    <ul>
+                        <li><?= $this->translate('Gratuità dei noleggi il giorno del tuo compleanno') ?></li>
+                        <?php if ($this->customer->getGender() === 'female'): ?>
+                            <li><?= $this->translate('Gratuità delle corse notturne dalle ore 1.00 alle ore 6.00') ?></li>
+                        <?php endif; ?>
+                    </ul>
+
+                    <div style="width: 100%; height: 80px;"></div>
 
                     <?php if ($this->customer->getReprofilingOption() != 1 && $this->customer->getProfilingCounter() <= 1): ?>
                         <!-- block-form -->
                         <div class="block-form clearfix">
                             <div class="block-form-section content-align-center margin-bottom">
-                                <h2><?= $this->translate("Per favore aiutaci a servirti con attenzione scegliendo una tra queste 3 opzioni"); ?></h2>
+                                <h2 style="font-size: 20px !important;"><?= $this->translate("Per favore aiutaci a servirti con attenzione scegliendo una tra queste 3 opzioni, potrai farlo una sola volta"); ?></h2>
                             </div>
 
                             <form id="reprofiling">
@@ -139,7 +142,7 @@ PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE IL SEGUENTE:'), $this->cust
                                 <?= $this->translate('Attenzione: eventuali condizioni di miglior favore in futuro ti verranno comunicate via email perché tu possa aggiornare la tua profilazione e il tuo sconto.') ?>
                             </div>
 
-                            <div class="block-wrapper-button content-align-center">
+                            <div class="block-wrapper-button content-align-center" style="margin-top: 20px;">
                                 <button id="reprofiling-confirm" type="button" data-ajax-url="<?= $this->serverUrl().$this->url('area-utente/rates-confirm') ?>"><?= $this->translate('Conferma') ?></button>
                                 </button>
                             </div>
