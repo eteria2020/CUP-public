@@ -364,6 +364,7 @@ return array(
             'cartasi' => [
                 'type' => 'Segment',
                 'options' => [
+                    'route' => '/cartasi',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'CartasiPayments',
