@@ -1,0 +1,3 @@
+ALTER TABLE customers ALTER pin TYPE jsonb;
+ALTER TABLE customers ALTER pin DROP DEFAULT;
+ALTER TABLE customers ALTER pin SET NOT NULL;

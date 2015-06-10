@@ -158,6 +158,12 @@ final class RegistrationService
             $customer = new Customers();
             $customer = $this->hydrator->hydrate($data, $customer);
 
+            //generate primary PIN
+            $primary = mt_rand(1000,9999);
+            $pins = ['primary' => $primary];
+
+            $customer->setPin(json_encode($pins));
+
             $this->entityManager->persist($customer);
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
