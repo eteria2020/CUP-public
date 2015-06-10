@@ -59,27 +59,27 @@
                             <tbody>
                                 <tr>
                                     <td><?= $this->translate('Tariffa base della corsa') ?></td>
-                                    <td>€ <?= round(0.28 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ <?= number_format(0.28 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                     <td>€ 0,28</td>
                                 <tr>
                                 <tr>
                                     <td><?= $this->translate('Tariffa di sosta') ?></td>
-                                    <td>€ <?= round(10 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ <?= number_format(10 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                     <td>€ 10,00</td>
                                 <tr>
                                 <tr>
                                     <td><?= $this->translate('Tariffa per 1 ora') ?></td>
-                                    <td>€ <?= round(7.8 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ <?= number_format(7.8 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                     <td>€ 12,00</td>
                                 <tr>
                                 <tr>
                                     <td><?= $this->translate('Tariffa per 1/2 giornata (4H)') ?></td>
-                                    <td>€ <?= round(30 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ <?= number_format(30 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                     <td>€ 30,00</td>
                                 <tr>
                                 <tr>
                                     <td><?= $this->translate('Tariffa giornaliera') ?></td>
-                                    <td>€ <?= round(50 * (100 - $this->customer->getDiscountRate()) / 100, 2) ?></td>
+                                    <td>€ <?= number_format(50 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                     <td>€ 50,00</td>
                                 <tr>
                                 <tr>
@@ -94,13 +94,13 @@
 
                             <? if ($this->customer->getDiscountRate() > 0): ?>
                                 <div>
-                                    <?= sprintf($this->translate('LO SCONTO %% CHE HAI OTTENUTO DA SHARE’NGO PROFILANDO IL TUO BISOGNO DI
-MOBILITA’ SU <a href="http://www.equomobili.it">WWW.EQUOMOBILI.IT</a> E’ DEL %d %% E QUINDI IL TUO PIANO TARIFFARIO
-PERSONALE SARA’ PER 365 GG DALLA TUA REGISTRAZIONE QUELLO INDICATO NELLA TABELLA A SINISTRA'), $this->customer->getDiscountRate()); ?>
+                                    <?= sprintf($this->translate('Lo sconto %% che hai ottenuto da Share’N GO profilando il tuo bisogno di mobilità
+su <a href="http:/www.equomobili.it">www.equomobili.it</a> è del %d%% e quindi il tuo piano tariffario
+personale sarà per 365 GG dalla tua registrazione quello indicato nella tabella a sinistra'), $this->customer->getDiscountRate()); ?>
                                 </div>
                             <? else: ?>
                                 <div>
-                                    <?= $this->translate('NON RISULTI ANCORA PROFILATO SU <a href="http:/www.equomobili.it">WWW.EQUOMIBILI.IT</a> PER AVERE UNO SCONTO PERSONALIZZATO SUL PIANO TARIFFARIO STANDARD. AL MOMENTO LE TUE TARIFFE SONO:'); ?>
+                                    <?= $this->translate('Non risulti ancora profilato su <a href="http:/www.equomobili.it">www.equomobili.it</a> per avere uno sconto personalizzato sul piano tariffario standard. Al momento il tuo piano tariffario è quello indicato nella tabella a sinistra.'); ?>
                                 </div>
                             <? endif; ?>
 
