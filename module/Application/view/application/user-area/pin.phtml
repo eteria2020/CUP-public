@@ -40,7 +40,7 @@
                     <div style="width:100%; overflow:hidden">
 
 	                    <div id="pin" class="pin-box">
-	                    	<?php echo $this->layout()->loggedUser->getPin(); ?>
+	                    	<?php echo $this->layout()->loggedUser->getPrimaryPin(); ?>
 	                    </div>
 
 	                    <div class="pin-warning">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="pin-info">
-                    	<a href="<?= $this->url('comefunziona'); ?>" style="color:#000066;">
+                    	<a href="<?= $this->url('comefunziona'); ?>">
                             <?= $this->translate('Guarda come si usa'); ?>
                         </a>
                     </div>

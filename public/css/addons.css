@@ -100,7 +100,7 @@
 .pin-box {
     height: 50px;
     float: left;
-    border: 3px solid #336699;
+    border: 3px solid black;
     background-color: #ffffff;
     text-align: center;
     color: #ff0000;
@@ -115,7 +115,6 @@
 
 .pin-warning {
     margin-top: 13px;
-    color: #000066;
     font-size: 18px;
     font-weight: 600
 }
@@ -123,7 +122,6 @@
 .pin-info {
     margin-top: 20px;
     text-indent: 5px;
-    color: #000066;
     font-size: 15px;
     text-decoration: underline;
     font-weight: 700

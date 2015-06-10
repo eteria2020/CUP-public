@@ -174,7 +174,7 @@ class UserAreaController extends AbstractActionController
 
     public function pinAction()
     {
-        // do something
+        return new ViewModel();
     }
 
     public function datiPagamentoAction()
