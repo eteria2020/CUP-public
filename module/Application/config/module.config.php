@@ -314,6 +314,15 @@ return array(
                             ]
                         ]
                     ],
+                    'pin' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{pin}',
+                            'defaults' => [
+                                'action' => 'pin'
+                            ]
+                        ]
+                    ],
                     'rates-confirm' => [
                         'type' => 'Segment',
                         'options' => [
