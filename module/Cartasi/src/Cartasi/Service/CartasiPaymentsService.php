@@ -5,47 +5,33 @@ namespace Cartasi\Service;
 use Cartasi\Entity\Contracts;
 use Cartasi\Entity\Transactions;
 
-class PaymentsService
+class CartasiPaymentsService
 {
 
-	/**
-	 * @var mixed[]
-	 */
-	private $params;
-
-	/**
-	 * @param mixed[]
-	 */
-	public function __construct($params)
+	public function __construct()
 	{
-		$this->params = $params;
+
 	}
 
 	/**
 	 * creates a Cartasi\Entity\Contracts entity with alias
+	 * @param string
 	 */
-	public function createContract()
+	public function createContract($alias)
 	{
-		if($this->params != null)
-		{
-			$alias = $this->params['alias'];
-			$contract = new Contracts();
-		}
+		$contract = new Contracts();
 	}
 
 	/**
 	 * creates a Cartasi\Entity\Transactions entity with all necessary parameters
+	 * @param string
+	 * @param string
+	 * @param string
+	 * @param string
 	 */
-	public function createTransaction()
+	public function createTransaction($importo, $divisa, $email, $num_contratto)
 	{
-		if($this->params != null)
-		{
-			$importo = $this->params['importo'];
-			$divisa = $this->params['divisa'];
-			$mail = $this->params['email'];
-			$num_contratto = $this->getContractNumber();
-			$transaction = new Transactions();
-		}
+		$transaction = new Transactions();
 	}
 
 	/**
@@ -100,7 +86,7 @@ class PaymentsService
 		$string = '';
 		for($params as $param)
 		{
-			$string .= $param . '=' . $this->params[$param];
+			$string .= $param . '=' . $this->firstPaymentarams[$param];
 		}
 		$string .= $this->getSecretKey()
 		return = sha1($string);
@@ -122,13 +108,5 @@ class PaymentsService
 	{
 		// TODO check if session is started
 		return session_id();
-	}
-
-	/**
-	 * @param string
-	 */
-	public function addGetParameters($url)
-	{
-
 	}
 }
