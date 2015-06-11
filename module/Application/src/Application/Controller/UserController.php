@@ -241,6 +241,7 @@ class UserController extends AbstractActionController
 
     public function signupinsertAction()
     {
+        var_dump($this->params()); die;
         $hash = $this->params()->fromQuery('user');
 
         $message = $this->registrationService->registerUser($hash);
