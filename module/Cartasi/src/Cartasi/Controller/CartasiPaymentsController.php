@@ -3,7 +3,7 @@
 namespace Cartasi\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+
 use Cartasi\Service\CartasiPaymentsService;
 
 class CartasiPaymentsController extends AbstractActionController
@@ -15,35 +15,58 @@ class CartasiPaymentsController extends AbstractActionController
     private $cartasiService;
 
     /**
+     * @var array
+     */
+    private $cartasiConfig;
+
+    /**
      * @param CartasiPaymentService
      */
-    public function __construct(CartasiPaymentsService $cartasiService)
-    {
+    public function __construct(
+        CartasiPaymentsService $cartasiService,
+        array $cartasiConfig
+    ) {
         $this->cartasiService = $cartasiService;
+        $this->cartasiConfig = $cartasiConfig;
     }
 
     public function firstPaymentAction()
     {
-        $url = '';
-        $email = $this->getEmail();
-        $alias = $this->params()->fromQuery('alias');
-        $codTrans = $this->params()->fromQuery('codTrans');
-        $divisa = $this->params()->fromQuery('divisa');
-        $importo = $this->params()->fromQuery('importo');
+        $email = $this->getEmailFromQuery();
+        $alias = $this->cartasiConfig['alias'];
+        $currency = $this->cartasiConfig['divisa'];
+        $amount = $this->cartasiConfig['first_payment_amount'];
 
-        $this->cartasiService->createContract($alias);
-        $this->cartasiService->createTransaction($importo,
-                                            $divisa,
-                                            $email,
-                                            $this->getContractNumber());
+        $contractId = $this->cartasiService->createContract($email);
+        $codTrans = $this->cartasiService->createTransaction(
+            $contractId,
+            $amount,
+            $currency,
+            $email
+        );
 
-        $mac = $this->cartasiService->computeMac(['codTrans','divisa','importo'],[$codTrans,$divisa,$importo]);
-        $sessionId = $this->cartasiService->getSessionId();
+        $macKey = $this->cartasiConfig['mac_key'];
+        $mac = $this->cartasiService->computeMac([
+            'codTrans' => $codTrans,
+            'divisa' => $currency,
+            'importo' => $amount
+        ], $macKey);
 
-        // TODO add beginning of url
+        //$sessionId
 
-        $url .= '&mac=' . $mac;
-        $url .= '&session_id=' . $sessionId;
+        $url = $this->cartasiConfig['first_payment_url'];
+        $url = $this->cartasiService->buildUrl($url, [
+            'alias' => $alias,
+            'importo' => $amount,
+            'divisa' => $currency,
+            'codTrans' => $codTrans,
+            'url' => '', //TODO
+            'url_back' => '', //TODO
+            'mac' => $mac,
+            'mail' => $email,
+            'num_contratto' => $contractId,
+            'tipo_servizio' => 'paga_rico',
+        ]);
 
         $this->redirect()->toUrl($url);
     }
@@ -51,21 +74,66 @@ class CartasiPaymentsController extends AbstractActionController
     public function returnFirstPaymentAction()
     {
         $codTrans = $this->params()->fromQuery('codTrans');
-        $esito = $this->params()->fromQuery('esito');
-        $importo = $this->params()->fromQuery('importo');
-        $divisa = $this->params()->fromQuery('divisa');
-        $data = $this->params()->fromQuery('data');
-        $orario = $this->params()->fromQuery('orario');
+        $outcome = $this->params()->fromQuery('esito');
+        $amount = $this->params()->fromQuery('importo');
+        $currency = $this->params()->fromQuery('divisa');
+        $date = $this->params()->fromQuery('data');
+        $time = $this->params()->fromQuery('orario');
         $codAut = $this->params()->fromQuery('codAut');
 
-        $mac = $this->cartasiService->computeMac(['codTrans','esito','importo','divisa','data','orario','codAut'],
-                                                [$codTrans,$esito,$importo,$divisa,$data,$orario,$codAut]);
-        
-        verifyMac()
-        getTransaction()
-        checkTransactionData()
-        updateContract()
-        updateTransaction()
+        $macKey = $this->cartasiConfig['mac_key'];
+        $computedMac = $this->cartasiService->computeMac([
+            'codTrans' => $codTrans,
+            'esito' => $outcome,
+            'importo' => $amount,
+            'divisa' => $currency,
+            'data' => $date,
+            'orario' => $time,
+            'codAut' => $codAut
+        ], $macKey);
+
+        // check if the mac is correct
+        $receivedMac = $this->params()->fromQuery('mac');
+        if (!$this->cartasiService->verifyMac($computedMac, $receivedMac)) {
+            throw new \Exception('InvalidMac');
+        }
+
+        $transaction = $this->cartasiService->getTransaction($codTrans);
+        $contractId = $this->params()->fromQuery('num_contratto');
+
+        // verify the transaction data
+        if (!$this->cartasiService->verifyTransaction($transaction, [
+            'contract_id' => $contractId,
+            'currency' => $currency,
+            'amount' => $amount
+        ])) {
+            throw new \Exception('InvalidTransactionData');
+        }
+
+        try {
+            $this->cartasiService->updateContract($contractId, [
+                'pan' => $this->params()->fromQuery('pan'),
+                'pan_expiry' => $this->params()->fromQuery('scadenza_pan')
+            ]);
+            $this->cartasiService->updateTransaction($transaction, [
+                'name' => $this->params()->fromQuery('nome'),
+                'surname' => $this->params()->fromQuery('cognome'),
+                'brand' => $this->params()->fromQuery('brand'),
+                'outcome' => $outcome,
+                'datetime' => $this->cartasiService->datetime($date, $time),
+                'codAut' => $codAut,
+                'region' => $this->params()->fromQuery('regione'),
+                'country' => $this->params()->fromQuery('nazionalita'),
+                'message' => $this->params()->fromQuery('messaggio'),
+                'hash' => $this->params()->fromQuery('hash'),
+                'check' => $this->params()->fromQuery('check'),
+                'conventionCode' => $this->params()->fromQuery('codiceConvenzione'),
+                'transactionType' => $this->params()->fromQuery('tipoTransazione'),
+                'productType' => $this->params()->fromQuery('check')
+            ]);
+        } catch (\Exception $e) {
+            //TODO
+        }
 
         return new ViewModel();
     }
@@ -83,7 +151,7 @@ class CartasiPaymentsController extends AbstractActionController
     {
         $url = '';
 
-        $email = $this->getEmail();
+        $email = $this->getEmailFromQuery();
 
         getContract()
         checkCardExiryDate()
@@ -102,15 +170,18 @@ class CartasiPaymentsController extends AbstractActionController
         updateTransaction()
     }
 
-    private function getEmail()
+    /**
+     * retrieces user email from query string
+     *
+     * @return string
+     * @throws \Exception email non valida
+     */
+    private function getEmailFromQuery()
     {
-        $email = $this->params()->fromQuery('email');
+        $email = $this->params()->fromQuery('email', '');
         if (empty($email)) {
-            throw \Exception('email non valida');
+            throw new \Exception('EmailNotDefined');
         }
         return $email;
     }
-
-
-
 }
