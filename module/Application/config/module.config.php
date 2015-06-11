@@ -361,64 +361,6 @@ return array(
                     ],
                 ]
             ],
-            'cartasi' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/cartasi',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'CartasiPayments',
-                    ]
-                ],
-                'may_terminate' => false,
-                'child_routes' => [
-                    'primo-pagamento' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{primo-pagamento}',
-                            'defaults' => [
-                                'action' => 'firstPayment'
-                            ]
-                        ]
-                    ],
-                    'ritorno-primo-pagamento' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{ritorno-primo-pagamento}',
-                            'defaults' => [
-                                'action' => 'returnFirstPayment'
-                            ]
-                        ]
-                    ],
-                    'rifutato-primo-pagamento' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{rifiutato-primo-pagamento}',
-                            'defaults' => [
-                                'action' => 'rejectedFirstPayment'
-                            ]
-                        ]
-                    ],
-                    'pagamento-ricorrente' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{pagamento-ricorrente}',
-                            'defaults' => [
-                                'action' => 'recurringPayment'
-                            ]
-                        ]
-                    ],
-                    'ritorno-pagamento-ricorrente' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{ritorno-pagamento-ricorrente}',
-                            'defaults' => [
-                                'action' => 'returnRecurringPayment'
-                            ]
-                        ]
-                    ]
-                ]
-            ],
         ),
     ),
     'service_manager' => array(
@@ -449,7 +391,6 @@ return array(
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Cars' => 'Application\Controller\CarsController',
-            'Application\Controller\CartasiPayments' => 'Application\Controller\CartasiPaymentsController'
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
@@ -503,7 +444,7 @@ return array(
                 array('controller' => 'Application\Controller\Console', 'roles' => array()),
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
-                array('controller' => 'Application\Controller\CartasiPayments', 'roles' => ['user'])
+                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => [])
             ),
         ),
     ),
