@@ -71,6 +71,9 @@ return [
         ]
     ],
     'service_manager' => [
+        'invokables' => [
+            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsService'
+        ]
     ],
     'doctrine'        => [
         'driver' => [
