@@ -14,6 +14,9 @@ class CartasiPaymentsController extends AbstractActionController
      */
     private $cartasiService;
 
+    /**
+     * @param CartasiPaymentService
+     */
     public function __construct(CartasiPaymentsService $cartasiService)
     {
         $this->cartasiService = $cartasiService;
@@ -23,15 +26,22 @@ class CartasiPaymentsController extends AbstractActionController
     {
         $url = '';
         $email = $this->getEmail();
+        $alias = $this->params()->fromQuery('alias');
+        $codTrans = $this->params()->fromQuery('codTrans');
+        $divisa = $this->params()->fromQuery('divisa');
+        $importo = $this->params()->fromQuery('importo');
 
-        $cartasiService->createContract($this->params()->fromQuery('alias'));
-        $cartasiService->createTransaction($this->params()->fromQuery('importo'),
-                                            $this->params()->fromQuery('divisa'),
+        $this->cartasiService->createContract($alias);
+        $this->cartasiService->createTransaction($importo,
+                                            $divisa,
                                             $email,
                                             $this->getContractNumber());
-        $mac = $cartasiService->computeFirstMac();
-        $sessionId = $cartasiService->getSessionId();
-        
+
+        $mac = $this->cartasiService->computeMac(['codTrans','divisa','importo'],[$codTrans,$divisa,$importo]);
+        $sessionId = $this->cartasiService->getSessionId();
+
+        // TODO add beginning of url
+
         $url .= '&mac=' . $mac;
         $url .= '&session_id=' . $sessionId;
 
@@ -40,8 +50,17 @@ class CartasiPaymentsController extends AbstractActionController
 
     public function returnFirstPaymentAction()
     {
-        getParameters()
-        computeMac()
+        $codTrans = $this->params()->fromQuery('codTrans');
+        $esito = $this->params()->fromQuery('esito');
+        $importo = $this->params()->fromQuery('importo');
+        $divisa = $this->params()->fromQuery('divisa');
+        $data = $this->params()->fromQuery('data');
+        $orario = $this->params()->fromQuery('orario');
+        $codAut = $this->params()->fromQuery('codAut');
+
+        $mac = $this->cartasiService->computeMac(['codTrans','esito','importo','divisa','data','orario','codAut'],
+                                                [$codTrans,$esito,$importo,$divisa,$data,$orario,$codAut]);
+        
         verifyMac()
         getTransaction()
         checkTransactionData()

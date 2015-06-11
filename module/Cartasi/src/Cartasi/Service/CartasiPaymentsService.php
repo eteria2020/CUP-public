@@ -44,52 +44,28 @@ class CartasiPaymentsService
 	}
 
 	/**
-	 * @return string
-	 */
-	public function computeFirstMac()
-	{
-		return $this->generateMac(['codTrans','divisa','importo']);
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function verifyFirstMac()
-	{
-
-	}
-
-	/**
-	 * @return string
-	 */
-	public function computeRecurringMac()
-	{
-
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function verifyRecurringMac()
-	{
-
-	}
-
-	/**
 	 * generates a 40 characters long string in 4-bit hexadecimal format
-	 * using the SHA1 algorithm
+	 * using the SHA1 algorithm. Note that the order in which the parameters
+	 * are set in the arrays affect the result
 	 * @param string[] the names of the parameters needed for the mac
-	 * @return string the resulting string
+	 * @param string[] the values of the parameters needed for the mac
+	 * @return string
 	 */
-	private function generateMac($params)
+	public function computeMac($paramNames, $params)
 	{
-		$string = '';
-		for($params as $param)
+		if(count($paramNames) != count($params))
 		{
-			$string .= $param . '=' . $this->firstPaymentarams[$param];
+			return '';
 		}
-		$string .= $this->getSecretKey()
-		return = sha1($string);
+
+		$string = '';
+		for($int i=0 ; i<count($paramNames) ; i++)
+		{
+			$string .= $paramNames[i] . '=' . $params[i];
+		}
+		$string .= $this->getSecretKey();
+
+		return sha1($string);
 	}
 
 	/**
