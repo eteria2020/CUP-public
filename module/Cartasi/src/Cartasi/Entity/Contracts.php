@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contracts
  *
- * @ORM\Table(name="contacts")
+ * @ORM\Table(name="contracts")
  * @ORM\Entity(repositoryClass="SharengoCore\Entity\Repository\ContractsRepository")
  */
 class Contracts
@@ -23,9 +23,9 @@ class Contracts
     private $id;
 
     /**
-     * @var \Customers
+     * @var \SharengoCore\Entity\Customers
      *
-     * @ORM\ManyToOne(targetEntity="Customers")
+     * @ORM\ManyToOne(targetEntity="SharengoCore\Entity\Customers")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      * })
@@ -35,14 +35,14 @@ class Contracts
     /**
      * @var string
      *
-     * @ORM\Column(name="pan", type="text", length=19, nullable=true)
+     * @ORM\Column(name="pan", type="string", length=19, nullable=true)
      */
     private $pan;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pan_expiry", type="text", length=6, nullable=true)
+     * @ORM\Column(name="pan_expiry", type="string", length=6, nullable=true)
      */
     private $panExpiry;
 

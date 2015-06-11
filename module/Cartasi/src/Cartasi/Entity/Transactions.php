@@ -2,6 +2,8 @@
 
 namespace Cartasi\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Transactions
  *
@@ -23,28 +25,28 @@ class Transactions
     /**
      * @var integer
      *
-     * @ORM\Column(name="amount", $type="integer", nullable=false)
+     * @ORM\Column(name="amount", type="integer", nullable=false)
      */
     private $amount;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="currency", $type="string", length=3, nullable=false)
+     * @ORM\Column(name="currency", type="string", length=3, nullable=false)
      */
     private $currency;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="text", nullable=true)
+     * @ORM\Column(name="email", type="string", nullable=true)
      */
     private $email;
 
     /**
      * @var \Contracts
      *
-     * @ORM\ManyToOne(targetEntity="Contrancts")
+     * @ORM\ManyToOne(targetEntity="Contracts")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
      * })
@@ -54,28 +56,28 @@ class Transactions
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="name", type="string", nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="surname", type="string", nullable=true)
      */
     private $surname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="brand", type="string", nullable=true)
      */
     private $brand;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="outcome", type="text", nullable=true)
      */
     private $outcome;
 
@@ -89,63 +91,63 @@ class Transactions
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="cod_aut", type="string", nullable=true)
      */
     private $codAut;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="region", type="string", nullable=true)
      */
     private $region;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="country", type="string", nullable=true)
      */
     private $country;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="message", type="string", nullable=true)
      */
     private $message;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="hash", type="string", nullable=true)
      */
     private $hash;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="check", type="string", nullable=true)
      */
     private $check;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="convention_code", type="string", nullable=true)
      */
     private $conventionCode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="transaction_type", type="string", nullable=true)
      */
-    private $tranactionType;
+    private $transactionType;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=true)
+     * @ORM\Column(name="product_type", type="string", nullable=true)
      */
     private $productType;
 

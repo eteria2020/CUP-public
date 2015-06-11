@@ -17,6 +17,7 @@ return array(
         // Our modules
         'Multilanguage',
         'SharengoCore',
+        'Cartasi',
         'Application',
     ),
 

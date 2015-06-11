@@ -25,8 +25,9 @@ class Module
         $moduleRouteListener->attach($eventManager);
         $userService = $serviceManager->get('zfcuser_auth_service');
 
-        /*$config = $em->getConnection()->getConfiguration();
-        $config->setFilterSchemaAssetsExpression('/^(trips)$/');*/
+        /*$em = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager');
+        $config = $em->getConnection()->getConfiguration();
+        $config->setFilterSchemaAssetsExpression('/^(transactions)$/');*/
 
         $eventManager->getSharedManager()->attach(
             'Application\Controller\PaymentController',
