@@ -1,6 +1,6 @@
 <?php
 
-namespace SharengoCore\Entity;
+namespace Cartasi\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,5 +32,29 @@ class Contracts
      */
     private $customer;
 
-    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pan", type="text", length=19, nullable=true)
+     */
+    private $pan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pan_expiry", type="text", length=6, nullable=true)
+     */
+    private $panExpiry;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="inserted_ts", type="datetime", nullable=true)
+     */
+    private $insertedTs;
+
+    public function __construct()
+    {
+        $this->insertedTs = date('Y-m-d h:i:s');
+    }
 }
