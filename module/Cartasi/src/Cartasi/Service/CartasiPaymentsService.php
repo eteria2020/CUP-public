@@ -14,7 +14,6 @@ class PaymentsService
 	private $params;
 
 	/**
-	 * default constructor
 	 * @param mixed[]
 	 */
 	public function __construct($params)
@@ -23,47 +22,112 @@ class PaymentsService
 	}
 
 	/**
-	 * creates a Cartasi\Entity\Contracts entity with alias and num_contratto
+	 * creates a Cartasi\Entity\Contracts entity with alias
 	 */
 	public function createContract()
 	{
 		if($this->params != null)
 		{
-			$num_contratto = $this->generateContractNumber();
+			$alias = $this->params['alias'];
 			$contract = new Contracts();
 		}
 	}
 
 	/**
-	 * generates a unique string of max 30 characters
-	 * may accept parameters in future implementation
-	 * @return string
+	 * creates a Cartasi\Entity\Transactions entity with all necessary parameters
 	 */
-	private function generateContractNumber()
-	{
-		// TODO generate num_contratto
-		return '';
-	}
-
 	public function createTransaction()
 	{
 		if($this->params != null)
 		{
+			$importo = $this->params['importo'];
+			$divisa = $this->params['divisa'];
+			$mail = $this->params['email'];
+			$num_contratto = $this->getContractNumber();
 			$transaction = new Transactions();
 		}
 	}
 
-	public function computeMac()
+	/**
+	 * @return string
+	 */
+	private function getContractNumber()
+	{
+		// TODO retrieve contrct number
+		return '';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function computeFirstMac()
+	{
+		return $this->generateMac(['codTrans','divisa','importo']);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function verifyFirstMac()
 	{
 
 	}
 
+	/**
+	 * @return string
+	 */
+	public function computeRecurringMac()
+	{
+
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function verifyRecurringMac()
+	{
+
+	}
+
+	/**
+	 * generates a 40 characters long string in 4-bit hexadecimal format
+	 * using the SHA1 algorithm
+	 * @param string[] the names of the parameters needed for the mac
+	 * @return string the resulting string
+	 */
+	private function generateMac($params)
+	{
+		$string = '';
+		for($params as $param)
+		{
+			$string .= $param . '=' . $this->params[$param];
+		}
+		$string .= $this->getSecretKey()
+		return = sha1($string);
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getSecretKey()
+	{
+		// TODO retrieve secret key
+		return '';
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getSessionId()
 	{
-
+		// TODO check if session is started
+		return session_id();
 	}
 
-	public function addGetParameters()
+	/**
+	 * @param string
+	 */
+	public function addGetParameters($url)
 	{
 
 	}

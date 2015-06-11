@@ -23,10 +23,11 @@ class PaymentsController extends AbstractActionController
 
         $cartasiService->createContract();
         $cartasiService->createTransaction();
-
-        computeMac()
-        getSessionId()
-        addGetParameters($url)
+        $mac = $cartasiService->computeFirstMac();
+        $sessionId = $cartasiService->getSessionId();
+        //$cartasiService->addGetParameters($url);
+        $url .= '&mac=' . $mac;
+        $url .= '&session_id=' . $sessionId;
 
         $this->redirect()->toUrl($url);
     }
