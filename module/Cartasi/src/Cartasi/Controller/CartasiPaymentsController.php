@@ -3,8 +3,10 @@
 namespace Cartasi\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Helper\Url;
 
 use Cartasi\Service\CartasiPaymentsService;
+use Sharengo\Service\CustomersService;
 
 class CartasiPaymentsController extends AbstractActionController
 {
@@ -15,34 +17,54 @@ class CartasiPaymentsController extends AbstractActionController
     private $cartasiService;
 
     /**
+     * @var CustomersService
+     */
+    private $customersService;
+
+    /**
      * @var array
      */
     private $cartasiConfig;
+
+    /**
+     * @var Zend\View\Helper\Url
+     */
+    private $url;
 
     /**
      * @param CartasiPaymentService
      */
     public function __construct(
         CartasiPaymentsService $cartasiService,
-        array $cartasiConfig
+        CustomersService $customersService,
+        array $cartasiConfig,
+        Url $url
     ) {
         $this->cartasiService = $cartasiService;
+        $this->customersService = $customersService;
         $this->cartasiConfig = $cartasiConfig;
+        $this->url = $url;
     }
 
     public function firstPaymentAction()
     {
-        $email = $this->getEmailFromQuery();
+        $customerId = $this->params()->fromQuery('customer', '');
+        if (empty($customerId)) {
+            // TODO
+        }
+        $customer = $this->customersService()->findById($customerId);
+
         $alias = $this->cartasiConfig['alias'];
         $currency = $this->cartasiConfig['divisa'];
         $amount = $this->cartasiConfig['first_payment_amount'];
+        $description = $this->cartasiConfig['first_payment_description'];
 
-        $contractId = $this->cartasiService->createContract($email);
+        $contractId = $this->cartasiService->createContract($customerId);
         $codTrans = $this->cartasiService->createTransaction(
             $contractId,
             $amount,
             $currency,
-            $email
+            $customerId
         );
 
         $macKey = $this->cartasiConfig['mac_key'];
@@ -63,9 +85,10 @@ class CartasiPaymentsController extends AbstractActionController
             'url' => '', //TODO
             'url_back' => '', //TODO
             'mac' => $mac,
-            'mail' => $email,
+            'mail' => $customer->getEmail(),
             'num_contratto' => $contractId,
             'tipo_servizio' => 'paga_rico',
+            'descrizione' => $description
         ]);
 
         $this->redirect()->toUrl($url);
@@ -82,7 +105,10 @@ class CartasiPaymentsController extends AbstractActionController
         $codAut = $this->params()->fromQuery('codAut');
 
         $macKey = $this->cartasiConfig['mac_key'];
-        $computedMac = $this->cartasiService->computeMac([
+
+        // check if the mac is correct
+        $receivedMac = $this->params()->fromQuery('mac');
+        if (!$this->cartasiService->verifyMac($receivedMac, [
             'codTrans' => $codTrans,
             'esito' => $outcome,
             'importo' => $amount,
@@ -90,12 +116,8 @@ class CartasiPaymentsController extends AbstractActionController
             'data' => $date,
             'orario' => $time,
             'codAut' => $codAut
-        ], $macKey);
-
-        // check if the mac is correct
-        $receivedMac = $this->params()->fromQuery('mac');
-        if (!$this->cartasiService->verifyMac($computedMac, $receivedMac)) {
-            throw new \Exception('InvalidMac');
+        ], $macKey)) {
+            // TODO
         }
 
         $transaction = $this->cartasiService->getTransaction($codTrans);
@@ -107,7 +129,7 @@ class CartasiPaymentsController extends AbstractActionController
             'currency' => $currency,
             'amount' => $amount
         ])) {
-            throw new \Exception('InvalidTransactionData');
+            // TODO
         }
 
         try {
@@ -132,7 +154,7 @@ class CartasiPaymentsController extends AbstractActionController
                 'productType' => $this->params()->fromQuery('check')
             ]);
         } catch (\Exception $e) {
-            //TODO
+            // TODO
         }
 
         return new ViewModel();
@@ -140,48 +162,81 @@ class CartasiPaymentsController extends AbstractActionController
 
     public function rejectedFirstPaymentAction()
     {
-        getParameters()
-        getTransaction()
-        updateTransaction()
+        $codTrans = $this->params()->fromQuery('codTrans');
+        $amount = $this->params()->fromQuery('importo');
+        $currency = $this->params()->fromQuery('divisa');
+        $outcome = $this->params()->fromQuery('esito');
+
+        $transaction = $this->cartasiService->getTransaction($codTrans);
+        $this->cartasiService->updateTransaction($transaction, [
+            'esito' => $esito
+        ]);
 
         return new ViewModel();
     }
 
     public function recurringPayment()
     {
-        $url = '';
+        // get parameters from query string
+        $amount = $this->params()->fromQuery('amount');
+        $contractNumber = $this->params()->fromQuery('contact');
 
-        $email = $this->getEmailFromQuery();
+        $contract = $this->cartasiService->getContract($contractNumber);
 
-        getContract()
-        checkCardExiryDate()
-        getNumContratto()
-        createTransaction()
-        computeMac()
-        addParameters($url)
+        if ($contract->isExpired()) {
+            // TODO
+        }
+
+        $email = $contract->getContactEmail();
+
+        // get configuration values
+        $alias = $this->cartasiConfig['alias'];
+        $currency = $this->cartasiConfig['divisa'];
+        $description = $this->cartasiConfig['recurring_payment_description'];
+
+        $codTrans = $this->cartasiService->createTransaction(
+            $contract->getId(),
+            $amount,
+            $currency,
+            $contract->getCustomer()->getId()
+        );
+
+        $macKey = $this->cartasiConfig['mac_key'];
+        $mac = $this->cartasiService->computeMac([
+            'codTrans' => $codTrans,
+            'divisa' => $currency,
+            'importo' => $amount
+        ], $macKey);
+
+        $url = $this->cartasiConfig['recurring_payment_url'];
+        $url = $this->cartasiService->buildUrl($url, [
+            'alias' => $alias,
+            'importo' => $amount,
+            'divisa' => $currency,
+            'codTrans' => $codTrans,
+            'mail' => $email,
+            'url' => '', //TODO
+            'scadenza' => $contratto->getExpiryDate(),
+            'mac' => $mac,
+            'num_contratto' => $contract->getId,
+            'tipo_servizio' => 'paga_rico',
+            'tipo_richiesta' => 'PR',
+            'descrizione' => $description
+        ]);
 
         $this->redirect()->toUrl($url);
     }
 
     public function returnRecurringPayment()
     {
-        getParameters()
-        getTransaction()
-        updateTransaction()
-    }
+        $xml = $this->params->fromQuery('xml');
 
-    /**
-     * retrieces user email from query string
-     *
-     * @return string
-     * @throws \Exception email non valida
-     */
-    private function getEmailFromQuery()
-    {
-        $email = $this->params()->fromQuery('email', '');
-        if (empty($email)) {
-            throw new \Exception('EmailNotDefined');
+        $response = $this->cartasiService->parseXml($xml);
+
+        if (!$this->cartasiService->verifyRespose($response)) {
+            // TODO
         }
-        return $email;
+
+        $this->cartasiService->updateTransactionFormResponse($response);
     }
 }
