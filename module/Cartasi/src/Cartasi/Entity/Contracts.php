@@ -40,7 +40,7 @@ class Contracts
     private $pan;
 
     /**
-     * @var string
+     * @var string format aaaamm
      *
      * @ORM\Column(name="pan_expiry", type="string", length=6, nullable=true)
      */
@@ -56,5 +56,25 @@ class Contracts
     public function __construct()
     {
         $this->insertedTs = date('Y-m-d h:i:s');
+    }
+
+    /**
+     * verifies if the pan is expired
+     *
+     * @return boolean
+     */
+    public function isExpired()
+    {
+
+    }
+
+    /**
+     * retrieves the email of the customer
+     *
+     * @return string
+     */
+    public function getContactEmail()
+    {
+        return $this->customer->getEmail();
     }
 }
