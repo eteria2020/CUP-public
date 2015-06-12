@@ -1,0 +1,1 @@
+ALTER TABLE transactions ADD first_transaction BOOLEAN NOT NULL;

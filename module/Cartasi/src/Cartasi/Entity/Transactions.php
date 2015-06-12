@@ -152,6 +152,13 @@ class Transactions
     private $productType;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=false)
+     */
+    private $isFirstPayment;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="inserted_ts", type="datetime", nullable=true)
