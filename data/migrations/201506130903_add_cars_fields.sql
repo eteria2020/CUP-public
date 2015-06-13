@@ -1,0 +1,5 @@
+ALTER TABLE cars
+   ADD COLUMN soc integer NOT NULL DEFAULT 0;
+
+ALTER TABLE cars
+   ADD COLUMN vin text;
