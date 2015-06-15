@@ -4,6 +4,7 @@ namespace Cartasi\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Helper\Url;
+use Zend\View\Model\ViewModel;
 
 use Cartasi\Service\CartasiPaymentsService;
 use SharengoCore\Service\CustomersService;
@@ -63,7 +64,8 @@ class CartasiPaymentsController extends AbstractActionController
         $codTrans = $this->cartasiService->createTransaction(
             $contract,
             $amount,
-            $currency
+            $currency,
+            true
         );
         $macKey = $this->cartasiConfig['mac_key'];
         $mac = $this->cartasiService->computeMac([
@@ -80,8 +82,8 @@ class CartasiPaymentsController extends AbstractActionController
             'importo' => $amount,
             'divisa' => $currency,
             'codTrans' => $codTrans,
-            'url' => '', //TODO
-            'url_back' => '', //TODO
+            'url' => $this->url->__invoke('cartasi/ritorno-primo-pagamento', [], ['force_canonical' => true]),
+            'url_back' => $this->url->__invoke('cartasi/rifiutato-primo-pagamento', [], ['force_canonical' => true]),
             'mac' => $mac,
             'mail' => $customer->getEmail(),
             'num_contratto' => $contract->getId(),
@@ -173,7 +175,7 @@ class CartasiPaymentsController extends AbstractActionController
 
         $transaction = $this->cartasiService->getTransaction($codTrans);
         $this->cartasiService->updateTransaction($transaction, [
-            'esito' => $outcome
+            'outcome' => $outcome
         ]);
 
         return new ViewModel();
@@ -183,7 +185,7 @@ class CartasiPaymentsController extends AbstractActionController
     {
         // get parameters from query string
         $amount = $this->params()->fromQuery('amount');
-        $contractNumber = $this->params()->fromQuery('contact');
+        $contractNumber = $this->params()->fromQuery('contract');
 
         $contract = $this->cartasiService->getContract($contractNumber);
 
@@ -202,7 +204,7 @@ class CartasiPaymentsController extends AbstractActionController
             $contract->getId(),
             $amount,
             $currency,
-            $contract->getCustomer()->getId()
+            false
         );
 
         $macKey = $this->cartasiConfig['mac_key'];
@@ -219,7 +221,7 @@ class CartasiPaymentsController extends AbstractActionController
             'divisa' => $currency,
             'codTrans' => $codTrans,
             'mail' => $email,
-            'url' => '', //TODO
+            'url' => $this->url->__invoke('cartasi/ritorno-pagamento-ricorrente', [], ['force_canonical' => true]),
             'scadenza' => $contratto->getExpiryDate(),
             'mac' => $mac,
             'num_contratto' => $contract->getId,

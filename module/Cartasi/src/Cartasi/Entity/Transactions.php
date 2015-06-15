@@ -18,7 +18,7 @@ class Transactions
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="transactions_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="transactions_id_seq", allocationSize=1, initialValue=10000)
      */
     private $id;
 
@@ -126,7 +126,7 @@ class Transactions
     /**
      * @var string
      *
-     * @ORM\Column(name="check", type="string", nullable=true)
+     * @ORM\Column(name="`check`", type="string", nullable=true)
      */
     private $check;
 
@@ -154,7 +154,7 @@ class Transactions
     /**
      * @var boolean
      *
-     * @ORM\Column(name="active", type="boolean", nullable=false)
+     * @ORM\Column(name="first_transaction", type="boolean", nullable=false)
      */
     private $isFirstPayment;
 
@@ -167,7 +167,15 @@ class Transactions
 
     public function __construct()
     {
-        $this->insertedTs = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s', time()));
+        $this->insertedTs = date_create(date('Y-m-d H:i:s'));
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -187,11 +195,14 @@ class Transactions
     }
 
     /**
-     *
+     * @param string
+     * @return Transactions
      */
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+
+        return $this;
     }
 
     /**
@@ -203,11 +214,14 @@ class Transactions
     }
 
     /**
-     *
+     * @param int
+     * @return Transactions
      */
     public function setAmount($amount)
     {
         $this->amount = $amount;
+
+        return $this;
     }
 
     /**
@@ -365,10 +379,24 @@ class Transactions
     }
 
     /**
-     *
+     * @var Contracts
+     * @return Transactions
      */
     public function setContract(Contracts $contract)
     {
         $this->contract = $contract;
+
+        return $this;
+    }
+
+    /**
+     * @var boolean
+     * @return Transactions
+     */
+    public function setIsFirstPayment($isFirstPayment)
+    {
+        $this->isFirstPayment = $isFirstPayment;
+
+        return $this;
     }
 }

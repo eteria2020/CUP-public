@@ -34,7 +34,7 @@ return [
                             ]
                         ]
                     ],
-                    'rifutato-primo-pagamento' => [
+                    'rifiutato-primo-pagamento' => [
                         'type' => 'Segment',
                         'options' => [
                             'route' => '/{rifiutato-primo-pagamento}',
@@ -89,5 +89,14 @@ return [
                 ]
             ],
         ],
+    ],
+
+    'view_manager' => [
+        'template_path_stack' => [
+            __DIR__ . '/../view',
+        ],
+        'strategies' => [
+            'ViewJsonStrategy'
+        ]
     ],
 ];

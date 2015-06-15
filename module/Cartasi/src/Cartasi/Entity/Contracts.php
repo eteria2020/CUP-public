@@ -19,7 +19,7 @@ class Contracts
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="contracts_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="contracts_id_seq", allocationSize=1, initialValue=10000)
      */
     private $id;
 
@@ -56,7 +56,15 @@ class Contracts
 
     public function __construct()
     {
-        $this->insertedTs = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s', time()));
+        $this->insertedTs = date_create(date('Y-m-d H:i:s'));
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -66,7 +74,9 @@ class Contracts
      */
     public function isExpired()
     {
+        $diff = time() - strtotime($this->panExpiry);
 
+        return $diff >= 0;
     }
 
     /**
@@ -88,11 +98,14 @@ class Contracts
     }
 
     /**
-     *
+     * @var Customers
+     * @return Contracts
      */
     public function setCustomer(Customers $customer)
     {
         $this->customer = $customer;
+
+        return $this;
     }
 
     /**

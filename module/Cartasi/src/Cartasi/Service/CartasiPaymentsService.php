@@ -70,15 +70,17 @@ class CartasiPaymentsService
      * @param Contracts
      * @param int
      * @param string
+     * @param boolean
      * @return int
      */
-    public function createTransaction(Contracts $contract, $amount, $currency)
+    public function createTransaction(Contracts $contract, $amount, $currency, $isFirstPayment)
     {
         $transaction = new Transactions();
 
         $transaction->setContract($contract);
         $transaction->setAmount($amount);
         $transaction->setCurrency($currency);
+        $transaction->setIsFirstPayment($isFirstPayment);
 
         $this->entityManager->persist($transaction);
         $this->entityManager->flush();
@@ -152,7 +154,7 @@ class CartasiPaymentsService
      */
     public function getTransaction($transactionId)
     {
-        return $this->transactionsRepository->findById($transactionId);
+        return $this->transactionsRepository->findById($transactionId)[0];
     }
 
     /**
@@ -163,7 +165,7 @@ class CartasiPaymentsService
      */
     public function getContract($contractId)
     {
-        return $this->contractsRepository->findById($contractId);
+        return $this->contractsRepository->findById($contractId)[0];
     }
 
     /**
@@ -228,7 +230,7 @@ class CartasiPaymentsService
      * @param Cartasi\Entity\Transactions
      * @param array
      */
-    private function updateTransaction(Transactions $transaction, array $params)
+    public function updateTransaction(Transactions $transaction, array $params)
     {
         foreach ($params as $key => $value) {
             $method = $this->setter($key);
