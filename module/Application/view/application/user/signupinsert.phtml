@@ -29,17 +29,28 @@
 
      <?php if ($this->enable_payment) { ?>
      <!--div class="margin-bottom">
-        <h1><?= $this->translate('Completa l\'attivazione del servizio')?></h1>
-        <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via PayPal.')?></p>
+        <h1><? //= $this->translate('Completa l\'attivazione del servizio')?></h1>
+        <p><? //= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via PayPal.')?></p>
      </div>
 
 
      <!--div class="module-wrapper-button margin-bottom content-align-center">
-         <a href="<?= $this->url('pay', array('email' => $this->email)) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento di 10€'); ?> <i class="fa fa-plus-circle"></i></a>
+         <a href="<? //$this->url('pay', array('email' => $this->email)) ?>" class="btn-link x-large ct2"><? //= $this->translate('Esegui il pagamento di 10€'); ?> <i class="fa fa-plus-circle"></i></a>
      </div-->
 
-    <div class="block-form-section content-align-center">
-        <h2><?= $this->translate('LA TUA REGISTRAZIONE E\' STATA COMPLETATA'); ?></h2>
+    <!--div class="block-form-section content-align-center">
+        <h2><? //= $this->translate('GRAZIE'); ?></h2>
+        <div style="color: black; line-height: 1.5; margin-bottom: 30px;"><? //= $this->translate('Qualche giorno prima dell’attivazione del servizio a Milano, prevista per lunedi 15 giugno, ti verrà richiesto di completare la tua iscrizione con il pagamento dei 10€ che comprende i primi 500 minuti di utilizzazione dell’Equomobile.'); ?></div>
+        <div style="color: black; line-height: 1.5; font-size: 1em;"><? //= $this->translate('Il mancato pagamento dell’iscrizione entro il 14 giugno a mezzanotte comporterà la perdita del diritto che hai maturato ai 500 minuti gratuiti previsti con la promozione di lancio di SHARE’NGO'); ?></div>
+    </div-->
+
+    <div class="margin-bottom">
+        <h1><?= $this->translate('Completa l\'attivazione del servizio')?></h1>
+        <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via Cartasi.')?></p>
+    </div>
+
+    <div class="module-wrapper-button margin-bottom content-align-center">
+        <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customerId]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento di 10€'); ?> <i class="fa fa-plus-circle"></i></a>
     </div>
 
      <?php } ?>

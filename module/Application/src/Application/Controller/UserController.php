@@ -247,16 +247,19 @@ class UserController extends AbstractActionController
         $email = '';
         $enablePayment = false;
 
-        $user = $this->registrationService->getUserFromHash($hash);
+        $customer = $this->registrationService->getUserFromHash($hash);
 
-        if (null != $user) {
-            $urlencodedEmail = urlencode($user->getEmail());
-            $enablePayment = !$user->getFirstPaymentCompleted();
+        if (null != $customer) {
+            //$urlencodedEmail = urlencode($customer->getEmail());
+            $enablePayment = !$customer->getFirstPaymentCompleted();
         }
 
-        return new ViewModel(array('message' => $message,
-                                   'enable_payment' => $enablePayment,
-                                   'email' => $urlencodedEmail));
+        return new ViewModel([
+            'message' => $message,
+            'enable_payment' => $enablePayment,
+            //'email' => $urlencodedEmail
+            'customerId' => $customer->getId()
+        ]);
     }
 
     public function signupScoreCompletionAction()
