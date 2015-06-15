@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Transactions
  *
  * @ORM\Table(name="transactions")
- * @ORM\Entity(repositoryClass="SharengoCore\Entity\Repository\TransactionsRepository")
+ * @ORM\Entity(repositoryClass="Cartasi\Entity\Repository\TransactionsRepository")
  */
 class Transactions
 {
@@ -167,7 +167,7 @@ class Transactions
 
     public function __construct()
     {
-        $this->insertedTs = date('Y-m-d h:i:s');
+        $this->insertedTs = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s', time()));
     }
 
     /**
@@ -187,11 +187,27 @@ class Transactions
     }
 
     /**
+     *
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+    }
+
+    /**
      * @return int
      */
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     *
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
     }
 
     /**
@@ -346,5 +362,13 @@ class Transactions
         $this->productType = $productType;
 
         return $this;
+    }
+
+    /**
+     *
+     */
+    public function setContract(Contracts $contract)
+    {
+        $this->contract = $contract;
     }
 }

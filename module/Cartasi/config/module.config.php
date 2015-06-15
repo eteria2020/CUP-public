@@ -10,7 +10,7 @@ return [
                 'options' => [
                     'route' => '/{cartasi}',
                     'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
+                        '__NAMESPACE__' => 'Cartasi\Controller',
                         'controller' => 'CartasiPayments',
                     ]
                 ],
@@ -66,13 +66,13 @@ return [
         ]
     ],
     'controllers' => [
-        'invokables' => [
-            'Cartasi\Controller\CartasiPayments' => 'Cartasi\Controller\CartasiPaymentsController'
+        'factories' => [
+            'Cartasi\Controller\CartasiPayments' => 'Cartasi\Controller\CartasiPaymentsControllerFactory'
         ]
     ],
     'service_manager' => [
-        'invokables' => [
-            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsService'
+        'factories' => [
+            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory'
         ]
     ],
     'doctrine'        => [

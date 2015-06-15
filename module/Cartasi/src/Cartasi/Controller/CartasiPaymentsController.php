@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Helper\Url;
 
 use Cartasi\Service\CartasiPaymentsService;
-use Sharengo\Service\CustomersService;
+use SharengoCore\Service\CustomersService;
 
 class CartasiPaymentsController extends AbstractActionController
 {
@@ -52,10 +52,10 @@ class CartasiPaymentsController extends AbstractActionController
         if (empty($customerId)) {
             // TODO
         }
-        $customer = $this->customersService()->findById($customerId);
+        $customer = $this->customersService->findById($customerId);
 
         $alias = $this->cartasiConfig['alias'];
-        $currency = $this->cartasiConfig['divisa'];
+        $currency = $this->cartasiConfig['currency'];
         $amount = $this->cartasiConfig['first_payment_amount'];
         $description = $this->cartasiConfig['first_payment_description'];
 
@@ -65,7 +65,6 @@ class CartasiPaymentsController extends AbstractActionController
             $amount,
             $currency
         );
-
         $macKey = $this->cartasiConfig['mac_key'];
         $mac = $this->cartasiService->computeMac([
             'codTrans' => $codTrans,
@@ -196,7 +195,7 @@ class CartasiPaymentsController extends AbstractActionController
 
         // get configuration values
         $alias = $this->cartasiConfig['alias'];
-        $currency = $this->cartasiConfig['divisa'];
+        $currency = $this->cartasiConfig['currency'];
         $description = $this->cartasiConfig['recurring_payment_description'];
 
         $codTrans = $this->cartasiService->createTransaction(

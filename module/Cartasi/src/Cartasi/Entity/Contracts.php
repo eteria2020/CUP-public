@@ -3,12 +3,13 @@
 namespace Cartasi\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SharengoCore\Entity\Customers;
 
 /**
  * Contracts
  *
  * @ORM\Table(name="contracts")
- * @ORM\Entity(repositoryClass="SharengoCore\Entity\Repository\ContractsRepository")
+ * @ORM\Entity(repositoryClass="Cartasi\Entity\Repository\ContractsRepository")
  */
 class Contracts
 {
@@ -55,7 +56,7 @@ class Contracts
 
     public function __construct()
     {
-        $this->insertedTs = date('Y-m-d h:i:s');
+        $this->insertedTs = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s', time()));
     }
 
     /**
@@ -84,6 +85,14 @@ class Contracts
     public function getCustomerId()
     {
         return $this->customer->getId();
+    }
+
+    /**
+     *
+     */
+    public function setCustomer(Customers $customer)
+    {
+        $this->customer = $customer;
     }
 
     /**

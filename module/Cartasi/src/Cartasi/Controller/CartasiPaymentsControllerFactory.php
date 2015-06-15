@@ -9,7 +9,7 @@ class CartasiPaymentsControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $cartasiPaymentsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiPaymentsService');
+        $cartasiPaymentsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiPayments');
         $customersService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $config = $serviceLocator->getServiceLocator()->get('Config');
         $cartasiConfig = $config['cartasi'];

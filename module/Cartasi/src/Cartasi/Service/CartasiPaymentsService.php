@@ -5,7 +5,7 @@ namespace Cartasi\Service;
 use Cartasi\Entity\Contracts;
 use Cartasi\Entity\Transactions;
 use Cartasi\Entity\Repository\TransactionsRepository;
-use Cartasi\Entity\Repository\ContractsRepostitory;
+use Cartasi\Entity\Repository\ContractsRepository;
 use SharengoCore\Entity\Customers;
 
 use Doctrine\ORM\EntityManager;
@@ -35,7 +35,7 @@ class CartasiPaymentsService
 
     public function __construct(
         TransactionsRepository $transactionsRepository,
-        ContractsRepostitory $contractsRepository,
+        ContractsRepository $contractsRepository,
         EntityManager $entityManager,
         UnderscoreToCamelCase $underscoreToCamelCase
     ) {
@@ -99,7 +99,7 @@ class CartasiPaymentsService
     {
         $mac = '';
         foreach ($params as $key => $value) {
-            $mac = $key.'='.$value;
+            $mac .= $key.'='.$value;
         }
 
         $mac .= $macKey;
