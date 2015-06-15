@@ -254,12 +254,7 @@ $this->headLink()
                                     <div class="block-row-field clearfix">
                                         <div class="block-field bw-f w-1-4">
                                             <p> <label><?= $this->translate("Titolo"); ?></label>
-                                                <?php
-                                                $gender = $this->profileForm->get('customer')->get('gender');
-                                                $gender->setValue($this->customer->getGender());
-                                                echo $this->formElement($gender->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($gender, array('class' => 'error-sign-up'));
-                                                ?>
+                                                <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
                                             </p>
                                         </div>
 

@@ -100,6 +100,10 @@ class UserAreaController extends AbstractActionController
 
             if (isset($postData['customer'])) {
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();
+
+                //prevent gender editing
+                $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
+
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
             } else if (isset($postData['password'])) {
