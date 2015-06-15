@@ -154,7 +154,7 @@ class CartasiPaymentsService
      */
     public function getTransaction($transactionId)
     {
-        return $this->transactionsRepository->findById($transactionId)[0];
+        return $this->transactionsRepository->findById($transactionId);
     }
 
     /**
@@ -165,7 +165,7 @@ class CartasiPaymentsService
      */
     public function getContract($contractId)
     {
-        return $this->contractsRepository->findById($contractId)[0];
+        return $this->contractsRepository->findById($contractId);
     }
 
     /**
@@ -259,7 +259,7 @@ class CartasiPaymentsService
 
         try {
             $this->updateContract($contract, $contractParams);
-            $this->updateTransaction($contract, $contractParams);
+            $this->updateTransaction($transaction, $contractParams);
 
             $this->entityManager->getConnection()->commit();
         } catch (\Exception $e) {
