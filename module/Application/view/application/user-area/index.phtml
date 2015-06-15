@@ -579,7 +579,8 @@ $this->headLink()
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
 
-                                    <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
+                                    <?php if (false) :
+                                        //if(!$this->customer->getFirstPaymentCompleted()): ?>
                                         <br />
                                         <a href="<?= $this->url('pay', ['email' => $this->customer->getEmail()]); ?>" style="color: #ff0000;">
                                             <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>

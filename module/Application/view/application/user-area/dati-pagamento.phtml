@@ -45,7 +45,12 @@
                         <?php else: ?>
 
                             <div class="block-alert margin-bottom info">
-                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?php echo $this->url('pay', array('email' => $this->customer->getEmail())); ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
+                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. 
+                                   <?= $this->translate('Nei prossimi giorni sarà possibile eseguire il pagamento e completare così l\'iscrizione al servizio.'); ?>
+                                    <?php /*
+                                    <a href="<?php echo $this->url('pay', array('email' => $this->customer->getEmail())); ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.
+                                     */ ?>
+                                </p>
                             </div>
                         <?php endif; ?>
 
