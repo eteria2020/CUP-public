@@ -77,4 +77,34 @@ class Contracts
     {
         return $this->customer->getEmail();
     }
+
+    /**
+     * @return int
+     */
+    public function getCustomerId()
+    {
+        return $this->customer->getId();
+    }
+
+    /**
+     * @param string
+     * @return Contracts
+     */
+    public function setPan($pan)
+    {
+        $this->pan = $pan;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Contracts
+     */
+    public function setPanExpiry($panExpiry)
+    {
+        $this->panExpiry = $panExpiry;
+
+        return $this;
+    }
 }

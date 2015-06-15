@@ -59,12 +59,11 @@ class CartasiPaymentsController extends AbstractActionController
         $amount = $this->cartasiConfig['first_payment_amount'];
         $description = $this->cartasiConfig['first_payment_description'];
 
-        $contractId = $this->cartasiService->createContract($customerId);
+        $contract = $this->cartasiService->createContract($customer);
         $codTrans = $this->cartasiService->createTransaction(
-            $contractId,
+            $contract,
             $amount,
-            $currency,
-            $customerId
+            $currency
         );
 
         $macKey = $this->cartasiConfig['mac_key'];
@@ -86,7 +85,7 @@ class CartasiPaymentsController extends AbstractActionController
             'url_back' => '', //TODO
             'mac' => $mac,
             'mail' => $customer->getEmail(),
-            'num_contratto' => $contractId,
+            'num_contratto' => $contract->getId(),
             'tipo_servizio' => 'paga_rico',
             'descrizione' => $description
         ]);
@@ -132,27 +131,33 @@ class CartasiPaymentsController extends AbstractActionController
             // TODO
         }
 
+        $contract = $this->cartasiService->getContract($contractId);
+
         try {
-            $this->cartasiService->updateContract($contractId, [
-                'pan' => $this->params()->fromQuery('pan'),
-                'pan_expiry' => $this->params()->fromQuery('scadenza_pan')
-            ]);
-            $this->cartasiService->updateTransaction($transaction, [
-                'name' => $this->params()->fromQuery('nome'),
-                'surname' => $this->params()->fromQuery('cognome'),
-                'brand' => $this->params()->fromQuery('brand'),
-                'outcome' => $outcome,
-                'datetime' => $this->cartasiService->datetime($date, $time),
-                'codAut' => $codAut,
-                'region' => $this->params()->fromQuery('regione'),
-                'country' => $this->params()->fromQuery('nazionalita'),
-                'message' => $this->params()->fromQuery('messaggio'),
-                'hash' => $this->params()->fromQuery('hash'),
-                'check' => $this->params()->fromQuery('check'),
-                'conventionCode' => $this->params()->fromQuery('codiceConvenzione'),
-                'transactionType' => $this->params()->fromQuery('tipoTransazione'),
-                'productType' => $this->params()->fromQuery('check')
-            ]);
+            $this->cartasiService->updateTransactionAndContract(
+                $contract,
+                $transaction,
+                [
+                    'pan' => $this->params()->fromQuery('pan'),
+                    'pan_expiry' => $this->params()->fromQuery('scadenza_pan')
+                ],
+                [
+                    'name' => $this->params()->fromQuery('nome'),
+                    'surname' => $this->params()->fromQuery('cognome'),
+                    'brand' => $this->params()->fromQuery('brand'),
+                    'outcome' => $outcome,
+                    'datetime' => $this->cartasiService->datetime($date, $time),
+                    'codAut' => $codAut,
+                    'region' => $this->params()->fromQuery('regione'),
+                    'country' => $this->params()->fromQuery('nazionalita'),
+                    'message' => $this->params()->fromQuery('messaggio'),
+                    'hash' => $this->params()->fromQuery('hash'),
+                    'check' => $this->params()->fromQuery('check'),
+                    'conventionCode' => $this->params()->fromQuery('codiceConvenzione'),
+                    'transactionType' => $this->params()->fromQuery('tipoTransazione'),
+                    'productType' => $this->params()->fromQuery('check')
+                ]
+            );
         } catch (\Exception $e) {
             // TODO
         }
@@ -169,13 +174,13 @@ class CartasiPaymentsController extends AbstractActionController
 
         $transaction = $this->cartasiService->getTransaction($codTrans);
         $this->cartasiService->updateTransaction($transaction, [
-            'esito' => $esito
+            'esito' => $outcome
         ]);
 
         return new ViewModel();
     }
 
-    public function recurringPayment()
+    public function recurringPaymentAction()
     {
         // get parameters from query string
         $amount = $this->params()->fromQuery('amount');
@@ -227,13 +232,14 @@ class CartasiPaymentsController extends AbstractActionController
         $this->redirect()->toUrl($url);
     }
 
-    public function returnRecurringPayment()
+    public function returnRecurringPaymentAction()
     {
         $xml = $this->params->fromQuery('xml');
 
         $response = $this->cartasiService->parseXml($xml);
 
-        if (!$this->cartasiService->verifyRespose($response)) {
+        $macKey = $this->cartasiConfig['mac_key'];
+        if (!$this->cartasiService->verifyRespose($response, $macKey)) {
             // TODO
         }
 

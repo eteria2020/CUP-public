@@ -169,4 +169,182 @@ class Transactions
     {
         $this->insertedTs = date('Y-m-d h:i:s');
     }
+
+    /**
+     * @return int
+     */
+    public function getContractId()
+    {
+        return $this->contract->getId();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setOutcome($outcome)
+    {
+        $this->outcome = $outcome;
+
+        return $this;
+    }
+
+    /**
+     * @param \DateTime
+     * @return Transactions
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setCodAut($codAut)
+    {
+        $this->codAut = $codAut;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setCheck($check)
+    {
+        $this->check = $check;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setConventionCode($conventionCode)
+    {
+        $this->conventionCode = $conventionCode;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setTransactionType($transactionType)
+    {
+        $this->transactionType = $transactionType;
+
+        return $this;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setProductType($productType)
+    {
+        $this->productType = $productType;
+
+        return $this;
+    }
 }

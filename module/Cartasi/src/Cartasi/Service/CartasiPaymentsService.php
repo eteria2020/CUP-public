@@ -6,6 +6,10 @@ use Cartasi\Entity\Contracts;
 use Cartasi\Entity\Transactions;
 use Cartasi\Entity\Repository\TransactionsRepository;
 use Cartasi\Entity\Repository\ContractsRepostitory;
+use SharengoCore\Entity\Customers;
+
+use Doctrine\ORM\EntityManager;
+use Zend\Filter\Word\UnderscoreToCamelCase;
 
 class CartasiPaymentsService
 {
@@ -19,37 +23,67 @@ class CartasiPaymentsService
      */
     private $contractsRepository;
 
-    public function __construct($transactionsRepository, $contractsRepository)
-    {
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
+     * @var Zend\Filter\Word\UnderscoreToCamelCase
+     */
+    private $underscoreToCamelCase;
+
+    public function __construct(
+        TransactionsRepository $transactionsRepository,
+        ContractsRepostitory $contractsRepository,
+        EntityManager $entityManager,
+        UnderscoreToCamelCase $underscoreToCamelCase
+    ) {
         $this->transactionsRepository = $transactionsRepository;
         $this->contractsRepository = $contractsRepository;
+        $this->entityManager = $entityManager;
+        $this->underscoreToCamelCase = $underscoreToCamelCase;
     }
 
     /**
      * creates a Cartasi\Entity\Contracts for the given user and returns
      * the contract id
      *
-     * @param int
-     * @return int
+     * @param SharengoCore\Entity\Customers
+     * @return Contracts
      */
-    public function createContract($customerId)
+    public function createContract(Customers $customer)
     {
+        $contract = new Contracts();
+        $contract->setCustomer($customer);
 
+        $this->entityManager->persist($contract);
+        $this->entityManager->flush();
+
+        return $contract;
     }
 
     /**
      * creates a Cartasi\Entity\Transactions entity with all necessary parameters
      * and returns the transaction id
      *
-     * @param int
+     * @param Contracts
      * @param int
      * @param string
-     * @param int
      * @return int
      */
-    public function createTransaction($contractId, $amount, $currency, $customerId)
+    public function createTransaction(Contracts $contract, $amount, $currency)
     {
+        $transaction = new Transactions();
 
+        $transaction->setContract($contract);
+        $transaction->setAmount($amount);
+        $transaction->setCurrency($currency);
+
+        $this->entityManager->persist($transaction);
+        $this->entityManager->flush();
+
+        return $transaction->getId();
     }
 
     /**
@@ -65,12 +99,12 @@ class CartasiPaymentsService
     {
         $mac = '';
         foreach ($params as $key => $value) {
-
+            $mac = $key.'='.$value;
         }
 
         $mac .= $macKey;
 
-        return $mac;
+        return sha1($mac);
     }
 
     /**
@@ -99,9 +133,13 @@ class CartasiPaymentsService
      */
     public function buildUrl($url, $params)
     {
-        foreach ($params as $key => $param) {
+        $url .= '?';
 
-        }
+        $arrayParams = array_map(function ($k, $v) {
+            return $k.'='.$v;
+        }, array_keys($params), $params);
+
+        $url .= implode('&', $arrayParams);
 
         return $url;
     }
@@ -125,7 +163,26 @@ class CartasiPaymentsService
      */
     public function getContract($contractId)
     {
-        return $this->contractsRepository_>findById($contractId);
+        return $this->contractsRepository->findById($contractId);
+    }
+
+    /**
+     * retrieves the getter method for the given field
+     *
+     * @param string
+     * @return string
+     */
+    private function getter($field)
+    {
+        return 'get'.ucfirst($this->underscoreToCamelCase->filter($field));
+    }
+
+    /**
+     * retrieves the setter method for the given field
+     */
+    private function setter($field)
+    {
+        return 'set'.ucfirst($this->underscoreToCamelCase->filter($field));
     }
 
     /**
@@ -138,18 +195,31 @@ class CartasiPaymentsService
      */
     public function verifyTransaction(Transactions $transaction, array $params)
     {
+        foreach ($params as $key => $value) {
+            $method = $this->getter($key);
+            if ($value != $transaction->$method()) {
+                return false;
+            };
+        }
 
+        return true;
     }
 
     /**
      * updates the contract with the data received in the response
      *
-     * @param int
+     * @param Cartasi\Entity\Contracts
      * @param array
      */
-    public function updateContract($contractId, array $params)
+    private function updateContract(Contracts $contract, array $params)
     {
+        foreach ($params as $key => $value) {
+            $method = $this->setter($key);
+            $contract->$method($value);
+        }
 
+        $this->entityManager->persist($contract);
+        $this->entityManager->flush();
     }
 
     /**
@@ -158,40 +228,122 @@ class CartasiPaymentsService
      * @param Cartasi\Entity\Transactions
      * @param array
      */
-    public function updateTransaction(Transactions $transaction, array $params)
+    private function updateTransaction(Transactions $transaction, array $params)
     {
+        foreach ($params as $key => $value) {
+            $method = $this->setter($key);
+            $transaction->$method($value);
+        }
 
+        $this->entityManager->persist($transaction);
+        $this->entityManager->flush();
+    }
+
+    /**
+     * updates the contract and the transaction, wrapping everything in a transaction
+     *
+     * @param Cartasi\Entity\Contracts
+     * @param Cartasi\Entity\Transactions
+     * @param array
+     * @param array
+     */
+    public function updateTransactionAndContract(
+        Contracts $contract,
+        Transactions $transaction,
+        array $contractParams,
+        array $transactionParams
+    ) {
+        $this->entityManager->getConnection()->beginTransaction();
+
+        try {
+            $this->updateContract($contract, $contractParams);
+            $this->updateTransaction($contract, $contractParams);
+
+            $this->entityManager->getConnection()->commit();
+        } catch (\Exception $e) {
+            $this->entityManager->getConnection()->rollback();
+            throw $e;
+        }
     }
 
     /**
      * parses the xml response
      *
      * @param string
-     * @return array
+     * @return \SimpleXMLElement
      */
     public function parseXml($xml)
     {
+        $response = new SimpleXMLElement($xml);
 
+        return $response;
     }
 
     /**
      * verifies that the response is correct
      *
-     * @param array
+     * @param \SimpleXMLElement
+     * @param string
      * @return boolean
      */
-    public function verifyResponse(array $response)
+    public function verifyResponse(\SimpleXMLElement $response, $macKey)
     {
+        $storeRequest = $response->RootResponse->StoreRequest;
+        $storeResponse = $response->RootResponse->StoreResponse;
 
+        if (!$this->verifyMac($storeResponse->mac, [
+            'codTrans' => $storeRequest->codTrans,
+            'divisa' => $storeRequest->divisa,
+            'importo' => $storeRequest->importo,
+            'codAut' => $storeResponse->codiceAutorizzazione,
+            'data' => explode("T", $storeResponse->dataOra)[0],
+            'orario' => explode("T", $storeResponse->dataOra)[1]
+        ], $macKey)) {
+            return false;
+        };
+
+        $transaction = $this->getTransaction($storeRequest->codTrans);
+
+        if (!$transaction) {
+            return false;
+        }
+
+        $contractId = $storeRequest->num_contratto;
+        $amount = $storeRequest->importo;
+        $currency = $storeRequest->divisa;
+
+        return $this->verifyTransaction($transaction, [
+            'contract_id' => $contractId,
+            'amount' => $amount,
+            'currency' => $currency
+        ]);
     }
 
     /**
      * updates the transaction with the parameters received in the response
      *
-     * @param array
+     * @param \SimpleXMLElement
      */
-    public function updateTransactionFormResponse(array $response)
+    public function updateTransactionFormResponse(\SimpleXMLElement $response)
     {
+        $storeResponse = $response->RootResponse->StoreResponse;
 
+        $transaction = $this->getTransaction($storeRequest->codTrans);
+
+        $this->updateTransaction($transaction, [
+            'brand' => $storeResponse->tipoCarta,
+            'transactionType' => $storeResponse->transactionType,
+            'region' => $storeResponse->regione,
+            'country' => $storeResponse->paese,
+            'productType' => $storeResponse->tipoProdotto,
+            'check' => $storeResponse->check,
+            'conventionCode' => $storeResponse->codiceConvenzione,
+            'hash' => $storeResponse->hash,
+            'codAut' => $storeResponse->codeAut,
+            'dateTime' => date_create_from_format('YmdHis', str_replace("T", "", $storeResponse->dataOra)),
+            'outcome' => $storeResponse->codiceEsito.' '.
+                $storeResponse->descrizioneEsito.' '.
+                $storeResponse->dettagliEsito
+        ]);
     }
 }
