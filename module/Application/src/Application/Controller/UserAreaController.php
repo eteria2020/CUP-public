@@ -188,7 +188,7 @@ class UserAreaController extends AbstractActionController
         ]);
     }
 
-    public function rentalsAction()
+    public function tripsAction()
     {
         return new ViewModel([
             'trips' => $this->I_tripsService->getTripsByCustomer($this->customer->getId())
