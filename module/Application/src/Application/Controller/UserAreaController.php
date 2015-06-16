@@ -16,6 +16,8 @@ use Zend\View\Model\JsonModel;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 
+use Cartasi\Service\CartasiPaymentsService;
+
 class UserAreaController extends AbstractActionController
 {
     const SUCCESS_MESSAGE = 'Operazione eseguita con successo!';
@@ -66,6 +68,11 @@ class UserAreaController extends AbstractActionController
     private $driverLicenseForm;
 
     /**
+     * @var Cartasi\Service\CartasiPaymentsService
+     */
+    private $cartasiPaymentsService;
+
+    /**
      * @var
      */
     private $showError = false;
@@ -77,7 +84,8 @@ class UserAreaController extends AbstractActionController
         Form $profileForm,
         Form $passwordForm,
         Form $driverLicenseForm,
-        HydratorInterface $hydrator
+        HydratorInterface $hydrator,
+        CartasiPaymentsService $cartasiPaymentsService
     ) {
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
@@ -87,6 +95,7 @@ class UserAreaController extends AbstractActionController
         $this->passwordForm = $passwordForm;
         $this->driverLicenseForm = $driverLicenseForm;
         $this->hydrator = $hydrator;
+        $this->cartasiPaymentsService = $cartasiPaymentsService;
     }
 
     public function indexAction()
@@ -183,8 +192,11 @@ class UserAreaController extends AbstractActionController
 
     public function datiPagamentoAction()
     {
+        $contract = $this->cartasiPaymentsService->getContractByCustomer($this->customer);
+
         return new ViewModel([
             'customer' => $this->customer,
+            'cartasiContract' => $contract
         ]);
     }
 

@@ -18,6 +18,7 @@ class UserAreaControllerFactory implements FactoryInterface
         $passwordForm = $serviceLocator->getServiceLocator()->get('PasswordForm');
         $driverLicenseForm = $serviceLocator->getServiceLocator()->get('DriverLicenseForm');
         $hydrator = new Reflection();
+        $cartasiPaymentsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiPayments');
 
         return new UserAreaController(
             $I_customerService,
@@ -26,7 +27,8 @@ class UserAreaControllerFactory implements FactoryInterface
             $profileForm,
             $passwordForm,
             $driverLicenseForm,
-            $hydrator
+            $hydrator,
+            $cartasiPaymentsService
         );
     }
 }

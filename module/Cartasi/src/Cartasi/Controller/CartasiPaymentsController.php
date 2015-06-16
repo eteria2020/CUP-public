@@ -163,7 +163,10 @@ class CartasiPaymentsController extends AbstractActionController
             // TODO
         }
 
-        return new ViewModel();
+        return new ViewModel([
+            'outcome' => $outcome,
+            'message' => $this->params()->fromQuery('messaggio')
+        ]);
     }
 
     public function rejectedFirstPaymentAction()
@@ -178,7 +181,9 @@ class CartasiPaymentsController extends AbstractActionController
             'outcome' => $outcome
         ]);
 
-        return new ViewModel();
+        return new ViewModel([
+            'outcome' => $outcome
+        ]);
     }
 
     public function recurringPaymentAction()

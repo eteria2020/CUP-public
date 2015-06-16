@@ -150,11 +150,17 @@ class CartasiPaymentsService
      * retrieves a transaction from its id
      *
      * @param int
-     * @return Cartasi\Entity\Transactions
+     * @return Cartasi\Entity\Transactions|null
      */
     public function getTransaction($transactionId)
     {
-        return $this->transactionsRepository->findById($transactionId);
+        $transactions = $this->transactionsRepository->findById($transactionId);
+
+        if (empty($transactions)) {
+            return null;
+        }
+
+        return $transactions[0];
     }
 
     /**
@@ -165,7 +171,13 @@ class CartasiPaymentsService
      */
     public function getContract($contractId)
     {
-        return $this->contractsRepository->findById($contractId);
+        $contracts = $this->contractsRepository->findById($contractId);
+
+        if (empty($contracts)) {
+            return null;
+        }
+
+        return $contracts[0];
     }
 
     /**
@@ -259,13 +271,31 @@ class CartasiPaymentsService
 
         try {
             $this->updateContract($contract, $contractParams);
-            $this->updateTransaction($transaction, $contractParams);
+            $this->updateTransaction($transaction, $transactionParams);
+
+            // set the first payment as payed
+            $this->setFirstPaymentCompleted($contract);
 
             $this->entityManager->getConnection()->commit();
         } catch (\Exception $e) {
             $this->entityManager->getConnection()->rollback();
             throw $e;
         }
+    }
+
+    /**
+     * set the first payment as completed
+     *
+     * @param Contracts
+     */
+    private function setFirstPaymentCompleted(Contracts $contract)
+    {
+        $customer = $contract->getCustomer();
+
+        $customer->setFirstPaymentCompleted(true);
+
+        $this->entityManager->persist($customer);
+        $this->entityManager->flush();
     }
 
     /**
@@ -347,5 +377,23 @@ class CartasiPaymentsService
                 $storeResponse->descrizioneEsito.' '.
                 $storeResponse->dettagliEsito
         ]);
+    }
+
+    /**
+     * @var string format aaaammgg
+     * @var string format hhmmss
+     */
+    public function datetime($date, $time)
+    {
+        return date_create_from_format('YmdHis', $date.$time);
+    }
+
+    /**
+     * @var Customers
+     * @return Contracts|null
+     */
+    public function getContractByCustomer(Customers $customer)
+    {
+        return $this->contractsRepository->findOneBy(['customer' => $customer]);
     }
 }
