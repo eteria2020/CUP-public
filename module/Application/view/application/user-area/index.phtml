@@ -567,7 +567,7 @@ $this->headLink()
                                     <strong><?= $this->translate("QUESTA È LA SITUAZIONE DEI TUOI MINUTI BONUS. "); ?></strong>
                                     <br />
 
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="500">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->bonus?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Accreditati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
@@ -575,7 +575,7 @@ $this->headLink()
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Utilizzati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="500">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->bonus?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
 

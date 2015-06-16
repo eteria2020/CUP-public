@@ -117,12 +117,21 @@ class UserAreaController extends AbstractActionController
             }
         }
 
+        //show bonus according to registration date
+        $bonus = 100;
+        $startDateBonus100Mins = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-06-14 23:59:59');
+        if (null == $this->customer->getInsertedTs() || 
+            $this->customer->getInsertedTs() < $startDateBonus100Mins) {
+            $bonus = 500;
+        }
+
         return new ViewModel([
             'customer'     => $this->customer,
             'profileForm'  => $this->profileForm,
             'passwordForm' => $this->passwordForm,
             'showError'    => $this->showError,
-            'typeForm'     => $this->typeForm
+            'typeForm'     => $this->typeForm,
+            'bonus'        => $bonus
         ]);
     }
 
