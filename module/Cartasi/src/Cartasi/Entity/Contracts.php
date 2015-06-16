@@ -80,6 +80,14 @@ class Contracts
     }
 
     /**
+     * @return string
+     */
+    public function getPanExpiry()
+    {
+        return $this->panExpiry;
+    }
+
+    /**
      * retrieves the email of the customer
      *
      * @return string

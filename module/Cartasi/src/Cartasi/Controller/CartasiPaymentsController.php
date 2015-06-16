@@ -206,7 +206,7 @@ class CartasiPaymentsController extends AbstractActionController
         $description = $this->cartasiConfig['recurring_payment_description'];
 
         $codTrans = $this->cartasiService->createTransaction(
-            $contract->getId(),
+            $contract,
             $amount,
             $currency,
             false
@@ -227,9 +227,9 @@ class CartasiPaymentsController extends AbstractActionController
             'codTrans' => $codTrans,
             'mail' => $email,
             'url' => $this->url->__invoke('cartasi/ritorno-pagamento-ricorrente', [], ['force_canonical' => true]),
-            'scadenza' => $contratto->getExpiryDate(),
+            'scadenza' => $contract->getPanExpiry(),
             'mac' => $mac,
-            'num_contratto' => $contract->getId,
+            'num_contratto' => $contract->getId(),
             'tipo_servizio' => 'paga_rico',
             'tipo_richiesta' => 'PR',
             'descrizione' => $description
