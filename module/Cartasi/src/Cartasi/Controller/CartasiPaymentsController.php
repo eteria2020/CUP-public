@@ -5,6 +5,7 @@ namespace Cartasi\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Helper\Url;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 use Cartasi\Service\CartasiPaymentsService;
 use SharengoCore\Service\CustomersService;
@@ -240,15 +241,19 @@ class CartasiPaymentsController extends AbstractActionController
 
     public function returnRecurringPaymentAction()
     {
-        $xml = $this->params->fromQuery('xml');
+        $xml = $this->params()->fromQuery('xml');
 
         $response = $this->cartasiService->parseXml($xml);
 
         $macKey = $this->cartasiConfig['mac_key'];
-        if (!$this->cartasiService->verifyRespose($response, $macKey)) {
+        if (!$this->cartasiService->verifyResponse($response, $macKey)) {
             // TODO
         }
 
         $this->cartasiService->updateTransactionFormResponse($response);
+
+        return new JsonModel([
+            'outcome' => 'OK'
+        ]);
     }
 }

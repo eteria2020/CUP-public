@@ -296,7 +296,7 @@ class CartasiPaymentsService
      */
     public function parseXml($xml)
     {
-        $response = new SimpleXMLElement($xml);
+        $response = new \SimpleXMLElement($xml);
 
         return $response;
     }
@@ -310,8 +310,8 @@ class CartasiPaymentsService
      */
     public function verifyResponse(\SimpleXMLElement $response, $macKey)
     {
-        $storeRequest = $response->RootResponse->StoreRequest;
-        $storeResponse = $response->RootResponse->StoreResponse;
+        $storeRequest = $response->StoreRequest;
+        $storeResponse = $response->StoreResponse;
 
         if (!$this->verifyMac($storeResponse->mac, [
             'codTrans' => $storeRequest->codTrans,
@@ -348,7 +348,8 @@ class CartasiPaymentsService
      */
     public function updateTransactionFormResponse(\SimpleXMLElement $response)
     {
-        $storeResponse = $response->RootResponse->StoreResponse;
+        $storeRequest = $response->StoreRequest;
+        $storeResponse = $response->StoreResponse;
 
         $transaction = $this->getTransaction($storeRequest->codTrans);
 
