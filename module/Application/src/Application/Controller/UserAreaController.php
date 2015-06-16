@@ -192,11 +192,11 @@ class UserAreaController extends AbstractActionController
 
     public function datiPagamentoAction()
     {
-        $contract = $this->cartasiPaymentsService->getContractByCustomer($this->customer);
+        $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($this->customer);
 
         return new ViewModel([
             'customer' => $this->customer,
-            'cartasiContract' => $contract
+            'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment
         ]);
     }
 

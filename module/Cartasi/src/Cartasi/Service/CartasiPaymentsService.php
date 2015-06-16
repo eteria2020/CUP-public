@@ -154,13 +154,7 @@ class CartasiPaymentsService
      */
     public function getTransaction($transactionId)
     {
-        $transactions = $this->transactionsRepository->findById($transactionId);
-
-        if (empty($transactions)) {
-            return null;
-        }
-
-        return $transactions[0];
+        return $this->transactionsRepository->findOneById($transactionId);
     }
 
     /**
@@ -171,13 +165,7 @@ class CartasiPaymentsService
      */
     public function getContract($contractId)
     {
-        $contracts = $this->contractsRepository->findById($contractId);
-
-        if (empty($contracts)) {
-            return null;
-        }
-
-        return $contracts[0];
+        return $this->contractsRepository->findOneById($contractId);
     }
 
     /**
@@ -274,7 +262,9 @@ class CartasiPaymentsService
             $this->updateTransaction($transaction, $transactionParams);
 
             // set the first payment as payed
-            $this->setFirstPaymentCompleted($contract);
+            if ($transaction->outcome == 'OK') {
+                $this->setFirstPaymentCompleted($contract);
+            }
 
             $this->entityManager->getConnection()->commit();
         } catch (\Exception $e) {
@@ -390,10 +380,25 @@ class CartasiPaymentsService
 
     /**
      * @var Customers
-     * @return Contracts|null
+     * @return boolean
      */
-    public function getContractByCustomer(Customers $customer)
+    public function customerCompletedFirstPayment(Customers $customer)
     {
-        return $this->contractsRepository->findOneBy(['customer' => $customer]);
+        $contract = $this->contractsRepository->findOneBy(['customer' => $customer]);
+
+        if (!$contract) {
+            return false;
+        }
+
+        $firstTransaction = $this->transactionsRepository->findOneBy([
+            'contract' => $contract,
+            'isFirstPayment' => true
+        ]);
+
+        if (!$firstTransaction) {
+            return false;
+        }
+
+        return $firstTransaction->getOutcome() == 'OK';
     }
 }

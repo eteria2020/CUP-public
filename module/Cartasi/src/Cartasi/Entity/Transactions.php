@@ -269,6 +269,14 @@ class Transactions
     }
 
     /**
+     * @return string
+     */
+    public function getOutcome()
+    {
+        return $this->outcome;
+    }
+
+    /**
      * @param \DateTime
      * @return Transactions
      */
