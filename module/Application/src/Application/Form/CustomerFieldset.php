@@ -145,7 +145,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'birthProvince',
                 'placeholder' => $translator->translate('EE = estero'),
-                'class' => 'required'
+                'class' => 'required',
+                'maxlength' => 2
             ],
             'options' => [
                 'label' => $translator->translate('Provincia di nascita (EE = estero)')
