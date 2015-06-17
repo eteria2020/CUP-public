@@ -579,12 +579,12 @@ $this->headLink()
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
 
-                                    <?php if (false) :
-                                        //if(!$this->customer->getFirstPaymentCompleted()): ?>
+                                    <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
                                         <br />
-                                        <a href="<?= $this->url('pay', ['email' => $this->customer->getEmail()]); ?>" style="color: #ff0000;">
+                                        <?php /*<a href="<?= $this->url('pay', ['email' => $this->customer->getEmail()]); ?>" style="color: #ff0000;">
                                             <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
-                                        </a>
+                                        </a>*/?>
+                                        La quota di iscrizione di 10€ non risulta ancora pagata. Potrai farlo dal 22 al 30 giugno rientrando in area riservata. Grazie.
                                     <?php endif; ?>
 
                                 </div>
