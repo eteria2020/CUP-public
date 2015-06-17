@@ -581,7 +581,7 @@ $this->headLink()
 
                                     <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
                                         <br />
-                                        <?php /*<a href="<?= $this->url('pay', ['email' => $this->customer->getEmail()]); ?>" style="color: #ff0000;">
+                                        <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" style="color: #ff0000;">
                                             <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
                                         </a>*/?>
                                         La quota di iscrizione di 10€ non risulta ancora pagata. Potrai farlo dal 22 al 30 giugno rientrando in area riservata. Grazie.

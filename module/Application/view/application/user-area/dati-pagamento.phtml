@@ -35,7 +35,7 @@
                     <div class="block-form bw-f w-2-3  clearfix">
 
                         <?php if($this->customer->getFirstPaymentCompleted()): ?>
-
+                        <!--
                             <?php if (!$this->cartasiCompletedFirstPayment): ?>
 
                                 <div class="block-alert margin-bottom info">
@@ -46,22 +46,23 @@
                                 </div>
 
                             <?php else: ?>
-
+                        
                                 <div class="block-alert margin-bottom info">
                                     <p>
                                         <?= $this->translate('Il pagamento della quota di iscrizione è andato a buon fine, grazie'); ?>.
                                     </p>
                                 </div>
-
+                        
                             <?php endif; ?>
-
+                        
                         <?php else: ?>
-
+                        <!-- -->
                             <div class="block-alert margin-bottom info">
                                 <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
                             </div>
+                        <!--
                         <?php endif; ?>
-
+                        -->
                     </div>
                     <!-- block-form -->
 
