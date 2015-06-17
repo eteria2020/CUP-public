@@ -112,40 +112,6 @@ personale sarà per 365 GG dalla tua registrazione quello indicato nella tabella
                         <?php endif; ?>
                     </ul>
 
-                    <div style="width: 100%; height: 80px;"></div>
-
-                    <?php if ($this->customer->getReprofilingOption() != 1 && $this->customer->getProfilingCounter() <= 1): ?>
-                        <!-- block-form -->
-                        <div class="block-form clearfix">
-                            <div class="block-form-section content-align-center margin-bottom">
-                                <h2 style="font-size: 20px !important;"><?= $this->translate("Per favore aiutaci a servirti con attenzione scegliendo una tra queste 3 opzioni, potrai farlo una sola volta"); ?></h2>
-                            </div>
-
-                            <form id="reprofiling">
-                                <div class="option">
-                                    <input type="radio" name="option" value="1">
-                                    <span><?= $this->translate('Confermo l’accettazione del mio piano tariffario personale') ?></span>
-                                </div>
-                                <div class="option">
-                                    <input type="radio" name="option" value="2">
-                                    <span><?= $this->translate('Vorrei ripetere ex-novo la mia profilazione perché non sono certo di avere indicato tutti i miei dati correttamente ( i dati della prima profilazione saranno cancellati)') ?></span>
-                                </div>
-                                <div class="option">
-                                    <input type="radio" name="option" value="3">
-                                    <span><?= $this->translate('Non ho fatto la profilazione su <a href="http://www.equomobili.it">www.equomobili.it</a> e desidero verificare se mi spetta uno sconto sulle tariffe nominali e quindi un Piano Tariffario Personale') ?></span>
-                                </div>
-                            </form>
-
-                            <div class="reprofiling-warning">
-                                <?= $this->translate('Attenzione: eventuali condizioni di miglior favore in futuro ti verranno comunicate via email perché tu possa aggiornare la tua profilazione e il tuo sconto.') ?>
-                            </div>
-
-                            <div class="block-wrapper-button content-align-center" style="margin-top: 20px;">
-                                <button id="reprofiling-confirm" type="button" data-ajax-url="<?= $this->serverUrl().$this->url('area-utente/rates-confirm') ?>"><?= $this->translate('Conferma') ?></button>
-                                </button>
-                            </div>
-                        </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>

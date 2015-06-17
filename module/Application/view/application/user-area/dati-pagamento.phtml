@@ -38,14 +38,18 @@
 
                             <div class="block-alert margin-bottom info">
                                 <p>
-                                    <?= $this->translate('Il pagamento della quota di iscrizione è andato a buon fine, grazie'); ?>.
+                                    <?= $this->translate('Ciao la quota di iscrizione di 10€ è stata regolarmente pagata. Grazie'); ?>.
                                 </p>
                             </div>
 
                         <?php else: ?>
 
                             <div class="block-alert margin-bottom info">
-                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?php echo $this->url('pay', array('email' => $this->customer->getEmail())); ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
+                                <p><?= $this->translate('Ciao, la quota di iscrizione di 10€ non risulta ancora pagata. Potrai farlo dal 22 al 30 giugno rientrando in area riservata. Grazie'); ?>
+                                    <?php /*
+                                    <a href="<?php echo $this->url('pay', array('email' => $this->customer->getEmail())); ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.
+                                     */ ?>
+                                </p>
                             </div>
                         <?php endif; ?>
 

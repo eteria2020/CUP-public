@@ -117,7 +117,7 @@
                                         <span class="block-data-field">
                                             <?= $this->translate('Fine noleggo'); ?>:
                                         </span>
-                                        <?= $I_trip->getTimestampEnd()->format('H:i'); ?>
+                                        <?= (null != $I_trip->getTimestampEnd() ? $I_trip->getTimestampEnd()->format('H:i') : ''); ?>
                                     </div>
                                     <div class="block-data-table-td cw-1-4">
                                         <span class="block-data-field">
@@ -138,7 +138,7 @@
                                 <div class="block-data-table-row data-info clearfix">
                                     <div class="block-data-table-td cw-6-6">
                                         <span class="block-data-field">
-                                            <?= $this->translate('Destinazone'); ?>:
+                                            <?= $this->translate('Destinazione'); ?>:
                                         </span>
                                         <?= $I_trip->getAddressEnd(); ?>
                                     </div>
@@ -151,7 +151,7 @@
                     <!-- block-data-table -->
                     <?php else: ?>
                         <div class="block-alert margin-bottom info">
-                            <p><?= $this->translate('Non hai ancora effettuato nessun noleggio'); ?>.</p>
+                            <p><?= $this->translate('Non hai ancora effettuato alcun noleggio'); ?>.</p>
                         </div>
                     <?php endif; ?>
 

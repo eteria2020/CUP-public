@@ -100,6 +100,10 @@ class UserAreaController extends AbstractActionController
 
             if (isset($postData['customer'])) {
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();
+
+                //prevent gender editing
+                $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
+
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
             } else if (isset($postData['password'])) {
@@ -113,12 +117,21 @@ class UserAreaController extends AbstractActionController
             }
         }
 
+        //show bonus according to registration date
+        $bonus = 100;
+        $startDateBonus100Mins = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-06-14 23:59:59');
+        if (null == $this->customer->getInsertedTs() || 
+            $this->customer->getInsertedTs() < $startDateBonus100Mins) {
+            $bonus = 500;
+        }
+
         return new ViewModel([
             'customer'     => $this->customer,
             'profileForm'  => $this->profileForm,
             'passwordForm' => $this->passwordForm,
             'showError'    => $this->showError,
-            'typeForm'     => $this->typeForm
+            'typeForm'     => $this->typeForm,
+            'bonus'        => $bonus
         ]);
     }
 
@@ -174,7 +187,7 @@ class UserAreaController extends AbstractActionController
 
     public function pinAction()
     {
-        return new ViewModel();
+        return new ViewModel(['customer' => $this->customer]);
     }
 
     public function datiPagamentoAction()
@@ -184,7 +197,7 @@ class UserAreaController extends AbstractActionController
         ]);
     }
 
-    public function rentalsAction()
+    public function tripsAction()
     {
         return new ViewModel([
             'trips' => $this->I_tripsService->getTripsByCustomer($this->customer->getId())

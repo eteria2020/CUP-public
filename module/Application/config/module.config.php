@@ -346,7 +346,7 @@ return array(
                         'options' => [
                             'route' => '/{noleggi}',
                             'defaults' => [
-                                'action' => 'rentals'
+                                'action' => 'trips'
                             ]
                         ]
                     ],

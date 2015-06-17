@@ -254,12 +254,7 @@ $this->headLink()
                                     <div class="block-row-field clearfix">
                                         <div class="block-field bw-f w-1-4">
                                             <p> <label><?= $this->translate("Titolo"); ?></label>
-                                                <?php
-                                                $gender = $this->profileForm->get('customer')->get('gender');
-                                                $gender->setValue($this->customer->getGender());
-                                                echo $this->formElement($gender->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($gender, array('class' => 'error-sign-up'));
-                                                ?>
+                                                <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
                                             </p>
                                         </div>
 
@@ -572,7 +567,7 @@ $this->headLink()
                                     <strong><?= $this->translate("QUESTA È LA SITUAZIONE DEI TUOI MINUTI BONUS. "); ?></strong>
                                     <br />
 
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="500">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->bonus?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Accreditati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
@@ -580,15 +575,16 @@ $this->headLink()
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Utilizzati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="500">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->bonus?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
 
                                     <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
                                         <br />
-                                        <a href="<?= $this->url('pay', ['email' => $this->customer->getEmail()]); ?>" style="color: #ff0000;">
+                                        <?php /*<a href="<?= $this->url('pay', ['email' => $this->customer->getEmail()]); ?>" style="color: #ff0000;">
                                             <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
-                                        </a>
+                                        </a>*/?>
+                                        La quota di iscrizione di 10€ non risulta ancora pagata. Potrai farlo dal 22 al 30 giugno rientrando in area riservata. Grazie.
                                     <?php endif; ?>
 
                                 </div>

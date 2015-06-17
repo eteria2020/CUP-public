@@ -14,15 +14,22 @@ class Minute extends AbstractHelper
      */
     public function __invoke($dateStart, $dateEnd)
     {
-        $dateStart = $dateStart->format('Y-m-d H:i:s');
-        $dateEnd = $dateEnd->format('Y-m-d H:i:s');
 
-        $start = new \DateTime($dateStart);
-        $diff = $start->diff(new \DateTime($dateEnd));
-        $minutes = $diff->days * 24 * 60;
-        $minutes += $diff->h * 60;
-        $minutes += $diff->i;
+        if (null != $dateEnd) {
+            
+            $dateStart = $dateStart->format('Y-m-d H:i:s');
+            $dateEnd = $dateEnd->format('Y-m-d H:i:s');
 
-        return $minutes;
+            $start = new \DateTime($dateStart);
+            $diff = $start->diff(new \DateTime($dateEnd));
+            $minutes = $diff->days * 24 * 60;
+            $minutes += $diff->h * 60;
+            $minutes += $diff->i;
+
+            return $minutes;
+
+        } else {
+            return 'n.d.';
+        }
     }
 }
