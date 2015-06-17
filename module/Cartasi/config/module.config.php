@@ -51,15 +51,6 @@ return [
                                 'action' => 'recurringPayment'
                             ]
                         ]
-                    ],
-                    'ritorno-pagamento-ricorrente' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{ritorno-pagamento-ricorrente}',
-                            'defaults' => [
-                                'action' => 'returnRecurringPayment'
-                            ]
-                        ]
                     ]
                 ]
             ]

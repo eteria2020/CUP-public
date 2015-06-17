@@ -6,7 +6,6 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Helper\Url;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
-use Zend\Http\Client;
 
 use Cartasi\Service\CartasiPaymentsService;
 use SharengoCore\Service\CustomersService;
@@ -37,29 +36,18 @@ class CartasiPaymentsController extends AbstractActionController
     private $url;
 
     /**
-     * @var Zend\Http\Client
-     */
-    private $client;
-
-    /**
      * @param CartasiPaymentService
      */
     public function __construct(
         CartasiPaymentsService $cartasiService,
         CustomersService $customersService,
         array $cartasiConfig,
-        Url $url,
-        Client $client
+        Url $url
     ) {
         $this->cartasiService = $cartasiService;
         $this->customersService = $customersService;
         $this->cartasiConfig = $cartasiConfig;
         $this->url = $url;
-        $this->client = $client;
-
-        $this->client->setOptions([
-            'sslverifypeer' => false
-        ]);
     }
 
     public function firstPaymentAction()
@@ -241,7 +229,6 @@ class CartasiPaymentsController extends AbstractActionController
             'divisa' => $currency,
             'codTrans' => $codTrans,
             'mail' => $email,
-            'url' => $this->url->__invoke('cartasi/ritorno-pagamento-ricorrente', [], ['force_canonical' => true]),
             'scadenza' => $contract->getPanExpiry(),
             'mac' => $mac,
             'num_contratto' => $contract->getId(),
@@ -251,23 +238,16 @@ class CartasiPaymentsController extends AbstractActionController
         ]);
 
         $xml = $this->cartasiService->sendRecurringPaymentRequest($url);
-    }
 
-    public function returnRecurringPaymentAction()
-    {
-        $xml = $this->params()->fromQuery('xml');
-
-        $response = $this->cartasiService->parseXml($xml);
-
-        $macKey = $this->cartasiConfig['mac_key'];
-        if (!$this->cartasiService->verifyResponse($response, $macKey)) {
+        if (!$this->cartasiService->verifyResponse($xml, $macKey)) {
             // TODO
         }
 
-        $this->cartasiService->updateTransactionFormResponse($response);
+        $this->cartasiService->updateTransactionFormResponse($xml);
 
         return new JsonModel([
-            'outcome' => 'OK'
+            'outcome' => $xml->StoreResponse->codiceEsito == 0 ? 'OK' : 'KO'
         ]);
+
     }
 }

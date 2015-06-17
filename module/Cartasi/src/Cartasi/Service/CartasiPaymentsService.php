@@ -35,6 +35,11 @@ class CartasiPaymentsService
      */
     private $underscoreToCamelCase;
 
+    /**
+     * @var Zend\Http\Client
+     */
+    private $client;
+
     public function __construct(
         TransactionsRepository $transactionsRepository,
         ContractsRepository $contractsRepository,
@@ -46,6 +51,11 @@ class CartasiPaymentsService
         $this->contractsRepository = $contractsRepository;
         $this->entityManager = $entityManager;
         $this->underscoreToCamelCase = $underscoreToCamelCase;
+        $this->client = $client;
+        
+        $this->client->setOptions([
+            'sslverifypeer' => false
+        ]);
     }
 
     /**
