@@ -275,7 +275,7 @@ class CartasiPaymentsService
             $this->updateTransaction($transaction, $transactionParams);
 
             // set the first payment as payed
-            if ($transaction->outcome == 'OK') {
+            if ($transaction->getOutcome() == 'OK') {
                 $this->setFirstPaymentCompleted($contract);
             }
 
@@ -359,7 +359,7 @@ class CartasiPaymentsService
      *
      * @param \SimpleXMLElement
      */
-    public function updateTransactionFormResponse(\SimpleXMLElement $response)
+    public function updateTransactionFromXml(\SimpleXMLElement $response)
     {
         $storeRequest = $response->StoreRequest;
         $storeResponse = $response->StoreResponse;
@@ -398,22 +398,9 @@ class CartasiPaymentsService
      */
     public function customerCompletedFirstPayment(Customers $customer)
     {
-        $contract = $this->contractsRepository->findOneBy(['customer' => $customer]);
+        $transaction = $this->transactionsRepository->findOneWithCompletedFirstPayment($customer);
 
-        if (!$contract) {
-            return false;
-        }
-
-        $firstTransaction = $this->transactionsRepository->findOneBy([
-            'contract' => $contract,
-            'isFirstPayment' => true
-        ]);
-
-        if (!$firstTransaction) {
-            return false;
-        }
-
-        return $firstTransaction->getOutcome() == 'OK';
+        return !is_null($rtansaction);
     }
 
     /**

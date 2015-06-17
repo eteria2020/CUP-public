@@ -10,8 +10,6 @@ use Zend\View\Model\JsonModel;
 use Cartasi\Service\CartasiPaymentsService;
 use SharengoCore\Service\CustomersService;
 
-
-
 class CartasiPaymentsController extends AbstractActionController
 {
 
@@ -53,10 +51,16 @@ class CartasiPaymentsController extends AbstractActionController
     public function firstPaymentAction()
     {
         $customerId = $this->params()->fromQuery('customer', '');
-        if (empty($customerId)) {
-            // TODO
+
+        if (!$customerId) {
+            return $this->notFoundAction();
         }
+
         $customer = $this->customersService->findById($customerId);
+
+        if (is_null($customer)) {
+            return $this->notFoundAction();
+        }
 
         $alias = $this->cartasiConfig['alias'];
         $currency = $this->cartasiConfig['currency'];
@@ -76,8 +80,6 @@ class CartasiPaymentsController extends AbstractActionController
             'divisa' => $currency,
             'importo' => $amount
         ], $macKey);
-
-        //$sessionId
 
         $url = $this->cartasiConfig['first_payment_url'];
         $url = $this->cartasiService->buildUrl($url, [
@@ -120,22 +122,53 @@ class CartasiPaymentsController extends AbstractActionController
             'orario' => $time,
             'codAut' => $codAut
         ], $macKey)) {
-            // TODO
+            $this->getEventManager()->trigger('cartasi.first_payment.invalid_mac', $this, [
+                'codTrans' => $codTrans,
+                'esito' => $outcome,
+                'importo' => $amount,
+                'divisa' => $currency,
+                'data' => $date,
+                'orario' => $time,
+                'codAut' => $codAut,
+                'receivedMac' => $receivedMac,
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
         }
 
         $transaction = $this->cartasiService->getTransaction($codTrans);
         $contractId = $this->params()->fromQuery('num_contratto');
 
         // verify the transaction data
-        if (!$this->cartasiService->verifyTransaction($transaction, [
+        if (!$transaction || !$this->cartasiService->verifyTransaction($transaction, [
             'contract_id' => $contractId,
             'currency' => $currency,
             'amount' => $amount
         ])) {
-            // TODO
+            $this->getEventManager()->trigger('cartasi.first_payment.wrong_transaction', $this, [
+                'transactionId' => $transaction ? $transaction->getId() : 0,
+                'contract_id' => $contractId,
+                'currency' => $currency,
+                'amount' => $amount,
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
+            return $this->notFoundAction();
         }
 
         $contract = $this->cartasiService->getContract($contractId);
+
+        if (!$contract) {
+            $this->getEventManager()->trigger('cartasi.first_payment.wrong_contract', $this, [
+                'transactionId' => $transaction ? $transaction->getId() : 0,
+                'contract_id' => $contractId,
+                'currency' => $currency,
+                'amount' => $amount,
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
+            return $this->notFoundAction();
+        }
 
         try {
             $this->cartasiService->updateTransactionAndContract(
@@ -163,7 +196,13 @@ class CartasiPaymentsController extends AbstractActionController
                 ]
             );
         } catch (\Exception $e) {
-            // TODO
+            $this->getEventManager()->trigger('cartasi.first_payment.update_error', $this, [
+                'contractId' => $contract->getId(),
+                'transactionId' => $rtansaction->getId(),
+                'errorMessage' => $e->getMessage(),
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
         }
 
         return new ViewModel([
@@ -180,9 +219,20 @@ class CartasiPaymentsController extends AbstractActionController
         $outcome = $this->params()->fromQuery('esito');
 
         $transaction = $this->cartasiService->getTransaction($codTrans);
-        $this->cartasiService->updateTransaction($transaction, [
-            'outcome' => $outcome
-        ]);
+
+        try {
+            $this->cartasiService->updateTransaction($transaction, [
+                'outcome' => $outcome
+            ]);
+        } catch (\Exception $e) {
+            $this->getEventManager()->trigger('cartasi.first_payment.return_update_error', $this, [
+                'transactionId' => $transaction->getId(),
+                'outcome' => $outcome,
+                'errorMessage' => $e->getMessage(),
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
+        }
 
         return new ViewModel([
             'outcome' => $outcome
@@ -197,8 +247,14 @@ class CartasiPaymentsController extends AbstractActionController
 
         $contract = $this->cartasiService->getContract($contractNumber);
 
+        if (!$contract) {
+            return $this->notFoundAction();
+        }
+
         if ($contract->isExpired()) {
-            // TODO
+            $this->getResponse()->setStatusCode(403);
+            $this->getResponse()->setReasonPhrase('Contract is expired');
+            return;
         }
 
         $email = $contract->getContactEmail();
@@ -240,10 +296,22 @@ class CartasiPaymentsController extends AbstractActionController
         $xml = $this->cartasiService->sendRecurringPaymentRequest($url);
 
         if (!$this->cartasiService->verifyResponse($xml, $macKey)) {
-            // TODO
+            $this->getEventManager()->trigger('cartasi.recurring_payment.wrong_data', $this, [
+                'xml' => $xml->asXml(),
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
         }
 
-        $this->cartasiService->updateTransactionFormResponse($xml);
+        try {
+            $this->cartasiService->updateTransactionFromXml($xml);
+        } catch (\Exception $e) {
+            $this->getEventManager()->trigger('cartasi.recurring_payment.update_error', $this, [
+                'xml' => $xml->asXml(),
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
+        }
 
         return new JsonModel([
             'outcome' => $xml->StoreResponse->codiceEsito == 0 ? 'OK' : 'KO'

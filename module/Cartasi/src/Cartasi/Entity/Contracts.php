@@ -117,6 +117,14 @@ class Contracts
     }
 
     /**
+     * @return Customers
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
      * @param string
      * @return Contracts
      */
