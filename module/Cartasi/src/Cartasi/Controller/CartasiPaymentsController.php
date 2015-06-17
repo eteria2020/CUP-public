@@ -181,6 +181,7 @@ class CartasiPaymentsController extends AbstractActionController
                 [
                     'name' => $this->params()->fromQuery('nome'),
                     'surname' => $this->params()->fromQuery('cognome'),
+                    'email' => $this->params()->fromQuery('mail'),
                     'brand' => $this->params()->fromQuery('brand'),
                     'outcome' => $outcome,
                     'datetime' => $this->cartasiService->datetime($date, $time),

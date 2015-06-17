@@ -106,6 +106,14 @@ class Contracts
     }
 
     /**
+     * @return \SharengoCore\Entity\Customers
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
      * @var Customers
      * @return Contracts
      */

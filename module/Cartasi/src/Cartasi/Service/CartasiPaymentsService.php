@@ -52,7 +52,7 @@ class CartasiPaymentsService
         $this->entityManager = $entityManager;
         $this->underscoreToCamelCase = $underscoreToCamelCase;
         $this->client = $client;
-        
+
         $this->client->setOptions([
             'sslverifypeer' => false
         ]);
@@ -369,6 +369,7 @@ class CartasiPaymentsService
         $this->updateTransaction($transaction, [
             'brand' => $storeResponse->tipoCarta,
             'transactionType' => $storeResponse->transactionType,
+            'email' => $storeRequest->mail,
             'region' => $storeResponse->regione,
             'country' => $storeResponse->paese,
             'productType' => $storeResponse->tipoProdotto,
@@ -377,9 +378,9 @@ class CartasiPaymentsService
             'hash' => $storeResponse->hash,
             'codAut' => $storeResponse->codeAut,
             'dateTime' => date_create_from_format('YmdHis', str_replace("T", "", $storeResponse->dataOra)),
-            'outcome' => $storeResponse->codiceEsito.' '.
-                $storeResponse->descrizioneEsito.' '.
-                $storeResponse->dettagliEsito
+            'outcome' => $storeResponse->codiceEsito.' - '.
+                $storeResponse->descrizioneEsito,
+            'message' => $storeResponse->dettagliEsito
         ]);
     }
 

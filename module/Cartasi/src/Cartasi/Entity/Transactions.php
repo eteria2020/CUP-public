@@ -206,6 +206,25 @@ class Transactions
     }
 
     /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string
+     * @return Transactions
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getAmount()
