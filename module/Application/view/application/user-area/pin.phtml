@@ -31,8 +31,6 @@
                 <!-- module-sharing-resmume -->
                 <div class="module-sharing-resmume padding-top">
 
-                    <?php if($this->customer->getFirstPaymentCompleted()) { ?>
-
                     <div class="pin-title">
                         <?= $this->translate('QUESTO E’ IL PIN CHE TI SEVIRA’ PER UTILIZZARE UN’EQUOMOBILE'); ?>
                     </div>
@@ -54,12 +52,6 @@
                             <?= $this->translate('Guarda come si usa'); ?>
                         </a>
                     </div>
-
-                    <?php } else { ?>
-
-                    <a href="<?= $this->url('area-utente/dati-pagamento'); ?>">Completa il pagamento della quota di iscrizione per poter visualizzare il tuo codice PIN</a>
-
-                    <?php } ?>
 
                 </div>
                 <!-- module-sharing-resmume -->

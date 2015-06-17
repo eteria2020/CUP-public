@@ -187,7 +187,7 @@ class UserAreaController extends AbstractActionController
 
     public function pinAction()
     {
-        return new ViewModel(['customer' => $this->customer]);
+        return new ViewModel();
     }
 
     public function datiPagamentoAction()
