@@ -10,6 +10,8 @@ use SharengoCore\Entity\Customers;
 
 use Doctrine\ORM\EntityManager;
 use Zend\Filter\Word\UnderscoreToCamelCase;
+use Zend\Http\Client;
+use Zend\Http\Response;
 
 class CartasiPaymentsService
 {
@@ -37,7 +39,8 @@ class CartasiPaymentsService
         TransactionsRepository $transactionsRepository,
         ContractsRepository $contractsRepository,
         EntityManager $entityManager,
-        UnderscoreToCamelCase $underscoreToCamelCase
+        UnderscoreToCamelCase $underscoreToCamelCase,
+        Client $client
     ) {
         $this->transactionsRepository = $transactionsRepository;
         $this->contractsRepository = $contractsRepository;
@@ -401,5 +404,19 @@ class CartasiPaymentsService
         }
 
         return $firstTransaction->getOutcome() == 'OK';
+    }
+
+    /**
+     * @var string
+     * @return \SimpleXMLElement
+     */
+    public function sendRecurringPaymentRequest($url)
+    {
+        $request = new \Zend\Http\Request();
+        $request->setUri($url);
+
+        $response = $this->client->send($request);
+
+        return simplexml_load_string($response->getBody());
     }
 }

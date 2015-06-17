@@ -5,6 +5,7 @@ namespace Cartasi\Service;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Filter\Word\UnderscoreToCamelCase;
+use Zend\Http\Client;
 
 class CartasiPaymentsServiceFactory implements FactoryInterface
 {
@@ -14,12 +15,14 @@ class CartasiPaymentsServiceFactory implements FactoryInterface
         $transactionsRepository = $entityManager->getRepository('Cartasi\Entity\Transactions');
         $contractsRepository = $entityManager->getRepository('Cartasi\Entity\Contracts');
         $underscoreToCamelCase = new UnderscoreToCamelCase();
+        $client = new Client();
 
         return new CartasiPaymentsService(
             $transactionsRepository,
             $contractsRepository,
             $entityManager,
-            $underscoreToCamelCase
+            $underscoreToCamelCase,
+            $client
         );
     }
 }

@@ -6,9 +6,12 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Helper\Url;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Zend\Http\Client;
 
 use Cartasi\Service\CartasiPaymentsService;
 use SharengoCore\Service\CustomersService;
+
+
 
 class CartasiPaymentsController extends AbstractActionController
 {
@@ -34,18 +37,29 @@ class CartasiPaymentsController extends AbstractActionController
     private $url;
 
     /**
+     * @var Zend\Http\Client
+     */
+    private $client;
+
+    /**
      * @param CartasiPaymentService
      */
     public function __construct(
         CartasiPaymentsService $cartasiService,
         CustomersService $customersService,
         array $cartasiConfig,
-        Url $url
+        Url $url,
+        Client $client
     ) {
         $this->cartasiService = $cartasiService;
         $this->customersService = $customersService;
         $this->cartasiConfig = $cartasiConfig;
         $this->url = $url;
+        $this->client = $client;
+
+        $this->client->setOptions([
+            'sslverifypeer' => false
+        ]);
     }
 
     public function firstPaymentAction()
@@ -236,7 +250,7 @@ class CartasiPaymentsController extends AbstractActionController
             'descrizione' => $description
         ]);
 
-        $this->redirect()->toUrl($url);
+        $xml = $this->cartasiService->sendRecurringPaymentRequest($url);
     }
 
     public function returnRecurringPaymentAction()
