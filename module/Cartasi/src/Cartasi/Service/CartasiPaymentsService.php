@@ -401,7 +401,7 @@ class CartasiPaymentsService
     {
         $transaction = $this->transactionsRepository->findOneWithCompletedFirstPayment($customer);
 
-        return !is_null($rtansaction);
+        return !is_null($transaction);
     }
 
     /**

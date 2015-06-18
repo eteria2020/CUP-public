@@ -246,10 +246,26 @@ class CartasiPaymentsController extends AbstractActionController
         $amount = $this->params()->fromQuery('amount');
         $contractNumber = $this->params()->fromQuery('contract');
 
+        if (!$contractNumber) {
+            $this->getEventManager()->trigger('cartasi.recurring_payment.invalid_contract_number', $this, [
+                'contractNumber' => $contractNumber,
+                'amount' => $amount,
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
+            return $this->returnJsonWithOutcome('KO');
+        }
+
         $contract = $this->cartasiService->getContract($contractNumber);
 
         if (!$contract) {
-            return $this->notFoundAction();
+            $this->getEventManager()->trigger('cartasi.recurring_payment.invalid_contract', $this, [
+                'contract' => $contract,
+                'amount' => $amount,
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
+            return $this->returnJsonWithOutcome('KO');
         }
 
         if ($contract->isExpired()) {
@@ -314,9 +330,14 @@ class CartasiPaymentsController extends AbstractActionController
             ]);
         }
 
-        return new JsonModel([
-            'outcome' => $xml->StoreResponse->codiceEsito == 0 ? 'OK' : 'KO'
-        ]);
+        $outcome = $xml->StoreResponse->codiceEsito == 0 ? 'OK' : 'KO';
+        return $this->returnJsonWithOutcome($outcome);
+    }
 
+    private function returnJsonWithOutcome($outcome)
+    {
+        return new JsonModel([
+            'outcome' => $outcome
+        ]);
     }
 }

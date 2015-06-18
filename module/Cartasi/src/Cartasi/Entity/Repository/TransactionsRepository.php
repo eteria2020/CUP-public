@@ -17,6 +17,6 @@ class TransactionsRepository extends \Doctrine\ORM\EntityRepository
             'AND t.outcome = \'OK\''
         );
         $query->setParameter('customerId', $customer->getId());
-        return $query->getSingleResult();
+        return $query->getOneOrNullResult();
     }
 }

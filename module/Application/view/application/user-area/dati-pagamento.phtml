@@ -35,34 +35,31 @@
                     <div class="block-form bw-f w-2-3  clearfix">
 
                         <?php if($this->customer->getFirstPaymentCompleted()): ?>
-                        <!--
-                            <?php if (!$this->cartasiCompletedFirstPayment): ?>
 
-                                <div class="block-alert margin-bottom info">
-                                    <p><?= $this->translate('Il primo pagamento è stato effettuato. Per abilitare i pagamenti ricorrenti è necessario registrare la proprio carta nel circuito Cartasi effettuando un pagamento iniziale di 10 €.') ?></p>
-                                    <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>">
-                                        <button class="medium red"><?= $this->translate("Clicca qui"); ?></button>
+                            <?php //if (!$this->cartasiCompletedFirstPayment): ?>
+
+                                <!--div class="block-alert margin-bottom info">
+                                    <p><? //echo $this->translate('Il primo pagamento è stato effettuato. Per abilitare i pagamenti ricorrenti è necessario registrare la proprio carta nel circuito Cartasi effettuando un pagamento iniziale di 10 €.') ?></p>
+                                    <a href="<? //echo $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>">
+                                        <button class="medium red"><? //echo $this->translate("Clicca qui"); ?></button>
                                     </a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
-                                </div>
+                                </div-->
 
-                            <?php else: ?>
-                        
+                            <? //php else: ?>
+
                                 <div class="block-alert margin-bottom info">
                                     <p>
                                         <?= $this->translate('Il pagamento della quota di iscrizione è andato a buon fine, grazie'); ?>.
                                     </p>
                                 </div>
-                        
-                            <?php endif; ?>
-                        
+
+                            <?php // endif; ?>
+
                         <?php else: ?>
-                        <!-- -->
                             <div class="block-alert margin-bottom info">
                                 <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
                             </div>
-                        <!--
                         <?php endif; ?>
-                        -->
                     </div>
                     <!-- block-form -->
 
