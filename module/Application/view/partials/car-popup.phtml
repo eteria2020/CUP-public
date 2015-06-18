@@ -1,0 +1,100 @@
+<!-- module-modal -->
+<div id="car-popup" class="module-modal" style="height:100%; position:fixed; display:none">
+    <!-- modal-overlay -->
+    <div class="modal-overlay">
+        <!-- module-pop-up -->
+        <div class="module-pop-up" style="margin:180px auto;">
+            
+            <a id="btn-close" class="btn-close"><i class="fa fa-close"></i></a>
+            
+            <!-- module-pop-up-content -->
+            <div class="module-pop-up-content">
+            
+                <!-- block-car-data -->
+                <div class="block-car-data bg-ct4 clearfix">
+                    
+                    <div class="block-heading text-align-center">
+                        <span class="block-info">Auto scelta</span>
+                        <h1 id="licence-plate" class="block-title"></h1>
+                    </div>
+                    
+                    <!-- block-content -->
+                    <div class="block-content clearfix">
+                        
+                        <!-- block-column -->
+                        <div class="block-column bw-f w-2-4">
+                            <div class="block-image"><img src="images/car.jpg" alt=""></div>
+                            
+                            <!-- block-label-status -->
+                            <div class="block-label-status">
+                                <span class="block-info">Stato interni</span>
+                                <div class="block-bar">
+                                    <!-- value are w25, w50, w75, w100 -->
+                                    <div id="int_cleanliness" class="block-bar-value"></div>
+                                </div>                                            
+                            </div>
+                            <!-- block-label-status -->
+                            
+                            <!-- block-label-status -->
+                            <div class="block-label-status">
+                                <span class="block-info">Stato esterni</span>
+                                <div class="block-bar">
+                                    <div id="ext_cleanliness" class="block-bar-value"></div>
+                                </div>                                            
+                            </div>
+                            <!-- block-label-status -->
+                            
+                        </div>
+                        <!-- block-column -->
+                        
+                        <div class="block-column last bw-f w-2-4">
+                         
+                            <!-- block-wrapper-car-data-info -->
+                            <div class="block-wrapper-car-data-info bg-ct4">
+                                <!-- block-car-data-info -->
+                                <div class="block-car-data-info">
+                                    <span class="block-data-name"><i class="fa fa-map-marker"></i> Dove si trova</span>
+                                    <span id="location" class="block-data-value"></span>
+                                </div>
+                                <!-- block-car-data-info -->
+                                <!-- block-car-data-info -->
+                                <div class="block-car-data-info">
+                                    <span class="block-data-name"><i class="fa fa-sun-o"></i> Autonomia</span>
+                                    <span id="km" class="block-data-value"></span>                                                
+                                </div>
+                                <!-- block-car-data-info -->
+                                
+                                <div class="block-wrapper-btn">                                            
+                                                                    
+                                    <a href="" class="btn-link ct3">Registrati e prenota <i class="fa fa-angle-right"></i></a>
+                                </div>
+                                
+                            </div>
+                            <!-- block-wrapper-car-data-info -->
+                            
+                        </div>
+                    </div>
+                    <!-- block-content -->
+                </div>
+                <!-- block-car-data -->
+                
+            </div>
+            <!-- module-pop-up-content -->
+            
+        </div>
+        <!-- module-pop-up -->
+    </div>
+    <!-- modal-overlay -->
+</div>
+<!-- module-modal -->
+
+<script>
+
+// close the popup when the cross button is pressed
+var div = document.getElementById('car-popup');
+var btn = document.getElementById('btn-close');
+btn.addEventListener('click', function (event) {
+     div.style.display="none";
+ });
+
+ </script>

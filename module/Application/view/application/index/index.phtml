@@ -84,6 +84,14 @@
 <div class="module-car-map">
 
     <script>
+
+        // define global variables to interact with map elements
+        var map;
+        var carMarkers = new Array();
+        var carMarkersSet = false;
+        var energyMarkers = new Array();
+        var energyMarkersSet = false;
+
         jQuery(function($) {
             // Asynchronously Load the map API
             var script = document.createElement('script');
@@ -92,8 +100,8 @@
         });
 
         function initialize() {
-            var map,
-            // Set the latitude & longitude for our location (London Eye)
+
+            var geocoder = new google.maps.Geocoder(),
                 myLatlng = new google.maps.LatLng(45.4627338,9.1777323),
                 mapOptions = {
                     center: myLatlng, // Set our point as the centre location
@@ -108,15 +116,84 @@
             // Allow our satellite view have a tilted display (This only works for certain locations)
             map.setTilt(45);
 
+            // retrieve value based on cleanliness
+            function parseCleanliness(value) {
+                var defaultClass = 'block-bar-value ';
+                if(value == 'clean')
+                {
+                    return defaultClass + 'w100';
+                } else if(value == 'average')
+                {
+                    return defaultClass + 'w75';
+                } else if(value == 'dirty')
+                {
+                    return defaultClass + 'w50';
+                }
+                // TODO verify default behaviour
+                return defaultClass + 'w100';
+            }
+
+            // get the positions of the cars
             $.get("<?= $this->url('cars'); ?>", function (data) {
-                data.forEach(function (position) {
-                    new google.maps.Marker({
-                        position: new google.maps.LatLng(position[0], position[1]),
+                data.forEach(function (car) {
+
+                    var latlng = new google.maps.LatLng(car['position'][0], car['position'][1]);
+
+                    var marker = new google.maps.Marker({
+                        position: latlng,
                         map: map,
-                        icon: "<?= $this->basePath('images/marker.png'); ?>"
+                        icon: "<?= $this->basePath('images/marker-car.png'); ?>"
                     });
+
+                    var location = '';
+                        
+                    geocoder.geocode({'latLng': latlng}, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[1]) {
+                                location = results[1].formatted_address;
+                            } else {
+                                console.log('No results found');
+                            }
+                        } else {
+                            console.log('Geocoder failed due to: ' + status);
+                        }
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function() {
+
+                        //retrieve the values for the car
+                        var plate = car['plate'];
+                        var intClean = parseCleanliness(car['intCleanliness']);
+                        var extClean = parseCleanliness(car['extCleanliness']);
+                        var km = car['km'] + ' km';
+                        
+                        // retrieve the elements that will be modified
+                        var plateDiv = document.getElementById('licence-plate');
+                        var intCleanDiv = document.getElementById('int_cleanliness');
+                        var extCleanDiv = document.getElementById('ext_cleanliness');
+                        var locationDiv = document.getElementById('location');
+                        var kmDiv = document.getElementById('km');
+
+                        // modify the elements
+                        plateDiv.innerHTML = plate;
+                        intCleanDiv.className = intClean;
+                        extCleanDiv.className = extClean;
+                        locationDiv.innerHTML = location;
+                        kmDiv.innerHTML = km;
+
+                        // show the popup
+                        document.getElementById('car-popup').style.display="inline";
+
+                    });
+
+                    // add the marker to the carMarkers array
+                    carMarkers.push(marker);
+
                 });
             });
+
+            carMarkersSet = true;
+
         }
     </script>
 
@@ -127,19 +204,44 @@
     <!-- block-map-tool-filter -->
     <div class="block-map-tool-filter margin-right margin-top g-top g-right">
         <ul>
-            <li><a href=""><i class="icon-car-in-circle-ct2"><?= $this->translate('auto'); ?></i></a></li>
-            <li><a href=""><i class="icon-energy-in-circle-ct2"><?= $this->translate('rifornimenti'); ?></i></a></li>
+            <li id="cars-toggle"><a><i class="icon-car-in-circle-ct2"></i></a></li>
+            <li id="energy-toggle"><a><i class="icon-energy-in-circle-ct2"></i></a></li>
+
+            <script>
+
+                // set on click events on the elements
+                $('#cars-toggle').click(function(e) {
+                    toggleMarkers(carMarkers, (carMarkersSet ? null : map));
+                    carMarkersSet = !carMarkersSet;
+                })
+
+                $('#energy-toggle').click(function(e) {
+                    toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
+                    energyMarkersSet = !energyMarkersSet;
+                })
+
+                // define on click function
+                function toggleMarkers(markers, value)
+                {
+                    for(i=0 ; i<markers.length ; i++)
+                    {
+                        markers[i].setMap(value);
+                    }
+                }
+
+            </script>
+
         </ul>
     </div>
     <!-- block-map-tool-filter -->
-
+    <!--
     <div id="map-overlay">
         <a href="http://www.equomobili.it">
             <img src="<?= $this->basePath('images/banner_sito_sharengo.png'); ?>">
         </a>
         <?= $this->translate('Stiamo arrivando'); ?>
     </div>
-
+    -->
     <!-- module-map-tool-search -->
     <?php /*<div class="module-map-tool-search bg-ct2 g-bottom g-left">
 
@@ -496,3 +598,9 @@
 
 </div>
 <!-- main -->
+
+<?php
+// load the popup to show when a car is selected
+echo $this->partial('partials/car-popup.phtml');
+
+?>
