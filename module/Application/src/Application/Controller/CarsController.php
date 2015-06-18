@@ -24,15 +24,6 @@ class CarsController extends AbstractActionController
     {
         $cars = $this->carsService->getListCars();
 
-        /*
-        $positions = array();
-        
-        foreach($cars as $car)
-        {
-            $positions[] = [$car->getLatitude(), $car->getLongitude()];
-        }
-        */
-
         $elements = array();
 
         foreach($cars as $car)

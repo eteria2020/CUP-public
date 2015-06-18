@@ -66,7 +66,22 @@
                                 
                                 <div class="block-wrapper-btn">                                            
                                                                     
-                                    <a href="" class="btn-link ct3">Registrati e prenota <i class="fa fa-angle-right"></i></a>
+                                    <a 
+
+                                    <?php
+
+                                    $isLoggedIn = $this->IsLoggedIn();
+
+                                    if(!$isLoggedIn)
+                                    {
+                                        echo "href=\"";
+                                        echo $this->url('login');
+                                        echo "\"";
+                                    }
+
+                                    ?>
+
+                                     class="btn-link ct3">Registrati e prenota <i class="fa fa-angle-right"></i></a>
                                 </div>
                                 
                             </div>

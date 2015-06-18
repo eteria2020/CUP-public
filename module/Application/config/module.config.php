@@ -407,7 +407,8 @@ return array(
         ],
         'invokables' => [
             'IsUserArea' => 'Application\View\Helper\IsUserArea',
-            'Minute'     => 'Application\View\Helper\Minute'
+            'Minute'     => 'Application\View\Helper\Minute',
+            'IsLoggedIn' => 'Application\View\Helper\IsLoggedIn'
         ]
     ],
     'view_manager' => array(
