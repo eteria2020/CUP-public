@@ -18,6 +18,7 @@ class PasswordService extends Password
     {
         $pass = hash("MD5", $data['newCredential']);
         $user->setPassword($pass);
+        $user->setRegistrationCompleted(true);
 
         $this->getEventManager()->trigger(__FUNCTION__, $this, array('user' => $user));
         $this->getUserMapper()->update($user);
