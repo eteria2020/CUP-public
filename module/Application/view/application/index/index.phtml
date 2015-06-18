@@ -135,7 +135,6 @@
 
             // get the positions of the cars
             $.get("<?= $this->url('cars'); ?>", function (jsonData) {
-                console.log(jsonData);
                 jsonData.data.forEach(function (car) {
 
                     var latlng = new google.maps.LatLng(car.lat, car.lon);
@@ -195,6 +194,24 @@
             });
 
             carMarkersSet = true;
+
+            $.get("<?= $this->url('pois'); ?>", function (jsonData) {
+                jsonData.data.forEach(function (pois) {
+
+                    var latlng = new google.maps.LatLng(pois.lat, pois.lon);
+
+                    var marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map,
+                        icon: "<?= $this->basePath('images/marker-pois.png'); ?>"
+                    });
+
+                    energyMarkers.push(marker);
+
+                });
+            });
+
+            energyMarkersSet = true;
 
         }
     </script>

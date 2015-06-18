@@ -293,6 +293,17 @@ return array(
                     ]
                 ]
             ],
+            'pois' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/pois',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Pois',
+                        'action'     => 'positions',
+                    ]
+                ]
+            ],
             'area-utente' => [
                 'type' => 'Segment',
                 'options' => [
@@ -390,7 +401,8 @@ return array(
     'controllers' => [
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Cars' => 'Application\Controller\CarsController'
+            'Application\Controller\Cars' => 'Application\Controller\CarsController',
+            'Application\Controller\Pois' => 'Application\Controller\PoisController'
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
@@ -442,6 +454,7 @@ return array(
                 array('controller' => 'Application\Controller\Index', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\Cars', 'roles' => array()),
+                array('controller' => 'Application\Controller\Pois', 'roles' => array()),
                 array('controller' => 'Application\Controller\Console', 'roles' => array()),
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
