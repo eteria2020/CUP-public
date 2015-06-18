@@ -12,10 +12,11 @@ class TransactionsRepository extends \Doctrine\ORM\EntityRepository
         $query = $em->createQuery(
             'SELECT t FROM \Cartasi\Entity\Transactions t '.
             'JOIN t.contract c '.
-            'WHERE c. = :customer '.
+            'WHERE c.customer = :customerId '.
             'AND t.isFirstPayment = TRUE '.
-            'AND t.outcome = "OK"'
+            'AND t.outcome = \'OK\''
         );
-        return $query->getSingleScalarResult() > 0;
+        $query->setParameter('customerId', $customer->getId());
+        return $query->getSingleResult();
     }
 }
