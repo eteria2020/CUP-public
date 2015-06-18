@@ -134,29 +134,16 @@
             }
 
             // get the positions of the cars
-            $.get("<?= $this->url('cars'); ?>", function (data) {
-                data.forEach(function (car) {
+            $.get("<?= $this->url('cars'); ?>", function (jsonData) {
+                console.log(jsonData);
+                jsonData.data.forEach(function (car) {
 
-                    var latlng = new google.maps.LatLng(car['position'][0], car['position'][1]);
+                    var latlng = new google.maps.LatLng(car.lat, car.lon);
 
                     var marker = new google.maps.Marker({
                         position: latlng,
                         map: map,
                         icon: "<?= $this->basePath('images/marker-car.png'); ?>"
-                    });
-
-                    var location = '';
-                        
-                    geocoder.geocode({'latLng': latlng}, function(results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            if (results[1]) {
-                                location = results[1].formatted_address;
-                            } else {
-                                console.log('No results found');
-                            }
-                        } else {
-                            console.log('Geocoder failed due to: ' + status);
-                        }
                     });
 
                     google.maps.event.addListener(marker, 'click', function() {
@@ -174,11 +161,26 @@
                         var locationDiv = document.getElementById('location');
                         var kmDiv = document.getElementById('km');
 
+                        // empty the location text
+                        locationDiv.innerHTML = '';
+
+                        // get the location
+                        geocoder.geocode({'latLng': latlng}, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[1]) {
+                                    locationDiv.innerHTML = results[1].formatted_address;
+                                } else {
+                                    console.log('No results found');
+                                }
+                            } else {
+                                console.log('Geocoder failed due to: ' + status);
+                            }
+                        });
+
                         // modify the elements
                         plateDiv.innerHTML = plate;
                         intCleanDiv.className = intClean;
                         extCleanDiv.className = extClean;
-                        locationDiv.innerHTML = location;
                         kmDiv.innerHTML = km;
 
                         // show the popup

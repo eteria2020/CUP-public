@@ -389,14 +389,14 @@ return array(
     ),
     'controllers' => [
         'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Cars' => 'Application\Controller\CarsController'
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
-            'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
-            'Application\Controller\Cars' => 'Application\Controller\CarsControllerFactory'
+            'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory'
         ],
     ],
     'view_helpers' => [

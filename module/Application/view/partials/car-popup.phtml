@@ -124,9 +124,12 @@ var btnBack = document.getElementById('btn-back');
 var btnConfirm = document.getElementById('btn-confirm');
 
 // add the event listeners
-btnReserve.addEventListener('click', function(event) {
-    reserve();
-})
+if(btnReserve != null)
+{
+    btnReserve.addEventListener('click', function(event) {
+        reserve();
+    })
+}
 btnBack.addEventListener('click', function(event) {
     reset();
 })
@@ -139,7 +142,7 @@ function reserve()
 {
     leftColumn.style.display="none";
     rightColumn.style.width="100%";
-    btnReserve.style.display="none";
+    btnReserve.style.display="none"; //.hide,.show
     step2Buttons.style.display="inline";
     circleIcon.className="fa fa-info-circle";
     kmTitle.innerHTML = "Ricorda che:";
@@ -151,7 +154,8 @@ function reset()
 {
     leftColumn.style.display="block";
     rightColumn.style.width="";
-    btnReserve.style.display="inline";
+    if(btnReserve != null)
+        btnReserve.style.display="inline";
     step2Buttons.style.display="none";
     circleIcon.className="fa fa-sun-o";
     kmTitle.innerHTML = "Autonomia";
