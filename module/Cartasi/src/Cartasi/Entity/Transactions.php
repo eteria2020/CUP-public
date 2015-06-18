@@ -417,6 +417,14 @@ class Transactions
     }
 
     /**
+     * @return Contracts
+     */
+    public function getContract()
+    {
+        return $this->contract;
+    }
+
+    /**
      * @var boolean
      * @return Transactions
      */

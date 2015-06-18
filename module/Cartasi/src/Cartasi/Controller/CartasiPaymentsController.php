@@ -140,13 +140,9 @@ class CartasiPaymentsController extends AbstractActionController
         $contractId = $this->params()->fromQuery('num_contratto');
 
         // verify the transaction data
-        if (!$transaction || !$this->cartasiService->verifyTransaction($transaction, [
-            'contract_id' => $contractId,
-            'currency' => $currency,
-            'amount' => $amount
-        ])) {
+        if (!$transaction) {
             $this->getEventManager()->trigger('cartasi.first_payment.wrong_transaction', $this, [
-                'transactionId' => $transaction ? $transaction->getId() : 0,
+                'transactionId' => $codTrans,
                 'contract_id' => $contractId,
                 'currency' => $currency,
                 'amount' => $amount,
@@ -154,6 +150,21 @@ class CartasiPaymentsController extends AbstractActionController
                 'ts' => date('Y-m-d H:i:s')
             ]);
             return $this->notFoundAction();
+        }
+
+        if (!$this->cartasiService->verifyTransaction($transaction, [
+            'contract_id' => $contractId,
+            'currency' => $currency,
+            'amount' => $amount
+        ])) {
+            $this->getEventManager()->trigger('cartasi.first_payment.wrong_transaction_data', $this, [
+                'transactionId' => $transaction ? $transaction->getId() : 0,
+                'contract_id' => $contractId,
+                'currency' => $currency,
+                'amount' => $amount,
+                'url' => $this->getRequest()->getUriString(),
+                'ts' => date('Y-m-d H:i:s')
+            ]);
         }
 
         $contract = $this->cartasiService->getContract($contractId);
@@ -167,7 +178,7 @@ class CartasiPaymentsController extends AbstractActionController
                 'url' => $this->getRequest()->getUriString(),
                 'ts' => date('Y-m-d H:i:s')
             ]);
-            return $this->notFoundAction();
+            $contract = $transaction->getContract();
         }
 
         try {

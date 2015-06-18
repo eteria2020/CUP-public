@@ -42,11 +42,14 @@ class Module
             [
                 'cartasi.first_payment.invalid_mac',
                 'cartasi.first_payment.wrong_transaction',
+                'cartasi.first_payment.wrong_transaction_data',
                 'cartasi.first_payment.wrong_contract',
                 'cartasi.first_payment.update_error',
                 'cartasi.first_payment.return_update_error',
                 'cartasi.recurring_payment.wrong_data',
-                'cartasi.recurring_payment.update_error'
+                'cartasi.recurring_payment.update_error',
+                'cartasi.recurring_payment.invalid_contract_number',
+                'cartasi.recurring_payment.invalid_contract'
             ],
             function (EventInterface $e) use ($alertSettings) {
                 $this->sendAlertEmail($e, $alertSettings);
