@@ -1,3 +1,10 @@
+<?php
+
+// Find out if a user is logged in
+$isLoggedIn = $this->IsLoggedIn();
+
+?>
+
 <!-- module-modal -->
 <div id="car-popup" class="module-modal" style="height:100%; position:fixed; display:none">
     <!-- modal-overlay -->
@@ -22,7 +29,7 @@
                     <div class="block-content clearfix">
                         
                         <!-- block-column -->
-                        <div class="block-column bw-f w-2-4">
+                        <div id="left-column" class="block-column bw-f w-2-4">
                             <div class="block-image"><img src="images/car.jpg" alt=""></div>
                             
                             <!-- block-label-status -->
@@ -47,7 +54,7 @@
                         </div>
                         <!-- block-column -->
                         
-                        <div class="block-column last bw-f w-2-4">
+                        <div id="right-column" class="block-column last bw-f w-2-4">
                          
                             <!-- block-wrapper-car-data-info -->
                             <div class="block-wrapper-car-data-info bg-ct4">
@@ -59,29 +66,23 @@
                                 <!-- block-car-data-info -->
                                 <!-- block-car-data-info -->
                                 <div class="block-car-data-info">
-                                    <span class="block-data-name"><i class="fa fa-sun-o"></i> Autonomia</span>
+                                    <span id="km-title" class="block-data-name">
+                                        <i id="circle-icon" class="fa fa-sun-o"></i>
+                                    Autonomia</span>
                                     <span id="km" class="block-data-value"></span>                                                
                                 </div>
                                 <!-- block-car-data-info -->
                                 
-                                <div class="block-wrapper-btn">                                            
+                                <div <?php if($isLoggedIn){echo 'id="btn-reserve"';} ?>
+                                 class="block-wrapper-btn">                                            
                                                                     
-                                    <a 
-
-                                    <?php
-
-                                    $isLoggedIn = $this->IsLoggedIn();
-
-                                    if(!$isLoggedIn)
-                                    {
-                                        echo "href=\"";
-                                        echo $this->url('login');
-                                        echo "\"";
-                                    }
-
-                                    ?>
-
+                                    <a <?php if(!$isLoggedIn){echo 'href="'.$this->url('login').'"';} ?>
                                      class="btn-link ct3">Registrati e prenota <i class="fa fa-angle-right"></i></a>
+                                </div>
+
+                                <div id="step2-buttons" class="block-wrapper-btn" style="display:none"> 
+                                    <button id="btn-back" class="reset pull-left"><i class="fa fa-angle-left"></i> Annulla</button>
+                                    <button id="btn-confirm" class="pull-right ct2">Conferma <i class="fa fa-angle-right"></i></button>
                                 </div>
                                 
                             </div>
@@ -104,12 +105,71 @@
 <!-- module-modal -->
 
 <script>
+// handle the second popup
 
+// hold the km value in this var
+var oldKm;
+
+var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec magna rhoncus nunc varius euismod. Nullam interdum a augue sed accumsan. Fusce in quam leo. Pellentesque in tristique est.';
+
+// get the necessary elements
+var leftColumn = document.getElementById('left-column');
+var rightColumn = document.getElementById('right-column');
+var btnReserve = document.getElementById('btn-reserve');
+var step2Buttons = document.getElementById('step2-buttons');
+var circleIcon = document.getElementById('circle-icon');
+var kmTitle = document.getElementById('km-title');
+var kmText = document.getElementById('km');
+var btnBack = document.getElementById('btn-back');
+var btnConfirm = document.getElementById('btn-confirm');
+
+// add the event listeners
+btnReserve.addEventListener('click', function(event) {
+    reserve();
+})
+btnBack.addEventListener('click', function(event) {
+    reset();
+})
+btnConfirm.addEventListener('click', function(event) {
+    // TODO
+})
+
+// create the functions
+function reserve()
+{
+    leftColumn.style.display="none";
+    rightColumn.style.width="100%";
+    btnReserve.style.display="none";
+    step2Buttons.style.display="inline";
+    circleIcon.className="fa fa-info-circle";
+    kmTitle.innerHTML = "Ricorda che:";
+    oldKm = km.innerHTML;
+    km.innerHTML = text;
+}
+
+function reset()
+{
+    leftColumn.style.display="block";
+    rightColumn.style.width="";
+    btnReserve.style.display="inline";
+    step2Buttons.style.display="none";
+    circleIcon.className="fa fa-sun-o";
+    kmTitle.innerHTML = "Autonomia";
+    km.innerHTML = oldKm;
+}
+
+</script>
+
+<script>
 // close the popup when the cross button is pressed
+
+// get the necessary elements
 var div = document.getElementById('car-popup');
-var btn = document.getElementById('btn-close');
-btn.addEventListener('click', function (event) {
-     div.style.display="none";
- });
+
+// add the event listener
+$('#btn-close').click(function(e) {
+    div.style.display="none";
+    reset();
+})
 
  </script>
