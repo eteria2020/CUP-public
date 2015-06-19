@@ -203,19 +203,24 @@ function initialize()
 // handle the click on the top right buttons
 var carsToggle = document.getElementById('cars-toggle');
 var energyToggle = document.getElementById('energy-toggle');
+var carsToggleIcon = document.getElementById('cars-toggle-icon');
+var energyToggleIcon = document.getElementById('energy-toggle-icon');
 
-carsToggle.setEventListener('click', function (event)
+// set energy icon off
+toggleButtonColor(energyToggleIcon, energyMarkersSet);
+
+carsToggle.addEventListener('click', function (event)
 {
     toggleMarkers(carMarkers, (carMarkersSet ? null : map));
     carMarkersSet = !carMarkersSet;
-    carsToggle.style.className = 'icon-car-in-circle-ct2' + (carMarkersSet ? '' : ' grey-images');
+    toggleButtonColor(carsToggleIcon, carMarkersSet);
 })
 
-energyToggle.setEventListener('click', function (event)
+energyToggle.addEventListener('click', function (event)
 {
     toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
     energyMarkersSet = !energyMarkersSet;
-    energyToggle.style.className = 'icon-energy-in-circle-ct2' + (energyMarkersSet ? '' : ' grey-images');
+    toggleButtonColor(energyToggleIcon, energyMarkersSet);
 })
 
 // define on click function
@@ -227,4 +232,8 @@ function toggleMarkers(markers, value)
     }
 }
 
-
+// toggle icon color
+function toggleButtonColor(icon, flag)
+{
+    icon.style.backgroundImage = "url('../images/images" + (flag ? '' : '-grey') + ".png')";
+}
