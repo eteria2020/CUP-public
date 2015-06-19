@@ -289,7 +289,7 @@ return array(
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Cars',
-                        'action'     => 'positions',
+                        'action'     => 'list',
                     ]
                 ]
             ],
@@ -300,7 +300,18 @@ return array(
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Pois',
-                        'action'     => 'positions',
+                        'action'     => 'list',
+                    ]
+                ]
+            ],
+            'reservations' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/reservations',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Reservations',
+                        'action'     => 'list',
                     ]
                 ]
             ],
@@ -402,7 +413,8 @@ return array(
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Cars' => 'Application\Controller\CarsController',
-            'Application\Controller\Pois' => 'Application\Controller\PoisController'
+            'Application\Controller\Pois' => 'Application\Controller\PoisController',
+            'Application\Controller\Reservations' => 'Application\Controller\ReservationsController'
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
@@ -420,7 +432,8 @@ return array(
         'invokables' => [
             'IsUserArea' => 'Application\View\Helper\IsUserArea',
             'Minute'     => 'Application\View\Helper\Minute',
-            'IsLoggedIn' => 'Application\View\Helper\IsLoggedIn'
+            'IsLoggedIn' => 'Application\View\Helper\IsLoggedIn',
+            'LoginProvider' => 'Application\View\Helper\LoginProvider'
         ]
     ],
     'view_manager' => array(
@@ -455,6 +468,7 @@ return array(
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\Cars', 'roles' => array()),
                 array('controller' => 'Application\Controller\Pois', 'roles' => array()),
+                array('controller' => 'Application\Controller\Reservations', 'roles' => array()),
                 array('controller' => 'Application\Controller\Console', 'roles' => array()),
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),

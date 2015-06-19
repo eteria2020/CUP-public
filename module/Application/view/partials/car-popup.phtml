@@ -3,6 +3,18 @@
 // Find out if a user is logged in
 $isLoggedIn = $this->IsLoggedIn();
 
+$userAuth = '';
+$userId = '';
+
+if ($isLoggedIn)
+{
+    $user = $this->LoginProvider();
+    $userEmail = urlencode($user->getEmail());
+    $userPassword = $user->getPassword();
+    $userAuth = $userEmail . ':' . $userPassword . '@';
+    $userId = $user->getId();
+}
+
 ?>
 
 <!-- module-modal -->
@@ -73,11 +85,9 @@ $isLoggedIn = $this->IsLoggedIn();
                                 </div>
                                 <!-- block-car-data-info -->
                                 
-                                <div <?php if($isLoggedIn){echo 'id="btn-reserve"';} ?>
-                                 class="block-wrapper-btn">                                            
-                                                                    
-                                    <a <?php if(!$isLoggedIn){echo 'href="'.$this->url('login').'"';} ?>
-                                     class="btn-link ct3">Registrati e prenota <i class="fa fa-angle-right"></i></a>
+                                <div id="btn-reserve" class="block-wrapper-btn">                                            
+                                    <a id="reserve-text" <?php if (!$isLoggedIn) echo 'href="' . $this->url('login') . '"'; ?>
+                                     class="btn-link ct3"> <?php if (!$isLoggedIn) echo 'Registrati e prenota '; ?> <i class="fa fa-angle-right"></i></a>
                                 </div>
 
                                 <div id="step2-buttons" class="block-wrapper-btn" style="display:none"> 
@@ -105,75 +115,9 @@ $isLoggedIn = $this->IsLoggedIn();
 <!-- module-modal -->
 
 <script>
-// handle the second popup
-
-// hold the km value in this var
-var oldKm;
-
-var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec magna rhoncus nunc varius euismod. Nullam interdum a augue sed accumsan. Fusce in quam leo. Pellentesque in tristique est.';
-
-// get the necessary elements
-var leftColumn = document.getElementById('left-column');
-var rightColumn = document.getElementById('right-column');
-var btnReserve = document.getElementById('btn-reserve');
-var step2Buttons = document.getElementById('step2-buttons');
-var circleIcon = document.getElementById('circle-icon');
-var kmTitle = document.getElementById('km-title');
-var kmText = document.getElementById('km');
-var btnBack = document.getElementById('btn-back');
-var btnConfirm = document.getElementById('btn-confirm');
-
-// add the event listeners
-if(btnReserve != null)
-{
-    btnReserve.addEventListener('click', function(event) {
-        reserve();
-    })
-}
-btnBack.addEventListener('click', function(event) {
-    reset();
-})
-btnConfirm.addEventListener('click', function(event) {
-    // TODO
-})
-
-// create the functions
-function reserve()
-{
-    leftColumn.style.display="none";
-    rightColumn.style.width="100%";
-    btnReserve.style.display="none"; //.hide,.show
-    step2Buttons.style.display="inline";
-    circleIcon.className="fa fa-info-circle";
-    kmTitle.innerHTML = "Ricorda che:";
-    oldKm = km.innerHTML;
-    km.innerHTML = text;
-}
-
-function reset()
-{
-    leftColumn.style.display="block";
-    rightColumn.style.width="";
-    if(btnReserve != null)
-        btnReserve.style.display="inline";
-    step2Buttons.style.display="none";
-    circleIcon.className="fa fa-sun-o";
-    kmTitle.innerHTML = "Autonomia";
-    km.innerHTML = oldKm;
-}
-
+var isLoggedIn = <?php if ($isLoggedIn) echo 'true'; else echo 'false'; ?>;
+var auth = '<?php echo $userAuth; ?>';
+var userId = '<?php echo $userId; ?>';
 </script>
+<script type="text/javascript" src="js/car-popup.js"></script>
 
-<script>
-// close the popup when the cross button is pressed
-
-// get the necessary elements
-var div = document.getElementById('car-popup');
-
-// add the event listener
-$('#btn-close').click(function(e) {
-    div.style.display="none";
-    reset();
-})
-
- </script>
