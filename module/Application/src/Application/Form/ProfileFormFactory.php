@@ -9,11 +9,9 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 class ProfileFormFactory implements FactoryInterface
 {
     /**
-     * Create service
-     *
      * @param ServiceLocatorInterface $serviceLocator
      *
-     * @return Application\Form\ProfileForm
+     * @return ProfileForm
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
@@ -22,13 +20,15 @@ class ProfileFormFactory implements FactoryInterface
         $hydrator = new DoctrineHydrator($entityManager);
         $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
+        $provincesService = $serviceLocator->get('SharengoCore\Service\ProvincesService');
         $userService = $serviceLocator->get('zfcuser_auth_service');
         $customerFieldset = new CustomerFieldset(
             $translator,
             $hydrator,
             $countriesService,
             $customersService,
-            $userService
+            $userService,
+            $provincesService
         );
 
         return new ProfileForm($customerFieldset, $entityManager);

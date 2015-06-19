@@ -663,6 +663,27 @@ echo <<<JS
         $("#js-edit-pwd, #js-reset-editPwd").click(function() {
             $('#viewEditPwd, #editPwd').toggle();
         });
+
+        var selectCountry = $('#birthCountry');
+        var selectProvince = $('#birthProvince');
+        var countryItaly = 'it';
+
+        if(selectCountry.val() != countryItaly) {
+            selectProvince.val('EE');
+            selectProvince.addClass('disabled');
+        }
+
+        $(selectCountry).change(function() {
+
+            var value = $(this).val();
+
+            if(value != countryItaly) {
+                selectProvince.val('EE');
+                selectProvince.addClass('disabled');
+            } else {
+                selectProvince.removeClass('disabled');
+            }
+        });
     });
 JS;
 $this->inlineScript()->captureEnd(); ?>
