@@ -5,6 +5,7 @@ namespace Application\Form;
 use Zend\Form\Form;
 use Zend\Mvc\I18n\Translator;
 use Application\Form\UserFieldset;
+use Application\Form\PromoCodeFieldset;
 use Zend\Session\Container;
 use SharengoCore\Entity\Customers;
 
@@ -14,17 +15,24 @@ class RegistrationForm extends Form
 
     const FORM_DATA = 'userData';
 
+    const PROMO_CODE = 'promoCode';
+
     private $container;
+
+    private $promoCodeContainer;
 
     public function __construct(
         Translator $translator,
-        UserFieldset $userFieldset
+        UserFieldset $userFieldset,
+        PromoCodeFieldset $promoCodeFieldset
     ) {
         parent::__construct('registration-form');
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
 
         $this->add($userFieldset);
+
+        $this->add($promoCodeFieldset);
 
         $this->add([
             'name' => 'submit',
@@ -44,22 +52,40 @@ class RegistrationForm extends Form
         return new Container(self::SESSION_KEY);
     }
 
+    private function getPromoCodeContainer()
+    {
+        if (isset($this->promoCodeContainer)) {
+            return $this->promoCodeContainer;
+        }
+
+        return new Container(self::SESSION_KEY . 'PromoCode');
+    }
+
     public function registerCustomerData(Customers $customer)
     {
         $container = $this->getContainer();
         $container->offsetSet(self::FORM_DATA, $customer);
     }
 
-    public function registerData()
+    public function registerData($promoCode)
     {
         $container = $this->getContainer();
         $container->offsetSet(self::FORM_DATA, $this->getData());
+
+        $promoCodeContainer = $this->getPromoCodeContainer();
+        $promoCodeContainer->offsetSet(self::PROMO_CODE, $promoCode);
     }
 
     public function getRegisteredData()
     {
         $container = $this->getContainer();
         return $container->offsetGet(self::FORM_DATA);
+    }
+
+    public function getRegisteredDataPromoCode()
+    {
+        $promoCodeContainer = $this->getPromoCodeContainer();
+        return $promoCodeContainer->offsetGet(self::PROMO_CODE);
     }
 
     public function clearRegisteredData()

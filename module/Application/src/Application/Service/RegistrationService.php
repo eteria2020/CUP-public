@@ -3,6 +3,9 @@
 namespace Application\Service;
 
 use SharengoCore\Entity\Customers;
+use SharengoCore\Entity\CustomersBonus;
+use SharengoCore\Service\PromoCodesService;
+
 use Zend\Form\Form;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\Mail\Message;
@@ -60,6 +63,12 @@ final class RegistrationService
      */
     private $customersRepository;
 
+    /**
+     *
+     * @var type \SharengoCore\Service\PromoCodesService;
+     */
+    private $promoCodesService;
+
     public function __construct(
         Form $form1,
         Form $form2,
@@ -68,7 +77,8 @@ final class RegistrationService
         TransportInterface $emailTransport,
         array $emailSettings,
         Translator $translator,
-        HelperPluginManager $viewHelperManager
+        HelperPluginManager $viewHelperManager,
+        PromoCodesService $promoCodesService
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -78,6 +88,7 @@ final class RegistrationService
         $this->emailSettings = $emailSettings;
         $this->translator = $translator;
         $this->viewHelperManager = $viewHelperManager;
+        $this->promoCodesService = $promoCodesService;
 
         $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
     }
@@ -91,6 +102,7 @@ final class RegistrationService
     {
         $dataForm1 = $this->form1->getRegisteredData();
         $dataForm2 = $this->form2->getRegisteredData();
+        $promoCode = $this->form1->getRegisteredDataPromoCode();
 
         if (empty($dataForm1) || empty($dataForm2)) {
             return null;
@@ -107,6 +119,10 @@ final class RegistrationService
             } else {
                 $data[$key] = $dataForm1[$key];
             }
+        }
+
+        if ('' != $promoCode) {
+            $data['promoCode'] = $promoCode['promocode'];
         }
 
         return $data;
@@ -165,6 +181,16 @@ final class RegistrationService
             $customer->setPin(json_encode($pins));
 
             $this->entityManager->persist($customer);
+
+            // has customer used a promo code?
+            $promoCode = $data['promoCode'];
+            if ('' != $promoCode) {
+                $customerBonus = CustomersBonus::createFromPromoCode($this->promoCodesService->getPromoCode($promoCode));
+                $customerBonus->setCustomer($customer);
+                
+                $this->entityManager->persist($customerBonus);
+            }
+
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
         } catch (\Exception $e) {

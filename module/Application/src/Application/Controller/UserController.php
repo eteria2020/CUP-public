@@ -89,10 +89,11 @@ class UserController extends AbstractActionController
         }
 
         if ($this->getRequest()->isPost()) {
-            $this->form1->setData($this->getRequest()->getPost());
+            $formData = $this->getRequest()->getPost();
+            $this->form1->setData($formData);
 
             if ($this->form1->isValid()) {
-                return $this->proceed($this->form1);
+                return $this->proceed($this->form1, $formData['promocode']);
             } else {
                 return $this->signupForm($this->form1);
             }
@@ -165,9 +166,9 @@ class UserController extends AbstractActionController
         }
     }
 
-    private function proceed($form)
+    private function proceed($form, $promoCode)
     {
-        $form->registerData();
+        $form->registerData($promoCode);
 
         return $this->redirect()->toRoute('signup-2');
     }

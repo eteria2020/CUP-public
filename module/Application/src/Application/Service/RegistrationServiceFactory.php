@@ -30,6 +30,8 @@ class RegistrationServiceFactory implements FactoryInterface
 
         $viewHelperManager = $serviceLocator->get('viewHelperManager');
 
+        $promoCodesService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
+
         return new RegistrationService(
             $form1,
             $form2,
@@ -38,7 +40,8 @@ class RegistrationServiceFactory implements FactoryInterface
             $emailTransport,
             $emailSettings,
             $translationService,
-            $viewHelperManager
+            $viewHelperManager,
+            $promoCodesService
         );
     }
 }
