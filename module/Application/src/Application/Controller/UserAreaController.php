@@ -82,7 +82,7 @@ class UserAreaController extends AbstractActionController
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
         $this->userService = $userService;
-        $this->customer = $userService->getIdentity();
+        $this->customer = $I_customersService->getCustomerEntity($userService->getIdentity());
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
         $this->driverLicenseForm = $driverLicenseForm;
@@ -117,21 +117,12 @@ class UserAreaController extends AbstractActionController
             }
         }
 
-        //show bonus according to registration date
-        $bonus = 100;
-        $startDateBonus100Mins = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-06-14 23:59:59');
-        if (null == $this->customer->getInsertedTs() || 
-            $this->customer->getInsertedTs() < $startDateBonus100Mins) {
-            $bonus = 500;
-        }
-
         return new ViewModel([
             'customer'     => $this->customer,
             'profileForm'  => $this->profileForm,
             'passwordForm' => $this->passwordForm,
             'showError'    => $this->showError,
             'typeForm'     => $this->typeForm,
-            'bonus'        => $bonus
         ]);
     }
 
