@@ -461,6 +461,17 @@ return array(
                             'action' => 'get-discounts'
                         ]
                     ]
+                ],
+                'assign-bonus' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'assign bonus',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'assign-bonus'
+                        ]
+                    ]
                 ]
             ],
         ],
