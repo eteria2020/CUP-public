@@ -62,12 +62,12 @@
                                 <tr>
                                 <tr>
                                     <td><?= $this->translate('Tariffa di sosta') ?></td>
-                                    <td>€ <?= number_format(10 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                    <td>€ 10,00</td>
+                                    <td>€ <?= number_format(0.1 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
+                                    <td>€ 0,10</td>
                                 <tr>
                                 <tr>
                                     <td><?= $this->translate('Tariffa per 1 ora') ?></td>
-                                    <td>€ <?= number_format(7.8 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
+                                    <td>€ <?= number_format(12 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                     <td>€ 12,00</td>
                                 <tr>
                                 <tr>
