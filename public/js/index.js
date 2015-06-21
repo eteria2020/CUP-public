@@ -105,7 +105,7 @@ function initialize()
                 setReservationButton(car['busy']);
 
                 // show the popup
-                document.getElementById('car-popup').style.display = "inline";
+                showPopup();
 
             });
 
@@ -236,23 +236,23 @@ function setReservationButton(isCarBusy)
 
             if (isCarBusy || (isReserved && !isReservedByMe))
             {
-                setReserveText('<?= $this->translate("L\'auto è occupata"); ?>');
+                setReserveText(textCarOccupied, false);
                 setAction(0);
             }
             else if (isReservedByMe)
             {
-                setReserveText('<?= $this->translate("Annulla la prenotazione"); ?>');
+                setReserveText(textCarReserved, true);
                 setAction(2);
             }
             else
             {
-                setReserveText('<?= $this->translate("Prenota l\'auto"); ?>');
+                setReserveText(textCarReserve, true);
                 setAction(1);
             }
         });
     }
     else
     {
-        setReserveText('<?= $this->translate("Registrati e prenota"); ?>');
+        setReserveText(textRegister, true);
     }
 }

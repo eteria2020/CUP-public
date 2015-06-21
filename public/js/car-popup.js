@@ -2,15 +2,13 @@
 
 // hold the km value in this var
 var oldKm;
-// text to be shown in second popup
-var text = '<?= $this->translate("Ricorda che dovrai avere con te lo smartphone per poter aprire l\'auto, oppure la tessera. Ti consigliamo di non utilizzare l\'auto se l\'autonomia è al di sotto del 20% di carica"); ?>';
 // text to enable spinner
 var spinner = '<i class="fa fa-circle-o-notch fa-spin"></i>';
-// used to disable modifications after popup is closed
-var is closed = true;
+// used to disable modifications when popup is closed
+var isOpen = false;
 
 // get html elements
-var div = document.getElementById('car-popup');
+var mainContainer = document.getElementById('car-popup');
 var btnClose = document.getElementById('btn-close');
 // elements modified for second popup
 var leftColumn = document.getElementById('left-column');
@@ -94,9 +92,9 @@ function nextStep()
     btnReserve.style.display = "none"; //.hide,.show
     step2Buttons.style.display = "inline";
     circleIcon.style.display = "none";
-    setRightBottomBlockTitle('<?= $this->translate("Ricorda che:"); ?>', 2);
+    setRightBottomBlockTitle(titleRemember, 2);
     oldKm = blockRightBottomText.innerHTML;
-    blockRightBottomText.innerHTML = text;
+    blockRightBottomText.innerHTML = textRemember;
 }
 
 // remove a car reservation
@@ -112,11 +110,11 @@ function removeReservation()
             {
                 if (true) // TODO verify response
                 {
-                    completed('<?= $this->translate("Prenotazione annullata"); ?>');
+                    completed(textReservationRemoved);
                 }
                 else
                 {
-                    completed('<?= $this->translate("Impossibile annullare prenotazione"); ?>');
+                    completed(textReservationRemovedNot);
                 }
             });
         }
@@ -127,6 +125,14 @@ function removeReservation()
 
 /* Create the other actions */
 
+
+// show popup
+function showPopup()
+{
+    mainContainer.style.display = "inline";
+    isOpen = true;
+}
+
 // reset the popup to the first screen
 function reset()
 {
@@ -135,20 +141,21 @@ function reset()
     btnReserve.style.display = "inline";
     step2Buttons.style.display = "none";
     circleIcon.style.display = "block";
-    setRightBottomBlockTitle('<?= $this->translate("Autonomia"); ?>', 1);
+    setRightBottomBlockTitle(titleMilage, 1);
     blockRightBottomText.innerHTML = oldKm;
 }
 
 // close the popup and reset some data
 function close()
 {
-    div.style.display = "none";
+    mainContainer.style.display = "none";
     isReservedDiv.innerHTML = spinner;
     setAction(0);
     blockRightTopDiv.style.display = "block"; // TODO - CHECK
     btnDone.style.display = "none";
     setLocationText(spinner);
     reset();
+    isOpen = false;
 }
 
 // confirm reservation
@@ -161,11 +168,11 @@ function confirm()
         */
         if (true) // TODO verify response
         {
-            completed('<?= $this->translate("Prenotazione effettuata"); ?>');
+            completed(textReservationCompleted);
         }
         else
         {
-            completed('<?= $this->translate("L\'auto è già occupata"); ?>'); // TODO verify error message
+            completed(textReservationCompletedNot); // TODO verify error message
         }
         /*
     });
@@ -186,11 +193,11 @@ function completed(text)
 
 /* Setters */
 
-function setReserveText(text)
+function setReserveText(text, setIcon) // TODO - CHECK warning, ban, times
 {
-    if (!isClosed)
+    if (isOpen)
     {
-        isReservedDiv.innerHTML = text + ' <i class="fa fa-angle-right"></i>';
+        isReservedDiv.innerHTML = text + (setIcon ? ' <i class="fa fa-angle-right"></i>' : ''); // TODO - CHECK <i class="fa fa-times"></i>');
     }
 }
 

@@ -18,7 +18,7 @@ if ($isLoggedIn)
 ?>
 
 <!-- module-modal -->
-<div id="car-popup" class="module-modal" style="height:100%; position:fixed; display:none">
+<div id="car-popup" class="module-modal car-popup">
     <!-- modal-overlay -->
     <div class="modal-overlay">
         <!-- module-pop-up -->
@@ -120,8 +120,17 @@ if ($isLoggedIn)
 
 <script>
 var isLoggedIn = <?php if ($isLoggedIn) echo 'true'; else echo 'false'; ?>;
+// string to be prepended in authenticated api calls
 var auth = '<?php echo $userAuth; ?>';
 var userId = '<?php echo $userId; ?>';
+// text to be shown in second popup
+var textRemember = '<?= $this->translate("Ricorda che dovrai avere con te lo smartphone per poter aprire l\'auto, oppure la tessera. Ti consigliamo di non utilizzare l\'auto se l\'autonomia è al di sotto del 20% di carica"); ?>';
+var titleRemember = '<?= $this->translate("Ricorda che:"); ?>';
+var textReservationRemoved = '<?= $this->translate("Prenotazione annullata"); ?>';
+var textReservationRemovedNot = '<?= $this->translate("Impossibile annullare prenotazione"); ?>';
+var titleMilage = '<?= $this->translate("Autonomia"); ?>';
+var textReservationCompleted = '<?= $this->translate("Prenotazione effettuata"); ?>';
+var textReservationCompletedNot = '<?= $this->translate("L\'auto è già occupata"); ?>';
 </script>
 <script type="text/javascript" src="js/car-popup.js"></script>
 

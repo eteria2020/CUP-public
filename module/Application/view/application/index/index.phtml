@@ -463,6 +463,17 @@
 <script>
 var port = "<?php echo ':8024'; ?>";
 var version = "<?php echo '/v2'; ?>";
+// texts to be translated
+var textCarOccupied = '<?= $this->translate("L\'auto è occupata"); ?>';
+var textCarReserved = '<?= $this->translate("Annulla la prenotazione"); ?>';
+var textCarReserve = '<?= $this->translate("Prenota l\'auto"); ?>';
+var textRegister = '<?= $this->translate("Registrati e prenota"); ?>';
+</script>
+<?php
+// load the popup to show when a car is selected
+echo $this->partial('partials/car-popup.phtml');
+?>
+<script>
 var carsUrl = "<?= $this->url('cars'); ?>"; // TODO "https://api.sharengo.it" + port + version + "/cars";
 var carMarkerPath = "<?= $this->basePath('images/marker-car.png'); ?>";
 var poisUrl = "<?= $this->url('pois'); ?>"; // TODO "https://api.sharengo.it" + port + version + "/pois";
@@ -471,8 +482,4 @@ var reservationsUrl = "<?= $this->url('reservations'); ?>"; // TODO "https://" +
 var reserveUrl = "https://" + auth + "api.sharengo.it" + port + version + "/reservations?plate=";
 var removeReservationUrl = "https://" + auth + "api.sharengo.it" + port + version + "/reservations?reservation_id=";
 </script>
-<?php
-// load the popup to show when a car is selected
-echo $this->partial('partials/car-popup.phtml');
-?>
 <script type="text/javascript" src="js/index.js"></script>

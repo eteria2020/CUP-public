@@ -127,6 +127,8 @@
     font-weight: 700
 }
 
-.grey-images {
-    background-image:url('../images/images-grey.png')
+.car-popup {
+     height:100%;
+     position:fixed;
+     display:none
 }
