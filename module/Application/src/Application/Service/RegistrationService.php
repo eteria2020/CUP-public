@@ -182,6 +182,19 @@ final class RegistrationService
 
             $this->entityManager->persist($customer);
 
+            // add 100 min bonus
+            $bonus100mins = new \SharengoCore\Entity\CustomersBonus();
+            $bonus100mins->setCustomer($customer);
+            $bonus100mins->setInsertTs($customer->getInsertedTs());
+            $bonus100mins->setUpdateTs($bonus100mins->getInsertTs());
+            $bonus100mins->setTotal(100);
+            $bonus100mins->setResidual(100);
+            $bonus100mins->setValidFrom($bonus100mins->getInsertTs());
+            $defaultBonusExpiryDate = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-12-31 23:59:59');
+            $bonus100mins->setValidTo($defaultBonusExpiryDate);
+            $bonus100mins->setDescription('Bonus iscrizione utente');
+            $this->entityManager->persist($bonus100mins);
+
             // has customer used a promo code?
             $promoCode = $data['promoCode'];
             if ('' != $promoCode) {
