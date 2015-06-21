@@ -1,64 +1,64 @@
-// define global variables to interact with map elements
+/* Global variables */
+
+// set to true to enable top-right buttons
+var isInit = false;
+
+// get html elements
+var carsToggle = document.getElementById('cars-toggle');
+var energyToggle = document.getElementById('energy-toggle');
+var carsToggleIcon = document.getElementById('cars-toggle-icon');
+var energyToggleIcon = document.getElementById('energy-toggle-icon');
+
+// define variables to interact with map elements
 var map;
 var carMarkers = [];
 var carMarkersSet = false;
 var energyMarkers = [];
 var energyMarkersSet = false;
 
+
+
+/* Start */
+
+// asynchronously Load the map API
 jQuery(function($)
 {
-    // Asynchronously Load the map API
     var script = document.createElement('script');
     script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
     document.body.appendChild(script);
 });
 
+// initialize the whole logic
 function initialize()
 {
+    /* Show the markers */
 
-    var geocoder = new google.maps.Geocoder(),
-        myLatlng = new google.maps.LatLng(45.4627338,9.1777323),
-        mapOptions =
+    // define the geocoder
+    var geocoder = new google.maps.Geocoder();
+    // define the initial position
+    var myLatlng = new google.maps.LatLng(45.4627338,9.1777323);
+    // define map options
+    var mapOptions =
         {
             center: myLatlng, // Set our point as the centre location
             zoom: 13, // Set the zoom level
             scrollwheel: false,
             mapTypeId: 'roadmap' // set the default map type
-        },
-        marker;
+        };
 
-    // Display a map on the page
+    // sisplay the map on the page
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-    // Allow our satellite view have a tilted display (This only works for certain locations)
-    map.setTilt(45);
 
-    // retrieve value based on cleanliness
-    function parseCleanliness(value)
-    {
-        var defaultClass = 'block-bar-value ';
-        if (value == 'clean')
-        {
-            return defaultClass + 'w100';
-        }
-        else if (value == 'average')
-        {
-            return defaultClass + 'w75';
-        }
-        else if (value == 'dirty')
-        {
-            return defaultClass + 'w50';
-        }
-        return defaultClass + 'w100';
-    }
-
-    // get the positions of the cars
+    // get the cars
     $.get(carsUrl, function (jsonData)
     {
+        // set a marker for each car
         jsonData.data.forEach(function (car)
         {
-
+            // position of the car
             var latlng = new google.maps.LatLng(car.lat, car.lon);
 
+            // create the marker on the map
             var marker = new google.maps.Marker(
             {
                 position: latlng,
@@ -66,34 +66,25 @@ function initialize()
                 icon: carMarkerPath
             });
 
+            // add event listener for when the marker is clicked
             google.maps.event.addListener(marker, 'click', function()
             {
 
-                //retrieve the values for the car
-                var plate = car['plate'];
-                var intClean = parseCleanliness(car['intCleanliness']);
-                var extClean = parseCleanliness(car['extCleanliness']);
-                var km = car['km'] + ' km';
-                var isBusy = car['busy'];
-                
-                // retrieve the elements that will be modified
-                var plateDiv = document.getElementById('licence-plate');
-                var intCleanDiv = document.getElementById('int_cleanliness');
-                var extCleanDiv = document.getElementById('ext_cleanliness');
-                var locationDiv = document.getElementById('location');
-                var kmDiv = document.getElementById('km');
+                // modify the elements
+                setPlateText(car['plate']);
+                setIntCleanliness(car['intCleanliness']);
+                setExtCleanliness(car['extCleanliness']);
+                setKmText(car['km']);
+                setLocationText('');
 
-                // empty the location text
-                locationDiv.innerHTML = '';
-
-                // get the location
+                // get the location and set it in the popup
                 geocoder.geocode({'latLng': latlng}, function(results, status)
                 {
                     if (status == google.maps.GeocoderStatus.OK)
                     {
                         if (results[1])
                         {
-                            locationDiv.innerHTML = results[1].formatted_address;
+                            setLocationText(results[1].formatted_address);
                         }
                         else
                         {
@@ -106,14 +97,10 @@ function initialize()
                     }
                 });
 
-                // modify the elements
-                plateDiv.innerHTML = plate;
-                intCleanDiv.className = intClean;
-                extCleanDiv.className = extClean;
-                kmDiv.innerHTML = km;
-
+                // Set the main button's behavior
                 if (isLoggedIn)
                 {
+                    // TODO
                     $.get(reservationsUrl, function (jsonData)
                     {
 
@@ -128,27 +115,26 @@ function initialize()
                             }
                         }
 
-                        if (isBusy || (isReserved && !isReservedByMe))
+                        if (car['busy'] || (isReserved && !isReservedByMe))
                         {
-                            isReservedDiv.innerHTML = 'L\'auto è occupata';
+                            setReserveText('L\'auto è occupata');
+                            setAction(0);
                         }
                         else if (isReservedByMe)
                         {
-                            isReservedDiv.innerHTML = 'Annulla la prenotazione';
-                            btnReserve.addEventListener('click', function(event)
-                            {
-                                    removeReservation();
-                            });
+                            setReserveText('Annulla la prenotazione');
+                            setAction(2);
                         }
                         else
                         {
-                            isReservedDiv.innerHTML = 'Prenota l\'auto';
-                            btnReserve.addEventListener('click', function(event)
-                            {
-                                    nextStep();
-                            });
+                            setReserveText('Prenota l\'auto');
+                            setAction(1);
                         }
                     });
+                }
+                else
+                {
+                    setReserveText('Registrati e prenota');
                 }
 
                 // show the popup
@@ -160,17 +146,23 @@ function initialize()
             carMarkers.push(marker);
 
         });
+    
+        // car markers are set, enable toggle
+        carMarkersSet = true;
+        isInit = true;
+        toggleButtonColor(carsToggleIcon, carMarkersSet);
     });
-
-    carMarkersSet = true;
-
+    
+    // get the pois
     $.get(poisUrl, function (jsonData)
     {
+        // set a marker for each pois (default = hidden)
         jsonData.data.forEach(function (pois)
         {
-
+            // position of the pois
             var latlng = new google.maps.LatLng(pois.lat, pois.lon);
 
+            // create a marker
             var marker = new google.maps.Marker(
             {
                 position: latlng,
@@ -178,16 +170,19 @@ function initialize()
                 icon: poisMarkerPath
             });
 
+            // define content of infowindow
             var contentString = '<div>' +
                                 '<h2>' + pois.type + '</h2>' +
                                 '<p>' + pois.address + '</p>' +
                                 '</div>';
 
+            // create the infowindow
             var infowindow = new google.maps.InfoWindow(
             {
                 content: contentString
             });
 
+            // add event listener for when the marker is clicked
             google.maps.event.addListener(marker, 'click', function()
             {
                 infowindow.open(map,marker);
@@ -196,31 +191,38 @@ function initialize()
             energyMarkers.push(marker);
 
         });
+
+        isInit = true;
     });
+    
 
 }
 
-// handle the click on the top right buttons
-var carsToggle = document.getElementById('cars-toggle');
-var energyToggle = document.getElementById('energy-toggle');
-var carsToggleIcon = document.getElementById('cars-toggle-icon');
-var energyToggleIcon = document.getElementById('energy-toggle-icon');
+/* Set the behavior of the top-right buttons */
 
-// set energy icon off
+// toggle icons off
+toggleButtonColor(carsToggleIcon, carMarkersSet);
 toggleButtonColor(energyToggleIcon, energyMarkersSet);
 
+// set click event listeners
 carsToggle.addEventListener('click', function (event)
 {
-    toggleMarkers(carMarkers, (carMarkersSet ? null : map));
-    carMarkersSet = !carMarkersSet;
-    toggleButtonColor(carsToggleIcon, carMarkersSet);
+    if(isInit)
+    {   
+        toggleMarkers(carMarkers, (carMarkersSet ? null : map));
+        carMarkersSet = !carMarkersSet;
+        toggleButtonColor(carsToggleIcon, carMarkersSet);
+    }
 })
 
 energyToggle.addEventListener('click', function (event)
 {
-    toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
-    energyMarkersSet = !energyMarkersSet;
-    toggleButtonColor(energyToggleIcon, energyMarkersSet);
+    if(isInit)
+    {
+        toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
+        energyMarkersSet = !energyMarkersSet;
+        toggleButtonColor(energyToggleIcon, energyMarkersSet);
+    }
 })
 
 // define on click function
