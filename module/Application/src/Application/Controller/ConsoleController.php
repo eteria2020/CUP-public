@@ -57,19 +57,17 @@ class ConsoleController extends AbstractActionController
         $defaultBonusInsertDate = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00');
         $defaultBonusExpiryDate = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-12-31 23:59:59');
 
-        $updateOnlyIfRegisteredBefore = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-06-20 00:00:00');
-        
         foreach ($customers as $customer) {
 
             // security check to avoid multiple script executions
-            if (count($customer->getBonuses()) == 0 &&
-                (null == $customer->getInsertedTs() || $updateOnlyIfRegisteredBefore >= $customer->getInsertedTs()))
-                {
+            if (count($customer->getBonuses()) == 0) {
 
                 $bonusValue = 100;
+                $bonusDesc = 'Bonus iscrizione utente';
                 if (null == $customer->getInsertedTs() ||
                     $customer->getInsertedTs() < $startDateBonus100Mins) {
                     $bonusValue = 500;
+                    $bonusDesc = 'Bonus iscrizione utente prima del 15-06-2015';
                 }
 
                 //create Bonus
@@ -80,7 +78,7 @@ class ConsoleController extends AbstractActionController
                 $bonus->setResidual($bonusValue);
                 $bonus->setValidFrom($bonus->getInsertTs());
                 $bonus->setValidTo($defaultBonusExpiryDate);
-                $bonus->setDescription('Inserito dal sistema su utente iscritto prima del ' . $startDateBonus100Mins->format('Y-m-d H:i:s'));
+                $bonus->setDescription($bonusDesc);
 
                 $this->customerService->addBonus($customer, $bonus);
 
