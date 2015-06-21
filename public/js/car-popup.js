@@ -3,11 +3,16 @@
 // hold the km value in this var
 var oldKm;
 // text to be shown in second popup
-var text = 'Ricorda che dovrai avere con te lo smartphone per poter aprire l\'auto, oppure la tessera. Ti consigliamo di non utilizzare l\'auto se l\'autonomia è al di sotto del 20% di carica';
+var text = '<?= $this->translate("Ricorda che dovrai avere con te lo smartphone per poter aprire l\'auto, oppure la tessera. Ti consigliamo di non utilizzare l\'auto se l\'autonomia è al di sotto del 20% di carica"); ?>';
+// text to enable spinner
+var spinner = '<i class="fa fa-circle-o-notch fa-spin"></i>';
+// used to disable modifications after popup is closed
+var is closed = true;
 
 // get html elements
 var div = document.getElementById('car-popup');
 var btnClose = document.getElementById('btn-close');
+// elements modified for second popup
 var leftColumn = document.getElementById('left-column');
 var rightColumn = document.getElementById('right-column');
 var btnReserve = document.getElementById('btn-reserve');
@@ -89,7 +94,7 @@ function nextStep()
     btnReserve.style.display = "none"; //.hide,.show
     step2Buttons.style.display = "inline";
     circleIcon.style.display = "none";
-    setRightBottomBlockTitle('Ricorda che:', 2);
+    setRightBottomBlockTitle('<?= $this->translate("Ricorda che:"); ?>', 2);
     oldKm = blockRightBottomText.innerHTML;
     blockRightBottomText.innerHTML = text;
 }
@@ -107,7 +112,11 @@ function removeReservation()
             {
                 if (true) // TODO verify response
                 {
-                    completed('Prenotazione annullata');
+                    completed('<?= $this->translate("Prenotazione annullata"); ?>');
+                }
+                else
+                {
+                    completed('<?= $this->translate("Impossibile annullare prenotazione"); ?>');
                 }
             });
         }
@@ -126,7 +135,7 @@ function reset()
     btnReserve.style.display = "inline";
     step2Buttons.style.display = "none";
     circleIcon.style.display = "block";
-    setRightBottomBlockTitle('Autonomia', 1);
+    setRightBottomBlockTitle('<?= $this->translate("Autonomia"); ?>', 1);
     blockRightBottomText.innerHTML = oldKm;
 }
 
@@ -134,10 +143,11 @@ function reset()
 function close()
 {
     div.style.display = "none";
-    isReservedDiv.innerHTML = '';
+    isReservedDiv.innerHTML = spinner;
     setAction(0);
     blockRightTopDiv.style.display = "block"; // TODO - CHECK
     btnDone.style.display = "none";
+    setLocationText(spinner);
     reset();
 }
 
@@ -148,12 +158,16 @@ function confirm()
     var plate = document.getElementById('licence-plate').innerHTML;
     $.get(reserveUrl + plate, function (jsonData)
     {
+        */
         if (true) // TODO verify response
         {
-            */
-            completed('Prenotazione effettuata');
-            /*
+            completed('<?= $this->translate("Prenotazione effettuata"); ?>');
         }
+        else
+        {
+            completed('<?= $this->translate("L\'auto è già occupata"); ?>'); // TODO verify error message
+        }
+        /*
     });
     */
 }
@@ -174,7 +188,10 @@ function completed(text)
 
 function setReserveText(text)
 {
-    isReservedDiv.innerHTML = text + ' <i class="fa fa-angle-right"></i>';
+    if (!isClosed)
+    {
+        isReservedDiv.innerHTML = text + ' <i class="fa fa-angle-right"></i>';
+    }
 }
 
 function setRightBottomBlockTitle(text, stepNumber)
@@ -222,6 +239,7 @@ function setExtCleanliness(cleanliness)
 // retrieve value based on cleanliness
 function parseCleanliness(value)
 {
+    // value w25 exists but has no match in database
     var defaultClass = 'block-bar-value ';
     if (value == 'clean')
     {

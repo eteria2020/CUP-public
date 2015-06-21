@@ -4,10 +4,8 @@
 var isInit = false;
 
 // get html elements
-var carsToggle = document.getElementById('cars-toggle');
-var energyToggle = document.getElementById('energy-toggle');
-var carsToggleIcon = document.getElementById('cars-toggle-icon');
-var energyToggleIcon = document.getElementById('energy-toggle-icon');
+var carsToggle = document.getElementById('cars-toggle-icon');
+var energyToggle = document.getElementById('energy-toggle-icon');
 
 // define variables to interact with map elements
 var map;
@@ -82,7 +80,6 @@ function initialize()
                 setIntCleanliness(car['intCleanliness']);
                 setExtCleanliness(car['extCleanliness']);
                 setKmText(car['km']);
-                setLocationText('');
 
                 // get the location and set it in the popup
                 geocoder.geocode({'latLng': latlng}, function(results, status)
@@ -105,44 +102,7 @@ function initialize()
                 });
 
                 // Set the main button's behavior
-                if (isLoggedIn)
-                {
-                    // TODO
-                    $.get(reservationsUrl, function (jsonData)
-                    {
-
-                        var isReserved = false; // TODO ??? how is this retrieved? 
-                        var isReservedByMe = false;
-                        if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null)
-                        {
-                            // TODO test with dummy reservation
-                            if (jsonData.data[0].customer_id == userId)
-                            {
-                                isReservedByMe = true;
-                            }
-                        }
-
-                        if (car['busy'] || (isReserved && !isReservedByMe))
-                        {
-                            setReserveText('L\'auto è occupata');
-                            setAction(0);
-                        }
-                        else if (isReservedByMe)
-                        {
-                            setReserveText('Annulla la prenotazione');
-                            setAction(2);
-                        }
-                        else
-                        {
-                            setReserveText('Prenota l\'auto');
-                            setAction(1);
-                        }
-                    });
-                }
-                else
-                {
-                    setReserveText('Registrati e prenota');
-                }
+                setReservationButton(car['busy']);
 
                 // show the popup
                 document.getElementById('car-popup').style.display = "inline";
@@ -157,7 +117,7 @@ function initialize()
         // car markers are set, enable toggle
         carMarkersSet = true;
         isInit = true;
-        toggleButtonColor(carsToggleIcon, carMarkersSet);
+        toggleButtonColor(carsToggle, carMarkersSet);
     });
     
     // get the pois
@@ -214,8 +174,8 @@ function initialize()
 /* Set the behavior of the top-right buttons */
 
 // toggle icons off
-toggleButtonColor(carsToggleIcon, carMarkersSet);
-toggleButtonColor(energyToggleIcon, energyMarkersSet);
+toggleButtonColor(carsToggle, carMarkersSet);
+toggleButtonColor(energyToggle, energyMarkersSet);
 
 // set click event listeners
 carsToggle.addEventListener('click', function (event)
@@ -224,7 +184,7 @@ carsToggle.addEventListener('click', function (event)
     {   
         toggleMarkers(carMarkers, (carMarkersSet ? null : map));
         carMarkersSet = !carMarkersSet;
-        toggleButtonColor(carsToggleIcon, carMarkersSet);
+        toggleButtonColor(carsToggle, carMarkersSet);
     }
 })
 
@@ -234,7 +194,7 @@ energyToggle.addEventListener('click', function (event)
     {
         toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
         energyMarkersSet = !energyMarkersSet;
-        toggleButtonColor(energyToggleIcon, energyMarkersSet);
+        toggleButtonColor(energyToggle, energyMarkersSet);
     }
 })
 
@@ -251,4 +211,48 @@ function toggleMarkers(markers, value)
 function toggleButtonColor(icon, flag)
 {
     icon.style.backgroundImage = "url('../images/images" + (flag ? '' : '-grey') + ".png')";
+}
+
+// changes the reservation button's state
+function setReservationButton(isCarBusy)
+{
+    if (isLoggedIn)
+    {
+        // TODO check if logic is correct
+        $.get(reservationsUrl, function (jsonData)
+        {
+
+            var isReserved = false; // TODO - ??? how is this retrieved? 
+            var isReservedByMe = false;
+
+            if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null)
+            {
+                // TODO test with dummy reservation
+                if (jsonData.data[0].customer_id == userId)
+                {
+                    isReservedByMe = true;
+                }
+            }
+
+            if (isCarBusy || (isReserved && !isReservedByMe))
+            {
+                setReserveText('<?= $this->translate("L\'auto è occupata"); ?>');
+                setAction(0);
+            }
+            else if (isReservedByMe)
+            {
+                setReserveText('<?= $this->translate("Annulla la prenotazione"); ?>');
+                setAction(2);
+            }
+            else
+            {
+                setReserveText('<?= $this->translate("Prenota l\'auto"); ?>');
+                setAction(1);
+            }
+        });
+    }
+    else
+    {
+        setReserveText('<?= $this->translate("Registrati e prenota"); ?>');
+    }
 }
