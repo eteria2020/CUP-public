@@ -15,6 +15,7 @@ var carMarkers = [];
 var carMarkersSet = false;
 var energyMarkers = [];
 var energyMarkersSet = false;
+var openInfoWindow = null;
 
 
 
@@ -69,6 +70,12 @@ function initialize()
             // add event listener for when the marker is clicked
             google.maps.event.addListener(marker, 'click', function()
             {
+
+                // if an infowindow is open, close it
+                if(openInfoWindow != null)
+                {
+                    openInfoWindow.close();
+                }
 
                 // modify the elements
                 setPlateText(car['plate']);
@@ -185,6 +192,12 @@ function initialize()
             // add event listener for when the marker is clicked
             google.maps.event.addListener(marker, 'click', function()
             {
+                // if an infowindow is open, close it
+                if(openInfoWindow != null)
+                {
+                    openInfoWindow.close();
+                }
+                openInfoWindow = infowindow;
                 infowindow.open(map,marker);
             });
 

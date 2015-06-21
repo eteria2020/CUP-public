@@ -71,17 +71,17 @@ if ($isLoggedIn)
                             <!-- block-wrapper-car-data-info -->
                             <div class="block-wrapper-car-data-info bg-ct4">
                                 <!-- block-car-data-info -->
-                                <div class="block-car-data-info">
+                                <div id="block-right-top" class="block-car-data-info">
                                     <span class="block-data-name"><i class="fa fa-map-marker"></i> Dove si trova</span>
                                     <span id="location" class="block-data-value"></span>
                                 </div>
                                 <!-- block-car-data-info -->
                                 <!-- block-car-data-info -->
                                 <div class="block-car-data-info">
-                                    <span id="km-title" class="block-data-name">
+                                    <span id="block-right-bottom-title" class="block-data-name">
                                         <i id="circle-icon" class="fa fa-sun-o"></i>
                                     Autonomia</span>
-                                    <span id="km" class="block-data-value"></span>                                                
+                                    <span id="block-right-bottom-text" class="block-data-value"></span>                                                
                                 </div>
                                 <!-- block-car-data-info -->
                                 
@@ -93,6 +93,10 @@ if ($isLoggedIn)
                                 <div id="step2-buttons" class="block-wrapper-btn" style="display:none"> 
                                     <button id="btn-back" class="reset pull-left"><i class="fa fa-angle-left"></i> Annulla</button>
                                     <button id="btn-confirm" class="pull-right ct2">Conferma <i class="fa fa-angle-right"></i></button>
+                                </div>
+
+                                <div>
+                                    <button id="btn-done" class="ct2" style="display:none; margin:0 auto;">Chiudi <i class="fa fa-check"></i></button>
                                 </div>
                                 
                             </div>

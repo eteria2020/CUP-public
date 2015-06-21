@@ -13,8 +13,8 @@ var rightColumn = document.getElementById('right-column');
 var btnReserve = document.getElementById('btn-reserve');
 var step2Buttons = document.getElementById('step2-buttons');
 var circleIcon = document.getElementById('circle-icon');
-var kmTitle = document.getElementById('km-title');
-var kmText = document.getElementById('km');
+var blockRightBottomTitle = document.getElementById('block-right-bottom-title');
+var blockRightBottomText = document.getElementById('block-right-bottom-text');
 var btnBack = document.getElementById('btn-back');
 var btnConfirm = document.getElementById('btn-confirm');
 var isReservedDiv = document.getElementById('reserve-text');
@@ -23,7 +23,9 @@ var plateDiv = document.getElementById('licence-plate');
 var intCleanDiv = document.getElementById('int_cleanliness');
 var extCleanDiv = document.getElementById('ext_cleanliness');
 var locationDiv = document.getElementById('location');
-var kmDiv = document.getElementById('km');
+// elements modified in last popup
+var blockRightTopDiv = document.getElementById('block-right-top');
+var btnDone = document.getElementById('btn-done');
 
 
 
@@ -40,6 +42,10 @@ btnBack.addEventListener('click', function(event)
 btnConfirm.addEventListener('click', function(event)
 {
     confirm();
+})
+btnDone.addEventListener('click', function(event)
+{
+    close();
 })
 
 
@@ -83,9 +89,9 @@ function nextStep()
     btnReserve.style.display = "none"; //.hide,.show
     step2Buttons.style.display = "inline";
     circleIcon.style.display = "none";
-    kmTitle.innerHTML = "Ricorda che:";
-    oldKm = km.innerHTML;
-    km.innerHTML = text;
+    setRightBottomBlockTitle('Ricorda che:', 2);
+    oldKm = blockRightBottomText.innerHTML;
+    blockRightBottomText.innerHTML = text;
 }
 
 // remove a car reservation
@@ -99,7 +105,10 @@ function removeReservation()
             reservationID = jsonData.jsonData[0].customer_id;
             $.get(removeReservationUrl + reservationID, function (jsonData)
             {
-                // TODO show return message
+                if (true) // TODO verify response
+                {
+                    completed('Prenotazione annullata');
+                }
             });
         }
     });
@@ -117,8 +126,8 @@ function reset()
     btnReserve.style.display = "inline";
     step2Buttons.style.display = "none";
     circleIcon.style.display = "block";
-    kmTitle.innerHTML = "Autonomia";
-    km.innerHTML = oldKm;
+    setRightBottomBlockTitle('Autonomia', 1);
+    blockRightBottomText.innerHTML = oldKm;
 }
 
 // close the popup and reset some data
@@ -127,26 +136,58 @@ function close()
     div.style.display = "none";
     isReservedDiv.innerHTML = '';
     setAction(0);
+    blockRightTopDiv.style.display = "block"; // TODO - CHECK
+    btnDone.style.display = "none";
     reset();
 }
 
 // confirm reservation
 function confirm()
 {
+    /*
     var plate = document.getElementById('licence-plate').innerHTML;
     $.get(reserveUrl + plate, function (jsonData)
     {
-        // TODO show return message
+        if (true) // TODO verify response
+        {
+            */
+            completed('Prenotazione effettuata');
+            /*
+        }
     });
+    */
+}
+
+// change popup to last step and display message
+function completed(text)
+{
+    blockRightTopDiv.style.display = "none";
+    step2Buttons.style.display = "none";
+    btnDone.style.display = "table";
+    setRightBottomBlockTitle(text, 3);
+    blockRightBottomText.innerHTML = '';
 }
 
 
 
-// Setters
+/* Setters */
 
 function setReserveText(text)
 {
     isReservedDiv.innerHTML = text + ' <i class="fa fa-angle-right"></i>';
+}
+
+function setRightBottomBlockTitle(text, stepNumber)
+{
+    if (stepNumber == 1)
+    {
+        text = '<i id="circle-icon" class="fa fa-sun-o"></i> ' + text;
+    }
+    else if (stepNumber == 2)
+    {
+        text = '<i id="circle-icon" class="fa fa-info-circle"></i> ' + text;
+    }
+    blockRightBottomTitle.innerHTML = text;
 }
 
 function setPlateText(text)
@@ -161,10 +202,10 @@ function setLocationText(text)
 
 function setKmText(text)
 {
-    kmDiv.innerHTML = text + ' km';
+    blockRightBottomText.innerHTML = text + ' km';
 }
 
-function setInnerCleanliness(cleanliness)
+function setIntCleanliness(cleanliness)
 {
     intCleanDiv.className = parseCleanliness(cleanliness);
 }
@@ -176,7 +217,7 @@ function setExtCleanliness(cleanliness)
 
 
 
-// Other functions
+/* Other functions */
 
 // retrieve value based on cleanliness
 function parseCleanliness(value)
