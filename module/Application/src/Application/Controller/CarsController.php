@@ -4,12 +4,32 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
+use Zend\Http\Client;
+use Zend\ServiceManager\ServiceLocator;
 
 class CarsController extends AbstractRestfulController
 {
 
+    /**
+     * @var string
+     */
+    private $url;
+
+    public function __construct($url)
+    {
+        $this->url = 'http://api.sharengo.it:8021/v2/cars';//sprintf($url, '');
+    }
+
     public function getList()
     {
+        $client = new Client($this->url, array(
+            'maxredirects' => 0,
+            'timeout'      => 30
+        ));
+        $response = $client->send();
+
+
+
         $json = '{"status":200,"reason":"","data":['.
             '{"plate":"DEMO1","model":"Test model","maker":"Test maker","lat":"45.468452","lon":"9.1857204","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":false,"km":20},'.
             '{"plate":"DEMO2","model":"Test model","maker":"Test maker","lat":"45.45","lon":"9.182","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":false,"km":30},'.
@@ -21,6 +41,8 @@ class CarsController extends AbstractRestfulController
             '{"plate":"DEMO8","model":"Test model","maker":"Test maker","lat":"45.462","lon":"9.172","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":true,"km":75},'.
             '{"plate":"DEMO9","model":"Test model","maker":"Test maker","lat":"45.464","lon":"9.19","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":false,"km":12},'.
             '{"plate":"DEMO10","model":"Test model","maker":"Test maker","lat":"45.466","lon":"9.188","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":false,"km":33}],"time":1434641823}';
+
+        return $response->getBody();
 
         return new JsonModel(json_decode($json, true));
     }

@@ -414,16 +414,16 @@ return array(
     ),
     'controllers' => [
         'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Cars' => 'Application\Controller\CarsController',
-            'Application\Controller\Pois' => 'Application\Controller\PoisController',
-            'Application\Controller\Reservations' => 'Application\Controller\ReservationsController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
         ],
         'factories' => [
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
-            'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory'
+            'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
+            'Application\Controller\Cars' => 'Application\Controller\CarsControllerFactory',
+            'Application\Controller\Pois' => 'Application\Controller\PoisControllerFactory',
+            'Application\Controller\Reservations' => 'Application\Controller\ReservationsControllerFactory'
         ],
     ],
     'view_helpers' => [
