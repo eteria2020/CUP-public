@@ -16,8 +16,7 @@ class PoisController extends AbstractRestfulController
 
     public function __construct($url)
     {
-        $this->url = 'http://api.sharengo.it:8021/v2/pois';//sprintf($url, '');
-
+        $this->url = sprintf($url, '');
     }
 
     public function getList()

@@ -16,7 +16,7 @@ class ReservationsController extends AbstractRestfulController
 
     public function __construct($url)
     {
-        $this->url = 'http://api.sharengo.it:8021/v2/reservations';//sprintf($url, '');
+        $this->url = sprintf($url, '');
 
     }
 

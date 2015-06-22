@@ -40,7 +40,7 @@ function initialize()
     var mapOptions =
         {
             center: myLatlng, // Set our point as the centre location
-            zoom: 13, // Set the zoom level
+            zoom: 14, // Set the zoom level
             scrollwheel: false,
             mapTypeId: 'roadmap' // set the default map type
         };
@@ -56,63 +56,59 @@ function initialize()
         // set a marker for each car
         jsonData.data.forEach(function (car)
         {
-            // position of the car
-            var latlng = new google.maps.LatLng(car.latitude, car.longitude );
-
-            // create the marker on the map
-            var marker = new google.maps.Marker(
+            // show car on map only if operative
+            if(car.status == 'operative')
             {
-                position: latlng,
-                map: map,
-                icon: carMarkerPath
-            });
+                // position of the car
+                var latlng = new google.maps.LatLng(car.latitude, car.longitude);
 
-            // add event listener for when the marker is clicked
-            google.maps.event.addListener(marker, 'click', function()
-            {
-
-                // if an infowindow is open, close it
-                if(openInfoWindow != null)
+                // create the marker on the map
+                var marker = new google.maps.Marker(
                 {
-                    openInfoWindow.close();
-                }
-
-                // modify the elements
-                setPlateText(car['plate']);
-                setIntCleanliness(car['intCleanliness']);
-                setExtCleanliness(car['extCleanliness']);
-                setBatteryText(car['battery']);
-
-                // get the location and set it in the popup
-                geocoder.geocode({'latLng': latlng}, function(results, status)
-                {
-                    if (status == google.maps.GeocoderStatus.OK)
-                    {
-                        if (results[1])
-                        {
-                            setLocationText(results[1].formatted_address);
-                        }
-                        else
-                        {
-                            console.log('No results found');
-                        }
-                    }
-                    else
-                    {
-                        console.log('Geocoder failed due to: ' + status);
-                    }
+                    position: latlng,
+                    map: map,
+                    icon: carMarkerPath
                 });
 
-                // Set the main button's behavior
-                //setReservationButton(car['busy']); // RESERVATION BUTTON
+                // add event listener for when the marker is clicked
+                google.maps.event.addListener(marker, 'click', function()
+                {
 
-                // show the popup
-                showPopup();
+                    // if an infowindow is open, close it
+                    if(openInfoWindow != null)
+                    {
+                        openInfoWindow.close();
+                    }
 
-            });
+                    // modify the elements
+                    setPlateText(car['plate']);
+                    setIntCleanliness(car['intCleanliness']);
+                    setExtCleanliness(car['extCleanliness']);
+                    setBatteryText(car['battery']);
 
-            // add the marker to the carMarkers array
-            carMarkers.push(marker);
+                    // get the location and set it in the popup
+                    geocoder.geocode({'latLng': latlng}, function(results, status)
+                    {
+                        if (status == google.maps.GeocoderStatus.OK)
+                        {
+                            if (results[1])
+                            {
+                                setLocationText(results[1].formatted_address);
+                            }
+                        }
+                    });
+
+                    // Set the main button's behavior
+                    //setReservationButton(car['busy']); // RESERVATION BUTTON
+
+                    // show the popup
+                    showPopup();
+
+                });
+
+                // add the marker to the carMarkers array
+                carMarkers.push(marker);
+            }
 
         });
     

@@ -10,7 +10,7 @@ class CarsControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->getServiceLocator()->get('Config');
-        $apiUrl = '';//$config['api']['url'];
+        $apiUrl = $config['api']['url'] . '/cars';
 
         return new CarsController($apiUrl);
     }
