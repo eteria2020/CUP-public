@@ -59,6 +59,12 @@
                             <div class="block-alert margin-bottom info">
                                 <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
                             </div>
+
+                            <div class="margin-bottom content-align-center">
+                                <p><?= $this->translate('Preferisci pagare con un bonifico?') ?></p>
+                                <p><?= $this->translate('Il conto di versamento di CS MILANO Srl è questo: ') ?><b>IT48U0570413900000000303400</b></p>
+                                <p><?= $this->translate('Nella causale indica il tuo Nome e Cognome + Codice Fiscale + Pagamento Iscrizione Share’ngo.')?></p>
+                            </div>
                         <?php endif; ?>
                     </div>
                     <!-- block-form -->
