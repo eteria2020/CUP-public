@@ -33,17 +33,19 @@ class ConsoleController extends AbstractActionController
         $customers = $this->customerService->getListCustomers();
 
         foreach ($customers as $customer) {
-            $email = $customer->getEmail();
+            if ($customer->getDiscountRate() == 0) {
+                $email = $customer->getEmail();
 
-            try {
-                $discount = $this->profilingPlatformService->getDiscountByEmail($email);
-            } catch (\Exception $e) {
-                $discount = 0;
+                try {
+                    $discount = $this->profilingPlatformService->getDiscountByEmail($email);
+                } catch (\Exception $e) {
+                    $discount = 0;
+                }
+
+                $this->customerService->setCustomerDiscountRate($customer, $discount);
+
+                echo "customer done: ".$email."\n";
             }
-
-            $this->customerService->setCustomerDiscountRate($customer, $discount);
-
-            echo "customer done: ".$email."\n";
         }
 
         echo "done\n";
