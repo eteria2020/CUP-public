@@ -48,6 +48,8 @@ function initialize()
     // sisplay the map on the page
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
+
+
     // get the cars
     $.get(carsUrl, function (jsonData)
     {
@@ -102,7 +104,7 @@ function initialize()
                 });
 
                 // Set the main button's behavior
-                setReservationButton(car['busy']);
+                //setReservationButton(car['busy']); // RESERVATION BUTTON
 
                 // show the popup
                 showPopup();
@@ -119,6 +121,8 @@ function initialize()
         isInit = true;
         toggleButtonColor(carsToggle, carMarkersSet);
     });
+    
+
     
     // get the pois
     $.get(poisUrl, function (jsonData)
@@ -137,16 +141,10 @@ function initialize()
                 icon: poisMarkerPath
             });
 
-            // define content of infowindow
-            var contentString = '<div>' +
-                                '<h2>' + pois.type + '</h2>' +
-                                '<p>' + pois.address + '</p>' +
-                                '</div>';
-
             // create the infowindow
             var infowindow = new google.maps.InfoWindow(
             {
-                content: contentString
+                content: getInfowindowContent(pois.type, pois.address)
             });
 
             // add event listener for when the marker is clicked
@@ -255,4 +253,13 @@ function setReservationButton(isCarBusy)
     {
         setReserveText(textRegister, true);
     }
+}
+
+// content to be shown in infowindow
+function getInfowindowContent(type, address)
+{
+    return '<div>' +
+            '<h2>' + type + '</h2>' +
+            '<p>' + address + '</p>' +
+            '</div>';
 }

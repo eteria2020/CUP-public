@@ -89,7 +89,7 @@ function nextStep()
 {
     leftColumn.style.display = "none";
     rightColumn.style.width = "100%";
-    btnReserve.style.display = "none"; //.hide,.show
+    btnReserve.style.display = "none";
     step2Buttons.style.display = "inline";
     circleIcon.style.display = "none";
     setRightBottomBlockTitle(titleRemember, 2);
@@ -138,7 +138,7 @@ function reset()
 {
     leftColumn.style.display = "block";
     rightColumn.style.width = "";
-    btnReserve.style.display = "inline";
+    //btnReserve.style.display = "inline"; // RESERVATION BUTTON
     step2Buttons.style.display = "none";
     circleIcon.style.display = "block";
     setRightBottomBlockTitle(titleMilage, 1);
