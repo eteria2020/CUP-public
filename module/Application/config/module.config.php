@@ -283,13 +283,15 @@ return array(
                 ]
             ],
             'cars' => [
-                'type' => 'Literal',
+                'type' => 'Segment',
                 'options' => [
-                    'route' => '/cars',
+                    'route' => '/cars[/:id]',
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
+                    ),
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Cars',
-                        'action'     => 'list',
+                        'controller' => 'Cars'
                     ]
                 ]
             ],
@@ -299,8 +301,7 @@ return array(
                     'route' => '/pois',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Pois',
-                        'action'     => 'list',
+                        'controller' => 'Pois'
                     ]
                 ]
             ],
@@ -308,10 +309,12 @@ return array(
                 'type' => 'Literal',
                 'options' => [
                     'route' => '/reservations',
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
+                    ),
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Reservations',
-                        'action'     => 'list',
+                        'controller' => 'Reservations'
                     ]
                 ]
             ],

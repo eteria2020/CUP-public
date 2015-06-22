@@ -474,12 +474,12 @@ var textRegister = '<?= $this->translate("Registrati e prenota"); ?>';
 echo $this->partial('partials/car-popup.phtml');
 ?>
 <script>
-var carsUrl = "<?= $this->url('cars'); ?>"; // TODO "https://api.sharengo.it" + port + version + "/cars";
+var carsUrl = "<?= $this->url('cars'); ?>";
 var carMarkerPath = "<?= $this->basePath('images/marker-car.png'); ?>";
-var poisUrl = "<?= $this->url('pois'); ?>"; // TODO "https://api.sharengo.it" + port + version + "/pois";
+var poisUrl = "<?= $this->url('pois'); ?>";
 var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
-var reservationsUrl = "<?= $this->url('reservations'); ?>"; // TODO "https://" + auth + "api.sharengo.it" + port + version + "/reservations?active" + plate;
-var reserveUrl = "https://" + auth + "api.sharengo.it" + port + version + "/reservations?plate=";
-var removeReservationUrl = "https://" + auth + "api.sharengo.it" + port + version + "/reservations?reservation_id=";
+var reservationsUrl = "<?= $this->url('reservations'); ?>";
+var reserveUrl = "<?= $this->url('reservations'); ?>"; // TODO
+var removeReservationUrl = "<?= $this->url('reservations'); ?>"; // TODO
 </script>
 <script type="text/javascript" src="js/index.js"></script>

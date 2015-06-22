@@ -27,7 +27,7 @@ jQuery(function($)
     document.body.appendChild(script);
 });
 
-// initialize the whole logic
+// initialize the whole logic when map is loaded
 function initialize()
 {
     /* Show the markers */

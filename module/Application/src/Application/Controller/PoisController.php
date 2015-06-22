@@ -2,15 +2,13 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
-// REMOVE DEVELOPMENTENVIORNMENT
-class PoisController extends AbstractActionController
+class PoisController extends AbstractRestfulController
 {
 
-    // when this becomes more serious maybe it will be better move it in some better place, like an API module
-    public function listAction()
+    public function getList()
     {
         $json = '{"status":200,"reason":"","data":['.
             '{"id":0,"type":"test type","code":"","name":"","brand":"","address":"test address","town":"","zip_code":"","province":"","lon":"9.2","lat":"45.44","update":1},'.

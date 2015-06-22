@@ -100,12 +100,11 @@ function nextStep()
 // remove a car reservation
 function removeReservation()
 {
-    // TODO
     $.get(reservationsUrl, function (jsonData)
     {
         if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null)
         {
-            reservationID = jsonData.jsonData[0].customer_id;
+            var reservationID = jsonData.jsonData[0].customer_id;
             $.get(removeReservationUrl + reservationID, function (jsonData)
             {
                 if (true) // TODO verify response
@@ -151,7 +150,7 @@ function close()
     mainContainer.style.display = "none";
     isReservedDiv.innerHTML = spinner;
     setAction(0);
-    blockRightTopDiv.style.display = "block"; // TODO - CHECK
+    blockRightTopDiv.style.display = "block";
     btnDone.style.display = "none";
     setLocationText(spinner);
     reset();
