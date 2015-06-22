@@ -223,9 +223,9 @@ function setLocationText(text)
     locationDiv.innerHTML = text;
 }
 
-function setKmText(text)
+function setBatteryText(text)
 {
-    blockRightBottomText.innerHTML = text + ' km';
+    blockRightBottomText.innerHTML = text + textBattery;
 }
 
 function setIntCleanliness(cleanliness)

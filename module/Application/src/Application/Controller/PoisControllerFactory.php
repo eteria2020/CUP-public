@@ -10,7 +10,7 @@ class PoisControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->getServiceLocator()->get('Config');
-        $apiUrl = $config['api']['url'];
+        $apiUrl = '';//$config['api']['url'];
 
         return new PoisController($apiUrl);
     }

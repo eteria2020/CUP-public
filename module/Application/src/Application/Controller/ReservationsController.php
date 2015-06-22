@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
+use Zend\Http\Client;
 
 class ReservationsController extends AbstractRestfulController
 {
@@ -30,7 +31,7 @@ class ReservationsController extends AbstractRestfulController
         
         $json = '{"status":200,"reason":"","data":[],"time":1434641823}';
 
-        return $response->getBody();
+        return new JsonModel(json_decode($response->getBody(), true));
         return new JsonModel(json_decode($json, true));
     }
  

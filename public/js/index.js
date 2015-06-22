@@ -57,7 +57,7 @@ function initialize()
         jsonData.data.forEach(function (car)
         {
             // position of the car
-            var latlng = new google.maps.LatLng(car.lat, car.lon);
+            var latlng = new google.maps.LatLng(car.latitude, car.longitude );
 
             // create the marker on the map
             var marker = new google.maps.Marker(
@@ -81,7 +81,7 @@ function initialize()
                 setPlateText(car['plate']);
                 setIntCleanliness(car['intCleanliness']);
                 setExtCleanliness(car['extCleanliness']);
-                setKmText(car['km']);
+                setBatteryText(car['battery']);
 
                 // get the location and set it in the popup
                 geocoder.geocode({'latLng': latlng}, function(results, status)
@@ -131,7 +131,7 @@ function initialize()
         jsonData.data.forEach(function (pois)
         {
             // position of the pois
-            var latlng = new google.maps.LatLng(pois.lat, pois.lon);
+            var latlng = new google.maps.LatLng(pois.lon, pois.lat);
 
             // create a marker
             var marker = new google.maps.Marker(

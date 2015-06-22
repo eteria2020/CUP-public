@@ -5,7 +5,6 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 use Zend\Http\Client;
-use Zend\ServiceManager\ServiceLocator;
 
 class CarsController extends AbstractRestfulController
 {
@@ -42,7 +41,7 @@ class CarsController extends AbstractRestfulController
             '{"plate":"DEMO9","model":"Test model","maker":"Test maker","lat":"45.464","lon":"9.19","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":false,"km":12},'.
             '{"plate":"DEMO10","model":"Test model","maker":"Test maker","lat":"45.466","lon":"9.188","internal_cleanliness":"","external_cleanliness":"","fuel_percentage":50,"busy":false,"km":33}],"time":1434641823}';
 
-        return $response->getBody();
+        return new JsonModel(json_decode($response->getBody(), true));
 
         return new JsonModel(json_decode($json, true));
     }

@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
+use Zend\Http\Client;
 
 class PoisController extends AbstractRestfulController
 {
@@ -36,7 +37,7 @@ class PoisController extends AbstractRestfulController
             '{"id":5,"type":"test type","code":"","name":"","brand":"","address":"test address","town":"","zip_code":"","province":"","lon":"9.215","lat":"45.48","update":1},'.
             '{"id":4,"type":"test type","code":"","name":"","brand":"","address":"test address","town":"","zip_code":"","province":"","lon":"9.195","lat":"45.46","update":1}],"time":1434641823}';
 
-        return $response->getBody();
+        return new JsonModel(json_decode($response->getBody(), true));
         return new JsonModel(json_decode($json, true));
     }
 }
