@@ -30,7 +30,7 @@ class Module
         $config->setFilterSchemaAssetsExpression('/^(transactions)$/');*/
 
         $eventManager->getSharedManager()->attach(
-            'Application\Controller\PaymentController',
+            ['Application\Controller\PaymentController', 'Cartasi\Controller\CartasiPaymentsController'],
             'successfulPayment',
             function (EventInterface $e) use ($serviceManager) {
                 $params = $e->getParams();

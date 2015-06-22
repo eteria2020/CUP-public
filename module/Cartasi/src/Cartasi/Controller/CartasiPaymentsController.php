@@ -207,6 +207,13 @@ class CartasiPaymentsController extends AbstractActionController
                     'productType' => $this->params()->fromQuery('check')
                 ]
             );
+
+            if ($outcome == 'OK') {
+                $eventManager = $this->getEventManager();
+                $eventManager->trigger('successfulPayment', $this, [
+                    'customer' => $contract->getCustomer()
+                ]);
+            }
         } catch (\Exception $e) {
             $this->getEventManager()->trigger('cartasi.first_payment.update_error', $this, [
                 'contractId' => $contract->getId(),

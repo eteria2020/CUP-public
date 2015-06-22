@@ -162,7 +162,7 @@ class UserController extends AbstractActionController
         if ($customer->getFirstPaymentCompleted()) {
             return $this->redirect()->toRoute('signup-score-completion');
         } else {
-            return $this->redirect()->toRoute('pay', ['email' => $customer->getEmail()]);
+            return $this->redirect()->toRoute('cartasi/primo-pagamento', ['email' => $customer->getEmail()]);
         }
     }
 
