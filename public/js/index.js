@@ -56,8 +56,8 @@ function initialize()
         // set a marker for each car
         jsonData.data.forEach(function (car)
         {
-            // show car on map only if operative
-            if(car.status == 'operative')
+            // show car on map only if operative and position is not 0,0
+            if(car.status == 'operative' && car.latitude != '0' && car.longitude != '0')
             {
                 // position of the car
                 var latlng = new google.maps.LatLng(car.latitude, car.longitude);
@@ -126,36 +126,40 @@ function initialize()
         // set a marker for each pois (default = hidden)
         jsonData.data.forEach(function (pois)
         {
-            // position of the pois
-            var latlng = new google.maps.LatLng(pois.lon, pois.lat);
-
-            // create a marker
-            var marker = new google.maps.Marker(
+            // show pois on map only if position is not 0,0
+            if (pois.lon != '0' && pois.lat != '0')
             {
-                position: latlng,
-                map: null,
-                icon: poisMarkerPath
-            });
+                // position of the pois
+                var latlng = new google.maps.LatLng(pois.lon, pois.lat);
 
-            // create the infowindow
-            var infowindow = new google.maps.InfoWindow(
-            {
-                content: getInfowindowContent(pois.type, pois.address)
-            });
-
-            // add event listener for when the marker is clicked
-            google.maps.event.addListener(marker, 'click', function()
-            {
-                // if an infowindow is open, close it
-                if(openInfoWindow != null)
+                // create a marker
+                var marker = new google.maps.Marker(
                 {
-                    openInfoWindow.close();
-                }
-                openInfoWindow = infowindow;
-                infowindow.open(map,marker);
-            });
+                    position: latlng,
+                    map: null,
+                    icon: poisMarkerPath
+                });
 
-            energyMarkers.push(marker);
+                // create the infowindow
+                var infowindow = new google.maps.InfoWindow(
+                {
+                    content: getInfowindowContent(pois.type, pois.address)
+                });
+
+                // add event listener for when the marker is clicked
+                google.maps.event.addListener(marker, 'click', function()
+                {
+                    // if an infowindow is open, close it
+                    if(openInfoWindow != null)
+                    {
+                        openInfoWindow.close();
+                    }
+                    openInfoWindow = infowindow;
+                    infowindow.open(map,marker);
+                });
+
+                energyMarkers.push(marker);
+            }
 
         });
 

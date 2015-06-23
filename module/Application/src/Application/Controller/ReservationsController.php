@@ -17,7 +17,6 @@ class ReservationsController extends AbstractRestfulController
     public function __construct($url)
     {
         $this->url = sprintf($url, '');
-
     }
 
     public function getList()
@@ -27,12 +26,10 @@ class ReservationsController extends AbstractRestfulController
             'maxredirects' => 0,
             'timeout'      => 30
         ));
+
         $response = $client->send();
         
-        $json = '{"status":200,"reason":"","data":[],"time":1434641823}';
-
         return new JsonModel(json_decode($response->getBody(), true));
-        return new JsonModel(json_decode($json, true));
     }
  
     public function create($data)
