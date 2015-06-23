@@ -40,13 +40,30 @@ class Module
                 // send confirmation email
                 $paymentService = $serviceManager->get('PaymentService');
                 $paymentService->sendCompletionEmail($customer);
+            }
+        );
+
+        $eventManager->getSharedManager()->attach(
+            'Application\Controller\UserController',
+            'registrationCompleted',
+            function (EventInterface $e) use ($serviceManager) {
+                $params = $e->getParams();
 
                 // store discount rate
                 $profilingPlatformService = $serviceManager->get('ProfilingPlatformService');
                 $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
 
+                $customer = $customerService->findByEmail($params['email']);
+
+                if (empty($customer)) {
+                    return;
+                } else {
+                    $customer = $customer[0];
+                }
+                $customerService->enableApi($customer);
+
                 try {
-                    $discount = $profilingPlatformService->getDiscountByEmail($customer->getEmail());
+                    $discount = $profilingPlatformService->getDiscountByEmail($params['email']);
                     $customerService->setCustomerDiscountRate($customer, $discount);
                 } catch (ProfilingPlatformException $ex) { }
             }

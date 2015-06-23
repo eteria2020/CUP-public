@@ -209,8 +209,7 @@ class CartasiPaymentsController extends AbstractActionController
             );
 
             if ($outcome == 'OK') {
-                $eventManager = $this->getEventManager();
-                $eventManager->trigger('successfulPayment', $this, [
+                $this->getEventManager()->trigger('successfulPayment', $this, [
                     'customer' => $contract->getCustomer()
                 ]);
             }
