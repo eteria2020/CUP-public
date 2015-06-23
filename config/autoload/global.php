@@ -18,5 +18,8 @@ return array(
     'profiling-platform' => [
         'endpoint' => 'http://www.equomobili.it/',
         'getdiscount-call' => 'getdiscount.php?email=%s'
+    ],
+    'api' => [
+        'url' => 'http://%sapi.sharengo.it:8021/v2'
     ]
 );
