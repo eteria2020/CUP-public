@@ -45,10 +45,10 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
         }
 
         // Success!
-        $e->setIdentity($userObject);
+        $e->setIdentity($userObject->getId());
         $this->setSatisfied(true);
         $storage = $this->getStorage()->read();
-        $storage['identity'] = $userObject;
+        $storage['identity'] = $e->getIdentity();
         $this->getStorage()->write($storage);
         $e->setCode(AuthenticationResult::SUCCESS)
             ->setMessages(array('Authentication successful.'));
