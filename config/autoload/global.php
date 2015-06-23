@@ -21,5 +21,8 @@ return array(
     ],
     'api' => [
         'url' => 'http://%sapi.sharengo.it:8021/v2'
+    ],
+    'mobile' => [
+        'url' => 'http://mobile.sharengo.it'
     ]
 );

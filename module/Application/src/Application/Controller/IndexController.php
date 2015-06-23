@@ -14,8 +14,24 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+
+    /**
+     * @var string
+     */
+    private $mobileUrl;
+
+    public function __construct($mobileUrl)
+    {
+        $this->mobileUrl = $mobileUrl;
+    }
+
     public function indexAction()
     {
+        // Any mobile device (phones or tablets).
+        if ($this->mobileDetect()->isMobile()) {
+            $this->redirect()->toUrl($this->mobileUrl);
+        }
+
         return new ViewModel();
     }
 
