@@ -14,6 +14,7 @@ var carMarkersSet = false;
 var energyMarkers = [];
 var energyMarkersSet = false;
 var openInfoWindow = null;
+var circle = null;
 
 
 
@@ -80,11 +81,15 @@ function initialize()
                         openInfoWindow.close();
                     }
 
+                    // if some car's coverage circle is drawn, remove it
+                    removeCoverage();
+
                     // modify the elements
                     setPlateText(car['plate']);
                     setIntCleanliness(car['intCleanliness']);
                     setExtCleanliness(car['extCleanliness']);
                     setBatteryText(car['battery']);
+                    setCarPos(marker.position);
 
                     // get the location and set it in the popup
                     geocoder.geocode({'latLng': latlng}, function(results, status)
@@ -262,4 +267,29 @@ function getInfowindowContent(type, address)
             '<h2>' + type + '</h2>' +
             '<p>' + address + '</p>' +
             '</div>';
+}
+
+// draw a 60 km circle around the passed position
+function drawCoverage(position)
+{
+    var circleOptions = {
+      strokeColor: '#43a34c',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#43a34c',
+      fillOpacity: 0.35,
+      map: map,
+      center: position,
+      radius: 60000 // in meters
+    };
+    circle = new google.maps.Circle(circleOptions);
+}
+
+// remove any drawn circle
+function removeCoverage()
+{
+    if (circle != null)
+    {
+        circle.setMap(null);
+    }
 }

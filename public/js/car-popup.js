@@ -6,10 +6,13 @@ var oldKm;
 var spinner = '<i class="fa fa-circle-o-notch fa-spin"></i>';
 // used to disable modifications when popup is closed
 var isOpen = false;
+// last clicked car's position
+var carPos;
 
 // get html elements
 var mainContainer = document.getElementById('car-popup');
 var btnClose = document.getElementById('btn-close');
+var btnCoverage = document.getElementById('coverage');
 // elements modified for second popup
 var leftColumn = document.getElementById('left-column');
 var rightColumn = document.getElementById('right-column');
@@ -49,6 +52,10 @@ btnConfirm.addEventListener('click', function(event)
 btnDone.addEventListener('click', function(event)
 {
     close();
+})
+btnCoverage.addEventListener('click', function(event)
+{
+    verifyCoverage();
 })
 
 
@@ -188,6 +195,13 @@ function completed(text)
     blockRightBottomText.innerHTML = '';
 }
 
+// draw a circle on the map with the coverage
+function verifyCoverage()
+{
+    drawCoverage(carPos);
+    close();
+}
+
 
 
 /* Setters */
@@ -236,6 +250,11 @@ function setIntCleanliness(cleanliness)
 function setExtCleanliness(cleanliness)
 {
     extCleanDiv.className = parseCleanliness(cleanliness);
+}
+
+function setCarPos(position)
+{
+    carPos = position;
 }
 
 
