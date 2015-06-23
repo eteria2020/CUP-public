@@ -47,5 +47,7 @@ return array(
         'guards' => array(
             // moved inside each module
         ),
+
+        'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
     ),
 );
