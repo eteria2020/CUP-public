@@ -12,6 +12,8 @@ class CarsControllerFactory implements FactoryInterface
         $config = $serviceLocator->getServiceLocator()->get('Config');
         $apiUrl = $config['api']['url'] . '/cars';
 
-        return new CarsController($apiUrl);
+        $carsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CarsService');
+
+        return new CarsController($apiUrl, $carsService);
     }
 }

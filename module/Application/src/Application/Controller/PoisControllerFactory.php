@@ -12,6 +12,8 @@ class PoisControllerFactory implements FactoryInterface
         $config = $serviceLocator->getServiceLocator()->get('Config');
         $apiUrl = $config['api']['url'] . '/pois';
 
-        return new PoisController($apiUrl);
+        $poisService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PoisService');
+        
+        return new PoisController($apiUrl, $poisService);
     }
 }
