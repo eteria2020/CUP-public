@@ -60,12 +60,18 @@ class Module
                 } else {
                     $customer = $customer[0];
                 }
+
+                // enable api usage
                 $customerService->enableApi($customer);
 
+                // retrieve discout from equomobili
                 try {
                     $discount = $profilingPlatformService->getDiscountByEmail($params['email']);
                     $customerService->setCustomerDiscountRate($customer, $discount);
                 } catch (ProfilingPlatformException $ex) { }
+
+                // assign card to user
+                $customerService->assignCard($customer);
             }
         );
 
