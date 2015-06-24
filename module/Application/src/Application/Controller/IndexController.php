@@ -34,10 +34,13 @@ class IndexController extends AbstractActionController
 
         return new ViewModel();
     }
-
+    
     public function carsharingAction()
     {
-        return new ViewModel();
+        $view = new ViewModel();
+        $view->setTemplate('application/index/index');
+
+        return $view;
     }
 
     public function cosaeAction()
