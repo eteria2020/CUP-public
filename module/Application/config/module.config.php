@@ -413,10 +413,8 @@ return array(
         ]
     ),
     'controllers' => [
-        'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ],
         'factories' => [
+            'Application\Controller\Index' => 'Application\Controller\IndexControllerFactory',
             'Application\Controller\User' => 'Application\Controller\UserControllerFactory',
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',

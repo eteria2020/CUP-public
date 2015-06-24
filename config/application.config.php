@@ -13,6 +13,7 @@ return array(
         'GoalioMailService',
         'GoalioForgotPassword',
         'GoalioForgotPasswordDoctrineORM',
+        'MobileDetectModule',
 
         // Our modules
         'Multilanguage',
