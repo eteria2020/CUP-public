@@ -474,12 +474,12 @@ var textRegister = '<?= $this->translate("Registrati e prenota"); ?>';
 echo $this->partial('partials/car-popup.phtml');
 ?>
 <script>
-var carsUrl = "<?= $this->url('cars'); ?>";
+var carsUrl = "<?= $this->url('api/cars'); ?>";
 var carMarkerPath = "<?= $this->basePath('images/marker-car.png'); ?>";
-var poisUrl = "<?= $this->url('pois'); ?>";
+var poisUrl = "<?= $this->url('api/pois'); ?>";
 var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
-var reservationsUrl = "<?= $this->url('reservations'); ?>";
-var reserveUrl = "<?= $this->url('reservations'); ?>"; // TODO
-var removeReservationUrl = "<?= $this->url('reservations'); ?>"; // TODO
+var reservationsUrl = "<?= $this->url('api/reservations'); ?>";
+var reserveUrl = "<?= $this->url('api/reservations'); ?>"; // TODO
+var removeReservationUrl = "<?= $this->url('api/reservations'); ?>"; // TODO
 </script>
 <script type="text/javascript" src="js/index.js"></script>

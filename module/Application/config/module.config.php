@@ -293,42 +293,6 @@ return array(
                     ),
                 ]
             ],
-            'cars' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/cars[/:id]',
-                    'constraints' => array(
-                        'id'     => '[0-9]+',
-                    ),
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Cars'
-                    ]
-                ]
-            ],
-            'pois' => [
-                'type' => 'Literal',
-                'options' => [
-                    'route' => '/pois',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Pois'
-                    ]
-                ]
-            ],
-            'reservations' => [
-                'type' => 'Literal',
-                'options' => [
-                    'route' => '/reservations',
-                    'constraints' => array(
-                        'id'     => '[0-9]+',
-                    ),
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Reservations'
-                    ]
-                ]
-            ],
             'area-utente' => [
                 'type' => 'Segment',
                 'options' => [
@@ -430,9 +394,6 @@ return array(
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
-            'Application\Controller\Cars' => 'Application\Controller\CarsControllerFactory',
-            'Application\Controller\Pois' => 'Application\Controller\PoisControllerFactory',
-            'Application\Controller\Reservations' => 'Application\Controller\ReservationsControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -477,9 +438,6 @@ return array(
                 array('controller' => 'zfcuser', 'roles' => array()),
                 array('controller' => 'goalioforgotpassword_forgot', 'roles' => array()),
                 array('controller' => 'Application\Controller\Index', 'roles' => array()),
-                array('controller' => 'Application\Controller\User', 'roles' => array()),
-                array('controller' => 'Application\Controller\Cars', 'roles' => array()),
-                array('controller' => 'Application\Controller\Pois', 'roles' => array()),
                 array('controller' => 'Application\Controller\Reservations', 'roles' => array()),
                 array('controller' => 'Application\Controller\Console', 'roles' => array()),
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
