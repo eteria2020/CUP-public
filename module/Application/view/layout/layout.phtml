@@ -69,7 +69,7 @@
         <!-- outer -->
         <div id="outer">
             <!-- header -->
-            <header id="header" class="emotional-header clearfix">
+            <header id="header" class="<?= $this->isUserArea($this->currentRoute()) ? 'clearfix' : 'emotional-header clearfix'; ?>">
 
                 <!-- show-nav-for-iphone -->
                 <button type="button" class="show-nav-for-iphone" data-toggle="collapse" data-target="#nav">
@@ -202,6 +202,13 @@
         </footer>
         <!-- footer -->
 
+        <? if($this->isUserArea($this->currentRoute())): ?>
+            <style>
+                .block-navigation-menu ul {
+                    text-align:center !important;
+                }
+            </style>
+        <?php endif; ?>
         <?php
             $this->inlineScript()
                 ->appendFile($this->basePath('js/respond.min.js'))
