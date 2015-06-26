@@ -23,7 +23,11 @@ return array(
 
             'BjyAuthorize\Provider\Role\Config' => array(
                 'guest' => array(),
-                'user' => array(),
+                'user' => array(
+                    'children' => array(
+                        'admin' => array(),
+                    ),
+                ),
             ),
 
         ),
