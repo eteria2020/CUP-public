@@ -3,6 +3,8 @@
 namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\TripsService;
+use SharengoCore\Service\AccountTripsService;
 use Application\Service\ProfilingPlaformService;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -16,15 +18,29 @@ class ConsoleController extends AbstractActionController
     private $customerService;
 
     /**
+     * @var TripsService
+     */
+    private $tripsService;
+
+    /**
+     * @var AccountTripsService
+     */
+    private $accountTripsService;
+
+    /**
      * @var ProfilingPlatformservice
      */
     private $profilingPlatformService;
 
     public function __construct(
         CustomersService $customerService,
+        TripsService $tripsService,
+        AccountTripsService $accountTripsService,
         ProfilingPlaformService $profilingPlatformService
     ) {
         $this->customerService = $customerService;
+        $this->tripsService = $tripsService;
+        $this->accountTripsService = $accountTripsService;
         $this->profilingPlatformService = $profilingPlatformService;
     }
 
@@ -93,5 +109,27 @@ class ConsoleController extends AbstractActionController
         echo "\n\nDONE\n";
 
     }
-    
+
+    public function accountTripsAction()
+    {
+        $tripsToBeAccounted = $this->tripsService->getTripsToBeAccounted();
+
+        foreach ($tripsToBeAccounted as $trip) {
+            echo "processing trip ".$trip->getId()."\n";
+            $this->accountTripsService->accountTrip($trip);
+        }
+
+        echo "\nDONE\n";
+    }
+
+    public function accountTripAction()
+    {
+        $tripId = $this->getRequest()->getParam('tripId');
+
+        $trip = $this->tripsService->getTripById($tripId);
+
+        $this->accountTripsService->accountTrip($trip);
+
+        echo "Trip ".$tripId." processed\n";
+    }
 }

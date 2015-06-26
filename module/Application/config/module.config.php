@@ -513,6 +513,28 @@ return array(
                             'action' => 'assign-bonus'
                         ]
                     ]
+                ],
+                'account-trips' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'account trips',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'account-trips'
+                        ]
+                    ]
+                ],
+                'account-trip' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'account trip <tripId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'account-trip'
+                        ]
+                    ]
                 ]
             ],
         ],
