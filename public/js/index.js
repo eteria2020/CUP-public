@@ -76,7 +76,7 @@ function initialize()
                 {
 
                     // if an infowindow is open, close it
-                    if(openInfoWindow != null)
+                    if(openInfoWindow !== null)
                     {
                         openInfoWindow.close();
                     }
@@ -88,7 +88,7 @@ function initialize()
                     setPlateText(car['plate']);
                     setIntCleanliness(car['intCleanliness']);
                     setExtCleanliness(car['extCleanliness']);
-                    setBatteryText(car['battery']);
+                    setCarBattery(car['battery']);
                     setCarPos(marker.position);
 
                     // get the location and set it in the popup
@@ -155,7 +155,7 @@ function initialize()
                 google.maps.event.addListener(marker, 'click', function()
                 {
                     // if an infowindow is open, close it
-                    if(openInfoWindow != null)
+                    if(openInfoWindow !== null)
                     {
                         openInfoWindow.close();
                     }
@@ -183,23 +183,23 @@ toggleButtonColor(energyToggle, energyMarkersSet);
 // set click event listeners
 carsToggle.addEventListener('click', function (event)
 {
-    if(isInit)
-    {   
+    if (isInit)
+    {
         toggleMarkers(carMarkers, (carMarkersSet ? null : map));
         carMarkersSet = !carMarkersSet;
         toggleButtonColor(carsToggle, carMarkersSet);
     }
-})
+});
 
 energyToggle.addEventListener('click', function (event)
 {
-    if(isInit)
+    if (isInit)
     {
         toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
         energyMarkersSet = !energyMarkersSet;
         toggleButtonColor(energyToggle, energyMarkersSet);
     }
-})
+});
 
 // define on click function
 function toggleMarkers(markers, value)
@@ -270,7 +270,7 @@ function getInfowindowContent(type, address)
 }
 
 // draw a 60 km circle around the passed position
-function drawCoverage(position)
+function drawCoverage(position, battery)
 {
     var circleOptions = {
       strokeColor: '#43a34c',
@@ -280,15 +280,16 @@ function drawCoverage(position)
       fillOpacity: 0.35,
       map: map,
       center: position,
-      radius: 60000 // in meters
+      radius: 600 * battery // in meters
     };
     circle = new google.maps.Circle(circleOptions);
+    circle.setMap(map);
 }
 
 // remove any drawn circle
 function removeCoverage()
 {
-    if (circle != null)
+    if (circle !== null)
     {
         circle.setMap(null);
     }

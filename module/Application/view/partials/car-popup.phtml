@@ -76,10 +76,12 @@ if ($isLoggedIn)
                                 <div class="block-car-data-info">
                                     <span id="block-right-bottom-title" class="block-data-name">
                                         <i id="circle-icon" class="fa fa-sun-o"></i>
-                                    <?= $this->translate('Autonomia'); ?>
-                                    <a id="coverage" class="btn-link small ct2 pull-right"><?= $this->translate('Verifica copertura'); ?><i class="fa fa-smile-o"></i></a>
+                                        <?= $this->translate('Autonomia'); ?>
                                     </span>
-                                    <span id="block-right-bottom-text" class="block-data-value"></span>                                                
+                                    <span class="block-data-value">
+                                        <span id="block-right-bottom-text"></span>
+                                        <a id="coverage" class="btn-link small ct2 pull-right"><?= $this->translate('Verifica copertura '); ?><i class="fa fa-smile-o"></i></a>
+                                    </span>                                                
                                 </div>
                                 <!-- block-car-data-info -->
                                 
@@ -124,10 +126,10 @@ var textRemember = '<?= $this->translate("Ricorda che dovrai avere con te lo sma
 var titleRemember = '<?= $this->translate("Ricorda che:"); ?>';
 var textReservationRemoved = '<?= $this->translate("Prenotazione annullata"); ?>';
 var textReservationRemovedNot = '<?= $this->translate("Impossibile annullare prenotazione"); ?>';
-var titleMilage = '<?= $this->translate("Autonomia"); ?> <a id="coverage" class="btn-link small ct2 pull-right"><?= $this->translate("Verifica copertura"); ?><i class="fa fa-smile-o"></i></a>';
+var titleMilage = '<?= $this->translate("Autonomia"); ?>';
 var textReservationCompleted = '<?= $this->translate("Prenotazione effettuata"); ?>';
 var textReservationCompletedNot = '<?= $this->translate("L\'auto è già occupata"); ?>';
-var textBattery = '<?= $this->translate("% batteria"); ?>';
+var textMileage = '<?= $this->translate(" km"); ?>';
 </script>
 <script type="text/javascript" src="js/car-popup.js"></script>
 

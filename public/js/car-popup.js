@@ -8,6 +8,8 @@ var spinner = '<i class="fa fa-circle-o-notch fa-spin"></i>';
 var isOpen = false;
 // last clicked car's position
 var carPos;
+// last clicked car's battery
+var carBattery;
 
 // get html elements
 var mainContainer = document.getElementById('car-popup');
@@ -40,23 +42,27 @@ var btnDone = document.getElementById('btn-done');
 btnClose.addEventListener('click', function(event)
 {
     close();
-})
+});
 btnBack.addEventListener('click', function(event)
 {
     reset();
-})
+});
 btnConfirm.addEventListener('click', function(event)
 {
     confirm();
-})
+});
 btnDone.addEventListener('click', function(event)
 {
     close();
-})
+});
 btnCoverage.addEventListener('click', function(event)
 {
     verifyCoverage();
-})
+});
+btnReserve.addEventListener('click', function(event)
+{
+    startAction();
+});
 
 
 
@@ -86,11 +92,6 @@ function startAction()
     //if actionNumber == 0 (or anything else) do nothing
 }
 
-btnReserve.addEventListener('click', function(event)
-{
-    startAction();
-})
-
 // next step to reserve car
 function nextStep()
 {
@@ -102,6 +103,7 @@ function nextStep()
     setRightBottomBlockTitle(titleRemember, 2);
     oldKm = blockRightBottomText.innerHTML;
     blockRightBottomText.innerHTML = textRemember;
+    btnCoverage.style.display = "none";
 }
 
 // remove a car reservation
@@ -149,6 +151,7 @@ function reset()
     circleIcon.style.display = "block";
     setRightBottomBlockTitle(titleMilage, 1);
     blockRightBottomText.innerHTML = oldKm;
+    btnCoverage.style.display = "inline";
 }
 
 // close the popup and reset some data
@@ -198,7 +201,7 @@ function completed(text)
 // draw a circle on the map with the coverage
 function verifyCoverage()
 {
-    drawCoverage(carPos);
+    drawCoverage(carPos, carBattery);
     close();
 }
 
@@ -237,9 +240,10 @@ function setLocationText(text)
     locationDiv.innerHTML = text;
 }
 
-function setBatteryText(text)
+function setBatteryText(battery)
 {
-    blockRightBottomText.innerHTML = text + textBattery;
+    mileage = Math.round(0.6 * battery);
+    blockRightBottomText.innerHTML = mileage + textMileage;
 }
 
 function setIntCleanliness(cleanliness)
@@ -255,6 +259,12 @@ function setExtCleanliness(cleanliness)
 function setCarPos(position)
 {
     carPos = position;
+}
+
+function setCarBattery(battery)
+{
+    carBattery = battery;
+    setBatteryText(battery);
 }
 
 
