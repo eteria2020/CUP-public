@@ -14,6 +14,7 @@ var carMarkersSet = false;
 var energyMarkers = [];
 var energyMarkersSet = false;
 var openInfoWindow = null;
+var circle = null;
 
 
 
@@ -75,16 +76,20 @@ function initialize()
                 {
 
                     // if an infowindow is open, close it
-                    if(openInfoWindow != null)
+                    if(openInfoWindow !== null)
                     {
                         openInfoWindow.close();
                     }
+
+                    // if some car's coverage circle is drawn, remove it
+                    removeCoverage();
 
                     // modify the elements
                     setPlateText(car['plate']);
                     setIntCleanliness(car['intCleanliness']);
                     setExtCleanliness(car['extCleanliness']);
-                    setBatteryText(car['battery']);
+                    setCarBattery(car['battery']);
+                    setCarPos(marker.position);
 
                     // get the location and set it in the popup
                     geocoder.geocode({'latLng': latlng}, function(results, status)
@@ -150,7 +155,7 @@ function initialize()
                 google.maps.event.addListener(marker, 'click', function()
                 {
                     // if an infowindow is open, close it
-                    if(openInfoWindow != null)
+                    if(openInfoWindow !== null)
                     {
                         openInfoWindow.close();
                     }
@@ -178,23 +183,23 @@ toggleButtonColor(energyToggle, energyMarkersSet);
 // set click event listeners
 carsToggle.addEventListener('click', function (event)
 {
-    if(isInit)
-    {   
+    if (isInit)
+    {
         toggleMarkers(carMarkers, (carMarkersSet ? null : map));
         carMarkersSet = !carMarkersSet;
         toggleButtonColor(carsToggle, carMarkersSet);
     }
-})
+});
 
 energyToggle.addEventListener('click', function (event)
 {
-    if(isInit)
+    if (isInit)
     {
         toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
         energyMarkersSet = !energyMarkersSet;
         toggleButtonColor(energyToggle, energyMarkersSet);
     }
-})
+});
 
 // define on click function
 function toggleMarkers(markers, value)
@@ -262,4 +267,30 @@ function getInfowindowContent(type, address)
             '<h2>' + type + '</h2>' +
             '<p>' + address + '</p>' +
             '</div>';
+}
+
+// draw a 60 km circle around the passed position
+function drawCoverage(position, battery)
+{
+    var circleOptions = {
+      strokeColor: '#43a34c',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#43a34c',
+      fillOpacity: 0.35,
+      map: map,
+      center: position,
+      radius: 600 * battery // in meters
+    };
+    circle = new google.maps.Circle(circleOptions);
+    circle.setMap(map);
+}
+
+// remove any drawn circle
+function removeCoverage()
+{
+    if (circle !== null)
+    {
+        circle.setMap(null);
+    }
 }
