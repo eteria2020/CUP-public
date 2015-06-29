@@ -132,4 +132,20 @@ class ConsoleController extends AbstractActionController
 
         echo "Trip ".$tripId." processed\n";
     }
+
+    public function accountUserTripsAction()
+    {
+        $customerId = $this->getRequest()->getParam('customerId');
+
+        $customer = $this->customerService->findById($customerId);
+
+        $tripsToBeAccounted = $this->tripsService->getCustomerTripsToBeAccounted($customer);
+
+        foreach ($tripsToBeAccounted as $trip) {
+            echo "processing trip ".$trip->getId()."\n";
+            $this->accountTripsService->accountTrip($trip);
+        }
+
+        echo "\nDONE\n";
+    }
 }

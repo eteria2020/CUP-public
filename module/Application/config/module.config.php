@@ -535,6 +535,17 @@ return array(
                             'action' => 'account-trip'
                         ]
                     ]
+                ],
+                'account-user-trips' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'account trips user <customerId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'account-user-trips'
+                        ]
+                    ]
                 ]
             ],
         ],
