@@ -441,6 +441,7 @@ return array(
                 array('controller' => 'Application\Controller\Reservations', 'roles' => array()),
                 array('controller' => 'Application\Controller\Console', 'roles' => array()),
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
+                array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
                 array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => [])
             ),
