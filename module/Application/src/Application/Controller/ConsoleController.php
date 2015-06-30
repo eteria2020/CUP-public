@@ -138,6 +138,8 @@ class ConsoleController extends AbstractActionController
         // define statuses
         $operative = 'operative';
         $maintenance = 'maintenance';
+        // defines if car status should be saved
+        $flagPersist = false;
 
         fwrite(STDOUT, "\nStarted\ntime = " . time() . "\n\n");
 
@@ -149,10 +151,9 @@ class ConsoleController extends AbstractActionController
             fwrite(STDOUT, "\nCar: plate = " . $car->getPlate());
             fwrite(STDOUT, " battery = " . $car->getBattery());
             fwrite(STDOUT, " last time = " . $car->getLastContact()->getTimestamp());
-            fwrite(STDOUT, " charging = " . $car->getCharging());
+            fwrite(STDOUT, " charging = " . (($car->getCharging()) ? 'true' : 'false'));
             fwrite(STDOUT, "\n");
 
-            // defines if car status should be saved
             $flagPersist = false;
             // defines if car should be in maintenance
             $isAlarm =  $car->getBattery() < $this->battery ||
@@ -176,15 +177,15 @@ class ConsoleController extends AbstractActionController
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
-                fwrite(STDOUT, "\ncar persisted\n");
+                fwrite(STDOUT, "\nEntity manager: car persisted\n");
 
             }
 
         }
 
-        fwrite(STDOUT, "\nabout to flush\n");
+        fwrite(STDOUT, "\nEntity manager: about to flush\n");
         $this->entityManager->flush();
-        fwrite(STDOUT, "flushed\n");
+        fwrite(STDOUT, "Entity manager: flushed\n");
 
         fwrite(STDOUT, "\n\ndone\n\n");
 
@@ -207,10 +208,10 @@ class ConsoleController extends AbstractActionController
 
             if (count($reservations) == 1) {
                 $reservation = $reservations[0];
-                fwrite(STDOUT, "reservation retrieved\n");
                 $reservation->setActive(false);
+                fwrite(STDOUT, "set reservation.active to false\n");
                 $this->entityManager->persist($reservation);
-                fwrite(STDOUT, "reservation persisted\n");
+                fwrite(STDOUT, "Entity manager: reservation persisted\n");
                 return true;
             } else {
                 fwrite(STDOUT, "not only one reservation, number = " . count($reservations) . "\n");
@@ -236,17 +237,17 @@ class ConsoleController extends AbstractActionController
             $reservation = new Reservations();
             fwrite(STDOUT, "reservation created\n");
 
-            $reservation->setTs(date_create());
-            $reservation->setCar($car);
-            $reservation->setCustomer(null);
-            $reservation->setBeginningTs(date_create());
-            $reservation->setActive(true);
-            $reservation->setLength(-1);
-            $reservation->setToSend(true);
-            $reservation->setCards($cardsString);
+            $reservation->setTs(date_create())
+                ->setCar($car)
+                ->setCustomer(null)
+                ->setBeginningTs(date_create())
+                ->setActive(true)
+                ->setLength(-1)
+                ->setToSend(true)
+                ->setCards($cardsString);
 
             $this->entityManager->persist($reservation);
-            fwrite(STDOUT, "reservation persisted\n");
+            fwrite(STDOUT, "Entity manager: reservation persisted\n");
 
         }
 
