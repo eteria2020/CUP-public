@@ -213,7 +213,7 @@ class ConsoleController extends AbstractActionController
                 fwrite(STDOUT, "reservation persisted\n");
                 return true;
             } else {
-                fwrite(STDOUT, "multiple reservations retrieved: " . count($reservations) . "\n");
+                fwrite(STDOUT, "not only one reservation, number = " . count($reservations) . "\n");
                 return false;
             }
 
@@ -222,20 +222,23 @@ class ConsoleController extends AbstractActionController
         elseif ($alarmCode == 1) {
 
             $cardsString = '';
+            $cardsArray = [];
             $maintainersCards = $this->customerService->getListMaintainersCards();
             fwrite(STDOUT, "cards retrieved\n");
-            // create single string with all maintainer's cards code
+
+            // create single json string with all maintainer's card codes
             foreach ($maintainersCards as $card) {
                 fwrite(STDOUT, "card code = " . $card->getCode() . " added\n");
-                $cardsString .= $card->getCode() . ','; // TODO - how are they written to string?
+                array_push($cardsArray, $card->getCode());
             }
+            $cardsString = json_encode($cardsArray);
 
             $reservation = new Reservations();
             fwrite(STDOUT, "reservation created\n");
 
             $reservation->setTs(date_create());
             $reservation->setCar($car);
-            $reservation->setCustomer();
+            $reservation->setCustomer(null);
             $reservation->setBeginningTs(date_create());
             $reservation->setActive(true);
             $reservation->setLength(-1);
