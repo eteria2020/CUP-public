@@ -11,12 +11,13 @@ class ConsoleControllerfactory implements FactoryInterface
     {
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $carsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CarsService');
+        $reservationsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ReservationsService');
         $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
-   		$config = $serviceLocator->getServiceLocator()->get('Config');
-   		$battery = $config['alarm']['battery'];
-   		$delay = $config['alarm']['delay'];
+   	    $config = $serviceLocator->getServiceLocator()->get('Config');
+   	    $battery = $config['alarm']['battery'];
+   	    $delay = $config['alarm']['delay'];
 
-        return new ConsoleController($customerService, $carsService, $entityManager, $profilingPlatformService, $battery, $delay);
+        return new ConsoleController($customerService, $carsService, $reservationsService, $entityManager, $profilingPlatformService, $battery, $delay);
     }
 }

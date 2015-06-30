@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\CarsService;
+use SharengoCore\Service\ReservationsService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
@@ -22,6 +23,11 @@ class ConsoleController extends AbstractActionController
      * @var CarsService
      */
     private $carsService;
+
+    /**
+     * @var ReservationsService
+     */
+    private $reservationsService;
 
     /**
      * @var EntityManager
@@ -46,6 +52,7 @@ class ConsoleController extends AbstractActionController
     public function __construct(
         CustomersService $customerService,
         CarsService $carsService,
+        ReservationsService $reservationsService,
         EntityManager $entityManager,
         ProfilingPlaformService $profilingPlatformService,
         $battery,
@@ -53,6 +60,7 @@ class ConsoleController extends AbstractActionController
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
+        $this->reservationsService = $reservationsService;
         $this->entityManager = $entityManager;
         $this->profilingPlatformService = $profilingPlatformService;
         $this->battery = $battery;
@@ -127,84 +135,120 @@ class ConsoleController extends AbstractActionController
 
     public function checkAlarmsAction()
     {
-        fwrite(STDOUT, "\nStarted\ntime = " . time() . "\n\n");
-
+        // define statuses
         $operative = 'operative';
         $maintenance = 'maintenance';
 
-        $cars = $this->carsService->getListCars();
+        fwrite(STDOUT, "\nStarted\ntime = " . time() . "\n\n");
 
+        // get all cars
+        $cars = $this->carsService->getListCars();
         fwrite(STDOUT, "Cars number = " . count($cars) . "\n");
 
         foreach ($cars as $car) {
-
             fwrite(STDOUT, "\nCar: plate = " . $car->getPlate());
             fwrite(STDOUT, " battery = " . $car->getBattery());
             fwrite(STDOUT, " last time = " . $car->getLastContact()->getTimestamp());
             fwrite(STDOUT, " charging = " . $car->getCharging());
             fwrite(STDOUT, "\n");
 
+            // defines if car status should be saved
             $flagPersist = false;
+            // defines if car should be in maintenance
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                         $car->getCharging() == true;
-
             fwrite(STDOUT, "isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
-
             $status = $car->getStatus();
-
             fwrite(STDOUT, "status = " . $status . "\n");
             
             if ($status == $operative && $isAlarm) {
                 $car->setStatus($maintenance);
-                $this->sendAlarmCommand(1, $car;
-                $flagPersist = true;
-
+                $flagPersist = $this->sendAlarmCommand(1, $car);
                 fwrite(STDOUT, "status changed to " . $maintenance . "\n");
 
             } elseif ($status == $maintenance && !$isAlarm) {
                 $car->setStatus($operative);
-                $this->sendAlarmCommand(0, $car);
-                $flagPersist = true;
-
+                $flagPersist = $this->sendAlarmCommand(0, $car);
                 fwrite(STDOUT, "status changed to " . $operative . "\n");
 
             }
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
-
-                fwrite(STDOUT, "\npersisting\n");
+                fwrite(STDOUT, "\ncar persisted\n");
 
             }
 
         }
 
+        fwrite(STDOUT, "\nabout to flush\n");
         $this->entityManager->flush();
-
-        fwrite(STDOUT, "\nflushed\n");
+        fwrite(STDOUT, "flushed\n");
 
         fwrite(STDOUT, "\n\ndone\n\n");
 
     }
 
+    /**
+     * @param integer
+     * @param Cars
+     * @return boolean
+     */
     private function sendAlarmCommand($alarmCode, $car)
     {
-        if($alarmCode == 0) {
-            // TODO - cancellazione prenotazione
-        } elseif ($alarmCode == 1) {
-            $reservation = new Reservations();
+        fwrite(STDOUT, "Alarm code = " . $alarmCode . "\n");
 
-            $reservation->setTs(time());
+        // remove current active reservation
+        if($alarmCode == 0) {
+
+            $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
+            fwrite(STDOUT, "reservations retrieved\n");
+
+            if (count($reservations) == 1) {
+                $reservation = $reservations[0];
+                fwrite(STDOUT, "reservation retrieved\n");
+                $reservation->setActive(false);
+                $this->entityManager->persist($reservation);
+                fwrite(STDOUT, "reservation persisted\n");
+                return true;
+            } else {
+                fwrite(STDOUT, "multiple reservations retrieved: " . count($reservations) . "\n");
+                return false;
+            }
+
+        }
+        // create reservation for all maintainers
+        elseif ($alarmCode == 1) {
+
+            $cardsString = '';
+            $maintainersCards = $this->customerService->getListMaintainersCards();
+            fwrite(STDOUT, "cards retrieved\n");
+            // create single string with all maintainer's cards code
+            foreach ($maintainersCards as $card) {
+                fwrite(STDOUT, "card code = " . $card->getCode() . " added\n");
+                $cardsString .= $card->getCode() . ','; // TODO - how are they written to string?
+            }
+
+            $reservation = new Reservations();
+            fwrite(STDOUT, "reservation created\n");
+
+            $reservation->setTs(date_create());
             $reservation->setCar($car);
             $reservation->setCustomer();
-            $reservation->setBeginningTs(time());
+            $reservation->setBeginningTs(date_create());
             $reservation->setActive(true);
             $reservation->setLength(-1);
             $reservation->setToSend(true);
-            $reservation->setCard(); // TODO
+            $reservation->setCards($cardsString);
+
+            $this->entityManager->persist($reservation);
+            fwrite(STDOUT, "reservation persisted\n");
 
         }
+
+        return true;
+
     }
     
 }
