@@ -24,5 +24,9 @@ return array(
     ],
     'mobile' => [
         'url' => 'http://mobile.sharengo.it'
+    ],
+    'alarm' => [
+        'battery' => '20',
+        'delay' => '60'
     ]
 );

@@ -471,6 +471,17 @@ return array(
                             'action' => 'assign-bonus'
                         ]
                     ]
+                ],
+                'chack-alarms' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'check alarms',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'check-alarms'
+                        ]
+                    ]
                 ]
             ],
         ],
