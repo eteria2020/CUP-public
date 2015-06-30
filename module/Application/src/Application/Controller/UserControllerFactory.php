@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class UserControllerfactory implements FactoryInterface
 {
@@ -16,6 +17,8 @@ class UserControllerfactory implements FactoryInterface
         $languageService = $serviceLocator->getServiceLocator()->get('LanguageService');
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
         $translationService = $serviceLocator->getServiceLocator()->get('Translator');
+        $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        $hydrator = new DoctrineHydrator($entityManager);
 
         return new UserController(
             $form1,
@@ -24,7 +27,8 @@ class UserControllerfactory implements FactoryInterface
             $customerService,
             $languageService,
             $profilingPlatformService,
-            $translationService
+            $translationService,
+            $hydrator
         );
     }
 }

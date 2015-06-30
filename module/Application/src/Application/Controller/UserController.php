@@ -7,6 +7,7 @@ use Zend\View\Model\ViewModel;
 use Zend\Form\Form;
 use Zend\Session\Container;
 use Zend\Mvc\I18n\Translator;
+use Zend\Stdlib\Hydrator\HydratorInterface;
 
 
 use Application\Service\RegistrationService;
@@ -54,6 +55,11 @@ class UserController extends AbstractActionController
      */
     private $translator;
 
+    /**
+     * @var HydratorInterface
+     */
+    private $hydrator;
+
     public function __construct(
         Form $form1,
         Form $form2,
@@ -61,7 +67,8 @@ class UserController extends AbstractActionController
         CustomersService $customersService,
         LanguageService $languageService,
         ProfilingPlaformService $profilingPlatformService,
-        Translator $translator
+        Translator $translator,
+        HydratorInterface $hydrator
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -70,6 +77,7 @@ class UserController extends AbstractActionController
         $this->languageService = $languageService;
         $this->profilingPlatformService = $profilingPlatformService;
         $this->translator = $translator;
+        $this->hydrator = $hydrator;
     }
 
     public function loginAction()
@@ -84,7 +92,7 @@ class UserController extends AbstractActionController
 
         if (!empty($registeredData)) {
             $this->form1->setData([
-                'user' => $registeredData->toArray()
+                'user' => $registeredData->toArray($this->hydrator)
             ]);
         }
 
@@ -180,7 +188,7 @@ class UserController extends AbstractActionController
 
         if (!empty($registeredData)) {
             $this->form2->setData([
-                'driver' => $registeredData->toArray()
+                'driver' => $registeredData->toArray($this->hydrator)
             ]);
         }
 
