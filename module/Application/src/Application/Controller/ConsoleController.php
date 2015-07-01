@@ -18,7 +18,7 @@ class ConsoleController extends AbstractActionController
 
     const OPERATIVE = 'operative';
 
-    const MAINTENANCE = 'maintenance';
+    const MAINTENANCE = 'out_of_order';
 
     const OPERATIVEACTION = 0;
 
@@ -152,11 +152,13 @@ class ConsoleController extends AbstractActionController
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
+        $carsToOperative = [];
+        $carsToMaintenance = [];
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         // get all cars
-        $cars = $this->carsService->getListCars();
+        $cars = $this->getCarsNotReserved($this->carsService->getCarsEligibleForAlarmCheck());
         $this->writeToConsole("Cars number = " . count($cars) . "\n");
 
         foreach ($cars as $car) {
@@ -180,12 +182,18 @@ class ConsoleController extends AbstractActionController
                 $car->setStatus(self::MAINTENANCE);
                 $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
                 $flagPersist = true;
+                if ($this->verbose) {
+                    array_push($carsToMaintenance, $car->getPlate());
+                }
                 $this->writeToConsole("status changed to " . self::MAINTENANCE . "\n");
 
             } elseif ($status == self::MAINTENANCE && !$isAlarm) {
                 $car->setStatus(self::OPERATIVE);
                 $this->sendAlarmCommand(self::OPERATIVEACTION, $car);
                 $flagPersist = true;
+                if ($this->verbose) {
+                    array_push($carsToOperative, $car->getPlate());
+                }
                 $this->writeToConsole("status changed to " . self::OPERATIVE . "\n");
 
             }
@@ -202,6 +210,18 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("\nEntity manager: about to flush\n");
             $this->entityManager->flush();
             $this->writeToConsole("Entity manager: flushed\n");
+        }
+
+        if ($this->verbose) {
+            $this->writeToConsole("\n\nStats:\n");
+            $this->writeToConsole("\nCars set to " . self::OPERATIVE . ": " . count($carsToOperative) . "\n");
+            foreach ($carsToOperative as $key => $value) {
+                $this->writeToConsole("Plate: " . $value . "\n");
+            }
+            $this->writeToConsole("\nCars set to " . self::MAINTENANCE . ": " . count($carsToMaintenance) . "\n");
+            foreach ($carsToMaintenance as $key => $value) {
+                $this->writeToConsole("Plate: " . $value . "\n");
+            }
         }
 
         $this->writeToConsole("\n\ndone\n\n");
@@ -254,6 +274,33 @@ class ConsoleController extends AbstractActionController
             $this->entityManager->persist($reservation);
             $this->writeToConsole("Entity manager: reservation persisted\n");
         }
+    }
+
+    private function getCarsNotReserved($cars)
+    {
+        $this->writeToConsole("Filtering cars by reservation...\n");
+        $carsNotReserved = [];
+
+        foreach ($cars as $car) {
+            $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
+            switch (count($reservations)) {
+                case '0':
+                    array_push($carsNotReserved, $car);
+                    break;
+
+                case '1':
+                    if ($reservations[0]->getLength() == -1) {
+                        array_push($carsNotReserved, $car);
+                    }
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+
+        $this->writeToConsole("Filtered cars by reservation\n");
+        return $carsNotReserved;
     }
 
     private function writeToConsole($string)
