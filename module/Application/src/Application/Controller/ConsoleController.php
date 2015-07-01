@@ -104,8 +104,8 @@ class ConsoleController extends AbstractActionController
         echo "done\n";
     }
 
-    public function assignBonusAction() {
-
+    public function assignBonusAction()
+    {
         $customers = $this->customerService->getListCustomers();
 
         $startDateBonus100Mins = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-06-14 23:59:59');
@@ -149,12 +149,11 @@ class ConsoleController extends AbstractActionController
 
     public function checkAlarmsAction()
     {
-
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
 
-        $this->writeToConsole("\nStarted\ntime = " . time() . "\n\n");
+        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         // get all cars
         $cars = $this->carsService->getListCars();
@@ -163,7 +162,8 @@ class ConsoleController extends AbstractActionController
         foreach ($cars as $car) {
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
             $this->writeToConsole(" battery = " . $car->getBattery());
-            $this->writeToConsole(" last time = " . $car->getLastContact()->getTimestamp());
+            $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
+            $this->writeToConsole(" last time = " . $lastContact);
             $this->writeToConsole(" charging = " . (($car->getCharging()) ? 'true' : 'false') . "\n");
 
             // defines if car status should be saved
@@ -175,7 +175,7 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $status = $car->getStatus();
             $this->writeToConsole("status = " . $status . "\n");
-            
+
             if ($status == self::OPERATIVE && $isAlarm) {
                 $car->setStatus(self::MAINTENANCE);
                 $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
@@ -205,7 +205,6 @@ class ConsoleController extends AbstractActionController
         }
 
         $this->writeToConsole("\n\ndone\n\n");
-
     }
 
     /**
@@ -216,9 +215,8 @@ class ConsoleController extends AbstractActionController
     {
         $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
-        // remove current active reservation
-        if($alarmCode == self::OPERATIVEACTION) {
-
+        if ($alarmCode == self::OPERATIVEACTION) {
+            // remove current active reservation
             $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
             $this->writeToConsole("reservations retrieved\n");
 
@@ -229,17 +227,14 @@ class ConsoleController extends AbstractActionController
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
             }
-            return;
-        }
-        // create reservation for all maintainers
-        elseif ($alarmCode == self::MAINTENANCEACTION) {
-
+        } elseif ($alarmCode == self::MAINTENANCEACTION) {
+            // create reservation for all maintainers
             $cardsArray = [];
             $maintainersCardCodes = $this->customerService->getListMaintainersCards();
             $this->writeToConsole("cards retrieved\n");
             // create single json string with all maintainer's card codes
             foreach ($maintainersCardCodes as $cardCode) {
-                $this->writeToConsole("card code = " . $cardCode['1'] . " added\n");
+                //$this->writeToConsole("card code = " . $cardCode['1'] . " added\n");
                 array_push($cardsArray, $cardCode['1']);
             }
             $cardsString = json_encode($cardsArray);
@@ -258,9 +253,7 @@ class ConsoleController extends AbstractActionController
 
             $this->entityManager->persist($reservation);
             $this->writeToConsole("Entity manager: reservation persisted\n");
-
         }
-
     }
 
     private function writeToConsole($string)
@@ -269,5 +262,4 @@ class ConsoleController extends AbstractActionController
             fwrite(STDOUT, $string);
         }
     }
-    
 }
