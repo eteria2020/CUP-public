@@ -359,6 +359,15 @@ return array(
                             ]
                         ]
                     ],
+                    'bonus' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{bonus}',
+                            'defaults' => [
+                                'action' => 'bonus'
+                            ]
+                        ]
+                    ],
                 ]
             ],
         ),
