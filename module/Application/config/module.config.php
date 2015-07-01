@@ -475,7 +475,7 @@ return array(
                 'check-alarms' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'check alarms [--dry-run]',
+                        'route' => 'check alarms [--dry-run] [--verbose|-v]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',

@@ -25,6 +25,11 @@ class ConsoleController extends AbstractActionController
     const MAINTENANCEACTION = 1;
 
     /**
+     * @var boolean defines verbosity
+     */
+    private $verbose;
+
+    /**
      * @var CustomersService
      */
     private $customerService;
@@ -147,19 +152,19 @@ class ConsoleController extends AbstractActionController
 
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
+        $this->verbose = $request->getParam('verbose') || $request->getParam('v');
 
-        fwrite(STDOUT, "\nStarted\ntime = " . time() . "\n\n");
+        $this->writeToConsole("\nStarted\ntime = " . time() . "\n\n");
 
         // get all cars
         $cars = $this->carsService->getListCars();
-        fwrite(STDOUT, "Cars number = " . count($cars) . "\n");
+        $this->writeToConsole("Cars number = " . count($cars) . "\n");
 
         foreach ($cars as $car) {
-            fwrite(STDOUT, "\nCar: plate = " . $car->getPlate());
-            fwrite(STDOUT, " battery = " . $car->getBattery());
-            fwrite(STDOUT, " last time = " . $car->getLastContact()->getTimestamp());
-            fwrite(STDOUT, " charging = " . (($car->getCharging()) ? 'true' : 'false'));
-            fwrite(STDOUT, "\n");
+            $this->writeToConsole("\nCar: plate = " . $car->getPlate());
+            $this->writeToConsole(" battery = " . $car->getBattery());
+            $this->writeToConsole(" last time = " . $car->getLastContact()->getTimestamp());
+            $this->writeToConsole(" charging = " . (($car->getCharging()) ? 'true' : 'false') . "\n");
 
             // defines if car status should be saved
             $flagPersist = false;
@@ -167,39 +172,39 @@ class ConsoleController extends AbstractActionController
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                         $car->getCharging();
-            fwrite(STDOUT, "isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
+            $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $status = $car->getStatus();
-            fwrite(STDOUT, "status = " . $status . "\n");
+            $this->writeToConsole("status = " . $status . "\n");
             
             if ($status == self::OPERATIVE && $isAlarm) {
                 $car->setStatus(self::MAINTENANCE);
                 $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
                 $flagPersist = true;
-                fwrite(STDOUT, "status changed to " . self::MAINTENANCE . "\n");
+                $this->writeToConsole("status changed to " . self::MAINTENANCE . "\n");
 
             } elseif ($status == self::MAINTENANCE && !$isAlarm) {
                 $car->setStatus(self::OPERATIVE);
                 $this->sendAlarmCommand(self::OPERATIVEACTION, $car);
                 $flagPersist = true;
-                fwrite(STDOUT, "status changed to " . self::OPERATIVE . "\n");
+                $this->writeToConsole("status changed to " . self::OPERATIVE . "\n");
 
             }
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
-                fwrite(STDOUT, "\nEntity manager: car persisted\n");
+                $this->writeToConsole("\nEntity manager: car persisted\n");
 
             }
 
         }
 
         if (!$dryRun) {
-            fwrite(STDOUT, "\nEntity manager: about to flush\n");
+            $this->writeToConsole("\nEntity manager: about to flush\n");
             $this->entityManager->flush();
-            fwrite(STDOUT, "Entity manager: flushed\n");
+            $this->writeToConsole("Entity manager: flushed\n");
         }
 
-        fwrite(STDOUT, "\n\ndone\n\n");
+        $this->writeToConsole("\n\ndone\n\n");
 
     }
 
@@ -209,20 +214,20 @@ class ConsoleController extends AbstractActionController
      */
     private function sendAlarmCommand($alarmCode, $car)
     {
-        fwrite(STDOUT, "Alarm code = " . $alarmCode . "\n");
+        $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
         // remove current active reservation
         if($alarmCode == self::OPERATIVEACTION) {
 
             $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
-            fwrite(STDOUT, "reservations retrieved\n");
+            $this->writeToConsole("reservations retrieved\n");
 
             foreach ($reservations as $reservation) {
                 $reservation->setActive(false)
                     ->setToSend(true);
-                fwrite(STDOUT, "set reservation.active to false\n");
+                $this->writeToConsole("set reservation.active to false\n");
                 $this->entityManager->persist($reservation);
-                fwrite(STDOUT, "Entity manager: reservation persisted\n");
+                $this->writeToConsole("Entity manager: reservation persisted\n");
             }
             return;
         }
@@ -231,16 +236,16 @@ class ConsoleController extends AbstractActionController
 
             $cardsArray = [];
             $maintainersCardCodes = $this->customerService->getListMaintainersCards();
-            fwrite(STDOUT, "cards retrieved\n");
+            $this->writeToConsole("cards retrieved\n");
             // create single json string with all maintainer's card codes
             foreach ($maintainersCardCodes as $cardCode) {
-                fwrite(STDOUT, "card code = " . $cardCode['1'] . " added\n");
+                $this->writeToConsole("card code = " . $cardCode['1'] . " added\n");
                 array_push($cardsArray, $cardCode['1']);
             }
             $cardsString = json_encode($cardsArray);
 
             $reservation = new Reservations();
-            fwrite(STDOUT, "reservation created\n");
+            $this->writeToConsole("reservation created\n");
 
             $reservation->setTs(date_create())
                 ->setCar($car)
@@ -252,10 +257,17 @@ class ConsoleController extends AbstractActionController
                 ->setCards($cardsString);
 
             $this->entityManager->persist($reservation);
-            fwrite(STDOUT, "Entity manager: reservation persisted\n");
+            $this->writeToConsole("Entity manager: reservation persisted\n");
 
         }
 
+    }
+
+    private function writeToConsole($string)
+    {
+        if ($this->verbose) {
+            fwrite(STDOUT, $string);
+        }
     }
     
 }
