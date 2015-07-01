@@ -14,6 +14,16 @@ use Zend\View\Model\JsonModel;
 
 class ConsoleController extends AbstractActionController
 {
+
+
+    const OPERATIVE = 'operative';
+
+    const MAINTENANCE = 'maintenance';
+
+    const OPERATIVEACTION = 0;
+
+    const MAINTENANCEACTION = 1;
+
     /**
      * @var CustomersService
      */
@@ -134,11 +144,9 @@ class ConsoleController extends AbstractActionController
 
     public function checkAlarmsAction()
     {
-        // define statuses
-        $operative = 'operative';
-        $maintenance = 'maintenance';
-        // defines if car status should be saved
-        $flagPersist = false;
+
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run');
 
         fwrite(STDOUT, "\nStarted\ntime = " . time() . "\n\n");
 
@@ -153,24 +161,27 @@ class ConsoleController extends AbstractActionController
             fwrite(STDOUT, " charging = " . (($car->getCharging()) ? 'true' : 'false'));
             fwrite(STDOUT, "\n");
 
+            // defines if car status should be saved
             $flagPersist = false;
             // defines if car should be in maintenance
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                        $car->getCharging() == true;
+                        $car->getCharging();
             fwrite(STDOUT, "isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $status = $car->getStatus();
             fwrite(STDOUT, "status = " . $status . "\n");
             
-            if ($status == $operative && $isAlarm) {
-                $car->setStatus($maintenance);
-                $flagPersist = $this->sendAlarmCommand(1, $car);
-                fwrite(STDOUT, "status changed to " . $maintenance . "\n");
+            if ($status == self::OPERATIVE && $isAlarm) {
+                $car->setStatus(self::MAINTENANCE);
+                $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
+                $flagPersist = true;
+                fwrite(STDOUT, "status changed to " . self::MAINTENANCE . "\n");
 
-            } elseif ($status == $maintenance && !$isAlarm) {
-                $car->setStatus($operative);
-                $flagPersist = $this->sendAlarmCommand(0, $car);
-                fwrite(STDOUT, "status changed to " . $operative . "\n");
+            } elseif ($status == self::MAINTENANCE && !$isAlarm) {
+                $car->setStatus(self::OPERATIVE);
+                $this->sendAlarmCommand(self::OPERATIVEACTION, $car);
+                $flagPersist = true;
+                fwrite(STDOUT, "status changed to " . self::OPERATIVE . "\n");
 
             }
 
@@ -182,9 +193,11 @@ class ConsoleController extends AbstractActionController
 
         }
 
-        fwrite(STDOUT, "\nEntity manager: about to flush\n");
-        $this->entityManager->flush();
-        fwrite(STDOUT, "Entity manager: flushed\n");
+        if (!$dryRun) {
+            fwrite(STDOUT, "\nEntity manager: about to flush\n");
+            $this->entityManager->flush();
+            fwrite(STDOUT, "Entity manager: flushed\n");
+        }
 
         fwrite(STDOUT, "\n\ndone\n\n");
 
@@ -193,43 +206,36 @@ class ConsoleController extends AbstractActionController
     /**
      * @param integer
      * @param Cars
-     * @return boolean
      */
     private function sendAlarmCommand($alarmCode, $car)
     {
         fwrite(STDOUT, "Alarm code = " . $alarmCode . "\n");
 
         // remove current active reservation
-        if($alarmCode == 0) {
+        if($alarmCode == self::OPERATIVEACTION) {
 
             $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
             fwrite(STDOUT, "reservations retrieved\n");
 
-            if (count($reservations) == 1) {
-                $reservation = $reservations[0];
-                $reservation->setActive(false);
+            foreach ($reservations as $reservation) {
+                $reservation->setActive(false)
+                    ->setToSend(true);
                 fwrite(STDOUT, "set reservation.active to false\n");
                 $this->entityManager->persist($reservation);
                 fwrite(STDOUT, "Entity manager: reservation persisted\n");
-                return true;
-            } else {
-                fwrite(STDOUT, "not only one reservation, number = " . count($reservations) . "\n");
-                return false;
             }
-
+            return;
         }
         // create reservation for all maintainers
-        elseif ($alarmCode == 1) {
+        elseif ($alarmCode == self::MAINTENANCEACTION) {
 
-            $cardsString = '';
             $cardsArray = [];
-            $maintainersCards = $this->customerService->getListMaintainersCards();
+            $maintainersCardCodes = $this->customerService->getListMaintainersCards();
             fwrite(STDOUT, "cards retrieved\n");
-
             // create single json string with all maintainer's card codes
-            foreach ($maintainersCards as $card) {
-                fwrite(STDOUT, "card code = " . $card->getCode() . " added\n");
-                array_push($cardsArray, $card->getCode());
+            foreach ($maintainersCardCodes as $cardCode) {
+                fwrite(STDOUT, "card code = " . $cardCode['1'] . " added\n");
+                array_push($cardsArray, $cardCode['1']);
             }
             $cardsString = json_encode($cardsArray);
 
@@ -249,8 +255,6 @@ class ConsoleController extends AbstractActionController
             fwrite(STDOUT, "Entity manager: reservation persisted\n");
 
         }
-
-        return true;
 
     }
     
