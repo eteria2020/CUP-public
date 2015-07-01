@@ -131,6 +131,7 @@
                     <div class="block-user-action block-menu">
                         <ul>
                             <?php if($this->loggedUser): ?>
+                                <li><a href="<?php echo $this->url('area-utente'); ?>"><i class="fa fa-user"></i> <?= $this->translate('Area riservata'); ?></a></li>
                                 <li><a href="<?php echo $this->url('logout'); ?>"><i class="fa fa-user-times"></i> <?= $this->translate('Log out'); ?></a></li>
                             <?php else: ?>
                                 <li><a href="<?= $this->url('login') ?>"><i class="fa fa-user"></i><?= $this->translate('Login'); ?></a></li>
