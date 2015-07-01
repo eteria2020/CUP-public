@@ -15,9 +15,8 @@ class ConsoleControllerfactory implements FactoryInterface
         $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
    	    $config = $serviceLocator->getServiceLocator()->get('Config');
-   	    $battery = $config['alarm']['battery'];
-   	    $delay = $config['alarm']['delay'];
+   	    $alarmConfig = $config['alarm'];
 
-        return new ConsoleController($customerService, $carsService, $reservationsService, $entityManager, $profilingPlatformService, $battery, $delay);
+        return new ConsoleController($customerService, $carsService, $reservationsService, $entityManager, $profilingPlatformService, $alarmConfig);
     }
 }

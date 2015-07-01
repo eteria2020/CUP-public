@@ -472,7 +472,7 @@ return array(
                         ]
                     ]
                 ],
-                'chack-alarms' => [
+                'check-alarms' => [
                     'type' => 'simple',
                     'options' => [
                         'route' => 'check alarms',

@@ -55,16 +55,15 @@ class ConsoleController extends AbstractActionController
         ReservationsService $reservationsService,
         EntityManager $entityManager,
         ProfilingPlaformService $profilingPlatformService,
-        $battery,
-        $delay
+        $alarmConfig
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
         $this->reservationsService = $reservationsService;
         $this->entityManager = $entityManager;
         $this->profilingPlatformService = $profilingPlatformService;
-        $this->battery = $battery;
-        $this->delay = $delay;
+        $this->battery = $alarmConfig['battery'];
+        $this->delay = $alarmConfig['delay'];
     }
 
     public function getDiscountsAction()
