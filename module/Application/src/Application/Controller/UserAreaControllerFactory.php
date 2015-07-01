@@ -12,13 +12,14 @@ class UserAreaControllerFactory implements FactoryInterface
     {
         $I_customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $I_tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
-
         $userService = $serviceLocator->getServiceLocator()->get('zfcuser_auth_service');
         $profileForm = $serviceLocator->getServiceLocator()->get('ProfileForm');
         $passwordForm = $serviceLocator->getServiceLocator()->get('PasswordForm');
         $driverLicenseForm = $serviceLocator->getServiceLocator()->get('DriverLicenseForm');
+        $promoCodeForm = $serviceLocator->getServiceLocator()->get('PromoCodeForm');
         $hydrator = new Reflection();
         $cartasiPaymentsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiPayments');
+        $promoCodeService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesService');
 
         return new UserAreaController(
             $I_customerService,
@@ -27,8 +28,10 @@ class UserAreaControllerFactory implements FactoryInterface
             $profileForm,
             $passwordForm,
             $driverLicenseForm,
+            $promoCodeForm,
             $hydrator,
-            $cartasiPaymentsService
+            $cartasiPaymentsService,
+            $promoCodeService
         );
     }
 }

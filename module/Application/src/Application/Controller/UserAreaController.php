@@ -3,6 +3,10 @@
 namespace Application\Controller;
 
 
+use Application\Form\PromoCodeForm;
+use SharengoCore\Entity\CustomersBonus;
+use SharengoCore\Entity\PromoCodes;
+use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
 
@@ -77,6 +81,12 @@ class UserAreaController extends AbstractActionController
      */
     private $showError = false;
 
+    /** @var  PromoCodeForm */
+    private $promoCodeForm;
+
+    /** @var  PromoCodesService */
+    private $promoCodeService;
+
     public function __construct(
         CustomersService $I_customersService,
         TripsService $I_tripsService,
@@ -84,8 +94,10 @@ class UserAreaController extends AbstractActionController
         Form $profileForm,
         Form $passwordForm,
         Form $driverLicenseForm,
+        Form $promoCodeForm,
         HydratorInterface $hydrator,
-        CartasiPaymentsService $cartasiPaymentsService
+        CartasiPaymentsService $cartasiPaymentsService,
+        PromoCodesService $promoCodeService
     ) {
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
@@ -94,8 +106,10 @@ class UserAreaController extends AbstractActionController
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
         $this->driverLicenseForm = $driverLicenseForm;
+        $this->promoCodeForm = $promoCodeForm;
         $this->hydrator = $hydrator;
         $this->cartasiPaymentsService = $cartasiPaymentsService;
+        $this->promoCodeService =  $promoCodeService;
     }
 
     public function indexAction()
@@ -254,6 +268,56 @@ class UserAreaController extends AbstractActionController
             'customer'  => $this->customer,
             'listBonus' => $this->I_customersService->getAllBonus($this->customer),
             'residual'  => !is_null($bonusResidual) ? $bonusResidual : 0
+        ]);
+    }
+
+    public function additionalServicesAction()
+    {
+        $form = $this->promoCodeForm;
+        if ($this->getRequest()->isPost()) {
+            $postData = $this->getRequest()->getPost()->toArray();
+            $form->setData($postData);
+
+            if ($form->isValid()) {
+
+                try {
+
+                    /** @var PromoCodes $promoCode */
+                    $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
+
+                    if(is_null($promoCode)) {
+                        throw new \Exception('Promocode not valid');
+                    }
+
+                    $customersBonus = new CustomersBonus();
+                    $customersBonus->setActive($promoCode->getPromocodesinfo()->getActive());
+                    $customersBonus->setInsertTs(new \DateTime());
+                    $customersBonus->setUpdateTs(new \DateTime());
+                    $customersBonus->setTotal($promoCode->getPromocodesinfo()->getMinutes());
+                    $customersBonus->setResidual($promoCode->getPromocodesinfo()->getMinutes());
+                    $customersBonus->setType($promoCode->getPromocodesinfo()->getType());
+                    $customersBonus->setValidFrom($promoCode->getPromocodesinfo()->getValidFrom());
+                    $customersBonus->setValidTo($promoCode->getPromocodesinfo()->getValidTo());
+                    $customersBonus->setDurationDays($promoCode->getPromocodesinfo()->getDurationDays());
+                    $customersBonus->setDescription($promoCode->getDescription());
+                    $customersBonus->setPromocode($promoCode);
+
+                    $this->I_customersService->addBonus($this->customer, $customersBonus);
+
+                    $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+
+                } catch (\Exception $e) {
+
+                    $this->flashMessenger()->addErrorMessage($e->getMessage());
+
+                }
+
+                return $this->redirect()->toRoute('area-utente/additional-services');
+            }
+        }
+
+        return new ViewModel([
+            'promoCodeForm' => $form
         ]);
     }
 }
