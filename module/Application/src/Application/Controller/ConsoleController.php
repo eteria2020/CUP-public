@@ -178,14 +178,16 @@ class ConsoleController extends AbstractActionController
             $status = $car->getStatus();
             $this->writeToConsole("status = " . $status . "\n");
 
-            if ($status == self::OPERATIVE && $isAlarm) {
-                $car->setStatus(self::MAINTENANCE);
+            if ($isAlarm) {
                 $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
-                $flagPersist = true;
-                if ($this->verbose) {
-                    array_push($carsToMaintenance, $car->getPlate());
+                if ($status == self::OPERATIVE) {
+                    $car->setStatus(self::MAINTENANCE);
+                    $flagPersist = true;
+                    if ($this->verbose) {
+                        array_push($carsToMaintenance, $car->getPlate());
+                    }
+                    $this->writeToConsole("status changed to " . self::MAINTENANCE . "\n");
                 }
-                $this->writeToConsole("status changed to " . self::MAINTENANCE . "\n");
 
             } elseif ($status == self::MAINTENANCE && !$isAlarm) {
                 $car->setStatus(self::OPERATIVE);
@@ -200,7 +202,7 @@ class ConsoleController extends AbstractActionController
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
-                $this->writeToConsole("\nEntity manager: car persisted\n");
+                $this->writeToConsole("Entity manager: car persisted\n");
 
             }
 
