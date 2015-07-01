@@ -235,10 +235,11 @@ class ConsoleController extends AbstractActionController
     {
         $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
+        $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
+        $this->writeToConsole("reservations retrieved\n");
+
         if ($alarmCode == self::OPERATIVEACTION) {
             // remove current active reservation
-            $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
-            $this->writeToConsole("reservations retrieved\n");
 
             foreach ($reservations as $reservation) {
                 $reservation->setActive(false)
@@ -247,32 +248,41 @@ class ConsoleController extends AbstractActionController
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
             }
+
         } elseif ($alarmCode == self::MAINTENANCEACTION) {
-            // create reservation for all maintainers
-            $cardsArray = [];
-            $maintainersCardCodes = $this->customerService->getListMaintainersCards();
-            $this->writeToConsole("cards retrieved\n");
-            // create single json string with all maintainer's card codes
-            foreach ($maintainersCardCodes as $cardCode) {
-                //$this->writeToConsole("card code = " . $cardCode['1'] . " added\n");
-                array_push($cardsArray, $cardCode['1']);
+
+            if (count($reservations) == 0) {
+                $this->writeToConsole("no reservation found, creating...\n");
+                // create reservation for all maintainers
+                $cardsArray = [];
+                $maintainersCardCodes = $this->customerService->getListMaintainersCards();
+                $this->writeToConsole("cards retrieved\n");
+                // create single json string with all maintainer's card codes
+                foreach ($maintainersCardCodes as $cardCode) {
+                    //$this->writeToConsole("card code = " . $cardCode['1'] . " added\n");
+                    array_push($cardsArray, $cardCode['1']);
+                }
+                $cardsString = json_encode($cardsArray);
+
+                $reservation = new Reservations();
+                $this->writeToConsole("reservation created\n");
+
+                $reservation->setTs(date_create())
+                    ->setCar($car)
+                    ->setCustomer(null)
+                    ->setBeginningTs(date_create())
+                    ->setActive(true)
+                    ->setLength(-1)
+                    ->setToSend(true)
+                    ->setCards($cardsString);
+
+                $this->entityManager->persist($reservation);
+                $this->writeToConsole("Entity manager: reservation persisted\n");
+
+            } else {
+                $this->writeToConsole("reservation found, skipping creation...\n");
             }
-            $cardsString = json_encode($cardsArray);
 
-            $reservation = new Reservations();
-            $this->writeToConsole("reservation created\n");
-
-            $reservation->setTs(date_create())
-                ->setCar($car)
-                ->setCustomer(null)
-                ->setBeginningTs(date_create())
-                ->setActive(true)
-                ->setLength(-1)
-                ->setToSend(true)
-                ->setCards($cardsString);
-
-            $this->entityManager->persist($reservation);
-            $this->writeToConsole("Entity manager: reservation persisted\n");
         }
     }
 
