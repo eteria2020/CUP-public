@@ -279,25 +279,11 @@ class ConsoleController extends AbstractActionController
     private function getCarsNotReserved($cars)
     {
         $this->writeToConsole("Filtering cars by reservation...\n");
-        $carsNotReserved = [];
-
-        foreach ($cars as $car) {
-            $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
-            switch (count($reservations)) {
-                case '0':
-                    array_push($carsNotReserved, $car);
-                    break;
-
-                case '1':
-                    if ($reservations[0]->getLength() == -1) {
-                        array_push($carsNotReserved, $car);
-                    }
-                    break;
-                
-                default:
-                    break;
-            }
-        }
+        $reservationsService = $this->reservationsService;
+        $carsNotReserved = array_filter($cars, function ($car) use ($reservationsService) {
+            $reservations = $reservationsService->getActiveReservationsByCar($car->getPlate());
+            return empty($reservations) || ($reservations[0]->getLength() == -1);
+        });
 
         $this->writeToConsole("Filtered cars by reservation\n");
         return $carsNotReserved;
