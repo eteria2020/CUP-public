@@ -98,7 +98,7 @@
                                         <?= ($bonus->getTotal() - $bonus->getResidual()); ?>
                                     </div>
                                     <div class="block-data-table-td cw-1-6">
-                                        <?= ($bonus->getResidual() + ($bonus->getTotal() - $bonus->getResidual())); ?>
+                                        <?= $bonus->getTotal(); ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>

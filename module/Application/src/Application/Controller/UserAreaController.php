@@ -289,6 +289,10 @@ class UserAreaController extends AbstractActionController
                         throw new \Exception('Promocode not valid');
                     }
 
+                    if($this->I_customersService->checkUsedPromoCode($this->customer, $promoCode)) {
+                        throw new \Exception('Codice bonus già associato a questo account.');
+                    }
+
                     $customersBonus = new CustomersBonus();
                     $customersBonus->setActive($promoCode->getPromocodesinfo()->getActive());
                     $customersBonus->setInsertTs(new \DateTime());
