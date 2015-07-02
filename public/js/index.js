@@ -52,13 +52,13 @@ function initialize()
 
 
     // get the cars
-    $.get(carsUrl, function (jsonData)
+    $.get(carsUrl + '?status=operative&active=true&busy=false&running=false&hidden=false', function (jsonData)
     {
         // set a marker for each car
         jsonData.data.forEach(function (car)
         {
             // show car on map only if operative and position is not 0,0
-            if(car.status == 'operative' && car.latitude != '0' && car.longitude != '0')
+            if(car.latitude != '0' && car.longitude != '0' && !car.reservation)
             {
                 // position of the car
                 var latlng = new google.maps.LatLng(car.latitude, car.longitude);
