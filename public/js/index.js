@@ -58,7 +58,7 @@ function initialize()
         jsonData.data.forEach(function (car)
         {
             // show car on map only if operative and position is not 0,0
-            if(car.status == 'operative' && car.latitude != '0' && car.longitude != '0')
+            if(car.status == 'operative' && car.latitude != '0' && car.longitude != '0' && car.hidden === false)
             {
                 // position of the car
                 var latlng = new google.maps.LatLng(car.latitude, car.longitude);
