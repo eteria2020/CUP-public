@@ -213,12 +213,14 @@ function setReservationButton(plate, isCarBusy)
 
             var isReserved = false;
             var isReservedByMe = false;
+            var reservationId = '';
 
             if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null) {
                 // there is an active reservation
                 if (jsonData.data[0].customer == userId) {
                     // there is an active reservation from the user
                     isReservedByMe = true;
+                    reservationId = jsonData.data[0].id;
                 } else {
                     // there is an active reservation from another user
                     isReserved = true;
@@ -228,15 +230,15 @@ function setReservationButton(plate, isCarBusy)
             if (isCarBusy || (isReserved && !isReservedByMe)) {
                 // car cannot be reserved by user
                 setReserveText(textCarOccupied, false);
-                setAction(0);
+                setAction(0, reservationId);
             } else if (isReservedByMe) {
                 // reservation can be removed by user
                 setReserveText(textCarReserved, true);
-                setAction(2);
+                setAction(2, reservationId);
             } else {
                 // car can be reserved
                 setReserveText(textCarReserve, true);
-                setAction(1);
+                setAction(1, reservationId);
             }
         });
     } else {
