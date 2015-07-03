@@ -78,14 +78,12 @@ class ConsoleController extends AbstractActionController
 
     public function __construct(
         CustomersService $customerService,
-        ProfilingPlaformService $profilingPlatformService,
-        TripsService $tripsService,
-        AccountTripsService $accountTripsService,
-        ProfilingPlaformService $profilingPlatformService,
         CarsService $carsService,
         ReservationsService $reservationsService,
         EntityManager $entityManager,
         ProfilingPlaformService $profilingPlatformService,
+        TripsService $tripsService,
+        AccountTripsService $accountTripsService,
         $alarmConfig
     ) {
         $this->customerService = $customerService;

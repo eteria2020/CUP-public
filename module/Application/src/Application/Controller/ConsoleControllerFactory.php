@@ -27,7 +27,7 @@ class ConsoleControllerfactory implements FactoryInterface
             $profilingPlatformService,
             $tripsService,
             $accountTripsService,
-            $alarmConfig,
+            $alarmConfig
         );
     }
 }
