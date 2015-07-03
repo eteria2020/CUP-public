@@ -482,6 +482,17 @@ return array(
                             'action' => 'check-alarms'
                         ]
                     ]
+                ],
+                'clear-reservations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'clear reservations [--dry-run] [--verbose|-v]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'clear-reservations'
+                        ]
+                    ]
                 ]
             ],
         ],

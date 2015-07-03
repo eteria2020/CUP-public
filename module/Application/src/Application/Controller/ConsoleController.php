@@ -5,6 +5,7 @@ namespace Application\Controller;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\ReservationsService;
+use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
@@ -45,6 +46,11 @@ class ConsoleController extends AbstractActionController
     private $reservationsService;
 
     /**
+     * @var ReservationsArchiveService
+     */
+    private $reservationsArchiveService;
+
+    /**
      * @var EntityManager
      */
     private $entityManager;
@@ -68,6 +74,7 @@ class ConsoleController extends AbstractActionController
         CustomersService $customerService,
         CarsService $carsService,
         ReservationsService $reservationsService,
+        ReservationsArchiveService $reservationsArchiveService,
         EntityManager $entityManager,
         ProfilingPlaformService $profilingPlatformService,
         $alarmConfig
@@ -75,6 +82,7 @@ class ConsoleController extends AbstractActionController
         $this->customerService = $customerService;
         $this->carsService = $carsService;
         $this->reservationsService = $reservationsService;
+        $this->reservationsArchiveService = $reservationsArchiveService;
         $this->entityManager = $entityManager;
         $this->profilingPlatformService = $profilingPlatformService;
         $this->battery = $alarmConfig['battery'];
@@ -301,10 +309,60 @@ class ConsoleController extends AbstractActionController
         return $carsNotReserved;
     }
 
+    public function clearReservationsAction()
+    {
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run');
+        $this->verbose = $request->getParam('verbose') || $request->getParam('v');
+
+        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        $reservations = $this->reservationsService->getReservationsToDelete();
+        $this->writeToConsole("Retrieved reservations: " . count($reservations) . "\n\n");
+
+        foreach ($reservations as $reservation) {
+            if ($this->verbose) {
+                $this->writeToConsole("Reservation id: " . $reservation->getId());
+                $this->writeToConsole(" consumed_ts: " . (($reservation->getConsumedTs() == null) ? "null" : $reservation->getConsumedTs()->format('Y-m-d H:i:s')) );
+                $this->writeToConsole(" active: " . (($reservation->getActive()) ? 'true' : 'false') );
+                $this->writeToConsole(" to_send: " . (($reservation->getToSend()) ? 'true' : 'false') );
+                $this->writeToConsole(" beginning_ts: " . $reservation->getBeginningTs()->format('Y-m-d H:i:s'));
+                $this->writeToConsole(" length: " . $reservation->getLength() . "\n");
+            }
+
+            if ($reservation->getConsumedTs() !== null) {
+                $reason = 'USED';
+            } elseif (!$reservation->getActive() && !$reservation->getToSend()) {
+                $reason = 'DELETED';
+            } else {
+                $reason = 'EXPIRED';
+            }
+            $this->writeToConsole("Reason: " . $reason . "\n");
+
+            $reservationsArchive = $this->reservationsArchiveService->getReservationsArchiveFromReservation($reservation, $reason);
+            $this->writeToConsole("Wrote to archive\n");
+            $this->entityManager->persist($reservationsArchive);
+            $this->writeToConsole("EntityManager: reservationsArchive persisted\n");
+            $this->entityManager->remove($reservation);
+            $this->writeToConsole("EntityManager: reservation removed\n\n");
+
+        }
+
+        if (!$dryRun) {
+            $this->writeToConsole("EntityManager: about to flush...\n");
+            $this->entityManager->flush();
+            $this->writeToConsole("EntityManager: flushed\n\n");
+        }
+
+        $this->writeToConsole("Done\n");
+
+    }
+
     private function writeToConsole($string)
     {
         if ($this->verbose) {
             fwrite(STDOUT, $string);
         }
     }
+
 }
