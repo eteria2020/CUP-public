@@ -293,9 +293,7 @@ class UserAreaController extends AbstractActionController
                         throw new \Exception('Codice bonus già associato a questo account.');
                     }
 
-                    $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
-
-                    $this->I_customersService->addBonus($this->customer, $customerBonus);
+                    $this->I_customersService->addBonusFromPromoCode($this->customer, $promoCode);
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 
