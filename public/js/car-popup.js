@@ -120,7 +120,7 @@ function removeReservation()
 
         $.ajax({
             url: reservationsUrl + '\\' + reservationId,
-            type: 'PUT',
+            type: 'DELETE',
             success: function(jsonData) {
                 // do not change layout if popup is closed
                 if (isOpen) {
