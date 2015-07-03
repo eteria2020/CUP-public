@@ -3,6 +3,8 @@
 namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\TripsService;
+use SharengoCore\Service\AccountTripsService;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\ReservationsService;
 use SharengoCore\Entity\Reservations;
@@ -55,6 +57,16 @@ class ConsoleController extends AbstractActionController
     private $profilingPlatformService;
 
     /**
+     * @var TripsService
+     */
+    private $tripsService;
+
+    /**
+     * @var AccountTripsService
+     */
+    private $accountTripsService;
+
+    /**
      * @var string
      */
     private $battery;
@@ -66,6 +78,10 @@ class ConsoleController extends AbstractActionController
 
     public function __construct(
         CustomersService $customerService,
+        ProfilingPlaformService $profilingPlatformService,
+        TripsService $tripsService,
+        AccountTripsService $accountTripsService,
+        ProfilingPlaformService $profilingPlatformService,
         CarsService $carsService,
         ReservationsService $reservationsService,
         EntityManager $entityManager,
@@ -77,6 +93,8 @@ class ConsoleController extends AbstractActionController
         $this->reservationsService = $reservationsService;
         $this->entityManager = $entityManager;
         $this->profilingPlatformService = $profilingPlatformService;
+        $this->tripsService = $tripsService;
+        $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
     }
@@ -306,5 +324,44 @@ class ConsoleController extends AbstractActionController
         if ($this->verbose) {
             fwrite(STDOUT, $string);
         }
+    }
+
+    public function accountTripsAction()
+    {
+        $tripsToBeAccounted = $this->tripsService->getTripsToBeAccounted();
+
+        foreach ($tripsToBeAccounted as $trip) {
+            echo "processing trip ".$trip->getId()."\n";
+            $this->accountTripsService->accountTrip($trip);
+        }
+
+        echo "\nDONE\n";
+    }
+
+    public function accountTripAction()
+    {
+        $tripId = $this->getRequest()->getParam('tripId');
+
+        $trip = $this->tripsService->getTripById($tripId);
+
+        $this->accountTripsService->accountTrip($trip);
+
+        echo "Trip ".$tripId." processed\n";
+    }
+
+    public function accountUserTripsAction()
+    {
+        $customerId = $this->getRequest()->getParam('customerId');
+
+        $customer = $this->customerService->findById($customerId);
+
+        $tripsToBeAccounted = $this->tripsService->getCustomerTripsToBeAccounted($customer);
+
+        foreach ($tripsToBeAccounted as $trip) {
+            echo "processing trip ".$trip->getId()."\n";
+            $this->accountTripsService->accountTrip($trip);
+        }
+
+        echo "\nDONE\n";
     }
 }
