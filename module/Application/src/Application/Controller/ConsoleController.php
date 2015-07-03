@@ -373,7 +373,7 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("\nReservations archived: " . count($reservationsArchived) . "\n\n");
         }
 
-        $this->writeToConsole("Done\n");
+        $this->writeToConsole("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
     }
 
