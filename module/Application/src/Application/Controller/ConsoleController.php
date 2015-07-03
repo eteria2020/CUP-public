@@ -314,7 +314,7 @@ class ConsoleController extends AbstractActionController
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
-        $reservationsDeleted = [];
+        $reservationsDeleted = ['USED' => [], 'DELETED' => [], 'EXPIRED' => []];
         $reservationsArchived = [];
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
@@ -353,7 +353,7 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("EntityManager: reservationsArchive persisted\n");
             // remove reservation
             $this->entityManager->remove($reservation);
-            array_push($reservationsDeleted, $reservation->getId());
+            array_push($reservationsDeleted[$reason], $reservation->getId());
             $this->writeToConsole("EntityManager: reservation removed\n\n");
 
         }
@@ -366,11 +366,10 @@ class ConsoleController extends AbstractActionController
 
         if ($this->verbose) {
             $this->writeToConsole("Stats:\n");
-            $this->writeToConsole("\nReservations deleted: " . count($reservationsDeleted) . "\nId: ");
-            foreach ($reservationsDeleted as $key => $value) {
-                $this->writeToConsole($value . ", ");
-            }
-            $this->writeToConsole("\nReservations archived: " . count($reservationsArchived) . "\n\n");
+            $this->writeToConsole("USED: " . count($reservationsDeleted['USED']) . "\n");
+            $this->writeToConsole("DELETED: " . count($reservationsDeleted['DELETED']) . "\n");
+            $this->writeToConsole("EXPIRED: " . count($reservationsDeleted['EXPIRED']) . "\n");
+            $this->writeToConsole("Archived: " . count($reservationsArchived) . "\n\n");
         }
 
         $this->writeToConsole("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
