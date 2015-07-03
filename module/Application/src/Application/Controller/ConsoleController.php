@@ -370,11 +370,7 @@ class ConsoleController extends AbstractActionController
             foreach ($reservationsDeleted as $key => $value) {
                 $this->writeToConsole($value . ", ");
             }
-            $this->writeToConsole("\nReservations archived: " . count($reservationsArchived) . "\nId: ");
-            foreach ($reservationsArchived as $key => $value) {
-                $this->writeToConsole($value . ", ");
-            }
-            $this->writeToConsole("\n\n");
+            $this->writeToConsole("\nReservations archived: " . count($reservationsArchived) . "\n\n");
         }
 
         $this->writeToConsole("Done\n");

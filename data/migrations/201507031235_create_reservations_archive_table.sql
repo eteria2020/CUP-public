@@ -2,6 +2,7 @@ CREATE TYPE reservations_archive_reason AS ENUM ('EXPIRED', 'USED', 'DELETED');
 
 CREATE TABLE reservations_archive (
     id SERIAL PRIMARY KEY,
+    reservation_id integer NOT NULL,
     ts timestamp with time zone NOT NULL,
     car_plate text NOT NULL,
     customer_id integer,
