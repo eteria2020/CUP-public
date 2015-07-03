@@ -286,27 +286,16 @@ class UserAreaController extends AbstractActionController
                     $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
 
                     if(is_null($promoCode)) {
-                        throw new \Exception('Promocode not valid');
+                        throw new \Exception('Codice promo non valido.');
                     }
 
                     if($this->I_customersService->checkUsedPromoCode($this->customer, $promoCode)) {
                         throw new \Exception('Codice bonus già associato a questo account.');
                     }
 
-                    $customersBonus = new CustomersBonus();
-                    $customersBonus->setActive($promoCode->getPromocodesinfo()->getActive());
-                    $customersBonus->setInsertTs(new \DateTime());
-                    $customersBonus->setUpdateTs(new \DateTime());
-                    $customersBonus->setTotal($promoCode->getPromocodesinfo()->getMinutes());
-                    $customersBonus->setResidual($promoCode->getPromocodesinfo()->getMinutes());
-                    $customersBonus->setType($promoCode->getPromocodesinfo()->getType());
-                    $customersBonus->setValidFrom($promoCode->getPromocodesinfo()->getValidFrom());
-                    $customersBonus->setValidTo($promoCode->getPromocodesinfo()->getValidTo());
-                    $customersBonus->setDurationDays($promoCode->getPromocodesinfo()->getDurationDays());
-                    $customersBonus->setDescription($promoCode->getDescription());
-                    $customersBonus->setPromocode($promoCode);
+                    $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
 
-                    $this->I_customersService->addBonus($this->customer, $customersBonus);
+                    $this->I_customersService->addBonus($this->customer, $customerBonus);
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 
