@@ -314,13 +314,17 @@ class ConsoleController extends AbstractActionController
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
+        $reservationsDeleted = [];
+        $reservationsArchived = [];
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
+        // get reservations to delete
         $reservations = $this->reservationsService->getReservationsToDelete();
         $this->writeToConsole("Retrieved reservations: " . count($reservations) . "\n\n");
 
         foreach ($reservations as $reservation) {
+            // output reservation info
             if ($this->verbose) {
                 $this->writeToConsole("Reservation id: " . $reservation->getId());
                 $this->writeToConsole(" consumed_ts: " . (($reservation->getConsumedTs() == null) ? "null" : $reservation->getConsumedTs()->format('Y-m-d H:i:s')) );
@@ -330,6 +334,7 @@ class ConsoleController extends AbstractActionController
                 $this->writeToConsole(" length: " . $reservation->getLength() . "\n");
             }
 
+            // retrieve reason
             if ($reservation->getConsumedTs() !== null) {
                 $reason = 'USED';
             } elseif (!$reservation->getActive() && !$reservation->getToSend()) {
@@ -339,11 +344,16 @@ class ConsoleController extends AbstractActionController
             }
             $this->writeToConsole("Reason: " . $reason . "\n");
 
+            // create reservationsArchive
             $reservationsArchive = $this->reservationsArchiveService->getReservationsArchiveFromReservation($reservation, $reason);
+            array_push($reservationsArchived, $reservationsArchive->getId());
             $this->writeToConsole("Wrote to archive\n");
+            // persist reservationsArchive
             $this->entityManager->persist($reservationsArchive);
             $this->writeToConsole("EntityManager: reservationsArchive persisted\n");
+            // remove reservation
             $this->entityManager->remove($reservation);
+            array_push($reservationsDeleted, $reservation->getId());
             $this->writeToConsole("EntityManager: reservation removed\n\n");
 
         }
@@ -352,6 +362,19 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("EntityManager: about to flush...\n");
             $this->entityManager->flush();
             $this->writeToConsole("EntityManager: flushed\n\n");
+        }
+
+        if ($this->verbose) {
+            $this->writeToConsole("Stats:\n");
+            $this->writeToConsole("\nReservations deleted: " . count($reservationsDeleted) . "\nId: ");
+            foreach ($reservationsDeleted as $key => $value) {
+                $this->writeToConsole($value . ", ");
+            }
+            $this->writeToConsole("\nReservations archived: " . count($reservationsArchived) . "\nId: ");
+            foreach ($reservationsArchived as $key => $value) {
+                $this->writeToConsole($value . ", ");
+            }
+            $this->writeToConsole("\n\n");
         }
 
         $this->writeToConsole("Done\n");
