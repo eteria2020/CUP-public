@@ -571,7 +571,7 @@ $this->headLink()
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Accreditati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; font-size: 26px; color: red; margin-top: 5px;" type="text" value="0">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; font-size: 26px; color: red; margin-top: 5px;" type="text" value="<?php echo $this->customer->getUsedBonuses()?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Utilizzati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
