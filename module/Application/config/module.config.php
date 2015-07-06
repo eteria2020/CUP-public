@@ -483,14 +483,14 @@ return array(
                         ]
                     ]
                 ],
-                'clear-reservations' => [
+                'archive-reservations' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'clear reservations [--dry-run] [--verbose|-v]',
+                        'route' => 'archive reservations [--dry-run] [--verbose|-v]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
-                            'action' => 'clear-reservations'
+                            'action' => 'archive-reservations'
                         ]
                     ]
                 ]

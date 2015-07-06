@@ -46,11 +46,6 @@ class ConsoleController extends AbstractActionController
     private $reservationsService;
 
     /**
-     * @var ReservationsArchiveService
-     */
-    private $reservationsArchiveService;
-
-    /**
      * @var EntityManager
      */
     private $entityManager;
@@ -74,7 +69,6 @@ class ConsoleController extends AbstractActionController
         CustomersService $customerService,
         CarsService $carsService,
         ReservationsService $reservationsService,
-        ReservationsArchiveService $reservationsArchiveService,
         EntityManager $entityManager,
         ProfilingPlaformService $profilingPlatformService,
         $alarmConfig
@@ -82,7 +76,6 @@ class ConsoleController extends AbstractActionController
         $this->customerService = $customerService;
         $this->carsService = $carsService;
         $this->reservationsService = $reservationsService;
-        $this->reservationsArchiveService = $reservationsArchiveService;
         $this->entityManager = $entityManager;
         $this->profilingPlatformService = $profilingPlatformService;
         $this->battery = $alarmConfig['battery'];
@@ -309,7 +302,7 @@ class ConsoleController extends AbstractActionController
         return $carsNotReserved;
     }
 
-    public function clearReservationsAction()
+    public function archiveReservationsAction()
     {
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
@@ -321,7 +314,7 @@ class ConsoleController extends AbstractActionController
 
         // get reservations to delete
         $reservations = $this->reservationsService->getReservationsToDelete();
-        $this->writeToConsole("Retrieved reservations: " . count($reservations) . "\n\n");
+        $this->writeToConsole("Retrieved reservations to delete: " . count($reservations) . "\n\n");
 
         foreach ($reservations as $reservation) {
             // output reservation info
@@ -335,7 +328,7 @@ class ConsoleController extends AbstractActionController
             }
 
             // retrieve reason
-            if ($reservation->getConsumedTs() !== null) {
+            if ($reservation->getConsumedTs() != null) {
                 $reason = 'USED';
             } elseif (!$reservation->getActive() && !$reservation->getToSend()) {
                 $reason = 'DELETED';
@@ -345,11 +338,11 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("Reason: " . $reason . "\n");
 
             // create reservationsArchive
-            $reservationsArchive = $this->reservationsArchiveService->getReservationsArchiveFromReservation($reservation, $reason);
-            array_push($reservationsArchived, $reservationsArchive->getId());
+            $archiveReservation = \SharengoCore\Entity\ReservationsArchive::createFromReservation($reservation, $reason);
+            array_push($reservationsArchived, $archiveReservation->getId());
             $this->writeToConsole("Wrote to archive\n");
             // persist reservationsArchive
-            $this->entityManager->persist($reservationsArchive);
+            $this->entityManager->persist($archiveReservation);
             $this->writeToConsole("EntityManager: reservationsArchive persisted\n");
             // remove reservation
             $this->entityManager->remove($reservation);
