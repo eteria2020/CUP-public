@@ -283,18 +283,9 @@ class ConsoleController extends AbstractActionController
                 }
                 $cardsString = json_encode($cardsArray);
 
-                $reservation = new Reservations();
+                $reservation = Reservations::createMaintenanceReservation($car, $cardsString);
                 $this->writeToConsole("reservation created\n");
-
-                $reservation->setTs(date_create())
-                    ->setCar($car)
-                    ->setCustomer(null)
-                    ->setBeginningTs(date_create())
-                    ->setActive(true)
-                    ->setLength(-1)
-                    ->setToSend(true)
-                    ->setCards($cardsString);
-
+                
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
 
