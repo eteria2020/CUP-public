@@ -515,6 +515,17 @@ return array(
                             'action' => 'check-alarms'
                         ]
                     ]
+                ],
+                'archive-reservations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'archive reservations [--dry-run] [--verbose|-v]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'archive-reservations'
+                        ]
+                    ]
                 ]
             ],
         ],

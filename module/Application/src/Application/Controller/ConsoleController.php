@@ -7,6 +7,7 @@ use SharengoCore\Service\TripsService;
 use SharengoCore\Service\AccountTripsService;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\ReservationsService;
+use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
@@ -315,6 +316,73 @@ class ConsoleController extends AbstractActionController
 
         $this->writeToConsole("Filtered cars by reservation\n");
         return $carsNotReserved;
+    }
+
+    public function archiveReservationsAction()
+    {
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run');
+        $this->verbose = $request->getParam('verbose') || $request->getParam('v');
+        $reservationsDeleted = ['USED' => [], 'DELETED' => [], 'EXPIRED' => []];
+        $reservationsArchived = [];
+
+        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        // get reservations to delete
+        $reservations = $this->reservationsService->getReservationsToDelete();
+        $this->writeToConsole("Retrieved reservations to delete: " . count($reservations) . "\n\n");
+
+        foreach ($reservations as $reservation) {
+            // output reservation info
+            if ($this->verbose) {
+                $this->writeToConsole("Reservation id: " . $reservation->getId());
+                $this->writeToConsole(" consumed_ts: " . (($reservation->getConsumedTs() == null) ? "null" : $reservation->getConsumedTs()->format('Y-m-d H:i:s')) );
+                $this->writeToConsole(" active: " . (($reservation->getActive()) ? 'true' : 'false') );
+                $this->writeToConsole(" to_send: " . (($reservation->getToSend()) ? 'true' : 'false') );
+                $this->writeToConsole(" beginning_ts: " . $reservation->getBeginningTs()->format('Y-m-d H:i:s'));
+                $this->writeToConsole(" length: " . $reservation->getLength() . "\n");
+            }
+
+            // retrieve reason
+            if ($reservation->getConsumedTs() != null) {
+                $reason = 'USED';
+            } elseif (!$reservation->getActive() && !$reservation->getToSend()) {
+                $reason = 'DELETED';
+            } else {
+                $reason = 'EXPIRED';
+            }
+            $this->writeToConsole("Reason: " . $reason . "\n");
+
+            // create reservationsArchive
+            $archiveReservation = \SharengoCore\Entity\ReservationsArchive::createFromReservation($reservation, $reason);
+            array_push($reservationsArchived, $archiveReservation->getId());
+            $this->writeToConsole("Wrote to archive\n");
+            // persist reservationsArchive
+            $this->entityManager->persist($archiveReservation);
+            $this->writeToConsole("EntityManager: reservationsArchive persisted\n");
+            // remove reservation
+            $this->entityManager->remove($reservation);
+            array_push($reservationsDeleted[$reason], $reservation->getId());
+            $this->writeToConsole("EntityManager: reservation removed\n\n");
+
+        }
+
+        if (!$dryRun) {
+            $this->writeToConsole("EntityManager: about to flush...\n");
+            $this->entityManager->flush();
+            $this->writeToConsole("EntityManager: flushed\n\n");
+        }
+
+        if ($this->verbose) {
+            $this->writeToConsole("Stats:\n");
+            $this->writeToConsole("USED: " . count($reservationsDeleted['USED']) . "\n");
+            $this->writeToConsole("DELETED: " . count($reservationsDeleted['DELETED']) . "\n");
+            $this->writeToConsole("EXPIRED: " . count($reservationsDeleted['EXPIRED']) . "\n");
+            $this->writeToConsole("Archived: " . count($reservationsArchived) . "\n\n");
+        }
+
+        $this->writeToConsole("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
     }
 
     private function writeToConsole($string)
