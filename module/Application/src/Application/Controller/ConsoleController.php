@@ -19,13 +19,15 @@ class ConsoleController extends AbstractActionController
 {
 
 
-    const OPERATIVE = 'operative';
+    const OPERATIVE_STATUS = 'operative';
 
-    const MAINTENANCE = 'out_of_order';
+    const NON_OPERATIVE_STATUS = 'out_of_order';
 
-    const OPERATIVEACTION = 0;
+    const MAINTENANCE_STATUS = 'maintenance';
 
-    const MAINTENANCEACTION = 1;
+    const OPERATIVE_ACTION = 0;
+
+    const MAINTENANCE_ACTION = 1;
 
     /**
      * @var boolean defines verbosity
@@ -191,29 +193,29 @@ class ConsoleController extends AbstractActionController
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                         $car->getCharging();
-            $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $status = $car->getStatus();
+            $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
             if ($isAlarm) {
-                $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
-                if ($status == self::OPERATIVE) {
-                    $car->setStatus(self::MAINTENANCE);
+                $this->sendAlarmCommand(self::MAINTENANCE_ACTION, $car);
+                if ($status == self::OPERATIVE_STATUS) {
+                    $car->setStatus(self::NON_OPERATIVE_STATUS);
                     $flagPersist = true;
                     if ($this->verbose) {
                         array_push($carsToMaintenance, $car->getPlate());
                     }
-                    $this->writeToConsole("status changed to " . self::MAINTENANCE . "\n");
+                    $this->writeToConsole("status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                 }
 
-            } elseif ($status == self::MAINTENANCE && !$isAlarm) {
-                $car->setStatus(self::OPERATIVE);
-                $this->sendAlarmCommand(self::OPERATIVEACTION, $car);
+            } elseif ($status == self::NON_OPERATIVE_STATUS && !$isAlarm) {
+                $car->setStatus(self::OPERATIVE_STATUS);
+                $this->sendAlarmCommand(self::OPERATIVE_ACTION, $car);
                 $flagPersist = true;
                 if ($this->verbose) {
                     array_push($carsToOperative, $car->getPlate());
                 }
-                $this->writeToConsole("status changed to " . self::OPERATIVE . "\n");
+                $this->writeToConsole("status changed to " . self::OPERATIVE_STATUS . "\n");
 
             }
 
@@ -233,11 +235,11 @@ class ConsoleController extends AbstractActionController
 
         if ($this->verbose) {
             $this->writeToConsole("\n\nStats:\n");
-            $this->writeToConsole("\nCars set to " . self::OPERATIVE . ": " . count($carsToOperative) . "\n");
+            $this->writeToConsole("\nCars set to " . self::OPERATIVE_STATUS . ": " . count($carsToOperative) . "\n");
             foreach ($carsToOperative as $key => $value) {
                 $this->writeToConsole("Plate: " . $value . "\n");
             }
-            $this->writeToConsole("\nCars set to " . self::MAINTENANCE . ": " . count($carsToMaintenance) . "\n");
+            $this->writeToConsole("\nCars set to " . self::NON_OPERATIVE_STATUS . ": " . count($carsToMaintenance) . "\n");
             foreach ($carsToMaintenance as $key => $value) {
                 $this->writeToConsole("Plate: " . $value . "\n");
             }
@@ -257,7 +259,7 @@ class ConsoleController extends AbstractActionController
         $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
         $this->writeToConsole("reservations retrieved\n");
 
-        if ($alarmCode == self::OPERATIVEACTION) {
+        if ($alarmCode == self::OPERATIVE_ACTION) {
             // remove current active reservation
 
             foreach ($reservations as $reservation) {
@@ -268,7 +270,7 @@ class ConsoleController extends AbstractActionController
                 $this->writeToConsole("Entity manager: reservation persisted\n");
             }
 
-        } elseif ($alarmCode == self::MAINTENANCEACTION) {
+        } elseif ($alarmCode == self::MAINTENANCE_ACTION) {
 
             if (count($reservations) == 0) {
                 $this->writeToConsole("no reservation found, creating...\n");
@@ -285,7 +287,7 @@ class ConsoleController extends AbstractActionController
 
                 $reservation = Reservations::createMaintenanceReservation($car, $cardsString);
                 $this->writeToConsole("reservation created\n");
-                
+
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
 
