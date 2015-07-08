@@ -189,11 +189,12 @@ class ConsoleController extends AbstractActionController
 
             // defines if car status should be saved
             $flagPersist = false;
+            $status = $car->getStatus();
             // defines if car should be in maintenance
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                        $car->getCharging();
-            $status = $car->getStatus();
+                        $car->getCharging() ||
+                        $status == self::MAINTENANCE_STATUS;
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
