@@ -350,10 +350,12 @@ class ConsoleController extends AbstractActionController
             // retrieve reason
             if ($reservation->getConsumedTs() != null) {
                 $reason = 'USED';
-            } elseif (($reservation->getBeginningTs()->getTimestamp() + $reservation->getLength()) < time() && $reservation->getDeletedTs() == null) {
+            } elseif ($reservation->getDeletedTs() != null) {
+                $reason = 'DELETED';
+            } else {
                 if ($reservation->getActive()) {
-                    $this->writeToConsole("Expired reservation found. Deactivating...\n");
                     // Deactivate reservation and send it to car
+                    $this->writeToConsole("Expired reservation found. Deactivating...\n");
                     $reservation->setActive(false);
                     $reservation->setToSend(true);
                     $this->writeToConsole("Reservation deactivated\n");
@@ -363,8 +365,6 @@ class ConsoleController extends AbstractActionController
                 } else {
                     $reason = 'EXPIRED';
                 }
-            } else {
-                $reason = 'DELETED';
             }
             $this->writeToConsole("Reason: " . $reason . "\n");
 
