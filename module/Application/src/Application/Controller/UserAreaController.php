@@ -263,11 +263,9 @@ class UserAreaController extends AbstractActionController
 
     public function bonusAction()
     {
-        $bonusResidual = $this->I_customersService->getTotalBonusResidualByUser($this->customer);
         return new ViewModel([
             'customer'  => $this->customer,
-            'listBonus' => $this->I_customersService->getAllBonus($this->customer),
-            'residual'  => !is_null($bonusResidual) ? $bonusResidual : 0
+            'listBonus' => $this->I_customersService->getAllBonus($this->customer)
         ]);
     }
 
