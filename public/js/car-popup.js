@@ -193,18 +193,22 @@ function confirm()
         {
             // do not change layout if popup is closed
             if (isOpen) {
-                if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null && jsonData.reason == 'OK') {
-                    completed(textReservationCompleted);
+                if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null) {
+                    if (jsonData.reason == 'OK') {
+                        completed(textReservationCompleted);
+                    } else {
+                        completed(jsonData.reason);
+                    }
                 } else {
                     completed(textReservationCompletedNot);
                 }
             }
             isConfirmingReservation = false;
-            
+
         });
 
     }
-    
+
 }
 
 // change popup to last step and display message
