@@ -350,10 +350,21 @@ class ConsoleController extends AbstractActionController
             // retrieve reason
             if ($reservation->getConsumedTs() != null) {
                 $reason = 'USED';
-            } elseif (!$reservation->getActive() && !$reservation->getToSend()) {
-                $reason = 'DELETED';
+            } elseif (($reservation->getBeginningTs()->getTimestamp() + $reservation->getLength()) < time() && $reservation->getDeletedTs() == null) {
+                if ($reservation->getActive()) {
+                    $this->writeToConsole("Expired reservation found. Deactivating...\n");
+                    // Deactivate reservation and send it to car
+                    $reservation->setActive(false);
+                    $reservation->setToSend(true);
+                    $this->writeToConsole("Reservation deactivated\n");
+                    $this->entityManager->persist($reservation);
+                    $this->writeToConsole("EntityManager: reservation persisted\n");
+                    continue;
+                } else {
+                    $reason = 'EXPIRED';
+                }
             } else {
-                $reason = 'EXPIRED';
+                $reason = 'DELETED';
             }
             $this->writeToConsole("Reason: " . $reason . "\n");
 
