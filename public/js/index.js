@@ -58,7 +58,7 @@ function initialize()
         jsonData.data.forEach(function (car)
         {
             // show car on map only if operative and position is not 0,0
-            if(car.latitude != '0' && car.longitude != '0' && !car.reservation)
+            if(car.latitude != '0' && car.longitude != '0' && (!car.reservation || car.reserved_by_you))
             {
                 // position of the car
                 var latlng = new google.maps.LatLng(car.latitude, car.longitude);
@@ -116,15 +116,15 @@ function initialize()
             }
 
         });
-    
+
         // car markers are set, enable toggle
         carMarkersSet = true;
         isInit = true;
         toggleButtonColor(carsToggle, carMarkersSet);
     });
-    
 
-    
+
+
     // get the pois
     $.get(poisUrl, function (jsonData)
     {
@@ -170,7 +170,7 @@ function initialize()
 
         isInit = true;
     });
-    
+
 
 }
 
@@ -225,7 +225,7 @@ function setReservationButton(isCarBusy)
         $.get(reservationsUrl, function (jsonData)
         {
 
-            var isReserved = false; // TODO - ??? how is this retrieved? 
+            var isReserved = false; // TODO - ??? how is this retrieved?
             var isReservedByMe = false;
 
             if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null)
