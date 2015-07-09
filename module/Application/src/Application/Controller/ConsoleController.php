@@ -215,7 +215,7 @@ class ConsoleController extends AbstractActionController
                     $this->writeToConsole("status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                 }
             // the car should be operative
-            } elseif ($status == self::NON_OPERATIVE_STATUS && !$isAlarm) {
+            } elseif ($status == self::NON_OPERATIVE_STATUS) {
                 // change the car's status to operative
                 $car->setStatus(self::OPERATIVE_STATUS);
                 // remove active reservations
