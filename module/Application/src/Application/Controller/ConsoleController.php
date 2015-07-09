@@ -19,13 +19,15 @@ class ConsoleController extends AbstractActionController
 {
 
 
-    const OPERATIVE = 'operative';
+    const OPERATIVE_STATUS = 'operative';
 
-    const MAINTENANCE = 'out_of_order';
+    const NON_OPERATIVE_STATUS = 'out_of_order';
 
-    const OPERATIVEACTION = 0;
+    const MAINTENANCE_STATUS = 'maintenance';
 
-    const MAINTENANCEACTION = 1;
+    const OPERATIVE_ACTION = 0;
+
+    const MAINTENANCE_ACTION = 1;
 
     /**
      * @var boolean defines verbosity
@@ -174,46 +176,55 @@ class ConsoleController extends AbstractActionController
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        // get all cars
+        // get all cars without reservation or with maintenance/non_operative reservation
         $cars = $this->getCarsNotReserved($this->carsService->getCarsEligibleForAlarmCheck());
         $this->writeToConsole("Cars number = " . count($cars) . "\n");
 
         foreach ($cars as $car) {
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
             $this->writeToConsole(" battery = " . $car->getBattery());
+
             $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
             $this->writeToConsole(" last time = " . $lastContact);
             $this->writeToConsole(" charging = " . (($car->getCharging()) ? 'true' : 'false') . "\n");
 
             // defines if car status should be saved
             $flagPersist = false;
-            // defines if car should be in maintenance
+            // holds the car's status
+            $status = $car->getStatus();
+            // defines if car should be in non_operative || is in maintenance
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                        $car->getCharging();
+                        $car->getCharging() ||
+                        $status == self::MAINTENANCE_STATUS;
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
-            $status = $car->getStatus();
             $this->writeToConsole("status = " . $status . "\n");
 
+            // the car should have a maintainer's reservation
             if ($isAlarm) {
-                $this->sendAlarmCommand(self::MAINTENANCEACTION, $car);
-                if ($status == self::OPERATIVE) {
-                    $car->setStatus(self::MAINTENANCE);
+                // create reservation if !exists
+                $this->sendAlarmCommand(self::MAINTENANCE_ACTION, $car);
+                // the car should be non_operative
+                if ($status == self::OPERATIVE_STATUS) {
+                    // change the car's status to non_operative
+                    $car->setStatus(self::NON_OPERATIVE_STATUS);
                     $flagPersist = true;
                     if ($this->verbose) {
                         array_push($carsToMaintenance, $car->getPlate());
                     }
-                    $this->writeToConsole("status changed to " . self::MAINTENANCE . "\n");
+                    $this->writeToConsole("status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                 }
-
-            } elseif ($status == self::MAINTENANCE && !$isAlarm) {
-                $car->setStatus(self::OPERATIVE);
-                $this->sendAlarmCommand(self::OPERATIVEACTION, $car);
+            // the car should be operative
+            } elseif ($status == self::NON_OPERATIVE_STATUS) {
+                // change the car's status to operative
+                $car->setStatus(self::OPERATIVE_STATUS);
+                // remove active reservations
+                $this->sendAlarmCommand(self::OPERATIVE_ACTION, $car);
                 $flagPersist = true;
                 if ($this->verbose) {
                     array_push($carsToOperative, $car->getPlate());
                 }
-                $this->writeToConsole("status changed to " . self::OPERATIVE . "\n");
+                $this->writeToConsole("status changed to " . self::OPERATIVE_STATUS . "\n");
 
             }
 
@@ -233,11 +244,11 @@ class ConsoleController extends AbstractActionController
 
         if ($this->verbose) {
             $this->writeToConsole("\n\nStats:\n");
-            $this->writeToConsole("\nCars set to " . self::OPERATIVE . ": " . count($carsToOperative) . "\n");
+            $this->writeToConsole("\nCars set to " . self::OPERATIVE_STATUS . ": " . count($carsToOperative) . "\n");
             foreach ($carsToOperative as $key => $value) {
                 $this->writeToConsole("Plate: " . $value . "\n");
             }
-            $this->writeToConsole("\nCars set to " . self::MAINTENANCE . ": " . count($carsToMaintenance) . "\n");
+            $this->writeToConsole("\nCars set to " . self::NON_OPERATIVE_STATUS . ": " . count($carsToMaintenance) . "\n");
             foreach ($carsToMaintenance as $key => $value) {
                 $this->writeToConsole("Plate: " . $value . "\n");
             }
@@ -254,22 +265,25 @@ class ConsoleController extends AbstractActionController
     {
         $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
+        // get all active reservations for car
         $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
         $this->writeToConsole("reservations retrieved\n");
 
-        if ($alarmCode == self::OPERATIVEACTION) {
-            // remove current active reservation
+        // car should not have active reservations
+        if ($alarmCode == self::OPERATIVE_ACTION) {
 
+            // remove current active reservation
             foreach ($reservations as $reservation) {
                 $reservation->setActive(false)
                     ->setToSend(true);
                 $this->writeToConsole("set reservation.active to false\n");
+
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
             }
-
-        } elseif ($alarmCode == self::MAINTENANCEACTION) {
-
+        // car should have maintainers reservation
+        } elseif ($alarmCode == self::MAINTENANCE_ACTION) {
+            // car does not have active reservations
             if (count($reservations) == 0) {
                 $this->writeToConsole("no reservation found, creating...\n");
                 // create reservation for all maintainers
@@ -278,14 +292,13 @@ class ConsoleController extends AbstractActionController
                 $this->writeToConsole("cards retrieved\n");
                 // create single json string with all maintainer's card codes
                 foreach ($maintainersCardCodes as $cardCode) {
-                    //$this->writeToConsole("card code = " . $cardCode['1'] . " added\n");
                     array_push($cardsArray, $cardCode['1']);
                 }
                 $cardsString = json_encode($cardsArray);
-
+                // create maintainers reservation
                 $reservation = Reservations::createMaintenanceReservation($car, $cardsString);
                 $this->writeToConsole("reservation created\n");
-                
+
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
 
@@ -337,10 +350,21 @@ class ConsoleController extends AbstractActionController
             // retrieve reason
             if ($reservation->getConsumedTs() != null) {
                 $reason = 'USED';
-            } elseif (!$reservation->getActive() && !$reservation->getToSend()) {
+            } elseif ($reservation->getDeletedTs() != null) {
                 $reason = 'DELETED';
             } else {
-                $reason = 'EXPIRED';
+                if ($reservation->getActive()) {
+                    // Deactivate reservation and send it to car
+                    $this->writeToConsole("Expired reservation found. Deactivating...\n");
+                    $reservation->setActive(false);
+                    $reservation->setToSend(true);
+                    $this->writeToConsole("Reservation deactivated\n");
+                    $this->entityManager->persist($reservation);
+                    $this->writeToConsole("EntityManager: reservation persisted\n");
+                    continue;
+                } else {
+                    $reason = 'EXPIRED';
+                }
             }
             $this->writeToConsole("Reason: " . $reason . "\n");
 
