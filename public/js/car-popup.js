@@ -10,6 +10,8 @@ var isOpen = false;
 var carPos;
 // last clicked car's battery
 var carBattery;
+// user's reservation id
+var reservationId;
 
 // get html elements
 var mainContainer = document.getElementById('car-popup');
@@ -72,20 +74,18 @@ btnReserve.addEventListener('click', function(event)
 var actionNumber = 0; // states are: 0=inactive, 1=nextStep, 2=removeReservation
 
 // call this function to set the action on btnReserve click event
-function setAction(number)
+function setAction(number, resId)
 {
     actionNumber = number;
+    reservationId = resId;
 }
 
 // this is called when btnReserve is clicked
 function startAction()
 {
-    if (actionNumber == 1)
-    {
+    if (actionNumber == 1) {
         nextStep();
-    }
-    else if (actionNumber == 2)
-    {
+    } else if (actionNumber == 2) {
         removeReservation();
     }
 
@@ -99,6 +99,7 @@ function nextStep()
     rightColumn.style.width = "100%";
     btnReserve.style.display = "none";
     step2Buttons.style.display = "inline";
+    btnConfirm.innerHTML = textButtonConfirm;
     circleIcon.style.display = "none";
     setRightBottomBlockTitle(titleRemember, 2);
     oldKm = blockRightBottomText.innerHTML;
@@ -106,27 +107,35 @@ function nextStep()
     btnCoverage.style.display = "none";
 }
 
+// avoid multiple function calls
+var isRemovingReservation = false;
+
 // remove a car reservation
 function removeReservation()
 {
-    $.get(reservationsUrl, function (jsonData)
-    {
-        if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null)
-        {
-            var reservationID = jsonData.jsonData[0].customer_id;
-            $.get(removeReservationUrl + reservationID, function (jsonData)
-            {
-                if (true) // TODO verify response
-                {
-                    completed(textReservationRemoved);
+    if (!isRemovingReservation) {
+
+        isRemovingReservation = true;
+        isReservedDiv.innerHTML = spinner;
+
+        $.ajax({
+            url: reservationsUrl + '\\' + reservationId,
+            type: 'DELETE',
+            success: function(jsonData) {
+                // do not change layout if popup is closed
+                if (isOpen) {
+                    nextStep();
+                    if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null && jsonData.reason == 'OK') {
+                        completed(textReservationRemoved);
+                    } else {
+                        completed(textReservationRemovedNot);
+                    }
                 }
-                else
-                {
-                    completed(textReservationRemovedNot);
-                }
-            });
-        }
-    });
+                isRemovingReservation = false;
+            }
+        });
+
+    }
 }
 
 
@@ -146,7 +155,7 @@ function reset()
 {
     leftColumn.style.display = "block";
     rightColumn.style.width = "";
-    //btnReserve.style.display = "inline"; // RESERVATION BUTTON
+    btnReserve.style.display = "inline";
     step2Buttons.style.display = "none";
     circleIcon.style.display = "block";
     setRightBottomBlockTitle(titleMilage, 1);
@@ -167,25 +176,35 @@ function close()
     isOpen = false;
 }
 
+// avoid multiple function calls
+var isConfirmingReservation = false;
+
 // confirm reservation
 function confirm()
 {
-    /*
-    var plate = document.getElementById('licence-plate').innerHTML;
-    $.get(reserveUrl + plate, function (jsonData)
-    {
-        */
-        if (true) // TODO verify response
+    if (!isConfirmingReservation) {
+        isConfirmingReservation = true;
+
+        btnConfirm.innerHTML = spinner;
+
+        var plate = document.getElementById('licence-plate').innerHTML;
+
+        $.post(reservationsUrl, 'plate=' + plate, function (jsonData)
         {
-            completed(textReservationCompleted);
-        }
-        else
-        {
-            completed(textReservationCompletedNot); // TODO verify error message
-        }
-        /*
-    });
-    */
+            // do not change layout if popup is closed
+            if (isOpen) {
+                if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null && jsonData.reason == 'OK') {
+                    completed(textReservationCompleted);
+                } else {
+                    completed(textReservationCompletedNot);
+                }
+            }
+            isConfirmingReservation = false;
+            
+        });
+
+    }
+    
 }
 
 // change popup to last step and display message
@@ -211,20 +230,16 @@ function verifyCoverage()
 
 function setReserveText(text, setIcon) // TODO - CHECK warning, ban, times
 {
-    if (isOpen)
-    {
+    if (isOpen) {
         isReservedDiv.innerHTML = text + (setIcon ? ' <i class="fa fa-angle-right"></i>' : ''); // TODO - CHECK <i class="fa fa-times"></i>');
     }
 }
 
 function setRightBottomBlockTitle(text, stepNumber)
 {
-    if (stepNumber == 1)
-    {
+    if (stepNumber == 1) {
         text = '<i id="circle-icon" class="fa fa-sun-o"></i> ' + text;
-    }
-    else if (stepNumber == 2)
-    {
+    } else if (stepNumber == 2) {
         text = '<i id="circle-icon" class="fa fa-info-circle"></i> ' + text;
     }
     blockRightBottomTitle.innerHTML = text;
@@ -276,17 +291,14 @@ function parseCleanliness(value)
 {
     // value w25 exists but has no match in database
     var defaultClass = 'block-bar-value ';
-    if (value == 'clean')
-    {
+
+    if (value == 'clean') {
         return defaultClass + 'w100';
-    }
-    else if (value == 'average')
-    {
+    } else if (value == 'average') {
         return defaultClass + 'w75';
-    }
-    else if (value == 'dirty')
-    {
+    } else if (value == 'dirty') {
         return defaultClass + 'w50';
     }
+
     return defaultClass + 'w100';
 }
