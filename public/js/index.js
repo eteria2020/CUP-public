@@ -52,68 +52,64 @@ function initialize()
 
 
     // get the cars
-    $.get(carsUrl + '?status=operative&active=true&busy=false&running=false', function (jsonData)
+    $.get(carsUrl, function (jsonData)
     {
         // set a marker for each car
         jsonData.data.forEach(function (car)
         {
-            // show car on map only if operative and position is not 0,0
-            if(car.latitude != '0' && car.longitude != '0' && !car.reservation && !car.busy)
+            // position of the car
+            var latlng = new google.maps.LatLng(car.latitude, car.longitude);
+
+            // create the marker on the map
+            var marker = new google.maps.Marker(
             {
-                // position of the car
-                var latlng = new google.maps.LatLng(car.latitude, car.longitude);
+                position: latlng,
+                map: map,
+                icon: carMarkerPath
+            });
 
-                // create the marker on the map
-                var marker = new google.maps.Marker(
+            // add event listener for when the marker is clicked
+            google.maps.event.addListener(marker, 'click', function()
+            {
+
+                // if an infowindow is open, close it
+                if(openInfoWindow !== null)
                 {
-                    position: latlng,
-                    map: map,
-                    icon: carMarkerPath
-                });
+                    openInfoWindow.close();
+                }
 
-                // add event listener for when the marker is clicked
-                google.maps.event.addListener(marker, 'click', function()
+                // if some car's coverage circle is drawn, remove it
+                removeCoverage();
+
+                // modify the elements
+                setPlateText(car['plate']);
+                setIntCleanliness(car['intCleanliness']);
+                setExtCleanliness(car['extCleanliness']);
+                setCarBattery(car['battery']);
+                setCarPos(marker.position);
+
+                // get the location and set it in the popup
+                geocoder.geocode({'latLng': latlng}, function(results, status)
                 {
-
-                    // if an infowindow is open, close it
-                    if(openInfoWindow !== null)
+                    if (status == google.maps.GeocoderStatus.OK)
                     {
-                        openInfoWindow.close();
-                    }
-
-                    // if some car's coverage circle is drawn, remove it
-                    removeCoverage();
-
-                    // modify the elements
-                    setPlateText(car['plate']);
-                    setIntCleanliness(car['intCleanliness']);
-                    setExtCleanliness(car['extCleanliness']);
-                    setCarBattery(car['battery']);
-                    setCarPos(marker.position);
-
-                    // get the location and set it in the popup
-                    geocoder.geocode({'latLng': latlng}, function(results, status)
-                    {
-                        if (status == google.maps.GeocoderStatus.OK)
+                        if (results[1])
                         {
-                            if (results[1])
-                            {
-                                setLocationText(results[1].formatted_address);
-                            }
+                            setLocationText(results[1].formatted_address);
                         }
-                    });
-
-                    // Set the main button's behavior
-                    //setReservationButton(car['busy']); // RESERVATION BUTTON
-
-                    // show the popup
-                    showPopup();
-
+                    }
                 });
 
-                // add the marker to the carMarkers array
-                carMarkers.push(marker);
-            }
+                // Set the main button's behavior
+                //setReservationButton(car['busy']); // RESERVATION BUTTON
+
+                // show the popup
+                showPopup();
+
+            });
+
+            // add the marker to the carMarkers array
+            carMarkers.push(marker);
 
         });
 
