@@ -90,7 +90,7 @@ class UserAreaController extends AbstractActionController
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
         $this->userService = $userService;
-        $this->customer = $I_customersService->getCustomerEntity($userService->getIdentity());
+        $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
         $this->driverLicenseForm = $driverLicenseForm;
@@ -141,9 +141,6 @@ class UserAreaController extends AbstractActionController
         if ($form->isValid()) {
 
             $customer = $form->saveData();
-
-            //update the identity in session
-            $this->userService->getStorage()->write($customer);
 
             //update the data in the form
             $this->setFormsData($customer);
