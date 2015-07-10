@@ -23,35 +23,33 @@ return array(
 
             'BjyAuthorize\Provider\Role\Config' => array(
                 'guest' => array(),
-                'user' => array(
-                    'children' => array(
-                        'admin' => array(),
-                    ),
-                ),
+                'admin' => array(),
+                'callcenter' => array(),
+                'user' => array(),
             ),
-
         ),
 
-        // resource providers provide a list of resources that will be tracked
-        // in the ACL. like roles, they can be hierarchical
-        'resource_providers' => array(),
-
-        /* rules can be specified here with the format:
-         * array(roles (array), resource, [privilege (array|string), assertion])
-         * assertions will be loaded using the service manager and must implement
-         * Zend\Acl\Assertion\AssertionInterface.
-         * *if you use assertions, define them using the service manager!*
-         */
-        'rule_providers' => array(),
-
-        /* Currently, only controller and route guards exist
-         *
-         * Consider enabling either the controller or the route guard depending on your needs.
-         */
-        'guards' => array(
-            // moved inside each module
-        ),
-
-        'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
     ),
+
+    // resource providers provide a list of resources that will be tracked
+    // in the ACL. like roles, they can be hierarchical
+    'resource_providers' => array(),
+
+    /* rules can be specified here with the format:
+     * array(roles (array), resource, [privilege (array|string), assertion])
+     * assertions will be loaded using the service manager and must implement
+     * Zend\Acl\Assertion\AssertionInterface.
+     * *if you use assertions, define them using the service manager!*
+     */
+    'rule_providers' => array(),
+
+    /* Currently, only controller and route guards exist
+     *
+     * Consider enabling either the controller or the route guard depending on your needs.
+     */
+    'guards' => array(
+        // moved inside each module
+    ),
+
+    'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
 );
