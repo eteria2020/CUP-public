@@ -177,7 +177,7 @@ class ConsoleController extends AbstractActionController
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         // get all cars without reservation or with maintenance/non_operative reservation
-        $cars = $this->getCarsNotReserved($this->carsService->getCarsEligibleForAlarmCheck());
+        $cars = $this->carsService->getCarsEligibleForAlarmCheck();
         $this->writeToConsole("Cars number = " . count($cars) . "\n");
 
         foreach ($cars as $car) {
@@ -187,6 +187,7 @@ class ConsoleController extends AbstractActionController
             $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
             $this->writeToConsole(" last time = " . $lastContact);
             $this->writeToConsole(" charging = " . (($car->getCharging()) ? 'true' : 'false') . "\n");
+
 
             // defines if car status should be saved
             $flagPersist = false;
@@ -254,7 +255,7 @@ class ConsoleController extends AbstractActionController
             }
         }
 
-        $this->writeToConsole("\n\ndone\n\n");
+        $this->writeToConsole("\n\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
     /**
@@ -307,19 +308,6 @@ class ConsoleController extends AbstractActionController
             }
 
         }
-    }
-
-    private function getCarsNotReserved($cars)
-    {
-        $this->writeToConsole("Filtering cars by reservation...\n");
-        $reservationsService = $this->reservationsService;
-        $carsNotReserved = array_filter($cars, function ($car) use ($reservationsService) {
-            $reservations = $reservationsService->getActiveReservationsByCar($car->getPlate());
-            return empty($reservations) || ($reservations[0]->getLength() == -1);
-        });
-
-        $this->writeToConsole("Filtered cars by reservation\n");
-        return $carsNotReserved;
     }
 
     public function archiveReservationsAction()
