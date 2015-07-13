@@ -11,6 +11,7 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use BjyAuthorize\View\RedirectionStrategy;
 use Zend\EventManager\EventInterface;
 
 use Application\Exception\ProfilingPlatformException;
@@ -74,6 +75,10 @@ class Module
                 $customerService->assignCard($customer);
             }
         );
+
+        // BjyAuthorize redirection strategy
+        $strategy = new RedirectionStrategy();
+        $eventManager->attach($strategy);
 
         $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
         $viewModel->loggedUser = $userService->getIdentity();
