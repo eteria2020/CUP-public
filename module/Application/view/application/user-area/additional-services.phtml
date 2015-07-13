@@ -1,0 +1,100 @@
+<?php
+$form = $this->promoCodeForm->prepare();
+?>
+
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'additional-services')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('servizi aggiuntivi'); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+                <div class="module-manage-driver-license padding-top">
+                    <div class="block-form bw-f w-2-3  clearfix">
+
+                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
+
+                        <!--
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-star"></i> Convenzione aziendale</h2>
+                        </div>
+                        <form method=post action="#">
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label>Inserisci il codice azienda</label> <a href=""><i class="fa fa-info-circle"></i></a>
+                                        <input type=text class=required name="">
+                                    </p>
+                                </div>
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label>Inserisci la tua email aziendale</label>
+                                        <input type=text name="" class=required value="">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="block-wrapper-button content-align-center">
+                                <input type=submit name="" value=Valida>
+                            </div>
+                        </form>
+                        -->
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice Promo'); ?></h2>
+                        </div>
+                        <?= $this->form()->openTag($form); ?>
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate('Inserisci il codice promo'); ?></label>
+                                        <?php
+                                        $promoCode = $form->get('promocode')->get('promocode');
+                                        echo $this->formElement($promoCode->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($promoCode, array('class' => 'errors'));
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="block-wrapper-button content-align-center">
+                                <input type=submit name="" value="<?= $this->translate('Valida'); ?>">
+                            </div>
+                        <?php echo $this->form()->closeTag(); ?>
+                    </div>
+                    <div class="bw-f w-1-3 last  clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!-- module-column-app dx -->
+    </div>
+    <!-- module-wrapper-app -->
+</div>
+<!-- main -->
+
+<?php
+$this->headStyle()->captureStart() ?>
+    .errors {
+        list-style-type: none;
+    }
+
+    .errors li {
+        color: red;
+    }
+<?php $this->headStyle()->captureEnd() ?>

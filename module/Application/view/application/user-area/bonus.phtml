@@ -1,0 +1,118 @@
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'bonus')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('BONUS'); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+                <div class="module-bonus-resmume padding-top">
+                    <div class="block-form bw-f w-1-4 clearfix">
+                        <form method=post action="#">
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-4-4">
+                                    <!--
+                                    <p> <label>Periodo</label>
+                                        <select name="">
+                                            <option>valore</option>
+                                            <option>valore</option>
+                                        </select>
+                                    </p>-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <?php if(count($this->listBonus) > 0): ?>
+                        <div class="pull-right w-1-3 last clearfix">
+                            <div class="block-total-bonus clearfix">
+                                <div class="block-total-bonus-count clearfix">
+                                    <i class="fa fa-trophy"></i>
+                                    <span class="block-total-bonus-count-value" style="min-width: 120px !important; max-width: 200px !important;">
+                                        <?= $this->customer->getResidualBonuses(); ?>
+                                    </span>
+                                </div>
+                                <div class=block-total-bonus-count-legend>
+                                    <?= $this->translate('Totale minuti attualmente utilizzabili'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-data-table clearboth clearfix">
+                            <div class="block-data-table-row clearfix">
+                                <div class="block-data-table-th cw-1-6">
+                                    <?= $this->translate('Valido dal'); ?>
+                                </div>
+                                <div class="block-data-table-th cw-1-6">
+                                    <?= $this->translate('Valido al'); ?>
+                                </div>
+                                <div class="block-data-table-th cw-1-6">
+                                    <?= $this->translate('Descrizione'); ?>
+                                </div>
+                                <div class="block-data-table-th cw-1-6">
+                                    <?= $this->translate('Minuti restanti'); ?>
+                                </div>
+                                <div class="block-data-table-th cw-1-6">
+                                    <?= $this->translate('Minuti utilizzati'); ?>
+                                </div>
+                                <div class="block-data-table-th cw-1-6">
+                                    <?= $this->translate('Accredito minuti'); ?>
+                                </div>
+                            </div>
+                            <?php
+                            /** @var \SharengoCore\Entity\CustomersBonus $bonus */
+                            foreach($this->listBonus as $bonus): ?>
+                                <div class="block-data-table-row odd clearfix">
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= is_object($bonus->getValidFrom()) ? $bonus->getValidFrom()->format('d-m-Y H:i:s') : ''; ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= is_object($bonus->getValidTo()) ? $bonus->getValidTo()->format('d-m-Y H:i:s') : ''; ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $bonus->getDescription(); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $bonus->getResidual(); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= ($bonus->getTotal() - $bonus->getResidual()); ?>
+                                    </div>
+                                    <div class="block-data-table-td cw-1-6">
+                                        <?= $bonus->getTotal(); ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="block-alert margin-bottom info">
+                            <p><?= $this->translate('Non hai ancora bonus associati al tuo account'); ?>.</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <!-- module-column-app dx -->
+    </div>
+    <!-- module-wrapper-app -->
+</div>
+<!-- main -->
