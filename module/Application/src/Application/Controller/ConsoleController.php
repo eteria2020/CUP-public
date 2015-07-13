@@ -144,7 +144,7 @@ class ConsoleController extends AbstractActionController
                     $bonusDesc = 'Bonus iscrizione utente prima del 15-06-2015';
                 }
 
-                //create Bonus
+                // create Bonus
                 $bonus = new \SharengoCore\Entity\CustomersBonus();
                 $bonus->setInsertTs(null != $customer->getInsertedTs() ? $customer->getInsertedTs() : $defaultBonusInsertDate);
                 $bonus->setUpdateTs($bonus->getInsertTs());
@@ -340,9 +340,8 @@ class ConsoleController extends AbstractActionController
                 $reason = 'USED';
             } elseif ($reservation->getDeletedTs() != null) {
                 $reason = 'DELETED';
-            } else {
-                if ($reservation->getActive()) {
-                    // Deactivate reservation and send it to car
+            } elseif ($reservation->getActive()) {
+                    // deactivate reservation and send it to car
                     $this->writeToConsole("Expired reservation found. Deactivating...\n");
                     $reservation->setActive(false);
                     $reservation->setToSend(true);
@@ -351,9 +350,8 @@ class ConsoleController extends AbstractActionController
                     $this->writeToConsole("EntityManager: reservation persisted\n");
                     array_push($reservationsDeleted['DEACTIVATED'], $reservation->getId());
                     continue;
-                } elseif ($reservation->getToSend() == false) {
-                    $reason = 'EXPIRED';
-                }
+            } else {
+                $reason = 'EXPIRED';
             }
             $this->writeToConsole("Reason: " . $reason . "\n");
 
