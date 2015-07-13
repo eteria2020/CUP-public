@@ -208,7 +208,7 @@ function setReservationButton(plate, isCarBusy)
 {
     if (isLoggedIn) {
         // user is logged in
-        $.get(reservationsUrl + '?plate=' + plate + '&active=true', function (jsonData)
+        $.get(reservationsUrl + '?plate=' + plate, function (jsonData)
         {
 
             var isReserved = false;
