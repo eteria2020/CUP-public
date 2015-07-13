@@ -72,8 +72,7 @@ function initialize()
             {
 
                 // if an infowindow is open, close it
-                if(openInfoWindow !== null)
-                {
+                if(openInfoWindow !== null) {
                     openInfoWindow.close();
                 }
 
@@ -90,8 +89,7 @@ function initialize()
                 // get the location and set it in the popup
                 geocoder.geocode({'latLng': latlng}, function(results, status)
                 {
-                    if (status == google.maps.GeocoderStatus.OK)
-                    {
+                    if (status == google.maps.GeocoderStatus.OK) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[1]) {
                                 setLocationText(results[1].formatted_address);
