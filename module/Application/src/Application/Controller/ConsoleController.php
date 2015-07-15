@@ -315,7 +315,7 @@ class ConsoleController extends AbstractActionController
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
-        $reservationsDeleted = ['USED' => [], 'DELETED' => [], 'EXPIRED' => [], 'DEACTIVATED' => []];
+        $reservationsDeleted = ['USED' => [], 'DELETED' => [], 'EXPIRED' => [], 'DEACTIVATED' => [], 'ALARM-OFF' => []];
         $reservationsArchived = [];
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
@@ -383,6 +383,7 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("DELETED: " . count($reservationsDeleted['DELETED']) . "\n");
             $this->writeToConsole("EXPIRED: " . count($reservationsDeleted['EXPIRED']) . "\n");
             $this->writeToConsole("DEACTIVATED: " . count($reservationsDeleted['DEACTIVATED']) . "\n");
+            $this->writeToConsole("ALARM-OFF: " . count($reservationsDeleted['ALARM-OFF']) . "\n");
             $this->writeToConsole("Archived: " . count($reservationsArchived) . "\n\n");
         }
 
