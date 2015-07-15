@@ -350,6 +350,8 @@ class ConsoleController extends AbstractActionController
                     $this->writeToConsole("EntityManager: reservation persisted\n");
                     array_push($reservationsDeleted['DEACTIVATED'], $reservation->getId());
                     continue;
+            } elseif ($reservation->getLength() == -1) {
+                $reason = 'ALARM-OFF';
             } else {
                 $reason = 'EXPIRED';
             }
