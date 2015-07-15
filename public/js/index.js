@@ -38,8 +38,7 @@ function initialize()
     // define the initial position
     var myLatlng = new google.maps.LatLng(45.4627338,9.1777323);
     // define map options
-    var mapOptions =
-        {
+    var mapOptions = {
             center: myLatlng, // Set our point as the centre location
             zoom: 14, // Set the zoom level
             scrollwheel: false,
@@ -73,8 +72,7 @@ function initialize()
             {
 
                 // if an infowindow is open, close it
-                if(openInfoWindow !== null)
-                {
+                if(openInfoWindow !== null) {
                     openInfoWindow.close();
                 }
 
@@ -91,22 +89,22 @@ function initialize()
                 // get the location and set it in the popup
                 geocoder.geocode({'latLng': latlng}, function(results, status)
                 {
-                    if (status == google.maps.GeocoderStatus.OK)
-                    {
-                        if (results[1])
-                        {
-                            setLocationText(results[1].formatted_address);
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[1]) {
+                                setLocationText(results[1].formatted_address);
+                            }
                         }
                     }
                 });
 
-                // Set the main button's behavior
-                //setReservationButton(car['busy']); // RESERVATION BUTTON
+                    // show the popup
+                    showPopup();
 
-                // show the popup
-                showPopup();
+                    // Set the main button's behavior
+                    setReservationButton(car['plate'], car['busy']);
 
-            });
+                });
 
             // add the marker to the carMarkers array
             carMarkers.push(marker);
@@ -128,22 +126,19 @@ function initialize()
         jsonData.data.forEach(function (pois)
         {
             // show pois on map only if position is not 0,0
-            if (pois.lon != '0' && pois.lat != '0')
-            {
+            if (pois.lon != '0' && pois.lat != '0') {
                 // position of the pois
                 var latlng = new google.maps.LatLng(pois.lon, pois.lat);
 
                 // create a marker
-                var marker = new google.maps.Marker(
-                {
+                var marker = new google.maps.Marker({
                     position: latlng,
                     map: null,
                     icon: poisMarkerPath
                 });
 
                 // create the infowindow
-                var infowindow = new google.maps.InfoWindow(
-                {
+                var infowindow = new google.maps.InfoWindow({
                     content: getInfowindowContent(pois.type, pois.address)
                 });
 
@@ -151,8 +146,7 @@ function initialize()
                 google.maps.event.addListener(marker, 'click', function()
                 {
                     // if an infowindow is open, close it
-                    if(openInfoWindow !== null)
-                    {
+                    if (openInfoWindow !== null) {
                         openInfoWindow.close();
                     }
                     openInfoWindow = infowindow;
@@ -179,8 +173,7 @@ toggleButtonColor(energyToggle, energyMarkersSet);
 // set click event listeners
 carsToggle.addEventListener('click', function (event)
 {
-    if (isInit)
-    {
+    if (isInit) {
         toggleMarkers(carMarkers, (carMarkersSet ? null : map));
         carMarkersSet = !carMarkersSet;
         toggleButtonColor(carsToggle, carMarkersSet);
@@ -189,8 +182,7 @@ carsToggle.addEventListener('click', function (event)
 
 energyToggle.addEventListener('click', function (event)
 {
-    if (isInit)
-    {
+    if (isInit) {
         toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
         energyMarkersSet = !energyMarkersSet;
         toggleButtonColor(energyToggle, energyMarkersSet);
@@ -200,8 +192,7 @@ energyToggle.addEventListener('click', function (event)
 // define on click function
 function toggleMarkers(markers, value)
 {
-    for (i=0; i<markers.length; i++)
-    {
+    for (i=0; i<markers.length; i++) {
         markers[i].setMap(value);
     }
 }
@@ -213,45 +204,45 @@ function toggleButtonColor(icon, flag)
 }
 
 // changes the reservation button's state
-function setReservationButton(isCarBusy)
+function setReservationButton(plate, isCarBusy)
 {
-    if (isLoggedIn)
-    {
-        // TODO check if logic is correct
-        $.get(reservationsUrl, function (jsonData)
+    if (isLoggedIn) {
+        // user is logged in
+        $.get(reservationsUrl + '?plate=' + plate, function (jsonData)
         {
 
-            var isReserved = false; // TODO - ??? how is this retrieved?
+            var isReserved = false;
             var isReservedByMe = false;
+            var reservationId = '';
 
-            if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null)
-            {
-                // TODO test with dummy reservation
-                if (jsonData.data[0].customer_id == userId)
-                {
+            if (typeof jsonData.data[0] !== 'undefined' && jsonData.data[0] !== null) {
+                // there is an active reservation
+                if (jsonData.data[0].customer == userId) {
+                    // there is an active reservation from the user
                     isReservedByMe = true;
+                    reservationId = jsonData.data[0].id;
+                } else {
+                    // there is an active reservation from another user
+                    isReserved = true;
                 }
             }
 
-            if (isCarBusy || (isReserved && !isReservedByMe))
-            {
+            if (isCarBusy || (isReserved && !isReservedByMe)) {
+                // car cannot be reserved by user
                 setReserveText(textCarOccupied, false);
-                setAction(0);
-            }
-            else if (isReservedByMe)
-            {
+                setAction(0, reservationId);
+            } else if (isReservedByMe) {
+                // reservation can be removed by user
                 setReserveText(textCarReserved, true);
-                setAction(2);
-            }
-            else
-            {
+                setAction(2, reservationId);
+            } else {
+                // car can be reserved
                 setReserveText(textCarReserve, true);
-                setAction(1);
+                setAction(1, reservationId);
             }
         });
-    }
-    else
-    {
+    } else {
+        // user is not logged in
         setReserveText(textRegister, true);
     }
 }
@@ -285,8 +276,7 @@ function drawCoverage(position, battery)
 // remove any drawn circle
 function removeCoverage()
 {
-    if (circle !== null)
-    {
+    if (circle !== null) {
         circle.setMap(null);
     }
 }
