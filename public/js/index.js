@@ -256,7 +256,7 @@ function getInfowindowContent(type, address)
             '</div>';
 }
 
-// draw a 60 km circle around the passed position
+// draw a circle around the passed position based on battery (max 45km)
 function drawCoverage(position, battery)
 {
     var circleOptions = {
@@ -267,7 +267,7 @@ function drawCoverage(position, battery)
       fillOpacity: 0.35,
       map: map,
       center: position,
-      radius: 600 * battery // in meters
+      radius: 450 * battery // in meters
     };
     circle = new google.maps.Circle(circleOptions);
     circle.setMap(map);
