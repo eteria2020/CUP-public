@@ -312,7 +312,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'generalConditions1',
+            'name' => 'generalCondition1',
             'options' => [
                 'label' => $translator->translate('ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.r.l. e da C.S. Milano S.r.l.'),
                 'use_hidden_element' => true
@@ -321,7 +321,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'generalConditions2',
+            'name' => 'generalCondition2',
             'options' => [
                 'label' => $translator->translate('dichiaro ai sensi e per gli effetti di cui all’art. 1341 c.c. e segg., di accettare espressamente ed approvare specificatamente le condizioni di cui agli articoli: 1 (premesse), 2 (definizioni), 3 (oggetto e parti del contratto), 4 (divieto di sostituzione), 5 (modifica unilaterale del Contratto e del Regolamento del servizio di car sharing), 6 (iscrizione e prenotazione online del Car Sharing SHARE’NGO), 7 (garanzia economica del noleggio), 8 (tariffe), 9 (obblighi, fatturazione e pagamenti), 10 (divieto di sublocazione e di cessione), 11 (esonero di responsabilità), 12 (permesso di guida), 13 (utilizzo dei veicoli. Clausola risolutiva espressa), 14 (sinistro o avaria del veicolo), 15 (furti e vandalismi), 16 (sanzioni in materia di circolazione stradale), 17 (responsabilità del Cliente), 18 (assicurazioni – oneri a carico del Cliente), 19 (limiti di responsabilità), 20 (dati personali), 21 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 22 (reclami), 23 (diritto di recesso del Cliente), 24 (penali), 25 (comunicazioni) 26 (foro competente), 27 (varie).'),
                 'use_hidden_element' => true
@@ -330,7 +330,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulation1',
+            'name' => 'regulationCondition1',
             'options' => [
                 'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.r.l. e da C.S. Milano S.r.l."),
                 'use_hidden_element' => true
@@ -339,7 +339,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulation2',
+            'name' => 'regulationCondition2',
             'options' => [
                 'label' => $translator->translate('dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).'),
                 'use_hidden_element' => true
@@ -348,7 +348,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'privacy',
+            'name' => 'privacyCondition',
             'options' => [
                 'label' => $translator->translate("ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate"),
                 'use_hidden_element' => true
@@ -356,38 +356,34 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'commercial1',
+            'name' => 'commercialCondition1',
             'type' => 'Zend\Form\Element\Radio',
-            'attributes' => [
-                'id' => 'commercial1'
-            ],
             'options' => [
                 'label' => $translator->translate('Consenso all’invio di comunicazioni pubblicitarie e offerte speciali per iniziative curate da eni'),
                 'value_options' => [
-                    '0' => $translator->translate('Do il mio consenso'),
-                    '1' => $translator->translate('Nego il mio consenso')
+                    '1' => $translator->translate('Do il mio consenso'),
+                    '0' => $translator->translate('Nego il mio consenso')
                 ]
             ],
             'attributes' => [
-                'value' => 1
+                'value' => 1,
+                'id' => 'commercialCondition1'
             ]
         ]);
 
         $this->add([
-            'name' => 'commercial2',
+            'name' => 'commercialCondition2',
             'type' => 'Zend\Form\Element\Radio',
-            'attributes' => [
-                'id' => 'commercial2'
-            ],
             'options' => [
                 'label' => $translator->translate("Consenso all'invio di comunicazioni pubblicitarie e offerte speciali per iniziative curate da imprese partner"),
                 'value_options' => [
-                    '0' => $translator->translate('Do il mio consenso'),
-                    '1' => $translator->translate('Nego il mio consenso')
+                    '1' => $translator->translate('Do il mio consenso'),
+                    '0' => $translator->translate('Nego il mio consenso')
                 ]
             ],
             'attributes' => [
-                'value' => 1
+                'value' => 1,
+                'id' => 'commercialCondition2'
             ]
         ]);
 
@@ -618,25 +614,25 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'generalConditions1' => [
+            'generalCondition1' => [
                 'required' => true
             ],
-            'generalConditions2' => [
+            'generalCondition2' => [
                 'required' => true
             ],
-            'regulation1' => [
+            'regulationCondition1' => [
                 'required' => true
             ],
-            'regulation2' => [
+            'regulationCondition2' => [
                 'required' => true
             ],
-            'privacy' => [
+            'privacyCondition' => [
                 'required' => true
             ],
-            'commercial1' => [
+            'commercialCondition1' => [
                 'required' => true
             ],
-            'commercial2' => [
+            'commercialCondition2' => [
                 'required' => true
             ],
         ];

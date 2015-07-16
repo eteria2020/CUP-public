@@ -361,18 +361,18 @@
                 <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
             </a>
         </p>
-        <?php $generalConditions1 = $this->form->get('user')->get('generalConditions1'); ?>
+        <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
         <label class='control checkbox'>
-            <input type='checkbox' name="<?php echo $generalConditions1->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $generalConditions1->getLabel(); ?>
+            <input type='checkbox' name="<?php echo $generalCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($generalConditions1, array('class' => 'errors')); ?>
-        <?php $generalConditions2 = $this->form->get('user')->get('generalConditions2'); ?>
+        <?php echo $this->formElementErrors($generalCondition1, array('class' => 'errors')); ?>
+        <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
         <label class='control checkbox'>
-            <input type='checkbox' name="<?php echo $generalConditions2->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $generalConditions2->getLabel(); ?>
+            <input type='checkbox' name="<?php echo $generalCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($generalConditions2, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($generalCondition2, array('class' => 'errors')); ?>
 
     </div>
 
@@ -393,18 +393,18 @@
                 <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
             </a>
         </p>
-        <?php $regulation1 = $this->form->get('user')->get('regulation1'); ?>
+        <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
         <label class='control checkbox'>
-            <input type='checkbox' name="<?php echo $regulation1->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $regulation1->getLabel(); ?>
+            <input type='checkbox' name="<?php echo $regulationCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($regulation1, array('class' => 'errors')); ?>
-        <?php $regulation2 = $this->form->get('user')->get('regulation2'); ?>
+        <?php echo $this->formElementErrors($regulationCondition1, array('class' => 'errors')); ?>
+        <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
         <label class='control checkbox'>
-            <input type='checkbox' name="<?php echo $regulation2->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $regulation2->getLabel(); ?>
+            <input type='checkbox' name="<?php echo $regulationCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($regulation2, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($regulationCondition2, array('class' => 'errors')); ?>
 
     </div>
 
@@ -423,12 +423,12 @@
         <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
             <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
         </a>
-        <?php $privacy = $this->form->get('user')->get('privacy'); ?>
+        <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
         <label class='control checkbox'>
-            <input type='checkbox' name="<?php echo $privacy->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $privacy->getLabel(); ?>
+            <input type='checkbox' name="<?php echo $privacyCondition->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($privacy, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($privacyCondition, array('class' => 'errors')); ?>
     </div>
 
 </div>
@@ -443,27 +443,27 @@
 
     <div class="block-field w-4-4">
         <p class="text-align-center">
-            <?php $commercial1 = $this->form->get('user')->get('commercial1'); ?>
-            <label><?= $commercial1->getLabel() . '<br><br>' ?></label>
-            <?php foreach ($commercial1->getValueOptions() as $key => $value): ?>
+            <?php $commercialCondition1 = $this->form->get('user')->get('commercialCondition1'); ?>
+            <label><?= $commercialCondition1->getLabel() . '<br><br>' ?></label>
+            <?php foreach ($commercialCondition1->getValueOptions() as $key => $value): ?>
                 <label class='control radio'>
-                    <input type='radio' name="<?php echo $commercial1->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
+                    <input type='radio' name="<?php echo $commercialCondition1->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
                 </label>
             <?php endforeach; ?>
         </p>
-        <?php echo $this->formElementErrors($commercial1, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($commercialCondition1, array('class' => 'errors')); ?>
         <br></br>
 
         <p class="text-align-center">
-            <?php $commercial2 = $this->form->get('user')->get('commercial2'); ?>
-            <label><?= $commercial2->getLabel() . '<br><br>' ?></label>
-            <?php foreach ($commercial2->getValueOptions() as $key => $value): ?>
+            <?php $commercialCondition2 = $this->form->get('user')->get('commercialCondition2'); ?>
+            <label><?= $commercialCondition2->getLabel() . '<br><br>' ?></label>
+            <?php foreach ($commercialCondition2->getValueOptions() as $key => $value): ?>
                 <label class='control radio'>
-                    <input type='radio' name="<?php echo $commercial2->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
+                    <input type='radio' name="<?php echo $commercialCondition2->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
                 </label>
             <?php endforeach; ?>
         </p>
-        <?php echo $this->formElementErrors($commercial2, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($commercialCondition2, array('class' => 'errors')); ?>
         <br></br>
     </div>
 
