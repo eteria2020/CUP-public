@@ -379,6 +379,17 @@ return array(
                     ],
                 ]
             ],
+            'snappy' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/snappy',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Snappy',
+                        'action'     => 'index',
+                    ],
+                ]
+            ],
         ),
     ),
     'service_manager' => array(
@@ -413,6 +424,7 @@ return array(
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
+            'Application\Controller\Snappy' => 'Application\Controller\SnappyControllerFactory',
         ],
     ],
     'view_helpers' => [
@@ -440,6 +452,7 @@ return array(
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'zfc-user/user/login'     => __DIR__ . '/../view/zfc-user/user/login.phtml',
+            'layout/pdf-layout'     => __DIR__ . '/../view/pdf/test1.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -461,7 +474,8 @@ return array(
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
-                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => [])
+                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
+                array('controller' => 'Application\Controller\Snappy', 'roles' => [])
             ),
         ),
     ),
