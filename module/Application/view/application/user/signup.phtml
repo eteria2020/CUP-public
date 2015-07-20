@@ -348,114 +348,124 @@
 <!-- block-row-field -->
 
 <div class="block-form-section content-align-center margin-bottom">
+    <h2><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
+</div>
+
+<!-- block-row-field -->
+<div class="block-row-field clearfix">
+
+    <div class="block-field w-4-4">
+
+        <p class="text-align-center">
+            <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
+                <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+            </a>
+        </p>
+        <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
+        <label class='control checkbox small-form'>
+            <input type='checkbox' name="<?php echo $generalCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
+        </label>
+        <br></br>
+        <?php echo $this->formElementErrors($generalCondition1, array('class' => 'errors')); ?>
+        <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
+        <label class='control checkbox small-form'>
+            <input type='checkbox' name="<?php echo $generalCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
+        </label>
+        <br></br>
+        <?php echo $this->formElementErrors($generalCondition2, array('class' => 'errors')); ?>
+
+    </div>
+
+</div>
+<!-- block-row-field -->
+
+<div class="block-form-section content-align-center margin-bottom">
+    <h2><?= $this->translate('Regolamento'); ?></h2>
+</div>
+
+<!-- block-row-field -->
+<div class="block-row-field clearfix">
+
+    <div class="block-field w-4-4">
+
+        <p class="text-align-center">
+            <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
+                <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+            </a>
+        </p>
+        <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
+        <label class='control checkbox small-form'>
+            <input type='checkbox' name="<?php echo $regulationCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
+        </label>
+        <br></br>
+        <?php echo $this->formElementErrors($regulationCondition1, array('class' => 'errors')); ?>
+        <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
+        <label class='control checkbox small-form'>
+            <input type='checkbox' name="<?php echo $regulationCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
+        </label>
+        <br></br>
+        <?php echo $this->formElementErrors($regulationCondition2, array('class' => 'errors')); ?>
+
+    </div>
+
+</div>
+<!-- block-row-field -->
+
+<div class="block-form-section content-align-center margin-bottom">
     <h2><?= $this->translate('Privacy'); ?></h2>
 </div>
 
 <!-- block-row-field -->
 <div class="block-row-field clearfix">
 
- <div class="block-field w-4-4">
-    <!--textarea class="margin-bottom" disabled>
-        <?= ''/*$this->translate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
+    <div class="block-field w-4-4">
 
-        Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor dui id nisi pharetra efficitur. In bibendum, libero id egestas facilisis, mauris neque aliquet ante, vel iaculis massa erat ut tellus. Duis quis nisl nec ligula blandit pharetra. Etiam augue eros, facilisis varius condimentum at, varius in dui. Donec eu dolor sapien. Vivamus pretium a leo sit amet facilisis. Integer quis aliquam dui.
-
-        Proin sed mi in nisi luctus dignissim eget ut enim. Suspendisse pretium libero nibh.');*/ ?> </textarea-->
         <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
             <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
         </a>
-
-        <p class="text-align-center">
-            <?php
-                $privacy = $this->form->get('user')->get('privacy');
-                foreach ($privacy->getValueOptions() as $key => $value): ?>
-                    <label class='control radio'>
-                        <input type='radio' name="<?php echo $privacy->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo $value; ?>
-                    </label>
-                <?php endforeach; ?>
-            <?php echo $this->formElementErrors($privacy, array('class' => 'errors')); ?>
-        </p>
+        <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
+        <label class='control checkbox small-form'>
+            <input type='checkbox' name="<?php echo $privacyCondition->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
+        </label>
+        <br></br>
+        <?php echo $this->formElementErrors($privacyCondition, array('class' => 'errors')); ?>
     </div>
 
 </div>
 <!-- block-row-field -->
 
-<?php /*
 <div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Condizioni Generali di contratto'); ?></h2>
+    <h2><?= $this->translate('Invio comunicazioni pubblicitarie'); ?></h2>
 </div>
 
 <!-- block-row-field -->
 <div class="block-row-field clearfix">
 
- <div class="block-field w-4-4">
-
-     <!--ol class="auto-margin w-2-4">
-         <li><?= $this->translate('Modifica Unilaterale del Contratto, 1.1, 1.2'); ?></li>
-         <li><?= $this->translate('Divieto di Utilizzo; 6- Diritto di Recesso'); ?></li>
-         <li><?= $this->translate('Clausola Risolutiva Espressa, 7.1'); ?></li>
-         <li><?= $this->translate('Chiusura del rapporto'); ?></li>
-         <li><?= $this->translate('Miscellanea, 9.2.'); ?> </li>
-     </ol-->
-    <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links">
-        <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
-    </a>
-
-     <p class="text-align-center">
-        <?php
-            $generalConditions = $this->form->get('user')->get('generalConditions');
-            foreach ($generalConditions->getValueOptions() as $key => $value): ?>
+    <div class="block-field w-4-4">
+        <p class="text-align-center">
+            <?php $commercialCondition1 = $this->form->get('user')->get('commercialCondition1'); ?>
+            <label><?= $commercialCondition1->getLabel() . '<br><br>' ?></label>
+            <?php foreach ($commercialCondition1->getValueOptions() as $key => $value): ?>
                 <label class='control radio'>
-                    <input type='radio' name="<?php echo $generalConditions->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo $value; ?>
+                    <input type='radio' name="<?php echo $commercialCondition1->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
                 </label>
             <?php endforeach; ?>
-        <?php echo $this->formElementErrors($generalConditions, array('class' => 'errors')); ?>
-    </p>
-</div>
+        </p>
+        <?php echo $this->formElementErrors($commercialCondition1, array('class' => 'errors')); ?>
+        <br></br>
 
-</div>
-<!-- block-row-field -->
- */?>
-
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Contratto di servizio'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
- <div class="block-field w-4-4">
-
-     <!--ol class="auto-margin w-2-4">
-        <li><?= $this->translate('6. Divieto di utilizzo'); ?></li>
-        <li><?= $this->translate(' Accesso al veicolo, 9.2'); ?></li>
-        <li><?= $this->translate(' Esenzione di responsabilità'); ?></li>
-        <li><?= $this->translate(' Esenzione di responsabilità'); ?></li>
-        <li><?= $this->translate(' Utilizzo del veicolo e del servizio;'); ?></li>
-        <li><?= $this->translate(' Divieti e restrizioni di utilizzo'); ?></li>
-        <li><?= $this->translate(' Procedure in caso di incidente, danno o difetti al veicolo'); ?></li>
-        <li><?= $this->translate('  Responsabilità del Cliente per infrazioni e/o sanzioni'); ?></li>
-        <li><?= $this->translate(' Termine del servizio di noleggio'); ?></li>
-        <li><?= $this->translate(' Copertura assicurativa'); ?></li>
-        <li><?= $this->translate(' Violazioni del cliente e penali contrattuali'); ?></li>
-        <li><?= $this->translate(' Termini e modalità di addebito al cliente'); ?> </li>
-    </ol-->
-
-    <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
-        <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
-    </a>
-
-    <p class="text-align-center">
-        <?php
-            $specialConditions = $this->form->get('user')->get('specialConditions');
-            foreach ($specialConditions->getValueOptions() as $key => $value): ?>
+        <p class="text-align-center">
+            <?php $commercialCondition2 = $this->form->get('user')->get('commercialCondition2'); ?>
+            <label><?= $commercialCondition2->getLabel() . '<br><br>' ?></label>
+            <?php foreach ($commercialCondition2->getValueOptions() as $key => $value): ?>
                 <label class='control radio'>
-                    <input type='radio' name="<?php echo $specialConditions->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo $value; ?>
+                    <input type='radio' name="<?php echo $commercialCondition2->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
                 </label>
             <?php endforeach; ?>
-        <?php echo $this->formElementErrors($specialConditions, array('class' => 'errors')); ?>
-    </p>
-</div>
+        </p>
+        <?php echo $this->formElementErrors($commercialCondition2, array('class' => 'errors')); ?>
+        <br></br>
+    </div>
 
 </div>
 <!-- block-row-field -->
