@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e79d37ec7171eaffce25c477edfeb6dc",
+    "hash": "e73eaead67ce2165d4a8ef6f0e984a5e",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -976,6 +976,78 @@
             "time": "2014-09-18 08:30:20"
         },
         {
+            "name": "google/wkhtmltopdf-amd64",
+            "version": "0.11.0-RC1",
+            "dist": {
+                "type": "tar",
+                "url": "http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "knplabs/knp-snappy",
+            "version": "0.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/snappy.git",
+                "reference": "f29edc4e53429deec2b394926a8f743a0ad2e28e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/f29edc4e53429deec2b394926a8f743a0ad2e28e",
+                "reference": "f29edc4e53429deec2b394926a8f743a0ad2e28e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "symfony/process": "~2.1"
+            },
+            "suggest": {
+                "h4cc/wkhtmltopdf-amd64": "Provide wkhtmltopdf-amd64 binary, use version `0.12.0` as dependency",
+                "h4cc/wkhtmltopdf-i386": "Provide wkhtmltopdf-i386 binary, use version `0.12.0` as dependency"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Snappy": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/snappy/contributors"
+                }
+            ],
+            "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+            "homepage": "http://github.com/KnpLabs/snappy",
+            "keywords": [
+                "knp",
+                "knplabs",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "time": "2015-05-07 07:43:07"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.8.15",
             "source": {
@@ -1030,12 +1102,66 @@
             "time": "2015-06-18 09:43:23"
         },
         {
+            "name": "mvlabs/mvlabs-snappy",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mvlabs/MvlabsSnappy.git",
+                "reference": "7e0e14cecef9f4a63565d84b0a969452b28ab1fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mvlabs/MvlabsSnappy/zipball/7e0e14cecef9f4a63565d84b0a969452b28ab1fd",
+                "reference": "7e0e14cecef9f4a63565d84b0a969452b28ab1fd",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-snappy": "0.3.*",
+                "php": ">=5.3.3",
+                "zendframework/zendframework": "2.*"
+            },
+            "type": "zf2-module",
+            "autoload": {
+                "psr-0": {
+                    "MvlabsSnappy": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Diego Drigani",
+                    "email": "d.drigani@mvlabs.it",
+                    "homepage": "http://www.mvlabs.it/en/"
+                }
+            ],
+            "description": "MvlabsSnappy is a ZF2 module that allow easy to thumbnail, snapshot or PDF generation from a url or a html page using Snappy PHP (5.3+) wrapper for the  wkhtmltopdf/wkhtmltoimage conversion utility.",
+            "homepage": "https://github.com/mvlabs/MvlabsSnappy.git",
+            "keywords": [
+                "MvLabs",
+                "MvaAssociati",
+                "pdf",
+                "snappy",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltoimage",
+                "wkhtmltopdf",
+                "zf2"
+            ],
+            "time": "2015-03-30 15:54:03"
+        },
+        {
             "name": "mvlabs/sharengo-coremodule",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "ca9203502e4751452d47a1342ea271c4faddd294"
+                "reference": "97e0f141018dfcaf059024877906656d117272ad"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1049,7 +1175,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-07-01 10:31:21"
+            "time": "2015-07-15 09:25:09"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
@@ -1156,16 +1282,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "564398bc1f33faf92fc2ec86859983d30eb81806"
+                "reference": "8cf484449130cabfd98dcb4694ca9945802a21ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/564398bc1f33faf92fc2ec86859983d30eb81806",
-                "reference": "564398bc1f33faf92fc2ec86859983d30eb81806",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/8cf484449130cabfd98dcb4694ca9945802a21ed",
+                "reference": "8cf484449130cabfd98dcb4694ca9945802a21ed",
                 "shasum": ""
             },
             "require": {
@@ -1209,7 +1335,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-06-10 15:30:22"
+            "time": "2015-07-09 16:07:40"
         },
         {
             "name": "zendframework/zend-developer-tools",
@@ -1634,7 +1760,9 @@
     "stability-flags": {
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
-        "zendframework/zend-developer-tools": 20
+        "zendframework/zend-developer-tools": 20,
+        "mvlabs/mvlabs-snappy": 20,
+        "google/wkhtmltopdf-amd64": 5
     },
     "prefer-stable": false,
     "prefer-lowest": false,
