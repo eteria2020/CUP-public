@@ -136,3 +136,7 @@
 .margin-top-custom {
     margin-top: 30px
 }
+
+.small-form {
+    font-size: 12px !important;
+}

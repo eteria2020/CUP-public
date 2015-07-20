@@ -368,7 +368,7 @@
         <br></br>
         <?php echo $this->formElementErrors($generalCondition1, array('class' => 'errors')); ?>
         <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
-        <label class='control checkbox'>
+        <label class='control checkbox small-form'>
             <input type='checkbox' name="<?php echo $generalCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
         </label>
         <br></br>
@@ -400,7 +400,7 @@
         <br></br>
         <?php echo $this->formElementErrors($regulationCondition1, array('class' => 'errors')); ?>
         <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
-        <label class='control checkbox'>
+        <label class='control checkbox small-form'>
             <input type='checkbox' name="<?php echo $regulationCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
         </label>
         <br></br>

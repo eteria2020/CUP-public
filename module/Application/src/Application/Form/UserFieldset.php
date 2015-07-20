@@ -359,7 +359,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'commercialCondition1',
             'type' => 'Zend\Form\Element\Radio',
             'options' => [
-                'label' => $translator->translate('Consenso all’invio di comunicazioni pubblicitarie e offerte speciali per iniziative curate da eni'),
+                'label' => $translator->translate('Consenso all’invio di comunicazioni pubblicitarie e offerte speciali per iniziative curate da Share’n Go'),
                 'value_options' => [
                     '1' => $translator->translate('Do il mio consenso'),
                     '0' => $translator->translate('Nego il mio consenso')
