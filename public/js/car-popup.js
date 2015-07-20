@@ -12,6 +12,10 @@ var carPos;
 var carBattery;
 // user's reservation id
 var reservationId;
+// last clicked car
+var car;
+// last clicked marker
+var marker;
 
 // get html elements
 var mainContainer = document.getElementById('car-popup');
@@ -127,6 +131,8 @@ function removeReservation()
                     nextStep();
                     if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null && jsonData.reason == 'OK') {
                         completed(textReservationRemoved);
+                        car['isReservedByCurrentUser'] = false;
+                        marker.setIcon(carMarkerPath);
                     } else {
                         completed(textReservationRemovedNot);
                     }
@@ -144,8 +150,10 @@ function removeReservation()
 
 
 // show popup
-function showPopup()
+function showPopup(carParam, markerParam)
 {
+    car = carParam;
+    marker = markerParam;
     mainContainer.style.display = "inline";
     isOpen = true;
 }
@@ -194,11 +202,9 @@ function confirm()
             // do not change layout if popup is closed
             if (isOpen) {
                 if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null) {
-                    if (jsonData.reason == 'OK') {
-                        completed(textReservationCompleted);
-                    } else {
-                        completed(jsonData.reason);
-                    }
+                    car['isReservedByCurrentUser'] = true;
+                    marker.setIcon(carMarkerPathReserved);
+                    completed(jsonData.reason);
                 } else {
                     completed(textReservationCompletedNot);
                 }

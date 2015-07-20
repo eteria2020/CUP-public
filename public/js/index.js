@@ -64,7 +64,7 @@ function initialize()
             {
                 position: latlng,
                 map: map,
-                icon: carMarkerPath
+                icon: (car['isReservedByCurrentUser'] === true) ? carMarkerPathReserved : carMarkerPath
             });
 
             // add event listener for when the marker is clicked
@@ -99,7 +99,7 @@ function initialize()
                 });
 
                     // show the popup
-                    showPopup();
+                    showPopup(car, marker);
 
                     // Set the main button's behavior
                     setReservationButton(car['plate'], car['busy']);
