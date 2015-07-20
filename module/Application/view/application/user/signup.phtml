@@ -362,7 +362,7 @@
             </a>
         </p>
         <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
-        <label class='control checkbox'>
+        <label class='control checkbox small-form'>
             <input type='checkbox' name="<?php echo $generalCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
         </label>
         <br></br>
@@ -394,7 +394,7 @@
             </a>
         </p>
         <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
-        <label class='control checkbox'>
+        <label class='control checkbox small-form'>
             <input type='checkbox' name="<?php echo $regulationCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
         </label>
         <br></br>
@@ -424,7 +424,7 @@
             <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
         </a>
         <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
-        <label class='control checkbox'>
+        <label class='control checkbox small-form'>
             <input type='checkbox' name="<?php echo $privacyCondition->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
         </label>
         <br></br>
