@@ -453,24 +453,18 @@ class ConsoleController extends AbstractActionController
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
         $invoicesCreated = 0;
 
-        // get customers with first payment completed
-        $customers = $this->customerService->getCustomersFirstPaymentCompleted();
+        // get customers with first payment completed and no invoice
+        $customers = $this->customerService->getCustomersFirstPaymentCompletedNoInvoice();
         $this->writeToConsole("Retrieved customers: " . count($customers) . "\n\n");
 
-        // check if customer has invoice for first payment
         foreach ($customers as $customer) {
-            $invoice = $this->invoicesService->getCustomersInvoicesFirstPayment($customer);
-
-            // if there is no invoice for the first payment
-            if($invoice == null || empty($invoice)) {
-                $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
-                $this->writeToConsole("Invoice not found\n");
-                $invoice = $this->invoicesService->createInvoiceForFirstPayment($customer);
-                $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n");
-                $this->entityManager->persist($invoice);
-                $this->writeToConsole("EntityManager: invoice persisted\n\n");
-                $invoicesCreated ++;
-            }
+            $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
+            $this->writeToConsole("Invoice not found\n");
+            $invoice = $this->invoicesService->createInvoiceForFirstPayment($customer);
+            $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n");
+            $this->entityManager->persist($invoice);
+            $this->writeToConsole("EntityManager: invoice persisted\n\n");
+            $invoicesCreated ++;
         }
 
         // save invoices to db
