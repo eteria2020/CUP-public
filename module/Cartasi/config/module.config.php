@@ -58,15 +58,13 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            'Cartasi\Controller\CartasiPayments' => 'Cartasi\Controller\CartasiPaymentsControllerFactory',
-            'Cartasi\Controller\Console' => 'Cartasi\Controller\ConsoleControllerFactory'
+            'Cartasi\Controller\CartasiPayments' => 'Cartasi\Controller\CartasiPaymentsControllerFactory'
         ]
     ],
     'service_manager' => [
         'factories' => [
             'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory',
-            'Cartasi\Service\Transactions' => 'Cartasi\Service\TransactionsServiceFactory',
-            'Cartasi\Service\Invoices' => 'Cartasi\Service\InvoicesServiceFactory'
+            'Cartasi\Service\Transactions' => 'Cartasi\Service\TransactionsServiceFactory'
         ]
     ],
     'doctrine'        => [
@@ -92,29 +90,5 @@ return [
         'strategies' => [
             'ViewJsonStrategy'
         ]
-    ],
-    'console' => [
-        'router' => [
-            'routes' => [
-                'invoice-registrations' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'invoice registrations [--dry-run|-d] [--verbose|-v]',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Cartasi\Controller',
-                            'controller' => 'Console',
-                            'action' => 'invoice-registrations'
-                        ]
-                    ]
-                ]
-            ],
-        ],
-    ],
-    'bjyauthorize' => [
-        'guards' => [
-            'BjyAuthorize\Guard\Controller' => [
-                ['controller' => 'Cartasi\Controller\Console', 'roles' => []],
-            ],
-        ],
     ],
 ];

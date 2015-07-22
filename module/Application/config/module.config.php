@@ -559,6 +559,17 @@ return array(
                             'action' => 'archive-reservations'
                         ]
                     ]
+                ],
+                'invoice-registrations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'invoice registrations [--dry-run|-d] [--verbose|-v]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'invoice-registrations'
+                        ]
+                    ]
                 ]
             ],
         ],

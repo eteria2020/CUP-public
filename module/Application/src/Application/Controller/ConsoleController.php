@@ -11,6 +11,7 @@ use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
+use SharengoCore\Service\InvoicesService;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
@@ -70,6 +71,11 @@ class ConsoleController extends AbstractActionController
     private $accountTripsService;
 
     /**
+     * @var InvoicesService
+     */
+    private $invoicesService;
+
+    /**
      * @var string
      */
     private $battery;
@@ -87,7 +93,8 @@ class ConsoleController extends AbstractActionController
         ProfilingPlaformService $profilingPlatformService,
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
-        $alarmConfig
+        $alarmConfig,
+        InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -98,6 +105,7 @@ class ConsoleController extends AbstractActionController
         $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
+        $this->invoicesService = $invoicesService;
     }
 
     public function getDiscountsAction()
@@ -435,5 +443,37 @@ class ConsoleController extends AbstractActionController
         }
 
         echo "\nDONE\n";
+    }
+
+    public function invoiceRegistrations()
+    {
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request;
+        $this->verbose = $request->getParam('verbose') || $request->getParam('v');
+        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $invoicesCreated = 0;
+
+        // get customers with first payment completed
+        $customers = $this->customersService->getCustomersFirstPaymentCompleted();
+        $this->writeToConsole("Retrieved customers: " . count($customers) . "\n\n");
+
+        // check if customer has invoice for first payment
+        foreach ($customers as $customer) {
+            $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
+            $invoice = $this->invoicesService->getCustomersInvoicesFirstPayment($customer);
+
+            // if there is no invoice for the first payment
+            if($invoice == null || empty($invoice)) {
+                $this->writeToConsole("Invoice not found\n");
+                $this->invoicesService->createInvoiceForFirstPayment($customer);
+                $this->writeToConsole("Invoice created\n\n");
+                $invoicesCreated ++;
+            } else {
+                $this->writeToConsole("Invoice found: " . $invoice->getId() . "\n\n");
+            }
+        }
+        $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
+        $this->writeToConsole("\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
     }
 }
