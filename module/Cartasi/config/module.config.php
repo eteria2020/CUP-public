@@ -58,13 +58,15 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            'Cartasi\Controller\CartasiPayments' => 'Cartasi\Controller\CartasiPaymentsControllerFactory'
+            'Cartasi\Controller\CartasiPayments' => 'Cartasi\Controller\CartasiPaymentsControllerFactory',
+            'Cartasi\Controller\Console' => 'Cartasi\Controller\ConsoleControllerFactory'
         ]
     ],
     'service_manager' => [
         'factories' => [
             'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory',
-            'Cartasi\Service\Transactions' => 'Cartasi\Service\TransactionsServiceFactory'
+            'Cartasi\Service\Transactions' => 'Cartasi\Service\TransactionsServiceFactory',
+            'Cartasi\Service\Invoices' => 'Cartasi\Service\InvoicesServiceFactory'
         ]
     ],
     'doctrine'        => [
@@ -72,7 +74,7 @@ return [
             __NAMESPACE__ . '_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+                'paths' => [__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity']
             ],
             'orm_default'             => [
                 'class'   => 'Doctrine\ORM\Mapping\Driver\DriverChain',
@@ -105,6 +107,13 @@ return [
                         ]
                     ]
                 ]
+            ],
+        ],
+    ],
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+                ['controller' => 'Cartasi\Controller\Console', 'roles' => []],
             ],
         ],
     ],

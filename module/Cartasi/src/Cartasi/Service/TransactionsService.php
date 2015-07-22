@@ -1,8 +1,8 @@
 <?php
 
-namespace SharengoCore\Service;
+namespace Cartasi\Service;
 
-use SharengoCore\Entity\Repository\TransactionsRepository;
+use Cartasi\Entity\Repository\TransactionsRepository;
 
 class TransactionsService
 {

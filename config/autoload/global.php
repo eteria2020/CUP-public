@@ -28,5 +28,8 @@ return array(
     'alarm' => [
         'battery' => '20',
         'delay' => '60'
+    ],
+    'invoice' => [
+        'template_version' => '1'
     ]
 );

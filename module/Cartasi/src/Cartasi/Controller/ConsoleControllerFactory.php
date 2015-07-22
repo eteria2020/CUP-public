@@ -1,16 +1,16 @@
 <?php
 
-namespace Application\Controller;
+namespace Cartasi\Controller;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class ConsoleControllerfactory implements FactoryInterface
+class ConsoleControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $customersService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
-        $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\InvoicesService');
+        $invoicesService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\Invoices');
 
         return new ConsoleController($customersService, $invoicesService);
     }
