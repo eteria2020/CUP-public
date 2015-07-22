@@ -448,7 +448,7 @@ class ConsoleController extends AbstractActionController
     public function invoiceRegistrationsAction()
     {
         $request = $this->getRequest();
-        $dryRun = $request->getParam('dry-run') || $request;
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
         $invoicesCreated = 0;
@@ -466,9 +466,9 @@ class ConsoleController extends AbstractActionController
                 $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
                 $this->writeToConsole("Invoice not found\n");
                 $invoice = $this->invoicesService->createInvoiceForFirstPayment($customer);
-                $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n\n");
+                $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n");
                 $this->entityManager->persist($invoice);
-                $this->writeToConsole("EntityManager: invoice persisted\n");
+                $this->writeToConsole("EntityManager: invoice persisted\n\n");
                 $invoicesCreated ++;
             }
         }
@@ -477,7 +477,7 @@ class ConsoleController extends AbstractActionController
         if (!$dryRun) {
             $this->writeToConsole("EntityManager: about to flush\n");
             $this->entityManager->flush();
-            $this->writeToConsole("EntityManager: flushed");
+            $this->writeToConsole("EntityManager: flushed\n");
         }
 
         $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
