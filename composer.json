@@ -20,24 +20,12 @@
         "mvlabs/sharengo-coremodule": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",
         "nikolaposa/mobile-detect-module": "^1.0",
-        "mvlabs/mvlabs-snappy": "dev-master",
-        "google/wkhtmltopdf-amd64": "0.11.0-RC1"
+        "mvlabs/mvlabs-snappy": "dev-master"
     },
     "repositories": [
         {
             "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
             "type": "git"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "google/wkhtmltopdf-amd64",
-                "version": "0.11.0-RC1",
-                "dist": {
-                    "url": "http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2",
-                    "type": "tar"
-                }
-            }
         }
     ]
 }

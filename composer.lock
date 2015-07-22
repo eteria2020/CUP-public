@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e73eaead67ce2165d4a8ef6f0e984a5e",
+    "hash": "e4a8da4b0a298aa0aa979966d168080c",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -976,17 +976,6 @@
             "time": "2014-09-18 08:30:20"
         },
         {
-            "name": "google/wkhtmltopdf-amd64",
-            "version": "0.11.0-RC1",
-            "dist": {
-                "type": "tar",
-                "url": "http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
             "name": "knplabs/knp-snappy",
             "version": "0.3.4",
             "source": {
@@ -1343,12 +1332,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendDeveloperTools.git",
-                "reference": "d3432681aa32177a741ad23604a40af9ad454acb"
+                "reference": "a3399877d69491acdac86e3aead53937c16b0303"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/d3432681aa32177a741ad23604a40af9ad454acb",
-                "reference": "d3432681aa32177a741ad23604a40af9ad454acb",
+                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/a3399877d69491acdac86e3aead53937c16b0303",
+                "reference": "a3399877d69491acdac86e3aead53937c16b0303",
                 "shasum": ""
             },
             "require": {
@@ -1403,20 +1392,20 @@
                 "module",
                 "zf2"
             ],
-            "time": "2015-05-06 10:10:04"
+            "time": "2015-07-21 09:14:24"
         },
         {
             "name": "zendframework/zendframework",
-            "version": "2.4.3",
+            "version": "2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "eb6275e9227e9ed1995d326087488d3ea25811b5"
+                "reference": "84cad41e1ee549d634c109de18c4626e51cc6b29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/eb6275e9227e9ed1995d326087488d3ea25811b5",
-                "reference": "eb6275e9227e9ed1995d326087488d3ea25811b5",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/84cad41e1ee549d634c109de18c4626e51cc6b29",
+                "reference": "84cad41e1ee549d634c109de18c4626e51cc6b29",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1509,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2015-06-17 19:32:51"
+            "time": "2015-07-21 15:45:25"
         },
         {
             "name": "zendframework/zendxml",
@@ -1699,16 +1688,16 @@
         },
         {
             "name": "zf-commons/zfc-user-doctrine-orm",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ZF-Commons/ZfcUserDoctrineORM.git",
-                "reference": "9a2e148c9a5a03ca8592b93ea28a21e37b06e053"
+                "reference": "252d77f55e64312184f3bcd4168292d919f11ceb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ZF-Commons/ZfcUserDoctrineORM/zipball/9a2e148c9a5a03ca8592b93ea28a21e37b06e053",
-                "reference": "9a2e148c9a5a03ca8592b93ea28a21e37b06e053",
+                "url": "https://api.github.com/repos/ZF-Commons/ZfcUserDoctrineORM/zipball/252d77f55e64312184f3bcd4168292d919f11ceb",
+                "reference": "252d77f55e64312184f3bcd4168292d919f11ceb",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1740,7 @@
             "keywords": [
                 "zf2"
             ],
-            "time": "2014-04-18 10:21:19"
+            "time": "2015-07-20 20:10:49"
         }
     ],
     "packages-dev": [],
@@ -1761,8 +1750,7 @@
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
         "zendframework/zend-developer-tools": 20,
-        "mvlabs/mvlabs-snappy": 20,
-        "google/wkhtmltopdf-amd64": 5
+        "mvlabs/mvlabs-snappy": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

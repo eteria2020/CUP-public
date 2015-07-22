@@ -452,7 +452,7 @@ return array(
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'zfc-user/user/login'     => __DIR__ . '/../view/zfc-user/user/login.phtml',
-            'layout/pdf-layout'     => __DIR__ . '/../view/pdf/test2.phtml',
+            'layout/pdf-layout'     => __DIR__ . '/../view/layout/layout_pdf.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

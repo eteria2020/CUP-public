@@ -1,0 +1,151 @@
+<?php
+    $name = "Test Name";
+    $docN = "97566";
+    $invoiceDate = "01.05.2015";
+    $cardN = "014258";
+    $mail = "test@test.it";
+    $address = "via test - 7343728";
+    $cf = "TESTCFI904S11L";
+    $piva = "";
+    $amount = "12,93";
+    $ccard = "xxxx xxxx xxxx xxxx";
+?>
+
+<!-- Top right logo and text -->
+<div class="header">
+    <img class="logo" src=<?= $this->basePath('images/logox2.png'); ?> alt="">
+    <h4>Share`n Go s.r.l.</h4>
+    <p>Sede operativa bla bla bla</p>
+    <h3 class="table-header">Riepilogo dei viaggi</h3>
+</div>
+
+<!-- Big light green box -->
+<div class="green-box">
+
+    <!-- Top right table -->
+    <table class="tg">
+        <tr>
+            <td class="tg-031e">Cliente:</td>
+            <td class="tg-031e"><?= $name ?></td>
+        </tr>
+        <tr>
+            <td class="tg-031e">Doc N°:</td>
+            <td class="tg-031e"><?= $docN ?></td>
+        </tr>
+        <tr>
+            <td class="tg-031e">Data Fattura:</td>
+            <td class="tg-031e"><?= $invoiceDate ?></td>
+        </tr>
+        <tr>
+            <td class="tg-031e">Card:</td>
+            <td class="tg-031e"><?= $cardN ?></td>
+        </tr>
+        <tr>
+            <td class="tg-031e">e-mail:</td>
+            <td class="tg-031e"><?= $mail ?></td>
+        </tr>
+    </table>
+
+    <!-- Message -->
+    <div class="message">
+        <p class="name"><?= $name ?></p>
+        <p><?= $address ?></p>
+        <p><?= $cf ?></p>
+        <p><?= "PIVA: " . $piva ?></p>
+        <p>Gentile <span class="name"><?= $name ?></span></p>
+        <p>La ringraziamo per aver usufruito dei nostri servizi.<br>
+            Nelle pagine successive troverà un elenco dettagliato dei viaggi di cui Lei ha usufruito.</p>
+        <p>L'importo totale della fattura da saldare è complessivamente di EUR <?= $amount ?></p>
+        <p>Twistcar provvederà ad addebitare la Sua carta di credito n° <?= $ccard ?> per il suddetto importo.</p>
+        <p>Per eventuali chiarimenti può contattarci al n. 02 49688617 il mercoledi dalle 9 alle 13.</p>
+        <p>Cordiali saluti</p>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>Share`n Go s.r.l.</p>
+    <br></br>
+    <p>pag 1/2</p>
+</div>
+
+
+
+<!-- General styles -->
+<style>
+.logo {
+    width: 486px;
+    height: 99px;
+}
+.header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.table-header {
+    width: 300px;
+    height: 30px;
+    background-color: #43a34c;
+    padding-top: 4px;
+    padding-left: 4px;
+}
+.line {
+    width: 100%;
+    height: 3px;
+    position: relative;
+    top: 225px;
+    background-color: #43a34c;
+}
+.green-box {
+    width: 100%;
+    height: 800px;
+    position: relative;
+    top: 225px;
+    background-color: #a3e3ac;
+    border-style: solid;
+    border-width: 3px;
+    border-right-width: 0px;
+    border-color: #43a34c;
+}
+.message {
+    position: relative;
+    top: 200px;
+    left: 50px;
+    font-size: 20px;
+}
+.name {
+    font-weight: 700;
+}
+.footer {
+    width: 486px;
+    float: right;
+    position: relative;
+    top: 300px;
+    font-size: 20px;
+}
+</style>
+
+<!-- Table styles -->
+<style type="text/css">
+.tg {
+    border-collapse:collapse;
+    border-spacing:0;
+    position: relative;
+    float: right;
+    width: 486px;
+    top: -2px;
+}
+.tg td, th {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:0px;
+    overflow:hidden;
+    word-break:normal;
+    border-top-width:2px;
+    border-bottom-width:2px;
+    border-color: #43a34c;
+}
+</style>
