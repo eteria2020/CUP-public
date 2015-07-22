@@ -445,7 +445,7 @@ class ConsoleController extends AbstractActionController
         echo "\nDONE\n";
     }
 
-    public function invoiceRegistrations()
+    public function invoiceRegistrationsAction()
     {
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request;
@@ -454,24 +454,32 @@ class ConsoleController extends AbstractActionController
         $invoicesCreated = 0;
 
         // get customers with first payment completed
-        $customers = $this->customersService->getCustomersFirstPaymentCompleted();
+        $customers = $this->customerService->getCustomersFirstPaymentCompleted();
         $this->writeToConsole("Retrieved customers: " . count($customers) . "\n\n");
 
         // check if customer has invoice for first payment
         foreach ($customers as $customer) {
-            $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
             $invoice = $this->invoicesService->getCustomersInvoicesFirstPayment($customer);
 
             // if there is no invoice for the first payment
             if($invoice == null || empty($invoice)) {
+                $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
                 $this->writeToConsole("Invoice not found\n");
-                $this->invoicesService->createInvoiceForFirstPayment($customer);
-                $this->writeToConsole("Invoice created\n\n");
+                $invoice = $this->invoicesService->createInvoiceForFirstPayment($customer);
+                $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n\n");
+                $this->entityManager->persist($invoice);
+                $this->writeToConsole("EntityManager: invoice persisted\n");
                 $invoicesCreated ++;
-            } else {
-                $this->writeToConsole("Invoice found: " . $invoice->getId() . "\n\n");
             }
         }
+
+        // save invoices to db
+        if (!$dryRun) {
+            $this->writeToConsole("EntityManager: about to flush\n");
+            $this->entityManager->flush();
+            $this->writeToConsole("EntityManager: flushed");
+        }
+
         $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
         $this->writeToConsole("\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
