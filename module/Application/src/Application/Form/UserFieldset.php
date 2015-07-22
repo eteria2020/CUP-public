@@ -356,38 +356,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'commercialCondition1',
-            'type' => 'Zend\Form\Element\Radio',
-            'options' => [
-                'label' => $translator->translate('Consenso all’invio di comunicazioni pubblicitarie e offerte speciali per iniziative curate da Share’n Go'),
-                'value_options' => [
-                    '1' => $translator->translate('Do il mio consenso'),
-                    '0' => $translator->translate('Nego il mio consenso')
-                ]
-            ],
-            'attributes' => [
-                'value' => 1,
-                'id' => 'commercialCondition1'
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'commercialCondition2',
-            'type' => 'Zend\Form\Element\Radio',
-            'options' => [
-                'label' => $translator->translate("Consenso all'invio di comunicazioni pubblicitarie e offerte speciali per iniziative curate da imprese partner"),
-                'value_options' => [
-                    '1' => $translator->translate('Do il mio consenso'),
-                    '0' => $translator->translate('Nego il mio consenso')
-                ]
-            ],
-            'attributes' => [
-                'value' => 1,
-                'id' => 'commercialCondition2'
-            ]
-        ]);
-
-        $this->add([
             'name' => 'profilingCounter',
             'type' => 'Zend\Form\Element\Hidden',
             'attributes' => [
@@ -627,12 +595,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true
             ],
             'privacyCondition' => [
-                'required' => true
-            ],
-            'commercialCondition1' => [
-                'required' => true
-            ],
-            'commercialCondition2' => [
                 'required' => true
             ],
         ];

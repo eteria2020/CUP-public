@@ -434,42 +434,6 @@
 </div>
 <!-- block-row-field -->
 
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Invio comunicazioni pubblicitarie'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
-    <div class="block-field w-4-4">
-        <p class="text-align-center">
-            <?php $commercialCondition1 = $this->form->get('user')->get('commercialCondition1'); ?>
-            <label><?= $commercialCondition1->getLabel() . '<br><br>' ?></label>
-            <?php foreach ($commercialCondition1->getValueOptions() as $key => $value): ?>
-                <label class='control radio'>
-                    <input type='radio' name="<?php echo $commercialCondition1->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
-                </label>
-            <?php endforeach; ?>
-        </p>
-        <?php echo $this->formElementErrors($commercialCondition1, array('class' => 'errors')); ?>
-        <br></br>
-
-        <p class="text-align-center">
-            <?php $commercialCondition2 = $this->form->get('user')->get('commercialCondition2'); ?>
-            <label><?= $commercialCondition2->getLabel() . '<br><br>' ?></label>
-            <?php foreach ($commercialCondition2->getValueOptions() as $key => $value): ?>
-                <label class='control radio'>
-                    <input type='radio' name="<?php echo $commercialCondition2->getName() ?>" value='<?php echo $key; ?>'><span class='control-indicator'></span><?php echo ' ' . $value; ?>
-                </label>
-            <?php endforeach; ?>
-        </p>
-        <?php echo $this->formElementErrors($commercialCondition2, array('class' => 'errors')); ?>
-        <br></br>
-    </div>
-
-</div>
-<!-- block-row-field -->
-
 <div class="block-wrapper-button content-align-center">
     <input type="reset" class="reset" name="" value="Annulla">
     <input type="submit" name="" value="Avanti">
