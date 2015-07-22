@@ -3,9 +3,9 @@
 namespace SharengoCore\Service;
 
 use SharengoCore\Entity\Repository\TransactionsRepository;
-use SharengoCore\Entity\Trips;
 
-class TripsService
+class TransactionsService
+{
 
     /** @var TransactionsRepository */
     private $transactionsRepository;
