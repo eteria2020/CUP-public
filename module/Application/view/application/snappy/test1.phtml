@@ -18,15 +18,13 @@
         $partialAmount = $fullAmount - $iva;
     }
     $amount = number_format($fullAmount, 2, '.', '');
-    // Pagination data
-    $totalPages = 2;
 ?>
 
 <!-- Main container -->
 <div id="container">
 
 <?php
-    for ($pageN = 1; $pageN <= $totalPages; $pageN++) {
+    for ($i = 1; $i <= 2; $i++) {
 ?>
 
     <!-- Page container -->
@@ -49,7 +47,7 @@
         <!-- header -->
 
         <!-- Logo -->
-        <img class="logo" src="<?= $this->serverUrl()  . '/images/logox2.png'; ?>" alt="">
+        <img class="logo" src="http://www.sharengo.it/images/logox2.png" alt="">
 
         <!-- Table aggregate -->
         <div>
@@ -109,7 +107,7 @@
         <div id="content" class="content">
 
 <?php
-    if ($pageN == 1) {
+    if ($i == 1) {
 ?>
 
             <!-- Message -->
@@ -176,13 +174,6 @@
 
         </div>
         <!-- content -->
-
-        <!-- Footer -->
-        <div class="footer font">
-            <p class="company">Share`n Go s.r.l.</p>
-            <p class="page">pag <?= $pageN ?>/<?= $totalPages ?></p>
-        </div>
-        <!-- footer -->
 
         <!-- Page end -->
         <div class="page-break"></div>
@@ -253,16 +244,6 @@
     word-wrap: break-word;
     max-width: 500px;
     margin-top: 50px;
-}
-.footer {
-    font-size: 20px;
-    font-size: 15px;
-}
-.company {
-    float: left;
-}
-.page {
-    float: right;
 }
 
 /* General styles */

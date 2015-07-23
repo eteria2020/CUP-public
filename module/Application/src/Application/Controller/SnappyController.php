@@ -29,14 +29,14 @@ class SnappyController extends AbstractActionController
 
     public function indexAction()
     {
-/*
+
         $this->pdfService->setOptions(array(
             'footer-right'     => '[page]', //Pag. [page]/[topage]
-            'footer-left'      => 'Versione: ' . $this->I_contratto->getVersionecontratto() . '/' .  $this->s_idVersioneStampa,
-            'footer-font-name' => 'Open Sans Condensed',
-            'footer-font-size' => '8',
+            'footer-left'      => 'Share`n Go s.r.l.',
+            'footer-font-name' => 'Arial Sans Serif',
+            'footer-font-size' => '10',
             'footer-line'      => true
-        ));*/
+        ));
 
         $invoiceId = urldecode($this->params('id'));
 
