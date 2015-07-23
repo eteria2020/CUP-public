@@ -12,7 +12,8 @@ class SnappyControllerfactory implements FactoryInterface
         $serviceLocator = $serviceLocator->getServiceLocator();
         $viewRenderer = $serviceLocator->get('view_manager')->getRenderer();
         $pdfService = $serviceLocator->get('mvlabssnappy.pdf.service');
+        $invoiceService = $serviceLocator->get('SharengoCore\Service\Invoices');
 
-        return new SnappyController($viewRenderer, $pdfService);
+        return new SnappyController($viewRenderer, $pdfService, $invoiceService);
     }
 }

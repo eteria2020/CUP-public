@@ -9,17 +9,15 @@
          <!-- CSS
           ================================================== -->
         <?php echo $this->headLink()
-                        ->prependStylesheet($this->serverUrl() . '/styles/css/report.css');
+                        //->prependStylesheet($this->basePath('css/invoices.css'));
 
         ?>
 
 	</head>
 	<body>
 
-	<?php echo $this->content; ?>
-
-	<script src="https://code.jquery.com/jquery.js"></script>
-    <?php
+	<?php
+        echo $this->content;
         echo $this->headScript();
         echo $this->inlineScript();
         echo $this->headStyle() ;

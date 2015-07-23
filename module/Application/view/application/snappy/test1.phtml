@@ -1,151 +1,330 @@
 <?php
-    $name = "Test Name";
-    $docN = "97566";
-    $invoiceDate = "01.05.2015";
-    $cardN = "014258";
-    $mail = "test@test.it";
-    $address = "via test - 7343728";
-    $cf = "TESTCFI904S11L";
-    $piva = "";
-    $amount = "12,93";
-    $ccard = "xxxx xxxx xxxx xxxx";
+    $invoiceContent = $this->invoiceContent;
+    // Customer data
+    $name = $invoiceContent['name']. ' ' . $invoiceContent['surname'];
+    $mail = $invoiceContent['email'];
+    $cardN = $invoiceContent['card'];
+    $address = $invoiceContent['address'];
+    $cf = $invoiceContent['cf'];
+    $piva = $invoiceContent['piva'];
+    $ccard = 'xxxx xxxx xxxx xxxx';
+    // Invoice data
+    $docN = $invoiceContent['invoice_number'];
+    $invoiceDate = substr($invoiceContent['emitted_ts']['date'], 0, 19);
+    $fullAmount = (float)$invoiceContent['amount'] / 100;
+    $partialAmount = number_format($fullAmount * 50 / 61, 2, '.', '');
+    $iva = number_format($partialAmount * 22 / 100, 2, '.', '');
+    if ($partialAmount + $iva != $fullAmount) {
+        $partialAmount = $fullAmount - $iva;
+    }
+    $amount = number_format($fullAmount, 2, '.', '');
+    // Pagination data
+    $totalPages = 2;
 ?>
 
-<!-- Top right logo and text -->
-<div class="header">
-    <img class="logo" src=<?= $this->basePath('images/logox2.png'); ?> alt="">
-    <h4>Share`n Go s.r.l.</h4>
-    <p>Sede operativa bla bla bla</p>
-    <h3 class="table-header">Riepilogo dei viaggi</h3>
-</div>
+<!-- Main container -->
+<div id="container">
 
-<!-- Big light green box -->
-<div class="green-box">
+<?php
+    for ($pageN = 1; $pageN <= $totalPages; $pageN++) {
+?>
 
-    <!-- Top right table -->
-    <table class="tg">
-        <tr>
-            <td class="tg-031e">Cliente:</td>
-            <td class="tg-031e"><?= $name ?></td>
-        </tr>
-        <tr>
-            <td class="tg-031e">Doc N°:</td>
-            <td class="tg-031e"><?= $docN ?></td>
-        </tr>
-        <tr>
-            <td class="tg-031e">Data Fattura:</td>
-            <td class="tg-031e"><?= $invoiceDate ?></td>
-        </tr>
-        <tr>
-            <td class="tg-031e">Card:</td>
-            <td class="tg-031e"><?= $cardN ?></td>
-        </tr>
-        <tr>
-            <td class="tg-031e">e-mail:</td>
-            <td class="tg-031e"><?= $mail ?></td>
-        </tr>
-    </table>
+    <!-- Page container -->
+    <div class="page-container">
 
-    <!-- Message -->
-    <div class="message">
-        <p class="name"><?= $name ?></p>
-        <p><?= $address ?></p>
-        <p><?= $cf ?></p>
-        <p><?= "PIVA: " . $piva ?></p>
-        <p>Gentile <span class="name"><?= $name ?></span></p>
-        <p>La ringraziamo per aver usufruito dei nostri servizi.<br>
-            Nelle pagine successive troverà un elenco dettagliato dei viaggi di cui Lei ha usufruito.</p>
-        <p>L'importo totale della fattura da saldare è complessivamente di EUR <?= $amount ?></p>
-        <p>Twistcar provvederà ad addebitare la Sua carta di credito n° <?= $ccard ?> per il suddetto importo.</p>
-        <p>Per eventuali chiarimenti può contattarci al n. 02 49688617 il mercoledi dalle 9 alle 13.</p>
-        <p>Cordiali saluti</p>
+        <!-- Header -->
+        <div class="header font">
+            <h4>Share`n Go s.r.l.</h4>
+            <p class="header-text">
+                CS Milano SRL<br>
+                Sede legale<br>
+                Via dei Pelaghi, 162 – 57121 Livorno (LI)<br>
+                P.IVA: 01808470494<br>
+                Sede operativa<br>
+                Via Casati Felice 1/A – 20124 Milano (MI)<br>
+                Tel: 0586.1975772<br>
+                Email: servizioclienti@sharengo.eu
+            </p>
+        </div>
+        <!-- header -->
+
+        <!-- Logo -->
+        <img class="logo" src="<?= $this->serverUrl()  . '/images/logox2.png'; ?>" alt="">
+
+        <!-- Table aggregate -->
+        <div>
+            <!-- Invoice table header -->
+            <h3 class="table-header invoice-header font">Dati Fattura</h3>
+
+            <!-- Top line -->
+            <div class="line"></div>
+
+            <!-- Invoice table -->
+            <table class="table table1 font">
+                <tr>
+                    <td class="table1-031e">Cliente:</td>
+                    <td class="table1-031e"><?= $name ?></td>
+                </tr>
+                <tr>
+                    <td class="table1-031e">Doc N°:</td>
+                    <td class="table1-031e"><?= $docN ?></td>
+                </tr>
+                <tr>
+                    <td class="table1-031e">Data Fattura:</td>
+                    <td class="table1-031e"><?= $invoiceDate ?></td>
+                </tr>
+                <tr>
+                    <td class="table1-031e">Card:</td>
+                    <td class="table1-031e"><?= $cardN ?></td>
+                </tr>
+                <tr>
+                    <td class="table1-031e">e-mail:</td>
+                    <td class="table1-031e"><?= $mail ?></td>
+                </tr>
+                <tr>
+                    <td class="table1-031e">Indirizzo</td>
+                    <td class="table1-031e"><?= $address ?></td>
+                </tr>
+                <tr>
+                    <td class="table1-031e">Codice fiscale</td>
+                    <td class="table1-031e"><?= $cf ?></td>
+                </tr>
+                <?php
+                    if ($piva != null && $piva != '') {
+                ?>
+                <tr>
+                    <td class="table1-031e">Codice fiscale</td>
+                    <td class="table1-031e"><?= $cf ?></td>
+                </tr>
+                <?php
+                    }
+                ?>
+            </table>
+            <!-- invoice table -->
+
+        </div>
+        <!-- table aggregate -->
+
+        <!-- Content -->
+        <div id="content" class="content">
+
+<?php
+    if ($pageN == 1) {
+?>
+
+            <!-- Message -->
+            <div class="message font">
+                <p><br>Gentile <span class="name"><?= $name ?></span></p>
+                <p>La ringraziamo per aver usufruito dei nostri servizi.<br>
+                    Nelle pagine successive troverà un elenco dettagliato dei viaggi di cui Lei ha usufruito.</p>
+                <p>L'importo totale della fattura da saldare è complessivamente di EUR <?= $amount ?></p>
+                <p>Twistcar provvederà ad addebitare la Sua carta di credito<br>n° <?= $ccard ?> per il suddetto importo.</p>
+                <p>Per eventuali chiarimenti può contattarci al n. 02 49688617 il mercoledi dalle 9 alle 13.</p>
+                <p>Cordiali saluti</p>
+            </div>
+            <!-- message -->
+
+<?php
+    } else {
+?>
+
+        <!-- Transactions table -->
+        <div>
+            <table class="table table2 font">
+                <tr>
+                    <th class="table2-031e">Descrizione</th>
+                </tr>
+                <tr>
+                    <td class="table2-031e">Fattura per il primo pagamento utente.</td>
+                </tr>
+            </table>
+        </div>
+        <!-- transactions table -->
+
+
+        <!-- Summary table header -->
+        <h3 class=" table-header summary-header font">Importo</h3>
+
+        <!-- Bottom line -->
+        <div class="line"></div>
+
+        <!-- Summary table -->
+        <table class="table table1 font">
+            <tr>
+                <td class="table1-031e">Imponibile</td>
+                <td class="table1-031e"><?= $partialAmount ?></td>
+            </tr>
+            <tr>
+                <td class="table1-031e">IVA 22%</td>
+                <td class="table1-031e"><?= $iva ?></td>
+            </tr>
+            <tr>
+                <td class="table1-031e">Totale</td>
+                <td class="table1-031e"><?= $amount ?></td>
+            </tr>
+        </table>
+        <!-- summary table -->
+
+        <!-- Bottom message -->
+        <p class="message font">
+            La Sua nuova fattura <?= $docN ?><br>
+            Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.
+        </p>
+<?php
+    }
+?>
+
+        </div>
+        <!-- content -->
+
+        <!-- Footer -->
+        <div class="footer font">
+            <p class="company">Share`n Go s.r.l.</p>
+            <p class="page">pag <?= $pageN ?>/<?= $totalPages ?></p>
+        </div>
+        <!-- footer -->
+
+        <!-- Page end -->
+        <div class="page-break"></div>
+
     </div>
+    <!-- page container -->
+
+<?php
+    }
+?>
 
 </div>
-
-<!-- Footer -->
-<div class="footer">
-    <p>Share`n Go s.r.l.</p>
-    <br></br>
-    <p>pag 1/2</p>
-</div>
+<!-- main container -->
 
 
 
-<!-- General styles -->
-<style>
+
+
+
+
+
+
+
+<!-- Styles -->
+<style type="text/css">
+/* Content styles */
+
+.page-container {
+    overflow: auto;
+}
 .logo {
-    width: 486px;
-    height: 99px;
+    width: 324px;
+    height: 66px;
 }
 .header {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    float: right;
+    margin-top: -20px;
+}
+.header-text {
+    font-size: 15px;
 }
 .table-header {
-    width: 300px;
+    width: 250px;
     height: 30px;
+    line-height: 30px;
     background-color: #43a34c;
-    padding-top: 4px;
-    padding-left: 4px;
+    padding-left: 5px;
+}
+.invoice-header {
+    margin-top: 105px;
+}
+.summary-header {
+    margin-top: 50px;
 }
 .line {
     width: 100%;
     height: 3px;
-    position: relative;
-    top: 225px;
     background-color: #43a34c;
+    margin-top: -20px;
 }
-.green-box {
-    width: 100%;
-    height: 800px;
-    position: relative;
-    top: 225px;
-    background-color: #a3e3ac;
-    border-style: solid;
-    border-width: 3px;
-    border-right-width: 0px;
-    border-color: #43a34c;
+.content {
+
 }
 .message {
     position: relative;
-    top: 200px;
     left: 50px;
-    font-size: 20px;
+    font-size: 15px;
+    word-wrap: break-word;
+    max-width: 500px;
+    margin-top: 50px;
 }
+.footer {
+    font-size: 20px;
+    font-size: 15px;
+}
+.company {
+    float: left;
+}
+.page {
+    float: right;
+}
+
+/* General styles */
+
+.font {
+    font-family: Arial, sans-serif;
+}
+
 .name {
     font-weight: 700;
 }
-.footer {
-    width: 486px;
-    float: right;
-    position: relative;
-    top: 300px;
-    font-size: 20px;
-}
-</style>
 
-<!-- Table styles -->
-<style type="text/css">
-.tg {
-    border-collapse:collapse;
-    border-spacing:0;
-    position: relative;
-    float: right;
-    width: 486px;
-    top: -2px;
-}
-.tg td, th {
-    font-family:Arial, sans-serif;
+/* Table styles */
+
+.table td, th {
     font-size:14px;
     padding:10px 5px;
     border-style:solid;
-    border-width:0px;
     overflow:hidden;
     word-break:normal;
-    border-top-width:2px;
-    border-bottom-width:2px;
+}
+.table1 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 324px;
+}
+.table1 td, th {
+    border-width: 0px;
+    border-bottom-width: 2px;
     border-color: #43a34c;
 }
+.table2 {
+    width: 100%;
+    margin-top: 50px;
+}
+.table2 td {
+    border-width:0px;
+    border-color:#43a34c;
+    color:#333;
+}
+.table2 th {
+    font-weight:normal;
+    border-width:0px;
+    border-color:#43a34c;
+    color:#333;
+    background-color:#43a34c;
+    color: #fff;
+}
+
+/* Pagination styles */
+
+@media all {
+    .page-break {
+        display: none;
+    }
+}
+
+@media print {
+    .page-break {
+        display: block;
+        page-break-before: always;
+    }
+}
+
 </style>

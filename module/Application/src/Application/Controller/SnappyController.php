@@ -9,47 +9,71 @@ class SnappyController extends AbstractActionController
 {
 
     private $viewRenderer;
+
     private $pdfService;
 
-    public function __construct($viewRenderer, $pdfService)
-    {
+    /**
+     * @var InvoicesService
+     */
+    private $invoicesService;
+
+    public function __construct(
+        $viewRenderer,
+        $pdfService,
+        $invoicesService
+    ) {
         $this->viewRenderer = $viewRenderer;
         $this->pdfService = $pdfService;
+        $this->invoicesService = $invoicesService;
     }
 
     public function indexAction()
     {
-        return $this->testPdf();
-    }
+/*
+        $this->pdfService->setOptions(array(
+            'footer-right'     => '[page]', //Pag. [page]/[topage]
+            'footer-left'      => 'Versione: ' . $this->I_contratto->getVersionecontratto() . '/' .  $this->s_idVersioneStampa,
+            'footer-font-name' => 'Open Sans Condensed',
+            'footer-font-size' => '8',
+            'footer-line'      => true
+        ));*/
 
-    private function testPdf()
-    {
+        $invoiceId = urldecode($this->params('id'));
 
-        $now = new \DateTime();
+        $invoice = $this->invoicesService->getInvoiceById($invoiceId);
+        if ($invoice != null) {
 
-        $layoutViewModel = $this->layout();
-        $layoutViewModel->setTemplate('layout/pdf-layout');
+            $now = new \DateTime();
 
-        $viewModel = new ViewModel();
+            $layoutViewModel = $this->layout();
+            $layoutViewModel->setTemplate('layout/pdf-layout');
 
-        $viewModel->setTemplate('Application/Snappy/test1');
+            $viewModel = new ViewModel([
+                'invoiceContent' => $invoice->getContent()
+            ]);
 
-        $layoutViewModel->setVariables([
-            'content' => $this->viewRenderer->render($viewModel),
-        ]);
+            $viewModel->setTemplate('Application/Snappy/test1');
 
-        $htmlOutput = $this->viewRenderer->render($layoutViewModel);
+            $layoutViewModel->setVariables([
+                'content' => $this->viewRenderer->render($viewModel)
+            ]);
 
-        $output = $this->pdfService->getOutputFromHtml($htmlOutput);
-        $response = $this->getResponse();
-        $headers  = $response->getHeaders();
-        $headers->addHeaderLine('Content-Type', 'application/pdf');
-        $headers->addHeaderLine('Content-Disposition', "attachment; filename=\"export-" . $now->format('d-m-Y H:i:s') . ".pdf\"");
-        $headers->addHeaderLine('Content-Length', strlen($output));
+            $htmlOutput = $this->viewRenderer->render($layoutViewModel);
+            //echo $htmlOutput;die;
 
-        $response->setContent($output);
+            $output = $this->pdfService->getOutputFromHtml($htmlOutput);
+            $response = $this->getResponse();
+            $headers  = $response->getHeaders();
+            $headers->addHeaderLine('Content-Type', 'application/pdf');
+            $headers->addHeaderLine('Content-Disposition', "attachment; filename=\"export-" . $now->format('d-m-Y H:i:s') . ".pdf\"");
+            $headers->addHeaderLine('Content-Length', strlen($output));
 
-        return $response;
+            $response->setContent($output);
 
+            return $response;
+
+        } else {
+            //return error
+        }
     }
 }
