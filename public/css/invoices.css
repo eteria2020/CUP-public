@@ -1,19 +1,29 @@
+.page-container {
+    overflow: auto;
+}
 .logo {
-    width: 486px;
-    height: 99px;
+    width: 324px;
+    height: 110px;
 }
 .header {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    float: right;
+    margin-top: -20px;
+}
+.header-text {
+    font-size: 15px;
 }
 .table-header {
-    width: 300px;
+    width: 250px;
     height: 30px;
+    line-height: 30px;
     background-color: #43a34c;
-    padding-top: 4px;
-    padding-left: 4px;
-    margin-top: 105px;
+    padding-left: 5px;
+}
+.invoice-header {
+    margin-top: 60px;
+}
+.summary-header {
+    margin-top: 50px;
 }
 .line {
     width: 100%;
@@ -21,29 +31,63 @@
     background-color: #43a34c;
     margin-top: -20px;
 }
-.footer {
-    width: 486px;
-    float: right;
-    font-size: 20px;
+.content {
+
+}
+.message {
+    position: relative;
+    left: 50px;
+    font-size: 15px;
+    word-wrap: break-word;
+    max-width: 500px;
+    margin-top: 50px;
+}
+
+/* General styles */
+
+.font {
+    font-family: Arial, sans-serif;
+}
+
+.name {
+    font-weight: 700;
 }
 
 /* Table styles */
 
-.table1 {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 486px;
-}
-.table1 td, th {
-    font-family: Arial, sans-serif;
+.table td, th {
     font-size: 14px;
     padding: 10px 5px;
     border-style: solid;
-    border-width: 0px;
     overflow: hidden;
     word-break: normal;
+}
+.table1 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 324px;
+}
+.table1 td, th {
+    border-width: 0px;
     border-bottom-width: 2px;
     border-color: #43a34c;
+}
+.table2 {
+    width: 100%;
+    margin-top: 50px;
+}
+.table2 td {
+    border-width: 0px;
+    border-color: #43a34c;
+    color: #333;
+}
+.table2 th {
+    font-weight: normal;
+    border-width: 0px;
+    border-color: #43a34c;
+    color: #333;
+    background-color: #43a34c;
+    color: #fff;
 }
 
 /* Pagination styles */
