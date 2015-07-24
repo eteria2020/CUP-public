@@ -4,6 +4,8 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Authentication\AuthenticationService;
+use SharengoCore\Entity\Customers;
 
 class SnappyController extends AbstractActionController
 {
@@ -17,31 +19,42 @@ class SnappyController extends AbstractActionController
      */
     private $invoicesService;
 
+    /**
+     * @var AuthenticationService
+     */
+    private $authService;
+
     public function __construct(
         $viewRenderer,
         $pdfService,
-        $invoicesService
+        $invoicesService,
+        AuthenticationService $authService
     ) {
         $this->viewRenderer = $viewRenderer;
         $this->pdfService = $pdfService;
         $this->invoicesService = $invoicesService;
+        $this->authService = $authService;
     }
 
     public function indexAction()
     {
 
-        $this->pdfService->setOptions(array(
-            'footer-right'     => '[page]', //Pag. [page]/[topage]
-            'footer-left'      => 'Share`n Go s.r.l.',
-            'footer-font-name' => 'Arial Sans Serif',
-            'footer-font-size' => '10',
-            'footer-line'      => true
-        ));
+        // get user id from AuthService
+        $user = $this->authService->getIdentity();
 
         $invoiceId = urldecode($this->params('id'));
 
         $invoice = $this->invoicesService->getInvoiceById($invoiceId);
-        if ($invoice != null) {
+
+        if ($invoice != null && $user instanceof Customers && $invoice->getCustomer()->getId() == $user->getId()) {
+
+            $this->pdfService->setOptions(array(
+                'footer-right'     => '[page]', //Pag. [page]/[topage]
+                'footer-left'      => 'Share`n Go s.r.l.',
+                'footer-font-name' => 'Arial Sans Serif',
+                'footer-font-size' => '10',
+                'footer-line'      => true
+            ));
 
             $now = new \DateTime();
 
@@ -52,7 +65,7 @@ class SnappyController extends AbstractActionController
                 'invoiceContent' => $invoice->getContent()
             ]);
 
-            $viewModel->setTemplate('Application/Snappy/test1');
+            $viewModel->setTemplate('Application/Snappy/invoice-pdf');
 
             $layoutViewModel->setVariables([
                 'content' => $this->viewRenderer->render($viewModel)
@@ -73,7 +86,7 @@ class SnappyController extends AbstractActionController
             return $response;
 
         } else {
-            //return error
+            $this->redirect()->toRoute('login');
         }
     }
 }

@@ -377,6 +377,15 @@ return array(
                             ]
                         ]
                     ],
+                    'invoices-list' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{fatture}',
+                            'defaults' => [
+                                'action' => 'invoices-list'
+                            ]
+                        ]
+                    ],
                 ]
             ],
             'snappy' => [

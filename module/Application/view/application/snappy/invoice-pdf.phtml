@@ -47,7 +47,7 @@
         <!-- header -->
 
         <!-- Logo -->
-        <img class="logo" src="http://www.sharengo.it/images/logox2.png" alt="">
+        <img class="logo" src="<?php echo $this->serverUrl()?>/images/sharengo_logo_pdf.png" alt="">
 
         <!-- Table aggregate -->
         <div>
@@ -80,19 +80,19 @@
                     <td class="table1-031e"><?= $mail ?></td>
                 </tr>
                 <tr>
-                    <td class="table1-031e">Indirizzo</td>
+                    <td class="table1-031e">Indirizzo:</td>
                     <td class="table1-031e"><?= $address ?></td>
                 </tr>
                 <tr>
-                    <td class="table1-031e">Codice fiscale</td>
+                    <td class="table1-031e">Codice fiscale:</td>
                     <td class="table1-031e"><?= $cf ?></td>
                 </tr>
                 <?php
                     if ($piva != null && $piva != '') {
                 ?>
                 <tr>
-                    <td class="table1-031e">Codice fiscale</td>
-                    <td class="table1-031e"><?= $cf ?></td>
+                    <td class="table1-031e">Partita IVA:</td>
+                    <td class="table1-031e"><?= $piva ?></td>
                 </tr>
                 <?php
                     }
@@ -115,7 +115,7 @@
                 <p><br>Gentile <span class="name"><?= $name ?></span></p>
                 <p>La ringraziamo per aver usufruito dei nostri servizi.<br>
                     Nelle pagine successive troverà un elenco dettagliato dei viaggi di cui Lei ha usufruito.</p>
-                <p>L'importo totale della fattura da saldare è complessivamente di EUR <?= $amount ?></p>
+                <p>L'importo totale della fattura da saldare è complessivamente di<br>EUR <?= $amount ?></p>
                 <p>Twistcar provvederà ad addebitare la Sua carta di credito<br>n° <?= $ccard ?> per il suddetto importo.</p>
                 <p>Per eventuali chiarimenti può contattarci al n. 02 49688617 il mercoledi dalle 9 alle 13.</p>
                 <p>Cordiali saluti</p>
@@ -165,7 +165,6 @@
 
         <!-- Bottom message -->
         <p class="message font">
-            La Sua nuova fattura <?= $docN ?><br>
             Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.
         </p>
 <?php
@@ -206,7 +205,7 @@
 }
 .logo {
     width: 324px;
-    height: 66px;
+    height: 110px;
 }
 .header {
     float: right;
@@ -223,7 +222,7 @@
     padding-left: 5px;
 }
 .invoice-header {
-    margin-top: 105px;
+    margin-top: 60px;
 }
 .summary-header {
     margin-top: 50px;

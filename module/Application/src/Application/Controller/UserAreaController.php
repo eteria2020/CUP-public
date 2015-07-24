@@ -306,4 +306,9 @@ class UserAreaController extends AbstractActionController
             'promoCodeForm' => $form
         ]);
     }
+
+    public function invoicesListAction()
+    {
+
+    }
 }

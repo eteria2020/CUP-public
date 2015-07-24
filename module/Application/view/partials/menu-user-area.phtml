@@ -46,6 +46,11 @@
         <i class="fa fa-tachometer"></i> <?= $this->translate('Patente'); ?>
         </a>
     </li>
+    <li>
+        <a href="<?= $this->url('area-utente/invoices-list'); ?>" <?= $this->route === 'invoices-list' ? 'class="active"' : '' ?>>
+        <i class="fa fa-newspaper-o"></i> <?= $this->translate('Fatture'); ?>
+        </a>
+    </li>
     <!--li><a href=""><i class="fa fa-trophy"></i> <?= $this->translate('Bonus'); ?></a></li>
     <li><a href=""><i class="fa fa-file-o"></i> <?= $this->translate('Fatture'); ?></a></li>
     <li><a href=""><i class="fa fa-tachometer"></i> <?= $this->translate('Patente'); ?></a></li>
