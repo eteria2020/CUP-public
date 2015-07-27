@@ -1,8 +1,10 @@
-var beginningYear = lastTs.getFullYear();
-var beginningMonth = lastTs.getMonth();
-
 // get the cars
-$.get(invoicesUrl, function (jsonData)
+console.log(invoicesUrl + "?shortDate=" + lastPeriod);
+$.get(invoicesUrl + "?date=" + lastPeriod, function (jsonData)
 {
-
+    console.log(jsonData);
+    jsonData.data.forEach(function (invoice)
+    {
+        console.log(invoice['id']);
+    });
 });

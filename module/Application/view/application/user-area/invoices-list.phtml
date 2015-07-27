@@ -47,8 +47,6 @@
 
                             <?php
                                 foreach ($availableDates as $date) {
-                                    // get date
-                                    $date = $date['invoiceDate'];
                                     // extract year
                                     $year = (integer) ($date / 100);
                                     // extract month
@@ -137,8 +135,8 @@
 <!-- main -->
 
 <!-- JavaScript -->
-<script>
-var invoicesUrl = "<?= $this->url('invoices'); ?>";
-var lastTs = new Date("<?= $lastTs ?>");
+<script type="text/javascript">
+var invoicesUrl = "<?= $this->url('core/invoices'); ?>";
+var lastPeriod = "<?= $availableDates[1]; ?>";
 </script>
-<script type="text/javascript" src="js/invoices.js"></script>
+<script type="text/javascript" src="<?= $this->basePath(); ?>/js/invoices.js"></script>
