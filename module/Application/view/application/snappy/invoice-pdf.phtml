@@ -24,6 +24,7 @@
 <div id="container">
 
 <?php
+    // loop through pages
     for ($i = 1; $i <= 2; $i++) {
 ?>
 
@@ -107,6 +108,7 @@
         <div id="content" class="content">
 
 <?php
+    // if first page
     if ($i == 1) {
 ?>
 
@@ -123,6 +125,7 @@
             <!-- message -->
 
 <?php
+    // if not first page
     } else {
 ?>
 
@@ -168,6 +171,7 @@
             Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.
         </p>
 <?php
+    // close pages if else
     }
 ?>
 
@@ -181,6 +185,7 @@
     <!-- page container -->
 
 <?php
+    // end loop through pages
     }
 ?>
 
