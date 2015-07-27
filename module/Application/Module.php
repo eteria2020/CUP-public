@@ -41,6 +41,11 @@ class Module
                 // send confirmation email
                 $paymentService = $serviceManager->get('PaymentService');
                 $paymentService->sendCompletionEmail($customer);
+
+                // enable api usage
+                $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
+                $customerService->enableApi($customer);
+                
             }
         );
 
@@ -61,9 +66,6 @@ class Module
                 } else {
                     $customer = $customer[0];
                 }
-
-                // enable api usage
-                $customerService->enableApi($customer);
 
                 // retrieve discout from equomobili
                 try {
