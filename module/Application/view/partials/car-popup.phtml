@@ -9,6 +9,7 @@ if ($isLoggedIn)
 {
     $user = $this->LoginProvider();
     $userId = $user->getId();
+    $userEnabled = $user->getEnabled();
 }
 
 ?>
@@ -19,51 +20,51 @@ if ($isLoggedIn)
     <div class="modal-overlay">
         <!-- module-pop-up -->
         <div class="module-pop-up" style="margin:180px auto;">
-            
+
             <a id="btn-close" class="btn-close"><i class="fa fa-close"></i></a>
-            
+
             <!-- module-pop-up-content -->
             <div class="module-pop-up-content">
-            
+
                 <!-- block-car-data -->
                 <div class="block-car-data bg-ct4 clearfix">
-                    
+
                     <div class="block-heading text-align-center">
                         <span class="block-info"><?= $this->translate('Auto scelta'); ?></span>
                         <h1 id="licence-plate" class="block-title"></h1>
                     </div>
-                    
+
                     <!-- block-content -->
                     <div class="block-content clearfix">
-                        
+
                         <!-- block-column -->
                         <div id="left-column" class="block-column bw-f w-2-4">
                             <div class="block-image"><img src="images/car.jpg" style="border: none" alt=""></div>
-                            
+
                             <!-- block-label-status -->
                             <div class="block-label-status">
                                 <span class="block-info"><?= $this->translate('Stato interni'); ?></span>
                                 <div class="block-bar">
                                     <!-- value are w25, w50, w75, w100 -->
                                     <div id="int_cleanliness" class="block-bar-value"></div>
-                                </div>                                            
+                                </div>
                             </div>
                             <!-- block-label-status -->
-                            
+
                             <!-- block-label-status -->
                             <div class="block-label-status">
                                 <span class="block-info"><?= $this->translate('Stato esterni'); ?></span>
                                 <div class="block-bar">
                                     <div id="ext_cleanliness" class="block-bar-value"></div>
-                                </div>                                            
+                                </div>
                             </div>
                             <!-- block-label-status -->
-                            
+
                         </div>
                         <!-- block-column -->
-                        
+
                         <div id="right-column" class="block-column last bw-f w-2-4">
-                         
+
                             <!-- block-wrapper-car-data-info -->
                             <div class="block-wrapper-car-data-info bg-ct4">
                                 <!-- block-car-data-info -->
@@ -81,16 +82,16 @@ if ($isLoggedIn)
                                     <span class="block-data-value">
                                         <span id="block-right-bottom-text"></span>
                                         <a id="coverage" class="btn-link small ct2 pull-right"><?= $this->translate('Verifica copertura '); ?><i class="fa fa-smile-o"></i></a>
-                                    </span>                                                
+                                    </span>
                                 </div>
                                 <!-- block-car-data-info -->
-                                
-                                <div id="btn-reserve" class="block-wrapper-btn">                                            
+
+                                <div id="btn-reserve" class="block-wrapper-btn">
                                     <a id="reserve-text" <?php if (!$isLoggedIn) echo 'href="' . $this->url('login') . '"'; ?>
                                      class="btn-link ct3"><i class="fa fa-circle-o-notch fa-spin"></i></a>
                                 </div>
 
-                                <div id="step2-buttons" class="block-wrapper-btn" style="display:none"> 
+                                <div id="step2-buttons" class="block-wrapper-btn" style="display:none">
                                     <button id="btn-back" class="reset pull-left"><i class="fa fa-angle-left"></i> <?= $this->translate('Annulla'); ?></button>
                                     <button id="btn-confirm" class="pull-right ct2"></button>
                                 </div>
@@ -98,19 +99,19 @@ if ($isLoggedIn)
                                 <div>
                                     <button id="btn-done" class="ct2" style="display:none; margin:0 auto;"><?= $this->translate('Chiudi'); ?> <i class="fa fa-check"></i></button>
                                 </div>
-                                
+
                             </div>
                             <!-- block-wrapper-car-data-info -->
-                            
+
                         </div>
                     </div>
                     <!-- block-content -->
                 </div>
                 <!-- block-car-data -->
-                
+
             </div>
             <!-- module-pop-up-content -->
-            
+
         </div>
         <!-- module-pop-up -->
     </div>
@@ -121,6 +122,7 @@ if ($isLoggedIn)
 <script>
 var isLoggedIn = <?php if ($isLoggedIn) echo 'true'; else echo 'false'; ?>;
 var userId = '<?php echo $userId; ?>';
+var userEnabled = '<?php echo $userEnabled; ?>';
 // text to be shown in second popup
 var textRemember = '<?= $this->translate("Ricorda che dovrai avere con te lo smartphone per poter aprire l\'auto, oppure la tessera. Ti consigliamo di non utilizzare l\'auto se l\'autonomia è al di sotto del 20% di carica"); ?>';
 var titleRemember = '<?= $this->translate("Ricorda che:"); ?>';

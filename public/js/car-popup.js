@@ -202,9 +202,13 @@ function confirm()
             // do not change layout if popup is closed
             if (isOpen) {
                 if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null) {
-                    car['isReservedByCurrentUser'] = true;
-                    marker.setIcon(carMarkerPathReserved);
-                    completed(jsonData.reason);
+                    if (jsonData.status == 200) {
+                        car['isReservedByCurrentUser'] = true;
+                        marker.setIcon(carMarkerPathReserved);
+                        completed(jsonData.reason);
+                    } else {
+                        completed(jsonData.reason);
+                    }
                 } else {
                     completed(textReservationCompletedNot);
                 }
@@ -238,11 +242,16 @@ function verifyCoverage()
 
 /* Setters */
 
-function setReserveText(text, setIcon) // TODO - CHECK warning, ban, times
+function setReserveText(text, setIcon)
 {
     if (isOpen) {
-        isReservedDiv.innerHTML = text + (setIcon ? ' <i class="fa fa-angle-right"></i>' : ''); // TODO - CHECK <i class="fa fa-times"></i>');
+        isReservedDiv.innerHTML = text + (setIcon ? ' <i class="fa fa-angle-right"></i>' : '');
     }
+}
+
+function setReserveButton(visible)
+{
+    isReservedDiv.style.display = (visible) ? "block" : "none";
 }
 
 function setRightBottomBlockTitle(text, stepNumber)
