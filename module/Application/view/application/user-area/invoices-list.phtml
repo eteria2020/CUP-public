@@ -1,3 +1,8 @@
+<?php
+    $invoices = [];
+    $availableDates = $this->availableDates;
+?>
+
 <!-- main -->
 <div id="main" class="detect-window-height">
 
@@ -22,7 +27,7 @@
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('Lista fatture'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('Fatture'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
@@ -31,8 +36,90 @@
                 <!-- module-sharing-resmume content -->
                 <div class="module-sharing-resmume padding-top">
 
+                    <!-- Filter -->
+                    <div class="invoices-filter">
 
+                        <!-- Header -->
+                        <p class="invoices-filter-title">Periodo</p>
 
+                        <!-- Select box -->
+                        <select id="invoices-filter-select" class="invoices-filter-select">
+
+                            <?php
+                                foreach ($availableDates as $date) {
+                                    // get date
+                                    $date = $date['invoiceDate'];
+                                    // extract year
+                                    $year = (integer) ($date / 100);
+                                    // extract month
+                                    $month = $date - $year * 100;
+                                    $month = (($month < 10) ? '0' : '') . $month;
+                                    // add selector option
+                                    echo '<option value="' . $date . '">' .
+                                        $year . '/' . $month .
+                                    '</option>';
+                                }
+                            ?>
+
+                        </select>
+                        <!-- select box -->
+
+                    </div>
+                    <!-- filter -->
+
+                    <!-- Invoices table -->
+                    <div class="block-data-table clearboth clearfix">
+
+                        <!-- Invoices table headers -->
+                        <div class="block-data-table-row clearfix">
+                            <div class="block-data-table-th cw-1-6">N&deg; Fattura</div>
+                            <div class="block-data-table-th cw-1-6">Data</div>
+                            <div class="block-data-table-th cw-1-6">Tipo</div>
+                            <div class="block-data-table-th cw-1-6">Netto (&euro;)</div>
+                            <div class="block-data-table-th cw-1-6">IVA (&euro;)</div>
+                            <div class="block-data-table-th cw-1-6">Download</div>
+                        </div>
+                        <!-- invoices table headers -->
+
+                        <!-- Invoice table body -->
+                        <div id="invoice-table-body">
+
+                            <?php
+                                // loop through invoices
+                                $i = 0;
+                                foreach ($invoices as $invoice) {
+                                    $invoiceNumber = $invoice->getInvoiceNumber();
+                                    $invoiceDate = $invoice->getEmittedTs();
+                                    $day = substr($invoiceDate, 0, 10);
+                                    $hour = substr($invoiceDate, 11, 5);
+                                    $totalAmount = (float)$invoice->getAmount() / 100;
+                                    $partialAmount = number_format($totalAmount * 50 / 61, 2, '.', '');
+                                    $totalAmount = number_format($totalAmount, 2, '.', '');
+                                    $link = $this->url('snappy') . '/' . $invoice->getId();
+                            ?>
+
+                            <div class="block-data-table-row <?= ($i % 2) ? 'even' : 'odd'; ?> clearfix">
+                                <div class="block-data-table-td cw-1-6"><?= $invoiceNumber ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $day ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $hour ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $partialAmount ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $totalAmount ?></div>
+                                <div class="block-data-table-td cw-1-6">
+                                    <span class=link-to-download><a href="<?= $link ?>"><i class="fa fa-download"></i> Download</a></span>
+                                </div>
+                            </div>
+
+                            <?php
+                                // end loop through invoices
+                                $i++;
+                                }
+                            ?>
+
+                        </div>
+                        <!-- invoice table body -->
+
+                    </div>
+                    <!-- invoices table -->
 
                 </div>
                 <!-- module-sharing-resmume -->
@@ -48,3 +135,10 @@
 
 </div>
 <!-- main -->
+
+<!-- JavaScript -->
+<script>
+var invoicesUrl = "<?= $this->url('invoices'); ?>";
+var lastTs = new Date("<?= $lastTs ?>");
+</script>
+<script type="text/javascript" src="js/invoices.js"></script>

@@ -7,7 +7,7 @@ CREATE TABLE invoices (
     content jsonb NOT NULL, #text if psql 9.1,
     version int NOT NULL,
     type invoice_type NOT NULL,
-    emitted_ts timestamp(0) with time zone NOT NULL,
+    invoice_date integer NOT NULL,
     amount int NOT NULL,
-    invoice_number varchar(20) NOT NULL
+    invoice_number varchar(15) NOT NULL
 );
