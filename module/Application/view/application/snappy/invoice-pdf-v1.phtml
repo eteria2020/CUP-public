@@ -76,8 +76,11 @@
     if ($i == 1) {
 ?>
 
+            <!-- Line -->
+            <div class="line"></div>
+
             <!-- Message -->
-            <div class="message font">
+            <div class="message message1 font">
                 <p><br>Gentile <span class="name"><?= $name ?></span></p>
                 <p>La ringraziamo per aver usufruito dei nostri servizi.</p>
                 <?= $invoiceContent['body']['greeting_message'] ?>
@@ -96,40 +99,35 @@
             <table class="table table2 font">
                 <tr>
                     <th class="table2-031e">Descrizione</th>
+                    <th class="table2-031e">Imponibile</th>
                 </tr>
                 <tr>
                     <td class="table2-031e">Fattura per il primo pagamento utente.</td>
+                    <td class="table2-031e align-right"><?= $partialAmount ?></td>
                 </tr>
             </table>
         </div>
         <!-- transactions table -->
 
-
-        <!-- Summary table header -->
-        <h3 class=" table-header summary-header font">Importo</h3>
-
-        <!-- Bottom line -->
-        <div class="line"></div>
-
         <!-- Summary table -->
         <table class="table table1 font">
             <tr>
-                <td class="table1-031e">Imponibile</td>
-                <td class="table1-031e"><?= $partialAmount ?></td>
+                <td class="table1-031e">Totale imponibile</td>
+                <td class="table1-031e align-right"><?= $partialAmount ?></td>
             </tr>
             <tr>
                 <td class="table1-031e">IVA 22%</td>
-                <td class="table1-031e"><?= $iva ?></td>
+                <td class="table1-031e align-right"><?= $iva ?></td>
             </tr>
             <tr>
                 <td class="table1-031e">Totale</td>
-                <td class="table1-031e"><?= $totalAmount ?></td>
+                <td class="table1-031e align-right"><?= $totalAmount ?></td>
             </tr>
         </table>
         <!-- summary table -->
 
         <!-- Bottom message -->
-        <p class="message font">
+        <p class="message message2 font">
             Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.
         </p>
 <?php

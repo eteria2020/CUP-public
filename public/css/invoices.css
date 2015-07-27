@@ -16,22 +16,17 @@
     width: 250px;
     float: right;
     margin-right: 20px;
-    padding-left: 20px;
-    padding-top: 10px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #000;
     font-size: 12px;
-    line-height: 15px
+    line-height: 12px
 }
 .invoice-data {
     height: 80px;
-    margin-top: 10px;
+    margin-top: 20px;
 
 }
 .customer-data {
     height: 150px;
-    margin-top: 40px;
+    margin-top: 20px;
 
 }
 .table-header {
@@ -49,9 +44,9 @@
 }
 .line {
     width: 100%;
-    height: 3px;
-    background-color: #43a34c;
-    margin-top: -20px;
+    height: 1px;
+    background-color: #000;
+    margin-top: 90px;
 }
 .content {
 
@@ -62,6 +57,11 @@
     font-size: 15px;
     word-wrap: break-word;
     max-width: 500px;
+}
+.message1 {
+    margin-top: 100px;
+}
+.message2 {
     margin-top: 200px;
 }
 
@@ -88,19 +88,21 @@
     border-collapse: collapse;
     border-spacing: 0;
     width: 324px;
+    float: right;
 }
 .table1 td, th {
     border-width: 0px;
     border-bottom-width: 2px;
-    border-color: #43a34c;
+    border-top-width: 2px;
+    border-color: #000;
 }
 .table2 {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 300px;
 }
 .table2 td {
     border-width: 0px;
-    border-color: #43a34c;
+    border-color: #000;
     color: #333;
 }
 .table2 th {
@@ -108,8 +110,11 @@
     border-width: 0px;
     border-color: #43a34c;
     color: #333;
-    background-color: #43a34c;
+    background-color: #aaa;
     color: #fff;
+}
+.align-right {
+    text-align: right;
 }
 
 /* Pagination styles */
