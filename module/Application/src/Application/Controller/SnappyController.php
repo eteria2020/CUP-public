@@ -65,7 +65,8 @@ class SnappyController extends AbstractActionController
                 'invoiceContent' => $invoice->getContent()
             ]);
 
-            $viewModel->setTemplate('Application/Snappy/invoice-pdf');
+            $templateVersion = $invoice->getContent()['template_version'];
+            $viewModel->setTemplate('Application/Snappy/invoice-pdf-v' . $templateVersion);
 
             $layoutViewModel->setVariables([
                 'content' => $this->viewRenderer->render($viewModel)

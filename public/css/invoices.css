@@ -6,11 +6,33 @@
     height: 110px;
 }
 .header {
-    float: right;
-    margin-top: -20px;
+    margin-top: -10px;
+    margin-left: 20px;
 }
 .header-text {
-    font-size: 15px;
+    font-size: 10px;
+}
+.data {
+    width: 250px;
+    float: right;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000;
+    font-size: 12px;
+    line-height: 15px
+}
+.invoice-data {
+    height: 80px;
+    margin-top: 10px;
+
+}
+.customer-data {
+    height: 150px;
+    margin-top: 40px;
+
 }
 .table-header {
     width: 250px;
@@ -20,7 +42,7 @@
     padding-left: 5px;
 }
 .invoice-header {
-    margin-top: 60px;
+    margin-top: 80px;
 }
 .summary-header {
     margin-top: 50px;
@@ -40,7 +62,7 @@
     font-size: 15px;
     word-wrap: break-word;
     max-width: 500px;
-    margin-top: 50px;
+    margin-top: 200px;
 }
 
 /* General styles */

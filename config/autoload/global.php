@@ -30,6 +30,7 @@ return array(
         'delay' => '60'
     ],
     'invoice' => [
-        'template_version' => '1'
+        'template_version' => '1',
+        'subscription_amount' => 1000
     ]
 );
