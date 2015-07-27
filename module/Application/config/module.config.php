@@ -391,7 +391,7 @@ return array(
             'snappy' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/snappy/:id',
+                    'route' => '/snappy[/:id]',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Snappy',

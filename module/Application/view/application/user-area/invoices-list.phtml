@@ -81,38 +81,7 @@
 
                         <!-- Invoice table body -->
                         <div id="invoice-table-body">
-
-                            <?php
-                                // loop through invoices
-                                $i = 0;
-                                foreach ($invoices as $invoice) {
-                                    $invoiceNumber = $invoice->getInvoiceNumber();
-                                    $invoiceDate = $invoice->getEmittedTs();
-                                    $day = substr($invoiceDate, 0, 10);
-                                    $hour = substr($invoiceDate, 11, 5);
-                                    $totalAmount = (float)$invoice->getAmount() / 100;
-                                    $partialAmount = number_format($totalAmount * 50 / 61, 2, '.', '');
-                                    $totalAmount = number_format($totalAmount, 2, '.', '');
-                                    $link = $this->url('snappy') . '/' . $invoice->getId();
-                            ?>
-
-                            <div class="block-data-table-row <?= ($i % 2) ? 'even' : 'odd'; ?> clearfix">
-                                <div class="block-data-table-td cw-1-6"><?= $invoiceNumber ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $day ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $hour ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $partialAmount ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $totalAmount ?></div>
-                                <div class="block-data-table-td cw-1-6">
-                                    <span class=link-to-download><a href="<?= $link ?>"><i class="fa fa-download"></i> Download</a></span>
-                                </div>
-                            </div>
-
-                            <?php
-                                // end loop through invoices
-                                $i++;
-                                }
-                            ?>
-
+                            <!-- Content generated in js -->
                         </div>
                         <!-- invoice table body -->
 
@@ -138,5 +107,6 @@
 <script type="text/javascript">
 var invoicesUrl = "<?= $this->url('core/invoices'); ?>";
 var lastPeriod = "<?= $availableDates[1]; ?>";
+var downloadLink = "<?= $this->url('snappy'); ?>/";
 </script>
 <script type="text/javascript" src="<?= $this->basePath(); ?>/js/invoices.js"></script>
