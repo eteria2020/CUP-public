@@ -136,3 +136,13 @@
 .margin-top-custom {
     margin-top: 30px
 }
+.invoices-filter-select {
+    max-width: 150px;
+}
+.table-row-fix {
+    float: none !important;
+}
+.invoices-filter-title {
+    font-weight: 700;
+    font-size: 20px;
+}
