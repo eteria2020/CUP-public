@@ -17,15 +17,16 @@
     $totalAmount = $invoiceContent['amounts']['grand_total'];
     $partialAmount = $invoiceContent['amounts']['total'];
     $iva = $invoiceContent['amounts']['iva'];
+    $type = $invoiceContent['type'];
 ?>
 
 <!-- Main container -->
 <div id="container">
 
-<?php
-    // loop through pages
-    for ($i = 1; $i <= 2; $i++) {
-?>
+    <?php
+        // loop through pages
+        for ($i = 1; $i <= 2; $i++) {
+    ?>
 
     <!-- Page container -->
     <div class="page-container">
@@ -68,10 +69,10 @@
         <!-- Content -->
         <div id="content" class="content">
 
-<?php
-    // if first page
-    if ($i == 1) {
-?>
+        <?php
+            // if first page
+            if ($i == 1) {
+        ?>
 
             <!-- Line -->
             <div class="line"></div>
@@ -86,14 +87,20 @@
             </div>
             <!-- message -->
 
-<?php
-    // if not first page
-    } else {
-?>
+        <?php
+            // if not first page
+            } else {
+        ?>
 
         <!-- Transactions table -->
         <div>
             <table class="table table2 font">
+
+                <?php
+                    // if invoice is for first payment
+                    if ($type == 'FIRST_PAYMENT') {
+                ?>
+
                 <tr>
                     <th class="table2-031e">Descrizione</th>
                     <th class="table2-031e">Imponibile</th>
@@ -102,6 +109,22 @@
                     <td class="table2-031e">Fattura per il primo pagamento utente.</td>
                     <td class="table2-031e align-right"><?= $partialAmount ?></td>
                 </tr>
+
+                <?php
+                    // if invoice is for trips
+                    } elseif ($type == 'TRIP') {
+                ?>
+
+                <?php
+                    // if invoice is for penalty
+                    } elseif ($type == 'PENALTY') {
+                ?>
+
+                <?php
+                    // close invoice types if/elseif/else
+                    }
+                ?>
+
             </table>
         </div>
         <!-- transactions table -->
@@ -127,10 +150,10 @@
         <p class="message message2 font">
             Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.
         </p>
-<?php
-    // close pages if else
-    }
-?>
+        <?php
+            // close pages if else
+            }
+        ?>
 
         </div>
         <!-- content -->
@@ -141,10 +164,10 @@
     </div>
     <!-- page container -->
 
-<?php
-    // end loop through pages
-    }
-?>
+    <?php
+        // end loop through pages
+        }
+    ?>
 
 </div>
 <!-- main container -->
