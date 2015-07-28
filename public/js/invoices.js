@@ -1,8 +1,14 @@
-refreshTable();
+refreshTable(lastPeriod);
 
-function refreshTable()
+$("#invoices-filter-select").change(function()
 {
-    $.get(invoicesUrl + "?date=" + lastPeriod, function (jsonData)
+    var selectedValue = $(this).find(":selected").val();
+    refreshTable(selectedValue);
+});
+
+function refreshTable(period)
+{
+    $.get(invoicesUrl + "?date=" + period, function (jsonData)
     {
         var i = 0;
         resetTable();
@@ -12,7 +18,7 @@ function refreshTable()
         jsonData.data.forEach(function (invoice)
         {
             addRow(
-                i % 2,
+                (i + 1) % 2,
                 invoice['invoiceNumber'],
                 invoice['invoiceDate'],
                 invoice['type'],
@@ -20,6 +26,7 @@ function refreshTable()
                 invoice['content']['amounts']['grand_total'],
                 invoice['id']
             );
+            i++;
         });
     });
 }
