@@ -388,13 +388,13 @@ return array(
                     ],
                 ]
             ],
-            'snappy' => [
+            'pdf' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/snappy[/:id]',
+                    'route' => '/pdf[/:id]',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Snappy',
+                        'controller' => 'Pdf',
                         'action'     => 'index',
                     ],
                 ]
@@ -433,7 +433,7 @@ return array(
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
-            'Application\Controller\Snappy' => 'Application\Controller\SnappyControllerFactory',
+            'Application\Controller\Pdf' => 'Application\Controller\PdfControllerFactory',
         ],
     ],
     'view_helpers' => [
@@ -484,7 +484,7 @@ return array(
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
                 array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
-                array('controller' => 'Application\Controller\Snappy', 'roles' => [])
+                array('controller' => 'Application\Controller\Pdf', 'roles' => [])
             ),
         ),
     ),

@@ -42,9 +42,7 @@ var columnClass3 = 'table-row-fix';
 function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
 {
         // parse variables
-        invoiceDate %= 100;
-        total = Math.floor(total / 100) + ',' + parseDecimal(total % 100);
-        grandTotal = Math.floor(grandTotal / 100) + ',' + parseDecimal(grandTotal % 100);
+        invoiceDate = parseDay(invoiceDate %= 100);
 
         // create the table row
         var $row = $('<div>');
@@ -109,7 +107,7 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
         $row.appendTo($('#invoice-table-body'));
 }
 
-function parseDecimal(decimal)
+function parseDay(day)
 {
-    return ((decimal < 10) ? '0' : '') + decimal;
+    return ((day < 10) ? '0' : '') + day;
 }

@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 use Zend\Authentication\AuthenticationService;
 use SharengoCore\Entity\Customers;
 
-class SnappyController extends AbstractActionController
+class PdfController extends AbstractActionController
 {
 
     private $viewRenderer;
@@ -66,20 +66,19 @@ class SnappyController extends AbstractActionController
             ]);
 
             $templateVersion = $invoice->getContent()['template_version'];
-            $viewModel->setTemplate('Application/Snappy/invoice-pdf-v' . $templateVersion);
+            $viewModel->setTemplate('Application/Pdf/invoice-pdf-v' . $templateVersion);
 
             $layoutViewModel->setVariables([
                 'content' => $this->viewRenderer->render($viewModel)
             ]);
 
             $htmlOutput = $this->viewRenderer->render($layoutViewModel);
-            //echo $htmlOutput;die;
 
             $output = $this->pdfService->getOutputFromHtml($htmlOutput);
             $response = $this->getResponse();
             $headers  = $response->getHeaders();
             $headers->addHeaderLine('Content-Type', 'application/pdf');
-            $headers->addHeaderLine('Content-Disposition', "attachment; filename=\"export-" . $now->format('d-m-Y H:i:s') . ".pdf\"");
+            $headers->addHeaderLine('Content-Disposition', "attachment; filename=\"Fattura-" . $invoice->getInvoiceNumber() . ".pdf\"");
             $headers->addHeaderLine('Content-Length', strlen($output));
 
             $response->setContent($output);

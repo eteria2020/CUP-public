@@ -14,12 +14,9 @@
     // Invoice data
     $docN = $invoiceContent['invoice_number'];
     $invoiceDate = $invoiceContent['invoice_date'];
-    $totalAmount = strval($invoiceContent['amounts']['grand_total']);
-    $totalAmount = substr($totalAmount, 0, strlen($totalAmount) - 2) . ',' . substr($totalAmount, strlen($totalAmount) - 2, 2);
-    $partialAmount = strval($invoiceContent['amounts']['total']);
-    $partialAmount = substr($partialAmount, 0, strlen($partialAmount) - 2) . ',' . substr($partialAmount, strlen($partialAmount) - 2, 2);
-    $iva = strval($invoiceContent['amounts']['iva']);
-    $iva = substr($iva, 0, strlen($iva) - 2) . ',' . substr($iva, strlen($iva) - 2, 2);
+    $totalAmount = $invoiceContent['amounts']['grand_total'];
+    $partialAmount = $invoiceContent['amounts']['total'];
+    $iva = $invoiceContent['amounts']['iva'];
 ?>
 
 <!-- Main container -->

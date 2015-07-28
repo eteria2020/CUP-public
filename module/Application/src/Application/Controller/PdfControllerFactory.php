@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class SnappyControllerfactory implements FactoryInterface
+class PdfControllerfactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
@@ -15,6 +15,6 @@ class SnappyControllerfactory implements FactoryInterface
         $invoiceService = $serviceLocator->get('SharengoCore\Service\Invoices');
         $authService = $serviceLocator->get('zfcuser_auth_service');
 
-        return new SnappyController($viewRenderer, $pdfService, $invoiceService, $authService);
+        return new PdfController($viewRenderer, $pdfService, $invoiceService, $authService);
     }
 }
