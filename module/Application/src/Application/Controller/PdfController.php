@@ -49,8 +49,8 @@ class PdfController extends AbstractActionController
         if ($invoice != null && $user instanceof Customers && $invoice->getCustomer()->getId() == $user->getId()) {
 
             $this->pdfService->setOptions(array(
-                'footer-right'     => '[page]', //Pag. [page]/[topage]
-                'footer-left'      => 'Share`n Go s.r.l.',
+                'footer-right'     => '[page]/[topage]', //Pag. [page]/[topage]
+                'footer-left'      => 'Share \'N Go',
                 'footer-font-name' => 'Arial Sans Serif',
                 'footer-font-size' => '10',
                 'footer-line'      => true
@@ -62,6 +62,7 @@ class PdfController extends AbstractActionController
             $layoutViewModel->setTemplate('layout/pdf-layout');
 
             $viewModel = new ViewModel([
+                'invoiceNumber' => $invoice->getInvoiceNumber(),
                 'invoiceContent' => $invoice->getContent()
             ]);
 

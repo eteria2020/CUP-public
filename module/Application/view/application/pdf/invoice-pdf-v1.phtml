@@ -12,7 +12,7 @@
     $cf = $invoiceContent['customer']['cf'];
     $piva = $invoiceContent['customer']['piva'];
     // Invoice data
-    $docN = $invoiceContent['invoice_number'];
+    $docN = $this->invoiceNumber;
     $invoiceDate = $invoiceContent['invoice_date'];
     $totalAmount = $invoiceContent['amounts']['grand_total'];
     $partialAmount = $invoiceContent['amounts']['total'];
@@ -37,7 +37,7 @@
         <!-- Invoice data -->
         <div class="invoice-data data">
             <p>Fattura N° <?= $docN ?></p>
-            <p>Data fattura: <?= $invoiceDate ?></p>
+            <p>Data fattura: <?= date_format(date_create($invoiceDate), 'd/m/Y') ?></p>
         </div>
         <!-- invoice data -->
 
@@ -67,7 +67,7 @@
         <!-- header -->
 
         <!-- Content -->
-        <div id="content" class="content">
+        <div id="content">
 
         <?php
             // if first page
@@ -78,11 +78,13 @@
             <div class="line"></div>
 
             <!-- Message -->
-            <div class="message message1 font">
+            <div class="message font">
                 <p><br>Gentile <span class="name"><?= $name ?></span></p>
                 <p>La ringraziamo per aver usufruito dei nostri servizi.</p>
                 <?= $invoiceContent['body']['greeting_message'] ?>
-                <p>Per eventuali chiarimenti può contattarci al n. ??? il ??? dalle ??? alle ???.</p>
+                <p>Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.</p>
+                <p>Se vuoi ricevere informazioni sul servizio Share’nGo,
+                    puoi contattarci al numero 0586 1975772 oppure all’indirizzo email servizioclienti@sharengo.eu.</p>
                 <p>Cordiali saluti</p>
             </div>
             <!-- message -->
@@ -106,8 +108,8 @@
                     <th class="table2-031e">Imponibile</th>
                 </tr>
                 <tr>
-                    <td class="table2-031e">Fattura per il primo pagamento utente.</td>
-                    <td class="table2-031e align-right"><?= $partialAmount ?></td>
+                    <td class="table2-031e"><?= $invoiceContent['body']['description'] ?></td>
+                    <td class="table2-031e align-right"><?= $partialAmount ?> €</td>
                 </tr>
 
                 <?php
@@ -133,23 +135,19 @@
         <table class="table table1 font">
             <tr>
                 <td class="table1-031e">Totale imponibile</td>
-                <td class="table1-031e align-right"><?= $partialAmount ?></td>
+                <td class="table1-031e align-right"><?= $partialAmount ?> €</td>
             </tr>
             <tr>
                 <td class="table1-031e">IVA 22%</td>
-                <td class="table1-031e align-right"><?= $iva ?></td>
+                <td class="table1-031e align-right"><?= $iva ?> €</td>
             </tr>
             <tr>
                 <td class="table1-031e">Totale</td>
-                <td class="table1-031e align-right"><?= $totalAmount ?></td>
+                <td class="table1-031e align-right"><?= $totalAmount ?> €</td>
             </tr>
         </table>
         <!-- summary table -->
 
-        <!-- Bottom message -->
-        <p class="message message2 font">
-            Potrà trovare tutte le sue fatture nell'Area Riservata insieme alle altre informazioni del suo profilo.
-        </p>
         <?php
             // close pages if else
             }

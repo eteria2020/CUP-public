@@ -17,7 +17,7 @@
     float: right;
     margin-right: 20px;
     font-size: 12px;
-    line-height: 12px
+    line-height: 12px;
 }
 .invoice-data {
     height: 80px;
@@ -29,50 +29,28 @@
     margin-top: 20px;
 
 }
-.table-header {
-    width: 250px;
-    height: 30px;
-    line-height: 30px;
-    background-color: #43a34c;
-    padding-left: 5px;
-}
-.invoice-header {
-    margin-top: 80px;
-}
-.summary-header {
-    margin-top: 50px;
-}
 .line {
     width: 100%;
     height: 1px;
-    background-color: #000;
-    margin-top: 90px;
-}
-.content {
-
+    background-color: #aaa;
+    margin-top: 120px;
 }
 .message {
     position: relative;
     left: 50px;
     font-size: 15px;
     word-wrap: break-word;
-    max-width: 500px;
+    max-width: 600px;
+    margin-top: 60px;
 }
-.message1 {
-    margin-top: 100px;
-}
-.message2 {
-    margin-top: 200px;
-}
-
-/* General styles */
-
 .font {
     font-family: Arial, sans-serif;
 }
-
 .name {
     font-weight: 700;
+}
+.align-right {
+    text-align: right;
 }
 
 /* Table styles */
@@ -83,38 +61,38 @@
     border-style: solid;
     overflow: hidden;
     word-break: normal;
+    line-height: 12px;
 }
 .table1 {
     border-collapse: collapse;
     border-spacing: 0;
     width: 324px;
     float: right;
+    margin-top: 530px;
 }
 .table1 td, th {
-    border-width: 0px;
+    border-width: 0;
     border-bottom-width: 2px;
     border-top-width: 2px;
-    border-color: #000;
+    border-left: none;
+    border-right: none;
+    border-color: #aaa;
 }
 .table2 {
     width: 100%;
     margin-top: 300px;
 }
 .table2 td {
-    border-width: 0px;
+    border-width: 0;
     border-color: #000;
     color: #333;
 }
 .table2 th {
     font-weight: normal;
-    border-width: 0px;
-    border-color: #43a34c;
+    border-width: 0;
     color: #333;
     background-color: #aaa;
     color: #fff;
-}
-.align-right {
-    text-align: right;
 }
 
 /* Pagination styles */
