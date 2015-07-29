@@ -27,6 +27,6 @@ return array(
     ],
     'alarm' => [
         'battery' => '20',
-        'delay' => '60'
+        'delay' => '31'
     ]
 );
