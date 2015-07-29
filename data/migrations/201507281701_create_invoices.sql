@@ -29,7 +29,7 @@ CREATE OR REPLACE FUNCTION before_insert_invoice()
             END IF;
 
             next_val := nextval('sequence_invoice_number');
-            NEW.invoice_number := to_char((next_val / 10000000000), '9999') || '/' || to_char((next_val % 10000000000), 'FM0999999999');
+            NEW.invoice_number := to_char((next_val / 10000000000), 'FM9999') || '/' || to_char((next_val % 10000000000), 'FM0999999999');
 
             RETURN NEW;
         END;

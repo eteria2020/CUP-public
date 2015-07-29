@@ -23,6 +23,7 @@ function refreshTable(period)
                 invoice['invoiceDate'],
                 invoice['type'],
                 invoice['content']['amounts']['total'],
+                invoice['content']['amounts']['iva'],
                 invoice['content']['amounts']['grand_total'],
                 invoice['id']
             );
@@ -39,10 +40,22 @@ function resetTable()
 var columnClass1 = 'block-data-table-td';
 var columnClass2 = 'cw-1-6';
 var columnClass3 = 'table-row-fix';
-function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
+function addRow(odd, invoiceNumber, invoiceDate, type, total, iva, grandTotal, id)
 {
-        // parse variables
-        invoiceDate = parseDay(invoiceDate %= 100);
+        // Parse type and substitute with alias
+        switch (type) {
+            case 'FIRST_PAYMENT':
+                type = 'Iscrizione al servizio';
+                break;
+            case 'TRIP':
+                type = 'Corse';
+                break;
+            case 'PENALTY':
+                type = 'Sanzione';
+                break;
+            default:
+                type = '';
+        }
 
         // create the table row
         var $row = $('<div>');
@@ -61,7 +74,7 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
         // create the day column
         var $dayCol = $('<div>')
             .appendTo($row);
-        $dayCol.html(invoiceDate);
+        $dayCol.html(parseDay(invoiceDate));
         $dayCol.addClass(columnClass1);
         $dayCol.addClass(columnClass2);
         $dayCol.addClass(columnClass3);
@@ -83,6 +96,14 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
         $partialAmountCol.addClass(columnClass3);
 
         // create the total amount column
+        var $ivaCol = $('<div>')
+            .appendTo($row);
+        $ivaCol.html(iva);
+        $ivaCol.addClass(columnClass1);
+        $ivaCol.addClass(columnClass2);
+        $ivaCol.addClass(columnClass3);
+
+        // create the total amount column
         var $totalAmountCol = $('<div>')
             .appendTo($row);
         $totalAmountCol.html(grandTotal);
@@ -96,7 +117,7 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
         $downloadCol.html(
             '<span class=link-to-download>' +
                 '<a href=' + downloadLink + id + '>' +
-                    '<i class"fa fa-download"></i> Download' +
+                    '<i class="fa fa-download"></i>' +
                 '</a>' +
             '</span>'
         );
@@ -109,5 +130,6 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, grandTotal, id)
 
 function parseDay(day)
 {
-    return ((day < 10) ? '0' : '') + day;
+    day = day.toString();
+    return day.substring(0, 4) + '/' + day.substring(4, 6) + '/' + day.substring(6, 8);
 }

@@ -48,13 +48,15 @@ class PdfController extends AbstractActionController
 
         if ($invoice != null && $user instanceof Customers && $invoice->getCustomer()->getId() == $user->getId()) {
 
-            $this->pdfService->setOptions(array(
-                'footer-right'     => '[page]/[topage]', //Pag. [page]/[topage]
-                'footer-left'      => 'Share \'N Go',
+            $this->pdfService->setOptions([
+                'footer-right' => '[page]/[topage]',
+                'footer-left' => 'Share \'nGo',
                 'footer-font-name' => 'Arial Sans Serif',
                 'footer-font-size' => '10',
-                'footer-line'      => true
-            ));
+                'footer-line' => true,
+                'lowquality' => false,
+                'image-quality' => 100
+            ]);
 
             $now = new \DateTime();
 

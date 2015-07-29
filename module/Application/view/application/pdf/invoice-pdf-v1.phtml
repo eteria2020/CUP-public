@@ -32,7 +32,7 @@
     <div class="page-container">
 
         <!-- Logo -->
-        <img class="logo" src="<?php echo $this->serverUrl()?>/images/sharengo_logo_pdf.png" alt="">
+        <img class="logo" src="<?php echo $this->serverUrl()?>/images/sharengo_logo.jpg" alt="">
 
         <!-- Invoice data -->
         <div class="invoice-data data">
@@ -98,32 +98,25 @@
         <div>
             <table class="table table2 font">
 
-                <?php
-                    // if invoice is for first payment
-                    if ($type == 'FIRST_PAYMENT') {
-                ?>
+                <tr>
 
-                <tr>
-                    <th class="table2-031e">Descrizione</th>
-                    <th class="table2-031e">Imponibile</th>
-                </tr>
-                <tr>
-                    <td class="table2-031e"><?= $invoiceContent['body']['description'] ?></td>
-                    <td class="table2-031e align-right"><?= $partialAmount ?> €</td>
+                    <?php
+                        // populate transactions table's header
+                        foreach ($invoiceContent['body']['contents']['header'] as $value) {
+                            echo '<th class="table2-031e">' . $value . '</th>';
+                        }
+                    ?>
+
                 </tr>
 
                 <?php
-                    // if invoice is for trips
-                    } elseif ($type == 'TRIP') {
-                ?>
-
-                <?php
-                    // if invoice is for penalty
-                    } elseif ($type == 'PENALTY') {
-                ?>
-
-                <?php
-                    // close invoice types if/elseif/else
+                    // generate transactions table's rows
+                    foreach ($invoiceContent['body']['contents']['body'] as $row) {
+                        echo '<tr>';
+                        foreach ($row as $value) {
+                            echo '<td class="table2-031e">' . $value . '</th>';
+                        }
+                        echo '</tr>';
                     }
                 ?>
 

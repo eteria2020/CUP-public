@@ -36,6 +36,11 @@
                 <!-- module-sharing-resmume content -->
                 <div class="module-sharing-resmume padding-top">
 
+                    <?php
+                        // check if there are any invoices
+                        if (!empty($availableDates)) {
+                    ?>
+
                     <!-- Filter -->
                     <div class="invoices-filter">
 
@@ -71,10 +76,11 @@
                         <!-- Invoices table headers -->
                         <div class="block-data-table-row clearfix">
                             <div class="block-data-table-th cw-1-6">N&deg; Fattura</div>
-                            <div class="block-data-table-th cw-1-6">Giorno</div>
+                            <div class="block-data-table-th cw-1-6">Data</div>
                             <div class="block-data-table-th cw-1-6">Tipo</div>
                             <div class="block-data-table-th cw-1-6">Netto (&euro;)</div>
                             <div class="block-data-table-th cw-1-6">IVA (&euro;)</div>
+                            <div class="block-data-table-th cw-1-6">Totale (&euro;)</div>
                             <div class="block-data-table-th cw-1-6">Download</div>
                         </div>
                         <!-- invoices table headers -->
@@ -87,6 +93,18 @@
 
                     </div>
                     <!-- invoices table -->
+
+                    <?php
+                        // if there are no invoices
+                        } else {
+                    ?>
+
+                    <h2>Nessuna fattura emessa finora</h2>
+
+                    <?php
+                        // close no invoices if
+                        }
+                    ?>
 
                 </div>
                 <!-- module-sharing-resmume -->
