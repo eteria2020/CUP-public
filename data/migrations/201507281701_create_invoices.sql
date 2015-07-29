@@ -36,7 +36,7 @@ CREATE TYPE invoice_type AS ENUM ('FIRST_PAYMENT', 'TRIP', 'PENALTY');
 
 CREATE TABLE invoices (
     id SERIAL PRIMARY KEY,
-    invoice_number TEXT DEFAULT nextval_sequence_invoice_number(),
+    invoice_number TEXT,
     customer_id integer NOT NULL,
     generated_ts timestamp(0) with time zone NOT NULL,
     content jsonb NOT NULL, #text if psql 9.1,
