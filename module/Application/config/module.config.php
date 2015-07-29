@@ -391,11 +391,23 @@ return array(
             'pdf' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/pdf[/:id]',
+                    'route' => '/pdf',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Pdf',
                         'action'     => 'index',
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'invoices' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/invoices[/:id]',
+                            'defaults' => [
+                                'action' => 'index',
+                            ]
+                        ]
                     ],
                 ]
             ],

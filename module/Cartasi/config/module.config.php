@@ -63,8 +63,7 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory',
-            'Cartasi\Service\Transactions' => 'Cartasi\Service\TransactionsServiceFactory'
+            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory'
         ]
     ],
     'doctrine'        => [

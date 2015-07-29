@@ -460,7 +460,7 @@ class ConsoleController extends AbstractActionController
         foreach ($customers as $customer) {
             $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
             $this->writeToConsole("Invoice not found\n");
-            $invoice = $this->invoicesService->createInvoiceForFirstPayment($customer);
+            $invoice = $this->invoicesService->prepareInvoiceForFirstPayment($customer);
             $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n");
             $this->entityManager->persist($invoice);
             $this->writeToConsole("EntityManager: invoice persisted\n\n");

@@ -1,37 +1,3 @@
-CREATE SEQUENCE sequence_invoice_number;
-SELECT setval('sequence_invoice_number', (EXTRACT(YEAR FROM now())::bigint * 10000000000));
-
-CREATE OR REPLACE FUNCTION nextval_sequence_invoice_number()
-    RETURNS TEXT
-    LANGUAGE plpgsql
-    AS
-    $$
-        DECLARE currVal bigint;
-        BEGIN
-            currVal := nextval('sequence_invoice_number');
-            RETURN to_char((currVal / 10000000000), '9999') || '/' || to_char((currVal % 10000000000), 'FM0999999999');
-        END;
-    $$;
-
-CREATE OR REPLACE FUNCTION before_insert_invoice()
-    RETURNS trigger
-    LANGUAGE plpgsql
-    AS
-    $$
-        DECLARE base_val  bigint;
-        BEGIN
-            NEW.invoice_number := nextval_sequence_invoice_number();
-            base_val := (EXTRACT(YEAR FROM now())::bigint * 10000000000);
-
-            IF (currval('sequence_invoice_number') < base_val) THEN
-                PERFORM setval('sequence_invoice_number', base_val);
-                NEW.invoice_number := nextval_sequence_invoice_number();
-            END IF;
-
-            RETURN NEW;
-        END;
-    $$;
-
 CREATE TYPE invoice_type AS ENUM ('FIRST_PAYMENT', 'TRIP', 'PENALTY');
 
 CREATE TABLE invoices (
@@ -46,7 +12,28 @@ CREATE TABLE invoices (
     amount int NOT NULL
 );
 
-ALTER SEQUENCE sequence_invoice_number OWNED BY invoices.invoice_number;
+CREATE SEQUENCE sequence_invoice_number OWNED BY invoices.invoice_number;
+
+CREATE OR REPLACE FUNCTION before_insert_invoice()
+    RETURNS trigger
+    LANGUAGE plpgsql
+    AS
+    $$
+        DECLARE base_val  bigint;
+        DECLARE next_val bigint;
+        BEGIN
+            base_val := (EXTRACT(YEAR FROM now())::bigint * 10000000000);
+
+            IF ((SELECT last_value FROM sequence_invoice_number) < base_val) THEN
+                PERFORM setval('sequence_invoice_number', base_val);
+            END IF;
+
+            next_val := nextval('sequence_invoice_number');
+            NEW.invoice_number := to_char((next_val / 10000000000), '9999') || '/' || to_char((next_val % 10000000000), 'FM0999999999');
+
+            RETURN NEW;
+        END;
+    $$;
 
 CREATE TRIGGER trigger_invoice_created
     BEFORE INSERT ON invoices
