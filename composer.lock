@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4a8da4b0a298aa0aa979966d168080c",
+    "hash": "05e9bc51ef206efb301df2aa9826452b",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -976,6 +976,46 @@
             "time": "2014-09-18 08:30:20"
         },
         {
+            "name": "h4cc/wkhtmltopdf-amd64",
+            "version": "0.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/h4cc/wkhtmltopdf-amd64.git",
+                "reference": "ebaa56a8ba0ae70a147ee70d544abf743db290d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/h4cc/wkhtmltopdf-amd64/zipball/ebaa56a8ba0ae70a147ee70d544abf743db290d3",
+                "reference": "ebaa56a8ba0ae70a147ee70d544abf743db290d3",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
+            "homepage": "http://wkhtmltopdf.org/",
+            "keywords": [
+                "binary",
+                "convert",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "time": "2014-02-11 21:33:07"
+        },
+        {
             "name": "knplabs/knp-snappy",
             "version": "0.3.4",
             "source": {
@@ -1092,7 +1132,7 @@
         },
         {
             "name": "mvlabs/mvlabs-snappy",
-            "version": "dev-master",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mvlabs/MvlabsSnappy.git",
@@ -1150,7 +1190,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "97e0f141018dfcaf059024877906656d117272ad"
+                "reference": "e5ae40b76f7b71f0a1ba7ba49daaece1ac06c450"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1164,7 +1204,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-07-15 09:25:09"
+            "time": "2015-07-27 11:53:39"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
@@ -1396,16 +1436,16 @@
         },
         {
             "name": "zendframework/zendframework",
-            "version": "2.4.4",
+            "version": "2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "84cad41e1ee549d634c109de18c4626e51cc6b29"
+                "reference": "d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/84cad41e1ee549d634c109de18c4626e51cc6b29",
-                "reference": "84cad41e1ee549d634c109de18c4626e51cc6b29",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a",
+                "reference": "d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a",
                 "shasum": ""
             },
             "require": {
@@ -1509,7 +1549,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2015-07-21 15:45:25"
+            "time": "2015-07-28 15:44:18"
         },
         {
             "name": "zendframework/zendxml",
@@ -1749,8 +1789,7 @@
     "stability-flags": {
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
-        "zendframework/zend-developer-tools": 20,
-        "mvlabs/mvlabs-snappy": 20
+        "zendframework/zend-developer-tools": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
