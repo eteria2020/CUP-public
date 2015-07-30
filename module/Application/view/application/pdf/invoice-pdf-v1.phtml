@@ -18,6 +18,8 @@
     $partialAmount = $invoiceContent['amounts']['total'];
     $iva = $invoiceContent['amounts']['iva'];
     $type = $invoiceContent['type'];
+    // Table data
+    $alignmentFormat = $invoiceContent['body']['contents']['body-format']['alignment'];
 ?>
 
 <!-- Main container -->
@@ -113,8 +115,8 @@
                     // generate transactions table's rows
                     foreach ($invoiceContent['body']['contents']['body'] as $row) {
                         echo '<tr>';
-                        foreach ($row as $value) {
-                            echo '<td class="table2-031e">' . $value . '</th>';
+                        foreach ($row as $key => $value) {
+                            echo '<td class="table2-031e' . ' ' . $alignmentFormat[$key] . '">' . $value . '</th>';
                         }
                         echo '</tr>';
                     }
@@ -124,19 +126,22 @@
         </div>
         <!-- transactions table -->
 
+        <!-- Spacing -->
+        <div class="spacing" style="height:<?= 570 - 25 * count($invoiceContent['body']['contents']['body']);?>px;"></div>
+
         <!-- Summary table -->
         <table class="table table1 font">
             <tr>
                 <td class="table1-031e">Totale imponibile</td>
-                <td class="table1-031e align-right"><?= $partialAmount ?> €</td>
+                <td class="table1-031e right"><?= $partialAmount ?> €</td>
             </tr>
             <tr>
                 <td class="table1-031e">IVA 22%</td>
-                <td class="table1-031e align-right"><?= $iva ?> €</td>
+                <td class="table1-031e right"><?= $iva ?> €</td>
             </tr>
             <tr>
                 <td class="table1-031e">Totale</td>
-                <td class="table1-031e align-right"><?= $totalAmount ?> €</td>
+                <td class="table1-031e right"><?= $totalAmount ?> €</td>
             </tr>
         </table>
         <!-- summary table -->

@@ -45,7 +45,7 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, iva, grandTotal, i
         // Parse type and substitute with alias
         switch (type) {
             case 'FIRST_PAYMENT':
-                type = 'Iscrizione al servizio';
+                type = 'Iscrizione';
                 break;
             case 'TRIP':
                 type = 'Corse';
