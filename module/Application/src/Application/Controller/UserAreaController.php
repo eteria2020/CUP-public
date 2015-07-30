@@ -240,7 +240,7 @@ class UserAreaController extends AbstractActionController
 
                 } catch (\Exception $e) {
 
-                    $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. L\'assistenza tecnica è già al corrente, ci scusiamo per l\'inconveniente');
 
                 }
 
@@ -294,7 +294,7 @@ class UserAreaController extends AbstractActionController
 
                 } catch (\Exception $e) {
 
-                    $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. L\'assistenza tecnica è già al corrente, ci scusiamo per l\'inconveniente');
 
                 }
 
