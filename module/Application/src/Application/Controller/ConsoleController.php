@@ -11,6 +11,7 @@ use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
+use SharengoCore\Service\InvoicesService;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
@@ -70,6 +71,11 @@ class ConsoleController extends AbstractActionController
     private $accountTripsService;
 
     /**
+     * @var InvoicesService
+     */
+    private $invoicesService;
+
+    /**
      * @var string
      */
     private $battery;
@@ -87,7 +93,8 @@ class ConsoleController extends AbstractActionController
         ProfilingPlaformService $profilingPlatformService,
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
-        $alarmConfig
+        $alarmConfig,
+        InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -98,6 +105,7 @@ class ConsoleController extends AbstractActionController
         $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
+        $this->invoicesService = $invoicesService;
     }
 
     public function getDiscountsAction()
@@ -435,5 +443,39 @@ class ConsoleController extends AbstractActionController
         }
 
         echo "\nDONE\n";
+    }
+
+    public function invoiceRegistrationsAction()
+    {
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $this->verbose = $request->getParam('verbose') || $request->getParam('v');
+        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $invoicesCreated = 0;
+
+        // get customers with first payment completed and no invoice
+        $customers = $this->customerService->getCustomersFirstPaymentCompletedNoInvoice();
+        $this->writeToConsole("Retrieved customers: " . count($customers) . "\n\n");
+
+        foreach ($customers as $customer) {
+            $this->writeToConsole('Customer: ' . $customer->getId() . "\n");
+            $this->writeToConsole("Invoice not found\n");
+            $invoice = $this->invoicesService->prepareInvoiceForFirstPayment($customer);
+            $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n");
+            $this->entityManager->persist($invoice);
+            $this->writeToConsole("EntityManager: invoice persisted\n\n");
+            $invoicesCreated ++;
+        }
+
+        // save invoices to db
+        if (!$dryRun) {
+            $this->writeToConsole("EntityManager: about to flush\n");
+            $this->entityManager->flush();
+            $this->writeToConsole("EntityManager: flushed\n");
+        }
+
+        $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
+        $this->writeToConsole("\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
     }
 }

@@ -71,7 +71,7 @@ return [
             __NAMESPACE__ . '_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+                'paths' => [__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity']
             ],
             'orm_default'             => [
                 'class'   => 'Doctrine\ORM\Mapping\Driver\DriverChain',

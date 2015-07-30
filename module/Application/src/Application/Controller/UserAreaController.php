@@ -19,6 +19,8 @@ use Zend\View\Model\JsonModel;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
+use SharengoCore\Service\InvoicesService;
+use SharengoCore\Entity\Invoices;
 
 use Cartasi\Service\CartasiPaymentsService;
 
@@ -40,6 +42,11 @@ class UserAreaController extends AbstractActionController
     * @var \Zend\Authentication\AuthenticationService
     */
     private $userService;
+
+    /**
+     * @var InvoicesService
+     */
+    private $invoicesService;
 
     /**
      * @var Customers
@@ -91,6 +98,7 @@ class UserAreaController extends AbstractActionController
         CustomersService $I_customersService,
         TripsService $I_tripsService,
         AuthenticationService $userService,
+        InvoicesService $invoicesService,
         Form $profileForm,
         Form $passwordForm,
         Form $driverLicenseForm,
@@ -102,6 +110,7 @@ class UserAreaController extends AbstractActionController
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
         $this->userService = $userService;
+        $this->invoicesService = $invoicesService;
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
@@ -305,5 +314,15 @@ class UserAreaController extends AbstractActionController
         return new ViewModel([
             'promoCodeForm' => $form
         ]);
+    }
+
+    public function invoicesListAction()
+    {
+        $customer = $this->userService->getIdentity();
+        $availableDates = $this->invoicesService->getDistinctDatesForCustomerByMonth($customer);
+
+        return new ViewModel(
+            ['availableDates' => $availableDates]
+        );
     }
 }
