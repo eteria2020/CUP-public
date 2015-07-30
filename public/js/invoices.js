@@ -131,5 +131,5 @@ function addRow(odd, invoiceNumber, invoiceDate, type, total, iva, grandTotal, i
 function parseDay(day)
 {
     day = day.toString();
-    return day.substring(0, 4) + '/' + day.substring(4, 6) + '/' + day.substring(6, 8);
+    return day.substring(6, 8) + '/' + day.substring(4, 6) + '/' + day.substring(0, 4);
 }

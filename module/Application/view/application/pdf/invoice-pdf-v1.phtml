@@ -104,30 +104,28 @@
 
                     <?php
                         // populate transactions table's header
-                        foreach ($invoiceContent['body']['contents']['header'] as $value) {
-                            echo '<th class="table2-031e">' . $value . '</th>';
-                        }
-                    ?>
+                        foreach ($invoiceContent['body']['contents']['header'] as $value) { ?>
+                            <th class="table2-031e"><?= $value ?></th>
+                        <?php } ?>
 
                 </tr>
 
                 <?php
                     // generate transactions table's rows
-                    foreach ($invoiceContent['body']['contents']['body'] as $row) {
-                        echo '<tr>';
-                        foreach ($row as $key => $value) {
-                            echo '<td class="table2-031e' . ' ' . $alignmentFormat[$key] . '">' . $value . '</th>';
-                        }
-                        echo '</tr>';
-                    }
-                ?>
+                    foreach ($invoiceContent['body']['contents']['body'] as $row) { ?>
+                        <tr>
+                        <?php foreach ($row as $key => $value) { ?>
+                            <td class="table2-031e <?= $alignmentFormat[$key] ?>"><?= $value ?></th>
+                        <?php } ?>
+                        </tr>
+                    <?php } ?>
 
             </table>
         </div>
         <!-- transactions table -->
 
         <!-- Spacing -->
-        <div class="spacing" style="height:<?= 570 - 25 * count($invoiceContent['body']['contents']['body']);?>px;"></div>
+        <div class="spacing" style="height:<?= 570 - 26 * count($invoiceContent['body']['contents']['body']);?>px;"></div>
 
         <!-- Summary table -->
         <table class="table table1 font">
