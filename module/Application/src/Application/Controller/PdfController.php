@@ -69,7 +69,7 @@ class PdfController extends AbstractActionController
             ]);
 
             $templateVersion = $invoice->getContent()['template_version'];
-            $viewModel->setTemplate('Application/Pdf/invoice-pdf-v' . $templateVersion);
+            $viewModel->setTemplate('application/pdf/invoice-pdf-v' . $templateVersion);
 
             $layoutViewModel->setVariables([
                 'content' => $this->viewRenderer->render($viewModel)
