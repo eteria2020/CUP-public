@@ -50,7 +50,7 @@ class PdfController extends AbstractActionController
 
             $this->pdfService->setOptions([
                 'footer-right' => '[page]/[topage]',
-                'footer-left' => 'Share \'nGo',
+                'footer-left' => 'Share \'N Go',
                 'footer-font-name' => 'Arial Sans Serif',
                 'footer-font-size' => '10',
                 'footer-line' => true,
