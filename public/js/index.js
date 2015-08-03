@@ -128,7 +128,7 @@ function initialize()
             // show pois on map only if position is not 0,0
             if (pois.lon != '0' && pois.lat != '0') {
                 // position of the pois
-                var latlng = new google.maps.LatLng(pois.lon, pois.lat);
+                var latlng = new google.maps.LatLng(pois.lat, pois.lon);
 
                 // create a marker
                 var marker = new google.maps.Marker({
