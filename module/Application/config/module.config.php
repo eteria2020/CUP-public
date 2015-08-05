@@ -388,29 +388,6 @@ return array(
                     ],
                 ]
             ],
-            'pdf' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/pdf',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Pdf',
-                        'action'     => 'index',
-                    ]
-                ],
-                'may_terminate' => true,
-                'child_routes' => [
-                    'invoices' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/invoices[/:id]',
-                            'defaults' => [
-                                'action' => 'index',
-                            ]
-                        ]
-                    ],
-                ]
-            ],
         ),
     ),
     'service_manager' => array(
@@ -445,7 +422,6 @@ return array(
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
-            'Application\Controller\Pdf' => 'Application\Controller\PdfControllerFactory',
         ],
     ],
     'view_helpers' => [
@@ -473,7 +449,6 @@ return array(
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'zfc-user/user/login'     => __DIR__ . '/../view/zfc-user/user/login.phtml',
-            'layout/pdf-layout'     => __DIR__ . '/../view/layout/layout_pdf.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -495,8 +470,7 @@ return array(
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
-                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
-                array('controller' => 'Application\Controller\Pdf', 'roles' => [])
+                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => [])
             ),
         ),
     ),

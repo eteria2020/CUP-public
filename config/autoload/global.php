@@ -28,9 +28,5 @@ return array(
     'alarm' => [
         'battery' => '20',
         'delay' => '31'
-    ],
-    'invoice' => [
-        'template_version' => '1',
-        'subscription_amount' => 1000
     ]
 );
