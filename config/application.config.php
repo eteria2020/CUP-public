@@ -14,6 +14,7 @@ return array(
         'GoalioForgotPassword',
         'GoalioForgotPasswordDoctrineORM',
         'MobileDetectModule',
+        'AssetManager',
         'MvlabsSnappy',
 
         // Our modules
