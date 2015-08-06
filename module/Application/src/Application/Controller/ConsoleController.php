@@ -412,7 +412,11 @@ class ConsoleController extends AbstractActionController
 
         foreach ($tripsToBeAccounted as $trip) {
             echo "processing trip ".$trip->getId()."\n";
-            $this->accountTripsService->accountTrip($trip);
+            if ($trip->isAccountable()) {
+                $this->accountTripsService->accountTrip($trip);
+            } else {
+                $this->tripsService->setTripAsNotPayable($trip);
+            }
         }
 
         echo "\nDONE\n";
