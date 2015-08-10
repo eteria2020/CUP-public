@@ -7,15 +7,15 @@ CREATE TABLE trip_payments (
     id INT NOT NULL,
     trip_id INT NOT NULL,
     fare_id INT NOT NULL,
-    invoice_id INT NOT NULL,
+    invoice_id INT,
     trip_minutes INT NOT NULL,
     parking_minutes INT NOT NULL,
     discount_percentage INT NOT NULL,
     total_cost INT NOT NULL,
     status trip_payment_status DEFAULT 'not_payed' NOT NULL,
     created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
-    payed_successfully_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
-    invoiced_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    payed_successfully_at TIMESTAMP(0) WITHOUT TIME ZONE,
+    invoiced_at TIMESTAMP(0) WITHOUT TIME ZONE,
     PRIMARY KEY(id)
 );
 
@@ -26,7 +26,7 @@ CREATE INDEX IDX_CD83A8222989F1FD ON trip_payments (invoice_id);
 CREATE TABLE trip_payment_tries (
     id INT NOT NULL,
     trip_payment_id INT NOT NULL,
-    webuser_id INT NOT NULL,
+    webuser_id INT,
     transaction_id INT NOT NULL,
     ts TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     outcome VARCHAR(255) NOT NULL,

@@ -348,13 +348,14 @@ class CartasiPaymentsController extends AbstractActionController
         }
 
         $outcome = $xml->StoreResponse->codiceEsito == 0 ? 'OK' : 'KO';
-        return $this->returnJsonWithOutcome($outcome);
+        return $this->returnJsonWithOutcome($outcome, $codTrans);
     }
 
-    private function returnJsonWithOutcome($outcome)
+    private function returnJsonWithOutcome($outcome, $codTrans = '')
     {
         return new JsonModel([
-            'outcome' => $outcome
+            'outcome' => $outcome,
+            'codTrans' => $codTrans
         ]);
     }
 }

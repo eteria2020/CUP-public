@@ -422,7 +422,8 @@ return array(
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
-            'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory'
+            'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory',
+            'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -472,7 +473,8 @@ return array(
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
                 array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
-                ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []]
+                ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
+                ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []]
             ),
         ),
     ),
@@ -576,6 +578,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'RemoveGoldListTrips',
                             'action' => 'remove-gold-list-trips'
+                        ]
+                    ]
+                ],
+                'compute-trips-cost' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'compute trips cost',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ComputeTripsCost',
+                            'action' => 'compute-trips-cost'
                         ]
                     ]
                 ]

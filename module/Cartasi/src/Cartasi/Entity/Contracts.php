@@ -54,6 +54,13 @@ class Contracts
      */
     private $insertedTs;
 
+    /**
+     * @var Transactions[]
+     *
+     * @ORM\OneToMany(targetEntity="Transactions", mappedBy="contract")
+     */
+    private $transactions;
+
     public function __construct()
     {
         $this->insertedTs = date_create(date('Y-m-d H:i:s'));

@@ -385,8 +385,8 @@ class CartasiPaymentsService
     }
 
     /**
-     * @var string format aaaammgg
-     * @var string format hhmmss
+     * @param string format aaaammgg
+     * @param string format hhmmss
      */
     public function datetime($date, $time)
     {
@@ -394,7 +394,7 @@ class CartasiPaymentsService
     }
 
     /**
-     * @var Customers
+     * @param Customers
      * @return boolean
      */
     public function customerCompletedFirstPayment(Customers $customer)
@@ -405,7 +405,7 @@ class CartasiPaymentsService
     }
 
     /**
-     * @var string
+     * @param string
      * @return \SimpleXMLElement
      */
     public function sendRecurringPaymentRequest($url)

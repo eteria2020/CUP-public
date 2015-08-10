@@ -28,5 +28,8 @@ return array(
     'alarm' => [
         'battery' => '20',
         'delay' => '31'
+    ],
+    'website' => [
+        'uri' => 'https://www.sharengo.it'
     ]
 );

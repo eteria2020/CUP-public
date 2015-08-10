@@ -8,7 +8,7 @@ return [
             'cartasi' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{cartasi}',
+                    'route' => '/cartasi',
                     'defaults' => [
                         '__NAMESPACE__' => 'Cartasi\Controller',
                         'controller' => 'CartasiPayments',
@@ -46,7 +46,7 @@ return [
                     'pagamento-ricorrente' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{pagamento-ricorrente}',
+                            'route' => '/pagamento-ricorrente',
                             'defaults' => [
                                 'action' => 'recurringPayment'
                             ]
@@ -63,7 +63,8 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory'
+            'Cartasi\Service\CartasiPayments' => 'Cartasi\Service\CartasiPaymentsServiceFactory',
+            'Cartasi\Service\CartasiContracts' => 'Cartasi\Service\CartasiContractsServiceFactory'
         ]
     ],
     'doctrine'        => [
