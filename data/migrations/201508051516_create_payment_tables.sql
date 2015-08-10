@@ -27,7 +27,7 @@ CREATE TABLE trip_payment_tries (
     id INT NOT NULL,
     trip_payment_id INT NOT NULL,
     webuser_id INT,
-    transaction_id INT NOT NULL,
+    transaction_id INT,
     ts TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     outcome VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
