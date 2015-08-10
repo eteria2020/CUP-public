@@ -31,5 +31,8 @@ return array(
     ],
     'website' => [
         'uri' => 'https://www.sharengo.it'
+    ],
+    'simple-logger' => [
+        'enviornment' => 'production'
     ]
 );

@@ -13,13 +13,13 @@ class ComputeTripsCostControllerFactory implements FactoryInterface
         $tripCostService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripCostService');
         $tripPaymentsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripPaymentsService');
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
-        $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        $logger = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\SimpleLoggerService');
 
         return new ComputeTripsCostController(
             $tripsService,
             $tripCostService,
             $tripPaymentsService,
             $invoicesService,
-            $entityManager);
+            $logger);
     }
 }
