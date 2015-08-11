@@ -16,14 +16,14 @@ class PaymentServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $emailTransport = new Sendmail();
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
+        $emailService = $serviceLocator->get('SharengoCore\Service\EmailService');
 
         $translationService = $serviceLocator->get('Translator');
 
         return new PaymentService(
-            $emailTransport,
             $emailSettings,
+            $emailService,
             $translationService
         );
     }

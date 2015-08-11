@@ -5,11 +5,11 @@ namespace Application\Service;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\EmailService;
 
 use Zend\Form\Form;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\Mail\Message;
-use Zend\Mail\Transport\TransportInterface;
 use Zend\Mime;
 use Zend\Mvc\I18n\Translator;
 use Zend\View\HelperPluginManager;
@@ -38,14 +38,14 @@ final class RegistrationService
     private $hydrator;
 
     /**
-     * @var \Zend\Mail\Transport\TransportInterface
-     */
-    private $emailTransport;
-
-    /**
      * @var array
      */
     private $emailSettings;
+
+    /**
+     * @var EmailService
+     */
+    private $emailService;
 
     /**
      * @var \Zend\Mvc\I18n\Translator
@@ -74,8 +74,8 @@ final class RegistrationService
         Form $form2,
         EntityManager $entityManager,
         AbstractHydrator $hydrator,
-        TransportInterface $emailTransport,
         array $emailSettings,
+        EmailService $emailService,
         Translator $translator,
         HelperPluginManager $viewHelperManager,
         PromoCodesService $promoCodesService
@@ -84,8 +84,8 @@ final class RegistrationService
         $this->form2 = $form2;
         $this->entityManager = $entityManager;
         $this->hydrator = $hydrator;
-        $this->emailTransport = $emailTransport;
         $this->emailSettings = $emailSettings;
+        $this->emailService = $emailService;
         $this->translator = $translator;
         $this->viewHelperManager = $viewHelperManager;
         $this->promoCodesService = $promoCodesService;
@@ -140,30 +140,20 @@ final class RegistrationService
 
     public function notifySharengoByMail($data)
     {
-        $mail = (new Message())
-            ->setFrom($this->emailSettings['from'])
-            ->setTo($this->emailSettings['sharengoNotices'])
-            ->setSubject("NUOVA REGISTRAZIONE DA SITO")
-            ->setReplyTo($this->emailSettings['replyTo'])
-            ->setBody(json_encode($data))
-            ->setEncoding("UTF-8");
-        $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
-
-        $this->emailTransport->send($mail);
+        $this->emailService->sendEmail(
+            $this->emailSettings['sharengoNotices'],
+            'NUOVA REGISTRAZIONE DA SITO',
+            json_encode($data)
+        );
     }
 
     public function notifySharengoErrorByEmail($message)
     {
-        $mail = (new Message())
-            ->setFrom($this->emailSettings['from'])
-            ->setTo($this->emailSettings['sharengoNotices'])
-            ->setSubject("ERRORE NUOVA REGISTRAZIONE DA SITO")
-            ->setReplyTo($this->emailSettings['replyTo'])
-            ->setBody($message)
-            ->setEncoding("UTF-8");
-        $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
-
-        $this->emailTransport->send($mail);
+        $this->emailService->sendEmail(
+            $this->emailSettings['sharengoNotices'],
+            'ERRORE NUOVA REGISTRAZIONE DA SITO',
+            $message
+        );
     }
 
     public function saveData($data)
@@ -175,7 +165,7 @@ final class RegistrationService
             $customer = $this->hydrator->hydrate($data, $customer);
 
             //generate primary PIN
-            $primary = mt_rand(1000,9999);
+            $primary = mt_rand(1000, 9999);
             $pins = ['primary' => $primary];
 
             $customer->setPin(json_encode($pins));
@@ -200,7 +190,7 @@ final class RegistrationService
             if ('' != $promoCode) {
                 $customerBonus = CustomersBonus::createFromPromoCode($this->promoCodesService->getPromoCode($promoCode));
                 $customerBonus->setCustomer($customer);
-                
+
                 $this->entityManager->persist($customerBonus);
             }
 
@@ -224,51 +214,24 @@ final class RegistrationService
             $serverUrl().$url('signup_insert').'?user='.$hash
         );
 
-        $text = new Mime\Part($content);
-        $text->type = Mime\Mime::TYPE_HTML;
-        $text->charset = 'utf-8';
+        $attachments = [
+            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
+            'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg'
+        ];
 
-        $image1 = file_get_contents(__DIR__.'/../../../../../public/images/bannerphono.jpg');
-        $attachment1 = new Mime\Part($image1);
-        $attachment1->type = Mime\Mime::TYPE_OCTETSTREAM;
-        $attachment1->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
-        $attachment1->encoding = Mime\Mime::ENCODING_BASE64;
-        $attachment1->filename = 'bannerphono.jpg';
-        $attachment1->id = 'bannerphono.jpg';
+        $this->emailService->sendEmail(
+            $email,
+            'SHARENGO: CONFERMA REGISTRAZIONE E ATTIVAZIONE',
+            $content,
+            $attachments
+        );
 
-        $image2 = file_get_contents(__DIR__.'/../../../../../public/images/barbarabacci.jpg');
-        $attachment2 = new Mime\Part($image2);
-        $attachment2->type = Mime\Mime::TYPE_OCTETSTREAM;
-        $attachment2->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
-        $attachment2->encoding = Mime\Mime::ENCODING_BASE64;
-        $attachment2->filename = 'barbarabacci.jpg';
-        $attachment2->id = 'barbarabacci.jpg';
-
-        $mimeMessage = new Mime\Message();
-        $mimeMessage->setParts([$text, $attachment1, $attachment2]);
-
-        $mail = (new Message())
-            ->setFrom($this->emailSettings['from'])
-            ->setTo(strtolower($email))
-            ->setSubject("SHARENGO: CONFERMA REGISTRAZIONE E ATTIVAZIONE")
-            ->setReplyTo($this->emailSettings['replyTo'])
-            ->setBcc($this->emailSettings['registrationBcc'])
-            ->setBody($mimeMessage)
-            ->setEncoding("UTF-8");
-        $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
-
-        $this->emailTransport->send($mail);
-
-        $mail = (new Message())
-            ->setFrom($this->emailSettings['from'])
-            ->setTo($this->emailSettings['sharengoNotices'])
-            ->setSubject("MAIL NUOVA REGISTRAZIONE DA SITO")
-            ->setReplyTo($this->emailSettings['replyTo'])
-            ->setBody($mimeMessage)
-            ->setEncoding("UTF-8");
-        $mail->getHeaders()->addHeaderLine('X-Mailer', $this->emailSettings['X-Mailer']);
-
-        $this->emailTransport->send($mail);
+        $this->emailService->sendEmail(
+            $this->emailSettings['sharengoNotices'],
+            'MAIL NUOVA REGISTRAZIONE DA SITO',
+            $content,
+            $attachments
+        );
     }
 
     public function removeSessionData()
@@ -277,7 +240,8 @@ final class RegistrationService
         $this->form2->clearRegisteredData();
     }
 
-    public function getUserFromHash($hash) {
+    public function getUserFromHash($hash)
+    {
         return $this->customersRepository->findOneBy([
             'hash' => $hash
         ]);

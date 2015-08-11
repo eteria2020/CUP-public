@@ -23,8 +23,8 @@ class RegistrationServiceFactory implements FactoryInterface
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
 
-        $emailTransport = new Sendmail();
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
+        $emailService = $serviceLocator->get('SharengoCore\Service\EmailService');
 
         $translationService = $serviceLocator->get('Translator');
 
@@ -37,8 +37,8 @@ class RegistrationServiceFactory implements FactoryInterface
             $form2,
             $entityManager,
             $hydrator,
-            $emailTransport,
             $emailSettings,
+            $emailService,
             $translationService,
             $viewHelperManager,
             $promoCodesService
