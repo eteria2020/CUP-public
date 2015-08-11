@@ -26,5 +26,8 @@
             "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
             "type": "git"
         }
-    ]
+    ],
+    "require-dev": {
+        "mockery/mockery": "^0.9.4"
+    }
 }
