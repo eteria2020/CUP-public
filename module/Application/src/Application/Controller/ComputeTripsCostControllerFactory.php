@@ -13,6 +13,7 @@ class ComputeTripsCostControllerFactory implements FactoryInterface
         $tripCostService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripCostService');
         $tripPaymentsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripPaymentsService');
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
+        $customersService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $logger = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\SimpleLoggerService');
 
         return new ComputeTripsCostController(
@@ -20,6 +21,8 @@ class ComputeTripsCostControllerFactory implements FactoryInterface
             $tripCostService,
             $tripPaymentsService,
             $invoicesService,
-            $logger);
+            $customersService,
+            $logger
+        );
     }
 }

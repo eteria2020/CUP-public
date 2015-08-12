@@ -602,6 +602,17 @@ return array(
                             'action' => 'invoice-trips'
                         ]
                     ]
+                ],
+                'disable-late-payers' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'disable late payers [--dry-run|-d] [--verbose|-v]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ComputeTripsCost',
+                            'action' => 'disable-late-payers'
+                        ]
+                    ]
                 ]
             ],
         ],

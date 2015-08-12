@@ -6,6 +6,8 @@ use SharengoCore\Service\TripsService;
 use SharengoCore\Service\TripCostService;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\InvoicesService;
+use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\CustomerNotificationsService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -33,9 +35,9 @@ class ComputeTripsCostController extends AbstractActionController
     private $invoicesService;
 
     /**
-     * @var boolean defines verbosity
+     * @var CustomerService
      */
-    private $verbose;
+    private $customerService;
 
     /**
      * @var Logger
@@ -54,12 +56,14 @@ class ComputeTripsCostController extends AbstractActionController
         TripCostService $tripCostService,
         TripPaymentsService $tripPaymentsService,
         InvoicesService $invoicesService,
+        CustomersService $customerService,
         Logger $logger
     ) {
         $this->tripsService = $tripsService;
         $this->tripCostService = $tripCostService;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->invoicesService = $invoicesService;
+        $this->customerService = $customerService;
         $this->logger = $logger;
     }
 
@@ -69,7 +73,7 @@ class ComputeTripsCostController extends AbstractActionController
 
         foreach ($tripsToBeProcessed as $trip) {
             echo "processing trip ".$trip->getId()."\n";
-            $this->tripCostService->computeTripCost($trip);
+            $this->tripCostService->computeTripCost($trip, false, false);
         }
 
         echo "\nDONE\n";
@@ -93,6 +97,30 @@ class ComputeTripsCostController extends AbstractActionController
         $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$dryRun);
 
         $this->logger->log("Created " . count($invoices) . " invoices\n\n");
+        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    public function disableLatePayersAction()
+    {
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $verbose = $request->getParam('verbose') || $request->getParam('v');
+
+        if ($verbose) {
+            $this->logger->setOutputEnviornment(Logger::OUTPUT_ON);
+            $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+        } else {
+            $this->logger->setOutputEnviornment(Logger::OUTPUT_OFF);
+        }
+
+        $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        // get all customers with expired trip payments
+        $latePayers = $this->customerService->retrieveLatePayers();
+        $this->logger->log('Retrieved ' . count($latePayers) . " late payers\n");
+
+        $this->customerService->disableForLatePayment($latePayers, !$dryRun, !$dryRun);
+
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 }
