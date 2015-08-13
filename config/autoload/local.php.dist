@@ -30,6 +30,6 @@ return [
         'environment' => 'development'
     ],
     'website' => [
-        'uri' => 'http://publicsite.dev.sharengo.it'
+        'uri' => 'http://www.dev.sharengo.eu'
     ]
 ];
