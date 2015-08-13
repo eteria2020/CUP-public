@@ -69,19 +69,30 @@ class ComputeTripsCostController extends AbstractActionController
 
     public function computeTripsCostAction()
     {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $payOff = $request->getParam('pay-off') || $request->getParam('p');
+        $emailOff = $request->getParam('email-off') || $request->getParam('e');
+
+        $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
         $tripsToBeProcessed = $this->tripsService->getTripsForCostComputation();
+        $this->logger->log("Trips found: " . count($tripsToBeProcessed) . "\n");
 
         foreach ($tripsToBeProcessed as $trip) {
-            echo "processing trip ".$trip->getId()."\n";
-            $this->tripCostService->computeTripCost($trip, false, false);
+            $this->logger->log("Processing trip " . $trip->getId() . "\n");
+            $this->tripCostService->computeTripCost($trip, $payOff, $dryRun, $emailOff);
         }
 
-        echo "\nDONE\n";
+        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
     public function invoiceTripsAction()
     {
-        $this->logger->setOutputEnviornment(Logger::OUTPUT_ON);
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
 
         $request = $this->getRequest();
@@ -91,7 +102,7 @@ class ComputeTripsCostController extends AbstractActionController
 
         // get all trip_payments without invoice
         $tripPayments = $this->tripPaymentsService->getTripPaymentsNoInvoiceGrouped();
-        $this->logger->log('Retrieved ' . count($tripPayments) . " tripPayments\n");
+        $this->logger->log("Retrieved tripPayments\n\n");
 
         // generate the invoices
         $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$dryRun);

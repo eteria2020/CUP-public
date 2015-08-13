@@ -33,6 +33,6 @@ return array(
         'uri' => 'https://www.sharengo.it'
     ],
     'simple-logger' => [
-        'enviornment' => 'production'
+        'environment' => 'production'
     ]
 );
