@@ -21,8 +21,10 @@ use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Entity\Invoices;
+use SharengoCore\Service\TripPaymentsService;
 
 use Cartasi\Service\CartasiPaymentsService;
+use Cartasi\Service\CartasiContractsService;
 
 class UserAreaController extends AbstractActionController
 {
@@ -38,7 +40,7 @@ class UserAreaController extends AbstractActionController
      */
     private $I_tripsService;
 
-    /*
+    /**
     * @var \Zend\Authentication\AuthenticationService
     */
     private $userService;
@@ -88,11 +90,25 @@ class UserAreaController extends AbstractActionController
      */
     private $showError = false;
 
-    /** @var  PromoCodeForm */
+    /**
+     * @var PromoCodeForm
+     */
     private $promoCodeForm;
 
-    /** @var  PromoCodesService */
+    /**
+     * @var PromoCodesService
+     */
     private $promoCodeService;
+
+    /**
+     * @var TripPaymentsService
+     */
+    private $tripPaymentsService;
+
+    /**
+     * @var CartasiContractsService
+     */
+    private $cartasiContractsService;
 
     public function __construct(
         CustomersService $I_customersService,
@@ -105,7 +121,9 @@ class UserAreaController extends AbstractActionController
         Form $promoCodeForm,
         HydratorInterface $hydrator,
         CartasiPaymentsService $cartasiPaymentsService,
-        PromoCodesService $promoCodeService
+        PromoCodesService $promoCodeService,
+        TripPaymentsService $tripPaymentsService,
+        CartasiContractsService $cartasiContractsService
     ) {
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
@@ -119,6 +137,8 @@ class UserAreaController extends AbstractActionController
         $this->hydrator = $hydrator;
         $this->cartasiPaymentsService = $cartasiPaymentsService;
         $this->promoCodeService =  $promoCodeService;
+        $this->tripPaymentsService = $tripPaymentsService;
+        $this->cartasiContractsService = $cartasiContractsService;
     }
 
     public function indexAction()
@@ -289,11 +309,11 @@ class UserAreaController extends AbstractActionController
                     /** @var PromoCodes $promoCode */
                     $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
 
-                    if(is_null($promoCode)) {
+                    if (is_null($promoCode)) {
                         throw new \Exception('Codice promo non valido.');
                     }
 
-                    if($this->I_customersService->checkUsedPromoCode($this->customer, $promoCode)) {
+                    if ($this->I_customersService->checkUsedPromoCode($this->customer, $promoCode)) {
                         throw new \Exception('Codice bonus già associato a questo account.');
                     }
 
@@ -334,5 +354,19 @@ class UserAreaController extends AbstractActionController
         return new ViewModel(
             ['availableDates' => $availableDates]
         );
+    }
+
+    public function activatePaymentsAction()
+    {
+        $customer = $this->userService->getIdentity();
+
+        $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
+        $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
+
+        return new ViewModel([
+            'expiryDate' => '31-08-2015',
+            'isActivated' => $isActivated,
+            'tripPayment' => $tripPayment
+        ]);
     }
 }

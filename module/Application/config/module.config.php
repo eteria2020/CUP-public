@@ -386,6 +386,15 @@ return array(
                             ]
                         ]
                     ],
+                    'activate-payments' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{attivazione}',
+                            'defaults' => [
+                                'action' => 'activate-payments'
+                            ]
+                        ]
+                    ],
                 ]
             ],
         ),

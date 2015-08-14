@@ -21,6 +21,9 @@ class UserAreaControllerFactory implements FactoryInterface
         $hydrator = new Reflection();
         $cartasiPaymentsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiPayments');
         $promoCodeService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesService');
+        $tripPaymentsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripPaymentsService');
+        $cartasiContractsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiContracts');
+
 
         return new UserAreaController(
             $I_customerService,
@@ -33,7 +36,10 @@ class UserAreaControllerFactory implements FactoryInterface
             $promoCodeForm,
             $hydrator,
             $cartasiPaymentsService,
-            $promoCodeService
+            $promoCodeService,
+            $tripPaymentsService,
+            $cartasiContractsService
+
         );
     }
 }

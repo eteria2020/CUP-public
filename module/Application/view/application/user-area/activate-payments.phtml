@@ -1,0 +1,128 @@
+<?php
+    $invoices = [];
+    $isActivated = $this->isActivated;
+    $expiryDate = $this->expiryDate;
+    $tripPayment = $this->tripPayment;
+?>
+
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'activate-payments')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('Attivazione pagamenti'); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-sharing-resmume content -->
+                <div class="module-sharing-resmume padding-top">
+
+                    <?php
+                        // check if customer has no credit card
+                        if (!$isActivated) {
+                            // check if customer has trips
+                            if ($tripPayment != null) {
+                    ?>
+
+                    <!-- Description -->
+                    <div>
+                        <p>Hai tempo fino al <?= $expiryDate ?> per pagare la prima corsa e confermare una carta di credito.</p>
+                        <p>I costi delle altre corse ti verranno addebitati nelle successive 24h al pagamento.</p>
+                        <p>Clicca il link in fondo e segui le istruzioni.</p>
+                        <h2 class="margin-top-custom">Di seguito i dettagli della corsa:</h2>
+                    </div>
+                    <!-- description -->
+
+                    <!-- Invoices table -->
+                    <div class="block-data-table clearboth clearfix margin-top-custom">
+
+                        <!-- Invoices table headers -->
+                        <div class="block-data-table-row clearfix">
+                            <div class="block-data-table-th cw-1-5">Data inizio</div>
+                            <div class="block-data-table-th cw-1-5">Targa</div>
+                            <div class="block-data-table-th cw-1-5">Durata (min)</div>
+                            <div class="block-data-table-th cw-1-5">Sosta (min)</div>
+                            <div class="block-data-table-th cw-1-5">Totale (&euro;)</div>
+                        </div>
+                        <!-- invoices table headers -->
+
+                        <!-- Invoice table body -->
+                        <div>
+                            <div class="block-data-table-row clearfix odd">
+                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTrip()->getTimestampBeginning()->format("Y-m-d H:i:s") ?></div>
+                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTrip()->getCar()->getPlate() ?></div>
+                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTripMinutes() ?></div>
+                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getParkingMinutes() ?></div>
+                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= number_format($tripPayment->getTotalCost() / 100, 2, ',', ' ') ?></div>
+                            </div>
+                        </div>
+                        <!-- invoice table body -->
+
+                    </div>
+                    <!-- invoices table -->
+
+                    <!-- Confirm button -->
+                    <div class="block-wrapper-button content-align-center margin-top-custom">
+                        <a href="<?= $this->url('cartasi/primo-pagamento-corsa') ?>"><button><?= $this->translate("Effettua pagamento"); ?></button></a>
+                    </div>
+                    <!-- confirm button -->
+
+                        <?php
+                            // if customer has no credit card and no trips
+                            } else {
+                        ?>
+
+                    <h2>Non hai ancora consumato i minuti bonus</h2>
+
+                    <?php
+                        // close no credit card if
+                        }
+                    ?>
+
+                    <?php
+                        // if customer has credit card
+                        } else {
+                    ?>
+
+                    <h2>Carta di credito registrata con successo!</h2>
+
+                    <?php
+                        // close has credit card if
+                        }
+                    ?>
+
+                </div>
+                <!-- module-sharing-resmume -->
+
+            </div>
+            <!-- module-column-app-content -->
+
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->
