@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "04862200a5e4104c9c6cc52f59bc0ad4",
+    "hash": "8769ec690ccc2723676a5c84009b9404",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -1259,6 +1259,28 @@
             "time": "2015-03-30 15:54:03"
         },
         {
+            "name": "mvlabs/sharengo-cartasi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
+                "reference": "e9eac96735af853e6ff49abcb42435359ef0d361"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cartasi": "src/"
+                }
+            },
+            "description": "Cartasi module for Sharengo",
+            "time": "2015-08-14 07:50:02"
+        },
+        {
             "name": "mvlabs/sharengo-coremodule",
             "version": "dev-master",
             "source": {
@@ -2087,7 +2109,8 @@
     "stability-flags": {
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
-        "zendframework/zend-developer-tools": 20
+        "zendframework/zend-developer-tools": 20,
+        "mvlabs/sharengo-cartasi": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
