@@ -6,3 +6,6 @@ CREATE TABLE fares (
     cost_steps JSONB NOT NULL,
     PRIMARY KEY(id)
 );
+
+INSERT INTO fares (motion_cost_per_minute, park_cost_per_minute, cost_steps)
+VALUES (28, 10, '{"1440": 5000, "240": 3000, "60": 1200}');
