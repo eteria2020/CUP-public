@@ -362,9 +362,10 @@ class UserAreaController extends AbstractActionController
 
         $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
+        $expiryDate = date('Y-m-d', strtotime($tripPayment->getCreatedAt()->format('Y-m-d') . ' + 7 days'));
 
         return new ViewModel([
-            'expiryDate' => '31-08-2015',
+            'expiryDate' => $expiryDate,
             'isActivated' => $isActivated,
             'tripPayment' => $tripPayment
         ]);
