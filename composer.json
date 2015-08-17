@@ -35,5 +35,11 @@
     "require-dev": {
         "mockery/mockery": "^0.9.4",
         "phpunit/phpunit": "^4.8"
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "SharengoCore": "module/SharengoCore/src",
+            "Cartasi": "module/SharengoCore/src"
+        }
     }
 }
