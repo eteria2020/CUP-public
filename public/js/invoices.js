@@ -12,8 +12,6 @@ function refreshTable(period)
     {
         var i = 0;
         resetTable();
-        var columnClass1 = 'block-data-table-td';
-        var columnClass2 = 'cw-1-6';
 
         jsonData.data.forEach(function (invoice)
         {
@@ -38,7 +36,7 @@ function resetTable()
 }
 
 var columnClass1 = 'block-data-table-td';
-var columnClass2 = 'cw-1-6';
+var columnClass2 = 'cw-1-7';
 var columnClass3 = 'table-row-fix';
 function addRow(odd, invoiceNumber, invoiceDate, type, total, iva, grandTotal, id)
 {
