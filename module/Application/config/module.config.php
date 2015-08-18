@@ -386,6 +386,15 @@ return array(
                             ]
                         ]
                     ],
+                    'rents' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{noleggi}',
+                            'defaults' => [
+                                'action' => 'rents'
+                            ]
+                        ]
+                    ],
                 ]
             ],
         ),

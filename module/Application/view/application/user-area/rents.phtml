@@ -1,0 +1,127 @@
+<?php
+    $availableDates = $this->availableDates;
+    $lastValue = '';
+?>
+
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'rents')); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('Noleggi'); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-sharing-resmume -->
+                <div class="module-sharing-resmume padding-top">
+
+                    <?php
+                        // check if there are any invoices
+                        if (!empty($availableDates)) {
+                    ?>
+
+                    <!-- Filter -->
+                    <div class="invoices-filter">
+
+                        <!-- Header -->
+                        <p class="invoices-filter-title">Periodo</p>
+
+                        <!-- Select box -->
+                        <select id="rents-filter-select" class="invoices-filter-select">
+
+                            <?php
+                                $isLastValue = true;
+                                foreach ($availableDates as $date) {
+                                    echo '<option value="' . $date->format('Y-m') . '-01 0:00:00">' .
+                                        $date->format('m-Y') .
+                                    '</option>';
+                                    if ($isLastValue) {
+                                        $lastValue = $date->format('Y-m') . '-01 0:00:00';
+                                        $isLastValue = false;
+                                    }
+                                }
+                            ?>
+
+                        </select>
+                        <!-- select box -->
+
+                    </div>
+                    <!-- filter -->
+
+                    <!-- Invoices table -->
+                    <div class="block-data-table clearboth clearfix margin-top-custom">
+
+                        <!-- Invoices table headers -->
+                        <div class="block-data-table-row clearfix">
+                            <div class="block-data-table-th cw-1-6">Data</div>
+                            <div class="block-data-table-th cw-1-6">Ora</div>
+                            <div class="block-data-table-th cw-1-6">Partenza</div>
+                            <div class="block-data-table-th cw-1-6">Netto (&euro;)</div>
+                            <div class="block-data-table-th cw-1-6">IVA (&euro;)</div>
+                            <div class="block-data-table-th cw-1-6">Totale (&euro;)</div>
+                        </div>
+                        <!-- invoices table headers -->
+
+                        <!-- Invoice table body -->
+                        <div id="rents-table-body">
+                            <!-- Content generated in js -->
+                        </div>
+                        <!-- invoice table body -->
+
+                    </div>
+                    <!-- invoices table -->
+
+                    <?php
+                        // if there are no invoices
+                        } else {
+                    ?>
+
+                    <h2>Nessun noleggio effettuato finora</h2>
+
+                    <?php
+                        // close no invoices if
+                        }
+                    ?>
+
+                </div>
+                <!-- module-sharing-resmume -->
+
+            </div>
+            <!-- module-column-app-content -->
+
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+var rentsUrl = "<?= $this->url('core/trips'); ?>";
+var lastPeriod = "<?= (count($availableDates) > 0 ? $lastValue : ''); ?>";
+</script>
+<script type="text/javascript" src="<?= $this->basePath(); ?>/js/rents.js"></script>
