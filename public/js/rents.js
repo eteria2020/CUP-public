@@ -27,17 +27,31 @@ function refreshTable(period)
 
         jsonData.data.forEach(function (trip)
         {
+            var tripPayment = trip['tripPayment'];
+            var tripMinutes = '/';
+            var parkingMinutes = '/';
+            var totalAmount = '/';
+            var mustPay = '/';
+            if (tripPayment !== null) {
+                tripMinutes = tripPayment['tripMinutes'] + ' (min)';
+                parkingMinutes = tripPayment['parkingMinutes'] + ' (min)';
+                totalAmount = tripPayment['totalCost'] + ' (\u20ac)';
+                mustPay = tripPayment['status'];
+                mustPay = (status == 'payed_correctly' || status == 'invoiced') ? 'NO' : 'SI';
+            }
             addRow(
                 (i + 1) % 2,
-                trip['timestampBeginningString'].substr(0, 10),
-                trip['timestampBeginningString'].substr(11, 8),
+                trip['timestampBeginningString'],
+                trip['timestampEndString'],
+                tripMinutes,
+                parkingMinutes,
+                totalAmount,
+                mustPay,
                 trip['latitudeBeginning'],
+                trip['longitudeBeginning'],
                 trip['latitudeEnd'],
-                'netto',
-                'iva',
-                'totale'
+                trip['longitudeEnd']
             );
-            console.log(trip);
         });
     });
 }
@@ -47,76 +61,138 @@ function resetTable()
     $('#rents-table-body').empty();
 }
 
+var groupClass = 'block-data-table-row-group';
+var clearfixClass = 'clearfix';
+var datainfoClass = 'data-info';
 var columnClass1 = 'block-data-table-td';
 var columnClass2 = 'cw-1-6';
 var columnClass3 = 'table-row-fix';
-function addRow(odd, date, hour, lat, lng, total, iva, grandTotal)
+var columnClass4 = 'cw-1-4';
+var columnClass5 = 'cw-6-6';
+var hiddenRowClass = 'block-data-field';
+function addRow(odd, startDate, endDate, tripMinutes, parkingMinutes, totalAmount, mustPay, latStart, lonStart, latEnd, lonEnd)
 {
+        // create the group for all the rows in a block
+        var $group = $('<div>')
+            .appendTo($('#rents-table-body'));
+        $group.addClass(groupClass);
+        $group.addClass(clearfixClass);
 
-        // create the table row
-        var $row = $('<div>');
-        $row.addClass('block-data-table-row');
-        $row.addClass('clearfix');
-        $row.addClass((odd) ? 'odd' : 'even');
+            // create the visible row
+            var $row = $('<div>')
+                .appendTo($group);
+            $row.addClass('block-data-table-row');
+            $row.addClass(clearfixClass);
+            $row.addClass((odd) ? 'odd' : 'even');
 
-        // create the date column
-        var $dateCol = $('<div>')
-            .appendTo($row);
-        $dateCol.html(date);
-        $dateCol.addClass(columnClass1);
-        $dateCol.addClass(columnClass2);
-        $dateCol.addClass(columnClass3);
+                // create the date column
+                var $startDateCol = $('<div>')
+                    .appendTo($row);
+                $startDateCol.html(startDate);
+                $startDateCol.addClass(columnClass1);
+                $startDateCol.addClass(columnClass2);
+                $startDateCol.addClass(columnClass3);
 
-        // create the hour column
-        var $hourCol = $('<div>')
-            .appendTo($row);
-        $hourCol.html(hour);
-        $hourCol.addClass(columnClass1);
-        $hourCol.addClass(columnClass2);
-        $hourCol.addClass(columnClass3);
+                // create the hour column
+                var $endDateCol = $('<div>')
+                    .appendTo($row);
+                $endDateCol.html(endDate);
+                $endDateCol.addClass(columnClass1);
+                $endDateCol.addClass(columnClass2);
+                $endDateCol.addClass(columnClass3);
 
-        // create the start column
-        var $startCol = $('<div>')
-            .appendTo($row);
-        $startCol.html('');
-        $startCol.addClass(columnClass1);
-        $startCol.addClass(columnClass2);
-        $startCol.addClass(columnClass3);
+                // create the start column
+                var $tripMinutesCol = $('<div>')
+                    .appendTo($row);
+                $tripMinutesCol.html(tripMinutes);
+                $tripMinutesCol.addClass(columnClass1);
+                $tripMinutesCol.addClass(columnClass2);
+                $tripMinutesCol.addClass(columnClass3);
 
-        // create the partial amount column
-        var $partialAmountCol = $('<div>')
-            .appendTo($row);
-        $partialAmountCol.html(total);
-        $partialAmountCol.addClass(columnClass1);
-        $partialAmountCol.addClass(columnClass2);
-        $partialAmountCol.addClass(columnClass3);
+                // create the partial amount column
+                var $parkingMinutesCol = $('<div>')
+                    .appendTo($row);
+                $parkingMinutesCol.html(parkingMinutes);
+                $parkingMinutesCol.addClass(columnClass1);
+                $parkingMinutesCol.addClass(columnClass2);
+                $parkingMinutesCol.addClass(columnClass3);
 
-        // create the total amount column
-        var $ivaCol = $('<div>')
-            .appendTo($row);
-        $ivaCol.html(iva);
-        $ivaCol.addClass(columnClass1);
-        $ivaCol.addClass(columnClass2);
-        $ivaCol.addClass(columnClass3);
+                // create the total amount column
+                var $totalAmountCol = $('<div>')
+                    .appendTo($row);
+                $totalAmountCol.html(totalAmount);
+                $totalAmountCol.addClass(columnClass1);
+                $totalAmountCol.addClass(columnClass2);
+                $totalAmountCol.addClass(columnClass3);
 
-        // create the total amount column
-        var $totalAmountCol = $('<div>')
-            .appendTo($row);
-        $totalAmountCol.html(grandTotal);
-        $totalAmountCol.addClass(columnClass1);
-        $totalAmountCol.addClass(columnClass2);
-        $totalAmountCol.addClass(columnClass3);
+                // create the total amount column
+                var $mustPayCol = $('<div>')
+                    .appendTo($row);
+                $mustPayCol.html(mustPay);
+                $mustPayCol.addClass(columnClass1);
+                $mustPayCol.addClass(columnClass2);
+                $mustPayCol.addClass(columnClass3);
 
-        $row.appendTo($('#rents-table-body'));
+            // create the first hidden row
+            var $hiddenRow1 = $('<div>')
+                .appendTo($group);
+            $hiddenRow1.addClass('block-data-table-row');
+            $hiddenRow1.addClass(datainfoClass);
+            $hiddenRow1.addClass(clearfixClass);
 
-        var latlng = new google.maps.LatLng(lat, lng);
+                // create the total amount column
+                var $startAddressCol = $('<div>')
+                    .appendTo($hiddenRow1);
+                $startAddressCol.html('');
+                $startAddressCol.addClass(columnClass1);
+                $startAddressCol.addClass(columnClass5);
+                $startAddressCol.addClass(columnClass3);
 
-        geocoder.geocode({'latLng': latlng}, function(results, status)
+                    var $startAddressSpan = $('<span>')
+                        .appendTo($startAddressCol);
+                    $startAddressSpan.html('Partenza: ');
+                    $startAddressSpan.addClass(hiddenRowClass);
+
+            // create the first hidden row
+            var $hiddenRow2 = $('<div>')
+                .appendTo($group);
+            $hiddenRow2.addClass('block-data-table-row');
+            $hiddenRow2.addClass(datainfoClass);
+            $hiddenRow2.addClass(clearfixClass);
+
+                // create the total amount column
+                var $endAddressCol = $('<div>')
+                    .appendTo($hiddenRow2);
+                $endAddressCol.html('');
+                $endAddressCol.addClass(columnClass1);
+                $endAddressCol.addClass(columnClass5);
+                $endAddressCol.addClass(columnClass3);
+
+                    var $endAddressSpan = $('<span>')
+                        .appendTo($endAddressCol);
+                    $endAddressSpan.html('Destinazione: ');
+                    $endAddressSpan.addClass(hiddenRowClass);
+
+        var latlngStart = new google.maps.LatLng(latStart, lonStart);
+        var latlngEnd = new google.maps.LatLng(latEnd, lonEnd);
+
+        geocoder.geocode({'latLng': latlngStart}, function(results, status)
         {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        $startCol.html(results[1].formatted_address);
+                        $startAddressCol.html($startAddressCol.html() + results[1].formatted_address);
+                    }
+                }
+            }
+        });
+
+        geocoder.geocode({'latLng': latlngEnd}, function(results, status)
+        {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        $endAddressCol.html($endAddressCol.html() + results[1].formatted_address);
                     }
                 }
             }
