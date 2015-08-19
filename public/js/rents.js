@@ -50,7 +50,9 @@ function refreshTable(period)
                 trip['latitudeBeginning'],
                 trip['longitudeBeginning'],
                 trip['latitudeEnd'],
-                trip['longitudeEnd']
+                trip['longitudeEnd'],
+                '/',
+                '/'
             );
         });
     });
@@ -68,10 +70,23 @@ var columnClass1 = 'block-data-table-td';
 var columnClass2 = 'cw-1-6';
 var columnClass3 = 'table-row-fix';
 var columnClass4 = 'cw-1-4';
-var columnClass5 = 'cw-6-6';
+var columnClass5 = 'cw-1-2';
 var hiddenRowClass = 'block-data-field';
-function addRow(odd, startDate, endDate, tripMinutes, parkingMinutes, totalAmount, mustPay, latStart, lonStart, latEnd, lonEnd)
-{
+function addRow(
+    odd,
+    startDate,
+    endDate,
+    tripMinutes,
+    parkingMinutes,
+    totalAmount,
+    mustPay,
+    latStart,
+    lonStart,
+    latEnd,
+    lonEnd,
+    bonusMinutes,
+    freeMinutes
+) {
         // create the group for all the rows in a block
         var $group = $('<div>')
             .appendTo($('#rents-table-body'));
@@ -140,7 +155,7 @@ function addRow(odd, startDate, endDate, tripMinutes, parkingMinutes, totalAmoun
             $hiddenRow1.addClass(datainfoClass);
             $hiddenRow1.addClass(clearfixClass);
 
-                // create the total amount column
+                // create the start address column
                 var $startAddressCol = $('<div>')
                     .appendTo($hiddenRow1);
                 $startAddressCol.html('');
@@ -153,16 +168,9 @@ function addRow(odd, startDate, endDate, tripMinutes, parkingMinutes, totalAmoun
                     $startAddressSpan.html('Partenza: ');
                     $startAddressSpan.addClass(hiddenRowClass);
 
-            // create the first hidden row
-            var $hiddenRow2 = $('<div>')
-                .appendTo($group);
-            $hiddenRow2.addClass('block-data-table-row');
-            $hiddenRow2.addClass(datainfoClass);
-            $hiddenRow2.addClass(clearfixClass);
-
-                // create the total amount column
+                // create the end address column
                 var $endAddressCol = $('<div>')
-                    .appendTo($hiddenRow2);
+                    .appendTo($hiddenRow1);
                 $endAddressCol.html('');
                 $endAddressCol.addClass(columnClass1);
                 $endAddressCol.addClass(columnClass5);
@@ -172,6 +180,39 @@ function addRow(odd, startDate, endDate, tripMinutes, parkingMinutes, totalAmoun
                         .appendTo($endAddressCol);
                     $endAddressSpan.html('Destinazione: ');
                     $endAddressSpan.addClass(hiddenRowClass);
+
+            // create the first hidden row
+            var $hiddenRow2 = $('<div>')
+                .appendTo($group);
+            $hiddenRow2.addClass('block-data-table-row');
+            $hiddenRow2.addClass(datainfoClass);
+            $hiddenRow2.addClass(clearfixClass);
+
+                // create the start address column
+                var $bonusMinutesCol = $('<div>')
+                    .appendTo($hiddenRow2);
+                $bonusMinutesCol.html('');
+                $bonusMinutesCol.addClass(columnClass1);
+                $bonusMinutesCol.addClass(columnClass5);
+                $bonusMinutesCol.addClass(columnClass3);
+
+                    var $bonusMinutesSpan = $('<span>')
+                        .appendTo($bonusMinutesCol);
+                    $bonusMinutesSpan.html('Minuti bonus consumati: ' + bonusMinutes);
+                    $bonusMinutesSpan.addClass(hiddenRowClass);
+
+                // create the end address column
+                var $freeMinutesCol = $('<div>')
+                    .appendTo($hiddenRow2);
+                $freeMinutesCol.html('');
+                $freeMinutesCol.addClass(columnClass1);
+                $freeMinutesCol.addClass(columnClass5);
+                $freeMinutesCol.addClass(columnClass3);
+
+                    var $freeMinutesSpan = $('<span>')
+                        .appendTo($freeMinutesCol);
+                    $freeMinutesSpan.html('Minuti gratuiti fruiti: ' + freeMinutes);
+                    $freeMinutesSpan.addClass(hiddenRowClass);
 
         var latlngStart = new google.maps.LatLng(latStart, lonStart);
         var latlngEnd = new google.maps.LatLng(latEnd, lonEnd);
