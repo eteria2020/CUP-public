@@ -39,7 +39,7 @@
     "autoload-dev": {
         "psr-0": {
             "SharengoCore": "module/SharengoCore/src",
-            "Cartasi": "module/SharengoCore/src"
+            "Cartasi": "module/Cartasi/src"
         }
     }
 }
