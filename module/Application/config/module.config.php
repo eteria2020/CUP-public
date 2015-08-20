@@ -423,7 +423,8 @@ return array(
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
             'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory',
-            'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory'
+            'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
+            'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -584,7 +585,7 @@ return array(
                 'compute-trips-cost' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'compute trips cost [--dry-run|-d] [--pay-off|-p] [--email-off|-e]',
+                        'route' => 'compute trips cost [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ComputeTripsCost',
@@ -611,6 +612,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ComputeTripsCost',
                             'action' => 'disable-late-payers'
+                        ]
+                    ]
+                ],
+                'make-them-pay' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'make them pay [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayments',
+                            'action' => 'make-them-pay'
                         ]
                     ]
                 ]

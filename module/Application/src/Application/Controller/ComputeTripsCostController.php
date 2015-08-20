@@ -74,8 +74,6 @@ class ComputeTripsCostController extends AbstractActionController
 
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
-        $payOff = $request->getParam('pay-off') || $request->getParam('p');
-        $emailOff = $request->getParam('email-off') || $request->getParam('e');
 
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -84,7 +82,7 @@ class ComputeTripsCostController extends AbstractActionController
 
         foreach ($tripsToBeProcessed as $trip) {
             $this->logger->log("Processing trip " . $trip->getId() . "\n");
-            $this->tripCostService->computeTripCost($trip, $payOff, $dryRun, $emailOff);
+            $this->tripCostService->computeTripCost($trip, $dryRun);
         }
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
