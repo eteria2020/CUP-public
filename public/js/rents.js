@@ -27,17 +27,37 @@ function refreshTable(period)
 
         jsonData.data.forEach(function (trip)
         {
-            var tripPayment = trip['tripPayment'];
-            var tripMinutes = '/';
-            var parkingMinutes = '/';
-            var totalAmount = '/';
-            var mustPay = '/';
-            if (tripPayment !== null) {
-                tripMinutes = tripPayment['tripMinutes'] + ' (min)';
-                parkingMinutes = tripPayment['parkingMinutes'] + ' (min)';
-                totalAmount = tripPayment['totalCost'] + ' (\u20ac)';
+            var tripPayment = trip['tripPayments'];
+            var tripBonuses = trip['tripBonuses'];
+            var tripFreeFares = trip['tripFreeFares'];
+            
+            var start = new Date(trip['timestampBeginning']['date']);
+            var end = new Date(trip['timestampEnd']['date']);
+            var timeDiff = Math.abs(end.getTime() - start.getTime());
+            var diffMinutes = Math.ceil(timeDiff / (1000 * 60)); 
+            
+            var tripMinutes = diffMinutes;
+            var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
+            var totalAmount = 'n.d.';
+            var mustPay = 'n.d.';
+            if (typeof tripPayment !== "undefined") {
+                tripMinutes = tripPayment['tripMinutes'];
+                parkingMinutes = tripPayment['parkingMinutes'];
+                totalAmount = tripPayment['totalCost'] + ' \u20ac';
                 mustPay = tripPayment['status'];
                 mustPay = (status == 'payed_correctly' || status == 'invoiced') ? 'NO' : 'SI';
+            }
+            tripBonus = 0;
+            if (typeof tripBonuses !== "undefined") {
+                for(var i = 0; i < tripBonuses.length; i++) {
+                    tripBonus += tripBonuses[0]['minutes'];
+                }
+            }
+            tripFree = 0;
+            if (typeof tripFreeFares !== "undefined") {
+                for(var i = 0; i < tripFreeFares.length; i++) {
+                    tripFree += tripFreeFares[0]['minutes'];
+                }
             }
             addRow(
                 (i + 1) % 2,
@@ -51,8 +71,8 @@ function refreshTable(period)
                 trip['longitudeBeginning'],
                 trip['latitudeEnd'],
                 trip['longitudeEnd'],
-                '/',
-                '/'
+                tripBonus,
+                tripFree
             );
         });
     });
@@ -182,37 +202,41 @@ function addRow(
                     $endAddressSpan.addClass(hiddenRowClass);
 
             // create the first hidden row
-            var $hiddenRow2 = $('<div>')
-                .appendTo($group);
-            $hiddenRow2.addClass('block-data-table-row');
-            $hiddenRow2.addClass(datainfoClass);
-            $hiddenRow2.addClass(clearfixClass);
+            if (bonusMinutes != 0 ||
+                freeMinutes != 0) {
+                var $hiddenRow2 = $('<div>')
+                    .appendTo($group);
+                $hiddenRow2.addClass('block-data-table-row');
+                $hiddenRow2.addClass(datainfoClass);
+                $hiddenRow2.addClass(clearfixClass);
 
-                // create the start address column
-                var $bonusMinutesCol = $('<div>')
-                    .appendTo($hiddenRow2);
-                $bonusMinutesCol.html('');
-                $bonusMinutesCol.addClass(columnClass1);
-                $bonusMinutesCol.addClass(columnClass5);
-                $bonusMinutesCol.addClass(columnClass3);
+                    // create the start address column
+                    var $bonusMinutesCol = $('<div>')
+                        .appendTo($hiddenRow2);
+                    $bonusMinutesCol.html('');
+                    $bonusMinutesCol.addClass(columnClass1);
+                    $bonusMinutesCol.addClass(columnClass5);
+                    $bonusMinutesCol.addClass(columnClass3);
 
-                    var $bonusMinutesSpan = $('<span>')
-                        .appendTo($bonusMinutesCol);
-                    $bonusMinutesSpan.html('Minuti bonus consumati: ' + bonusMinutes);
-                    $bonusMinutesSpan.addClass(hiddenRowClass);
+                        var $bonusMinutesSpan = $('<span>')
+                            .appendTo($bonusMinutesCol);
+                        $bonusMinutesSpan.html('Minuti bonus consumati: ' + bonusMinutes);
+                        $bonusMinutesSpan.addClass(hiddenRowClass);
 
-                // create the end address column
-                var $freeMinutesCol = $('<div>')
-                    .appendTo($hiddenRow2);
-                $freeMinutesCol.html('');
-                $freeMinutesCol.addClass(columnClass1);
-                $freeMinutesCol.addClass(columnClass5);
-                $freeMinutesCol.addClass(columnClass3);
+                    // create the end address column
+                    var $freeMinutesCol = $('<div>')
+                        .appendTo($hiddenRow2);
+                    $freeMinutesCol.html('');
+                    $freeMinutesCol.addClass(columnClass1);
+                    $freeMinutesCol.addClass(columnClass5);
+                    $freeMinutesCol.addClass(columnClass3);
 
-                    var $freeMinutesSpan = $('<span>')
-                        .appendTo($freeMinutesCol);
-                    $freeMinutesSpan.html('Minuti gratuiti fruiti: ' + freeMinutes);
-                    $freeMinutesSpan.addClass(hiddenRowClass);
+                        var $freeMinutesSpan = $('<span>')
+                            .appendTo($freeMinutesCol);
+                        $freeMinutesSpan.html('Minuti gratuiti fruiti: ' + freeMinutes);
+                        $freeMinutesSpan.addClass(hiddenRowClass);
+                        
+            }
 
         var latlngStart = new google.maps.LatLng(latStart, lonStart);
         var latlngEnd = new google.maps.LatLng(latEnd, lonEnd);
