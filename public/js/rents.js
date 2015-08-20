@@ -43,7 +43,7 @@ function refreshTable(period)
             if (typeof tripPayment !== "undefined") {
                 tripMinutes = tripPayment['tripMinutes'];
                 parkingMinutes = tripPayment['parkingMinutes'];
-                totalAmount = tripPayment['totalCost'] + ' \u20ac';
+                totalAmount = (tripPayment['totalCost'] / 100) + ' \u20ac';
                 mustPay = tripPayment['status'];
                 mustPay = (status == 'payed_correctly' || status == 'invoiced') ? 'NO' : 'SI';
             }
@@ -80,7 +80,7 @@ function refreshTable(period)
 
 function resetTable()
 {
-    $('#rents-table-body').empty();
+    $('#rents-table-body').find('.block-data-table-row-group').remove();
 }
 
 var groupClass = 'block-data-table-row-group';
@@ -88,7 +88,7 @@ var clearfixClass = 'clearfix';
 var datainfoClass = 'data-info';
 var columnClass1 = 'block-data-table-td';
 var columnClass2 = 'cw-1-6';
-var columnClass3 = 'table-row-fix';
+//var columnClass3 = 'table-row-fix';
 var columnClass4 = 'cw-1-4';
 var columnClass5 = 'cw-1-2';
 var hiddenRowClass = 'block-data-field';
@@ -126,7 +126,6 @@ function addRow(
                 $startDateCol.html(startDate);
                 $startDateCol.addClass(columnClass1);
                 $startDateCol.addClass(columnClass2);
-                $startDateCol.addClass(columnClass3);
 
                 // create the hour column
                 var $endDateCol = $('<div>')
@@ -134,7 +133,6 @@ function addRow(
                 $endDateCol.html(endDate);
                 $endDateCol.addClass(columnClass1);
                 $endDateCol.addClass(columnClass2);
-                $endDateCol.addClass(columnClass3);
 
                 // create the start column
                 var $tripMinutesCol = $('<div>')
@@ -142,7 +140,6 @@ function addRow(
                 $tripMinutesCol.html(tripMinutes);
                 $tripMinutesCol.addClass(columnClass1);
                 $tripMinutesCol.addClass(columnClass2);
-                $tripMinutesCol.addClass(columnClass3);
 
                 // create the partial amount column
                 var $parkingMinutesCol = $('<div>')
@@ -150,7 +147,6 @@ function addRow(
                 $parkingMinutesCol.html(parkingMinutes);
                 $parkingMinutesCol.addClass(columnClass1);
                 $parkingMinutesCol.addClass(columnClass2);
-                $parkingMinutesCol.addClass(columnClass3);
 
                 // create the total amount column
                 var $totalAmountCol = $('<div>')
@@ -158,7 +154,6 @@ function addRow(
                 $totalAmountCol.html(totalAmount);
                 $totalAmountCol.addClass(columnClass1);
                 $totalAmountCol.addClass(columnClass2);
-                $totalAmountCol.addClass(columnClass3);
 
                 // create the total amount column
                 var $mustPayCol = $('<div>')
@@ -166,7 +161,6 @@ function addRow(
                 $mustPayCol.html(mustPay);
                 $mustPayCol.addClass(columnClass1);
                 $mustPayCol.addClass(columnClass2);
-                $mustPayCol.addClass(columnClass3);
 
             // create the first hidden row
             var $hiddenRow1 = $('<div>')
@@ -181,7 +175,6 @@ function addRow(
                 $startAddressCol.html('');
                 $startAddressCol.addClass(columnClass1);
                 $startAddressCol.addClass(columnClass5);
-                $startAddressCol.addClass(columnClass3);
 
                     var $startAddressSpan = $('<span>')
                         .appendTo($startAddressCol);
@@ -194,7 +187,6 @@ function addRow(
                 $endAddressCol.html('');
                 $endAddressCol.addClass(columnClass1);
                 $endAddressCol.addClass(columnClass5);
-                $endAddressCol.addClass(columnClass3);
 
                     var $endAddressSpan = $('<span>')
                         .appendTo($endAddressCol);
@@ -216,7 +208,6 @@ function addRow(
                     $bonusMinutesCol.html('');
                     $bonusMinutesCol.addClass(columnClass1);
                     $bonusMinutesCol.addClass(columnClass5);
-                    $bonusMinutesCol.addClass(columnClass3);
 
                         var $bonusMinutesSpan = $('<span>')
                             .appendTo($bonusMinutesCol);
@@ -229,7 +220,6 @@ function addRow(
                     $freeMinutesCol.html('');
                     $freeMinutesCol.addClass(columnClass1);
                     $freeMinutesCol.addClass(columnClass5);
-                    $freeMinutesCol.addClass(columnClass3);
 
                         var $freeMinutesSpan = $('<span>')
                             .appendTo($freeMinutesCol);
