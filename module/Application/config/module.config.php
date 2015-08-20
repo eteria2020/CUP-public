@@ -341,15 +341,6 @@ return array(
                             ]
                         ]
                     ],
-                    'noleggi' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{noleggi}',
-                            'defaults' => [
-                                'action' => 'trips'
-                            ]
-                        ]
-                    ],
                     'patente' => [
                         'type' => 'Segment',
                         'options' => [
@@ -389,7 +380,7 @@ return array(
                     'rents' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{noleggi}',
+                            'route' => '/{corse}',
                             'defaults' => [
                                 'action' => 'rents'
                             ]
