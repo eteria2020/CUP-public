@@ -341,15 +341,6 @@ return array(
                             ]
                         ]
                     ],
-                    'noleggi' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{noleggi}',
-                            'defaults' => [
-                                'action' => 'trips'
-                            ]
-                        ]
-                    ],
                     'patente' => [
                         'type' => 'Segment',
                         'options' => [
@@ -383,6 +374,15 @@ return array(
                             'route' => '/{fatture}',
                             'defaults' => [
                                 'action' => 'invoices-list'
+                            ]
+                        ]
+                    ],
+                    'rents' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{corse}',
+                            'defaults' => [
+                                'action' => 'rents'
                             ]
                         ]
                     ],
@@ -422,6 +422,9 @@ return array(
             'Application\Controller\Payment' => 'Application\Controller\PaymentControllerFactory',
             'Application\Controller\UserArea' => 'Application\Controller\UserAreaControllerFactory',
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
+            'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory',
+            'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
+            'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -470,7 +473,10 @@ return array(
                 array('controller' => 'Application\Controller\Payment', 'roles' => array()),
                 array('controller' => 'Application\Controller\User', 'roles' => array()),
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
-                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => [])
+                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
+                ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
+                ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []]
             ),
         ),
     ),
@@ -563,6 +569,61 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
                             'action' => 'invoice-registrations'
+                        ]
+                    ]
+                ],
+                'remove-gold' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'remove gold [--dry-run] [--verbose]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'RemoveGoldListTrips',
+                            'action' => 'remove-gold-list-trips'
+                        ]
+                    ]
+                ],
+                'compute-trips-cost' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'compute trips cost [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ComputeTripsCost',
+                            'action' => 'compute-trips-cost'
+                        ]
+                    ]
+                ],
+                'invoice-trips' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'invoice trips [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ComputeTripsCost',
+                            'action' => 'invoice-trips'
+                        ]
+                    ]
+                ],
+                'disable-late-payers' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'disable late payers [--dry-run|-d] [--verbose|-v]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ComputeTripsCost',
+                            'action' => 'disable-late-payers'
+                        ]
+                    ]
+                ],
+                'make-them-pay' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'make them pay [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayments',
+                            'action' => 'make-them-pay'
                         ]
                     ]
                 ]

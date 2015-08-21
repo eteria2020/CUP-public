@@ -1,6 +1,6 @@
 <?php
-    $invoices = [];
     $availableDates = $this->availableDates;
+    $lastValue = '';
 ?>
 
 <!-- main -->
@@ -16,7 +16,7 @@
 
             <!-- block-nav-app -->
             <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', array('route' => 'invoices-list')); ?>
+                <?php echo $this->partial('partials/menu-user-area', array('route' => 'rents')); ?>
             </nav>
             <!-- block-nav-app -->
 
@@ -27,13 +27,13 @@
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('Fatture'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('Le mie corse'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
             <div class="module-column-app-content clearfix">
 
-                <!-- module-sharing-resmume content -->
+                <!-- module-sharing-resmume -->
                 <div class="module-sharing-resmume padding-top">
 
                     <?php
@@ -48,19 +48,18 @@
                         <p class="invoices-filter-title">Periodo</p>
 
                         <!-- Select box -->
-                        <select id="invoices-filter-select" class="invoices-filter-select">
+                        <select id="rents-filter-select" class="invoices-filter-select">
 
                             <?php
+                                $isLastValue = true;
                                 foreach ($availableDates as $date) {
-                                    // extract year
-                                    $year = (integer) ($date / 100);
-                                    // extract month
-                                    $month = $date - $year * 100;
-                                    $month = (($month < 10) ? '0' : '') . $month;
-                                    // add selector option
-                                    echo '<option value="' . $date . '">' .
-                                        $month . '/' . $year .
+                                    echo '<option value="' . $date->format('Y-m') . '-01 0:00:00">' .
+                                        $date->format('m-Y') .
                                     '</option>';
+                                    if ($isLastValue) {
+                                        $lastValue = $date->format('Y-m') . '-01 0:00:00';
+                                        $isLastValue = false;
+                                    }
                                 }
                             ?>
 
@@ -71,26 +70,21 @@
                     <!-- filter -->
 
                     <!-- Invoices table -->
-                    <div class="block-data-table clearboth clearfix margin-top-custom">
+                    <div id="rents-table-body" class="block-data-table clearboth clearfix margin-top-custom">
 
                         <!-- Invoices table headers -->
                         <div class="block-data-table-row clearfix">
-                            <div class="block-data-table-th cw-1-7">N&deg; Fattura</div>
-                            <div class="block-data-table-th cw-1-7">Data</div>
-                            <div class="block-data-table-th cw-1-7">Tipo</div>
-                            <div class="block-data-table-th cw-1-7">Netto (&euro;)</div>
-                            <div class="block-data-table-th cw-1-7">IVA (&euro;)</div>
-                            <div class="block-data-table-th cw-1-7">Totale (&euro;)</div>
-                            <div class="block-data-table-th cw-1-7">Download</div>
+                            <div class="block-data-table-th cw-1-6">Inizio</div>
+                            <div class="block-data-table-th cw-1-6">Fine</div>
+                            <div class="block-data-table-th cw-1-6">Durata (min.)</div>
+                            <div class="block-data-table-th cw-1-6">Sosta (min.)</div>
+                            <div class="block-data-table-th cw-1-6">Totale</div>
+                            <div class="block-data-table-th cw-1-6">Da saldare</div>
                         </div>
                         <!-- invoices table headers -->
 
-                        <!-- Invoice table body -->
-                        <div id="invoice-table-body">
-                            <!-- Content generated in js -->
-                        </div>
-                        <!-- invoice table body -->
-
+                        <!-- Invoice table body goes here -->
+                        
                     </div>
                     <!-- invoices table -->
 
@@ -99,7 +93,7 @@
                         } else {
                     ?>
 
-                    <h2>Nessuna fattura emessa finora</h2>
+                    <h2>Nessuna corsa effettuato finora</h2>
 
                     <?php
                         // close no invoices if
@@ -123,8 +117,7 @@
 
 <!-- JavaScript -->
 <script type="text/javascript">
-var invoicesUrl = "<?= $this->url('core/invoices'); ?>";
-var lastPeriod = "<?= (count($availableDates) > 0 ? $availableDates[0] : ''); ?>";
-var downloadLink = "<?= $this->url('pdf/invoices'); ?>/";
+var rentsUrl = "<?= $this->url('core/trips'); ?>";
+var lastPeriod = "<?= (count($availableDates) > 0 ? $lastValue : ''); ?>";
 </script>
-<script type="text/javascript" src="<?= $this->basePath(); ?>/js/invoices.js"></script>
+<script type="text/javascript" src="<?= $this->basePath(); ?>/js/rents.js"></script>

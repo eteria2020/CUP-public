@@ -10,3 +10,6 @@ vendor
 
 // SharengoCore lives on its own repository
 module/SharengoCore
+
+// Cartasi module lives in its own repository
+module/Cartasi

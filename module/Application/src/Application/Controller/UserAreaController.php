@@ -325,4 +325,14 @@ class UserAreaController extends AbstractActionController
             ['availableDates' => $availableDates]
         );
     }
+
+    public function rentsAction()
+    {
+        $customer = $this->userService->getIdentity();
+        $availableDates = $this->I_tripsService->getDistinctDatesForCustomerByMonth($customer);
+
+        return new ViewModel(
+            ['availableDates' => $availableDates]
+        );
+    }
 }
