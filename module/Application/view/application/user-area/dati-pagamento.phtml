@@ -75,6 +75,19 @@
             </div>
             <!-- module-column-app-content -->
 
+        <?php
+        // if necessary create link to the activation page
+            if (!$this->activateLink) {
+        ?>
+            <!-- Activation button -->
+            <div class="block-wrapper-button content-align-center margin-top-custom">
+                <a href="<?= $this->url('area-utente/activate-payments') ?>"><button><?= $this->translate("Attiva carta"); ?></button></a>
+            </div>
+            <!-- activation button -->
+        <?php
+            }
+        ?>
+
         </div>
         <!-- module-column-app dx -->
 

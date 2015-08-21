@@ -143,6 +143,18 @@ class UserAreaController extends AbstractActionController
 
     public function indexAction()
     {
+        // check wether the customer still needs to register a credit card
+        $customer = $this->userService->getIdentity();
+        $cartasiCompletedFirstPayment = $customer->getFirstPaymentCompleted();
+        if ($cartasiCompletedFirstPayment) {
+            $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
+            $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
+            if (!$isActivated && $tripPayment != null) {
+                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+            }
+        }
+
+        // if not, continue with index action
         $this->setFormsData($this->customer);
         $editForm = true;
 
@@ -232,11 +244,15 @@ class UserAreaController extends AbstractActionController
 
     public function datiPagamentoAction()
     {
-        $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($this->customer);
+        $customer = $this->userService->getIdentity();
+        $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
+        $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
+        $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
 
         return new ViewModel([
-            'customer' => $this->customer,
-            'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment
+            'customer' => $customer,
+            'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment,
+            'activateLink' => $isActivated && $tripPayment == null
         ]);
     }
 
