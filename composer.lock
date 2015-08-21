@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a2d27c4be18795b799eb40af367948fa",
+    "hash": "57ae7d14d3dcc8cacf88e4574089c4b0",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -1264,7 +1264,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
-                "reference": "e9eac96735af853e6ff49abcb42435359ef0d361"
+                "reference": "c513f214fc06ff19914364ea02f79a4501fa662c"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1278,7 +1278,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2015-08-14 07:50:02"
+            "time": "2015-08-21 12:30:08"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
@@ -1286,7 +1286,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "912d02309ee23f6e51fc2b6790f738837a96de54"
+                "reference": "5547deb8a4c7b7b6d4a373b6c32c61a8a56b16da"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1296,6 +1296,10 @@
                 "rwoverdijk/assetmanager": "1.4.*",
                 "zendframework/zendframework": "2.4.*"
             },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.7"
+            },
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1303,7 +1307,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-08-06 10:50:17"
+            "time": "2015-08-21 13:09:16"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
