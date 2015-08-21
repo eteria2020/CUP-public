@@ -145,13 +145,8 @@ class UserAreaController extends AbstractActionController
     {
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
-        $cartasiCompletedFirstPayment = $customer->getFirstPaymentCompleted();
-        if ($cartasiCompletedFirstPayment) {
-            $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
-            $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
-            if (!$isActivated && $tripPayment != null) {
-                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
-            }
+        if ($this->I_customersService->isFirstTripManualPaymentNeeded($customer)) {
+            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
         }
 
         // if not, continue with index action
@@ -245,14 +240,14 @@ class UserAreaController extends AbstractActionController
     public function datiPagamentoAction()
     {
         $customer = $this->userService->getIdentity();
-        $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
+        $activateLink = $this->I_customersService->isFirstTripManualPaymentNeeded($customer);
         $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
 
         return new ViewModel([
             'customer' => $customer,
             'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment,
-            'activateLink' => $isActivated && $tripPayment == null
+            'activateLink' => $activateLink
         ]);
     }
 
@@ -380,7 +375,7 @@ class UserAreaController extends AbstractActionController
         $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
         if ($tripPayment != null) {
-            $expiryDate = date('Y-m-d', strtotime($tripPayment->getCreatedAt()->format('Y-m-d') . ' + 7 days'));
+            $expiryDate = $this->tripPaymentsService->getExpiryDate($tripPayment)->format('d-m-Y');
         }
 
         return new ViewModel([
