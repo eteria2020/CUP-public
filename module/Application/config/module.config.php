@@ -475,7 +475,8 @@ return array(
                 array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
                 array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
-                ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []]
+                ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []]
             ),
         ),
     ),

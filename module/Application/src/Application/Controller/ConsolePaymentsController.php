@@ -8,7 +8,7 @@ use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class ConsoleController extends AbstractActionController
+class ConsolePaymentsController extends AbstractActionController
 {
     /**
      * @var TripPaymentsService
@@ -51,10 +51,10 @@ class ConsoleController extends AbstractActionController
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         $tripsPayments = $this->tripPaymentsService->getTripPaymentsForPayment();
-        $this->logger->log("Trips found: " . count($tripsToBeProcessed) . "\n");
+        $this->logger->log("Trips found: " . count($tripsPayments) . "\n");
 
         foreach ($tripsPayments as $tripPayment) {
-            $this->logger->log("Processing trip " . $tripPayment->getId() . "\n");
+            $this->logger->log("Processing trip payment " . $tripPayment->getId() . "\n");
             $this->paymentsService->tryPayment(
                 $tripPayment,
                 $avoidEmails,
