@@ -384,6 +384,7 @@ class UserAreaController extends AbstractActionController
         }
 
         return new ViewModel([
+            'customer' => $customer,
             'expiryDate' => $expiryDate,
             'isActivated' => $isActivated,
             'tripPayment' => $tripPayment

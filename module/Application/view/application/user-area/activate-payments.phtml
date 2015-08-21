@@ -1,8 +1,12 @@
 <?php
-    $invoices = [];
+    // get data
+    $customer = $this->customer;
     $isActivated = $this->isActivated;
     $expiryDate = $this->expiryDate;
     $tripPayment = $this->tripPayment;
+
+    // parse data
+    $name = ucwords(strtolower($customer->getName() . ' ' . $customer->getSurname()));
 ?>
 
 <!-- main -->
@@ -47,17 +51,22 @@
 
                     <!-- Description -->
                     <div>
-                        <p>Hai tempo fino al <?= $expiryDate ?> per pagare la prima corsa e confermare una carta di credito.</p>
-                        <p>I costi delle altre corse ti verranno addebitati nelle successive 24h al pagamento.</p>
-                        <p>Clicca il link in fondo e segui le istruzioni.</p>
-                        <h2 class="margin-top-custom">Di seguito i dettagli della corsa:</h2>
+                        <p>Ciao <?= $name ?>,</p>
+                        <p>come puoi vedere nella sezione <a href="<?= $this->url('area-utente/noleggi') ?>">Le mie corse</a> hai esaurito i tuoi minuti bonus e hai effettuato una o più corse "a debito".</p>
+                        <p>Ti eri iscritto/a a Share’ngo regolando il pagamento dell'iscrizione con paypal o con bonifico.</p>
+                        <p>Per questo ti invitiamo ad effettuare il pagamento di quanto a noi dovuto con un carta di credito valida (anche pre-pagata) scegliendo così la carta che vuoi associare in modo permanente al tuo profilo cliente.</p>
+                        <p>Dopo questo primo pagamento le corse ti saranno addebitate periodicamente in automatico su questa carta e potrai scaricare le fatture nella sezione <a href="<?= $this->url('area-utente/invoices-list') ?>">Fatture</a> il giorno successivo all'addebito.</p>
+
+                        <p><br>Attenzione: nel caso in cui il tuo debito non venisse saldato entro il <?= $expiryDate ?> - e non avessimo quindi una carta di credito valida associata al tuo profilo utente - il tuo account sarà sospeso fino al pagamento (potrai accedere all’area riservata ma non fare il log-in sulla APP o utilizzare un’Equomobile di Share’ngo).</p>
+
+                        <h2 class="margin-top-custom">Di seguito i dettagli della corsa di cui effettuare il pagamento:</h2>
                     </div>
                     <!-- description -->
 
-                    <!-- Invoices table -->
+                    <!-- Trip table -->
                     <div class="block-data-table clearboth clearfix margin-top-custom">
 
-                        <!-- Invoices table headers -->
+                        <!-- Trip table headers -->
                         <div class="block-data-table-row clearfix">
                             <div class="block-data-table-th cw-1-5">Data inizio</div>
                             <div class="block-data-table-th cw-1-5">Targa</div>
@@ -65,9 +74,9 @@
                             <div class="block-data-table-th cw-1-5">Sosta (min)</div>
                             <div class="block-data-table-th cw-1-5">Totale (&euro;)</div>
                         </div>
-                        <!-- invoices table headers -->
+                        <!-- trip table headers -->
 
-                        <!-- Invoice table body -->
+                        <!-- Trip table body -->
                         <div>
                             <div class="block-data-table-row clearfix odd">
                                 <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTrip()->getTimestampBeginning()->format("Y-m-d H:i:s") ?></div>
@@ -77,10 +86,10 @@
                                 <div class="block-data-table-td cw-1-5 table-row-fix"><?= number_format($tripPayment->getTotalCost() / 100, 2, ',', ' ') ?></div>
                             </div>
                         </div>
-                        <!-- invoice table body -->
+                        <!-- trip table body -->
 
                     </div>
-                    <!-- invoices table -->
+                    <!-- trip table -->
 
                     <!-- Confirm button -->
                     <div class="block-wrapper-button content-align-center margin-top-custom">
