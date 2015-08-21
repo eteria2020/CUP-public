@@ -1,0 +1,1 @@
+ALTER TABLE customers ALTER COLUMN payment_able DROP NOT NULL;
