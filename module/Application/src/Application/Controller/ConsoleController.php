@@ -12,8 +12,6 @@ use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
-use SharengoCore\Service\LocationService;
-use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
@@ -78,16 +76,6 @@ class ConsoleController extends AbstractActionController
     private $invoicesService;
 
     /**
-     * @var LocationService
-     */
-    private $locationService;
-
-    /**
-     * @var Logger
-     */
-    private $logger;
-
-    /**
      * @var string
      */
     private $battery;
@@ -106,9 +94,7 @@ class ConsoleController extends AbstractActionController
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
         $alarmConfig,
-        InvoicesService $invoicesService,
-        LocationService $locationService,
-        Logger $logger
+        InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -120,8 +106,6 @@ class ConsoleController extends AbstractActionController
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
-        $this->locationService = $locationService;
-        $this->logger = $logger;
     }
 
     public function getDiscountsAction()
@@ -504,50 +488,5 @@ class ConsoleController extends AbstractActionController
         $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
         $this->writeToConsole("\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-    }
-
-    public function generateLocationsAction()
-    {
-        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
-        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
-
-        $request = $this->getRequest();
-        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
-        $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
-        $maxTripsPerDay = 1000; // set to 1000
-        $delay = 500000; // half second in microseconds
-
-        $trips = $this->tripsService->getTripsNoAddress($maxTripsPerDay);
-
-        foreach ($trips as $trip) {
-            $this->logger->log("Parsing trip: " . $trip->getId() . "\n");
-
-            $addressBeginning = $this->locationService->getAddressFromCoordinates(
-                $trip->getLatitudeBeginning(),
-                $trip->getLongitudeBeginning()
-            );
-            $this->logger->log("Beginning: " . $addressBeginning . "\n");
-            $trip->setAddressBeginning($addressBeginning);
-
-            $addressEnd = $this->locationService->getAddressFromCoordinates(
-                $trip->getLatitudeEnd(),
-                $trip->getLongitudeEnd()
-            );
-            $this->logger->log("End: " . $addressEnd . "\n");
-            $trip->setAddressEnd($addressEnd);
-
-            $this->logger->log("EntityManager: persisting\n\n");
-            $this->entityManager->persist($trip);
-
-            usleep($delay);
-        }
-
-        if (!$dryRun) {
-            $this->logger->log("EntityManager: flushing\n\n");
-            $this->entityManager->flush();
-        }
-
-        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 }

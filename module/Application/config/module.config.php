@@ -433,7 +433,8 @@ return array(
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
             'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory',
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
-            'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory'
+            'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
+            'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -485,7 +486,8 @@ return array(
                 array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
-                ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []]
+                ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
+                ['controller' => 'Application\Controller\Address', 'roles' => []]
             ),
         ),
     ),
@@ -642,7 +644,7 @@ return array(
                         'route' => 'generate locations [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'Console',
+                            'controller' => 'Address',
                             'action' => 'generate-locations'
                         ]
                     ]
