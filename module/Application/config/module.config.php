@@ -434,6 +434,7 @@ return array(
             'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory',
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
             'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
+            'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
             'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory'
         ],
     ],
@@ -487,7 +488,8 @@ return array(
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
-                ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []]
+                ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []],
+                ['controller' => 'Application\Controller\Address', 'roles' => []]
             ),
         ),
     ),
@@ -646,6 +648,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleComputePayInvoice',
                             'action' => 'compute-pay-invoice'
+                        ]
+                    ]
+                ],
+                'generate-locations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate locations [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Address',
+                            'action' => 'generate-locations'
                         ]
                     ]
                 ]
