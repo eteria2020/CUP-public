@@ -435,7 +435,8 @@ return array(
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
             'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
-            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory'
+            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory',
+            'Application\Controller\Polygon' => 'Application\Controller\PolygonControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -489,7 +490,8 @@ return array(
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []],
-                ['controller' => 'Application\Controller\Address', 'roles' => []]
+                ['controller' => 'Application\Controller\Address', 'roles' => []],
+                ['controller' => 'Application\Controller\Polygon', 'roles' => []]
             ),
         ),
     ),
@@ -659,6 +661,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Address',
                             'action' => 'generate-locations'
+                        ]
+                    ]
+                ],
+                'evaluate-cars-location' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'evaluate cars location [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Polygon',
+                            'action' => 'evaluate-cars-location'
                         ]
                     ]
                 ]
