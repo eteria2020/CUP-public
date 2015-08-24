@@ -406,6 +406,13 @@ class ConsoleController extends AbstractActionController
         }
     }
 
+    /*
+     * Computes bonus minutes
+     *
+     * The first time this action is called on a fresh database, make sure
+     * trips before 05/07 are excluded (ie payable = false).
+     *
+     */
     public function accountTripsAction()
     {
         $tripsToBeAccounted = $this->tripsService->getTripsToBeAccounted();
