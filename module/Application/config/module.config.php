@@ -635,6 +635,17 @@ return array(
                             'action' => 'make-them-pay'
                         ]
                     ]
+                ],
+                'generate-locations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate locations [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'generate-locations'
+                        ]
+                    ]
                 ]
             ],
         ],
