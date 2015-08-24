@@ -433,7 +433,8 @@ return array(
             'Application\Controller\Console' => 'Application\Controller\ConsoleControllerFactory',
             'Application\Controller\RemoveGoldListTrips' => 'Application\Controller\RemoveGoldListTripsControllerFactory',
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
-            'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory'
+            'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
+            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -485,7 +486,8 @@ return array(
                 array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
-                ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []]
+                ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []]
             ),
         ),
     ),
@@ -633,6 +635,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayments',
                             'action' => 'make-them-pay'
+                        ]
+                    ]
+                ],
+                'compute-pay-invoice' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'compute pay invoice [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleComputePayInvoice',
+                            'action' => 'compute-pay-invoice'
                         ]
                     ]
                 ]
