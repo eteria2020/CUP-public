@@ -515,7 +515,7 @@ class ConsoleController extends AbstractActionController
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $maxTripsPerDay = 2; // set to 1000
+        $maxTripsPerDay = 1000; // set to 1000
         $delay = 500000; // half second in microseconds
 
         $trips = $this->tripsService->getTripsNoAddress($maxTripsPerDay);
