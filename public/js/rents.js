@@ -142,10 +142,14 @@ function addRow(
     freeMinutes
 ) {
 
-        if (latStart.length > 6) { latStart = latStart.substring(0, 6); }
-        if (lonStart.length > 6) { lonStart = lonStart.substring(0, 6); }
-        if (latEnd.length > 6) { latEnd = latEnd.substring(0, 6); }
-        if (lonEnd.length > 6) { lonEnd = lonEnd.substring(0, 6); }
+        var latStartPrintable = latStart;
+        if (latStart.length > 6) { latStartPrintable = latStart.substring(0, 6); }
+        var lonStartPrintable = lonStart;
+        if (lonStart.length > 6) { lonStartPrintable = lonStart.substring(0, 6); }
+        var latEndPrintable = latEnd;
+        if (latEnd.length > 6) { latEndPrintable = latEnd.substring(0, 6); }
+        var lonEndPrintable = lonEnd;
+        if (lonEnd.length > 6) { lonEndPrintable = lonEnd.substring(0, 6); }
 
         // create the group for all the rows in a block
         var $group = $('<div>')
@@ -225,7 +229,7 @@ function addRow(
                     $startAddressSpan.html('Partenza: ');
                     $startAddressSpan.addClass(hiddenRowClass);
 
-                $startAddressCol.html($startAddressCol.html() + '<a href="#">' + latStart + ' ' + lonStart + '</a>');
+                $startAddressCol.html($startAddressCol.html() + '<a href="#">' + latStartPrintable + ' ' + lonStartPrintable + '</a>');
                 $startAddressCol.click(function() {
                     loadMapPopup(latStart, lonStart);
                     return false;
@@ -243,7 +247,7 @@ function addRow(
                     $endAddressSpan.html('Destinazione: ');
                     $endAddressSpan.addClass(hiddenRowClass);
 
-                $endAddressCol.html($endAddressCol.html() + '<a href="">' + latEnd + ' ' + lonEnd + '</a>');
+                $endAddressCol.html($endAddressCol.html() + '<a href="">' + latEndPrintable + ' ' + lonEndPrintable + '</a>');
                 $endAddressCol.click(function() {
                     loadMapPopup(latEnd, lonEnd);
                     return false;
