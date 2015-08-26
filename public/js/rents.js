@@ -50,7 +50,6 @@ function refreshTable(period)
 
             // show FREE for trips before 05/07/2015
             $fifthjuly2015 = new Date("2015-07-05 00:00:00+02");
-            console.log($fifthjuly2015);
             if (start <= $fifthjuly2015) {
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
@@ -223,6 +222,7 @@ function addRow(
                 $startAddressCol.html($startAddressCol.html() + '<a href="#">' + latStart + ' ' + lonStart + '</a>');
                 $startAddressCol.click(function() {
                     loadMapPopup(latStart, lonStart);
+                    return false;
                 });
 
                 // create the end address column
@@ -240,6 +240,7 @@ function addRow(
                 $endAddressCol.html($endAddressCol.html() + '<a href="">' + latEnd + ' ' + lonEnd + '</a>');
                 $endAddressCol.click(function() {
                     loadMapPopup(latEnd, lonEnd);
+                    return false;
                 });
 
             // create the second hidden row
