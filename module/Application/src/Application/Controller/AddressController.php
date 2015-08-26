@@ -52,10 +52,9 @@ class AddressController extends AbstractActionController
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $maxTripsPerDay = 1000; // set to 1000
         $delay = 500000; // half second in microseconds
 
-        $trips = $this->tripsService->getTripsNoAddress($maxTripsPerDay);
+        $trips = $this->tripsService->getTripsNoAddress();
 
         foreach ($trips as $trip) {
             $this->logger->log("Parsing trip: " . $trip->getId() . "\n");
