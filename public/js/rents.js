@@ -80,26 +80,32 @@ function refreshTable(period)
                     tripFree += tripFreeFares[0]['minutes'];
                 }
             }
-            addRow(
-                tripsCount % 2,
-                trip['timestampBeginningString'],
-                trip['timestampEndString'],
-                tripMinutes,
-                parkingMinutes,
-                totalAmount,
-                mustPay,
-                trip['latitudeBeginning'],
-                trip['longitudeBeginning'],
-                trip['latitudeEnd'],
-                trip['longitudeEnd'],
-                tripBonus,
-                tripFree
-            );
+            
+            // exclude trips less than 5 mins long
+            if (tripMinutes >= 5) {
+            
+                addRow(
+                    0,
+                    trip['timestampBeginningString'],
+                    trip['timestampEndString'],
+                    tripMinutes,
+                    parkingMinutes,
+                    totalAmount,
+                    mustPay,
+                    trip['latitudeBeginning'],
+                    trip['longitudeBeginning'],
+                    trip['latitudeEnd'],
+                    trip['longitudeEnd'],
+                    tripBonus,
+                    tripFree
+                );
+
+            }
 
             // after last line is rendered...
             if (--tripsCount == 0) {
                 addFinalRow(
-                    (jsonData.data.length + 1) % 2,
+                    1,
                     grandTotal + ' \u20ac',
                     grandTotalToPay + ' \u20ac'
                 );
