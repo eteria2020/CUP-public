@@ -25,6 +25,11 @@ function refreshTable(period)
         var columnClass1 = 'block-data-table-td';
         var columnClass2 = 'cw-1-6';
 
+        var tripsCount = jsonData.data.length;
+            
+        var grandTotal = 0;
+        var grandTotalToPay = 0;
+            
         jsonData.data.forEach(function (trip)
         {
             var tripPayment = trip['tripPayments'];
@@ -38,15 +43,32 @@ function refreshTable(period)
             
             var tripMinutes = diffMinutes;
             var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
-            var totalAmount = 'n.d.';
-            var mustPay = 'n.d.';
+            var totalAmount = 'in elaborazione';
+            var totalAmountValue = 0;
+            var mustPay = 'in elaborazione';
+            var mustPayValue = 0;
+            
+            // show FREE for trips before 05/07/2015
+            $fifthjuly2015 = new Date("2015-07-05 00:00:00+02");
+            console.log($fifthjuly2015);
+            if (start <= $fifthjuly2015) {
+                totalAmount = 'FREE';
+                mustPay = 'FREE';
+            }
+            
             if (typeof tripPayment !== "undefined") {
                 tripMinutes = tripPayment['tripMinutes'];
                 parkingMinutes = tripPayment['parkingMinutes'];
-                totalAmount = (tripPayment['totalCost'] / 100) + ' \u20ac';
-                mustPay = tripPayment['status'];
-                mustPay = (status == 'payed_correctly' || status == 'invoiced') ? 'NO' : 'SI';
+                totalAmountValue = (tripPayment['totalCost'] / 100);
+                totalAmount = totalAmountValue + ' \u20ac';
+                paymentStatus = tripPayment['status'];
+                mustPayValue = (paymentStatus == 'payed_correctly' || paymentStatus == 'invoiced') ? 0 : totalAmountValue;
+                mustPay = mustPayValue + ' \u20ac';
             }
+            
+            grandTotal = grandTotal + totalAmountValue;
+            grandTotalToPay = grandTotalToPay + mustPayValue;
+            
             tripBonus = 0;
             if (typeof tripBonuses !== "undefined") {
                 for(var i = 0; i < tripBonuses.length; i++) {
@@ -60,7 +82,7 @@ function refreshTable(period)
                 }
             }
             addRow(
-                (i + 1) % 2,
+                tripsCount % 2,
                 trip['timestampBeginningString'],
                 trip['timestampEndString'],
                 tripMinutes,
@@ -74,6 +96,15 @@ function refreshTable(period)
                 tripBonus,
                 tripFree
             );
+    
+            // after last line is rendered...
+            if (--tripsCount == 0) {
+                addFinalRow(
+                    (jsonData.data.length + 1) % 2,
+                    grandTotal + ' \u20ac',
+                    grandTotalToPay + ' \u20ac'
+                );
+            }
         });
     });
 }
@@ -91,6 +122,9 @@ var columnClass2 = 'cw-1-6';
 //var columnClass3 = 'table-row-fix';
 var columnClass4 = 'cw-1-4';
 var columnClass5 = 'cw-1-2';
+var classCenter = 'text-center';
+var classRight = 'text-right';
+var cssBorderTop = 'border-top';
 var hiddenRowClass = 'block-data-field';
 function addRow(
     odd,
@@ -140,6 +174,7 @@ function addRow(
                 $tripMinutesCol.html(tripMinutes);
                 $tripMinutesCol.addClass(columnClass1);
                 $tripMinutesCol.addClass(columnClass2);
+                $tripMinutesCol.addClass(classCenter);
 
                 // create the partial amount column
                 var $parkingMinutesCol = $('<div>')
@@ -147,6 +182,7 @@ function addRow(
                 $parkingMinutesCol.html(parkingMinutes);
                 $parkingMinutesCol.addClass(columnClass1);
                 $parkingMinutesCol.addClass(columnClass2);
+                $parkingMinutesCol.addClass(classCenter);
 
                 // create the total amount column
                 var $totalAmountCol = $('<div>')
@@ -154,6 +190,7 @@ function addRow(
                 $totalAmountCol.html(totalAmount);
                 $totalAmountCol.addClass(columnClass1);
                 $totalAmountCol.addClass(columnClass2);
+                $totalAmountCol.addClass(classRight);
 
                 // create the total amount column
                 var $mustPayCol = $('<div>')
@@ -161,6 +198,7 @@ function addRow(
                 $mustPayCol.html(mustPay);
                 $mustPayCol.addClass(columnClass1);
                 $mustPayCol.addClass(columnClass2);
+                $mustPayCol.addClass(classRight);
 
             // create the first hidden row
             var $hiddenRow1 = $('<div>')
@@ -180,6 +218,8 @@ function addRow(
                         .appendTo($startAddressCol);
                     $startAddressSpan.html('Partenza: ');
                     $startAddressSpan.addClass(hiddenRowClass);
+                
+                $startAddressCol.html($startAddressCol.html() + '<a href="#">' + latStart + ' ' + lonStart + '</a>');
 
                 // create the end address column
                 var $endAddressCol = $('<div>')
@@ -192,8 +232,10 @@ function addRow(
                         .appendTo($endAddressCol);
                     $endAddressSpan.html('Destinazione: ');
                     $endAddressSpan.addClass(hiddenRowClass);
+                    
+                $endAddressCol.html($endAddressCol.html() + '<a href="">' + latEnd + ' ' + lonEnd + '</a>');
 
-            // create the first hidden row
+            // create the second hidden row
             if (bonusMinutes != 0 ||
                 freeMinutes != 0) {
                 var $hiddenRow2 = $('<div>')
@@ -228,7 +270,7 @@ function addRow(
                         
             }
 
-        var latlngStart = new google.maps.LatLng(latStart, lonStart);
+        /*var latlngStart = new google.maps.LatLng(latStart, lonStart);
         var latlngEnd = new google.maps.LatLng(latEnd, lonEnd);
 
         geocoder.geocode({'latLng': latlngStart}, function(results, status)
@@ -251,5 +293,70 @@ function addRow(
                     }
                 }
             }
-        });
+        });*/
+}
+
+function addFinalRow(
+    odd,
+    totalAmount,
+    mustPay
+) {
+        // create the group for all the rows in a block
+        var $group = $('<div>')
+            .appendTo($('#rents-table-body'));
+        $group.addClass(groupClass);
+        $group.addClass(clearfixClass);
+        $group.addClass(cssBorderTop);
+
+        // create the visible row
+        var $row = $('<div>')
+            .appendTo($group);
+        $row.addClass('block-data-table-row');
+        $row.addClass(clearfixClass);
+        $row.addClass((odd) ? 'odd' : 'even');
+
+        // create first column
+        var $startDateCol = $('<div>')
+            .appendTo($row);
+        $startDateCol.html('');
+        $startDateCol.addClass(columnClass1);
+        $startDateCol.addClass(columnClass2);
+
+        // create second column
+        var $endDateCol = $('<div>')
+            .appendTo($row);
+        $endDateCol.html('');
+        $endDateCol.addClass(columnClass1);
+        $endDateCol.addClass(columnClass2);
+
+        // create third column
+        var $tripMinutesCol = $('<div>')
+            .appendTo($row);
+        $tripMinutesCol.html('');
+        $tripMinutesCol.addClass(columnClass1);
+        $tripMinutesCol.addClass(columnClass2);
+
+        // create fourth column
+        var $parkingMinutesCol = $('<div>')
+            .appendTo($row);
+        $parkingMinutesCol.html('<strong>Totali periodo</strong>');
+        $parkingMinutesCol.addClass(columnClass1);
+        $parkingMinutesCol.addClass(columnClass2);
+
+        // create the total amount column
+        var $totalAmountCol = $('<div>')
+            .appendTo($row);
+        $totalAmountCol.html('<strong>' + totalAmount + '</strong>');
+        $totalAmountCol.addClass(columnClass1);
+        $totalAmountCol.addClass(columnClass2);
+        $totalAmountCol.addClass(classRight);
+
+        // create the total amount column
+        var $mustPayCol = $('<div>')
+            .appendTo($row);
+        $mustPayCol.html('<strong>' + mustPay + '</strong>');
+        $mustPayCol.addClass(columnClass1);
+        $mustPayCol.addClass(columnClass2);
+        $mustPayCol.addClass(classRight);
+
 }

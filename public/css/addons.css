@@ -157,3 +157,24 @@
 .small-form {
     font-size: 12px !important;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.border-top {
+    border-top: 5px solid black;
+}
+
+.block-data-table a {
+    color:#000;
+    text-decoration:underline
+}
+
+.block-data-table a:hover {
+    text-decoration:none
+}
