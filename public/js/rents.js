@@ -26,28 +26,28 @@ function refreshTable(period)
         var columnClass2 = 'cw-1-6';
 
         var tripsCount = jsonData.data.length;
-            
+
         var grandTotal = 0;
         var grandTotalToPay = 0;
-            
+
         jsonData.data.forEach(function (trip)
         {
             var tripPayment = trip['tripPayments'];
             var tripBonuses = trip['tripBonuses'];
             var tripFreeFares = trip['tripFreeFares'];
-            
+
             var start = new Date(trip['timestampBeginning']['date']);
             var end = new Date(trip['timestampEnd']['date']);
             var timeDiff = Math.abs(end.getTime() - start.getTime());
-            var diffMinutes = Math.ceil(timeDiff / (1000 * 60)); 
-            
+            var diffMinutes = Math.ceil(timeDiff / (1000 * 60));
+
             var tripMinutes = diffMinutes;
             var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
             var totalAmount = 'in elaborazione';
             var totalAmountValue = 0;
             var mustPay = 'in elaborazione';
             var mustPayValue = 0;
-            
+
             // show FREE for trips before 05/07/2015
             $fifthjuly2015 = new Date("2015-07-05 00:00:00+02");
             console.log($fifthjuly2015);
@@ -55,7 +55,7 @@ function refreshTable(period)
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
             }
-            
+
             if (typeof tripPayment !== "undefined") {
                 tripMinutes = tripPayment['tripMinutes'];
                 parkingMinutes = tripPayment['parkingMinutes'];
@@ -65,10 +65,10 @@ function refreshTable(period)
                 mustPayValue = (paymentStatus == 'payed_correctly' || paymentStatus == 'invoiced') ? 0 : totalAmountValue;
                 mustPay = mustPayValue + ' \u20ac';
             }
-            
+
             grandTotal = grandTotal + totalAmountValue;
             grandTotalToPay = grandTotalToPay + mustPayValue;
-            
+
             tripBonus = 0;
             if (typeof tripBonuses !== "undefined") {
                 for(var i = 0; i < tripBonuses.length; i++) {
@@ -96,7 +96,7 @@ function refreshTable(period)
                 tripBonus,
                 tripFree
             );
-    
+
             // after last line is rendered...
             if (--tripsCount == 0) {
                 addFinalRow(
@@ -126,6 +126,7 @@ var classCenter = 'text-center';
 var classRight = 'text-right';
 var cssBorderTop = 'border-top';
 var hiddenRowClass = 'block-data-field';
+
 function addRow(
     odd,
     startDate,
@@ -218,8 +219,11 @@ function addRow(
                         .appendTo($startAddressCol);
                     $startAddressSpan.html('Partenza: ');
                     $startAddressSpan.addClass(hiddenRowClass);
-                
+
                 $startAddressCol.html($startAddressCol.html() + '<a href="#">' + latStart + ' ' + lonStart + '</a>');
+                $startAddressCol.click(function() {
+                    loadMapPopup(latStart, lonStart);
+                });
 
                 // create the end address column
                 var $endAddressCol = $('<div>')
@@ -232,12 +236,15 @@ function addRow(
                         .appendTo($endAddressCol);
                     $endAddressSpan.html('Destinazione: ');
                     $endAddressSpan.addClass(hiddenRowClass);
-                    
+
                 $endAddressCol.html($endAddressCol.html() + '<a href="">' + latEnd + ' ' + lonEnd + '</a>');
+                $endAddressCol.click(function() {
+                    loadMapPopup(latEnd, lonEnd);
+                });
 
             // create the second hidden row
-            if (bonusMinutes != 0 ||
-                freeMinutes != 0) {
+            if (bonusMinutes !== 0 ||
+                freeMinutes !== 0) {
                 var $hiddenRow2 = $('<div>')
                     .appendTo($group);
                 $hiddenRow2.addClass('block-data-table-row');
@@ -267,7 +274,7 @@ function addRow(
                             .appendTo($freeMinutesCol);
                         $freeMinutesSpan.html('Minuti gratuiti fruiti: ' + freeMinutes);
                         $freeMinutesSpan.addClass(hiddenRowClass);
-                        
+
             }
 
         /*var latlngStart = new google.maps.LatLng(latStart, lonStart);
@@ -359,4 +366,26 @@ function addFinalRow(
         $mustPayCol.addClass(columnClass2);
         $mustPayCol.addClass(classRight);
 
+}
+
+var $mapPopup = $('#map-popup');
+$mapPopup.click(function() {
+    hideMapPopup();
+});
+
+function loadMapPopup(lat, lng)
+{
+    $mapPopup.html(
+    '<img id="map-popup-img" src="' +
+    'https://www.google.it/maps/api/staticmap?center=' +
+    lat + ',' + lng +
+    '&zoom=16&sensor=false&size=800x600&markers=color:green%7C' +
+    lat + ',' + lng +
+    '" class="map-popup-img">');
+    $mapPopup.show();
+}
+
+function hideMapPopup()
+{
+    $mapPopup.hide();
 }

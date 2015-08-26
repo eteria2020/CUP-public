@@ -178,3 +178,17 @@
 .block-data-table a:hover {
     text-decoration:none
 }
+
+.map-popup {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: none;
+}
+.map-popup-img {
+    width: 485px;
+    height: 455px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #fff;
+}
