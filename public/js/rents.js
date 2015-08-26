@@ -141,6 +141,12 @@ function addRow(
     bonusMinutes,
     freeMinutes
 ) {
+
+        if (latStart.length > 6) { latStart = latStart.substring(0, 6); }
+        if (lonStart.length > 6) { lonStart = lonStart.substring(0, 6); }
+        if (latEnd.length > 6) { latEnd = latEnd.substring(0, 6); }
+        if (lonEnd.length > 6) { lonEnd = lonEnd.substring(0, 6); }
+
         // create the group for all the rows in a block
         var $group = $('<div>')
             .appendTo($('#rents-table-body'));
