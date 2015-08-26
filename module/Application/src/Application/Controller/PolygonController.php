@@ -51,6 +51,13 @@ class PolygonController extends AbstractActionController
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
+        $cars = $this->carsService->getListCars();
+        foreach ($cars as $car) {
+            $this->logger->log("Car: " . $car->getPlate() . "   Result: ");// . $this->carsService->isCarOutOfBounds($car) . "\n");
+            var_dump($this->carsService->isCarOutOfBounds($car));
+            $this->logger->log("\n");
+        }
+
         // Get polygons
         //
         // Get all cars that can be evaluated
