@@ -177,7 +177,7 @@ class ConsoleController extends AbstractActionController
     public function checkAlarmsAction()
     {
         $request = $this->getRequest();
-        $dryRun = $request->getParam('dry-run');
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $carsToOperative = [];
         $carsToMaintenance = [];
@@ -190,11 +190,13 @@ class ConsoleController extends AbstractActionController
 
         foreach ($cars as $car) {
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
-            $this->writeToConsole(" battery = " . $car->getBattery());
+            $this->writeToConsole(", battery = " . $car->getBattery());
 
             $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
-            $this->writeToConsole(" last time = " . $lastContact);
-            $this->writeToConsole(" charging = " . (($car->getCharging()) ? 'true' : 'false') . "\n");
+            $this->writeToConsole(", last time = " . $lastContact);
+            $this->writeToConsole(", charging = " . (($car->getCharging()) ? 'true' : 'false'));
+            $isOutOfBounds = $this->carsService->isCarOutOfBounds($car);
+            $this->writeToConsole(", is " . (($isOutOfBounds) ? "NOT " : "") . "in bounds\n");
 
 
             // defines if car status should be saved
@@ -205,6 +207,7 @@ class ConsoleController extends AbstractActionController
             $isAlarm =  $car->getBattery() < $this->battery ||
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                         $car->getCharging() ||
+                        $isOutOfBounds ||
                         $status == self::MAINTENANCE_STATUS;
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");

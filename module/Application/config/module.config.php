@@ -435,8 +435,7 @@ return array(
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
             'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
-            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory',
-            'Application\Controller\Polygon' => 'Application\Controller\PolygonControllerFactory'
+            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -490,8 +489,7 @@ return array(
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []],
-                ['controller' => 'Application\Controller\Address', 'roles' => []],
-                ['controller' => 'Application\Controller\Polygon', 'roles' => []]
+                ['controller' => 'Application\Controller\Address', 'roles' => []]
             ),
         ),
     ),
@@ -557,7 +555,7 @@ return array(
                 'check-alarms' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'check alarms [--dry-run] [--verbose|-v]',
+                        'route' => 'check alarms [--dry-run|-d] [--verbose|-v]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
