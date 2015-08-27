@@ -137,6 +137,11 @@
     margin-top: 30px
 }
 
+.invoices-filter {
+    float: left;
+    width: 200px;
+}
+
 .invoices-filter-select {
     max-width: 150px;
 }
@@ -191,4 +196,10 @@
     border-width: 3px;
     border-style: solid;
     border-color: #fff;
+}
+
+.rents-message {
+    float: left;
+    width: 80%;
+    margin-bottom: 20px;
 }
