@@ -1,11 +1,11 @@
-CREATE TABLE zones (
+CREATE TABLE zone_alarms (
     id SERIAL PRIMARY KEY,
     name text NOT NULL,
     geo polygon NOT NULL
 );
 
-INSERT INTO zones Values (
-    nextval('zones_id_seq'::regclass),
+INSERT INTO zone_alarms Values (
+    nextval('zone_alarms_id_seq'::regclass),
     'MI',
     '(
         (7.965223053156447, 45.68915145978575),
@@ -24,8 +24,8 @@ INSERT INTO zones Values (
     )'
 );
 
-INSERT INTO zones Values (
-    nextval('zones_id_seq'::regclass),
+INSERT INTO zone_alarms Values (
+    nextval('zone_alarms_id_seq'::regclass),
     'FI',
     '(
         (10.44149502270095, 43.15865410027914),
