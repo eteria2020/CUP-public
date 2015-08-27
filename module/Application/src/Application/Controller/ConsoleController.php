@@ -435,7 +435,11 @@ class ConsoleController extends AbstractActionController
 
         $trip = $this->tripsService->getTripById($tripId);
 
-        $this->accountTripsService->accountTrip($trip);
+        if ($trip->isAccountable()) {
+            $this->accountTripsService->accountTrip($trip);
+        } else {
+            echo "Trip ".$tripId." not accountable\n";
+        }
 
         echo "Trip ".$tripId." processed\n";
     }
