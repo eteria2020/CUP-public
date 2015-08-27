@@ -234,7 +234,7 @@ function addRow(
                     $startAddressSpan.html('Partenza: ');
                     $startAddressSpan.addClass(hiddenRowClass);
 
-                $startAddressCol.html($startAddressCol.html() + '<a href="#">' + latStartPrintable + ' ' + lonStartPrintable + '</a>');
+                $startAddressCol.html($startAddressCol.html() + '<a href="#">Lat: ' + latStartPrintable + ' - Lon: ' + lonStartPrintable + '</a>');
                 $startAddressCol.click(function() {
                     loadMapPopup(latStart, lonStart);
                     return false;
@@ -252,7 +252,7 @@ function addRow(
                     $endAddressSpan.html('Destinazione: ');
                     $endAddressSpan.addClass(hiddenRowClass);
 
-                $endAddressCol.html($endAddressCol.html() + '<a href="">' + latEndPrintable + ' ' + lonEndPrintable + '</a>');
+                $endAddressCol.html($endAddressCol.html() + '<a href="#">Lat: ' + latEndPrintable + ' - Lon: ' + lonEndPrintable + '</a>');
                 $endAddressCol.click(function() {
                     loadMapPopup(latEnd, lonEnd);
                     return false;
