@@ -35,12 +35,12 @@ function refreshTable(period)
             var tripPayment = trip['tripPayments'];
             var tripBonuses = trip['tripBonuses'];
             var tripFreeFares = trip['tripFreeFares'];
-
-            var start = new Date(trip['timestampBeginning']['date']);
-            var end = new Date(trip['timestampEnd']['date']);
-            var timeDiff = Math.abs(end.getTime() - start.getTime());
-            var diffMinutes = Math.ceil(timeDiff / (1000 * 60));
-
+            
+            var start = moment(trip['timestampBeginning']['date'], "YYYY-MM-DD HH:mm:ss");
+            var end = moment(trip['timestampEnd']['date'], "YYYY-MM-DD HH:mm:ss");
+            var timeDiff = end.diff(start);     // milliseconds
+            var diffMinutes = Math.ceil(timeDiff / (1000 * 60));    //minutes
+            
             var tripMinutes = diffMinutes;
             var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
             var totalAmount = 'in elaborazione';
@@ -49,8 +49,8 @@ function refreshTable(period)
             var mustPayValue = 0;
 
             // show FREE for trips before 05/07/2015
-            $fifthjuly2015 = new Date("2015-07-05 00:00:00+02");
-            if (start <= $fifthjuly2015) {
+            $fifthjuly2015 = moment("2015-07-05 00:00:00", "YYYY-MM-DD HH:mm:ss");
+            if ($fifthjuly2015.diff(start) > 0) {
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
             }
@@ -83,7 +83,6 @@ function refreshTable(period)
             
             // exclude trips less than 5 mins long
             if (tripMinutes >= 5) {
-            
                 addRow(
                     0,
                     trip['timestampBeginningString'],
