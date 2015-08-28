@@ -247,7 +247,7 @@ class UserAreaController extends AbstractActionController
         return new ViewModel([
             'customer' => $customer,
             'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment,
-            'activateLink' => $activateLink
+            'activateLink' => false
         ]);
     }
 
