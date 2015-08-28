@@ -144,10 +144,10 @@ class UserAreaController extends AbstractActionController
     public function indexAction()
     {
         // check wether the customer still needs to register a credit card
-        $customer = $this->userService->getIdentity();
+        /*$customer = $this->userService->getIdentity();
         if ($this->I_customersService->isFirstTripManualPaymentNeeded($customer)) {
             $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
-        }
+        }*/
 
         // if not, continue with index action
         $this->setFormsData($this->customer);
