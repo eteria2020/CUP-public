@@ -435,7 +435,8 @@ return array(
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
             'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
-            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory'
+            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory',
+            'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -489,6 +490,7 @@ return array(
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []]
             ),
         ),
@@ -648,6 +650,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleComputePayInvoice',
                             'action' => 'compute-pay-invoice'
+                        ]
+                    ]
+                ],
+                'account-compute' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'account compute [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleAccountCompute',
+                            'action' => 'account-compute'
                         ]
                     ]
                 ],

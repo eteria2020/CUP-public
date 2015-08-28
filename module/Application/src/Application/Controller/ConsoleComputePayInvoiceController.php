@@ -61,6 +61,9 @@ class ConsoleComputePayInvoiceController extends AbstractActionController
     /**
      * @param TripsService $tripsService
      * @param TripCostService $tripCostService
+     * @param TripPaymentsService
+     * @param PaymentsService
+     * @param InvoicesService
      * @param Logger $logger
      */
     public function __construct(
