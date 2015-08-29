@@ -96,8 +96,12 @@
                     </div>
                     <!-- invoices table -->
 
+                    <div style="margin-top: 10px">
+                        <p style="color: red"><strong>Attenzione</strong>: se il totale nella colonna "da saldare" è positivo, vuol dire che hai terminato i minuti bonus e maturato un debito verso SHARE’NGO che sarà regolato il prossimo 3 Settembre con addebito sulla tua carta di credito. Dopo questo pagamento l'addebito delle corse avverrà di regola il giorno dopo.</p>
+                    </div>
+
                     <?php
-                        // if there are no invoices
+                        // if there are no trips
                         } else {
                     ?>
 
@@ -110,10 +114,6 @@
 
                 </div>
                 <!-- module-sharing-resmume -->
-
-                <div style="margin-top: 10px">
-                    <p style="color: red"><strong>Attenzione</strong>: se il totale nella colonna "da saldare" è positivo, vuol dire che hai terminato i minuti bonus e maturato un debito verso SHARE’NGO che sarà regolato il prossimo 3 Settembre con addebito sulla tua carta di credito. Dopo questo pagamento l'addebito delle corse avverrà di regola il giorno dopo.</p>
-                </div>
 
             </div>
             <!-- module-column-app-content -->
@@ -132,5 +132,5 @@
 var rentsUrl = "<?= $this->url('core/trips'); ?>";
 var lastPeriod = "<?= (count($availableDates) > 0 ? $lastValue : ''); ?>";
 </script>
-<script type="text/javascript" src="<?= $this->basePath(); ?>/js/moment.min.js"></script>
+<script type="text/javascript" src="<?= $this->basePath(); ?>/js/accounting.min.js"></script>
 <script type="text/javascript" src="<?= $this->basePath(); ?>/js/rents.js"></script>

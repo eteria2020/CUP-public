@@ -36,10 +36,7 @@ function refreshTable(period)
             var tripBonuses = trip['tripBonuses'];
             var tripFreeFares = trip['tripFreeFares'];
             
-            var start = moment(trip['timestampBeginning']['date'], "YYYY-MM-DD HH:mm:ss");
-            var end = moment(trip['timestampEnd']['date'], "YYYY-MM-DD HH:mm:ss");
-            var timeDiff = end.diff(start);     // milliseconds
-            var diffMinutes = Math.ceil(timeDiff / (1000 * 60));    //minutes
+            var diffMinutes = trip['duration'];    //minutes
             
             var tripMinutes = diffMinutes;
             var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
@@ -48,21 +45,20 @@ function refreshTable(period)
             var mustPay = 'in elaborazione';
             var mustPayValue = 0;
 
-            // show FREE for trips before 05/07/2015
-            $fifthjuly2015 = moment("2015-07-05 00:00:00", "YYYY-MM-DD HH:mm:ss");
-            if ($fifthjuly2015.diff(start) > 0) {
+            // show FREE for not accountable trips
+            if (!trip['isAccountable']) {
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
             }
 
             if (typeof tripPayment !== "undefined") {
-                tripMinutes = tripPayment['tripMinutes'];
-                parkingMinutes = tripPayment['parkingMinutes'];
+                //tripMinutes = tripPayment['tripMinutes'];
+                //parkingMinutes = tripPayment['parkingMinutes'];
                 totalAmountValue = (tripPayment['totalCost'] / 100);
-                totalAmount = totalAmountValue + ' \u20ac';
+                totalAmount = formatCurrency(totalAmountValue);
                 paymentStatus = tripPayment['status'];
                 mustPayValue = (paymentStatus == 'payed_correctly' || paymentStatus == 'invoiced') ? 0 : totalAmountValue;
-                mustPay = mustPayValue + ' \u20ac';
+                mustPay = formatCurrency(mustPayValue);
             }
 
             grandTotal = grandTotal + totalAmountValue;
@@ -72,6 +68,11 @@ function refreshTable(period)
             if (typeof tripBonuses !== "undefined") {
                 for(var i = 0; i < tripBonuses.length; i++) {
                     tripBonus += tripBonuses[0]['minutes'];
+                }
+                
+                if (tripBonus == diffMinutes) {
+                    var totalAmount = formatCurrency(0);
+                    var mustPay = formatCurrency(0);
                 }
             }
             tripFree = 0;
@@ -369,7 +370,7 @@ function addFinalRow(
         // create the total amount column
         var $totalAmountCol = $('<div>')
             .appendTo($row);
-        $totalAmountCol.html('<strong>' + totalAmount + '</strong>');
+        $totalAmountCol.html('<strong>' + formatCurrency(totalAmount) + '</strong>');
         $totalAmountCol.addClass(columnClass1);
         $totalAmountCol.addClass(columnClass2);
         $totalAmountCol.addClass(classRight);
@@ -377,7 +378,7 @@ function addFinalRow(
         // create the total amount column
         var $mustPayCol = $('<div>')
             .appendTo($row);
-        $mustPayCol.html('<strong>' + mustPay + '</strong>');
+        $mustPayCol.html('<strong>' + formatCurrency(mustPay) + '</strong>');
         $mustPayCol.addClass(columnClass1);
         $mustPayCol.addClass(columnClass2);
         $mustPayCol.addClass(classRight);
@@ -388,6 +389,10 @@ var $mapPopup = $('#map-popup');
 $mapPopup.click(function() {
     hideMapPopup();
 });
+
+function formatCurrency(value) {
+    return accounting.formatMoney(value, "€ ", 2, ".", ",");
+}
 
 function loadMapPopup(lat, lng)
 {
