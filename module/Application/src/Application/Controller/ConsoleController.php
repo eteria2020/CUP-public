@@ -406,60 +406,6 @@ class ConsoleController extends AbstractActionController
         }
     }
 
-    /*
-     * Computes bonus minutes
-     *
-     * The first time this action is called on a fresh database, make sure
-     * trips before 05/07 are excluded (ie payable = false).
-     *
-     */
-    public function accountTripsAction()
-    {
-        $tripsToBeAccounted = $this->tripsService->getTripsToBeAccounted();
-
-        foreach ($tripsToBeAccounted as $trip) {
-            echo "processing trip ".$trip->getId()."\n";
-            if ($trip->isAccountable()) {
-                $this->accountTripsService->accountTrip($trip);
-            } else {
-                $this->tripsService->setTripAsNotPayable($trip);
-            }
-        }
-
-        echo "\nDONE\n";
-    }
-
-    public function accountTripAction()
-    {
-        $tripId = $this->getRequest()->getParam('tripId');
-
-        $trip = $this->tripsService->getTripById($tripId);
-
-        if ($trip->isAccountable()) {
-            $this->accountTripsService->accountTrip($trip);
-        } else {
-            echo "Trip ".$tripId." not accountable\n";
-        }
-
-        echo "Trip ".$tripId." processed\n";
-    }
-
-    public function accountUserTripsAction()
-    {
-        $customerId = $this->getRequest()->getParam('customerId');
-
-        $customer = $this->customerService->findById($customerId);
-
-        $tripsToBeAccounted = $this->tripsService->getCustomerTripsToBeAccounted($customer);
-
-        foreach ($tripsToBeAccounted as $trip) {
-            echo "processing trip ".$trip->getId()."\n";
-            $this->accountTripsService->accountTrip($trip);
-        }
-
-        echo "\nDONE\n";
-    }
-
     public function invoiceRegistrationsAction()
     {
         $request = $this->getRequest();

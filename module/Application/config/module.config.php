@@ -524,10 +524,10 @@ return array(
                 'account-trips' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'account trips',
+                        'route' => 'account trips [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'Console',
+                            'controller' => 'ConsoleAccountCompute',
                             'action' => 'account-trips'
                         ]
                     ]
@@ -535,10 +535,10 @@ return array(
                 'account-trip' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'account trip <tripId>',
+                        'route' => 'account trip <tripId> [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'Console',
+                            'controller' => 'ConsoleAccountCompute',
                             'action' => 'account-trip'
                         ]
                     ]
@@ -546,10 +546,10 @@ return array(
                 'account-user-trips' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'account trips user <customerId>',
+                        'route' => 'account trips user <customerId> [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'Console',
+                            'controller' => 'ConsoleAccountCompute',
                             'action' => 'account-user-trips'
                         ]
                     ]
