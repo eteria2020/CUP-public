@@ -31,7 +31,7 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
                 'placeholder' => $translator->translate('Promo code'),
             ]
         ]);
-        
+
     }
 
     public function getInputFilterSpecification()
@@ -39,6 +39,11 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
         return [
             'promocode' => [
                 'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\PromoCode',
