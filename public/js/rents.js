@@ -67,7 +67,7 @@ function refreshTable(period)
             tripBonus = 0;
             if (typeof tripBonuses !== "undefined") {
                 for(var i = 0; i < tripBonuses.length; i++) {
-                    tripBonus += tripBonuses[0]['minutes'];
+                    tripBonus += tripBonuses[i]['minutes'];
                 }
                 
                 if (tripBonus == diffMinutes) {
