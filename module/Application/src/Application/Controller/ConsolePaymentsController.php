@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PaymentsService;
+use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -14,6 +15,11 @@ class ConsolePaymentsController extends AbstractActionController
      * @var TripPaymentsService
      */
     private $tripPaymentsService;
+
+    /**
+     * @var CustomerService
+     */
+    private $customersService;
 
     /**
      * @var PaymentsService
@@ -31,10 +37,12 @@ class ConsolePaymentsController extends AbstractActionController
     public function __construct(
         TripPaymentsService $tripPaymentsService,
         PaymentsService $paymentsService,
+        CustomersService $customersService,
         Logger $logger
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
         $this->paymentsService = $paymentsService;
+        $this->customersService = $customersService;
         $this->logger = $logger;
     }
 
@@ -49,7 +57,7 @@ class ConsolePaymentsController extends AbstractActionController
         $avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
         $customerId = $this->getRequest()->getParam('customerId');
-        $customer = $this->customerService->findById($customerId);
+        $customer = $this->customersService->findById($customerId);
 
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 

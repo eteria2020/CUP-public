@@ -79,11 +79,20 @@
         // if necessary create link to the activation page
             if ($this->activateLink) {
         ?>
-            <!-- Activation button -->
-            <div class="block-wrapper-button content-align-center margin-top-custom">
-                <a href="<?= $this->url('area-utente/activate-payments') ?>"><button><?= $this->translate("Attiva carta"); ?></button></a>
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-manage-card -->
+                <div class="module-manage-card padding-top">
+
+                    <p>Hai esaurito i tuoi minuti bonus e hai effettuato una o più corse "a debito". Puoi effettuare manualmente il primo pagamento cliccando sul seguente link.</p>
+                    <!-- Activation button -->
+                    <div class="block-wrapper-button content-align-center margin-top-custom">
+                        <a href="<?= $this->url('area-utente/activate-payments') ?>"><button><?= $this->translate("Maggiori informazioni"); ?></button></a>
+                    </div>
+                    <!-- activation button -->
+
+                </div>
             </div>
-            <!-- activation button -->
         <?php
             }
         ?>
