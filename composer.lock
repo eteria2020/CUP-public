@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "57ae7d14d3dcc8cacf88e4574089c4b0",
+    "hash": "96d6e18b653f6dfa3503781cbdd05902",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -1264,7 +1264,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
-                "reference": "c513f214fc06ff19914364ea02f79a4501fa662c"
+                "reference": "0db7a4091420922516fd248db8a9ab8efec51114"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1278,7 +1278,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2015-08-21 12:30:08"
+            "time": "2015-09-02 12:00:12"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
@@ -1286,7 +1286,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "38bcb74ad1c63ad5c86221fd580c74f62462346e"
+                "reference": "91e38b026e602e35b7db5b31df63c3a10d3a82a3"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1307,7 +1307,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-08-31 07:35:11"
+            "time": "2015-09-02 12:01:00"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
