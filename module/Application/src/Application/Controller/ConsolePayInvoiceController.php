@@ -11,7 +11,7 @@ use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class ConsoleComputePayInvoiceController extends AbstractActionController
+class ConsolePayInvoiceController extends AbstractActionController
 {
     /**
      * @var TripsService
@@ -67,22 +67,18 @@ class ConsoleComputePayInvoiceController extends AbstractActionController
      * @param Logger $logger
      */
     public function __construct(
-        TripsService $tripsService,
-        TripCostService $tripCostService,
         TripPaymentsService $tripPaymentsService,
         PaymentsService $paymentsService,
         InvoicesService $invoicesService,
         Logger $logger
     ) {
-        $this->tripsService = $tripsService;
-        $this->tripCostService = $tripCostService;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->paymentsService = $paymentsService;
         $this->invoicesService = $invoicesService;
         $this->logger = $logger;
     }
 
-    public function computePayInvoiceAction()
+    public function payInvoiceAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
@@ -92,24 +88,8 @@ class ConsoleComputePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
-        $this->computeTripsCost();
         $this->processPayments();
         $this->generateInvoices();
-    }
-
-    private function computeTripsCost()
-    {
-        $this->logger->log("\nStarted computing costs\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
-        $tripsForCostComputation = $this->tripsService->getTripsForCostComputation();
-        $this->logger->log("Computing cost for " . count($tripsForCostComputation) . " trips\n");
-
-        foreach ($tripsForCostComputation as $trip) {
-            $this->logger->log("Computing cost for trip " . $trip->getId() . "\n");
-            $this->tripCostService->computeTripCost($trip, $this->avoidPersistance);
-        }
-
-        $this->logger->log("Done computing costs\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
     private function processPayments()

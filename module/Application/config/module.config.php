@@ -435,7 +435,7 @@ return array(
             'Application\Controller\ComputeTripsCost' => 'Application\Controller\ComputeTripsCostControllerFactory',
             'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
-            'Application\Controller\ConsoleComputePayInvoice' => 'Application\Controller\ConsoleComputePayInvoiceControllerFactory',
+            'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory'
         ],
     ],
@@ -489,7 +489,7 @@ return array(
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
-                ['controller' => 'Application\Controller\ConsoleComputePayInvoice', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsolePayInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []]
             ),
@@ -631,25 +631,25 @@ return array(
                         ]
                     ]
                 ],
-                'make-them-pay' => [
+                'make-user-pay' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'make them pay [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'route' => 'make user pay <customerId> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayments',
-                            'action' => 'make-them-pay'
+                            'action' => 'make-user-pay'
                         ]
                     ]
                 ],
-                'compute-pay-invoice' => [
+                'pay-invoice' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'compute pay invoice [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'route' => 'pay invoice [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsoleComputePayInvoice',
-                            'action' => 'compute-pay-invoice'
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'pay-invoice'
                         ]
                     ]
                 ],

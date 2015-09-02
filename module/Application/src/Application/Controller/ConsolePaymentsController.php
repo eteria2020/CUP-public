@@ -38,7 +38,7 @@ class ConsolePaymentsController extends AbstractActionController
         $this->logger = $logger;
     }
 
-    public function makeThemPayAction()
+    public function makeUserPayAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
@@ -48,9 +48,12 @@ class ConsolePaymentsController extends AbstractActionController
         $avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
+        $customerId = $this->getRequest()->getParam('customerId');
+        $customer = $this->customerService->findById($customerId);
+
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $tripsPayments = $this->tripPaymentsService->getTripPaymentsForPayment();
+        $tripsPayments = $this->tripPaymentsService->getTripPaymentsForUserPayment($customer);
         $this->logger->log("Trips found: " . count($tripsPayments) . "\n");
 
         foreach ($tripsPayments as $tripPayment) {
