@@ -2,20 +2,20 @@
 
 namespace Application\Controller;
 
-use SharengoCore\Service\TripsService;
+use SharengoCore\Service\EditTripsService;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
 class EditTripController extends AbstractActionController
 {
     /**
-     * @param TripsService
+     * @param EditTripsService
      */
-    private $tripsService;
+    private $editTripsService;
 
-    public function __construct(TripsService $tripsService)
+    public function __construct(EditTripsService $editTripsService)
     {
-        $this->tripsService = $tripsService;
+        $this->editTripsService = $editTripsService;
     }
 
     public function editTripAction()
@@ -26,6 +26,7 @@ class EditTripController extends AbstractActionController
 
         $trip = $this->tripsService->getTripById($tripId);
 
+        // validate trip
         if (!$trip) {
             echo "There is no trip with the requested id\n";
             exit;
@@ -33,11 +34,13 @@ class EditTripController extends AbstractActionController
 
         $endDate = date_create($endDateString);
 
+        // validate date
         if (!$endDate) {
             echo "Please use a valid date format\n";
             exit;
         }
 
-        $this->tripsService->editTrip($trip, $notPayable, $endDate);
+        // edit trip
+        $this->editTripsService->editTrip($trip, $notPayable, $endDate);
     }
 }

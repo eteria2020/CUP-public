@@ -9,7 +9,7 @@ class EditTripControllerfactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $tripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
+        $tripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\EditTripsService');
 
         return new EditTripController($tripsService);
     }
