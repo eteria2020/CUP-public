@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use SharengoCore\Service\TripsService;
 use SharengoCore\Service\EditTripsService;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -9,12 +10,20 @@ use Zend\Mvc\Controller\AbstractActionController;
 class EditTripController extends AbstractActionController
 {
     /**
+     * @param TripsService
+     */
+    private $tripsService;
+
+    /**
      * @param EditTripsService
      */
     private $editTripsService;
 
-    public function __construct(EditTripsService $editTripsService)
-    {
+    public function __construct(
+        TripsService $tripsService,
+        EditTripsService $editTripsService
+    ) {
+        $this->tripsService = $tripsService;
         $this->editTripsService = $editTripsService;
     }
 
@@ -32,10 +41,10 @@ class EditTripController extends AbstractActionController
             exit;
         }
 
-        $endDate = date_create($endDateString);
+        $endDate = is_null($endDateString) ? null : date_create($endDateString);
 
         // validate date
-        if (!$endDate) {
+        if ($endDate === false) {
             echo "Please use a valid date format\n";
             exit;
         }
