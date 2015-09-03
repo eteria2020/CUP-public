@@ -436,7 +436,8 @@ return array(
             'Application\Controller\ConsolePayments' => 'Application\Controller\ConsolePaymentsControllerFactory',
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
             'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
-            'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory'
+            'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
+            'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -491,7 +492,8 @@ return array(
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
-                ['controller' => 'Application\Controller\Address', 'roles' => []]
+                ['controller' => 'Application\Controller\Address', 'roles' => []],
+                ['controller' => 'Application\Controller\EditTrip', 'roles' => []]
             ),
         ),
     ),
@@ -672,6 +674,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Address',
                             'action' => 'generate-locations'
+                        ]
+                    ]
+                ],
+                'edit-trip' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'edit trip <tripId> [--notPayable] [--endDate=]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'EditTrip',
+                            'action' => 'edit-trip'
                         ]
                     ]
                 ]

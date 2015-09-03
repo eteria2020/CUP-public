@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "96d6e18b653f6dfa3503781cbdd05902",
+    "hash": "57ae7d14d3dcc8cacf88e4574089c4b0",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -511,12 +511,12 @@
             "version": "0.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/DoctrineORMModule.git",
+                "url": "git@github.com:doctrine/DoctrineORMModule.git",
                 "reference": "31a0a0aefd424ca2eaecc0303c4bb0d959b1f2c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineORMModule/zipball/31a0a0aefd424ca2eaecc0303c4bb0d959b1f2c0",
+                "url": "https://api.github.com/repos/doctrine/DoctrineORMModule/zipball/473e12ff9b39e2ec00f09bf89758d1fb0bec829e",
                 "reference": "31a0a0aefd424ca2eaecc0303c4bb0d959b1f2c0",
                 "shasum": ""
             },
@@ -1264,7 +1264,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
-                "reference": "0db7a4091420922516fd248db8a9ab8efec51114"
+                "reference": "c513f214fc06ff19914364ea02f79a4501fa662c"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1278,7 +1278,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2015-09-02 12:00:12"
+            "time": "2015-08-21 12:30:08"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
@@ -1286,7 +1286,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "91e38b026e602e35b7db5b31df63c3a10d3a82a3"
+                "reference": "d6ceb456b3a53b9827adf57b705b330de85f1721"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1307,7 +1307,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-09-02 12:01:00"
+            "time": "2015-09-03 08:26:27"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
