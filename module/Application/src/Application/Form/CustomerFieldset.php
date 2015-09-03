@@ -324,7 +324,9 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'email' => [
                 'required' => true,
                 'filters' => [
-                    'name' => 'StringToLower'
+                    [
+                        'name' => 'StringToLower'
+                    ]
                 ],
                 'validators' => [
                     [
@@ -345,7 +347,9 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'email2' => [
                 'required' => true,
                 'filters' => [
-                    'name' => 'StringToLower'
+                    [
+                        'name' => 'StringToLower'
+                    ]
                 ],
                 'validators' => [
                     [
