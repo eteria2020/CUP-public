@@ -16,7 +16,7 @@ class ConsoleAccountComputeController extends AbstractActionController
      * @var CustomersService
      */
     private $customerService;
-    
+
     /**
      * @var AccountTripsService
      */
@@ -85,7 +85,6 @@ class ConsoleAccountComputeController extends AbstractActionController
         $this->checkDryRun();
 
         $this->accountTrips();
-        
     }
 
     public function accountTripAction()
@@ -95,7 +94,7 @@ class ConsoleAccountComputeController extends AbstractActionController
         $this->checkDryRun();
 
         $this->logger->log("\nStarted accounting trip\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-        
+
         $tripId = $this->getRequest()->getParam('tripId');
 
         $trip = $this->tripsService->getTripById($tripId);
@@ -116,7 +115,7 @@ class ConsoleAccountComputeController extends AbstractActionController
         $this->checkDryRun();
 
         $this->logger->log("\nStarted accounting user trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-        
+
         $customerId = $this->getRequest()->getParam('customerId');
 
         $customer = $this->customerService->findById($customerId);
@@ -129,7 +128,6 @@ class ConsoleAccountComputeController extends AbstractActionController
         }
 
         $this->logger->log("Done accounting user trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-        
     }
 
     private function accountTrips()
@@ -178,5 +176,4 @@ class ConsoleAccountComputeController extends AbstractActionController
         $request = $this->getRequest();
         $this->avoidPersistance = $request->getParam('dry-run') || $request->getParam('d');
     }
-
 }
