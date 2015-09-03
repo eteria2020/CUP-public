@@ -511,12 +511,12 @@
             "version": "0.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/DoctrineORMModule.git",
+                "url": "git@github.com:doctrine/DoctrineORMModule.git",
                 "reference": "31a0a0aefd424ca2eaecc0303c4bb0d959b1f2c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineORMModule/zipball/31a0a0aefd424ca2eaecc0303c4bb0d959b1f2c0",
+                "url": "https://api.github.com/repos/doctrine/DoctrineORMModule/zipball/473e12ff9b39e2ec00f09bf89758d1fb0bec829e",
                 "reference": "31a0a0aefd424ca2eaecc0303c4bb0d959b1f2c0",
                 "shasum": ""
             },
@@ -1286,7 +1286,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "38bcb74ad1c63ad5c86221fd580c74f62462346e"
+                "reference": "d6ceb456b3a53b9827adf57b705b330de85f1721"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1307,7 +1307,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-08-31 07:35:11"
+            "time": "2015-09-03 08:26:27"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
