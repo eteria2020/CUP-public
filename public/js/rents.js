@@ -35,9 +35,9 @@ function refreshTable(period)
             var tripPayment = trip['tripPayments'];
             var tripBonuses = trip['tripBonuses'];
             var tripFreeFares = trip['tripFreeFares'];
-            
+
             var diffMinutes = trip['duration'];    //minutes
-            
+
             var tripMinutes = diffMinutes;
             var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
             var totalAmount = 'in elaborazione';
@@ -66,22 +66,22 @@ function refreshTable(period)
 
             tripBonus = 0;
             if (typeof tripBonuses !== "undefined") {
-                for(var i = 0; i < tripBonuses.length; i++) {
+                for(i = 0; i < tripBonuses.length; i++) {
                     tripBonus += tripBonuses[i]['minutes'];
                 }
-                
+
                 if (tripBonus == diffMinutes) {
-                    var totalAmount = formatCurrency(0);
-                    var mustPay = formatCurrency(0);
+                    totalAmount = formatCurrency(0);
+                    mustPay = formatCurrency(0);
                 }
             }
             tripFree = 0;
             if (typeof tripFreeFares !== "undefined") {
-                for(var i = 0; i < tripFreeFares.length; i++) {
+                for(i = 0; i < tripFreeFares.length; i++) {
                     tripFree += tripFreeFares[0]['minutes'];
                 }
             }
-            
+
             // exclude trips less than 5 mins long
             if (tripMinutes >= 5) {
                 addRow(
@@ -103,7 +103,7 @@ function refreshTable(period)
             }
 
             // after last line is rendered...
-            if (--tripsCount == 0) {
+            if (--tripsCount === 0) {
                 addFinalRow(
                     1,
                     grandTotal + ' \u20ac',
@@ -293,31 +293,6 @@ function addRow(
                         $freeMinutesSpan.addClass(hiddenRowClass);
 
             }
-
-        /*var latlngStart = new google.maps.LatLng(latStart, lonStart);
-        var latlngEnd = new google.maps.LatLng(latEnd, lonEnd);
-
-        geocoder.geocode({'latLng': latlngStart}, function(results, status)
-        {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                        $startAddressCol.html($startAddressCol.html() + results[1].formatted_address);
-                    }
-                }
-            }
-        });
-
-        geocoder.geocode({'latLng': latlngEnd}, function(results, status)
-        {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                        $endAddressCol.html($endAddressCol.html() + results[1].formatted_address);
-                    }
-                }
-            }
-        });*/
 }
 
 function addFinalRow(
