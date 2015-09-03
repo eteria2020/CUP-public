@@ -344,8 +344,12 @@ class UserAreaController extends AbstractActionController
             }
         }
 
+        // Add here code
+        $bonusPackages = [];
+
         return new ViewModel([
-            'promoCodeForm' => $form
+            'promoCodeForm' => $form,
+            'bonusPackages' => $bonusPackages
         ]);
     }
 
