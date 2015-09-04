@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\TripsService;
 
 use Doctrine\ORM\EntityManager;
@@ -22,6 +23,11 @@ class ExportInvoicesController extends AbstractActionController
     private $customersService;
 
     /**
+     * @var InvoicesService
+     */
+    private $invoicesService;
+
+    /**
      * @var TripsService
      */
     private $tripsService;
@@ -34,11 +40,13 @@ class ExportInvoicesController extends AbstractActionController
     public function __construct(
         EntityManager $entityManager,
         CustomersService $customersService,
+        InvoicesService $invoicesService,
         TripsService $tripsService,
         Logger $logger
     ) {
         $this->entityManager = $entityManager;
         $this->customersService = $customersService;
+        $this->invoicesService = $invoicesService;
         $this->tripsService = $tripsService;
         $this->logger = $logger;
     }
@@ -54,7 +62,6 @@ class ExportInvoicesController extends AbstractActionController
 
         // Generate customers registries
         $customers = $this->customersService->getCustomersForExport();
-
         foreach ($customers as $customer) {
             //$this->logger->log("Exporting customer: " . $customer->getId() . "\n");
             $vat = $customer->getVat();
@@ -89,6 +96,55 @@ class ExportInvoicesController extends AbstractActionController
                 "CC001;"; // 581
 
             $this->logger->log($record . "\n\n");
+        }
+
+        // Export invoices registries
+        $invoices = $this->invoicesService->getInvoicesForExport();
+        foreach ($invoices as $invoice) {
+            $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+
+            $startDate = "";
+            $endDate = "";
+
+            $record1 = "TES;" . // 3
+                "110;" .// 11
+                $invoice->getInvoiceDate() . ";" .// 10
+                $invoice->getInvoiceNumber() . ";" .// 20
+                "TC;" .// 30
+                $invoice->getInvoiceDate() . ";" .// 50
+                $invoice->getInvoiceNumber() . ";" .// 61
+                $invoice->getCustomer()->getCard()->getCode() . ";" .// 130
+                $invoice->getCustomer()->getId() . ";" .// 78
+                "CC001;" .// 241
+                $invoice->getAmount() .// 140
+                ";" .// 660
+                ";" .// 681
+                $invoice->getAmount() . ";" .// 930
+                "22;" .// 1001 (add vat to invoices)
+                $startDate . ";" .// 1020
+                $endDate . ";" .// 1030
+                "FR;";// 99999
+
+            $record2 = "RIG;" . // 3
+                "110;" .// 11
+                $invoice->getInvoiceDate() . ";" .// 10
+                $invoice->getInvoiceNumber() . ";" .// 20
+                "TC;" .// 30
+                $invoice->getInvoiceDate() . ";" .// 50
+                $invoice->getInvoiceNumber() . ";" .// 61
+                $invoice->getCustomer()->getCard()->getCode() . ";" .// 130
+                $invoice->getCustomer()->getId() . ";" .// 78
+                "CC001;" .// 241
+                $invoice->getAmount() .// 140
+                "40;" .// 660
+                "CORSA;" .// 681
+                $invoice->getAmount() . ";" .// 930
+                "22;" .// 1001 (add vat to invoices)
+                $startDate . ";" .// 1020
+                $endDate . ";" .// 1030
+                "FR;";// 99999
+
+            $this->logger->log($record1 . "\n" . $record2 . "\n\n");
         }
 
         if (!$dryRun) {
