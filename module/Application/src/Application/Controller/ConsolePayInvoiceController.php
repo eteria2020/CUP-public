@@ -118,7 +118,7 @@ class ConsolePayInvoiceController extends AbstractActionController
 
         // get all trip_payments without invoice
         $tripPayments = $this->tripPaymentsService->getTripPaymentsNoInvoiceGrouped();
-        $this->logger->log("Generating invoices for " . count($tripsPayments) . "trips\n");
+        $this->logger->log("Generating invoices for " . count($tripPayments) . "trips\n");
 
         // generate the invoices
         $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$this->avoidPersistance);
