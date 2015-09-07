@@ -54,7 +54,7 @@ class ExportRegistriesController extends AbstractActionController
     // TODO
     // throw exception if customer does not have card
     // add IVA to Invoices (in json)
-    // create file
+    // create file (find out where)
     public function exportRegistriesAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
@@ -62,31 +62,42 @@ class ExportRegistriesController extends AbstractActionController
 
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $noCustomers = $request->getParam('no-customers') || $request->getParam('c');
+        $noInvoices = $request->getParam('no-invoices') || $request->getParam('i');
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
+        // Create the output file
+        $file = fopen("export.txt", "w");
+        $fileContent = "";
+
         // Generate customers registries
-        $this->logger->log("Exporting customers...\n\n");
-        $customers = $this->customersService->getCustomersForExport();
-        foreach ($customers as $customer) {
-            $this->logger->log("Exporting customer: " . $customer->getId() . "\n");
-            $record = $this->customersService->getExportDataForCustomer($customer);
-            $this->logger->log($record . "\n\n");
+        if (!$noCustomers) {
+            $this->logger->log("Exporting customers...\n\n");
+            $customers = $this->customersService->getCustomersForExport();
+            foreach ($customers as $customer) {
+                $this->logger->log("Exporting customer: " . $customer->getId() . "\n");
+                $record = $this->customersService->getExportDataForCustomer($customer);
+                $fileContent .= $record . "\n";
+            }
+            $this->logger->log("\n");
         }
 
         // Export invoices registries
-        $this->logger->log("Exporting invoices...\n\n");
-        $invoices = $this->invoicesService->getInvoicesForExport();
-        foreach ($invoices as $invoice) {
-            $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
-            $record = $this->invoicesService->getExportDataForInvoice($invoice);
-            $this->logger->log($record . "\n\n");
+        if (!$noInvoices) {
+            $this->logger->log("Exporting invoices...\n\n");
+            $invoices = $this->invoicesService->getInvoicesForExport();
+            foreach ($invoices as $invoice) {
+                $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+                $record = $this->invoicesService->getExportDataForInvoice($invoice);
+                $fileContent .= $record . "\n";
+            }
         }
 
         if (!$dryRun) {
-            $this->logger->log("EntityManager: flushing\n\n");
-            $this->entityManager->flush();
+            fwrite($file, $fileContent);
         }
 
+        fclose($file);
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 }
