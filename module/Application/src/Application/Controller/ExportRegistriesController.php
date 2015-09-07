@@ -2,6 +2,8 @@
 
 namespace Application\Controller;
 
+use Application\Exception\MissingCardFromCustomerException;
+
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\InvoicesService;
@@ -68,40 +70,51 @@ class ExportRegistriesController extends AbstractActionController
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $noCustomers = $request->getParam('no-customers') || $request->getParam('c');
         $noInvoices = $request->getParam('no-invoices') || $request->getParam('i');
+        $exceptionThrown = false;
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
-        // Create the output file
-        $file = fopen("export.txt", "w");
-        $fileContent = "";
 
         // Generate customers registries
         if (!$noCustomers) {
-            $this->logger->log("Exporting customers...\n\n");
-            $customers = $this->customersService->getCustomersForExport();
-            foreach ($customers as $customer) {
-                $this->logger->log("Exporting customer: " . $customer->getId() . "\n");
-                $record = $this->customersService->getExportDataForCustomer($customer);
-                $fileContent .= $record . "\n";
+            try {
+                $this->logger->log("Exporting customers...\n\n");
+                $fileContentCustomers = "";
+                $customers = $this->customersService->getCustomersForExport();
+                foreach ($customers as $customer) {
+                    $this->logger->log("Exporting customer: " . $customer->getId() . "\n");
+                    $record = $this->customersService->getExportDataForCustomer($customer);
+                    $fileContentCustomers .= $record . "\n";
+                }
+                $this->logger->log("\n");
+                if (!$dryRun) {
+                    $fileCustomers = fopen("exportCustomers.txt", "w");
+                    fwrite($fileCustomers, $fileContentCustomers);
+                    fprintf($fileCustomers, "%c", 26);
+                    fclose($fileCustomers);
+                }
+            } catch(MissingCardFromCustomerException $e) {
+                $this->logger->log("\nException thrown: found customer without card\n");
+                $exceptionThrown = true;
             }
-            $this->logger->log("\n");
         }
 
         // Export invoices registries
-        if (!$noInvoices) {
+        if (!$noInvoices && !$exceptionThrown) {
             $this->logger->log("Exporting invoices...\n\n");
+            $fileContentInvoices = "";
             $invoices = $this->invoicesService->getInvoicesForExport();
             foreach ($invoices as $invoice) {
                 $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
                 $record = $this->invoicesService->getExportDataForInvoice($invoice);
-                $fileContent .= $record . "\n";
+                $fileContentInvoices .= $record . "\n";
+            }
+            if (!$dryRun) {
+                $fileInvoices = fopen("exportInvoices.txt", "w");
+                fwrite($fileInvoices, $fileContentInvoices);
+                fprintf($fileInvoices, "%c", 26);
+                fclose($fileInvoices);
             }
         }
 
-        if (!$dryRun) {
-            fwrite($file, $fileContent);
-        }
-
-        fclose($file);
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 }
