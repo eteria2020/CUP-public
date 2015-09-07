@@ -51,10 +51,14 @@ class ExportRegistriesController extends AbstractActionController
         $this->logger = $logger;
     }
 
-    // TODO
-    // throw exception if customer does not have card
-    // add IVA to Invoices (in json)
-    // create file (find out where)
+    /**
+     * Writes a file (TODO define path) in which all data to be
+     * exported is written.
+     * Available params are:
+     *     -d (does not write to file)
+     *     -c (does not export customers data)
+     *     -i (does not export invoices data)
+     */
     public function exportRegistriesAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
