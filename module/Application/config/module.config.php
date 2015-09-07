@@ -450,7 +450,7 @@ return array(
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
-            'Application\Controller\ExportInvoices' => 'Application\Controller\ExportInvoicesControllerFactory'
+            'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -508,7 +508,7 @@ return array(
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
-                ['controller' => 'Application\Controller\ExportInvoices', 'roles' => []]
+                ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []]
             ),
         ),
     ),
@@ -722,14 +722,14 @@ return array(
                         ]
                     ]
                 ],
-                'export-invoices' => [
+                'export-registries' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'export invoices [--dry-run|-d]',
+                        'route' => 'export registries [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ExportInvoices',
-                            'action' => 'export-invoices'
+                            'controller' => 'ExportRegistries',
+                            'action' => 'export-registries'
                         ]
                     ]
                 ]
