@@ -372,7 +372,7 @@ class UserAreaController extends AbstractActionController
         $customer = $this->userService->getIdentity();
         $expiryDate = '';
 
-        $isActivated = $this->cartasiContractsService->getCartasiContractNumber($customer) != null;
+        $isActivated = $this->cartasiContractsService->getCartasiContract($customer) != null;
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
         if ($tripPayment != null) {
             $expiryDate = $this->tripPaymentsService->getExpiryDate($tripPayment)->format('d-m-Y');
