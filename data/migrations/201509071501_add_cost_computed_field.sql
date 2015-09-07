@@ -1,0 +1,1 @@
+ALTER TABLE trips ADD cost_computed BOOLEAN DEFAULT 'false' NOT NULL;
