@@ -70,6 +70,7 @@ class ExportRegistriesController extends AbstractActionController
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $noCustomers = $request->getParam('no-customers') || $request->getParam('c');
         $noInvoices = $request->getParam('no-invoices') || $request->getParam('i');
+        $ignoreExceptions = $request->getParam('ignore-exceptions') || $request->getParam('e');
         $exceptionThrown = false;
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -81,18 +82,26 @@ class ExportRegistriesController extends AbstractActionController
                 $customers = $this->customersService->getCustomersForExport();
                 foreach ($customers as $customer) {
                     $this->logger->log("Exporting customer: " . $customer->getId() . "\n");
-                    $record = $this->customersService->getExportDataForCustomer($customer);
-                    $fileContentCustomers .= $record . "\n";
+                    try {
+                        $record = $this->customersService->getExportDataForCustomer($customer);
+                    } catch(MissingCardFromCustomerException $ex) {
+                        if ($ignoreExceptions) {
+                            $this->logger->log("\n" . $ex->getMessage() . "\n");
+                            continue;
+                        } else {
+                            throw $ex;
+                        }
+                    }
+                    $fileContentCustomers .= $record . "\r\n";
                 }
                 $this->logger->log("\n");
                 if (!$dryRun) {
                     $fileCustomers = fopen("exportCustomers.txt", "w");
                     fwrite($fileCustomers, $fileContentCustomers);
-                    fprintf($fileCustomers, "%c", 26);
                     fclose($fileCustomers);
                 }
             } catch(MissingCardFromCustomerException $e) {
-                $this->logger->log("\nException thrown: found customer without card\n");
+                $this->logger->log("\n" . $ex->getMessage() . "\n");
                 $exceptionThrown = true;
             }
         }
@@ -105,12 +114,11 @@ class ExportRegistriesController extends AbstractActionController
             foreach ($invoices as $invoice) {
                 $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
                 $record = $this->invoicesService->getExportDataForInvoice($invoice);
-                $fileContentInvoices .= $record . "\n";
+                $fileContentInvoices .= $record . "\r\n";
             }
             if (!$dryRun) {
                 $fileInvoices = fopen("exportInvoices.txt", "w");
                 fwrite($fileInvoices, $fileContentInvoices);
-                fprintf($fileInvoices, "%c", 26);
                 fclose($fileInvoices);
             }
         }
