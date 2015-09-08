@@ -1,3 +1,14 @@
+/**
+ * @param text crfid the rfid of a card
+ * @param text ccode the code of a card
+ *
+ * Checks if the card's code is of the right length by extracting the longest
+ * substring. If it isn't it:
+ * - retrieves the customer with that code,
+ * - removes the card from the customer,
+ * - updates the card with the correct code,
+ * - reassignes the card to the customer
+ */
 CREATE OR REPLACE FUNCTION fix_card_code(crfid text, ccode text)
     RETURNS void
     LANGUAGE plpgsql
@@ -17,6 +28,13 @@ CREATE OR REPLACE FUNCTION fix_card_code(crfid text, ccode text)
         END;
     $$;
 
-SELECT fix_card_code(cards.code, cards.rfid) FROM cards;
+/**
+ * Calls the fix_card_code() function for every card, passing the rfid and code
+ */
+SELECT fix_card_code(cards.rfid, cards.code) FROM cards;
 
-ALTER TABLE cards ADD CONSTRAINT alnum_code CHECK (code ~* '^[A-Z0-9]+$');
+/**
+ * Adds a constraint to the cards code column so that only capital alphanumeric
+ * values can be used
+ */
+ALTER TABLE cards ADD CONSTRAINT alnum_code CHECK (code ~ '^[A-Z0-9]+$');
