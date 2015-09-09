@@ -661,17 +661,6 @@ return array(
                             'action' => 'generate-locations'
                         ]
                     ]
-                ],
-                'evaluate-cars-location' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'evaluate cars location [--dry-run|-d]',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'Polygon',
-                            'action' => 'evaluate-cars-location'
-                        ]
-                    ]
                 ]
             ],
         ],
