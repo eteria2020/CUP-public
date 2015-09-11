@@ -437,7 +437,8 @@ return array(
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
             'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
-            'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory'
+            'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
+            'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -493,7 +494,8 @@ return array(
                 ['controller' => 'Application\Controller\ConsolePayInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
-                ['controller' => 'Application\Controller\EditTrip', 'roles' => []]
+                ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
+                ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []]
             ),
         ),
     ),
@@ -685,6 +687,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'EditTrip',
                             'action' => 'edit-trip'
+                        ]
+                    ]
+                ],
+                'fix-invoices-body' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'fix invoices body',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'FixInvoicesBody',
+                            'action' => 'fix-invoices-body'
                         ]
                     ]
                 ]
