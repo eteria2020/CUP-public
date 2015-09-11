@@ -116,7 +116,7 @@ class ComputeTripsCostController extends AbstractActionController
         $verbose = $request->getParam('verbose') || $request->getParam('v');
 
         if ($verbose) {
-            $this->logger->setOutputEnviornment(Logger::OUTPUT_ON);
+            $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
             $this->logger->setOutputType(Logger::TYPE_CONSOLE);
         } else {
             $this->logger->setOutputEnviornment(Logger::OUTPUT_OFF);
