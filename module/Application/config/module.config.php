@@ -249,6 +249,17 @@ return array(
                     ),
                 ]
             ],
+            'eq-sharing' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{eq-sharing}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'eq-sharing',
+                    ),
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
@@ -499,6 +510,14 @@ return array(
             ),
         ),
     ),
+
+    'asset_manager' => [
+        'resolver_configs' => [
+            'paths' => [
+                __DIR__ . '/../public',
+            ]
+        ]
+    ],
 
     'console' => [
         'router' => [

@@ -34,7 +34,7 @@ class IndexController extends AbstractActionController
 
         return new ViewModel();
     }
-    
+
     public function carsharingAction()
     {
         $view = new ViewModel();
@@ -86,5 +86,10 @@ class IndexController extends AbstractActionController
     public function callcenterAction()
     {
         return new ViewModel();
+    }
+
+    public function eqSharingAction()
+    {
+        return new viewModel();
     }
 }
