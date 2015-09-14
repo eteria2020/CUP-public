@@ -90,6 +90,6 @@ class IndexController extends AbstractActionController
 
     public function eqSharingAction()
     {
-        return new viewModel();
+        return (new viewModel())->setTerminal(true);
     }
 }
