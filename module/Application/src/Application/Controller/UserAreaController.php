@@ -9,6 +9,7 @@ use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
+use Application\Exception\BonusAssignmentException;
 
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
@@ -321,16 +322,20 @@ class UserAreaController extends AbstractActionController
                     $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
 
                     if (is_null($promoCode)) {
-                        throw new \Exception('Codice promo non valido.');
+                        throw new BonusAssignmentException('Codice promo non valido.');
                     }
 
                     if ($this->I_customersService->checkUsedPromoCode($this->customer, $promoCode)) {
-                        throw new \Exception('Codice bonus già associato a questo account.');
+                        throw new BonusAssignmentException('Codice bonus già associato a questo account.');
                     }
 
                     $this->I_customersService->addBonusFromPromoCode($this->customer, $promoCode);
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+
+                } catch (BonusAssignmentException $e) {
+
+                    $this->flashMessenger()->addErrorMessage($e->getMessage());
 
                 } catch (\Exception $e) {
 
