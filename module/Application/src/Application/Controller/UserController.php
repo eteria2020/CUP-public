@@ -270,7 +270,9 @@ class UserController extends AbstractActionController
             'message' => $message,
             'enable_payment' => $enablePayment,
             //'email' => $urlencodedEmail
-            'customerId' => $customer->getId()
+            'customerId' => $customer->getId(),
+            'benefitsFromDiscountedSubscriptionAmount' => $customer->benefitsFromDiscoutedSubscriptionAmount(),
+            'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100
         ]);
     }
 
