@@ -1,0 +1,1 @@
+ALTER TABLE promo_codes_info ADD overridden_subscription_cost INT DEFAULT NULL;
