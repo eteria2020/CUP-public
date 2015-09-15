@@ -27,3 +27,5 @@ INSERT INTO customers_bonus_packages VALUES (
     'Pacchetto bonus da 1000 minuti',
     10000
 );
+
+ALTER TYPE invoice_type ADD VALUE IF NOT EXISTS 'BONUS_PACKAGE';

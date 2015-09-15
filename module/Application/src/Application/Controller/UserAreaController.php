@@ -23,6 +23,7 @@ use SharengoCore\Service\InvoicesService;
 use SharengoCore\Entity\Invoices;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Exception\BonusAssignmentException;
+use SharengoCore\Service\CustomersBonusPackagesService as BonusPackagesService;
 
 use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
@@ -111,6 +112,11 @@ class UserAreaController extends AbstractActionController
      */
     private $cartasiContractsService;
 
+    /**
+     * @var BonusPackagesService
+     */
+    private $bonusPackagesService;
+
     public function __construct(
         CustomersService $I_customersService,
         TripsService $I_tripsService,
@@ -124,7 +130,8 @@ class UserAreaController extends AbstractActionController
         CartasiPaymentsService $cartasiPaymentsService,
         PromoCodesService $promoCodeService,
         TripPaymentsService $tripPaymentsService,
-        CartasiContractsService $cartasiContractsService
+        CartasiContractsService $cartasiContractsService,
+        BonusPackagesService $bonusPackagesService
     ) {
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
@@ -140,6 +147,7 @@ class UserAreaController extends AbstractActionController
         $this->promoCodeService =  $promoCodeService;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->cartasiContractsService = $cartasiContractsService;
+        $this->bonusPackagesService = $bonusPackagesService;
     }
 
     public function indexAction()
@@ -345,7 +353,7 @@ class UserAreaController extends AbstractActionController
         }
 
         // Add here code
-        $bonusPackages = [];
+        $bonusPackages = $this->bonusPackagesService->getAvailableBonusPackges();
 
         return new ViewModel([
             'promoCodeForm' => $form,

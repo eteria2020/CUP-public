@@ -34,7 +34,7 @@ $bonusPackages = $this->bonusPackages;
             <div class="module-column-app-content clearfix">
                 <div class="module-manage-driver-license padding-top">
                     <!-- Promo code section -->
-                    <div class="block-form bw-f w-2-3  clearfix">
+                    <div class="block-form bw-f w-3-3  clearfix">
 
                         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
 
@@ -66,7 +66,7 @@ $bonusPackages = $this->bonusPackages;
                         </div>
                         <?= $this->form()->openTag($form); ?>
                             <div class="block-row-field clearfix">
-                                <div class="block-field bw-f w-2-4">
+                                <div class="block-field bw-f w-4-4">
                                     <p> <label><?= $this->translate('Inserisci il codice promo'); ?></label>
                                         <?php
                                         $promoCode = $form->get('promocode')->get('promocode');
@@ -86,6 +86,10 @@ $bonusPackages = $this->bonusPackages;
                     <!-- Margin -->
                     <div class="block-form bw-f margin-separator"></div>
 
+                    <?php
+                        if (count($bonusPackages) > 0) {
+                    ?>
+
                     <!-- Bonus packages section -->
                     <div class="block-form bw-f w-3-3  clearfix">
 
@@ -95,15 +99,11 @@ $bonusPackages = $this->bonusPackages;
                         </div>
                         <!-- title -->
 
-                        <?php
-                            if (count($bonusPackages) > 0) {
-                        ?>
-
                         <!-- Description -->
                         <div>
                             <p>In questa sezione puoi acquistare dei pacchetti promozionali di minuti bonus a dei prezzi vantaggiosi.</p>
                             <p>Nella seguente tabella trovi i pacchetti disponibili con i relativi dati.</p>
-                            <p>Clicca sul bottone dell'ultima colonna per accedere alla schermata di conferma dove potrai acquistare il pacchetto</p>
+                            <p>Clicca sul bottone nella colonna "Acquista" per accedere alla schermata di conferma dove potrai acquistare il pacchetto</p>
                         </div>
                         <!-- description -->
 
@@ -130,12 +130,12 @@ $bonusPackages = $this->bonusPackages;
 
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
-                                <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getCost() ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getValidFrom() ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getValidTo() ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= 'n.a.' ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= 'button' ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $package->getMinutes() . ("min.") ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $package->getValidFrom()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $package->getValidTo()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= 'button' ?></div>
                             </div>
                             <!-- table body -->
 
@@ -147,24 +147,12 @@ $bonusPackages = $this->bonusPackages;
                         </div>
                         <!-- table -->
 
-                        <?php
-                            // if no packages are available
-                            } else {
-                        ?>
-
-                        <!-- Description -->
-                        <div>
-                            <p>In questa sezione troverai i pacchetti di minuti bonus acquistabili ad un prezzo vantaggioso.</p>
-                            <p>Al momento non sono disponibili pacchetti promozionali.</p>
-                        </div>
-                        <!-- description -->
-
-                        <?php
-                            }
-                        ?>
-
                     </div>
                     <!-- bonus packages section -->
+
+                    <?php
+                        }
+                    ?>
 
                     <div class="bw-f w-1-3 last clearfix"></div>
                 </div>
