@@ -1,0 +1,69 @@
+<?php
+
+$user = $this->LoginProvider();
+$userId = $user->getId();
+
+?>
+
+<!-- Main popup container -->
+<div id="pack-popup-container" class="sng-pack-popup-container">
+    <div class="sng-pack-popup-inner">
+        <!-- Actual container -->
+        <div class="sng-pack-popup">
+            <!-- Top-right button to close popup -->
+            <a id="close-btn" class="sng-close-btn"><i class="fa fa-close"></i></a>
+
+            <h1 class="sng-headers sng-w-1-1 sng-padding-top">Riepilogo</h1>
+            <div class="sng-separator-line"></div>
+
+            <div class="sng-summary">
+                <h2 class="sng-headers">Descrizione:</h2>
+                <p id="description" class="sng-text"></p>
+
+                <table class="sng-table">
+                    <tr>
+                        <td class="sng-w-1-2">
+                            <h2 class="sng-headers">Minuti:</h2>
+                            <p id="minutes" class="sng-text"></p>
+                        </td>
+                        <td class="sng-w-1-2">
+                            <h2 class="sng-headers">Prezzo:</h2>
+                            <p id="cost" class="sng-text"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sng-w-1-2">
+                            <h2 class="sng-headers">Valido dal:</h2>
+                            <p id="valid-from" class="sng-text"></p>
+                        </td>
+                        <td class="sng-w-1-2">
+                            <h2 class="sng-headers">Valido al:</h2>
+                            <p id="valid-to" class="sng-text"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sng-w-1-2">
+                            <h2 class="sng-headers">Disponibile fino:</h2>
+                            <p id="available-until" class="sng-text"></p>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="sng-footer">
+                <p class="sng-text">Messaggio possibilmente personalizzato sulla base della presenza di un contratto Cartasi</p>
+                <input type="submit" name="" value="Conferma"><a href=""></a></input>
+            </div>
+
+        </div>
+        <!-- actual container -->
+    </div>
+</div>
+<!-- main popup container -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+var packageUrl = "<?= $this->url('core/packages'); ?>/";
+</script>
+<script type="text/javascript" src="<?= $this->basePath(); ?>/js/bonus-packages.js"></script>
