@@ -3,6 +3,10 @@ document.getElementById("close-btn").addEventListener('click', function (event)
 {
     close();
 });
+document.getElementById("confirm-btn").addEventListener('click', function (event)
+{
+    triggerPayment();
+});
 
 function buy(packageId)
 {
@@ -35,4 +39,9 @@ function togglePopup()
 function parseCost(cost)
 {
     return Math.floor(cost / 100) + ',' + cost % 100 + (cost % 100 < 10 ? '0' : '') + '\u20ac';
+}
+
+function triggerPayment()
+{
+    close();
 }
