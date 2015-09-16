@@ -5,6 +5,7 @@ $isLoggedIn = $this->IsLoggedIn();
 
 $userId = '';
 
+$userEnabled = false;
 if ($isLoggedIn)
 {
     $user = $this->LoginProvider();
@@ -122,7 +123,7 @@ if ($isLoggedIn)
 <script>
 var isLoggedIn = <?php if ($isLoggedIn) echo 'true'; else echo 'false'; ?>;
 var userId = '<?php echo $userId; ?>';
-var userEnabled = '<?php echo $userEnabled; ?>';
+var userEnabled = <?php echo $userEnabled ? "true" : "false"; ?>;
 // text to be shown in second popup
 var textRemember = '<?= $this->translate("Ricorda che dovrai avere con te lo smartphone per poter aprire l\'auto, oppure la tessera. Ti consigliamo di non utilizzare l\'auto se l\'autonomia è al di sotto del 20% di carica"); ?>';
 var titleRemember = '<?= $this->translate("Ricorda che:"); ?>';
