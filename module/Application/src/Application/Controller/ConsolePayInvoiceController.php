@@ -9,6 +9,7 @@ use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Listener\PaymentEmailListener;
+use SharengoCore\Listener\NotifyCustomerPayListener;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -50,6 +51,11 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $paymentEmailListener;
 
     /**
+     * @var NotifyCustomerPayListener
+     */
+    private $notifyCustomerPayListener;
+
+    /**
      * @var boolean
      */
     private $avoidEmails;
@@ -65,25 +71,27 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $avoidPersistance;
 
     /**
-     * @param TripsService $tripsService
-     * @param TripCostService $tripCostService
-     * @param TripPaymentsService
-     * @param PaymentsService
-     * @param InvoicesService
+     * @param TripPaymentsService $tripPaymentsService
+     * @param PaymentsService $paymentsService
+     * @param InvoicesService $invoicesService
      * @param Logger $logger
+     * @param PaymentEmailListener $paymentEmailListener
+     * @param NotifyCustomerPayListener $notifyCustomerPayListener
      */
     public function __construct(
         TripPaymentsService $tripPaymentsService,
         PaymentsService $paymentsService,
         InvoicesService $invoicesService,
         Logger $logger,
-        PaymentEmailListener $paymentEmailListener
+        PaymentEmailListener $paymentEmailListener,
+        NotifyCustomerPayListener $notifyCustomerPayListener
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
         $this->paymentsService = $paymentsService;
         $this->invoicesService = $invoicesService;
         $this->logger = $logger;
         $this->paymentEmailListener = $paymentEmailListener;
+        $this->notifyCustomerPayListener = $notifyCustomerPayListener;
     }
 
     public function payInvoiceAction()
@@ -97,7 +105,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
         $this->processPayments();
-        $this->generateInvoices();
+        //$this->generateInvoices();
     }
 
     private function processPayments()
@@ -108,6 +116,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->logger->log("Processing payments for " . count($tripsPayments) . " trips\n");
 
         $this->getEventManager()->getSharedManager()->attachAggregate($this->paymentEmailListener);
+        $this->getEventManager()->getSharedManager()->attachAggregate($this->notifyCustomerPayListener);
 
         foreach ($tripsPayments as $tripPayment) {
             $this->logger->log("Processing payment for trip payment " . $tripPayment->getId() . "\n");
