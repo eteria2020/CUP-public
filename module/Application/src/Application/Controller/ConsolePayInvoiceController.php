@@ -8,7 +8,7 @@ use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
-use Application\Listener\PaymentEmailListener;
+use SharengoCore\Listener\PaymentEmailListener;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
