@@ -105,7 +105,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
         $this->processPayments();
-        //$this->generateInvoices();
+        $this->generateInvoices();
     }
 
     private function processPayments()
