@@ -428,7 +428,7 @@ return array(
             'ProfileForm'              => 'Application\Form\ProfileFormFactory',
             'PasswordForm'             => 'Application\Form\PasswordFormFactory',
             'DriverLicenseForm'        => 'Application\Form\DriverLicenseFormFactory',
-            'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory',
+            'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory'
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',

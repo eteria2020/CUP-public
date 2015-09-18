@@ -8,6 +8,7 @@ use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
+use SharengoCore\Listener\PaymentEmailListener;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -44,6 +45,11 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $logger;
 
     /**
+     * @var PaymentEmailListener
+     */
+    private $paymentEmailListener;
+
+    /**
      * @var boolean
      */
     private $avoidEmails;
@@ -70,12 +76,14 @@ class ConsolePayInvoiceController extends AbstractActionController
         TripPaymentsService $tripPaymentsService,
         PaymentsService $paymentsService,
         InvoicesService $invoicesService,
-        Logger $logger
+        Logger $logger,
+        PaymentEmailListener $paymentEmailListener
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
         $this->paymentsService = $paymentsService;
         $this->invoicesService = $invoicesService;
         $this->logger = $logger;
+        $this->paymentEmailListener = $paymentEmailListener;
     }
 
     public function payInvoiceAction()
@@ -97,7 +105,9 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         $tripsPayments = $this->tripPaymentsService->getTripPaymentsForPayment();
-        $this->logger->log("Processing payments for " . count($tripsPayments) . "trips\n");
+        $this->logger->log("Processing payments for " . count($tripsPayments) . " trips\n");
+
+        $this->getEventManager()->getSharedManager()->attachAggregate($this->paymentEmailListener);
 
         foreach ($tripsPayments as $tripPayment) {
             $this->logger->log("Processing payment for trip payment " . $tripPayment->getId() . "\n");
@@ -108,6 +118,10 @@ class ConsolePayInvoiceController extends AbstractActionController
                 $this->avoidPersistance
             );
         }
+
+        $this->getEventManager()->trigger('processPaymentsCompleted', $this, [
+            'avoidEmails' => $this->avoidEmails
+        ]);
 
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
