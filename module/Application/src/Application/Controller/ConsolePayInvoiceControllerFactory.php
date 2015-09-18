@@ -16,13 +16,15 @@ class ConsolePayInvoiceControllerFactory implements FactoryInterface
         $invoicesService = $sharedServiceManager->get('SharengoCore\Service\Invoices');
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
         $paymentEmailListener = $sharedServiceManager->get('SharengoCore\Listener\PaymentEmailListener');
+        $notifyCustomerPayListener = $sharedServiceManager->get('SharengoCore\Listener\NotifyCustomerPayListener');
 
         return new ConsolePayInvoiceController(
             $tripPaymentsService,
             $paymentsService,
             $invoicesService,
             $logger,
-            $paymentEmailListener
+            $paymentEmailListener,
+            $notifyCustomerPayListener
         );
     }
 }
