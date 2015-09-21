@@ -57,7 +57,7 @@ function refreshTable(period)
                 totalAmountValue = (tripPayment['totalCost'] / 100);
                 totalAmount = formatCurrency(totalAmountValue);
                 paymentStatus = tripPayment['status'];
-                mustPayValue = (paymentStatus == 'payed_correctly' || paymentStatus == 'invoiced') ? 0 : totalAmountValue;
+                mustPayValue = tripPayment['mustPayValue'] / 100;
                 mustPay = formatCurrency(mustPayValue);
             }
 
