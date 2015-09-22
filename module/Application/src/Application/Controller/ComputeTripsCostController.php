@@ -119,7 +119,7 @@ class ComputeTripsCostController extends AbstractActionController
             $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
             $this->logger->setOutputType(Logger::TYPE_CONSOLE);
         } else {
-            $this->logger->setOutputEnviornment(Logger::OUTPUT_OFF);
+            $this->logger->setOutputEnvironment(Logger::OUTPUT_OFF);
         }
 
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
