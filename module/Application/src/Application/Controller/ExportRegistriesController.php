@@ -63,9 +63,11 @@ class ExportRegistriesController extends AbstractActionController
      */
     public function exportRegistriesAction()
     {
+        // Setup logger
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
 
+        // Get params
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $noCustomers = $request->getParam('no-customers') || $request->getParam('c');
@@ -86,7 +88,7 @@ class ExportRegistriesController extends AbstractActionController
                         $record = $this->customersService->getExportDataForCustomer($customer);
                     } catch(MissingCardFromCustomerException $ex) {
                         if ($ignoreExceptions) {
-                            $this->logger->log("\n" . $ex->getMessage() . "\n");
+                            $this->logger->log($ex->getMessage() . "\n");
                             continue;
                         } else {
                             throw $ex;
@@ -106,7 +108,7 @@ class ExportRegistriesController extends AbstractActionController
             }
         }
 
-        // Export invoices registries
+        // Generate invoices registries
         if (!$noInvoices && !$exceptionThrown) {
             $this->logger->log("Exporting invoices...\n\n");
             $fileContentInvoices = "";
