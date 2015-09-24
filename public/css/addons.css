@@ -203,3 +203,8 @@
     width: 80%;
     margin-bottom: 20px;
 }
+
+#footer .badge-green-number {
+    position: relative;
+    margin-bottom: 15px;
+}
