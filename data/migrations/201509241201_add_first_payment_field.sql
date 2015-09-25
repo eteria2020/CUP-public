@@ -1,4 +1,18 @@
 /**
+ * Check if there are any trip_payents with status = wrong_payment that do not
+ * have a related trip_payment_try. This is unexpected so this will show there
+ * is a problem if it returns any row. Do not proceed!
+ */
+SELECT *
+FROM trip_payments tp
+WHERE tp.status = 'wrong_payment'
+AND NOT EXISTS(
+    SELECT 1
+    FROM trip_payment_tries tpt
+    WHERE tpt.trip_payment_id = tp.id
+);
+
+/**
  * Add the column first_trip_payment_ts
  */
 ALTER TABLE trip_payments ADD first_payment_try_ts TIMESTAMP(0) WITHOUT TIME ZONE;
@@ -17,13 +31,3 @@ SET first_payment_try_ts = (
     ORDER BY tpt.id
     LIMIT 1
 );
-
-/**
- * Check if there are any trip_payments with status = to_be_payed that have a
- * first_payment_try_ts. This is an unexpected behaviour so this should not
- * return any element
- */
-SELECT *
-FROM trip_payments tp
-WHERE tp.first_payment_try_ts IS NOT NULL
-AND tp.status = 'to_be_payed';
