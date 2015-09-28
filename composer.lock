@@ -1264,7 +1264,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
-                "reference": "3db150e2e7f18aa4ca5bcda9bb53ff07ced58dd1"
+                "reference": "4885ff0eeeac57f55a45404a75bed608efc1cd19"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1278,7 +1278,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2015-09-22 16:12:15"
+            "time": "2015-09-25 16:12:40"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
@@ -1286,7 +1286,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "2b607649f2b0958c4e3f5f14a2ed60e1bf37acfe"
+                "reference": "6c72e45ef55d42e9c2cce818306ecc674b4b7660"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1307,7 +1307,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-09-25 15:14:20"
+            "time": "2015-09-28 11:59:49"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
