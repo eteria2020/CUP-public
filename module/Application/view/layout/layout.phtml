@@ -23,11 +23,6 @@
             ->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300')
             ->appendStylesheet($this->basePath('css/styles.css'), 'screen')
             ->appendStylesheet($this->basePath('css/addons.css'), 'screen')
-            /*->appendStylesheet([
-                'rel' => 'stylesheet/less',
-                'href' => $this->basePath('less/styles.less'),
-                'type' => 'text/css'],
-            'screen')*/
             ->appendStylesheet($this->basePath('css/print.css'), 'print')
             ->appendStylesheet($this->basePath('css/ie8.css'), 'screen', 'lte IE 8')
             ->appendStylesheet('http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css')
@@ -87,21 +82,17 @@
                     <!-- block-menu-languages -->
                     <div class="block-languages block-menu">
                         <ul>
-                            <?php /*<li>
-                                <a class="js-show-element">
-                                    <?= $this->translate('Italiano'); ?>
-                                    <i class="fa fa-caret-down"></i>
-                                </a>
-                                <ul class="js-collapse-box block-available-languages hidden">
-                                    <li><a href=""><?= $this->translate('Inglese'); ?></a></li>
-                                    <li><a href=""><?= $this->translate('Francese'); ?></a></li>
-                                    <li><a href=""><?= $this->translate('Tedesco'); ?></a></li>
-                                </ul>
-                            </li> */?>
                             <li>
-                                <a class="js-show-element">
-                                    <?= $this->translate('MILANO'); ?>
-                                </a>
+                                <a class="js-show-element">Milano <i class="fa fa-caret-down"></i></a>
+                                <ul class="js-collapse-box block-available-languages hidden">
+                                <?php
+                                $cities = ['Milano' => '01',
+                                    'Firenze' => '02'];
+                                foreach ($cities as $name => $code):
+                                ?>
+                                    <li onclick="cityPicker(<?= $code ?>)"><?= $name ?></li>
+                                <?php endforeach; ?>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -203,11 +194,6 @@
                 </div>
                 <!-- block-footer -->
 
-                
-                
-
-                
-
             </div>
             <!-- content -->
         </footer>
@@ -227,6 +213,7 @@
                 ->appendFile('http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.min.js')
                 ->appendFile($this->basePath('js/slick-script.js'))
                 ->appendFile($this->basePath('js/main.js'))
+                ->appendFile($this->basePath('js/js.cookie.js'))
                 ->appendScript('
                      // Using $(document).ready never hurts
                     $(document).ready(function(){
