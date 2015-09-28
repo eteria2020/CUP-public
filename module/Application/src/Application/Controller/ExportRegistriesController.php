@@ -8,6 +8,7 @@ use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\TripsService;
+use SharengoCore\Entity\Invoices;
 
 use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -73,9 +74,12 @@ class ExportRegistriesController extends AbstractActionController
         $noCustomers = $request->getParam('no-customers') || $request->getParam('c');
         $noInvoices = $request->getParam('no-invoices') || $request->getParam('i');
         $ignoreExceptions = $request->getParam('ignore-exceptions') || $request->getParam('e');
+        $all = $request->getParam('all') || $request->getParam('a');
         $exceptionThrown = false;
+        $path = "data/export/";
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
+        /*
         // Generate customers registries
         if (!$noCustomers) {
             try {
@@ -107,21 +111,35 @@ class ExportRegistriesController extends AbstractActionController
                 $exceptionThrown = true;
             }
         }
+        */
 
-        // Generate invoices registries
-        if (!$noInvoices && !$exceptionThrown) {
-            $this->logger->log("Exporting invoices...\n\n");
-            $fileContentInvoices = "";
-            $invoices = $this->invoicesService->getInvoicesForExport();
+        $invoicesByDate = $this->invoicesService->getInvoicesForExport();
+        $this->logger->log("Retrieved invoices\n");
+        foreach ($invoicesByDate as $invoices) {
+            $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
+            $invoicesEntry = '';
+            $customersEntry = '';
             foreach ($invoices as $invoice) {
-                $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
-                $record = $this->invoicesService->getExportDataForInvoice($invoice);
-                $fileContentInvoices .= $record . "\r\n";
+                if (!$noInvoices) {
+                    $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+                    $invoicesEntry .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
+                }
+                if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                    $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
+                    $customersEntry .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
+                }
             }
-            if (!$dryRun) {
-                $fileInvoices = fopen("exportInvoices.txt", "w");
-                fwrite($fileInvoices, $fileContentInvoices);
+            if (!$dryRun && !$noInvoices && $invoicesEntry !== '') {
+                $this->logger->log("Writing invoices to file for the day\n");
+                $fileInvoices = fopen($path . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "-fatture.txt", 'w');
+                fwrite($fileInvoices, $invoicesEntry);
                 fclose($fileInvoices);
+            }
+            if (!$dryRun && !$noCustomers && $customersEntry !== '') {
+                $this->logger->log("Writing customers to file for the day\n");
+                $fileCustomers = fopen($path . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "-clienti.txt", 'w');
+                fwrite($fileCustomers, $customersEntry);
+                fclose($fileCustomers);
             }
         }
 

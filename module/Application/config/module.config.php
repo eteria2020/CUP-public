@@ -725,7 +725,7 @@ return array(
                 'export-registries' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'export registries [--dry-run|-d] [--no-customers|-c] [--no-invoices|-i] [--ignore-exceptions|-e]',
+                        'route' => 'export registries [--dry-run|-d] [--no-customers|-c] [--no-invoices|-i] [--ignore-exceptions|-e] [--all|-a]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ExportRegistries',
