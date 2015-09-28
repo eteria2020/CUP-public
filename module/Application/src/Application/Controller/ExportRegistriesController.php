@@ -93,13 +93,13 @@ class ExportRegistriesController extends AbstractActionController
             }
             if (!$dryRun && !$noInvoices && $invoicesEntry !== '') {
                 $this->logger->log("Writing invoices to file for the day\n");
-                $fileInvoices = fopen($path . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "-fatture.txt", 'w');
+                $fileInvoices = fopen($path . "exportInvoices_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt", 'w');
                 fwrite($fileInvoices, $invoicesEntry);
                 fclose($fileInvoices);
             }
             if (!$dryRun && !$noCustomers && $customersEntry !== '') {
                 $this->logger->log("Writing customers to file for the day\n");
-                $fileCustomers = fopen($path . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "-clienti.txt", 'w');
+                $fileCustomers = fopen($path . "exportCustomers_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt", 'w');
                 fwrite($fileCustomers, $customersEntry);
                 fclose($fileCustomers);
             }
