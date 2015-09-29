@@ -67,13 +67,18 @@ class RegistrationForm extends Form
         $container->offsetSet(self::FORM_DATA, $customer);
     }
 
+    public function registerPromoCodeData($promoCode)
+    {
+        $promoCodeContainer = $this->getPromoCodeContainer();
+        $promoCodeContainer->offsetSet(self::PROMO_CODE, $promoCode);
+    }
+
     public function registerData($promoCode)
     {
         $container = $this->getContainer();
         $container->offsetSet(self::FORM_DATA, $this->getData());
 
-        $promoCodeContainer = $this->getPromoCodeContainer();
-        $promoCodeContainer->offsetSet(self::PROMO_CODE, $promoCode);
+        $this->registerPromoCodeData($promoCode);
     }
 
     public function getRegisteredData()

@@ -89,10 +89,12 @@ class UserController extends AbstractActionController
     {
         //if there are data in session, we use them to populate the form
         $registeredData = $this->form1->getRegisteredData();
+        $registeredDataPromoCode = $this->form1->getRegisteredDataPromoCode();
 
         if (!empty($registeredData)) {
             $this->form1->setData([
-                'user' => $registeredData->toArray($this->hydrator)
+                'user' => $registeredData->toArray($this->hydrator),
+                'promocode' => ['promocode' => $registeredDataPromoCode],
             ]);
         }
 
@@ -140,6 +142,9 @@ class UserController extends AbstractActionController
             $customer->setEmail($email);
             $customer->setProfilingCounter(1);
             $this->form1->registerCustomerData($customer);
+
+            $promoCode = $this->getProfilingPlatformPromoCode($email);
+            $this->form1->registerPromoCodeData($promoCode);
 
             // we store in session the information that the user already have a discount, so we can avoid showing him the banner
             $container = new Container('userDiscount');
@@ -237,12 +242,9 @@ class UserController extends AbstractActionController
 
     private function signupForm($form)
     {
-        $container = new Container('userDiscount');
-        $hasDiscount = $container->offsetGet('hasDiscount');
-
         return new ViewModel([
             'form' => $form,
-            'hasDiscount' => $hasDiscount
+            'hasDiscount' => $this->customerHasDiscount()
         ]);
     }
 
@@ -280,4 +282,24 @@ class UserController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    private function customerHasDiscount()
+    {
+        $container = new Container('userDiscount');
+        return $container->offsetGet('hasDiscount');
+    }
+
+    private function getProfilingPlatformPromoCode($email)
+    {
+        try {
+
+            return $this->profilingPlatformService->getPromoCodeByEmail($email);
+
+        } catch (ProfilingPlatformException $ex) {
+
+        }
+
+        return null;
+    }
+
 }

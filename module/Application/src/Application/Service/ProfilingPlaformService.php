@@ -45,4 +45,30 @@ final class ProfilingPlaformService
 
     }
 
+    public function getPromoCodeByEmail($email) {
+
+        $client = new Client();
+
+        $uri = $this->profilingPlatformSettings['endpoint'] . $this->profilingPlatformSettings['getpromocode-call'];
+
+        $client->setUri(sprintf($uri, $email));
+
+        $response = $client->send();
+
+        switch($response->getStatusCode()) {
+            case 200:
+                $body = $response->getBody();
+                $data = json_decode($body, true);
+                if ($data['status'] && null != $data['data']) {
+                    return $data['data'];
+                }
+                throw new ProfilingPlatformException('Response error');
+            case 404:
+                throw new ProfilingPlatformException('User not found');
+            default:
+                throw new ProfilingPlatformException('Generic response error');
+        }
+
+    }
+
 }
