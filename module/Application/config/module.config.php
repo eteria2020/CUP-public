@@ -449,7 +449,8 @@ return array(
             'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
-            'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory'
+            'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
+            'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory'
         ],
     ],
     'view_helpers' => [
@@ -506,7 +507,8 @@ return array(
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
-                ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []]
+                ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
+                ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []]
             ),
         ),
     ),
@@ -717,6 +719,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'FixInvoicesBody',
                             'action' => 'fix-invoices-body'
+                        ]
+                    ]
+                ],
+                'export-registries' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'export registries [--dry-run|-d] [--no-customers|-c] [--no-invoices|-i] [--all|-a]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ExportRegistries',
+                            'action' => 'export-registries'
                         ]
                     ]
                 ]
