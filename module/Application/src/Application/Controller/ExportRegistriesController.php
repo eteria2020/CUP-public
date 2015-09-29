@@ -59,7 +59,7 @@ class ExportRegistriesController extends AbstractActionController
         $path = "data/export/";
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $invoicesByDate = $this->invoicesService->getInvoicesForExport();
+        $invoicesByDate = $this->invoicesService->getInvoicesGroupedByDate();
         $this->logger->log("Retrieved invoices\n");
         foreach ($invoicesByDate as $invoices) {
             $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
