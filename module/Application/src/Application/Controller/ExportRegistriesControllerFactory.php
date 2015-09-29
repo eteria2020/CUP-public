@@ -9,17 +9,13 @@ class ExportRegistriesControllerfactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $customersService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
-        $tripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $logger = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\SimpleLoggerService');
 
         return new ExportRegistriesController(
-            $entityManager,
             $customersService,
             $invoicesService,
-            $tripsService,
             $logger
         );
     }

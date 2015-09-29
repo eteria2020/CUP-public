@@ -5,19 +5,12 @@ namespace Application\Controller;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\InvoicesService;
-use SharengoCore\Service\TripsService;
 use SharengoCore\Entity\Invoices;
 
-use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ExportRegistriesController extends AbstractActionController
 {
-    /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
     /**
      * @var CustomersService
      */
@@ -29,26 +22,17 @@ class ExportRegistriesController extends AbstractActionController
     private $invoicesService;
 
     /**
-     * @var TripsService
-     */
-    private $tripsService;
-
-    /**
      * @var Logger
      */
     private $logger;
 
     public function __construct(
-        EntityManager $entityManager,
         CustomersService $customersService,
         InvoicesService $invoicesService,
-        TripsService $tripsService,
         Logger $logger
     ) {
-        $this->entityManager = $entityManager;
         $this->customersService = $customersService;
         $this->invoicesService = $invoicesService;
-        $this->tripsService = $tripsService;
         $this->logger = $logger;
     }
 
