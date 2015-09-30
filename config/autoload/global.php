@@ -29,5 +29,11 @@ return array(
     'alarm' => [
         'battery' => '20',
         'delay' => '31'
+    ],
+    'export' => [
+        'path' => 'data/export/',
+        'server' => 'dev.sharengo.it',
+        'name' => 'fatture',
+        'password' => 'f477ur3!'
     ]
 );
