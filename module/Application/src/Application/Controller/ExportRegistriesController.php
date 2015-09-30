@@ -68,8 +68,9 @@ class ExportRegistriesController extends AbstractActionController
         $path = $this->exportConfig['path'];
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
+        $this->logger->log("Retrieving invoices...");
         $invoicesByDate = $this->invoicesService->getInvoicesGroupedByDate();
-        $this->logger->log("Retrieved invoices\n");
+        $this->logger->log("Retrieved!\n");
 
         if (!$noFtp) {
             $this->logger->log("Connecting to ftp server... ");
