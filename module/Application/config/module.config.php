@@ -260,6 +260,28 @@ return array(
                     ),
                 ]
             ],
+            'bikemi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{bikemi}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'bikemi',
+                    ),
+                ]
+            ],
+            'teatro-elfo' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{elfo}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'teatro-elfo',
+                    ),
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
