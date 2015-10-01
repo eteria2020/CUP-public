@@ -69,58 +69,64 @@ class ExportRegistriesController extends AbstractActionController
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         $this->logger->log("Retrieving invoices...");
-        $invoicesByDate = $this->invoicesService->getInvoicesGroupedByDate();
-        $this->logger->log("Retrieved!\n");
+        $invoicesByDate = null;
+        if ($all) {
+            $this->logger->log("all...");
+            $invoicesByDate = $this->invoicesService->getInvoicesGroupedByDate();
+        } else {
+            $this->logger->log("for yesterday...");
+            $invoicesByDate = $this->invoicesService->getInvoicesByDate(date_sub(date_create(), new \DateInterval('P1D')));
+        }
+        $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
+        $this->logger->log(" Retrieved!\n");
 
         if (!$noFtp) {
             $this->logger->log("Connecting to ftp server... ");
             $ftp_server = $this->exportConfig['server'];
-            $ftp_conn = ftp_connect($ftp_server) or die("Could not connect to $ftp_server\n");
+            $ftp_conn = ftp_connect($ftp_server) or die(" Could not connect to $ftp_server!\n");
             $login = ftp_login($ftp_conn, $this->exportConfig['name'], $this->exportConfig['password']);
-            $this->logger->log("Connected!\n");
+            $this->logger->log(" Connected!\n");
         }
 
         foreach ($invoicesByDate as $key => $invoices) {
-            if ($all || date_sub(date_create(), new \DateInterval('P1D'))->format('Ymd') == $key) {
-                $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
-                $invoicesEntry = '';
-                $customersEntry = '';
-                foreach ($invoices as $invoice) {
-                    if (!$noInvoices) {
-                        $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
-                        $invoicesEntry .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
-                    }
-                    if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
-                        $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
-                        $customersEntry .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
+            $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
+            $invoicesEntry = '';
+            $customersEntry = '';
+            foreach ($invoices as $invoice) {
+                if (!$noInvoices) {
+                    $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+                    $invoicesEntry .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
+                }
+                if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                    $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
+                    $customersEntry .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
+                }
+            }
+            if (!$dryRun && !$noInvoices && $invoicesEntry !== '') {
+                $this->logger->log("Writing invoices to file for the day\n");
+                $fileName = $testName . "exportInvoices_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
+                $fileInvoices = fopen($path . $fileName, 'w');
+                fwrite($fileInvoices, $invoicesEntry);
+                fclose($fileInvoices);
+                if (!$noFtp) {
+                    if (ftp_put($ftp_conn, $fileName, $path . $fileName, FTP_ASCII)) {
+                        $this->logger->log("File uploaded successfully\n");
+                    } else {
+                        $this->logger->log("Error uploading file\n");
                     }
                 }
-                if (!$dryRun && !$noInvoices && $invoicesEntry !== '') {
-                    $this->logger->log("Writing invoices to file for the day\n");
-                    $fileName = $testName . "exportInvoices_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
-                    $fileInvoices = fopen($path . $fileName, 'w');
-                    fwrite($fileInvoices, $invoicesEntry);
-                    fclose($fileInvoices);
-                    if (!$noFtp) {
-                        if (ftp_put($ftp_conn, $fileName, $path . $fileName, FTP_ASCII)) {
-                            $this->logger->log("File uploaded successfully\n");
-                        } else {
-                            $this->logger->log("Error uploading file\n");
-                        }
-                    }
-                }
-                if (!$dryRun && !$noCustomers && $customersEntry !== '') {
-                    $this->logger->log("Writing customers to file for the day\n");
-                    $fileName = $testName . "exportCustomers_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
-                    $fileCustomers = fopen($path . $fileName, 'w');
-                    fwrite($fileCustomers, $customersEntry);
-                    fclose($fileCustomers);
-                    if (!$noFtp) {
-                        if (ftp_put($ftp_conn, $fileName, $path . $fileName, FTP_ASCII)) {
-                            $this->logger->log("File uploaded successfully\n");
-                        } else {
-                            $this->logger->log("Error uploading file\n");
-                        }
+            }
+            if (!$dryRun && !$noCustomers && $customersEntry !== '') {
+                $this->logger->log("Writing customers to file for the day\n");
+                $fileName = $testName . "exportCustomers_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
+                $fileCustomers = fopen($path . $fileName, 'w');
+                fwrite($fileCustomers, $customersEntry);
+                fclose($fileCustomers);
+                if (!$noFtp) {
+                    if (ftp_put($ftp_conn, $fileName, $path . $fileName, FTP_ASCII)) {
+                        $this->logger->log("File uploaded successfully\n");
+                    } else {
+                        $this->logger->log("Error uploading file\n");
                     }
                 }
             }

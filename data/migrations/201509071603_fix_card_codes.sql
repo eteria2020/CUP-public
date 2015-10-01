@@ -3,11 +3,11 @@
  * @param text ccode the code of a card
  *
  * Checks if the card's code is of the right length by extracting the longest
- * substring. If it isn't it:
- * - retrieves the customer with that code,
- * - removes the card from the customer,
- * - updates the card with the correct code,
- * - reassignes the card to the customer
+ * substring. If it isn't, it will:
+ * - retrieve the customer with that code,
+ * - remove the card from the customer,
+ * - update the card with the correct code,
+ * - reassign the card to the customer
  */
 CREATE OR REPLACE FUNCTION fix_card_code(crfid text, ccode text)
     RETURNS void
