@@ -274,7 +274,7 @@ return array(
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{teatro-elfo}',
+                    'route' => '/{elfo}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
