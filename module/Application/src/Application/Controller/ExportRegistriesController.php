@@ -27,7 +27,7 @@ class ExportRegistriesController extends AbstractActionController
     private $logger;
 
     /**
-     * @var mixed[]
+     * @var array
      */
     private $exportConfig;
 
@@ -72,10 +72,10 @@ class ExportRegistriesController extends AbstractActionController
         $invoicesByDate = null;
         if ($all) {
             $this->logger->log("all...");
-            $invoicesByDate = $this->invoicesService->getInvoicesGroupedByDate();
+            $invoicesByDate = $this->invoicesService->getInvoicesWithCustomer();
         } else {
             $this->logger->log("for yesterday...");
-            $invoicesByDate = $this->invoicesService->getInvoicesByDate(date_sub(date_create(), new \DateInterval('P1D')));
+            $invoicesByDate = $this->invoicesService->getInvoicesByDate(date_create('yesterday'));
         }
         $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
         $this->logger->log(" Retrieved!\n");
@@ -88,7 +88,7 @@ class ExportRegistriesController extends AbstractActionController
             $this->logger->log(" Connected!\n");
         }
 
-        foreach ($invoicesByDate as $key => $invoices) {
+        foreach ($invoicesByDate as $invoices) {
             $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
             $invoicesEntry = '';
             $customersEntry = '';
