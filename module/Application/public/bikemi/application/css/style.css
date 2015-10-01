@@ -1,0 +1,395 @@
+@font-face {
+	font-family: 'Lato-Bold';
+	src: url('../../../common/application/font/Lato-Bold.eot');
+	src: url('../../../common/application/font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Bold.woff') format('woff'),
+		url('../../../common/application/font/Lato-Bold.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Regular';
+	src: url('../../../common/application/font/Lato-Regular.eot');
+	src: url('../../../common/application/font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Regular.woff') format('woff'),
+		url('../../../common/application/font/Lato-Regular.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+html, body{
+	font-size:100%;
+}
+
+.lato-regular{
+	font-family: 'Lato-Regular';
+}
+
+.lato-bold{
+	font-family: 'Lato-Bold';
+}
+
+.black{
+	color:#000;
+}
+
+.black a{
+	color:#000;
+}
+
+.black a:hover, .black a:active, .black a:focus{
+	color:#000;
+}
+
+.red, .red a{
+	color:#eb2523;
+}
+
+.white{
+	color:#ffffff;
+}
+
+.yellow{
+	color:#ffed00;
+}
+
+.yellow a{
+	color:#ffed00;
+}
+
+.yellow a:hover, .yellow a:active, .yellow a:focus{
+	color:#ffed00;
+}
+.bg-grey{
+	background-color:#c5bd98;
+}
+div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
+	padding-left:0;
+}
+
+button{
+	color:#000;
+	background-color:#ffed00;
+	border:2px solid #fff;
+	padding:3px 15px 2px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom:15px;
+}
+
+button a{
+	color:#000;
+}
+.desk-block{
+	display:block;
+}
+
+.container-fluid{
+		padding-left:0;
+		padding-right:0;
+	}
+
+#intro{
+	font-size: 24px;
+	position: relative;
+	top:-20px;
+}
+
+#logo{
+	width: 250px;
+	height: 63px;
+	background-image: url('../images/logo-bikeMI.png');
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top:-30px;
+}
+
+#first-paragraph{
+	position: relative;
+	top:-30px;
+}
+
+#paragraph1{
+	position: relative;
+	top:-30px;
+}
+
+#second-paragraph{
+	position: relative;
+	top:-100px;
+}
+
+#nota{
+	font-size: 20px;
+}
+
+#registrati{
+	position: relative;
+	top:-50px;
+}
+
+#submit{
+	position: relative;
+	top:-25px;
+}
+
+
+@media screen and (min-width:768px) and (max-width: 1900px){
+	.desk-block.desk-inline{
+		display:inline;
+	}
+}
+@media screen and (max-width:767px){
+
+	div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7{
+		padding-right:0;
+	}
+	.col-sm-5.col-sm-push-7{
+		padding-top:4%;
+	}
+	.col-sm-5.text-center.p-top-5{
+		padding-bottom:4%;
+	}
+
+	a.yellow{
+		font-size:1.3rem;
+	}
+	.strong{
+		font-size:1.9rem;
+		line-height:2.5rem;
+	}
+	.semistrong{
+		font-size:1rem;
+	}
+	.smaller{
+		font-size:0.9rem;
+	}
+	.p-top-5{
+		padding-top:5%;
+	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: 0px;
+	}
+
+	#intro {
+	    font-size: 16px;
+	    position: relative;
+	    top: 0px;
+	}
+
+	#logo{
+		top:-18px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:45px;
+	}
+}
+
+
+@media screen and (min-width: 768px){
+
+	.col-sm-5.col-sm-push-7{
+		padding-top:3%;
+	}
+	a.yellow{
+		font-size:1.3rem;
+	}
+	.strong{
+		font-size:1.0rem;
+		line-height:1.2rem;
+	}
+	.smaller, .semistrong{
+		font-size:0.85rem;
+	}
+
+	#intro {
+	    font-size: 14px;
+	    position: relative;
+	    top:2px;
+	}
+
+	#logo{
+	    top: -4px;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: -11px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-23px;
+	}
+
+	#nota{
+	    font-size: 14px;
+	}
+
+}
+@media screen and (min-width: 960px){
+
+	.strong {
+	    font-size: 1.2rem;
+	    line-height: 1.4rem;
+	}
+
+	#intro {
+	    font-size: 14px;
+	    position: relative;
+	    top: -2px;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: -19px;
+	}
+
+	#logo{
+		top:-13px;
+		width: 250px;
+		height: 63px;
+		background-image: url('../images/logo-bikeMI.png');
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-45px;
+	}
+
+	#nota{
+	    font-size: 14px;
+	}
+
+}
+@media screen and (min-width: 1024px){
+	/*span{
+		display:block;
+	}*/
+	a.yellow{
+		font-size:1.7rem;
+	}
+	.strong{
+	    font-size: 1.4rem;
+   		line-height: 1.6rem;
+	}
+	.semistrong{
+		font-size:1.3rem;
+	}
+
+	#intro {
+	    font-size: 16px;
+	    position: relative;
+	    top: -6px;
+	}
+
+	#logo{
+		top:-20px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-65px;
+	}
+
+	#nota{
+	    font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 768px){
+	.img-mobile{
+		display:none;
+	}
+}
+@media screen and (max-width: 767px){
+	.img-desk{
+		display:none;
+	}
+}
+@media screen and (min-width:1200px){
+	a.yellow{
+		font-size:1.9rem;
+	}
+	.strong{
+		font-size: 1.7rem;
+   		line-height: 1.9rem;
+	}
+	.semistrong{
+		font-size:1.5rem;
+	}
+	.smaller{
+		font-size:1rem;
+	}
+
+	#intro {
+	    font-size: 20px;
+	    position: relative;
+	    top: -12px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-120px;
+	}
+}
+
+@media screen and (min-width:1400px){
+	a.yellow{
+		font-size:2.1rem;
+	}
+	.strong{
+		font-size:2.3rem;
+		line-height:2.5rem;
+	}
+	.semistrong{
+		font-size:1.7rem;
+	}
+	.smaller{
+		font-size:1.2rem;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-95px;
+	}
+}
+
+@media screen and (min-width:1600px){
+	a.yellow{
+		font-size:2.4rem;
+	}
+	.strong{
+		font-size:2.5rem;
+		line-height:2.7rem;
+	}
+	.semistrong{
+		font-size:2rem;
+	}
+	.smaller{
+		font-size:1.5rem;
+	}
+}
+
+@media screen and (min-width:1800px){
+	a.yellow{
+		font-size:3rem;
+	}
+	.strong{
+		font-size:2.7rem;
+		line-height:2.9rem;
+	}
+	.semistrong{
+		font-size:2.3rem;
+	}
+	.smaller{
+		font-size:2.1rem;
+	}
+}

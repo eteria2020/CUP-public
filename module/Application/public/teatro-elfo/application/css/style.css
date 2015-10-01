@@ -8,12 +8,38 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'Lato-Regular';
+	src: url('../../../common/application/font/Lato-Regular.eot');
+	src: url('../../../common/application/font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Regular.woff') format('woff'),
+		url('../../../common/application/font/Lato-Regular.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
 html, body{
 	font-size:100%;
 }
 
+.lato-regular{
+	font-family: 'Lato-Regular';
+}
+
 .lato-bold{
 	font-family: 'Lato-Bold';
+}
+
+.black{
+	color:#000;
+}
+
+.black a{
+	color:#000;
+}
+
+.black a:hover, .black a:active, .black a:focus{
+	color:#000;
 }
 
 .white{
@@ -32,7 +58,11 @@ html, body{
 	color:#ffed00;
 }
 .bg-grey{
-	background-color:#8E899A;
+	background-color:#8d95cd;
+}
+
+.link-equo{
+	font-size: 40px;
 }
 div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
 	padding-left:0;
@@ -59,6 +89,45 @@ button a{
 		padding-left:0;
 		padding-right:0;
 	}
+
+#intro{
+	color: #000;
+	font-size: 24px;
+	position: relative;
+	top:-20px;
+}
+
+#logo{
+	width: 150px;
+	height: 105px;
+	background-image: url('../images/logo_elfo.png');
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top:-30px;
+}
+
+#first-paragraph{
+	position: relative;
+	top:-30px;
+}
+
+#paragraph1{
+	position: relative;
+	top:-30px;
+}
+
+#second-paragraph{
+	position: relative;
+	top:-50px;
+}
+
+#nota{
+	font-size: 20px;
+}
+
+
+
 @media screen and (min-width:768px) and (max-width: 1900px){
 	.desk-block.desk-inline{
 		display:inline;
@@ -92,6 +161,30 @@ button a{
 	.p-top-5{
 		padding-top:5%;
 	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: 0px;
+	}
+
+	#intro {
+	    font-size: 16px;
+	    position: relative;
+	    top: 0px;
+	}
+
+	#logo{
+		top:-18px;
+	}
+
+	.link-equo{
+		font-size: 30px;
+	}
+
+	#nota{
+	    font-size: 14px;
+	}
+
 }
 
 
@@ -104,11 +197,71 @@ button a{
 		font-size:1.3rem;
 	}
 	.strong{
-		font-size:1.4rem;
-		line-height:1.8rem;
+		font-size:1.0rem;
+		line-height:1.2rem;
 	}
 	.smaller, .semistrong{
 		font-size:0.85rem;
+	}
+
+	#intro {
+	    font-size: 14px;
+	    position: relative;
+	    top:2px;
+	}
+
+	#logo{
+		top:-10px;
+		width: 75px;
+		height: 53px;
+		background-image: url('../images/logo-elfo-small.png');
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: -11px;
+	}
+
+	#nota{
+	    font-size: 14px;
+	}
+
+	.link-equo{
+		font-size: 30px;
+	}
+
+}
+@media screen and (min-width: 960px){
+
+	.strong {
+	    font-size: 1.2rem;
+	    line-height: 1.4rem;
+	}
+
+	#intro {
+	    font-size: 14px;
+	    position: relative;
+	    top: -2px;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: -19px;
+	}
+
+	#logo{
+		top:-13px;
+		width: 150px;
+		height: 105px;
+		background-image: url('../images/logo_elfo.png');
+	}
+
+	#nota{
+	    font-size: 14px;
+	}
+
+	.link-equo{
+		font-size: 30px;
 	}
 
 }
@@ -120,11 +273,30 @@ button a{
 		font-size:1.7rem;
 	}
 	.strong{
-		font-size:2rem;
-		line-height:2.5rem;
+	    font-size: 1.4rem;
+   		line-height: 1.6rem;
 	}
 	.semistrong{
 		font-size:1.3rem;
+	}
+
+	#intro {
+	    color: #000;
+	    font-size: 16px;
+	    position: relative;
+	    top: -6px;
+	}
+
+	#logo{
+		top:-20px;
+	}
+
+	#nota{
+	    font-size: 16px;
+	}
+
+	.link-equo{
+		font-size: 40px;
 	}
 }
 
@@ -143,14 +315,21 @@ button a{
 		font-size:1.9rem;
 	}
 	.strong{
-		font-size:2.2rem;
-		line-height:2.7rem;
+		font-size: 1.7rem;
+   		line-height: 1.9rem;
 	}
 	.semistrong{
 		font-size:1.5rem;
 	}
 	.smaller{
 		font-size:1rem;
+	}
+
+	#intro {
+	    color: #000;
+	    font-size: 20px;
+	    position: relative;
+	    top: -12px;
 	}
 }
 
@@ -159,8 +338,8 @@ button a{
 		font-size:2.1rem;
 	}
 	.strong{
-		font-size:2.4rem;
-		line-height:2.9rem;
+		font-size:2.3rem;
+		line-height:2.5rem;
 	}
 	.semistrong{
 		font-size:1.7rem;
@@ -175,8 +354,8 @@ button a{
 		font-size:2.4rem;
 	}
 	.strong{
-		font-size:2.7rem;
-		line-height:3.2rem;
+		font-size:2.5rem;
+		line-height:2.7rem;
 	}
 	.semistrong{
 		font-size:2rem;
@@ -191,8 +370,8 @@ button a{
 		font-size:3rem;
 	}
 	.strong{
-		font-size:3.3rem;
-		line-height:3.8rem;
+		font-size:2.7rem;
+		line-height:2.9rem;
 	}
 	.semistrong{
 		font-size:2.3rem;
