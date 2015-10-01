@@ -85,6 +85,7 @@ class ExportRegistriesController extends AbstractActionController
             $ftp_server = $this->exportConfig['server'];
             $ftp_conn = ftp_connect($ftp_server) or die(" Could not connect to $ftp_server!\n");
             $login = ftp_login($ftp_conn, $this->exportConfig['name'], $this->exportConfig['password']);
+            ftp_pasv($ftp_conn, true);
             $this->logger->log(" Connected!\n");
         }
 
