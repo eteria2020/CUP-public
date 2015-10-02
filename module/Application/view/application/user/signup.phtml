@@ -39,17 +39,33 @@
 <!-- content -->
 <div class="content">
 
+    <?php
+        $this->form->prepare();
+        echo $this->form()->openTag($this->form);
+    ?>
+
+    <div class="block-form w-3-4 auto-margin clearfix">
+        <div class="block-form-section content-align-center margin-bottom">
+            <h2><i class="fa fa-globe"></i> <?= $this->translate('Città preferita'); ?></h2>
+        </div>
+
+        <div class="block-field auto-margin w-1-3">
+            <p>
+                <?php
+                    $fleet = $this->form->get('user')->get('fleet');
+                    echo $this->formElement($fleet);
+                    echo $this->formElementErrors($fleet, array('class' => 'errors'));
+                ?>
+            </p>
+        </div>
+    </div>
+
     <!-- block-form -->
     <div class="block-form w-3-4 auto-margin clearfix">
 
         <div class="block-form-section content-align-center margin-bottom">
             <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate('Inserisci i dati per l\'accesso'); ?></h2>
         </div>
-
-    <?php
-        $this->form->prepare();
-        echo $this->form()->openTag($this->form);
-    ?>
 
      <!-- block-row-field -->
      <div class="block-row-field clearfix">

@@ -6,6 +6,7 @@ use SharengoCore\Entity\Customers;
 use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
+use SharengoCore\Service\FleetService;
 
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
@@ -14,16 +15,26 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
+    /**
+     * @var CustomersService
+     */
     private $customersService;
+
+    /**
+     * @var FleetService
+     */
+    private $fleetService;
 
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
         CountriesService $countriesService,
         CustomersService $customersService,
-        ProvincesService $provincesService
+        ProvincesService $provincesService,
+        FleetService $fleetService
     ) {
         $this->customersService = $customersService;
+        $this->fleetService = $fleetService;
 
         parent::__construct('user', [
             'use_as_base_fieldset' => true
@@ -254,6 +265,17 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     "ru" => $translator->translate("russo"),
                     "pt" => $translator->translate("portoghese")
                 ]
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'fleet',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'fleet'
+            ],
+            'options' => [
+                'value_options' => $fleetService->getFleetsSelectorArray()
             ]
         ]);
 
@@ -597,6 +619,16 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'privacyCondition' => [
                 'required' => true
             ],
+            'fleet' => [
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\ValidFleet',
+                        'options' => [
+                            'fleetService' => $this->fleetService
+                        ]
+                    ]
+                ]
+            ]
         ];
     }
 }
