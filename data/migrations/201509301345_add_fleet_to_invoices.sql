@@ -89,10 +89,10 @@ CREATE OR REPLACE FUNCTION before_insert_invoice()
             base_val := (EXTRACT(YEAR FROM now())::bigint * 10000000000);
 
             IF (curr_val < base_val) THEN
-                PERFORM setval('sequence_invoice_number' || code, base_val);
+                PERFORM setval('sequence_invoice_number_' || code, base_val);
             END IF;
 
-            next_val := nextval('sequence_invoice_number' || code);
+            next_val := nextval('sequence_invoice_number_' || code);
             NEW.invoice_number := to_char((next_val / 10000000000), 'FM9999') || '/' || to_char((next_val % 10000000000), 'FM0999999999');
 
             RETURN NEW;
