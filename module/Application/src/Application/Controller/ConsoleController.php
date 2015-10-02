@@ -428,14 +428,13 @@ class ConsoleController extends AbstractActionController
             $this->writeToConsole("Invoice created: " . $invoice->getId() . "\n");
             $this->entityManager->persist($invoice);
             $this->writeToConsole("EntityManager: invoice persisted\n\n");
+            // save invoices to db
+            if (!$dryRun) {
+                $this->writeToConsole("EntityManager: about to flush\n");
+                $this->entityManager->flush();
+                $this->writeToConsole("EntityManager: flushed\n");
+            }
             $invoicesCreated ++;
-        }
-
-        // save invoices to db
-        if (!$dryRun) {
-            $this->writeToConsole("EntityManager: about to flush\n");
-            $this->entityManager->flush();
-            $this->writeToConsole("EntityManager: flushed\n");
         }
 
         $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");

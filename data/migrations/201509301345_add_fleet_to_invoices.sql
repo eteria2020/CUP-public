@@ -35,3 +35,9 @@ DROP FUNCTION IF EXISTS before_insert_invoice();
  * it makes sense to set the column as NOT NULL.
  */
 ALTER TABLE invoices ALTER COLUMN invoice_number SET NOT NULL;
+
+/**
+ * Add UNIQUE key to invoice_number to avoid flushing multiple invoices at the
+ * same time that would generate multiple invoice numbers with the same value.
+ */
+ALTER TABLE invoices ADD CONSTRAINT unique_invoice_number UNIQUE (invoice_number);
