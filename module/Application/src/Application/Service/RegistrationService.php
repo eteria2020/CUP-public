@@ -124,6 +124,8 @@ final class RegistrationService
         if ('' != $promoCode) {
             $data['promoCode'] = $promoCode['promocode'];
         }
+        // we need to pass from the entity to the id
+        $data['fleet'] = $data['fleet']->getId();
 
         return $data;
     }
