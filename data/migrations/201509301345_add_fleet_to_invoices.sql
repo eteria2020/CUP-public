@@ -1,7 +1,7 @@
 /**
  * Add a column to specify the code used in invoices
  */
-ALTER TABLE fleets ADD int_code TEXT;
+ALTER TABLE fleets ADD int_code TEXT UNIQUE;
 /**
  * Set the codes for the current fleets and set the column as NOT NULL
  * @type {[type]}
@@ -14,13 +14,13 @@ ALTER TABLE fleets ALTER COLUMN int_code SET NOT NULL;
  * Add a column for the fleet to enable filtering and
  * easier access to this information.
  */
-ALTER TABLE invoices ADD fleet_int_code TEXT;
+ALTER TABLE invoices ADD fleet_id INTEGER REFERENCES fleets(id);
 /**
- * Set the current invoices with code for Milano.
+ * Set the current invoices with fleet for Milano.
  * Now that it is populated, set the column as NOT NULL.
  */
-UPDATE invoices SET fleet_int_code = '00';
-ALTER TABLE invoices ALTER COLUMN fleet_int_code SET NOT NULL;
+UPDATE invoices SET fleet_id = 1;
+ALTER TABLE invoices ALTER COLUMN fleet_id SET NOT NULL;
 /**
  * Drop the trigger that was called when a new row was inserted.
  */
