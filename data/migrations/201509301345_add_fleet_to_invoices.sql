@@ -71,3 +71,41 @@ CREATE OR REPLACE FUNCTION set_sequence_invoice_number_mi_start()
     $$;
 SELECT set_sequence_invoice_number_mi_start();
 DROP FUNCTION set_sequence_invoice_number_mi_start();
+
+
+
+CREATE OR REPLACE FUNCTION before_insert_invoice()
+    RETURNS trigger
+    LANGUAGE plpgsql
+    AS
+    $$
+        DECLARE code TEXT;
+        DECLARE curr_val bigint;
+        DECLARE base_val bigint;
+        DECLARE next_val bigint;
+        BEGIN
+            code := (SELECT f.code FROM fleets f WHERE f.id = NEW.fleet_id);
+            EXECUTE format('SELECT last_value FROM sequence_invoice_number_%s',lower(code)) INTO curr_val;
+            base_val := (EXTRACT(YEAR FROM now())::bigint * 10000000000);
+
+            IF (curr_val < base_val) THEN
+                PERFORM setval('sequence_invoice_number' || code, base_val);
+            END IF;
+
+            next_val := nextval('sequence_invoice_number' || code);
+            NEW.invoice_number := to_char((next_val / 10000000000), 'FM9999') || '/' || to_char((next_val % 10000000000), 'FM0999999999');
+
+            RETURN NEW;
+        END;
+    $$;
+
+CREATE TRIGGER trigger_invoice_created
+    BEFORE INSERT ON invoices
+    FOR EACH ROW EXECUTE PROCEDURE before_insert_invoice();
+
+
+
+
+
+
+
