@@ -94,7 +94,7 @@ class UserController extends AbstractActionController
         if (!empty($registeredData)) {
             $this->form1->setData([
                 'user' => $registeredData->toArray($this->hydrator),
-                'promocode' => ['promocode' => $registeredDataPromoCode],
+                'promocode' => $registeredDataPromoCode,
             ]);
         }
 
@@ -301,5 +301,4 @@ class UserController extends AbstractActionController
 
         return null;
     }
-
 }
