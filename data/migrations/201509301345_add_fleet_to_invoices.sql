@@ -41,3 +41,32 @@ ALTER TABLE invoices ALTER COLUMN invoice_number SET NOT NULL;
  * same time that would generate multiple invoice numbers with the same value.
  */
 ALTER TABLE invoices ADD CONSTRAINT unique_invoice_number UNIQUE (invoice_number);
+
+/**
+ * Create new sequences for the two fleets to generate the invoice_number.
+ * First set fleets.code to UNIQUE as it will be used as suffix in sequence name
+ */
+ALTER TABLE fleets ADD CONSTRAINT unique_code UNIQUE (code);
+CREATE SEQUENCE sequence_invoice_number_mi MAXVALUE 99999999999999 START currval('sequence_invoice_number');
+CREATE SEQUENCE sequence_invoice_number_fi MAXVALUE 99999999999999 START 20150100000001;
+/**
+ * DROP SEQUENCE IF EXISTS sequence_invoice_number_mi;
+ * DROP SEQUENCE IF EXISTS sequence_invoice_number_fi;
+ */
+
+/**
+ * Create function that sets the value for the sequence for Milano to the
+ * value of the current used sequence.
+ * Once used, remove the function.
+ */
+CREATE OR REPLACE FUNCTION set_sequence_invoice_number_mi_start()
+    RETURNS void
+    LANGUAGE plpgsql
+    AS
+    $$
+        BEGIN
+            PERFORM setval('sequence_invoice_number_mi', currval('sequence_invoice_number'));
+        END;
+    $$;
+SELECT set_sequence_invoice_number_mi_start();
+DROP FUNCTION set_sequence_invoice_number_mi_start();
