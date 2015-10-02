@@ -4,7 +4,7 @@
 ALTER TABLE fleets ADD int_code TEXT UNIQUE;
 /**
  * Set the codes for the current fleets and set the column as NOT NULL
- * @type {[type]}
+ * Make sure 00 is the code for Milano and 01 for Firenze
  */
 UPDATE fleets SET int_code = '00' WHERE id = 1;
 UPDATE fleets SET int_code = '01' WHERE id = 2;
@@ -16,7 +16,7 @@ ALTER TABLE fleets ALTER COLUMN int_code SET NOT NULL;
  */
 ALTER TABLE invoices ADD fleet_id INTEGER REFERENCES fleets(id);
 /**
- * Set the current invoices with fleet for Milano.
+ * Set the current invoices with fleet for Milano. Make sure 1 is for Milano.
  * Now that it is populated, set the column as NOT NULL.
  */
 UPDATE invoices SET fleet_id = 1;
@@ -44,11 +44,12 @@ ALTER TABLE invoices ADD CONSTRAINT unique_invoice_number UNIQUE (invoice_number
 
 /**
  * Create new sequences for the two fleets to generate the invoice_number.
- * First set fleets.code to UNIQUE as it will be used as suffix in sequence name
+ * First set fleets.code to UNIQUE as it will be used as suffix in sequence name.
+ * Make sure 20150100000001 is right for Firenze.
  */
 ALTER TABLE fleets ADD CONSTRAINT unique_code UNIQUE (code);
-CREATE SEQUENCE sequence_invoice_number_mi MAXVALUE 99999999999999 START currval('sequence_invoice_number');
-CREATE SEQUENCE sequence_invoice_number_fi MAXVALUE 99999999999999 START 20150100000001;
+CREATE SEQUENCE sequence_invoice_number_mi;
+CREATE SEQUENCE sequence_invoice_number_fi START 20150100000001;
 /**
  * DROP SEQUENCE IF EXISTS sequence_invoice_number_mi;
  * DROP SEQUENCE IF EXISTS sequence_invoice_number_fi;
@@ -65,7 +66,7 @@ CREATE OR REPLACE FUNCTION set_sequence_invoice_number_mi_start()
     AS
     $$
         BEGIN
-            PERFORM setval('sequence_invoice_number_mi', currval('sequence_invoice_number'));
+            PERFORM setval('sequence_invoice_number_mi', (SELECT last_value FROM sequence_invoice_number));
         END;
     $$;
 SELECT set_sequence_invoice_number_mi_start();

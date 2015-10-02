@@ -19,6 +19,7 @@ class ConsoleControllerfactory implements FactoryInterface
    	    $config = $serviceLocator->getServiceLocator()->get('Config');
    	    $alarmConfig = $config['alarm'];
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
+        $errorService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\NotifyErrorInInvoiceGenerationService');
 
         return new ConsoleController(
             $customerService,
@@ -29,7 +30,8 @@ class ConsoleControllerfactory implements FactoryInterface
             $tripsService,
             $accountTripsService,
             $alarmConfig,
-            $invoicesService
+            $invoicesService,
+            $errorService
         );
     }
 }
