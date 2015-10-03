@@ -78,9 +78,4 @@ $('.js-toggle-map-height').on('click', function(e) {
     e.preventDefault();
 });
 
-function cityPicker(code)
-{
-  console.log(code);
-}
-
 });

@@ -79,24 +79,7 @@
                 <!-- module-wrapper-menu -->
                 <div class="module-wrapper-menu clearfix">
 
-                    <!-- block-menu-languages -->
-                    <div class="block-languages block-menu">
-                        <ul>
-                            <li>
-                                <a class="js-show-element">Milano <i class="fa fa-caret-down"></i></a>
-                                <ul class="js-collapse-box block-available-languages hidden">
-                                <?php
-                                $cities = ['Milano' => '01',
-                                    'Firenze' => '02'];
-                                foreach ($cities as $name => $code):
-                                ?>
-                                    <li onclick="cityPicker(<?= $code ?>)"><?= $name ?></li>
-                                <?php endforeach; ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- block-menu-languages -->
+                    <?= $this->availableFleets(); ?>
 
                     <!-- nav-collapse -->
                     <div id="nav" class="nav-collapse collapse">

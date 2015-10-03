@@ -36,7 +36,9 @@ function initialize()
     // define the geocoder
     var geocoder = new google.maps.Geocoder();
     // define the initial position
-    var myLatlng = new google.maps.LatLng(45.4627338,9.1777323);
+    var latitude = $('div.block-languages.block-menu ul li a.js-show-element').data('latitude');
+    var longitude = $('div.block-languages.block-menu ul li a.js-show-element').data('longitude');
+    var myLatlng = new google.maps.LatLng(latitude, longitude);
     // define map options
     var mapOptions = {
             center: myLatlng, // Set our point as the centre location
@@ -161,8 +163,26 @@ function initialize()
         isInit = true;
     });
 
+    $('ul.js-collapse-box.block-available-languages li a').click(function () {
+        var latitude = $(this).data('latitude'),
+            longitude = $(this).data('longitude'),
+            name = $(this).data('name'),
+            id = $(this).data('id'),
+            latLng = new google.maps.LatLng(latitude, longitude);
 
-}
+        // change the name in the menu
+        $('div.block-languages.block-menu ul li a.js-show-element span').html(name);
+
+        // move the map
+        map.panTo(latLng);
+
+        // close the dropdown sending a click to the above menu
+        $(".js-show-element").click();
+
+        // set the preference in a cookie
+        Cookies.set("sharengo_map_fleetPreference", id, {expires: 30});
+    });
+};
 
 /* Set the behavior of the top-right buttons */
 
