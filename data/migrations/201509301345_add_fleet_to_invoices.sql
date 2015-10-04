@@ -50,6 +50,9 @@ ALTER TABLE invoices ADD CONSTRAINT unique_invoice_number UNIQUE (invoice_number
 ALTER TABLE fleets ADD CONSTRAINT unique_code UNIQUE (code);
 CREATE SEQUENCE sequence_invoice_number_mi;
 CREATE SEQUENCE sequence_invoice_number_fi START 20150100000001;
+
+ALTER SEQUENCE sequence_invoice_number_mi OWNER TO sharengo;
+ALTER SEQUENCE sequence_invoice_number_fi OWNER TO sharengo;
 /**
  * DROP SEQUENCE IF EXISTS sequence_invoice_number_mi;
  * DROP SEQUENCE IF EXISTS sequence_invoice_number_fi;
@@ -98,6 +101,8 @@ CREATE OR REPLACE FUNCTION before_insert_invoice()
             RETURN NEW;
         END;
     $$;
+
+ALTER FUNCTION before_insert_invoice() OWNER TO sharengo;
 
 CREATE TRIGGER trigger_invoice_created
     BEFORE INSERT ON invoices
