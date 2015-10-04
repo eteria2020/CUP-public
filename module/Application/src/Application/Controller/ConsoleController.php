@@ -12,7 +12,6 @@ use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
-use SharengoCore\Service\NotifyErrorInInvoiceGenerationService as ErrorService;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
@@ -100,8 +99,7 @@ class ConsoleController extends AbstractActionController
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
         $alarmConfig,
-        InvoicesService $invoicesService,
-        ErrorService $errorService
+        InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -113,7 +111,6 @@ class ConsoleController extends AbstractActionController
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
-        $this->errorService = $errorService;
     }
 
     public function getDiscountsAction()
@@ -347,9 +344,9 @@ class ConsoleController extends AbstractActionController
             // output reservation info
             if ($this->verbose) {
                 $this->writeToConsole("Reservation id: " . $reservation->getId());
-                $this->writeToConsole(" consumed_ts: " . (($reservation->getConsumedTs() == null) ? "null" : $reservation->getConsumedTs()->format('Y-m-d H:i:s')) );
-                $this->writeToConsole(" active: " . (($reservation->getActive()) ? 'true' : 'false') );
-                $this->writeToConsole(" to_send: " . (($reservation->getToSend()) ? 'true' : 'false') );
+                $this->writeToConsole(" consumed_ts: " . (($reservation->getConsumedTs() == null) ? "null" : $reservation->getConsumedTs()->format('Y-m-d H:i:s')));
+                $this->writeToConsole(" active: " . (($reservation->getActive()) ? 'true' : 'false'));
+                $this->writeToConsole(" to_send: " . (($reservation->getToSend()) ? 'true' : 'false'));
                 $this->writeToConsole(" beginning_ts: " . $reservation->getBeginningTs()->format('Y-m-d H:i:s'));
                 $this->writeToConsole(" length: " . $reservation->getLength() . "\n");
             }
@@ -425,9 +422,8 @@ class ConsoleController extends AbstractActionController
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
         $invoicesCreated = 0;
 
-        if (!$dryRun) {
-            $this->entityManager->beginTransaction();
-        }
+        $this->entityManager->beginTransaction();
+
         try {
             // get customers with first payment completed and no invoice
             $customers = $this->customerService->getCustomersFirstPaymentCompletedNoInvoice();
@@ -444,23 +440,22 @@ class ConsoleController extends AbstractActionController
             }
 
             // save invoices to db
+            $this->writeToConsole("EntityManager: about to flush\n");
+            $this->entityManager->flush();
+            $this->writeToConsole("EntityManager: flushed\n");
+
             if (!$dryRun) {
-                $this->writeToConsole("EntityManager: about to flush\n");
-                $this->entityManager->flush();
-                $this->writeToConsole("EntityManager: flushed\n");
                 $this->entityManager->commit();
-            }
-        } catch (\Exception $e) {
-            if (!$dryRun) {
+                $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
+            } else {
                 $this->entityManager->rollback();
             }
-            $this->errorService->firstPaymentError($e);
-            $this->writeToConsole("Failed...relled back...\n");
-            throw $e;
+
+            $this->writeToConsole("\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        } catch (\Exception $e) {
+            $this->entityManager->rollback();
+
+            $this->writeToConsole("Exception message: ".$e->getMessage());
         }
-
-        $this->writeToConsole("Created " . $invoicesCreated . " invoices\n\n");
-        $this->writeToConsole("\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
     }
 }
