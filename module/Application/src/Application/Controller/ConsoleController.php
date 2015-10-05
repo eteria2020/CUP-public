@@ -76,11 +76,6 @@ class ConsoleController extends AbstractActionController
     private $invoicesService;
 
     /**
-     * @var ErrorService
-     */
-    private $errorService;
-
-    /**
      * @var string
      */
     private $battery;
