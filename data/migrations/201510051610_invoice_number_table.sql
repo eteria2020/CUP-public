@@ -9,3 +9,7 @@ CREATE TABLE invoice_number
 
 ALTER TABLE invoice_number
   OWNER TO sharengo;
+
+/* change 4310 to match the last invoice number value */
+INSERT INTO invoice_number (year, fleet_id, number) VALUES
+(2015, 1, 4310);
