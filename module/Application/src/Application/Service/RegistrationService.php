@@ -127,6 +127,11 @@ final class RegistrationService
         // we need to pass from the entity to the id
         $data['fleet'] = $data['fleet']->getId();
 
+        // ensure the vat is not NULL, but a string
+        if (is_null($data['vat'])) {
+            $data['vat'] = '';
+        }
+
         return $data;
     }
 

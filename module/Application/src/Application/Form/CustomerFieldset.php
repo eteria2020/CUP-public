@@ -450,11 +450,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 ],
                 'validators' => [
                     [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 11,
-                            'max' => 13
-                        ]
+                        'name' => 'Application\Form\Validator\VatNumber'
                     ]
                 ]
             ],

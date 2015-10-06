@@ -164,6 +164,11 @@ class UserAreaController extends AbstractActionController
                 //prevent gender editing
                 $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
 
+                // ensure vat is not NULL, but a string
+                if (is_null($postData['customer']['vat'])) {
+                    $postData['customer']['vat'] = '';
+                }
+
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
             } else if (isset($postData['password'])) {
