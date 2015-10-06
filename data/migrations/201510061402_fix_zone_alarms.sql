@@ -14,3 +14,8 @@ ALTER TABLE zone_alarms ALTER COLUMN fleet_id SET NOT NULL;
  * Remove the obsolete column
  */
 ALTER TABLE zone_alarms DROP COLUMN name;
+
+/**
+ * Add active column to specify if zone should be considered or not
+ */
+ALTER TABLE zone_alarms ADD active boolean DEFAULT true NOT NULL;
