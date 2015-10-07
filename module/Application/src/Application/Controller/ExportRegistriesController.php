@@ -65,6 +65,14 @@ class ExportRegistriesController extends AbstractActionController
         $all = $request->getParam('all') || $request->getParam('a');
         $noFtp = $request->getParam('no-ftp') || $request->getParam('f');
         $testName = $request->getParam('test-name') || $request->getParam('t') ? 'test-' : '';
+        $date = date_create($this->request->getParam('date') ?: 'yesterday');
+
+        // validate date
+        if ($date === false) {
+            echo "Please use a valid date format\n";
+            exit;
+        }
+
         $path = $this->exportConfig['path'];
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -75,7 +83,7 @@ class ExportRegistriesController extends AbstractActionController
             $invoicesByDate = $this->invoicesService->getInvoicesWithCustomer();
         } else {
             $this->logger->log("for yesterday...");
-            $invoicesByDate = $this->invoicesService->getInvoicesByDate(date_create('yesterday'));
+            $invoicesByDate = $this->invoicesService->getInvoicesByDate($date);
         }
         $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
         $this->logger->log(" Retrieved!\n");
