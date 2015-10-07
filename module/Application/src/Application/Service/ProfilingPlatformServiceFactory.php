@@ -15,11 +15,12 @@ class ProfilingPlatformServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        
         $profilingPlatformSettings = $serviceLocator->get('Configuration')['profiling-platform'];
+        $fleetService = $serviceLocator->get('SharengoCore\Service\FleetService');
 
         return new ProfilingPlaformService(
-            $profilingPlatformSettings
+            $profilingPlatformSettings,
+            $fleetService
         );
     }
 }

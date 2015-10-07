@@ -16,6 +16,7 @@ use Application\Service\ProfilingPlaformService;
 use Application\Exception\ProfilingPlatformException;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
+use SharengoCore\Entity\Fleet;
 
 class UserController extends AbstractActionController
 {
@@ -141,6 +142,12 @@ class UserController extends AbstractActionController
             $customer = new Customers();
             $customer->setEmail($email);
             $customer->setProfilingCounter(1);
+
+            $fleet = $this->getProfilingPlatformFleet($email);
+            if ($fleet instanceof Fleet) {
+                $customer->setFleet($fleet);
+            }
+
             $this->form1->registerCustomerData($customer);
 
             $promoCode = $this->getProfilingPlatformPromoCode($email);
@@ -297,6 +304,16 @@ class UserController extends AbstractActionController
 
         } catch (ProfilingPlatformException $ex) {
 
+        }
+
+        return null;
+    }
+
+    private function getProfilingPlatformFleet($email)
+    {
+        try {
+            return $this->profilingPlatformService->getFleetByEmail($email);
+        } catch (ProfilingPlatformException $ex) {
         }
 
         return null;
