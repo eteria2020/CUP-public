@@ -255,7 +255,7 @@ return array(
                     'route' => '/{eq-sharing}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
+                        'controller' => 'LandingPage',
                         'action'     => 'eq-sharing',
                     ),
                 ]
@@ -266,7 +266,7 @@ return array(
                     'route' => '/{bikemi}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
+                        'controller' => 'LandingPage',
                         'action'     => 'bikemi',
                     ),
                 ]
@@ -277,7 +277,7 @@ return array(
                     'route' => '/{elfo}',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
+                        'controller' => 'LandingPage',
                         'action'     => 'teatro-elfo',
                     ),
                 ]
@@ -474,6 +474,9 @@ return array(
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
             'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory'
         ],
+        'invokables' => [
+            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
+        ]
     ],
     'view_helpers' => [
         'factories' => [
@@ -531,7 +534,8 @@ return array(
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
-                ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []]
+                ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []],
+                ['controller' => 'Application\Controller\LandingPage', 'roles' => []],
             ),
         ),
     ),
