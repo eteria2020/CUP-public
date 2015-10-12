@@ -151,7 +151,7 @@ class UserController extends AbstractActionController
             $this->form1->registerCustomerData($customer);
 
             $promoCode = $this->getProfilingPlatformPromoCode($email);
-            $this->form1->registerPromoCodeData($promoCode);
+            $this->form1->registerPromoCodeData(['promocode' => $promoCode]);
 
             // we store in session the information that the user already have a discount, so we can avoid showing him the banner
             $container = new Container('userDiscount');
