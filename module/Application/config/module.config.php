@@ -483,7 +483,8 @@ return array(
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
-            'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory'
+            'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory',
+            'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory'
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -547,6 +548,7 @@ return array(
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
                 ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []],
                 ['controller' => 'Application\Controller\LandingPage', 'roles' => []],
+                ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []]
             ),
         ),
     ),
@@ -779,6 +781,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ExportRegistries',
                             'action' => 'export-registries'
+                        ]
+                    ]
+                ],
+                'generate-extra-invoices' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate extra invoices [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'GenerateExtraInvoices',
+                            'action' => 'generate-extra-invoices'
                         ]
                     ]
                 ]
