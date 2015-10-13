@@ -1,17 +1,5 @@
 /**
- * Add column to properly reference fleets
- */
-ALTER TABLE zone_alarms ADD fleet_id integer REFERENCES fleets (id);
-
-/**
- * Check whether the id's used here correspond to the ones in production
- */
-UPDATE zone_alarms SET fleet_id = 1 WHERE name = 'MI';
-UPDATE zone_alarms SET fleet_id = 2 WHERE name = 'FI';
-ALTER TABLE zone_alarms ALTER COLUMN fleet_id SET NOT NULL;
-
-/**
- * Remove the obsolete column
+ * Remove the column that references the fleet
  */
 ALTER TABLE zone_alarms DROP COLUMN name;
 
@@ -19,3 +7,30 @@ ALTER TABLE zone_alarms DROP COLUMN name;
  * Add active column to specify if zone should be considered or not
  */
 ALTER TABLE zone_alarms ADD active boolean DEFAULT true NOT NULL;
+
+/**
+ * Create table for many-to-many relationship
+ */
+CREATE TABLE zone_alarms_fleets (
+    zone_alarm_id int REFERENCES zone_alarms (id) ON UPDATE CASCADE ON DELETE CASCADE,
+    fleet_id int REFERENCES fleets (id) ON UPDATE CASCADE,
+    CONSTRAINT zone_alarms_pkey PRIMARY KEY (bill_id, product_id)
+);
+
+/**
+ * Check that the values are the same in production.
+ * In this case the first 1 is for the Milano zone and the second 1 is for the
+ * Milano fleet
+ */
+INSERT INTO zone_alarms_fleets Values(
+    1,
+    1
+);
+/**
+ * In this case the first 2 is for the Firenze zone and the second 2 is for the
+ * Firenze fleet
+ */
+INSERT INTO zone_alarms_fleets Values(
+    2,
+    2
+);
