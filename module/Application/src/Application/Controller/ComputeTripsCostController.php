@@ -88,6 +88,35 @@ class ComputeTripsCostController extends AbstractActionController
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
+    public function computeTripCostAction()
+    {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+
+        $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        $tripId = $this->getRequest()->getParam('tripId');
+        $trip = $this->tripsService->getTripById($tripId);
+        $customer = $trip->getCustomer();
+
+        if (!$customer->getPaymentAble()) {
+            $this->logger->log("\nThe customer is not payment able. Impossible to proceed\n\n");
+            return;
+        }
+
+        if (!$trip->getCostComputed()) {
+            $this->logger->log("Computing cost for trip " . $trip->getId() . "\n");
+            $this->tripCostService->computeTripCost($trip, $dryRun);
+        } else {
+            $this->logger->log("Cost already computed for trip " . $trip->getId() . "\n");
+        }
+
+        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
     public function invoiceTripsAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);

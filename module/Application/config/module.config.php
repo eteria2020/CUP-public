@@ -672,6 +672,17 @@ return array(
                         ]
                     ]
                 ],
+                'compute-trip-cost' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'compute trip cost <tripId> [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ComputeTripsCost',
+                            'action' => 'compute-trip-cost'
+                        ]
+                    ]
+                ],
                 'invoice-trips' => [
                     'type' => 'simple',
                     'options' => [
