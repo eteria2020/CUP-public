@@ -282,17 +282,6 @@ return array(
                     ),
                 ]
             ],
-            'firenze' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{firenze}',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'firenze',
-                    ),
-                ]
-            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
