@@ -44,7 +44,15 @@ function initialize()
             center: myLatlng, // Set our point as the centre location
             zoom: 14, // Set the zoom level
             scrollwheel: false,
-            mapTypeId: 'roadmap' // set the default map type
+            mapTypeId: 'roadmap', // set the default map type
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            }
         };
 
     // sisplay the map on the page
