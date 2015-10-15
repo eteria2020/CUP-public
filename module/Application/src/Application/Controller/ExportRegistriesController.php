@@ -102,13 +102,15 @@ class ExportRegistriesController extends AbstractActionController
             $invoicesEntry = '';
             $customersEntry = '';
             foreach ($invoices as $invoice) {
-                if (!$noInvoices) {
-                    $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
-                    $invoicesEntry .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
-                }
-                if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
-                    $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
-                    $customersEntry .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
+                if ($invoice->getFleet()->getCode() == 'MI') {
+                    if (!$noInvoices) {
+                        $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+                        $invoicesEntry .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
+                    }
+                    if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                        $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
+                        $customersEntry .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
+                    }
                 }
             }
             if (!$dryRun && !$noInvoices && $invoicesEntry !== '') {
