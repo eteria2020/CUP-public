@@ -73,7 +73,7 @@ class ExportRegistriesController extends AbstractActionController
             exit;
         }
 
-        $path = $this->exportConfig['path'] . '/Milano';
+        $path = $this->exportConfig['path'] . 'Milano/';
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         $this->logger->log("Retrieving invoices...");
