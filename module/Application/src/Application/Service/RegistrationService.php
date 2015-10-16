@@ -127,6 +127,8 @@ final class RegistrationService
         // we need to pass from the entity to the id
         $data['fleet'] = $data['fleet']->getId();
 
+        $data['email'] = strtolower($data['email']);
+
         // ensure the vat is not NULL, but a string
         if (is_null($data['vat'])) {
             $data['vat'] = '';
@@ -253,10 +255,10 @@ final class RegistrationService
             'hash' => $hash
         ]);
     }
-    
+
     public function registerUser($hash)
     {
-        
+
         $customer = $this->customersRepository->findBy([
             'hash' => $hash
         ]);

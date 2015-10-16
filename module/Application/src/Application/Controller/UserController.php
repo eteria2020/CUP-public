@@ -115,7 +115,7 @@ class UserController extends AbstractActionController
 
     public function signupScoreAction()
     {
-        $email = urldecode($this->params('email'));
+        $email = strtolower(urldecode($this->params('email')));
 
         $customers = $this->customersService->findByEmail($email);
         $customer = null;
@@ -265,20 +265,17 @@ class UserController extends AbstractActionController
         $hash = $this->params()->fromQuery('user');
 
         $message = $this->registrationService->registerUser($hash);
-        $email = '';
         $enablePayment = false;
 
         $customer = $this->registrationService->getUserFromHash($hash);
 
         if (null != $customer) {
-            //$urlencodedEmail = urlencode($customer->getEmail());
             $enablePayment = !$customer->getFirstPaymentCompleted();
         }
 
         return new ViewModel([
             'message' => $message,
             'enable_payment' => $enablePayment,
-            //'email' => $urlencodedEmail
             'customerId' => $customer->getId(),
             'benefitsFromDiscountedSubscriptionAmount' => $customer->benefitsFromDiscoutedSubscriptionAmount(),
             'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100
