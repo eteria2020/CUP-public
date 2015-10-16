@@ -120,7 +120,7 @@ class ExportRegistriesController extends AbstractActionController
                 fwrite($fileInvoices, $invoicesEntry);
                 fclose($fileInvoices);
                 if (!$noFtp) {
-                    if (ftp_put($ftp_conn, $fileName, $path . $fileName, FTP_ASCII)) {
+                    if (ftp_put($ftp_conn, 'Milano/' . $fileName, $path . $fileName, FTP_ASCII)) {
                         $this->logger->log("File uploaded successfully\n");
                     } else {
                         $this->logger->log("Error uploading file\n");
@@ -134,7 +134,7 @@ class ExportRegistriesController extends AbstractActionController
                 fwrite($fileCustomers, $customersEntry);
                 fclose($fileCustomers);
                 if (!$noFtp) {
-                    if (ftp_put($ftp_conn, $fileName, $path . $fileName, FTP_ASCII)) {
+                    if (ftp_put($ftp_conn, 'Milano/' . $fileName, $path . $fileName, FTP_ASCII)) {
                         $this->logger->log("File uploaded successfully\n");
                     } else {
                         $this->logger->log("Error uploading file\n");
