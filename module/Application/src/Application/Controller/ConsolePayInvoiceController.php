@@ -10,8 +10,11 @@ use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Listener\PaymentEmailListener;
 use SharengoCore\Listener\NotifyCustomerPayListener;
+use Cartasi\Service\CartasiCustomerPaymentsRetry;
+use Cartasi\Exception\WrongPaymentException;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\EventManager\EventInterface;
 
 class ConsolePayInvoiceController extends AbstractActionController
 {
@@ -119,13 +122,18 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->getEventManager()->getSharedManager()->attachAggregate($this->notifyCustomerPayListener);
 
         foreach ($tripsPayments as $tripPayment) {
-            $this->logger->log("Processing payment for trip payment " . $tripPayment->getId() . "\n");
-            $this->paymentsService->tryPayment(
-                $tripPayment,
-                $this->avoidEmails,
-                $this->avoidCartasi,
-                $this->avoidPersistance
-            );
+            try {
+                $this->logger->log("Processing payment for trip payment " . $tripPayment->getId() . "\n");
+                $this->paymentsService->tryPayment(
+                    $tripPayment,
+                    $this->avoidEmails,
+                    $this->avoidCartasi,
+                    $this->avoidPersistance
+                );
+            } catch (WrongPaymentException $e) {
+                // if we are not able to process a payment we skip the followings
+                break;
+            }
         }
 
         $this->getEventManager()->trigger('processPaymentsCompleted', $this, [
