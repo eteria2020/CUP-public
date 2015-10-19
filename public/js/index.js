@@ -47,11 +47,11 @@ function initialize()
             mapTypeId: 'roadmap', // set the default map type
             zoomControl: true,
             zoomControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_CENTER
+                position: google.maps.ControlPosition.LEFT_BOTTOM
             },
             streetViewControl: true,
             streetViewControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_CENTER
+                position: google.maps.ControlPosition.LEFT_BOTTOM
             }
         };
 
