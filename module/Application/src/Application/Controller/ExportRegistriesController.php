@@ -200,7 +200,7 @@ class ExportRegistriesController extends AbstractActionController
 
             foreach ($entries as $fleetName => $entry) {
                 $fileName = $this->testName . "export" . $type . '_' . $date->format('Y-m-d') . ".txt";
-                $this->ensurePathExists($path . $fleetName);
+                $this->ensurePathExistsLocally($path . $fleetName);
                 $file = fopen($path . $fleetName . '/' . $fileName, 'w');
                 fwrite($file, $entry);
                 fclose($file);
@@ -211,19 +211,17 @@ class ExportRegistriesController extends AbstractActionController
     }
 
     /**
-     * Checks wether path exists and creates it if it doesn't
+     * Checks wether path exists under data/export and creates it if it doesn't
      * @param string $path
      */
-    private function ensurePathExists($path)
+    private function ensurePathExistsLocally($path)
     {
         if (!file_exists($path)) {
-            try {
-                $this->logger->log("Generating directory " . $path . " ... ");
-                mkdir($path);
+            $this->logger->log("Generating local directory " . $path . " ... ");
+            if (mkdir($path)) {
                 $this->logger->log("Done!\n");
-            } catch (Exception $e) {
+            } else {
                 $this->logger->log("Failed!\n");
-                $this->logger->log($e->getMessage());
                 exit;
             }
         }
@@ -237,7 +235,7 @@ class ExportRegistriesController extends AbstractActionController
     private function exportToFtp($from, $to)
     {
         if (!$this->noFtp) {
-            if (ftp_put($this->ftpConn, $from, $to, FTP_ASCII)) {
+            if (ftp_put($this->ftpConn, $to, $from, FTP_ASCII)) {
                 $this->logger->log("File uploaded successfully\n");
             } else {
                 $this->logger->log("Error uploading file\n");
