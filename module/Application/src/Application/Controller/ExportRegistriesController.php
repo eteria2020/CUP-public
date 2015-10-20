@@ -11,6 +11,10 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class ExportRegistriesController extends AbstractActionController
 {
+    const TYPE_INVOICES = "Invoices";
+
+    const TYPE_CUSTOMERS = "Customers";
+
     /**
      * @var CustomersService
      */
@@ -31,6 +35,48 @@ class ExportRegistriesController extends AbstractActionController
      */
     private $exportConfig;
 
+    /**
+     * Specifies wether files should be written
+     * @var boolean
+     */
+    private $dryRun;
+
+    /**
+     * Specifies wether data for customers will be exported
+     * @var boolean
+     */
+    private $noCustomers;
+
+    /**
+     * Specifies wether data for invoices will be exported
+     * @var boolean
+     */
+    private $noInvoices;
+
+    /**
+     * Specifies wether data for all days will be exported
+     * @var boolean
+     */
+    private $all;
+
+    /**
+     * Specifies wether ftp connection and upload will be made
+     * @var boolean
+     */
+    private $noFtp;
+
+    /**
+     * Specifies prepended text to filenames.
+     * @var string
+     */
+    private $testName;
+
+    /**
+     * Connection to ftp server
+     * @var resource | null
+     */
+    private $ftpConn = null;
+
     public function __construct(
         CustomersService $customersService,
         InvoicesService $invoicesService,
@@ -44,12 +90,14 @@ class ExportRegistriesController extends AbstractActionController
     }
 
     /**
-     * Writes a file (TODO define path) in which all data to be
-     * exported is written.
      * Available params are:
-     *     -d (does not write to file)
+     *     -d (does not generate files)
      *     -c (does not export customers data)
      *     -i (does not export invoices data)
+     *     -a (exports data for all days, overrides --date)
+     *     -f (does not connect to ftp)
+     *     -t (appends "test-" to filenames)
+     *     --date= (export for specified date, date_create formats accepted)
      */
     public function exportRegistriesAction()
     {
@@ -59,64 +107,38 @@ class ExportRegistriesController extends AbstractActionController
 
         // Get params
         $request = $this->getRequest();
-        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
-        $noCustomers = $request->getParam('no-customers') || $request->getParam('c');
-        $noInvoices = $request->getParam('no-invoices') || $request->getParam('i');
-        $all = $request->getParam('all') || $request->getParam('a');
-        $noFtp = $request->getParam('no-ftp') || $request->getParam('f');
-        $testName = $request->getParam('test-name') || $request->getParam('t') ? 'test-' : '';
-        $date = date_create($this->request->getParam('date') ?: 'yesterday');
-
-        // validate date
-        if ($date === false) {
-            echo "Please use a valid date format\n";
-            exit;
-        }
-
+        $this->dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $this->noCustomers = $request->getParam('no-customers') || $request->getParam('c');
+        $this->noInvoices = $request->getParam('no-invoices') || $request->getParam('i');
+        $this->all = $request->getParam('all') || $request->getParam('a');
+        $this->noFtp = $request->getParam('no-ftp') || $request->getParam('f');
+        $this->testName = $request->getParam('test-name') || $request->getParam('t') ? 'test-' : '';
         $path = $this->exportConfig['path'];
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $this->logger->log("Retrieving invoices...");
-        $invoicesByDate = null;
-        if ($all) {
-            $this->logger->log("all...");
-            $invoicesByDate = $this->invoicesService->getInvoicesWithCustomer();
-        } else {
-            $this->logger->log("for yesterday...");
-            $invoicesByDate = $this->invoicesService->getInvoicesByDate($date);
-        }
-        $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
-        $this->logger->log(" Retrieved!\n");
+        // Retrieve invoices
+        $invoicesByDate = $this->retrieveData();
 
-        if (!$noFtp) {
-            $this->logger->log("Connecting to ftp server... ");
-            $ftp_server = $this->exportConfig['server'];
-            $ftp_conn = ftp_connect($ftp_server) or die(" Could not connect to $ftp_server!\n");
-            $login = ftp_login($ftp_conn, $this->exportConfig['name'], $this->exportConfig['password']);
-            ftp_pasv($ftp_conn, true);
-            $this->logger->log(" Connected!\n");
-        }
+        // Start the ftp connection and login
+        $this->connectToServer($this->exportConfig);
 
         foreach ($invoicesByDate as $invoices) {
-            $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
+            $date = $invoices[0]->getDateTimeDate();
+            $this->logger->log("\nParsing invoices for date: " . $date->format('Y-m-d') . "\n");
             $invoicesEntries = [];
             $customersEntries = [];
 
             // Generate the data to be exported
             foreach ($invoices as $invoice) {
                 $fleetName = $invoice->getFleet()->getName();
-                if (!array_key_exists($fleetName, $invoicesEntries)) {
-                    $invoicesEntries[$fleetName] = '';
-                    $customersEntries[$fleetName] = '';
-                }
-                if (!$noInvoices) {
+                if (!$this->noInvoices) {
                     $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
                     if (!array_key_exists($fleetName, $invoicesEntries)) {
                         $invoicesEntries[$fleetName] = '';
                     }
                     $invoicesEntries[$fleetName] .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
                 }
-                if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                if (!$this->noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
                     $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
                     if (!array_key_exists($fleetName, $customersEntries)) {
                         $customersEntries[$fleetName] = '';
@@ -126,46 +148,96 @@ class ExportRegistriesController extends AbstractActionController
             }
 
             // Export invoices data
-            if (!$dryRun && !$noInvoices && !empty($invoicesEntries)) {
-                $this->logger->log("Writing invoices to file for the day\n");
-                foreach ($invoicesEntries as $fleetName => $invoicesEntry) {
-                    $fileName = $testName . "exportInvoices_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
-                    $fileInvoices = fopen($path . $fleetName . '/' . $fileName, 'w');
-                    fwrite($fileInvoices, $invoicesEntry);
-                    fclose($fileInvoices);
-                    if (!$noFtp) {
-                        if (ftp_put($ftp_conn, $fleetName . '/' . $fileName, $path . $fleetName . '/' . $fileName, FTP_ASCII)) {
-                            $this->logger->log("File uploaded successfully\n");
-                        } else {
-                            $this->logger->log("Error uploading file\n");
-                        }
-                    }
-                }
-            }
+            $this->exportData($date, $invoicesEntries, self::TYPE_INVOICES, $path);
 
             // Export customers data
-            if (!$dryRun && !$noCustomers && !empty($customersEntries)) {
-                $this->logger->log("Writing customers to file for the day\n");
-                foreach ($customersEntries as $fleetName => $customersEntry) {
-                    $fileName = $testName . "exportCustomers_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
-                    $fileCustomers = fopen($path . $fleetName . '/' . $fileName, 'w');
-                    fwrite($fileCustomers, $customersEntry);
-                    fclose($fileCustomers);
-                    if (!$noFtp) {
-                        if (ftp_put($ftp_conn, $fleetName . '/' . $fileName, $path . $fleetName . '/' . $fileName, FTP_ASCII)) {
-                            $this->logger->log("File uploaded successfully\n");
-                        } else {
-                            $this->logger->log("Error uploading file\n");
-                        }
-                    }
-                }
-            }
+            $this->exportData($date, $customersEntries, self::TYPE_CUSTOMERS, $path);
         }
 
-        if (!$noFtp) {
-            ftp_close($ftp_conn);
+        if (!$this->noFtp) {
+            ftp_close($this->ftpConn);
         }
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    /**
+     * Retrieves invoices based on params and groups them as needed
+     * @return array[]
+     */
+    private function retrieveData()
+    {
+        $this->logger->log("Retrieving invoices...");
+        $invoicesByDate = null;
+        if ($this->all) {
+            $this->logger->log("all...");
+            $invoicesByDate = $this->invoicesService->getInvoicesWithCustomer();
+        } else {
+            $date = date_create($this->request->getParam('date') ?: '2 days ago');
+            // validate date
+            if ($date === false) {
+                $this->logger->log("\nPlease use a valid date format (eg. YYYY-MM-DD)\n");
+                exit;
+            }
+            $this->logger->log("for " . $date->format('Y-m-d') . '...');
+            $invoicesByDate = $this->invoicesService->getInvoicesByDate($date);
+        }
+        $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
+        $this->logger->log(" Retrieved!\n");
+        return $invoicesByDate;
+    }
+
+    /**
+     * @param \DateTime $date
+     * @param string[] $entries
+     * @param string $type
+     * @param string $path
+     */
+    private function exportData(\DateTime $date, $entries, $type, $path)
+    {
+        if (!$this->dryRun && !$this->noInvoices && !empty($entries)) {
+            $this->logger->log("Writing " . $type . " to file for the day\n");
+
+            foreach ($entries as $fleetName => $entry) {
+                $fileName = $this->testName . "export" . $type . '_' . $date->format('Y-m-d') . ".txt";
+                $file = fopen($path . $fleetName . '/' . $fileName, 'w');
+                fwrite($file, $entry);
+                fclose($file);
+
+                $this->exportToFtp($path . $fleetName . '/' . $fileName, $fleetName . '/' . $fileName);
+            }
+        }
+    }
+
+    /**
+     * Params expected to be relative paths like path/to/file/.../filename.txt
+     * @param string $from
+     * @param string $to
+     */
+    private function exportToFtp($from, $to)
+    {
+        if (!$this->noFtp) {
+            if (ftp_put($this->ftpConn, $from, $to, FTP_ASCII)) {
+                $this->logger->log("File uploaded successfully\n");
+            } else {
+                $this->logger->log("Error uploading file\n");
+            }
+        }
+    }
+
+    /**
+     * Attempts connection to ftp server
+     * @param string[] $config
+     */
+    private function connectToServer($config)
+    {
+        if (!$this->noFtp) {
+            $this->logger->log("Connecting to ftp server... ");
+            $ftpServer = $config['server'];
+            $this->ftpConn = ftp_connect($ftpServer) or die(" Could not connect to $ftp_server!\n");
+            $login = ftp_login($this->ftpConn, $config['name'], $config['password']);
+            ftp_pasv($this->ftpConn, true);
+            $this->logger->log(" Connected!\n");
+        }
     }
 }
