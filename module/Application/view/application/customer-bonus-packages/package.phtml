@@ -1,11 +1,3 @@
-<?php
-
-$user = $this->LoginProvider();
-$userId = $user->getId();
-
-?>
-
-<!-- Main popup container -->
 <div id="pack-popup-container" class="sng-pack-popup-container">
     <div class="sng-pack-popup-inner">
         <!-- Actual container -->
@@ -18,33 +10,33 @@ $userId = $user->getId();
 
             <div class="sng-summary">
                 <h2 class="sng-headers">Descrizione:</h2>
-                <p id="description" class="sng-text"></p>
+                <p id="description" class="sng-text"><?= $this->package->getDescription() ?></p>
 
                 <table class="sng-table">
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2 class="sng-headers">Minuti:</h2>
-                            <p id="minutes" class="sng-text"></p>
+                            <h2>Minuti:</h2>
+                            <p id="minutes" class="sng-text"><?= $this->package->getMinutes() ?></p>
                         </td>
                         <td class="sng-w-1-2">
-                            <h2 class="sng-headers">Prezzo:</h2>
-                            <p id="cost" class="sng-text"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="sng-w-1-2">
-                            <h2 class="sng-headers">Valido dal:</h2>
-                            <p id="valid-from" class="sng-text"></p>
-                        </td>
-                        <td class="sng-w-1-2">
-                            <h2 class="sng-headers">Valido al:</h2>
-                            <p id="valid-to" class="sng-text"></p>
+                            <h2>Prezzo:</h2>
+                            <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2 class="sng-headers">Disponibile fino:</h2>
-                            <p id="available-until" class="sng-text"></p>
+                            <h2>Valido dal:</h2>
+                            <p id="valid-from" class="sng-text"><?= $this->package->getValidFrom()->format('d-m-Y') ?></p>
+                        </td>
+                        <td class="sng-w-1-2">
+                            <h2>Valido al:</h2>
+                            <p id="valid-to" class="sng-text"><?= $this->package->getValidTo()->format('d-m-Y') ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sng-w-1-2">
+                            <h2>Disponibile fino al:</h2>
+                            <p id="available-until" class="sng-text"><?= $this->package->getBuyableUntil()->format('d-m-Y') ?></p>
                         </td>
                     </tr>
                 </table>
@@ -52,18 +44,11 @@ $userId = $user->getId();
             </div>
 
             <div class="sng-footer">
-                <p class="sng-text">Messaggio possibilmente personalizzato sulla base della presenza di un contratto Cartasi</p>
-                <button id="confirm-btn" class="big green">Conferma</button>
+                <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
             </div>
 
         </div>
         <!-- actual container -->
     </div>
 </div>
-<!-- main popup container -->
-
-<!-- JavaScript -->
-<script type="text/javascript">
-var packageUrl = "<?= $this->url('core/packages'); ?>/";
-</script>
-<script type="text/javascript" src="<?= $this->basePath(); ?>/js/bonus-packages.js"></script>

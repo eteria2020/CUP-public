@@ -61,9 +61,6 @@ $bonusPackages = $this->bonusPackages;
                         </form>
                         -->
 
-                        <!-- Load popup to buy package -->
-                        <?= $this->partial('partials/buy-bonus-package.phtml'); ?>
-
                         <div class="block-form-section content-align-center margin-bottom">
                             <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice Promo'); ?></h2>
                         </div>
@@ -138,7 +135,11 @@ $bonusPackages = $this->bonusPackages;
                                 <div class="block-data-table-td cw-1-6"><?= $package->getValidFrom()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-6"><?= $package->getValidTo()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-6"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-6"><a onclick="buy(<?= $package->getId() ?>)"><i class="fa fa-cart-plus"></i></a></div>
+                                <div class="block-data-table-td cw-1-6">
+                                    <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
+                                        <i class="fa fa-cart-plus"></i>
+                                    </a>
+                                </div>
                             </div>
                             <!-- table body -->
 
@@ -179,3 +180,10 @@ $this->headStyle()->captureStart() ?>
         color: red;
     }
 <?php $this->headStyle()->captureEnd() ?>
+
+<!-- JavaScript -->
+<?php
+    $this->inlineScript()->appendFile($this->basePath('js/magnific-popup.min.js'));
+    $this->inlineScript()->appendFile($this->basePath('js/bonus-packages.js'));
+    $this->headLink()->appendStylesheet($this->basePath('css/magnific-popup.css'), 'screen');
+?>

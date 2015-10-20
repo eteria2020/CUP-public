@@ -217,14 +217,12 @@
 
 /* BonusPakagesPopup */
 .sng-pack-popup-container {
-     height: 500px;
-     width: 500px;
-     position: fixed;
-     display: none;
-     background-color: #FFF;
-     z-index: 1;
-     border-radius: 10px;
-     padding: 4px;
+    height: 500px;
+    width: 500px;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 4px;
+    margin: auto;
 }
 .sng-pack-popup-inner {
     height: 100%;
@@ -240,6 +238,7 @@
     border-radius: 6px;
     padding-right: 4px;
     padding-left: 4px;
+    position: relative;
 }
 .sng-close-btn {
     float: right;
@@ -277,4 +276,30 @@
     position: absolute;
     bottom: 15px;
     text-align: center;
+    width: 100%;
+}
+.sng-footer button {
+    background: #43a34c;
+    width: auto;
+    text-align: center;
+    color: #fff;
+    line-height: 1em;
+    height: 40px;
+    display: inline-block;
+    padding: 12px 20px 10px 20px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid #255b2a;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    backface-visibility: hidden;
+    webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
 }

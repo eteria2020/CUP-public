@@ -412,6 +412,26 @@ return array(
                             ]
                         ]
                     ],
+                    'bonus-package' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/package/:id',
+                            'defaults' => [
+                                'controller' => 'CustomerBonusPackages',
+                                'action' => 'package'
+                            ]
+                        ]
+                    ],
+                    'buy-package' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => 'buy-package',
+                            'defaults' => [
+                                'controller' => 'CustomerBonusPackages',
+                                'action' => 'buy-package'
+                            ]
+                        ]
+                    ],
                     'invoices-list' => [
                         'type' => 'Segment',
                         'options' => [
@@ -484,7 +504,8 @@ return array(
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
             'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory',
-            'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory'
+            'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory',
+            'Application\Controller\CustomerBonusPackages' => 'Application\Controller\CustomerBonusPackagesControllerFactory'
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -548,7 +569,8 @@ return array(
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
                 ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []],
                 ['controller' => 'Application\Controller\LandingPage', 'roles' => []],
-                ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []]
+                ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []],
+                ['controller' => 'Application\Controller\CustomerBonusPackages', 'roles' => []]
             ),
         ),
     ),

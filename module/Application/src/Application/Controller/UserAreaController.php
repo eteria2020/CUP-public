@@ -352,7 +352,6 @@ class UserAreaController extends AbstractActionController
             }
         }
 
-        // Add here code
         $bonusPackages = $this->bonusPackagesService->getAvailableBonusPackges();
 
         return new ViewModel([

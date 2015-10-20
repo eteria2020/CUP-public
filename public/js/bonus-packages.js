@@ -1,47 +1,29 @@
-var isPopupVisible = false;
-document.getElementById("close-btn").addEventListener('click', function (event)
-{
-    close();
-});
-document.getElementById("confirm-btn").addEventListener('click', function (event)
-{
-    triggerPayment();
-});
+/* global $ */
 
-function buy(packageId)
-{
-    // get the cars
-    $.get(packageUrl + packageId, function (jsonData)
-    {
-        document.getElementById("description").innerHTML = jsonData.data.description;
-        document.getElementById("minutes").innerHTML = jsonData.data.minutes;
-        document.getElementById("cost").innerHTML = parseCost(jsonData.data.cost);
-        document.getElementById("valid-from").innerHTML = jsonData.data.validFrom;
-        document.getElementById("valid-to").innerHTML = jsonData.data.validTo;
-        document.getElementById("available-until").innerHTML = jsonData.data.buyableUntil;
+$(function () {
+    "use strict";
+
+    $(".buyPackage").magnificPopup({
+        type: "ajax",
+        callbacks: {
+            ajaxContentAdded: function () {
+                $("#close-btn").click(function (e) {
+                    e.preventDefault();
+                    $.magnificPopup.close();
+                });
+
+                $(".sng-pack-popup #confirm-btn").click(function (e) {
+                    var url = $(this).data("href"),
+                        packageId = $(this).data("package-id");
+
+                    e.preventDefault();
+                    $.post(url, {
+                        packageId: packageId
+                    }).done(function (x) {
+                        console.log(x);
+                    });
+                });
+            }
+        }
     });
-
-    togglePopup();
-}
-
-function close()
-{
-    togglePopup();
-}
-
-function togglePopup()
-{
-    document.getElementById("pack-popup-container").style.display =
-        isPopupVisible ? 'none' : 'inline';
-    isPopupVisible = !isPopupVisible;
-}
-
-function parseCost(cost)
-{
-    return Math.floor(cost / 100) + ',' + cost % 100 + (cost % 100 < 10 ? '0' : '') + '\u20ac';
-}
-
-function triggerPayment()
-{
-    close();
-}
+});
