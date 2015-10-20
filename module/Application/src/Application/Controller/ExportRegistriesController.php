@@ -200,11 +200,31 @@ class ExportRegistriesController extends AbstractActionController
 
             foreach ($entries as $fleetName => $entry) {
                 $fileName = $this->testName . "export" . $type . '_' . $date->format('Y-m-d') . ".txt";
+                $this->ensurePathExists($path . $fleetName);
                 $file = fopen($path . $fleetName . '/' . $fileName, 'w');
                 fwrite($file, $entry);
                 fclose($file);
 
                 $this->exportToFtp($path . $fleetName . '/' . $fileName, $fleetName . '/' . $fileName);
+            }
+        }
+    }
+
+    /**
+     * Checks wether path exists and creates it if it doesn't
+     * @param string $path
+     */
+    private function ensurePathExists($path)
+    {
+        if (!file_exists($path)) {
+            try {
+                $this->logger->log("Generating directory " . $path . " ... ");
+                mkdir($path);
+                $this->logger->log("Done!\n");
+            } catch (Exception $e) {
+                $this->logger->log("Failed!\n");
+                $this->logger->log($e->getMessage());
+                exit;
             }
         }
     }
