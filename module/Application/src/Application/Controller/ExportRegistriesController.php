@@ -73,7 +73,7 @@ class ExportRegistriesController extends AbstractActionController
             exit;
         }
 
-        $path = $this->exportConfig['path'] . 'Milano/';
+        $path = $this->exportConfig['path'];
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         $this->logger->log("Retrieving invoices...");
@@ -99,49 +99,69 @@ class ExportRegistriesController extends AbstractActionController
 
         foreach ($invoicesByDate as $invoices) {
             $this->logger->log("\nParsing invoices for date: " . $invoices[0]->getDateTimeDate()->format('Y-m-d') . "\n");
-            $invoicesEntry = '';
-            $customersEntry = '';
+            $invoicesEntries = [];
+            $customersEntries = [];
+
+            // Generate the data to be exported
             foreach ($invoices as $invoice) {
-                if ($invoice->getFleet()->getCode() == 'MI') {
-                    if (!$noInvoices) {
-                        $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
-                        $invoicesEntry .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
+                $fleetName = $invoice->getFleet()->getName();
+                if (!array_key_exists($fleetName, $invoicesEntries)) {
+                    $invoicesEntries[$fleetName] = '';
+                    $customersEntries[$fleetName] = '';
+                }
+                if (!$noInvoices) {
+                    $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+                    if (!array_key_exists($fleetName, $invoicesEntries)) {
+                        $invoicesEntries[$fleetName] = '';
                     }
-                    if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
-                        $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
-                        $customersEntry .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
+                    $invoicesEntries[$fleetName] .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
+                }
+                if (!$noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                    $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
+                    if (!array_key_exists($fleetName, $customersEntries)) {
+                        $customersEntries[$fleetName] = '';
                     }
+                    $customersEntries[$fleetName] .= $this->customersService->getExportDataForCustomer($invoice->getCustomer()) . "\r\n";
                 }
             }
-            if (!$dryRun && !$noInvoices && $invoicesEntry !== '') {
+
+            // Export invoices data
+            if (!$dryRun && !$noInvoices && !empty($invoicesEntries)) {
                 $this->logger->log("Writing invoices to file for the day\n");
-                $fileName = $testName . "exportInvoices_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
-                $fileInvoices = fopen($path . $fileName, 'w');
-                fwrite($fileInvoices, $invoicesEntry);
-                fclose($fileInvoices);
-                if (!$noFtp) {
-                    if (ftp_put($ftp_conn, 'Milano/' . $fileName, $path . $fileName, FTP_ASCII)) {
-                        $this->logger->log("File uploaded successfully\n");
-                    } else {
-                        $this->logger->log("Error uploading file\n");
+                foreach ($invoicesEntries as $fleetName => $invoicesEntry) {
+                    $fileName = $testName . "exportInvoices_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
+                    $fileInvoices = fopen($path . $fleetName . '/' . $fileName, 'w');
+                    fwrite($fileInvoices, $invoicesEntry);
+                    fclose($fileInvoices);
+                    if (!$noFtp) {
+                        if (ftp_put($ftp_conn, $fleetName . '/' . $fileName, $path . $fleetName . '/' . $fileName, FTP_ASCII)) {
+                            $this->logger->log("File uploaded successfully\n");
+                        } else {
+                            $this->logger->log("Error uploading file\n");
+                        }
                     }
                 }
             }
-            if (!$dryRun && !$noCustomers && $customersEntry !== '') {
+
+            // Export customers data
+            if (!$dryRun && !$noCustomers && !empty($customersEntries)) {
                 $this->logger->log("Writing customers to file for the day\n");
-                $fileName = $testName . "exportCustomers_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
-                $fileCustomers = fopen($path . $fileName, 'w');
-                fwrite($fileCustomers, $customersEntry);
-                fclose($fileCustomers);
-                if (!$noFtp) {
-                    if (ftp_put($ftp_conn, 'Milano/' . $fileName, $path . $fileName, FTP_ASCII)) {
-                        $this->logger->log("File uploaded successfully\n");
-                    } else {
-                        $this->logger->log("Error uploading file\n");
+                foreach ($customersEntries as $fleetName => $customersEntry) {
+                    $fileName = $testName . "exportCustomers_" . $invoices[0]->getDateTimeDate()->format('Y-m-d') . ".txt";
+                    $fileCustomers = fopen($path . $fleetName . '/' . $fileName, 'w');
+                    fwrite($fileCustomers, $customersEntry);
+                    fclose($fileCustomers);
+                    if (!$noFtp) {
+                        if (ftp_put($ftp_conn, $fleetName . '/' . $fileName, $path . $fleetName . '/' . $fileName, FTP_ASCII)) {
+                            $this->logger->log("File uploaded successfully\n");
+                        } else {
+                            $this->logger->log("Error uploading file\n");
+                        }
                     }
                 }
             }
         }
+
         if (!$noFtp) {
             ftp_close($ftp_conn);
         }
