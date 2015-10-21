@@ -249,17 +249,6 @@ return array(
                     ),
                 ]
             ],
-            'eq-sharing' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{eq-sharing}',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'eq-sharing',
-                    ),
-                ]
-            ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [
