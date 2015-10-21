@@ -191,7 +191,7 @@ class ExportRegistriesController extends AbstractActionController
             $this->logger->log("all...");
             $invoices = $this->invoicesService->getInvoicesByFleetJoinCustomers($filterFleet);
         } else {
-            $date = date_create($this->request->getParam('date') ?: '2 days ago');
+            $date = date_create($this->request->getParam('date') ?: 'yesterday');
             // validate date
             if ($date === false) {
                 $this->logger->log("\nPlease use a valid date format (eg. YYYY-MM-DD)\n");
