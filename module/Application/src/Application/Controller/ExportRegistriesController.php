@@ -5,7 +5,9 @@ namespace Application\Controller;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\InvoicesService;
+use SharengoCore\Service\FleetService;
 use SharengoCore\Entity\Invoices;
+use SharengoCore\Exception\FleetNotFoundException;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -24,6 +26,11 @@ class ExportRegistriesController extends AbstractActionController
      * @var InvoicesService
      */
     private $invoicesService;
+
+    /**
+     * @var FleetService
+     */
+    private $fleetService;
 
     /**
      * @var Logger
@@ -80,11 +87,13 @@ class ExportRegistriesController extends AbstractActionController
     public function __construct(
         CustomersService $customersService,
         InvoicesService $invoicesService,
+        FleetService $fleetService,
         Logger $logger,
         $exportConfig
     ) {
         $this->customersService = $customersService;
         $this->invoicesService = $invoicesService;
+        $this->fleetService = $fleetService;
         $this->logger = $logger;
         $this->exportConfig = $exportConfig;
     }
@@ -105,7 +114,7 @@ class ExportRegistriesController extends AbstractActionController
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
 
-        // Get params
+        // Get/Set params
         $request = $this->getRequest();
         $this->dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->noCustomers = $request->getParam('no-customers') || $request->getParam('c');
@@ -168,10 +177,19 @@ class ExportRegistriesController extends AbstractActionController
     private function retrieveData()
     {
         $this->logger->log("Retrieving invoices...");
-        $invoicesByDate = null;
+        $invoices = null;
+        $filterFleet = $this->request->getParam('fleet');
+        if ($filterFleet !== null) {
+            try {
+                $filterFleet = $this->fleetService->getFleetByCode($filterFleet);
+            } catch(FleetNotFoundException $e) {
+                $this->logger->log("\nUse a valid fleet code!");
+                exit;
+            }
+        }
         if ($this->all) {
             $this->logger->log("all...");
-            $invoicesByDate = $this->invoicesService->getInvoicesJoinCustomers();
+            $invoices = $this->invoicesService->getInvoicesByFleetJoinCustomers($filterFleet);
         } else {
             $date = date_create($this->request->getParam('date') ?: '2 days ago');
             // validate date
@@ -180,11 +198,10 @@ class ExportRegistriesController extends AbstractActionController
                 exit;
             }
             $this->logger->log("for " . $date->format('Y-m-d') . '...');
-            $invoicesByDate = $this->invoicesService->getInvoicesByDateJoinCustomers($date);
+            $invoices = $this->invoicesService->getInvoicesByDateAndFleetJoinCustomers($date, $filterFleet);
         }
-        $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
         $this->logger->log(" Retrieved!\n");
-        return $invoicesByDate;
+        return $this->invoicesService->groupByInvoiceDate($invoices);
     }
 
     /**
