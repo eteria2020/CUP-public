@@ -183,7 +183,7 @@ class ExportRegistriesController extends AbstractActionController
             try {
                 $filterFleet = $this->fleetService->getFleetByCode($filterFleet);
             } catch(FleetNotFoundException $e) {
-                $this->logger->log("\nUse a valid fleet code!");
+                $this->logger->log("\nUse a valid fleet code!\n");
                 exit;
             }
         }
