@@ -16,3 +16,6 @@ module/Cartasi
 
 // cache
 data/DoctrineORMModule
+
+// exported invoices
+data/export
