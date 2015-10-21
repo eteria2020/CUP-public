@@ -171,7 +171,7 @@ class ExportRegistriesController extends AbstractActionController
         $invoicesByDate = null;
         if ($this->all) {
             $this->logger->log("all...");
-            $invoicesByDate = $this->invoicesService->getInvoicesWithCustomer();
+            $invoicesByDate = $this->invoicesService->getInvoicesJoinCustomers();
         } else {
             $date = date_create($this->request->getParam('date') ?: '2 days ago');
             // validate date
@@ -180,7 +180,7 @@ class ExportRegistriesController extends AbstractActionController
                 exit;
             }
             $this->logger->log("for " . $date->format('Y-m-d') . '...');
-            $invoicesByDate = $this->invoicesService->getInvoicesByDate($date);
+            $invoicesByDate = $this->invoicesService->getInvoicesByDateJoinCustomers($date);
         }
         $invoicesByDate = $this->invoicesService->groupByInvoiceDate($invoicesByDate);
         $this->logger->log(" Retrieved!\n");
