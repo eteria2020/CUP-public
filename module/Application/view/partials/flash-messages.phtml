@@ -2,7 +2,7 @@
 $this->flashMessenger()->setMessageOpenFormat('<div%s>')
     ->setMessageSeparatorString('<br/>')
     ->setMessageCloseString('</div>');
-echo $this->flashMessenger()->render('error',   array('block-alert', 'info'));
+echo $this->flashMessenger()->render('error',   array('block-alert', 'error'));
 echo $this->flashMessenger()->render('info',    array('block-alert', 'info'));
-echo $this->flashMessenger()->render('success', array('block-alert', 'info'));
+echo $this->flashMessenger()->render('success', array('block-alert', 'success'));
 ?>

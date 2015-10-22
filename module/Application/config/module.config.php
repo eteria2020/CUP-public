@@ -470,6 +470,7 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+            'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service'
         ),
         'factories' => [
             'RegistrationService'      => 'Application\Service\RegistrationServiceFactory',

@@ -1,4 +1,4 @@
-/* global $ */
+/* global $ window */
 
 $(function () {
     "use strict";
@@ -19,9 +19,12 @@ $(function () {
                     e.preventDefault();
                     $.post(url, {
                         packageId: packageId
-                    }).done(function (x) {
-                        console.log(x);
+                    }).always(function () {
+                        window.location.reload();
                     });
+
+                    // disable button
+                    $(this).attr("disabled", true);
                 });
             }
         }

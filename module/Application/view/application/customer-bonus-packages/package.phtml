@@ -44,8 +44,12 @@
             </div>
 
             <div class="sng-footer">
-                <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
-                <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
+                <?php if ($this->hasContract): ?>
+                    <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                    <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
+                <?php else: ?>
+                    <p class="sng-text">E' necessario avere un contratto attivo con Cartasi per poter procedere con il pagamento</p>
+                <?php endif; ?>
             </div>
 
         </div>

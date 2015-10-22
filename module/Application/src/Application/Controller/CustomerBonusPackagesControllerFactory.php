@@ -9,8 +9,16 @@ class CustomerBonusPackagesControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $customersBonusPackagesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\BonusPackagesService');
+        $sharedLocator = $serviceLocator->getServiceLocator();
 
-        return new CustomerBonusPackagesController($customersBonusPackagesService);
+        $customersBonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
+        $buyCustomerBonusPackage = $sharedLocator->get('SharengoCore\Service\BuyCustomerBonusPackage');
+        $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
+
+        return new CustomerBonusPackagesController(
+            $customersBonusPackagesService,
+            $buyCustomerBonusPackage,
+            $cartasiContractsService
+        );
     }
 }
