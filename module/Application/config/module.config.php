@@ -271,6 +271,17 @@ return array(
                     ),
                 ]
             ],
+            'linear' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{linear}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'linear',
+                    ),
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
