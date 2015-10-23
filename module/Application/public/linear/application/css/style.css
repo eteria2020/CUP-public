@@ -1,39 +1,39 @@
 @font-face {
 	font-family: 'Lato-Bold';
-	src: url('../font/Lato-Bold.eot');
-	src: url('../font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Bold.woff') format('woff'),
-		url('../font/Lato-Bold.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Bold.eot');
+	src: url('../../../common/application/font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Bold.woff') format('woff'),
+		url('../../../common/application/font/Lato-Bold.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Regular';
-	src: url('../font/Lato-Regular.eot');
-	src: url('../font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Regular.woff') format('woff'),
-		url('../font/Lato-Regular.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Regular.eot');
+	src: url('../../../common/application/font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Regular.woff') format('woff'),
+		url('../../../common/application/font/Lato-Regular.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Light';
-	src: url('../font/Lato-Light.eot');
-	src: url('../font/Lato-Light.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Light.woff') format('woff'),
-		url('../font/Lato-Light.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Light.eot');
+	src: url('../../../common/application/font/Lato-Light.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Light.woff') format('woff'),
+		url('../../../common/application/font/Lato-Light.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Heavy';
-	src: url('../font/Lato-Heavy.eot');
-	src: url('../font/Lato-Heavy.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Heavy.woff') format('woff'),
-		url('../font/Lato-Heavy.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Heavy.eot');
+	src: url('../../../common/application/font/Lato-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Heavy.woff') format('woff'),
+		url('../../../common/application/font/Lato-Heavy.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
@@ -136,7 +136,7 @@ button a{
 #logo{
 	width: 540px;
 	height: 165px;
-	background-image: url('../img/logo-linear.png');
+	background-image: url('../images/logo-linear.png');
 	margin:0;
 	padding:0;
 	margin-left: auto;
@@ -182,7 +182,7 @@ button a{
 	}
 }
 @media screen and (max-width:767px){
-	
+
 	div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7{
 		padding-right:0;
 	}
@@ -192,7 +192,7 @@ button a{
 	.col-sm-5.text-center.p-top-5{
 		padding-bottom:4%;
 	}
-	
+
 	a.yellow{
 		font-size:1.3rem;
 	}
@@ -233,7 +233,7 @@ button a{
 	#logo{
 		width: 300px;
 		height: 92px;
-		background-image: url('../img/logo-linear-768.png');
+		background-image: url('../images/logo-linear-768.png');
 		top:-5px;
 	}
 
@@ -251,7 +251,7 @@ button a{
 
 
 @media screen and (min-width: 768px){
-	
+
 	.col-sm-5.col-sm-push-7{
 		padding-top:3%;
 	}
@@ -293,7 +293,7 @@ button a{
 	#logo{
 		width: 300px;
 		height: 92px;
-		background-image: url('../img/logo-linear-768.png');
+		background-image: url('../images/logo-linear-768.png');
 		top:-4px;
 	}
 
@@ -336,11 +336,11 @@ button a{
 	    position: relative;
 	    top: 15px;
 	}
-	
+
 }
 @media screen and (min-width: 960px){
 
-	
+
 
 }
 @media screen and (min-width: 1024px){
@@ -384,7 +384,7 @@ button a{
 	#logo{
 		width: 400px;
 		height: 123px;
-		background-image: url('../img/logo-linear-1024.png');
+		background-image: url('../images/logo-linear-1024.png');
 		top:-23px;
 	}
 
@@ -461,7 +461,7 @@ button a{
 	#logo{
 		width: 450px;
 		height: 138px;
-		background-image: url('../img/logo-linear-1200.png');
+		background-image: url('../images/logo-linear-1200.png');
 	}
 
 	#intro {
@@ -529,7 +529,7 @@ button a{
 	#logo{
 		width: 540px;
 		height: 165px;
-		background-image: url('../img/logo-linear.png');
+		background-image: url('../images/logo-linear.png');
 	}
 
 	#tit{
