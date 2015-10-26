@@ -506,7 +506,8 @@ return array(
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
             'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory',
             'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory',
-            'Application\Controller\CustomerBonusPackages' => 'Application\Controller\CustomerBonusPackagesControllerFactory'
+            'Application\Controller\CustomerBonusPackages' => 'Application\Controller\CustomerBonusPackagesControllerFactory',
+            'Application\Controller\GeneratePackageInvoices' => 'Application\Controller\GeneratePackageInvoicesControllerFactory'
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -571,7 +572,8 @@ return array(
                 ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []],
                 ['controller' => 'Application\Controller\LandingPage', 'roles' => []],
                 ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []],
-                ['controller' => 'Application\Controller\CustomerBonusPackages', 'roles' => []]
+                ['controller' => 'Application\Controller\CustomerBonusPackages', 'roles' => []],
+                ['controller' => 'Application\Controller\GeneratePackageInvoices', 'roles' => []]
             ),
         ),
     ),
@@ -815,6 +817,17 @@ return array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'GenerateExtraInvoices',
                             'action' => 'generate-extra-invoices'
+                        ]
+                    ]
+                ],
+                'generate-package-invoices' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate bonus invoices [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'GeneratePackageInvoices',
+                            'action' => 'generate-package-invoices'
                         ]
                     ]
                 ]
