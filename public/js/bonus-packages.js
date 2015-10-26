@@ -12,7 +12,7 @@ $(function () {
                     $.magnificPopup.close();
                 });
 
-                $(".sng-pack-popup #confirm-btn").click(function (e) {
+                $(".sng-pack-popup button#confirm-btn").click(function (e) {
                     var url = $(this).data("href"),
                         packageId = $(this).data("package-id");
 

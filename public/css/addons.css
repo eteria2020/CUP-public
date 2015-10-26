@@ -278,7 +278,7 @@
     text-align: center;
     width: 100%;
 }
-.sng-footer button {
+.sng-footer #confirm-btn.big.green {
     background: #43a34c;
     width: auto;
     text-align: center;
