@@ -98,4 +98,31 @@ class RegistrationForm extends Form
         $container = $this->getContainer();
         $container->offsetUnset(self::FORM_DATA);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function setData($data)
+    {
+        $this->excludeTaxCodeValidationForForeigners($data['user']['birthCountry']);
+
+        return parent::setData($data);
+    }
+
+    /**
+     * @param string $birthCountry
+     */
+    private function excludeTaxCodeValidationForForeigners($birthCountry)
+    {
+        $userValidationGroup = array_keys($this->getBaseFieldset()->getElements());
+
+        if ($birthCountry !== 'it') {
+            $userValidationGroup = array_diff($userValidationGroup, ['taxCode']);
+        }
+
+        $this->setValidationGroup([
+            'user' => $userValidationGroup,
+            'promocode'
+        ]);
+    }
 }
