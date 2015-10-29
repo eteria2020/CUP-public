@@ -147,7 +147,7 @@ class ExportRegistriesController extends AbstractActionController
                     }
                     $invoicesEntries[$fleetName] .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
                 }
-                if (!$this->noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                if (!$this->noCustomers) {
                     $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
                     if (!array_key_exists($fleetName, $customersEntries)) {
                         $customersEntries[$fleetName] = '';
@@ -269,7 +269,7 @@ class ExportRegistriesController extends AbstractActionController
         if (!$this->noFtp) {
             $this->logger->log("Connecting to ftp server... ");
             $ftpServer = $config['server'];
-            $this->ftpConn = ftp_connect($ftpServer) or die(" Could not connect to $ftp_server!\n");
+            $this->ftpConn = ftp_connect($ftpServer) or die(" Could not connect to $ftpServer!\n");
             $login = ftp_login($this->ftpConn, $config['name'], $config['password']);
             ftp_pasv($this->ftpConn, true);
             $this->logger->log(" Connected!\n");
