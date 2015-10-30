@@ -1,7 +1,7 @@
 <?php
 
-return array(
-    'bjyauthorize' => array(
+return [
+    'bjyauthorize' => [
 
         // set the 'guest' role as default (must be defined in a role provider)
         'default_role' => 'guest',
@@ -19,21 +19,21 @@ return array(
          * to specify roles in a config file and one to load roles using a
          * Zend\Db adapter.
          */
-        'role_providers' => array(
+        'role_providers' => [
 
-            'BjyAuthorize\Provider\Role\Config' => array(
-                'guest' => array(),
-                'admin' => array(),
-                'callcenter' => array(),
-                'user' => array(),
-            ),
-        ),
+            'BjyAuthorize\Provider\Role\Config' => [
+                'guest' => [],
+                'admin' => [],
+                'callcenter' => [],
+                'user' => [],
+            ],
+        ],
 
-    ),
+    ],
 
     // resource providers provide a list of resources that will be tracked
     // in the ACL. like roles, they can be hierarchical
-    'resource_providers' => array(),
+    'resource_providers' => [],
 
     /* rules can be specified here with the format:
      * array(roles (array), resource, [privilege (array|string), assertion])
@@ -41,15 +41,13 @@ return array(
      * Zend\Acl\Assertion\AssertionInterface.
      * *if you use assertions, define them using the service manager!*
      */
-    'rule_providers' => array(),
+    'rule_providers' => [],
 
     /* Currently, only controller and route guards exist
      *
      * Consider enabling either the controller or the route guard depending on your needs.
      */
-    'guards' => array(
-        // moved inside each module
-    ),
+    'guards' => [],
 
     'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
-);
+];
