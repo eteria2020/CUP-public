@@ -20,10 +20,10 @@ INSERT INTO customers_bonus_packages VALUES (
     now(),
     1000,
     'promo',
-    '15-10-2015 0:00:00',
+    '02-11-2015 00:00:00',
+    90,
     null,
     '31-12-2015 23:59:59',
-    '15-09-2015 23:59:59',
     'Pacchetto bonus da 1000 minuti',
     10000
 );
