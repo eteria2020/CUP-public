@@ -253,6 +253,12 @@ class ExportRegistriesController extends AbstractActionController
             if (mkdir($path)) {
                 $this->logger->log("Done!\n");
             } else {
+                $this->emailService->sendEmail(
+                    $this->alertConfig['to'],
+                    "Sharengo - export error",
+                    "Error while creating local directory at path " . $path .
+                    " Export was aborted"
+                );
                 $this->logger->log("Failed!\n");
                 exit;
             }
@@ -270,6 +276,12 @@ class ExportRegistriesController extends AbstractActionController
             if (ftp_put($this->ftpConn, $to, $from, FTP_ASCII)) {
                 $this->logger->log("File uploaded successfully\n");
             } else {
+                $this->emailService->sendEmail(
+                    $this->alertConfig['to'],
+                    "Sharengo - export error",
+                    "The ftp connection was established but there was an error "
+                    . "uploading file " . $from . " to " . $to
+                );
                 $this->logger->log("Error uploading file\n");
             }
         }
@@ -287,8 +299,10 @@ class ExportRegistriesController extends AbstractActionController
             if (!$this->ftpConn) {
                 $this->emailService->sendEmail(
                     $this->alertConfig['to'],
-                    "Sharengo - export failure",
-                    "The ftp connection could not be established. Date: " . date_create()->format('Y-m-d H:i:s')
+                    "Sharengo - export error",
+                    "The ftp connection could not be established. Date: " .
+                    date_create()->format('Y-m-d H:i:s') .
+                    " Export was aborted!"
                 );
                 $this->logger->log(" Could not connect to ftp server! ...aborting export\n");
                 die;
