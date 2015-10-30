@@ -13,15 +13,19 @@ class ExportRegistriesControllerfactory implements FactoryInterface
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
         $fleetService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\FleetService');
         $logger = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\SimpleLoggerService');
+        $emailService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\EmailService');
         $config = $serviceLocator->getServiceLocator()->get('Config');
         $exportConfig = $config['export'];
+        $alertConfig = $config['alertSettings'];
 
         return new ExportRegistriesController(
             $customersService,
             $invoicesService,
             $fleetService,
+            $emailService,
             $logger,
-            $exportConfig
+            $exportConfig,
+            $alertConfig
         );
     }
 }

@@ -6,6 +6,7 @@ use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\FleetService;
+use SharengoCore\Service\EmailService;
 use SharengoCore\Entity\Invoices;
 use SharengoCore\Exception\FleetNotFoundException;
 
@@ -33,6 +34,11 @@ class ExportRegistriesController extends AbstractActionController
     private $fleetService;
 
     /**
+     * @var EmailService
+     */
+    private $emailService;
+
+    /**
      * @var Logger
      */
     private $logger;
@@ -41,6 +47,11 @@ class ExportRegistriesController extends AbstractActionController
      * @var array
      */
     private $exportConfig;
+
+    /**
+     * @var array
+     */
+    private $alertConfig;
 
     /**
      * Specifies wether files should be written
@@ -88,14 +99,18 @@ class ExportRegistriesController extends AbstractActionController
         CustomersService $customersService,
         InvoicesService $invoicesService,
         FleetService $fleetService,
+        EmailService $emailService,
         Logger $logger,
-        $exportConfig
+        $exportConfig,
+        $alertConfig
     ) {
         $this->customersService = $customersService;
         $this->invoicesService = $invoicesService;
         $this->fleetService = $fleetService;
+        $this->emailService = $emailService;
         $this->logger = $logger;
         $this->exportConfig = $exportConfig;
+        $this->alertConfig = $alertConfig;
     }
 
     /**
@@ -147,7 +162,7 @@ class ExportRegistriesController extends AbstractActionController
                     }
                     $invoicesEntries[$fleetName] .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
                 }
-                if (!$this->noCustomers && $invoice->getType() == Invoices::TYPE_FIRST_PAYMENT) {
+                if (!$this->noCustomers) {
                     $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
                     if (!array_key_exists($fleetName, $customersEntries)) {
                         $customersEntries[$fleetName] = '';
@@ -238,6 +253,12 @@ class ExportRegistriesController extends AbstractActionController
             if (mkdir($path)) {
                 $this->logger->log("Done!\n");
             } else {
+                $this->emailService->sendEmail(
+                    $this->alertConfig['to'],
+                    "Sharengo - export error",
+                    "Error while creating local directory at path " . $path .
+                    " Export was aborted"
+                );
                 $this->logger->log("Failed!\n");
                 exit;
             }
@@ -255,6 +276,12 @@ class ExportRegistriesController extends AbstractActionController
             if (ftp_put($this->ftpConn, $to, $from, FTP_ASCII)) {
                 $this->logger->log("File uploaded successfully\n");
             } else {
+                $this->emailService->sendEmail(
+                    $this->alertConfig['to'],
+                    "Sharengo - export error",
+                    "The ftp connection was established but there was an error "
+                    . "uploading file " . $from . " to " . $to
+                );
                 $this->logger->log("Error uploading file\n");
             }
         }
@@ -268,8 +295,18 @@ class ExportRegistriesController extends AbstractActionController
     {
         if (!$this->noFtp) {
             $this->logger->log("Connecting to ftp server... ");
-            $ftpServer = $config['server'];
-            $this->ftpConn = ftp_connect($ftpServer) or die(" Could not connect to $ftp_server!\n");
+            $this->ftpConn = ftp_connect($config['server']);
+            if (!$this->ftpConn) {
+                $this->emailService->sendEmail(
+                    $this->alertConfig['to'],
+                    "Sharengo - export error",
+                    "The ftp connection could not be established. Date: " .
+                    date_create()->format('Y-m-d H:i:s') .
+                    " Export was aborted!"
+                );
+                $this->logger->log(" Could not connect to ftp server! ...aborting export\n");
+                die;
+            }
             $login = ftp_login($this->ftpConn, $config['name'], $config['password']);
             ftp_pasv($this->ftpConn, true);
             $this->logger->log(" Connected!\n");
