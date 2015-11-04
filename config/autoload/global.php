@@ -36,5 +36,10 @@ return array(
         'server' => 'dev.sharengo.it',
         'name' => 'fatture',
         'password' => 'f477ur3!'
+    ],
+    'subscription-bonus' => [
+        'total' => 100,
+        'description' => 'Bonus iscrizione utente',
+        'valid-to' => '+3 months'
     ]
 );
