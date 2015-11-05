@@ -26,11 +26,11 @@
                     <tr>
                         <td class="sng-w-1-2">
                             <h2>Valido dal:</h2>
-                            <p id="valid-from" class="sng-text"><?= $this->package->getValidFrom()->format('d-m-Y') ?></p>
+                            <p id="valid-from" class="sng-text"><?= date_create()->format('d-m-Y') ?></p>
                         </td>
                         <td class="sng-w-1-2">
                             <h2>Valido al:</h2>
-                            <p id="valid-to" class="sng-text"><?= $this->package->getValidTo()->format('d-m-Y') ?></p>
+                            <p id="valid-to" class="sng-text">per 90 gg</p>
                         </td>
                     </tr>
                     <tr>

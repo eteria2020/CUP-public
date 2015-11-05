@@ -108,7 +108,7 @@ $bonusPackages = $this->bonusPackages;
                         <!-- description -->
 
                         <!-- Table -->
-                        <div class="block-data-table clearboth clearfix margin-top-custom">
+                        <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
 
                             <!-- Table header -->
                             <div class="block-data-table-row clearfix">
@@ -132,14 +132,17 @@ $bonusPackages = $this->bonusPackages;
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-6"><?= $package->getMinutes() . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-6"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $package->getValidFrom()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $package->getValidTo()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= date_create()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-6">per 90 gg</div>
                                 <div class="block-data-table-td cw-1-6"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-6">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
                                         <i class="fa fa-cart-plus"></i>
                                     </a>
                                 </div>
+                            </div>
+                            <div class="block-data-table-row data-info clearfix" style="display: table-row; border: none;">
+                                <div class="block-data-table-td cw-6-6"><?= $package->getNotes() ?></div>
                             </div>
                             <!-- table body -->
 
