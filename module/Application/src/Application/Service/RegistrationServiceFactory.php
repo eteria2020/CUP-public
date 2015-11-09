@@ -32,6 +32,8 @@ class RegistrationServiceFactory implements FactoryInterface
 
         $promoCodesService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
 
+        $subscriptionBonus = $serviceLocator->get('Configuration')['subscription-bonus'];
+
         return new RegistrationService(
             $form1,
             $form2,
@@ -41,7 +43,8 @@ class RegistrationServiceFactory implements FactoryInterface
             $emailService,
             $translationService,
             $viewHelperManager,
-            $promoCodesService
+            $promoCodesService,
+            $subscriptionBonus
         );
     }
 }
