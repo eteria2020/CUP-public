@@ -513,7 +513,15 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
             'fleet' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\ValidFleet',
+                        'options' => [
+                            'fleetService' => $this->fleetService
+                        ]
+                    ]
+                ]
             ],
         ];
     }
