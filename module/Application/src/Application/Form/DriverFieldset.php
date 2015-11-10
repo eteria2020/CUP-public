@@ -143,6 +143,19 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ]
         ]);
+
+        $this->add([
+            'name' => 'driverLicenseForeign',
+            'type' => 'Zend\Form\Element\Checkbox',
+            'attributes' => [
+                'id' => 'driverLicenseForeign'
+            ],
+            'options' => [
+                'use_hidden_element' => true,
+                'checked_value' => 'true',
+                'unchecked_value' => 'false'
+            ]
+        ]);
     }
 
     public function getInputFilterSpecification()
