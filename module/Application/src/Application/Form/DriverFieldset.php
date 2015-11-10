@@ -250,6 +250,9 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'driverLicenseCountry' => [
                 'required' => true
             ],
+            'driverLicenseForeign' => [
+                'required' => true
+            ],
             'driverLicenseExpire' => [
                 'required' => true,
                 'validators' => [
