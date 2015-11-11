@@ -823,7 +823,7 @@ return array(
                 'generate-package-invoices' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'generate bonus invoices [--dry-run|-d]',
+                        'route' => 'generate package invoices [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'GeneratePackageInvoices',
