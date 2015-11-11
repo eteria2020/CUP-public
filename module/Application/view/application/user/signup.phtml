@@ -380,13 +380,15 @@
         </p>
         <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
         <label class='control checkbox small-form'>
-            <input type='checkbox' name="<?php echo $generalCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
+            <?php echo $this->formElement($generalCondition1)?>
+            <span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
         </label>
         <br></br>
         <?php echo $this->formElementErrors($generalCondition1, array('class' => 'errors')); ?>
         <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
         <label class='control checkbox small-form'>
-            <input type='checkbox' name="<?php echo $generalCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
+            <?php echo $this->formElement($generalCondition2)?>
+            <span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
         </label>
         <br></br>
         <?php echo $this->formElementErrors($generalCondition2, array('class' => 'errors')); ?>
@@ -412,13 +414,15 @@
         </p>
         <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
         <label class='control checkbox small-form'>
-            <input type='checkbox' name="<?php echo $regulationCondition1->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
+            <?php echo $this->formElement($regulationCondition1)?>
+            <span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
         </label>
         <br></br>
         <?php echo $this->formElementErrors($regulationCondition1, array('class' => 'errors')); ?>
         <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
         <label class='control checkbox small-form'>
-            <input type='checkbox' name="<?php echo $regulationCondition2->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
+            <?php echo $this->formElement($regulationCondition2)?>
+            <span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
         </label>
         <br></br>
         <?php echo $this->formElementErrors($regulationCondition2, array('class' => 'errors')); ?>
@@ -442,7 +446,8 @@
         </a>
         <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
         <label class='control checkbox small-form'>
-            <input type='checkbox' name="<?php echo $privacyCondition->getName() ?>"><span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
+            <?php echo $this->formElement($privacyCondition)?>
+            <span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
         </label>
         <br></br>
         <?php echo $this->formElementErrors($privacyCondition, array('class' => 'errors')); ?>
