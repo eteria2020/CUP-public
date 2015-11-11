@@ -207,6 +207,11 @@ $this->headLink()
                                             <input type="text" name="" class="required disabled" value="<?= $this->longLanguage($this->customer->getLanguage()); ?>" >
                                         </p>
                                     </div>
+                                    <div class="block-field bw-f w-1-4">
+                                        <p> <label><?= $this->translate("Citt&agrave; preferita"); ?></label>
+                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getFleet()->getName(); ?>">
+                                        </p>
+                                    </div>
                                 </div>
 
                                 <div class="block-wrapper-button content-align-center">
@@ -456,6 +461,17 @@ $this->headLink()
                                                 $language->setValue($this->customer->getLanguage());
                                                 echo $this->formElement($language->setAttribute('class', 'required'));
                                                 echo $this->formElementErrors($language, array('class' => 'error-sign-up'));
+                                                ?>
+                                            </p>
+                                        </div>
+
+                                        <div class="block-field bw-f w-1-4">
+                                            <p><label><?= $this->translate("Citt&agrave; preferita"); ?></label>
+                                                <?php
+                                                $fleet = $this->profileForm->get('customer')->get('fleet');
+                                                $fleet->setValue($this->customer->getFleet()->getId());
+                                                echo $this->formElement($fleet->setAttribute('class', 'required'));
+                                                echo $this->formElementErrors($fleet, array('class' => 'error-sign-up'));
                                                 ?>
                                             </p>
                                         </div>

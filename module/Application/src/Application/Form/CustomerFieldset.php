@@ -6,6 +6,7 @@ namespace Application\Form;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\FleetService;
 use SharengoCore\Service\ProvincesService;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Fieldset;
@@ -15,8 +16,20 @@ use Zend\InputFilter\InputFilterProviderInterface;
 
 class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
 {
+    /**
+     * @var CustomersService
+     */
     private $customersService;
+
+    /**
+     * @var ProvincesService
+     */
     private $provincesService;
+
+    /**
+     * @var FleetService
+     */
+    private $fleetService;
 
     public function __construct(
         Translator $translator,
@@ -24,11 +37,13 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
         CountriesService $mondoService,
         CustomersService $customersService,
         AuthenticationService $userService,
-        ProvincesService $provincesService
+        ProvincesService $provincesService,
+        FleetService $fleetService
     ) {
         $this->customersService = $customersService;
         $this->userService = $userService;
         $this->provincesService = $provincesService;
+        $this->fleetService = $fleetService;
 
         parent::__construct('customer', [
             'use_as_base_fieldset' => true
@@ -300,6 +315,17 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => $translator->translate('Telefono'),
             ]
         ]);
+
+        $this->add([
+            'name' => 'fleet',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'fleet'
+            ],
+            'options' => [
+                'value_options' => $fleetService->getFleetsSelectorArray()
+            ]
+        ]);
     }
 
     public function getInputFilterSpecification()
@@ -482,6 +508,17 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 3
+                        ]
+                    ]
+                ]
+            ],
+            'fleet' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\ValidFleet',
+                        'options' => [
+                            'fleetService' => $this->fleetService
                         ]
                     ]
                 ]

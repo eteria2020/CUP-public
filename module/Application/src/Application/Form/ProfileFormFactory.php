@@ -22,13 +22,15 @@ class ProfileFormFactory implements FactoryInterface
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
         $provincesService = $serviceLocator->get('SharengoCore\Service\ProvincesService');
         $userService = $serviceLocator->get('zfcuser_auth_service');
+        $fleetService = $serviceLocator->get('SharengoCore\Service\FleetService');
         $customerFieldset = new CustomerFieldset(
             $translator,
             $hydrator,
             $countriesService,
             $customersService,
             $userService,
-            $provincesService
+            $provincesService,
+            $fleetService
         );
 
         return new ProfileForm($customerFieldset, $entityManager);
