@@ -14,8 +14,9 @@ FROM invoices AS i
 WHERE i.id = cb.invoice_id;
 
 /**
- * For any customers_bonus that has an invoice, set the fleet as the one in the
- * invoice
+ * For any customers_bonus that still does not have a payment_fleet_id, set it
+ * as the current preferred fleet of the customer (this was the expected
+ * behaviour)
  */
 UPDATE customers_bonus AS cb
 SET payment_fleet_id = c.fleet_id
