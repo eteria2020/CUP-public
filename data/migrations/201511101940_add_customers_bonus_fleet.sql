@@ -26,14 +26,6 @@ AND cb.payment_fleet_id IS NULL
 AND c.id = cb.customer_id;
 
 /**
- * Change the package_id to an existing package. For some reason it is always
- * set to three
- */
-UPDATE customers_bonus
-SET package_id = 1
-WHERE package_id IS NOT NULL;
-
-/**
  * Add foreign key to package_id
  */
 ALTER TABLE customers_bonus
