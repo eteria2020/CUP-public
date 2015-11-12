@@ -12,6 +12,7 @@ use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Validator\Identical;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -337,7 +338,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'generalCondition1',
             'options' => [
                 'label' => $translator->translate('ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e da C.S. Milano S.r.l.'),
-                'use_hidden_element' => true
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
             ]
         ]);
 
@@ -346,7 +352,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'generalCondition2',
             'options' => [
                 'label' => $translator->translate('dichiaro ai sensi e per gli effetti di cui all’art. 1341 c.c. e segg., di accettare espressamente ed approvare specificatamente le condizioni di cui agli articoli: 1 (premesse), 2 (definizioni), 3 (oggetto e parti del contratto), 4 (divieto di sostituzione), 5 (modifica unilaterale del Contratto e del Regolamento del servizio di car sharing), 6 (iscrizione e prenotazione online del Car Sharing SHARE’NGO), 7 (garanzia economica del noleggio), 8 (tariffe), 9 (obblighi, fatturazione e pagamenti), 10 (divieto di sublocazione e di cessione), 11 (esonero di responsabilità), 12 (permesso di guida), 13 (utilizzo dei veicoli. Clausola risolutiva espressa), 14 (sinistro o avaria del veicolo), 15 (furti e vandalismi), 16 (sanzioni in materia di circolazione stradale), 17 (responsabilità del Cliente), 18 (assicurazioni – oneri a carico del Cliente), 19 (limiti di responsabilità), 20 (dati personali), 21 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 22 (reclami), 23 (diritto di recesso del Cliente), 24 (penali), 25 (comunicazioni) 26 (foro competente), 27 (varie).'),
-                'use_hidden_element' => true
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
             ]
         ]);
 
@@ -355,7 +366,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'regulationCondition1',
             'options' => [
                 'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e da C.S. Milano S.r.l."),
-                'use_hidden_element' => true
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
             ]
         ]);
 
@@ -364,7 +380,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'regulationCondition2',
             'options' => [
                 'label' => $translator->translate('dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).'),
-                'use_hidden_element' => true
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
             ]
         ]);
 
@@ -373,7 +394,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'privacyCondition',
             'options' => [
                 'label' => $translator->translate("ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate"),
-                'use_hidden_element' => true
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
             ]
         ]);
 
@@ -601,19 +627,74 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
             'generalCondition1' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'generalCondition2' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'regulationCondition1' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'regulationCondition2' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'privacyCondition' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'fleet' => [
                 'validators' => [
