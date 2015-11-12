@@ -2,7 +2,7 @@
 
 namespace Application\Controller;
 
-use SharengoCore\Service\CustomerBonusService;
+use SharengoCore\Service\BonusPackagePaymentService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -10,9 +10,9 @@ use Zend\Mvc\Controller\AbstractActionController;
 class GeneratePackageInvoicesController extends AbstractActionController
 {
     /**
-     * @var CustomerBonusService
+     * @var BonusPackagePaymentService
      */
-    private $bonuses;
+    private $bonusPaymentService;
 
     /**
      * @var Logger $logger
@@ -20,10 +20,10 @@ class GeneratePackageInvoicesController extends AbstractActionController
     private $logger;
 
     public function __construct(
-        CustomerBonusService $bonuses,
+        BonusPackagePaymentService $bonusPaymentService,
         Logger $logger
     ) {
-        $this->bonuses = $bonuses;
+        $this->bonusPaymentService = $bonusPaymentService;
         $this->logger = $logger;
     }
 
@@ -40,14 +40,14 @@ class GeneratePackageInvoicesController extends AbstractActionController
 
     private function generateInvoices()
     {
-        $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->logger->log("\nStarted processing bonus package payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $bonusPayments = $this->bonuses->getBonusPaymentsForInvoice();
+        $bonusPayments = $this->bonusPaymentService->getBonusPackagePaymentsToInvoice();
         $this->logger->log("Processing payments for " . count($bonusPayments) . " bonus package\n");
 
         foreach ($bonusPayments as $bonusPayment) {
             $this->logger->log("Processing payment for bonus packages payment " . $bonusPayment->getId() . "\n");
-            $this->bonuses->generateInvoice($bonusPayment, !$this->dryRun);
+            $this->bonusPaymentService->generateInvoice($bonusPayment, !$this->dryRun);
         }
 
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");

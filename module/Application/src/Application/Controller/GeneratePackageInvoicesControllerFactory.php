@@ -11,11 +11,11 @@ class GeneratePackageInvoicesControllerFactory implements FactoryInterface
     {
         $sharedManager = $serviceLocator->getServiceLocator();
 
-        $packages = $sharedManager->get('SharengoCore\Service\CustomerBonusService');
+        $bonusPaymentService = $sharedManager->get('SharengoCore\Service\BonusPackagePaymentService');
         $logger = $sharedManager->get('SharengoCore\Service\SimpleLoggerService');
 
         return new GeneratePackageInvoicesController(
-            $packages,
+            $bonusPaymentService,
             $logger
         );
     }
