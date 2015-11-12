@@ -1,0 +1,1 @@
+ALTER TABLE customers ADD driver_license_foreign BOOLEAN DEFAULT 'false' NOT NULL;

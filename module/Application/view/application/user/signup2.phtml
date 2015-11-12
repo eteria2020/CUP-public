@@ -121,6 +121,20 @@
 </div>
 <!-- block-row-field -->
 
+ <!-- block-row-field -->
+ <div class="block-row-field clearfix">
+
+     <div class="block-field bw-f w-2-4">
+         <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
+             <?php $driverLicenseForeign = $this->form->get('driver')->get('driverLicenseForeign'); ?>
+             <?php echo $this->formRow($driverLicenseForeign); ?>
+         </p>
+     </div>
+
+ </div>
+ <!-- block-row-field -->
+
+
 <div class="block-form-section content-align-center margin-bottom">
     <h2><i class="fa fa-folder-open"></i> <?= $this->translate('Categoria patente'); ?></h2>
 </div>
