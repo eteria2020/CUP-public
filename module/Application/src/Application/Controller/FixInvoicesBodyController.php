@@ -19,6 +19,10 @@ class FixInvoicesBodyController extends AbstractActionController
      */
     private $entityManager;
 
+    /**
+     * @param FirstPaymentInvoicesVersionTwo $invoicesQuery
+     * @param EntityManager $entityManager
+     */
     public function __construct(
         FirstPaymentInvoicesVersionTwo $invoicesQuery,
         EntityManager $entityManager

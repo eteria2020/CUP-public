@@ -16,7 +16,7 @@
 <!-- main -->
 <div id="main">
     <div class="content">
-        <?php echo $this->partial('partials/flash-messages.phtml', array()); ?>
+        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
         <?php if (!$this->hasDiscount): ?>
             <div class="block-form w-3-4 auto-margin clearfix">
                 <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
@@ -55,7 +55,7 @@
                 <?php
                     $fleet = $this->form->get('user')->get('fleet');
                     echo $this->formElement($fleet);
-                    echo $this->formElementErrors($fleet, array('class' => 'errors'));
+                    echo $this->formElementErrors($fleet, ['class' => 'errors']);
                 ?>
             </p>
         </div>
@@ -76,7 +76,7 @@
                 <?php
                     $email = $this->form->get('user')->get('email');
                     echo $this->formElement($email);
-                    echo $this->formElementErrors($email, array('class' => 'errors'));
+                    echo $this->formElementErrors($email, ['class' => 'errors']);
                 ?>
             </p>
         </div>
@@ -86,7 +86,7 @@
                 <?php
                     $email2 = $this->form->get('user')->get('email2');
                     echo $this->formElement($email2);
-                    echo $this->formElementErrors($email2, array('class' => 'errors'));
+                    echo $this->formElementErrors($email2, ['class' => 'errors']);
                 ?>
             </p>
         </div>
@@ -102,7 +102,7 @@
             <?php
                 $password = $this->form->get('user')->get('password');
                 echo $this->formElement($password);
-                echo $this->formElementErrors($password, array('class' => 'errors'));
+                echo $this->formElementErrors($password, ['class' => 'errors']);
             ?>
         </p>
     </div>
@@ -112,7 +112,7 @@
             <?php
                 $password2 = $this->form->get('user')->get('password2');
                 echo $this->formElement($password2);
-                echo $this->formElementErrors($password2, array('class' => 'errors'));
+                echo $this->formElementErrors($password2, ['class' => 'errors']);
             ?>
         </p>
     </div>
@@ -132,7 +132,7 @@
         <?php
             $gender = $this->form->get('user')->get('gender');
             echo $this->formElement($gender);
-            echo $this->formElementErrors($gender, array('class' => 'errors'));
+            echo $this->formElementErrors($gender, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -144,7 +144,7 @@
         <?php
             $name = $this->form->get('user')->get('name');
             echo $this->formElement($name);
-            echo $this->formElementErrors($name, array('class' => 'errors'));
+            echo $this->formElementErrors($name, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -154,7 +154,7 @@
         <?php
             $surname = $this->form->get('user')->get('surname');
             echo $this->formElement($surname);
-            echo $this->formElementErrors($surname, array('class' => 'errors'));
+            echo $this->formElementErrors($surname, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -172,7 +172,7 @@
         <?php
             $birthDate = $this->form->get('user')->get('birthDate');
             echo $this->formElement($birthDate);
-            echo $this->formElementErrors($birthDate, array('class' => 'errors'));
+            echo $this->formElementErrors($birthDate, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -182,7 +182,7 @@
         <?php
             $birthCountry = $this->form->get('user')->get('birthCountry');
             echo $this->formElement($birthCountry);
-            echo $this->formElementErrors($birthCountry, array('class' => 'errors'));
+            echo $this->formElementErrors($birthCountry, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -192,7 +192,7 @@
         <?php
             $birthProvince = $this->form->get('user')->get('birthProvince');
             echo $this->formElement($birthProvince);
-            echo $this->formElementErrors($birthProvince, array('class' => 'errors'));
+            echo $this->formElementErrors($birthProvince, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -209,7 +209,7 @@
         <?php
             $birthTown = $this->form->get('user')->get('birthTown');
             echo $this->formElement($birthTown);
-            echo $this->formElementErrors($birthTown, array('class' => 'errors'));
+            echo $this->formElementErrors($birthTown, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -221,7 +221,7 @@
         <?php
             $address = $this->form->get('user')->get('address');
             echo $this->formElement($address);
-            echo $this->formElementErrors($address, array('class' => 'errors'));
+            echo $this->formElementErrors($address, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -231,7 +231,7 @@
         <?php
             $zipCode = $this->form->get('user')->get('zipCode');
             echo $this->formElement($zipCode);
-            echo $this->formElementErrors($zipCode, array('class' => 'errors'));
+            echo $this->formElementErrors($zipCode, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -249,7 +249,7 @@
         <?php
             $town = $this->form->get('user')->get('town');
             echo $this->formElement($town);
-            echo $this->formElementErrors($town, array('class' => 'errors'));
+            echo $this->formElementErrors($town, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -259,7 +259,7 @@
         <?php
             $addressInfo = $this->form->get('user')->get('addressInfo');
             echo $this->formElement($addressInfo);
-            echo $this->formElementErrors($addressInfo, array('class' => 'errors'));
+            echo $this->formElementErrors($addressInfo, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -275,7 +275,7 @@
         <?php
             $taxCode = $this->form->get('user')->get('taxCode');
             echo $this->formElement($taxCode);
-            echo $this->formElementErrors($taxCode, array('class' => 'errors'));
+            echo $this->formElementErrors($taxCode, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -285,7 +285,7 @@
         <?php
             $vat = $this->form->get('user')->get('vat');
             echo $this->formElement($vat);
-            echo $this->formElementErrors($vat, array('class' => 'errors'));
+            echo $this->formElementErrors($vat, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -301,7 +301,7 @@
         <?php
             $mobile = $this->form->get('user')->get('mobile');
             echo $this->formElement($mobile);
-            echo $this->formElementErrors($mobile, array('class' => 'errors'));
+            echo $this->formElementErrors($mobile, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -311,7 +311,7 @@
         <?php
             $phone = $this->form->get('user')->get('phone');
             echo $this->formElement($phone);
-            echo $this->formElementErrors($phone, array('class' => 'errors'));
+            echo $this->formElementErrors($phone, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -336,7 +336,7 @@
         <?php
             $language = $this->form->get('user')->get('language');
             echo $this->formElement($language);
-            echo $this->formElementErrors($language, array('class' => 'errors'));
+            echo $this->formElementErrors($language, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -356,7 +356,7 @@
         <?php
             $promocode = $this->form->get('promocode')->get('promocode');
             echo $this->formElement($promocode);
-            echo $this->formElementErrors($promocode, array('class' => 'errors'));
+            echo $this->formElementErrors($promocode, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -384,14 +384,14 @@
             <span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($generalCondition1, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
         <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
         <label class='control checkbox small-form'>
             <?php echo $this->formElement($generalCondition2)?>
             <span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($generalCondition2, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
 
     </div>
 
@@ -418,14 +418,14 @@
             <span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($regulationCondition1, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($regulationCondition1, ['class' => 'errors']); ?>
         <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
         <label class='control checkbox small-form'>
             <?php echo $this->formElement($regulationCondition2)?>
             <span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($regulationCondition2, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($regulationCondition2, ['class' => 'errors']); ?>
 
     </div>
 
@@ -450,7 +450,7 @@
             <span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
         </label>
         <br></br>
-        <?php echo $this->formElementErrors($privacyCondition, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
     </div>
 
 </div>

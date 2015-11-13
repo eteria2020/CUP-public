@@ -16,23 +16,26 @@ class PaymentController extends AbstractActionController
     private $I_customersService;
 
     /**
-     *
      * @var type \SpeckPaypal\Service\Request
      */
     private $I_paypalRequest;
 
     /**
-     *
      * @var array
      */
     private $I_paypalConfig;
 
     /**
-     *
      * @var array
      */
     private $I_sharengoConfig;
 
+    /**
+     * @param CustomersService $I_customersService
+     * @param \SpeckPaypal\Service\Request $I_paypalRequest
+     * @param array $I_paypalConfig
+     * @param array $I_sharengoConfig
+     */
     public function __construct(
         CustomersService $I_customersService,
         \SpeckPaypal\Service\Request $I_paypalRequest,
@@ -59,15 +62,15 @@ class PaymentController extends AbstractActionController
 
             $s_expresscheckoutEndpoint = $this->I_paypalConfig['expresscheckout_endpoint'];
 
-            $I_paymentDetails = new \SpeckPaypal\Element\PaymentDetails(array(
+            $I_paymentDetails = new \SpeckPaypal\Element\PaymentDetails([
                 'amt' => $this->I_sharengoConfig['card-cost'],
                 'paymentAction' => 'Sale',
                 'currencyCode' => 'EUR'
-            ));
+            ]);
 
-            $I_express = new \SpeckPaypal\Request\SetExpressCheckout(array('paymentDetails' => $I_paymentDetails));
-            $I_express->setReturnUrl($this->url()->fromRoute('pay-return', array(), array('force_canonical' => true)));
-            $I_express->setCancelUrl($this->url()->fromRoute('pay-error', array(), array('force_canonical' => true)));
+            $I_express = new \SpeckPaypal\Request\SetExpressCheckout(['paymentDetails' => $I_paymentDetails]);
+            $I_express->setReturnUrl($this->url()->fromRoute('pay-return', [], ['force_canonical' => true]));
+            $I_express->setCancelUrl($this->url()->fromRoute('pay-error', [], ['force_canonical' => true]));
 
             $I_response = $this->I_paypalRequest->send($I_express);
 
@@ -85,7 +88,6 @@ class PaymentController extends AbstractActionController
         } else {
             return $this->redirect()->toRoute('pay-error');
         }
-
     }
 
     public function payReturnAction(){
@@ -101,18 +103,18 @@ class PaymentController extends AbstractActionController
                 $s_token   = $I_request->getQuery()->get('token');
                 $s_payerId = $I_request->getQuery()->get('PayerID');
 
-                $I_paymentDetails = new \SpeckPaypal\Element\PaymentDetails(array(
+                $I_paymentDetails = new \SpeckPaypal\Element\PaymentDetails([
                     'amt' => $this->I_sharengoConfig['card-cost'],
                     'paymentAction' => 'Sale',
                     'currencyCode' => 'EUR'
-                ));
+                ]);
 
                 //To capture express payment
-                $I_captureExpress = new \SpeckPaypal\Request\DoExpressCheckoutPayment(array(
+                $I_captureExpress = new \SpeckPaypal\Request\DoExpressCheckoutPayment([
                     'token'             => $s_token,
                     'payerId'           => $s_payerId,
                     'paymentDetails'    => $I_paymentDetails
-                ));
+                ]);
 
                 $I_response = $this->I_paypalRequest->send($I_captureExpress);
 
@@ -128,15 +130,11 @@ class PaymentController extends AbstractActionController
                     unset($session->id);
 
                     return $this->redirect()->toRoute('pay-success');
-
                 }
-
             }
-
         }
 
         return $this->redirect()->toRoute('pay-error');
-
     }
 
     public function payErrorAction() {
@@ -146,5 +144,4 @@ class PaymentController extends AbstractActionController
     public function paySuccessAction() {
         return new ViewModel();
     }
-    
 }

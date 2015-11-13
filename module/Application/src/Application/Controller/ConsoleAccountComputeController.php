@@ -43,6 +43,7 @@ class ConsoleAccountComputeController extends AbstractActionController
     private $avoidPersistance;
 
     /**
+     * @param CustomersService $customersService
      * @param AccountTripsService $accountTripsService
      * @param TripsService $tripsService
      * @param TripCostService $tripCostService

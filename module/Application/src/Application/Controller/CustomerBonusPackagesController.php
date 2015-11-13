@@ -36,6 +36,11 @@ class CustomerBonusPackagesController extends AbstractActionController
      */
     private $cartasiContractsService;
 
+    /**
+     * @param CustomersBonusPackagesService $customersBonusPackagesService
+     * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
+     * @param CartasiContractsService $cartasiContractsService
+     */
     public function __construct(
         CustomersBonusPackagesService $customersBonusPackagesService,
         BuyCustomerBonusPackage $buyCustomerBonusPackage,

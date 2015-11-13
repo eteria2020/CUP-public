@@ -13,6 +13,9 @@ class CurrentRoute extends AbstractHelper
      */
     private $application;
 
+    /**
+     * @param Application $application
+     */
     public function __construct(Application $application)
     {
         $this->application = $application;

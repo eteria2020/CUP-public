@@ -18,7 +18,6 @@ class PaymentServiceFactory implements FactoryInterface
     {
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
         $emailService = $serviceLocator->get('SharengoCore\Service\EmailService');
-
         $translationService = $serviceLocator->get('Translator');
 
         return new PaymentService(

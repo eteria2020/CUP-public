@@ -14,7 +14,7 @@
         $form = $this->resetForm;
 
         $form->prepare();
-        $form->setAttribute('action', $this->url('reset', array('userId' => $this->userId, 'token' => $this->token)));
+        $form->setAttribute('action', $this->url('reset', ['userId' => $this->userId, 'token' => $this->token]));
         $form->setAttribute('method', 'post');
         ?>
 

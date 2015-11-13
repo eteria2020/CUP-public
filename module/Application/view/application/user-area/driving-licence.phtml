@@ -19,7 +19,7 @@ $this->headLink()
 
             <!-- block-nav-app -->
             <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', array('route' => 'patente')); ?>
+                <?php echo $this->partial('partials/menu-user-area', ['route' => 'patente']); ?>
             </nav>
             <!-- block-nav-app -->
 
@@ -150,7 +150,7 @@ $this->headLink()
                                         <?php
                                         $driverLicense = $form->get('driver')->get('driverLicense');
                                         echo $this->formElement($driverLicense);
-                                        echo $this->formElementErrors($driverLicense, array('class' => 'errors'));
+                                        echo $this->formElementErrors($driverLicense, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>
@@ -160,7 +160,7 @@ $this->headLink()
                                         <?php
                                         $driverLicenseAuthority = $form->get('driver')->get('driverLicenseAuthority');
                                         echo $this->formElement($driverLicenseAuthority->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($driverLicenseAuthority, array('class' => 'errors'));
+                                        echo $this->formElementErrors($driverLicenseAuthority, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>
@@ -176,7 +176,7 @@ $this->headLink()
                                         <?php
                                         $driverLicenseReleaseDate = $form->get('driver')->get('driverLicenseReleaseDate');
                                         echo $this->formElement($driverLicenseReleaseDate);
-                                        echo $this->formElementErrors($driverLicenseReleaseDate, array('class' => 'errors'));
+                                        echo $this->formElementErrors($driverLicenseReleaseDate, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>
@@ -186,7 +186,7 @@ $this->headLink()
                                         <?php
                                         $driverLicenseName = $form->get('driver')->get('driverLicenseName');
                                         echo $this->formElement($driverLicenseName);
-                                        echo $this->formElementErrors($driverLicenseName, array('class' => 'errors'));
+                                        echo $this->formElementErrors($driverLicenseName, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>
@@ -202,7 +202,7 @@ $this->headLink()
                                         <?php
                                         $driverLicenseCountry= $form->get('driver')->get('driverLicenseCountry');
                                         echo $this->formElement($driverLicenseCountry->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($driverLicenseCountry, array('class' => 'errors'));
+                                        echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>
@@ -212,7 +212,7 @@ $this->headLink()
                                         <?php
                                         $driverLicenseExpire = $form->get('driver')->get('driverLicenseExpire');
                                         echo $this->formElement($driverLicenseExpire);
-                                        echo $this->formElementErrors($driverLicenseExpire, array('class' => 'errors'));
+                                        echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>
@@ -240,7 +240,7 @@ $this->headLink()
                                                 <input type='checkbox' name="<?php echo $driverLicenseCategories->getName() ?>[]" value="<?php echo $value; ?>" <?= in_array($key, $driverLicense) ? 'checked' : ''; ?>>
                                             </label>
                                         <?php endforeach; ?>
-                                        <?php echo $this->formElementErrors($driverLicenseCategories, array('class' => 'errors')); ?>
+                                        <?php echo $this->formElementErrors($driverLicenseCategories, ['class' => 'errors']); ?>
                                     </p>
                                 </div>
 

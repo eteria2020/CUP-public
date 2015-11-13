@@ -6,10 +6,10 @@
  * @link https://github.com/doctrine/DoctrineModule/issues/246
  * @link https://github.com/goalio/GoalioForgotPasswordDoctrineORM/issues/5
  */
-return array(
-    'service_manager' => array(
-        'aliases' => array(
+return [
+    'service_manager' => [
+        'aliases' => [
             'goalioforgotpassword_doctrine_em' => 'Doctrine\ORM\EntityManager',
-        )
-    )
-);
+        ]
+    ]
+];

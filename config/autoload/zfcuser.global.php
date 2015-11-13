@@ -5,7 +5,7 @@
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$settings = array(
+$settings = [
     /**
      * Zend\Db\Adapter\Adapter DI Alias
      *
@@ -50,7 +50,7 @@ $settings = array(
      * Default value: array containing 'ZfcUser\Authentication\Adapter\Db' with priority 100
      * Accepted values: array containing services that implement 'ZfcUser\Authentication\Adapter\ChainableAdapter'
      */
-    'auth_adapters' => array( 1 => 'Application\Authentication\Adapter\Sharengo' ),
+    'auth_adapters' => [1 => 'Application\Authentication\Adapter\Sharengo'],
 
     /**
      * Enable Display Name
@@ -226,16 +226,16 @@ $settings = array(
      */
     'enable_default_entities' => false,
 
-);
+];
 
 /**
  * You do not need to edit below this line
  */
-return array(
+return [
     'zfcuser' => $settings,
-    'service_manager' => array(
-        'aliases' => array(
+    'service_manager' => [
+        'aliases' => [
             'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Zend\Db\Adapter\Adapter',
-        ),
-    ),
-);
+        ],
+    ],
+];

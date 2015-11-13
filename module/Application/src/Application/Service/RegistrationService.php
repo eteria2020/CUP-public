@@ -58,14 +58,12 @@ final class RegistrationService
     private $viewHelperManager;
 
     /**
-     *
      * @var \SharengoCore\Entity\Repository\CustomersRepository
      */
     private $customersRepository;
 
     /**
-     *
-     * @var type \SharengoCore\Service\PromoCodesService;
+     * @var \SharengoCore\Service\PromoCodesService;
      */
     private $promoCodesService;
 
@@ -74,6 +72,18 @@ final class RegistrationService
      */
     private $subscriptionBonus;
 
+    /**
+     * @param Form $form1
+     * @param Form $form2
+     * @param EntityManager $entityManager
+     * @param AbstractHydrator $hydrator
+     * @param array $emailSettings
+     * @param EmailService $emailService
+     * @param Translator $translator
+     * @param HelperPluginManager $viewHelperManager
+     * @param PromoCodesService $promoCodesService
+     * @param array $subscriptionBonus
+     */
     public function __construct(
         Form $form1,
         Form $form2,
@@ -96,7 +106,6 @@ final class RegistrationService
         $this->viewHelperManager = $viewHelperManager;
         $this->promoCodesService = $promoCodesService;
         $this->subscriptionBonus = $subscriptionBonus;
-
         $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
     }
 
@@ -144,6 +153,10 @@ final class RegistrationService
         return $data;
     }
 
+    /**
+     * @param array $data
+     * @return array
+     */
     public function formatData($data)
     {
         $data['driverLicenseCategories'] = '{' .implode(',', $data['driverLicenseCategories']). '}';
@@ -154,6 +167,9 @@ final class RegistrationService
         return $data;
     }
 
+    /**
+     * @param array $data
+     */
     public function notifySharengoByMail($data)
     {
         $this->emailService->sendEmail(
@@ -163,6 +179,9 @@ final class RegistrationService
         );
     }
 
+    /**
+     * @param string $message
+     */
     public function notifySharengoErrorByEmail($message)
     {
         $this->emailService->sendEmail(
@@ -172,6 +191,9 @@ final class RegistrationService
         );
     }
 
+    /**
+     * @param array $data
+     */
     public function saveData($data)
     {
         $this->entityManager->getConnection()->beginTransaction();
@@ -214,6 +236,12 @@ final class RegistrationService
         }
     }
 
+    /**
+     * @param string $email
+     * @param string $name
+     * @param string $surname
+     * @param string $hash
+     */
     public function sendEmail($email, $name, $surname, $hash)
     {
         $url = $this->viewHelperManager->get('url');
@@ -252,6 +280,10 @@ final class RegistrationService
         $this->form2->clearRegisteredData();
     }
 
+    /**
+     * @param string $hash
+     * @return Customers
+     */
     public function getUserFromHash($hash)
     {
         return $this->customersRepository->findOneBy([
@@ -259,6 +291,10 @@ final class RegistrationService
         ]);
     }
 
+    /**
+     * @param string $hash
+     * @return string
+     */
     public function registerUser($hash)
     {
 

@@ -32,7 +32,10 @@ class ConsolePaymentsController extends AbstractActionController
     private $logger;
 
     /**
-     * @param PaymentsService $paymnetsService
+     * @param TripPaymentsService $tripPaymentsService
+     * @param PaymentsService $paymentsService
+     * @param CustomersService $customersService
+     * @param Logger $logger
      */
     public function __construct(
         TripPaymentsService $tripPaymentsService,

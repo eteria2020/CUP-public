@@ -6,7 +6,6 @@ use Zend\View\Helper\AbstractHelper;
 
 class LoginProvider extends AbstractHelper
 {
-
 	/**
 	 * @return boolean returns true if a customer is logged in, returns false otherwise
 	 */

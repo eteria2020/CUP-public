@@ -20,6 +20,9 @@ class IndexController extends AbstractActionController
      */
     private $mobileUrl;
 
+    /**
+     * @param string $mobileUrl
+     */
     public function __construct($mobileUrl)
     {
         $this->mobileUrl = $mobileUrl;

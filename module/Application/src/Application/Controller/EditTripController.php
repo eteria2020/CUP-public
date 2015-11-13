@@ -19,6 +19,10 @@ class EditTripController extends AbstractActionController
      */
     private $editTripsService;
 
+    /**
+     * @param TripsService $tripsService
+     * @param EditTripsService $editTripsService
+     */
     public function __construct(
         TripsService $tripsService,
         EditTripsService $editTripsService

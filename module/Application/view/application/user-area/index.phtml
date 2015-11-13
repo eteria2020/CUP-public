@@ -19,7 +19,7 @@ $this->headLink()
 
             <!-- block-nav-app -->
             <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', array('route' => 'profile')); ?>
+                <?php echo $this->partial('partials/menu-user-area', ['route' => 'profile']); ?>
             </nav>
             <!-- block-nav-app -->
 
@@ -43,7 +43,7 @@ $this->headLink()
                     <!-- block-form -->
                     <div class="block-form bw-f w-2-3  clearfix">
 
-                        <?php echo $this->partial('partials/flash-messages.phtml', array()); ?>
+                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
 
                             <div class="block-form-section content-align-center margin-bottom">
                                 <h2><i class="fa fa-user"></i><?= $this->translate("I tuoi dati personali"); ?></h2>
@@ -236,7 +236,7 @@ $this->headLink()
                                             $email = $this->profileForm->get('customer')->get('email');
                                             $email->setValue($this->customer->getEmail());
                                             echo $this->formElement($email->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($email, array('class' => 'error-sign-up'));
+                                            echo $this->formElementErrors($email, ['class' => 'error-sign-up']);
                                             ?>
                                         </p>
                                     </div>
@@ -247,7 +247,7 @@ $this->headLink()
                                             $email2 = $this->profileForm->get('customer')->get('email2');
                                             $email2->setValue($this->customer->getEmail());
                                             echo $this->formElement($email2->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($email2, array('class' => 'error-sign-up'));
+                                            echo $this->formElementErrors($email2, ['class' => 'error-sign-up']);
                                             ?>
                                         </p>
                                     </div>
@@ -271,7 +271,7 @@ $this->headLink()
                                                     $name = $this->profileForm->get('customer')->get('name');
                                                     $name->setValue($this->customer->getName());
                                                     echo $this->formElement($name->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($name, array('class' => 'error-sign-up'));
+                                                    echo $this->formElementErrors($name, ['class' => 'error-sign-up']);
                                                     ?>
                                                 </p>
                                             </div>
@@ -282,7 +282,7 @@ $this->headLink()
                                                     $surname = $this->profileForm->get('customer')->get('surname');
                                                     $surname->setValue($this->customer->getSurname());
                                                     echo $this->formElement($surname->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($surname, array('class' => 'error-sign-up'));
+                                                    echo $this->formElementErrors($surname, ['class' => 'error-sign-up']);
                                                     ?>
                                                 </p>
                                             </div>
@@ -299,7 +299,7 @@ $this->headLink()
                                                 $birthDate = $this->profileForm->get('customer')->get('birthDate');
                                                 $birthDate->setValue($this->customer->getBirthDate()->format('d-m-Y'));
                                                 echo $this->formElement($birthDate->setAttribute('class', 'required datepicker-date'));
-                                                echo $this->formElementErrors($birthDate, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($birthDate, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -310,7 +310,7 @@ $this->headLink()
                                                 $birthCountry = $this->profileForm->get('customer')->get('birthCountry');
                                                 $birthCountry->setValue($this->customer->getBirthCountry());
                                                 echo $this->formElement($birthCountry->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($birthCountry, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($birthCountry, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -321,7 +321,7 @@ $this->headLink()
                                                 $birthProvince = $this->profileForm->get('customer')->get('birthProvince');
                                                 $birthProvince->setValue($this->customer->getBirthProvince());
                                                 echo $this->formElement($birthProvince->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($birthProvince, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($birthProvince, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -337,7 +337,7 @@ $this->headLink()
                                                 $birthTown = $this->profileForm->get('customer')->get('birthTown');
                                                 $birthTown->setValue($this->customer->getBirthTown());
                                                 echo $this->formElement($birthTown->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($birthTown, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($birthTown, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -350,7 +350,7 @@ $this->headLink()
                                                     $address = $this->profileForm->get('customer')->get('address');
                                                     $address->setValue($this->customer->getAddress());
                                                     echo $this->formElement($address->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($address, array('class' => 'error-sign-up'));
+                                                    echo $this->formElementErrors($address, ['class' => 'error-sign-up']);
                                                     ?>
                                                 </p>
                                             </div>
@@ -361,7 +361,7 @@ $this->headLink()
                                                     $zipCode = $this->profileForm->get('customer')->get('zipCode');
                                                     $zipCode->setValue($this->customer->getZipCode());
                                                     echo $this->formElement($zipCode->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($zipCode, array('class' => 'error-sign-up'));
+                                                    echo $this->formElementErrors($zipCode, ['class' => 'error-sign-up']);
                                                     ?>
                                                 </p>
                                             </div>
@@ -379,7 +379,7 @@ $this->headLink()
                                                 $town = $this->profileForm->get('customer')->get('town');
                                                 $town->setValue($this->customer->getTown());
                                                 echo $this->formElement($town->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($town, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($town, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -390,7 +390,7 @@ $this->headLink()
                                                 $addressInfo = $this->profileForm->get('customer')->get('addressInfo');
                                                 $addressInfo->setValue($this->customer->getAddressInfo());
                                                 echo $this->formElement($addressInfo);
-                                                echo $this->formElementErrors($addressInfo, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($addressInfo, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -406,7 +406,7 @@ $this->headLink()
                                                 $taxCode = $this->profileForm->get('customer')->get('taxCode');
                                                 $taxCode->setValue($this->customer->getTaxCode());
                                                 echo $this->formElement($taxCode->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($taxCode, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($taxCode, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -417,7 +417,7 @@ $this->headLink()
                                                 $vat = $this->profileForm->get('customer')->get('vat');
                                                 $vat->setValue($this->customer->getVat());
                                                 echo $this->formElement($vat);
-                                                echo $this->formElementErrors($vat, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($vat, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -433,7 +433,7 @@ $this->headLink()
                                                 $mobile = $this->profileForm->get('customer')->get('mobile');
                                                 $mobile->setValue($this->customer->getMobile());
                                                 echo $this->formElement($mobile);
-                                                echo $this->formElementErrors($mobile, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($mobile, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -444,7 +444,7 @@ $this->headLink()
                                                 $phone = $this->profileForm->get('customer')->get('phone');
                                                 $phone->setValue($this->customer->getPhone());
                                                 echo $this->formElement($phone);
-                                                echo $this->formElementErrors($phone, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($phone, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -460,7 +460,7 @@ $this->headLink()
                                                 $language = $this->profileForm->get('customer')->get('language');
                                                 $language->setValue($this->customer->getLanguage());
                                                 echo $this->formElement($language->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($language, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($language, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -471,7 +471,7 @@ $this->headLink()
                                                 $fleet = $this->profileForm->get('customer')->get('fleet');
                                                 $fleet->setValue($this->customer->getFleet()->getId());
                                                 echo $this->formElement($fleet->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($fleet, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($fleet, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -525,7 +525,7 @@ $this->headLink()
                                             <?php
                                             $oldPassword = $this->passwordForm->get('oldPassword');
                                             echo $this->formElement($oldPassword->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($oldPassword, array('class' => 'error-sign-up'));
+                                            echo $this->formElementErrors($oldPassword, ['class' => 'error-sign-up']);
                                             ?>
                                         </p>
                                     </div>
@@ -537,7 +537,7 @@ $this->headLink()
                                                 <?php
                                                 $password = $this->passwordForm->get('password');
                                                 echo $this->formElement($password->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($password, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($password, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>
@@ -547,7 +547,7 @@ $this->headLink()
                                                 <?php
                                                 $password2 = $this->passwordForm->get('password2');
                                                 echo $this->formElement($password2->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($password2, array('class' => 'error-sign-up'));
+                                                echo $this->formElementErrors($password2, ['class' => 'error-sign-up']);
                                                 ?>
                                             </p>
                                         </div>

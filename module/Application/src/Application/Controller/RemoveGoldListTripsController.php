@@ -19,6 +19,10 @@ class RemoveGoldListTripsController extends AbstractActionController
      */
     private $accountedTripsService;
 
+    /**
+     * @param TripsService $tripsService
+     * @param AccountedTripsService $accountedTripsService
+     */
     public function __construct(
         TripsService $tripsService,
         AccountedTripsService $accountedTripsService

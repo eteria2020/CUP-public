@@ -14,11 +14,9 @@ use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
 
 class ConsoleController extends AbstractActionController
 {
-
 
     const OPERATIVE_STATUS = 'operative';
 
@@ -85,6 +83,17 @@ class ConsoleController extends AbstractActionController
      */
     private $delay;
 
+    /**
+     * @param CustomersService $customerService
+     * @param CarsService $carsService
+     * @param ReservationsService $reservationsService
+     * @param EntityManager $entityManager
+     * @param ProfilingPlaformService $profilingPlatformService
+     * @param TripsService $tripsService
+     * @param AccountTripsService $accountTripsService
+     * @param array $alarmConfig
+     * @param InvoicesService $invoicesService
+     */
     public function __construct(
         CustomersService $customerService,
         CarsService $carsService,

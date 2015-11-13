@@ -20,10 +20,10 @@ class PasswordService extends Password
         $user->setPassword($pass);
         $user->setRegistrationCompleted(true);
 
-        $this->getEventManager()->trigger(__FUNCTION__, $this, array('user' => $user));
+        $this->getEventManager()->trigger(__FUNCTION__, $this, ['user' => $user]);
         $this->getUserMapper()->update($user);
         $this->remove($password);
-        $this->getEventManager()->trigger(__FUNCTION__.'.post', $this, array('user' => $user));
+        $this->getEventManager()->trigger(__FUNCTION__.'.post', $this, ['user' => $user]);
 
         return true;
     }

@@ -31,6 +31,12 @@ class AddressController extends AbstractActionController
      */
     private $logger;
 
+    /**
+     * @param EntityManager $entityManager
+     * @param TripsService $tripsService
+     * @param LocationService $locationService
+     * @param Logger $logger
+     */
     public function __construct(
         EntityManager $entityManager,
         TripsService $tripsService,

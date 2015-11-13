@@ -95,6 +95,15 @@ class ExportRegistriesController extends AbstractActionController
      */
     private $ftpConn = null;
 
+    /**
+     * @param CustomersService $customersService
+     * @param InvoicesService $invoicesService
+     * @param FleetService $fleetService
+     * @param EmailService $emailService
+     * @param Logger $logger
+     * @param array $exportConfig
+     * @param array $alertConfig
+     */
     public function __construct(
         CustomersService $customersService,
         InvoicesService $invoicesService,
