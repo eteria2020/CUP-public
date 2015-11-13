@@ -1,4 +1,4 @@
-CREATE TABLE customers_notes (
+CREATE TABLE customer_notes (
     id SERIAL PRIMARY KEY,
     customer_id INT REFERENCES customers (id) NOT NULL,
     webuser_id INT REFERENCES webuser (id) NOT NULL,
