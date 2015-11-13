@@ -7,96 +7,96 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-return array(
-    'router' => array(
+return [
+    'router' => [
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
-        'routes' => array(
-            'home' => array(
+        'routes' => [
+            'home' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'index',
-                    ),
-                ),
-            ),
+                    ],
+                ],
+            ],
             'carsharing' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{carsharing}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'carsharing',
-                    ),
+                    ],
                 ]
             ],
             'cosae' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{cosa-e-sharengo}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'cosae',
-                    ),
+                    ],
                 ]
             ],
             'quantocosta' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{quantocosta}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'quantocosta',
-                    ),
+                    ],
                 ]
             ],
             'comefunziona' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{comefunziona}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'comefunziona',
-                    ),
+                    ],
                 ]
             ],
             'faq' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{faq}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'faq',
-                    ),
+                    ],
                 ]
             ],
             'contatti' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{contatti}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'contatti',
-                    ),
+                    ],
                 ]
             ],
             'login' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{login}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'zfcuser',
                         'action'     => 'login',
-                    ),
+                    ],
                 ]
             ],
             'logout' => [
@@ -123,31 +123,31 @@ return array(
                 ],
                 'may_terminate' => true
             ],
-            'reset' => array(
+            'reset' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/{reset-password}/:userId/:token',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'goalioforgotpassword_forgot',
                         'action'     => 'reset',
-                    ),
-                    'constraints' => array(
+                    ],
+                    'constraints' => [
                         'userId'  => '[A-Fa-f0-9]+',
                         'token' => '[A-F0-9]+',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true
-            ),
+            ],
             'signup' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action'     => 'signup',
-                    ),
+                    ],
                 ]
             ],
             'signup-2' => [
@@ -176,22 +176,22 @@ return array(
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup-score}/:email',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action'     => 'signup-score',
-                    ),
+                    ],
                 ]
             ],
             'signup-score-completion' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup-score-completion}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action'     => 'signup-score-completion',
-                    ),
+                    ],
                 ]
             ],
             'signup_insert' => [
@@ -209,132 +209,132 @@ return array(
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{cookies}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'cookies',
-                    ),
+                    ],
                 ]
             ],
             'notelegali' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{notelegali}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'notelegali',
-                    ),
+                    ],
                 ]
             ],
             'privacy' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{privacy}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'privacy',
-                    ),
+                    ],
                 ]
             ],
             'callcenter' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{callcenter}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'callcenter',
-                    ),
+                    ],
                 ]
             ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{bikemi}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'bikemi',
-                    ),
+                    ],
                 ]
             ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{elfo}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'teatro-elfo',
-                    ),
+                    ],
                 ]
             ],
             'linear' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{linear}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'linear',
-                    ),
+                    ],
                 ]
             ],
             'firenze' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{firenze}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'firenze',
-                    ),
+                    ],
                 ]
             ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{pay}/:email',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
                         'action'     => 'pay',
-                    ),
+                    ],
                 ]
             ],
             'pay-return' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{pay-return}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
                         'action'     => 'pay-return',
-                    ),
+                    ],
                 ]
             ],
             'pay-error' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{pay-error}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
                         'action'     => 'pay-error',
-                    ),
+                    ],
                 ]
             ],
             'pay-success' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{pay-success}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
                         'action'     => 'pay-success',
-                    ),
+                    ],
                 ]
             ],
             'area-utente' => [
@@ -461,17 +461,17 @@ return array(
                     ],
                 ]
             ],
-        ),
-    ),
-    'service_manager' => array(
-        'abstract_factories' => array(
+        ],
+    ],
+    'service_manager' => [
+        'abstract_factories' => [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'aliases' => array(
+        ],
+        'aliases' => [
             'translator' => 'MvcTranslator',
             'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service'
-        ),
+        ],
         'factories' => [
             'RegistrationService'      => 'Application\Service\RegistrationServiceFactory',
             'RegistrationForm'         => 'Application\Form\RegistrationFormFactory',
@@ -488,7 +488,7 @@ return array(
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
             'goalioforgotpassword_password_service' => 'Application\Service\PasswordService',
         ]
-    ),
+    ],
     'controllers' => [
         'factories' => [
             'Application\Controller\Index' => 'Application\Controller\IndexControllerFactory',
@@ -527,40 +527,40 @@ return array(
             'LoginProvider' => 'Application\View\Helper\LoginProvider'
         ]
     ],
-    'view_manager' => array(
+    'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
+        'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'zfc-user/user/login'     => __DIR__ . '/../view/zfc-user/user/login.phtml',
-        ),
-        'template_path_stack' => array(
+        ],
+        'template_path_stack' => [
             __DIR__ . '/../view',
-        ),
+        ],
         'strategies' => [
             'ViewJsonStrategy'
         ]
-    ),
+    ],
 
     // ACL
-    'bjyauthorize' => array(
-        'guards' => array(
-            'BjyAuthorize\Guard\Controller' => array(
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
 
-                array('controller' => 'zfcuser', 'roles' => array()),
-                array('controller' => 'goalioforgotpassword_forgot', 'roles' => array()),
-                array('controller' => 'Application\Controller\Index', 'roles' => array()),
-                array('controller' => 'Application\Controller\Console', 'roles' => array()),
-                array('controller' => 'Application\Controller\Payment', 'roles' => array()),
-                array('controller' => 'Application\Controller\User', 'roles' => array()),
-                array('controller' => 'Application\Controller\UserArea', 'roles' => array('user')),
-                array('controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []),
+                ['controller' => 'zfcuser', 'roles' => []],
+                ['controller' => 'goalioforgotpassword_forgot', 'roles' => []],
+                ['controller' => 'Application\Controller\Index', 'roles' => []],
+                ['controller' => 'Application\Controller\Console', 'roles' => []],
+                ['controller' => 'Application\Controller\Payment', 'roles' => []],
+                ['controller' => 'Application\Controller\User', 'roles' => []],
+                ['controller' => 'Application\Controller\UserArea', 'roles' => ['user']],
+                ['controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []],
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
@@ -574,9 +574,9 @@ return array(
                 ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []],
                 ['controller' => 'Application\Controller\CustomerBonusPackages', 'roles' => []],
                 ['controller' => 'Application\Controller\GeneratePackageInvoices', 'roles' => []]
-            ),
-        ),
-    ),
+            ],
+        ],
+    ],
 
     'asset_manager' => [
         'resolver_configs' => [
@@ -834,4 +834,4 @@ return array(
             ],
         ],
     ],
-);
+];

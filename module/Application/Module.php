@@ -18,6 +18,9 @@ use Application\Exception\ProfilingPlatformException;
 
 class Module
 {
+    /**
+     * @param MvcEvent $e
+     */
     public function onBootstrap(MvcEvent $e)
     {
         $serviceManager = $e->getApplication()->getServiceManager();
@@ -45,7 +48,7 @@ class Module
                 // enable api usage
                 $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
                 $customerService->enableApi($customer);
-                
+
             }
         );
 
@@ -91,17 +94,23 @@ class Module
         return include __DIR__ . '/config/module.config.php';
     }
 
+    /**
+     * @return array
+     */
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
+    /**
+     * @param EventInterface $e
+     */
     public function successfulPayment(EventInterface $e)
     {
         $params = $e->getParams();

@@ -15,6 +15,11 @@ class PaymentControllerfactory implements FactoryInterface
         $paypalConfig = $config['paypal'];
         $sharengoConfig = $config['sharengo'];
 
-        return new PaymentController($customerService, $paypalRequest, $paypalConfig, $sharengoConfig);
+        return new PaymentController(
+            $customerService,
+            $paypalRequest,
+            $paypalConfig,
+            $sharengoConfig
+        );
     }
 }

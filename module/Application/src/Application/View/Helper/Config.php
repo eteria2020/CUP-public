@@ -32,5 +32,4 @@ class Config extends AbstractHelper {
 
         return $ret;
     }
-
 }

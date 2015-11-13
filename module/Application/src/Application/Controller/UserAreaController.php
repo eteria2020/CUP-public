@@ -73,7 +73,7 @@ class UserAreaController extends AbstractActionController
     private $passwordForm;
 
     /**
-     * @var
+     * @var \Zend\Form\Form
      */
     private $typeForm;
 
@@ -88,7 +88,7 @@ class UserAreaController extends AbstractActionController
     private $cartasiPaymentsService;
 
     /**
-     * @var
+     * @var boolean
      */
     private $showError = false;
 
@@ -117,6 +117,22 @@ class UserAreaController extends AbstractActionController
      */
     private $bonusPackagesService;
 
+    /**
+     * @param CustomersService $I_customersService
+     * @param TripsService $I_tripsService
+     * @param AuthenticationService $userService
+     * @param InvoicesService $invoicesService
+     * @param Form $profileForm
+     * @param Form $passwordForm
+     * @param Form $driverLicenseForm
+     * @param Form $promoCodeForm
+     * @param HydratorInterface $hydrator
+     * @param CartasiPaymentsService $cartasiPaymentsService
+     * @param PromoCodesService $promoCodeService
+     * @param TripPaymentsService $tripPaymentsService
+     * @param CartasiContractsService $cartasiContractsService
+     * @param BonusPackagesService $bonusPackagesService
+     */
     public function __construct(
         CustomersService $I_customersService,
         TripsService $I_tripsService,
@@ -164,7 +180,6 @@ class UserAreaController extends AbstractActionController
 
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPost()->toArray();
-
 
             if (isset($postData['customer'])) {
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();

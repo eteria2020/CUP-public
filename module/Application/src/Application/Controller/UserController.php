@@ -61,6 +61,16 @@ class UserController extends AbstractActionController
      */
     private $hydrator;
 
+    /**
+     * @param Form $form1
+     * @param Form $form2
+     * @param RegistrationService $registrationService
+     * @param CustomersService $customersService
+     * @param LanguageService $languageService
+     * @param ProfilingPlaformService $profilingPlatformService
+     * @param Translator $translator
+     * @param HydratorInterface $hydrator
+     */
     public function __construct(
         Form $form1,
         Form $form2,
@@ -227,7 +237,7 @@ class UserController extends AbstractActionController
         if (empty($data)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('signup', array('lang' => $this->languageService->getLanguage()));
+            return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage()]);
         }
         $data = $this->registrationService->formatData($data);
         try {
@@ -237,14 +247,14 @@ class UserController extends AbstractActionController
             $this->registrationService->removeSessionData();
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage().' '.json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('signup-2', array('lang' => $this->languageService->getLanguage()));
+            return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage()]);
         }
 
         $this->getEventManager()->trigger('registrationCompleted', $this, [
             'email' => $data['email']
         ]);
 
-        return $this->redirect()->toRoute('signup-3', array('lang' => $this->languageService->getLanguage()));
+        return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage()]);
     }
 
     private function signupForm($form)

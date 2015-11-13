@@ -7,13 +7,23 @@ use Zend\Mvc\I18n\Translator;
 
 class LongLanguage extends AbstractHelper
 {
+    /**
+     * @var Translator
+     */
     private $translator;
 
+    /**
+     * @param Translator $translator
+     */
     public function __construct(Translator $translator)
     {
         $this->translator = $translator;
     }
 
+    /**
+     * @param string $lang
+     * @return string
+     */
     public function __invoke($lang)
     {
         $longLanguages = [

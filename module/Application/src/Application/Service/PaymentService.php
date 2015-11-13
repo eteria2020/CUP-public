@@ -25,6 +25,11 @@ final class PaymentService
      */
     private $translator;
 
+    /**
+     * @param array $emailSettings
+     * @param EmailService $emailService
+     * @param Translator $translator
+     */
     public function __construct(
         array $emailSettings,
         EmailService $emailService,

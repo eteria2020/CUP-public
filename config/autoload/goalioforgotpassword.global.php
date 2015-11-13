@@ -5,17 +5,17 @@
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$settings = array(
+$settings = [
 
     /**
      * Email Address that will appear in the 'From' of outbound emails
      *
      * Default: empty
      */
-    'email_from_address' => array(
+    'email_from_address' => [
         'email' => 'servizioclienti@sharengo.it',
         'name' => 'Sharengo',
-    ),
+    ],
 
     /**
      * Subject line of the email message which is
@@ -69,12 +69,12 @@ $settings = array(
     /**
      * End of GoalioForgotPassword configuration
      */
-);
+];
 
 
 /**
  * You do not need to edit below this line
  */
-return array(
+return [
     'goalioforgotpassword' => $settings,
-);
+];

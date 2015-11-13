@@ -19,6 +19,10 @@ class GeneratePackageInvoicesController extends AbstractActionController
      */
     private $logger;
 
+    /**
+     * @param BonusPackagePaymentService $bonusPaymentService
+     * @param Logger $logger
+     */
     public function __construct(
         BonusPackagePaymentService $bonusPaymentService,
         Logger $logger

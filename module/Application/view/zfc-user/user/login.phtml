@@ -36,10 +36,10 @@
                 <!-- block-row-field -->
                 <div class="block-row-field clearfix">
                     <div class="block-field bw-f w-4-4">
-                        <?php echo $this->formElementErrors($form->get('identity'), array('class' => 'error-login')) ?>
+                        <?php echo $this->formElementErrors($form->get('identity'), ['class' => 'error-login']) ?>
 
                         <p> <label><?= $this->translate('Username'); ?></label>
-                            <?php echo $this->formInput($form->get('identity')->setAttributes(array('class' => 'required', 'placeholder' => $this->translate('La tua email')))); ?>
+                            <?php echo $this->formInput($form->get('identity')->setAttributes(['class' => 'required', 'placeholder' => $this->translate('La tua email')])); ?>
                         </p>
                     </div>
                 </div>

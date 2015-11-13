@@ -16,7 +16,7 @@ $bonusPackages = $this->bonusPackages;
 
             <!-- block-nav-app -->
             <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', array('route' => 'additional-services')); ?>
+                <?php echo $this->partial('partials/menu-user-area', ['route' => 'additional-services']); ?>
             </nav>
             <!-- block-nav-app -->
 
@@ -69,7 +69,7 @@ $bonusPackages = $this->bonusPackages;
                                         <?php
                                         $promoCode = $form->get('promocode')->get('promocode');
                                         echo $this->formElement($promoCode->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($promoCode, array('class' => 'errors'));
+                                        echo $this->formElementErrors($promoCode, ['class' => 'errors']);
                                         ?>
                                     </p>
                                 </div>

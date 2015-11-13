@@ -12,6 +12,9 @@ class RemoveGoldListTripsControllerFactory implements FactoryInterface
         $tripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $accountedTripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\AccountedTripsService');
 
-        return new RemoveGoldListTripsController($tripsService, $accountedTripsService);
+        return new RemoveGoldListTripsController(
+            $tripsService,
+            $accountedTripsService
+        );
     }
 }

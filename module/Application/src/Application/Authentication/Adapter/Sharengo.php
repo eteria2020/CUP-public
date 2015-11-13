@@ -10,7 +10,6 @@ use ZfcUser\Authentication\Adapter\AbstractAdapter;
 
 class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
 {
-
     /**
      * @var ServiceManager
      */
@@ -18,17 +17,15 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
 
     /**
      * @param AuthEvent $e
-     *
      * @return bool|void
      */
     public function authenticate(AuthEvent $e)
     {
-
         if ($this->isSatisfied()) {
             $storage = $this->getStorage()->read();
             $e->setIdentity($storage['identity'])
                 ->setCode(AuthenticationResult::SUCCESS)
-                ->setMessages(array('Authentication successful.'));
+                ->setMessages(['Authentication successful.']);
             return;
         }
 
@@ -39,7 +36,7 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
 
         if (!$userObject) {
             $e->setCode(AuthenticationResult::FAILURE_IDENTITY_NOT_FOUND)
-                ->setMessages(array('A record with the supplied identity could not be found.'));
+                ->setMessages(['A record with the supplied identity could not be found.']);
             $this->setSatisfied(false);
             return false;
         }
@@ -51,11 +48,12 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
         $storage['identity'] = $e->getIdentity();
         $this->getStorage()->write($storage);
         $e->setCode(AuthenticationResult::SUCCESS)
-            ->setMessages(array('Authentication successful.'));
-
+            ->setMessages(['Authentication successful.']);
     }
 
-
+    /**
+     * @return SharengoCore\Service\CustomersService
+     */
     public function getCustomersService()
     {
         return $this->getServiceManager()->get('SharengoCore\Service\CustomersService');

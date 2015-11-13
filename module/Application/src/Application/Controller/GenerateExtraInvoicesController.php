@@ -30,6 +30,11 @@ class GenerateExtraInvoicesController extends AbstractActionController
      */
     private $logger;
 
+    /**
+     * @param ExtraPaymentsService $extraPayments
+     * @param ExtraPaymentsSearchService $extraPaymentsSearch
+     * @param Logger $logger
+     */
     public function __construct(
         ExtraPaymentsService $extraPayments,
         ExtraPaymentsSearchService $extraPaymentsSearch,

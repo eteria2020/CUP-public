@@ -50,7 +50,7 @@
                     <?php
                         $driverLicense = $this->form->get('driver')->get('driverLicense');
                         echo $this->formElement($driverLicense);
-                        echo $this->formElementErrors($driverLicense, array('class' => 'errors'));
+                        echo $this->formElementErrors($driverLicense, ['class' => 'errors']);
                     ?>
                 </p>
             </div>
@@ -61,7 +61,7 @@
                 <?php
                     $driverLicenseAuthority = $this->form->get('driver')->get('driverLicenseAuthority');
                     echo $this->formElement($driverLicenseAuthority);
-                    echo $this->formElementErrors($driverLicenseAuthority, array('class' => 'errors'));
+                    echo $this->formElementErrors($driverLicenseAuthority, ['class' => 'errors']);
                 ?>
             </p>
         </div>
@@ -77,7 +77,7 @@
             <?php
                 $driverLicenseReleaseDate = $this->form->get('driver')->get('driverLicenseReleaseDate');
                 echo $this->formElement($driverLicenseReleaseDate);
-                echo $this->formElementErrors($driverLicenseReleaseDate, array('class' => 'errors'));
+                echo $this->formElementErrors($driverLicenseReleaseDate, ['class' => 'errors']);
             ?>
         </p>
     </div>
@@ -87,7 +87,7 @@
             <?php
                 $driverLicenseName = $this->form->get('driver')->get('driverLicenseName');
                 echo $this->formElement($driverLicenseName);
-                echo $this->formElementErrors($driverLicenseName, array('class' => 'errors'));
+                echo $this->formElementErrors($driverLicenseName, ['class' => 'errors']);
             ?>
         </p>
     </div>
@@ -103,7 +103,7 @@
         <?php
             $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
             echo $this->formElement($driverLicenseCountry);
-            echo $this->formElementErrors($driverLicenseCountry, array('class' => 'errors'));
+            echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -113,7 +113,7 @@
         <?php
             $driverLicenseExpire = $this->form->get('driver')->get('driverLicenseExpire');
             echo $this->formElement($driverLicenseExpire);
-            echo $this->formElementErrors($driverLicenseExpire, array('class' => 'errors'));
+            echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
         ?>
     </p>
 </div>
@@ -151,7 +151,7 @@
                     <input type='checkbox' name="<?php echo $driverLicenseCategories->getName() ?>[]" value="<?php echo $value; ?>"><span class='control-indicator'><?php echo $key; ?></span>
                 </label>
             <?php endforeach; ?>
-        <?php echo $this->formElementErrors($driverLicenseCategories, array('class' => 'errors')); ?>
+        <?php echo $this->formElementErrors($driverLicenseCategories, ['class' => 'errors']); ?>
         </div>
     </p>
 </div>

@@ -32,7 +32,7 @@
                         <p> <label><?= $this->translate('Email'); ?></label>
                             <?php
                             $email = $form->get('email');
-                            echo $this->formElement($email->setAttributes(array('class' => 'required', 'placeholder' => $this->translate('Inserisci la tua email'))));
+                            echo $this->formElement($email->setAttributes(['class' => 'required', 'placeholder' => $this->translate('Inserisci la tua email')]));
                             ?>
                         </p>
                     </div>

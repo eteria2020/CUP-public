@@ -11,7 +11,7 @@ class ProfilingPlatformServiceFactory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @return Application\Service\RegistrationService
+     * @return ProfilingPlaformService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

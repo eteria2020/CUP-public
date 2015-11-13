@@ -11,7 +11,7 @@
  * file.
  */
 
-return array(
+return [
     'sharengo' => [
         'card-cost' => 10
     ],
@@ -42,4 +42,4 @@ return array(
         'description' => 'Bonus iscrizione utente',
         'valid-to' => '+3 months'
     ]
-);
+];

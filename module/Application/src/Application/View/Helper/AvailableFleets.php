@@ -27,6 +27,11 @@ class AvailableFleets extends AbstractHelper
      */
     protected $request;
 
+    /**
+     * @param AuthenticationService $authenticationService
+     * @param FleetService $fleetService
+     * @param Request $request
+     */
     public function __construct(
         AuthenticationService $authenticationService,
         FleetService $fleetService,
@@ -37,6 +42,9 @@ class AvailableFleets extends AbstractHelper
         $this->request = $request;
     }
 
+    /**
+     * @return string
+     */
     public function __invoke()
     {
         $currentFleet = $this->currentFleet();

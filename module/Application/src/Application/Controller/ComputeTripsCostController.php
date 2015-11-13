@@ -50,6 +50,7 @@ class ComputeTripsCostController extends AbstractActionController
      * @param TripPaymentsService $tripPaymentsService
      * @param InvoicesService $invoicesService
      * @param EntityManager $entityManager
+     * @param Logger $logger
      */
     public function __construct(
         TripsService $tripsService,

@@ -9,7 +9,6 @@ use Zend\Http\Client;
 
 final class ProfilingPlaformService
 {
-
     /**
      * @var array
      */
@@ -20,6 +19,10 @@ final class ProfilingPlaformService
      */
     private $fleetService;
 
+    /**
+     * @param array $profilingPlatformSettings
+     * @param FleetService $fleetService
+     */
     public function __construct(
         array $profilingPlatformSettings,
         FleetService $fleetService
@@ -28,6 +31,9 @@ final class ProfilingPlaformService
         $this->fleetService = $fleetService;
     }
 
+    /**
+     * @param string $email
+     */
     public function getDiscountByEmail($email)
     {
         $client = new Client();
@@ -51,9 +57,11 @@ final class ProfilingPlaformService
             default:
                 throw new ProfilingPlatformException('Generic response error');
         }
-
     }
 
+    /**
+     * @param string $email
+     */
     public function getPromoCodeByEmail($email)
     {
         $client = new Client();
@@ -79,6 +87,9 @@ final class ProfilingPlaformService
         }
     }
 
+    /**
+     * @param string $email
+     */
     public function getFleetByEmail($email)
     {
         $client = new Client();

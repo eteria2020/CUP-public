@@ -5,7 +5,7 @@
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$settings = array(
+$settings = [
 
     /**
      * Transport Class
@@ -14,16 +14,16 @@ $settings = array(
      */
     'type' => 'Zend\Mail\Transport\Sendmail',
 
-    'options' => array(),
+    'options' => [],
 
     /**
      * End of GoalioMailService configuration
      */
-);
+];
 
 /**
  * You do not need to edit below this line
  */
-return array(
+return [
     'goaliomailservice' => $settings,
-);
+];
