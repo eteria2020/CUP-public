@@ -15,6 +15,12 @@ CREATE TABLE bonus_package_payments (
 );
 
 /**
+ * Change ownership to sharengo
+ */
+ALTER TABLE bonus_package_payments OWNER TO sharengo;
+ALTER SEQUENCE bonus_package_payments_id_seq OWNER TO sharengo;
+
+/**
  * Populate the table with existing data from other tables
  */
 INSERT INTO bonus_package_payments
