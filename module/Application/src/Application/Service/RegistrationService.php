@@ -261,14 +261,14 @@ final class RegistrationService
 
         $this->emailService->sendEmail(
             $email,
-            'SHARENGO: CONFERMA REGISTRAZIONE E ATTIVAZIONE',
+            'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );
 
         $this->emailService->sendEmail(
             $this->emailSettings['sharengoNotices'],
-            'MAIL NUOVA REGISTRAZIONE DA SITO',
+            'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );

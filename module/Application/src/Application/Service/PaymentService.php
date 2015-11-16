@@ -56,7 +56,7 @@ final class PaymentService
 
         $this->emailService->sendEmail(
             $customer->getEmail(),
-            'SHARENGO: CONFERMA PAGAMENTO',
+            'Benvenuto in Share’nGo: ecco come guidare la tua prima auto',
             $content,
             $attachments
         );
