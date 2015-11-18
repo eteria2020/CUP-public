@@ -537,7 +537,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'StringTrim'
                     ]
                 ],
-                'validators' =>[
+                'validators' => [
                     [
                         'name' => 'Application\Form\Validator\BirthProvince'
                     ]

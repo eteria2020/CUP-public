@@ -12,8 +12,9 @@ $(function () {
             birthProvince.prop( "disabled", true );
             birthProvinceHidden.val("EE");
         } else {
-            if (birthProvince.val() === "EE")
+            if (birthProvince.val() === "EE") {
                 birthProvince.val("AG");
+            }
 
             birthProvince.prop( "disabled", false );
             birthProvinceHidden.val("");
