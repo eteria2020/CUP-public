@@ -5,3 +5,5 @@ CREATE TABLE customer_notes (
     inserted_ts TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     note TEXT NOT NULL
 );
+
+ALTER TABLE customer_notes OWNER TO sharengo;
