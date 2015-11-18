@@ -29,7 +29,6 @@ class BirthProvince extends AbstractValidator
             return false;
         }
 
-
         return true;
     }
 }
