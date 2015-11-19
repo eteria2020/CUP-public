@@ -175,7 +175,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Provincia di nascita (EE = estero)'),
-                'value_options' => $provincesService->getAllProvinces()
+                'value_options' => $provincesService->getAllProvinces(),
+                'use_hidden_element' => true
             ]
         ]);
 
@@ -534,6 +535,11 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'filters' => [
                     [
                         'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\BirthProvince'
                     ]
                 ]
             ],
