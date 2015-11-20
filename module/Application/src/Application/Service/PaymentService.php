@@ -42,12 +42,12 @@ final class PaymentService
 
     public function sendCompletionEmail($customer)
     {
-        $emailFrom = $this->emailSettings['from'];
+        $writeTo = $this->emailSettings['from'];
         $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
             $customer->getName(),
             $customer->getSurname(),
-            $emailFrom
+            $writeTo
         );
 
         $attachments = [

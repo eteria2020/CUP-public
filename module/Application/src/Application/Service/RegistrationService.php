@@ -249,13 +249,13 @@ final class RegistrationService
         /** @var callable $serverUrl */
         $serverUrl = $this->viewHelperManager->get('serverUrl');
 
-        $emailFrom = $this->emailSettings['from'];
+        $writeTo = $this->emailSettings['from'];
         $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.html'),
             $name,
             $surname,
             $serverUrl().$url('signup_insert').'?user='.$hash,
-            $emailFrom
+            $writeTo
         );
 
         $attachments = [
