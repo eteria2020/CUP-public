@@ -42,10 +42,12 @@ final class PaymentService
 
     public function sendCompletionEmail($customer)
     {
+        $writeTo = $this->emailSettings['from'];
         $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
             $customer->getName(),
-            $customer->getSurname()
+            $customer->getSurname(),
+            $writeTo
         );
 
         $attachments = [
@@ -56,7 +58,7 @@ final class PaymentService
 
         $this->emailService->sendEmail(
             $customer->getEmail(),
-            'SHARENGO: CONFERMA PAGAMENTO',
+            'Benvenuto in Share’nGo: ecco come guidare la tua prima auto',
             $content,
             $attachments
         );

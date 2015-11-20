@@ -244,14 +244,18 @@ final class RegistrationService
      */
     public function sendEmail($email, $name, $surname, $hash)
     {
+        /** @var callable $url */
         $url = $this->viewHelperManager->get('url');
+        /** @var callable $serverUrl */
         $serverUrl = $this->viewHelperManager->get('serverUrl');
 
+        $writeTo = $this->emailSettings['from'];
         $content = sprintf(
             file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.html'),
             $name,
             $surname,
-            $serverUrl().$url('signup_insert').'?user='.$hash
+            $serverUrl().$url('signup_insert').'?user='.$hash,
+            $writeTo
         );
 
         $attachments = [
@@ -261,14 +265,14 @@ final class RegistrationService
 
         $this->emailService->sendEmail(
             $email,
-            'SHARENGO: CONFERMA REGISTRAZIONE E ATTIVAZIONE',
+            'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );
 
         $this->emailService->sendEmail(
             $this->emailSettings['sharengoNotices'],
-            'MAIL NUOVA REGISTRAZIONE DA SITO',
+            'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );
