@@ -24,3 +24,6 @@ DROP COLUMN payment_type;
 
 ALTER TABLE extra_payments
 RENAME COLUMN types_temp TO payment_type;
+
+ALTER TABLE extra_payments ADD FOREIGN KEY (customer_id) REFERENCES customers (id);
+ALTER TABLE extra_payments ADD FOREIGN KEY (invoice_id) REFERENCES invoices (id);
