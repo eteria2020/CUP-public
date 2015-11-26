@@ -21,7 +21,8 @@
         "zendframework/zend-developer-tools": "dev-master",
         "nikolaposa/mobile-detect-module": "^1.0",
         "mvlabs/sharengo-cartasi": "dev-master",
-        "chrisboulton/php-resque": "^1.2"
+        "chrisboulton/php-resque": "^1.2",
+        "mvlabs/drivers-license-validation": "dev-master"
     },
     "repositories": [
         {
@@ -31,6 +32,10 @@
         {
             "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
             "type": "git"
+        },
+        {
+            "type": "path",
+            "url": "module/DriversLicenseValidation"
         }
     ],
     "require-dev": {
