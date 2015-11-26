@@ -31,15 +31,9 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     '{"trip_payment_try_id":"not available"}'
 FROM customers c
-WHERE (
-    c.enabled = false
-    AND c.payment_able = false
-) OR (
-    c.enabled = true
-    AND c.payment_able = false
-)
-AND c.registration_completed = true
-And c.first_payment_completed = true
+WHERE c.enabled = false
+AND c.payment_able = false
+AND c.first_payment_completed = true
 AND c.maintainer = false;
 
 /**
@@ -58,8 +52,7 @@ SELECT nextval('customer_deactivations_id_seq'),
 FROM customers c
 WHERE c.enabled = false
 AND c.payment_able = true
-AND c.registration_completed = true
-And c.first_payment_completed = true
+AND c.first_payment_completed = true
 AND c.maintainer = false;
 
 /**
@@ -78,5 +71,5 @@ SELECT nextval('customer_deactivations_id_seq'),
 FROM customers c
 WHERE c.enabled = false
 AND c.payment_able = true
-And c.first_payment_completed = false
+AND c.first_payment_completed = false
 AND c.maintainer = false;
