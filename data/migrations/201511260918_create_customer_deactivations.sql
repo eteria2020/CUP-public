@@ -13,7 +13,7 @@ CREATE TABLE customer_deactivations (
     start_ts TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     end_ts TIMESTAMP(0) WITHOUT TIME ZONE,
     deactivator_webuser_id INT REFERENCES webuser(id),
-    activator_webuser_id INT REFERENCES webuser(id),
+    reactivator_webuser_id INT REFERENCES webuser(id),
     details jsonb NOT NULL
 );
 
@@ -29,7 +29,7 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     NULL,
     NULL,
-    '{"trip_payment_try_id":"not available"}'
+    '{"deactivation":{"trip_payment_try_id":"not available"}}'
 FROM customers c
 WHERE c.enabled = false
 AND c.payment_able = false
@@ -48,7 +48,7 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     NULL,
     NULL,
-    '{"note":""}'
+    '{"deactivation":{"note":""}}'
 FROM customers c
 WHERE c.enabled = false
 AND c.payment_able = true
@@ -67,9 +67,8 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     NULL,
     NULL,
-    '{}'
+    '{"deactivation":{}}'
 FROM customers c
 WHERE c.enabled = false
-AND c.payment_able = true
 AND c.first_payment_completed = false
 AND c.maintainer = false;
