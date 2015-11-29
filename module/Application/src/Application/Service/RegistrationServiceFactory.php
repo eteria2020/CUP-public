@@ -2,37 +2,26 @@
 
 namespace Application\Service;
 
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Zend\Mail\Transport\Sendmail;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Mail\Transport\Sendmail;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class RegistrationServiceFactory implements FactoryInterface
 {
-    /**
-     * Create service
-     *
-     * @param ServiceLocatorInterface $serviceLocator
-     * @return Application\Service\RegistrationService
-     */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $form1 = $serviceLocator->get('RegistrationForm');
         $form2 = $serviceLocator->get('RegistrationForm2');
-
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
-
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
         $emailService = $serviceLocator->get('SharengoCore\Service\EmailService');
-
         $translationService = $serviceLocator->get('Translator');
-
         $viewHelperManager = $serviceLocator->get('viewHelperManager');
-
         $promoCodesService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
-
         $subscriptionBonus = $serviceLocator->get('Configuration')['subscription-bonus'];
+        $deactivationService = $serviceLocator->get('SharengoCore\Service\CustomerDeactivationService');
 
         return new RegistrationService(
             $form1,
@@ -44,7 +33,8 @@ class RegistrationServiceFactory implements FactoryInterface
             $translationService,
             $viewHelperManager,
             $promoCodesService,
-            $subscriptionBonus
+            $subscriptionBonus,
+            $deactivationService
         );
     }
 }

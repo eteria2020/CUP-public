@@ -29,7 +29,7 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     NULL,
     NULL,
-    '{"deactivation":{"trip_payment_try_id":"not available"}}'
+    '{"deactivation":{"trip_payment_try_id":"","note":"Generated automatically"}}'
 FROM customers c
 WHERE c.enabled = false
 AND c.payment_able = false
@@ -48,7 +48,7 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     NULL,
     NULL,
-    '{"deactivation":{"note":""}}'
+    '{"deactivation":{"note":"Generated automatically"}}'
 FROM customers c
 WHERE c.enabled = false
 AND c.payment_able = true
@@ -67,7 +67,7 @@ SELECT nextval('customer_deactivations_id_seq'),
     NULL,
     NULL,
     NULL,
-    '{"deactivation":{}}'
+    '{"deactivation":{"note":"Generated automatically"}}'
 FROM customers c
 WHERE c.enabled = false
 AND c.first_payment_completed = false

@@ -4,36 +4,37 @@ namespace Application\Service;
 
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
-use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\CustomerDeactivationService;
 use SharengoCore\Service\EmailService;
+use SharengoCore\Service\PromoCodesService;
 
+use Doctrine\ORM\EntityManager;
 use Zend\Form\Form;
-use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\Mail\Message;
 use Zend\Mime;
 use Zend\Mvc\I18n\Translator;
+use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\View\HelperPluginManager;
-use Doctrine\ORM\EntityManager;
 
 final class RegistrationService
 {
     /**
-     * @var \Zend\Form\Form
+     * @var Form
      */
     private $form1;
 
     /**
-     * @var \Zend\Form\Form
+     * @var Form
      */
     private $form2;
 
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     private $entityManager;
 
     /**
-     * @var \Zend\Stdlib\Hydrator\AbstractHydrator
+     * @var AbstractHydrator
      */
     private $hydrator;
 
@@ -48,12 +49,12 @@ final class RegistrationService
     private $emailService;
 
     /**
-     * @var \Zend\Mvc\I18n\Translator
+     * @var Translator
      */
     private $translator;
 
     /**
-     * @var \Zend\View\HelperPluginManager
+     * @var HelperPluginManager
      */
     private $viewHelperManager;
 
@@ -63,7 +64,7 @@ final class RegistrationService
     private $customersRepository;
 
     /**
-     * @var \SharengoCore\Service\PromoCodesService;
+     * @var PromoCodesService;
      */
     private $promoCodesService;
 
@@ -71,6 +72,11 @@ final class RegistrationService
      * @var array
      */
     private $subscriptionBonus;
+
+    /**
+     * @var CustomerDeactivationService;
+     */
+    private $deactivationService;
 
     /**
      * @param Form $form1
@@ -94,7 +100,8 @@ final class RegistrationService
         Translator $translator,
         HelperPluginManager $viewHelperManager,
         PromoCodesService $promoCodesService,
-        array $subscriptionBonus
+        array $subscriptionBonus,
+        CustomerDeactivationService $deactivationService
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -107,6 +114,7 @@ final class RegistrationService
         $this->promoCodesService = $promoCodesService;
         $this->subscriptionBonus = $subscriptionBonus;
         $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
+        $this->deactivationService = $deactivationService;
     }
 
     /**
@@ -227,6 +235,8 @@ final class RegistrationService
 
                 $this->entityManager->persist($customerBonus);
             }
+
+            $this->deactivationService->deactivateAtRegistration($customer);
 
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
