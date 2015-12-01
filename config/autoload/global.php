@@ -27,10 +27,6 @@ return [
     'mobile' => [
         'url' => 'http://mobile.sharengo.it'
     ],
-    'alarm' => [
-        'battery' => '20',
-        'delay' => '31'
-    ],
     'export' => [
         'path' => 'data/export/',
         'server' => 'dev.sharengo.it',

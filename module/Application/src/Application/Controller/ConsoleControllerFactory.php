@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use SharengoCore\Entity\Configurations;
 
 class ConsoleControllerfactory implements FactoryInterface
 {
@@ -16,8 +17,10 @@ class ConsoleControllerfactory implements FactoryInterface
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
         $tripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $accountTripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\AccountTripsService');
-        $config = $serviceLocator->getServiceLocator()->get('Config');
-        $alarmConfig = $config['alarm'];
+
+        $configurationService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ConfigurationsService');
+        $alarmConfig = $configurationService->getConfigurationsKeyValueBySlug(Configurations::ALARM);
+
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
 
         return new ConsoleController(
