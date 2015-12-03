@@ -63,7 +63,7 @@ class IndexController extends AbstractActionController
 
     public function faqAction()
     {
-        return new ViewModel();
+        $this->redirect()->toUrl('http://support.sharengo.it');
     }
 
     public function contattiAction()
