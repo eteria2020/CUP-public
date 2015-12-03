@@ -338,7 +338,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition1',
             'options' => [
-                'label' => $translator->translate('ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e da C.S. Milano S.r.l.'),
+                'label' => $translator->translate('ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e le sue controllate'),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -366,7 +366,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'regulationCondition1',
             'options' => [
-                'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e da C.S. Milano S.r.l."),
+                'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e le sue controllate"),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
