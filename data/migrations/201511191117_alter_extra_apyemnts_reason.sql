@@ -7,7 +7,7 @@ ALTER TABLE extra_payments
 ADD COLUMN types_temp extra_payments_types;
 
 UPDATE extra_payments
-SET reasons = ('{"' || reason || '": ' || amount::text || '}')::jsonb,
+SET reasons = ('{"' || replace(reason, E'\t', '') || '": ' || amount::text || '}')::jsonb,
     types_temp = payment_type::extra_payments_types;
 
 ALTER TABLE extra_payments
