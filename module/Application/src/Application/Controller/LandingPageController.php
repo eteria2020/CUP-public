@@ -40,4 +40,9 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function volontariocardAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
 }

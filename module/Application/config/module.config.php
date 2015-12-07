@@ -293,6 +293,17 @@ return [
                     ],
                 ]
             ],
+            'volontariocard' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{volontariocard}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'volontariocard',
+                    ],
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
