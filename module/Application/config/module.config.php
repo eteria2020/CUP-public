@@ -493,7 +493,9 @@ return [
             'ProfileForm'              => 'Application\Form\ProfileFormFactory',
             'PasswordForm'             => 'Application\Form\PasswordFormFactory',
             'DriverLicenseForm'        => 'Application\Form\DriverLicenseFormFactory',
-            'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory'
+            'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory',
+            'Application\Listener\DriversLicenseValidationListener' => 'Application\Listener\DriversLicenseValidationListenerFactory',
+            'Application\Listener\DriversLicensePostValidationListener' => 'Application\Listener\DriversLicensePostValidationListenerFactory'
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
@@ -518,7 +520,8 @@ return [
             'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory',
             'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory',
             'Application\Controller\CustomerBonusPackages' => 'Application\Controller\CustomerBonusPackagesControllerFactory',
-            'Application\Controller\GeneratePackageInvoices' => 'Application\Controller\GeneratePackageInvoicesControllerFactory'
+            'Application\Controller\GeneratePackageInvoices' => 'Application\Controller\GeneratePackageInvoicesControllerFactory',
+            'Application\Controller\DriversLicenseValidation' => 'Application\Controller\DriversLicenseValidationControllerFactory'
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -584,7 +587,8 @@ return [
                 ['controller' => 'Application\Controller\LandingPage', 'roles' => []],
                 ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []],
                 ['controller' => 'Application\Controller\CustomerBonusPackages', 'roles' => []],
-                ['controller' => 'Application\Controller\GeneratePackageInvoices', 'roles' => []]
+                ['controller' => 'Application\Controller\GeneratePackageInvoices', 'roles' => []],
+                ['controller' => 'Application\Controller\DriversLicenseValidation', 'roles' => []]
             ],
         ],
     ],
@@ -839,6 +843,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'GeneratePackageInvoices',
                             'action' => 'generate-package-invoices'
+                        ]
+                    ]
+                ],
+                'drivers-license-validation' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'validate drivers licenses',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DriversLicenseValidation',
+                            'action' => 'validate-drivers-license'
                         ]
                     ]
                 ]

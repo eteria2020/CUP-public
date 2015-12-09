@@ -1,30 +1,47 @@
 <?php
 
-namespace MvLabs\DriversLicenseValidation\Listener;
+namespace Application\Listener;
 
-use Zend\EventManager\ListenerAggragateInterface;
-use Zend\EventManager\ListenerAggregateTrait;
-use Zend\EventManager\EventManagerInterface;
+use MvLabsDriversLicenseValidation\Service\EnqueueValidationService;
 
-final class DriversLicenseValidationListener implements ListenerAggregateInterface
+use Zend\EventManager\SharedListenerAggregateInterface;
+use Zend\EventManager\SharedEventManagerInterface;
+use Zend\EventManager\EventInterface;
+
+final class DriversLicenseValidationListener implements SharedListenerAggregateInterface
 {
-    use ListenerAggregateTrait;
+    /**
+     * @var EnqueueValidationService $enqueueValidationService
+     */
+    private $enqueueValidationService;
 
-    public function __construct()
+    public function __construct(EnqueueValidationService $enqueueValidationService)
     {
-        
+        $this->enqueueValidationService = $enqueueValidationService;
     }
 
-    public function attach(EventManagerInterface $events)
+    public function attachShared(SharedEventManagerInterface $events)
     {
         $this->listeners[] = $events->attach(
+            'Application\Controller\UserController',
             'registrationCompleted',
             [$this, 'validateDriversLicense']
         );
     }
 
-    public function  validateDriversLicense()
+    public function detachShared(SharedEventManagerInterface $events)
     {
+        foreach ($this->listeners as $index => $callback) {
+            if ($events->detach($callback)) {
+                unset($this->listeners[$index]);
+            }
+        }
+    }
 
+    public function validateDriversLicense(EventInterface $e)
+    {
+        $data = $e->getParams();
+
+        $this->enqueueValidationService->validateDriversLicense($data);
     }
 }

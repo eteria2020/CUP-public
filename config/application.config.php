@@ -16,11 +16,13 @@ return [
         'MobileDetectModule',
         'AssetManager',
         'MvlabsSnappy',
+        'Zf2Resque',
 
         // Our modules
         'Multilanguage',
         'SharengoCore',
         'Cartasi',
+        'MvLabsDriversLicenseValidation',
         'Application',
     ],
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f46bd4a8e93512c485a2870bdba2076b",
-    "content-hash": "d97f9b2c55cc12784dc4576051194771",
+    "hash": "e8f51bf2490bace3e03a6fb513d6d981",
+    "content-hash": "6e5eb48bff88f5dced78df664d38715c",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -79,21 +79,34 @@
         },
         {
             "name": "chrisboulton/php-resque",
-            "version": "1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chrisboulton/php-resque.git",
-                "reference": "0549d6c88a4aed934655b7c03b6153349d6c3ad0"
+                "reference": "df69e8980cc21652f10cd775cb6a0e8c572ffd2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/0549d6c88a4aed934655b7c03b6153349d6c3ad0",
-                "reference": "0549d6c88a4aed934655b7c03b6153349d6c3ad0",
+                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/df69e8980cc21652f10cd775cb6a0e8c572ffd2d",
+                "reference": "df69e8980cc21652f10cd775cb6a0e8c572ffd2d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "colinmollenhour/credis": "~1.2",
+                "ext-pcntl": "*",
+                "php": ">=5.3.0",
+                "psr/log": "1.0.0"
             },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-proctitle": "Allows php-resque to rename the title of UNIX processes to show the status of a worker.",
+                "ext-redis": "Native PHP extension for Redis connectivity. Credis will automatically utilize when available."
+            },
+            "bin": [
+                "bin/resque"
+            ],
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -118,7 +131,115 @@
                 "redis",
                 "resque"
             ],
-            "time": "2012-10-13 07:28:16"
+            "time": "2015-05-13 11:58:23"
+        },
+        {
+            "name": "chrisboulton/php-resque-scheduler",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chrisboulton/php-resque-scheduler.git",
+                "reference": "ab8bd52949cac1f815bbb97aa39f51c7b5766a86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chrisboulton/php-resque-scheduler/zipball/ab8bd52949cac1f815bbb97aa39f51c7b5766a86",
+                "reference": "ab8bd52949cac1f815bbb97aa39f51c7b5766a86",
+                "shasum": ""
+            },
+            "require": {
+                "chrisboulton/php-resque": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ResqueScheduler": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Chris Boulton",
+                    "email": "chris@bgigcommerce.com"
+                }
+            ],
+            "description": "php-resque-scheduler is a PHP port of resque-scheduler, which adds support for scheduling items in the future to Resque.",
+            "time": "2013-09-16 09:21:26"
+        },
+        {
+            "name": "colinmollenhour/credis",
+            "version": "1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colinmollenhour/credis.git",
+                "reference": "7bd47b61fc3dad28aa881de45c71026256ad27cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colinmollenhour/credis/zipball/7bd47b61fc3dad28aa881de45c71026256ad27cc",
+                "reference": "7bd47b61fc3dad28aa881de45c71026256ad27cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Client.php",
+                    "Cluster.php",
+                    "Sentinel.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Mollenhour",
+                    "email": "colin@mollenhour.com"
+                }
+            ],
+            "description": "Credis is a lightweight interface to the Redis key-value store which wraps the phpredis library when available for better performance.",
+            "homepage": "https://github.com/colinmollenhour/credis",
+            "time": "2014-11-13 18:40:25"
+        },
+        {
+            "name": "dmregister/zf2-resque",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmregister/zf2-resque.git",
+                "reference": "994e0c95c077c4f85d217b446dd4749319bafb3c"
+            },
+            "require": {
+                "chrisboulton/php-resque": "dev-master",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Zf2Resque\\": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Creates a ZF2 module and wraps the php-resque project into a service that can interact with the service locator.",
+            "homepage": "http://davidmregister.com/",
+            "keywords": [
+                "job",
+                "php-resque",
+                "queue",
+                "redis",
+                "resque",
+                "worker"
+            ],
+            "time": "2015-06-18 13:36:53"
         },
         {
             "name": "doctrine/annotations",
@@ -1060,6 +1181,66 @@
             "time": "2014-02-11 21:33:07"
         },
         {
+            "name": "jaaprood/php-resque-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JaapRood/php-resque-plugin.git",
+                "reference": "258f09357e236657d8e0fc2c5eefe6df10e94860"
+            },
+            "require": {
+                "chrisboulton/php-resque": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Resque": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaap Rood",
+                    "email": "jaap@jaaprood.nl"
+                }
+            ],
+            "description": "A plugin architecture for php-resque",
+            "time": "2013-09-23 07:21:01"
+        },
+        {
+            "name": "jaaprood/php-resque-retry",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JaapRood/php-resque-retry.git",
+                "reference": "0214a166d37bf18be41dd644feda27dc26d4c3ac"
+            },
+            "require": {
+                "chrisboulton/php-resque": "dev-master",
+                "chrisboulton/php-resque-scheduler": "dev-master",
+                "jaaprood/php-resque-plugin": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Resque": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaap Rood",
+                    "email": "jaap@jaaprood.nl"
+                }
+            ],
+            "description": "A php-resque plugin; provides retry, delay and exponential backoff support to php-resque jobs",
+            "time": "2013-09-30 05:06:04"
+        },
+        {
             "name": "knplabs/knp-snappy",
             "version": "0.3.4",
             "source": {
@@ -1253,7 +1434,7 @@
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "module/DriversLicenseValidation/",
+                "url": "module/MvLabsDriversLicenseValidation/",
                 "reference": "eaf32c058fc533b2f41a620df9e0f89e1ca02319",
                 "shasum": null
             },
@@ -1263,7 +1444,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "MvLabs\\DriversLicenseValidation\\": "src/"
+                    "MvLabsDriversLicenseValidation\\": "src/"
                 }
             },
             "license": [
@@ -1446,6 +1627,44 @@
                 "zf2"
             ],
             "time": "2013-12-24 19:41:21"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2012-12-21 11:40:51"
         },
         {
             "name": "rwoverdijk/assetmanager",
@@ -3141,7 +3360,12 @@
         "mvlabs/sharengo-coremodule": 20,
         "zendframework/zend-developer-tools": 20,
         "mvlabs/sharengo-cartasi": 20,
-        "mvlabs/drivers-license-validation": 20
+        "mvlabs/drivers-license-validation": 20,
+        "chrisboulton/php-resque": 20,
+        "dmregister/zf2-resque": 20,
+        "chrisboulton/php-resque-scheduler": 20,
+        "jaaprood/php-resque-retry": 20,
+        "jaaprood/php-resque-plugin": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

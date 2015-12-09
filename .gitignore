@@ -15,10 +15,13 @@ module/SharengoCore
 module/Cartasi
 
 //DriversLicenseValidation module lives in its own repository
-module/DriversLicenseValidation
+module/MvLabsDriversLicenseValidation
 
 // cache
 data/DoctrineORMModule
 
 // exported invoices
 data/export
+
+// log
+data/log

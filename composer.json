@@ -21,8 +21,12 @@
         "zendframework/zend-developer-tools": "dev-master",
         "nikolaposa/mobile-detect-module": "^1.0",
         "mvlabs/sharengo-cartasi": "dev-master",
-        "chrisboulton/php-resque": "^1.2",
-        "mvlabs/drivers-license-validation": "dev-master"
+        "mvlabs/drivers-license-validation": "dev-master",
+        "chrisboulton/php-resque": "dev-master",
+        "dmregister/zf2-resque": "dev-master",
+        "chrisboulton/php-resque-scheduler": "dev-master",
+        "jaaprood/php-resque-retry": "dev-master",
+        "jaaprood/php-resque-plugin": "dev-master"
     },
     "repositories": [
         {
@@ -35,7 +39,19 @@
         },
         {
             "type": "path",
-            "url": "module/DriversLicenseValidation"
+            "url": "module/MvLabsDriversLicenseValidation"
+        },
+        {
+            "url": "https://github.com/dmregister/zf2-resque.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/JaapRood/php-resque-retry.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/JaapRood/php-resque-plugin.git",
+            "type": "git"
         }
     ],
     "require-dev": {
