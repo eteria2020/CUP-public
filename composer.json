@@ -46,11 +46,11 @@
             "type": "git"
         },
         {
-            "url": "https://github.com/JaapRood/php-resque-retry.git",
+            "url": "https://github.com/marcosh/php-resque-retry.git",
             "type": "git"
         },
         {
-            "url": "https://github.com/JaapRood/php-resque-plugin.git",
+            "url": "https://github.com/marcosh/php-resque-plugin.git",
             "type": "git"
         }
     ],

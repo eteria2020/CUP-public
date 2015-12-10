@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e8f51bf2490bace3e03a6fb513d6d981",
-    "content-hash": "6e5eb48bff88f5dced78df664d38715c",
+    "hash": "b7fe17773b7f993c9dad1b8db691aab3",
+    "content-hash": "3efe92a7ae569a0947f6c3cc3181ead3",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -1185,8 +1185,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/JaapRood/php-resque-plugin.git",
-                "reference": "258f09357e236657d8e0fc2c5eefe6df10e94860"
+                "url": "https://github.com/marcosh/php-resque-plugin.git",
+                "reference": "8d0c59467f8f1b41e4d856af74838f864848d319"
             },
             "require": {
                 "chrisboulton/php-resque": "dev-master"
@@ -1207,15 +1207,15 @@
                 }
             ],
             "description": "A plugin architecture for php-resque",
-            "time": "2013-09-23 07:21:01"
+            "time": "2015-12-09 12:01:59"
         },
         {
             "name": "jaaprood/php-resque-retry",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/JaapRood/php-resque-retry.git",
-                "reference": "0214a166d37bf18be41dd644feda27dc26d4c3ac"
+                "url": "https://github.com/marcosh/php-resque-retry.git",
+                "reference": "fd3b6e191d7bf6e610836722224dbc867f59535d"
             },
             "require": {
                 "chrisboulton/php-resque": "dev-master",
@@ -1238,7 +1238,7 @@
                 }
             ],
             "description": "A php-resque plugin; provides retry, delay and exponential backoff support to php-resque jobs",
-            "time": "2013-09-30 05:06:04"
+            "time": "2015-12-09 12:00:56"
         },
         {
             "name": "knplabs/knp-snappy",
