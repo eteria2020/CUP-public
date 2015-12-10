@@ -2,31 +2,23 @@
 
 namespace Application\Listener;
 
-use SharengoCore\Service\CustomersService;
-use SharengoCore\Service\CustomerDeactivationService;
+use SharengoCore\Service\EmailService;
 
 use Zend\EventManager\SharedListenerAggregateInterface;
 use Zend\EventManager\SharedEventManagerInterface;
 use Zend\EventManager\EventInterface;
 
-final class DriversLicensePostValidationListener implements SharedListenerAggregateInterface
+final class DriversLicensePostValidationNotifier implements SharedListenerAggregateInterface
 {
     /**
-     * @var CustomersService $customersService
+     * @var EmailService $emailService
      */
-    private $customersService;
-
-    /**
-     * @var CustomerDeactivationService $customerDeactivator
-     */
-    private $customerDeactivator;
+    private $emailService;
 
     public function __construct(
-        CustomersService $customersService,
-        CustomerDeactivationService $customerDeactivator
+        EmailService $emailService
     ) {
-        $this->customersService = $customersService;
-        $this->customerDeactivator = $customerDeactivator;
+        $this->emailService = $emailService;
     }
 
     public function attachShared(SharedEventManagerInterface $events)
@@ -34,13 +26,15 @@ final class DriversLicensePostValidationListener implements SharedListenerAggreg
         $this->listeners[] = $events->attach(
             'MvLabsDriversLicenseValidation\Job\ValidationJob',
             'validDriversLicense',
-            [$this, 'validDriversLicense']
+            [$this, 'validDriversLicense'],
+            -100 // low priority so that sending the mail is the last thing we do
         );
 
         $this->listeners[] = $events->attach(
             'MvLabsDriversLicenseValidation\Job\ValidationJob',
             'unvalidDriversLicense',
-            [$this, 'unvalidDriversLicense']
+            [$this, 'unvalidDriversLicense'],
+            - 100 // low priority so that sending the mail is the last thing we do
         );
     }
 
@@ -57,17 +51,25 @@ final class DriversLicensePostValidationListener implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $customer = $customersService->findByEmail($args['email']);
+        $content = file_get_contents(__DIR__.'/../../../view/emails/drivers-license-valid.html');
 
-        $this->customerDeactivator->reactivateCustomerForDriversLicense($customer, date_create());
+        $this->emailService->sendEmail(
+            $args['email'],
+            'RIABILITAZIONE PROFILO',
+            $content
+        );
     }
 
     public function unvalidDriversLicense(EventInterface $e)
     {
         $args = $e->getParam('args');
 
-        $customer = $customersService->findByEmail($args['email']);
+        $content = file_get_contents(__DIR__.'/../../../view/emails/drivers-license-unvalid.html');
 
-        $this->customerDeactivator->deactivateForDriversLicense($customer, date_create());
+        $this->emailService->sendEmail(
+            $args['email'],
+            'DISABILITAZIONE PROFILO',
+            $content
+        );
     }
 }

@@ -86,8 +86,14 @@ class Module
         $eventManager->getSharedManager()->attachAggregate($driversLicenseValidationListener);
 
         // attach listener to react on driver's license validation
-        $driversLicensePostValidationListener = $serviceManager->get('Application\Listener\DriversLicensePostValidationListener');
-        $eventManager->getSharedManager()->attachAggregate($driversLicensePostValidationListener);
+        $driversLicensePostValidationLogger = $serviceManager->get('Application\Listener\DriversLicensePostValidationLogger');
+        $eventManager->getSharedManager()->attachAggregate($driversLicensePostValidationLogger);
+
+        $driversLicensePostValidation = $serviceManager->get('Application\Listener\DriversLicensePostValidationListener');
+        $eventManager->getSharedManager()->attachAggregate($driversLicensePostValidation);
+
+        $driversLicensePostValidationNotifier = $serviceManager->get('Application\Listener\DriversLicensePostValidationNotifier');
+        $eventManager->getSharedManager()->attachAggregate($driversLicensePostValidationNotifier);
 
         // BjyAuthorize redirection strategy
         $strategy = new RedirectionStrategy();

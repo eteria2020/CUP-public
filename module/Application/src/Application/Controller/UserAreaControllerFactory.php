@@ -10,20 +10,22 @@ class UserAreaControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $I_customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
-        $I_tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
-        $userService = $serviceLocator->getServiceLocator()->get('zfcuser_auth_service');
-        $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
-        $profileForm = $serviceLocator->getServiceLocator()->get('ProfileForm');
-        $passwordForm = $serviceLocator->getServiceLocator()->get('PasswordForm');
-        $driverLicenseForm = $serviceLocator->getServiceLocator()->get('DriverLicenseForm');
-        $promoCodeForm = $serviceLocator->getServiceLocator()->get('PromoCodeForm');
+        $sharedLocator = $serviceLocator->getServiceLocator();
+
+        $I_customerService = $sharedLocator->get('SharengoCore\Service\CustomersService');
+        $I_tripService = $sharedLocator->get('SharengoCore\Service\TripsService');
+        $userService = $sharedLocator->get('zfcuser_auth_service');
+        $invoicesService = $sharedLocator->get('SharengoCore\Service\Invoices');
+        $profileForm = $sharedLocator->get('ProfileForm');
+        $passwordForm = $sharedLocator->get('PasswordForm');
+        $driverLicenseForm = $sharedLocator->get('DriverLicenseForm');
+        $promoCodeForm = $sharedLocator->get('PromoCodeForm');
         $hydrator = new Reflection();
-        $cartasiPaymentsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiPayments');
-        $promoCodeService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesService');
-        $tripPaymentsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripPaymentsService');
-        $cartasiContractsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiContracts');
-        $bonusPackagesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\BonusPackagesService');
+        $cartasiPaymentsService = $sharedLocator->get('Cartasi\Service\CartasiPayments');
+        $promoCodeService = $sharedLocator->get('SharengoCore\Service\PromoCodesService');
+        $tripPaymentsService = $sharedLocator->get('SharengoCore\Service\TripPaymentsService');
+        $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
+        $bonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
 
         return new UserAreaController(
             $I_customerService,

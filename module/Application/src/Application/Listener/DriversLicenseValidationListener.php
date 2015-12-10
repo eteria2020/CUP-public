@@ -27,6 +27,12 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
             'registrationCompleted',
             [$this, 'validateDriversLicense']
         );
+
+        $this->listeners[] = $events->attach(
+            'Application\Controller\UserAreaController',
+            'driversLicenseEdited',
+            [$this, 'validateDriversLicense']
+        );
     }
 
     public function detachShared(SharedEventManagerInterface $events)

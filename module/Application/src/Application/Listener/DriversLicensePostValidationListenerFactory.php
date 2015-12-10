@@ -9,6 +9,12 @@ class DriversLicensePostValidationListenerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new DriversLicensePostValidationListener();
+        $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
+        $customerDeactivator = $serviceLocator->get('SharengoCore\Service\CustomerDeactivationService');
+
+        return new DriversLicensePostValidationListener(
+            $customersService,
+            $customerDeactivator
+        );
     }
 }

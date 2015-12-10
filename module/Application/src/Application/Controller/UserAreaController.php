@@ -2,7 +2,6 @@
 
 namespace Application\Controller;
 
-
 use Application\Form\PromoCodeForm;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Entity\PromoCodes;
@@ -16,6 +15,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Zend\EventManager\EventManager;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
@@ -218,7 +218,6 @@ class UserAreaController extends AbstractActionController
     {
         $form->setData($data);
         if ($form->isValid()) {
-
             $customer = $form->saveData();
 
             //update the data in the form
@@ -296,26 +295,34 @@ class UserAreaController extends AbstractActionController
 
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPost()->toArray();
-            $postData['driver']['id'] = $this->userService->getIdentity()->getId();
+            $customer = $this->userService->getIdentity();
+            $postData['driver']['id'] = $customer->getId();
             $form->setData($postData);
 
             if ($form->isValid()) {
-
                 try {
-
                     $this->I_customersService->saveDriverLicense($form->getData());
 
+                    $params = [
+                        'driverLicense' => $customer->getDriverLicense(),
+                        'taxCode' => $customer->getTaxCode(),
+                        'name' => $customer->getName(),
+                        'surname' => $customer->getSurname(),
+                        'birthDate' => ['date' => $customer->getBirthDate()],
+                        'birthCountry' => $customer->getBirthCountry(),
+                        'birthProvince' => $customer->getBirthProvince(),
+                        'birthTown' => $customer->getBirthTown()
+                    ];
+
+                    $this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
+
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-
                 } catch (\Exception $e) {
-
                     $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. L\'assistenza tecnica è già al corrente, ci scusiamo per l\'inconveniente');
-
                 }
 
                 return $this->redirect()->toRoute('area-utente/patente');
             } else {
-
                 $this->showError = true;
             }
         }
@@ -343,24 +350,17 @@ class UserAreaController extends AbstractActionController
             $form->setData($postData);
 
             if ($form->isValid()) {
-
                 try {
-
                     /** @var PromoCodes $promoCode */
                     $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
 
                     $this->I_customersService->addBonusFromPromoCode($this->customer, $promoCode);
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-
                 } catch (BonusAssignmentException $e) {
-
                     $this->flashMessenger()->addErrorMessage($e->getMessage());
-
                 } catch (\Exception $e) {
-
                     $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. L\'assistenza tecnica è già al corrente, ci scusiamo per l\'inconveniente');
-
                 }
 
                 return $this->redirect()->toRoute('area-utente/additional-services');
