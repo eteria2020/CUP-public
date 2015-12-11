@@ -95,6 +95,9 @@ class Module
         $driversLicensePostValidationNotifier = $serviceManager->get('Application\Listener\DriversLicensePostValidationNotifier');
         $eventManager->getSharedManager()->attachAggregate($driversLicensePostValidationNotifier);
 
+        $driversLicenseEditing = $serviceManager->get('Application\Listener\DriversLicenseEditingListener');
+        $eventManager->getSharedManager()->attachAggregate($driversLicenseEditing);
+
         // BjyAuthorize redirection strategy
         $strategy = new RedirectionStrategy();
         $eventManager->attach($strategy);
