@@ -38,8 +38,8 @@
             "type": "git"
         },
         {
-            "type": "path",
-            "url": "module/MvLabsDriversLicenseValidation"
+            "type": "git",
+             "url": "ssh://git@git.mvlabs.it:4222/internals/drivers-license-validation.git"
         },
         {
             "url": "https://github.com/dmregister/zf2-resque.git",
