@@ -55,7 +55,7 @@ final class DriversLicensePostValidationNotifier implements SharedListenerAggreg
 
         $this->emailService->sendEmail(
             $args['email'],
-            'RIABILITAZIONE PROFILO',
+            'VALIDAZIONE PATENTE',
             $content
         );
     }
