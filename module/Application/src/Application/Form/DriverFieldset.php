@@ -96,7 +96,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Nome sulla patente')
+                'label' => $translator->translate('Nome sulla patente (nome e cognome)')
             ]
         ]);
 

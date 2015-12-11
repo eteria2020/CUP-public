@@ -309,6 +309,7 @@ class UserAreaController extends AbstractActionController
                         'taxCode' => $customer->getTaxCode(),
                         'name' => $customer->getName(),
                         'surname' => $customer->getSurname(),
+                        'driverLicenseName' => $customer->getDriverLicenseName(),
                         'birthDate' => ['date' => $customer->getBirthDate()->format('Y-m-d')],
                         'birthCountry' => $customer->getBirthCountry(),
                         'birthProvince' => $customer->getBirthProvince(),

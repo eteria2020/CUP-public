@@ -80,7 +80,7 @@ $this->headLink()
                                 </div>
 
                                 <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate('Nome sulla patente'); ?></label>
+                                    <p> <label><?= $this->translate('Nome sulla patente (nome e cognome)'); ?></label>
                                         <input type="text" name="" class="required disabled" value="<?= $this->customer->getDriverLicenseName(); ?>" >
                                     </p>
                                 </div>
@@ -197,7 +197,7 @@ $this->headLink()
                                 </div>
 
                                 <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate('Nome sulla patente'); ?></label>
+                                    <p> <label><?= $this->translate('Nome sulla patente (nome e cognome)'); ?></label>
                                         <?php
                                         $driverLicenseName = $form->get('driver')->get('driverLicenseName');
                                         echo $this->formElement($driverLicenseName);
