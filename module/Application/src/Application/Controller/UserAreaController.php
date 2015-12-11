@@ -304,11 +304,12 @@ class UserAreaController extends AbstractActionController
                     $this->I_customersService->saveDriverLicense($form->getData());
 
                     $params = [
+                        'email' => $customer->getEmail(),
                         'driverLicense' => $customer->getDriverLicense(),
                         'taxCode' => $customer->getTaxCode(),
                         'name' => $customer->getName(),
                         'surname' => $customer->getSurname(),
-                        'birthDate' => ['date' => $customer->getBirthDate()],
+                        'birthDate' => ['date' => $customer->getBirthDate()->format('Y-m-d')],
                         'birthCountry' => $customer->getBirthCountry(),
                         'birthProvince' => $customer->getBirthProvince(),
                         'birthTown' => $customer->getBirthTown()

@@ -57,7 +57,7 @@ final class DriversLicensePostValidationListener implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $customer = $customersService->findByEmail($args['email']);
+        $customer = $this->customersService->findByEmail($args['email']);
 
         $this->customerDeactivator->reactivateCustomerForDriversLicense($customer, date_create());
     }
@@ -66,7 +66,7 @@ final class DriversLicensePostValidationListener implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $customer = $customersService->findByEmail($args['email']);
+        $customer = $this->customersService->findByEmail($args['email']);
 
         $this->customerDeactivator->deactivateForDriversLicense($customer, date_create());
     }
