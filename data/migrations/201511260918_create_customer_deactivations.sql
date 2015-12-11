@@ -17,6 +17,8 @@ CREATE TABLE customer_deactivations (
     details jsonb NOT NULL
 );
 
+ALTER TABLE customer_deactivations OWNER TO sharengo;
+
 /**
  * Customers disabled for late payment
  */
