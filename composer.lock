@@ -1435,7 +1435,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/internals/drivers-license-validation.git",
-                "reference": "9be6c1faa666084a2a743008416677a05b3e6d5a"
+                "reference": "bab0c6c31f482b8dc8807d89f6d9ec583517e1c3"
             },
             "require": {
                 "php": ">=5.4"
@@ -1466,7 +1466,7 @@
                 "validation",
                 "zf2"
             ],
-            "time": "2015-12-11 16:28:42"
+            "time": "2015-12-11 16:34:14"
         },
         {
             "name": "mvlabs/mvlabs-snappy",
