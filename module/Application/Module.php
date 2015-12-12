@@ -46,9 +46,11 @@ class Module
                 $paymentService->sendCompletionEmail($customer);
 
                 // enable api usage
-                $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
-                $customerService->enableApi($customer);
-
+                $deactivationService = $serviceManager->get('SharengoCore\Service\CustomerDeactivationService');
+                if (!$deactivationService->hasActiveDeactivations($customer)) {
+                    $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
+                    $customerService->enableApi($customer);
+                }
             }
         );
 
@@ -74,7 +76,8 @@ class Module
                 try {
                     $discount = $profilingPlatformService->getDiscountByEmail($params['email']);
                     $customerService->setCustomerDiscountRate($customer, $discount);
-                } catch (ProfilingPlatformException $ex) { }
+                } catch (ProfilingPlatformException $ex) {
+                }
 
                 // assign card to user
                 $customerService->assignCard($customer);
