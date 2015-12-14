@@ -56,8 +56,8 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
     {
         return [
             $args['email'],
-            $args['name'],
-            $args['surname'],
+            $args['driverLicenseName'],
+            $args['driverLicenseSurname'],
             $args['driverLicense'],
             $args['taxCode'],
             $args['birthDate']['date'],

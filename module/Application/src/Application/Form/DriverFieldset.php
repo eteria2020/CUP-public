@@ -92,11 +92,24 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'driverLicenseName',
-                'placeholder' => $translator->translate('Es. Mario Rossi'),
+                'placeholder' => $translator->translate('Es. Mario'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Nome sulla patente (nome e cognome)')
+                'label' => $translator->translate('Nome sulla patente')
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'driverLicenseSurname',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'driverLicenseSurname',
+                'placeholder' => $translator->translate('Es. Rossi'),
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Cognome sulla patente')
             ]
         ]);
 
@@ -160,7 +173,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
 
     public function getInputFilterSpecification()
     {
-        if(is_null($this->avoid)) {
+        if (is_null($this->avoid)) {
             $optionValidatorDriverLicense = [
                 'customerService' => $this->customersService
             ];
@@ -241,7 +254,24 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 6,
+                            'min' => 3,
+                            'max' => 32
+                        ]
+                    ]
+                ]
+            ],
+            'driverLicenseSurname' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 3,
                             'max' => 32
                         ]
                     ]

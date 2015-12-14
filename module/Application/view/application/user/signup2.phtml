@@ -83,11 +83,11 @@
     </div>
 
     <div class="block-field bw-f w-2-4">
-        <p> <label><?= $this->translate('Nome sulla patente (nome e cognome)'); ?></label>
+        <p> <label><?= $this->translate('Data di scadenza'); ?></label>
             <?php
-                $driverLicenseName = $this->form->get('driver')->get('driverLicenseName');
-                echo $this->formElement($driverLicenseName);
-                echo $this->formElementErrors($driverLicenseName, ['class' => 'errors']);
+                $driverLicenseExpire = $this->form->get('driver')->get('driverLicenseExpire');
+                echo $this->formElement($driverLicenseExpire);
+                echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
             ?>
         </p>
     </div>
@@ -98,41 +98,46 @@
 <!-- block-row-field -->
 <div class="block-row-field clearfix">
 
- <div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Rilasciata (nazione)'); ?></label>
-        <?php
-            $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
-            echo $this->formElement($driverLicenseCountry);
-            echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
-        ?>
-    </p>
+    <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Nome sulla patente'); ?></label>
+            <?php
+                $driverLicenseName = $this->form->get('driver')->get('driverLicenseName');
+                echo $this->formElement($driverLicenseName);
+                echo $this->formElementErrors($driverLicenseName, ['class' => 'errors']);
+            ?>
+        </p>
+    </div>
+
+    <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Cognome sulla patente'); ?></label>
+            <?php
+                $driverLicenseSurname = $this->form->get('driver')->get('driverLicenseSurname');
+                echo $this->formElement($driverLicenseSurname);
+                echo $this->formElementErrors($driverLicenseSurname, ['class' => 'errors']);
+            ?>
+        </p>
+    </div>
 </div>
 
-<div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Data di scadenza'); ?></label>
-        <?php
-            $driverLicenseExpire = $this->form->get('driver')->get('driverLicenseExpire');
-            echo $this->formElement($driverLicenseExpire);
-            echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-</div>
-<!-- block-row-field -->
-
- <!-- block-row-field -->
- <div class="block-row-field clearfix">
-
-     <div class="block-field bw-f w-2-4">
+<div>
+    <div class="block-field bw-f w-2-4">
          <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
              <?php $driverLicenseForeign = $this->form->get('driver')->get('driverLicenseForeign'); ?>
              <?php echo $this->formRow($driverLicenseForeign); ?>
          </p>
      </div>
 
- </div>
- <!-- block-row-field -->
+     <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Rilasciata (nazione)'); ?></label>
+            <?php
+                $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
+                echo $this->formElement($driverLicenseCountry);
+                echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
+            ?>
+        </p>
+    </div>
+</div>
+<!-- block-row-field -->
 
 
 <div class="block-form-section content-align-center margin-bottom">

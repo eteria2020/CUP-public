@@ -1,0 +1,1 @@
+ALTER TABLE customers ADD driver_license_surname VARCHAR(255) DEFAULT NULL;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d9ca1b111316f97bf35ab5f9f7c17552",
+    "hash": "3456aeef2d89773c6463bccd164ab3f8",
     "content-hash": "94b930fc92757f64959c6bf82ff892ca",
     "packages": [
         {
@@ -1435,7 +1435,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/internals/drivers-license-validation.git",
-                "reference": "bab0c6c31f482b8dc8807d89f6d9ec583517e1c3"
+                "reference": "19d5478d3a6ccfce38ac3656823f5b4e5c0baa8d"
             },
             "require": {
                 "php": ">=5.4"
@@ -1466,7 +1466,7 @@
                 "validation",
                 "zf2"
             ],
-            "time": "2015-12-11 16:34:14"
+            "time": "2015-12-14 14:42:37"
         },
         {
             "name": "mvlabs/mvlabs-snappy",
