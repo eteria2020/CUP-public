@@ -7,6 +7,7 @@ use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
 use SharengoCore\Service\FleetService;
+use SharengoCore\Service\MunicipalitiesService;
 
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
@@ -32,7 +33,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         CountriesService $countriesService,
         CustomersService $customersService,
         ProvincesService $provincesService,
-        FleetService $fleetService
+        FleetService $fleetService,
+        MunicipalitiesService $municipalitiesService
     ) {
         $this->customersService = $customersService;
         $this->fleetService = $fleetService;
@@ -166,6 +168,11 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ]
         ]);
 
+        $provinces = array_merge(
+            [''],
+            $provincesService->getAllProvinces()
+        );
+
         $this->add([
             'name' => 'birthProvince',
             'type' => 'Zend\Form\Element\Select',
@@ -175,7 +182,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Provincia di nascita (EE = estero)'),
-                'value_options' => $provincesService->getAllProvinces(),
+                'value_options' => $provinces,
                 'use_hidden_element' => true
             ]
         ]);
@@ -538,6 +545,13 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ],
                 'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/[A-Z]{2}/',
+                            'message' => 'Il dato è richiesto e non può essere vuoto'
+                        ]
+                    ],
                     [
                         'name' => 'Application\Form\Validator\BirthProvince'
                     ]

@@ -168,7 +168,6 @@ class UserController extends AbstractActionController
             $container->offsetSet('hasDiscount', true);
 
         } catch (ProfilingPlatformException $ex) {
-
         }
 
         return $this->redirect()->toRoute('signup');
@@ -186,7 +185,6 @@ class UserController extends AbstractActionController
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
-
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -304,11 +302,8 @@ class UserController extends AbstractActionController
     private function getProfilingPlatformPromoCode($email)
     {
         try {
-
             return $this->profilingPlatformService->getPromoCodeByEmail($email);
-
         } catch (ProfilingPlatformException $ex) {
-
         }
 
         return null;

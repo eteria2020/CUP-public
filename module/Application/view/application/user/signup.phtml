@@ -208,7 +208,18 @@
     <p> <label><?= $this->translate('Comune di nascita'); ?></label>
         <?php
             $birthTown = $this->form->get('user')->get('birthTown');
-            echo $this->formElement($birthTown);
+            $select = '<select name="'.$birthTown->getName().'" ';
+            foreach ($birthTown->getAttributes() as $attribute => $value) {
+                $select .= $attribute.'="'.$value.'" ';
+            }
+            $select .= '><option></option></select>';
+            echo $select;
+            $input = '<input name="'.$birthTown->getName().'" ';
+            foreach ($birthTown->getAttributes() as $attribute => $value) {
+                $input .= $attribute.'="'.$value.'" ';
+            }
+            $input .= ' style="display: none;" value="'.$birthTown->getValue().'" disabled></ipnut>';
+            echo $input;
             echo $this->formElementErrors($birthTown, ['class' => 'errors']);
         ?>
     </p>
@@ -485,3 +496,8 @@
         });'
     );
 ?>
+
+<script>
+    var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
+        birthTownValue = "<?= $birthTown->getValue() ?>";
+</script>

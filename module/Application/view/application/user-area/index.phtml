@@ -1,7 +1,8 @@
 <?php
 $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
-    ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+    ->appendFile($this->basePath('js/ui.datepicker-it.js'))
+    ->appendFile($this->basePath('js/signup.js'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
 ?>
@@ -334,10 +335,20 @@ $this->headLink()
                                         <div class="block-field bw-f w-1-4">
                                             <p> <label><?= $this->translate("Comune di nascita"); ?></label>
                                                 <?php
-                                                $birthTown = $this->profileForm->get('customer')->get('birthTown');
-                                                $birthTown->setValue($this->customer->getBirthTown());
-                                                echo $this->formElement($birthTown->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($birthTown, ['class' => 'error-sign-up']);
+                                                    $birthTown = $this->profileForm->get('customer')->get('birthTown');
+                                                    $select = '<select name="'.$birthTown->getName().'" ';
+                                                    foreach ($birthTown->getAttributes() as $attribute => $value) {
+                                                        $select .= $attribute.'="'.$value.'" ';
+                                                    }
+                                                    $select .= '><option></option></select>';
+                                                    echo $select;
+                                                    $input = '<input name="'.$birthTown->getName().'" ';
+                                                    foreach ($birthTown->getAttributes() as $attribute => $value) {
+                                                        $input .= $attribute.'="'.$value.'" ';
+                                                    }
+                                                    $input .= ' style="display: none;" value="'.$birthTown->getValue().'" disabled></ipnut>';
+                                                    echo $input;
+                                                    echo $this->formElementErrors($birthTown, ['class' => 'errors']);
                                                 ?>
                                             </p>
                                         </div>
@@ -678,27 +689,11 @@ echo <<<JS
         $("#js-edit-pwd, #js-reset-editPwd").click(function() {
             $('#viewEditPwd, #editPwd').toggle();
         });
-
-        var selectCountry = $('#birthCountry');
-        var selectProvince = $('#birthProvince');
-        var countryItaly = 'it';
-
-        if(selectCountry.val() != countryItaly) {
-            selectProvince.val('EE');
-            selectProvince.addClass('disabled');
-        }
-
-        $(selectCountry).change(function() {
-
-            var value = $(this).val();
-
-            if(value != countryItaly) {
-                selectProvince.val('EE');
-                selectProvince.addClass('disabled');
-            } else {
-                selectProvince.removeClass('disabled');
-            }
-        });
     });
 JS;
 $this->inlineScript()->captureEnd(); ?>
+
+<script>
+    var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
+        birthTownValue = "<?= $birthTown->getValue() ?>";
+</script>

@@ -169,7 +169,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Provincia di nascita (EE = estero)'),
-                'value_options' => $provincesService->getAllProvinces()
+                'value_options' => $provincesService->getAllProvinces(),
+                'use_hidden_element' => true
             ]
         ]);
 
