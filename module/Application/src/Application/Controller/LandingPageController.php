@@ -45,4 +45,9 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function lifegateAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
 }

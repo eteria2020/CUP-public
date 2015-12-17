@@ -304,6 +304,17 @@ return [
                     ],
                 ]
             ],
+            'lifegate' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{lifegate}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'lifegate',
+                    ],
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
