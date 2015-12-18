@@ -522,7 +522,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'break_chain_on_failure' => true
                     ],
                     [
-                        'name' => 'Application\Form\Validator\EighteenDate'
+                        'name' => 'Application\Form\Validator\EighteenDate',
+                        'name' => 'Application\Form\Validator\NotTooOld'
                     ]
                 ]
             ],
