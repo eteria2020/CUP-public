@@ -315,14 +315,14 @@ return [
                     ],
                 ]
             ],
-            'aereonautica' => [
+            'aeronautica' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{aereonautica}',
+                    'route' => '/{aeronautica}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'aereonautica',
+                        'action'     => 'aeronautica',
                     ],
                 ]
             ],
