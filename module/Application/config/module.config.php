@@ -260,6 +260,17 @@ return [
                     ],
                 ]
             ],
+            'eq-sharing' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{eq-sharing}',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'index',
+                    ),
+                ]
+            ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
