@@ -1,19 +1,19 @@
 @font-face {
 	font-family: 'Lato-Bold';
-	src: url('../../../common/application/font/Lato-Bold.eot');
-	src: url('../../../common/application/font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
-		url('../../../common/application/font/Lato-Bold.woff') format('woff'),
-		url('../../../common/application/font/Lato-Bold.ttf')  format('truetype');
+	src: url('../font/Lato-Bold.eot');
+	src: url('../font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Bold.woff') format('woff'),
+		url('../font/Lato-Bold.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Regular';
-	src: url('../../../common/application/font/Lato-Regular.eot');
-	src: url('../../../common/application/font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../../../common/application/font/Lato-Regular.woff') format('woff'),
-		url('../../../common/application/font/Lato-Regular.ttf')  format('truetype');
+	src: url('../font/Lato-Regular.eot');
+	src: url('../font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Regular.woff') format('woff'),
+		url('../font/Lato-Regular.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
@@ -71,11 +71,11 @@ div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
 button{
 	color:#000;
 	background-color:#ffed00;
-	border:2px solid #fff;
+	border:5px solid #fff;
 	padding:3px 15px 2px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
-	border-radius: 4px;
+	border-radius: 10px;
 	margin-bottom:15px;
 }
 
@@ -100,7 +100,7 @@ button a{
 #logo{
 	width: 150px;
 	height: 105px;
-	background-image: url('../images/logo_elfo.png');
+	background-image: url('../img/logo_elfo.png');
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -119,12 +119,14 @@ button a{
 
 #second-paragraph{
 	position: relative;
-	top:-50px;
+	top:-120px;
 }
 
 #nota{
 	font-size: 20px;
+	font-family: 'Lato-Regular';
 }
+
 
 
 
@@ -134,7 +136,7 @@ button a{
 	}
 }
 @media screen and (max-width:767px){
-
+	
 	div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7{
 		padding-right:0;
 	}
@@ -144,13 +146,19 @@ button a{
 	.col-sm-5.text-center.p-top-5{
 		padding-bottom:4%;
 	}
-
+	
 	a.yellow{
 		font-size:1.3rem;
 	}
 	.strong{
-		font-size:1.9rem;
-		line-height:2.5rem;
+		font-size: 1.2rem;
+   		line-height: 1.6rem;
+
+	}
+
+	.strong-big{
+		font-size: 1.6rem;
+		line-height: 2.0rem;
 	}
 	.semistrong{
 		font-size:1rem;
@@ -164,17 +172,17 @@ button a{
 
 	#second-paragraph {
 	    position: relative;
-	    top: 0px;
+	    top: -40px;
 	}
 
 	#intro {
 	    font-size: 16px;
 	    position: relative;
-	    top: 0px;
+	    top: 20px;
 	}
 
 	#logo{
-		top:-18px;
+		top:13px;
 	}
 
 	.link-equo{
@@ -182,14 +190,19 @@ button a{
 	}
 
 	#nota{
-	    font-size: 14px;
+	    font-size: 10px;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: 10px;
 	}
 
 }
 
 
 @media screen and (min-width: 768px){
-
+	
 	.col-sm-5.col-sm-push-7{
 		padding-top:3%;
 	}
@@ -200,6 +213,10 @@ button a{
 		font-size:1.0rem;
 		line-height:1.2rem;
 	}
+
+	.strong-big{
+		font-size:1.4rem;
+	}
 	.smaller, .semistrong{
 		font-size:0.85rem;
 	}
@@ -207,14 +224,14 @@ button a{
 	#intro {
 	    font-size: 14px;
 	    position: relative;
-	    top:2px;
+	    top:10px;
 	}
 
 	#logo{
-		top:-10px;
+		top:0px;
 		width: 75px;
 		height: 53px;
-		background-image: url('../images/logo-elfo-small.png');
+		background-image: url('../img/logo-elfo-small.png');
 	}
 
 	#paragraph1 {
@@ -222,14 +239,19 @@ button a{
 	    top: -11px;
 	}
 
+	#second-paragraph {
+	    position: relative;
+	    top: -100px;
+	}
+
 	#nota{
-	    font-size: 14px;
+	    font-size: 12px;
 	}
 
 	.link-equo{
 		font-size: 30px;
 	}
-
+	
 }
 @media screen and (min-width: 960px){
 
@@ -246,18 +268,23 @@ button a{
 
 	#paragraph1 {
 	    position: relative;
-	    top: -19px;
+	    top: 2px;
+	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: -100px;
 	}
 
 	#logo{
 		top:-13px;
 		width: 150px;
 		height: 105px;
-		background-image: url('../images/logo_elfo.png');
+		background-image: url('../img/logo_elfo.png');
 	}
 
 	#nota{
-	    font-size: 14px;
+	    font-size: 12px;
 	}
 
 	.link-equo{
@@ -273,8 +300,12 @@ button a{
 		font-size:1.7rem;
 	}
 	.strong{
-	    font-size: 1.4rem;
+	    font-size: 1.2rem;
    		line-height: 1.6rem;
+	}
+
+	.strong-big{
+		font-size:1.6rem;
 	}
 	.semistrong{
 		font-size:1.3rem;
@@ -284,19 +315,24 @@ button a{
 	    color: #000;
 	    font-size: 16px;
 	    position: relative;
-	    top: -6px;
+	    top: 3px;
 	}
 
 	#logo{
-		top:-20px;
+		top:0px;
 	}
 
 	#nota{
-	    font-size: 16px;
+	    font-size: 14px;
 	}
 
 	.link-equo{
 		font-size: 40px;
+	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: -80px;
 	}
 }
 
@@ -318,6 +354,9 @@ button a{
 		font-size: 1.7rem;
    		line-height: 1.9rem;
 	}
+	.strong-big{
+		font-size:2.1rem;
+	}
 	.semistrong{
 		font-size:1.5rem;
 	}
@@ -327,9 +366,18 @@ button a{
 
 	#intro {
 	    color: #000;
-	    font-size: 20px;
+	    font-size: 30px;
 	    position: relative;
-	    top: -12px;
+	    top: 4px;
+	}
+
+	#nota {
+	    font-size: 16px;
+	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: -145px;
 	}
 }
 
@@ -341,11 +389,37 @@ button a{
 		font-size:2.3rem;
 		line-height:2.5rem;
 	}
+	.strong-big{
+		font-size: 2.8rem;
+	}
 	.semistrong{
 		font-size:1.7rem;
 	}
 	.smaller{
 		font-size:1.2rem;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: 0px;
+	}
+
+	#logo {
+	    top: -10px;
+	}
+
+	#nota {
+	    font-size: 20px;
+	}
+	#intro {
+	    color: #000;
+	    font-size: 30px;
+	    position: relative;
+	    top: -10px;
+	}
+	#second-paragraph {
+	    position: relative;
+	    top: -120px;
 	}
 }
 
@@ -355,13 +429,21 @@ button a{
 	}
 	.strong{
 		font-size:2.5rem;
-		line-height:2.7rem;
+		line-height:2.9rem;
+	}
+	.strong-big{
+		font-size: 3.0rem;
 	}
 	.semistrong{
 		font-size:2rem;
 	}
 	.smaller{
 		font-size:1.5rem;
+	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: -170px;
 	}
 }
 
@@ -371,12 +453,33 @@ button a{
 	}
 	.strong{
 		font-size:2.7rem;
-		line-height:2.9rem;
+		line-height:3.1rem;
 	}
 	.semistrong{
 		font-size:2.3rem;
 	}
 	.smaller{
 		font-size:2.1rem;
+	}
+
+	#paragraph1{
+		position: relative;
+		top:50px;
+	}
+
+	#second-paragraph {
+	    position: relative;
+	    top: -180px;
+	}
+}
+
+@media screen and (min-width:1900px){
+	#second-paragraph {
+	    position: relative;
+	    top: -220px;
+	}
+
+	#logo{
+		top:20px;
 	}
 }
