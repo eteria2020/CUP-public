@@ -318,7 +318,7 @@ return [
             'aeronautica' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{aeronautica}',
+                    'route' => '/{isma}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
