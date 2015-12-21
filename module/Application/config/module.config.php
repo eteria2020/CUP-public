@@ -315,6 +315,17 @@ return [
                     ],
                 ]
             ],
+            'aeronautica' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{isma}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aeronautica',
+                    ],
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
