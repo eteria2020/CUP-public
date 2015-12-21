@@ -104,9 +104,10 @@ class RegistrationForm extends Form
      */
     public function setData($data)
     {
-        if (empty($data['user']['taxCode'])) {
-            $this->excludeTaxCodeValidationForForeigners($data['user']['birthCountry']);
-        }
+        $this->excludeTaxCodeValidationForForeigners(
+            $data['user']['taxCode'],
+            $data['user']['birthCountry']
+        );
 
         return parent::setData($data);
     }
@@ -114,11 +115,11 @@ class RegistrationForm extends Form
     /**
      * @param string $birthCountry
      */
-    private function excludeTaxCodeValidationForForeigners($birthCountry)
+    private function excludeTaxCodeValidationForForeigners($taxCode, $birthCountry)
     {
         $userValidationGroup = array_keys($this->getBaseFieldset()->getElements());
 
-        if ($birthCountry !== 'it') {
+        if (empty($taxCode) && $birthCountry !== 'it') {
             $userValidationGroup = array_diff($userValidationGroup, ['taxCode']);
         }
 
