@@ -255,8 +255,8 @@ return [
                     'route' => '/{bikemi}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'bikemi',
+                        'controller' => 'Index',					// Redirect to the Index page as require on Issue-1295
+                        'action'     => 'index',
                     ],
                 ]
             ],
