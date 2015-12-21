@@ -52,6 +52,10 @@
         {
             "url": "https://github.com/marcosh/php-resque-plugin.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/marcosh/php-resque-scheduler.git",
+            "type": "git"
         }
     ],
     "require-dev": {

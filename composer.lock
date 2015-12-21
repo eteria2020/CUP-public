@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3456aeef2d89773c6463bccd164ab3f8",
-    "content-hash": "94b930fc92757f64959c6bf82ff892ca",
+    "hash": "5e8b2d878743b8c7a88febf2a38dd167",
+    "content-hash": "bd4c0faa229745a8c75ff136e9fe15ae",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -138,14 +138,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/chrisboulton/php-resque-scheduler.git",
-                "reference": "ab8bd52949cac1f815bbb97aa39f51c7b5766a86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chrisboulton/php-resque-scheduler/zipball/ab8bd52949cac1f815bbb97aa39f51c7b5766a86",
-                "reference": "ab8bd52949cac1f815bbb97aa39f51c7b5766a86",
-                "shasum": ""
+                "url": "https://github.com/marcosh/php-resque-scheduler.git",
+                "reference": "bef0067c8c048b6494f330b860c24a68766b68ff"
             },
             "require": {
                 "chrisboulton/php-resque": "dev-master"
@@ -156,7 +150,6 @@
                     "ResqueScheduler": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Chris Boulton",
@@ -164,7 +157,7 @@
                 }
             ],
             "description": "php-resque-scheduler is a PHP port of resque-scheduler, which adds support for scheduling items in the future to Resque.",
-            "time": "2013-09-16 09:21:26"
+            "time": "2015-12-20 16:52:44"
         },
         {
             "name": "colinmollenhour/credis",
@@ -1435,7 +1428,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/internals/drivers-license-validation.git",
-                "reference": "19d5478d3a6ccfce38ac3656823f5b4e5c0baa8d"
+                "reference": "8a8f3959b97b3e8842433f9d3436543d6280b801"
             },
             "require": {
                 "php": ">=5.4"
@@ -1466,7 +1459,7 @@
                 "validation",
                 "zf2"
             ],
-            "time": "2015-12-14 14:42:37"
+            "time": "2015-12-21 08:36:33"
         },
         {
             "name": "mvlabs/mvlabs-snappy",
@@ -1550,7 +1543,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "665889deca62add0b70e8c08c014a046861a9110"
+                "reference": "6cdccacdf8c4a973c7c89e2722bf4fa7ebfef476"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1571,7 +1564,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-12-17 16:54:08"
+            "time": "2015-12-21 08:37:35"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
