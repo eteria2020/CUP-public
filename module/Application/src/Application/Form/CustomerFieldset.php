@@ -234,7 +234,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'town',
-                'maxlength' => 16,
+                'maxlength' => 64,
                 'placeholder' => $translator->translate('Città'),
                 'class' => 'required'
             ],
