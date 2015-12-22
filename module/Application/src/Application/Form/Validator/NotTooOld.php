@@ -41,7 +41,7 @@ class NotTooOld extends AbstractValidator
         $this->setValue($value);
 
         $date = date_create($value);
-        $oldest = date_create("first day of " . $this->minYear);
+        $oldest = date_create("first day of January " . $this->minYear);
 
         if ($date < $oldest) {
             $this->error(self::TOO_OLD);

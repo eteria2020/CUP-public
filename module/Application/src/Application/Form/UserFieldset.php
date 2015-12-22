@@ -523,6 +523,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ],
                     [
                         'name' => 'Application\Form\Validator\EighteenDate',
+                    ],
+                    [
                         'name' => 'Application\Form\Validator\NotTooOld'
                     ]
                 ]
