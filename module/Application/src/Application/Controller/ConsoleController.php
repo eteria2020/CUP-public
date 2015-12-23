@@ -149,10 +149,8 @@ class ConsoleController extends AbstractActionController
         $defaultBonusExpiryDate = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-12-31 23:59:59');
 
         foreach ($customers as $customer) {
-
             // security check to avoid multiple script executions
             if (count($customer->getBonuses()) == 0) {
-
                 $bonusValue = 100;
                 $bonusDesc = 'Bonus iscrizione utente';
                 if (null == $customer->getInsertedTs() ||
@@ -164,9 +162,9 @@ class ConsoleController extends AbstractActionController
                 // create Bonus
                 $bonus = new \SharengoCore\Entity\CustomersBonus();
                 $bonus->setInsertTs(null != $customer->getInsertedTs() ? $customer->getInsertedTs() : $defaultBonusInsertDate);
-                $bonus->setUpdateTs($bonus->getInsertTs());
                 $bonus->setTotal($bonusValue);
                 $bonus->setResidual($bonusValue);
+                $bonus->setUpdateTs($bonus->getInsertTs());
                 $bonus->setValidFrom($bonus->getInsertTs());
                 $bonus->setValidTo($defaultBonusExpiryDate);
                 $bonus->setDescription($bonusDesc);
@@ -174,9 +172,7 @@ class ConsoleController extends AbstractActionController
                 $this->customerService->addBonus($customer, $bonus);
 
                 echo $customer->getId() . "\n";
-
             }
-
         }
 
         echo "\n\nDONE\n";
@@ -292,7 +288,6 @@ class ConsoleController extends AbstractActionController
 
         // car should not have active reservations
         if ($alarmCode == self::OPERATIVE_ACTION) {
-
             // remove current active reservation
             foreach ($reservations as $reservation) {
                 $reservation->setActive(false)
@@ -326,7 +321,6 @@ class ConsoleController extends AbstractActionController
             } else {
                 $this->writeToConsole("reservation found, skipping creation...\n");
             }
-
         }
     }
 
