@@ -1543,7 +1543,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "6cdccacdf8c4a973c7c89e2722bf4fa7ebfef476"
+                "reference": "fb20f06591b446e346a169c45a0d86c1508b9420"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1564,7 +1564,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2015-12-21 08:37:35"
+            "time": "2015-12-23 16:31:40"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
