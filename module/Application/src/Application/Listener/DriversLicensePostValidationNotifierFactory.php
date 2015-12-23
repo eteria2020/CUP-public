@@ -10,7 +10,8 @@ class DriversLicensePostValidationNotifierFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $emailService = $serviceLocator->get('SharengoCore\Service\EmailService');
+        $emailSettings = $serviceLocator->get('Config')['emailSettings'];
 
-        return new DriversLicensePostValidationNotifier($emailService);
+        return new DriversLicensePostValidationNotifier($emailService, $emailSettings);
     }
 }
