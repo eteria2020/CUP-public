@@ -337,6 +337,17 @@ return [
                     ],
                 ]
             ],
+            'roma' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{roma}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'roma',
+                    ],
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
