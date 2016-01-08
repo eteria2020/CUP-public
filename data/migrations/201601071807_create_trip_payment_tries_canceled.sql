@@ -9,7 +9,6 @@ CREATE TABLE trip_payments_canceled (
     parking_minutes INT NOT NULL,
     discount_percentage INT NOT NULL,
     total_cost INT NOT NULL,
-    status trip_payment_status NOT NULL,
     created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     to_be_payed_from TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     first_payment_try_ts TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
