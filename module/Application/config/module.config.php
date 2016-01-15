@@ -255,7 +255,7 @@ return [
                     'route' => '/{bikemi}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',					// Redirect to the Index page as require on Issue-1295
+                        'controller' => 'Index',// Redirect to the Index page as require on Issue-1295
                         'action'     => 'index',
                     ],
                 ]
@@ -568,7 +568,8 @@ return [
             'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory',
             'Application\Controller\CustomerBonusPackages' => 'Application\Controller\CustomerBonusPackagesControllerFactory',
             'Application\Controller\GeneratePackageInvoices' => 'Application\Controller\GeneratePackageInvoicesControllerFactory',
-            'Application\Controller\DriversLicenseValidation' => 'Application\Controller\DriversLicenseValidationControllerFactory'
+            'Application\Controller\DriversLicenseValidation' => 'Application\Controller\DriversLicenseValidationControllerFactory',
+            'Application\Controller\GenerateTripInvoice' => 'Application\Controller\GenerateTripInvoiceControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -635,7 +636,8 @@ return [
                 ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []],
                 ['controller' => 'Application\Controller\CustomerBonusPackages', 'roles' => []],
                 ['controller' => 'Application\Controller\GeneratePackageInvoices', 'roles' => []],
-                ['controller' => 'Application\Controller\DriversLicenseValidation', 'roles' => []]
+                ['controller' => 'Application\Controller\DriversLicenseValidation', 'roles' => []],
+                ['controller' => 'Application\Controller\GenerateTripInvoice', 'roles' => []],
             ],
         ],
     ],
@@ -813,6 +815,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',
                             'action' => 'pay-invoice'
+                        ]
+                    ]
+                ],
+                'generate-trip-invoice' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate trip invoice <tripPaymentId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'GenerateTripInvoice',
+                            'action' => 'generate-invoice'
                         ]
                     ]
                 ],
