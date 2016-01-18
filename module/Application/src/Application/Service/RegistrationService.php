@@ -122,13 +122,31 @@ final class RegistrationService
      *
      * @return array|null
      */
-    public function retrieveData()
+    public function retrieveValidData()
     {
         $dataForm1 = $this->form1->getRegisteredData();
         $dataForm2 = $this->form2->getRegisteredData();
         $promoCode = $this->form1->getRegisteredDataPromoCode();
 
-        if (empty($dataForm1) || empty($dataForm2)) {
+        $userData = $dataForm1->toArray($this->hydrator);
+        $driverData = $dataForm2->toArray($this->hydrator);
+
+        // we compile manually some fields just for the sake of validation
+        $userData['email2'] = $userData['email'];
+        $userData['password2'] = $userData['password'];
+        $userData['birthDate'] = $userData['birthDate']->format('d-m-Y');
+        $driverData['driverLicenseReleaseDate'] = $driverData['driverLicenseReleaseDate']->format('d-m-Y');
+        $driverData['driverLicenseExpire'] = $driverData['driverLicenseExpire']->format('d-m-Y');
+
+        $this->form1->setData([
+            'user' => $userData,
+            'promocode' => $promoCode,
+        ]);
+        $this->form2->setData([
+            'driver' => $driverData
+        ]);
+
+        if (!$this->form1->isValid() || !$this->form2->isValid()) {
             return null;
         } else {
             $dataForm1 = $this->hydrator->extract($dataForm1);

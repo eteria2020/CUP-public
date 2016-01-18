@@ -229,7 +229,7 @@ class UserController extends AbstractActionController
     {
         $form->registerData();
 
-        $data = $this->registrationService->retrieveData();
+        $data = $this->registrationService->retrieveValidData();
 
         // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
         if (empty($data)) {
