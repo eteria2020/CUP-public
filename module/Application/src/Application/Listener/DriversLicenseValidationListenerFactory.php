@@ -11,10 +11,12 @@ class DriversLicenseValidationListenerFactory implements FactoryInterface
     {
         $enqueueValidation = $serviceLocator->get('MvLabsDriversLicenseValidation\EnqueueValidation');
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
+        $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
 
         return new DriversLicenseValidationListener(
             $enqueueValidation,
-            $customersService
+            $customersService,
+            $countriesService
         );
     }
 }

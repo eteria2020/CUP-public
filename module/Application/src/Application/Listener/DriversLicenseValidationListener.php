@@ -2,6 +2,7 @@
 
 namespace Application\Listener;
 
+use SharengoCore\Service\CountriesService;
 use MvLabsDriversLicenseValidation\Service\EnqueueValidationService;
 use SharengoCore\Service\CustomersService;
 
@@ -16,12 +17,24 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
      */
     private $enqueueValidationService;
 
+    /**
+     * @var CustomersService $customersService
+     */
+    private $customersService;
+
+    /**
+     * @var CountriesService $countriesService
+     */
+    private $countriesService;
+
     public function __construct(
         EnqueueValidationService $enqueueValidationService,
-        CustomersService $customersService
+        CustomersService $customersService,
+        CountriesService $countriesService
     ) {
         $this->enqueueValidationService = $enqueueValidationService;
         $this->customersService = $customersService;
+        $this->countriesService = $countriesService;
     }
 
     public function attachShared(SharedEventManagerInterface $events)
@@ -57,6 +70,8 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         // we do not request the validation of the drivers license to the
         // motorizzazione civile is the customer has a foreign drivers license
         if (!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)) {
+            $data['birthCountryMCTC'] = $this->countriesService->getMctcCode($data['birthCountry']);
+
             $this->enqueueValidationService->validateDriversLicense($data);
         }
     }

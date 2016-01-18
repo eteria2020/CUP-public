@@ -62,6 +62,7 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
             $args['taxCode'],
             $args['birthDate']['date'],
             $args['birthCountry'],
+            $args['birthCountryMCTC'],
             $args['birthProvince'],
             $args['birthTown'],
             $response->valid(),
