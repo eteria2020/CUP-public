@@ -128,6 +128,9 @@ final class RegistrationService
         $dataForm2 = $this->form2->getRegisteredData();
         $promoCode = $this->form1->getRegisteredDataPromoCode();
 
+        if (is_null($dataForm1) || is_null($dataForm2)) {
+            return null;
+        }
         $userData = $dataForm1->toArray($this->hydrator);
         $driverData = $dataForm2->toArray($this->hydrator);
 
