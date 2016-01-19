@@ -297,6 +297,11 @@ class UserAreaController extends AbstractActionController
             $postData = $this->getRequest()->getPost()->toArray();
             $customer = $this->userService->getIdentity();
             $postData['driver']['id'] = $customer->getId();
+            if (!isset($postData['driver']['driverLicenseCategories'])) {
+                $driver = $postData['driver'];
+                $driver['driverLicenseCategories'] = [];
+                $postData['driver'] = $driver;
+            }
             $form->setData($postData);
 
             if ($form->isValid()) {

@@ -302,11 +302,6 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'driverLicenseCategories' => [
                 'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Application\Form\Validator\BLicense'
-                    ]
-                ]
             ]
         ];
     }

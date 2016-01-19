@@ -213,7 +213,14 @@ class UserController extends AbstractActionController
         }
 
         if ($this->getRequest()->isPost()) {
-            $this->form2->setData($this->getRequest()->getPost());
+            $postData = $this->getRequest()->getPost();
+
+            if (!isset($postData['driver']['driverLicenseCategories'])) {
+                $driver = $postData['driver'];
+                $driver['driverLicenseCategories'] = [];
+                $postData->set('driver', $driver);
+            }
+            $this->form2->setData($postData);
 
             if ($this->form2->isValid()) {
                 return $this->conclude($this->form2);

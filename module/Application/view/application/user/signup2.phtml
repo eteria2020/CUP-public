@@ -153,7 +153,8 @@
             $driverLicenseCategories = $this->form->get('driver')->get('driverLicenseCategories');
             foreach ($driverLicenseCategories->getValueOptions() as $key => $value): ?>
                 <label class='control checkbox checkbox--patente'>
-                    <input type='checkbox' name="<?php echo $driverLicenseCategories->getName() ?>[]" value="<?php echo $value; ?>"><span class='control-indicator'><?php echo $key; ?></span>
+                    <input type='checkbox' name="<?php echo $driverLicenseCategories->getName() ?>[]" value="<?php echo $value; ?>" <?= !is_null($driverLicenseCategories->getValue()) && in_array($value, $driverLicenseCategories->getValue()) ? 'checked' : '' ?>>
+                    <span class='control-indicator'><?php echo $key; ?></span>
                 </label>
             <?php endforeach; ?>
         <?php echo $this->formElementErrors($driverLicenseCategories, ['class' => 'errors']); ?>
