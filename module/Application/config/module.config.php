@@ -205,6 +205,17 @@ return [
                     ]
                 ]
             ],
+            'foreign-drivers-license' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{foreign-drivers-license}/:customerId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'ForeignDriversLicense',
+                        'action' => 'foreign-drivers-license'
+                    ]
+                ]
+            ],
             'cookies' => [
                 'type' => 'Segment',
                 'options' => [
@@ -538,6 +549,7 @@ return [
             'PasswordForm'             => 'Application\Form\PasswordFormFactory',
             'DriverLicenseForm'        => 'Application\Form\DriverLicenseFormFactory',
             'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory',
+            'ForeignDriversLicenseForm' => 'Application\Form\ForeignDriversLicenseFormFactory',
             'Application\Listener\DriversLicenseValidationListener' => 'Application\Listener\DriversLicenseValidationListenerFactory',
             'Application\Listener\DriversLicensePostValidationLogger' => 'Application\Listener\DriversLicensePostValidationLoggerFactory',
             'Application\Listener\DriversLicensePostValidationListener' => 'Application\Listener\DriversLicensePostValidationListenerFactory',
@@ -570,6 +582,7 @@ return [
             'Application\Controller\GeneratePackageInvoices' => 'Application\Controller\GeneratePackageInvoicesControllerFactory',
             'Application\Controller\DriversLicenseValidation' => 'Application\Controller\DriversLicenseValidationControllerFactory',
             'Application\Controller\GenerateTripInvoice' => 'Application\Controller\GenerateTripInvoiceControllerFactory',
+            'Application\Controller\ForeignDriversLicense' => 'Application\Controller\ForeignDriversLicenseControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -638,6 +651,7 @@ return [
                 ['controller' => 'Application\Controller\GeneratePackageInvoices', 'roles' => []],
                 ['controller' => 'Application\Controller\DriversLicenseValidation', 'roles' => []],
                 ['controller' => 'Application\Controller\GenerateTripInvoice', 'roles' => []],
+                ['controller' => 'Application\Controller\ForeignDriversLicense', 'roles' => []],
             ],
         ],
     ],

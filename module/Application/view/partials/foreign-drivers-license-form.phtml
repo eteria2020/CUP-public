@@ -1,0 +1,56 @@
+<?php
+    $form->prepare(); // The correct enctype is set here
+    echo $this->form()->openTag($form);
+?>
+<div class="padding-top margin-bottom">
+    <div class="block-form w-2-4 auto-margin clearfix">
+        <div class="block-field auto-margin">
+                <div style="font-weight: bold; text-align: center">DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'<br>CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA</div>
+            <div style="font-weight: bold; text-align: center">(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)</div>
+            <br>
+            <div class="message font">
+                Il sottoscritto <?= $this->customer->getSurname() . ' ' . $this->customer->getName() ?> nato a <?= $this->customer->getBirthTown() ?> (prov. <?= $this->customer->getBirthProvince() ?>) il <?= $this->customer->getBirthDate()->format('d/m/Y') ?> e residente in <?= $this->customer->getTown() ?>, via <?= $this->customer->getAddress() ?>,
+                <br>
+                consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di dichiarazioni mendaci, sanzioni penali previste dal Codice penale e dalle leggi speciali in materia ed espressamente richiamate dall'art. 76 del D.P.R. N. 445 DEL 28/12/2000, sotto la sua responsabilit&agrave
+                <br>
+                <br>
+                <div style="font-weight: bold; text-align: center">DICHIARA</div>
+                <br>
+                di essere titolare di patente di guida in corso di validit&agrave n. <?= $this->customer->getDriverLicense() ?> rilasciata da <?= $this->authority ?> il <?= $this->customer->getDriverLicenseReleaseDate()->format('d/m/Y') ?> categoria <?= $this->categories ?>, con scadenza il <?= $this->customer->getDriverLicenseExpire()->format('d/m/Y') ?>.
+            </div>
+            <br>
+            <div>
+                <?php
+                    $signature = $this->form->get('signature');
+                    echo $this->formElement($signature);
+                ?>
+                Letto, confermato e sottoscritto
+                <?= $this->formElementErrors($signature, ['class' => 'errors']); ?>
+            </div>
+            <br>
+            <div style="font-size: 70%">
+                Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente dichiarazione sono relativi ad  informazioni strettamente necessarie al conseguimento di finalit&agrave previste dalle vigenti normative e sono trattati e custoditi esclusivamente dall'ufficio responsabile del procedimento.
+            </div>
+            <div style="font-size: 80%; font-weight: bold; text-decoration: underline;">
+                Esente da Autentica
+            </div>
+            <br>
+            <br>
+            <p>
+                <label>Occorre allegare copia fotostatica, anche non autenticata, della patente di guida</label>
+                <?php
+                    $file = $form->get('drivers-license-file');
+                    echo $this->formFile($file);
+                    echo $this->formElementErrors($file, ['class' => 'errors']);
+                ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="block-wrapper-button content-align-center">
+        <input type="reset" class="reset" name="" value="Annulla">
+        <input type="submit" name="" value="Avanti">
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>
