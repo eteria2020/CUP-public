@@ -36,6 +36,6 @@ return [
     'subscription-bonus' => [
         'total' => 100,
         'description' => 'Bonus iscrizione utente',
-        'valid-to' => '+3 months'
+        'valid-to' => '+ 90 days'
     ]
 ];
