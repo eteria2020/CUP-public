@@ -118,6 +118,11 @@ class UserAreaController extends AbstractActionController
     private $bonusPackagesService;
 
     /**
+     * @var BannerJsonpUrl
+     */
+    private $bannerJsonpUrl;
+
+    /**
      * @param CustomersService $I_customersService
      * @param TripsService $I_tripsService
      * @param AuthenticationService $userService
@@ -132,6 +137,7 @@ class UserAreaController extends AbstractActionController
      * @param TripPaymentsService $tripPaymentsService
      * @param CartasiContractsService $cartasiContractsService
      * @param BonusPackagesService $bonusPackagesService
+     * @param $bannerJsonpUrl
      */
     public function __construct(
         CustomersService $I_customersService,
@@ -147,7 +153,8 @@ class UserAreaController extends AbstractActionController
         PromoCodesService $promoCodeService,
         TripPaymentsService $tripPaymentsService,
         CartasiContractsService $cartasiContractsService,
-        BonusPackagesService $bonusPackagesService
+        BonusPackagesService $bonusPackagesService,
+        $bannerJsonpUrl
     ) {
         $this->I_customersService = $I_customersService;
         $this->I_tripsService = $I_tripsService;
@@ -164,6 +171,7 @@ class UserAreaController extends AbstractActionController
         $this->tripPaymentsService = $tripPaymentsService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->bonusPackagesService = $bonusPackagesService;
+        $this->bannerJsonpUrl = $bannerJsonpUrl;
     }
 
     public function indexAction()
@@ -206,6 +214,7 @@ class UserAreaController extends AbstractActionController
         }
 
         return new ViewModel([
+            'bannerJsonpUrl' => $this->bannerJsonpUrl,
             'customer'     => $this->customer,
             'profileForm'  => $this->profileForm,
             'passwordForm' => $this->passwordForm,

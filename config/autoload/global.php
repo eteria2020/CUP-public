@@ -37,5 +37,8 @@ return [
         'total' => 100,
         'description' => 'Bonus iscrizione utente',
         'valid-to' => '+3 months'
-    ]
+    ],
+    'banner-jsonp' => [
+        'url' => 'test.json'
+    ],
 ];

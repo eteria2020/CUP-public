@@ -1,0 +1,10 @@
+setBanner({
+	"banner":
+	[
+    	{
+            "id": "singup-banner",
+            "img": "http://somesite.it/banner.png",
+            "link": "http://somesite.it/dosomething?foo=bar"
+        }
+	]
+});

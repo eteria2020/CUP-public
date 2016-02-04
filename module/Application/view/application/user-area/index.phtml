@@ -1,5 +1,6 @@
 <?php
 $this->headScript()
+    ->appendFile($this->basePath('js/banner.js'))
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
     ->appendFile($this->basePath('js/ui.datepicker-it.js'))
     ->appendFile($this->basePath('js/signup.js'));
@@ -580,7 +581,10 @@ $this->headLink()
 
                         <!-- block-form -->
                         <div class="block-form bw-f w-4-4  clearfix">
-
+                            <!-- user area banner -->
+                            <div id="userarea-banner" class="bw-f w-4-4 clearfix">
+                            </div>
+                            <!-- user area banner -->
 
                             <div class="block-form-section content-align-center margin-bottom">
                                 <h2><?= $this->translate("I tuoi minuti Bonus"); ?></h2>
@@ -673,7 +677,8 @@ JS;
 }
 ?>
 
-<?php $this->inlineScript()->captureStart();
+<?php
+$this->inlineScript()->captureStart();
 echo <<<JS
     $(document).ready(function() {
         $(".datepicker-date" ).datepicker({
@@ -695,5 +700,19 @@ $this->inlineScript()->captureEnd(); ?>
 
 <script>
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
-        birthTownValue = "<?= $birthTown->getValue() ?>";
+        birthTownValue = "<?= $birthTown->getValue() ?>",
+        userId = <?= (string)$this->customer->getId() ?>,
+        bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url']?>";
+        
+    // Load Banner
+    $.ajax({
+        url: bannerJsonpUrl,
+        type: "POST",
+        async: true,
+        data: {
+            id: userId
+        },
+        crossDomain: true,
+        dataType: "jsonp"
+    });
 </script>
