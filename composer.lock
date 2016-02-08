@@ -1521,7 +1521,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
-                "reference": "37dd79e23cb99dbe868490ad6cf28a2f3b4de3e0"
+                "reference": "8f547fc0e9afd9e768bc8033a32193fc6bc095a1"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1535,7 +1535,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2016-02-08 10:11:04"
+            "time": "2016-02-08 11:45:28"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
