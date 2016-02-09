@@ -24,3 +24,7 @@ CREATE TABLE cartasi_csv_anomalies (
     transaction_id INT REFERENCES transactions(id) DEFAULT NULL,
     updates jsonb DEFAULT NULL
 );
+
+ALTER TABLE cartasi_csv_files OWNER TO sharengo;
+
+ALTER TABLE cartasi_csv_anomalies OWNER TO sharengo;
