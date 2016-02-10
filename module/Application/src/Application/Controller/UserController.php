@@ -280,7 +280,7 @@ class UserController extends AbstractActionController
         $message = $this->registrationService->registerUser($hash);
         $enablePayment = false;
 
-        $customer = $this->registrationService->getUserFromHash($hash);
+        $customer = $this->customersService->getUserFromHash($hash);
 
         if (null != $customer) {
             $enablePayment = !$customer->getFirstPaymentCompleted();
@@ -291,7 +291,9 @@ class UserController extends AbstractActionController
             'enable_payment' => $enablePayment,
             'customerId' => $customer->getId(),
             'benefitsFromDiscountedSubscriptionAmount' => $customer->benefitsFromDiscoutedSubscriptionAmount(),
-            'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100
+            'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100,
+            'needsDriversLicenseUpload' => $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer),
+            'hash' => $hash
         ]);
     }
 

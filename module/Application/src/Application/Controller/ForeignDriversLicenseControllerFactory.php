@@ -14,11 +14,13 @@ class ForeignDriversLicenseControllerFactory implements FactoryInterface
         $form = $sharedLocator->get('ForeignDriversLicenseForm');
         $customersService = $sharedLocator->get('SharengoCore\Service\CustomersService');
         $authorityService = $sharedLocator->get('SharengoCore\Service\AuthorityService');
+        $foreignDriversLicenseService = $sharedLocator->get('SharengoCore\Service\ForeignDriversLicenseService');
 
         return new ForeignDriversLicenseController(
             $form,
             $customersService,
-            $authorityService
+            $authorityService,
+            $foreignDriversLicenseService
         );
     }
 }

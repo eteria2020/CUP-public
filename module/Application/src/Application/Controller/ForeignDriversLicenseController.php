@@ -5,8 +5,10 @@ namespace Application\Controller;
 use Application\Form\ForeignDriversLicenseForm;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\AuthorityService;
+use SharengoCore\Service\ForeignDriversLicenseService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Exception\InvalidAuthorityCodeException;
+use SharengoCore\Form\DTO\UploadedFile;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -29,21 +31,32 @@ class ForeignDriversLicenseController extends AbstractActionController
      */
     private $authorityService;
 
+    /**
+     * @var ForeignDriversLicenseService $foreignDriversLicenseService
+     */
+    private $foreignDriversLicenseService;
+
     public function __construct(
         ForeignDriversLicenseForm $form,
         CustomersService $customersService,
-        AuthorityService $authorityService
+        AuthorityService $authorityService,
+        ForeignDriversLicenseService $foreignDriversLicenseService
     ) {
         $this->form = $form;
         $this->customersService = $customersService;
         $this->authorityService = $authorityService;
+        $this->foreignDriversLicenseService = $foreignDriversLicenseService;
     }
 
     public function foreignDriversLicenseAction()
     {
-        $customerId = $this->params('customerId');
+        $hash = $this->params('hash');
 
-        $customer = $this->customersService->findById($customerId);
+        if (!empty($hash)) {
+            $customer = $this->customersService->getUserFromHash($hash);
+        } else {
+            $customer = $this->identity();
+        }
 
         if (!$customer instanceof Customers) {
             $this->getResponse()->setStatusCode(404);
@@ -71,9 +84,20 @@ class ForeignDriversLicenseController extends AbstractActionController
 
         $this->form->setData($post);
         if ($this->form->isValid()) {
-            $data = $this->form->getData();
+            try {
+                $data = $this->form->getData();
+                $uploadedFile = new UploadedFile(
+                    $data['drivers-license-file']['name'],
+                    $data['drivers-license-file']['type'],
+                    $data['drivers-license-file']['tmp_name'],
+                    $data['drivers-license-file']['size']
+                );
+                $this->foreignDriversLicenseService->saveUploadedForeignDriversLicense($uploadedFile);
 
-            //return $this->redirect()->toRoute();
+                return $this->redirect()->toRoute('foreign-drivers-license-completion');
+            } catch (\Exception $e) {
+                //TODO
+            }
         }
     }
 
@@ -93,5 +117,14 @@ class ForeignDriversLicenseController extends AbstractActionController
             'authority' => $authority,
             'categories' => $categories
         ];
+    }
+
+    public function completionAction()
+    {
+        $viewModel = new ViewModel();
+
+        $viewModel->setTemplate('partials/foreign-drivers-license-completion');
+
+        return $viewModel;
     }
 }

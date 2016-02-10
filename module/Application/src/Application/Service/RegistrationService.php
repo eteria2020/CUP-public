@@ -317,17 +317,6 @@ final class RegistrationService
 
     /**
      * @param string $hash
-     * @return Customers
-     */
-    public function getUserFromHash($hash)
-    {
-        return $this->customersRepository->findOneBy([
-            'hash' => $hash
-        ]);
-    }
-
-    /**
-     * @param string $hash
      * @return string
      */
     public function registerUser($hash)

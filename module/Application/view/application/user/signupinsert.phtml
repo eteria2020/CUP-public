@@ -6,15 +6,15 @@
 
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
-<h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
+    <h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
 </div>
 <!-- module-section-bookmark -->
 
 <!-- main -->
 <div id="main">
 
- <!-- module-wizard -->
- <div class="module-wizard clearfix">
+<!-- module-wizard -->
+<div class="module-wizard clearfix">
     <ul>
         <li class="active"><i class="fa fa-user"></i></li>
         <li class="active"><i class="fa fa-tachometer"></i></li>
@@ -26,14 +26,14 @@
 <!-- content -->
 <div class="content">
 
- <!-- block-form -->
- <div class="block-form w-3-4 auto-margin clearfix">
+<!-- block-form -->
+<div class="block-form w-3-4 auto-margin clearfix">
 
-     <div class="block-form-section content-align-center margin-bottom">
-         <h2><i class="fa fa-thumbs-up"></i> <?= $this->message ?></h2>
-     </div>
+    <div class="block-form-section content-align-center margin-bottom">
+        <h2><i class="fa fa-thumbs-up"></i> <?= $this->message ?></h2>
+    </div>
 
-     <?php if ($this->enable_payment) { ?>
+    <?php if ($this->enable_payment) { ?>
      <!--div class="margin-bottom">
         <h1><? //= $this->translate('Completa l\'attivazione del servizio')?></h1>
         <p><? //= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via PayPal.')?></p>
@@ -53,9 +53,9 @@
     <div class="margin-bottom">
         <h1><?= $this->translate('Completa l\'attivazione del servizio')?></h1>
         <?php if ($this->benefitsFromDiscountedSubscriptionAmount) { ?>
-        <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di ' . $this->subscriptionDiscountedAmount . '&euro; via Cartasi.')?></p>
+            <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di ' . $this->subscriptionDiscountedAmount . '&euro; via Cartasi.')?></p>
         <?php } else { ?>
-        <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via Cartasi.')?></p>
+            <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via Cartasi.')?></p>
         <?php } ?>
     </div>
 
@@ -63,7 +63,18 @@
         <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customerId]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento'); ?> <i class="fa fa-plus-circle"></i></a>
     </div>
 
-     <?php } ?>
+    <?php } ?>
+
+    <?php if ($this->needsDriversLicenseUpload): ?>
+        <div class="block-alert error margin-bottom right">
+            <h2 class="block-title"></i><?= $this->translate('Abilitazione patente'); ?></h2>
+            <p>
+                <?= $this->translate('Per verificare la validità della tua patente estera, è necessario caricare una copia della propria patente. Puoi procedere subito, '); ?>
+                <a href="<?= $this->url('foreign-drivers-license', ['hash' => $this->hash]) ?>" target="_blank"><?= $this->translate('qui') ?></a>
+                <?= $this->translate(', oppure farlo in secondo momento dalla tua area riservata. Finchè la validità della tua patente non sarà verificata, non potrai utilizzare il servizio di SHARE’NGO.')?>
+            </p>
+        </div>
+    <? endif; ?>
 
 </div>
 <!-- block-form -->

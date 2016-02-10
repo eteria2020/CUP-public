@@ -79,9 +79,9 @@ class ForeignDriversLicenseForm extends Form
                     [
                         'name' => 'File/MimeType',
                         'options' => [
-                            'mimeType' => 'image/jpg,image/jpeg,application/pdf',
+                            'mimeType' => 'image,application/pdf',
                             'messages' => [
-                                MimeType::FALSE_TYPE => 'Il file caricato ha un formato non valido; sono accettati solo formati jpg e pdf',
+                                MimeType::FALSE_TYPE => 'Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf',
                                 MimeType::NOT_DETECTED => 'Non è stato possibile verificare il formato del file',
                                 MimeType::NOT_READABLE => 'Il file caricato non è leggibile o non esiste'
                             ]

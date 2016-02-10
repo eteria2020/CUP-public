@@ -208,11 +208,22 @@ return [
             'foreign-drivers-license' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{foreign-drivers-license}/:customerId',
+                    'route' => '/{foreign-drivers-license}[/:hash]',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'ForeignDriversLicense',
                         'action' => 'foreign-drivers-license'
+                    ]
+                ]
+            ],
+            'foreign-drivers-license-completion' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{foreign-drivers-license-completion}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'ForeignDriversLicense',
+                        'action' => 'completion'
                     ]
                 ]
             ],
