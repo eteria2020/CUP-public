@@ -64,7 +64,7 @@ class ForeignDriversLicenseController extends AbstractActionController
         }
 
         if ($this->getRequest()->isPost()) {
-            $this->handlePostRequest($this->getRequest());
+            $this->handlePostRequest($this->getRequest(), $customer);
         }
 
         $viewData = $this->prepareViewData($customer);
@@ -75,7 +75,7 @@ class ForeignDriversLicenseController extends AbstractActionController
         return $viewModel;
     }
 
-    private function handlePostRequest(Request $request)
+    private function handlePostRequest(Request $request, Customers $customer)
     {
         $post = array_merge_recursive(
             $request->getPost()->toArray(),
@@ -92,7 +92,10 @@ class ForeignDriversLicenseController extends AbstractActionController
                     $data['drivers-license-file']['tmp_name'],
                     $data['drivers-license-file']['size']
                 );
-                $this->foreignDriversLicenseService->saveUploadedForeignDriversLicense($uploadedFile);
+                $this->foreignDriversLicenseService->saveUploadedForeignDriversLicense(
+                    $uploadedFile,
+                    $customer
+                );
 
                 return $this->redirect()->toRoute('foreign-drivers-license-completion');
             } catch (\Exception $e) {
