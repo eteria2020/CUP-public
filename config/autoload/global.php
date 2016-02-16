@@ -39,6 +39,6 @@ return [
         'valid-to' => '+3 months'
     ],
     'banner-jsonp' => [
-        'url' => 'test.json'
+        'url' => 'http://manage.sharengo.it/banner.php'
     ],
 ];
