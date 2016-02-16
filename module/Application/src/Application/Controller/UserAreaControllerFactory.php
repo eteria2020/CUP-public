@@ -26,7 +26,7 @@ class UserAreaControllerFactory implements FactoryInterface
         $tripPaymentsService = $sharedLocator->get('SharengoCore\Service\TripPaymentsService');
         $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
         $bonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
-        $bannerJsonpUrl = $sharedLocator->get('Configuration')['bannerJsonp'];
+        $bannerJsonpUrl = $sharedLocator->get('Configuration')['banner-jsonp'];
 
         return new UserAreaController(
             $I_customerService,

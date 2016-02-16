@@ -707,12 +707,15 @@ $this->inlineScript()->captureEnd(); ?>
     // Load Banner
     $.ajax({
         url: bannerJsonpUrl,
-        type: "POST",
+        dataType: 'jsonp',
+        type: 'POST',
         async: true,
         data: {
-            id: userId
+            id: userId,
+            link: "<?= $this->serverUrl(true) ?>",
+            callback: 'setBanner'
         },
         crossDomain: true,
-        dataType: "jsonp"
+        success: setBanner
     });
 </script>
