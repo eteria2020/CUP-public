@@ -1,6 +1,5 @@
 <?php
 $this->headScript()
-    ->appendFile($this->basePath('js/banner.js'))
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
     ->appendFile($this->basePath('js/ui.datepicker-it.js'))
     ->appendFile($this->basePath('js/signup.js'));
@@ -702,20 +701,8 @@ $this->inlineScript()->captureEnd(); ?>
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
         birthTownValue = "<?= $birthTown->getValue() ?>",
         userId = <?= (string)$this->customer->getId() ?>,
-        bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url'] ?>";
-        
-    // Load Banner
-    $.ajax({
-        url: bannerJsonpUrl,
-        dataType: 'jsonp',
-        type: 'POST',
-        async: true,
-        data: {
-            id: userId,
-            link: "<?= $this->serverUrl(true) ?>",
-            callback: 'setBanner'
-        },
-        crossDomain: true,
-        success: setBanner
-    });
+        bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url'] ?>",
+        pageLink = "<?= $this->serverUrl(true) ?>";
 </script>
+
+<?php $this->inlineScript()->appendFile($this->basePath('js/banner.js')) ?>
