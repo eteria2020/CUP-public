@@ -306,7 +306,24 @@ $this->headLink()
                     <!-- block-form -->
 
                     <!-- block -->
-                    <div class="bw-f w-1-3 last  clearfix"></div>
+                    <div class="bw-f w-1-3 last  clearfix">
+                        <?php if ($this->driversLicenseUpload): ?>
+                            <div class="block-form bw-f w-4-4  clearfix">
+
+                                <div class="block-form-section content-align-center margin-bottom">
+                                    <h2><?= $this->translate("Abilitazione patente"); ?></h2>
+                                </div>
+
+                                <div class="block-alert error margin-bottom right">
+                                    <p>Per verificare la validità della tua patente estera, è necessario caricare una copia della propria patente. Puoi procedere subito, cliccando il bottone sottostante. Finchè la validità della tua patente non sarà verificata, non potrai utilizzare il servizio di SHARE’NGO.</p>
+                                </div>
+
+                                <div class="block-wrapper-button content-align-center">
+                                    <a href="<?= $this->url('foreign-drivers-license', ['hash' => $this->customer->getHash()]) ?>" target="_blank"><button type="button"><?= $this->translate('Procedi'); ?></button></a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                     <!-- block -->
                 </div>
                 <!-- module-manage-driver-license -->

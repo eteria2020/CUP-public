@@ -35,12 +35,12 @@ class UserAreaController extends AbstractActionController
     /**
      * @var CustomersService
      */
-    private $I_customersService;
+    private $customerService;
 
     /**
      * @var TripsService
      */
-    private $I_tripsService;
+    private $tripsService;
 
     /**
     * @var \Zend\Authentication\AuthenticationService
@@ -123,8 +123,8 @@ class UserAreaController extends AbstractActionController
     private $bannerJsonpUrl;
 
     /**
-     * @param CustomersService $I_customersService
-     * @param TripsService $I_tripsService
+     * @param CustomersService $customerService
+     * @param TripsService $tripsService
      * @param AuthenticationService $userService
      * @param InvoicesService $invoicesService
      * @param Form $profileForm
@@ -140,8 +140,8 @@ class UserAreaController extends AbstractActionController
      * @param $bannerJsonpUrl
      */
     public function __construct(
-        CustomersService $I_customersService,
-        TripsService $I_tripsService,
+        CustomersService $customerService,
+        TripsService $tripsService,
         AuthenticationService $userService,
         InvoicesService $invoicesService,
         Form $profileForm,
@@ -156,8 +156,8 @@ class UserAreaController extends AbstractActionController
         BonusPackagesService $bonusPackagesService,
         $bannerJsonpUrl
     ) {
-        $this->I_customersService = $I_customersService;
-        $this->I_tripsService = $I_tripsService;
+        $this->customerService = $customerService;
+        $this->tripsService = $tripsService;
         $this->userService = $userService;
         $this->invoicesService = $invoicesService;
         $this->customer = $userService->getIdentity();
@@ -178,7 +178,7 @@ class UserAreaController extends AbstractActionController
     {
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
-        if ($this->I_customersService->isFirstTripManualPaymentNeeded($customer)) {
+        if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
             $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
         }
 
@@ -262,7 +262,7 @@ class UserAreaController extends AbstractActionController
     {
         $option = $this->params()->fromPost('option');
 
-        $customer = $this->I_customersService->setCustomerReprofilingOption($this->customer, $option);
+        $customer = $this->customerService->setCustomerReprofilingOption($this->customer, $option);
 
         return new JsonModel([
             'option' => $option
@@ -277,7 +277,7 @@ class UserAreaController extends AbstractActionController
     public function datiPagamentoAction()
     {
         $customer = $this->userService->getIdentity();
-        $activateLink = $this->I_customersService->isFirstTripManualPaymentNeeded($customer);
+        $activateLink = $this->customerService->isFirstTripManualPaymentNeeded($customer);
         $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
 
@@ -291,7 +291,7 @@ class UserAreaController extends AbstractActionController
     public function tripsAction()
     {
         return new ViewModel([
-            'trips' => $this->I_tripsService->getTripsByCustomer($this->customer->getId())
+            'trips' => $this->tripsService->getTripsByCustomer($this->customer->getId())
         ]);
     }
 
@@ -315,7 +315,7 @@ class UserAreaController extends AbstractActionController
 
             if ($form->isValid()) {
                 try {
-                    $this->I_customersService->saveDriverLicense($form->getData());
+                    $this->customerService->saveDriverLicense($form->getData());
 
                     $params = [
                         'email' => $customer->getEmail(),
@@ -342,10 +342,14 @@ class UserAreaController extends AbstractActionController
             }
         }
 
+        $driversLicenseUpload = $this->customerService->customerNeedsToAcceptDriversLicenseForm($this->customer) &&
+            !$this->customerService->customerHasAcceptedDriversLicenseForm($this->customer);
+
         return new ViewModel([
-            'customer'          => $this->customer,
+            'customer' => $this->customer,
             'driverLicenseForm' => $form,
-            'showError'         => $this->showError,
+            'showError' => $this->showError,
+            'driversLicenseUpload' => $driversLicenseUpload
         ]);
     }
 
@@ -353,7 +357,7 @@ class UserAreaController extends AbstractActionController
     {
         return new ViewModel([
             'customer'  => $this->customer,
-            'listBonus' => $this->I_customersService->getAllBonus($this->customer)
+            'listBonus' => $this->customerService->getAllBonus($this->customer)
         ]);
     }
 
@@ -369,7 +373,7 @@ class UserAreaController extends AbstractActionController
                     /** @var PromoCodes $promoCode */
                     $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
 
-                    $this->I_customersService->addBonusFromPromoCode($this->customer, $promoCode);
+                    $this->customerService->addBonusFromPromoCode($this->customer, $promoCode);
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
                 } catch (BonusAssignmentException $e) {
@@ -403,7 +407,7 @@ class UserAreaController extends AbstractActionController
     public function rentsAction()
     {
         $customer = $this->userService->getIdentity();
-        $availableDates = $this->I_tripsService->getDistinctDatesForCustomerByMonth($customer);
+        $availableDates = $this->tripsService->getDistinctDatesForCustomerByMonth($customer);
 
         return new ViewModel(
             ['availableDates' => $availableDates]

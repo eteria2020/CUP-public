@@ -3,6 +3,7 @@
 namespace Application\Listener;
 
 use MvLabsDriversLicenseValidation\Service\EnqueueValidationService;
+use SharengoCore\Service\CustomersService;
 
 use Zend\EventManager\SharedListenerAggregateInterface;
 use Zend\EventManager\SharedEventManagerInterface;
@@ -15,9 +16,12 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
      */
     private $enqueueValidationService;
 
-    public function __construct(EnqueueValidationService $enqueueValidationService)
-    {
+    public function __construct(
+        EnqueueValidationService $enqueueValidationService,
+        CustomersService $customersService
+    ) {
         $this->enqueueValidationService = $enqueueValidationService;
+        $this->customersService = $customersService;
     }
 
     public function attachShared(SharedEventManagerInterface $events)
@@ -48,6 +52,12 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
     {
         $data = $e->getParams();
 
-        $this->enqueueValidationService->validateDriversLicense($data);
+        $customer = $this->customersService->findByEmail($data['email']);
+
+        // we do not request the validation of the drivers license to the
+        // motorizzazione civile is the customer has a foreign drivers license
+        if (!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)) {
+            $this->enqueueValidationService->validateDriversLicense($data);
+        }
     }
 }

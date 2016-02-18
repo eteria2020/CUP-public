@@ -286,13 +286,16 @@ class UserController extends AbstractActionController
             $enablePayment = !$customer->getFirstPaymentCompleted();
         }
 
+        $needsDriversLicenseUpload = $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer) &&
+            !$this->customersService->customerHasAcceptedDriversLicenseForm($customer);
+
         return new ViewModel([
             'message' => $message,
             'enable_payment' => $enablePayment,
             'customerId' => $customer->getId(),
             'benefitsFromDiscountedSubscriptionAmount' => $customer->benefitsFromDiscoutedSubscriptionAmount(),
             'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100,
-            'needsDriversLicenseUpload' => $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer),
+            'needsDriversLicenseUpload' => $needsDriversLicenseUpload,
             'hash' => $hash
         ]);
     }

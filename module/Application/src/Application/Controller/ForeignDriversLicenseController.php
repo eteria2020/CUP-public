@@ -58,7 +58,9 @@ class ForeignDriversLicenseController extends AbstractActionController
             $customer = $this->identity();
         }
 
-        if (!$customer instanceof Customers) {
+        if (!$customer instanceof Customers ||
+            !$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer) ||
+            $this->customersService->customerHasAcceptedDriversLicenseForm($customer)) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
@@ -99,7 +101,9 @@ class ForeignDriversLicenseController extends AbstractActionController
 
                 return $this->redirect()->toRoute('foreign-drivers-license-completion');
             } catch (\Exception $e) {
-                //TODO
+                // TODO: manage this in a better way!
+                $this->getResponse()->setStatusCode(500);
+                return;
             }
         }
     }
