@@ -704,5 +704,6 @@ $this->inlineScript()->captureEnd(); ?>
         userId = <?= (string)$this->customer->getId() ?>,
         bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url'] ?>",
         pageLink = "<?= $this->serverUrl(true) ?>";
+
     loadBanner(bannerJsonpUrl,userId,pageLink);
 </script>

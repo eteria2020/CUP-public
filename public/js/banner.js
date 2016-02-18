@@ -1,4 +1,4 @@
-/* global setBanner, loadBanner */
+/* global $ */
 
 /**
  * Predefined callback function
