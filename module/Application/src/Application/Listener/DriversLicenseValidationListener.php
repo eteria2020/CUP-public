@@ -52,7 +52,7 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
     {
         $data = $e->getParams();
 
-        $customer = $this->customersService->findByEmail($data['email']);
+        $customer = $this->customersService->findByEmail($data['email'])[0];
 
         // we do not request the validation of the drivers license to the
         // motorizzazione civile is the customer has a foreign drivers license
