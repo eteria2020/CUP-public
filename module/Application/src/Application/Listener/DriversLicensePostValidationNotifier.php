@@ -70,17 +70,8 @@ final class DriversLicensePostValidationNotifier implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        if ($args['birthCountry'] !== 'it') {
-            // we tell to foreign customers to send us via email a copy of their driver's license
-            $content = sprintf(
-                file_get_contents(__DIR__.'/../../../view/emails/drivers-license-unvalid-foreign.html'),
-                $this->emailSettings['from']
-            );
-            $subject = 'Share\'ngo - Verifica Patente via mail';
-        } else {
-            $content = file_get_contents(__DIR__.'/../../../view/emails/drivers-license-unvalid.html');
-            $subject = 'Share\'ngo - Disabilitazione profilo';
-        }
+        $content = file_get_contents(__DIR__.'/../../../view/emails/drivers-license-unvalid.html');
+        $subject = 'Share\'ngo - Disabilitazione profilo';
 
         $this->emailService->sendEmail($args['email'], $subject, $content);
     }
