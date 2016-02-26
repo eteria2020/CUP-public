@@ -1428,7 +1428,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/internals/drivers-license-validation.git",
-                "reference": "8a8f3959b97b3e8842433f9d3436543d6280b801"
+                "reference": "f1db80d8f41693268e8329d6aabaccfff88d5b39"
             },
             "require": {
                 "php": ">=5.4"
@@ -1459,7 +1459,7 @@
                 "validation",
                 "zf2"
             ],
-            "time": "2015-12-21 08:36:33"
+            "time": "2016-02-26 14:44:06"
         },
         {
             "name": "mvlabs/mvlabs-snappy",
@@ -1543,7 +1543,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "6723794d60c2ed5f621d7daeb452533a0908a506"
+                "reference": "7cdec4877ae9fa5c2b47941c7e7c423f4773b5d2"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1564,7 +1564,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-02-23 11:07:31"
+            "time": "2016-02-26 14:46:13"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
