@@ -370,6 +370,17 @@ return [
                     ],
                 ]
             ],
+            'falacosagiusta' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{falacosagiusta}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'falacosagiusta',
+                    ],
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
