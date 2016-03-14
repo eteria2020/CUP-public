@@ -51,7 +51,7 @@ class IndexController extends AbstractActionController
      */
     public function getListZonesAction()
     {
-        $data = $this->zoneService->getListZones(false);
+        $data = $this->zoneService->getListZones(false,true);
 
         /** @var \SharengoCore\Entity\Zone $zone */
         foreach($data as $zone){
