@@ -11,7 +11,8 @@ class IndexControllerfactory implements FactoryInterface
     {
         $config = $serviceLocator->getServiceLocator()->get('Config');
         $mobileUrl = $config['mobile']['url'];
+        $zoneService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ZonesService');
 
-        return new IndexController($mobileUrl);
+        return new IndexController($mobileUrl,$zoneService);
     }
 }

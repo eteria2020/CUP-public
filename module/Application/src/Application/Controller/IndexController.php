@@ -9,6 +9,8 @@
 
 namespace Application\Controller;
 
+use SharengoCore\Service\ZonesService;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -21,11 +23,17 @@ class IndexController extends AbstractActionController
     private $mobileUrl;
 
     /**
+     * @var ZoneService
+     */
+    private $zoneService;
+
+    /**
      * @param string $mobileUrl
      */
-    public function __construct($mobileUrl)
+    public function __construct($mobileUrl, ZonesService $zoneService)
     {
         $this->mobileUrl = $mobileUrl;
+        $this->zoneService = $zoneService;
     }
 
     public function indexAction()
@@ -36,6 +44,22 @@ class IndexController extends AbstractActionController
         }
 
         return new ViewModel();
+    }
+    
+    /**
+     * @return \Zend\Http\Response (JSON Format)
+     */
+    public function getListZonesAction()
+    {
+        $data = $this->zoneService->getListZones(false);
+
+        /** @var \SharengoCore\Entity\Zone $zone */
+        foreach($data as $zone){
+            $data[$zone->getId()] = json_decode($zone->getAreaUse());
+        }
+
+        $this->getResponse()->setContent(json_encode($data));
+        return $this->getResponse();
     }
 
     public function carsharingAction()

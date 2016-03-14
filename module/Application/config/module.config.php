@@ -22,6 +22,17 @@ return [
                     ],
                 ],
             ],
+            'zone' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'route' => '/zone',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-zones',
+                    ],
+                ],
+            ],
             'carsharing' => [
                 'type' => 'Segment',
                 'options' => [

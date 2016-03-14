@@ -16,21 +16,17 @@ var energyMarkersSet = false;
 var openInfoWindow = null;
 var circle = null;
 
-
-
 /* Start */
 
 // asynchronously Load the map API
-jQuery(function($)
-{
+jQuery(function($) {
     var script = document.createElement('script');
     script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
     document.body.appendChild(script);
 });
 
 // initialize the whole logic when map is loaded
-function initialize()
-{
+function initialize() {
     /* Show the markers */
 
     // define the geocoder
@@ -41,48 +37,43 @@ function initialize()
     var myLatlng = new google.maps.LatLng(latitude, longitude);
     // define map options
     var mapOptions = {
-            center: myLatlng, // Set our point as the centre location
-            zoom: 14, // Set the zoom level
-            scrollwheel: false,
-            mapTypeId: 'roadmap', // set the default map type
-            zoomControl: true,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.LEFT_BOTTOM
-            },
-            streetViewControl: true,
-            streetViewControlOptions: {
-                position: google.maps.ControlPosition.LEFT_BOTTOM
-            }
-        };
+        center: myLatlng, // Set our point as the centre location
+        zoom: 14, // Set the zoom level
+        scrollwheel: false,
+        mapTypeId: 'roadmap', // set the default map type
+        zoomControl: true,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_BOTTOM
+        },
+        streetViewControl: true,
+        streetViewControlOptions: {
+            position: google.maps.ControlPosition.LEFT_BOTTOM
+        }
+    };
 
     // sisplay the map on the page
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-
-
     // get the cars
-    $.get(carsUrl, function (jsonData)
-    {
+    $.get(carsUrl, function(jsonData) {
         // set a marker for each car
-        jsonData.data.forEach(function (car)
-        {
+        jsonData.data.forEach(function(car) {
             // position of the car
             var latlng = new google.maps.LatLng(car.latitude, car.longitude);
 
             // create the marker on the map
             var marker = new google.maps.Marker(
-            {
-                position: latlng,
-                map: map,
-                icon: (car['isReservedByCurrentUser'] === true) ? carMarkerPathReserved : carMarkerPath
-            });
+                {
+                    position: latlng,
+                    map: map,
+                    icon: (car['isReservedByCurrentUser'] === true) ? carMarkerPathReserved : carMarkerPath
+                });
 
             // add event listener for when the marker is clicked
-            google.maps.event.addListener(marker, 'click', function()
-            {
+            google.maps.event.addListener(marker, 'click', function() {
 
                 // if an infowindow is open, close it
-                if(openInfoWindow !== null) {
+                if (openInfoWindow !== null) {
                     openInfoWindow.close();
                 }
 
@@ -97,8 +88,7 @@ function initialize()
                 setCarPos(marker.position);
 
                 // get the location and set it in the popup
-                geocoder.geocode({'latLng': latlng}, function(results, status)
-                {
+                geocoder.geocode({ 'latLng': latlng }, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[1]) {
@@ -108,13 +98,13 @@ function initialize()
                     }
                 });
 
-                    // show the popup
-                    showPopup(car, marker);
+                // show the popup
+                showPopup(car, marker);
 
-                    // Set the main button's behavior
-                    setReservationButton(car['plate'], car['busy']);
+                // Set the main button's behavior
+                setReservationButton(car['plate'], car['busy']);
 
-                });
+            });
 
             // add the marker to the carMarkers array
             carMarkers.push(marker);
@@ -127,14 +117,55 @@ function initialize()
         toggleButtonColor(carsToggle, carMarkersSet);
     });
 
+    // Get the zones
+    // Zone Object Scheleton
+    var loadZoneObj =
+        {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {}
+                }
+            ]
+        },
+        allZonesObjs = {};
+    $.ajax({
+        url: zonesUrl,
+        type: "POST",
+        cache: true,
+        dataType: "json"
+    }).success(function(data) {
+        $.each(data,
+            function(id, val) {
+                if (typeof val.coordinates != "undefined") {
+                    // Create the new feature object
+                    var newObj = $.extend(true, {}, loadZoneObj);
+                    newObj.features[0].geometry = val;
 
+                    // Inject the new feature in the map
+                    allZonesObjs[id] = map.data.addGeoJson(newObj);
+                    map.data.setStyle(
+                        function() {
+                            return {
+                                fillColor: "#43a34c",
+                                fillOpacity: 0.3,
+                                strokeColor: "#43a34c",
+                                strokeOpacity: 1,
+                                strokeWeight: 2,
+                                zIndex: 11
+                            };
+                        }
+                    );
+                }
+            }
+        );
+    });
 
     // get the pois
-    $.get(poisUrl, function (jsonData)
-    {
+    $.get(poisUrl, function(jsonData) {
         // set a marker for each pois (default = hidden)
-        jsonData.data.forEach(function (pois)
-        {
+        jsonData.data.forEach(function(pois) {
             // show pois on map only if position is not 0,0
             if (pois.lon != '0' && pois.lat != '0') {
                 // position of the pois
@@ -153,14 +184,13 @@ function initialize()
                 });
 
                 // add event listener for when the marker is clicked
-                google.maps.event.addListener(marker, 'click', function()
-                {
+                google.maps.event.addListener(marker, 'click', function() {
                     // if an infowindow is open, close it
                     if (openInfoWindow !== null) {
                         openInfoWindow.close();
                     }
                     openInfoWindow = infowindow;
-                    infowindow.open(map,marker);
+                    infowindow.open(map, marker);
                 });
 
                 energyMarkers.push(marker);
@@ -179,8 +209,7 @@ toggleButtonColor(carsToggle, carMarkersSet);
 toggleButtonColor(energyToggle, energyMarkersSet);
 
 // set click event listeners
-carsToggle.addEventListener('click', function (event)
-{
+carsToggle.addEventListener('click', function(event) {
     if (isInit) {
         toggleMarkers(carMarkers, (carMarkersSet ? null : map));
         carMarkersSet = !carMarkersSet;
@@ -188,8 +217,7 @@ carsToggle.addEventListener('click', function (event)
     }
 });
 
-energyToggle.addEventListener('click', function (event)
-{
+energyToggle.addEventListener('click', function(event) {
     if (isInit) {
         toggleMarkers(energyMarkers, (energyMarkersSet ? null : map));
         energyMarkersSet = !energyMarkersSet;
@@ -198,27 +226,23 @@ energyToggle.addEventListener('click', function (event)
 });
 
 // define on click function
-function toggleMarkers(markers, value)
-{
-    for (i=0; i<markers.length; i++) {
+function toggleMarkers(markers, value) {
+    for (i = 0; i < markers.length; i++) {
         markers[i].setMap(value);
     }
 }
 
 // toggle icon color
-function toggleButtonColor(icon, flag)
-{
+function toggleButtonColor(icon, flag) {
     icon.style.backgroundImage = "url('../images/images" + (flag ? '' : '-grey') + ".png')";
 }
 
 // changes the reservation button's state
-function setReservationButton(plate, isCarBusy)
-{
+function setReservationButton(plate, isCarBusy) {
     if (userEnabled) {
         if (isLoggedIn) {
             // user is logged in
-            $.get(reservationsUrl + '?plate=' + plate, function (jsonData)
-            {
+            $.get(reservationsUrl + '?plate=' + plate, function(jsonData) {
 
                 var isReserved = false;
                 var isReservedByMe = false;
@@ -261,34 +285,31 @@ function setReservationButton(plate, isCarBusy)
 }
 
 // content to be shown in infowindow
-function getInfowindowContent(type, address)
-{
+function getInfowindowContent(type, address) {
     return '<div>' +
-            '<h2>' + type + '</h2>' +
-            '<p>' + address + '</p>' +
-            '</div>';
+        '<h2>' + type + '</h2>' +
+        '<p>' + address + '</p>' +
+        '</div>';
 }
 
 // draw a circle around the passed position based on battery (max 45km)
-function drawCoverage(position, battery)
-{
+function drawCoverage(position, battery) {
     var circleOptions = {
-      strokeColor: '#43a34c',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#43a34c',
-      fillOpacity: 0.35,
-      map: map,
-      center: position,
-      radius: 450 * battery // in meters
+        strokeColor: '#43a34c',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#43a34c',
+        fillOpacity: 0.35,
+        map: map,
+        center: position,
+        radius: 450 * battery // in meters
     };
     circle = new google.maps.Circle(circleOptions);
     circle.setMap(map);
 }
 
 // remove any drawn circle
-function removeCoverage()
-{
+function removeCoverage() {
     if (circle !== null) {
         circle.setMap(null);
     }
