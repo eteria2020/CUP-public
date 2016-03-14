@@ -25,3 +25,6 @@ data/export
 
 // log
 data/log
+
+// mail dump
+data/mails
