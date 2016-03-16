@@ -46,7 +46,8 @@ class ForeignDriversLicenseForm extends Form
             'name' => 'drivers-license-file',
             'type' => 'Zend\Form\Element\File',
             'attributes' => [
-                'id' => 'drivers-license-file'
+                'id' => 'drivers-license-file',
+                'multiple' => true
             ]
         ]);
     }

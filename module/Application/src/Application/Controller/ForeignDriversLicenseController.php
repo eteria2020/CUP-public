@@ -88,17 +88,22 @@ class ForeignDriversLicenseController extends AbstractActionController
         if ($this->form->isValid()) {
             try {
                 $data = $this->form->getData();
-                $uploadedFile = new UploadedFile(
-                    $data['drivers-license-file']['name'],
-                    $data['drivers-license-file']['type'],
-                    $data['drivers-license-file']['tmp_name'],
-                    $data['drivers-license-file']['size']
-                );
-                $this->foreignDriversLicenseService->saveUploadedForeignDriversLicense(
-                    $uploadedFile,
+                $files = [];
+
+                foreach ($data['drivers-license-file'] as $file) {
+                    $uploadedFile = new UploadedFile(
+                        $file['name'],
+                        $file['type'],
+                        $file['tmp_name'],
+                        $file['size']
+                    );
+                    $files[] = $uploadedFile;
+                }
+
+                $this->foreignDriversLicenseService->saveUploadedFiles(
+                    $files,
                     $customer
                 );
-
                 return $this->redirect()->toRoute('foreign-drivers-license-completion');
             } catch (\Exception $e) {
                 // TODO: manage this in a better way!
