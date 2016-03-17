@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e8b2d878743b8c7a88febf2a38dd167",
+    "hash": "565c1940a729330bce6a38b349b85ac3",
     "content-hash": "bd4c0faa229745a8c75ff136e9fe15ae",
     "packages": [
         {
@@ -87,7 +87,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/df69e8980cc21652f10cd775cb6a0e8c572ffd2d",
+                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/73b62e364a89230d041abd2ba767bcec6fa15927",
                 "reference": "df69e8980cc21652f10cd775cb6a0e8c572ffd2d",
                 "shasum": ""
             },
@@ -1543,7 +1543,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "7cdec4877ae9fa5c2b47941c7e7c423f4773b5d2"
+                "reference": "9016bd591b374b1fef849ce516d22b2bbd6fd19a"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1564,7 +1564,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-02-26 14:46:13"
+            "time": "2016-03-17 13:21:30"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
