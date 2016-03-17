@@ -1,0 +1,1 @@
+ALTER TABLE zone_alarms ADD description TEXT;
