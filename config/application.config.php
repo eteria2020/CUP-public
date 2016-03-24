@@ -1,6 +1,4 @@
 <?php
-
-$env = getenv('APPLICATION_ENV') == 'development' ? 'dev' : 'prod';
 return [
     // This should be an array of module namespaces used in the application.
     'modules' => [
@@ -43,7 +41,7 @@ return [
         // modules are loaded. These effectively override configuration
         // provided by modules themselves. Paths may use GLOB_BRACE notation.
         'config_glob_paths' => [
-            sprintf('config/autoload/{,*.}{global,%s,local}.php', $env),
+            'config/autoload/{,*.}{global,local}.php',
         ],
 
         // Whether or not to enable a configuration cache.
