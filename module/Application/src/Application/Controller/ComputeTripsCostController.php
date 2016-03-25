@@ -103,11 +103,6 @@ class ComputeTripsCostController extends AbstractActionController
         $trip = $this->tripsService->getTripById($tripId);
         $customer = $trip->getCustomer();
 
-        if (!$customer->getPaymentAble()) {
-            $this->logger->log("\nThe customer is not payment able. Impossible to proceed\n\n");
-            return;
-        }
-
         if (!$trip->getCostComputed()) {
             $this->logger->log("Computing cost for trip " . $trip->getId() . "\n");
             $this->tripCostService->computeTripCost($trip, $dryRun);
