@@ -9,7 +9,20 @@
             <div style="font-weight: bold; text-align: center">(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)</div>
             <br>
             <div class="message font">
-                <?= $this->translate("Il sottoscritto"); ?> <?= $this->customer->getSurname() . ' ' . $this->customer->getName() ?> <?= $this->translate("nato a"); ?> <?= $this->customer->getBirthTown() ?> (<?= $this->translate("prov."); ?> <?= $this->customer->getBirthProvince() ?>) <?= $this->translate("il"); ?> <?= $this->customer->getBirthDate()->format('d/m/Y') ?> <?= $this->translate("e residente in"); ?> <?= $this->customer->getTown() ?>, <?= $this->translate("via"); ?> <?= $this->customer->getAddress() ?>,
+                <?= $this->translate("Il sottoscritto") . ' ' .
+                    $this->customer->getSurname() . ' ' .
+                    $this->customer->getName() . ' ' .
+                    $this->translate("nato a") . ' ' .
+                    $this->customer->getBirthTown() . ' (' .
+                    $this->translate("prov.") . ' ' .
+                    $this->customer->getBirthProvince() . ') ' .
+                    $this->translate("il") . ' ' .
+                    $this->customer->getBirthDate()->format('d/m/Y') .' ' .
+                    $this->translate("e residente in") . ' ' .
+                    $this->customer->getTown() . ', '.
+                    $this->translate("via") .' ' .
+                    $this->customer->getAddress()
+                ?>,
                 <br>
                 <?= $this->translate("consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di dichiarazioni mendaci, sanzioni penali previste dal Codice penale e dalle leggi speciali in materia ed espressamente richiamate dall'art. 76 del D.P.R. N. 445 DEL 28/12/2000, sotto la sua responsabilit&agrave"); ?>
                 <br>
@@ -37,7 +50,7 @@
             <br>
             <br>
             <p>
-                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida (è possibile selezionare più di un file)"); ?></label>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida (è possibile caricare più di un file effettuando una selezione multipla)"); ?></label>
                 <br>
                 <?php
                     $file = $form->get('drivers-license-file');
