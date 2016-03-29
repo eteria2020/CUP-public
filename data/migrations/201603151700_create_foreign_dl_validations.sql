@@ -11,8 +11,8 @@ ALTER TABLE foreign_drivers_license_validation OWNER TO sharengo;
 
 INSERT INTO foreign_drivers_license_validation (foreign_drivers_license_upload_id, validated_by, validated_at)
     SELECT id, validated_by, validated_at
-    WHERE validated_by IS NOT NULL AND validated_at IS NOT NULL
-    FROM foreign_drivers_license_upload;
+    FROM foreign_drivers_license_upload
+    WHERE validated_by IS NOT NULL AND validated_at IS NOT NULL;
 
 --remove migrated columns
 ALTER TABLE foreign_drivers_license_upload
