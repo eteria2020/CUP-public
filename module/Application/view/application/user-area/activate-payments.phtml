@@ -2,7 +2,6 @@
     // get data
     $customer = $this->customer;
     $isActivated = $this->isActivated;
-    $expiryDate = $this->expiryDate;
     $tripPayment = $this->tripPayment;
 
     // parse data
@@ -57,7 +56,7 @@
                         <p>Per questo ti invitiamo ad effettuare il pagamento di quanto a noi dovuto con un carta di credito valida (anche pre-pagata) scegliendo così la carta che vuoi associare in modo permanente al tuo profilo cliente.</p>
                         <p>Dopo questo primo pagamento le corse ti saranno addebitate periodicamente in automatico su questa carta e potrai scaricare le fatture nella sezione <a href="<?= $this->url('area-utente/invoices-list') ?>">Fatture</a> il giorno successivo all'addebito.</p>
 
-                        <p><br>Attenzione: nel caso in cui il tuo debito non venisse saldato entro il <?= $expiryDate ?> - e non avessimo quindi una carta di credito valida associata al tuo profilo utente - il tuo account sarà sospeso fino al pagamento (potrai accedere all’area riservata ma non fare il log-in sulla APP o utilizzare un’Equomobile di Share’ngo).</p>
+                        <p><br>Attenzione: nel caso in cui il tuo debito non venisse saldato - e non avessimo quindi una carta di credito valida associata al tuo profilo utente - il tuo account sarà sospeso fino al pagamento (potrai accedere all’area riservata ma non fare il log-in sulla APP o utilizzare un’Equomobile di Share’ngo).</p>
 
                         <h2 class="margin-top-custom">Di seguito i dettagli della corsa di cui effettuare il pagamento:</h2>
                     </div>
