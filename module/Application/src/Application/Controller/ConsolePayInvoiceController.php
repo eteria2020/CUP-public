@@ -2,19 +2,13 @@
 
 namespace Application\Controller;
 
-use SharengoCore\Service\TripsService;
-use SharengoCore\Service\TripCostService;
 use SharengoCore\Service\TripPaymentsService;
-use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
-use SharengoCore\Listener\PaymentEmailListener;
-use SharengoCore\Listener\NotifyCustomerPayListener;
-use Cartasi\Service\CartasiCustomerPaymentsRetry;
+use SharengoCore\Service\ProcessPaymentsService;
 use Cartasi\Exception\WrongPaymentException;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\EventManager\EventInterface;
 
 class ConsolePayInvoiceController extends AbstractActionController
 {
@@ -34,11 +28,6 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $tripPaymentsService;
 
     /**
-     * @var PaymentsService
-     */
-    private $paymentsService;
-
-    /**
      * @var InvoicesService
      */
     private $invoicesService;
@@ -49,14 +38,9 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $logger;
 
     /**
-     * @var PaymentEmailListener
+     * @var ProcessPaymentsService
      */
-    private $paymentEmailListener;
-
-    /**
-     * @var NotifyCustomerPayListener
-     */
-    private $notifyCustomerPayListener;
+    private $processPaymentsService;
 
     /**
      * @var boolean
@@ -75,26 +59,21 @@ class ConsolePayInvoiceController extends AbstractActionController
 
     /**
      * @param TripPaymentsService $tripPaymentsService
-     * @param PaymentsService $paymentsService
      * @param InvoicesService $invoicesService
      * @param Logger $logger
-     * @param PaymentEmailListener $paymentEmailListener
-     * @param NotifyCustomerPayListener $notifyCustomerPayListener
+     * @param ProcessPaymentsService $processPaymentsService
      */
     public function __construct(
         TripPaymentsService $tripPaymentsService,
-        PaymentsService $paymentsService,
         InvoicesService $invoicesService,
         Logger $logger,
-        PaymentEmailListener $paymentEmailListener,
-        NotifyCustomerPayListener $notifyCustomerPayListener
+        ProcessPaymentsService $processPaymentsService
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
-        $this->paymentsService = $paymentsService;
         $this->invoicesService = $invoicesService;
         $this->logger = $logger;
-        $this->paymentEmailListener = $paymentEmailListener;
-        $this->notifyCustomerPayListener = $notifyCustomerPayListener;
+        $this->processPaymentsService = $processPaymentsService;
+        $this->processPaymentsService->setLogger($this->logger);
     }
 
     public function payInvoiceAction()
@@ -118,27 +97,12 @@ class ConsolePayInvoiceController extends AbstractActionController
         $tripsPayments = $this->tripPaymentsService->getTripPaymentsForPayment();
         $this->logger->log("Processing payments for " . count($tripsPayments) . " trips\n");
 
-        $this->getEventManager()->getSharedManager()->attachAggregate($this->paymentEmailListener);
-        $this->getEventManager()->getSharedManager()->attachAggregate($this->notifyCustomerPayListener);
-
-        foreach ($tripsPayments as $tripPayment) {
-            try {
-                $this->logger->log("Processing payment for trip payment " . $tripPayment->getId() . "\n");
-                $this->paymentsService->tryPayment(
-                    $tripPayment,
-                    $this->avoidEmails,
-                    $this->avoidCartasi,
-                    $this->avoidPersistance
-                );
-            } catch (WrongPaymentException $e) {
-                // if we are not able to process a payment we skip the followings
-                break;
-            }
-        }
-
-        $this->getEventManager()->trigger('processPaymentsCompleted', $this, [
-            'avoidEmails' => $this->avoidEmails
-        ]);
+        $this->processPaymentsService->processPayments(
+            $tripPayments,
+            $this->avoidEmails,
+            $this->avoidCartasi,
+            $this->avoidPersistance
+        );
 
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
