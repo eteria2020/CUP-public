@@ -26,7 +26,9 @@
         "dmregister/zf2-resque": "dev-master",
         "chrisboulton/php-resque-scheduler": "dev-master",
         "jaaprood/php-resque-retry": "dev-master",
-        "jaaprood/php-resque-plugin": "dev-master"
+        "jaaprood/php-resque-plugin": "dev-master",
+        "socalnick/scn-social-auth": "^1.18",
+        "socalnick/scn-social-auth-doctrine-orm": "^1.5"
     },
     "repositories": [
         {

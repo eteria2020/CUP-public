@@ -560,6 +560,22 @@ return [
                     ],
                 ]
             ],
+            'scn-social-auth-user' => [
+                'child_routes' => [
+                    'authenticate' => [
+                        'child_routes' => [
+                            'provider' => [
+                                'options' => [
+                                    'defaults' => [
+                                        '__NAMESPACE__' => 'Application\Controller',
+                                        'controller' => 'SocialAuthController',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
     'service_manager' => [
@@ -616,6 +632,7 @@ return [
             'Application\Controller\DriversLicenseValidation' => 'Application\Controller\DriversLicenseValidationControllerFactory',
             'Application\Controller\GenerateTripInvoice' => 'Application\Controller\GenerateTripInvoiceControllerFactory',
             'Application\Controller\ForeignDriversLicense' => 'Application\Controller\ForeignDriversLicenseControllerFactory',
+            'Application\Controller\SocialAuthController' => 'Application\Controller\SocialAuthControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -685,6 +702,9 @@ return [
                 ['controller' => 'Application\Controller\DriversLicenseValidation', 'roles' => []],
                 ['controller' => 'Application\Controller\GenerateTripInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ForeignDriversLicense', 'roles' => []],
+                ['controller' => 'ScnSocialAuth-User', 'roles' => []],
+                ['controller' => 'ScnSocialAuth-HybridAuth', 'roles' => []],
+                ['controller' => 'Application\Controller\SocialAuthController', 'roles' => []],
             ],
         ],
     ],

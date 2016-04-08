@@ -21,6 +21,8 @@ $config = [
         'AssetManager',
         'MvlabsSnappy',
         'Zf2Resque',
+        'ScnSocialAuth',
+        'ScnSocialAuthDoctrineORM',
 
         // Our modules
         'Multilanguage',
