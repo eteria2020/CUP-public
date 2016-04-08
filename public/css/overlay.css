@@ -1,0 +1,674 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:700);
+
+#sng-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#sng-overlay > .table
+{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#sng-overlay > .table > .cell
+{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#sng-overlay > .table > .cell > .box
+{
+    display: inline-block;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    text-align: left;
+    background: #7F7A8E;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+}
+
+#sng-overlay > .table > .cell > .box > .sng-overlay-close
+{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+    background: url(../images/overlay/close.png) no-repeat 50% 50%;
+    width: 16px;
+    height: 16px;
+    display: block;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#sng-overlay > .table > .cell > .box > .sng-overlay-close:hover
+{
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+#sng-overlay > .table > .cell > .box > .table
+{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+#sng-overlay > .table > .cell > .box > .table > .cell
+{
+    float: left;
+}
+
+#sng-overlay .content-left
+{
+    width: 45%;
+}
+
+#sng-overlay .content-left h1
+{
+    font-family: 'Comfortaa', cursive;
+    color: #1c2849;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 50px;
+    line-height: 110%;
+    text-align: center;
+    padding: 30px;
+}
+
+#sng-overlay .content-right
+{
+    background: #1c2849;
+    color: #fff;
+    padding: 30px;
+    width: 55%;
+}
+
+#sng-overlay .content-right h2
+{
+    font-family: 'Comfortaa', cursive;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 120%;
+    margin: 20px 0;
+}
+
+#sng-overlay .content-right h4
+{
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 120%;
+    margin: 20px 0;
+}
+
+#sng-overlay .content-right p
+{
+    text-align: center;
+    margin: 20px 0;
+    font-size: 22px;
+    line-height: 140%;
+}
+
+#sng-overlay .content-right p.upper
+{
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: left;
+    font-size: 24px;
+    line-height: 140%;
+}
+
+#sng-overlay .content-right .sng-overlay-button
+{
+    display: block;
+    background: #ffed00;
+    color: #1c2849;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 142%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 20px 0;
+    padding: 5px 10px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    border-bottom: 5px solid #484e62;
+    -webkit-transition: background .3s ease;
+    -moz-transition: background .3s ease;
+    -o-transition: background .3s ease;
+    transition: background .3s ease;
+}
+
+#sng-overlay .content-right .sng-overlay-button:hover
+{
+    background: #FFFD47;
+}
+
+#sng-overlay .content-right .sng-overlay-button-cyan
+{
+    background: #72a0c0;
+}
+
+#sng-overlay .content-right .sng-overlay-button-cyan:hover
+{
+    background: #87BADA;
+}
+
+#sng-overlay .content-right > :first-child { margin-top: 0 }
+#sng-overlay .content-right > :last-child { margin-bottom: 0 }
+
+#sng-overlay-content2
+{
+    display: none;
+}
+
+#sng-overlay-slider
+{
+    margin: 0;
+    width: 100%;
+}
+
+#sng-overlay-slider > .slide
+{
+    display: none;
+}
+
+#sng-overlay-slider > .slide:first-child
+{
+    display: block;
+}
+
+#sng-overlay-slider .slide
+{
+    background: no-repeat 50% 50%;
+    background-size: cover;
+}
+
+#sng-overlay .content-more
+{
+    padding: 0 30px 30px;
+    background: no-repeat url(../img/overlay/bg.jpg) 50% 50%;
+    background-size: cover;
+    text-align: center;
+}
+
+#sng-overlay .content-more h3
+{
+    background: #ffed00;
+    color: #1c2849;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 140%;
+    text-transform: uppercase;
+    padding: 5px 10px 8px;
+    -webkit-border-radius: 0 0 25px 25px;
+    -moz-border-radius: 0 0 25px 25px;
+    border-radius: 0 0 25px 25px;
+    margin: 0 10px;
+}
+
+#sng-overlay .content-more ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#sng-overlay .content-more ul > li
+{
+    margin: 60px 0;
+    position: relative;
+    padding-left: 300px;
+}
+
+#sng-overlay .content-more ul > li > img
+{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 268px;
+    height: 268px;
+    margin-top: -134px;
+}
+
+#sng-overlay .content-more ul > li.item1 > img
+{
+    top: 90%;
+}
+
+#sng-overlay .content-more ul > li.item2
+{
+    margin-left: 134px;
+}
+
+#sng-overlay .content-more ul > li.item3 > img
+{
+    top: 20%;
+}
+
+#sng-overlay .content-more h4
+{
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 120%;
+    margin: 0;
+}
+
+#sng-overlay .content-more p
+{
+    margin: 0;
+    font-size: 18px;
+    line-height: 140%;
+}
+
+#sng-overlay .content-more .sng-overlay-button
+{
+    display: inline-block;
+    background: #ffed00;
+    color: #1c2849;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 142%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px 20px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    border-bottom: 5px solid #484e62;
+    -webkit-transition: background .3s ease;
+    -moz-transition: background .3s ease;
+    -o-transition: background .3s ease;
+    transition: background .3s ease;
+}
+
+#sng-overlay .content-more .sng-overlay-button:hover
+{
+    background: #FFFD47;
+}
+
+@media only screen and (max-width: 1099px)
+{
+    #sng-overlay > .table > .cell > .box
+    {
+        width: 1024px;
+    }
+}
+
+@media only screen and (max-width: 1023px)
+{
+    #sng-overlay > .table > .cell > .box
+    {
+        width: 768px;
+    }
+
+    #sng-overlay .content-right
+    {
+        width: 100%;
+    }
+
+    #sng-overlay .content-left
+    {
+        width: 100%;
+    }
+
+    #sng-overlay .content-left h1 br
+    {
+        display: none;
+    }
+
+    #sng-overlay .content-right h2
+    {
+        font-size: 32px;
+        line-height: 120%;
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    #sng-overlay .content-right h4
+    {
+        font-size: 24px;
+        line-height: 120%;
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    #sng-overlay .content-right p
+    {
+        margin: 15px 0;
+        font-size: 16px;
+        line-height: 140%;
+    }
+
+    #sng-overlay .content-right p.upper
+    {
+        text-align: center;
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    #sng-overlay .content-right .sng-overlay-button
+    {
+        font-size: 20px;
+        line-height: 142%;
+        margin: 15px auto;
+        max-width: 350px;
+    }
+
+    #sng-overlay .content-right > :first-child { margin-top: 0 }
+    #sng-overlay .content-right > :last-child { margin-bottom: 0 }
+
+    #sng-overlay .content-more ul > li
+    {
+        margin: 40px 0;
+    }
+
+    #sng-overlay .content-more ul > li.item1 > img
+    {
+        top: 80%;
+    }
+
+    #sng-overlay .content-more ul > li.item2
+    {
+        margin-left: 90px;
+    }
+
+    #sng-overlay .content-more ul > li.item3 > img
+    {
+        top: 30%;
+    }
+
+    #sng-overlay .content-more h4
+    {
+        font-size: 26px;
+        line-height: 120%;
+    }
+
+    #sng-overlay .content-more p
+    {
+        font-size: 16px;
+        line-height: 140%;
+    }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px)
+{
+    #sng-overlay-slider .slide
+    {
+        height: 600px !important;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    #sng-overlay > .table > .cell > .box
+    {
+        width: 480px;
+    }
+
+    #sng-overlay .content-left h1
+    {
+        font-size: 26px;
+        line-height: 120%;
+        padding: 15px;
+    }
+
+    #sng-overlay .content-right
+    {
+        width: 55%;
+    }
+
+    #sng-overlay .content-left
+    {
+        width: 45%;
+    }
+
+    #sng-overlay .content-right
+    {
+        padding: 15px;
+    }
+
+    #sng-overlay .content-right h2
+    {
+        font-size: 24px;
+        line-height: 120%;
+        margin: 10px 0;
+        text-align: left;
+    }
+
+    #sng-overlay .content-right h4
+    {
+        font-size: 16px;
+        line-height: 120%;
+        margin: 10px 0;
+        text-align: left;
+    }
+
+    #sng-overlay .content-right p
+    {
+        margin: 10px 0;
+        font-size: 13px;
+        line-height: 140%;
+    }
+
+    #sng-overlay .content-right p.upper
+    {
+        text-align: left;
+        font-size: 14px;
+        line-height: 140%;
+    }
+
+    #sng-overlay .content-right .sng-overlay-button
+    {
+        font-size: 15px;
+        line-height: 140%;
+        margin: 10px auto;
+        max-width: none;
+    }
+
+    #sng-overlay .content-right > :first-child { margin-top: 0 }
+    #sng-overlay .content-right > :last-child { margin-bottom: 0 }
+
+    #sng-overlay .content-more
+    {
+        padding: 0 15px 15px;
+    }
+
+    #sng-overlay .content-more h3
+    {
+        font-size: 18px;
+        line-height: 140%;
+        margin: 0 20px 0 0;
+    }
+
+    #sng-overlay .content-more ul > li
+    {
+        margin: 20px 0;
+        padding-left: 130px;
+    }
+
+    #sng-overlay .content-more ul > li > img
+    {
+        width: 120px;
+        height: 120px;
+        margin-top: -60px;
+    }
+
+    #sng-overlay .content-more ul > li.item1 > img
+    {
+        top: 50%;
+    }
+
+    #sng-overlay .content-more ul > li.item2
+    {
+        margin-left: 0;
+    }
+
+    #sng-overlay .content-more ul > li.item3 > img
+    {
+        top: 50%;
+    }
+
+    #sng-overlay .content-more h4
+    {
+        font-size: 18px;
+        line-height: 120%;
+    }
+
+    #sng-overlay .content-more p
+    {
+        font-size: 13px;
+        line-height: 130%;
+    }
+
+    #sng-overlay .content-more .sng-overlay-button
+    {
+        font-size: 18px;
+        line-height: 140%;
+    }
+}
+
+@media only screen and (max-width: 479px)
+{
+    #sng-overlay-slider .slide
+    {
+        height: 300px !important;
+    }
+
+    #sng-overlay > .table > .cell > .box
+    {
+        width: 320px;
+    }
+
+    #sng-overlay .content-left h1
+    {
+        font-size: 22px;
+        line-height: 120%;
+        padding: 20px 10px 0;
+    }
+
+    #sng-overlay .content-right
+    {
+        width: 100%;
+    }
+
+    #sng-overlay .content-left
+    {
+        width: 100%;
+    }
+
+    #sng-overlay .content-right
+    {
+        padding: 15px;
+    }
+
+    #sng-overlay .content-right h2
+    {
+        font-size: 22px;
+        line-height: 120%;
+        margin: 8px 0;
+        text-align: center;
+    }
+
+    #sng-overlay .content-right h4
+    {
+        font-size: 15px;
+        line-height: 120%;
+        margin: 8px 0;
+        text-align: center;
+    }
+
+    #sng-overlay .content-right p
+    {
+        margin: 8px 0;
+        font-size: 12px;
+        line-height: 140%;
+    }
+
+    #sng-overlay .content-right p.upper
+    {
+        text-align: center;
+        font-size: 13px;
+        line-height: 140%;
+    }
+
+    #sng-overlay .content-right .sng-overlay-button
+    {
+        font-size: 14px;
+        line-height: 140%;
+        margin: 8px auto;
+    }
+
+    #sng-overlay .content-right > :first-child { margin-top: 0 }
+    #sng-overlay .content-right > :last-child { margin-bottom: 0 }
+
+    #sng-overlay .content-more h3
+    {
+        font-size: 16px;
+        line-height: 130%;
+    }
+
+    #sng-overlay .content-more ul > li
+    {
+        padding-left: 100px;
+    }
+
+    #sng-overlay .content-more ul > li > img
+    {
+        width: 90px;
+        height: 90px;
+        margin-top: 0;
+        top: 0;
+    }
+
+    #sng-overlay .content-more ul > li.item1 > img
+    {
+        top: 0;
+    }
+
+    #sng-overlay .content-more ul > li.item3 > img
+    {
+        top: 0;
+    }
+
+    #sng-overlay .content-more h4
+    {
+        font-size: 16px;
+        line-height: 120%;
+        margin: 0 0 5px;
+    }
+
+    #sng-overlay .content-more p
+    {
+        font-size: 12px;
+        line-height: 130%;
+    }
+
+    #sng-overlay .content-more .sng-overlay-button
+    {
+        display: block;
+        font-size: 16px;
+        line-height: 140%;
+    }
+}

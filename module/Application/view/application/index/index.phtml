@@ -5,6 +5,9 @@
     $this->headMeta()->appendName('og:image', 'http://mobile.sharengo.it/_template_style/images/sharengo_logo.png');
     $this->headMeta()->appendName('og:site_name', 'SHARE\'N GO');
     $this->headMeta()->setProperty('og:description', 'Dal 22 giugno è attivo a Milano il servizio di car sharing a flusso libero, con le nostre Equomobili elettriche. Le iscrizioni al servizio sono aperte su www.equomobili.it. Dal 1° maggio inoltre 10 veicoli SHARE\'NGO sono disponibili c/o la stazione delle Ferrovie Nord di Busto Arsizio e possono essere prenotate telefonando al n 370.3325086. Gli orari per il ritiro e la consegna sono 7.30-10.30 oppure 17.00-19.00 tutti i giorni della settimana.');
+    $this->inlineScript()->appendFile($this->basePath('js/overlay.js'));
+    $this->inlineScript()->appendFile($this->basePath('js/perfect-scrollbar.jquery.min.js'));
+    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
 ?>
 
 <!-- module-car-map -->
@@ -160,6 +163,65 @@
 
 </div>
 <!-- main -->
+
+
+<!-- overlay -->
+<div id="sng-overlay">
+    <div class="table">
+        <div class="cell">
+            <div class="box">
+                <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                <div id="sng-overlay-content1" class="table">
+                    <div class="cell content-left">
+                        <div id="sng-overlay-slider">
+                            <div class="slide" style="background-image:url(images/overlay/01.jpg)">
+                                <h1>
+                                    Elettrica,<br>
+                                    condivisa,<br>
+                                    sotto casa.
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell content-right">
+                        <h2>La nuova mobilità urbana è SHARE’Ngo</h2>
+                        <a href="<?= $this->url('signup') ?>" class="sng-overlay-button">Iscriviti oggi</a>
+                        <h4>Bastano 5 minuti e 1€ per salire a bordo (con 100 minuti bonus)</h4>
+                        <p>Servono solo la tua patente e una carta di credito, anche prepagata.</p>
+                        <a href="http://www.sharengo.it/signup" class="sng-overlay-button">Registrati con Facebook</a>
+                        <p class="upper">Riceverai via mail tutti i dettagli per completare la tua iscrizione</p>
+                        <a href="#" class="more sng-overlay-button sng-overlay-button-cyan">Scopri di più</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="sng-overlay-content2">
+                    <div class="content-more">
+                        <h3>Con SHARE’Ngo è facile guidare senza inquinare</h3>
+                        <ul>
+                            <li class="item1">
+                                <img src="images/overlay/img1.png" alt="Elettrica e divertente">
+                                <h4>Elettrica e divertente</h4>
+                                <p>Le nostre auto sono amiche dell’ambiente perché sono elettriche, senza emissioni e silenziose. Le trovi in giro per la città, le prenoti con il telefonino e le puoi lasciare dove vuoi. Sono facili e divertenti da guidare e a ricaricarle ci pensiamo sempre noi!</p>
+                            </li>
+                            <li class="item2">
+                                <img src="images/overlay/img2.png" alt="Conveniente">
+                                <h4>Conveniente</h4>
+                                <p>Più ne hai bisogno e meno costano! Con la tua tariffa personalizzata potresti avere fino al 50% di sconto. E con i pacchetti da 100/200/500 minuti corri a 0.10 € al minuto, cioè a 6 € l’ora. Il prezzo più basso al mondo per un servizio di car sharing a flusso libero. Di notte, poi, per le donne sono gratis!</p>
+                            </li>
+                            <li class="item3">
+                                <img src="images/overlay/img3.png" alt="Pratica e brillante">
+                                <h4>Pratica e brillante</h4>
+                                <p>Le usi solo quando ti servono e vai dove ti pare. Nessuna limitazione di ingresso in ZTL (area C a Milano), parcheggio gratuito sulle strisce blu (anche sulle strisce gialle a Milano). 300 litri di bagagliaio, 2 posti comodi, una ripresa e una supermobilità nel traffico che ti sorprenderanno.</p>
+                            </li>
+                        </ul>
+                        <a href="<?= $this->url('signup') ?>" class="sng-overlay-button">Iscriviti oggi a SHARE’Ngo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- overlay -->
 
 <script>
 var port = "<?php echo ':8024'; ?>";
