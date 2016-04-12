@@ -105,8 +105,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => $translator->translate('Titolo'),
                 'value_options' => [
-                    'male' => $translator->translate('Sig.'),
-                    'female' => $translator->translate('Sig.ra')
+                    'male' => $translator->translate('Maschio'),
+                    'female' => $translator->translate('Femmina')
                 ]
             ]
         ]);
