@@ -104,6 +104,9 @@ class Module
         $uploadedDriversLicenseMailSender = $serviceManager->get('SharengoCore\Listener\UploadedDriversLicenseMailSender');
         $eventManager->getSharedManager()->attachAggregate($uploadedDriversLicenseMailSender);
 
+        $providerAuthenticatedCustomerRegisterd = $serviceManager->get('Application\Listener\ProviderAuthenticatedCustomerRegistered');
+        $eventManager->getSharedManager()->attachAggregate($providerAuthenticatedCustomerRegisterd);
+
         // BjyAuthorize redirection strategy
         $strategy = new RedirectionStrategy();
         $eventManager->attach($strategy);

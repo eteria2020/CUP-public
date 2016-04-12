@@ -15,6 +15,7 @@ use Zend\Mime;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\View\HelperPluginManager;
+use Zend\EventManager\EventManager;
 
 final class RegistrationService
 {
@@ -79,6 +80,11 @@ final class RegistrationService
     private $deactivationService;
 
     /**
+     * @var EventManager
+     */
+    private $events;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param EntityManager $entityManager
@@ -89,6 +95,7 @@ final class RegistrationService
      * @param HelperPluginManager $viewHelperManager
      * @param PromoCodesService $promoCodesService
      * @param array $subscriptionBonus
+     * @param EventManager
      */
     public function __construct(
         Form $form1,
@@ -101,7 +108,8 @@ final class RegistrationService
         HelperPluginManager $viewHelperManager,
         PromoCodesService $promoCodesService,
         array $subscriptionBonus,
-        CustomerDeactivationService $deactivationService
+        CustomerDeactivationService $deactivationService,
+        EventManager $events
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -115,6 +123,7 @@ final class RegistrationService
         $this->subscriptionBonus = $subscriptionBonus;
         $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
         $this->deactivationService = $deactivationService;
+        $this->events = $events;
     }
 
     /**
@@ -258,6 +267,8 @@ final class RegistrationService
             }
 
             $this->deactivationService->deactivateAtRegistration($customer);
+
+            $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
