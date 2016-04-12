@@ -166,6 +166,7 @@
 
 
 <!-- overlay -->
+<?php if (!$this->identity()): ?>
 <div id="sng-overlay">
     <div class="table">
         <div class="cell">
@@ -188,7 +189,7 @@
                         <a href="<?= $this->url('signup') ?>" class="sng-overlay-button">Iscriviti oggi</a>
                         <h4>Bastano 5 minuti e 1€ per salire a bordo (con 100 minuti bonus)</h4>
                         <p>Servono solo la tua patente e una carta di credito, anche prepagata.</p>
-                        <a href="http://www.sharengo.it/signup" class="sng-overlay-button">Registrati con Facebook</a>
+                        <a href="<?= $this->url('scn-social-auth-user/authenticate/provider', ['provider' => 'facebook']) ?>" class="sng-overlay-button">Registrati con Facebook</a>
                         <p class="upper">Riceverai via mail tutti i dettagli per completare la tua iscrizione</p>
                         <a href="#" class="more sng-overlay-button sng-overlay-button-cyan">Scopri di più</a>
                     </div>
@@ -221,6 +222,7 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
 <!-- overlay -->
 
 <script>
