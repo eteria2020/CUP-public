@@ -574,6 +574,28 @@ return [
                             ],
                         ],
                     ],
+                    'thank-you' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{thank-you}',
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller' => 'SocialAuthController',
+                                'action' => 'thank-you'
+                            ]
+                        ]
+                    ],
+                    'register' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{register}/:id',
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller' => 'SocialAuthController',
+                                'action' => 'register'
+                            ]
+                        ]
+                    ]
                 ],
             ],
         ],
@@ -599,11 +621,13 @@ return [
             'DriverLicenseForm'        => 'Application\Form\DriverLicenseFormFactory',
             'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory',
             'ForeignDriversLicenseForm' => 'Application\Form\ForeignDriversLicenseFormFactory',
+            'Application\Service\ProviderAuthentication' => 'Application\Service\ProviderAuthenticationServiceFactory',
             'Application\Listener\DriversLicenseValidationListener' => 'Application\Listener\DriversLicenseValidationListenerFactory',
             'Application\Listener\DriversLicensePostValidationLogger' => 'Application\Listener\DriversLicensePostValidationLoggerFactory',
             'Application\Listener\DriversLicensePostValidationListener' => 'Application\Listener\DriversLicensePostValidationListenerFactory',
             'Application\Listener\DriversLicensePostValidationNotifier' => 'Application\Listener\DriversLicensePostValidationNotifierFactory',
-            'Application\Listener\DriversLicenseEditingListener' => 'Application\Listener\DriversLicenseEditingListenerFactory'
+            'Application\Listener\DriversLicenseEditingListener' => 'Application\Listener\DriversLicenseEditingListenerFactory',
+            'Application\Listener\ProviderAuthenticatedCustomerRegistered' => 'Application\Listener\ProviderAuthenticatedCustomerRegisteredFactory'
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
