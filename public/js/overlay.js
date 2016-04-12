@@ -66,9 +66,9 @@ jQuery(function($)
         });
     });
 
-    w.on('load', function()
+    /*w.on('load', function()
     {
         closeTimeout = setTimeout(closeOverlay, 15000);
         //overlay.find('.more').trigger('click');
-    });
+    });*/
 });
