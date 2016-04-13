@@ -24,6 +24,7 @@ CREATE TABLE provider_authenticated_customers (
     city VARCHAR(255) DEFAULT NULL,
     zip VARCHAR(255) DEFAULT NULL,
     customer_id INT DEFAULT NULL REFERENCES customers(id),
+    inserted_ts TIMESTAMP(0) WITHOUT TIME ZONE,
     PRIMARY KEY(id)
 );
 COMMENT ON COLUMN provider_authenticated_customers.id IS '(DC2Type:uuid)';
