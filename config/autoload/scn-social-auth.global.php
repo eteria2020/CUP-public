@@ -28,7 +28,7 @@ $settings = array(
      * Name of Entity class to use. Useful for using your own entity class
      * instead of the default one provided. Default is ScnSocialAuth\Entity\UserProvider.
      */
-    'user_provider_entity_class' => 'SharengoCore\Entity\CustomerProvider',
+    //'user_provider_entity_class' => 'ScnSocialAuth\Entity\UserProvider',
 
     /**
      * BitBucket Enabled
