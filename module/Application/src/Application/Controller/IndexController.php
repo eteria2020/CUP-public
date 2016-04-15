@@ -39,9 +39,9 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         // Any mobile device (phones or tablets).
-        if ($this->mobileDetect()->isMobile()) {
+        /*if ($this->mobileDetect()->isMobile()) {
             $this->redirect()->toUrl($this->mobileUrl);
-        }
+        }*/
 
         return new ViewModel();
     }
