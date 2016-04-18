@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4384e16e61e738a778fcda46c984e39b",
-    "content-hash": "e86e1ca0bf5d61f5c4b31b51f45f40f7",
+    "hash": "1216dd699ae72fcf07abcf54be958a41",
+    "content-hash": "23061344c3884ba953301137dc29348b",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -1594,8 +1594,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-coremodule.git",
-                "reference": "4d50a551ff7de7fc898c7fa1c8c7916a8688d58f"
+                "url": "ssh://git@gitlab.bulweria.com:1022/cup-web/core.git",
+                "reference": "63ae8147ab7bd4a6f32b732c4daa15ce3adc8c4c"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1616,7 +1616,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-04-06 07:28:45"
+            "time": "2016-04-18 07:36:46"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
