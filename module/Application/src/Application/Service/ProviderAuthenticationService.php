@@ -3,6 +3,7 @@
 namespace Application\Service;
 
 use Application\Form\RegistrationForm;
+use Application\Exception\CustomerRefusedAuthenticationException;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ProviderAuthenticatedCustomer;
 use SharengoCore\Service\EmailService;
@@ -25,11 +26,6 @@ class ProviderAuthenticationService
     private $options;
 
     /**
-     * @var Hybrid_Auth
-     */
-    private $hybridAuth;
-
-    /**
      * @var EntityManager
      */
     private $entityManager;
@@ -44,18 +40,23 @@ class ProviderAuthenticationService
      */
     private $viewHelperManager;
 
+    /**
+     * @var Hybrid_Auth
+     */
+    private $hybridAuth;
+
     public function __construct(
         ModuleOptions $options,
-        Hybrid_Auth $hybridAuth,
         EntityManager $entityManager,
         EmailService $emailService,
-        HelperPluginManager $viewHelperManager
+        HelperPluginManager $viewHelperManager,
+        Hybrid_Auth $hybridAuth
     ) {
         $this->options = $options;
-        $this->hybridAuth = $hybridAuth;
         $this->entityManager = $entityManager;
         $this->emailService = $emailService;
         $this->viewHelperManager = $viewHelperManager;
+        $this->hybridAuth = $hybridAuth;
     }
 
     /**
@@ -69,7 +70,11 @@ class ProviderAuthenticationService
             throw new \Exception();
         }
 
-        $adapter = $this->hybridAuth->authenticate($provider);
+        if (!$this->hybridAuth instanceof FailedHybridAuth) {
+            $adapter = $this->hybridAuth->authenticate($provider);
+        } else {
+            throw new CustomerRefusedAuthenticationException();
+        }
         $userProfile = $adapter->getUserProfile();
 
         return ProviderAuthenticatedCustomer::fromUserProfile($provider, $userProfile);

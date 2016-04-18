@@ -3,6 +3,7 @@
 namespace Application\Controller;
 
 use Application\Service\ProviderAuthenticationService;
+use Application\Exception\CustomerRefusedAuthenticationException;
 use SharengoCore\Service\ProviderAuthenticatedCustomersService;
 use SharengoCore\Exception\ProviderAuthenticatedCustomerNotFoundException;
 
@@ -38,6 +39,8 @@ class SocialAuthController extends AbstractActionController
             $providerAuthenticatedCustomer = $this->providerAuthentication->authenticateWithProvider($provider);
 
             $this->providerAuthentication->welcomeCustomer($providerAuthenticatedCustomer);
+        } catch (CustomerRefusedAuthenticationException $e) {
+            return $this->redirect()->toRoute('home');
         } catch (\Exception $e) {
             return $this->notFoundAction();
         }
