@@ -54,7 +54,7 @@ jQuery(function($)
         closeOverlay();
     });
 
-    overlay.find('.more').on('click', function(e)
+    /*overlay.find('.more').on('click', function(e)
     {
         e.preventDefault();
         if (closeTimeout !== null) clearTimeout(closeTimeout);
@@ -64,7 +64,7 @@ jQuery(function($)
         {
             overlay.perfectScrollbar('update');
         });
-    });
+    });*/
 
     /*w.on('load', function()
     {
