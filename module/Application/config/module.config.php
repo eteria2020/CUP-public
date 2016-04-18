@@ -390,7 +390,18 @@ return [
                         'controller' => 'LandingPage',
                         'action'     => 'falacosagiusta',
                     ],
-                ]
+                ],
+            ],
+            'express' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{express}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'express',
+                    ],
+                ],
             ],
             'pay' => [
                 'type' => 'Segment',
