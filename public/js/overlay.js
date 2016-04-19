@@ -54,7 +54,7 @@ jQuery(function($)
         closeOverlay();
     });
 
-    /*overlay.find('.more').on('click', function(e)
+    overlay.find('.more').on('click', function(e)
     {
         e.preventDefault();
         if (closeTimeout !== null) clearTimeout(closeTimeout);
@@ -64,11 +64,11 @@ jQuery(function($)
         {
             overlay.perfectScrollbar('update');
         });
-    });*/
+    });
 
-    /*w.on('load', function()
+    w.on('load', function()
     {
-        closeTimeout = setTimeout(closeOverlay, 15000);
+        //closeTimeout = setTimeout(closeOverlay, 15000);
         //overlay.find('.more').trigger('click');
-    });*/
+    });
 });
