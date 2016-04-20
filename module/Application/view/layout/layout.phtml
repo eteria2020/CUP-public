@@ -55,6 +55,7 @@
             echo $this->headScript();
             echo $this->headStyle();
             echo $this->placeholder('google-track-adwords');
+            echo $this->placeholder('facebook-pixel');
         ?>
     </head>
     <body <?= $this->isUserArea($this->currentRoute()) ? 'class="app"' : ''; ?>>
