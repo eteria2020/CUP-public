@@ -59,9 +59,4 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-
-    public function falacosagiustaAction()
-    {
-        return (new viewModel())->setTerminal(true);
-    }
 }
