@@ -83,8 +83,8 @@
     color: #1c2849;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 50px;
-    line-height: 110%;
+    font-size: 48px;
+    line-height: 100%;
     text-align: center;
     padding: 30px;
 }
@@ -103,9 +103,9 @@
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 40px;
-    line-height: 120%;
-    margin: 20px 0;
+    font-size: 38px;
+    line-height: 110%;
+    margin: 15px 0;
 }
 
 #sng-overlay .content-right h4
@@ -113,17 +113,17 @@
     color: #fff;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 30px;
-    line-height: 120%;
-    margin: 20px 0;
+    font-size: 28px;
+    line-height: 110%;
+    margin: 15px 0;
 }
 
 #sng-overlay .content-right p
 {
     text-align: center;
-    margin: 20px 0;
-    font-size: 22px;
-    line-height: 140%;
+    margin: 15px 0;
+    font-size: 20px;
+    line-height: 120%;
 }
 
 #sng-overlay .content-right p.upper
@@ -131,8 +131,8 @@
     text-transform: uppercase;
     font-weight: 600;
     text-align: left;
-    font-size: 24px;
-    line-height: 140%;
+    font-size: 22px;
+    line-height: 120%;
 }
 
 #sng-overlay .content-right .sng-overlay-button
@@ -140,13 +140,13 @@
     display: block;
     background: #ffed00;
     color: #1c2849;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    line-height: 142%;
+    line-height: 130%;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 5px 10px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -236,9 +236,9 @@
 
 #sng-overlay .content-more ul > li
 {
-    margin: 60px 0;
+    margin: 20px 0 45px;
     position: relative;
-    padding-left: 300px;
+    padding-left: 230px;
 }
 
 #sng-overlay .content-more ul > li > img
@@ -246,39 +246,40 @@
     position: absolute;
     left: 0;
     top: 50%;
-    width: 268px;
-    height: 268px;
-    margin-top: -134px;
+    width: 200px;
+    height: 200px;
+    margin-top: -100px;
 }
 
 #sng-overlay .content-more ul > li.item1 > img
 {
-    top: 90%;
+    top: 0;
+    margin-top: 0;
 }
 
 #sng-overlay .content-more ul > li.item2
 {
-    margin-left: 134px;
+    margin-left: 80px;
 }
 
 #sng-overlay .content-more ul > li.item3 > img
 {
-    top: 20%;
+    top: 30%;
 }
 
 #sng-overlay .content-more h4
 {
     font-weight: 700;
-    font-size: 30px;
-    line-height: 120%;
+    font-size: 28px;
+    line-height: 110%;
     margin: 0;
 }
 
 #sng-overlay .content-more p
 {
     margin: 0;
-    font-size: 18px;
-    line-height: 140%;
+    font-size: 16px;
+    line-height: 130%;
 }
 
 #sng-overlay .content-more .sng-overlay-button
@@ -286,9 +287,9 @@
     display: inline-block;
     background: #ffed00;
     color: #1c2849;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    line-height: 142%;
+    line-height: 130%;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
@@ -333,6 +334,12 @@
         width: 100%;
     }
 
+    #sng-overlay .content-left h1
+    {
+        font-size: 44px;
+        line-height: 100%;
+    }
+
     #sng-overlay .content-left h1 br
     {
         display: none;
@@ -340,39 +347,39 @@
 
     #sng-overlay .content-right h2
     {
-        font-size: 32px;
-        line-height: 120%;
-        margin: 15px 0;
+        font-size: 30px;
+        line-height: 100%;
+        margin: 10px 0;
         text-align: center;
     }
 
     #sng-overlay .content-right h4
     {
-        font-size: 24px;
-        line-height: 120%;
-        margin: 15px 0;
+        font-size: 22px;
+        line-height: 110%;
+        margin: 10px 0;
         text-align: center;
     }
 
     #sng-overlay .content-right p
     {
-        margin: 15px 0;
-        font-size: 16px;
-        line-height: 140%;
+        margin: 10px 0;
+        font-size: 15px;
+        line-height: 120%;
     }
 
     #sng-overlay .content-right p.upper
     {
         text-align: center;
-        font-size: 18px;
-        line-height: 140%;
+        font-size: 17px;
+        line-height: 120%;
     }
 
     #sng-overlay .content-right .sng-overlay-button
     {
-        font-size: 20px;
-        line-height: 142%;
-        margin: 15px auto;
+        font-size: 18px;
+        line-height: 120%;
+        margin: 10px auto;
         max-width: 350px;
     }
 
@@ -386,7 +393,7 @@
 
     #sng-overlay .content-more ul > li.item1 > img
     {
-        top: 80%;
+        top: 0;
     }
 
     #sng-overlay .content-more ul > li.item2
@@ -402,13 +409,13 @@
     #sng-overlay .content-more h4
     {
         font-size: 26px;
-        line-height: 120%;
+        line-height: 110%;
     }
 
     #sng-overlay .content-more p
     {
-        font-size: 16px;
-        line-height: 140%;
+        font-size: 15px;
+        line-height: 130%;
     }
 }
 
@@ -416,7 +423,7 @@
 {
     #sng-overlay-slider .slide
     {
-        height: 600px !important;
+        height: 500px !important;
     }
 }
 
@@ -497,14 +504,14 @@
 
     #sng-overlay .content-more h3
     {
-        font-size: 18px;
-        line-height: 140%;
+        font-size: 15px;
+        line-height: 110%;
         margin: 0 20px 0 0;
     }
 
     #sng-overlay .content-more ul > li
     {
-        margin: 20px 0;
+        margin: 10px 0;
         padding-left: 130px;
     }
 
@@ -512,12 +519,13 @@
     {
         width: 120px;
         height: 120px;
-        margin-top: -60px;
+        top: 0;
+        margin-top: 0;
     }
 
     #sng-overlay .content-more ul > li.item1 > img
     {
-        top: 50%;
+        top: 0;
     }
 
     #sng-overlay .content-more ul > li.item2
@@ -527,25 +535,25 @@
 
     #sng-overlay .content-more ul > li.item3 > img
     {
-        top: 50%;
+        top: 0;
     }
 
     #sng-overlay .content-more h4
     {
-        font-size: 18px;
-        line-height: 120%;
+        font-size: 16px;
+        line-height: 110%;
     }
 
     #sng-overlay .content-more p
     {
-        font-size: 13px;
-        line-height: 130%;
+        font-size: 12px;
+        line-height: 110%;
     }
 
     #sng-overlay .content-more .sng-overlay-button
     {
-        font-size: 18px;
-        line-height: 140%;
+        font-size: 16px;
+        line-height: 120%;
     }
 }
 
@@ -553,7 +561,7 @@
 {
     #sng-overlay-slider .slide
     {
-        height: 300px !important;
+        height: 240px !important;
     }
 
     #sng-overlay > .table > .cell > .box
@@ -563,8 +571,8 @@
 
     #sng-overlay .content-left h1
     {
-        font-size: 22px;
-        line-height: 120%;
+        font-size: 20px;
+        line-height: 110%;
         padding: 20px 10px 0;
     }
 
@@ -585,39 +593,39 @@
 
     #sng-overlay .content-right h2
     {
-        font-size: 22px;
-        line-height: 120%;
-        margin: 8px 0;
+        font-size: 20px;
+        line-height: 110%;
+        margin: 5px 0;
         text-align: center;
     }
 
     #sng-overlay .content-right h4
     {
-        font-size: 15px;
-        line-height: 120%;
-        margin: 8px 0;
+        font-size: 13px;
+        line-height: 110%;
+        margin: 5px 0;
         text-align: center;
     }
 
     #sng-overlay .content-right p
     {
-        margin: 8px 0;
-        font-size: 12px;
-        line-height: 140%;
+        margin: 5px 0;
+        font-size: 11px;
+        line-height: 110%;
     }
 
     #sng-overlay .content-right p.upper
     {
         text-align: center;
-        font-size: 13px;
-        line-height: 140%;
+        font-size: 12px;
+        line-height: 110%;
     }
 
     #sng-overlay .content-right .sng-overlay-button
     {
-        font-size: 14px;
-        line-height: 140%;
-        margin: 8px auto;
+        font-size: 13px;
+        line-height: 120%;
+        margin: 5px auto;
     }
 
     #sng-overlay .content-right > :first-child { margin-top: 0 }
@@ -625,19 +633,20 @@
 
     #sng-overlay .content-more h3
     {
-        font-size: 16px;
-        line-height: 130%;
+        font-size: 15px;
+        line-height: 110%;
     }
 
     #sng-overlay .content-more ul > li
     {
-        padding-left: 100px;
+        padding-left: 70px;
+        margin: 10px 0;
     }
 
     #sng-overlay .content-more ul > li > img
     {
-        width: 90px;
-        height: 90px;
+        width: 60px;
+        height: 60px;
         margin-top: 0;
         top: 0;
     }
@@ -654,21 +663,21 @@
 
     #sng-overlay .content-more h4
     {
-        font-size: 16px;
-        line-height: 120%;
-        margin: 0 0 5px;
+        font-size: 14px;
+        line-height: 110%;
+        margin: 0 0 3px;
     }
 
     #sng-overlay .content-more p
     {
-        font-size: 12px;
-        line-height: 130%;
+        font-size: 10px;
+        line-height: 120%;
     }
 
     #sng-overlay .content-more .sng-overlay-button
     {
         display: block;
-        font-size: 16px;
-        line-height: 140%;
+        font-size: 14px;
+        line-height: 120%;
     }
 }

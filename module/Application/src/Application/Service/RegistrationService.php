@@ -246,8 +246,6 @@ final class RegistrationService
 
             $customer->setPin(json_encode($pins));
 
-            $this->entityManager->persist($customer);
-
             // add 100 min bonus
             $bonus100mins = CustomersBonus::createBonus(
                 $customer,
@@ -260,11 +258,23 @@ final class RegistrationService
             // has customer used a promo code?
             $promoCode = $data['promoCode'];
             if ('' != $promoCode) {
-                $customerBonus = CustomersBonus::createFromPromoCode($this->promoCodesService->getPromoCode($promoCode));
+                $promoCode = $this->promoCodesService->getPromoCode($promoCode);
+                $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
                 $customerBonus->setCustomer($customer);
 
                 $this->entityManager->persist($customerBonus);
+
+                // promo codes has a discount percentage
+                if ($promoCode->discountPercentage() > 0) {
+                    $discountPercentage = max(
+                        $customer->getDiscountRate(),
+                        $promoCode->discountPercentage()
+                    );
+                    $customer->setDiscountRate($discountPercentage);
+                }
             }
+
+            $this->entityManager->persist($customer);
 
             $this->deactivationService->deactivateAtRegistration($customer);
 
