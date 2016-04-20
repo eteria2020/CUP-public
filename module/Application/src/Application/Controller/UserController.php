@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+// External Modules
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Form\Form;
@@ -9,11 +10,12 @@ use Zend\Session\Container;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
-
+// Internal Modules
 use Application\Service\RegistrationService;
 use Multilanguage\Service\LanguageService;
 use Application\Service\ProfilingPlaformService;
 use Application\Exception\ProfilingPlatformException;
+use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
@@ -102,13 +104,21 @@ class UserController extends AbstractActionController
         $registeredData = $this->form1->getRegisteredData();
         $registeredDataPromoCode = $this->form1->getRegisteredDataPromoCode();
 
+        if (!empty($registeredDataPromoCode)) {
+            $this->form1->setData([
+                'promocode' => [
+                    'promocode' => $registeredDataPromoCode
+                ]
+            ]);
+        }
+
         if (!empty($registeredData)) {
             $this->form1->setData([
                 'user' => $registeredData->toArray($this->hydrator),
                 'promocode' => $registeredDataPromoCode,
             ]);
         }
-
+    
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             $this->form1->setData($formData);
@@ -166,7 +176,6 @@ class UserController extends AbstractActionController
             // we store in session the information that the user already have a discount, so we can avoid showing him the banner
             $container = new Container('userDiscount');
             $container->offsetSet('hasDiscount', true);
-
         } catch (ProfilingPlatformException $ex) {
         }
 
@@ -303,6 +312,20 @@ class UserController extends AbstractActionController
     public function signupScoreCompletionAction()
     {
         return new ViewModel();
+    }
+
+    /**
+     *  This action autocomplete the signup form "PromoCode" field,
+     *  from the given root parameter "promocode".
+     */
+    public function promocodeSignupAction()
+    {
+        $promoCode = strtoupper($this->params('promocode'));
+
+        $promoCodeContainer = new Container(RegistrationForm::SESSION_KEY . 'PromoCode');
+        $promoCodeContainer->offsetSet(RegistrationForm::PROMO_CODE, $promoCode);
+
+        $this->redirect()->toRoute('signup');
     }
 
     private function customerHasDiscount()
