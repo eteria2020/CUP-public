@@ -322,8 +322,7 @@ class UserController extends AbstractActionController
     {
         $promoCode = strtoupper($this->params('promocode'));
 
-        $promoCodeContainer = new Container(RegistrationForm::SESSION_KEY . 'PromoCode');
-        $promoCodeContainer->offsetSet(RegistrationForm::PROMO_CODE, $promoCode);
+        $this->form1->registerPromoCodeData($promoCode);
 
         $this->redirect()->toRoute('signup');
     }
