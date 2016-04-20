@@ -104,10 +104,12 @@ class RegistrationForm extends Form
      */
     public function setData($data)
     {
-        $this->excludeTaxCodeValidationForForeigners(
-            $data['user']['taxCode'],
-            $data['user']['birthCountry']
-        );
+        if(isset($data['user'])){
+            $this->excludeTaxCodeValidationForForeigners(
+                $data['user']['taxCode'],
+                $data['user']['birthCountry']
+            );
+        }
 
         return parent::setData($data);
     }

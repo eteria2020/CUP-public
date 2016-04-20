@@ -216,6 +216,17 @@ return [
                     ]
                 ]
             ],
+            'promocode-signup' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{promocode-signup}/:promocode',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'promocode-signup'
+                    ]
+                ]
+            ],
             'foreign-drivers-license' => [
                 'type' => 'Segment',
                 'options' => [
