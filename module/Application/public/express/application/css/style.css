@@ -446,11 +446,11 @@ a#submit:hover{
 }
 @media screen and (min-width:1200px){
 	a.yellow{
-		font-size:1.9rem;
+		font-size:1.5rem;
 	}
 	.strong{
-		font-size: 1.7rem;
-   		line-height: 2.1rem;
+		font-size: 1.5rem;
+   		line-height: 1.9rem;
 	}
 	.strong-big{
 		font-size: 2.6rem;
@@ -505,6 +505,7 @@ a#submit:hover{
 	#registrati {
 	    position: relative;
 	    font-size: 36px;
+		line-height: 2.1rem;
 	    top: -8px;
 	}
 
@@ -575,6 +576,7 @@ a#submit:hover{
 	    position: relative;
 	    font-size: 40px;
 	    top: 30px;
+		line-height: 2.4rem;
 	}
 }
 
@@ -625,6 +627,7 @@ a#submit:hover{
 	    position: relative;
 	    top: 9px;
 	    font-size: 45px;
+		line-height: 2.9rem;
 	}
 
 	#submit {
