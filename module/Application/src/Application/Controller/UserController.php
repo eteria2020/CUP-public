@@ -118,7 +118,7 @@ class UserController extends AbstractActionController
                 'promocode' => $registeredDataPromoCode,
             ]);
         }
-    
+
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             $this->form1->setData($formData);
