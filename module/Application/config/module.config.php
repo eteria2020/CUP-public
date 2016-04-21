@@ -671,6 +671,7 @@ return [
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
+            'Application\Controller\FixRegistrationInvoicesAmount' => 'Application\Controller\FixRegistrationInvoicesAmountControllerFactory',
             'Application\Controller\ExportRegistries' => 'Application\Controller\ExportRegistriesControllerFactory',
             'Application\Controller\GenerateExtraInvoices' => 'Application\Controller\GenerateExtraInvoicesControllerFactory',
             'Application\Controller\CustomerBonusPackages' => 'Application\Controller\CustomerBonusPackagesControllerFactory',
@@ -740,6 +741,7 @@ return [
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
+                ['controller' => 'Application\Controller\FixRegistrationInvoicesAmount', 'roles' => []],
                 ['controller' => 'Application\Controller\ExportRegistries', 'roles' => []],
                 ['controller' => 'Application\Controller\LandingPage', 'roles' => []],
                 ['controller' => 'Application\Controller\GenerateExtraInvoices', 'roles' => []],
@@ -983,6 +985,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'FixInvoicesBody',
                             'action' => 'fix-invoices-body'
+                        ]
+                    ]
+                ],
+                'fix-registration-invoices-amount' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'fix registration invoices amount',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'FixRegistrationInvoicesAmount',
+                            'action' => 'fix-registration-invoices-amount'
                         ]
                     ]
                 ],
