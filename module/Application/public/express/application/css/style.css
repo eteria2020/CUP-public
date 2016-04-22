@@ -1,39 +1,39 @@
 @font-face {
 	font-family: 'Lato-Bold';
-	src: url('../font/Lato-Bold.eot');
-	src: url('../font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Bold.woff') format('woff'),
-		url('../font/Lato-Bold.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Bold.eot');
+	src: url('../../../common/application/font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Bold.woff') format('woff'),
+		url('../../../common/application/font/Lato-Bold.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Regular';
-	src: url('../font/Lato-Regular.eot');
-	src: url('../font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Regular.woff') format('woff'),
-		url('../font/Lato-Regular.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Regular.eot');
+	src: url('../../../common/application/font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Regular.woff') format('woff'),
+		url('../../../common/application/font/Lato-Regular.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Light';
-	src: url('../font/Lato-Light.eot');
-	src: url('../font/Lato-Light.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Light.woff') format('woff'),
-		url('../font/Lato-Light.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Light.eot');
+	src: url('../../../common/application/font/Lato-Light.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Light.woff') format('woff'),
+		url('../../../common/application/font/Lato-Light.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Lato-Heavy';
-	src: url('../font/Lato-Heavy.eot');
-	src: url('../font/Lato-Heavy.eot?#iefix') format('embedded-opentype'),
-		url('../font/Lato-Heavy.woff') format('woff'),
-		url('../font/Lato-Heavy.ttf')  format('truetype');
+	src: url('../../../common/application/font/Lato-Heavy.eot');
+	src: url('../../../common/application/font/Lato-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('../../../common/application/font/Lato-Heavy.woff') format('woff'),
+		url('../../../common/application/font/Lato-Heavy.ttf')  format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
@@ -91,7 +91,7 @@ html, body{
 }
 
 .bg-grey{
-	background-color:#005426;
+	background-color:#299348;
 }
 div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
 	padding-left:0;
