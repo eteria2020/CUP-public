@@ -254,7 +254,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 3,
+                            'min' => 2,
                             'max' => 32
                         ]
                     ]
@@ -271,7 +271,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 3,
+                            'min' => 2,
                             'max' => 32
                         ]
                     ]

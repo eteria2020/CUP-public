@@ -498,6 +498,15 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringTrim'
                     ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 2,
+                            'max' => 32
+                        ]
+                    ]
                 ]
             ],
             'surname' => [
@@ -505,6 +514,15 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'filters' => [
                     [
                         'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 2,
+                            'max' => 32
+                        ]
                     ]
                 ]
             ],
