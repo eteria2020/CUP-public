@@ -29,30 +29,8 @@ class Module
         $moduleRouteListener->attach($eventManager);
         $userService = $serviceManager->get('zfcuser_auth_service');
 
-        /*$em = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager');
-        $config = $em->getConnection()->getConfiguration();
-        $config->setFilterSchemaAssetsExpression('/^(transactions)$/');*/
-
-        $eventManager->getSharedManager()->attach(
-            ['Application\Controller\PaymentController', 'Cartasi\Controller\CartasiPaymentsController'],
-            'successfulPayment',
-            function (EventInterface $e) use ($serviceManager) {
-                $params = $e->getParams();
-
-                $customer = $params['customer'];
-
-                // send confirmation email
-                $paymentService = $serviceManager->get('PaymentService');
-                $paymentService->sendCompletionEmail($customer);
-
-                // enable api usage
-                $deactivationService = $serviceManager->get('SharengoCore\Service\CustomerDeactivationService');
-                if (!$deactivationService->hasActiveDeactivations($customer)) {
-                    $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
-                    $customerService->enableApi($customer);
-                }
-            }
-        );
+        $successfulPaymentListener = $serviceManager->get('Application\Listener\SuccessfulPaymentListener');
+        $eventManager->getSharedManager()->attachAggregate($successfulPaymentListener);
 
         $eventManager->getSharedManager()->attach(
             'Application\Controller\UserController',
