@@ -681,6 +681,7 @@ return [
             'Application\Controller\GenerateTripInvoice' => 'Application\Controller\GenerateTripInvoiceControllerFactory',
             'Application\Controller\ForeignDriversLicense' => 'Application\Controller\ForeignDriversLicenseControllerFactory',
             'Application\Controller\SocialAuthController' => 'Application\Controller\SocialAuthControllerFactory',
+            'Application\Controller\DisableCustomerController' => 'Application\Controller\DisableCustomerControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -754,6 +755,7 @@ return [
                 ['controller' => 'ScnSocialAuth-User', 'roles' => []],
                 ['controller' => 'ScnSocialAuth-HybridAuth', 'roles' => []],
                 ['controller' => 'Application\Controller\SocialAuthController', 'roles' => []],
+                ['controller' => 'Application\Controller\DisableCustomerController', 'roles' => []],
             ],
         ],
     ],
@@ -1043,7 +1045,18 @@ return [
                             'action' => 'validate-drivers-license'
                         ]
                     ]
-                ]
+                ],
+                'disable-customer-drivers-license' => [
+                    'type' => 'Simple',
+                    'options' => [
+                        'route' => 'disable customer drivers license <customerId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableCustomerController',
+                            'action' => 'invalid-drivers-license'
+                        ]
+                    ]
+                ],
             ],
         ],
     ],
