@@ -1,0 +1,2 @@
+INSERT INTO fleets(id, code, name) VALUES(nextval('fleet_id_seq'), 'MI', 'Milano');
+INSERT INTO fleets(id, code, name) VALUES(nextval('fleet_id_seq'), 'FI', 'Firenze');

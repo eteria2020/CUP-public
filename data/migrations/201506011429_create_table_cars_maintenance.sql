@@ -8,5 +8,4 @@ CREATE TABLE cars_maintenance (
 );
 
 ALTER TABLE public.cars_maintenance OWNER TO sharengo;
-ALTER TABLE cars_maintenance ADD CONSTRAINT car_fk FOREIGN KEY (car_plate) REFERENCES cars (plate);
 ALTER TABLE cars_maintenance ADD CONSTRAINT webuser_fk FOREIGN KEY (webuser_id) REFERENCES webuser (id);

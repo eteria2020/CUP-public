@@ -1,0 +1,10 @@
+INSERT INTO promo_codes_info (id, active, insert_ts, type, minutes, valid_from, valid_to, overridden_subscription_cost, bonus_valid_from, bonus_valid_to) VALUES
+(nextval('promocodesinfo_id_seq'::regclass),true, '2015-10-23 00:00:00', 'promo', 0, '2015-10-23 00:00:00', '2016-01-23 23:59:59', 100, '2015-10-23 00:00:00', '2016-01-23 23:59:59');
+
+INSERT INTO promo_codes Values(
+    nextval('promocodes_id_seq'),
+    (select id from promo_codes_info order by id desc limit 1),
+    'LNGO',
+    'Iscrizione ad 1 euro per soci Linear',
+    true
+);

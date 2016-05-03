@@ -10,8 +10,3 @@ CREATE TABLE configurations (
 
 ALTER TABLE configurations OWNER TO sharengo;
 
-/**
- * Populate the table with existing data
- */
-INSERT INTO configurations VALUES (1, 'alarm', 'battery', '20');
-INSERT INTO configurations VALUES (2, 'alarm', 'delay', '31');

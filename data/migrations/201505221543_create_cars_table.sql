@@ -42,5 +42,6 @@ CREATE TABLE cars (
     obc_wl_size int NOT NULL,
     km int NOT NULL,
     running boolean DEFAULT false,
-    parking boolean DEFAULT false
+    parking boolean DEFAULT false,
+    plug boolean DEFAULT false NOT NULL
 );
