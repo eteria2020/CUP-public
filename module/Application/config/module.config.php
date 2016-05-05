@@ -293,6 +293,17 @@ return [
                     ],
                 ]
             ],
+            'anas' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{anas}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'anas',
+                    ],
+                ],
+            ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [

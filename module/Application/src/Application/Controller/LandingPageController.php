@@ -64,4 +64,9 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
+
+    public function anasAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
 }
