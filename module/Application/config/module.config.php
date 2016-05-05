@@ -392,17 +392,6 @@ return [
                     ],
                 ]
             ],
-            'falacosagiusta' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{falacosagiusta}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'falacosagiusta',
-                    ],
-                ],
-            ],
             'express' => [
                 'type' => 'Segment',
                 'options' => [
