@@ -54,7 +54,7 @@
         <div class="col-sm-12 bg-grey">
             <div class="col-sm-7 img-desk"> <img src="/saba/application/images/saba-bottom.jpg" class="img-responsive" /> </div>
             <div class="col-sm-5 text-center p-top-5" id="second-paragraph">
-                <a href="http://www.sharengo.it/promocode-signup/SABA" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'SABA'});">
+                <a href="<?= $this->url('promocode-signup',['promocode' => 'SABA']); ?>" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'SABA'});">
                     <p class="yellow strong" id="registrati"> <span class="lato-bold">REGISTRATI OGGI!<br/></span> <span class="white strong lato-regular">CODICE PROMO</span> </p>
                     <button class="strong">SABA</button>
                 </a>

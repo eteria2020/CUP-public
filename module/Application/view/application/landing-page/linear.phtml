@@ -69,7 +69,7 @@
                 <img src="/linear/application/images/linear-bottom.jpg" class="img-responsive" />
             </div>
             <div class="col-sm-5 text-center p-top-5" id="second-paragraph">
-                <a href="http://www.sharengo.it/promocode-signup/LNGO" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'LNGO'});">
+                <a href="<?= $this->url('promocode-signup',['promocode' => 'LNGO']); ?>" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'LNGO'});">
                     <p class="yellow strong" id="registrati">
                         <span class="lato-bold">REGISTRATI OGGI!</span>
                     </p>

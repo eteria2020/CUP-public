@@ -71,7 +71,7 @@
                 <img src="/jwt/application/images/JWT-bottom.jpg" class="img-responsive" />
             </div>
             <div class="col-sm-5 text-center p-top-5" id="second-paragraph">
-                <a href="http://www.sharengo.it/promocode-signup/JWT16" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'JWT16'});">
+                <a href="<?= $this->url('promocode-signup',['promocode' => 'JWT16']); ?>" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'JWT16'});">
                     <p class="yellow strong" id="registrati">
                         <span class="lato-bold">REGISTRATI OGGI!<br/></span>
                         <span class="white strong lato-regular">CODICE PROMO</span>
