@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a576b732b70cdf05fe80f33676cfd2c",
-    "content-hash": "62d17ea35f1d41711890330bcafd8f45",
+    "hash": "a3b1ecd4628d7238cf07b1e26fea2cc5",
+    "content-hash": "8d679a6ae597e4d78b66ca1fbf1be35c",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -197,6 +197,67 @@
             "description": "Credis is a lightweight interface to the Redis key-value store which wraps the phpredis library when available for better performance.",
             "homepage": "https://github.com/colinmollenhour/credis",
             "time": "2014-11-13 18:40:25"
+        },
+        {
+            "name": "cup-web/cartasi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.bulweria.com/cup-web/cartasi.git",
+                "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cartasi": "src/"
+                }
+            },
+            "description": "Cartasi module for Sharengo",
+            "time": "2016-05-06 13:16:50"
+        },
+        {
+            "name": "cup-web/drivers-license-validation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.bulweria.com/cup-web/drivers-license-validation.git",
+                "reference": "a6b09e410cb34db870331dc486acb64fafc95f08"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MvLabsDriversLicenseValidation\\": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Perone",
+                    "email": "m.perone@mvlabs.it"
+                }
+            ],
+            "description": "MVLabs driver's license validation module for ZF2",
+            "keywords": [
+                "driver",
+                "licence",
+                "license",
+                "validation",
+                "zf2"
+            ],
+            "time": "2016-05-06 13:16:36"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -1475,45 +1536,6 @@
             "time": "2015-06-18 09:43:23"
         },
         {
-            "name": "mvlabs/drivers-license-validation",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/internals/drivers-license-validation.git",
-                "reference": "f1db80d8f41693268e8329d6aabaccfff88d5b39"
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MvLabsDriversLicenseValidation\\": "src/"
-                },
-                "classmap": [
-                    "./Module.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Perone",
-                    "email": "m.perone@mvlabs.it"
-                }
-            ],
-            "description": "MVLabs diriver's license validation module for ZF2",
-            "keywords": [
-                "driver",
-                "licence",
-                "license",
-                "validation",
-                "zf2"
-            ],
-            "time": "2016-02-26 14:44:06"
-        },
-        {
             "name": "mvlabs/mvlabs-snappy",
             "version": "0.2.0",
             "source": {
@@ -1568,34 +1590,12 @@
             "time": "2015-03-30 15:54:03"
         },
         {
-            "name": "mvlabs/sharengo-cartasi",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/clients/sharengo-cartasi.git",
-                "reference": "c26de5b45500e93bae31b9d3453a31c4d0ca6017"
-            },
-            "require": {
-                "doctrine/doctrine-orm-module": "0.*",
-                "php": ">=5.4.0",
-                "zendframework/zendframework": "2.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Cartasi": "src/"
-                }
-            },
-            "description": "Cartasi module for Sharengo",
-            "time": "2016-04-05 14:47:40"
-        },
-        {
             "name": "mvlabs/sharengo-coremodule",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
-                "reference": "1f9cc742ebbd19a75ae2f43f4ae9cfdf75613e07"
+                "reference": "f334d22fd556889802a3df8583b9db5867d45c99"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1616,7 +1616,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-04-28 10:46:48"
+            "time": "2016-05-05 10:19:27"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
@@ -2310,12 +2310,12 @@
             "version": "2.4.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zendframework/zf2.git",
+                "url": "https://github.com/zendframework/zendframework.git",
                 "reference": "d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a",
+                "url": "https://api.github.com/repos/zendframework/zendframework/zipball/d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a",
                 "reference": "d7c27c5e9080e4fc7ae0d6455e2373cb6d85916a",
                 "shasum": ""
             },
@@ -3718,8 +3718,8 @@
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
         "zendframework/zend-developer-tools": 20,
-        "mvlabs/sharengo-cartasi": 20,
-        "mvlabs/drivers-license-validation": 20,
+        "cup-web/cartasi": 20,
+        "cup-web/drivers-license-validation": 20,
         "chrisboulton/php-resque": 20,
         "dmregister/zf2-resque": 20,
         "chrisboulton/php-resque-scheduler": 20,
