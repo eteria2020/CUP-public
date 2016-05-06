@@ -370,6 +370,18 @@ return [
                     ],
                 ]
             ],
+            'jwt' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{jwt}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'jwt',
+                    ],
+                ],
+                'may_terminate' => true
+            ],
             'lifegate' => [
                 'type' => 'Segment',
                 'options' => [
