@@ -74,4 +74,9 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
+
+    public function jwtAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
 }
