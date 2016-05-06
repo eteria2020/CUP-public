@@ -136,7 +136,7 @@ button a{
 #logo{
 	width: 540px;
 	height: 165px;
-	background-image: url('../img/logo-linear.png');
+	background-image: url('../images/logo-linear.png');
 	margin:0;
 	padding:0;
 	margin-left: auto;
@@ -242,7 +242,7 @@ button a{
 	#logo{
 		width: 300px;
 		height: 92px;
-		background-image: url('../img/logo-linear-768.png');
+		background-image: url('../images/logo-linear-768.png');
 		top:-5px;
 	}
 
@@ -302,7 +302,7 @@ button a{
 	#logo{
 		width: 300px;
 		height: 92px;
-		background-image: url('../img/logo-linear-768.png');
+		background-image: url('../images/logo-linear-768.png');
 		top:-4px;
 	}
 
@@ -393,7 +393,7 @@ button a{
 	#logo{
 		width: 400px;
 		height: 123px;
-		background-image: url('../img/logo-linear-1024.png');
+		background-image: url('../images/logo-linear-1024.png');
 		top:-23px;
 	}
 
@@ -470,7 +470,7 @@ button a{
 	#logo{
 		width: 450px;
 		height: 138px;
-		background-image: url('../img/logo-linear-1200.png');
+		background-image: url('../images/logo-linear-1200.png');
 	}
 
 	#intro {
@@ -538,7 +538,7 @@ button a{
 	#logo{
 		width: 540px;
 		height: 165px;
-		background-image: url('../img/logo-linear.png');
+		background-image: url('../images/logo-linear.png');
 	}
 
 	#tit{
