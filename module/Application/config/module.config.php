@@ -293,6 +293,17 @@ return [
                     ],
                 ]
             ],
+            'anas' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{anas}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'anas',
+                    ],
+                ],
+            ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [
@@ -359,6 +370,18 @@ return [
                     ],
                 ]
             ],
+            'jwt' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{jwt}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'jwt',
+                    ],
+                ],
+                'may_terminate' => true
+            ],
             'lifegate' => [
                 'type' => 'Segment',
                 'options' => [
@@ -392,16 +415,16 @@ return [
                     ],
                 ]
             ],
-            'falacosagiusta' => [
+            'saba' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{falacosagiusta}',
+                    'route' => '/{saba}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'falacosagiusta',
+                        'action'     => 'saba',
                     ],
-                ],
+                ]
             ],
             'express' => [
                 'type' => 'Segment',

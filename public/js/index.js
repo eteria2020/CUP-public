@@ -91,8 +91,8 @@ function initialize() {
                 geocoder.geocode({ 'latLng': latlng }, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (status == google.maps.GeocoderStatus.OK) {
-                            if (results[1]) {
-                                setLocationText(results[1].formatted_address);
+                            if (results[0]) {
+                                setLocationText(results[0].formatted_address);
                             }
                         }
                     }

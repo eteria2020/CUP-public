@@ -1,0 +1,693 @@
+@font-face {
+	font-family: 'Lato-Bold';
+	src: url('../font/Lato-Bold.eot');
+	src: url('../font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Bold.woff') format('woff'),
+		url('../font/Lato-Bold.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Regular';
+	src: url('../font/Lato-Regular.eot');
+	src: url('../font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Regular.woff') format('woff'),
+		url('../font/Lato-Regular.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Light';
+	src: url('../font/Lato-Light.eot');
+	src: url('../font/Lato-Light.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Light.woff') format('woff'),
+		url('../font/Lato-Light.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Heavy';
+	src: url('../font/Lato-Heavy.eot');
+	src: url('../font/Lato-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Heavy.woff') format('woff'),
+		url('../font/Lato-Heavy.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+html, body{
+	font-size:100%;
+}
+
+.lato-regular{
+	font-family: 'Lato-Regular';
+}
+
+.lato-bold{
+	font-family: 'Lato-Heavy';
+}
+
+.black{
+	color:#000;
+}
+
+.black a{
+	color:#000;
+}
+
+.black a:hover, .black a:active, .black a:focus{
+	color:#000;
+}
+
+.red, .red a{
+	color:#eb2523;
+}
+
+.white{
+	color:#ffffff;
+}
+
+.yellow{
+	color:#ffed00;
+}
+
+.yellow a{
+	color:#ffed00;
+}
+
+.yellow a:hover, .yellow a:active, .yellow a:focus{
+	color:#ffed00;
+}
+
+.blu, .blu a{
+	color: #1c3462;
+}
+
+.blu a:hover, .blu a:active, .blu a:focus{
+	color:#1c3462;
+}
+
+.bg-grey{
+	background-color:#00a9a6;
+}
+div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
+	padding-left:0;
+}
+
+button{
+	color:#3f3e3e;
+	background-color:#ffed00;
+	border:5px solid #fff;
+	padding:15px 25px 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	font-size: 30px;
+	margin-top:10px;
+}
+
+button a{
+	color:#3f3e3e;
+}
+
+a#submit:hover{
+	color:#fff;
+}
+
+.desk-block{
+	display:block;
+}
+
+.container-fluid{
+		padding-left:0;
+		padding-right:0;
+	}
+
+#intro{
+	font-size: 24px;
+	position: relative;
+	top:-20px;
+}
+
+#tit{
+	position: relative;
+	top:-20px;
+	font-family: 'Lato-Regular';
+	font-size: 30px;
+}
+
+#logo{
+	width: 400px;
+	height: 100px;
+	background-image: url('../images/logo-jwt.png');
+	margin:0;
+	padding:0;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top:-20px;
+}
+
+#first-paragraph{
+	position: relative;
+	top:0px;
+}
+
+#paragraph1{
+	position: relative;
+	top:0px;
+}
+
+
+#second-paragraph{
+	position: relative;
+	top:-100px;
+}
+
+#nota{
+	font-size: 20px;
+}
+
+#registrati{
+	position: relative;
+	top:0px;
+}
+
+#submit{
+	position: relative;
+	top:40px;
+}
+
+
+@media screen and (min-width:768px) and (max-width: 1900px){
+	.desk-block.desk-inline{
+		display:inline;
+	}
+}
+@media screen and (max-width:767px){
+	
+	div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7{
+		padding-right:0;
+	}
+	.col-sm-5.col-sm-push-7{
+		padding-top:4%;
+	}
+	.col-sm-5.text-center.p-top-5{
+		padding-bottom:4%;
+	}
+	
+	a.yellow{
+		font-size:1.3rem;
+	}
+	.strong{
+	    font-size: 1.2rem;
+		line-height: 1.8rem;
+	}
+	.strong-big{
+		font-size: 1.4rem;
+    	line-height: 1;
+	}
+	.semistrong{
+		font-size:1rem;
+	}
+	.smaller{
+		font-size:0.9rem;
+	}
+	.p-top-5{
+		padding-top:5%;
+	}
+
+	#intro {
+	    font-size: 16px;
+	    position: relative;
+	    top: 0px;
+	}
+
+	#tit{
+		position: relative;
+		top:0px;
+	}
+
+	#logo{
+		width: 200px;
+		height: 50px;
+		background-image: url('../images/logo-jwt-768.png');
+		top:10px;
+	}
+
+	#paragraph1a{
+		position: relative;
+		top:18px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:0px;
+		margin-bottom: 40px;
+	}
+
+	#submit {
+	    position: relative;
+	    top: 20px;
+	    margin-bottom: 20px;
+	}
+}
+
+
+@media screen and (min-width: 768px){
+	
+	.col-sm-5.col-sm-push-7{
+		padding-top:3%;
+	}
+	a.yellow{
+		font-size:1.3rem;
+	}
+	.strong{
+		font-size:1.1rem;
+		line-height:1.7rem;
+	}
+	.strong-big{
+		font-size: 1.4rem;
+    	line-height: 1;
+	}
+	.smaller, .semistrong{
+		font-size:0.85rem;
+	}
+
+	.semistrong2{
+		font-size:1rem;
+	}
+
+	#intro {
+	    font-size: 14px;
+	    position: relative;
+	    top:-15px;
+	}
+
+	#tit {
+	    position: relative;
+	    top: 0px;
+	    font-size: 20px;
+	}
+
+	#logo{
+	    top: -4px;
+	}
+
+	#logo{
+		width: 200px;
+		height: 50px;
+		background-image: url('../images/logo-jwt-768.png');
+		top:10px;
+	}
+
+	#first-paragraph {
+	    position: relative;
+	    top: -10px;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: 5px;
+	}
+
+	#paragraph1a{
+		position: relative;
+	    top: 18px;
+	}
+
+	#registrati {
+	    position: relative;
+	    top: 16px;
+	    font-size: 20px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-50px;
+	}
+
+	#paragraph2{
+		position: relative;
+		top:15px;
+	}
+
+	#nota{
+	    font-size: 14px;
+	}
+
+	#submit {
+	    position: relative;
+	    top: 15px;
+	}
+	
+}
+@media screen and (min-width: 960px){
+
+	
+
+}
+@media screen and (min-width: 1024px){
+	/*span{
+		display:block;
+	}*/
+	a.yellow{
+		font-size:1.7rem;
+	}
+	.strong{
+	    font-size: 1.4rem;
+   		line-height: 2rem;
+	}
+
+	.strong-big{
+		font-size: 2.4rem;
+    	line-height: 1;
+	}
+
+	.semistrong{
+		font-size:1.3rem;
+		line-height:1.8rem;
+	}
+
+	.semistrong2{
+		font-size:1.5rem;
+	}
+
+	#intro {
+	    font-size: 16px;
+	    position: relative;
+	    top: -10px;
+	}
+
+	#tit {
+	    position: relative;
+	    top: -10px;
+  		font-size: 28px;
+	}
+
+	#logo{
+		width: 250px;
+		height: 63px;
+		background-image: url('../images/logo-jwt-1024.png');
+		top:10px;
+	}
+
+	#paragraph1{
+		position: relative;
+		top:-13px;
+	}
+
+	#paragraph1a{
+		position: relative;
+		top:18px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-65px;
+	}
+
+	#paragraph2{
+		position: relative;
+		top:20px;
+	}
+
+	#registrati {
+	    position: relative;
+	    top: 14px;
+	    font-size: 28px;
+	}
+
+	#nota{
+	    font-size: 16px;
+	}
+
+	#submit {
+	    position: relative;
+	    top: 20px;
+	}
+}
+
+@media screen and (min-width: 768px){
+	.img-mobile{
+		display:none;
+	}
+}
+@media screen and (max-width: 767px){
+	.img-desk{
+		display:none;
+	}
+}
+@media screen and (min-width:1200px){
+	a.yellow{
+		font-size:1.9rem;
+	}
+	.strong{
+		font-size: 1.7rem;
+   		line-height: 2.4rem;
+	}
+	.strong-big{
+		font-size: 2.0rem;
+    	line-height: 1;
+	}
+	.semistrong{
+		font-size:1.3rem;
+		line-height:2.1rem;
+	}
+	.semistrong2{
+		font-size:1.7rem;
+		line-height:2.3rem;
+	}
+	.smaller{
+		font-size:1rem;
+	}
+
+	#logo{
+		width: 300px;
+		height: 100px;
+		background-image: url('../images/logo-jwt-1200.png');
+		background-repeat: no-repeat;
+		position: relative;
+		top:20px;
+	}
+
+	#intro {
+	    font-size: 28px;
+	    position: relative;
+	}
+
+	#paragraph1 {
+	    position: relative;
+	    top: 0px;
+	}
+
+	#paragraph1a {
+	    position: relative;
+	    top: 18px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-80px;
+	}
+
+	#intro {
+	    font-size: 32px;
+	    position: relative;
+	}
+
+	#registrati {
+	    position: relative;
+	    font-size: 36px;
+	    top: -8px;
+	}
+
+	#submit {
+	    position: relative;
+	    top: 29px;
+	}
+	button{
+	color:#3f3e3e;
+	background-color:#ffed00;
+	border:5px solid #fff;
+	padding:15px 25px 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	font-size: 30px;
+	margin-top:0px;
+}
+}
+
+@media screen and (min-width:1400px){
+	a.yellow{
+		font-size:2.1rem;
+	}
+	.strong{
+		font-size: 2.1rem;
+   		line-height: 3rem;
+	}
+
+	.strong-big{
+		font-size: 3.6rem;
+    	line-height: 1;
+	}
+
+	.semistrong{
+		font-size:1.3rem;
+		line-height:2.3rem;
+	}
+	.semistrong2{
+		font-size:1.9rem;
+	}
+	.smaller{
+		font-size:1.2rem;
+	}
+	
+	#logo{
+		width: 500px;
+		height: 100px;
+		background-image: url('../images/logo-jwt-1400.png');
+		background-repeat: no-repeat;
+		position: relative;
+		top:35px;
+	}
+	
+
+	#tit{
+		font-size: 32px;
+	}
+
+	#paragraph1a {
+	    position: relative;
+	    top: 30px;
+	}
+
+	#second-paragraph{
+		position: relative;
+		top:-90px;
+	}
+
+	#paragraph2{
+		position: relative;
+		top:33px;
+	}
+
+	#registrati {
+	    position: relative;
+	    font-size: 40px;
+	    top: 30px;
+	}
+	button{
+	color:#3f3e3e;
+	background-color:#ffed00;
+	border:5px solid #fff;
+	padding:15px 25px 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	font-size: 30px;
+	margin-top:30px;
+}
+}
+
+@media screen and (min-width:1600px){
+	a.yellow{
+		font-size:2.4rem;
+	}
+	.strong{
+		font-size: 2.3rem;
+   		line-height: 3.2rem;
+	}
+
+	.strong-big{
+		font-size: 3.6rem;
+    	line-height: 1;
+	}
+	.semistrong{
+		font-size:1.6rem;
+	}
+
+	.semistrong2{
+		font-size:2.2rem;
+	}
+	.smaller{
+		font-size:1.5rem;
+	}
+
+	#logo{
+		width: 500px;
+		height: 100px;
+		background-image: url('../images/logo-jwt-1400.png');
+		background-repeat: no-repeat;
+		position: relative;
+		top:35px;
+	}
+	
+	#intro {
+	    font-size: 38px;
+	    position: relative;
+	}
+
+	#tit{
+		font-size: 36px;
+	}
+
+	#paragraph2{
+		position: relative;
+		top:30px;
+	}
+
+	#paragraph3{
+		position: relative;
+		top:-20px;
+	}
+
+	#registrati {
+	    position: relative;
+	    top: 9px;
+	    font-size: 45px;
+	}
+
+	#submit {
+	    position: relative;
+	    top: 55px;
+	}
+}
+
+@media screen and (min-width:1800px){
+	a.yellow{
+		font-size:3rem;
+	}
+	.strong{
+		font-size:2.7rem;
+		line-height:3.7rem;
+	}
+	.semistrong{
+		font-size:2.3rem;
+	}
+	.smaller{
+		font-size:2.1rem;
+	}
+	
+	#logo{
+		width: 500px;
+		height: 100px;
+		background-image: url('../images/logo-jwt-1400.png');
+		background-repeat: no-repeat;
+		position: relative;
+		top:35px;
+	}
+	
+	#tit{
+		font-size: 36px;
+	}
+
+	#paragraph1a {
+	    position: relative;
+	    top: 40px;
+	}
+}

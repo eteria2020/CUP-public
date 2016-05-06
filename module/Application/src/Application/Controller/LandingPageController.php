@@ -60,12 +60,22 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
-    public function falacosagiustaAction()
+    public function expressAction()
     {
         return (new viewModel())->setTerminal(true);
     }
 
-    public function expressAction()
+    public function sabaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function anasAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function jwtAction()
     {
         return (new viewModel())->setTerminal(true);
     }
