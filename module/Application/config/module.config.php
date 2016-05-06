@@ -403,6 +403,17 @@ return [
                     ],
                 ]
             ],
+            'saba' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{saba}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'saba',
+                    ],
+                ]
+            ],
             'express' => [
                 'type' => 'Segment',
                 'options' => [
