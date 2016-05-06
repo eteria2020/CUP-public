@@ -100,7 +100,7 @@ button a{
 #logo{
 	width: 150px;
 	height: 105px;
-	background-image: url('../img/logo_elfo.png');
+	background-image: url('../images/logo_elfo.png');
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -265,7 +265,7 @@ button{
 		top:0px;
 		width: 75px;
 		height: 53px;
-		background-image: url('../img/logo-elfo-small.png');
+		background-image: url('../images/logo-elfo-small.png');
 	}
 
 	#paragraph1 {
@@ -336,7 +336,7 @@ button{
 		top:-13px;
 		width: 150px;
 		height: 105px;
-		background-image: url('../img/logo_elfo.png');
+		background-image: url('../images/logo_elfo.png');
 	}
 
 	#nota{
