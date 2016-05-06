@@ -293,6 +293,17 @@ return [
                     ],
                 ]
             ],
+            'anas' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{anas}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'anas',
+                    ],
+                ],
+            ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [
@@ -389,6 +400,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'roma',
+                    ],
+                ]
+            ],
+            'saba' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{saba}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'saba',
                     ],
                 ]
             ],
