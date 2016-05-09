@@ -49,12 +49,14 @@ $(function () {
 
         if (province !== 0 && province !== "0") {
             promise = $.get(municipalitiesUrl + "/" + province, function (data) {
-                $.each(data, function (i, item) {
-                    $("#birthTown").append($("<option>", {
-                        value: item.name,
-                        text: item.name
-                    }));
-                });
+                if (province === $("#birthProvince").val()) {
+                    $.each(data, function (i, item) {
+                        $("#birthTown").append($("<option>", {
+                            value: item.name,
+                            text: item.name
+                        }));
+                    });
+                }
             });
 
             if (typeof params !== "undefined" && params.hasOwnProperty("birthTownValue")) {
