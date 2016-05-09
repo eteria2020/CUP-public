@@ -24,15 +24,13 @@ class RegistrationFormFactory implements FactoryInterface
         $provincesService = $serviceLocator->get('SharengoCore\Service\ProvincesService');
         $promoCodeService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
         $fleetService = $serviceLocator->get('SharengoCore\Service\FleetService');
-        $municipalitiesService = $serviceLocator->get('SharengoCore\Service\MunicipalitiesService');
         $userFieldset = new UserFieldset(
             $translator,
             $hydrator,
             $countriesService,
             $customersService,
             $provincesService,
-            $fleetService,
-            $municipalitiesService
+            $fleetService
         );
         $promoCodeFieldset = new PromoCodeFieldset($translator, $promoCodeService);
 
