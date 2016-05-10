@@ -42,6 +42,12 @@ final class DriversLicenseEditingListener implements SharedListenerAggregateInte
             'driversLicenseEdited',
             [$this, 'disableCustomer']
         );
+
+        $this->listeners[] = $events->attach(
+            'Application\Controller\UserAreaController',
+            'taxCodeEdited',
+            [$this, 'disableCustomer']
+        );
     }
 
     public function detachShared(SharedEventManagerInterface $events)

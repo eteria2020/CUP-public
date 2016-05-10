@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a3b1ecd4628d7238cf07b1e26fea2cc5",
-    "content-hash": "8d679a6ae597e4d78b66ca1fbf1be35c",
+    "hash": "26b8e3483de671f6fa92b861c0e1d877",
+    "content-hash": "e8e4c24fde335d9dd584774609e5397d",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -2236,6 +2236,50 @@
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
             "time": "2015-07-01 11:25:50"
+        },
+        {
+            "name": "usu/codice-fiscale",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreausu/CodiceFiscale.git",
+                "reference": "92a9a9accd388744813043683cff5652838956dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreausu/CodiceFiscale/zipball/92a9a9accd388744813043683cff5652838956dc",
+                "reference": "92a9a9accd388744813043683cff5652838956dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CodiceFiscale": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrea Usuelli",
+                    "email": "andrea.usuelli@gmail.com"
+                }
+            ],
+            "description": "A library to calculate and check the validity of the italian fiscal code (codice fiscale)",
+            "homepage": "http://andreausu.github.com/CodiceFiscale",
+            "keywords": [
+                "codice fiscale",
+                "php"
+            ],
+            "time": "2014-11-29 09:49:24"
         },
         {
             "name": "zendframework/zend-developer-tools",

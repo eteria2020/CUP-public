@@ -616,7 +616,11 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'Application\Form\Validator\DuplicateTaxCode',
                         'options' => [
                             'customerService' => $this->customersService
-                        ]
+                        ],
+                        'break_chain_on_failure' => true
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\CoherentTaxCode'
                     ]
                 ]
             ],
