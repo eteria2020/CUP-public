@@ -7,9 +7,13 @@ nbproject
 .project
 .settings
 vendor
+node_modules
 
 // SharengoCore lives on its own repository
 module/SharengoCore
+
+// BusinessCore lives on its own repository
+module/BusinessCore
 
 // Cartasi module lives in its own repository
 module/Cartasi

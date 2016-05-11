@@ -27,6 +27,7 @@ $config = [
         // Our modules
         'Multilanguage',
         'SharengoCore',
+        'BusinessCore',
         'Cartasi',
         'MvLabsDriversLicenseValidation',
         'Application',

@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.4.0",
         "zendframework/zendframework": "~2.4",
-        "doctrine/doctrine-orm-module": "0.8.*",
+        "doctrine/doctrine-orm-module": "0.9.*",
         "speckcommerce/speck-paypal": "dev-master#bbf9c1adf40f9db288051b8f5d8d9b76ed9ea9f0",
         "zf-commons/zfc-user-doctrine-orm": "1.0.*",
         "bjyoungblood/bjy-authorize": "1.4.0",
@@ -59,15 +59,21 @@
         {
             "url": "https://github.com/marcosh/php-resque-scheduler.git",
             "type": "git"
+        },
+        {
+            "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
+            "type": "git"
         }
     ],
     "require-dev": {
         "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "^4.8"
+        "phpunit/phpunit": "^4.8",
+        "phpmd/phpmd": "@stable"
     },
     "autoload-dev": {
         "psr-0": {
             "SharengoCore": "module/SharengoCore/src",
+            "BusinessCore": "module/BusinessCore/src",
             "Cartasi": "module/Cartasi/src"
         }
     }
