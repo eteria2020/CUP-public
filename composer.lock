@@ -226,7 +226,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/cup-web/drivers-license-validation.git",
-                "reference": "a6b09e410cb34db870331dc486acb64fafc95f08"
+                "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
             },
             "require": {
                 "php": ">=5.4"
@@ -257,7 +257,7 @@
                 "validation",
                 "zf2"
             ],
-            "time": "2016-05-06 13:16:36"
+            "time": "2016-05-16 07:48:51"
         },
         {
             "name": "dmregister/zf2-resque",
