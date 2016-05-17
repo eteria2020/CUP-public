@@ -9,17 +9,12 @@ nbproject
 vendor
 node_modules
 
-// SharengoCore lives on its own repository
+// These modules are on their own repository
 module/SharengoCore
-
-// BusinessCore lives on its own repository
 module/BusinessCore
-
-// Cartasi module lives in its own repository
 module/Cartasi
-
-//DriversLicenseValidation module lives in its own repository
 module/MvLabsDriversLicenseValidation
+module/CUPPublicBusinessModule
 
 // cache
 data/DoctrineORMModule
