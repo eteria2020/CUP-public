@@ -7,6 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+$translator = new \Zend\I18n\Translator\Translator();
 return [
     'router' => [
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
@@ -655,6 +656,7 @@ return [
             'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service'
         ],
         'factories' => [
+            'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'RegistrationService'      => 'Application\Service\RegistrationServiceFactory',
             'RegistrationForm'         => 'Application\Form\RegistrationFormFactory',
             'RegistrationForm2'        => 'Application\Form\RegistrationForm2Factory',
@@ -1080,6 +1082,55 @@ return [
                         ]
                     ]
                 ],
+            ],
+        ],
+    ],
+    'navigation' => [
+        'default' => [
+            [
+                'label' => $translator->translate("Profilo"),
+                'route' => 'area-utente',
+                'icon' => 'fa fa-user',
+            ],
+            [
+                'label' => $translator->translate("Le mie corse"),
+                'route' => 'area-utente/rents',
+                'icon' => 'fa icon-car-small-fff',
+            ],
+            [
+                'label' => $translator->translate("Tariffe"),
+                'route' => 'area-utente/tariffe',
+                'icon' => 'fa fa-money',
+            ],
+            [
+                'label' => $translator->translate("PIN"),
+                'route' => 'area-utente/pin',
+                'icon' => 'fa fa-lock',
+            ],
+            [
+                'label' => $translator->translate("Fatture"),
+                'route' => 'area-utente/invoices-list',
+                'icon' => 'fa fa-file-o',
+            ],
+            [
+                'label' => $translator->translate("Dati di pagamento"),
+                'route' => 'area-utente/dati-pagamento',
+                'icon' => 'fa fa-credit-card',
+            ],
+            [
+                'label' => $translator->translate("Bonus"),
+                'route' => 'area-utente/bonus',
+                'icon' => 'fa fa-trophy',
+            ],
+            [
+                'label' => $translator->translate("Servizi aggiuntivi"),
+                'route' => 'area-utente/additional-services',
+                'icon' => 'fa fa-plus',
+            ],
+            [
+                'label' => $translator->translate("Patente"),
+                'route' => 'area-utente/patente',
+                'icon' => 'fa fa-tachometer',
             ],
         ],
     ],
