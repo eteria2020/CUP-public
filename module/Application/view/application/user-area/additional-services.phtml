@@ -132,8 +132,8 @@ $bonusPackages = $this->bonusPackages;
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-6"><?= $package->getMinutes() . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-6"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= date_create()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-6">per 90 gg</div>
+                                <div class="block-data-table-td cw-1-6"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-6"><?= $package->readableValidTo() ?></div>
                                 <div class="block-data-table-td cw-1-6"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-6">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
