@@ -92,13 +92,15 @@
 
                             <? if ($this->customer->getDiscountRate() > 0): ?>
                                 <div>
-                                    <?= sprintf($this->translate('Lo sconto %% che hai ottenuto da Share’N GO profilando il tuo bisogno di mobilità
-su <a href="http://www.equomobili.it">www.equomobili.it</a> è del %d%% e quindi il tuo piano tariffario
-personale sarà per 365 GG dalla tua registrazione quello indicato nella tabella a sinistra'), $this->customer->getDiscountRate()); ?>
+                                    <?= $this->translate('Share’N GO offre tariffe scontate a chi ha maggior bisogno di mobilità e partecipa
+ alla sharing economy. Nella colonna a sinistra vedi il tuo piano tariffario personale (è valido 365 giorni dal giorno in cui ti è stato
+ concesso lo sconto che ti spetta).'); ?>
                                 </div>
                             <? else: ?>
                                 <div>
-                                    <?= $this->translate('Non risulti ancora profilato su <a href="http://www.equomobili.it">www.equomobili.it</a> per avere uno sconto personalizzato sul piano tariffario standard. Al momento il tuo piano tariffario è quello indicato nella tabella a sinistra.'); ?>
+                                    <?= $this->translate('Con Share’N GO puoi ottenere una tariffa scontata, che riconosce il tuo bisogno di mobilità
+ e premia la tua partecipazione alla sharing economy. Clicca sul banner a destra e scopri lo sconto
+ che ti spetta (dura 365 giorni e puoi chiederlo solo una volta).'); ?>
                                 </div>
                             <? endif; ?>
 
