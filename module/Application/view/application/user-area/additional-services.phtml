@@ -100,42 +100,78 @@ $bonusPackages = $this->bonusPackages;
                         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
 
                         <!-- Description -->
-                        <div>
-                            <p>In questa sezione puoi acquistare dei pacchetti promozionali di minuti bonus a dei prezzi vantaggiosi.</p>
-                            <p>Nella seguente tabella trovi i pacchetti disponibili con i relativi dati.</p>
-                            <p>Clicca sul bottone nella colonna "Acquista" per accedere alla schermata di conferma dove potrai acquistare il pacchetto</p>
+                        <div class="content-align-center block-title highlight">
+                            <?= $this->translate('TIPO CHE SEI, PACCHETTO CHE TROVI') ?>
                         </div>
+                        <div class="block-field block-avatar-app content-align-center">
+                            <span class="block-sub-title">
+                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi SHARE’N GO
+                                scende fino ad arrivare a 6 € l’ora, la tariffa di car sharing a flusso libero 
+                                più bassa al mondo. Più ti muovi e più scopri quanto piacevole e conveniente 
+                                sia la mobilità elettrica e condivisa.') ?>
+                            </span>
+                        </div>
+                        <br><br>
+                        <!-- packages -->
+                        <div class="block-data-table clearboth clearfix">
+                        <?php
+                            foreach ($bonusPackages as $package) {
+                        ?>
+                            <div class="bw-f w-1-4 clearfix">
+                                <div class="bw-f w-1-2 clearfix">
+                                    <img style="width:110px;" src="<?= $this->basePath('images/pacco_regalo.png') ?>" alt="">
+                                </div>
+                                <div class="bw-f w-1-2 clearfix">
+                                    <div class="content-align-center">
+                                        <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
+                                        <p class="block-sub-title"><?= $package->getMinutes() ?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+                                        <p class="block-sub-title">(<?= sprintf("%.2f cent.", ($package->getCost() / 100) / $package->getMinutes()) ?> <?= $this->translate('min') ?>)</p>
+                                        <p class="block-sub-title"><?= $this->translate('Validità') ?>
+                                            <?php
+                                                // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                                $months = $package->getDuration() / 30;
+                                                echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                            // end foreach
+                            }
+                        ?>
+                        </div>
+                        <!-- packages -->
+                        
                         <!-- description -->
-
                         <!-- Table -->
                         <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
-
                             <!-- Table header -->
                             <div class="block-data-table-row clearfix">
-                                <div class="block-data-table-th cw-1-6">Minuti</div>
-                                <div class="block-data-table-th cw-1-6">Prezzo</div>
-                                <div class="block-data-table-th cw-1-6">Valido dal</div>
-                                <div class="block-data-table-th cw-1-6">Valido fino</div>
-                                <div class="block-data-table-th cw-1-6">Disponibile fino</div>
-                                <div class="block-data-table-th cw-1-6">Acquista</div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Nome'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista'); ?></div>
                             </div>
                             <!-- table header -->
-
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                     $i++;
                             ?>
-
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
-                                <div class="block-data-table-td cw-1-6"><?= $package->getMinutes() . (" min.") ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $package->readableValidTo() ?></div>
-                                <div class="block-data-table-td cw-1-6"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-6">
+                                <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $package->readableValidTo() ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-7">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
                                         <i class="fa fa-cart-plus"></i>
                                     </a>
