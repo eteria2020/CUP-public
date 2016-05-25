@@ -5,8 +5,9 @@ CREATE TABLE reservations (
     customer_id integer NOT NULL,
     beginning_ts timestamp with time zone NOT NULL,
     active boolean NOT NULL DEFAULT true,
-    cards jsonb, #text if psql 9.1,
+    cards jsonb, -- text if psql 9.1,
     length int NOT NULL,
     to_send boolean DEFAULT true,
-    sent_ts timestamp with time zone NOT NULL
+    sent_ts timestamp with time zone NOT NULL,
+    consumed_ts timestamp with time zone 
 );

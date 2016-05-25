@@ -1,0 +1,3 @@
+ALTER TABLE ONLY cars ALTER COLUMN charging TYPE boolean;
+ALTER TABLE ONLY cars ALTER COLUMN charging SET DEFAULT false;
+ALTER TABLE cars ADD COLUMN battery_offset integer NOT NULL DEFAULT 0;

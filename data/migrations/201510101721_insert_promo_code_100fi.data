@@ -4,7 +4,7 @@ INSERT INTO promo_codes_info (id, active, insert_ts, type, minutes, valid_from, 
 
 INSERT INTO promo_codes Values(
     nextval('promocodes_id_seq'::regclass),
-    , # usare l'id del promo_codes_info appena creato
+    (select id from promo_codes order by id desc limit 1), --  usare l'id del promo_codes_info appena creato
     '100FI',
     'Iscrizione ad 1 euro per evento top 100 Firenze',
     true

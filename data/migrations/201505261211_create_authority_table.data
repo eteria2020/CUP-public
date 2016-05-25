@@ -1,0 +1,5 @@
+INSERT INTO authority (code, name) VALUES
+('DTT', 'Dipartimento dei Trasporti Terrestri'),
+('MC', 'Motorizzazione Civile'),
+('CO', 'Comune'),
+('AE', 'Altro ente');

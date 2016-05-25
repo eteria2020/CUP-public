@@ -1,8 +1,5 @@
 CREATE SEQUENCE fleet_id_seq INCREMENT BY 1 MINVALUE 1 START 1;
-CREATE TABLE fleets (id INT NOT NULL, code VARCHAR(2) NOT NULL, name TEXT NOT NULL, PRIMARY KEY(id));
-
-INSERT INTO fleets(id, code, name) VALUES(nextval('fleet_id_seq'), 'MI', 'Milano');
-INSERT INTO fleets(id, code, name) VALUES(nextval('fleet_id_seq'), 'FI', 'Firenze');
+CREATE TABLE fleets (id INT NOT NULL, code VARCHAR(2) NOT NULL, name TEXT NOT NULL, choropleth_params jsonb, PRIMARY KEY(id));
 
 ALTER TABLE cars ADD fleet_id INT DEFAULT NULL;
 ALTER TABLE cars ADD CONSTRAINT FK_95C71D144B061DF9 FOREIGN KEY (fleet_id) REFERENCES fleets (id) NOT DEFERRABLE INITIALLY IMMEDIATE;
@@ -10,8 +7,5 @@ CREATE INDEX IDX_95C71D144B061DF9 ON cars (fleet_id);
 ALTER TABLE trips ADD fleet_id INT DEFAULT NULL;
 ALTER TABLE trips ADD CONSTRAINT FK_AA7370DA4B061DF9 FOREIGN KEY (fleet_id) REFERENCES fleets (id) NOT DEFERRABLE INITIALLY IMMEDIATE;
 CREATE INDEX IDX_AA7370DA4B061DF9 ON trips (fleet_id);
-
-UPDATE cars SET fleet_id = 1;
-UPDATE trips SET fleet_id = 1;
 
 ALTER TABLE cars ALTER fleet_id SET NOT NULL;
