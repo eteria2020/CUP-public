@@ -79,7 +79,7 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-    
+
     public function aceaAction()
     {
         return (new viewModel())->setTerminal(true);
