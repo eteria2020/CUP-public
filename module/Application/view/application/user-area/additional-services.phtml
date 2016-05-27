@@ -125,11 +125,11 @@ $bonusPackages = $this->bonusPackages;
                                     <div class="content-align-center">
                                         <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
                                         <p class="block-sub-title"><?= $package->getMinutes() ?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
-                                        <p class="block-sub-title">(<?= sprintf("%.2f cent.", ($package->getCost() / 100) / $package->getMinutes()) ?> <?= $this->translate('min') ?>)</p>
+                                        <p class="block-sub-title">(<?= sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()) ?>/<?= $this->translate('min') ?>)</p>
                                         <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                             <?php
                                                 // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                $months = $package->getDuration() / 30;
+                                                $months = floor($package->getDuration() / 30);
                                                 echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
                                             ?>
                                         </p>
