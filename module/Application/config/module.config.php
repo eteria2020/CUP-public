@@ -447,7 +447,7 @@ return [
                         'action'     => 'acea',
                     ],
                 ],
-            ],            
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
