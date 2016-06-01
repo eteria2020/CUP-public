@@ -382,6 +382,17 @@ return [
                 ],
                 'may_terminate' => true
             ],
+            'legambiente' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{legambiente}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'legambiente',
+                    ],
+                ],
+            ],
             'lifegate' => [
                 'type' => 'Segment',
                 'options' => [
