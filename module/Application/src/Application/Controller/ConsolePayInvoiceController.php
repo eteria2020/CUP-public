@@ -9,6 +9,7 @@ use SharengoCore\Service\ProcessPaymentsService;
 use Cartasi\Exception\WrongPaymentException;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Doctrine\ORM\EntityManager;
 
 class ConsolePayInvoiceController extends AbstractActionController
 {
@@ -58,6 +59,11 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $avoidPersistance;
 
     /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
      * @param TripPaymentsService $tripPaymentsService
      * @param InvoicesService $invoicesService
      * @param Logger $logger
@@ -67,13 +73,15 @@ class ConsolePayInvoiceController extends AbstractActionController
         TripPaymentsService $tripPaymentsService,
         InvoicesService $invoicesService,
         Logger $logger,
-        ProcessPaymentsService $processPaymentsService
+        ProcessPaymentsService $processPaymentsService,
+        EntityManager $entityManager
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
         $this->invoicesService = $invoicesService;
         $this->logger = $logger;
         $this->processPaymentsService = $processPaymentsService;
         $this->processPaymentsService->setLogger($this->logger);
+        $this->entityManager = $entityManager;
     }
 
     public function payInvoiceAction()
@@ -87,6 +95,10 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
         $this->processPayments();
+
+        // clear the entity manager cache
+        $this->entityManager->clear();
+
         $this->generateInvoices();
     }
 
