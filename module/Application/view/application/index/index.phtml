@@ -8,6 +8,7 @@
     $this->inlineScript()->appendFile($this->basePath('js/overlay.js'));
     $this->inlineScript()->appendFile($this->basePath('js/perfect-scrollbar.jquery.min.js'));
     $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+    $this->headLink()->appendStylesheet($this->basePath('css/find-address.css'));
 ?>
 
 <!-- module-car-map -->
@@ -23,6 +24,17 @@
             <li><a><i id="cars-toggle-icon" class="icon-car-in-circle-ct2"></i></a></li>
             <li><a><i id="energy-toggle-icon" class="icon-energy-in-circle-ct2"></i></a></li>
         </ul>
+    </div>
+
+    <!-- module-map-tool -->
+    <div class="module-map-tool bg-ct2 g-top g-left">
+
+        <!-- block-list-map-tool -->
+        <div class="block-list-map-tool">
+            <input id="find-address" class="controls" type="text" placeholder="<?= $this->translate('CERCA INDIRIZZO'); ?>">
+        </div>
+        <!-- block-list-map-tool -->
+
     </div>
 
     <!-- module-map-tool -->

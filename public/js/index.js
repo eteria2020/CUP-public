@@ -21,7 +21,7 @@ var circle = null;
 // asynchronously Load the map API
 jQuery(function($) {
     var script = document.createElement('script');
-    script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+    script.src = "//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&callback=initialize";
     document.body.appendChild(script);
 });
 
@@ -51,8 +51,69 @@ function initialize() {
         }
     };
 
-    // sisplay the map on the page
+    // display the map on the page
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+    // input find address
+    var inputFindAddress = document.getElementById('find-address');
+    if(inputFindAddress!=null)
+    {        
+        var searchBox = new google.maps.places.SearchBox(inputFindAddress);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputFindAddress);
+        
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+              return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function(marker) {
+              marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+                var icon = {
+                  url: place.icon,
+                  size: new google.maps.Size(71, 71),
+                  origin: new google.maps.Point(0, 0),
+                  anchor: new google.maps.Point(17, 34),
+                  scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location,
+                    zIndex: google.maps.Marker.MAX_ZINDEX + 1
+                }));
+
+                if (place.geometry.viewport) {
+                  // Only geocodes have viewport.
+                  bounds.union(place.geometry.viewport);
+                } else {
+                  bounds.extend(place.geometry.location);
+                }
+            });
+          map.fitBounds(bounds);
+          map.setZoom(17);
+        });
+        
+    }
 
     // get the cars
     $.get(carsUrl, function(jsonData) {
