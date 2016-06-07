@@ -56,11 +56,11 @@ function initialize() {
 
     // input find address
     var inputFindAddress = document.getElementById('find-address');
-    if(inputFindAddress!=null)
-    {        
+    if(inputFindAddress!==null)
+    {
         var searchBox = new google.maps.places.SearchBox(inputFindAddress);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputFindAddress);
-        
+
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
           searchBox.setBounds(map.getBounds());
@@ -72,7 +72,7 @@ function initialize() {
         searchBox.addListener('places_changed', function() {
             var places = searchBox.getPlaces();
 
-            if (places.length == 0) {
+            if (places.length === 0) {
               return;
             }
 
@@ -112,7 +112,7 @@ function initialize() {
           map.fitBounds(bounds);
           map.setZoom(17);
         });
-        
+
     }
 
     // get the cars
