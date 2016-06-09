@@ -40,7 +40,7 @@
 
 html, body{
 	font-size:100%;
-	font-family: 'Lato-Regular';	
+	font-family: 'Lato-Regular';
 }
 
 .lato-regular{
@@ -99,7 +99,7 @@ div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
 	font-size: 47px;
 	font-family: 'Lato-Bold';
 	line-height: 1;
-	display: inline-block;	
+	display: inline-block;
 }
 
 a#submit:hover{
@@ -123,11 +123,11 @@ a#submit:hover{
 	margin:20px 40px;
 }
 #container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
-	
+
 	#paragraph1a{
 		margin-bottom:30px;
 		padding: 0 15px 0 12px;
@@ -135,23 +135,23 @@ a#submit:hover{
 	}
 
 @media screen and (max-width:991px){
-	
+
 	.space{
 		margin-top:10px;
 		margin-bottom:30px;
 	}
 
-	.button{		
+	.button{
 		padding:10px 50px 10px;
-		font-size: 30px;		
+		font-size: 30px;
 	}
-	
+
 	.strong-too-small{
 		font-size: 0.8rem;
    		line-height: 1rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong-more-small{
 		font-size: 1.0rem;
    		line-height: 1.2rem;
@@ -163,7 +163,7 @@ a#submit:hover{
    		line-height: 1.4rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong{
 		font-size: 1.5rem;
    		line-height: 1.7rem;
@@ -176,7 +176,7 @@ a#submit:hover{
 
 	#first-paragraph {
 	    margin-top:48px;
-	}	
+	}
 
 	#paragraph1a{
 		margin-bottom:30px;
@@ -188,9 +188,9 @@ a#submit:hover{
 	.logo_acea_conte{
 		width: 170px;
 		margin:50px auto;
-	}	
+	}
 	#container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 	}
 
@@ -204,23 +204,23 @@ a#submit:hover{
 		margin-bottom:30px;
 	}
 
-	.button{		
+	.button{
 		padding:10px 50px 10px;
-		font-size: 30px;		
+		font-size: 30px;
 	}
-	
+
 	.strong-too-small{
 		font-size: 0.8rem;
    		line-height: 1rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong-more-small{
 		font-size: 0.9rem;
    		line-height: 1.1rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong-small{
 		font-size: 1.0rem;
    		line-height: 1.2rem;
@@ -244,9 +244,9 @@ a#submit:hover{
 	.logo_acea_conte{
 		width: 140px;
 		margin:20px 20px 0 auto;
-	}	
+	}
 	#container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 	}
 
@@ -255,7 +255,7 @@ a#submit:hover{
 	.mobile {
 		font-size:0.95rem;
 	}
-	
+
 }
 
 @media screen and (min-width: 768px){
@@ -263,11 +263,11 @@ a#submit:hover{
 		display:none;
 	}
 	#container-paragraph{
-		 max-width:500px; 
+		 max-width:500px;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
-	
+
 
 }
 @media screen and (max-width: 767px){
@@ -275,7 +275,7 @@ a#submit:hover{
 		display:none;
 	}
 	#container-paragraph{
-		 max-width:500px; 
+		 max-width:500px;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
@@ -292,22 +292,22 @@ a#submit:hover{
 		margin-bottom:30px;
 	}
 
-	.button{		
+	.button{
 		padding:10px 50px 10px;
-		font-size: 47px;		
+		font-size: 47px;
 	}
-	
+
 	.strong-too-small{
 		font-size: 0.8rem;
    		line-height: 1.0rem;
 	}
-	
+
 	.strong-more-small{
 		font-size: 1.1rem;
    		line-height: 1.3rem;
 		padding-bottom:5px;
 	}
-		
+
 	.strong-small{
 		font-size: 1.4rem;
    		line-height: 1.6rem;
@@ -332,11 +332,11 @@ a#submit:hover{
 		margin:20px 20px 0 auto;
 	}
 	#container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 	}
 	#container-paragraph{
-		 max-width:100%; 
+		 max-width:100%;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
@@ -347,18 +347,18 @@ a#submit:hover{
 		margin-top:30px;
 		margin-bottom:30px;
 	}
-	
+
 	.strong-too-small{
 		font-size: 1rem;
    		line-height: 1.2rem;
 	}
-	
+
 	.strong-more-small{
 		font-size: 1.4rem;
    		line-height: 1.6rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong-small{
 		font-size: 1.8rem;
    		line-height: 2rem;
@@ -384,11 +384,11 @@ a#submit:hover{
 	}
 
 	#container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 	}
 		#container-paragraph{
-		 max-width:100%; 
+		 max-width:100%;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
@@ -400,23 +400,23 @@ a#submit:hover{
 		margin-top:50px;
 		margin-bottom:50px;
 	}
-	
+
 	.strong-too-small{
 		font-size: 1.0rem;
    		line-height: 1.2rem;
 	}
-	
+
 	.strong-more-small{
 		font-size: 1.4rem;
    		line-height: 1.6rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong-small{
 		font-size: 1.8rem;
    		line-height: 2rem;
 	}
-	
+
 	.strong{
 		font-size: 2.2rem;
    		line-height: 2.6rem;
@@ -436,11 +436,11 @@ a#submit:hover{
 		margin:15px 20px 0 auto;
 	}
 	#container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 	}
 		#container-paragraph{
-		 max-width:100%; 
+		 max-width:100%;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
@@ -452,23 +452,23 @@ a#submit:hover{
 		margin-top:80px;
 		margin-bottom:80px;
 	}
-	
+
 	.strong-too-small{
 		font-size: 1.1rem;
    		line-height: 1.3rem;
 	}
-	
+
 	.strong-more-small{
 		font-size: 1.6rem;
    		line-height: 1.8rem;
 		padding-bottom:5px;
 	}
-	
+
 	.strong-small{
 		font-size: 2rem;
    		line-height: 2.2rem;
 	}
-	
+
 	.strong{
 		font-size: 2.3rem;
    		line-height: 2.7rem;
@@ -487,11 +487,11 @@ a#submit:hover{
 		margin:35px 20px 0 auto;
 	}
 	#container-paragraph{
-		 width:100%; 
+		 width:100%;
 		 margin:0 auto;
 	}
 		#container-paragraph{
-		 max-width:100%; 
+		 max-width:100%;
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
