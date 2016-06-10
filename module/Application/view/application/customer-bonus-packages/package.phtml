@@ -30,7 +30,7 @@
                         </td>
                         <td class="sng-w-1-2">
                             <h2>Valido al:</h2>
-                            <p id="valid-to" class="sng-text">per 90 gg</p>
+                            <p id="valid-to" class="sng-text"><?= sprintf($this->translate("per %d gg"), $this->package->getDuration()); ?></p>
                         </td>
                     </tr>
                     <tr>

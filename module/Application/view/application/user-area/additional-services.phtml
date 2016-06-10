@@ -169,7 +169,7 @@ $bonusPackages = $this->bonusPackages;
                                 <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->readableValidTo() ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= sprintf($this->translate("per %d gg"), $package->getDuration()); ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-7">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
