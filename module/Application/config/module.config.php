@@ -459,6 +459,17 @@ return [
                     ],
                 ],
             ],
+            'ordpro' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ordpro}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ordpro',
+                    ],
+                ],
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [

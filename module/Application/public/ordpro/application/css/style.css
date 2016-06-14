@@ -1,0 +1,528 @@
+@font-face {
+	font-family: 'Lato-Bold';
+	src: url('../font/Lato-Bold.eot');
+	src: url('../font/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Bold.woff') format('woff'),
+		url('../font/Lato-Bold.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Regular';
+	src: url('../font/Lato-Regular.eot');
+	src: url('../font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Regular.woff') format('woff'),
+		url('../font/Lato-Regular.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Light';
+	src: url('../font/Lato-Light.eot');
+	src: url('../font/Lato-Light.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Light.woff') format('woff'),
+		url('../font/Lato-Light.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato-Heavy';
+	src: url('../font/Lato-Heavy.eot');
+	src: url('../font/Lato-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('../font/Lato-Heavy.woff') format('woff'),
+		url('../font/Lato-Heavy.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+html, body{
+	font-size:100%;
+	font-family: 'Lato-Regular';
+}
+
+.lato-regular{
+	font-family: 'Lato-Regular';
+}
+
+.lato-bold{
+	font-family: 'Lato-Heavy';
+}
+
+.white{
+	color:#ffffff;
+}
+
+.yellow{
+	color:#ffee02;
+}
+
+.grey{
+	color:#575656;
+}
+
+.orange, .orange a, .orange a:hover, .orange a:active, .orange a:focus{
+	color:#faaf43;
+	font-family: 'Lato-Bold';
+}
+
+.blu, .blu a{
+	color: #1c3462;
+}
+
+.blu a:hover, .blu a:active, .blu a:focus{
+	color:#1c3462;
+}
+
+.bg-grey{
+	background-color:#005426;
+}
+
+.bg-blue{
+	background-color:#215968;
+}
+
+div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
+	padding-left:0;
+}
+
+.button{
+	color: #3f3d40;
+	background-color:#ffed08;
+	border:5px solid #fff;
+	padding:15px 60px 15px;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	border-radius: 14px;
+	font-size: 47px;
+	font-family: 'Lato-Bold';
+	line-height: 1;
+	display: inline-block;
+}
+
+a#submit:hover{
+	color:#1d2848;
+	text-decoration: none;
+}
+
+.desk-block{
+	display:block;
+}
+
+.container-fluid{
+		width: 100%;
+	}
+
+.col-md-8, .col-md-4{
+	padding: 0px;
+}
+
+.logo_acea_conte{
+	margin:20px 40px;
+}
+#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+
+	#paragraph1a{
+		margin-bottom:30px;
+		padding: 0 15px 0 12px;
+		text-align:left;
+	}
+
+@media screen and (max-width:991px){
+
+	.space{
+		margin-top:10px;
+		margin-bottom:30px;
+	}
+
+	.button{
+		padding:10px 50px 10px;
+		font-size: 30px;
+	}
+
+	.strong-too-small{
+		font-size: 0.8rem;
+   		line-height: 1rem;
+		padding-bottom:5px;
+	}
+
+	.strong-more-small{
+		font-size: 1.0rem;
+   		line-height: 1.2rem;
+		padding-bottom:5px;
+	}
+
+	.strong-small{
+		font-size: 1.2rem;
+   		line-height: 1.4rem;
+		padding-bottom:5px;
+	}
+
+	.strong{
+		font-size: 1.5rem;
+   		line-height: 1.7rem;
+	}
+
+	.strong-big{
+		font-size: 1.9rem;
+    	line-height: 1.2;
+	}
+
+	.strong-more-big{
+		font-size: 2.4rem;
+    	line-height: 1.5;
+	}
+
+	#first-paragraph {
+	    margin-top:48px;
+	}
+
+	#paragraph1a{
+		margin-bottom:30px;
+		padding: 0 15px 0 12px;
+		text-align:left;
+	}
+
+
+	.logo_acea_conte{
+		width: 170px;
+		margin:50px auto;
+	}
+	#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+	}
+
+}
+
+
+
+@media screen and (min-width: 992px){
+	.space{
+		margin-top:20px;
+		margin-bottom:30px;
+	}
+
+	.button{
+		padding:10px 50px 10px;
+		font-size: 30px;
+	}
+
+	.strong-too-small{
+		font-size: 0.8rem;
+   		line-height: 1rem;
+		padding-bottom:5px;
+	}
+
+	.strong-more-small{
+		font-size: 0.9rem;
+   		line-height: 1.1rem;
+		padding-bottom:5px;
+	}
+
+	.strong-small{
+		font-size: 1.0rem;
+   		line-height: 1.2rem;
+		padding-bottom:5px;
+	}
+
+	.strong{
+		font-size: 1.4rem;
+   		line-height: 1.7rem;
+	}
+
+	.strong-big{
+		font-size: 1.5rem;
+    	line-height: 1.4;
+	}
+
+	.strong-more-big{
+		font-size: 2.4rem;
+    	line-height: 1.5;
+	}
+
+	#first-paragraph {
+	    margin-top:21px;
+	}
+
+	.logo_acea_conte{
+		width: 140px;
+		margin:20px 20px 0 auto;
+	}
+	#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+	}
+
+}
+@media screen and (max-width: 480px){
+	.mobile {
+		font-size:0.95rem;
+	}
+
+}
+
+@media screen and (min-width: 768px){
+	.img-mobile{
+		display:none;
+	}
+	#container-paragraph{
+		 max-width:400px;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+
+
+}
+@media screen and (max-width: 767px){
+	.img-desk{
+		display:none;
+	}
+	#container-paragraph{
+		 max-width:500px;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+	#paragraph1a{
+		margin-bottom:30px;
+		padding: 0 15px 0 12px;
+		text-align:left;
+	}
+}
+
+@media screen and (min-width:1200px){
+	.space{
+		margin-top:20px;
+		margin-bottom:30px;
+	}
+
+	.button{
+		padding:10px 50px 10px;
+		font-size: 47px;
+	}
+
+	.strong-too-small{
+		font-size: 0.8rem;
+   		line-height: 1.0rem;
+	}
+
+	.strong-more-small{
+		font-size: 1.1rem;
+   		line-height: 1.3rem;
+		padding-bottom:5px;
+	}
+
+	.strong-small{
+		font-size: 1.4rem;
+   		line-height: 1.6rem;
+	}
+
+	.strong{
+		font-size: 1.7rem;
+   		line-height: 1.8rem;
+	}
+
+	.strong-big{
+		font-size: 2.1rem;
+    	line-height: 1.19;
+	}
+
+	.strong-more-big{
+		font-size: 2.8rem;
+    	line-height: 1.5;
+	}
+
+	#first-paragraph {
+	    margin-top:17px;
+	}
+
+	.logo_acea_conte{
+		width: 145px;
+		margin:20px 20px 0 auto;
+	}
+	#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+	}
+	#container-paragraph{
+		 max-width:100%;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+}
+
+@media screen and (min-width:1400px){
+	.space{
+		margin-top:30px;
+		margin-bottom:30px;
+	}
+
+	.strong-too-small{
+		font-size: 1rem;
+   		line-height: 1.2rem;
+	}
+
+	.strong-more-small{
+		font-size: 1.4rem;
+   		line-height: 1.6rem;
+		padding-bottom:5px;
+	}
+
+	.strong-small{
+		font-size: 1.8rem;
+   		line-height: 2rem;
+	}
+
+	.strong{
+		font-size: 2rem;
+   		line-height: 2.2rem;
+	}
+
+	.strong-big{
+		font-size: 2.4rem;
+    	line-height: 1.2;
+	}
+
+	.strong-more-big{
+		font-size: 3rem;
+    	line-height: 1.8;
+	}
+
+	#first-paragraph {
+	    margin-top:20px;
+	}
+
+	.logo_acea_conte{
+		width: 170px;
+		margin:25px 20px 0 auto;
+	}
+
+	#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+	}
+		#container-paragraph{
+		 max-width:100%;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+}
+
+
+@media screen and (min-width:1600px){
+	.space{
+		margin-top:50px;
+		margin-bottom:50px;
+	}
+
+	.strong-too-small{
+		font-size: 1.0rem;
+   		line-height: 1.2rem;
+	}
+
+	.strong-more-small{
+		font-size: 1.4rem;
+   		line-height: 1.6rem;
+		padding-bottom:5px;
+	}
+
+	.strong-small{
+		font-size: 1.8rem;
+   		line-height: 2rem;
+	}
+
+	.strong{
+		font-size: 2.2rem;
+   		line-height: 2.6rem;
+	}
+
+	.strong-big{
+		font-size: 2.8rem;
+    	line-height: 1.1;
+	}
+
+	.strong-more-big{
+		font-size: 3.4rem;
+    	line-height: 1.8;
+	}
+
+	#first-paragraph {
+	    margin-top:40px;
+	}
+
+	.logo_acea_conte{
+		width: 180px;
+		margin:15px 20px 0 auto;
+	}
+	#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+	}
+		#container-paragraph{
+		 max-width:100%;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+}
+
+
+@media screen and (min-width:1800px){
+	.space{
+		margin-top:80px;
+		margin-bottom:80px;
+	}
+
+	.strong-too-small{
+		font-size: 1.1rem;
+   		line-height: 1.3rem;
+	}
+
+	.strong-more-small{
+		font-size: 1.6rem;
+   		line-height: 1.8rem;
+		padding-bottom:5px;
+	}
+
+	.strong-small{
+		font-size: 2rem;
+   		line-height: 2.2rem;
+	}
+
+	.strong{
+		font-size: 2.3rem;
+   		line-height: 2.7rem;
+	}
+
+	.strong-big{
+		font-size: 3.15rem;
+    	line-height: 1.2;
+	}
+
+	.strong-more-big{
+		font-size: 3.6rem;
+    	line-height: 2;
+	}
+
+	#first-paragraph {
+	    margin-top:46px;
+	}
+	.logo_acea_conte{
+		width: 180px;
+		margin:35px 20px 0 auto;
+	}
+	#container-paragraph{
+		 width:100%;
+		 margin:0 auto;
+	}
+		#container-paragraph{
+		 max-width:100%;
+		 margin:0 auto;
+		 padding: 0 15px 0 15px;
+	}
+}
