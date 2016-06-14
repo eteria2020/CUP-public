@@ -49,17 +49,20 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-    
+
     public function aeronauticaAction()
     {
         return (new viewModel())->setTerminal(true);
     }
-    
+
     public function romaAction()
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    public function unirm1Action()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
     public function expressAction()
     {
         return (new viewModel())->setTerminal(true);
