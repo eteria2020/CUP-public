@@ -330,11 +330,11 @@ return [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{fao}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'fao',
-                    ),
+                    ],
                 ]
             ],
             'ordpro' => [
