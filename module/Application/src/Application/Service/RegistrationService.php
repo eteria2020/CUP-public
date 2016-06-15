@@ -4,6 +4,7 @@ namespace Application\Service;
 
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
+use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Service\CustomerDeactivationService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\PromoCodesService;
@@ -246,15 +247,6 @@ final class RegistrationService
 
             $customer->setPin(json_encode($pins));
 
-            // add 100 min bonus
-            $bonus100mins = CustomersBonus::createBonus(
-                $customer,
-                $this->subscriptionBonus['total'],
-                $this->subscriptionBonus['description'],
-                $this->subscriptionBonus['valid-to']
-            );
-            $this->entityManager->persist($bonus100mins);
-
             // has customer used a promo code?
             $promoCode = $data['promoCode'];
             if ('' != $promoCode) {
@@ -272,6 +264,17 @@ final class RegistrationService
                     );
                     $customer->setDiscountRate($discountPercentage);
                 }
+            }
+
+            if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
+                // add 100 min bonus
+                $bonus100mins = CustomersBonus::createBonus(
+                    $customer,
+                    $this->subscriptionBonus['total'],
+                    $this->subscriptionBonus['description'],
+                    $this->subscriptionBonus['valid-to']
+                );
+                $this->entityManager->persist($bonus100mins);
             }
 
             $this->entityManager->persist($customer);
