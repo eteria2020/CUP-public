@@ -59,16 +59,17 @@ class AvailableFleets extends AbstractHelper
             '</span><i class="fa fa-caret-down"></i></a><ul class="js-collapse-box block-available-languages hidden">';
 
         foreach ($fleets as $fleet) {
-            $ret .= '<li><a href="javascript:void();" data-longitude="'.
-            $fleet->getLongitude().
-            '" data-latitude="'.
-            $fleet->getLatitude().
-            '" data-name="'.
-            $fleet->getname().
-            '" data-id="'.
-            $fleet->getId()
-            .'">'.
-            $fleet->getName().
+            $ret .= '<li><a href="javascript:setCenter('.$fleet->getLatitude().','.$fleet->getLongitude().
+                ');" data-longitude="'.
+                $fleet->getLongitude().
+                '" data-latitude="'.
+                $fleet->getLatitude().
+                '" data-name="'.
+                $fleet->getname().
+                '" data-id="'.
+                $fleet->getId()
+                .'">'.
+                $fleet->getName().
             '</a></li>';
         }
 
