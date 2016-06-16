@@ -1,6 +1,12 @@
 <!-- main -->
 <div id="main">
+    <script type="text/javascript" src="/js/intercom.js"></script>
 
+    <?php
+        if ($this->config('intercom', 'key')) {
+            $this->headScript()->appendScript("var intercomAppId='".$this->config('intercom','key')."';");
+        }
+    ?>
     <!-- content -->
     <div class="content">
 
