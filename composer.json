@@ -30,7 +30,8 @@
         "socalnick/scn-social-auth": "^1.18",
         "socalnick/scn-social-auth-doctrine-orm": "^1.5",
         "ramsey/uuid-doctrine": "^1.2",
-        "usu/codice-fiscale": "^1.0"
+        "usu/codice-fiscale": "^1.0",
+        "creof/doctrine2-spatial": "1.*"
     },
     "repositories": [
         {
