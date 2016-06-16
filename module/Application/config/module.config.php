@@ -326,6 +326,17 @@ return [
                     ),
                 ]
             ],
+            'ordpro' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ordpro}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ordpro',
+                    ],
+                ],
+            ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
