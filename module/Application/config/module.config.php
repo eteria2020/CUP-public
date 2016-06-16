@@ -459,6 +459,17 @@ return [
                     ],
                 ],
             ],
+            'unirm1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{unirm1}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'unirm1',
+                    ],
+                ],
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
