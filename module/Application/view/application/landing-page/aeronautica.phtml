@@ -53,7 +53,7 @@
                     <span id="intro strong lato-bold">Se è in forza all’Aeronautica Militare di Firenze o uno studente dell’ISMA o della scuola Giulio Douhet</span>
                 </p>
                 <p class="yellow" id="paragraph1">
-                    <span class="strong lato-regular">con un click e 1 € usa a FIRENZE le Equomobili elettriche e condivise di <span class="strong-big lato-bold">SHARE'NGO</span> con 100 minuti gratis!
+                    <span class="strong lato-regular">con un click e 5 € usa a FIRENZE le Equomobili elettriche e condivise di <span class="strong-big lato-bold">SHARE'NGO</span> con 30 minuti gratis!
                 </p>
             </div>
             <div class="col-sm-7 col-sm-pull-5 img-desk">
@@ -64,24 +64,18 @@
             <div class="col-sm-7 img-desk">
                 <img src="/aeronautica/application/images/aeronautica-bottom.jpg" class="img-responsive" />
             </div>
-            <div class="col-sm-5 text-center p-top-5" id="second-paragraph">
-                <p class="yellow semistrong">
-                    <a href="http://www.equomobili.it/?codice_sconto=AERO" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'AERO 1'});">
-                        <span class="lato-bold"><strong class="strong-big2">SI REGISTRI OGGI.</strong></span>
-                        <br>
+            <div class="col-sm-5 text-center p-top-5" id="second-paragraph" style="top:-200px">
+                <a href="<?= $this->url('promocode-signup',['promocode' => 'AERO']); ?>" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'AERO'});">
+                    <p class="yellow semistrong">
+                        <span class="lato-bold">
+                               <strong class="strong-big2">SI REGISTRI OGGI.</strong>
+                        </span><br>
                         <span class="lato-regular">Le nostre auto sono pronte</span>
-                        <br>
-                        <span class="lato-regular">all’uscita dell’ISMA.</span>
-                        <span class="white desk-block strong-big" id="link-equo">www.equomobili.it</span>
-                    </a>
-                    <p class="yellow semistrong" id="codice-promo">
+                        <span class="lato-regular">all’uscita dell’ISMA.</span><br>
                         <span class="white lato-regular">CODICE PROMO</span>
-                        <p></p>
-                        <a href="http://www.equomobili.it/?codice_sconto=AERO" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'AERO 2'});">
-                            <button class="semistrong">AERO</button>
-                        </a>
-					</p>
-				</p>
+                    </p>
+                    <button class="strong">AERO</button>
+                </a>
             </div>
         </div>
     </div>
