@@ -392,18 +392,6 @@ return [
                     ],
                 ]
             ],
-            'jwt' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{jwt}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'jwt',
-                    ],
-                ],
-                'may_terminate' => true
-            ],
             'legambiente' => [
                 'type' => 'Segment',
                 'options' => [
@@ -414,17 +402,6 @@ return [
                         'action'     => 'legambiente',
                     ],
                 ],
-            ],
-            'lifegate' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{lifegate}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'lifegate',
-                    ],
-                ]
             ],
             'aeronautica' => [
                 'type' => 'Segment',

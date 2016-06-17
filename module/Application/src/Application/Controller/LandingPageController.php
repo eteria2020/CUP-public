@@ -45,11 +45,6 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
-    public function lifegateAction()
-    {
-        return (new viewModel())->setTerminal(true);
-    }
-
     public function aeronauticaAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -76,11 +71,6 @@ class LandingPageController extends AbstractActionController
     }
 
     public function anasAction()
-    {
-        return (new viewModel())->setTerminal(true);
-    }
-
-    public function jwtAction()
     {
         return (new viewModel())->setTerminal(true);
     }
