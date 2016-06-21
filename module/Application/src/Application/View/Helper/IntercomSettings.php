@@ -9,19 +9,16 @@ class IntercomSettings extends AbstractHelper
 {
     protected $intercomKey;
     protected $authenticationService;
-    protected $loggedUser;
 
     public function __construct($intercomKey, AuthenticationService $authenticationService) {
         $this->intercomKey = $intercomKey;
         $this->authenticationService = $authenticationService;
-        //$this->$loggedUser = "";
-        
     }
 
     public function __invoke()
     {
         $ret = "";
-        if ($this->intercomKey) {
+        if ($this->intercomKey!=='') {
             $ret = sprintf("var intercomAppId='%s';", $this->intercomKey);
             if($this->authenticationService->hasIdentity()) {
                 $user = $this->authenticationService->getIdentity();

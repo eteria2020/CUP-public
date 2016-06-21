@@ -41,18 +41,10 @@
             ->appendFile('//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js')
             ->appendFile($this->basePath('js/jquery.cookiesdirective.js'));
 
-        /*
-            if ($this->config('intercom', 'key')) {
-                $this->headScript()
-                    ->appendScript("var intercomAppId='".$this->config('intercom','key')."';")
-                    ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
-            }
-*/
-            $this->headScript()
-                    ->appendScript($this->intercomSettings())
-                    ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
-        
-        
+        $this->headScript()
+            ->appendScript($this->intercomSettings())
+            ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
+
             if ($this->config('googleAnalytics', 'key')) {
                 $this->headScript()->appendScript(
                     "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

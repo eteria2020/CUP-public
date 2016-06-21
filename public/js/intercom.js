@@ -1,4 +1,4 @@
-/* global window document intercomAppId $ */
+/* global window document intercomAppId intercomCustomerEmail intercomCustomerId $*/
 
 var intercomSettings = {app_id: intercomAppId};
 
@@ -7,6 +7,11 @@ $(function () {
 
     var w = window;
     var ic = w.Intercom;
+
+    if (intercomCustomerEmail !== "") {
+        intercomSettings.email = intercomCustomerEmail;
+        intercomSettings.user_id = intercomCustomerId;
+    }
 
     if (typeof ic === "function") {
         ic('reattach_activator');

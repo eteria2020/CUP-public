@@ -17,8 +17,6 @@ class IntercomSettingsFactory implements FactoryInterface{
         $intercomKey = $config['intercom']['key'];
 
         $authenticationService = $serviceLocator->getServiceLocator()->get('zfcuser_auth_service');
-        //$loggedUser = "";
-        //print_r($authenticationService);
         return new IntercomSettings($intercomKey, $authenticationService);
     }
 }
