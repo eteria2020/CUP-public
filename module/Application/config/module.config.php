@@ -749,6 +749,7 @@ return [
             'Application\Controller\ForeignDriversLicense' => 'Application\Controller\ForeignDriversLicenseControllerFactory',
             'Application\Controller\SocialAuthController' => 'Application\Controller\SocialAuthControllerFactory',
             'Application\Controller\DisableCustomerController' => 'Application\Controller\DisableCustomerControllerFactory',
+            'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
@@ -823,6 +824,7 @@ return [
                 ['controller' => 'ScnSocialAuth-HybridAuth', 'roles' => []],
                 ['controller' => 'Application\Controller\SocialAuthController', 'roles' => []],
                 ['controller' => 'Application\Controller\DisableCustomerController', 'roles' => []],
+                ['controller' => 'Application\Controller\DisableOldDiscountsController', 'roles' => []],
             ],
         ],
     ],
@@ -1124,6 +1126,17 @@ return [
                         ]
                     ]
                 ],
+                'disable-old-discounts' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'disable old discounts [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'disable-old-discounts'
+                        ]
+                    ]
+                ]
             ],
         ],
     ],
