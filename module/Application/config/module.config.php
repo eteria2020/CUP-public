@@ -658,7 +658,16 @@ return [
                             ]
                         ]
                     ],
-                ]
+                    'send-discount-request' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/send-discount-request',
+                            'defaults' => [
+                                'action' => 'send-discount-request'
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'scn-social-auth-user' => [
                 'child_routes' => [

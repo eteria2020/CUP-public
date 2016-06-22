@@ -445,4 +445,18 @@ class UserAreaController extends AbstractActionController
             'tripPayment' => $tripPayment
         ]);
     }
+
+    public function sendDiscountRequestAction()
+    {
+        $customer = $this->userService->getIdentity();
+
+        /*
+         * @todo Forward to http://discount.sharengo.it/index.php
+         * with parameter:
+         *      $customer->getName()
+         *      $customer->getSurame()
+         *      $customer->getId()
+         *      $customer->getEmail()
+         */
+    }
 }
