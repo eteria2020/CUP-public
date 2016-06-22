@@ -326,6 +326,17 @@ return [
                     ),
                 ]
             ],
+            'fao' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{fao}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'fao',
+                    ],
+                ]
+            ],
             'ordpro' => [
                 'type' => 'Segment',
                 'options' => [
