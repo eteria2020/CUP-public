@@ -47,6 +47,7 @@ class DisableOldDiscountsController extends AbstractActionController
 
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $noEmail = $request->getparam('no-email') || $request->getParam('e');
 
         $customersWithOldDiscount = $this->customersService->retrieveOldDiscountCustomers();
 
@@ -57,7 +58,7 @@ class DisableOldDiscountsController extends AbstractActionController
                 "Disabling discount for customer " . $customer->getId() .
                 " - " . $customer->getEmail() . "\n"
             );
-            $this->oldCustomerDiscountsService->disableCustomerDiscount($customer, !$dryRun);
+            $this->oldCustomerDiscountsService->disableCustomerDiscount($customer, !$dryRun, !$noEmail);
         }
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");

@@ -16,6 +16,7 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\EventManager\EventManager;
+use Zend\Stdlib\Parameters;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
@@ -118,9 +119,14 @@ class UserAreaController extends AbstractActionController
     private $bonusPackagesService;
 
     /**
-     * @var BannerJsonpUrl
+     * @var string
      */
     private $bannerJsonpUrl;
+
+    /**
+     * @var string
+     */
+    private $discounterUrl;
 
     /**
      * @param CustomersService $customerService
@@ -137,7 +143,8 @@ class UserAreaController extends AbstractActionController
      * @param TripPaymentsService $tripPaymentsService
      * @param CartasiContractsService $cartasiContractsService
      * @param BonusPackagesService $bonusPackagesService
-     * @param $bannerJsonpUrl
+     * @param string $bannerJsonpUrl
+     * @param string $discounterUrl
      */
     public function __construct(
         CustomersService $customerService,
@@ -154,7 +161,8 @@ class UserAreaController extends AbstractActionController
         TripPaymentsService $tripPaymentsService,
         CartasiContractsService $cartasiContractsService,
         BonusPackagesService $bonusPackagesService,
-        $bannerJsonpUrl
+        $bannerJsonpUrl,
+        $discounterUrl
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -172,6 +180,7 @@ class UserAreaController extends AbstractActionController
         $this->cartasiContractsService = $cartasiContractsService;
         $this->bonusPackagesService = $bonusPackagesService;
         $this->bannerJsonpUrl = $bannerJsonpUrl;
+        $this->discounterUrl = $discounterUrl;
     }
 
     public function indexAction()
@@ -271,8 +280,16 @@ class UserAreaController extends AbstractActionController
 
     public function ratesAction()
     {
+        $customer = $this->identity();
+
+        if (!$customer instanceof Customers) {
+            return $this->response->setStatusCode(403);
+        }
+
         return new ViewModel([
-            'customer' => $this->customer
+            'customer' => $this->customer,
+            'discounterUrl' => $this->discounterUrl,
+            'showNewDiscount' => $customer->deservesNewDiscount()
         ]);
     }
 
@@ -444,19 +461,5 @@ class UserAreaController extends AbstractActionController
             'isActivated' => $isActivated,
             'tripPayment' => $tripPayment
         ]);
-    }
-
-    public function sendDiscountRequestAction()
-    {
-        $customer = $this->userService->getIdentity();
-
-        /*
-         * @todo Forward to http://discount.sharengo.it/index.php
-         * with parameter:
-         *      $customer->getName()
-         *      $customer->getSurame()
-         *      $customer->getId()
-         *      $customer->getEmail()
-         */
     }
 }

@@ -1,5 +1,6 @@
 <?php
     $this->headScript()
+        ->appendFile($this->basePath('js/jquery.redirect.js'))
         ->appendFile($this->basePath('js/reprofiling-rates.js'));
 ?>
 
@@ -88,25 +89,22 @@
                             </tbody>
                         </table>
 
-                        <div class="bw-f w-2-4" style="margin-top: 13px;">
-                            <div class="block-form-section content-align-center margin-bottom"><h2>Offerta</h2></div>
-                            <a href="<?= $this->url('user-area/send-discount-request') ?>"><img src="/images/banner_rates.jpg" width="100%"/></a>
+                        <?php if ($this->showNewDiscount): ?>
+                            <div class="bw-f w-2-4" style="margin-top: 13px;">
+                                <div class="block-form-section content-align-center margin-bottom"><h2>Offerta</h2></div>
+                                <a id="profiling-banner" href="<?= $this->discounterUrl ?>">
+                                    <img src="/images/banner_rates.jpg" width="100%"/>
+                                </a>
 
-                            <? if ($this->customer->getDiscountRate() > 0): ?>
                                 <div>
-                                    <?= $this->translate('Share’N GO offre tariffe scontate a chi ha maggior bisogno di mobilità e partecipa
- alla sharing economy. Nella colonna a sinistra vedi il tuo piano tariffario personale (è valido 365 giorni dal giorno in cui ti è stato
- concesso lo sconto che ti spetta).'); ?>
+                                    <?= $this->translate('Con Share’N GO puoi ottenere una tariffa scontata, che riconosce il tuo bisogno di mobilità e premia la tua partecipazione alla sharing economy. Clicca sul banner a destra e scopri lo sconto che ti spetta (dura 365 giorni e puoi chiederlo solo una volta).'); ?>
                                 </div>
-                            <? else: ?>
-                                <div>
-                                    <?= $this->translate('Con Share’N GO puoi ottenere una tariffa scontata, che riconosce il tuo bisogno di mobilità
- e premia la tua partecipazione alla sharing economy. Clicca sul banner a destra e scopri lo sconto
- che ti spetta (dura 365 giorni e puoi chiederlo solo una volta).'); ?>
-                                </div>
-                            <? endif; ?>
-
-                        </div>
+                            </div>
+                        <?php else: ?>
+                            <div class="bw-f w-2-4" style="margin-top: 13px;">
+                                <?= $this->translate('Share’N GO offre tariffe scontate a chi ha maggior bisogno di mobilità e partecipa alla sharing economy. Nella colonna a sinistra vedi il tuo piano tariffario personale (è valido 365 giorni dal giorno in cui ti è stato concesso lo sconto che ti spetta).'); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <ul>
@@ -121,3 +119,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    var userDetailsUrl = "<?= $this->url('area-utente/utente') ?>";
+</script>

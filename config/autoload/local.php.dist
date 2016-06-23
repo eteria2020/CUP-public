@@ -35,5 +35,8 @@ return [
     'driversLicense' => [
         'path' => '/srv/apps/sharengo/data/drivers-license-uploads',
         'notifyTo' => 'email@domain'
-    ]
+    ],
+    'discounterSite' => [
+        'url' => 'http://discount.sharengo.it',
+    ],
 ];

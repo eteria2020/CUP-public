@@ -319,11 +319,11 @@ return [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{eq-sharing}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'index',
-                    ),
+                    ],
                 ]
             ],
             'fao' => [
@@ -557,6 +557,17 @@ return [
                             ]
                         ]
                     ],
+                    'utente' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{utente}',
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller' => 'CustomerController',
+                                'action' => 'customer-data'
+                            ]
+                        ]
+                    ],
                     'pin' => [
                         'type' => 'Segment',
                         'options' => [
@@ -772,7 +783,8 @@ return [
             'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
         ],
         'invokables' => [
-            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
+            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
+            'Application\Controller\CustomerController' => 'Application\Controller\CustomerController',
         ]
     ],
     'view_helpers' => [
@@ -845,6 +857,7 @@ return [
                 ['controller' => 'Application\Controller\SocialAuthController', 'roles' => []],
                 ['controller' => 'Application\Controller\DisableCustomerController', 'roles' => []],
                 ['controller' => 'Application\Controller\DisableOldDiscountsController', 'roles' => []],
+                ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
             ],
         ],
     ],
@@ -1149,7 +1162,7 @@ return [
                 'disable-old-discounts' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'disable old discounts [--dry-run|-d]',
+                        'route' => 'disable old discounts [--dry-run|-d] [--no-email|-e]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableOldDiscountsController',
