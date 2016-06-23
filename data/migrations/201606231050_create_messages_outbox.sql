@@ -17,4 +17,4 @@ WITH (
   OIDS=FALSE
 );
 
-ALTER TABLE messages_outbox OWNER TO cs;
+ALTER TABLE messages_outbox OWNER TO sharengo;
