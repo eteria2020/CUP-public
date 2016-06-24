@@ -50,27 +50,31 @@ class AvailableFleets extends AbstractHelper
         $currentFleet = $this->currentFleet();
         $fleets = $this->fleetService->getAllFleets();
 
-        $ret = '<div class="block-languages block-menu"><ul><li><a class="js-show-element" data-longitude="'.
-            $currentFleet->getLongitude().
-            '" data-latitude="'.
-            $currentFleet->getLatitude().
-            '"><span>'.
-            $currentFleet->getName().
-            '</span><i class="fa fa-caret-down"></i></a><ul class="js-collapse-box block-available-languages hidden">';
+
+        $ret = sprintf(
+            '<div class="block-languages block-menu">
+                <ul>
+                    <li>
+                        <a class="js-show-element" data-longitude="%s" data-latitude="%s">
+                            <span>%s</span>
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="js-collapse-box block-available-languages hidden">',
+            $currentFleet->getLongitude(),
+            $currentFleet->getLatitude(),
+            $currentFleet->getName()
+        );
 
         foreach ($fleets as $fleet) {
-            $ret .= '<li><a href="javascript:setCenter('.$fleet->getLatitude().','.$fleet->getLongitude().
-                ');" data-longitude="'.
-                $fleet->getLongitude().
-                '" data-latitude="'.
-                $fleet->getLatitude().
-                '" data-name="'.
-                $fleet->getname().
-                '" data-id="'.
+            $ret .= sprintf(
+                '<li>
+                    <a href="javascript:void(0);" data-longitude="%s" data-latitude="%s" data-name="%s" data-id="%s">%3$s</a>
+                </li>',
+                $fleet->getLongitude(),
+                $fleet->getLatitude(),
+                $fleet->getName(),
                 $fleet->getId()
-                .'">'.
-                $fleet->getName().
-            '</a></li>';
+            );
         }
 
         $ret .= '</ul></li></ul></div>';
@@ -104,6 +108,10 @@ class AvailableFleets extends AbstractHelper
         }
 
         $cookieFleetId = $this->request->getCookie()->sharengo_map_fleetPreference;
+
+        if (!is_numeric($cookieFleetId)) {
+            return null;
+        }
 
         try {
             return $this->fleetService->getFleetById($cookieFleetId);

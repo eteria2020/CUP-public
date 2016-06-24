@@ -4,7 +4,7 @@
     userEnabled isLoggedIn reservationsUrl userId setReserveText textCarOccupied
     textCarReserved textCarReserve setAction textRegister setReserveButton */
 
-var initialize, drawCoverage, setCenter;
+var initialize, drawCoverage, map;
 
 $(function () {
     "use strict";
@@ -17,7 +17,6 @@ $(function () {
     var energyToggle = document.getElementById('energy-toggle-icon');
 
     // define variables to interact with map elements
-    var map;
     var carMarkers = [];
     var carMarkersSet = false;
     var energyMarkers = [];
@@ -379,9 +378,4 @@ $(function () {
             toggleButtonColor(energyToggle, energyMarkersSet);
         }
     });
-
-    setCenter = function(latitude, longitude) {
-         //map = new google.maps.Map(document.getElementById("map_canvas"));
-         map.setCenter({lat: latitude, lng: longitude});
-    };
 });
