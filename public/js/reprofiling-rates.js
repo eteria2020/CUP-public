@@ -10,7 +10,7 @@ $(document).ready(function () {
 
         $.get(userDetailsUrl, function (data) {
             $.redirect(discouterUrl, {
-                'utente': data.name + ' ' + data.surname,
+                'utente': data.name,
                 'email': data.email
             });
         });

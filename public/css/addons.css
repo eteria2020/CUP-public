@@ -316,3 +316,9 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 780px) {
+    .fixresponsive {
+        width: 100%;
+    }
+}
