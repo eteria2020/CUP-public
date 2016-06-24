@@ -1809,7 +1809,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
-                "reference": "f0a7eee08c447c04d4620ea9cc76187289c6373b"
+                "reference": "319536e81294b07ad5bba53dd9fb38b54c1ea907"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1830,7 +1830,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-06-24 08:57:09"
+            "time": "2016-06-24 15:48:43"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
