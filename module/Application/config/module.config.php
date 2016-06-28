@@ -678,6 +678,16 @@ return [
                             ],
                         ],
                     ],
+                    'discount-status' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/discount-status[/:id]',
+                            'defaults' => [
+                                'controller' => 'DiscountStatus',
+                                'action' => null
+                            ]
+                        ]
+                    ]
                 ],
             ],
             'scn-social-auth-user' => [
@@ -781,6 +791,7 @@ return [
             'Application\Controller\SocialAuthController' => 'Application\Controller\SocialAuthControllerFactory',
             'Application\Controller\DisableCustomerController' => 'Application\Controller\DisableCustomerControllerFactory',
             'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
+            'Application\Controller\DiscountStatus' => 'Application\Controller\DiscountStatusControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
@@ -858,6 +869,7 @@ return [
                 ['controller' => 'Application\Controller\DisableCustomerController', 'roles' => []],
                 ['controller' => 'Application\Controller\DisableOldDiscountsController', 'roles' => []],
                 ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
+                ['controller' => 'Application\Controller\DiscountStatus', 'roles' => []],
             ],
         ],
     ],
