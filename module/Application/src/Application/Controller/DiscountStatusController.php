@@ -60,7 +60,7 @@ class DiscountStatusController extends AbstractRestfulController
 
         try {
             $this->discountStatusService->upsertStatus($customer, $status);
-        } catch (\Exception $e) {var_dump($e->getMessage());die;
+        } catch (\Exception $e) {
             return $this->response->setStatusCode(500);
         }
 
@@ -76,6 +76,10 @@ class DiscountStatusController extends AbstractRestfulController
 
     public function onDispatch(MvcEvent $e)
     {
+        if (!$this->requestFromServer($this->request)) {
+            return $this->response->setStatusCode(403);
+        }
+
         $method = strtolower($this->request->getMethod());
 
         if (!in_array($method, ['get', 'post'])) {
