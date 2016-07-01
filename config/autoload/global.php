@@ -34,7 +34,7 @@ return [
         'password' => 'f477ur3!'
     ],
     'subscription-bonus' => [
-        'total' => 100,
+        'total' => 30,
         'description' => 'Bonus iscrizione utente',
         'valid-to' => '+ 90 days'
     ],
