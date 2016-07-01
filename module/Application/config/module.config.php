@@ -1158,6 +1158,17 @@ return [
                             'action' => 'disable-old-discounts'
                         ]
                     ]
+                ],
+                'notify-disable-discount' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'notify disable discount [--no-email|-e]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'notify-disable-discount'
+                        ]
+                    ]
                 ]
             ],
         ],

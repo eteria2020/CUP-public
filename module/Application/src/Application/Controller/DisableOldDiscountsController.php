@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use SharengoCore\Entity\Customers;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\OldCustomerDiscountsService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
@@ -59,6 +60,39 @@ class DisableOldDiscountsController extends AbstractActionController
                 " - " . $customer->getEmail() . "\n"
             );
             $this->oldCustomerDiscountsService->disableCustomerDiscount($customer, !$dryRun, !$noEmail);
+        }
+
+        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    public function notifyDisableDiscountAction()
+    {
+        $this->logger->log(
+            "\nStarted notifying customers that soon their discount will be disabled\n" .
+            "time = " . date_create()->format('Y-m-d H:i:s') . "\n\n"
+        );
+
+        $request = $this->getRequest();
+        $noEmail = $request->getparam('no-email') || $request->getParam('e');
+
+        $customersToNotify = array_filter(
+            $this->customersService->retrieveCustomersWithDiscountOldInAWeek(),
+            function (Customers $customer) {
+                return $customer->getFirstPaymentCompleted();
+            }
+        );
+
+        $this->logger->log("Notifying " . count($customersToNotify) . " customers\n");
+
+        foreach ($customersToNotify as $customer) {
+            $this->logger->log(
+                "Notifying customer " . $customer->getId() .
+                " - " . $customer->getEmail() . "\n"
+            );
+
+            if (!$noEmail) {
+                $this->oldCustomerDiscountsService->notifyCustomer($customer);
+            }
         }
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
