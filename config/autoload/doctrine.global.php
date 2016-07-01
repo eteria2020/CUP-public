@@ -13,6 +13,9 @@ return array(
                 ),
                 'numeric_functions' => [
                     'ST_AsGeoJson' => 'CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STAsGeoJson'
+                ],
+                'datetime_functions' => [
+                    'DATE_FORMAT' => 'DoctrineExtensions\Query\Postgresql\DateFormat'
                 ]
             ),
         ),
