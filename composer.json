@@ -18,7 +18,7 @@
         "goalio/goalio-forgotpassword": "^1.0",
         "goalio/goalio-forgotpassword-doctrine-orm": "^1.0",
         "mvlabs/sharengo-coremodule": "dev-master",
-        "zendframework/zend-developer-tools": "dev-master",
+        "zendframework/zend-developer-tools": "1.0",
         "nikolaposa/mobile-detect-module": "^1.0",
         "cup-web/cartasi": "dev-master",
         "cup-web/drivers-license-validation": "dev-master",
@@ -67,7 +67,7 @@
     "require-dev": {
         "mockery/mockery": "^0.9.4",
         "phpunit/phpunit": "^4.8",
-        "deployer/deployer": "^3.1" 
+        "deployer/deployer": "^3.0"
     },
     "autoload-dev": {
         "psr-0": {
