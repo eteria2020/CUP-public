@@ -21,6 +21,10 @@ final class DriversLicenseEditingListener implements SharedListenerAggregateInte
      */
     private $customerDeactivator;
 
+    /**
+     * @param CustomersService $customersService
+     * @param CustomerDeactivationService $customerDeactivator
+     */
     public function __construct(
         CustomersService $customersService,
         CustomerDeactivationService $customerDeactivator
