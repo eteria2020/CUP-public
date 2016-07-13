@@ -2,7 +2,7 @@
 
 namespace Application\Listener;
 
-use MvLabsDriversLicenseValidation\Response;
+use MvLabsDriversLicenseValidation\Response\Response;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Exception\CustomerNotFoundException;
 use SharengoCore\Service\CustomersService;

@@ -9,9 +9,11 @@ class ImportDriversLicenseValidationsControllerFactory implements FactoryInterfa
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $customersService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
-        $validationService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\DriversLicenseValidationService');
-        $config = $serviceLocator->getServiceLocator()->get('Config');
+        $sharedServiceManager = $serviceLocator->getServiceLocator();
+        $customersService = $sharedServiceManager->get('SharengoCore\Service\CustomersService');
+        $validationService = $sharedServiceManager->get('SharengoCore\Service\DriversLicenseValidationService');
+        $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
+        $config = $sharedServiceManager->get('Config');
         $exportConfig = $config['export'];
 
         return new ImportDriversLicenseValidationsController(

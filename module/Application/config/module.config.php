@@ -771,6 +771,7 @@ return [
             'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
             'Application\Controller\DiscountStatus' => 'Application\Controller\DiscountStatusControllerFactory',
             'Application\Controller\AdditionalServices' => 'Application\Controller\AdditionalServicesControllerFactory',
+            'Application\Controller\ImportDriversLicenseValidations' => 'Application\Controller\ImportDriversLicenseValidationsControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
@@ -850,6 +851,7 @@ return [
                 ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
                 ['controller' => 'Application\Controller\DiscountStatus', 'roles' => []],
                 ['controller' => 'Application\Controller\AdditionalServices', 'roles' => ['user']],
+                ['controller' => 'Application\Controller\ImportDriversLicenseValidations', 'roles' => []],
             ],
         ],
     ],
@@ -1176,10 +1178,10 @@ return [
                 'test-license-validation' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'test license validation [--dry-run|-d]',
+                        'route' => 'test license validation [--dry-run|-d] [--use-data] [--id=] [--email=] [--valid=] [--code=] [--msg=]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ImportDriversLicenseValidationController',
+                            'controller' => 'ImportDriversLicenseValidations',
                             'action' => 'test-validation'
                         ]
                     ]
