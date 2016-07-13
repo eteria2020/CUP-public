@@ -1172,6 +1172,17 @@ return [
                             'action' => 'notify-disable-discount'
                         ]
                     ]
+                ],
+                'test-license-validation' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'test license validation [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ImportDriversLicenseValidationController',
+                            'action' => 'test-validation'
+                        ]
+                    ]
                 ]
             ],
         ],
