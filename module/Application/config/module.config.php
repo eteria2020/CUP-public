@@ -595,6 +595,7 @@ return [
                         'options' => [
                             'route' => '/{servizi-aggiuntivi}',
                             'defaults' => [
+                                'controller' => 'AdditionalServices',
                                 'action' => 'additional-services'
                             ]
                         ]
@@ -769,6 +770,7 @@ return [
             'Application\Controller\DisableCustomerController' => 'Application\Controller\DisableCustomerControllerFactory',
             'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
             'Application\Controller\DiscountStatus' => 'Application\Controller\DiscountStatusControllerFactory',
+            'Application\Controller\AdditionalServices' => 'Application\Controller\AdditionalServicesControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
@@ -847,6 +849,7 @@ return [
                 ['controller' => 'Application\Controller\DisableOldDiscountsController', 'roles' => []],
                 ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
                 ['controller' => 'Application\Controller\DiscountStatus', 'roles' => []],
+                ['controller' => 'Application\Controller\AdditionalServices', 'roles' => ['user']],
             ],
         ],
     ],

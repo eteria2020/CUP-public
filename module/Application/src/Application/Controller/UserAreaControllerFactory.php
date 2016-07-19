@@ -19,13 +19,10 @@ class UserAreaControllerFactory implements FactoryInterface
         $profileForm = $sharedLocator->get('ProfileForm');
         $passwordForm = $sharedLocator->get('PasswordForm');
         $driverLicenseForm = $sharedLocator->get('DriverLicenseForm');
-        $promoCodeForm = $sharedLocator->get('PromoCodeForm');
         $hydrator = new Reflection();
         $cartasiPaymentsService = $sharedLocator->get('Cartasi\Service\CartasiPayments');
-        $promoCodeService = $sharedLocator->get('SharengoCore\Service\PromoCodesService');
         $tripPaymentsService = $sharedLocator->get('SharengoCore\Service\TripPaymentsService');
         $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
-        $bonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
         $bannerJsonpUrl = $sharedLocator->get('Configuration')['banner-jsonp'];
         $discounterUrl = $sharedLocator->get('Configuration')['discounterSite']['url'];
 
@@ -37,13 +34,10 @@ class UserAreaControllerFactory implements FactoryInterface
             $profileForm,
             $passwordForm,
             $driverLicenseForm,
-            $promoCodeForm,
             $hydrator,
             $cartasiPaymentsService,
-            $promoCodeService,
             $tripPaymentsService,
             $cartasiContractsService,
-            $bonusPackagesService,
             $bannerJsonpUrl,
             $discounterUrl
         );
