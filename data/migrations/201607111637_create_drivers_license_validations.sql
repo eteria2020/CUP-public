@@ -5,5 +5,6 @@ CREATE TABLE drivers_license_validations (
     code text NOT NULL,
     message text NOT NULL,
     data jsonb NOT NULL,
-    generated_ts timestamp(0) with time zone NOT NULL
+    generated_ts timestamp(0) with time zone NOT NULL,
+    is_from_script boolean NOT NULL
 );

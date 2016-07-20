@@ -130,6 +130,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
                     $code,
                     $message,
                     ['test validation'],
+                    true,
                     !$this->dryRun
                 );
             } else {
@@ -145,6 +146,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
                     $customer,
                     $response,
                     ['test validation'],
+                    true,
                     !$this->dryRun
                 );
             }
@@ -198,6 +200,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
                 $customer,
                 $response,
                 $data,
+                true,
                 !$this->dryRun
             );
             $this->logger->log("Validation created" . ($this->dryRun ? '' : " with id: " . $validation->getId()) . "\n\n");
