@@ -1185,6 +1185,17 @@ return [
                             'action' => 'test-validation'
                         ]
                     ]
+                ],
+                'import-license-validations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'import license validations [--dry-run|-d] [--one|-o]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ImportDriversLicenseValidations',
+                            'action' => 'import-validations'
+                        ]
+                    ]
                 ]
             ],
         ],

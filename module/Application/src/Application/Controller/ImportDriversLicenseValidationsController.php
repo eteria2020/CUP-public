@@ -28,6 +28,11 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
     private $logger;
 
     /**
+     * @var mixed[]
+     */
+    private $validationConfig;
+
+    /**
      * Specifies wether validations should be saved to db
      * @var boolean
      */
@@ -44,15 +49,18 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
      * @param CustomersService $customersService
      * @param DriversLicenseValidationService $validationService
      * @param Logger $logger
+     * @param mixed[] $validationConfig
      */
     public function __construct(
         CustomersService $customersService,
         DriversLicenseValidationService $validationService,
-        Logger $logger
+        Logger $logger,
+        array $validationConfig
     ) {
         $this->customersService = $customersService;
         $this->validationService = $validationService;
         $this->logger = $logger;
+        $this->validationConfig = $validationConfig;
     }
 
     /**
@@ -60,8 +68,8 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
      *     [--dry-run|-d] (does not save entities to db)
      *     [--use-data] (does not create Response to generate Validation)
      *     [--id=] (id of customer for which to create validation)
-     *     [--email=] (email customer of which to create validation. overridden
-     *                 by [--id=])
+     *     [--email=] (email of customer of which to create validation.
+     *                 overridden by [--id=])
      *     [--valid=] (defaults to true)
      *     [--code=] (defaults to 0)
      *     [--msg=] (defaults to PATENTE VALIDA)
@@ -78,6 +86,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
         $this->useData = $request->getParam('use-data');
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
+        // Get params
         $id = $request->getParam('id');
         $email = $request->getParam('email');
         $valid = $request->getParam('valid');
@@ -120,6 +129,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
                     $valid,
                     $code,
                     $message,
+                    ['test validation'],
                     !$this->dryRun
                 );
             } else {
@@ -134,12 +144,70 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
                 $validation = $this->validationService->addFromResponse(
                     $customer,
                     $response,
+                    ['test validation'],
                     !$this->dryRun
                 );
             }
 
             $this->logger->log("Validation created" . ($this->dryRun ? '' : " with id: " . $validation->getId()) . "\n\n");
         }
+
+        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    /**
+     * Available params are:
+     *     [--dry-run|-d] (does not save entities to db)
+     *     [--one|-o] (stops after at least one validation is generated)
+     */
+    public function importValidationsAction()
+    {
+        // Setup logger
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        // Get/Set params
+        $request = $this->getRequest();
+        $this->dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $one = $request->getParam('one') || $request->getParam('o');
+        $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        // Get data from logs
+        $fp = fopen($this->validationConfig['logDir'], 'r');
+        $this->logger->log('Opened file: ' . $this->validationConfig['logDir'] . "\n\n");
+        for ($row = 1; ($data = fgetcsv($fp)) !== FALSE; $row++) {
+
+            // Get customer
+            $customer = $this->customersService->findOneByEmail($data[0]);
+            if (!($customer instanceof Customers)) {
+                $this->logger->log('Customer not found with email: ' . $data[0] . "\n\n");
+                continue;
+            }
+            $this->logger->log('Customer: ' . $customer->getId() . "\n");
+
+            // Generate Response
+            $response = new Response($data[10], $data[11], $data[12]);
+            $this->logger->log(
+                'Generated Response with: ' .
+                'valid=' . ($response->valid() ? 'true' : 'false') .
+                ' code=' . $response->code() .
+                ' message=' . $response->message() . "\n");
+
+            // Generate validation
+            $validation = $this->validationService->addFromResponse(
+                $customer,
+                $response,
+                $data,
+                !$this->dryRun
+            );
+            $this->logger->log("Validation created" . ($this->dryRun ? '' : " with id: " . $validation->getId()) . "\n\n");
+
+            if ($one) {
+                $this->logger->log("Stopped after one successful row\n\n");
+                break;
+            }
+        }
+        fclose($fp);
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }

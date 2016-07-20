@@ -25,15 +25,23 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
     private $validationService;
 
     /**
+     * @var mixed[]
+     */
+    private $validationConfig;
+
+    /**
      * @param CustomersService $customersService
      * @param DriversLicenseValidationService $validationService
+     * @param mixed[] $validationConfig
      */
     public function __construct(
         CustomersService $customersService,
-        DriversLicenseValidationService $validationService
+        DriversLicenseValidationService $validationService,
+        array $validationConfig
     ) {
         $this->customersService = $customersService;
         $this->validationService = $validationService;
+        $this->validationConfig = $validationConfig;
     }
 
     /**
@@ -93,7 +101,7 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
 
         $this->writeToCsv($line);
 
-        $this->registerValidation($response, $args['email']);
+        $this->registerValidation($response, $line, $args['email']);
     }
 
     /**
@@ -125,11 +133,8 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
      */
     private function writeToCsv($line)
     {
-        $file = __DIR__ . '/../../../../../data/log/driversLicense.log';
-
-        $fp = fopen($file, 'a');
+        $fp = fopen($this->validationConfig['logDir'], 'a');
         fputcsv($fp, $line);
-
         fclose($fp);
     }
 
@@ -138,12 +143,12 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
      * @param string $email
      * @throws CustomerNotFoundException
      */
-    private function registerValidation(Response $response, $email)
+    private function registerValidation(Response $response, array $data, $email)
     {
         $customer = $this->customersService->findOneByEmail($email);
 
         if ($customer instanceof Customers) {
-            $this->validationService->addFromResponse($customer, $response);
+            $this->validationService->addFromResponse($customer, $response, $data);
         } else {
             throw new CustomerNotFoundException('Email: ' . $email);
         }

@@ -14,12 +14,13 @@ class ImportDriversLicenseValidationsControllerFactory implements FactoryInterfa
         $validationService = $sharedServiceManager->get('SharengoCore\Service\DriversLicenseValidationService');
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
         $config = $sharedServiceManager->get('Config');
-        $exportConfig = $config['export'];
+        $validationConfig = $config['drivers-license-validation'];
 
         return new ImportDriversLicenseValidationsController(
             $customersService,
             $validationService,
-            $logger
+            $logger,
+            $validationConfig
         );
     }
 }

@@ -11,10 +11,13 @@ class DriversLicensePostValidationLoggerFactory implements FactoryInterface
     {
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
         $validationService = $serviceLocator->get('SharengoCore\Service\DriversLicenseValidationService');
+        $config = $serviceLocator->get('Configuration');
+        $validationConfig = $config['drivers-license-validation'];
 
         return new DriversLicensePostValidationLogger(
             $customersService,
-            $validationService
+            $validationService,
+            $validationConfig
         );
     }
 }
