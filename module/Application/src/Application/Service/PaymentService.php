@@ -53,8 +53,8 @@ final class PaymentService
         $attachments = [
             'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
             'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg',
-            'facebook.jpg' => __DIR__.'/../../../../../public/images/social/facebook.jpg',
-            'twitter.jpg' => __DIR__.'/../../../../../public/images/social/twitter.jpg',
+            'facebook.png' => __DIR__.'/../../../../../public/images/social/facebook.png',
+            'twitter.png' => __DIR__.'/../../../../../public/images/social/twitter.png',
         ];
 
         $this->emailService->sendEmail(
