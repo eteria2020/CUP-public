@@ -106,9 +106,7 @@ class UserController extends AbstractActionController
 
         if (!empty($registeredDataPromoCode)) {
             $this->form1->setData([
-                'promocode' => [
-                    'promocode' => $registeredDataPromoCode
-                ]
+                'promocode' => $registeredDataPromoCode
             ]);
         }
 
