@@ -160,6 +160,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
     /**
      * Available params are:
      *     [--dry-run|-d] (does not save entities to db)
+     *     [--verbose|-v] (outputs more info)
      *     [--one|-o] (stops after at least one validation is generated)
      */
     public function importValidationsAction()
@@ -171,6 +172,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
         // Get/Set params
         $request = $this->getRequest();
         $this->dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $verbose = $request->getParam('verbose') || $request->getParam('v');
         $one = $request->getParam('one') || $request->getParam('o');
         $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -178,6 +180,7 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
         $fp = fopen($this->validationConfig['logDir'], 'r');
         $this->logger->log('Opened file: ' . $this->validationConfig['logDir'] . "\n\n");
         for ($row = 1; ($data = fgetcsv($fp)) !== FALSE; $row++) {
+            $data = $this->fixData($data, $row);
 
             // Get customer
             $customer = $this->customersService->findOneByEmail($data[0]);
@@ -188,12 +191,20 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
             $this->logger->log('Customer: ' . $customer->getId() . "\n");
 
             // Generate Response
-            $response = new Response($data[10], $data[11], $data[12]);
-            $this->logger->log(
-                'Generated Response with: ' .
-                'valid=' . ($response->valid() ? 'true' : 'false') .
-                ' code=' . $response->code() .
-                ' message=' . $response->message() . "\n");
+            $response = new Response(
+                $data[count($data) - 3],
+                $data[count($data) - 2],
+                $data[count($data) - 1]
+            );
+            if ($verbose) {
+                $this->logger->log(
+                    'Generated Response with: ' .
+                    ' valid=' . ($response->valid() ? 'true' : 'false') .
+                    ' code=' . $response->code() .
+                    ' message=' . $response->message() . "\n");
+            } else {
+                $this->logger->log("Generated Response\n");
+            }
 
             // Generate validation
             $validation = $this->validationService->addFromResponse(
@@ -201,7 +212,8 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
                 $response,
                 $data,
                 true,
-                !$this->dryRun
+                !$this->dryRun,
+                true
             );
             $this->logger->log("Validation created" . ($this->dryRun ? '' : " with id: " . $validation->getId()) . "\n\n");
 
@@ -213,5 +225,48 @@ class ImportDriversLicenseValidationsController extends AbstractActionController
         fclose($fp);
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    /**
+     * A few rows have a problem in some elements where there are extra commas.
+     * This method tries to fix any known issue.
+     *
+     * @param mixed[] $data
+     * @param integer $row
+     * @return mixed[]
+     */
+    private function fixData($data, $row)
+    {
+        $count = count($data);
+        if ($count === 12 || $count === 13) {
+            return $data;
+        }
+
+        $this->logger->log("Fixing row: " . $row . "\n");
+        if (count($data) == 4) {
+            return array_merge(
+                array_slice($data, 0, 3),
+                explode(",", $data[3])
+            );
+
+        } elseif (count($data) == 10) {
+            if (strlen($data[3]) > 10) {
+                return array_merge(
+                    array_slice($data, 0, 3),
+                    explode(",", $data[3]),
+                    array_slice($data, 4)
+                );
+
+            } else {
+                return array_merge(
+                    array_slice($data, 0, 9),
+                    explode(",", $data[9])
+                );
+
+            }
+        }
+
+        $this->logger->log("FAILED\n");
+        return $data;
     }
 }
