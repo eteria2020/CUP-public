@@ -97,6 +97,8 @@ class RegistrationForm extends Form
     {
         $container = $this->getContainer();
         $container->offsetUnset(self::FORM_DATA);
+        $promoCodeContainer = $this->getPromoCodeContainer();
+        $promoCodeContainer->offsetUnset(self::PROMO_CODE);
     }
 
     /**
