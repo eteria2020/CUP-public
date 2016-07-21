@@ -143,7 +143,7 @@ return [
             '1712'
         ],
         'minutes' => 5,
-        'description' => 'Carrefour',
-        'validTo' => '2018-01-01 00:00:00'
+        'description' => 'Bonus promozione Carrefour',
+        'validFor' => '+90 days'
     ]
 ];
