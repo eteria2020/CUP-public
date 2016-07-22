@@ -85,34 +85,37 @@ class AdditionalServicesController extends AbstractActionController
             $postData = $this->getRequest()->getPost()->toArray();
             $form->setData($postData);
 
-            // Check if form represents a valid Promocode
             if ($form->isValid()) {
-                try {
-                    $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
-                    $this->customersService->addBonusFromPromoCode($customer, $promoCode);
-                    $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 
-                } catch (BonusAssignmentException $e) {
-                    $this->flashMessenger()->addErrorMessage($e->getMessage());
+                $code = $postData['promocode']['promocode'];
+                if ($form->isStandardPromoCode($code)) {
 
-                } catch (\Exception $e) {
-                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
-                }
+                    try {
+                        $promoCode = $this->promoCodeService->getPromoCode($code);
+                        $this->customersService->addBonusFromPromoCode($customer, $promoCode);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 
-            // Check if form represents a valid Carrefour code
-            } else {
-                try {
-                    $this->carrefourService->addFromCode($customer, $postData['promocode']['promocode']);
-                    $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (BonusAssignmentException $e) {
+                        $this->flashMessenger()->addErrorMessage($e->getMessage());
 
-                } catch (NotAValidCodeException $e) {
-                    $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
+                    }
 
-                } catch (CodeAlreadyUsedException $e) {
-                    $this->flashMessenger()->addErrorMessage('Il codice inserito è già stato utilizzato');
+                } else {
+                    try {
+                        $this->carrefourService->addFromCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 
-                } catch (\Exception $e) {
-                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
+                    } catch (NotAValidCodeException $e) {
+                        $this->flashMessenger()->addErrorMessage($e->getMessage());
+
+                    } catch (CodeAlreadyUsedException $e) {
+                        $this->flashMessenger()->addErrorMessage('Il codice inserito è già stato utilizzato');
+
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
+                    }
                 }
             }
 

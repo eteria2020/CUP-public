@@ -2,6 +2,7 @@
 
 namespace Application\Form;
 
+use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\PromoCodesService;
 
 use Zend\Form\Fieldset;
@@ -10,13 +11,28 @@ use Zend\InputFilter\InputFilterProviderInterface;
 
 class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
 {
+    /**
+     * @var PromoCodesService
+     */
     private $promoCodesService;
 
+    /**
+     * @var CarrefourService|null
+     */
+    private $carrefourService;
+
+    /**
+     * @param Translator $translator
+     * @param PromoCodesService $promoCodesService
+     * @param CarrefourService|null $carrefourService
+     */
     public function __construct(
         Translator $translator,
-        PromoCodesService $promoCodesService
+        PromoCodesService $promoCodesService,
+        CarrefourService $carrefourService = null
     ) {
         $this->promoCodesService = $promoCodesService;
+        $this->carrefourService = $carrefourService;
 
         parent::__construct('promocode', [
             'use_as_base_fieldset' => false
@@ -48,7 +64,8 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'Application\Form\Validator\PromoCode',
                         'options' => [
-                            'promoCodesService' => $this->promoCodesService
+                            'promoCodesService' => $this->promoCodesService,
+                            'carrefourService' => $this->carrefourService
                         ]
                     ]
                 ]

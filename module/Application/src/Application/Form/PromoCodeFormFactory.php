@@ -16,7 +16,12 @@ class PromoCodeFormFactory implements FactoryInterface
     {
         $translator = $serviceLocator->get('Translator');
         $promoCodeService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
-        $promoCodeFieldset = new PromoCodeFieldset($translator, $promoCodeService);
+        $carrefourService = $serviceLocator->get('SharengoCore\Service\CarrefourService');
+        $promoCodeFieldset = new PromoCodeFieldset(
+            $translator,
+            $promoCodeService,
+            $carrefourService
+        );
 
         return new PromoCodeForm($promoCodeFieldset);
     }

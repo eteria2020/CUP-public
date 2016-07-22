@@ -13,4 +13,16 @@ class PromoCodeForm extends Form
 
         $this->add($promoCodeFieldset);
     }
+
+    /**
+     * Returns true if code represents a standard PromoCode, false otherwise
+     * i.e. Carrefour codes
+     *
+     * @param string $code
+     * @return boolean
+     */
+    public function isStandardPromoCode($code)
+    {
+        return strlen($code) <= 6;
+    }
 }
