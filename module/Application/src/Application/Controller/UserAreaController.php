@@ -368,7 +368,7 @@ class UserAreaController extends AbstractActionController
 
                     $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
                 } catch (\Exception $e) {
-                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. L\'assistenza tecnica è già al corrente, ci scusiamo per l\'inconveniente');
+                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. Ci scusiamo per l\'inconveniente');
                 }
 
                 return $this->redirect()->toRoute('area-utente/patente');
