@@ -2,45 +2,30 @@
 
 namespace Application\Controller;
 
-use Application\Service\ProfilingPlaformService;
-use SharengoCore\Entity\CustomersBonus;
-use SharengoCore\Entity\Reservations;
+use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\TripsService;
 use SharengoCore\Service\AccountTripsService;
 use SharengoCore\Service\CarsService;
-use SharengoCore\Service\CustomersService;
-use SharengoCore\Service\InvoicesService;
-use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Service\ReservationsService;
-use SharengoCore\Service\TripsService;
-
+use SharengoCore\Service\ReservationsArchiveService;
+use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
+use Application\Service\ProfilingPlaformService;
+use SharengoCore\Service\InvoicesService;
+
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ConsoleController extends AbstractActionController
 {
-    /**
-     * @const string
-     */
+
     const OPERATIVE_STATUS = 'operative';
 
-    /**
-     * @const string
-     */
     const NON_OPERATIVE_STATUS = 'out_of_order';
 
-    /**
-     * @const string
-     */
     const MAINTENANCE_STATUS = 'maintenance';
 
-    /**
-     * @const integer
-     */
     const OPERATIVE_ACTION = 0;
 
-    /**
-     * @const integer
-     */
     const MAINTENANCE_ACTION = 1;
 
     /**
@@ -175,7 +160,7 @@ class ConsoleController extends AbstractActionController
                 }
 
                 // create Bonus
-                $bonus = new CustomersBonus();
+                $bonus = new \SharengoCore\Entity\CustomersBonus();
                 $bonus->setInsertTs(null != $customer->getInsertedTs() ? $customer->getInsertedTs() : $defaultBonusInsertDate);
                 $bonus->setTotal($bonusValue);
                 $bonus->setResidual($bonusValue);
@@ -290,10 +275,10 @@ class ConsoleController extends AbstractActionController
     }
 
     /**
-     * @param integer $alarmCode
-     * @param Cars $car
+     * @param integer
+     * @param Cars
      */
-    private function sendAlarmCommand($alarmCode, Cars $car)
+    private function sendAlarmCommand($alarmCode, $car)
     {
         $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
@@ -317,13 +302,19 @@ class ConsoleController extends AbstractActionController
             // car does not have active reservations
             if (count($reservations) == 0) {
                 $this->writeToConsole("no reservation found, creating...\n");
-
-                // Create resrevation for all maintainers
-                $reservation = $this->reservationsService->createMaintenanceReservation(
-                    $car,
-                    false
-                );
+                // create reservation for all maintainers
+                $cardsArray = [];
+                $maintainersCardCodes = $this->customerService->getListMaintainersCards();
+                $this->writeToConsole("cards retrieved\n");
+                // create single json string with all maintainer's card codes
+                foreach ($maintainersCardCodes as $cardCode) {
+                    array_push($cardsArray, $cardCode['1']);
+                }
+                $cardsString = json_encode($cardsArray);
+                // create maintainers reservation
+                $reservation = Reservations::createMaintenanceReservation($car, $cardsString);
                 $this->writeToConsole("reservation created\n");
+
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
 
@@ -414,9 +405,6 @@ class ConsoleController extends AbstractActionController
 
     }
 
-    /**
-     * @param string $string
-     */
     private function writeToConsole($string)
     {
         if ($this->verbose) {
