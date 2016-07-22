@@ -2,6 +2,8 @@
 
 namespace Application\Form\Validator;
 
+use SharengoCore\Exception\CodeAlreadyUsedException;
+use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\PromoCodesService;
 
@@ -12,7 +14,12 @@ class PromoCode extends AbstractValidator
     /**
      * @var string
      */
-    const WRONG = 'promoCode';
+    const WRONG_CODE = 'code';
+
+    /**
+     * @var string
+     */
+    const USED_CODE = 'used';
 
     /**
      * @var PromoCodesService
@@ -28,7 +35,8 @@ class PromoCode extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::WRONG => "Il codice inserito non è valido"
+        self::WRONG_CODE => "Il codice inserito non è valido",
+        self::USED_CODE => "Il codice è già stato utilizzato"
     ];
 
     /**
@@ -50,16 +58,22 @@ class PromoCode extends AbstractValidator
         $this->setValue($value);
 
         $isStandardValid = $this->promoCodesService->isValid($value);
-        $isCarrefourValid = false;
-        if ($this->carrefourService instanceof CarrefourService) {
-            $isCarrefourValid = $this->carrefourService->isValid($value);
+
+        if (!$isStandardValid && $this->carrefourService instanceof CarrefourService) {
+            try {
+                $this->carrefourService->checkCarrefourCode($value);
+            } catch (CodeAlreadyUsedException $e) {
+                $this->error(self::USED_CODE);
+                return false;
+            } catch (NotAValidCodeException $e) {
+                $this->error(self::WRONG_CODE);
+                return false;
+            }
+        } elseif (!$isStandardValid) {
+            $this->error(self::WRONG_CODE);
+            return false;
         }
 
-        if ($isStandardValid || $isCarrefourValid) {
-            return true;
-        }
-
-        $this->error(self::WRONG);
-        return false;
+        return true;
     }
 }

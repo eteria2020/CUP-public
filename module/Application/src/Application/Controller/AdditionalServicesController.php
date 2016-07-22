@@ -7,8 +7,6 @@ use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Exception\BonusAssignmentException;
-use SharengoCore\Exception\CodeAlreadyUsedException;
-use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Service\CustomersService;
@@ -107,19 +105,13 @@ class AdditionalServicesController extends AbstractActionController
                         $this->carrefourService->addFromCode($customer, $code);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
 
-                    } catch (NotAValidCodeException $e) {
-                        $this->flashMessenger()->addErrorMessage($e->getMessage());
-
-                    } catch (CodeAlreadyUsedException $e) {
-                        $this->flashMessenger()->addErrorMessage('Il codice inserito è già stato utilizzato');
-
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
                     }
                 }
-            }
 
-            return $this->redirect()->toRoute('area-utente/additional-services');
+                return $this->redirect()->toRoute('area-utente/additional-services');
+            }
         }
 
         $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
