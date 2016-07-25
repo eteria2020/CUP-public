@@ -2,10 +2,8 @@
 
 namespace Application\Controller;
 
-use Application\Form\PromoCodeForm;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Entity\PromoCodes;
-use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
 
@@ -24,7 +22,6 @@ use SharengoCore\Service\InvoicesService;
 use SharengoCore\Entity\Invoices;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Exception\BonusAssignmentException;
-use SharengoCore\Service\CustomersBonusPackagesService as BonusPackagesService;
 
 use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
@@ -94,16 +91,6 @@ class UserAreaController extends AbstractActionController
     private $showError = false;
 
     /**
-     * @var PromoCodeForm
-     */
-    private $promoCodeForm;
-
-    /**
-     * @var PromoCodesService
-     */
-    private $promoCodeService;
-
-    /**
      * @var TripPaymentsService
      */
     private $tripPaymentsService;
@@ -112,11 +99,6 @@ class UserAreaController extends AbstractActionController
      * @var CartasiContractsService
      */
     private $cartasiContractsService;
-
-    /**
-     * @var BonusPackagesService
-     */
-    private $bonusPackagesService;
 
     /**
      * @var string
@@ -136,13 +118,10 @@ class UserAreaController extends AbstractActionController
      * @param Form $profileForm
      * @param Form $passwordForm
      * @param Form $driverLicenseForm
-     * @param Form $promoCodeForm
      * @param HydratorInterface $hydrator
      * @param CartasiPaymentsService $cartasiPaymentsService
-     * @param PromoCodesService $promoCodeService
      * @param TripPaymentsService $tripPaymentsService
      * @param CartasiContractsService $cartasiContractsService
-     * @param BonusPackagesService $bonusPackagesService
      * @param string $bannerJsonpUrl
      * @param string $discounterUrl
      */
@@ -154,13 +133,10 @@ class UserAreaController extends AbstractActionController
         Form $profileForm,
         Form $passwordForm,
         Form $driverLicenseForm,
-        Form $promoCodeForm,
         HydratorInterface $hydrator,
         CartasiPaymentsService $cartasiPaymentsService,
-        PromoCodesService $promoCodeService,
         TripPaymentsService $tripPaymentsService,
         CartasiContractsService $cartasiContractsService,
-        BonusPackagesService $bonusPackagesService,
         $bannerJsonpUrl,
         $discounterUrl
     ) {
@@ -172,13 +148,10 @@ class UserAreaController extends AbstractActionController
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
         $this->driverLicenseForm = $driverLicenseForm;
-        $this->promoCodeForm = $promoCodeForm;
         $this->hydrator = $hydrator;
         $this->cartasiPaymentsService = $cartasiPaymentsService;
-        $this->promoCodeService =  $promoCodeService;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->cartasiContractsService = $cartasiContractsService;
-        $this->bonusPackagesService = $bonusPackagesService;
         $this->bannerJsonpUrl = $bannerJsonpUrl;
         $this->discounterUrl = $discounterUrl;
     }
@@ -393,39 +366,6 @@ class UserAreaController extends AbstractActionController
         return new ViewModel([
             'customer'  => $this->customer,
             'listBonus' => $this->customerService->getAllBonus($this->customer)
-        ]);
-    }
-
-    public function additionalServicesAction()
-    {
-        $form = $this->promoCodeForm;
-        if ($this->getRequest()->isPost()) {
-            $postData = $this->getRequest()->getPost()->toArray();
-            $form->setData($postData);
-
-            if ($form->isValid()) {
-                try {
-                    /** @var PromoCodes $promoCode */
-                    $promoCode = $this->promoCodeService->getPromoCode($postData['promocode']['promocode']);
-
-                    $this->customerService->addBonusFromPromoCode($this->customer, $promoCode);
-
-                    $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-                } catch (BonusAssignmentException $e) {
-                    $this->flashMessenger()->addErrorMessage($e->getMessage());
-                } catch (\Exception $e) {
-                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. L\'assistenza tecnica è già al corrente, ci scusiamo per l\'inconveniente');
-                }
-
-                return $this->redirect()->toRoute('area-utente/additional-services');
-            }
-        }
-
-        $bonusPackages = $this->bonusPackagesService->getAvailableBonusPackges();
-
-        return new ViewModel([
-            'promoCodeForm' => $form,
-            'bonusPackages' => $bonusPackages
         ]);
     }
 

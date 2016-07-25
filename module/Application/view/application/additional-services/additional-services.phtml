@@ -36,28 +36,7 @@ $bonusPackages = $this->bonusPackages;
                     <!-- Promo code section -->
                     <div class="block-form bw-f w-3-3  clearfix">
 
-                        <!--
-                        <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-star"></i> Convenzione aziendale</h2>
-                        </div>
-                        <form method=post action="#">
-                            <div class="block-row-field clearfix">
-                                <div class="block-field bw-f w-2-4">
-                                    <p> <label>Inserisci il codice azienda</label> <a href=""><i class="fa fa-info-circle"></i></a>
-                                        <input type=text class=required name="">
-                                    </p>
-                                </div>
-                                <div class="block-field bw-f w-2-4">
-                                    <p> <label>Inserisci la tua email aziendale</label>
-                                        <input type=text name="" class=required value="">
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="block-wrapper-button content-align-center">
-                                <input type=submit name="" value=Valida>
-                            </div>
-                        </form>
-                        -->
+                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
 
                         <div class="block-form-section content-align-center margin-bottom">
                             <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice Promo'); ?></h2>
@@ -97,8 +76,6 @@ $bonusPackages = $this->bonusPackages;
                         </div>
                         <!-- title -->
 
-                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
-
                         <!-- Description -->
                         <div class="content-align-center block-title highlight">
                             <?= $this->translate('TIPO CHE SEI, PACCHETTO CHE TROVI') ?>
@@ -106,8 +83,8 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
                                 <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi SHARE’N GO
-                                scende fino ad arrivare a 6 € l’ora, la tariffa di car sharing a flusso libero 
-                                più bassa al mondo. Più ti muovi e più scopri quanto piacevole e conveniente 
+                                scende fino ad arrivare a 6 € l’ora, la tariffa di car sharing a flusso libero
+                                più bassa al mondo. Più ti muovi e più scopri quanto piacevole e conveniente
                                 sia la mobilità elettrica e condivisa.') ?>
                             </span>
                         </div>
@@ -142,7 +119,7 @@ $bonusPackages = $this->bonusPackages;
                         ?>
                         </div>
                         <!-- packages -->
-                        
+
                         <!-- description -->
                         <!-- Table -->
                         <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
