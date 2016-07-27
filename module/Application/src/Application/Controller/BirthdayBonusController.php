@@ -74,14 +74,15 @@ class BirthdayBonusController extends AbstractActionController
         $this->logger->log("\nStarted assigning birthday bonuses\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         // Get all customers
-        $this->logger->log("Acquiring customers...");
-        $customers = $this->customersService->getAllForBirthdayBonusAssignement();
+        $date = date_create('tomorrow');
+        $this->logger->log("Acquiring customers for date: " . $date->format('Y-m-d') . "...");
+        $customers = $this->customersService->getAllForBirthdayBonusAssignement($date);
         $this->logger->log("got " . count($customers) . " customers\n");
 
         if (count($customers) > 0) {
 
             // Prepare dates
-            $date = date_create('tomorrow')->format('Y-m-d');
+            $date = $date->format('Y-m-d');
             $from = $date . ' 00:00:00';
             $to = $date . ' 23:59:59';
             $this->logger->log("Bonuses will be valid from: " . $from . " to: " . $to . "\n\n");
