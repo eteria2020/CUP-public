@@ -43,7 +43,7 @@ return [
     ],
     'bonus' => [
         'birthday' => [
-            'total' => 30,
+            'total' => 180,
             'description' => 'Bonus compleanno'
         ]
     ]
