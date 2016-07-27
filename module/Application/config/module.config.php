@@ -771,6 +771,7 @@ return [
             'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
             'Application\Controller\DiscountStatus' => 'Application\Controller\DiscountStatusControllerFactory',
             'Application\Controller\AdditionalServices' => 'Application\Controller\AdditionalServicesControllerFactory',
+            'Application\Controller\BirthdayBonus' => 'Application\Controller\BirthdayBonusControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
@@ -850,6 +851,7 @@ return [
                 ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
                 ['controller' => 'Application\Controller\DiscountStatus', 'roles' => []],
                 ['controller' => 'Application\Controller\AdditionalServices', 'roles' => ['user']],
+                ['controller' => 'Application\Controller\BirthdayBonus', 'roles' => []],
             ],
         ],
     ],
@@ -1170,6 +1172,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableOldDiscountsController',
                             'action' => 'notify-disable-discount'
+                        ]
+                    ]
+                ],
+                'assign birthday bonuses' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'assign birthday bonuses [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'BirthdayBonus',
+                            'action' => 'assign-birthday-bonuses'
                         ]
                     ]
                 ]
