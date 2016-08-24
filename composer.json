@@ -29,7 +29,9 @@
         "jaaprood/php-resque-plugin": "dev-master",
         "socalnick/scn-social-auth": "^1.18",
         "socalnick/scn-social-auth-doctrine-orm": "^1.5",
-        "ramsey/uuid-doctrine": "^1.2"
+        "ramsey/uuid-doctrine": "^1.2",
+        "mvlabs/mvlabs-payments": "dev-master",
+        "mvlabs/omnipay-cartasi": "@dev"
     },
     "repositories": [
         {
@@ -63,6 +65,14 @@
         {
             "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
             "type": "git"
+        },
+        {
+            "url": "ssh://git@git.mvlabs.it:4222/internals/payments.git",
+            "type": "git"
+        },
+        {
+            "url": "ssh://git@git.mvlabs.it:4222/internals/omnipay-cartasi.git",
+            "type": "git"
         }
     ],
     "require-dev": {
@@ -70,12 +80,26 @@
         "phpunit/phpunit": "^4.8",
         "phpmd/phpmd": "@stable"
     },
-    "autoload-dev": {
-        "psr-0": {
-            "SharengoCore": "module/SharengoCore/src",
-            "BusinessCore": "module/BusinessCore/src",
-            "CUPPublicBusinessModule": "module/CUPPublicBusinessModule/src",
-            "Cartasi": "module/Cartasi/src"
+    "autoload": {
+        "psr-4": {
+            "Scripts\\": "scripts/"
         }
-    }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "./module/BusinessCore/Module.php"
+        ],
+        "psr-4": {
+            "BusinessCore\\": "module/BusinessCore/src/",
+            "SharengoCore\\": "module/SharengoCore/src/",
+            "CUPPublicBusinessModule\\": "module/CUPPublicBusinessModule/src/CUPPublicBusinessModule/",
+            "Cartasi\\": "module/Cartasi/src/"
+        }
+    },
+    "scripts": {
+        "pre-dependencies-solving": "Scripts\\Composer::addSubreposDependencies",
+        "pre-install-cmd": "Scripts\\Composer::addSubreposRepositories",
+        "pre-update-cmd": "Scripts\\Composer::addSubreposRepositories"
+    },
+    "minimum-stability": "dev"
 }
