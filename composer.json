@@ -29,8 +29,9 @@
         "jaaprood/php-resque-plugin": "dev-master",
         "socalnick/scn-social-auth": "^1.18",
         "socalnick/scn-social-auth-doctrine-orm": "^1.5",
+        "rwoverdijk/assetmanager": "^1.2.1",
         "ramsey/uuid-doctrine": "^1.2",
-        "mvlabs/mvlabs-payments": "dev-master",
+        "mvlabs/mvlabs-payments": "dev-business-changes",
         "mvlabs/omnipay-cartasi": "@dev"
     },
     "repositories": [
