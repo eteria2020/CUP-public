@@ -282,7 +282,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'id' => 'fleet'
             ],
             'options' => [
-                'value_options' => $fleetService->getFleetsSelectorArray()
+                'value_options' => $fleetService->getFleetsSelectorArray(
+                    [0 => '---']
+                )
             ]
         ]);
 
