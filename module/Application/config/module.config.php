@@ -1209,6 +1209,7 @@ return [
                             'action' => 'assign-birthday-bonuses'
                         ]
                     ]
+                ]
             ],
         ],
     ],
