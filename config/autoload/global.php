@@ -40,7 +40,7 @@ return [
     ],
     'banner-jsonp' => [
         'url' => 'http://manage.sharengo.it/banner.php'
-    ],
+    ]
     'bonus' => [
         'birthday' => [
             'total' => 180,

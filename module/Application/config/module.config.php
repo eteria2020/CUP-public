@@ -771,6 +771,7 @@ return [
             'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
             'Application\Controller\DiscountStatus' => 'Application\Controller\DiscountStatusControllerFactory',
             'Application\Controller\AdditionalServices' => 'Application\Controller\AdditionalServicesControllerFactory',
+            'Application\Controller\ImportDriversLicenseValidations' => 'Application\Controller\ImportDriversLicenseValidationsControllerFactory',
             'Application\Controller\BirthdayBonus' => 'Application\Controller\BirthdayBonusControllerFactory',
         ],
         'invokables' => [
@@ -851,6 +852,7 @@ return [
                 ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
                 ['controller' => 'Application\Controller\DiscountStatus', 'roles' => []],
                 ['controller' => 'Application\Controller\AdditionalServices', 'roles' => ['user']],
+                ['controller' => 'Application\Controller\ImportDriversLicenseValidations', 'roles' => []],
                 ['controller' => 'Application\Controller\BirthdayBonus', 'roles' => []],
             ],
         ],
@@ -1175,6 +1177,28 @@ return [
                         ]
                     ]
                 ],
+                'test-license-validation' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'test license validation [--dry-run|-d] [--use-data] [--id=] [--email=] [--valid=] [--code=] [--msg=]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ImportDriversLicenseValidations',
+                            'action' => 'test-validation'
+                        ]
+                    ]
+                ],
+                'import-license-validations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'import license validations [--dry-run|-d] [--verbose|-v] [--one|-o]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ImportDriversLicenseValidations',
+                            'action' => 'import-validations'
+                        ]
+                    ]
+                ],
                 'assign birthday bonuses' => [
                     'type' => 'simple',
                     'options' => [
@@ -1185,7 +1209,6 @@ return [
                             'action' => 'assign-birthday-bonuses'
                         ]
                     ]
-                ]
             ],
         ],
     ],
