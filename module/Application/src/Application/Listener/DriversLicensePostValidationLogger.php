@@ -86,7 +86,7 @@ final class DriversLicensePostValidationLogger implements SharedListenerAggregat
 
         $this->writeToCsv($line);
 
-        $this->registerValidation($response, $args['email']);
+        $this->registerValidation($response, $line, $args['email']);
     }
 
     /**
