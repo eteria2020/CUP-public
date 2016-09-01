@@ -4,7 +4,7 @@
     userEnabled isLoggedIn reservationsUrl userId setReserveText textCarOccupied
     textCarReserved textCarReserve setAction textRegister setReserveButton */
 
-var initialize, drawCoverage, map;
+var initialize, map;
 
 $(function () {
     "use strict";
@@ -32,29 +32,6 @@ $(function () {
         script.src = "//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&callback=initialize";
         document.body.appendChild(script);
     });
-
-    // remove any drawn circle
-    function removeCoverage() {
-        if (circle !== null) {
-            circle.setMap(null);
-        }
-    }
-
-    // draw a circle around the passed position based on battery (max 45km)
-    drawCoverage = function(position, battery) {
-        var circleOptions = {
-            strokeColor: '#43a34c',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#43a34c',
-            fillOpacity: 0.35,
-            map: map,
-            center: position,
-            radius: 450 * battery // in meters
-        };
-        circle = new google.maps.Circle(circleOptions);
-        circle.setMap(map);
-    };
 
     // define on click function
     function toggleMarkers(markers, value) {
@@ -234,9 +211,6 @@ $(function () {
                     if (openInfoWindow !== null) {
                         openInfoWindow.close();
                     }
-
-                    // if some car's coverage circle is drawn, remove it
-                    removeCoverage();
 
                     // modify the elements
                     setPlateText(car.plate);
