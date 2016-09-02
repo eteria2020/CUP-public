@@ -224,14 +224,6 @@ function completed(text)
     blockRightBottomText.innerHTML = '';
 }
 
-// draw a circle on the map with the coverage
-function verifyCoverage()
-{
-    drawCoverage(carPos, carBattery);
-    close();
-}
-
-
 
 /* Setters */
 
@@ -269,8 +261,7 @@ function setLocationText(text)
 
 function setBatteryText(battery)
 {
-    mileage = Math.round(0.6 * battery);
-    blockRightBottomText.innerHTML = mileage + textMileage;
+    blockRightBottomText.innerHTML = battery + textMileage;
 }
 
 function setIntCleanliness(cleanliness)
