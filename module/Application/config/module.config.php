@@ -823,6 +823,7 @@ return [
             'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
             'Application\Controller\ConsolePromoCodesOnceCompute' => 'Application\Controller\ConsolePromoCodesOnceComputeFactory',
+            'Application\Controller\ConsoleBonusCompute' => 'Application\Controller\ConsoleBonusComputeControllerFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
             'Application\Controller\FixRegistrationInvoicesAmount' => 'Application\Controller\FixRegistrationInvoicesAmountControllerFactory',
@@ -901,6 +902,7 @@ return [
                 ['controller' => 'Application\Controller\ConsolePayInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePromoCodesOnceCompute', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsoleBonusCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
@@ -1133,6 +1135,14 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePromoCodesOnceCompute',
                             'action' => 'promocode-once-main'
+                'bonus-compute' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus compute [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-compute'
                         ]
                     ]
                 ],
