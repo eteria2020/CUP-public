@@ -4,6 +4,10 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Doctrine\ORM\EntityManager;
+use SharengoCore\Entity\Repository\PromoCodesOnceRepository;
+use SharengoCore\Entity\Repository\PromoCodesInfoRepository;
+use SharengoCore\Entity\PromoCodesInfo;
+use SharengoCore\Entity\PromoCodesOnce;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 class ConsolePromoCodesOnceCompute extends AbstractActionController {
@@ -19,13 +23,29 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
     private $logger;
 
     /**
+     * @var $PromoCodesOnce
+     */
+    private $repository;
+
+    /**
+     * @var $PciRepository
+     */
+    private $pciRepository;
+
+    /**
      * @param EntityManager $entityManager
+     * @param PromoCodesOnce $promoCodesOnce
      * @param Logger $logger
      */
     public function __construct(
-    EntityManager $entityManager, Logger $logger
+    EntityManager $entityManager,
+            PromoCodesOnceRepository $repository, 
+            PromoCodesInfoRepository $pciRepository, 
+            Logger $logger
     ) {
         $this->entityManager = $entityManager;
+        $this->repository = $repository;
+        $this->pciRepository = $pciRepository;
         $this->logger = $logger;
     }
 
@@ -36,17 +56,32 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $request = $this->getRequest();
         $promocodesInfoId = intval($request->getParam('promocodesInfoId'));
         $qty = intval($request->getParam('qty'));
+
+        var_dump( $this->pciRepository);
+        
+        //$promoCodesInfo = $this->pciRepository.findById($promocodesInfoId);
+
+
         $this->logger->log("\nInsertNewPromocodeAction promocodesInfoId=" . $promocodesInfoId . " qty=" . $qty . "\n");
-        for ($i = 0; $i < $qty; $i++) {
-            $this->logger->log($i . " " . $this->GetPromocode(). "\n");
-        }
+
+
+
+        $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $this->GetPromocode());
+
+        var_dump($promoCodesInfo);
+
+        //$this->entityManager->persist($promoCodesOnce);
+        //$this->entityManager->flush();
+//        $promoCodesOnce = new PromoCodesOnce();
+//        $promoCodesOnce.insertNew($promocodesInfoId, $this->GetPromocode());
+//        for ($i = 0; $i < $qty; $i++) {
+//            $this->logger->log($i . " " . $this->GetPromocode(). "\n");
+//        }
     }
 
     private function GetPromocode() {
         return $this->RandomString(4) . "-" .
-            $this->RandomString(4) . "-" .
-            $this->RandomString(4) . "-" .
-            $this->RandomString(4);
+                $this->RandomString(4);
     }
 
     private function RandomString($length = 10) {
