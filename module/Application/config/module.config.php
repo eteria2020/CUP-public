@@ -337,6 +337,17 @@ return [
                     ],
                 ]
             ],
+            'futura' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{futura}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'futura',
+                    ],
+                ]
+            ],
             'ordpro' => [
                 'type' => 'Segment',
                 'options' => [
