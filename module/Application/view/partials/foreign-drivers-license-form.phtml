@@ -29,7 +29,8 @@
                 <br>
                 <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARA"); ?></div>
                 <br>
-                <?= $this->translate("di essere titolare di patente di guida in corso di validit&agrave n."); ?> <?= $this->customer->getDriverLicense() ?> <?= $this->translate("rilasciata da"); ?> <?= $this->authority ?> il <?= $this->customer->getDriverLicenseReleaseDate()->format('d/m/Y') ?> <?= $this->translate("categoria"); ?> <?= $this->categories ?>, <?= $this->translate("con scadenza il"); ?> <?= $this->customer->getDriverLicenseExpire()->format('d/m/Y') ?>.
+                <?= $this->translate("di essere titolare di patente di guida in corso di validit&agrave n."); ?> <?= $this->customer->getDriverLicense() ?> <?= $this->translate("rilasciata da"); ?> <?= $this->authority ?> il <?= $this->customer->getDriverLicenseReleaseDate()->format('d/m/Y') ?>, <?= $this->translate("con scadenza il"); ?> <?= $this->customer->getDriverLicenseExpire()->format('d/m/Y') ?>.
+                <?= $this->translate("E altresì dichiara che suddetto documento di guida è valido, in relazione alle norme internazionali di circolazione (legate alla residenza del cittadino straniero su territorio italiano e alla durata della stessa), ai fini della guida sul territorio italiano.");?>
             </div>
             <br>
             <div>
