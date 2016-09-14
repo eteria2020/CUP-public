@@ -24,3 +24,4 @@ data/export
 
 // log
 data/log
+data/dumps/*

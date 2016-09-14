@@ -467,7 +467,11 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                             'avoid' => [
                                 $this->userService->getIdentity()->getTaxCode()
                             ]
-                        ]
+                        ],
+                        'break_chain_on_failure' => true
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\CoherentTaxCode'
                     ]
                 ]
             ],

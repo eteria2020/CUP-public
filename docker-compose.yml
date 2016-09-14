@@ -1,0 +1,35 @@
+version: '2'
+services:
+  sharengo-public-data:
+    image: docker.mvlabs.it/sharengo-public-data
+    volumes:
+      - .:/srv/apps/sharengo
+    external_links:
+      - sharengo-postgres:sharengo-postgres
+    networks:
+      - back-tier
+  sharengo-public-fpm:
+    image: docker.mvlabs.it/sharengo-public-fpm
+    volumes_from:
+      - sharengo-public-data
+    external_links:
+      - sharengo-redis
+      - sharengo-postgres
+    networks:
+      - back-tier
+  sharengo-public-nginx:
+    image: docker.mvlabs.it/sharengo-public-nginx
+    volumes_from:
+      - sharengo-public-data
+    links:
+      - sharengo-public-fpm:fpm
+    networks:
+      - front-tier
+      - back-tier
+networks:
+  front-tier:
+    external:
+      name: sharengo-front-tier
+  back-tier:
+    external:
+      name: sharengo-back-tier

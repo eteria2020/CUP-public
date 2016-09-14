@@ -438,6 +438,17 @@ return [
                     ],
                 ],
             ],
+            'acea' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{acea}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'acea',
+                    ],
+                ],
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [

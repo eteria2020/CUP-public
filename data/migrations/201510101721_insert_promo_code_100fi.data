@@ -1,0 +1,11 @@
+INSERT INTO promo_codes_info (id, active, insert_ts, type, minutes, valid_from, valid_to, overridden_subscription_cost) VALUES
+(nextval('promocodesinfo_id_seq'::regclass),true, '2015-10-10 17:21:00', 'promo', 0, '2015-10-12 00:00:00', '2015-12-31 23:59:59', 100);
+
+
+INSERT INTO promo_codes Values(
+    nextval('promocodes_id_seq'::regclass),
+    (select id from promo_codes order by id desc limit 1), --  usare l'id del promo_codes_info appena creato
+    '100FI',
+    'Iscrizione ad 1 euro per evento top 100 Firenze',
+    true
+);

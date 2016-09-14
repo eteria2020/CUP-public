@@ -1,0 +1,22 @@
+/**
+ * Add base events types
+ */
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (1, 'SW_BOOT', '', 'Reboot OBC ver. {txtval}', 'Riavvio dell''applicazione OBC con in txtval la versione del SW OBC a bordo');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (2, 'RFID', 'intval=1', 'Inizio CORSA', 'Apertura corsa da CARD con CODICE RFID AABBCC');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (3, 'RFID', 'intval=2', 'Fine CORSA', 'Chiusura corsa da CARD con CODICE RFID AABBCC');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (5, 'RFID', 'intval=4', 'Fine SOSTA', 'Passaggio CARD con CODICE RFID AABBCC per disattivare la SOSTA');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (6, 'RFID', 'intval=5', 'RFID non permesso', 'Passaggio CARD con CODICE RFID AABBCC diversa da quella che ha aperto la corsa');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (7, 'PARK', 'intval=1', 'Tasto inizio SOSTA', 'Premuto il tasto a bordo per mettere in SOSTA');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (8, 'PARK', 'intval=2', 'Tasto fine SOSTA', 'Premuto il tasto a bordo per riprendere la corsa dalla SOSTA');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (9, 'CLEANLINESS', 'txtval=0;0', 'IN:VERDE - OUT:VERDE', 'Valutazione Pulizia IN;OUT [0=verde - 1=giallo - 2=rosso]');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (10, 'CLEANLINESS', 'txtval=1;1', 'IN:GIALLO - OUT:GIALLO', 'Valutazione Pulizia IN;OUT [0=verde - 1=giallo - 2=rosso]');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (11, 'CLEANLINESS', 'txtval=0;1', 'IN:VERDE - OUT:GIALLO', 'Valutazione Pulizia IN;OUT [0=verde - 1=giallo - 2=rosso]');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (12, 'CLEANLINESS', 'txtval=1;0', 'IN:GIALLO - OUT:VERDE', 'Valutazione Pulizia IN;OUT [0=verde - 1=giallo - 2=rosso]');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (13, 'GEAR', 'txtval=N', 'Cambio: FOLLE', 'Cambio Marcia - NO GEAR');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (14, 'GEAR', 'txtval=D', 'Cambio: PRIMA', 'Cambio Marcia - DRIVE');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (15, 'GEAR', 'txtval=R', 'Cambio: RETRO', 'Cambio Marcia - REVERSE');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (16, 'KEY', 'intval=1', 'Quadro: Posizione 1', 'Chiave in posizione 1');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (17, 'KEY', 'intval=2', 'Quadro: Posizione 2', 'Chiave in posizione 2');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (18, 'KEY', 'intval=3', 'Quadro: Posizione 3', 'Chiave in posizione 3');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (19, '3G', 'txtval=mobile', 'Riavvio 3G per {intval} volte', 'Ha ripreso la connessione internet su MOBILE dopo xx minuti (1 reset ogni 1 minuto)');
+INSERT INTO events_types (id, label, map_logic, description, notes) VALUES (4, 'RFID', 'intval=3', 'Inizio SOSTA', 'Passaggio CARD con CODICE RFID AABBCC per attivare la SOSTA');

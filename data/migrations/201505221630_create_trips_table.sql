@@ -21,5 +21,6 @@ CREATE TABLE trips (
     park_seconds int NOT NULL,
     payable boolean DEFAULT true,
     price_cent int NOT NULL,
-    vat_cent int NOT NULL
+    vat_cent int NOT NULL,
+    error_code integer DEFAULT 0 NOT NULL
 );

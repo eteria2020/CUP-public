@@ -7,7 +7,6 @@ use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
 use SharengoCore\Service\FleetService;
-use SharengoCore\Service\MunicipalitiesService;
 
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
@@ -33,8 +32,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         CountriesService $countriesService,
         CustomersService $customersService,
         ProvincesService $provincesService,
-        FleetService $fleetService,
-        MunicipalitiesService $municipalitiesService
+        FleetService $fleetService
     ) {
         $this->customersService = $customersService;
         $this->fleetService = $fleetService;
@@ -618,7 +616,11 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'Application\Form\Validator\DuplicateTaxCode',
                         'options' => [
                             'customerService' => $this->customersService
-                        ]
+                        ],
+                        'break_chain_on_failure' => true
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\CoherentTaxCode'
                     ]
                 ]
             ],

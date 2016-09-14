@@ -1,4 +1,4 @@
-DROP VIEW "Prenotazioni ALARMS";
+DROP VIEW IF EXISTS "Prenotazioni ALARMS";
 
 ALTER TABLE reservations ALTER consumed_ts TYPE timestamp(0) with time zone;
 
