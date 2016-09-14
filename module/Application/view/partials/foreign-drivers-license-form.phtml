@@ -41,6 +41,10 @@
                 <?= $this->formElementErrors($signature, ['class' => 'errors']); ?>
             </div>
             <br>
+            <div>
+                Livorno, lì <?= date("d/m/Y")?>
+            </div>
+            <br>
             <div style="font-size: 70%">
                 <?= $this->translate("Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente dichiarazione sono relativi ad  informazioni strettamente necessarie al conseguimento di finalit&agrave previste dalle vigenti normative e sono trattati e custoditi esclusivamente dall'ufficio responsabile del procedimento."); ?>
             </div>
@@ -50,7 +54,7 @@
             <br>
             <br>
             <p>
-                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida (è possibile caricare più di un file effettuando una selezione multipla)"); ?></label>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro (è possibile caricare più di un file effettuando una selezione multipla)"); ?></label>
                 <br>
                 <?php
                     $file = $form->get('drivers-license-file');
