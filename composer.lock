@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ec0271b7140a5512cefe3274d1dbe2e8",
-    "content-hash": "58623ae4e04f1ed30b9ade1d90f47b2e",
+    "hash": "d4a3552da26550d769085124d8531fa8",
+    "content-hash": "0ffb39e525c718aeebd6c70fa5e33e93",
     "packages": [
         {
             "name": "bjyoungblood/bjy-authorize",
@@ -1906,7 +1906,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/82d6f01e66c919f24468df6c7103bce6042e639e",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/8217d0e8b80a97f0d1fab0e1763200636daf1c00",
                 "reference": "82d6f01e66c919f24468df6c7103bce6042e639e",
                 "shasum": ""
             },
@@ -2576,7 +2576,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/176b094c515ae8ad85484f93999ab6776ec4ac67",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1d4ab8de2215e44e57fddc1e6b5d122546769e7d",
                 "reference": "176b094c515ae8ad85484f93999ab6776ec4ac67",
                 "shasum": ""
             },
@@ -2631,7 +2631,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/988cbed31ec9493057bcfc545b13447521849702",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/53ad9faffe141fbe8f98cd6a7fd9a5e84513f56c",
                 "reference": "988cbed31ec9493057bcfc545b13447521849702",
                 "shasum": ""
             },
@@ -2844,6 +2844,50 @@
             "time": "2015-07-01 11:25:50"
         },
         {
+            "name": "usu/codice-fiscale",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreausu/CodiceFiscale.git",
+                "reference": "92a9a9accd388744813043683cff5652838956dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreausu/CodiceFiscale/zipball/92a9a9accd388744813043683cff5652838956dc",
+                "reference": "92a9a9accd388744813043683cff5652838956dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CodiceFiscale": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrea Usuelli",
+                    "email": "andrea.usuelli@gmail.com"
+                }
+            ],
+            "description": "A library to calculate and check the validity of the italian fiscal code (codice fiscale)",
+            "homepage": "http://andreausu.github.com/CodiceFiscale",
+            "keywords": [
+                "codice fiscale",
+                "php"
+            ],
+            "time": "2014-11-29 09:49:24"
+        },
+        {
             "name": "zendframework/zend-developer-tools",
             "version": "dev-master",
             "source": {
@@ -2853,7 +2897,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/4d8a2e4a56b9620fb986657e0e701e1e65bfc7a5",
+                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/6c4854eed280ff46d43f2f3ed609d1d7c2ed3ee2",
                 "reference": "a3399877d69491acdac86e3aead53937c16b0303",
                 "shasum": ""
             },
