@@ -11,10 +11,13 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
     {
         $sharedServiceManager = $serviceLocator->getServiceLocator();
 
-        $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
+        $customerService = $sharedServiceManager->get('SharengoCore\Service\CustomersService');
         $accountTripsService = $sharedServiceManager->get('SharengoCore\Service\AccountTripsService');
         $tripsService = $sharedServiceManager->get('SharengoCore\Service\TripsService');
-        $tripCostService = $sharedServiceManager->get('SharengoCore\Service\TripCostService');
+        //$tripCostService = $sharedServiceManager->get('SharengoCore\Service\TripCostService');
+        $bonusService = $sharedServiceManager->get('SharengoCore\Service\BonusService');
+        $eventsService = $sharedServiceManager->get('SharengoCore\Service\EventsService'); //MongoDB
+        
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
         
         //$carsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CarsService');
@@ -28,7 +31,9 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
             $customerService,
             $accountTripsService,
             $tripsService,
-            $tripCostService,
+            //$tripCostService,
+            $bonusService,
+            $eventsService,
             $logger
         );
     }

@@ -6,6 +6,8 @@ use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\AccountTripsService;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Service\TripCostService;
+use SharengoCore\Service\BonusService;
+use SharengoCore\Service\EventsService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -30,18 +32,24 @@ class ConsoleBonusComputeController extends AbstractActionController
     /**
      * @var TripCostService
      */
-    private $tripCostService;
+    //private $tripCostService;
+
+    /**
+     * @var BonusService
+     */
+    private $bonusService;
+    
+    /**
+     * @var EventsService
+     */
+    private $eventsService;
 
     /**
      * @var Logger
      */
     private $logger;
-
-    /**
-     * @var boolean
-     */
-    private $avoidPersistance;
-
+    
+   
     /**
      * @param CustomersService $customersService
      * @param AccountTripsService $accountTripsService
@@ -54,17 +62,32 @@ class ConsoleBonusComputeController extends AbstractActionController
         AccountTripsService $accountTripsService,
         TripsService $tripsService,
         TripCostService $tripCostService,
+        BonusService $bonusService,
+        EventsService $eventsService,
         Logger $logger
     ) {
         $this->customerService = $customerService;
         $this->accountTripsService = $accountTripsService;
         $this->tripsService = $tripsService;
-        $this->tripCostService = $tripCostService;
+        //$this->tripCostService = $tripCostService;
+        $this->bonusService = $bonusService;
+        $this->eventsService = $eventsService;
         $this->logger = $logger;
     }
 
     public function bonusComputeAction()
     {
+        
+        $id = $this->params()->fromRoute('id', 0);
+
+        $trip = $this->tripsService->getTripById($id);
+
+        if (!$trip instanceof Trips) {
+            throw new TripNotFoundException();
+        }
+
+        $events = $this->eventsService->getEventsByTrip($trip);
+        
         $this->prepareLogger();
         $this->checkDryRun();
 
