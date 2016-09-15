@@ -348,6 +348,28 @@ return [
                     ],
                 ]
             ],
+            'gym16' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{gym16}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',// Redirect to the Index page, waiting front-end html
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'kpmg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{kpmg}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'kpmg',
+                    ],
+                ],
+            ],
             'ordpro' => [
                 'type' => 'Segment',
                 'options' => [
@@ -380,6 +402,17 @@ return [
                         'action'     => 'linear',
                     ],
                 ]
+            ],
+            'ording' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ording}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',// Redirect to the Index page, waiting front-end html
+                        'action'     => 'index',
+                    ],
+                ],
             ],
             'firenze' => [
                 'type' => 'Segment',
