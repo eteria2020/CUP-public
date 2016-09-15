@@ -151,7 +151,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => $translator->translate('Categoria/e patente'),
                 'value_options' => [
-                    'A' => 'A',
+                    'B1' => 'A',
                     'B' => 'B'
                 ]
             ]

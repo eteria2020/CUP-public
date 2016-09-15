@@ -65,30 +65,29 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
 
     <div class="margin-bottom">
         <h1><?= $this->translate('Completa l\'attivazione del servizio')?></h1>
+        <br>
+        <?php if ($this->needsDriversLicenseUpload){ ?>
+            <p><?= $this->translate('Per verificare la validità della tua patente estera, è necessario caricare una copia della patente di guida e della carta di identità, entrambe fronte e retro. Puoi procedere subito '); ?>
+            <a href="<?= $this->url('foreign-drivers-license', ['hash' => $this->hash]) ?>" target="_blank"><?= $this->translate('qui') ?></a>
+            <?= $this->translate(', oppure farlo in secondo momento dalla tua area riservata. Finchè la validità della tua patente non sarà verificata, non potrai utilizzare il servizio di SHARE’NGO.')?>
+            <p>
+        <?php } else {?>
+            <p><?= $this->translate('Controlla nelle tue mail se la verifica della tua patente ha dato esito positivo,<br>se così non fosse accedi all\'area riservata e verifica i tuoi dati prima di effettuare il pagamento.')?></p>
+        <?php }?>
+            <br>
         <?php if ($this->benefitsFromDiscountedSubscriptionAmount) { ?>
             <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di ' . $this->subscriptionDiscountedAmount . '&euro; via Cartasi.')?></p>
         <?php } else { ?>
             <p><?= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento via Cartasi.')?></p>
         <?php } ?>
-        <p><?= $this->translate('Controlla nelle tue mail se la verifica della tua patente ha dato esito positivo,<br>se così non fosse accedi alla tua riservata e verifica i tuoi dati prima di effettuare il pagamento.<br>In caso di patente straniera il servizio clienti la validerá una volta fatte le opportune verifiche.')?></p>
     </div>
-
+            <br>
     <div class="module-wrapper-button margin-bottom content-align-center">
         <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customerId]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento'); ?> <i class="fa fa-plus-circle"></i></a>
     </div>
 
     <?php } ?>
 
-    <?php if ($this->needsDriversLicenseUpload): ?>
-        <div class="block-alert info margin-bottom right">
-            <h2 class="block-title"></i><?= $this->translate('Abilitazione patente'); ?></h2>
-            <p>
-                <?= $this->translate('Per verificare la validità della tua patente estera, è necessario caricare una copia della propria patente. Puoi procedere subito, '); ?>
-                <a href="<?= $this->url('foreign-drivers-license', ['hash' => $this->hash]) ?>" target="_blank"><?= $this->translate('qui') ?></a>
-                <?= $this->translate(', oppure farlo in secondo momento dalla tua area riservata. Finchè la validità della tua patente non sarà verificata, non potrai utilizzare il servizio di SHARE’NGO.')?>
-            </p>
-        </div>
-    <? endif; ?>
 
 </div>
 <!-- block-form -->
