@@ -1,8 +1,93 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+        <script type="text/javascript" src="/common/application/js/jquery.1.11.3.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link href="/common/application/css/bootstrap.css" rel="stylesheet">
+        <script type="text/javascript" src="/common/application/js/bootstrap.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link href="/ording/application/css/style.css" rel="stylesheet">
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-63160906-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+
+    <body class="bg-blue">
+        <div class="container-fluid lato-bold">
+            <div class="row bg-grey  bg-blue">
+                <div class="col-lg-7 col-md-8">
+                    <img src="/ording/application/images/sharengo_img.jpg" class="img-responsive"/>
+                </div>
+                <div class="col-lg-5 col-md-4 text-center" >
+
+                    <div id="first-paragraph">
+
+
+                        <span class="lato-BOLD strong-big white">
+                            PER GLI ISCRITTI ALL' </span><span class="lato-BOLD strong-big yellow">ORDINE
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                            DEGLI INGEGNERI DELLA
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                            PROVINCIA DI ROMA
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                        </span>
+                        <br class="visible-md visible-lg">
+                        <br class="visible-xs visible-sm">
+                        <p></p>
+                        <span class="lato-regular strong white">
+                            CODICE PROMO
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                        </span>
+
+                        <div class="text-center space">
+                            <a href="<?= $this->url('promocode-signup',['promocode' => 'ORDING']); ?>" id="submit" class="button" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'ORDING'});">ORDING</a>
+                        </div>
+                    </div>
+
+                    <div id="container-paragraph">
+                        <div id="first-paragraph-due" style="text-align:left; padding-left:10px; padding-top:10px;">
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                            <span class="lato-bold strong-big white">Fino al 31 dicembre 2016:</span>
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                            <!--<span class="lato-regular strong-big white">fino al 30 giugno:</span>-->
+                            <ul class="lato-regular strong-small white" style="padding-top:20px; padding-left:22px;">
+                                <li><span class="lato-regular strong-small yellow" >ISCRIZIONE RIDOTTA AL 50%</span><br/>
+                                    (5€ invece di 10€)</li>
+
+                                <li style="padding-top:20px;"><span class="lato-regular strong-small yellow" >TARIFFA SCONTATA<br>A 0,22 CENT./MINUTO</span><br/>
+                                <!--<span class="lato-regular strong-more-small white" >(0,22cent./minuto invece di 0,28cent./minuto)</span>--></li>
+
+                                <li style="padding-top:20px;"><span class="lato-regular strong-small yellow" style="">30 MINUTI DI CORSE GRATIS</span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
