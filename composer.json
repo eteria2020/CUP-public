@@ -95,7 +95,8 @@
             "BusinessCore\\": "module/BusinessCore/src/",
             "SharengoCore\\": "module/SharengoCore/src/",
             "CUPPublicBusinessModule\\": "module/CUPPublicBusinessModule/src/CUPPublicBusinessModule/",
-            "Cartasi\\": "module/Cartasi/src/"
+            "Cartasi\\": "module/Cartasi/src/",
+            "MvlabsPayments\\": "module/MvlabsPayments/src/"
         }
     },
     "scripts": {
