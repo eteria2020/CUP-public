@@ -38,10 +38,10 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
      * @param Logger $logger
      */
     public function __construct(
-    EntityManager $entityManager,
-            PromoCodesOnceRepository $repository, 
-            PromoCodesInfoRepository $pciRepository, 
-            Logger $logger
+        EntityManager $entityManager,
+        PromoCodesOnceRepository $repository, 
+        PromoCodesInfoRepository $pciRepository, 
+        Logger $logger
     ) {
         $this->entityManager = $entityManager;
         $this->repository = $repository;
@@ -59,16 +59,14 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
 
         var_dump( $this->pciRepository);
         
-        //$promoCodesInfo = $this->pciRepository.findById($promocodesInfoId);
-
+        //$promoCodesInfo = $this->pciRepository.findById(11);
 
         $this->logger->log("\nInsertNewPromocodeAction promocodesInfoId=" . $promocodesInfoId . " qty=" . $qty . "\n");
 
+        //var_dump($repository.getAllPromoCodesOnce());
+        //$promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $this->GetPromocode());
 
-
-        $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $this->GetPromocode());
-
-        var_dump($promoCodesInfo);
+        //var_dump($promoCodesInfo);
 
         //$this->entityManager->persist($promoCodesOnce);
         //$this->entityManager->flush();
