@@ -293,6 +293,28 @@ return [
                     ],
                 ]
             ],
+            'acea' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{acea}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'acea',
+                    ],
+                ],
+            ],
+            'aeronautica' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{isma}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aeronautica',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -326,6 +348,17 @@ return [
                     ],
                 ]
             ],
+            'express' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{express}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'express',
+                    ],
+                ],
+            ],
             'fao' => [
                 'type' => 'Segment',
                 'options' => [
@@ -334,39 +367,6 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'fao',
-                    ],
-                ]
-            ],
-            'ordpro' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{ordpro}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'ordpro',
-                    ],
-                ],
-            ],
-            'teatro-elfo' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{elfo}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'teatro-elfo',
-                    ],
-                ]
-            ],
-            'linear' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{linear}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'linear',
                     ],
                 ]
             ],
@@ -381,16 +381,38 @@ return [
                     ],
                 ]
             ],
-            'volontariocard' => [
+            'futura' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{volontariocard}',
+                    'route' => '/{futura}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'volontariocard',
+                        'action'     => 'futura',
                     ],
                 ]
+            ],
+            'gym16' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{gym16}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',// Redirect to the Index page, waiting front-end html
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'kpmg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{kpmg}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'kpmg',
+                    ],
+                ],
             ],
             'legambiente' => [
                 'type' => 'Segment',
@@ -403,14 +425,47 @@ return [
                     ],
                 ],
             ],
-            'aeronautica' => [
+            'linear' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{isma}',
+                    'route' => '/{linear}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'aeronautica',
+                        'action'     => 'linear',
+                    ],
+                ]
+            ],
+            'ording' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ording}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ording',
+                    ],
+                ],
+            ],
+            'ordpro' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ordpro}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ordpro',
+                    ],
+                ],
+            ],
+            'roma' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{roma}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'roma',
                     ],
                 ]
             ],
@@ -425,27 +480,16 @@ return [
                     ],
                 ]
             ],
-            'express' => [
+            'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{express}',
+                    'route' => '/{elfo}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'express',
+                        'action'     => 'teatro-elfo',
                     ],
-                ],
-            ],
-            'acea' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{acea}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'acea',
-                    ],
-                ],
+                ]
             ],
             'unirm1' => [
                 'type' => 'Segment',
@@ -457,6 +501,17 @@ return [
                         'action'     => 'unirm1',
                     ],
                 ],
+            ],
+            'volontariocard' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{volontariocard}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'volontariocard',
+                    ],
+                ]
             ],
             'pay' => [
                 'type' => 'Segment',
