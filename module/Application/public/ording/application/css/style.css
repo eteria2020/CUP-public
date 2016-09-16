@@ -39,7 +39,7 @@
 }
 
 html, body{
-	font-size:95%;
+	font-size:100%;
 	font-family: 'Lato-Regular';	
 }
 
@@ -81,7 +81,7 @@ html, body{
 }
 
 .bg-blue{
-	background-color:#215968;
+	background-color:#778abb;
 }
 
 div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
@@ -90,7 +90,7 @@ div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
 
 .button{
 	color: #3f3d40;
-	background-color:orange;
+	background-color:yellow;
 	border:5px solid #fff;
 	padding:15px 60px 15px;
 	-webkit-border-radius: 14px;
@@ -210,7 +210,7 @@ a#submit:hover{
 	}
 
 	.button{		
-		padding:10px 50px 10px;
+		padding:10px 20px 10px;
 		font-size: 30px;		
 	}
 	

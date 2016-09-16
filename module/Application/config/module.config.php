@@ -293,6 +293,28 @@ return [
                     ],
                 ]
             ],
+            'acea' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{acea}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'acea',
+                    ],
+                ],
+            ],
+            'aeronautica' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{isma}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aeronautica',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -326,6 +348,17 @@ return [
                     ],
                 ]
             ],
+            'express' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{express}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'express',
+                    ],
+                ],
+            ],
             'fao' => [
                 'type' => 'Segment',
                 'options' => [
@@ -334,6 +367,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'fao',
+                    ],
+                ]
+            ],
+            'firenze' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{firenze}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'firenze',
                     ],
                 ]
             ],
@@ -370,27 +414,16 @@ return [
                     ],
                 ],
             ],
-            'ordpro' => [
+            'legambiente' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{ordpro}',
+                    'route' => '/{legambiente}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'ordpro',
+                        'action'     => 'legambiente',
                     ],
                 ],
-            ],
-            'teatro-elfo' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{elfo}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'teatro-elfo',
-                    ],
-                ]
             ],
             'linear' => [
                 'type' => 'Segment',
@@ -409,54 +442,21 @@ return [
                     'route' => '/{ording}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',// Redirect to the Index page, waiting front-end html
-                        'action'     => 'index',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ording',
                     ],
                 ],
             ],
-            'firenze' => [
+            'ordpro' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{firenze}',
+                    'route' => '/{ordpro}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'firenze',
-                    ],
-                ]
-            ],
-            'volontariocard' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{volontariocard}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'volontariocard',
-                    ],
-                ]
-            ],
-            'legambiente' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{legambiente}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'legambiente',
+                        'action'     => 'ordpro',
                     ],
                 ],
-            ],
-            'aeronautica' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{isma}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'aeronautica',
-                    ],
-                ]
             ],
             'roma' => [
                 'type' => 'Segment',
@@ -480,27 +480,16 @@ return [
                     ],
                 ]
             ],
-            'express' => [
+            'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{express}',
+                    'route' => '/{elfo}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'express',
+                        'action'     => 'teatro-elfo',
                     ],
-                ],
-            ],
-            'acea' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{acea}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'acea',
-                    ],
-                ],
+                ]
             ],
             'unirm1' => [
                 'type' => 'Segment',
@@ -512,6 +501,17 @@ return [
                         'action'     => 'unirm1',
                     ],
                 ],
+            ],
+            'volontariocard' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{volontariocard}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'volontariocard',
+                    ],
+                ]
             ],
             'pay' => [
                 'type' => 'Segment',
