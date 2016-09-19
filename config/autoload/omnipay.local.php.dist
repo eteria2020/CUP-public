@@ -4,8 +4,8 @@ return [
         'first-payment' => [
             'alias' => 'xxx',
             'serviceType' => 'paga_rico',
-            'returnUrl' => 'http://business.dev.sharengo.it/payment-concluded',
-            'cancelUrl' => 'http://business.dev.sharengo.it/payment-cancelled',
+            'returnUrl' => '##domain name##/payment-concluded',
+            'cancelUrl' => '##domain name##/payment-cancelled',
             'macKey' => 'xxx'
         ],
         'token-payment' => [
