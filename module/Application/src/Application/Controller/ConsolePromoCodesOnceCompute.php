@@ -57,19 +57,26 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $promocodesInfoId = intval($request->getParam('promocodesInfoId'));
         $qty = intval($request->getParam('qty'));
 
-        var_dump( $this->pciRepository);
+        //var_dump( $this->pciRepository);
         
         //$promoCodesInfo = $this->pciRepository.findById(11);
-
-        $this->logger->log("\nInsertNewPromocodeAction promocodesInfoId=" . $promocodesInfoId . " qty=" . $qty . "\n");
+        //$this->pciRepository.findOneBy(array('id', 11));
+        
+        //var_dump($this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findOneBy(array('id' =>3)));
+        //$promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findOneBy(array('id' =>3));
+        $promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findById(3);
+        var_dump($promoCodeOnce.id);
+        
+        //$this->logger->log("\nInsertNewPromocodeAction promocodesInfoId=" . $promocodesInfoId . " qty=" . $qty . "\n");
 
         //var_dump($repository.getAllPromoCodesOnce());
-        //$promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $this->GetPromocode());
+//        $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $this->GetPromocode());
+//
+//        var_dump($promoCodesOnce);
+//
+//        $this->entityManager->persist($promoCodesOnce);
+//        $this->entityManager->flush();
 
-        //var_dump($promoCodesInfo);
-
-        //$this->entityManager->persist($promoCodesOnce);
-        //$this->entityManager->flush();
 //        $promoCodesOnce = new PromoCodesOnce();
 //        $promoCodesOnce.insertNew($promocodesInfoId, $this->GetPromocode());
 //        for ($i = 0; $i < $qty; $i++) {
