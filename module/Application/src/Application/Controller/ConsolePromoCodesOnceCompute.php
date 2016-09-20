@@ -66,8 +66,9 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $qty = intval($request->getParam('qty'));
 
         //var_dump($this->pciRepository);
-        $this->pcoService.getAllPromoCodesOnce();
-        
+        //$this->pcoService.getAllPromoCodesOnce();
+        var_dump($this->pcoService->getPromoCode(1)->getPromoCodesInfo());
+        //var_dump( $this->pcoService);
         //var_dump( $this->pciRepository);
         
         //$promoCodesInfo = $this->pciRepository.findById(11);
