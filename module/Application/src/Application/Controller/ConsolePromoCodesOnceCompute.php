@@ -8,6 +8,7 @@ use SharengoCore\Entity\Repository\PromoCodesOnceRepository;
 use SharengoCore\Entity\Repository\PromoCodesInfoRepository;
 use SharengoCore\Entity\PromoCodesInfo;
 use SharengoCore\Entity\PromoCodesOnce;
+use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 class ConsolePromoCodesOnceCompute extends AbstractActionController {
@@ -17,6 +18,11 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
      */
     private $entityManager;
 
+    /**
+     * @var $pcoService
+     */
+    private $pcoService;
+    
     /**
      * @var $Logger
      */
@@ -40,12 +46,14 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
     public function __construct(
         EntityManager $entityManager,
         PromoCodesOnceRepository $repository, 
-        PromoCodesInfoRepository $pciRepository, 
+        PromoCodesInfoRepository $pciRepository,
+        PromoCodesOnceService $pcoService,
         Logger $logger
     ) {
         $this->entityManager = $entityManager;
         $this->repository = $repository;
         $this->pciRepository = $pciRepository;
+        $this->pcoService = $pcoService;
         $this->logger = $logger;
     }
 
@@ -57,6 +65,9 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $promocodesInfoId = intval($request->getParam('promocodesInfoId'));
         $qty = intval($request->getParam('qty'));
 
+        //var_dump($this->pciRepository);
+        $this->pcoService.getAllPromoCodesOnce();
+        
         //var_dump( $this->pciRepository);
         
         //$promoCodesInfo = $this->pciRepository.findById(11);
@@ -64,8 +75,8 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         
         //var_dump($this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findOneBy(array('id' =>3)));
         //$promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findOneBy(array('id' =>3));
-        $promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findById(3);
-        var_dump($promoCodeOnce.id);
+//        $promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findById(3);
+//        var_dump($promoCodeOnce);
         
         //$this->logger->log("\nInsertNewPromocodeAction promocodesInfoId=" . $promocodesInfoId . " qty=" . $qty . "\n");
 
