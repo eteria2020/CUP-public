@@ -88,16 +88,45 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $this->logger->log("test use\n");
         
         $customersRepository = $this->entityManager->getRepository('SharengoCore\Entity\Customers');
-        $customer = $customersRepository->findByCI("email","enrico.taddei@gmail.com");
+        //$customer = $customersRepository->findByCI("email","enrico.taddei@gmail.com");
         
-        $promocode = "AAAA-BBBB";
-        $this->pcoService->usePromoCode($customer, $promocode);
-//        $this->entityManager->persist($promoCodesOnce);
-//        $this->entityManager->flush();
+        $customer = $customersRepository->getUserByEmailPassword("enrico.taddei@gmail.com","508ee8d3c2a15d9edb22927cfb8c6ff2");
+
+        $promocode = "X0C8-H20M";
+        //$promocode = "AAA-BBB";
+        //$result = $promoCodesOnce = $this->pcoService->usePromoCode($customer, $promocode);
+        var_dump($this->pcoService->isValid($promocode));
+//         $promoCodesOnce =$this->pcoService->getByPromoCode($promocode);
+//         if($promoCodesOnce!==NULL){   // find promocode once
+//            var_dump($promoCodesOnce->getUsedTs());
+//            
+//            if($promoCodesOnce->getUsedTs()===NULL) { // promocode not used
+//                var_dump($promoCodesOnce->getUsedTs());
+//                $promoCodesInfo = $promoCodesOnce->getPromoCodesInfo();
+//                if($promoCodesInfo->getActive()){       // promocode info is active
+//                    $now = new \DateTime();
+//
+//                    if($now>=$promoCodesInfo->getValidFrom() && 
+//                            $now<=$promoCodesInfo->getValidTo()){
+//                       $this->logger->log("update\n");
+//                    }
+//                    else {
+//                       $this->logger->log("promo code exiped\n");
+//                    }
+//                }
+//                else {
+//                    $this->logger->log("promo code not active\n");
+//                }
+//            }
+//            else {
+//                $this->logger->log("promo code once used\n");
+//            }
+//         } else {
+//             $this->logger->log("promo code once not found\n");
+//         }
+        
     }
-    
-    
-    
+
     private function GetPromocode4_4() {
         return $this->RandomString(4) . "-" .
                 $this->RandomString(4);
