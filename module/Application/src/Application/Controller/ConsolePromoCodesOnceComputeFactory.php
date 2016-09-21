@@ -12,8 +12,7 @@ class ConsolePromoCodesOnceComputeFactory implements FactoryInterface
 
         $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
 
-
-        $repository = $entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce');
+        $pcoRepository = $entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce');
         $pciRepository = $entityManager->getRepository('SharengoCore\Entity\PromoCodesInfo');
         $pcoService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesOnceService');
 
@@ -21,7 +20,7 @@ class ConsolePromoCodesOnceComputeFactory implements FactoryInterface
 
         return new ConsolePromoCodesOnceCompute(
             $entityManager,
-            $repository,
+            $pcoRepository,
             $pciRepository,
             $pcoService,
             $logger);

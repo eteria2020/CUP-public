@@ -1114,6 +1114,17 @@ return [
                         ]
                     ]
                 ],
+                'promocodesonce' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'promocodesonce use <customerId> <promocode>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePromoCodesOnceCompute',
+                            'action' => 'use-promocode'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [

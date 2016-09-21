@@ -22,7 +22,7 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
      * @var $pcoService
      */
     private $pcoService;
-    
+
     /**
      * @var $Logger
      */
@@ -44,14 +44,14 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
      * @param Logger $logger
      */
     public function __construct(
-        EntityManager $entityManager,
-        PromoCodesOnceRepository $repository, 
+        EntityManager $entityManager, 
+        PromoCodesOnceRepository $pcoRepository,
         PromoCodesInfoRepository $pciRepository,
         PromoCodesOnceService $pcoService,
         Logger $logger
     ) {
         $this->entityManager = $entityManager;
-        $this->repository = $repository;
+        $this->repository = $pcoRepository;
         $this->pciRepository = $pciRepository;
         $this->pcoService = $pcoService;
         $this->logger = $logger;
@@ -62,41 +62,43 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
 
         $request = $this->getRequest();
-        $promocodesInfoId = intval($request->getParam('promocodesInfoId'));
+        $pciId = intval($request->getParam('promocodesInfoId'));
         $qty = intval($request->getParam('qty'));
 
-        //var_dump($this->pciRepository);
-        //$this->pcoService.getAllPromoCodesOnce();
-        var_dump($this->pcoService->getPromoCode(1)->getPromoCodesInfo());
-        //var_dump( $this->pcoService);
-        //var_dump( $this->pciRepository);
-        
-        //$promoCodesInfo = $this->pciRepository.findById(11);
-        //$this->pciRepository.findOneBy(array('id', 11));
-        
-        //var_dump($this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findOneBy(array('id' =>3)));
-        //$promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findOneBy(array('id' =>3));
-//        $promoCodeOnce = $this->entityManager->getRepository('SharengoCore\Entity\PromoCodesOnce')->findById(3);
-//        var_dump($promoCodeOnce);
-        
-        //$this->logger->log("\nInsertNewPromocodeAction promocodesInfoId=" . $promocodesInfoId . " qty=" . $qty . "\n");
+        $promocodesInfoId = $this->pciRepository->findById($pciId);
 
-        //var_dump($repository.getAllPromoCodesOnce());
-//        $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $this->GetPromocode());
-//
-//        var_dump($promoCodesOnce);
-//
-//        $this->entityManager->persist($promoCodesOnce);
-//        $this->entityManager->flush();
+        for ($i = 0; $i < $qty; $i++) {
 
-//        $promoCodesOnce = new PromoCodesOnce();
-//        $promoCodesOnce.insertNew($promocodesInfoId, $this->GetPromocode());
-//        for ($i = 0; $i < $qty; $i++) {
-//            $this->logger->log($i . " " . $this->GetPromocode(). "\n");
-//        }
+            do {
+                $promocode = $this->GetPromocode4_4();
+            } while ($this->pcoService->getByPromoCode($promocode) !== NULL);
+
+            if ($this->pcoService->getByPromoCode($promocode) === NULL) {
+                $this->logger->log($i . " " . $promocode . "\n");
+
+                $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $promocode);
+                $this->entityManager->persist($promoCodesOnce);
+                $this->entityManager->flush();
+            }
+        }
     }
 
-    private function GetPromocode() {
+    public function UsePromocodeAction() {
+        
+        $this->logger->log("test use\n");
+        
+        $customersRepository = $this->entityManager->getRepository('SharengoCore\Entity\Customers');
+        $customer = $customersRepository->findByCI("email","enrico.taddei@gmail.com");
+        
+        $promocode = "AAAA-BBBB";
+        $this->pcoService->usePromoCode($customer, $promocode);
+//        $this->entityManager->persist($promoCodesOnce);
+//        $this->entityManager->flush();
+    }
+    
+    
+    
+    private function GetPromocode4_4() {
         return $this->RandomString(4) . "-" .
                 $this->RandomString(4);
     }
