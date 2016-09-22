@@ -94,8 +94,15 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
 
         $promocode = "X0C8-H20M";
         //$promocode = "AAA-BBB";
-        //$result = $promoCodesOnce = $this->pcoService->usePromoCode($customer, $promocode);
-        var_dump($this->pcoService->isValid($promocode));
+        
+        if($this->pcoService->isValid($promocode)) {
+            $result = $promoCodesOnce = $this->pcoService->usePromoCode($customer, $promocode);
+            $this->logger->log("update success\n");
+        }else {
+            $this->logger->log("update FAIL\n");
+        }
+        
+        
 //         $promoCodesOnce =$this->pcoService->getByPromoCode($promocode);
 //         if($promoCodesOnce!==NULL){   // find promocode once
 //            var_dump($promoCodesOnce->getUsedTs());

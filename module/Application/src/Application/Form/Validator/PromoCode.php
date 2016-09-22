@@ -55,25 +55,45 @@ class PromoCode extends AbstractValidator
      */
     public function isValid($value)
     {
-        $this->setValue($value);
+        $result =FALSE;
 
+        $this->setValue($value);
         $isStandardValid = $this->promoCodesService->isValid($value);
 
-        if (!$isStandardValid && $this->carrefourService instanceof CarrefourService) {
-            try {
-                $this->carrefourService->checkCarrefourCode($value);
-            } catch (CodeAlreadyUsedException $e) {
-                $this->error(self::USED_CODE);
-                return false;
-            } catch (NotAValidCodeException $e) {
+        if($isStandardValid){
+             $result =TRUE;
+        }else {
+            if ($this->carrefourService instanceof CarrefourService) {
+                try {
+                    $this->carrefourService->checkCarrefourCode($value);
+                } catch (CodeAlreadyUsedException $e) {
+                    $this->error(self::USED_CODE);
+                } catch (NotAValidCodeException $e) {
+                    $this->error(self::WRONG_CODE);
+                }
+            }else {
                 $this->error(self::WRONG_CODE);
-                return false;
             }
-        } elseif (!$isStandardValid) {
-            $this->error(self::WRONG_CODE);
-            return false;
         }
 
-        return true;
+        return $result;
+
+//        if (!$isStandardValid && $this->carrefourService instanceof CarrefourService) {
+//            try {
+//                $this->carrefourService->checkCarrefourCode($value);
+//            } catch (CodeAlreadyUsedException $e) {
+//                $this->error(self::USED_CODE);
+//                return false;
+//            } catch (NotAValidCodeException $e) {
+//                $this->error(self::WRONG_CODE);
+//                return false;
+//            }
+//        } elseif (!$isStandardValid) {
+//            $this->error(self::WRONG_CODE);
+//            return false;
+//        }
+//
+//        return true;
+
     }
 }
