@@ -11,6 +11,7 @@ use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\PromoCodesOnceService;
 
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
@@ -41,6 +42,11 @@ class AdditionalServicesController extends AbstractActionController
     private $promoCodeService;
 
     /**
+     * @var PromoCodesOnceService
+     */
+    private $promoCodeOnceService;
+
+    /**
      * @var CustomersBonusPackagesService
      */
     private $customersBonusPackagesService;
@@ -63,6 +69,7 @@ class AdditionalServicesController extends AbstractActionController
         CarrefourService $carrefourService,
         Form $promoCodeForm,
         PromoCodesService $promoCodeService,
+        PromoCodesOnceService $promoCodeOnceService,
         CustomersBonusPackagesService $customersBonusPackagesService,
         AuthenticationService $authService
     ) {
@@ -70,6 +77,7 @@ class AdditionalServicesController extends AbstractActionController
         $this->carrefourService = $carrefourService;
         $this->promoCodeForm = $promoCodeForm;
         $this->promoCodeService =  $promoCodeService;
+        $this->promoCodeOnceService =  $promoCodeOnceService;
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->authService = $authService;
     }

@@ -16,6 +16,7 @@ class AdditionalServicesControllerFactory implements FactoryInterface
         $carrefourService = $sharedLocator->get('SharengoCore\Service\CarrefourService');
         $promoCodeForm = $sharedLocator->get('PromoCodeForm');
         $promoCodeService = $sharedLocator->get('SharengoCore\Service\PromoCodesService');
+        $promoCodeOnceService = $sharedLocator->get('SharengoCore\Service\PromoCodesOnceService');
         $bonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
         $authService = $sharedLocator->get('zfcuser_auth_service');
 
@@ -24,6 +25,7 @@ class AdditionalServicesControllerFactory implements FactoryInterface
             $carrefourService,
             $promoCodeForm,
             $promoCodeService,
+            $promoCodeOnceService,
             $bonusPackagesService,
             $authService
         );

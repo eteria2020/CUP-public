@@ -6,6 +6,7 @@ use SharengoCore\Exception\CodeAlreadyUsedException;
 use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\PromoCodesOnceService;
 
 use Zend\Validator\AbstractValidator;
 
@@ -27,6 +28,11 @@ class PromoCode extends AbstractValidator
     private $promoCodesService;
 
     /**
+     * @var PromoCodesOnceService
+     */
+    private $promoCodesOnceService;
+
+    /**
      * @var CarrefourService|null
      */
     private $carrefourService;
@@ -46,6 +52,7 @@ class PromoCode extends AbstractValidator
     {
         parent::__construct();
         $this->promoCodesService = $options['promoCodesService'];
+        $this->promoCodesOnceService = $options['promoCodesOnceService'];
         $this->carrefourService = $options['carrefourService'];
     }
 
@@ -58,21 +65,24 @@ class PromoCode extends AbstractValidator
         $result =FALSE;
 
         $this->setValue($value);
-        $isStandardValid = $this->promoCodesService->isValid($value);
 
-        if($isStandardValid){
+        if($this->promoCodesService->isValid($value)){
              $result =TRUE;
         }else {
-            if ($this->carrefourService instanceof CarrefourService) {
-                try {
-                    $this->carrefourService->checkCarrefourCode($value);
-                } catch (CodeAlreadyUsedException $e) {
-                    $this->error(self::USED_CODE);
-                } catch (NotAValidCodeException $e) {
+            if($this->promoCodesOnceService->isValid($value)){
+                $result =TRUE;
+            } else {
+                if ($this->carrefourService instanceof CarrefourService) {
+                    try {
+                        $this->carrefourService->checkCarrefourCode($value);
+                    } catch (CodeAlreadyUsedException $e) {
+                        $this->error(self::USED_CODE);
+                    } catch (NotAValidCodeException $e) {
+                        $this->error(self::WRONG_CODE);
+                    }
+                }else {
                     $this->error(self::WRONG_CODE);
                 }
-            }else {
-                $this->error(self::WRONG_CODE);
             }
         }
 
