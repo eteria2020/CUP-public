@@ -44,7 +44,7 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
      * @param Logger $logger
      */
     public function __construct(
-        EntityManager $entityManager, 
+        EntityManager $entityManager,
         PromoCodesOnceRepository $pcoRepository,
         PromoCodesInfoRepository $pciRepository,
         PromoCodesOnceService $pcoService,
@@ -84,36 +84,36 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
     }
 
     public function UsePromocodeAction() {
-        
-        $this->logger->log("test use\n");
-        
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
         $customersRepository = $this->entityManager->getRepository('SharengoCore\Entity\Customers');
         //$customer = $customersRepository->findByCI("email","enrico.taddei@gmail.com");
-        
+
         $customer = $customersRepository->getUserByEmailPassword("enrico.taddei@gmail.com","508ee8d3c2a15d9edb22927cfb8c6ff2");
 
-        $promocode = "X0C8-H20M";
-        //$promocode = "AAA-BBB";
-        
+        //$promocode = "X0C8-H20M";
+        $promocode = "AAA-BBB";
+
         if($this->pcoService->isValid($promocode)) {
             $result = $promoCodesOnce = $this->pcoService->usePromoCode($customer, $promocode);
             $this->logger->log("update success\n");
         }else {
             $this->logger->log("update FAIL\n");
         }
-        
-        
+
+
 //         $promoCodesOnce =$this->pcoService->getByPromoCode($promocode);
 //         if($promoCodesOnce!==NULL){   // find promocode once
 //            var_dump($promoCodesOnce->getUsedTs());
-//            
+//
 //            if($promoCodesOnce->getUsedTs()===NULL) { // promocode not used
 //                var_dump($promoCodesOnce->getUsedTs());
 //                $promoCodesInfo = $promoCodesOnce->getPromoCodesInfo();
 //                if($promoCodesInfo->getActive()){       // promocode info is active
 //                    $now = new \DateTime();
 //
-//                    if($now>=$promoCodesInfo->getValidFrom() && 
+//                    if($now>=$promoCodesInfo->getValidFrom() &&
 //                            $now<=$promoCodesInfo->getValidTo()){
 //                       $this->logger->log("update\n");
 //                    }
@@ -131,7 +131,7 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
 //         } else {
 //             $this->logger->log("promo code once not found\n");
 //         }
-        
+
     }
 
     private function GetPromocode4_4() {
