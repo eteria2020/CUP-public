@@ -10,15 +10,16 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $sharedServiceManager = $serviceLocator->getServiceLocator();
-
-        $customerService = $sharedServiceManager->get('SharengoCore\Service\CustomersService');
-        $accountTripsService = $sharedServiceManager->get('SharengoCore\Service\AccountTripsService');
-        $tripsService = $sharedServiceManager->get('SharengoCore\Service\TripsService');
-        //$tripCostService = $sharedServiceManager->get('SharengoCore\Service\TripCostService');
-        $bonusService = $sharedServiceManager->get('SharengoCore\Service\BonusService');
-        $eventsService = $sharedServiceManager->get('SharengoCore\Service\EventsService'); //MongoDB
         
-        $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
+        $customerService = $sharedServiceManager->get('\SharengoCore\Service\CustomersService');        
+        $tripsService = $sharedServiceManager->get('\SharengoCore\Service\TripsService');
+        $editTripsService = $sharedServiceManager->get('\SharengoCore\Service\EditTripsService');
+        $bonusService = $sharedServiceManager->get('\SharengoCore\Service\BonusService');
+        $zonesService = $sharedServiceManager->get('\SharengoCore\Service\ZonesService');
+        $eventsService = $sharedServiceManager->get('\SharengoCore\Service\EventsService'); //MongoDB
+        
+        $logger = $sharedServiceManager->get('\SharengoCore\Service\SimpleLoggerService');
+        $config = $sharedServiceManager->get('\Configuration')['bonus']['zones'];
         
         //$carsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CarsService');
         //$entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
@@ -26,15 +27,15 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
 
         //$invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
 
-
         return new ConsoleBonusComputeController(
             $customerService,
-            $accountTripsService,
             $tripsService,
-            //$tripCostService,
+            $editTripsService,
             $bonusService,
+            $zonesService,
             $eventsService,
-            $logger
+            $logger,
+            $config
         );
     }
 }

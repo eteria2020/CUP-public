@@ -45,6 +45,18 @@ return [
         'birthday' => [
             'total' => 30,
             'description' => 'Bonus compleanno'
+        ],
+        'zones' => [
+            'defaultTotal' => 10,
+            'defaultDuration' => 30,
+            'Carrefour' => [
+                'total' => 30,
+                'duration' => 30
+            ],
+            'Campus' => [
+                'total' => 100,
+                'duration' => 365
+            ]
         ]
     ]
 ];
