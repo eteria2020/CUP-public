@@ -398,8 +398,8 @@ return [
                     'route' => '/{gym16}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',// Redirect to the Index page, waiting front-end html
-                        'action'     => 'index',
+                        'controller' => 'LandingPage',
+                        'action'     => 'gym16',
                     ],
                 ],
             ],
