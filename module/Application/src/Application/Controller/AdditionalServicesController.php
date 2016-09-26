@@ -96,6 +96,7 @@ class AdditionalServicesController extends AbstractActionController
             if ($form->isValid()) {
 
                 $code = $postData['promocode']['promocode'];
+
                 if ($this->promoCodeService->isStandardPromoCode($code)) {
 
                     try {

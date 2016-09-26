@@ -75,6 +75,7 @@ class PromoCode extends AbstractValidator
                 if ($this->carrefourService instanceof CarrefourService) {
                     try {
                         $this->carrefourService->checkCarrefourCode($value);
+                        $result =TRUE;
                     } catch (CodeAlreadyUsedException $e) {
                         $this->error(self::USED_CODE);
                     } catch (NotAValidCodeException $e) {
