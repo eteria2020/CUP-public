@@ -6,7 +6,7 @@ CREATE SEQUENCE zone_bonus_id_seq
     CACHE 1;
 
 CREATE TABLE zone_bonus (
-    id integer NOT NULL,
+    id integer PRIMARY KEY NOT NULL,
     geo polygon NOT NULL,
     active boolean NOT NULL,
     description text,
@@ -15,6 +15,7 @@ CREATE TABLE zone_bonus (
 );
 
 -- Se serve:
+-- ALTER TABLE zone_bonus ADD CONSTRAINT zone_bonus_id primary KEY (id)
 -- ALTER TABLE zone_bonus ADD COLUMN fleets_id integer[] not null default '{}';
 -- alter table zone_bonus add column geo polygon not null default '((0.0,0.0))'
 

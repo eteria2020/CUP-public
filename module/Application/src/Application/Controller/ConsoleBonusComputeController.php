@@ -117,7 +117,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                 ", time " . $trip->getTimestampBeginning()->format('Y-m-d') . "\n");
             
             // Mettere a true $bonusComputed in trips
-            //DEBUG: $this->editTripService->doEditTripBonusComputed($trip, true);
+            $this->editTripService->doEditTripBonusComputed($trip, true);
             
             // Verifica se ci sono zone bonus su quella flotta
             $zonesBonus = $this->zonesService->getListZonesBonusByFleet($trip->getFleet());
