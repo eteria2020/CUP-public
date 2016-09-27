@@ -1106,22 +1106,11 @@ return [
                 'promocodesonce' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'promocodesonce new <promocodesInfoId> <qty>',
+                        'route' => 'promocodesonce <actionType> <param1> <param2>',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePromoCodesOnceCompute',
-                            'action' => 'insert-new-promocode'
-                        ]
-                    ]
-                ],
-                'promocodesonce' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'promocodesonce use <customerId> <promocode>',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsolePromoCodesOnceCompute',
-                            'action' => 'use-promocode'
+                            'action' => 'promocode-once-main'
                         ]
                     ]
                 ],

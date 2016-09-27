@@ -57,81 +57,86 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         $this->logger = $logger;
     }
 
-    public function InsertNewPromocodeAction() {
+    public function PromocodeOnceMainAction() {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
 
         $request = $this->getRequest();
-        $pciId = intval($request->getParam('promocodesInfoId'));
-        $qty = intval($request->getParam('qty'));
+        $actionType = $request->getParam('actionType');
 
-        $promocodesInfoId = $this->pciRepository->findById($pciId);
+        $this->logger->log("PromocodeOnceMainAction ".$actionType."\n");
+        if($actionType==="new"){
+            //php ../public/public/index.php  promocodesonce new promocodesInfoId  qty
+            $pciId = intval($request->getParam('param1'));
+            $qty = intval($request->getParam('param2'));
+            $this->insertNewPromocode($pciId, $qty);
 
-        for ($i = 0; $i < $qty; $i++) {
+        } else if($actionType==="use"){
+            //php ../public/public/index.php  promocodesonce use email  promocode
 
-            do {
-                $promocode = $this->GetPromocode4_4();
-            } while ($this->pcoService->getByPromoCode($promocode) !== NULL);
-
-            if ($this->pcoService->getByPromoCode($promocode) === NULL) {
-                $this->logger->log($i . " " . $promocode . "\n");
-
-                $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $promocode);
-                $this->entityManager->persist($promoCodesOnce);
-                $this->entityManager->flush();
-            }
+            $email = $request->getParam('param1');
+            $promocode = $request->getParam('param2');
+            $this->usePromocode($email, $promocode);
+        } else {
+            $this->logger->log("command un-know\n");
         }
     }
 
-    public function UsePromocodeAction() {
-        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
-        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+    private function insertNewPromocode($pciId, $qty) {
+        $result= FALSE;
+            //php ../public/public/index.php  promocodesonce new promocodesInfoId  qty
+//            $pciId = intval($request->getParam('param1'));
+//            $qty = intval($request->getParam('param2'));
 
-        $customersRepository = $this->entityManager->getRepository('SharengoCore\Entity\Customers');
-        //$customer = $customersRepository->findByCI("email","enrico.taddei@gmail.com");
+        try {
+            $promocodesInfoId = $this->pciRepository->findById($pciId);
 
-        $customer = $customersRepository->getUserByEmailPassword("enrico.taddei@gmail.com","508ee8d3c2a15d9edb22927cfb8c6ff2");
+            for ($i = 0; $i < $qty; $i++) {
 
-        //$promocode = "X0C8-H20M";
-        $promocode = "AAA-BBB";
+                do {
+                    $promocode = $this->GetPromocode4_4();
+                } while ($this->pcoService->getByPromoCode($promocode) !== NULL);
 
-        if($this->pcoService->isValid($promocode)) {
-            $result = $promoCodesOnce = $this->pcoService->usePromoCode($customer, $promocode);
-            $this->logger->log("update success\n");
-        }else {
-            $this->logger->log("update FAIL\n");
+                if ($this->pcoService->getByPromoCode($promocode) === NULL) {
+                    $this->logger->log($i . " " . $promocode . "\n");
+
+                    $promoCodesOnce = new PromoCodesOnce($promocodesInfoId, $promocode);
+                    $this->entityManager->persist($promoCodesOnce);
+                    $this->entityManager->flush();
+                }
+            }
+
+            $result=TRUE;
+        } catch (Exception $ex) {
+            throwException($ex);
         }
 
+        return $result;
+    }
 
-//         $promoCodesOnce =$this->pcoService->getByPromoCode($promocode);
-//         if($promoCodesOnce!==NULL){   // find promocode once
-//            var_dump($promoCodesOnce->getUsedTs());
-//
-//            if($promoCodesOnce->getUsedTs()===NULL) { // promocode not used
-//                var_dump($promoCodesOnce->getUsedTs());
-//                $promoCodesInfo = $promoCodesOnce->getPromoCodesInfo();
-//                if($promoCodesInfo->getActive()){       // promocode info is active
-//                    $now = new \DateTime();
-//
-//                    if($now>=$promoCodesInfo->getValidFrom() &&
-//                            $now<=$promoCodesInfo->getValidTo()){
-//                       $this->logger->log("update\n");
-//                    }
-//                    else {
-//                       $this->logger->log("promo code exiped\n");
-//                    }
-//                }
-//                else {
-//                    $this->logger->log("promo code not active\n");
-//                }
-//            }
-//            else {
-//                $this->logger->log("promo code once used\n");
-//            }
-//         } else {
-//             $this->logger->log("promo code once not found\n");
-//         }
+    private function usePromocode($email, $promocode) {
+        $result= FALSE;
+        try{
+            $this->logger->log("usePromocode ".$email." ".$promocode."\n");
+            $customersRepository = $this->entityManager->getRepository('SharengoCore\Entity\Customers');
+            $customer = $customersRepository->findByCI("email", $email);
+            if (empty($customer)) {
+                $this->logger->log("update FAIL\n");
+            } else {
+                $customer = $customer[0];
+                if($this->pcoService->isValid($promocode)) {
+                    $this->pcoService->usePromoCode($customer, $promocode);
+                    $this->logger->log("update success\n");
+                    $result=TRUE;
+                }else {
+                    $this->logger->log("update FAIL\n");
+                }
+            }
+        } catch (Exception $ex) {
+            throwException($ex);
+        }
 
+        return $result;
     }
 
     private function GetPromocode4_4() {
