@@ -469,6 +469,17 @@ return [
                     ],
                 ]
             ],
+            'sim1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{sim1}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'sim1',
+                    ],
+                ]
+            ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
