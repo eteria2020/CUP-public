@@ -7,14 +7,8 @@
         </a>
     </li>
     <li>
-        <a href="<?= $this->url('area-utente/rents'); ?>" <?= $this->route === 'rents' ? 'class="active"' : '' ?>>
-            <i class="icon icon-car-small-fff"></i> <?= $this->translate('Le mie corse'); ?>
-        </a>
-    </li>
-    <li>
-        <a href="<?= $this->url('area-utente/tariffe'); ?>" <?= $this->route === 'tariffe' ? 'class="active"' : '' ?>>
-            <i class="fa fa-money"></i>
-            <?= $this->translate('Tariffe'); ?>
+        <a href="<?= $this->url('area-utente/patente'); ?>" <?= $this->route === 'patente' ? 'class="active"' : '' ?>>
+        <i class="fa fa-tachometer"></i> <?= $this->translate('Patente'); ?>
         </a>
     </li>
     <li>
@@ -24,8 +18,26 @@
         </a>
     </li>
     <li>
-        <a href="<?= $this->url('area-utente/invoices-list'); ?>" <?= $this->route === 'invoices-list' ? 'class="active"' : '' ?>>
-        <i class="fa fa-file-o"></i> <?= $this->translate('Fatture'); ?>
+        <a href="<?= $this->url('area-utente/tariffe'); ?>" <?= $this->route === 'tariffe' ? 'class="active"' : '' ?>>
+            <i class="fa fa-money"></i>
+            <?= $this->translate('Tariffe'); ?>
+        </a>
+    </li>
+    <li>
+        <a href="<?= $this->url('area-utente/additional-services'); ?>" <?= $this->route === 'additional-services' ? 'class="active"' : '' ?>>
+            <i class="fa fa-plus"></i>
+            <?= $this->translate('Promo e pacchetti'); //ex Servizi aggiuntivi ?>
+        </a>
+    </li>
+    <li>
+        <a href="<?= $this->url('area-utente/bonus'); ?>" <?= $this->route === 'bonus' ? 'class="active"' : '' ?>>
+            <i class="fa fa-trophy"></i>
+            <?= $this->translate('Bonus minuti'); //ex Bonus ?>
+        </a>
+    </li>
+    <li>
+        <a href="<?= $this->url('area-utente/rents'); ?>" <?= $this->route === 'rents' ? 'class="active"' : '' ?>>
+            <i class="icon icon-car-small-fff"></i> <?= $this->translate('Corse completate'); //ex Le mie corse ?>
         </a>
     </li>
     <li>
@@ -35,20 +47,8 @@
         </a>
     </li>
     <li>
-        <a href="<?= $this->url('area-utente/bonus'); ?>" <?= $this->route === 'bonus' ? 'class="active"' : '' ?>>
-            <i class="fa fa-trophy"></i>
-            <?= $this->translate('Bonus'); ?>
-        </a>
-    </li>
-    <li>
-        <a href="<?= $this->url('area-utente/additional-services'); ?>" <?= $this->route === 'additional-services' ? 'class="active"' : '' ?>>
-            <i class="fa fa-plus"></i>
-            <?= $this->translate('Servizi aggiuntivi'); ?>
-        </a>
-    </li>
-    <li>
-        <a href="<?= $this->url('area-utente/patente'); ?>" <?= $this->route === 'patente' ? 'class="active"' : '' ?>>
-        <i class="fa fa-tachometer"></i> <?= $this->translate('Patente'); ?>
+        <a href="<?= $this->url('area-utente/invoices-list'); ?>" <?= $this->route === 'invoices-list' ? 'class="active"' : '' ?>>
+        <i class="fa fa-file-o"></i> <?= $this->translate('Fatture'); ?>
         </a>
     </li>
     <!--li><a href=""><i class="fa fa-trophy"></i> <?= $this->translate('Bonus'); ?></a></li>

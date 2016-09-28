@@ -39,7 +39,7 @@
 }
 
 html, body{
-	font-size:95%;
+	font-size:100%;
 	font-family: 'Lato-Regular';	
 }
 
@@ -81,7 +81,7 @@ html, body{
 }
 
 .bg-blue{
-	background-color:#215968;
+	background-color:#f47b00;
 }
 
 div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
@@ -90,7 +90,7 @@ div.col-sm-12.bg-grey, div.col-sm-12 .col-sm-7 {
 
 .button{
 	color: #3f3d40;
-	background-color:orange;
+	background-color:#ffed08;
 	border:5px solid #fff;
 	padding:15px 60px 15px;
 	-webkit-border-radius: 14px;
@@ -171,12 +171,7 @@ a#submit:hover{
 
 	.strong-big{
 		font-size: 1.9rem;
-    	line-height: 1.2;
-	}
-	
-	.strong-more-big{
-		font-size: 2.4rem;
-    	line-height: 1.5;
+    	line-height: 1;
 	}
 
 	#first-paragraph {
@@ -233,18 +228,13 @@ a#submit:hover{
 	}
 
 	.strong{
-		font-size: 1.4rem;
-   		line-height: 1.7rem;
+		font-size: 1.2rem;
+   		line-height: 1.4rem;
 	}
 
 	.strong-big{
 		font-size: 1.5rem;
-    	line-height: 1.4;
-	}
-	
-	.strong-more-big{
-		font-size: 2.4rem;
-    	line-height: 1.5;
+    	line-height: 1;
 	}
 
 	#first-paragraph {
@@ -285,7 +275,7 @@ a#submit:hover{
 		display:none;
 	}
 	#container-paragraph{
-		 max-width:500px; 
+		 max-width:330px; 
 		 margin:0 auto;
 		 padding: 0 15px 0 15px;
 	}
@@ -324,20 +314,15 @@ a#submit:hover{
 	}
 
 	.strong{
-		font-size: 1.7rem;
-   		line-height: 1.8rem;
+		font-size: 1.8rem;
+   		line-height: 2rem;
 	}
 
 	.strong-big{
 		font-size: 2.1rem;
-    	line-height: 1.19;
+    	line-height: 1;
 	}
 
-	.strong-more-big{
-		font-size: 2.8rem;
-    	line-height: 1.5;
-	}
-	
 	#first-paragraph {
 	    margin-top:17px;
 	}
@@ -386,12 +371,7 @@ a#submit:hover{
 
 	.strong-big{
 		font-size: 2.4rem;
-    	line-height: 1.2;
-	}
-	
-	.strong-more-big{
-		font-size: 3rem;
-    	line-height: 1.8;
+    	line-height: 1;
 	}
 
 	#first-paragraph {
@@ -444,14 +424,9 @@ a#submit:hover{
 
 	.strong-big{
 		font-size: 2.8rem;
-    	line-height: 1.1;
+    	line-height: 1;
 	}
-	
-	.strong-more-big{
-		font-size: 3.4rem;
-    	line-height: 1.8;
-	}
-	
+
 	#first-paragraph {
 	    margin-top:40px;
 	}
@@ -501,14 +476,9 @@ a#submit:hover{
 
 	.strong-big{
 		font-size: 3.15rem;
-    	line-height: 1.2;
+    	line-height: 1;
 	}
-	
-	.strong-more-big{
-		font-size: 3.6rem;
-    	line-height: 2;
-	}
-	
+
 	#first-paragraph {
 	    margin-top:46px;
 	}

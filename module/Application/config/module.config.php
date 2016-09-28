@@ -398,8 +398,8 @@ return [
                     'route' => '/{gym16}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',// Redirect to the Index page, waiting front-end html
-                        'action'     => 'index',
+                        'controller' => 'LandingPage',
+                        'action'     => 'gym16',
                     ],
                 ],
             ],
@@ -458,17 +458,6 @@ return [
                     ],
                 ],
             ],
-            'roma' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{roma}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'roma',
-                    ],
-                ]
-            ],
             'saba' => [
                 'type' => 'Segment',
                 'options' => [
@@ -480,6 +469,17 @@ return [
                     ],
                 ]
             ],
+            'sim1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{sim1}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'sim1',
+                    ],
+                ]
+            ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
@@ -488,6 +488,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'teatro-elfo',
+                    ],
+                ]
+            ],
+            'tevere' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{tevere}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'tevere',
                     ],
                 ]
             ],
