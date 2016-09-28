@@ -77,6 +77,14 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
             $email = $request->getParam('param1');
             $promocode = $request->getParam('param2');
             $this->usePromocode($email, $promocode);
+        }else if($actionType==="check"){
+            //php ../public/public/index.php  promocodesonce check  promocode no-used
+            $promocode = $request->getParam('param1');
+            if($this->checkPromocode($promocode)){
+                $this->logger->log("promocode ".$promocode." is valid\n");
+            }else {
+                $this->logger->log("promocode ".$promocode." NOT valid\n");
+            }
         } else {
             $this->logger->log("command un-know\n");
         }
@@ -94,7 +102,7 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
             for ($i = 0; $i < $qty; $i++) {
 
                 do {
-                    $promocode = $this->GetPromocode4_4();
+                    $promocode = $this->getPromocode4_4();
                 } while ($this->pcoService->getByPromoCode($promocode) !== NULL);
 
                 if ($this->pcoService->getByPromoCode($promocode) === NULL) {
@@ -139,12 +147,16 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
         return $result;
     }
 
-    private function GetPromocode4_4() {
-        return $this->RandomString(4) . "-" .
-                $this->RandomString(4);
+    private function checkPromocode($promocode){
+        return $this->pcoService->checkPromoCodeOnce($promocode);
     }
 
-    private function RandomString($length = 10) {
+    private function getPromocode4_4() {
+        return $this->randomString(4) . "-" .
+                $this->randomString(4);
+    }
+
+    private function randomString($length = 10) {
         //$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
