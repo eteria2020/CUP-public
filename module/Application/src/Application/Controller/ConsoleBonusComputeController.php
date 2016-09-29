@@ -108,6 +108,9 @@ class ConsoleBonusComputeController extends AbstractActionController
 
             if (!$trip instanceof Trips) {
                 continue;
+            }            
+            if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer()) {
+                continue;
             }
 
             // Put to true $bonusComputed in trips
@@ -169,12 +172,13 @@ class ConsoleBonusComputeController extends AbstractActionController
                         if ($attribs["adding"] < $attribs["residual"] &&
                                 strtolower($zone) === strtolower($zonesBonus[0]->getBonusType()))
                         {
-                        	if (isset($event->getEventTime()))
-                        	{
-                            	$time_beginning = $event->getEventTime();
+                            $tb = $event->getEventTime();
+                            if (isset($tb))
+                            {
+                            	$time_beginning = $tb;
                             	$bonus_attribs = &$attribs; //By reference
                             	$is_bonus_parking = true;
-                        	}
+                            }
                             break;
                         }
                     }
@@ -186,28 +190,29 @@ class ConsoleBonusComputeController extends AbstractActionController
                 if ($is_bonus_parking)
                 {
                     $is_bonus_parking = false;
-                    if (isset($event->getEventTime()))
+                    $te = $event->getEventTime();
+                    if (isset($te))
                     {
-	                    $time_ending = $event->getEventTime();
-	                    $minTime = new \DateTime('2016-01-01');
+                        $time_ending = $te;
+                        $minTime = new \DateTime('2016-01-01');
 
-	                    $int1 = ($time_beginning->getTimestamp() - $minTime->getTimestamp()) / 60;
-	                    $int2 = ($time_ending->getTimestamp() - $minTime->getTimestamp()) / 60;
+                        $int1 = ($time_beginning->getTimestamp() - $minTime->getTimestamp()) / 60;
+                        $int2 = ($time_ending->getTimestamp() - $minTime->getTimestamp()) / 60;
 
-	                    if ($int1 > 0 && $int2 > 0 && $int2 > $int1)
-	                    {
-	                    	$intstop = $int2 - $int1;
+                        if ($int1 > 0 && $int2 > 0 && $int2 > $int1)
+                        {
+                            $intstop = $int2 - $int1;
 
-                            $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
-                            if ($intstop >= $maxBonus)
-                            {
-                            	$bonus_attribs["adding"] = $bonus_attribs["residual"];
-                            }
-                            else
-                            {
-                            	$bonus_attribs["adding"] += $intstop;
-                            }
-	                    }
+                        $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
+                        if ($intstop >= $maxBonus)
+                        {
+                            $bonus_attribs["adding"] = $bonus_attribs["residual"];
+                        }
+                        else
+                        {
+                            $bonus_attribs["adding"] += $intstop;
+                        }
+                        }
                     }
                 }
             }
