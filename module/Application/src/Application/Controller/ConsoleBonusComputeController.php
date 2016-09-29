@@ -108,13 +108,15 @@ class ConsoleBonusComputeController extends AbstractActionController
 
             if (!$trip instanceof Trips) {
                 continue;
-            }            
-            if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer()) {
-                continue;
             }
 
             // Put to true $bonusComputed in trips
             $this->editTripService->doEditTripBonusComputed($trip, true);
+
+            if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
+            {
+                continue;
+            }
 
             // Verify if there are zone bonuses in that fleet
             $zonesBonus = $this->zonesService->getListZonesBonusByFleet($trip->getFleet());
