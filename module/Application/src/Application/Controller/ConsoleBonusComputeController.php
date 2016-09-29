@@ -103,8 +103,8 @@ class ConsoleBonusComputeController extends AbstractActionController
     {      
         $tripsToBeComputed = $this->tripsService->getTripsForBonusComputation();
         
-        $this->logger->log("-------- Compute Zone Bonus\n\n");
-        var_dump(count($tripsToBeComputed));
+        $this->logger->log("-------- Compute Zone Bonuses\n");
+        $this->logger->log("Trips to compute: ".count($tripsToBeComputed)."\n\n");
                 
         foreach ($tripsToBeComputed as $trip) {
 
@@ -112,43 +112,31 @@ class ConsoleBonusComputeController extends AbstractActionController
                 continue;
             }
             
-            $this->logger->log("Computing bonus zone for trip " . $trip->getId() . ", fleet " . $trip->getFleet()->getId() . 
-                ", customer " . $trip->getCustomer()->getId() .
-                ", time " . $trip->getTimestampBeginning()->format('Y-m-d') . "\n");
-            
-            // Mettere a true $bonusComputed in trips
+            // Put to true $bonusComputed in trips
             $this->editTripService->doEditTripBonusComputed($trip, true);
             
-            // Verifica se ci sono zone bonus su quella flotta
+            // Verify if there are zone bonuses in that fleet
             $zonesBonus = $this->zonesService->getListZonesBonusByFleet($trip->getFleet());
             if (count($zonesBonus) == 0)
             {
-                $this->logger->log("zonesBonus empty\n");
                 continue;
-            }
-            
-            $this->logger->log("Get Zones for fleet done\n");
-            var_dump(count($zonesBonus));
+            }            
                        
-            // Verifica se il cliente ha raggiunto il tetto massimo nelle bonus area
-            // e crea un elenco di quelle disponibili
+            // Verify if customer reached max amount in zone bonuses passed and return a list of those available
             $residuals = $this->findBonusUsable($trip, $zonesBonus);            
             if (count($residuals) == 0)
             {
-                $this->logger->log("residuals empty\n");
                 continue;   
             }
             
-            $this->logger->log("Get available Zones for Customer done\n");
-            var_dump($residuals);           
+            var_dump($residuals); //DEBUG          
 
-            // Lettura eventi del trip per trovare le soste e analisi per vedere se danno bonus
+            // Read and process trip events to find stops for parking, contolling if they obtain zone bonuses
             $this->verifyBonus($trip, $zonesBonus, $residuals);
             
-            $this->logger->log("Computed new bonuses done\n");
-            var_dump($residuals);
+            var_dump($residuals); //DEBUG
             
-            // Assegnazione bonus al cliente
+            // Assign zone bonuses to customer
             foreach($residuals as $zone => $attribs)
             {
                 if ($attribs["adding"] > 0)
@@ -168,7 +156,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         
         foreach($events as $event)
         {
-            // Cerco inizio sosta
+            // Search stop begin
             if ($event->getEventId() == 3 && $event->getIntval() == 3) // getLabel()
             {   
                 $zonesBonus = $this->zonesService->checkPointInBonusZones(
@@ -178,52 +166,51 @@ class ConsoleBonusComputeController extends AbstractActionController
                 
                 if (count($zonesBonus) > 0)
                 {
-                    $this->logger->log("Bonus area find: ". $zonesBonus[0]->getDescription() ."\n");
-                    
                     foreach($residuals as $zone => &$attribs)
                     {
                         if ($attribs["adding"] < $attribs["residual"] &&
-                                strtolower($zone) === strtolower('zone-'.$zonesBonus[0]->getBonusType()))
+                                strtolower($zone) === strtolower($zonesBonus[0]->getBonusType()))
                         {
-                            $time_beginning = $event->getEventTime();
-                            $bonus_attribs = &$attribs; //Per riferimento
-                            $is_bonus_parking = true;
-                            
+                        	if (isset($event->getEventTime()))
+                        	{
+                            	$time_beginning = $event->getEventTime();
+                            	$bonus_attribs = &$attribs; //By reference
+                            	$is_bonus_parking = true;
+                        	}
                             break;
                         }
                     }
                 }                
             }
-            // Cerco fine sosta
+          	// Search stop end
             else if ($event->getEventId() == 3 && $event->getIntval() == 4) // getLabel()
             {
                 if ($is_bonus_parking)
                 {                           
                     $is_bonus_parking = false;
-                    $time_ending = $event->getEventTime();
-                    $minTime = new \DateTime('2016-01-01');
-                    $int1 = $minTime->diff($time_beginning);
-                    $int2 = $minTime->diff($time_ending);
-                    
-                    if ($int1 !== FALSE && $int2 !== FALSE)                                    
+                    if (isset($event->getEventTime()))
                     {
-                        if ($int1->d > 0 && $int2->d > 0)
-                        {
-                            $parkInterval = $time_beginning->diff($time_ending);                            
-                            if ($parkInterval->i > 0)
+	                    $time_ending = $event->getEventTime();
+	                    $minTime = new \DateTime('2016-01-01');
+	                    
+	                    $int1 = ($time_beginning->getTimestamp() - $minTime->getTimestamp()) / 60;
+	                    $int2 = ($time_ending->getTimestamp() - $minTime->getTimestamp()) / 60;
+	                    
+	                    if ($int1 > 0 && $int2 > 0 && $int2 > $int1)                                    
+	                    {
+	                    	$intstop = $int2 - $int1;                        
+                            
+                            $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
+                            if ($intstop >= $maxBonus)
                             {
-                                $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
-                                if ($parkInterval->i >= $maxBonus)
-                                {
-                                    $bonus_attribs["adding"] = $bonus_attribs["residual"];
-                                }
-                                else
-                                {
-                                    $bonus_attribs["adding"] += $parkInterval->i;
-                                }
+                            	$bonus_attribs["adding"] = $bonus_attribs["residual"];
                             }
-                        }
-                    }                            
+                            else
+                            {
+                            	$bonus_attribs["adding"] += $intstop;
+                            }                            
+	                    }
+                    }
                 }                    
             }
         }
@@ -236,13 +223,10 @@ class ConsoleBonusComputeController extends AbstractActionController
         $validTo = new \DateTime($valFrom);
         $validTo->add(new \DateInterval('P'.strval($duration).'D')); //aggiungo i giorni di durata
         $valTo = $validTo->format("Y-m-d");       
-        var_dump($valFrom);
-        var_dump($valTo);
                 
-        $bonus = $this->bonusService->createBonusForCustomerFromData($trip->getCustomer(), $bonus_to_assign, $bonus_type, "Parking bonus", $valTo, $valFrom);
+        $bonus = $this->bonusService->createBonusForCustomerFromData($trip->getCustomer(), $bonus_to_assign, 'zone-'.$bonus_type, "Parking bonus ".$bonus_type, $valTo, $valFrom);
                 
-        $this->logger->log("Bonus assigned: " . $bonus->getId() . "\n");
-        //var_dump($bonus);
+        $this->logger->log("Bonus ".$bonus_type." assigned: ".$bonus->getId()." to customer ".$trip->getCustomer()->getId()."\n");
     }
     
     private function findBonusUsable(Trips $trip, array $zonesBonus)
@@ -255,9 +239,6 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $trip->getCustomer(),
                     $trip->getTimestampBeginning(),
                     'zone-'.$zoneBonus->getBonusType());
-            
-            var_dump(count($customerBonuses));
-            //die;
             
             $zone_bonus_sum = 0;            
             foreach($customerBonuses as $customerBonus)
@@ -274,8 +255,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (isset($this->config["defaultDuration"]))
             {
                 $duration = $this->config["defaultDuration"];
-            }           
-            
+            }            
             foreach($this->config as $zone => $attribs)
             {
                 if (strtolower($zone) === strtolower($zoneBonus->getBonusType()))
@@ -294,7 +274,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             
             if ($zone_bonus_sum < $total)
             {             
-                $residuals['zone-'.$zoneBonus->getBonusType()] = array (
+                $residuals[$zoneBonus->getBonusType()] = array (
                         "residual" => $total - $zone_bonus_sum,
                         "adding" => 0,
                         "duration" => $duration  

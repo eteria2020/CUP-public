@@ -21,12 +21,6 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
         $logger = $sharedServiceManager->get('\SharengoCore\Service\SimpleLoggerService');
         $config = $sharedServiceManager->get('\Configuration')['bonus']['zones'];
         
-        //$carsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CarsService');
-        //$entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-        //$accountTripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\AccountTripsService');
-
-        //$invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
-
         return new ConsoleBonusComputeController(
             $customerService,
             $tripsService,
