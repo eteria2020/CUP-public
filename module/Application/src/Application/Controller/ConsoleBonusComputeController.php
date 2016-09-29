@@ -196,22 +196,21 @@ class ConsoleBonusComputeController extends AbstractActionController
                         $time_ending = $te;
                         $minTime = new \DateTime('2016-01-01');
 
-                        $int1 = ($time_beginning->getTimestamp() - $minTime->getTimestamp()) / 60;
-                        $int2 = ($time_ending->getTimestamp() - $minTime->getTimestamp()) / 60;
+                        $int1 = intval(floor(($time_beginning->getTimestamp() - $minTime->getTimestamp()) / 60));
+                        $int2 = intval(floor(($time_ending->getTimestamp() - $minTime->getTimestamp()) / 60));
 
                         if ($int1 > 0 && $int2 > 0 && $int2 > $int1)
                         {
                             $intstop = $int2 - $int1;
-
-                        $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
-                        if ($intstop >= $maxBonus)
-                        {
-                            $bonus_attribs["adding"] = $bonus_attribs["residual"];
-                        }
-                        else
-                        {
-                            $bonus_attribs["adding"] += $intstop;
-                        }
+                            $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
+                            if ($intstop >= $maxBonus)
+                            {
+                                $bonus_attribs["adding"] = $bonus_attribs["residual"];
+                            }
+                            else
+                            {
+                                $bonus_attribs["adding"] += $intstop;
+                            }
                         }
                     }
                 }
