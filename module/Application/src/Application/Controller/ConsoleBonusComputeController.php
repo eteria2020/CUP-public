@@ -132,12 +132,8 @@ class ConsoleBonusComputeController extends AbstractActionController
                 continue;
             }
 
-            var_dump($residuals); //DEBUG
-
             // Read and process trip events to find stops for parking, contolling if they obtain zone bonuses
             $this->verifyBonus($trip, $zonesBonus, $residuals);
-
-            var_dump($residuals); //DEBUG
 
             // Assign zone bonuses to customer
             foreach($residuals as $zone => $attribs)
