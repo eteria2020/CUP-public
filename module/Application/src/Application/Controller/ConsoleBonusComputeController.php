@@ -140,7 +140,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             {
                 if ($attribs["adding"] > 0)
                 {
-                    $this->assigneBonus($trip, $attribs["adding"], $zone, $attribs["duration"]);
+                    $this->assigneBonus($trip, $attribs["adding"], $zone, $attribs["duration"], "Parking bonus ".$attribs["name"]);
                 }
             }
         }
@@ -168,7 +168,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     foreach($residuals as $zone => &$attribs)
                     {
                         if ($attribs["adding"] < $attribs["residual"] &&
-                                strtolower($zone) === strtolower($zonesBonus[0]->getBonusType()))
+                                $zone === strtolower($zonesBonus[0]->getBonusType()))
                         {
                             $tb = $event->getEventTime();
                             if (isset($tb))
@@ -182,7 +182,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     }
                 }
             }
-          	// Search stop end
+            // Search stop end
             else if ($event->getEventId() == 3 && $event->getIntval() == 4) // getLabel()
             {
                 if ($is_bonus_parking)
@@ -216,7 +216,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         }
     }
 
-    private function assigneBonus(Trips $trip, $bonus_to_assign, $bonus_type, $duration)
+    private function assigneBonus(Trips $trip, $bonus_to_assign, $bonus_type, $duration, $description)
     {
         $validFrom = $trip->getTimestampBeginning();
         $valFrom = $validFrom->format("Y-m-d");
@@ -224,21 +224,40 @@ class ConsoleBonusComputeController extends AbstractActionController
         $validTo->add(new \DateInterval('P'.strval($duration).'D')); //aggiungo i giorni di durata
         $valTo = $validTo->format("Y-m-d");
 
-        $bonus = $this->bonusService->createBonusForCustomerFromData($trip->getCustomer(), $bonus_to_assign, 'zone-'.$bonus_type, "Parking bonus ".$bonus_type, $valTo, $valFrom);
+        $bonus = $this->bonusService->createBonusForCustomerFromData($trip->getCustomer(), $bonus_to_assign, 'zone-'.$bonus_type, $description, $valTo, $valFrom);
 
         $this->logger->log("Bonus ".$bonus_type." assigned: ".$bonus->getId()." to customer ".$trip->getCustomer()->getId()."\n");
     }
 
-    private function findBonusUsable(Trips $trip, array $zonesBonus)
+    private function findBonusUsable(Trips $trip, array &$zonesBonus)
     {
         $residuals = array();
 
+        $zonesBonusNoDuplicate = array();
         foreach($zonesBonus as $zoneBonus)
         {
+            $notFound = true;
+            foreach($zonesBonusNoDuplicate as $zb)
+            {
+                if (strtolower($zoneBonus->getBonusType()) === strtolower($zb->getBonusType()))
+                {
+                    $notFound = false;
+                    break;
+                }
+            }
+            if ($notFound)
+            {
+                $zonesBonusNoDuplicate[] = $zoneBonus;
+            }
+        }
+
+        foreach($zonesBonusNoDuplicate as $zoneBonus)
+        {
+            $bonus_type = strtolower($zoneBonus->getBonusType());
             $customerBonuses = $this->customerService->getBonusesForCustomerIdAndDateInsertionAndType(
                     $trip->getCustomer(),
                     $trip->getTimestampBeginning(),
-                    'zone-'.$zoneBonus->getBonusType());
+                    'zone-'.$bonus_type);
 
             $zone_bonus_sum = 0;
             foreach($customerBonuses as $customerBonus)
@@ -258,7 +277,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             }
             foreach($this->config as $zone => $attribs)
             {
-                if (strtolower($zone) === strtolower($zoneBonus->getBonusType()))
+                if (strtolower($zone) === $bonus_type)
                 {
                     if (isset($attribs["total"]))
                     {
@@ -274,13 +293,30 @@ class ConsoleBonusComputeController extends AbstractActionController
 
             if ($zone_bonus_sum < $total)
             {
-                $residuals[$zoneBonus->getBonusType()] = array (
+                $residuals[$bonus_type] = array (
                         "residual" => $total - $zone_bonus_sum,
                         "adding" => 0,
-                        "duration" => $duration
+                        "duration" => $duration,
+                        "name" => $zoneBonus->getBonusType()
                     );
             }
         }
+
+        //Remove bonus zones not interested
+        $zonesBonusInterested = array();
+        foreach($zonesBonus as $zoneBonus)
+        {
+            foreach ($residuals as $zone => $attribs)
+            {
+                if (strtolower($zoneBonus->getBonusType()) === $zone)
+                {
+                    $zonesBonusInterested[] = $zoneBonus;
+                    break;
+                }
+            }
+        }
+        $zonesBonus = $zonesBonusInterested;
+
         return $residuals;
     }
 
