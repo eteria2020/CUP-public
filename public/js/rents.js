@@ -83,7 +83,7 @@ function refreshTable(period)
             }
 
             // exclude trips less than 5 mins long
-            if (tripMinutes >= 5) {
+            if (tripMinutes >= 1) {
                 addRow(
                     0,
                     trip['timestampBeginningString'],
