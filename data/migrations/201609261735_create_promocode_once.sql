@@ -22,3 +22,5 @@ ALTER TABLE ONLY promo_codes_once ADD CONSTRAINT fk_eec57fa945911549 FOREIGN KEY
 ALTER TABLE ONLY promo_codes_once ADD CONSTRAINT fk_eec57fa99395c3f3 FOREIGN KEY (customer_id) REFERENCES customers(id);
 
 ALTER TABLE ONLY promo_codes_once ADD CONSTRAINT promo_codes_once_unique UNIQUE (promocode);
+
+CREATE SEQUENCE promocodesonce_id_seq INCREMENT BY 1 MINVALUE 1 START 1;
