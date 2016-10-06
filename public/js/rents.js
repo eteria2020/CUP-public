@@ -46,7 +46,7 @@ function refreshTable(period)
             var mustPayValue = 0;
 
             // show FREE for not accountable trips
-            if (!trip['isAccountable'] || !trip['isPayable']) {
+            if (!trip['isAccountable'] || !trip['payable']) {
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
             }
