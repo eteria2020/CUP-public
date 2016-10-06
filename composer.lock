@@ -476,11 +476,11 @@
             "time": "2016-05-03 16:15:16"
         },
         {
-            "name": "cup-web/cartasi",
+            "name": "sharengo-web/cartasi",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/cartasi.git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
                 "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
             },
             "require": {
@@ -498,11 +498,11 @@
             "time": "2016-05-06 13:16:50"
         },
         {
-            "name": "cup-web/drivers-license-validation",
+            "name": "sharengo-web/drivers-license-validation",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/drivers-license-validation.git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/drivers-license-validation.git",
                 "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
             },
             "require": {
@@ -1870,7 +1870,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
                 "reference": "645b3269bcafedd859022ce72f4e8593f51eabc5"
             },
             "require": {
@@ -5375,8 +5375,8 @@
     "stability-flags": {
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
-        "cup-web/cartasi": 20,
-        "cup-web/drivers-license-validation": 20,
+        "sharengo-web/cartasi": 20,
+        "sharengo-web/drivers-license-validation": 20,
         "chrisboulton/php-resque": 20,
         "dmregister/zf2-resque": 20,
         "chrisboulton/php-resque-scheduler": 20,
