@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "966dd510ae20d8778a55f295028f1fe1",
-    "content-hash": "3da6ccb608fccdbfe9743ed4234dacfe",
+    "hash": "6ab3b97a3c78e27d9585b767b254cef9",
+    "content-hash": "a2ed3ce25e5cf2c616d0fc73d6488a07",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -474,67 +474,6 @@
                 "wkt"
             ],
             "time": "2016-05-03 16:15:16"
-        },
-        {
-            "name": "cup-web/cartasi",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/cartasi.git",
-                "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
-            },
-            "require": {
-                "doctrine/doctrine-orm-module": "0.*",
-                "php": ">=5.4.0",
-                "zendframework/zendframework": "2.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Cartasi": "src/"
-                }
-            },
-            "description": "Cartasi module for Sharengo",
-            "time": "2016-05-06 13:16:50"
-        },
-        {
-            "name": "cup-web/drivers-license-validation",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/drivers-license-validation.git",
-                "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MvLabsDriversLicenseValidation\\": "src/"
-                },
-                "classmap": [
-                    "./Module.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Perone",
-                    "email": "m.perone@mvlabs.it"
-                }
-            ],
-            "description": "MVLabs driver's license validation module for ZF2",
-            "keywords": [
-                "driver",
-                "licence",
-                "license",
-                "validation",
-                "zf2"
-            ],
-            "time": "2016-05-16 07:48:51"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -1870,8 +1809,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
-                "reference": "645b3269bcafedd859022ce72f4e8593f51eabc5"
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
+                "reference": "b931b6854ff1c2336a6ac06ded6e0dae61e0d787"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1892,7 +1831,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-08-26 11:32:22"
+            "time": "2016-10-06 13:00:48"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
@@ -2238,6 +2177,67 @@
                 "zf2"
             ],
             "time": "2015-03-12 07:10:33"
+        },
+        {
+            "name": "sharengo-web/cartasi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
+                "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cartasi": "src/"
+                }
+            },
+            "description": "Cartasi module for Sharengo",
+            "time": "2016-05-06 13:16:50"
+        },
+        {
+            "name": "sharengo-web/drivers-license-validation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/drivers-license-validation.git",
+                "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MvLabsDriversLicenseValidation\\": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Perone",
+                    "email": "m.perone@mvlabs.it"
+                }
+            ],
+            "description": "MVLabs driver's license validation module for ZF2",
+            "keywords": [
+                "driver",
+                "licence",
+                "license",
+                "validation",
+                "zf2"
+            ],
+            "time": "2016-05-16 07:48:51"
         },
         {
             "name": "socalnick/scn-social-auth",
@@ -5375,8 +5375,8 @@
     "stability-flags": {
         "speckcommerce/speck-paypal": 20,
         "mvlabs/sharengo-coremodule": 20,
-        "cup-web/cartasi": 20,
-        "cup-web/drivers-license-validation": 20,
+        "sharengo-web/cartasi": 20,
+        "sharengo-web/drivers-license-validation": 20,
         "chrisboulton/php-resque": 20,
         "dmregister/zf2-resque": 20,
         "chrisboulton/php-resque-scheduler": 20,
