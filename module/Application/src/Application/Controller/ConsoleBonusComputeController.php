@@ -200,14 +200,19 @@ class ConsoleBonusComputeController extends AbstractActionController
                         if ($int1 > 0 && $int2 > 0 && $int2 > $int1)
                         {
                             $intstop = intval(floor(($int2 - $int1) / 60));
-                            $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
-                            if ($intstop >= $maxBonus)
+                            if ($intstop >= $bonus_attribs[minMinutes])
                             {
-                                $bonus_attribs["adding"] = $bonus_attribs["residual"];
-                            }
-                            else
-                            {
-                                $bonus_attribs["adding"] += $intstop;
+                                if ($bonus_attribs[fixedBonus] > 0)
+                                    $intstop = $bonus_attribs[fixedBonus];
+                                $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
+                                if ($intstop >= $maxBonus)
+                                {
+                                    $bonus_attribs["adding"] = $bonus_attribs["residual"];
+                                }
+                                else
+                                {
+                                    $bonus_attribs["adding"] += $intstop;
+                                }
                             }
                         }
                     }
@@ -267,6 +272,8 @@ class ConsoleBonusComputeController extends AbstractActionController
 
             $total = 30;
             $duration = 60;
+            $fixedBonus = 0;
+            $minMinutes = 1;
             if (isset($this->config["defaultTotal"]))
             {
                 $total = $this->config["defaultTotal"];
@@ -287,6 +294,14 @@ class ConsoleBonusComputeController extends AbstractActionController
                     {
                         $duration = $attribs["duration"];
                     }
+                    if (isset($attribs["fixedBonus"]))
+                    {
+                        $fixedBonus = $attribs["fixedBonus"];
+                    }
+                    if (isset($attribs["minMinutes"]))
+                    {
+                        $minMinutes = $attribs["minMinutes"];
+                    }
                     break;
                 }
             }
@@ -297,7 +312,9 @@ class ConsoleBonusComputeController extends AbstractActionController
                         "residual" => $total - $zone_bonus_sum,
                         "adding" => 0,
                         "duration" => $duration,
-                        "name" => $zoneBonus->getBonusType()
+                        "name" => $zoneBonus->getBonusType(),
+                        "minBonus" => $minBonus,
+                        "minMinutes" => $minMinutes
                     );
             }
         }

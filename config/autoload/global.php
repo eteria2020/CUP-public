@@ -54,8 +54,10 @@ return [
                 'duration' => 30
             ],
             'Campus' => [
-                'total' => 100,
-                'duration' => 365
+                'fixedBonus' => 30,
+                'minMinutes' => 3,
+                'total' => 30,
+                'duration' => 60
             ]
         ]
     ]
