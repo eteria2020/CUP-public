@@ -200,10 +200,10 @@ class ConsoleBonusComputeController extends AbstractActionController
                         if ($int1 > 0 && $int2 > 0 && $int2 > $int1)
                         {
                             $intstop = intval(floor(($int2 - $int1) / 60));
-                            if ($intstop >= $bonus_attribs[minMinutes])
+                            if ($intstop >= $bonus_attribs["minMinutes"])
                             {
-                                if ($bonus_attribs[fixedBonus] > 0)
-                                    $intstop = $bonus_attribs[fixedBonus];
+                                if ($bonus_attribs["fixedBonus"] > 0)
+                                    $intstop = $bonus_attribs["fixedBonus"];
                                 $maxBonus = $bonus_attribs["residual"] - $bonus_attribs["adding"];
                                 if ($intstop >= $maxBonus)
                                 {
