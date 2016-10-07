@@ -313,7 +313,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                         "adding" => 0,
                         "duration" => $duration,
                         "name" => $zoneBonus->getBonusType(),
-                        "minBonus" => $minBonus,
+                        "fixedBonus" => $fixedBonus,
                         "minMinutes" => $minMinutes
                     );
             }
