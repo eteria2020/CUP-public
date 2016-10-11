@@ -7,10 +7,13 @@ use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Exception\BonusAssignmentException;
+use SharengoCore\Exception\NotAValidCodeException;
+use SharengoCore\Exception\CodeAlreadyUsedException;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\PromoCodesOnceService;
 
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
@@ -41,6 +44,11 @@ class AdditionalServicesController extends AbstractActionController
     private $promoCodeService;
 
     /**
+     * @var PromoCodesOnceService
+     */
+    private $promoCodeOnceService;
+
+    /**
      * @var CustomersBonusPackagesService
      */
     private $customersBonusPackagesService;
@@ -63,6 +71,7 @@ class AdditionalServicesController extends AbstractActionController
         CarrefourService $carrefourService,
         Form $promoCodeForm,
         PromoCodesService $promoCodeService,
+        PromoCodesOnceService $promoCodeOnceService,
         CustomersBonusPackagesService $customersBonusPackagesService,
         AuthenticationService $authService
     ) {
@@ -70,6 +79,7 @@ class AdditionalServicesController extends AbstractActionController
         $this->carrefourService = $carrefourService;
         $this->promoCodeForm = $promoCodeForm;
         $this->promoCodeService =  $promoCodeService;
+        $this->promoCodeOnceService =  $promoCodeOnceService;
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->authService = $authService;
     }
@@ -86,27 +96,37 @@ class AdditionalServicesController extends AbstractActionController
             if ($form->isValid()) {
 
                 $code = $postData['promocode']['promocode'];
+
                 if ($this->promoCodeService->isStandardPromoCode($code)) {
 
                     try {
                         $promoCode = $this->promoCodeService->getPromoCode($code);
                         $this->customersService->addBonusFromPromoCode($customer, $promoCode);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-
                     } catch (BonusAssignmentException $e) {
                         $this->flashMessenger()->addErrorMessage($e->getMessage());
-
                     } catch (\Exception $e) {
-                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
                     }
 
-                } else {
+                } else if ($this->promoCodeOnceService->isValid($code)) {
+                    try {
+                        $this->promoCodeOnceService->usePromoCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (\Exception $ex) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo PCO.');
+                    }
+                }
+                else {
                     try {
                         $this->carrefourService->addFromCode($customer, $code);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-
+                    } catch(NotAValidCodeException $ex){
+                        $this->flashMessenger()->addErrorMessage('Promocode non valido.');
+                    } catch(CodeAlreadyUsedException $ex){
+                        $this->flashMessenger()->addErrorMessage('Promocode già utilizzato.');
                     } catch (\Exception $e) {
-                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo');
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo CR.');
                     }
                 }
 

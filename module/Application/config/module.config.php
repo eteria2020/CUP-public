@@ -822,6 +822,7 @@ return [
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
             'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
+            'Application\Controller\ConsolePromoCodesOnceCompute' => 'Application\Controller\ConsolePromoCodesOnceComputeFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
             'Application\Controller\FixRegistrationInvoicesAmount' => 'Application\Controller\FixRegistrationInvoicesAmountControllerFactory',
@@ -899,6 +900,7 @@ return [
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsolePromoCodesOnceCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
@@ -1120,6 +1122,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleAccountCompute',
                             'action' => 'account-compute'
+                        ]
+                    ]
+                ],
+                'promocodesonce' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'promocodesonce <actionType> <param1> <param2>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePromoCodesOnceCompute',
+                            'action' => 'promocode-once-main'
                         ]
                     ]
                 ],
