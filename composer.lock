@@ -145,12 +145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chrisboulton/php-resque.git",
-                "reference": "73b62e364a89230d041abd2ba767bcec6fa15927"
+                "reference": "15a14d8a86be5946ffb8fe4261a42b82ddc5e027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/73b62e364a89230d041abd2ba767bcec6fa15927",
-                "reference": "73b62e364a89230d041abd2ba767bcec6fa15927",
+                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/15a14d8a86be5946ffb8fe4261a42b82ddc5e027",
+                "reference": "15a14d8a86be5946ffb8fe4261a42b82ddc5e027",
                 "shasum": ""
             },
             "require": {
@@ -193,7 +193,7 @@
                 "redis",
                 "resque"
             ],
-            "time": "2016-03-09 21:02:55"
+            "time": "2016-08-16 02:02:21"
         },
         {
             "name": "chrisboulton/php-resque-scheduler",
@@ -999,12 +999,6 @@
                     "homepage": "http://www.spiffyjr.me/"
                 },
                 {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/",
-                    "role": "Developer"
-                },
-                {
                     "name": "Evan Coury",
                     "email": "me@evancoury.com",
                     "homepage": "http://blog.evan.pro/"
@@ -1012,6 +1006,11 @@
                 {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@hotmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://marco-pivetta.com/"
                 }
             ],
             "description": "Zend Framework 2 Module that provides Doctrine ORM functionality",
@@ -1810,7 +1809,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "b931b6854ff1c2336a6ac06ded6e0dae61e0d787"
+                "reference": "b978f89652c9ebe8daebb0656f9fa2ab7135f01b"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -1831,7 +1830,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-10-06 13:00:48"
+            "time": "2016-10-11 12:38:38"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
