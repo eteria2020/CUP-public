@@ -315,6 +315,17 @@ return [
                     ],
                 ]
             ],
+            'agoal' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{agoal}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'agoal',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [

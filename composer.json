@@ -20,8 +20,8 @@
         "mvlabs/sharengo-coremodule": "dev-master",
         "zendframework/zend-developer-tools": "1.0",
         "nikolaposa/mobile-detect-module": "^1.0",
-        "cup-web/cartasi": "dev-master",
-        "cup-web/drivers-license-validation": "dev-master",
+        "sharengo-web/cartasi": "dev-master",
+        "sharengo-web/drivers-license-validation": "dev-master",
         "chrisboulton/php-resque": "dev-master",
         "dmregister/zf2-resque": "dev-master",
         "chrisboulton/php-resque-scheduler": "dev-master",
@@ -36,15 +36,15 @@
     },
     "repositories": [
         {
-            "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
+            "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
             "type": "git"
         },
         {
-            "url": "ssh://git@gitlab.bulweria.com/cup-web/cartasi.git",
+            "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
             "type": "git"
         },
         {
-            "url": "ssh://git@gitlab.bulweria.com/cup-web/drivers-license-validation.git",
+            "url": "ssh://git@gitlab.bulweria.com/sharengo-web/drivers-license-validation.git",
             "type": "git"
         },
         {

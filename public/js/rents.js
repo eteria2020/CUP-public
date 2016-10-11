@@ -46,7 +46,7 @@ function refreshTable(period)
             var mustPayValue = 0;
 
             // show FREE for not accountable trips
-            if (!trip['isAccountable']) {
+            if (!trip['isAccountable'] || !trip['payable']) {
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
             }
@@ -83,7 +83,7 @@ function refreshTable(period)
             }
 
             // exclude trips less than 5 mins long
-            if (tripMinutes >= 5) {
+            if (tripMinutes >= 1) {
                 addRow(
                     0,
                     trip['timestampBeginningString'],
