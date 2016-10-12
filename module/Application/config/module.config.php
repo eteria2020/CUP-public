@@ -1135,6 +1135,9 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePromoCodesOnceCompute',
                             'action' => 'promocode-once-main'
+			]
+	 	    ]
+		],
                 'bonus-compute' => [
                     'type' => 'simple',
                     'options' => [
