@@ -36,10 +36,10 @@ return [
         'path' => '/srv/apps/sharengo/data/drivers-license-uploads',
         'notifyTo' => 'email@domain'
     ],
-    'logger' => [
-        'path' => '/var/log/php/public.log'
-    ],
     'intercom' => [
-	'key' => 't88nj0rn'
-    ]
+        'key' => 't88nj0rn'
+    ],
+    'discounterSite' => [
+        'url' => 'http://discount.sharengo.it',
+    ],
 ];

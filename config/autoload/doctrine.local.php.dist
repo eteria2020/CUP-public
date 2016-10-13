@@ -9,9 +9,9 @@ return array(
                 'params' => array(
                     'host'     => '127.0.0.1',
                     'port'     => '5432',
-                    'user'     => 'sharengo',
-                    'password' => 'Sharengo1',
-                    'dbname'   => 'sharengo',
+                    'user'     => '',
+                    'password' => '',
+                    'dbname'   => '',
                 )
             ),
             // default Mongo connection name
@@ -33,7 +33,7 @@ return array(
                 ),
             ),
             'odm_default' => array(
-                'default_db' => 'test'
+                'default_db' => ''
             )
         ),
     ),
