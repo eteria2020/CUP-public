@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ab3b97a3c78e27d9585b767b254cef9",
-    "content-hash": "a2ed3ce25e5cf2c616d0fc73d6488a07",
+    "hash": "297a3cf10b27df78bd84b6c20113804c",
+    "content-hash": "35bd887b4efde2828313220bf45a706e",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -1072,6 +1072,12 @@
                     "homepage": "http://www.spiffyjr.me/"
                 },
                 {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/",
+                    "role": "Developer"
+                },
+                {
                     "name": "Evan Coury",
                     "email": "me@evancoury.com",
                     "homepage": "http://blog.evan.pro/"
@@ -1079,11 +1085,6 @@
                 {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@hotmail.com"
-                },
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://marco-pivetta.com/"
                 }
             ],
             "description": "Zend Framework 2 Module that provides Doctrine ORM functionality",
@@ -2041,7 +2042,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "b978f89652c9ebe8daebb0656f9fa2ab7135f01b"
+                "reference": "5dff906f9b11dbf4a6dc979de7510fd6bc834223"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2062,7 +2063,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-10-11 12:38:38"
+            "time": "2016-10-13 10:49:25"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
