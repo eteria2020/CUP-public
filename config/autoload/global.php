@@ -50,12 +50,8 @@ return [
             'defaultTotal' => 10,
             'defaultDuration' => 30,
             'Carrefour' => [
-                'total' => 30,
-                'duration' => 30
-            ],
-            'Campus' => [
                 'fixedBonus' => 30,
-                'minMinutes' => 3,
+                'minMinutes' => 5,
                 'total' => 30,
                 'duration' => 60
             ]
