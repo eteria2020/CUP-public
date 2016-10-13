@@ -25,17 +25,15 @@ CREATE INDEX IDX_66DC9D2441E8DAFB ON zone_bonus_fleets (zone_bonus_id);
 ALTER TABLE zone_bonus_fleets ADD CONSTRAINT FK_66DC9D244B061DF9 FOREIGN KEY (fleet_id) REFERENCES fleets (id) NOT DEFERRABLE INITIALLY IMMEDIATE;
 ALTER TABLE zone_bonus_fleets ADD CONSTRAINT FK_66DC9D2441E8DAFB FOREIGN KEY (zone_bonus_id) REFERENCES zone_bonus (id) NOT DEFERRABLE INITIALLY IMMEDIATE;
 
-# Poi
+-- Poi
 
-ALTER TABLE trips
-ADD COLUMN bonus_computed BOOLEAN NOT NULL DEFAULT FALSE;
+-- ALTER TABLE trips ADD COLUMN bonus_computed BOOLEAN NOT NULL DEFAULT FALSE;
+-- UPDATE trips SET bonus_computed = true;
 
-UPDATE trips SET bonus_computed = true;
+-- Oppure (meglio)
 
-# Oppure (meglio)
+ALTER TABLE trips ADD COLUMN bonus_computed BOOLEAN NOT NULL DEFAULT TRUE;
 
-ALTER TABLE trips
-ADD COLUMN bonus_computed BOOLEAN NOT NULL DEFAULT TRUE;
-
+-- Da fare quando si avvia la promo
 alter table trips alter bonus_computed set default false;
 
