@@ -80,6 +80,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function marketAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function ordingAction()
     {
         return (new viewModel())->setTerminal(true);

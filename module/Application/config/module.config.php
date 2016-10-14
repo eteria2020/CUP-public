@@ -447,6 +447,17 @@ return [
                     ],
                 ]
             ],
+            'market' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{market}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'market',
+                    ],
+                ]
+            ],
             'ording' => [
                 'type' => 'Segment',
                 'options' => [
