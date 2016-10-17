@@ -261,7 +261,12 @@ function setLocationText(text)
 
 function setBatteryText(battery)
 {
-    blockRightBottomText.innerHTML = battery + textMileage;
+    var mileage = parseInt(battery);
+    if(mileage<=40){
+        mileage = mileage -10;
+    }
+
+    blockRightBottomText.innerHTML = mileage + textMileage;
 }
 
 function setIntCleanliness(cleanliness)
