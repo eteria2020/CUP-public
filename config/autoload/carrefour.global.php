@@ -145,5 +145,12 @@ return [
         'minutes' => 5,
         'description' => 'Bonus promozione Carrefour',
         'validFor' => '+90 days'
+    ],
+    'carrefourMarket' => [
+        'shops' => [
+        ],
+        'minutes' => 50,
+        'description' => 'Bonus promozione Carrefour Market',
+        'validFor' => '+90 days'
     ]
 ];
