@@ -1072,12 +1072,6 @@
                     "homepage": "http://www.spiffyjr.me/"
                 },
                 {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/",
-                    "role": "Developer"
-                },
-                {
                     "name": "Evan Coury",
                     "email": "me@evancoury.com",
                     "homepage": "http://blog.evan.pro/"
@@ -1085,6 +1079,11 @@
                 {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@hotmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://marco-pivetta.com/"
                 }
             ],
             "description": "Zend Framework 2 Module that provides Doctrine ORM functionality",
@@ -2036,7 +2035,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "5dff906f9b11dbf4a6dc979de7510fd6bc834223"
+                "reference": "38c1ebd6131ed42718dd500afcf06f95ce9019af"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2057,7 +2056,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2016-10-13 10:49:25"
+            "time": "2016-10-20 14:28:11"
         },
         {
             "name": "nikolaposa/mobile-detect-module",
