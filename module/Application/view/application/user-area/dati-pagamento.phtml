@@ -57,7 +57,9 @@
 
                         <?php else: ?>
                             <div class="block-alert margin-bottom info">
-                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
+                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p><br>
+                                <p><font color="red"><?= $this->translate('Attenzione!') ?></font> <?= $this->translate(' Per completare il pagamento dell’iscrizione e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?></p><br>
+                                <p><?= $this->translate('Se non avessi il Secure Code o non l’avessi mai utilizzato, chiedine l’attivazione al gestore della tua carta, prima di proseguire.'); ?></p>
                             </div>
                         <?php endif; ?>
                     </div>
