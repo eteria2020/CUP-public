@@ -15,9 +15,16 @@
             <div class="block-form w-3-4 auto-margin clearfix">
                 <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
                     <img src="<?= $this->basePath('images/banner_benvenuto.jpg')?>"/>
+                    <label class="small-form content-align-center" style="line-height: 1;color:#000000">
+                        <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard in assenza di codici promozionali).'); ?>
+                        <br>
+                        <?= $this->translate('Se serve aiuto durante l’iscrizione usa il pulsante chat.'); ?>
+                        <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png')?>"/>
+                    </label>
                 </div>
             </div>
         <?php endif; ?>
+
     </div>
 
  <!-- module-wizard -->
