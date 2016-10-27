@@ -35,6 +35,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function assocralAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function eqSharingAction()
     {
         return (new viewModel())->setTerminal(true);
