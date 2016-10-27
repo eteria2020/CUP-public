@@ -337,6 +337,17 @@ return [
                     ],
                 ],
             ],
+            'assocral' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{assocral}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'assocral',
+                    ],
+                ],
+            ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [
