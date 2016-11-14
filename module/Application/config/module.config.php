@@ -513,6 +513,17 @@ return [
                     ],
                 ]
             ],
+            'svolta' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{svolta}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'svolta',
+                    ],
+                ]
+            ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [

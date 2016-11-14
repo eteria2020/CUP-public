@@ -115,6 +115,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function svoltaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function teatroElfoAction()
     {
         return (new viewModel())->setTerminal(true);
