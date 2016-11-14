@@ -359,6 +359,17 @@ return [
                     ],
                 ]
             ],
+            'chigi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{chigi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'chigi',
+                    ],
+                ],
+            ],
             'eq-sharing' => [
                 'type' => 'Segment',
                 'options' => [

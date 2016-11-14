@@ -40,6 +40,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function chigiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function eqSharingAction()
     {
         return (new viewModel())->setTerminal(true);
