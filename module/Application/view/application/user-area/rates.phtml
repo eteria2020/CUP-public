@@ -59,7 +59,7 @@
                                         <td><?= $this->translate('Tariffa base della corsa') ?></td>
                                         <td>€ <?= number_format(0.28 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                         <td>€ 0,28</td>
-                                    <tr>                                    
+                                    <tr>
                                     <tr>
                                         <td><?= $this->translate('Tariffa per 1 ora') ?></td>
                                         <td>€ <?= number_format(12 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
@@ -86,9 +86,9 @@
 
                         <ul>
                             <li><?= $this->translate('Il giorno del tuo compleanno ricevi 30 minuti bonus (per questo giorno)') ?></li>
-                            <li><?= $this->translate('La tariffa di sosta è sempre di € 0,10 al minuto ') ?></li>                            
+                            <li><?= $this->translate('La tariffa di sosta è sempre di € 0,10 al minuto ') ?></li>
                             <?php if ($this->customer->getGender() === 'female'): ?>
-                                <li><?= $this->translate('Gratuità delle corse notturne dalle ore 1.00 alle ore 6.00') ?></li>
+                                <li><?= $this->translate('Per le donne, per i primi 100 minuti al mese, le corse notturne dalle ore 1.00 alle ore 6.00 sono gratuite.') ?></li>
                             <?php endif; ?>
                         </ul>
                     </div>
