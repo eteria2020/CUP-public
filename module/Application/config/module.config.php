@@ -699,6 +699,16 @@ return [
                             ]
                         ]
                     ],
+                    'gift-packages' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{gift-packages}',
+                            'defaults' => [
+                                'controller' => 'AdditionalServices',
+                                'action' => 'gift-packages'
+                            ]
+                        ]
+                    ],
                     'bonus-package' => [
                         'type' => 'Segment',
                         'options' => [

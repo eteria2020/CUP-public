@@ -30,6 +30,12 @@
         </a>
     </li>
     <li>
+        <a href="<?= $this->url('area-utente/gift-packages'); ?>" <?= $this->route === 'gift-packages' ? 'class="active"' : '' ?>>
+            <i class="fa fa-gift"></i>
+            <?= $this->translate('Pacchetti regalo'); ?>
+        </a>
+    </li>
+    <li>
         <a href="<?= $this->url('area-utente/bonus'); ?>" <?= $this->route === 'bonus' ? 'class="active"' : '' ?>>
             <i class="fa fa-trophy"></i>
             <?= $this->translate('Bonus minuti'); //ex Bonus ?>

@@ -1,5 +1,4 @@
 <?php
-$form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
 ?>
 
@@ -16,7 +15,7 @@ $bonusPackages = $this->bonusPackages;
 
             <!-- block-nav-app -->
             <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'additional-services']); ?>
+                <?php echo $this->partial('partials/menu-user-area', ['route' => 'gift-packages']); ?>
             </nav>
             <!-- block-nav-app -->
 
@@ -34,32 +33,6 @@ $bonusPackages = $this->bonusPackages;
             <div class="module-column-app-content clearfix">
                 <div class="module-manage-driver-license padding-top">
                     <!-- Promo code section -->
-                    <div class="block-form bw-f w-3-3  clearfix">
-
-                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
-
-                        <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice Promo'); ?></h2>
-                        </div>
-                        <?= $this->form()->openTag($form); ?>
-                            <div class="block-row-field clearfix">
-                                <div class="block-field bw-f w-4-4">
-                                    <p> <label><?= $this->translate('Inserisci il codice promo'); ?></label>
-                                        <?php
-                                        $promoCode = $form->get('promocode')->get('promocode');
-                                        echo $this->formElement($promoCode->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($promoCode, ['class' => 'errors']);
-                                        ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="block-wrapper-button content-align-center">
-                                <input type=submit name="" value="<?= $this->translate('Valida'); ?>">
-                            </div>
-                        <?php echo $this->form()->closeTag(); ?>
-                    </div>
-                    <!-- promo code section -->
-
                     <!-- Margin -->
                     <div class="block-form bw-f margin-separator"></div>
 
@@ -72,7 +45,7 @@ $bonusPackages = $this->bonusPackages;
 
                         <!-- Title -->
                         <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Acquista Pacchetti'); ?></h2>
+                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Acquista Pacchetti Regalo'); ?></h2>
                         </div>
                         <!-- title -->
 
@@ -93,7 +66,7 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                 if(substr($package->getName(),0, 4)==="GIFT"){
                         ?>
                             <div class="bw-f w-1-4 clearfix">
                                 <div class="bw-f w-1-2 clearfix">
@@ -105,9 +78,7 @@ $bonusPackages = $this->bonusPackages;
                                         <p class="block-sub-title"><?= $package->getMinutes() ?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
                                         <p class="block-sub-title">
                                         <?php
-                                        if($package->getMinutes()>0) { 
-                                            echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min'); 
-                                        }
+                                        if($package->getMinutes()>0) { echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min'); }
                                         ?>
                                         </p>
                                         <p class="block-sub-title"><?= $this->translate('Validità') ?>
@@ -121,7 +92,7 @@ $bonusPackages = $this->bonusPackages;
                                 </div>
                             </div>
                         <?php
-                                }   // enf if
+                                 }  // end if
                             }   // end foreach
                         ?>
                         </div>
@@ -144,14 +115,14 @@ $bonusPackages = $this->bonusPackages;
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                    if(substr($package->getName(),0, 4)==="GIFT"){
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= substr($package->getName(), 4,5) . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf($this->translate("per %d gg"), $package->getDuration()); ?></div>
@@ -166,6 +137,7 @@ $bonusPackages = $this->bonusPackages;
                                 <div class="block-data-table-td cw-6-6"><?= $package->getNotes() ?></div>
                             </div>
                             <!-- table body -->
+
                             <?php
                                     }   // end if
                                 }   // end foreach
