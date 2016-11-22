@@ -1,0 +1,324 @@
+/*#header.emotional-header {
+    background: #fff url(../images/bg/bg-emotional-header.jpg) center -30px no-repeat;
+}*/
+
+#registration-form ul.errors li, #registration-form-2 ul.errors li {
+    list-style-type: none;
+    color: red;
+}
+
+#footer .badge-green-number {
+    width: 280px;
+}
+
+#main .block-wrapper-button a.reset {
+    background: #999;
+    color: #fff;
+    line-height: 1em;
+    height: 40px;
+    display: inline-block;
+    padding: 12px 20px 10px 20px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid #255b2a;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    backface-visibility: hidden;
+    webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+}
+
+#main .block-wrapper-button a.reset:hover {
+    box-shadow: 0 0 8px #999;
+    -moz-box-shadow: 0 0 8px #999;
+    -webkit-box-shadow: 0 0 8px #999;
+}
+
+.module-car-map #map-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(25, 25, 25, .85);;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+    padding-top: 150px;
+}
+
+.module-car-map #map-overlay a {
+    display: block;
+}
+
+#registration-form.form-signup a.document-links {
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.module-rates table#rates {
+    margin-top: 20px;
+}
+
+.module-rates table#rates td, .module-rates table#rates th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#reprofiling .option {
+    margin: 5px 0;
+    clear: both;
+}
+
+#reprofiling .option span {
+    float: right;
+    width: 95%;
+}
+
+.reprofiling-warning {
+    padding-top: 40px;
+    color: red;
+}
+
+.pin-title {
+    font-size: 22px;
+    color: #000000;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-indent: 20px;
+}
+
+.pin-box {
+    height: 50px;
+    float: left;
+    border: 3px solid black;
+    background-color: #ffffff;
+    text-align: center;
+    color: #ff0000;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 30px;
+
+}
+
+.pin-warning {
+    margin-top: 13px;
+    font-size: 18px;
+    font-weight: 600
+}
+
+.pin-info {
+    margin-top: 20px;
+    text-indent: 5px;
+    font-size: 15px;
+    text-decoration: underline;
+    font-weight: 700
+}
+
+.car-popup {
+     height:100%;
+     position:fixed;
+     display:none
+}
+
+.margin-top-custom {
+    margin-top: 30px
+}
+
+.invoices-filter {
+    float: left;
+    width: 200px;
+}
+
+.invoices-filter-select {
+    max-width: 150px;
+}
+.table-row-fix {
+    float: none !important;
+}
+.invoices-filter-title {
+    font-weight: 700;
+    font-size: 20px;
+}
+.block-data-table .cw-1-5 {
+    width: 20% !important;
+}
+.block-data-table .cw-1-7 {
+    width: 14.2857143% !important;
+}
+
+.small-form {
+    font-size: 12px !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.border-top {
+    border-top: 5px solid black;
+}
+
+.block-data-table a {
+    color:#000;
+    text-decoration:underline
+}
+
+.block-data-table a:hover {
+    text-decoration:none
+}
+
+.map-popup {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: none;
+}
+.map-popup-img {
+    width: 485px;
+    height: 455px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #fff;
+}
+
+.rents-message {
+    float: left;
+    width: 80%;
+    margin-bottom: 20px;
+}
+#footer .badge-green-number {
+    position: relative;
+    margin-bottom: 15px;
+}
+.margin-separator {
+    width: 100%;
+    height: 50px;
+}
+.w-3-3 {
+    width: 100%;
+}
+
+/* BonusPakagesPopup */
+.sng-pack-popup-container {
+    height: 500px;
+    width: 500px;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 4px;
+    margin: auto;
+}
+.sng-pack-popup-inner {
+    height: 100%;
+    width: 100%;
+    background-color: #43A34C;
+    border-radius: 8px;
+    padding: 4px;
+}
+.sng-pack-popup {
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    border-radius: 6px;
+    padding-right: 4px;
+    padding-left: 4px;
+    position: relative;
+}
+.sng-close-btn {
+    float: right;
+}
+.sng-headers {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.sng-w-1-2 {
+    width: 50%;
+}
+.sng-w-1-1 {
+    width: 100%;
+    text-align: center;
+}
+.sng-separator-line {
+    width: 95%;
+    height: 3px;
+    background-color: #43A34C;
+    margin: 0 auto;
+}
+.sng-summary {
+    width: 92%;
+    margin: 0 auto;
+}
+.sng-text {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.sng-table {
+    width: 100%;
+    margin-top: 15px;
+}
+.sng-footer {
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+.sng-footer #confirm-btn.big.green {
+    background: #43a34c;
+    width: auto;
+    text-align: center;
+    color: #fff;
+    line-height: 1em;
+    height: 40px;
+    display: inline-block;
+    padding: 12px 20px 10px 20px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid #255b2a;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    backface-visibility: hidden;
+    webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+}
+.sng-footer button[disabled] {
+    opacity: 0.6;
+}
+.block-alert.success {
+    border: 1px solid green;
+    background:rgba(0,255,0,0.3)
+}
+
+@media screen and (max-width: 479px) {
+    .js-car-image {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .fixresponsive {
+        width: 100%;
+    }
+}
