@@ -57,28 +57,28 @@
                                 <tbody>
                                     <tr>
                                         <td><?= $this->translate('Tariffa base della corsa') ?></td>
-                                        <td>€ <?= number_format(0.28 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                        <td>€ 0,28</td>
-                                    <tr>                                    
+                                        <td>&euro; <?= number_format(0.28 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
+                                        <td>&euro; 0,28</td>
+                                    <tr>
                                     <tr>
                                         <td><?= $this->translate('Tariffa per 1 ora') ?></td>
-                                        <td>€ <?= number_format(12 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                        <td>€ 12,00</td>
+                                        <td>&euro; <?= number_format(12 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
+                                        <td>&euro; 12,00</td>
                                     <tr>
                                     <tr>
                                         <td><?= $this->translate('Tariffa per 1/2 giornata (4H)') ?></td>
-                                        <td>€ <?= number_format(30 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                        <td>€ 30,00</td>
+                                        <td>&euro; <?= number_format(30 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
+                                        <td>&euro; 30,00</td>
                                     <tr>
                                     <tr>
                                         <td><?= $this->translate('Tariffa giornaliera') ?></td>
-                                        <td>€ <?= number_format(50 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                        <td>€ 50,00</td>
+                                        <td>&euro; <?= number_format(50 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
+                                        <td>&euro; 50,00</td>
                                     <tr>
                                     <tr>
                                         <td><?= $this->translate('Tariffa di prenotazione') ?></td>
-                                        <td>€ 0,00</td>
-                                        <td>€ 0,00</td>
+                                        <td>&euro; 0,00</td>
+                                        <td>&euro; 0,00</td>
                                     <tr>
                                 </tbody>
                             </table>
@@ -86,9 +86,9 @@
 
                         <ul>
                             <li><?= $this->translate('Il giorno del tuo compleanno ricevi 30 minuti bonus (per questo giorno)') ?></li>
-                            <li><?= $this->translate('La tariffa di sosta è sempre di € 0,10 al minuto ') ?></li>                            
+                            <li><?= $this->translate('La tariffa di sosta è sempre di &euro; 0,10 al minuto ') ?></li>
                             <?php if ($this->customer->getGender() === 'female'): ?>
-                                <li><?= $this->translate('Gratuità delle corse notturne dalle ore 1.00 alle ore 6.00') ?></li>
+                                <li><?= $this->translate('Per le donne, le corse notturne dalle ore 1.00 alle ore 6.00 sono gratuite.') ?></li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -103,13 +103,13 @@
                                 </a>
 
                                 <div style="margin-top: 20px;" align="justify">
-                                    <?= $this->translate('Con Share’N GO puoi ottenere una tariffa scontata, che riconosce il tuo bisogno di mobilità e premia la tua partecipazione alla sharing economy. Clicca sul banner con Mizzie e scopri lo sconto che ti spetta (dura 365 giorni e puoi chiederlo solo una volta).'); ?>
+                                    <?= $this->translate('Con Share&#39;N Go puoi ottenere una tariffa scontata, che riconosce il tuo bisogno di mobilit&agrave; e premia la tua partecipazione alla sharing economy. Clicca sul banner con Mizzie e scopri lo sconto che ti spetta (dura 365 giorni e puoi chiederlo solo una volta).'); ?>
                                 </div>
                             </div>
                         </div>
                     <?php else: ?>
                         <div class="block-form bw-f w-2-4 fixresponsive" style="margin-top: 13px;">
-                            <?= $this->translate('Share’N GO offre tariffe scontate a chi ha maggior bisogno di mobilità e partecipa alla sharing economy. Nella colonna a sinistra vedi il tuo piano tariffario personale (è valido 365 giorni dal giorno in cui ti è stato concesso lo sconto che ti spetta).'); ?>
+                            <?= $this->translate('Share&#39;N GO offre tariffe scontate a chi ha maggior bisogno di mobilit&agrave; e partecipa alla sharing economy. Nella colonna a sinistra vedi il tuo piano tariffario personale (&egrave; valido 365 giorni dal giorno in cui ti &egrave; stato concesso lo sconto che ti spetta).'); ?>
                         </div>
                     <?php endif; ?>
                 </div>
