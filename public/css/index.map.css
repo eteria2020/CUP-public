@@ -1,0 +1,126 @@
+div.ol-zoom.ol-unselectable.ol-control{
+    bottom: 15px;
+    top: auto;
+    height: 100px;
+    width: 40px;
+}
+
+div.ol-zoom.ol-unselectable.ol-control button{
+    width: 35px;
+    height: 45px;
+    background: rgba(67, 163, 76, 0.5);
+}
+
+div.ol-zoom.ol-unselectable.ol-control button:hover{
+    background: #43a34c;
+}
+
+/* Ol3-geocode */
+
+.ol3-geocoder-container{
+    top: 15px
+}
+
+div.ol3-geocoder-search.ol-control{
+    overflow: visible;
+    height: 45px;
+    width: 210px;
+}
+
+.ol3-geocoder-input-search{
+
+    z-index: 0;
+    position: absolute;
+    height: 40px;
+    width: 200px;
+
+    background: rgba(67, 163, 76, 0.5);
+    color: white;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    left: 5px !important;
+    opacity: 0.9;
+    padding: 5px;
+}
+
+.ol3-geocoder-input-search::placeholder{
+    color: white;
+}
+
+.ol3-geocoder-input-search:active,
+.ol3-geocoder-input-search:hover{
+    background: #43a34c;
+    color: #FFF;
+}
+
+.ol3-geocoder-btn-search{
+    display: none !important;
+}
+
+ul.ol3-geocoder-result{
+
+    width: 260px;
+    top: 50px;
+    left: 5px;
+}
+
+
+/* Map Overlay */
+
+div.load-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    z-index: 1
+}
+
+
+div.load-overlay > div {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+
+div.load-overlay > div > p{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+div.load-overlay > div > p > i{
+    font-size: 100px;
+    color: #43a34c;
+    z-index: 2;
+}
+
+/** OpenLayers Popup **/
+.popover.top {
+    margin-top: -60px;
+}
+.popover {
+    width: 300px;
+    webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+
+    background-color: rgba(255, 218, 58, 0.9) !important;
+}
+.popover .head{
+    margin:0 auto;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.popover h3{
+    background-color:black;
+    color:white;
+    font-size: 16px;
+}
