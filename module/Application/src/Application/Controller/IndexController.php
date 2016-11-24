@@ -45,7 +45,13 @@ class IndexController extends AbstractActionController
 
         return new ViewModel();
     }
-    
+
+        public function map2Action()
+    {
+        $this->layout('layout/layout2');
+        return new ViewModel();
+    }
+
     /**
      * @return \Zend\Http\Response (JSON Format)
      */

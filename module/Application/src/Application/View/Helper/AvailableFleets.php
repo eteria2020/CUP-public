@@ -68,7 +68,7 @@ class AvailableFleets extends AbstractHelper
         foreach ($fleets as $fleet) {
             $ret .= sprintf(
                 '<li>
-                    <a href="javascript:void(0);" data-longitude="%s" data-latitude="%s" data-name="%s" data-id="%s">%3$s</a>
+                    <a href="javascript:void(0);" id="%3$s" data-longitude="%s" data-latitude="%s" data-name="%s" data-id="%s">%3$s</a>
                 </li>',
                 $fleet->getLongitude(),
                 $fleet->getLatitude(),

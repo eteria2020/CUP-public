@@ -1,3 +1,6 @@
+<?php
+$this->currentRoute() == 'login2' ? $this->layout('layout/layout2') : '';
+?>
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Login'); ?></h1>
@@ -61,7 +64,7 @@
                     <div class="block-field bw-f w-2-4">
                         <p>
                             <!--<input type="checkbox" name="" value=""> <?/* $this->translate('ricordami'); */?><br>-->
-                            <a href="<?= $this->url('forgot'); ?>"> <?= $this->translate('Password dimenticata ?'); ?></a>
+                            <a href="<?= $this->currentRoute() == 'login2' ? $this->url('forgot2') : $this->url('forgot'); ?>"> <?= $this->translate('Password dimenticata ?'); ?></a>
                         </p>
                     </div>
                     <div class="block-field content-align-right bw-f w-2-4">
