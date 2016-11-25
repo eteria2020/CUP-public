@@ -1,0 +1,240 @@
+<?php
+    $this->headScript()
+        ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+        ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+    $this->headLink()
+        ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+    $this->inlineScript()
+        ->appendFile($this->basePath('js/driver-license-popup.js'));
+?>
+
+<!-- module-section-bookmark -->
+<div class="module-section-bookmark content-align-center">
+<h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
+</div>
+<!-- module-section-bookmark -->
+
+<!-- main -->
+<div id="main">
+
+ <!-- module-wizard -->
+ <div class="module-wizard clearfix">
+    <ul>
+        <li class="active"><i class="fa fa-user"></i></li>
+        <li class="active"><i class="fa fa-tachometer"></i></li>
+        <li><i class="fa fa-flag-checkered"></i></li>
+    </ul>
+</div>
+<!-- module-wizard -->
+
+<!-- content -->
+<div class="content">
+
+ <!-- block-form -->
+ <div class="block-form w-3-4 auto-margin clearfix">
+
+     <div class="block-form-section content-align-center margin-bottom">
+        <h2><i class="fa fa-car"></i> <?= $this->translate('Inserisci i dati della tua patente di guida'); ?></h2>
+    </div>
+
+    <?php
+        $this->form->prepare();
+        echo $this->form()->openTag($this->form);
+    ?>
+
+        <!-- block-row-field -->
+         <div class="block-row-field clearfix">
+
+            <div class="block-field bw-f w-2-4">
+                <p> <label><?= $this->translate('Numero patente'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                    <?php
+                        $driverLicense = $this->form->get('driver')->get('driverLicense');
+                        echo $this->formElement($driverLicense);
+                        echo $this->formElementErrors($driverLicense, ['class' => 'errors']);
+                    ?>
+                </p>
+                <label class="small-form"><?= $this->translate('Assicurati di inserire quello dell’ultima patente rilasciata.'); ?></label>
+            </div>
+
+        <div class="block-field bw-f w-2-4">
+            <p>
+                <label><?= $this->translate('Rilascio da autorit&agrave;'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                <?php
+                    $driverLicenseAuthority = $this->form->get('driver')->get('driverLicenseAuthority');
+                    echo $this->formElement($driverLicenseAuthority);
+                    echo $this->formElementErrors($driverLicenseAuthority, ['class' => 'errors']);
+                ?>
+            </p>
+        </div>
+
+    </div>
+    <!-- block-row-field -->
+
+    <!-- block-row-field -->
+    <div class="block-row-field clearfix">
+
+     <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Conseguita il'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+            <?php
+                $driverLicenseReleaseDate = $this->form->get('driver')->get('driverLicenseReleaseDate');
+                echo $this->formElement($driverLicenseReleaseDate);
+                echo $this->formElementErrors($driverLicenseReleaseDate, ['class' => 'errors']);
+            ?>
+        </p>
+    </div>
+
+    <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Data di scadenza'); ?></label>
+            <?php
+                $driverLicenseExpire = $this->form->get('driver')->get('driverLicenseExpire');
+                echo $this->formElement($driverLicenseExpire);
+                echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
+            ?>
+        </p>
+    </div>
+
+</div>
+<!-- block-row-field -->
+
+<!-- block-row-field -->
+<div class="block-row-field clearfix">
+
+    <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Nome sulla patente'); ?></label>
+            <?php
+                $driverLicenseName = $this->form->get('driver')->get('driverLicenseName');
+                echo $this->formElement($driverLicenseName);
+                echo $this->formElementErrors($driverLicenseName, ['class' => 'errors']);
+            ?>
+        </p>
+        <label class="small-form"><?= $this->translate('Da inserire esattamente come compare sulla tua patente, anche nel caso di doppio o triplo nome.'); ?></label>
+    </div>
+
+    <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Cognome sulla patente'); ?></label>
+            <?php
+                $driverLicenseSurname = $this->form->get('driver')->get('driverLicenseSurname');
+                echo $this->formElement($driverLicenseSurname);
+                echo $this->formElementErrors($driverLicenseSurname, ['class' => 'errors']);
+            ?>
+        </p>
+        <label class="small-form"><?= $this->translate('Da inserire esattamente come compare sulla tua patente, anche nel caso di doppio o triplo nome.'); ?></label>
+    </div>
+</div>
+
+<div>
+    <div class="block-field bw-f w-2-4">
+         <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
+             <?php $driverLicenseForeign = $this->form->get('driver')->get('driverLicenseForeign'); ?>
+             <?php echo $this->formRow($driverLicenseForeign); ?>
+         </p>
+     </div>
+
+     <div class="block-field bw-f w-2-4">
+        <p> <label><?= $this->translate('Rilasciata (nazione)'); ?></label>
+            <?php
+                $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
+                echo $this->formElement($driverLicenseCountry);
+                echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
+            ?>
+        </p>
+    </div>
+</div>
+<!-- block-row-field -->
+
+
+<div class="block-form-section content-align-center margin-bottom">
+    <h2><i class="fa fa-folder-open"></i> <?= $this->translate('Categoria patente'); ?></h2>
+</div>
+
+<!-- block-row-field -->
+<div class="block-row-field clearfix">
+
+ <div class="block-field content-align-center bw-f w-4-4">
+    <p>
+        <?php
+            $driverLicenseCategories = $this->form->get('driver')->get('driverLicenseCategories');
+            foreach ($driverLicenseCategories->getValueOptions() as $key => $value): ?>
+                <label class='control checkbox checkbox--patente'>
+                    <input type='checkbox' name="<?php echo $driverLicenseCategories->getName() ?>[]" value="<?php echo $value; ?>" <?= !is_null($driverLicenseCategories->getValue()) && in_array($value, $driverLicenseCategories->getValue()) ? 'checked' : '' ?>>
+                    <span class='control-indicator'><?php echo $key; ?></span>
+                </label>
+            <?php endforeach; ?>
+        <?php echo $this->formElementErrors($driverLicenseCategories, ['class' => 'errors']); ?>
+        </div>
+    </p>
+</div>
+
+</div>
+<!-- block-row-field -->
+
+
+<div class="block-wrapper-button content-align-center">
+    <a href="<?= $this->url('signup1', ['lang' => $this->lang]); ?>" class="reset"><?= $this->translate('Indietro'); ?></a>
+    <input type="submit" name="" value="<?= $this->translate('Avanti'); ?>">
+</div>
+
+</form>
+
+</div>
+<!-- block-form -->
+
+</div>
+<!-- content -->
+
+</div>
+<!-- main -->
+
+<!-- module-modal -->
+<div class="module-modal" style="height:2400px; display: none;">
+    <!-- modal-overlay -->
+    <div class="modal-overlay">
+        <!-- module-pop-up -->
+        <div class="module-pop-up" style="margin:180px auto;">
+
+            <a class="btn-close"><i class="fa fa-close"></i></a>
+
+            <!-- module-pop-up-content -->
+            <div class="module-pop-up-content">
+
+                <!-- block-pop-up-generic-content -->
+                <div class="block-pop-up-generic-content">
+                    <img src="<?= $this->basePath('images/patente-fac-simile.jpg'); ?>" alt="">
+                    <p>
+                        <?= $this->translate('5. Numero Patente<br>4. Data di rilascio<br>4c. Autorit&agrave; di rilascio<br>'); ?>
+                    </p>
+                </div>
+                <!-- block-pop-up-generic-content -->
+
+            </div>
+            <!-- module-pop-up-content -->
+
+        </div>
+        <!-- module-pop-up -->
+    </div>
+    <!-- modal-overlay -->
+</div>
+            <!-- module-modal -->
+
+<?
+    $this->inlineScript()->appendScript(
+        '$(document).ready(function() {
+            $( "#driverLicenseReleaseDate" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                maxDate: new Date(new Date().getFullYear(), 11, 31)
+            });
+        });
+        $(document).ready(function() {
+            $( "#driverLicenseExpire" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "+0:+100",
+                minDate: new Date(new Date().getFullYear(), 0, 1)
+            });
+        });'
+    );
+?>

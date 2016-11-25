@@ -55,6 +55,17 @@ return [
                     ],
                 ]
             ],
+            'map2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{map2}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'map2',
+                    ],
+                ]
+            ],
             'quantocosta' => [
                 'type' => 'Segment',
                 'options' => [
@@ -110,6 +121,17 @@ return [
                     ],
                 ]
             ],
+            'login2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{login2}',
+                    'defaults' => [
+                        '__NAMESPACE__' => null,
+                        'controller' => 'zfcuser',
+                        'action'     => 'login',
+                    ],
+                ]
+            ],
             'logout' => [
                 'type' => 'Segment',
                 'options' => [
@@ -126,6 +148,18 @@ return [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{forgot-password}',
+                    'defaults' => [
+                        '__NAMESPACE__' => null,
+                        'controller' => 'goalioforgotpassword_forgot',
+                        'action' => 'forgot'
+                    ]
+                ],
+                'may_terminate' => true
+            ],
+            'forgot2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{forgot-password2}',
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'goalioforgotpassword_forgot',
@@ -161,6 +195,17 @@ return [
                     ],
                 ]
             ],
+            'signup1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup1}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'signup11',
+                    ],
+                ]
+            ],
             'signup-2' => [
                 'type' => 'Segment',
                 'options' => [
@@ -172,6 +217,17 @@ return [
                     ]
                 ]
             ],
+            'signup12' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup12}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signup12'
+                    ]
+                ]
+            ],
             'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
@@ -180,6 +236,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup3'
+                    ]
+                ]
+            ],
+            'signup13' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup13}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signup13'
                     ]
                 ]
             ],
@@ -337,6 +404,17 @@ return [
                     ],
                 ],
             ],
+            'arci' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{arci}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'arci',
+                    ],
+                ],
+            ],
             'assocral' => [
                 'type' => 'Segment',
                 'options' => [
@@ -358,6 +436,17 @@ return [
                         'action'     => 'index',
                     ],
                 ]
+            ],
+            'chigi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{chigi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'chigi',
+                    ],
+                ],
             ],
             'eq-sharing' => [
                 'type' => 'Segment',

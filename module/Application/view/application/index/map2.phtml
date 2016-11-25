@@ -1,0 +1,86 @@
+<?php
+    $this->headMeta()->appendName('og:title', 'Share\'NGo - the new mobility');
+    $this->headMeta()->appendName('og:type', 'website');
+    $this->headMeta()->appendName('og:url', $this->url('home'));
+    $this->headMeta()->appendName('og:image', 'http://mobile.sharengo.it/_template_style/images/sharengo_logo.png');
+    $this->headMeta()->appendName('og:site_name', 'SHARE\'N GO');
+    $this->headMeta()->setProperty('og:description', 'Dal 22 giugno è attivo a Milano il servizio di car sharing a flusso libero, con le nostre Equomobili elettriche. Le iscrizioni al servizio sono aperte su www.equomobili.it. Dal 1° maggio inoltre 10 veicoli SHARE\'NGO sono disponibili c/o la stazione delle Ferrovie Nord di Busto Arsizio e possono essere prenotate telefonando al n 370.3325086. Gli orari per il ritiro e la consegna sono 7.30-10.30 oppure 17.00-19.00 tutti i giorni della settimana.');
+    //$this->inlineScript()->appendFile($this->basePath('js/overlay.js'));
+    $this->inlineScript()->appendFile($this->basePath('js/perfect-scrollbar.jquery.min.js'));
+    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+    $this->headLink()->appendStylesheet($this->basePath('css/find-address.css'));
+?>
+
+<!-- module-car-map -->
+<div class="module-car-map small-height">
+
+    <div id="map_wrapper">
+        <div id="map_canvas" class="mapping"></div>
+    </div>
+
+    <!-- block-map-tool-filter -->
+    <div class="block-map-tool-filter margin-right margin-top-custom g-top g-right">
+        <ul>
+            <li><a><i id="cars-toggle-icon" class="icon-car-in-circle-ct2"></i></a></li>
+            <li><a><i id="energy-toggle-icon" class="icon-energy-in-circle-ct2"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- module-map-tool -->
+    <div class="module-map-tool bg-ct2 g-top g-left">
+
+        <!-- block-list-map-tool -->
+        <div class="block-list-map-tool">
+            <input id="find-address" class="controls" type="text" placeholder="<?= $this->translate('CERCA INDIRIZZO'); ?>">
+        </div>
+        <!-- block-list-map-tool -->
+
+    </div>
+
+    <!-- module-map-tool
+    <div class="module-map-tool bg-ct2 g-bottom g-right">
+
+        <!-- block-list-map-tool -->
+		<!--
+        <div class="block-list-map-tool">
+            <ul>
+                <li>
+                    <a class="js-toggle-map-height active" >
+                        <span class="block-info-1"><?= $this->translate('Riduci la mappa'); ?></span>
+                        <span class="block-info-2"><?= $this->translate('Estendi la mappa'); ?></span> <i class="fa fa-angle-up"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- block-list-map-tool -->
+	<!--
+    </div>
+    <!-- module-map-tool -->
+
+</div>
+<!-- module-car-map -->
+
+<script>
+var port = "<?php echo ':8024'; ?>";
+var version = "<?php echo '/v2'; ?>";
+// texts to be translated
+var textCarOccupied = '<?= $this->translate("L\'auto è occupata"); ?>';
+var textCarReserved = '<?= $this->translate("Annulla prenotazione"); ?>';
+var textCarReserve = '<?= $this->translate("Prenota l\'auto"); ?>';
+var textRegister = '<?= $this->translate("Registrati e prenota"); ?>';
+</script>
+<?php
+// load the popup to show when a car is selected
+echo $this->partial('partials/car-popup.phtml');
+?>
+<script>
+var carsUrl = "<?= $this->url('core/publiccars'); ?>";
+var carMarkerPath = "<?= $this->basePath('images/marker-car.png'); ?>";
+var carMarkerPathReserved = "<?= $this->basePath('images/marker-car-reserved.png'); ?>";
+var poisUrl = "<?= $this->url('core/pois'); ?>";
+var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
+var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
+var zonesUrl = "<?= $this->url('zone'); ?>";
+var citta = <? if (isset($_POST['citta'])) { echo $_POST['citta'];} else { echo 1;}  ?>;
+</script>
+<script type="text/javascript" src="js/map2.js"></script>
