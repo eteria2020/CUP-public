@@ -82,7 +82,11 @@ $bonusPackages = $this->bonusPackages;
                         </div>
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
-                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi SHARE&#39;N GO scende fino ad arrivare a 6 &euro; l&#39;ora, la tariffa di car sharing a flusso libero più bassa al mondo. Pi&ugrave; ti muovi e pi&ugrave; scopri quanto piacevole e conveniente sia la mobilit&agrave; elettrica e condivisa.') ?>
+                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi Share&#39;N Go scende fino ad arrivare a 9 &euro; l&#39;ora, la tariffa di car sharing a flusso libero più bassa al mondo. Con l&#39;abbonamento mensile  puoi avere una Share&#39;N Go tutta per te.') ?>
+                                <br>
+                                <span style="font-size: 16px">
+                                    (<a href="http://www.sharengo.it"><?= $this->translate('clicca qui') ?></a> <?= $this->translate('per ricevere tutte le informazioni necessarie') ?>)
+                                </span>
                             </span>
                         </div>
                         <br><br>
@@ -99,11 +103,14 @@ $bonusPackages = $this->bonusPackages;
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
                                         <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
-                                        <p class="block-sub-title"><?= $package->getMinutes() ?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+                                            <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
+                                            <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
+                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+
                                         <p class="block-sub-title">
                                         <?php
-                                        if($package->getMinutes()>0) { 
-                                            echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min'); 
+                                        if($package->getMinutes()>0) {
+                                            echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min');
                                         }
                                         ?>
                                         </p>

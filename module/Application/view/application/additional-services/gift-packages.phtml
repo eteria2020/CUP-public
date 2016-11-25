@@ -69,14 +69,14 @@ $bonusPackages = $this->bonusPackages;
                             foreach ($bonusPackages as $package) {
                                  if(substr($package->getName(),0, 4)==="GIFT"){
                         ?>
-                            <div class="bw-f w-1-3 clearfix">
-                                <div class="bw-f w-1-2 clearfix">
-                                    <img style="width:110px;" src="<?= $this->basePath('images/pacco_regalo.png') ?>" alt="">
+                            <div class="bw-f w-1-3 clearfix" style="margin-right: 0px;">
+                                <div class="bw-f w-1-2 clearfix" style="margin-right: 5px;">
+                                    <img style="width:122px;" src="<?= $this->basePath('images/gift-packages.png') ?>" alt="">
                                 </div>
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
                                         <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
-                                        <p class="block-sub-title" style='font-size:18px'><?= $this->translate('Iscrizione +')?> <?=  substr($package->getCode(), 4,5)?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+                                        <p class="block-sub-title" style='font-size:16px'><?= $this->translate('Iscrizione +')?><br><?=  substr($package->getCode(), 4,5)?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
                                         <p class="block-sub-title">
                                         <?php
                                         if($package->getMinutes()>0) { echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min'); }
