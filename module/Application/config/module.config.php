@@ -404,6 +404,17 @@ return [
                     ],
                 ],
             ],
+            'arci' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{arci}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'arci',
+                    ],
+                ],
+            ],
             'assocral' => [
                 'type' => 'Segment',
                 'options' => [
@@ -426,17 +437,17 @@ return [
                     ],
                 ]
             ],
-//            'chigi' => [
-//                'type' => 'Segment',
-//                'options' => [
-//                    'route' => '/{chigi}',
-//                    'defaults' => [
-//                        '__NAMESPACE__' => 'Application\Controller',
-//                        'controller' => 'LandingPage',
-//                        'action'     => 'chigi',
-//                    ],
-//                ],
-//            ],
+            'chigi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{chigi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'chigi',
+                    ],
+                ],
+            ],
             'eq-sharing' => [
                 'type' => 'Segment',
                 'options' => [
