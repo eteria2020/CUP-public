@@ -4508,7 +4508,7 @@ img.pull-right {
 .module-modal select.datepicker-date,
 #main input[type="password"].datepicker-date,
 .module-modal input[type="password"].datepicker-date {
-    background: #f2f2f2 url(../../_template_style/images/simple-icon/calendar.png) 10px 10px no-repeat;
+    background: #f2f2f2 url(../images/simple-icon/calendar.png) 10px 10px no-repeat;
     padding-left: 32.36px
 }
 @media screen and (min-width: 0) {
@@ -4800,7 +4800,7 @@ img.pull-right {
 }
 #main textarea.datepicker-date,
 .module-modal textarea.datepicker-date {
-    background: #f2f2f2 url(../../_template_style/images/simple-icon/calendar.png) 10px 10px no-repeat;
+    background: #f2f2f2 url(../images/simple-icon/calendar.png) 10px 10px no-repeat;
     padding-left: 32.36px
 }
 @media screen and (min-width: 0) {

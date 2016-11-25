@@ -48,7 +48,7 @@ class IndexController extends AbstractActionController
 
         public function map2Action()
     {
-        $this->layout('layout/layout2');
+        $this->layout('layout/map2');
         return new ViewModel();
     }
 
