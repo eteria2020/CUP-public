@@ -6181,10 +6181,10 @@ screen and (min-resolution: 1dppx) {
     overflow: hidden
 }
 .module-car-map.small-height {
-    height: 800px
+    height: 600px
 }
 .module-car-map.small-height #map_wrapper {
-    height: 800px
+    height: 600px
 }
 .module-map-tool-search {
     border-top: 1px solid #fff
