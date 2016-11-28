@@ -110,7 +110,7 @@ $bonusPackages = $this->bonusPackages;
                                         <p class="block-sub-title">
                                         <?php
                                         if($package->getMinutes()>0) {
-                                            echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min');
+                                            echo sprintf("%.3f &euro;/", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min');
                                         }
                                         ?>
                                         </p>
