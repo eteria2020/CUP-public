@@ -6255,10 +6255,11 @@ screen and (min-resolution: 1dppx) {
 }
 .module-section-bookmark {
     padding: 20px 0;
-    background: #feef66
+    background: #07BA50;
+    margin-bottom: 50px;
 }
 .module-section-bookmark .module-main-title {
-    text-transform: uppercase;
+    color: #fff;
     margin: 0;
     padding: 0;
     line-height: 1em
