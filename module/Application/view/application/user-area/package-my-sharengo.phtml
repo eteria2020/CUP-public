@@ -24,10 +24,10 @@
                 <h1 class="module-main-title"><?= $this->translate('PACKAGE MY SHARE\'N GO'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
-            
+
             <div class="module-column-app-content clearfix">
                 <br>
-                <button onclick="goBack()">Go Back</button>
+                <button onclick="goBack()"><?= $this->translate('Indietro') ?></button>
                 <table id="textEdit" style="display: table;" width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
@@ -48,31 +48,50 @@
                 <table id="textEdit" style="display: table; text-align: center;" width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
-                            <td class="Content MainText" style="font-family: Trebuchet MS, Verdana, Helvetica, sans-serif;" valign="top" align="left" data-gcf-font-size="12pt"><br>MySHARE&#39;NGO &egrave; un ABBONAMENTO MENSILE con validit&agrave; di 30 gg che acquistate quando vi pare, come gli altri pacchetti, in Area Riservata a 360&euro; (300 &euro; + IVA).&nbsp; Al momento dell&#39;acquisto vi vengono immediatamente&nbsp; accreditati 45.000 minuti (tutti i minuti di un mese da 30 gg) e ricevete una mail con le indicazioni per concordare la consegna della vostra vettura lo stesso giorno o quello successivo. <strong>Da quel giorno l&#39;auto sar&agrave; esclusivamente per voi </strong>con l&#39;unico onere di gestirvi la ricarica in casa o c/o una colonnina ENEL o A2A (e gli abbonamenti mensili sono molto favorevoli). <br><br>In termini pratici:&nbsp;
+                            <td class="Content MainText" style="font-family: Trebuchet MS, Verdana, Helvetica, sans-serif;" valign="top" align="justify" data-gcf-font-size="12pt">
+                                <br>
+                                <?= $this->translate('MySHARE&#39;NGO &egrave; un ABBONAMENTO MENSILE con validit&agrave; di 30 gg che acquistate quando vi pare, come gli altri pacchetti, in Area Riservata a 360&euro; (300 &euro; + IVA).&nbsp; Al momento dell&#39;acquisto vi vengono immediatamente&nbsp; accreditati 45.000 minuti (tutti i minuti di un mese da 30 gg) e ricevete una mail con le indicazioni per concordare la consegna della vostra vettura lo stesso giorno o quello successivo. <strong>Da quel giorno l&#39;auto sar&agrave; esclusivamente per voi </strong>con l&#39;unico onere di gestirvi la ricarica in casa o c/o una colonnina ENEL o A2A (e gli abbonamenti mensili sono molto favorevoli). <br><br>In termini pratici:&nbsp;') ?>
                                 <ul>
-                                    <li>Non chiuderete mai la vostra corsa (terrete l&#39;auto in parcheggio)</li>
-                                    <li>L&#39;auto andr&agrave; e uscir&agrave; dalla ricarica senza alcun intervento particolare</li>
-                                    <li>La manutenzione ordinaria e straordinaria sar&agrave; a nostro carico</li>
-                                    <li>Avrete un&#39;auto sostitutiva se e quando servir&agrave;</li>
-                                    <li>L&#39;abbonamento si rinnover&agrave; automaticamente ogni mese, salvo disdetta da parte vostra entro 7 gg dalla chiusura del mese</li>
+                                    <li><?= $this->translate('Non chiuderete mai la vostra corsa (terrete l&#39;auto in parcheggio)') ?></li>
+                                    <li><?= $this->translate('L&#39;auto andr&agrave; e uscir&agrave; dalla ricarica senza alcun intervento particolare') ?></li>
+                                    <li><?= $this->translate('La manutenzione ordinaria e straordinaria sar&agrave; a nostro carico') ?></li>
+                                    <li><?= $this->translate('Avrete un&#39;auto sostitutiva se e quando servir&agrave;') ?></li>
+                                    <li><?= $this->translate('L&#39;abbonamento si rinnover&agrave; automaticamente ogni mese, salvo disdetta da parte vostra entro 7 gg dalla chiusura del mese') ?></li>
                                 </ul>
-                                <div style="margin-top: 0px; margin-bottom: 0px;">E il costo al minuto? Calcolatelo voi per i km e il tempo che userete la vostra Share&#39;N Go,&nbsp; ricordando che NON AVETE LIMITI di chilometraggio o di Area Operativa o di minuti&nbsp; corsi e che entrate e parcheggiate liberamente in centro.&nbsp;</div>
-                                <div style="margin-top: 0px; margin-bottom: 0px;">&nbsp;</div>
-                                <div style="margin-top: 0px; margin-bottom: 0px; color: #800000;"><span><strong>Attenzione: abbiamo una disponibilit&agrave; iniziale di 25 auto per il progetto sperimentale MySHARE&#39;NGO e quindi - se vi interessa - scriveteci presto a <a style="color: blue; text-decoration: underline;" shape="rect" href="mailto:servizioclienti@sharengo.eu?subject=MYSHARENGO" linktype="2" target="_blank">servizioclienti@sharengo.eu</a> con oggetto MYSHARE&#39;NGO. &nbsp; &nbsp;</strong></span></div>
-                                <div style="margin-top: 0px; margin-bottom: 0px; color: #800000;"><span>&nbsp;</span></div>
-                                <div style="margin-top: 0px; margin-bottom: 0px; color: #333333;"><span>Gli utenti MySHARE&#39;NGO saranno automaticamente iscritti ad un Priority Club con numero di telefono riservato, uno speciale contratto di noleggio e l&#39;attenzione che meritano i nostri migliori clienti.&nbsp; </span> &nbsp;</div>
-                                <div style="margin-top: 0px; margin-bottom: 0px;">&nbsp;</div>
+                                <div><?= $this->translate('E il costo al minuto? Calcolatelo voi per i km e il tempo che userete la vostra Share&#39;N Go,&nbsp; ricordando che NON AVETE LIMITI di chilometraggio o di Area Operativa o di minuti&nbsp; corsi e che entrate e parcheggiate liberamente in centro.&nbsp;') ?></div>
+                                <br>
+                                <div style="color: #800000;">
+                                    <span>
+                                        <strong>
+                                            <?= $this->translate('Attenzione: abbiamo una disponibilit&agrave; iniziale di 25 auto per il progetto sperimentale MySHARE&#39;NGO e quindi - se vi interessa - scriveteci presto a ') ?>
+                                                <a style="color: blue; text-decoration: underline;" shape="rect" href="mailto:mysharengo@sharengo.eu?subject=MYSHARENGO" linktype="2" target="_blank">mysharengo@sharengo.eu</a>
+                                        </strong>
+                                    </span>
+                                </div>
+                                <br>
+                                <div>
+                                    <span>
+                                        <?= $this->translate('Gli utenti MySHARE&#39;NGO saranno automaticamente iscritti ad un Priority Club con numero di telefono riservato, uno speciale contratto di noleggio e l&#39;attenzione che meritano i nostri migliori clienti.&nbsp; ') ?>
+                                    </span>
+                                </div>
+                                <br>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button onclick="goBack()">Go Back</button>
+                <button onclick="goBack()"><?= $this->translate('Indietro') ?></button>
             </div>
         </div>
-    </div>
-</div>
+        <!-- module-column-app dx -->
 
-<script>
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
     function goBack() {
         window.history.back();
     }
