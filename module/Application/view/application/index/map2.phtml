@@ -81,6 +81,23 @@ var poisUrl = "<?= $this->url('core/pois'); ?>";
 var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
 var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
 var zonesUrl = "<?= $this->url('zone'); ?>";
-var citta = <? if (isset($_POST['citta'])) { echo $_POST['citta'];} else { echo 1;}  ?>;
+var citta = <? if (isset($_GET['citta'])) {
+                        switch ($_GET['citta']){
+                            case 1:
+                                echo 1;
+                                break;
+                            case 2:
+                                echo 2;
+                                break;
+                            case 3:
+                                echo 3;
+                                break;
+                            default:
+                                echo 1;
+                           }
+                } else {
+                        echo 1;
+                    }
+            ?>;
 </script>
 <script type="text/javascript" src="js/map2.js"></script>
