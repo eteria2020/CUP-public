@@ -827,6 +827,15 @@ return [
                             ]
                         ]
                     ],
+                    'package-my-sharengo' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/package-my-sharengo',
+                            'defaults' => [
+                                'action' => 'package-my-sharengo'
+                            ]
+                        ]
+                    ],
                     'rents' => [
                         'type' => 'Segment',
                         'options' => [

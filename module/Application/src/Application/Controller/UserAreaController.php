@@ -402,4 +402,9 @@ class UserAreaController extends AbstractActionController
             'tripPayment' => $tripPayment
         ]);
     }
+
+        public function packageMySharengoAction()
+    {
+        return new ViewModel();
+    }
 }
