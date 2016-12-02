@@ -1,503 +1,550 @@
 <?php
-    $this->headScript()
+$this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
         ->appendFile($this->basePath('js/signup.js'));
-    $this->headLink()
+
+$this->headLink()
+        ->appendStylesheet($this->basePath('css/overlay.css'))
         ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
 ?>
 
 <!-- main -->
 <div id="main">
+    <!-- overlay -->
+    <div id="sng-overlay" style="visibility: hidden">
+        <div class="table">
+            <div class="cell">
+                <div class="box">
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-color:#666666">
+                            <h3>ATTENZIONE</h3>
+                            <br>
+                            <ul>
+                                <p style="color:#b30000;text-align: justify;"><b>Domenica 4 Dicembre dalle ore 8 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</b></p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+
     <div class="content">
         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
         <?php if (!$this->hasDiscount): ?>
             <div class="block-form w-3-4 auto-margin clearfix">
                 <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
-                    <img src="<?= $this->basePath('images/banner_benvenuto.jpg')?>"/>
+                    <img src="<?= $this->basePath('images/banner_benvenuto.jpg') ?>"/>
                     <label class="small-form content-align-center" style="line-height: 1;color:#000000">
                         <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?>
                         <br>
                         <?= $this->translate('Se serve aiuto durante l’iscrizione usa il pulsante chat.'); ?>
-                        <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png')?>"/>
+                        <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
                     </label>
                 </div>
             </div>
         <?php endif; ?>
-
     </div>
 
- <!-- module-wizard -->
- <div class="module-wizard clearfix">
-    <ul>
-        <li class="active"><i class="fa fa-user"></i></li>
-        <li><i class="fa fa-tachometer"></i></li>
-        <li><i class="fa fa-flag-checkered"></i></li>
-    </ul>
-</div>
-<!-- module-wizard -->
+    <!-- module-wizard -->
+    <div class="module-wizard clearfix">
+        <ul>
+            <li class="active"><i class="fa fa-user"></i></li>
+            <li><i class="fa fa-tachometer"></i></li>
+            <li><i class="fa fa-flag-checkered"></i></li>
+        </ul>
+    </div>
+    <!-- module-wizard -->
 
-<!-- content -->
-<div class="content">
+    <!-- content -->
+    <div class="content">
 
-    <?php
+        <?php
         $this->form->prepare();
         echo $this->form()->openTag($this->form);
-    ?>
+        ?>
 
-    <div class="block-form w-3-4 auto-margin clearfix">
-        <div class="block-form-section content-align-center margin-bottom">
-            <h2><i class="fa fa-globe"></i> <?= $this->translate('Città preferita'); ?></h2>
-        </div>
+        <div class="block-form w-3-4 auto-margin clearfix">
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><i class="fa fa-globe"></i> <?= $this->translate('Città preferita'); ?></h2>
+            </div>
 
-        <div class="block-field auto-margin w-1-3">
-            <p>
-                <?php
+            <div class="block-field auto-margin w-1-3">
+                <p>
+                    <?php
                     $fleet = $this->form->get('user')->get('fleet');
                     echo $this->formElement($fleet);
                     echo $this->formElementErrors($fleet, ['class' => 'errors']);
-                ?>
-            </p>
-        </div>
-    </div>
-
-    <!-- block-form -->
-    <div class="block-form w-3-4 auto-margin clearfix">
-
-        <div class="block-form-section content-align-center margin-bottom">
-            <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate('Inserisci i dati che userai per accedere al servizio'); ?></h2>
+                    ?>
+                </p>
+            </div>
         </div>
 
-     <!-- block-row-field -->
-     <div class="block-row-field clearfix">
+        <!-- block-form -->
+        <div class="block-form w-3-4 auto-margin clearfix">
 
-         <div class="block-field bw-f w-2-4">
-            <p> <label><?= $this->translate('Email'); ?></label>
-                <?php
-                    $email = $this->form->get('user')->get('email');
-                    echo $this->formElement($email);
-                    echo $this->formElementErrors($email, ['class' => 'errors']);
-                ?>
-            </p>
-        </div>
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate('Inserisci i dati che userai per accedere al servizio'); ?></h2>
+            </div>
 
-        <div class="block-field bw-f w-2-4">
-            <p> <label><?= $this->translate('Ripeti l\'email'); ?></label>
-                <?php
-                    $email2 = $this->form->get('user')->get('email2');
-                    echo $this->formElement($email2);
-                    echo $this->formElementErrors($email2, ['class' => 'errors']);
-                ?>
-            </p>
-        </div>
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
 
-    </div>
-    <!-- block-row-field -->
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Email'); ?></label>
+                        <?php
+                        $email = $this->form->get('user')->get('email');
+                        echo $this->formElement($email);
+                        echo $this->formElementErrors($email, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
 
-    <!-- block-row-field -->
-    <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Ripeti l\'email'); ?></label>
+                        <?php
+                        $email2 = $this->form->get('user')->get('email2');
+                        echo $this->formElement($email2);
+                        echo $this->formElementErrors($email2, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
 
-     <div class="block-field bw-f w-2-4">
-        <p> <label><?= $this->translate('Password'); ?></label>
+            </div>
+            <!-- block-row-field -->
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Password'); ?></label>
+                        <?php
+                        $password = $this->form->get('user')->get('password');
+                        echo $this->formElement($password);
+                        echo $this->formElementErrors($password, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Password'); ?></label>
+                        <?php
+                        $password2 = $this->form->get('user')->get('password2');
+                        echo $this->formElement($password2);
+                        echo $this->formElementErrors($password2, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+            </div>
+            <!-- block-row-field -->
+
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><i class="fa fa-user"></i> <?= $this->translate('Inserisci i tuoi dati personali'); ?></h2>
+            </div>
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Genere'); ?></label>
+                        <?php
+                        $gender = $this->form->get('user')->get('gender');
+                        echo $this->formElement($gender);
+                        echo $this->formElementErrors($gender, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-3-4 last">
+
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label><?= $this->translate('Nome'); ?></label>
+                            <?php
+                            $name = $this->form->get('user')->get('name');
+                            echo $this->formElement($name);
+                            echo $this->formElementErrors($name, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label><?= $this->translate('Cognome'); ?></label>
+                            <?php
+                            $surname = $this->form->get('user')->get('surname');
+                            echo $this->formElement($surname);
+                            echo $this->formElementErrors($surname, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- block-row-field -->
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Data di nascita'); ?></label>
+                        <?php
+                        $birthDate = $this->form->get('user')->get('birthDate');
+                        echo $this->formElement($birthDate);
+                        echo $this->formElementErrors($birthDate, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Stato di nascita'); ?></label>
+                        <?php
+                        $birthCountry = $this->form->get('user')->get('birthCountry');
+                        echo $this->formElement($birthCountry);
+                        echo $this->formElementErrors($birthCountry, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-3 last">
+                    <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
+                        <?php
+                        $birthProvince = $this->form->get('user')->get('birthProvince');
+                        echo $this->formElement($birthProvince);
+                        echo $this->formElementErrors($birthProvince, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+
+            </div>
+            <!-- block-row-field -->
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Comune di nascita'); ?></label>
+                        <?php
+                        $birthTown = $this->form->get('user')->get('birthTown');
+                        $select = '<select name="' . $birthTown->getName() . '" ';
+                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                            $select .= $attribute . '="' . $value . '" ';
+                        }
+                        $select .= '><option></option></select>';
+                        echo $select;
+                        $input = '<input name="' . $birthTown->getName() . '" ';
+                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                            $input .= $attribute . '="' . $value . '" ';
+                        }
+                        $input .= ' style="display: none;" value="' . $birthTown->getValue() . '" disabled></ipnut>';
+                        echo $input;
+                        echo $this->formElementErrors($birthTown, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-3-4 last">
+
+                    <div class="block-field bw-f w-3-4">
+                        <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
+                            <?php
+                            $address = $this->form->get('user')->get('address');
+                            echo $this->formElement($address);
+                            echo $this->formElementErrors($address, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="block-field bw-f last w-1-4">
+                        <p> <label><?= $this->translate('Cap'); ?></label>
+                            <?php
+                            $zipCode = $this->form->get('user')->get('zipCode');
+                            echo $this->formElement($zipCode);
+                            echo $this->formElementErrors($zipCode, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- block-row-field -->
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Citt&agrave;'); ?></label>
+                        <?php
+                        $town = $this->form->get('user')->get('town');
+                        echo $this->formElement($town);
+                        echo $this->formElementErrors($town, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field last bw-f w-3-4">
+                    <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo Paese se risiedi all\'estero'); ?></label>
+                        <?php
+                        $addressInfo = $this->form->get('user')->get('addressInfo');
+                        echo $this->formElement($addressInfo);
+                        echo $this->formElementErrors($addressInfo, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+            </div>
+            <!-- block-row-field -->
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Codice Fiscale'); ?></label>
+                        <?php
+                        $taxCode = $this->form->get('user')->get('taxCode');
+                        echo $this->formElement($taxCode);
+                        echo $this->formElementErrors($taxCode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Partita IVA (Opzionale)'); ?></label>
+                        <?php
+                        $vat = $this->form->get('user')->get('vat');
+                        echo $this->formElement($vat);
+                        echo $this->formElementErrors($vat, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+            </div>
+            <!-- block-row-field -->
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Cellulare'); ?></label>
+                        <?php
+                        $mobile = $this->form->get('user')->get('mobile');
+                        echo $this->formElement($mobile);
+                        echo $this->formElementErrors($mobile, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
+                        <?php
+                        $phone = $this->form->get('user')->get('phone');
+                        echo $this->formElement($phone);
+                        echo $this->formElementErrors($phone, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+            </div>
+            <!-- block-row-field -->
+
             <?php
-                $password = $this->form->get('user')->get('password');
-                echo $this->formElement($password);
-                echo $this->formElementErrors($password, ['class' => 'errors']);
+            $profilingCounter = $this->form->get('user')->get('profilingCounter');
+            echo $this->formElement($profilingCounter);
             ?>
-        </p>
-    </div>
 
-    <div class="block-field bw-f w-2-4">
-        <p> <label><?= $this->translate('Password'); ?></label>
-            <?php
-                $password2 = $this->form->get('user')->get('password2');
-                echo $this->formElement($password2);
-                echo $this->formElementErrors($password2, ['class' => 'errors']);
-            ?>
-        </p>
-    </div>
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><i class="fa fa-language"></i> <?= $this->translate('Scegli la lingua preferita'); ?></h2>
+            </div>
 
-</div>
-<!-- block-row-field -->
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
 
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><i class="fa fa-user"></i> <?= $this->translate('Inserisci i tuoi dati personali'); ?></h2>
-</div>
+                <div class="block-field auto-margin w-1-3">
+                    <p>
+                        <?php
+                        $language = $this->form->get('user')->get('language');
+                        echo $this->formElement($language);
+                        echo $this->formElementErrors($language, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
 
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
+            </div>
+            <!-- block-row-field -->
 
- <div class="block-field bw-f w-1-4">
-    <p> <label><?= $this->translate('Genere'); ?></label>
-        <?php
-            $gender = $this->form->get('user')->get('gender');
-            echo $this->formElement($gender);
-            echo $this->formElementErrors($gender, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><?= $this->translate('Codice promo'); ?></h2>
+            </div>
 
-<div class="block-field bw-f w-3-4 last">
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
 
- <div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Nome'); ?></label>
-        <?php
-            $name = $this->form->get('user')->get('name');
-            echo $this->formElement($name);
-            echo $this->formElementErrors($name, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+                <div class="block-field auto-margin w-1-3">
+                    <p>
+                        <?php
+                        $promocode = $this->form->get('promocode')->get('promocode');
+                        echo $this->formElement($promocode);
+                        echo $this->formElementErrors($promocode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
 
-<div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Cognome'); ?></label>
-        <?php
-            $surname = $this->form->get('user')->get('surname');
-            echo $this->formElement($surname);
-            echo $this->formElementErrors($surname, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            </div>
+            <!-- block-row-field -->
 
-</div>
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
+            </div>
 
-</div>
-<!-- block-row-field -->
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
 
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
+                <div class="block-field w-4-4">
 
- <div class="block-field bw-f w-1-3">
-    <p> <label><?= $this->translate('Data di nascita'); ?></label>
-        <?php
-            $birthDate = $this->form->get('user')->get('birthDate');
-            echo $this->formElement($birthDate);
-            echo $this->formElementErrors($birthDate, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+                    <p class="text-align-center">
+                        <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links">
+                            <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+                        </a>
+                    </p>
+                    <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($generalCondition1) ?>
+                        <span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
+                    </label>
+                    <br></br>
+                    <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
+                    <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($generalCondition2) ?>
+                        <span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
+                    </label>
+                    <br></br>
+                    <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
 
-<div class="block-field bw-f w-1-3">
-    <p> <label><?= $this->translate('Stato di nascita'); ?></label>
-        <?php
-            $birthCountry = $this->form->get('user')->get('birthCountry');
-            echo $this->formElement($birthCountry);
-            echo $this->formElementErrors($birthCountry, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+                </div>
 
-<div class="block-field bw-f w-1-3 last">
-    <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
-        <?php
-            $birthProvince = $this->form->get('user')->get('birthProvince');
-            echo $this->formElement($birthProvince);
-            echo $this->formElementErrors($birthProvince, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            </div>
+            <!-- block-row-field -->
 
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><?= $this->translate('Regolamento'); ?></h2>
+            </div>
 
-</div>
-<!-- block-row-field -->
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
 
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
+                <div class="block-field w-4-4">
 
- <div class="block-field bw-f w-1-4">
-    <p> <label><?= $this->translate('Comune di nascita'); ?></label>
-        <?php
-            $birthTown = $this->form->get('user')->get('birthTown');
-            $select = '<select name="'.$birthTown->getName().'" ';
-            foreach ($birthTown->getAttributes() as $attribute => $value) {
-                $select .= $attribute.'="'.$value.'" ';
-            }
-            $select .= '><option></option></select>';
-            echo $select;
-            $input = '<input name="'.$birthTown->getName().'" ';
-            foreach ($birthTown->getAttributes() as $attribute => $value) {
-                $input .= $attribute.'="'.$value.'" ';
-            }
-            $input .= ' style="display: none;" value="'.$birthTown->getValue().'" disabled></ipnut>';
-            echo $input;
-            echo $this->formElementErrors($birthTown, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+                    <p class="text-align-center">
+                        <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
+                            <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+                        </a>
+                    </p>
+                    <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($regulationCondition1) ?>
+                        <span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
+                    </label>
+                    <br></br>
+                    <?php echo $this->formElementErrors($regulationCondition1, ['class' => 'errors']); ?>
+                    <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($regulationCondition2) ?>
+                        <span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
+                    </label>
+                    <br></br>
+                    <?php echo $this->formElementErrors($regulationCondition2, ['class' => 'errors']); ?>
 
-<div class="block-field bw-f w-3-4 last">
+                </div>
 
- <div class="block-field bw-f w-3-4">
-    <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
-        <?php
-            $address = $this->form->get('user')->get('address');
-            echo $this->formElement($address);
-            echo $this->formElementErrors($address, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            </div>
+            <!-- block-row-field -->
 
-<div class="block-field bw-f last w-1-4">
-    <p> <label><?= $this->translate('Cap'); ?></label>
-        <?php
-            $zipCode = $this->form->get('user')->get('zipCode');
-            echo $this->formElement($zipCode);
-            echo $this->formElementErrors($zipCode, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><?= $this->translate('Privacy'); ?></h2>
+            </div>
 
-</div>
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
 
-</div>
-<!-- block-row-field -->
+                <div class="block-field w-4-4">
 
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
+                    <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
+                        <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+                    </a>
+                    <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($privacyCondition) ?>
+                        <span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
+                    </label>
+                    <br></br>
+                    <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
+                </div>
 
- <div class="block-field bw-f w-1-4">
-    <p> <label><?= $this->translate('Citt&agrave;'); ?></label>
-        <?php
-            $town = $this->form->get('user')->get('town');
-            echo $this->formElement($town);
-            echo $this->formElementErrors($town, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            </div>
+            <!-- block-row-field -->
 
-<div class="block-field last bw-f w-3-4">
-    <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo Paese se risiedi all\'estero'); ?></label>
-        <?php
-            $addressInfo = $this->form->get('user')->get('addressInfo');
-            echo $this->formElement($addressInfo);
-            echo $this->formElementErrors($addressInfo, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
+            <div class="block-wrapper-button content-align-center">
+                <input type="reset" class="reset" name="" value="Annulla">
+                <input type="submit" name="" value="Avanti">
+            </div>
 
-</div>
-<!-- block-row-field -->
+            </form>
 
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
- <div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Codice Fiscale'); ?></label>
-        <?php
-            $taxCode = $this->form->get('user')->get('taxCode');
-            echo $this->formElement($taxCode);
-            echo $this->formElementErrors($taxCode, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-<div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Partita IVA (Opzionale)'); ?></label>
-        <?php
-            $vat = $this->form->get('user')->get('vat');
-            echo $this->formElement($vat);
-            echo $this->formElementErrors($vat, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-</div>
-<!-- block-row-field -->
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
- <div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Cellulare'); ?></label>
-        <?php
-            $mobile = $this->form->get('user')->get('mobile');
-            echo $this->formElement($mobile);
-            echo $this->formElementErrors($mobile, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-<div class="block-field bw-f w-2-4">
-    <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
-        <?php
-            $phone = $this->form->get('user')->get('phone');
-            echo $this->formElement($phone);
-            echo $this->formElementErrors($phone, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-</div>
-<!-- block-row-field -->
-
-<?php
-    $profilingCounter = $this->form->get('user')->get('profilingCounter');
-    echo $this->formElement($profilingCounter);
-?>
-
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><i class="fa fa-language"></i> <?= $this->translate('Scegli la lingua preferita'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
- <div class="block-field auto-margin w-1-3">
-    <p>
-        <?php
-            $language = $this->form->get('user')->get('language');
-            echo $this->formElement($language);
-            echo $this->formElementErrors($language, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-</div>
-<!-- block-row-field -->
-
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Codice promo'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
- <div class="block-field auto-margin w-1-3">
-    <p>
-        <?php
-            $promocode = $this->form->get('promocode')->get('promocode');
-            echo $this->formElement($promocode);
-            echo $this->formElementErrors($promocode, ['class' => 'errors']);
-        ?>
-    </p>
-</div>
-
-</div>
-<!-- block-row-field -->
-
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
-    <div class="block-field w-4-4">
-
-        <p class="text-align-center">
-            <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links">
-                <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
-            </a>
-        </p>
-        <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
-        <label class='control checkbox small-form'>
-            <?php echo $this->formElement($generalCondition1)?>
-            <span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
-        </label>
-        <br></br>
-        <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
-        <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
-        <label class='control checkbox small-form'>
-            <?php echo $this->formElement($generalCondition2)?>
-            <span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
-        </label>
-        <br></br>
-        <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
+        </div>
+        <!-- block-form -->
 
     </div>
+    <!-- content -->
 
 </div>
-<!-- block-row-field -->
-
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Regolamento'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
-    <div class="block-field w-4-4">
-
-        <p class="text-align-center">
-            <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
-                <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
-            </a>
-        </p>
-        <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
-        <label class='control checkbox small-form'>
-            <?php echo $this->formElement($regulationCondition1)?>
-            <span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
-        </label>
-        <br></br>
-        <?php echo $this->formElementErrors($regulationCondition1, ['class' => 'errors']); ?>
-        <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
-        <label class='control checkbox small-form'>
-            <?php echo $this->formElement($regulationCondition2)?>
-            <span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
-        </label>
-        <br></br>
-        <?php echo $this->formElementErrors($regulationCondition2, ['class' => 'errors']); ?>
-
-    </div>
-
-</div>
-<!-- block-row-field -->
-
-<div class="block-form-section content-align-center margin-bottom">
-    <h2><?= $this->translate('Privacy'); ?></h2>
-</div>
-
-<!-- block-row-field -->
-<div class="block-row-field clearfix">
-
-    <div class="block-field w-4-4">
-
-        <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
-            <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
-        </a>
-        <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
-        <label class='control checkbox small-form'>
-            <?php echo $this->formElement($privacyCondition)?>
-            <span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
-        </label>
-        <br></br>
-        <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
-    </div>
-
-</div>
-<!-- block-row-field -->
-
-<div class="block-wrapper-button content-align-center">
-    <input type="reset" class="reset" name="" value="Annulla">
-    <input type="submit" name="" value="Avanti">
-</div>
-
-</form>
-
-</div>
-<!-- block-form -->
-
-</div>
-<!-- content -->
-
-</div>
-               <!-- main -->
+<!-- main -->
 
 <?
-    $this->inlineScript()->appendScript(
-        '$(document).ready(function() {
-            $( ".datepicker-date" ).datepicker({
-                dateFormat: "dd-mm-yy",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-100:+0",
-                maxDate: new Date(new Date().getFullYear(), 11, 31)
-            });
-        });'
-    );
+$this->inlineScript()->appendScript(
+'$(document).ready(function() {
+$( ".datepicker-date" ).datepicker({
+dateFormat: "dd-mm-yy",
+changeMonth: true,
+changeYear: true,
+yearRange: "-100:+0",
+maxDate: new Date(new Date().getFullYear(), 11, 31)
+});
+});'
+);
 ?>
 
-<script>
+<script type="text/javascript">
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
-        birthTownValue = "<?= $birthTown->getValue() ?>";
+            birthTownValue = "<?= $birthTown->getValue() ?>";
+
+    $(document).ready(function () {
+        overlay = $('#sng-overlay');
+
+        var now = new Date( <? echo date("Y, n - 1, d, H, i, s") ?> );
+                //var dateStart = new Date(2016, 11, 4,  7, 0, 0, 0);
+                //var dateEnd   = new Date(2016, 11, 4, 15, 0, 0, 0);
+
+                var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
+        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
+
+        if (now > dateStart) {
+            if (now < dateEnd) {
+                overlay.css("visibility", "visible");
+            }
+        }
+
+        $(".sng-overlay-close").click(function (e) {
+            e.preventDefault();
+            overlay.fadeOut(600, function () {
+                overlay.remove();
+            });
+        });
+    });
+
 </script>
