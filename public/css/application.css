@@ -2421,7 +2421,7 @@ section.wrapper {
         margin-bottom: 5%; } }
     @media (max-width: 680px) {
       .menu_main ul.menu li {
-        margin-bottom: 15%; } }
+        margin-bottom: 10%; } }
     .menu_main ul.menu li a {
       font-weight: 500;
       color: #888;
@@ -2431,10 +2431,10 @@ section.wrapper {
         color: black; }
       @media (max-width: 880px) {
         .menu_main ul.menu li a {
-          font-size: 1.6em; } }
+          font-size: 1.4em; } }
       @media (max-width: 680px) {
         .menu_main ul.menu li a {
-          font-size: 1.4em; } }
+          font-size: 1em; } }
     .menu_main ul.menu li.current-menu-item a {
       border-bottom: 2px solid #07BA50;
       color: black; }
