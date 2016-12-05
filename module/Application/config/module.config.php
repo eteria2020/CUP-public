@@ -202,7 +202,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action'     => 'signup11',
+                        'action'     => 'signup',
                     ],
                 ]
             ],
