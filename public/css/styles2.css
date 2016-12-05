@@ -4500,7 +4500,7 @@ img.pull-right {
 .module-modal select.required,
 #main input[type="password"].required,
 .module-modal input[type="password"].required {
-    border: 2px solid #999
+    border: 1px solid #999
 }
 #main input[type="text"].datepicker-date,
 .module-modal input[type="text"].datepicker-date,
@@ -7601,4 +7601,7 @@ body {
 }
 #impliedsubmit {
 	color: #000;
+}
+footer ul {
+    font-size: 1em;
 }
