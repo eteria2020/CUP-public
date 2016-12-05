@@ -1044,7 +1044,7 @@ a {
   transition: color 0.3s; }
   .no-touch a:hover {
     text-decoration: none;
-    color: #fff; }
+    color: rgba(51, 57, 62, 0.8); }
 
 img {
   max-width: 100%;

@@ -263,6 +263,7 @@ $(function () {
 
                 // add the marker to the carMarkers array
                 carMarkers.push(marker);
+                $(".loading_img").fadeOut("slow"); // remove loading img
 
             });
 
