@@ -393,6 +393,17 @@ return [
                     ],
                 ]
             ],
+            'alcons' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{altroconsumo}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'alcons',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -588,6 +599,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'saba',
+                    ],
+                ]
+            ],
+            'scoac1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{scontato}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'scoac1',
                     ],
                 ]
             ],
