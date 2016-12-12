@@ -3007,23 +3007,33 @@ form label {
   font-size: 0.7222222222em;
   font-weight: 500; }
 form input[type="text"], form input[type="email"], form textarea {
-  -webkit-appearance: none;
-  border: none;
-  border-bottom: 2px solid #ebebeb;
-  color: black;
-  outline: none;
-  transition: border-color 0.4s;
-  width: 100%; }
-  form input[type="text"]:hover, form input[type="text"]:focus, form input[type="email"]:hover, form input[type="email"]:focus, form textarea:hover, form textarea:focus {
-    border-bottom: 2px solid #666; }
-  form input[type="text"]::-webkit-input-placeholder, form input[type="email"]::-webkit-input-placeholder, form textarea::-webkit-input-placeholder {
-    color: #ccc; }
-  form input[type="text"]::-moz-placeholder, form input[type="email"]::-moz-placeholder, form textarea::-moz-placeholder {
-    color: #ccc; }
-  form input[type="text"]:-moz-placeholder, form input[type="email"]:-moz-placeholder, form textarea:-moz-placeholder {
-    color: #ccc; }
-  form input[type="text"]:-ms-input-placeholder, form input[type="email"]:-ms-input-placeholder, form textarea:-ms-input-placeholder {
-    color: #ccc; }
+
+    background: #f2f2f2;
+    box-shadow: 0;
+    color: #333;
+    width: 100%;
+    padding: 6px 12.360939431396785px 6px 12.360939431396785px;
+    font-size: 18px;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 40px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 35px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #999
+}
+  form input[type="text"]::-webkit-input-placeholder, form input[type="password"]::-webkit-input-placeholder, form input[type="email"]::-webkit-input-placeholder, form textarea::-webkit-input-placeholder {
+    color: #999; }
+  form input[type="text"]::-moz-placeholder, form input[type="password"]::-moz-placeholder, form input[type="email"]::-moz-placeholder, form textarea::-moz-placeholder {
+    color: #999; }
+  form input[type="text"]:-moz-placeholder, form input[type="password"]:-moz-placeholder, form input[type="email"]:-moz-placeholder, form textarea:-moz-placeholder {
+    color: #999; }
+  form input[type="text"]:-ms-input-placeholder, form input[type="password"]:-ms-input-placeholder, form input[type="email"]:-ms-input-placeholder, form textarea:-ms-input-placeholder {
+    color: #999; }
 form input[type="submit"] {
   outline: none;
   padding: 8px 30px 6px;

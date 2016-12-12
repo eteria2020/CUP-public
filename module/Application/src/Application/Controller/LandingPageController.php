@@ -30,6 +30,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function alconsAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function anasAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -116,6 +121,11 @@ class LandingPageController extends AbstractActionController
     }
 
     public function sabaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function scoac1Action()
     {
         return (new viewModel())->setTerminal(true);
     }
