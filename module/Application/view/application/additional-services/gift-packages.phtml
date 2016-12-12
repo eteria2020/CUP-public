@@ -1,5 +1,4 @@
 <?php
-$form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
 ?>
 
@@ -16,7 +15,7 @@ $bonusPackages = $this->bonusPackages;
 
             <!-- block-nav-app -->
             <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'additional-services']); ?>
+                <?php echo $this->partial('partials/menu-user-area', ['route' => 'gift-packages']); ?>
             </nav>
             <!-- block-nav-app -->
 
@@ -34,32 +33,6 @@ $bonusPackages = $this->bonusPackages;
             <div class="module-column-app-content clearfix">
                 <div class="module-manage-driver-license padding-top">
                     <!-- Promo code section -->
-                    <div class="block-form bw-f w-3-3  clearfix">
-
-                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
-
-                        <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice Promo'); ?></h2>
-                        </div>
-                        <?= $this->form()->openTag($form); ?>
-                            <div class="block-row-field clearfix">
-                                <div class="block-field bw-f w-4-4">
-                                    <p> <label><?= $this->translate('Inserisci il codice promo'); ?></label>
-                                        <?php
-                                        $promoCode = $form->get('promocode')->get('promocode');
-                                        echo $this->formElement($promoCode->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($promoCode, ['class' => 'errors']);
-                                        ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="block-wrapper-button content-align-center">
-                                <input type=submit name="" value="<?= $this->translate('Valida'); ?>">
-                            </div>
-                        <?php echo $this->form()->closeTag(); ?>
-                    </div>
-                    <!-- promo code section -->
-
                     <!-- Margin -->
                     <div class="block-form bw-f margin-separator"></div>
 
@@ -72,21 +45,21 @@ $bonusPackages = $this->bonusPackages;
 
                         <!-- Title -->
                         <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Acquista Pacchetti'); ?></h2>
+                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Acquista Gift Card'); ?></h2>
                         </div>
                         <!-- title -->
 
                         <!-- Description -->
                         <div class="content-align-center block-title highlight">
-                            <?= $this->translate('TIPO CHE SEI, PACCHETTO CHE TROVI') ?>
+                            <?= $this->translate('REGALA LA MOBILIT&Agrave; SOSTENIBILE CON GIFT CARD') ?>
                         </div>
                         <div class="block-field block-avatar-app content-align-center">
-                            <span class="block-sub-title">
-                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi Share&#39;N Go scende fino ad arrivare a 9 &euro; l&#39;ora, la tariffa di car sharing a flusso libero più bassa al mondo. Con l&#39;abbonamento mensile  puoi avere una Share&#39;N Go tutta per te.') ?>
-                                <br>
-                                <span style="font-size: 16px">
-                                    (<a href="package-my-sharengo"><?= $this->translate('clicca qui') ?></a> <?= $this->translate('per ricevere tutte le informazioni necessarie') ?>)
-                                </span>
+                            <span class="block-sub-title" >
+                                <?= $this->translate('Ti stai divertendo un mondo con Share&#39;N Go? Condividi il piacere della mobilit&agrave; elettrica e condivisa, regalando una Gift Card ad un amico, un parente o un collega.') ?><br>
+                                <?= $this->translate('La Gift Card comprende l&#39;iscrizione a Share&#39;N Go con il pacchetto minuti bonus che scegli tu.') ?><br>
+                                <div style='font-size:20px'>
+                                <?= $this->translate('(chi riceve la Gift Card potr&agrave; attivare il suo account con soli 50 cent)' )?>
+                                </div>
                             </span>
                         </div>
                         <br><br>
@@ -94,38 +67,26 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                 if(substr($package->getName(),0, 4)==="GIFT"){
                         ?>
-                            <div class="bw-f w-1-4 clearfix">
-                                <div class="bw-f w-1-2 clearfix">
-                                    <img style="width:110px;" src="<?= $this->basePath('images/pacco_regalo.png') ?>" alt="">
+                            <div class="bw-f w-1-3 clearfix" style="margin-right: 0px;">
+                                <div class="bw-f w-1-2 clearfix" style="margin-right: 5px;">
+                                    <img style="width:122px;" src="<?= $this->basePath('images/gift-packages.png') ?>" alt="">
                                 </div>
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
                                         <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
-                                            <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
-                                            <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
-                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
-
+                                        <p class="block-sub-title" style='font-size:16px'><?= $this->translate('Iscrizione +')?><br><?=  substr($package->getCode(), 4,5)?> <?= $this->translate('min') ?> <?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
                                         <p class="block-sub-title">
                                         <?php
-                                        if($package->getMinutes()>0) {
-                                            echo sprintf("%.3f &euro;/", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min');
-                                        }
+                                        if($package->getMinutes()>0) { echo sprintf("%.2f &euro;", ($package->getCost() / 100) / $package->getMinutes()).$this->translate('min'); }
                                         ?>
-                                        </p>
-                                        <p class="block-sub-title"><?= $this->translate('Validità') ?>
-                                            <?php
-                                                // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                $months = floor($package->getDuration() / 30);
-                                                echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
-                                            ?>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         <?php
-                                }   // enf if
+                                 }  // end if
                             }   // end foreach
                         ?>
                         </div>
@@ -148,14 +109,14 @@ $bonusPackages = $this->bonusPackages;
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                    if(substr($package->getName(),0, 4)==="GIFT"){
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= substr($package->getCode(), 4,5) . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf($this->translate("per %d gg"), $package->getDuration()); ?></div>
@@ -170,6 +131,7 @@ $bonusPackages = $this->bonusPackages;
                                 <div class="block-data-table-td cw-6-6"><?= $package->getNotes() ?></div>
                             </div>
                             <!-- table body -->
+
                             <?php
                                     }   // end if
                                 }   // end foreach

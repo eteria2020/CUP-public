@@ -141,4 +141,63 @@ class AdditionalServicesController extends AbstractActionController
             'bonusPackages' => $bonusPackages
         ]);
     }
+
+    public function giftPackagesAction()
+    {
+        $form = $this->promoCodeForm;
+
+        if ($this->getRequest()->isPost()) {
+            $customer = $this->authService->getIdentity();
+            $postData = $this->getRequest()->getPost()->toArray();
+            $form->setData($postData);
+
+            if ($form->isValid()) {
+
+                $code = $postData['promocode']['promocode'];
+
+                if ($this->promoCodeService->isStandardPromoCode($code)) {
+
+                    try {
+                        $promoCode = $this->promoCodeService->getPromoCode($code);
+                        $this->customersService->addBonusFromPromoCode($customer, $promoCode);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (BonusAssignmentException $e) {
+                        $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
+                    }
+
+                } else if ($this->promoCodeOnceService->isValid($code)) {
+                    try {
+                        $this->promoCodeOnceService->usePromoCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (\Exception $ex) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo PCO.');
+                    }
+                }
+                else {
+                    try {
+                        $this->carrefourService->addFromCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch(NotAValidCodeException $ex){
+                        $this->flashMessenger()->addErrorMessage('Promocode non valido.');
+                    } catch(CodeAlreadyUsedException $ex){
+                        $this->flashMessenger()->addErrorMessage('Promocode già utilizzato.');
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo CR.');
+                    }
+                }
+
+                return $this->redirect()->toRoute('area-utente/gift-packages');
+            }
+        }
+
+        $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
+
+        return new ViewModel([
+            'promoCodeForm' => $form,
+            'bonusPackages' => $bonusPackages
+        ]);
+    }
+
 }

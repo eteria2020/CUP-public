@@ -810,6 +810,16 @@ return [
                             ]
                         ]
                     ],
+                    'gift-packages' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{gift-packages}',
+                            'defaults' => [
+                                'controller' => 'AdditionalServices',
+                                'action' => 'gift-packages'
+                            ]
+                        ]
+                    ],
                     'bonus-package' => [
                         'type' => 'Segment',
                         'options' => [
@@ -836,6 +846,15 @@ return [
                             'route' => '/{fatture}',
                             'defaults' => [
                                 'action' => 'invoices-list'
+                            ]
+                        ]
+                    ],
+                    'package-my-sharengo' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/package-my-sharengo',
+                            'defaults' => [
+                                'action' => 'package-my-sharengo'
                             ]
                         ]
                     ],
