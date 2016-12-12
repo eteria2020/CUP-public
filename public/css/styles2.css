@@ -5231,7 +5231,7 @@ only screen and (min-device-pixel-ratio: 2) {
     text-decoration: none
 }
 .block-title {
-    font-size: 2.0rem;
+    font-size: 1.4rem;
     line-height: 3.130397770826148;
     line-height: 1em;
     margin: 0;
@@ -5239,7 +5239,7 @@ only screen and (min-device-pixel-ratio: 2) {
     padding-bottom: 20px
 }
 .block-sub-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 2.022287066089143;
     line-height: 1em;
     margin: 0;
@@ -5417,11 +5417,12 @@ screen and (min-resolution: 1dppx) {
 .block-form .block-form-section * {
     font-size: 1.5rem;
     line-height: 2.022287066089143;
-    color: #43a34c
+    color: #43a34c;
+    margin-bottom: 0px;
 }
 .block-form label {
     font-weight: 600;
-    font-size: 18px
+    font-size: 15px
 }
 .block-form .block-row-field {
     margin-bottom: 20px
@@ -7624,4 +7625,7 @@ footer ul {
 .block-field.block-avatar-app.content-align-center h2 {
     font-size: 1.5rem !important;
     color: #43a34c !important;
+}
+#viewEditPwd{
+    padding-bottom: 20px;
 }
