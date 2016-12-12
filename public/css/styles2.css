@@ -5231,7 +5231,7 @@ only screen and (min-device-pixel-ratio: 2) {
     text-decoration: none
 }
 .block-title {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     line-height: 3.130397770826148;
     line-height: 1em;
     margin: 0;
@@ -5239,7 +5239,7 @@ only screen and (min-device-pixel-ratio: 2) {
     padding-bottom: 20px
 }
 .block-sub-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 2.022287066089143;
     line-height: 1em;
     margin: 0;
@@ -6017,7 +6017,7 @@ screen and (min-resolution: 1dppx) {
 .block-data-table .block-data-table-th {
     display: table-cell;
     background: #43a34c;
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1.767766952966369;
     float: left;
     line-height: 1em;
@@ -6565,7 +6565,7 @@ body.app .btn-toogle-column-app.side-close .fa {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 7.639641181332994px 20px;
+    padding: 7.639641181332994px 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2)
 }
 .block-nav-app ul li a .fa {
@@ -7604,4 +7604,24 @@ body {
 }
 footer ul {
     font-size: 1em;
+}
+.sng-headers {
+    font-size: 1.5em;
+}
+.sng-table h2 {
+    font-size: 1em;
+}
+.sng-footer {
+ bottom: 5px !important;
+}
+.sng-pack-popup-inner {
+    padding: 1px 4px 30px 4px !important;
+}
+.sng-headers {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.block-field.block-avatar-app.content-align-center h2 {
+    font-size: 1.5rem !important;
+    color: #43a34c !important;
 }
