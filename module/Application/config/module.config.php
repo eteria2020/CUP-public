@@ -217,17 +217,6 @@ return [
                     ]
                 ]
             ],
-            'signup12' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{signup12}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'signup12'
-                    ]
-                ]
-            ],
             'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
@@ -236,17 +225,6 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup3'
-                    ]
-                ]
-            ],
-            'signup13' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{signup13}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'signup13'
                     ]
                 ]
             ],
