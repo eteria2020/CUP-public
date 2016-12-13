@@ -131,40 +131,6 @@ class UserController extends AbstractActionController
         }
     }
 
-        public function signup11Action()
-    {
-        $this->layout('layout/layout2'); //set layout 2
-	//if there are data in session, we use them to populate the form
-        $registeredData = $this->form1->getRegisteredData();
-        $registeredDataPromoCode = $this->form1->getRegisteredDataPromoCode();
-
-        if (!empty($registeredDataPromoCode)) {
-            $this->form1->setData([
-                'promocode' => $registeredDataPromoCode
-            ]);
-        }
-
-        if (!empty($registeredData)) {
-            $this->form1->setData([
-                'user' => $registeredData->toArray($this->hydrator),
-                'promocode' => $registeredDataPromoCode,
-            ]);
-        }
-
-        if ($this->getRequest()->isPost()) {
-            $formData = $this->getRequest()->getPost();
-            $this->form1->setData($formData);
-
-            if ($this->form1->isValid()) {
-                return $this->proceed1($this->form1, $formData['promocode']);
-            } else {
-                return $this->signupForm($this->form1);
-            }
-        } else {
-            return $this->signupForm($this->form1);
-        }
-    }
-    
     public function signupScoreAction()
     {
         $email = strtolower(urldecode($this->params('email')));
@@ -241,14 +207,7 @@ class UserController extends AbstractActionController
 
         return $this->redirect()->toRoute('signup-2');
     }
-    
-    private function proceed1($form, $promoCode)
-    {
-        $form->registerData($promoCode);
 
-        return $this->redirect()->toRoute('signup12');
-    }
-    
     public function signup2Action()
     {
         //if there are data in session, we use them to populate the form
@@ -280,38 +239,6 @@ class UserController extends AbstractActionController
         }
     }
 
-    public function signup12Action()
-    {	
-	$this->layout('layout/layout2'); //set layout 2
-        //if there are data in session, we use them to populate the form
-        $registeredData = $this->form2->getRegisteredData();
-
-        if (!empty($registeredData)) {
-            $this->form2->setData([
-                'driver' => $registeredData->toArray($this->hydrator)
-            ]);
-        }
-
-        if ($this->getRequest()->isPost()) {
-            $postData = $this->getRequest()->getPost();
-
-            if (!isset($postData['driver']['driverLicenseCategories'])) {
-                $driver = $postData['driver'];
-                $driver['driverLicenseCategories'] = [];
-                $postData->set('driver', $driver);
-            }
-            $this->form2->setData($postData);
-
-            if ($this->form2->isValid()) {
-                return $this->conclude1($this->form2);
-            } else {
-                return $this->signupForm($this->form2);
-            }
-        } else {
-            return $this->signupForm($this->form2);
-        }
-    }
-    
     private function conclude($form)
     {
         $form->registerData();
@@ -339,35 +266,7 @@ class UserController extends AbstractActionController
 
         return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage()]);
     }
-    
-        private function conclude1($form)
-    {
-        $form->registerData();
 
-        $data = $this->registrationService->retrieveValidData();
-
-        // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
-        if (empty($data)) {
-            $message = $this->translator->translate('La sessione &egrave; scaduta. E\' necessario ripetere la procedura di registrazione');
-            $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('signup1', ['lang' => $this->languageService->getLanguage()]);
-        }
-        $data = $this->registrationService->formatData($data);
-        try {
-            $this->registrationService->notifySharengoByMail($data);
-            $this->registrationService->saveData($data);
-            $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash']);
-            $this->registrationService->removeSessionData();
-        } catch (\Exception $e) {
-            $this->registrationService->notifySharengoErrorByEmail($e->getMessage().' '.json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('signup12', ['lang' => $this->languageService->getLanguage()]);
-        }
-
-        $this->getEventManager()->trigger('registrationCompleted', $this, $data);
-
-        return $this->redirect()->toRoute('signup13', ['lang' => $this->languageService->getLanguage()]);
-    }
-    
     private function signupForm($form)
     {
         return new ViewModel([
@@ -378,12 +277,6 @@ class UserController extends AbstractActionController
 
     public function signup3Action()
     {
-        return new ViewModel();
-    }
-    
-    public function signup13Action()
-    {
-        $this->layout('layout/layout2');
         return new ViewModel();
     }
 
