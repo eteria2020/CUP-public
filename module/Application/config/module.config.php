@@ -156,18 +156,6 @@ return [
                 ],
                 'may_terminate' => true
             ],
-            'forgot2' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{forgot-password2}',
-                    'defaults' => [
-                        '__NAMESPACE__' => null,
-                        'controller' => 'goalioforgotpassword_forgot',
-                        'action' => 'forgot'
-                    ]
-                ],
-                'may_terminate' => true
-            ],
             'reset' => [
                 'type' => 'Segment',
                 'options' => [
