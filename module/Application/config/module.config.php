@@ -824,6 +824,15 @@ return [
                             ]
                         ]
                     ],
+                    'payment-securecode-cartasi' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/payment-securecode-cartasi',
+                            'defaults' => [
+                                'action' => 'payment-securecode-cartasi'
+                            ]
+                        ]
+                    ],
                     'rents' => [
                         'type' => 'Segment',
                         'options' => [

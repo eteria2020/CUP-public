@@ -407,4 +407,9 @@ class UserAreaController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function paymentSecurecodeCartasiAction()
+    {
+        return new ViewModel();
+    }
 }
