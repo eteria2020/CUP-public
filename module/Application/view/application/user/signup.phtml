@@ -314,7 +314,7 @@ $this->headLink()
                 </div>
 
                 <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Partita IVA (Opzionale)'); ?></label>
+                    <p> <label><?= $this->translate('Partita IVA (solo per ditte individuali e professionisti)'); ?></label>
                         <?php
                         $vat = $this->form->get('user')->get('vat');
                         echo $this->formElement($vat);
