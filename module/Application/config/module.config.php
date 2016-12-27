@@ -502,6 +502,17 @@ return [
                     ],
                 ],
             ],
+            'la7' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{la7}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'la7',
+                    ],
+                ],
+            ],
             'legambiente' => [
                 'type' => 'Segment',
                 'options' => [
