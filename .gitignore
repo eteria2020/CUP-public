@@ -26,3 +26,4 @@ data/export
 // log
 data/log
 data/dumps/*
+/bower_components
