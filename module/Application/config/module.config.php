@@ -86,6 +86,17 @@ return [
                     ],
                 ]
             ],
+            'map' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{map}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'map',
+                    ],
+                ]
+            ],
             'map2' => [
                 'type' => 'Segment',
                 'options' => [

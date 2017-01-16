@@ -81,6 +81,10 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
+    public function mapAction()
+    {
+        return new ViewModel();
+    }
     /**
      * @return \Zend\Http\Response (JSON Format)
      */
