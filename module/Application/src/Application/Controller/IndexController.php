@@ -9,10 +9,17 @@
 
 namespace Application\Controller;
 
+// Internals
+use SharengoCore\Exception\FleetNotFoundException;
+use SharengoCore\Service\CarsService;
+use SharengoCore\Service\FleetService;
 use SharengoCore\Service\ZonesService;
-
+use SharengoCore\Service\PoisService;
+// Externals
+use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 class IndexController extends AbstractActionController
 {
@@ -28,12 +35,34 @@ class IndexController extends AbstractActionController
     private $zoneService;
 
     /**
+     * @var CarsService
+     */
+    private $carsService;
+
+    /**
+     * @var FleetService
+     */
+    private $fleetService;
+
+    /**
+     * @var PoisService
+     */
+
+    /**
      * @param string $mobileUrl
      */
-    public function __construct($mobileUrl, ZonesService $zoneService)
-    {
+    public function __construct(
+        $mobileUrl,
+        ZonesService $zoneService,
+        CarsService $carsService,
+        FleetService $fleetService,
+        PoisService $poisService
+    ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
+        $this->carsService = $carsService;
+        $this->fleetService = $fleetService;
+        $this->poisService = $poisService;
     }
 
     public function indexAction()
@@ -46,12 +75,16 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-        public function map2Action()
+    public function map2Action()
     {
         $this->layout('layout/map2');
         return new ViewModel();
     }
 
+    public function mapAction()
+    {
+        return new ViewModel();
+    }
     /**
      * @return \Zend\Http\Response (JSON Format)
      */
@@ -67,6 +100,39 @@ class IndexController extends AbstractActionController
         $this->getResponse()->setContent(json_encode($data));
         return $this->getResponse();
     }
+
+    public function getListCarsByFleetAction()
+    {
+        $fleetId = $this->params()->fromRoute('fleetId', 0);
+
+        try {
+            $fleet = $this->fleetService->getFleetById($fleetId);
+        } catch (FleetNotFoundException $exception) {
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+            return false;
+        }
+
+        return new JsonModel(
+            $this->carsService->getPublicFreeCarsByFleet($fleet)
+        );
+    }
+
+    public function getListPoisByFleetAction()
+    {
+        $fleetId = $this->params()->fromRoute('fleetId', 0);
+
+        try {
+            $fleet = $this->fleetService->getFleetById($fleetId);
+        } catch (FleetNotFoundException $exception) {
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+            return false;
+        }
+
+        return new JsonModel(
+            $this->poisService->getPublicPoisByFleet($fleet)
+        );
+    }
+
 
     public function carsharingAction()
     {

@@ -7,6 +7,9 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+// Getting the siteroot path ( = sharengo-admin folder)
+$baseDir = realpath(__DIR__.'/../../../');
+
 return [
     'router' => [
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
@@ -33,6 +36,34 @@ return [
                     ],
                 ],
             ],
+            'cars' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/cars/:fleetId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-cars-by-fleet',
+                    ],
+                    'constraints' => [
+                        'fleetId' => '[0-9]+'
+                    ],
+                ],
+            ],
+            'pois' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/pois/:fleetId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-pois-by-fleet',
+                    ],
+                    'constraints' => [
+                        'fleetId' => '[0-9]+'
+                    ],
+                ],
+            ],
             'carsharing' => [
                 'type' => 'Segment',
                 'options' => [
@@ -52,6 +83,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'cosae',
+                    ],
+                ]
+            ],
+            'map' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{map}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'map',
                     ],
                 ]
             ],
@@ -1079,11 +1121,80 @@ return [
     ],
 
     'asset_manager' => [
+        'caching' => [
+            'default' => [
+                'cache'     => 'Assetic\\Cache\\FilesystemCache',
+                'options' => [
+                    'dir' => $baseDir.'/data/cache',
+                ],
+            ],
+        ],
         'resolver_configs' => [
+            'collections' => [
+                // JavaScript
+                'assets-modules/js/vendor.map.js' => [
+                    // Libs
+                    'bower/ol3/ol.js',
+                    'bower/ol3-ext/style/fontsymbol.js',
+                    'bower/ol3-ext/style/fontawesome.def.js',
+                    'bower/ol3-ext/style/shadowstyle.js',
+                    'bower/ol3-geocoder/build/ol3-geocoder.js',
+                    'bower/bootstrap/js/tooltip.js',
+                    'bower/bootstrap/js/popover.js'
+                ],
+                'assets-modules/js/vendor.index.js' => [
+                    // Libs
+                    'assets-modules/js/vendor.map.js',
+                    // Code
+                    'public/js/overlay.js',
+                    'public/js/perfect-scrollbar.jquery.min.js',
+                    'public/js/index.map.js'
+                ],
+                // CSS
+                'assets-modules/css/vendor.map.css' => [
+                    // Libs
+                    'bower/ol3/ol.css',
+                    'bower/ol3-geocoder/build/ol3-geocoder.css',
+                ],
+                'assets-modules/css/vendor.index.css' => [
+                    // Libs
+                    'assets-modules/css/vendor.map.css',
+                    // Code
+                    'public/css/overlay.css',
+                    'public/css/find-address.css',
+                    'public/css/index.map.css'
+                ],
+            ],
+            'aliases' => [
+                // Bower Assets
+                'bower' => $baseDir.'/bower_components',
+
+                // Public Assets
+                'public' => $baseDir.'/public',
+
+                // Overlay Assets
+                'assets-modules/img/overlay' => $baseDir.'/public/images/overlay',
+                'assets-modules/images/overlay' => $baseDir.'/public/images/overlay'
+            ],
             'paths' => [
                 __DIR__ . '/../public',
+                $baseDir.'/public',
             ]
-        ]
+        ],
+        'filters' => [
+            // Minify All JS
+            'js' => [
+                [
+                    'filter' => 'JSMin',
+                ],
+            ],
+            // Minify All CSS
+            'css' => [
+                [
+                    'filter' => 'CssMin',
+                ],
+            ],
+        ],
     ],
 
     'console' => [

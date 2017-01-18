@@ -1,0 +1,22 @@
+{
+  "name": "sharengo-public",
+  "version": "1.0.0",
+  "authors": [
+    "Massimo De Luisa <massimodeluisa@me.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.4",
+    "ol3": "ol3-bower#^3.18",
+    "ol3-ext": "viglino/ol3-ext#gh-pages",
+    "ol3-geocoder": "https://github.com/jonataswalker/ol3-geocoder.git#^2.3.0",
+    "bootstrap": "^3.3.7"
+  }
+}
