@@ -36,6 +36,17 @@ return [
                     ],
                 ],
             ],
+            'zoneosm' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'route' => '/zoneosm',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-osm-zones',
+                    ],
+                ],
+            ],
             'cars' => [
                 'type' => 'Segment',
                 'options' => [

@@ -82,7 +82,7 @@ class IndexController extends AbstractActionController
     }
 
     public function mapAction()
-    {
+    {   
         return new ViewModel();
     }
     /**
@@ -101,6 +101,14 @@ class IndexController extends AbstractActionController
         return $this->getResponse();
     }
 
+    public function getListOsmZonesAction()
+    {
+        $data = $this->zoneService->getListZones(false, true);
+
+        $this->getResponse()->setContent(json_encode($data));
+        return $this->getResponse();
+    }
+    
     public function getListCarsByFleetAction()
     {
         $fleetId = $this->params()->fromRoute('fleetId', 0);
