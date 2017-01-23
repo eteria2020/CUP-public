@@ -29,7 +29,10 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    public function aidiaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
     public function alconsAction()
     {
         return (new viewModel())->setTerminal(true);

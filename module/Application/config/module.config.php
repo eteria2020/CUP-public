@@ -401,6 +401,17 @@ return [
                     ],
                 ]
             ],
+            'aidia' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{aidia}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aidia',
+                    ],
+                ]
+            ],
             'alcons' => [
                 'type' => 'Segment',
                 'options' => [
