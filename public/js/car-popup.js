@@ -197,7 +197,7 @@ function confirm()
                 if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null) {
                     if (jsonData.status == 200) {
                         car['isReservedByCurrentUser'] = true;
-                        marker.setIcon(carMarkerPathReserved);
+                        //marker.setIcon(carMarkerPathReserved);
                         completed(jsonData.reason);
                     } else {
                         completed(jsonData.reason);
