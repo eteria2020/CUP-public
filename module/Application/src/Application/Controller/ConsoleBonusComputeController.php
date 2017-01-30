@@ -342,4 +342,64 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
+
+    public function bonusParkIslandsAction()
+    {
+        $this->prepareLogger();
+
+        $this->logger->log("\nStarted computing for bonuses park islands\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        $this->zoneBonusPark();
+    }
+    private function zoneBonusPark()
+    {
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation();
+
+        $this->logger->log("-------- Compute Zone Bonuses Park\n");
+        $this->logger->log("Trips to compute: ".count($tripsToBeComputed)."\n\n");
+/*
+        foreach ($tripsToBeComputed as $trip) {
+
+            if (!$trip instanceof Trips) {
+                continue;
+            }
+
+            // Put to true $bonusComputed in trips
+            $this->editTripService->doEditTripBonusComputed($trip, true);
+
+            if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
+            {
+                continue;
+            }
+
+            // Verify if there are zone bonuses in that fleet
+            $zonesBonus = $this->zonesService->getListZonesBonusByFleet($trip->getFleet());
+            if (count($zonesBonus) == 0)
+            {
+                continue;
+            }
+
+            // Verify if customer reached max amount in zone bonuses passed and return a list of those available
+            $residuals = $this->findBonusUsable($trip, $zonesBonus);
+            if (count($residuals) == 0)
+            {
+                continue;
+            }
+
+            // Read and process trip events to find stops for parking, contolling if they obtain zone bonuses
+            $this->verifyBonus($trip, $zonesBonus, $residuals);
+
+            // Assign zone bonuses to customer
+            foreach($residuals as $zone => $attribs)
+            {
+                if ($attribs["adding"] > 0)
+                {
+                    $this->assigneBonus($trip, $attribs["adding"], $zone, $attribs["duration"], "Parking bonus ".$attribs["name"]);
+                }
+            }
+        }
+        
+        */
+    }
+    
 }

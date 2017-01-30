@@ -1431,6 +1431,17 @@ return [
                         ]
                     ]
                 ],
+                'bonus-park' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus park [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-park-islands'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [
