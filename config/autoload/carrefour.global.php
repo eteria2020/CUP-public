@@ -156,12 +156,7 @@ return [
             '3587' => ['VIA DEI MISSAGLIA 70','MILANO']
         ],
         'dates' => [
-            '1607',
-            '1608',
-            '1609',
-            '1610',
-            '1611',
-            '1612'
+               //dates of receipts
         ],
         'minutes' => 5,
         'description' => 'Bonus promozione Carrefour',
