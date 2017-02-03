@@ -533,6 +533,17 @@ return [
                     ],
                 ]
             ],
+            'flcg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{flcg}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'flcg',
+                    ],
+                ]
+            ],
             'futura' => [
                 'type' => 'Segment',
                 'options' => [
