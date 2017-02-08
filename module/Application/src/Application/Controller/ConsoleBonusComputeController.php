@@ -4,10 +4,12 @@ namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\TripsService;
+use SharengoCore\Service\PoisService;
 use SharengoCore\Service\EditTripsService;
 use SharengoCore\Service\BonusService;
 use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
+use SharengoCore\Service\EmailService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\Trips;
@@ -42,7 +44,17 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var ZonesService
      */
     private $zonesService;
+    
+    /**
+     * @var PoisService
+     */
+    private $poisService;
 
+    /**
+     * @var EmailService
+     */
+    private $emailService;
+    
     /**
      * @var EventsService
      */
@@ -74,6 +86,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         EditTripsService $editTripService,
         BonusService $bonusService,
         ZonesService $zonesService,
+        EmailService $emailService,
+        PoisService $poisService,
         EventsService $eventsService,
         Logger $logger,
         $config
@@ -82,6 +96,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->tripsService = $tripsService;
         $this->editTripService = $editTripService;
         $this->bonusService = $bonusService;
+        $this->poisService = $poisService;
+        $this->emailService = $emailService;
         $this->zonesService = $zonesService;
         $this->eventsService = $eventsService;
         $this->logger = $logger;
@@ -343,63 +359,87 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
 
-    public function bonusParkIslandsAction()
+    public function bonusPoisAction()
     {
         $this->prepareLogger();
-
-        $this->logger->log("\nStarted computing for bonuses park islands\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
-        $this->zoneBonusPark();
+                
+        $this->logger->log("\nStarted computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n");
+        
+        $date_ts = $this->request->getParam('data-run');
+        $radius = $this->request->getParam('radius');
+        
+        $this->logger->log("\nShell date: ".$date_ts."\n");
+        $this->logger->log("Radius: ".$radius."\n\n");
+        
+        $this->zoneBonusPark($date_ts, $radius);
     }
-    private function zoneBonusPark()
+    private function zoneBonusPark($date_ts, $radius)
     {
-        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation();
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts);
 
-        $this->logger->log("-------- Compute Zone Bonuses Park\n");
+        $this->logger->log("-------- Compute Zone Bonuses Park POIS\n");
         $this->logger->log("Trips to compute: ".count($tripsToBeComputed)."\n\n");
-/*
+
         foreach ($tripsToBeComputed as $trip) {
 
             if (!$trip instanceof Trips) {
                 continue;
             }
 
-            // Put to true $bonusComputed in trips
-            $this->editTripService->doEditTripBonusComputed($trip, true);
-
             if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
             {
                 continue;
             }
-
-            // Verify if there are zone bonuses in that fleet
-            $zonesBonus = $this->zonesService->getListZonesBonusByFleet($trip->getFleet());
-            if (count($zonesBonus) == 0)
-            {
-                continue;
-            }
-
+       
             // Verify if customer reached max amount in zone bonuses passed and return a list of those available
-            $residuals = $this->findBonusUsable($trip, $zonesBonus);
-            if (count($residuals) == 0)
+            $residuals = $this->poisService->checkPointInDigitalIslands($trip->getFleet(), $trip->getLatitudeEnd(), $trip->getLongitudeEnd(), $radius);
+            if ($residuals == false)
             {
                 continue;
             }
-
-            // Read and process trip events to find stops for parking, contolling if they obtain zone bonuses
-            $this->verifyBonus($trip, $zonesBonus, $residuals);
-
-            // Assign zone bonuses to customer
-            foreach($residuals as $zone => $attribs)
+            
+            // Verify that customer reiceves only one bonus for trips with same plate
+            $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate(), $trip->getCustomer()->getId());
+            //$this->logger->log("Verified: ".count($verified)."\n");
+            if (count($verified)>=1)
             {
-                if ($attribs["adding"] > 0)
-                {
-                    $this->assigneBonus($trip, $attribs["adding"], $zone, $attribs["duration"], "Parking bonus ".$attribs["name"]);
-                }
-            }
+                continue;
+            } 
+
+            $this->logger->log("Trip ID:". $trip->getId() ."- Customer ID: ".$trip->getCustomer()->getId()." - Carplate:". $trip->getCar()->getPlate() ."\n\n");
+                
+            // Assign bonuses to customer
+            $this->assigneBonus($trip, 5, 'POIS', 30, "Parking bonus POIS: ".$trip->getCar()->getPlate());
+                
+            //send email to customer -> notification bonuses
+            $this->logger->log("email inviata a:".$trip->getCustomer()->getEmail()."\n");
+            
+            // inserire try catch
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), "Sharengo");
         }
         
-        */
+        //Recap bonus assigned
+        
+        $this->logger->log("\nEnd computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
-    
+        private function sendEmail($email, $name)
+    {
+        //$writeTo = $this->emailSettings['from'];
+        $content = sprintf(
+            file_get_contents(__DIR__.'/../../../view/emails/poisparkbonus-it_IT.html'),
+            $name
+            //$surname,
+            //$serverUrl().$url('signup_insert').'?user='.$hash,
+            //$writeTo
+        );
+        $attachments = [
+            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+        ];
+        $this->emailService->sendEmail(
+            $email, //to
+            'Share’nGo',//object email
+            $content,
+            $attachments
+        );
+    }
 }

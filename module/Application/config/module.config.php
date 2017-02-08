@@ -1434,11 +1434,11 @@ return [
                 'bonus-park' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'bonus park [--dry-run|-d]',
+                        'route' => 'bonus park <data-run> <radius> [--dry-run|-d]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
-                            'action' => 'bonus-park-islands'
+                            'action' => 'bonus-pois'
                         ]
                     ]
                 ],
