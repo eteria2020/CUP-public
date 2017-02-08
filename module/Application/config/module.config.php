@@ -643,6 +643,17 @@ return [
                     ],
                 ],
             ],
+            'payback' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{payback}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'payback',
+                    ],
+                ],
+            ],
             'saba' => [
                 'type' => 'Segment',
                 'options' => [
