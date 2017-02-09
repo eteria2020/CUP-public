@@ -434,6 +434,17 @@ return [
                     ],
                 ]
             ],
+            'aldai' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{aldai}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aldai',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -488,6 +499,17 @@ return [
                         'action'     => 'chigi',
                     ],
                 ],
+            ],
+            'espresso' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{espresso}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'espresso',
+                    ],
+                ]
             ],
             'eq-sharing' => [
                 'type' => 'Segment',
