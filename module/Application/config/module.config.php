@@ -434,6 +434,17 @@ return [
                     ],
                 ]
             ],
+            'aldai' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{aldai}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aldai',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -489,6 +500,17 @@ return [
                     ],
                 ],
             ],
+            'espresso' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{espresso}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'espresso',
+                    ],
+                ]
+            ],
             'eq-sharing' => [
                 'type' => 'Segment',
                 'options' => [
@@ -530,6 +552,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'firenze',
+                    ],
+                ]
+            ],
+            'flcg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{falacosagiusta}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'flcg',
                     ],
                 ]
             ],
@@ -629,6 +662,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'ordpro',
+                    ],
+                ],
+            ],
+            'payback' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{payback}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'payback',
                     ],
                 ],
             ],

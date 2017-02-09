@@ -33,6 +33,12 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
+    
+    public function aldaiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function alconsAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -58,6 +64,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function espressoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function eqSharingAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -78,6 +89,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function flcgAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function futuraAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -122,7 +138,12 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    
+    public function paybackAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function romaAction()
     {
         return (new viewModel())->setTerminal(true);
