@@ -414,8 +414,8 @@ class ConsoleBonusComputeController extends AbstractActionController
             //send email to customer -> notification bonuses
             $this->logger->log("email inviata a:".$trip->getCustomer()->getEmail()."\n");
             
-            // inserire try catch
-            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), "Sharengo");
+            // inserire try catch nel caso di errore
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName());
         }
         
         //Recap bonus assigned
