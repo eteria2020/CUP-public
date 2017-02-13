@@ -385,34 +385,36 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (!$trip instanceof Trips) {
                 continue;
             }
-
-            if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
-            {
+            
+            if ($trip->getDurationMinutes()<=5){
                 continue;
             }
-       
+            //if ($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
+            //{
+            //    continue;
+            //}
+            
             // Verify if customer reached max amount in zone bonuses passed and return a list of those available
-            $residuals = $this->poisService->checkPointInDigitalIslands($trip->getFleet(), $trip->getLatitudeEnd(), $trip->getLongitudeEnd(), $radius);
-            if ($residuals == false)
-            {
+            $residuals = $this->poisService->checkPointInDigitalIslands($trip->getFleet()->getId(), $trip->getLatitudeEnd(), $trip->getLongitudeEnd(), $radius);
+            //$this->logger->log("Verified: ".count($residuals)." id: - ".$trip->getId()."\n");            
+            if (count($residuals) == 0){
                 continue;
             }
             
             // Verify that customer reiceves only one bonus for trips with same plate
             $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate(), $trip->getCustomer()->getId());
-            //$this->logger->log("Verified: ".count($verified)."\n");
-            if (count($verified)>=1)
-            {
+            //$this->logger->log("Verified1: ".count($verified)."\n");
+            if (count($verified)>=1){
                 continue;
             } 
 
-            $this->logger->log("Trip ID:". $trip->getId() ."- Customer ID: ".$trip->getCustomer()->getId()." - Carplate:". $trip->getCar()->getPlate() ."\n\n");
+            //$this->logger->log("Trip ID:". $trip->getId() ."- Customer ID: ".$trip->getCustomer()->getId()." - Carplate:". $trip->getCar()->getPlate() ."\n\n");
                 
             // Assign bonuses to customer
-            $this->assigneBonus($trip, 5, 'POIS', 30, "Parking bonus POIS: ".$trip->getCar()->getPlate());
+            $this->assigneBonus($trip, 5, 'POIS', 30, "Bonus parcheggio nei pressi di punto di ricarica - ".$trip->getCar()->getPlate());
                 
             //send email to customer -> notification bonuses
-            $this->logger->log("email inviata a:".$trip->getCustomer()->getEmail()."\n");
+            $this->logger->log("send email:".$trip->getCustomer()->getEmail()."\n");
             
             // inserire try catch nel caso di errore
             $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName());
