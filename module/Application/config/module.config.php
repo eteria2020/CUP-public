@@ -577,7 +577,8 @@ return [
                     ],
                 ]
             ],
-            'gym16' => [
+            // remove 2017-02-13
+            /* 'gym16' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{gym16}',
@@ -587,7 +588,7 @@ return [
                         'action'     => 'gym16',
                     ],
                 ],
-            ],
+            ], */
             'kpmg' => [
                 'type' => 'Segment',
                 'options' => [
@@ -698,7 +699,8 @@ return [
                     ],
                 ]
             ],
-            'sim1' => [
+            // disable 2017-02-13
+            /*'sim1' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{sim1}',
@@ -708,7 +710,7 @@ return [
                         'action'     => 'sim1',
                     ],
                 ]
-            ],
+            ],*/
             'svolta' => [
                 'type' => 'Segment',
                 'options' => [
