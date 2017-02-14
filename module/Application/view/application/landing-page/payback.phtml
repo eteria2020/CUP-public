@@ -20,47 +20,72 @@
         <link href="/payback/application/css/style.css" rel="stylesheet">
 
         <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments);
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m);
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-            ga('create', 'UA-63160906-2', 'auto');
-            ga('send', 'pageview');
+          ga('create', 'UA-63160906-2', 'auto');
+          ga('send', 'pageview');
+
         </script>
     </head>
-  <body class="bg-blue">
-    <div class="container-fluid lato-bold">
-      <div class="row bg-grey bg-blue">
-        <div class="col-lg-7 col-md-8">
-          <img src="/payback/application/images/sharengo_img.jpg" class="img-responsive" style="width: 100%"/>
-        </div>
-        <div class="col-lg-5 col-md-4 text-center" >
-          <br class="visible-md visible-lg">
-          <br class="visible-xs visible-sm">
-          <span class="lato-bold strong-big white">Con la carta PAYBACK usi a MILANO, ROMA e FIRENZE le auto elettriche e condivise di</span><br><br>
-            <span class="lato-bold strong-more-big yellow">SHARE'NGO</span><br><br>
-            <span class="lato-bold strong-big white">con l'iscrizione ridotta da 10 a 1 € e la tariffa scontata del 20%<br>(22 cent./minuto)</span><br><br>
-            <span class="lato-bold strong-more-big yellow">REGISTRATI OGGI</span>
+    
+    <body class="bg-grey">
+    	<div class="container-fluid lato-bold">
+    		<div class="col-sm-12 bg-grey">
+                <div class="col-sm-7 col-sm-pull-5 img-mobile">
+                    <img src="/payback/application/images/payback-top.jpg" class="img-responsive"/>
+                </div>
+                <div class="col-sm-7 img-mobile">
+                    <img src="/payback/application/images/payback-bottom.jpg" class="img-responsive"/>
+                </div>
+    			<div class="col-sm-5 col-sm-push-7 text-center" id="first-paragraph">
+    				
+                    
 
+    				<p class="white" id="paragraph1">
+                        <span class="strong desk-block lato-regular">Con la carta PAYBACK usi a</span>
+                        <span class="strong desk-block lato-regular">MILANO, ROMA e FIRENZE</span>
+                        <span class="strong desk-block lato-regular">le auto elettriche e condivise di</span>
+                        <span class="yellow strong lato-bold">SHARE'NGO</span>
+                    	<span class="strong desk-block lato-regular">con l'iscrizione ridotta da 10 a 1 €</span>
+                        <span class="strong desk-block lato-regular">e la tariffa scontata del 20%</span>
+                        <span class="strong desk-block lato-regular">(22 cent./minuto)</span>
+					</p>
+    			</div>
+    			<div class="col-sm-7 col-sm-pull-5 img-desk">
+    				<img src="/payback/application/images/payback-top.jpg" class="img-responsive"/>
+    			</div>
+    			
+    		</div>
+    		<div class="col-sm-12 bg-grey">
+    			<div class="col-sm-7 img-desk">
+    				<img src="/payback/application/images/payback-bottom.jpg" class="img-responsive"/>
+    			</div>
+    			
+    			<div class="col-sm-5 text-center p-top-5" id="second-paragraph">
+    				
+    				<p class="yellow strong" id="registrati">
+    					<span class="lato-bold"><br/>REGISTRATI OGGI<br/></span>
+                        <span class="lato-bold">CON IL CODICE PROMO</span>
+    				</p>
 
-          <div class="text-center space">
-            <span class="lato-bold strong-more-small white">CON IL CODICE PROMO
-            </span><br>
-            <br>
-            <a href="<?= $this->url('promocode-signup', ['promocode' => 'PBACK']); ?>" id="submit" class="button" onClick="ga('send', 'event', {eventCategory: 'landing', eventAction: 'click', eventLabel: 'PBACK'});">PBACK</a>
-            </a>
-          </div>
-        </div>
-        <!-------->
-      </div>
-    </div>
-  </body>
+                             
+                    <a href="<?= $this->url('promocode-signup', ['promocode' => 'PBACK']); ?>" id="submit" class="button" onClick="ga('send', 'event', {eventCategory: 'landing', eventAction: 'click', eventLabel: 'PBACK'});">
+                         <button class="strong">PBACK</button>
+					</a>
+<!--<p></p>
+                    <p class="white strong" id="paragraph2">
+                        <span class="lato-regular">Con la mobilit&agrave; sostenibile</span>
+                        <span class="lato-regular">le nostre citt&agrave;</span>
+                        <span class="lato-regular">saranno sempre pi&ugrave; vivibili.</span>
+                    </p>-->
+
+                   
+    			</div>
+    			
+    		</div>
+    	</div>
+    </body>
 </html>
