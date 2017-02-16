@@ -1,4 +1,4 @@
-/* Global variables */
+/* Global variables document*/
 
 // hold the km value in this var
 var oldKm;
@@ -20,7 +20,6 @@ var marker;
 // get html elements
 var mainContainer = document.getElementById('car-popup');
 var btnClose = document.getElementById('btn-close');
-var btnCoverage = document.getElementById('coverage');
 // elements modified for second popup
 var leftColumn = document.getElementById('left-column');
 var rightColumn = document.getElementById('right-column');
@@ -60,10 +59,6 @@ btnConfirm.addEventListener('click', function(event)
 btnDone.addEventListener('click', function(event)
 {
     close();
-});
-btnCoverage.addEventListener('click', function(event)
-{
-    verifyCoverage();
 });
 btnReserve.addEventListener('click', function(event)
 {
@@ -108,7 +103,6 @@ function nextStep()
     setRightBottomBlockTitle(titleRemember, 2);
     oldKm = blockRightBottomText.innerHTML;
     blockRightBottomText.innerHTML = textRemember;
-    btnCoverage.style.display = "none";
 }
 
 // avoid multiple function calls
@@ -168,7 +162,6 @@ function reset()
     circleIcon.style.display = "block";
     setRightBottomBlockTitle(titleMilage, 1);
     blockRightBottomText.innerHTML = oldKm;
-    btnCoverage.style.display = "inline";
 }
 
 // close the popup and reset some data
@@ -204,7 +197,7 @@ function confirm()
                 if (typeof jsonData.reason !== 'undefined' && jsonData.reason !== null) {
                     if (jsonData.status == 200) {
                         car['isReservedByCurrentUser'] = true;
-                        marker.setIcon(carMarkerPathReserved);
+                        //marker.setIcon(carMarkerPathReserved);
                         completed(jsonData.reason);
                     } else {
                         completed(jsonData.reason);
@@ -230,14 +223,6 @@ function completed(text)
     setRightBottomBlockTitle(text, 3);
     blockRightBottomText.innerHTML = '';
 }
-
-// draw a circle on the map with the coverage
-function verifyCoverage()
-{
-    drawCoverage(carPos, carBattery);
-    close();
-}
-
 
 
 /* Setters */
@@ -276,7 +261,11 @@ function setLocationText(text)
 
 function setBatteryText(battery)
 {
-    mileage = Math.round(0.6 * battery);
+    var mileage = parseInt(battery);
+    if(mileage<=40){
+        mileage = mileage -10;
+    }
+
     blockRightBottomText.innerHTML = mileage + textMileage;
 }
 

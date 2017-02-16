@@ -10,6 +10,7 @@ $config = [
         // 3rd party modules
         'DoctrineModule',
         'DoctrineORMModule',
+        'DoctrineMongoODMModule',
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',

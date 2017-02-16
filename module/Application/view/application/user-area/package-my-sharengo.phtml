@@ -1,0 +1,98 @@
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <div class="module-column-app side-sx">
+
+            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
+
+            <!-- block-nav-app -->
+            <nav class="block-nav-app">
+                <?php echo $this->partial('partials/menu-user-area', ['route' => 'package-my-sharengo']); ?>
+            </nav>
+            <!-- block-nav-app -->
+
+        </div>
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('PACKAGE MY SHARE\'N GO'); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+                <br>
+                <button onclick="goBack()"><?= $this->translate('Indietro') ?></button>
+                <table id="textEdit" style="display: table;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="Image MainText" valign="top" align="center" data-gcf-font-size="12pt">
+                                <table class="OneColumnMobile" width="598" data-padding-converted="true" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 0px;" width="100%">
+                                                <div align="center"><img class="cc-image-resize" style="display: block; height: auto !important; max-width: 100% !important;" vspace="0" border="0" name="ACCOUNT.IMAGE.268" hspace="0" width="598" src="<?= $this->basePath('images/package-my-sharengo.jpg') ?>"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="textEdit" style="display: table; text-align: center;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="Content MainText" style="font-family: Trebuchet MS, Verdana, Helvetica, sans-serif;" valign="top" align="justify" data-gcf-font-size="12pt">
+                                <br>
+                                <?= $this->translate('MySHARE&#39;NGO &egrave; un ABBONAMENTO MENSILE con validit&agrave; di 30 gg che acquistate quando vi pare, come gli altri pacchetti, in Area Riservata a 360&euro; (300 &euro; + IVA).&nbsp; Al momento dell&#39;acquisto vi vengono immediatamente&nbsp; accreditati 45.000 minuti (tutti i minuti di un mese da 30 gg) e ricevete una mail con le indicazioni per concordare la consegna della vostra vettura lo stesso giorno o quello successivo. <strong>Da quel giorno l&#39;auto sar&agrave; esclusivamente per voi </strong>con l&#39;unico onere di gestirvi la ricarica in casa o c/o una colonnina ENEL o A2A (e gli abbonamenti mensili sono molto favorevoli). <br><br>In termini pratici:&nbsp;') ?>
+                                <ul>
+                                    <li><?= $this->translate('Non chiuderete mai la vostra corsa (terrete l&#39;auto in parcheggio)') ?></li>
+                                    <li><?= $this->translate('L&#39;auto andr&agrave; e uscir&agrave; dalla ricarica senza alcun intervento particolare') ?></li>
+                                    <li><?= $this->translate('La manutenzione ordinaria e straordinaria sar&agrave; a nostro carico') ?></li>
+                                    <li><?= $this->translate('Avrete un&#39;auto sostitutiva se e quando servir&agrave;') ?></li>
+                                    <li><?= $this->translate('L&#39;abbonamento si rinnover&agrave; automaticamente ogni mese, salvo disdetta da parte vostra entro 7 gg dalla chiusura del mese') ?></li>
+                                </ul>
+                                <div><?= $this->translate('E il costo al minuto? Calcolatelo voi per i km e il tempo che userete la vostra Share&#39;N Go,&nbsp; ricordando che NON AVETE LIMITI di chilometraggio o di Area Operativa o di minuti&nbsp; corsi e che entrate e parcheggiate liberamente in centro.&nbsp;') ?></div>
+                                <br>
+                                <div style="color: #800000;">
+                                    <span>
+                                        <strong>
+                                            <?= $this->translate('Attenzione: abbiamo una disponibilit&agrave; iniziale di 25 auto per il progetto sperimentale MySHARE&#39;NGO e quindi - se vi interessa - scriveteci presto a ') ?>
+                                                <a style="color: blue; text-decoration: underline;" shape="rect" href="mailto:mysharengo@sharengo.eu?subject=MYSHARENGO" linktype="2" target="_blank">mysharengo@sharengo.eu</a>
+                                        </strong>
+                                    </span>
+                                </div>
+                                <br>
+                                <div>
+                                    <span>
+                                        <?= $this->translate('Gli utenti MySHARE&#39;NGO saranno automaticamente iscritti ad un Priority Club con numero di telefono riservato, uno speciale contratto di noleggio e l&#39;attenzione che meritano i nostri migliori clienti.&nbsp; ') ?>
+                                    </span>
+                                </div>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button onclick="goBack()"><?= $this->translate('Indietro') ?></button>
+            </div>
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+</script>

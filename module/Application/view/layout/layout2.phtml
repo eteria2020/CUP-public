@@ -1,0 +1,221 @@
+<?php echo $this->doctype(); ?>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Share\'ngo'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headMeta()
+            ->appendName('description', '')
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <?php echo $this->headLink([
+                'rel' => 'shortcut icon',
+                'type' => 'image/x-icon',
+                'href' => $this->basePath() . '/img/favicon.ico'
+            ])
+            ->appendStylesheet('//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300')
+            ->appendStylesheet($this->basePath('css/styles2.css'), 'screen')
+            ->appendStylesheet($this->basePath('css/addons.css'), 'screen')
+            ->appendStylesheet($this->basePath('css/core.css?ver=4.6.1'), 'screen') // da sostituire con il link al rokivo css
+            ->appendStylesheet($this->basePath('css/application.css?ver=4.6.1'), 'screen') // da sostituire rokivo
+            ->appendStylesheet($this->basePath('css/print.css'), 'print')
+            ->appendStylesheet($this->basePath('css/ie8.css'), 'screen', 'lte IE 8')
+            ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css')
+        ?>
+
+        <!-- Scripts -->
+        <?php $this->headScript()
+            ->prependScript('window.jQuery || document.write(\'<script src="js/vendor/jquery-1.8.2.min.js"><\/script>\')')
+            ->prependFile('//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js')
+            ->prependFile('//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
+            ->appendFile($this->basePath('js/jquery.backgroundSize.js'), 'text/javascript', ['conditional' => 'lte IE 8'])
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js')
+            ->appendFile($this->basePath('js/jquery.cookiesdirective.js'));
+
+        $this->headScript()
+            ->appendScript($this->intercomSettings())
+            ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
+
+            if ($this->config('googleAnalytics', 'key')) {
+                $this->headScript()->appendScript(
+                    "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', '".$this->config('googleAnalytics', 'key')."', 'auto');
+                    ga('send', 'pageview');"
+                );
+            }
+
+            echo $this->headScript();
+            echo $this->headStyle();
+            echo $this->placeholder('google-track-adwords');
+            echo $this->placeholder('facebook-pixel');
+        ?>
+<body <?= $this->isUserArea($this->currentRoute()) ? 'class="app"' : ''; ?>>
+		    <!-- Header -->
+<header class="main_head">
+
+    <div class="boxed">
+        <div class="top_head">
+            <h1 class="logo">
+            <span>Share'n Go</span>
+            <a href="http://site.sharengo.it" class="custom-logo-link" rel="home" itemprop="url"><img width="384" height="76" src="../images/logo-1.png" class="custom-logo" alt="logo" itemprop="logo" srcset="../images/logo-1.png 384w, ../images/logo-1-150x30.png 150w, ../images/logo-1-150x30@2x.png 300w" sizes="(max-width: 384px) 100vw, 384px"></a></h1>
+        </div>
+
+        <div class="button_container" id="toggle">
+            <span class="top"></span>
+            <span class="middle"></span>
+            <span class="bottom"></span>
+        </div>
+
+        <nav class="menu_main">
+            <ul class="menu">
+                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="http://site.sharengo.it/come-funziona/">Come funziona</a></li>
+                <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="http://site.sharengo.it/tariffe-promozioni/">Tariffe &amp; promozioni</a></li>
+                <li id="menu-item-258" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-258"><a href="http://site.sharengo.it/la-citta-cambia/">La città cambia</a></li>
+                <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="http://site.sharengo.it/chi-e-sharen-go/">Chi è Share’nGo</a></li>
+                <?php if($this->loggedUser): ?>
+                <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('logout'); ?>">Logout</a></li>
+                <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('login2'); ?>">Area utente</a></li>
+                <?php else: ?>
+                <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('login2'); ?>">Accedi</a></li>
+                <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('signup1'); ?>">Iscriviti</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+<!-- outer -->
+        <div id="outer">
+            <?php echo $this->content; ?>
+        </div>
+
+<!-- Footer -->
+<footer class="main_foot">
+    <div class="boxed">
+        <div id="footer_widget">
+            <div class="widget_box seguici">
+                <div class="fwidget">
+                    <h3>Seguici su</h3>
+                    <div class="menu-social-container">
+                        <ul id="menu-social" class="menu">
+                            <li id="menu-item-104" class="facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-104"><a target="_blank" href="https://www.facebook.com/ShareNGo.eu/">facebook</a></li>
+                            <li id="menu-item-105" class="twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-105"><a target="_blank" href="https://twitter.com/share_n_go">twitter</a></li>
+                            <li id="menu-item-106" class="linkedin menu-item menu-item-type-custom menu-item-object-custom menu-item-106"><a target="_blank" href="https://www.linkedin.com/company/share'ngo">linkedin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fwidget">
+                    <div class="textwidget">© Share'ngo CS Group Spa 2016</div>
+                </div>
+            </div>
+            <div class="widget_box menu_uno">
+                <div class="fwidget">
+                    <h3>Share’ngo</h3>
+                    <div class="menu-menu-foot-1-container">
+                        <ul id="menu-menu-foot-1" class="menu">
+                            <li id="menu-item-101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101"><a href="http://site.sharengo.it/contatti/">Contatti</a></li>
+                            <li id="menu-item-103" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103"><a href="mailto:info@sharengo.it">Lavora con noi</a></li>
+                            <li id="menu-item-102" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102"><a href="http://site.sharengo.it/press/">Press</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="widget_box menu_due">
+                <div class="fwidget">
+                    <h3>Supporto</h3>
+                    <div class="menu-menu-foot-2-container">
+                        <ul id="menu-menu-foot-2" class="menu">
+                            <li id="menu-item-270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="http://site.sharengo.it/privacy/">Privacy</a></li>
+                            <li id="menu-item-126" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-126"><a target="_blank" href="http://www.sharengo.it/pdf/Regolamento_Sharengo.pdf">Contratto di servizo e tariffe</a></li>
+                            <li id="menu-item-127" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-127"><a target="_blank" href="http://support.sharengo.it/">Manuale di istruzioni</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="widget_box scarica">
+                <div class="fwidget">
+                    <h3>Scarica l’App</h3>
+                    <div class="menu-app_footer-container">
+                        <ul id="menu-app_footer" class="menu">
+                            <li id="menu-item-128" class="app_store menu-item menu-item-type-custom menu-item-object-custom menu-item-128"><a href="https://itunes.apple.com/it/app/sharengo-cs/id1093104891?mt=8">Apple</a></li>
+                            <li id="menu-item-129" class="play_store menu-item menu-item-type-custom menu-item-object-custom menu-item-129"><a href="https://play.google.com/store/apps/details?id=it.sharengo.eteria">Google</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dati_legali">
+            <p>
+                © Share'ngo è un servizio di C.S. Group S.p.A. · Servizio clienti <strong>0586 1975772</strong>
+            </p>
+            <p>
+                Sede Legale: Via dei Pelaghi 162, 57124 - Livorno (LI) · Codice Fiscale e Partita IVA n. 01769950492 · Numero REA LI - 156608
+                <br> Sede operativa: Via San Martino, 7 – 20122 Milano (MI)
+            </p>
+        </div>
+    </div>
+</footer>
+        <?php if($this->isUserArea($this->currentRoute())): ?>
+            <style>
+                .block-navigation-menu ul {
+                    text-align:center !important;
+                }
+				.block-navigation-menu {
+					visibility: hidden;
+				}
+            </style>
+        <?php endif; ?>
+		<?php
+            $this->inlineScript()
+		->appendFile($this->basePath('js/plugins-min.js?ver=4.6.1'))
+		->appendFile($this->basePath('js/main-min.js?ver=4.6.1'))
+                ->appendFile($this->basePath('js/respond.min.js'))
+                ->appendFile($this->basePath('js/bootstrap.min.js'))
+                ->appendFile('//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.min.js')
+                ->appendFile($this->basePath('js/slick-script.js'))
+                ->appendFile($this->basePath('js/main.js'))
+                ->appendFile($this->basePath('js/js.cookie.js'))
+                ->appendScript('
+                     // Using $(document).ready never hurts
+                    $(document).ready(function(){
+
+                        // Cookie setting script wrapper
+                        var cookieScripts = function () {
+                            // Loading external javascript file
+                            $.cookiesDirective.loadScript({
+                                uri:"external.js",
+                                appendTo: "eantics"
+                            });
+                        }
+
+                        $.cookiesDirective({
+                            privacyPolicyUri: "'.$this->basePath('pdf/Informativa_Privacy.pdf').'",
+                            explicitConsent: false,
+                            position : "bottom",
+                            duration: 999999,
+                            message: "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, accetti l\'utilizzo dei cookie da parte nostra. Per maggiori dettagli leggi la nostra",
+                            scriptWrapper: cookieScripts,
+                            backgroundColor: "#000000",
+                            linkColor: "#ffffff"
+                        });
+                    });
+                ');
+            echo $this->inlineScript()
+        ?>
+    </body>
+</html>

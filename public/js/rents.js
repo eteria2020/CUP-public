@@ -39,14 +39,14 @@ function refreshTable(period)
             var diffMinutes = trip['duration'];    //minutes
 
             var tripMinutes = diffMinutes;
-            var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
+            var parkingMinutes = Math.round(trip['parkSeconds'] / 60);
             var totalAmount = 'in elaborazione';
             var totalAmountValue = 0;
             var mustPay = 'in elaborazione';
             var mustPayValue = 0;
 
             // show FREE for not accountable trips
-            if (!trip['isAccountable']) {
+            if (!trip['isAccountable'] || !trip['payable']) {
                 totalAmount = 'FREE';
                 mustPay = 'FREE';
             }
@@ -83,7 +83,7 @@ function refreshTable(period)
             }
 
             // exclude trips less than 5 mins long
-            if (tripMinutes >= 5) {
+            if (tripMinutes >= 1) {
                 addRow(
                     0,
                     trip['timestampBeginningString'],

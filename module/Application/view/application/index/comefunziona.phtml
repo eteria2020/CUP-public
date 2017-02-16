@@ -10,49 +10,58 @@
             <h1 class="block-title"><?= $this->translate('Come funziona'); ?></h1>
 
             <br>
-            <h2><?= $this->translate('Iscrizione  al servizio'); ?></h2>
-            <p><?= $this->translate('Per Iscriversi al servizio di car sharing SHARE ‘NGO  basta andare all’home page del nostro sito '); ?><a href="<?= $this->url('home'); ?>">www.sharengo.it.</a><?= $this->translate(' Per avere il proprio Piano Tariffario Personale l’iscrizione deve avvenire attraverso il sito '); ?><a href="http://www.equomobili.it">www.equomobili.it</a><?= $this->translate('. Riceverai il PIN per l’uso del servizio via email. '); ?></p>
+            <h2><?= $this->translate('Iscrizione a Share’ngo'); ?></h2>
+            <p><?= $this->translate('Se hai più di 18 anni, puoi iscriverti a Share’ngo in pochi minuti direttamente dalla pagina '); ?><a href="<?= $this->url('signup'); ?>">www.sharengo.it/signup</a><?= $this->translate('. Tieni a portata di mano la patente, il codice fiscale e la carta di credito, anche prepagata. L\'iscrizione a Share’ngo costa 10 euro e comprende i primi 30 minuti di guida gratuita e la Share’ngo Card (per aprire l’auto anche senza smartphone).'); ?></p>
 
-            <h2><?= $this->translate('Trovare  e prenotare in rete un’Equomobile quando ti serve'); ?></h2>
-            <p><?= $this->translate('Per trovare un’Equombile  basta andare all’home page del nostro sito '); ?><a href="<?= $this->url('home'); ?>">www.sharengo.it.</a><?= $this->translate(' per visualizzare la posizione di ogni vettura disponibile (che potrai prenotare gratuitamente per 30 minuti se sei iscritto al servizio SHARE’NGO). Localizzazione e prenotazione funzionano esattamente nello stesso modo se avrai scaricato sul tuo smartphone IOS oppure Android la nostra APP (Share‘ngo – su Apple Store e Google Play). Sulla mappa potrai visualizzare l’indirizzo di sosta, le condizioni e lo status di ogni Equomibile disponibile.'); ?></p>
+            <h2><?= $this->translate('Quanto costa? Poco, meno della tua auto privata'); ?></h2>
+            <p><?= $this->translate('La tariffa base è 0,28 € al minuto e quella di sosta è 0,10 € al minuto. Ma se credi nella mobilità urbana elettrica puoi spendere molto meno e scoprire in un attimo perché Share’ngo è di gran lunga il servizio di car sharing più conveniente della tua città. '); ?></p>
 
-            <h2><?= $this->translate('Usare un’Equomobile che hai trovato parcheggiata'); ?></h2>
-            <p><?= $this->translate('Puoi verificare la disponibilità del veicolo molto semplicemente. Nella parte bassa a destra del parabrezza anteriore è localizzata una centralina a led colorati: la luce verde indica che il veicolo è disponibile per il noleggio con almeno il 20% di carica (cioè un’autonomia di almeno 20 km), la luce gialla che il veicolo è già stato prenotato, la luce blu che l’auto è attualmente in uso. Se la luce è rossa quell’Equomobile non è disponibile. '); ?><u><?= $this->translate('Per utilizzarla devi prima prenotarla'); ?></u><?= $this->translate(' (vedi sopra). La prenotazione è gratuita e dura 30 minuti.'); ?></p>
+            <p style='margin-left:20pt;text-indent:-18.0pt'><span style='font-size:12.0pt;font-family:Symbol'>·&nbsp;&nbsp;&nbsp;</span>
+            <b><span style='color:#07BA50'><?= $this->translate('PUOI AVERE UNA TARIFFA PERSONALIZZATA.'); ?> </span></b>
+            <?= $this->translate('Se non hai utilizzato un Codice Promo in fase di iscrizione, puoi ottenere uno sconto e avere un Piano Tariffario Personale, perché noi riconosciamo il tuo bisogno di mobilità e premiamo la tua partecipazione alla sharing economy. Una volta registrato al servizio basterà accedere al tuo Profilo Personale (sul sito o nella nostra App), andare nella sezione “Tariffe”, cliccare sul banner che ti offre lo sconto e rispondere ad alcune domande per bloccare lo'); ?>
+            <i>&nbsp;<?= $this->translate('sconto che ti spetta'); ?>&nbsp;</i>
+            <?= $this->translate('per un anno.'); ?></p>
 
-            <h2><?= $this->translate('Apertura e chiusura delle portiere'); ?></h2>
-            <p><?= $this->translate('Se usi il tuo smartphone per gestire il servizio (sia attraverso la APP che sul sito responsive '); ?><a href="<?= $this->url('home'); ?>">www.sharengo.it.</a>)<?= $this->translate(' hai mezz’ora di tempo per arrivare alla macchina e vedere comparire automaticamente sul tuo telefono il pulsante ‘’apri porta’’.
-            All’avvio del servizio a Milano, il 15 giugno, saranno disponibili anche un '); ?><u><?= $this->translate('numero limitato'); ?></u><?= $this->translate(' di CARD per chi dichiarasse in area riservata di NON possedere uno smartphone, che invieremo all’indirizzo indicato in registrazione.  Il funzionamento della Card per l’apertura delle porte è semplice e intuitivo: dovrà essere accostata alla centralina a led colorati posta dietro il parabrezza anteriore e le porte si apriranno.'); ?></p>
+            <p style='margin-left:20pt;text-indent:-18.0pt'><span style='font-size:12.0pt;font-family:Symbol'>·&nbsp;&nbsp;&nbsp;</span>
+            <b><span style='color:#07BA50'><?= $this->translate('PUOI ACQUISTARE I PACCHETTI MINUTI. Sono disponibili nei tagli da 100/200/500 e 1000 minuti'); ?> </span></b>
+            <?= $this->translate('e ti permettono di ridurre molto il costo dei tuoi noleggi, fino a 0,10 € al minuto o 6 €/ora, il costo più basso al mondo per un servizio di car sharing a flusso libero.'); ?></p>
 
-            <h2><?= $this->translate('Status Veicolo'); ?></h2>
-            <p><?= $this->translate('Quando accederai all’interno del veicolo prenotato, ti verrà chiesta dal display di bordo di confermare le condizioni del veicolo. Potrai indicare se presenta danni e il livello di pulizia del mezzo (sia interna che esterna) che hai riscontrato. Questo procedimento ci aiuta a mantenere le Equomobili sempre nelle migliori condizioni possibili.'); ?></p>
+            <p style='margin-bottom:3pt!important'><b><?= $this->translate('E la convenienza di Share’ngo non finisce qui!'); ?></b></p>
+            <p style='margin-left:40pt;text-indent:-18.0pt;margin-bottom:3pt!important'><span style='font-size:12.0pt;font-family:Symbol'>·&nbsp;&nbsp;&nbsp;</span>
+            <?= $this->translate('il chilometraggio per singola corsa è illimitato (senza extra, a differenza degli altri car sharing)'); ?></p>
+            <p style='margin-left:40pt;text-indent:-18.0pt;margin-bottom:3pt!important'><span style='font-size:12.0pt;font-family:Symbol'>·&nbsp;&nbsp;&nbsp;</span>
+            <?= $this->translate('per le donne le corse notturne sono gratuite dall’1 alle 6!'); ?></p>
+            <p style='margin-left:40pt;text-indent:-18.0pt'><span style='font-size:12.0pt;font-family:Symbol'>·&nbsp;&nbsp;&nbsp;</span>
+            <?= $this->translate('il giorno del tuo compleanno ricevi 30 minuti bonus, da utilizzare nello stesso giorno'); ?>.</p>
 
-            <h2><?= $this->translate('Inizio del Noleggio'); ?></h2>
-            <p><?= $this->translate('Dopo il controllo del veicolo ti verrà chiesto il tuo PIN da digitare sullo schermo del computer di bordo (il PIN  ti è stato inviato via email dopo la registrazione). Una volta inserito il codice PIN  il noleggio avrà inizio. Sul display di bordo è possibile selezionare la lingua italiana o quella inglese.
-            ATTENZIONE! '); ?><u><?= $this->translate('La chiave dell’Equombile non è estraibile'); ?></u><?= $this->translate(' e resta sempre a bordo.'); ?></p>
+            <p><?= $this->translate('L’iscrizione, le corse  e i pacchetti minuti di Share’ngo sono pagabili con carta di credito, anche prepagata o ricaricabile. Nella pagina del tuo Profilo Personale troverai sempre tutte le corse che hai effettuato, il loro costo e potrai scaricare le tue fatture.'); ?></p>
 
-            <h2><?= $this->translate('Avanti, folle, retromarcia'); ?></h2>
-            <p><?= $this->translate("Con la stessa logica di una vettura con il cambio automatico, sulle Equomobili trovi solo tre pulsanti, appena sotto il display: 'R' indica la retromarcia, 'D' è la marcia avanti o 'drive' ’N’ la posizione di folle. Girata la chiave sotto il volante (che è sempre inserita) per  partire basta schiacciare il pulsante D o R e fare la manovra normale di uscita dal parcheggio, che è facilitata dal servosterzo. Durante la corsa per passare da 'drive' a 'retromarcia', o viceversa, è necessario passare per la posizione N. Alla fine del noleggio l’auto deve essere obbligatoriamente lasciata in posizione N. Prima della partenza accertati che il pulsante rosso di sicurezza posto tra i due sedili NON sia inserito, in tal caso tiralo su (serve solo in casi di emergenza a spegnere il motore)."); ?></p>
+            <h2><?= $this->translate('Trovare e prenotare un’auto quando e dove ti serve'); ?></h2>
+            <p><?= $this->translate('Una volta scaricata la nostra App per'); ?>&nbsp;<a href="https://itunes.apple.com/it/app/sharengo-cs/id1093104891?mt=8">iOS</a>&nbsp;<?= $this->translate('e') ?>&nbsp;<a href="https://play.google.com/store/apps/details?id=it.sharengo.eteria">Android</a>&nbsp;<?= $this->translate('- o fatto il login su'); ?>&nbsp;<a href="http://mobile.sharengo.it">mobile.sharengo.it</a>&nbsp;<?= $this->translate('- è facilissimo prenotare un’auto di Share’ngo. Vai sulla mappa della tua città e vedi tutte le auto disponibili, con la loro autonomia. Quando hai trovato l’auto più vicina, clicca su “Prenotala ora”. La prenotazione è gratuita e dura 30 minuti.'); ?></p>
 
-            <h2><?= $this->translate('Fine noleggio'); ?></h2>
-            <p><?= $this->translate("Per terminare la sessione di noleggio è necessario selezionare l’opzione corrispondente sul display di bordo e seguire le istruzioni per lo spegnimento della vettura. Lo ripetiamo: la chiave non è estraibile e deve rimanere inserita nel cruscotto. Ricorda che l’auto deve essere lasciata con la marcia 'N' inserita e la leva del freno a mano tirata su. Il costo della sessione di noleggio verrà automaticamente addebitato sulla carta di credito inserita al momento della registrazione."); ?></p>
+            <h2><?= $this->translate('Un\'auto semplice e molto divertente da guidare'); ?></h2>
+            <p><?= $this->translate('Guidare un’auto elettrica di Share’ngo è molto facile e divertente. In prossimità dell\'auto prenotata, con un clic sul tuo smartphone apri le portiere (puoi anche aprirle passando la tua Share’ngo Card sul lettore). Inserisci sul computer di bordo il tuo PIN (che trovi nella pagina del tuo Profilo Personale sul sito o sulla App) e gira la chiave: la tua macchina sarà “READY”, cioè pronta per muoversi. È un’auto molto semplice da guidare, con il cambio automatico e prestazioni che ti stupiranno: fino a 120 km di autonomia, 80 km/ora, la ripresa brillante di un’auto elettrica e il comfort a bordo di una citycar con sensori di parcheggio, luci a led, finestrini elettrici, radio e navigatore. Vuoi vedere nel dettaglio come funziona: leggi le'); ?>&nbsp;<a href="http://support.sharengo.it/come-guido-auto">FAQ&nbsp;<?= $this->translate('dedicate'); ?></a>!</p>
 
-            <h2><?= $this->translate('Area operativa  e chilometraggio illimitato'); ?></h2>
-            <p><?= $this->translate('Il servizio Share’nGo è operativo nella zona di Milano. E’ possibile uscire dall’area della città (confini comunali),  ma non sarà possibile chiudere la sessione di noleggio al di fuori di essa. Fino a che non riporterai l’auto all’interno dellarea operativa e chiuderai la corsa, pagherai per l’utilizzazione e la sosta dell’Equomobile in relazione al tuo Piano Tariffario Personale o in base alle Tariffe Nominali se hai preferito non averlo. Le corse di SHARE ‘NGO sono sempre a chilometraggio illimitato.'); ?></p>
+            <h2><?= $this->translate('Fine noleggio o sosta'); ?></h2>
+            <p><?= $this->translate('Una corsa si termina cliccando sulla “P” nel display di bordo e scegliendo una delle due opzioni: “Termina il noleggio” oppure “Metti in sosta”. In entrambi i casi le porte si chiuderanno da sole in 40 secondi, senza che tu debba preoccuparti d’altro che girare la chiave per spegnere il quadro, chiudere le luci, alzare i finestrini e tirare il freno a mano prima di uscire dall’auto. La chiave non è estraibile e resta inserita nel cruscotto. Non devi preoccuparti neanche della ricarica: ci pensiamo noi!'); ?></p>
 
-            <h2><?= $this->translate('Coperture assicurative'); ?></h2>
-            <p><?= $this->translate('Sui nostri veicoli è garantita una copertura RC fino a 10.000.000 €. Le macchine sono coperte da polizza Kasko (con franchigia di 500 €) e assicurazione Furto e Incendio, atti vandalici ed eventi atmosferici. Il Conducente è assicurato per infortuni (PAI) per un massimale di 50.000 €.'); ?></p>
+            <h2><?= $this->translate('Dove puoi andare'); ?></h2>
+            <p><?= $this->translate('Share’ngo è operativa nelle città di Milano, Roma e Firenze. Per ogni città è definita un’area di copertura del servizio (area operativa): nei limiti di autonomia della macchina che hai noleggiato puoi andare dove vuoi e fare tutte le soste che credi ma non puoi chiudere la corsa fuori da essa. Puoi entrare gratuitamente nell’Area C a Milano e nelle ZTL a Roma e Firenze. Con le nostre auto ,non è possibile guidare invece in autostrada, nelle zone pedonali e nelle corsie preferenziali (riservate a taxi e mezzi pubblici). Puoi parcheggiare gratis negli spazi a pagamento (strisce blu) e in quelli riservati ai residenti (strisce gialle a Milano, strisce bianche a Firenze e a Roma). Non puoi invece parcheggiare nei posti riservati a taxi, mezzi pubblici, disabili, scarico merci ecc.'); ?></p>
+
+            <h2><?= $this->translate('Le coperture assicurative'); ?></h2>
+            <p><?= $this->translate('Sui nostri veicoli è garantita una copertura RC fino a 10.000.000 €. Le macchine sono coperte anche da polizza Kasko e assicurazione Furto e Incendio, atti vandalici ed eventi atmosferici (in entrambi i casi con franchigia di 500 €). Il conducente è assicurato per infortuni (PAI) per un massimale di 50.000 €.'); ?></p>
 
             <h2><?= $this->translate('Bambini a bordo'); ?></h2>
-            <p><?= $this->translate('Le Equomobili sono dotate di cinture di sicurezza omologate e quindi NON si applica l’art 172 del codice della strada che vieta il trasporto di minori di anni 3 sui veicoli a motore che ne siano sprovvisti (serve ovviamente il seggiolino omologato). Non avendo Airbag inoltre NON si applicano le limitazioni a portare i minori sul sedile del passeggero purchè il seggiolino di sicurezza sia rivolto all’indietro.'); ?></p>
+            <p><?= $this->translate('Le nostre auto sono dotate di cinture di sicurezza omologate e quindi non si applica l’articolo 172 del codice della strada che vieta il trasporto di minori di tre anni sui veicoli a motore che ne siano sprovvisti (serve ovviamente il seggiolino omologato). Non essendoci l’airbag, non si ci sono limitazioni per portare i minori sul sedile del passeggero, purché il seggiolino di sicurezza sia rivolto all’indietro.'); ?></p>
 
             <h2><?= $this->translate('Pagamenti e fatturazione del servizio'); ?></h2>
-            <p><?= $this->translate('I noleggi Share‘ngo sono pagabili con carta di credito e anche carta prepagata. Ad ogni corsa corrisponde una fattura che puoi scaricare quando vuoi nell’Area Riservata. Sempre in area riservata puoi controllare e aggiornare il tuo Piano Tariffario Personale e vedere quanti minuti gratuiti ti sono stati accreditati con la registrazione e quanti ne hai consumati. I noleggi nel giorno del tuo compleanno sono gratuiti e gratuite sono le corse per le donne di notte, dall’1 alle 6 del mattino.'); ?></p>
+            <p><?= $this->translate('Le corse Share‘ngo sono pagabili con carta di credito, anche prepagata. Se non hai acquistato minuti di noleggio a pacchetto, a ogni singola corsa corrisponderà un addebito e una fattura scaricabile nel tuo Profilo Personale, dove potrai controllare le tue tariffe, quanti minuti gratuiti o pre-acquistati hai consumato e quanti te ne sono rimasti.'); ?></p>
 
-            <h2><?= $this->translate('Regolamento e condizioni di utilizzazione'); ?></h2>
-            <p><?= $this->translate('Sono pubblicati sul nostro sito e inviati via email a tutti i registrati al servizio'); ?></p>
+            <h2><?= $this->translate('Contratto e regolamento'); ?></h2>
+            <p><?= $this->translate('Il contratto con Share’go è disponibile a'); ?>&nbsp;<a href="http://www.sharengo.it/pdf/Contratto_Sharengo.pdf"><?= $this->translate('questa pagina'); ?></a>.&nbsp;<?= $this->translate('Se hai altre domande sul funzionamento del servizio, consulta le nostre'); ?>&nbsp;<a href="http://support.sharengo.it/home">FAQ</a>.</p>
 
-            <h2><?= $this->translate('Tariffe nominali e penali'); ?></h2>
-            <p><?= $this->translate('Sono pubblicati sul nostro sito e inviati via email a tutti i registrati al servizio'); ?></p>
+            <h2><span style='color:#07BA50'><?= $this->translate('ISCRIVITI OGGI A SHARE’NGO E SCOPRI IL PIACERE DELLA MOBILITÀ ELETTRICA IN CITTÀ!') ?></span></h2>
+            <br>
 
         </article>
         <!-- block-main-article -->

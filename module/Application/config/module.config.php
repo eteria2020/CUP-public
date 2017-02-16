@@ -8,6 +8,9 @@
  */
 
 $translator = new \Zend\I18n\Translator\Translator();
+// Getting the siteroot path ( = sharengo-admin folder)
+$baseDir = realpath(__DIR__.'/../../../');
+
 return [
     'router' => [
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
@@ -34,6 +37,45 @@ return [
                     ],
                 ],
             ],
+            'zoneosm' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'route' => '/zoneosm',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-osm-zones',
+                    ],
+                ],
+            ],
+            'cars' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/cars/:fleetId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-cars-by-fleet',
+                    ],
+                    'constraints' => [
+                        'fleetId' => '[0-9]+'
+                    ],
+                ],
+            ],
+            'pois' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/pois/:fleetId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-pois-by-fleet',
+                    ],
+                    'constraints' => [
+                        'fleetId' => '[0-9]+'
+                    ],
+                ],
+            ],
             'carsharing' => [
                 'type' => 'Segment',
                 'options' => [
@@ -53,6 +95,28 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'cosae',
+                    ],
+                ]
+            ],
+            'map' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{map}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'map',
+                    ],
+                ]
+            ],
+            'map2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{map2}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'map2',
                     ],
                 ]
             ],
@@ -111,6 +175,17 @@ return [
                     ],
                 ]
             ],
+            'login2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{login2}',
+                    'defaults' => [
+                        '__NAMESPACE__' => null,
+                        'controller' => 'zfcuser',
+                        'action'     => 'login',
+                    ],
+                ]
+            ],
             'logout' => [
                 'type' => 'Segment',
                 'options' => [
@@ -155,6 +230,17 @@ return [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action'     => 'signup',
+                    ],
+                ]
+            ],
+            'signup1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signup1}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
@@ -294,6 +380,72 @@ return [
                     ],
                 ]
             ],
+            'acea' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{acea}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'acea',
+                    ],
+                ],
+            ],
+            'aeronautica' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{isma}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aeronautica',
+                    ],
+                ]
+            ],
+            'agoal' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{agoal}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'agoal',
+                    ],
+                ]
+            ],
+            'aidia' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{aidia}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aidia',
+                    ],
+                ]
+            ],
+            'alcons' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{altroconsumo}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'alcons',
+                    ],
+                ]
+            ],
+            'aldai' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{aldai}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'aldai',
+                    ],
+                ]
+            ],
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -302,6 +454,28 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'anas',
+                    ],
+                ],
+            ],
+            'arci' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{arci}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'arci',
+                    ],
+                ],
+            ],
+            'assocral' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{assocral}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'assocral',
                     ],
                 ],
             ],
@@ -316,114 +490,36 @@ return [
                     ],
                 ]
             ],
+            'chigi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{chigi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'chigi',
+                    ],
+                ],
+            ],
+            'espresso' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{espresso}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'espresso',
+                    ],
+                ]
+            ],
             'eq-sharing' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{eq-sharing}',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action'     => 'index',
-                    ),
-                ]
-            ],
-            'teatro-elfo' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{elfo}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'teatro-elfo',
-                    ],
-                ]
-            ],
-            'linear' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{linear}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'linear',
-                    ],
-                ]
-            ],
-            'firenze' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{firenze}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'firenze',
-                    ],
-                ]
-            ],
-            'volontariocard' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{volontariocard}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'volontariocard',
-                    ],
-                ]
-            ],
-            'jwt' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{jwt}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'jwt',
-                    ],
-                ],
-                'may_terminate' => true
-            ],
-            'lifegate' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{lifegate}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'lifegate',
-                    ],
-                ]
-            ],
-            'aeronautica' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{isma}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'aeronautica',
-                    ],
-                ]
-            ],
-            'roma' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{roma}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'roma',
-                    ],
-                ]
-            ],
-            'saba' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{saba}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'saba',
                     ],
                 ]
             ],
@@ -438,16 +534,238 @@ return [
                     ],
                 ],
             ],
-            'acea' => [
+            'fao' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{acea}',
+                    'route' => '/{fao}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'acea',
+                        'action'     => 'fao',
+                    ],
+                ]
+            ],
+            'firenze' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{firenze}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'firenze',
+                    ],
+                ]
+            ],
+            'flcg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{falacosagiusta}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'flcg',
+                    ],
+                ]
+            ],
+            'futura' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{futura}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'futura',
+                    ],
+                ]
+            ],
+            // remove 2017-02-13
+            /* 'gym16' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{gym16}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'gym16',
                     ],
                 ],
+            ], */
+            'kpmg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{kpmg}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'kpmg',
+                    ],
+                ],
+            ],
+            'la7' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{la7}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'la7',
+                    ],
+                ],
+            ],
+            'legambiente' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{legambiente}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'legambiente',
+                    ],
+                ],
+            ],
+            'linear' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{linear}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'linear',
+                    ],
+                ]
+            ],
+            'market' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{market}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'market',
+                    ],
+                ]
+            ],
+            'ording' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ording}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ording',
+                    ],
+                ],
+            ],
+            'ordpro' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{ordpro}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'ordpro',
+                    ],
+                ],
+            ],
+            'payback' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{payback}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'payback',
+                    ],
+                ],
+            ],
+            'saba' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{saba}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'saba',
+                    ],
+                ]
+            ],
+            'scoac1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{scontato}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'scoac1',
+                    ],
+                ]
+            ],
+            // disable 2017-02-13
+            /*'sim1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{sim1}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'sim1',
+                    ],
+                ]
+            ],*/
+            'svolta' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{svolta}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'svolta',
+                    ],
+                ]
+            ],
+            'teatro-elfo' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{elfo}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'teatro-elfo',
+                    ],
+                ]
+            ],
+            'tevere' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{tevere}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'tevere',
+                    ],
+                ]
+            ],
+            'unirm1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{unirm1}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'unirm1',
+                    ],
+                ],
+            ],
+            'volontariocard' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{volontariocard}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'volontariocard',
+                    ],
+                ]
             ],
             'pay' => [
                 'type' => 'Segment',
@@ -514,6 +832,17 @@ return [
                             ]
                         ]
                     ],
+                    'utente' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{utente}',
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller' => 'CustomerController',
+                                'action' => 'customer-data'
+                            ]
+                        ]
+                    ],
                     'pin' => [
                         'type' => 'Segment',
                         'options' => [
@@ -564,7 +893,18 @@ return [
                         'options' => [
                             'route' => '/{servizi-aggiuntivi}',
                             'defaults' => [
+                                'controller' => 'AdditionalServices',
                                 'action' => 'additional-services'
+                            ]
+                        ]
+                    ],
+                    'gift-packages' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{gift-packages}',
+                            'defaults' => [
+                                'controller' => 'AdditionalServices',
+                                'action' => 'gift-packages'
                             ]
                         ]
                     ],
@@ -597,6 +937,24 @@ return [
                             ]
                         ]
                     ],
+                    'package-my-sharengo' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/package-my-sharengo',
+                            'defaults' => [
+                                'action' => 'package-my-sharengo'
+                            ]
+                        ]
+                    ],
+                    'payment-securecode-cartasi' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/payment-securecode-cartasi',
+                            'defaults' => [
+                                'action' => 'payment-securecode-cartasi'
+                            ]
+                        ]
+                    ],
                     'rents' => [
                         'type' => 'Segment',
                         'options' => [
@@ -615,7 +973,26 @@ return [
                             ]
                         ]
                     ],
-                ]
+                    'send-discount-request' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/send-discount-request',
+                            'defaults' => [
+                                'action' => 'send-discount-request'
+                            ],
+                        ],
+                    ],
+                    'discount-status' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/discount-status[/:id]',
+                            'defaults' => [
+                                'controller' => 'DiscountStatus',
+                                'action' => null
+                            ]
+                        ]
+                    ]
+                ],
             ],
             'scn-social-auth-user' => [
                 'child_routes' => [
@@ -706,6 +1083,8 @@ return [
             'Application\Controller\Address' => 'Application\Controller\AddressControllerFactory',
             'Application\Controller\ConsolePayInvoice' => 'Application\Controller\ConsolePayInvoiceControllerFactory',
             'Application\Controller\ConsoleAccountCompute' => 'Application\Controller\ConsoleAccountComputeControllerFactory',
+            'Application\Controller\ConsolePromoCodesOnceCompute' => 'Application\Controller\ConsolePromoCodesOnceComputeFactory',
+            'Application\Controller\ConsoleBonusCompute' => 'Application\Controller\ConsoleBonusComputeControllerFactory',
             'Application\Controller\EditTrip' => 'Application\Controller\EditTripControllerFactory',
             'Application\Controller\FixInvoicesBody' => 'Application\Controller\FixInvoicesBodyControllerFactory',
             'Application\Controller\FixRegistrationInvoicesAmount' => 'Application\Controller\FixRegistrationInvoicesAmountControllerFactory',
@@ -718,9 +1097,15 @@ return [
             'Application\Controller\ForeignDriversLicense' => 'Application\Controller\ForeignDriversLicenseControllerFactory',
             'Application\Controller\SocialAuthController' => 'Application\Controller\SocialAuthControllerFactory',
             'Application\Controller\DisableCustomerController' => 'Application\Controller\DisableCustomerControllerFactory',
+            'Application\Controller\DisableOldDiscountsController' => 'Application\Controller\DisableOldDiscountsControllerFactory',
+            'Application\Controller\DiscountStatus' => 'Application\Controller\DiscountStatusControllerFactory',
+            'Application\Controller\AdditionalServices' => 'Application\Controller\AdditionalServicesControllerFactory',
+            'Application\Controller\ImportDriversLicenseValidations' => 'Application\Controller\ImportDriversLicenseValidationsControllerFactory',
+            'Application\Controller\BirthdayBonus' => 'Application\Controller\BirthdayBonusControllerFactory',
         ],
         'invokables' => [
-            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController'
+            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
+            'Application\Controller\CustomerController' => 'Application\Controller\CustomerController',
         ]
     ],
     'view_helpers' => [
@@ -728,7 +1113,8 @@ return [
             'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
             'LongLanguage' => 'Application\View\Helper\LongLanguageFactory',
             'Config' => 'Application\View\Helper\ConfigFactory',
-            'availableFleets' => 'Application\View\Helper\AvailableFleetsFactory'
+            'availableFleets' => 'Application\View\Helper\AvailableFleetsFactory',
+            'intercomSettings' => 'Application\View\Helper\IntercomSettingsFactory'
         ],
         'invokables' => [
             'IsUserArea' => 'Application\View\Helper\IsUserArea',
@@ -744,7 +1130,7 @@ return [
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => [
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/layout'           => __DIR__ . '/../view/layout/layout2.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
@@ -776,6 +1162,8 @@ return [
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayInvoice', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsoleAccountCompute', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsolePromoCodesOnceCompute', 'roles' => []],
+                ['controller' => 'Application\Controller\ConsoleBonusCompute', 'roles' => []],
                 ['controller' => 'Application\Controller\Address', 'roles' => []],
                 ['controller' => 'Application\Controller\EditTrip', 'roles' => []],
                 ['controller' => 'Application\Controller\FixInvoicesBody', 'roles' => []],
@@ -792,16 +1180,91 @@ return [
                 ['controller' => 'ScnSocialAuth-HybridAuth', 'roles' => []],
                 ['controller' => 'Application\Controller\SocialAuthController', 'roles' => []],
                 ['controller' => 'Application\Controller\DisableCustomerController', 'roles' => []],
+                ['controller' => 'Application\Controller\DisableOldDiscountsController', 'roles' => []],
+                ['controller' => 'Application\Controller\CustomerController', 'roles' => []],
+                ['controller' => 'Application\Controller\DiscountStatus', 'roles' => []],
+                ['controller' => 'Application\Controller\AdditionalServices', 'roles' => ['user']],
+                ['controller' => 'Application\Controller\ImportDriversLicenseValidations', 'roles' => []],
+                ['controller' => 'Application\Controller\BirthdayBonus', 'roles' => []],
             ],
         ],
     ],
 
     'asset_manager' => [
+        'caching' => [
+            'default' => [
+                'cache'     => 'Assetic\\Cache\\FilesystemCache',
+                'options' => [
+                    'dir' => $baseDir.'/data/cache',
+                ],
+            ],
+        ],
         'resolver_configs' => [
+            'collections' => [
+                // JavaScript
+                'assets-modules/js/vendor.map.js' => [
+                    // Libs
+                    'bower/ol3/ol.js',
+                    'bower/ol3-ext/style/fontsymbol.js',
+                    'bower/ol3-ext/style/fontawesome.def.js',
+                    'bower/ol3-ext/style/shadowstyle.js',
+                    'bower/ol3-geocoder/build/ol3-geocoder.js',
+                    'bower/bootstrap/js/tooltip.js',
+                    'bower/bootstrap/js/popover.js'
+                ],
+                'assets-modules/js/vendor.index.js' => [
+                    // Libs
+                    'assets-modules/js/vendor.map.js',
+                    // Code
+                    'public/js/overlay.js',
+                    'public/js/perfect-scrollbar.jquery.min.js',
+                    'public/js/index.map.js'
+                ],
+                // CSS
+                'assets-modules/css/vendor.map.css' => [
+                    // Libs
+                    'bower/ol3/ol.css',
+                    'bower/ol3-geocoder/build/ol3-geocoder.css',
+                ],
+                'assets-modules/css/vendor.index.css' => [
+                    // Libs
+                    'assets-modules/css/vendor.map.css',
+                    // Code
+                    'public/css/overlay.css',
+                    'public/css/find-address.css',
+                    'public/css/index.map.css'
+                ],
+            ],
+            'aliases' => [
+                // Bower Assets
+                'bower' => $baseDir.'/bower_components',
+
+                // Public Assets
+                'public' => $baseDir.'/public',
+
+                // Overlay Assets
+                'assets-modules/img/overlay' => $baseDir.'/public/images/overlay',
+                'assets-modules/images/overlay' => $baseDir.'/public/images/overlay'
+            ],
             'paths' => [
                 __DIR__ . '/../public',
+                $baseDir.'/public',
             ]
-        ]
+        ],
+        'filters' => [
+            // Minify All JS
+            'js' => [
+                [
+                    'filter' => 'JSMin',
+                ],
+            ],
+            // Minify All CSS
+            'css' => [
+                [
+                    'filter' => 'CssMin',
+                ],
+            ],
+        ],
     ],
 
     'console' => [
@@ -994,6 +1457,28 @@ return [
                         ]
                     ]
                 ],
+                'promocodesonce' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'promocodesonce <actionType> <param1> <param2>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePromoCodesOnceCompute',
+                            'action' => 'promocode-once-main'
+			]
+	 	    ]
+		],
+                'bonus-compute' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus compute [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-compute'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [
@@ -1093,6 +1578,61 @@ return [
                         ]
                     ]
                 ],
+                'disable-old-discounts' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'disable old discounts [--dry-run|-d] [--no-email|-e]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'disable-old-discounts'
+                        ]
+                    ]
+                ],
+                'notify-disable-discount' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'notify disable discount [--no-email|-e]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'notify-disable-discount'
+                        ]
+                    ]
+                ],
+                'test-license-validation' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'test license validation [--dry-run|-d] [--use-data] [--id=] [--email=] [--valid=] [--code=] [--msg=]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ImportDriversLicenseValidations',
+                            'action' => 'test-validation'
+                        ]
+                    ]
+                ],
+                'import-license-validations' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'import license validations [--dry-run|-d] [--verbose|-v] [--one|-o]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ImportDriversLicenseValidations',
+                            'action' => 'import-validations'
+                        ]
+                    ]
+                ],
+                'assign birthday bonuses' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'assign birthday bonuses [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'BirthdayBonus',
+                            'action' => 'assign-birthday-bonuses'
+                        ]
+                    ]
+                ]
             ],
         ],
     ],

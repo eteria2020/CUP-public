@@ -121,10 +121,6 @@
 
 .pin-info {
     margin-top: 20px;
-    text-indent: 5px;
-    font-size: 15px;
-    text-decoration: underline;
-    font-weight: 700
 }
 
 .car-popup {
@@ -314,5 +310,11 @@
 @media screen and (max-width: 479px) {
     .js-car-image {
         display: none;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .fixresponsive {
+        width: 100%;
     }
 }

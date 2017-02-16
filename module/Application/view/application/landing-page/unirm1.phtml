@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="/common/application/js/jquery.1.11.3.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link href="/common/application/css/bootstrap.css" rel="stylesheet">
+        <script type="text/javascript" src="/common/application/js/bootstrap.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link href="/unirm1/application/css/style.css" rel="stylesheet">
+
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-63160906-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+
+    <body class="bg-blue">
+        <div class="container-fluid lato-bold">
+            <div class="row bg-grey  bg-blue">
+                <div class="col-lg-7 col-md-8">
+                    <img src="/unirm1/application/images/sharengo_img.jpg" class="img-responsive"/>
+                </div>
+                <div class="col-lg-5 col-md-4 text-center" >
+                    <div id="first-paragraph">
+                        <img src="/unirm1/application/images/logo_lasapienza.jpg" width="200" height="136" alt="logo roma sapienza" style="padding-bottom:20px">
+                        <br class="visible-md visible-lg">
+                        <br class="visible-xs visible-sm">
+                        <span class="lato-bold strong-big yellow">
+                            ISCRIVITI OGGI A
+                            <br class="visible-md visible-lg">
+                            <br class="visible-xs visible-sm">
+                            SHARE'NGO</span>
+                        <div class="text-center space">
+                            <span class="strong-small desk-block lato-regular white">CODICE PROMO</span>
+                            <p class="strongyellow">
+                                <a href="<?= $this->url('promocode-signup',['promocode' => 'UNIRM1']); ?>" id="submit" class="button" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'UNIRM1'});">UNIRM1</a>
+                            </p>
+                        </div>
+                        <div id="container-paragraph">
+                            <div id="first-paragraph-due" style="text-align:left; padding-left:10px; padding-top:20px;">
+                                <span class="lato-bold strong-big white" >SOLO PER TE</span>
+                                <br class="visible-md visible-lg">
+                                <br class="visible-xs visible-sm">
+                                <span class="lato-regular strong-big white">fino al 31 dicembre:</span>
+                                <ul class="lato-regular strong-small white" style="padding-top:20px; padding-left:22px;">
+                                    <li>
+                                        <span class="lato-regular strong-small yellow" >ISCRIZIONE SCONTATA DA 10 ad 5€</span>
+                                        <br/>
+                                        <br class="visible-md visible-lg">
+                                        <br class="visible-xs visible-sm">
+                                    </li>
+                                    <li>
+                                        <span class="lato-regular strong-small yellow" >TARIFFA SCONTATA DEL 21,5%</span>
+                                        <br/>
+                                        <span class="lato-regular strong-more-small white" >(0,22cent./minuto invece di 0,28cent./minuto)</span>
+                                        <br class="visible-md visible-lg">
+                                        <br class="visible-xs visible-sm">
+                                        <br class="visible-md visible-lg">
+                                        <br class="visible-xs visible-sm">
+                                    </li>
+                                    <li>
+                                        <span class="lato-regular strong-small yellow" style="">30 MINUTI DI CORSE GRATIS</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

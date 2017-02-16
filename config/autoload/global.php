@@ -34,11 +34,27 @@ return [
         'password' => 'f477ur3!'
     ],
     'subscription-bonus' => [
-        'total' => 100,
+        'total' => 30,
         'description' => 'Bonus iscrizione utente',
         'valid-to' => '+ 90 days'
     ],
     'banner-jsonp' => [
         'url' => 'http://manage.sharengo.it/banner.php'
     ],
+    'bonus' => [
+        'birthday' => [
+            'total' => 30,
+            'description' => 'Bonus compleanno'
+        ],
+        'zones' => [
+            'defaultTotal' => 10,
+            'defaultDuration' => 30,
+            'Carrefour' => [
+                'fixedBonus' => 30,
+                'minMinutes' => 5,
+                'total' => 30,
+                'duration' => 60
+            ]
+        ]
+    ]
 ];

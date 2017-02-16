@@ -5,9 +5,7 @@
     $this->headMeta()->appendName('og:image', 'http://mobile.sharengo.it/_template_style/images/sharengo_logo.png');
     $this->headMeta()->appendName('og:site_name', 'SHARE\'N GO');
     $this->headMeta()->setProperty('og:description', 'Dal 22 giugno è attivo a Milano il servizio di car sharing a flusso libero, con le nostre Equomobili elettriche. Le iscrizioni al servizio sono aperte su www.equomobili.it. Dal 1° maggio inoltre 10 veicoli SHARE\'NGO sono disponibili c/o la stazione delle Ferrovie Nord di Busto Arsizio e possono essere prenotate telefonando al n 370.3325086. Gli orari per il ritiro e la consegna sono 7.30-10.30 oppure 17.00-19.00 tutti i giorni della settimana.');
-    $this->inlineScript()->appendFile($this->basePath('js/overlay.js'));
-    $this->inlineScript()->appendFile($this->basePath('js/perfect-scrollbar.jquery.min.js'));
-    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+    $this->headLink()->appendStylesheet($this->basePath('/assets-modules/css/vendor.index.css'));
 ?>
 
 <!-- module-car-map -->
@@ -15,6 +13,7 @@
 
     <div id="map_wrapper">
         <div id="map_canvas" class="mapping"></div>
+        <div id="popup" class="ol-popup"></div>
     </div>
 
     <!-- block-map-tool-filter -->
@@ -187,7 +186,7 @@
                     <div class="cell content-right">
                         <h2>La nuova mobilità urbana è SHARE’Ngo</h2>
                         <a href="<?= $this->url('signup') ?>" class="sng-overlay-button">Iscriviti oggi</a>
-                        <h4>Bastano 5 minuti e 1€ per salire a bordo (con 100 minuti bonus)</h4>
+                        <h4>Bastano 5 minuti e 10€ per salire a bordo (con 30 minuti bonus)</h4>
                         <p>Servono solo la tua patente e una carta di credito, anche prepagata.</p>
                         <a href="<?= $this->url('scn-social-auth-user/authenticate/provider', ['provider' => 'facebook']) ?>" class="sng-overlay-button">Registrati con Facebook</a>
                         <p class="upper">Riceverai via mail tutti i dettagli per completare la tua iscrizione</p>
@@ -207,7 +206,7 @@
                             <li class="item2">
                                 <img src="images/overlay/img2.png" alt="Conveniente">
                                 <h4>Conveniente</h4>
-                                <p>Più ne hai bisogno e meno costano! Con la tua tariffa personalizzata potresti avere fino al 50% di sconto. E con i pacchetti da 100/200/500 minuti corri a 0.10 € al minuto, cioè a 6 € l’ora. Il prezzo più basso al mondo per un servizio di car sharing a flusso libero. Di notte, poi, per le donne sono gratis!</p>
+                                <p>Più ne hai bisogno e meno costano! Con la tua tariffa personalizzata potresti avere fino al 35% di sconto. E con i pacchetti da 100/250/500 e 1.000 minuti la tariffa di noleggio può scendere fino a 0.10 € al minuto, cioè a 6 € l’ora. Il prezzo più basso al mondo per un servizio di car sharing a flusso libero. Di notte, poi, per le donne le corse sono gratis!</p>
                             </li>
                             <li class="item3">
                                 <img src="images/overlay/img3.png" alt="Pratica e brillante">
@@ -233,6 +232,7 @@ var textCarOccupied = '<?= $this->translate("L\'auto è occupata"); ?>';
 var textCarReserved = '<?= $this->translate("Annulla prenotazione"); ?>';
 var textCarReserve = '<?= $this->translate("Prenota l\'auto"); ?>';
 var textRegister = '<?= $this->translate("Registrati e prenota"); ?>';
+var textSearchAddress = '<?= $this->translate('Cerca indirizzo'); ?>';
 </script>
 <?php
 // load the popup to show when a car is selected
@@ -247,4 +247,6 @@ var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
 var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
 var zonesUrl = "<?= $this->url('zone'); ?>";
 </script>
-<script type="text/javascript" src="js/index.js"></script>
+<?php
+    $this->inlineScript()->appendFile($this->basePath('/assets-modules/js/vendor.index.js'));
+?>

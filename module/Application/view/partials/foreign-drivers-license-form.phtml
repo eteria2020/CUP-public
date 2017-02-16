@@ -29,7 +29,8 @@
                 <br>
                 <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARA"); ?></div>
                 <br>
-                <?= $this->translate("di essere titolare di patente di guida in corso di validit&agrave n."); ?> <?= $this->customer->getDriverLicense() ?> <?= $this->translate("rilasciata da"); ?> <?= $this->authority ?> il <?= $this->customer->getDriverLicenseReleaseDate()->format('d/m/Y') ?> <?= $this->translate("categoria"); ?> <?= $this->categories ?>, <?= $this->translate("con scadenza il"); ?> <?= $this->customer->getDriverLicenseExpire()->format('d/m/Y') ?>.
+                <?= $this->translate("di essere titolare di patente di guida in corso di validit&agrave n."); ?> <?= $this->customer->getDriverLicense() ?> <?= $this->translate("rilasciata da"); ?> <?= $this->authority ?> il <?= $this->customer->getDriverLicenseReleaseDate()->format('d/m/Y') ?>, <?= $this->translate("con scadenza il"); ?> <?= $this->customer->getDriverLicenseExpire()->format('d/m/Y') ?>.
+                <?= $this->translate("E altresì dichiara che suddetto documento di guida è valido, in relazione alle norme internazionali di circolazione (legate alla residenza del cittadino straniero su territorio italiano e alla durata della stessa), ai fini della guida sul territorio italiano.");?>
             </div>
             <br>
             <div>
@@ -41,6 +42,10 @@
                 <?= $this->formElementErrors($signature, ['class' => 'errors']); ?>
             </div>
             <br>
+            <div>
+                Livorno, lì <?= date("d/m/Y")?>
+            </div>
+            <br>
             <div style="font-size: 70%">
                 <?= $this->translate("Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente dichiarazione sono relativi ad  informazioni strettamente necessarie al conseguimento di finalit&agrave previste dalle vigenti normative e sono trattati e custoditi esclusivamente dall'ufficio responsabile del procedimento."); ?>
             </div>
@@ -50,7 +55,7 @@
             <br>
             <br>
             <p>
-                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida (è possibile caricare più di un file effettuando una selezione multipla)"); ?></label>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro (è possibile caricare più di un file effettuando una selezione multipla)"); ?></label>
                 <br>
                 <?php
                     $file = $form->get('drivers-license-file');

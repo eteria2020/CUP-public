@@ -49,10 +49,10 @@
                 </p>
                 <div id="logo"></div>
                 <p class="white" id="paragraph1a">
-                    <span class="strong desk-block lato-regular">Con un click e 1 €</span>
+                    <span class="strong desk-block lato-regular">Con un click e 5 €</span>
                     <span class="strong desk-block lato-regular"> usi in città le Equomobili</span>
                     <span class="strong desk-block lato-regular">di <span class="lato-bold">SHARE’NGO</span></span>
-                    <span class="strong desk-block lato-regular">con 100 minuti gratis!</span>
+                    <span class="strong desk-block lato-regular">con 30 minuti gratis e il 15% di sconto!</span>
                 </p>
             </div>
             <div class="col-sm-7 col-sm-pull-5 img-desk">
@@ -71,17 +71,17 @@
             </div>
             <div class="col-sm-5 text-center p-top-5" id="second-paragraph">
                 <p class="yellow strong" id="registrati">
-                    <a href="http://www.equomobili.it/?codice_sconto=VCGO" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'VCGO 1'});">
+                    <a href="<?= $this->url('promocode-signup',['promocode' => 'VCGO']); ?>" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'VCGO 1'});">
                         <span class="lato-bold">REGISTRATI OGGI!</span>
                     </a>
                 </p>
                 <p class="white strong" id="paragraph2">
                     <span class="lato-regular">Per te il costo</span>
                     <span class="lato-regular">di iscrizione è ridotto</span>
-                    <span class="lato-regular">da 10 € a 1 €</span>
+                    <span class="lato-regular">da 10 € a 5 €</span>
                     <span class="lato-regular">con il CODICE PROMO</span>
                 </p>
-                <a href="http://www.equomobili.it/?codice_sconto=VCGO" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'VCGO 2'});">
+                <a href="<?= $this->url('promocode-signup',['promocode' => 'VCGO']); ?>" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'VCGO 2'});">
                     <button class="strong">VCGO</button>
                 </a>
             </div>

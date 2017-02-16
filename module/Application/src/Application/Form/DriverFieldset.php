@@ -151,7 +151,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => $translator->translate('Categoria/e patente'),
                 'value_options' => [
-                    'A' => 'A',
+                    'B1' => 'B1',
                     'B' => 'B'
                 ]
             ]
@@ -239,7 +239,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                         ]
                     ],
                     [
-                        'name' => 'Application\Form\Validator\OneYearDate'
+                        'name' => 'Application\Form\Validator\NotFutureDate'
                     ]
                 ]
             ],

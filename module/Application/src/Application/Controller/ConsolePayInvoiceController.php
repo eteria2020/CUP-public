@@ -6,9 +6,11 @@ use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\InvoicesService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\ProcessPaymentsService;
+use SharengoCore\Service\PaymentScriptRunsService;
 use Cartasi\Exception\WrongPaymentException;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Doctrine\ORM\EntityManager;
 
 class ConsolePayInvoiceController extends AbstractActionController
 {
@@ -58,22 +60,38 @@ class ConsolePayInvoiceController extends AbstractActionController
     private $avoidPersistance;
 
     /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
+     * @var PaymentScriptRunsService
+     */
+    private $paymentScriptRunsService;
+
+    /**
      * @param TripPaymentsService $tripPaymentsService
      * @param InvoicesService $invoicesService
      * @param Logger $logger
      * @param ProcessPaymentsService $processPaymentsService
+     * @param EntityManager $entityManager
+     * @param PaymentScriptRunsService $paymentScriptRunsService
      */
     public function __construct(
         TripPaymentsService $tripPaymentsService,
         InvoicesService $invoicesService,
         Logger $logger,
-        ProcessPaymentsService $processPaymentsService
+        ProcessPaymentsService $processPaymentsService,
+        EntityManager $entityManager,
+        PaymentScriptRunsService $paymentScriptRunsService
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
         $this->invoicesService = $invoicesService;
         $this->logger = $logger;
         $this->processPaymentsService = $processPaymentsService;
         $this->processPaymentsService->setLogger($this->logger);
+        $this->entityManager = $entityManager;
+        $this->paymentScriptRunsService = $paymentScriptRunsService;
     }
 
     public function payInvoiceAction()
@@ -86,7 +104,15 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
+        $scriptId = $this->paymentScriptRunsService->scriptStarted();
+
         $this->processPayments();
+
+        $this->paymentScriptRunsService->scriptEnded($scriptId);
+
+        // clear the entity manager cache
+        $this->entityManager->clear();
+
         $this->generateInvoices();
     }
 

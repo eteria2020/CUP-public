@@ -1,25 +1,18 @@
+/* global $ document userDetailsUrl */
+
 $(document).ready(function () {
-    $('#reprofiling-confirm').click(function (e) {
-        var option = $('input[name="option"]:checked').val(),
-            url = $.attr(this, 'data-ajax-url');
+    'use strict';
+
+    $('#profiling-banner').click(function (e) {
+        var discouterUrl = $(this).attr('href');
 
         e.preventDefault();
 
-        if (option !== undefined) {
-            //save option value in database
-            $.post(url, {
-                option: option
+        $.get(userDetailsUrl, function (data) {
+            $.redirect(discouterUrl, {
+                'utente': data.name,
+                'email': data.email
             });
-
-            switch (option) {
-                case "1": // conferma accettazione
-                    window.location.reload();
-                    break;
-                case "2": // ripetere ex-novo profilazione
-                case "3": // non ho fatto profilazione
-                    window.location.replace('http://www.equomobili.com');
-                    break;
-            }
-        }
+        });
     });
 });

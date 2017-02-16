@@ -106,9 +106,7 @@ class UserController extends AbstractActionController
 
         if (!empty($registeredDataPromoCode)) {
             $this->form1->setData([
-                'promocode' => [
-                    'promocode' => $registeredDataPromoCode
-                ]
+                'promocode' => $registeredDataPromoCode
             ]);
         }
 
@@ -322,7 +320,7 @@ class UserController extends AbstractActionController
     {
         $promoCode = strtoupper($this->params('promocode'));
 
-        $this->form1->registerPromoCodeData($promoCode);
+        $this->form1->registerPromoCodeData(['promocode' => $promoCode]);
 
         $this->redirect()->toRoute('signup');
     }

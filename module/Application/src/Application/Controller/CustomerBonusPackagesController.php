@@ -74,6 +74,7 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
 
+        // The packageId is incorrect
         if (!$package instanceof CustomersBonusPackages) {
             $this->flashMessenger()->addErrorMessage('Impossibile completare l\'acquisto del pacchetto richiesto');
             throw new PackageNotFoundException();
@@ -81,15 +82,24 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         $customer = $this->identity();
 
+        // The customer could not be identified
         if (!$customer instanceof Customers) {
             $this->flashMessenger()->addErrorMessage('Impossibile completare l\'acquisto del pacchetto richiesto');
             throw new CustomerNotFoundException();
         }
 
-        if (!$this->buyCustomerBonusPackage($customer, $package)) {
-            $this->flashMessenger()->addErrorMessage('Si è verificato un errore durante l\'acquisto del pacchetto richiesto');
+        // The customer did not pay the first payment
+        if (!$customer->getFirstPaymentCompleted()) {
+            $this->flashMessenger()->addErrorMessage('Occorre effettuare il pagamento per l\'iscrizione al servizio prima di poter acquistare un pacchetto');
+
         } else {
-            $this->flashMessenger()->addSuccessMessage('Acquisto del pacchetto bonus completato correttamente');
+            $success = $this->buyCustomerBonusPackage($customer, $package);
+
+            if ($success) {
+                $this->flashMessenger()->addSuccessMessage('Acquisto del pacchetto bonus completato correttamente');
+            } else {
+                $this->flashMessenger()->addErrorMessage('Si è verificato un errore durante l\'acquisto del pacchetto richiesto');
+            }
         }
 
         return new JsonModel();
