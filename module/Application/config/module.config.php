@@ -1644,14 +1644,9 @@ return [
                 'icon' => 'fa fa-user',
             ],
             [
-                'label' => $translator->translate("Le mie corse"),
-                'route' => 'area-utente/rents',
-                'icon' => 'fa icon-car-small-fff',
-            ],
-            [
-                'label' => $translator->translate("Tariffe"),
-                'route' => 'area-utente/tariffe',
-                'icon' => 'fa fa-money',
+                'label' => $translator->translate("Patente"),
+                'route' => 'area-utente/patente',
+                'icon' => 'fa fa-tachometer',
             ],
             [
                 'label' => $translator->translate("PIN"),
@@ -1659,9 +1654,29 @@ return [
                 'icon' => 'fa fa-lock',
             ],
             [
-                'label' => $translator->translate("Fatture"),
-                'route' => 'area-utente/invoices-list',
-                'icon' => 'fa fa-file-o',
+                'label' => $translator->translate("Tariffe"),
+                'route' => 'area-utente/tariffe',
+                'icon' => 'fa fa-money',
+            ],
+            [
+                'label' => $translator->translate("Promo e pacchetti"),
+                'route' => 'area-utente/additional-services',
+                'icon' => 'fa fa-plus',
+            ],
+            [
+                'label' => $translator->translate("Gift Card"),
+                'route' => 'area-utente/gift-packages',
+                'icon' => 'fa fa-gift',
+            ],
+            [
+                'label' => $translator->translate("Bonus minuti"),
+                'route' => 'area-utente/bonus',
+                'icon' => 'fa fa-trophy',
+            ],
+            [
+                'label' => $translator->translate("Corse completate"),
+                'route' => 'area-utente/rents',
+                'icon' => 'fa icon-car-small-fff',
             ],
             [
                 'label' => $translator->translate("Dati di pagamento"),
@@ -1669,19 +1684,9 @@ return [
                 'icon' => 'fa fa-credit-card',
             ],
             [
-                'label' => $translator->translate("Bonus"),
-                'route' => 'area-utente/bonus',
-                'icon' => 'fa fa-trophy',
-            ],
-            [
-                'label' => $translator->translate("Servizi aggiuntivi"),
-                'route' => 'area-utente/additional-services',
-                'icon' => 'fa fa-plus',
-            ],
-            [
-                'label' => $translator->translate("Patente"),
-                'route' => 'area-utente/patente',
-                'icon' => 'fa fa-tachometer',
+                'label' => $translator->translate("Fatture"),
+                'route' => 'area-utente/invoices-list',
+                'icon' => 'fa fa-file-o',
             ],
         ],
     ],
