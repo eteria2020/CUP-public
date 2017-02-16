@@ -7,6 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+$translator = new \Zend\I18n\Translator\Translator();
 // Getting the siteroot path ( = sharengo-admin folder)
 $baseDir = realpath(__DIR__.'/../../../');
 
@@ -1043,6 +1044,7 @@ return [
             'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service'
         ],
         'factories' => [
+            'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'RegistrationService'      => 'Application\Service\RegistrationServiceFactory',
             'RegistrationForm'         => 'Application\Form\RegistrationFormFactory',
             'RegistrationForm2'        => 'Application\Form\RegistrationForm2Factory',
@@ -1631,6 +1633,60 @@ return [
                         ]
                     ]
                 ]
+            ],
+        ],
+    ],
+    'navigation' => [
+        'default' => [
+            [
+                'label' => $translator->translate("Profilo"),
+                'route' => 'area-utente',
+                'icon' => 'fa fa-user',
+            ],
+            [
+                'label' => $translator->translate("Patente"),
+                'route' => 'area-utente/patente',
+                'icon' => 'fa fa-tachometer',
+            ],
+            [
+                'label' => $translator->translate("PIN"),
+                'route' => 'area-utente/pin',
+                'icon' => 'fa fa-lock',
+            ],
+            [
+                'label' => $translator->translate("Tariffe"),
+                'route' => 'area-utente/tariffe',
+                'icon' => 'fa fa-money',
+            ],
+            [
+                'label' => $translator->translate("Promo e pacchetti"),
+                'route' => 'area-utente/additional-services',
+                'icon' => 'fa fa-plus',
+            ],
+            [
+                'label' => $translator->translate("Gift Card"),
+                'route' => 'area-utente/gift-packages',
+                'icon' => 'fa fa-gift',
+            ],
+            [
+                'label' => $translator->translate("Bonus minuti"),
+                'route' => 'area-utente/bonus',
+                'icon' => 'fa fa-trophy',
+            ],
+            [
+                'label' => $translator->translate("Corse completate"),
+                'route' => 'area-utente/rents',
+                'icon' => 'fa icon-car-small-fff',
+            ],
+            [
+                'label' => $translator->translate("Dati di pagamento"),
+                'route' => 'area-utente/dati-pagamento',
+                'icon' => 'fa fa-credit-card',
+            ],
+            [
+                'label' => $translator->translate("Fatture"),
+                'route' => 'area-utente/invoices-list',
+                'icon' => 'fa fa-file-o',
             ],
         ],
     ],

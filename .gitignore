@@ -7,15 +7,14 @@ nbproject
 .project
 .settings
 vendor
+node_modules
 
-// SharengoCore lives on its own repository
+// These modules are on their own repository
 module/SharengoCore
-
-// Cartasi module lives in its own repository
+module/BusinessCore
 module/Cartasi
-
-//DriversLicenseValidation module lives in its own repository
 module/MvLabsDriversLicenseValidation
+module/CUPPublicBusinessModule
 
 // cache
 data/DoctrineORMModule
