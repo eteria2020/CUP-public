@@ -20,8 +20,8 @@
         "mvlabs/sharengo-coremodule": "dev-master",
         "zendframework/zend-developer-tools": "1.0",
         "nikolaposa/mobile-detect-module": "^1.0",
-        "sharengo-web/cartasi": "dev-master",
-        "sharengo-web/drivers-license-validation": "dev-master",
+        "cup-web/cartasi": "dev-master",
+        "cup-web/drivers-license-validation": "dev-master",
         "chrisboulton/php-resque": "dev-master",
         "dmregister/zf2-resque": "dev-master",
         "chrisboulton/php-resque-scheduler": "dev-master",
@@ -32,7 +32,7 @@
         "ramsey/uuid-doctrine": "^1.2",
         "usu/codice-fiscale": "^1.0",
         "rwoverdijk/assetmanager": "^1.2.1",
-        "mvlabs/mvlabs-payments": "dev-business-changes",
+        "mvlabs/mvlabs-payments": "dev-master",
         "mvlabs/omnipay-cartasi": "@dev",
         "creof/doctrine2-spatial": "1.*",
         "beberlei/DoctrineExtensions": "^1.0",
@@ -43,11 +43,11 @@
     },
     "repositories": [
         {
-            "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
+            "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
             "type": "git"
         },
         {
-            "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
+            "url": "ssh://git@gitlab.bulweria.com/cup-web/cartasi.git",
             "type": "git"
         },
         {
@@ -72,6 +72,10 @@
         },
         {
             "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
+            "type": "git"
+        },
+        {
+            "url": "ssh://git@gitlab.bulweria.com/cup-web/public-business-module.git",
             "type": "git"
         },
         {
