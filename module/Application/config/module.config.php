@@ -1576,6 +1576,17 @@ return [
                         ]
                     ]
                 ],
+                'disable-customer-expired-license' => [
+                    'type' => 'Simple',
+                    'options' => [
+                        'route' => 'disable customer expired license <customerId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableCustomerController',
+                            'action' => 'expired-drivers-license'
+                        ]
+                    ]
+                ],
                 'disable-old-discounts' => [
                     'type' => 'simple',
                     'options' => [
