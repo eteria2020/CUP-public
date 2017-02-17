@@ -389,7 +389,11 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (!$trip instanceof Trips) {
                 continue;
             }
-
+            
+            /*if ($trip->getFleet()->getId() == 3) {
+                continue;
+            }*/
+            
             if ($trip->getDurationMinutes()<=5){
                 continue;
             }
