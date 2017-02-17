@@ -371,15 +371,16 @@ class ConsoleBonusComputeController extends AbstractActionController
         }
         $date_ts = $request->getParam('data-run');
         $radius = $request->getParam('radius');
+        $carplate = $request->getParam('carplate');
 
         $this->logger->log("\nShell date: ".$date_ts."\n");
         $this->logger->log("Radius: ".$radius." meters\n\n");
 
-        $this->zoneBonusPark($date_ts, $radius, $debug);
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug);
     }
-    private function zoneBonusPark($date_ts, $radius, $debug)
+    private function zoneBonusPark($date_ts, $radius, $carplate, $debug)
     {
-        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts);
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate);
 
         $this->logger->log("-------- Compute Zone Bonuses Park POIS\n");
         $this->logger->log("Trips to compute: ".count($tripsToBeComputed)."\n\n");
@@ -389,10 +390,6 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (!$trip instanceof Trips) {
                 continue;
             }
-            
-            /*if ($trip->getFleet()->getId() == 3) {
-                continue;
-            }*/
             
             if ($trip->getDurationMinutes()<=5){
                 continue;
@@ -405,7 +402,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (count($residuals) == 0){
                 continue;
             }
-
+            
             // Verify that customer reiceves only one bonus for trips with same plate
             $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate(), $trip->getCustomer()->getId());
             if (count($verified)>=1){

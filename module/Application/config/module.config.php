@@ -1480,7 +1480,7 @@ return [
                 'bonus-park' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'bonus park <data-run> <radius> [--dry-run|-d] [--debug-mode|-dm]',
+                        'route' => 'bonus park <data-run> <radius> <carplate> [--dry-run|-d] [--debug-mode|-dm]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
