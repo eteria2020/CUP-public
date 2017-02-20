@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e128486791f3f940a9427053aa6a224e",
-    "content-hash": "8f131949a5f421dd3007e4a8993f7f12",
+    "hash": "24ad8c686eb8c94c24448db6cb25468b",
+    "content-hash": "2f3b038c57c63c95df19a05829b4c16f",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -476,65 +476,58 @@
             "time": "2016-05-03 16:15:16"
         },
         {
-            "name": "cup-web/cartasi",
+            "name": "cup-web/core-business",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/cartasi.git",
-                "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
+                "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
+                "reference": "9cdfb391c54a3efbc5ac0738b406aaec7cb8f92a"
             },
             "require": {
-                "doctrine/doctrine-orm-module": "0.*",
-                "php": ">=5.4.0",
+                "doctrine/doctrine-orm-module": "0.9.*",
+                "doctrine/migrations": "^1.2",
+                "h4cc/wkhtmltopdf-amd64": "0.12.0",
+                "mvlabs/mvlabs-snappy": "0.2.*",
+                "php": ">=5.4",
+                "rwoverdijk/assetmanager": "1.4.*",
                 "zendframework/zendframework": "2.4.*"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Cartasi": "src/"
+                "classmap": [
+                    "./Module.php"
+                ],
+                "psr-4": {
+                    "BusinessCore\\": "src/"
                 }
             },
-            "description": "Cartasi module for Sharengo",
-            "time": "2016-05-06 13:16:50"
+            "description": "Business Core module",
+            "time": "2017-02-20 11:34:10"
         },
         {
-            "name": "cup-web/drivers-license-validation",
+            "name": "cup-web/public-business-module",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/drivers-license-validation.git",
-                "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
+                "url": "ssh://git@gitlab.bulweria.com/cup-web/public-business-module.git",
+                "reference": "b746acd2f263af35fa2917854f31c82832118a36"
             },
             "require": {
-                "php": ">=5.4"
+                "php": ">=5.4",
+                "rwoverdijk/assetmanager": "1.4.*",
+                "zendframework/zendframework": "2.4.*"
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "MvLabsDriversLicenseValidation\\": "src/"
-                },
                 "classmap": [
                     "./Module.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Perone",
-                    "email": "m.perone@mvlabs.it"
+                ],
+                "psr-4": {
+                    "CUPPublicBusinessModule\\": "src/"
                 }
-            ],
-            "description": "MVLabs driver's license validation module for ZF2",
-            "keywords": [
-                "driver",
-                "licence",
-                "license",
-                "validation",
-                "zf2"
-            ],
-            "time": "2016-05-16 07:48:51"
+            },
+            "description": "Business area in Admin",
+            "time": "2017-02-20 11:29:43"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -1329,6 +1322,80 @@
             "time": "2014-09-09 13:34:57"
         },
         {
+            "name": "doctrine/migrations",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/migrations.git",
+                "reference": "c81147c0f2938a6566594455367e095150547f72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/c81147c0f2938a6566594455367e095150547f72",
+                "reference": "c81147c0f2938a6566594455367e095150547f72",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "~2.2",
+                "ocramius/proxy-manager": "^1.0|^2.0",
+                "php": "^5.5|^7.0",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "dev-master",
+                "doctrine/orm": "2.*",
+                "jdorn/sql-formatter": "~1.1",
+                "johnkary/phpunit-speedtrap": "~1.0@dev",
+                "mikey179/vfsstream": "^1.6",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "~4.7",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "jdorn/sql-formatter": "Allows to generate formatted SQL with the diff command."
+            },
+            "bin": [
+                "bin/doctrine-migrations"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "v1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\DBAL\\Migrations\\": "lib/Doctrine/DBAL/Migrations"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Michael Simonson",
+                    "email": "contact@mikesimonson.com"
+                }
+            ],
+            "description": "Database Schema migrations using Doctrine DBAL",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database",
+                "migrations"
+            ],
+            "time": "2016-12-25 22:54:00"
+        },
+        {
             "name": "doctrine/mongodb",
             "version": "1.2.2",
             "source": {
@@ -1693,16 +1760,16 @@
         },
         {
             "name": "guzzle/guzzle",
-            "version": "dev-master",
+            "version": "v3.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle3.git",
-                "reference": "f7778ed85e3db90009d79725afd6c3a82dab32fe"
+                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/f7778ed85e3db90009d79725afd6c3a82dab32fe",
-                "reference": "f7778ed85e3db90009d79725afd6c3a82dab32fe",
+                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/0645b70d953bc1c067bbc8d5bc53194706b628d9",
+                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9",
                 "shasum": ""
             },
             "require": {
@@ -1785,7 +1852,7 @@
                 "web service"
             ],
             "abandoned": "guzzlehttp/guzzle",
-            "time": "2016-10-26 18:22:07"
+            "time": "2015-03-18 18:23:50"
         },
         {
             "name": "h4cc/wkhtmltopdf-amd64",
@@ -2316,11 +2383,11 @@
         },
         {
             "name": "mvlabs/sharengo-coremodule",
-            "version": "dev-master",
+            "version": "dev-develop-business",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/core.git",
-                "reference": "1be529249ff4497b7b31148745604fd7f8ee1500"
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
+                "reference": "aa7258e2a97ddde6ab681980ec685e5c619e7cbe"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2337,11 +2404,11 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "SharengoCore": "src/"
+                    "SharengoCore\\": "src/"
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-02-08 08:47:50"
+            "time": "2017-02-17 13:29:55"
         },
         {
             "name": "natxet/CssMin",
@@ -2453,17 +2520,80 @@
             "time": "2015-09-04 10:34:45"
         },
         {
-            "name": "omnipay/common",
-            "version": "dev-master",
+            "name": "ocramius/proxy-manager",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/omnipay-common.git",
-                "reference": "b1440bd7c0b4fb28ba8250d93695c61ac887685d"
+                "url": "https://github.com/Ocramius/ProxyManager.git",
+                "reference": "57e9272ec0e8deccf09421596e0e2252df440e11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/b1440bd7c0b4fb28ba8250d93695c61ac887685d",
-                "reference": "b1440bd7c0b4fb28ba8250d93695c61ac887685d",
+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/57e9272ec0e8deccf09421596e0e2252df440e11",
+                "reference": "57e9272ec0e8deccf09421596e0e2252df440e11",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-code": ">2.2.5,<3.0"
+            },
+            "require-dev": {
+                "ext-phar": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "1.5.*"
+            },
+            "suggest": {
+                "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
+                "zendframework/zend-json": "To have the JsonRpc adapter (Remote Object feature)",
+                "zendframework/zend-soap": "To have the Soap adapter (Remote Object feature)",
+                "zendframework/zend-stdlib": "To use the hydrator proxy",
+                "zendframework/zend-xmlrpc": "To have the XmlRpc adapter (Remote Object feature)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "ProxyManager\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "A library providing utilities to generate, instantiate and generally operate with Object Proxies",
+            "homepage": "https://github.com/Ocramius/ProxyManager",
+            "keywords": [
+                "aop",
+                "lazy loading",
+                "proxy",
+                "proxy pattern",
+                "service proxies"
+            ],
+            "time": "2015-08-09 04:28:19"
+        },
+        {
+            "name": "omnipay/common",
+            "version": "2.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/omnipay-common.git",
+                "reference": "54910f2ece6b1be64f5e53e2111dd1254d50ee49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/54910f2ece6b1be64f5e53e2111dd1254d50ee49",
+                "reference": "54910f2ece6b1be64f5e53e2111dd1254d50ee49",
                 "shasum": ""
             },
             "require": {
@@ -2548,7 +2678,7 @@
                 "payment",
                 "purchase"
             ],
-            "time": "2017-01-08 16:58:11"
+            "time": "2016-11-07 06:10:23"
         },
         {
             "name": "paragonie/random_compat",
@@ -2834,6 +2964,67 @@
             "time": "2015-03-12 07:10:33"
         },
         {
+            "name": "sharengo-web/cartasi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
+                "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cartasi": "src/"
+                }
+            },
+            "description": "Cartasi module for Sharengo",
+            "time": "2016-05-06 13:16:50"
+        },
+        {
+            "name": "sharengo-web/drivers-license-validation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/drivers-license-validation.git",
+                "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MvLabsDriversLicenseValidation\\": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Perone",
+                    "email": "m.perone@mvlabs.it"
+                }
+            ],
+            "description": "MVLabs driver's license validation module for ZF2",
+            "keywords": [
+                "driver",
+                "licence",
+                "license",
+                "validation",
+                "zf2"
+            ],
+            "time": "2016-05-16 07:48:51"
+        },
+        {
             "name": "socalnick/scn-social-auth",
             "version": "1.19.0",
             "source": {
@@ -3070,7 +3261,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "2.8.x-dev",
+            "version": "v2.8.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3130,16 +3321,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "dev-master",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "737aa3e24c17c6ffd8685abedada20e75922a223"
+                "reference": "a90da6dd679605d88c9803a57a6fc1fb7a19a6e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/737aa3e24c17c6ffd8685abedada20e75922a223",
-                "reference": "737aa3e24c17c6ffd8685abedada20e75922a223",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a90da6dd679605d88c9803a57a6fc1fb7a19a6e0",
+                "reference": "a90da6dd679605d88c9803a57a6fc1fb7a19a6e0",
                 "shasum": ""
             },
             "require": {
@@ -3152,7 +3343,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -3179,7 +3370,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-12 19:33:56"
+            "time": "2017-02-16 22:46:52"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3286,6 +3477,55 @@
                 }
             ],
             "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:29:29"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.8.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/dba4bb5846798cd12f32e2d8f3f35d77045773c8",
+                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-06-29 05:29:29"
         },
@@ -4359,46 +4599,6 @@
             "time": "2016-05-22 21:52:33"
         },
         {
-            "name": "pdepend/pdepend",
-            "version": "2.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "0c50874333149c0dad5a2877801aed148f2767ff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/0c50874333149c0dad5a2877801aed148f2767ff",
-                "reference": "0c50874333149c0dad5a2877801aed148f2767ff",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.7",
-                "symfony/config": "^2.3.0|^3",
-                "symfony/dependency-injection": "^2.3.0|^3",
-                "symfony/filesystem": "^2.3.0|^3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.4.0,<4.8",
-                "squizlabs/php_codesniffer": "^2.0.0"
-            },
-            "bin": [
-                "src/bin/pdepend"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PDepend\\": "src/main/php/PDepend"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-01-19 14:23:36"
-        },
-        {
             "name": "phpdocumentor/reflection-docblock",
             "version": "2.0.4",
             "source": {
@@ -4446,72 +4646,6 @@
                 }
             ],
             "time": "2015-02-03 12:10:50"
-        },
-        {
-            "name": "phpmd/phpmd",
-            "version": "2.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "4e9924b2c157a3eb64395460fcf56b31badc8374"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/4e9924b2c157a3eb64395460fcf56b31badc8374",
-                "reference": "4e9924b2c157a3eb64395460fcf56b31badc8374",
-                "shasum": ""
-            },
-            "require": {
-                "ext-xml": "*",
-                "pdepend/pdepend": "^2.5",
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0",
-                "squizlabs/php_codesniffer": "^2.0"
-            },
-            "bin": [
-                "src/bin/phpmd"
-            ],
-            "type": "project",
-            "autoload": {
-                "psr-0": {
-                    "PHPMD\\": "src/main/php"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Manuel Pichler",
-                    "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
-                },
-                {
-                    "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
-                },
-                {
-                    "name": "Marc Würth",
-                    "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
-                }
-            ],
-            "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
-            "homepage": "http://phpmd.org/",
-            "keywords": [
-                "mess detection",
-                "mess detector",
-                "pdepend",
-                "phpmd",
-                "pmd"
-            ],
-            "time": "2017-01-20 14:41:10"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -5982,123 +6116,6 @@
             "time": "2015-11-21 02:21:41"
         },
         {
-            "name": "sharengo-web/cartasi",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
-                "reference": "b6e596812edd375ac645592c918af1bf010e1b44"
-            },
-            "require": {
-                "doctrine/doctrine-orm-module": "0.*",
-                "php": ">=5.4.0",
-                "zendframework/zendframework": "2.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Cartasi": "src/"
-                }
-            },
-            "description": "Cartasi module for Sharengo",
-            "time": "2016-05-06 13:16:50"
-        },
-        {
-            "name": "sharengo-web/drivers-license-validation",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/drivers-license-validation.git",
-                "reference": "5ea1832b1d8316ae842ca99e900dddf8dcc02e02"
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MvLabsDriversLicenseValidation\\": "src/"
-                },
-                "classmap": [
-                    "./Module.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Perone",
-                    "email": "m.perone@mvlabs.it"
-                }
-            ],
-            "description": "MVLabs driver's license validation module for ZF2",
-            "keywords": [
-                "driver",
-                "licence",
-                "license",
-                "validation",
-                "zf2"
-            ],
-            "time": "2016-05-16 07:48:51"
-        },
-        {
-            "name": "symfony/config",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/config.git",
-                "reference": "f0adc7e9b7191545727f15ccbaa5f381ccce2cad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/f0adc7e9b7191545727f15ccbaa5f381ccce2cad",
-                "reference": "f0adc7e9b7191545727f15ccbaa5f381ccce2cad",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "symfony/filesystem": "~2.8|~3.0"
-            },
-            "require-dev": {
-                "symfony/yaml": "~3.0"
-            },
-            "suggest": {
-                "symfony/yaml": "To use the yaml reference dumper"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Config\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Config Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-02-14 16:35:24"
-        },
-        {
             "name": "symfony/debug",
             "version": "v2.8.8",
             "source": {
@@ -6156,66 +6173,6 @@
             "time": "2016-06-29 05:29:29"
         },
         {
-            "name": "symfony/dependency-injection",
-            "version": "3.1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "f4a04433f82eb8ca58555d1b6375293fc7c90d18"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/f4a04433f82eb8ca58555d1b6375293fc7c90d18",
-                "reference": "f4a04433f82eb8ca58555d1b6375293fc7c90d18",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "symfony/config": "~2.8|~3.0",
-                "symfony/expression-language": "~2.8|~3.0",
-                "symfony/yaml": "~2.8.7|~3.0.7|~3.1.1|~3.2"
-            },
-            "suggest": {
-                "symfony/config": "",
-                "symfony/expression-language": "For using expressions in service container configuration",
-                "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
-                "symfony/yaml": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\DependencyInjection\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony DependencyInjection Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-01-28 00:04:57"
-        },
-        {
             "name": "symfony/expression-language",
             "version": "v2.8.8",
             "source": {
@@ -6265,55 +6222,6 @@
             "time": "2016-03-07 14:04:32"
         },
         {
-            "name": "symfony/filesystem",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/filesystem.git",
-                "reference": "b2de62936fea037d501159f52b7b6172cc962282"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/b2de62936fea037d501159f52b7b6172cc962282",
-                "reference": "b2de62936fea037d501159f52b7b6172cc962282",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Filesystem\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Filesystem Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-01-08 21:15:04"
-        },
-        {
             "name": "symfony/finder",
             "version": "v2.8.8",
             "source": {
@@ -6361,72 +6269,24 @@
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
             "time": "2016-06-29 05:29:29"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "v2.8.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/dba4bb5846798cd12f32e2d8f3f35d77045773c8",
-                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:29:29"
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "speckcommerce/speck-paypal": 20,
-        "mvlabs/sharengo-coremodule": 20,
-        "cup-web/cartasi": 20,
-        "cup-web/drivers-license-validation": 20,
+        "sharengo-web/cartasi": 20,
+        "sharengo-web/drivers-license-validation": 20,
         "chrisboulton/php-resque": 20,
         "dmregister/zf2-resque": 20,
         "chrisboulton/php-resque-scheduler": 20,
         "jaaprood/php-resque-retry": 20,
         "jaaprood/php-resque-plugin": 20,
+        "cup-web/core-business": 20,
+        "cup-web/public-business-module": 20,
         "mvlabs/mvlabs-payments": 20,
         "mvlabs/omnipay-cartasi": 20,
-        "phpmd/phpmd": 0
+        "mvlabs/sharengo-coremodule": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
