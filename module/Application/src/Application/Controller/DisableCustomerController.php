@@ -9,6 +9,8 @@ use SharengoCore\Service\CustomerNoteService;
 use SharengoCore\Service\UsersService;
 use SharengoCore\Entity\Webuser;
 
+use SharengoCore\Service\SimpleLoggerService as Logger;
+
 use Zend\Mvc\Controller\AbstractActionController;
 
 class DisableCustomerController extends AbstractActionController
@@ -27,19 +29,28 @@ class DisableCustomerController extends AbstractActionController
      * @var CustomerNotesService
      */
     private $customerNoteService;
-    
+    /**
+     * @var UserService 
+     */
     private $usersService;
 
+    /**
+     * @var Logger
+     */
+    private $logger;
+    
     public function __construct(
         CustomersService $customersService,
         CustomerDeactivationService $customerDeactivationService,
         CustomerNoteService $customerNoteService,
-        UsersService $usersService
+        UsersService $usersService,
+        Logger $logger
     ) {
         $this->customersService = $customersService;
         $this->customerDeactivationService = $customerDeactivationService;
         $this->customerNoteService = $customerNoteService;
         $this->usersService = $usersService;
+        $this->logger = $logger;
     }
 
     public function invalidDriversLicenseAction()
@@ -60,27 +71,36 @@ class DisableCustomerController extends AbstractActionController
 
         fwrite(STDOUT, 'The customer '.$customer->getName().' '.$customer->getSurname().' was disabled correctly'.PHP_EOL);
     }
+
+    private function prepareLogger()
+    {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+    }
     
     public function expiredDriversLicenseAction(){
-        $customerId = $this->params('customerId');
-        if (!is_numeric($customerId)) {
-            fwrite(STDOUT, 'You need to provide a valid numeric id to retrieve the customer'.PHP_EOL);
-            exit;
-        }
-
-        $customer = $this->customersService->findById($customerId);
-        if (!$customer instanceof Customers) {
-            fwrite(STDOUT, 'The id you provided is not associated to any customer'.PHP_EOL);
-            exit;
-        }
-
-        $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
-
-        fwrite(STDOUT, 'The customer '.$customer->getName().' '.$customer->getSurname().' was disabled correctly'.PHP_EOL);
-        //CustomerNoteService.php in service sharengo-coremodule
-        $webuser = $this->usersService->findUserById(3); 
-
-        $this->customerNoteService->addNote($customer, $webuser ,"Test nota");
         
+        $this->prepareLogger();
+        
+        $customers = $this->customersService->getCustomersExpiredLicense();
+        
+        $this->logger->log("\nStarted time = " . date_create()->format('Y-m-d H:i:s') . " - Count expired: ". count($customers)."\n");
+        
+        foreach ($customers as $customer) {
+        
+            if (!$customer instanceof Customers) {
+               continue;
+            }
+
+            $this->logger->log(date('Y-m-d H:i:s').";". $customer->getId() .";". $customer->getDriverLicenseExpire()->format('Y-m-d') ."\n");
+
+            $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
+
+            //CustomerNoteService.php in service sharengo-coremodule
+            $webuser = $this->usersService->findUserById(12); 
+
+            $this->customerNoteService->addNote($customer, $webuser ,"Messaggio di sistema: utente disattivato per patente scaduta.");
+        
+        }
     }
 }
