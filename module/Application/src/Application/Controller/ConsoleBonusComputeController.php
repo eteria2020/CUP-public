@@ -403,8 +403,8 @@ class ConsoleBonusComputeController extends AbstractActionController
                 continue;
             }
             
-            // Verify that customer reiceves only one bonus for trips with same plate
-            $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate(), $trip->getCustomer()->getId());
+            // Verify that only one bonus for trips with plate
+            $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate());
             if (count($verified)>=1){
                 continue;
             }
@@ -420,7 +420,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             //send email to customer -> notification bonuses
             $this->logger->log("send email:".$trip->getCustomer()->getEmail()."\n");
 
-            // send email to the customer - trycatch?
+            // send email to the customer
             $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName());
         }
 
