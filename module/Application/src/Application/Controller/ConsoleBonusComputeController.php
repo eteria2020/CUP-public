@@ -4,10 +4,12 @@ namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\TripsService;
+use SharengoCore\Service\PoisService;
 use SharengoCore\Service\EditTripsService;
 use SharengoCore\Service\BonusService;
 use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
+use SharengoCore\Service\EmailService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\Trips;
@@ -44,6 +46,16 @@ class ConsoleBonusComputeController extends AbstractActionController
     private $zonesService;
 
     /**
+     * @var PoisService
+     */
+    private $poisService;
+
+    /**
+     * @var EmailService
+     */
+    private $emailService;
+
+    /**
      * @var EventsService
      */
     private $eventsService;
@@ -74,6 +86,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         EditTripsService $editTripService,
         BonusService $bonusService,
         ZonesService $zonesService,
+        EmailService $emailService,
+        PoisService $poisService,
         EventsService $eventsService,
         Logger $logger,
         $config
@@ -82,6 +96,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->tripsService = $tripsService;
         $this->editTripService = $editTripService;
         $this->bonusService = $bonusService;
+        $this->poisService = $poisService;
+        $this->emailService = $emailService;
         $this->zonesService = $zonesService;
         $this->eventsService = $eventsService;
         $this->logger = $logger;
@@ -341,5 +357,93 @@ class ConsoleBonusComputeController extends AbstractActionController
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+    }
+
+    public function bonusPoisAction()
+    {
+        $this->prepareLogger();
+        $request = $this->getRequest();
+        $debug = $request->getParam('debug-mode') || $request->getParam('dm');
+        $this->logger->log("\nStarted computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n");
+
+        if ($debug) {
+            $this->logger->log("\n---- Debug mode ----\n");
+        }
+        $date_ts = $request->getParam('data-run');
+        $radius = $request->getParam('radius');
+        $carplate = $request->getParam('carplate');
+
+        $this->logger->log("\nShell date: ".$date_ts."\n");
+        $this->logger->log("Radius: ".$radius." meters\n\n");
+
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug);
+    }
+    private function zoneBonusPark($date_ts, $radius, $carplate, $debug)
+    {
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate);
+
+        $this->logger->log("-------- Compute Zone Bonuses Park POIS\n");
+        $this->logger->log("Trips to compute: ".count($tripsToBeComputed)."\n\n");
+
+        foreach ($tripsToBeComputed as $trip) {
+
+            if (!$trip instanceof Trips) {
+                continue;
+            }
+            
+            if ($trip->getDurationMinutes()<=5){
+                continue;
+            }
+            
+            //($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
+
+            // Verify if customer reached max amount in zone bonuses passed and return a list of those available
+            $residuals = $this->poisService->checkPointInDigitalIslands($trip->getFleet()->getId(), $trip->getLatitudeEnd(), $trip->getLongitudeEnd(), $radius);
+            if (count($residuals) == 0){
+                continue;
+            }
+            
+            // Verify that only one bonus for trips with plate
+            $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate());
+            if (count($verified)>=1){
+                continue;
+            }
+
+            if ($debug){
+                $this->logger->log("Trip ID:". $trip->getId() ."- Customer ID: ".$trip->getCustomer()->getId()." - Carplate:". $trip->getCar()->getPlate() ."\n\n");
+                continue;
+            }
+            
+            // Assign bonuses to customer
+            $this->assigneBonus($trip, 5, 'POIS', 30, "Bonus parcheggio nei pressi di punto di ricarica - ".$trip->getCar()->getPlate());
+
+            //send email to customer -> notification bonuses
+            $this->logger->log("send email:".$trip->getCustomer()->getEmail()."\n");
+
+            // send email to the customer
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName());
+        }
+
+        //Recap bonus assigned
+
+        $this->logger->log("\nEnd computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+        private function sendEmail($email, $name)
+    {
+        //$writeTo = $this->emailSettings['from'];
+        $content = sprintf(
+            file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+            $name
+            //add another value,
+        );
+        $attachments = [
+            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+        ];
+        $this->emailService->sendEmail(
+            $email, //send to
+            'Share’ngo: bonus 5 minuti',//object email
+            $content,
+            $attachments
+        );
     }
 }
