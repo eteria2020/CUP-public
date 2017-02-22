@@ -80,11 +80,18 @@ class DisableCustomerController extends AbstractActionController
     
     public function expiredDriversLicenseAction(){
         
+        $request = $this->getRequest();
+        $debug = $request->getParam('debug-mode') || $request->getParam('dm');
+        
         $this->prepareLogger();
         
         $customers = $this->customersService->getCustomersExpiredLicense();
         
         $this->logger->log("\nStarted time = " . date_create()->format('Y-m-d H:i:s') . " - Count expired: ". count($customers)."\n");
+        
+        if ($debug) {
+            $this->logger->log("Debug mode: \n");
+        }
         
         foreach ($customers as $customer) {
         
@@ -93,7 +100,11 @@ class DisableCustomerController extends AbstractActionController
             }
 
             $this->logger->log(date('Y-m-d H:i:s').";". $customer->getId() .";". $customer->getDriverLicenseExpire()->format('Y-m-d') ."\n");
-
+            
+            if ($debug) {
+                continue;
+            }
+            
             $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
 
             //CustomerNoteService.php in service sharengo-coremodule
@@ -102,5 +113,7 @@ class DisableCustomerController extends AbstractActionController
             $this->customerNoteService->addNote($customer, $webuser ,"Messaggio di sistema: utente disattivato per patente scaduta.");
         
         }
+        
+        $this->logger->log("\nEnd time = " . date_create()->format('Y-m-d H:i:s') ."\n");
     }
 }
