@@ -104,16 +104,20 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
-        $scriptId = $this->paymentScriptRunsService->scriptStarted();
+        if (!$this->paymentScriptRunsService->isRunning()) {
+            $scriptId = $this->paymentScriptRunsService->scriptStarted();
 
-        $this->processPayments();
+            $this->processPayments();
 
-        $this->paymentScriptRunsService->scriptEnded($scriptId);
-
-        // clear the entity manager cache
-        $this->entityManager->clear();
-
-        $this->generateInvoices();
+            $this->paymentScriptRunsService->scriptEnded($scriptId);
+            
+            // clear the entity manager cache
+            $this->entityManager->clear();
+            
+            $this->generateInvoices();
+        } else {
+            $this->logger->log("\nError: Pay invoice is running\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        }
     }
 
     private function processPayments()
