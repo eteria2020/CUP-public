@@ -124,7 +124,7 @@ class ConsolePayInvoiceController extends AbstractActionController
     {
         $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment();
+        $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-15 days');
         $this->logger->log("Processing payments for " . count($tripPayments) . " trips\n");
 
         $this->processPaymentsService->processPayments(
