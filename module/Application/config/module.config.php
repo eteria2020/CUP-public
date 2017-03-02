@@ -589,6 +589,17 @@ return [
                     ],
                 ],
             ], */
+            'intern' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{intern}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'intern',
+                    ],
+                ],
+            ],
             'kpmg' => [
                 'type' => 'Segment',
                 'options' => [
