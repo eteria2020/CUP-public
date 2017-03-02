@@ -9,6 +9,7 @@ use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Exception\BonusAssignmentException;
 use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Exception\CodeAlreadyUsedException;
+use SharengoCore\Service\BonusService;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Service\CustomersService;
@@ -57,6 +58,10 @@ class AdditionalServicesController extends AbstractActionController
      * @var AuthenticationService
      */
     private $authService;
+    /**
+     * @var BonusService
+     */
+    private $bonusService;
 
     /**
      * @param CustomersService $customerService
@@ -65,6 +70,7 @@ class AdditionalServicesController extends AbstractActionController
      * @param PromoCodesService $promoCodeService
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param AuthenticationService $authService
+     * @param BonusService $bonusService
      */
     public function __construct(
         CustomersService $customersService,
@@ -73,7 +79,8 @@ class AdditionalServicesController extends AbstractActionController
         PromoCodesService $promoCodeService,
         PromoCodesOnceService $promoCodeOnceService,
         CustomersBonusPackagesService $customersBonusPackagesService,
-        AuthenticationService $authService
+        AuthenticationService $authService,
+        BonusService $bonusService
     ) {
         $this->customersService = $customersService;
         $this->carrefourService = $carrefourService;
@@ -82,6 +89,7 @@ class AdditionalServicesController extends AbstractActionController
         $this->promoCodeOnceService =  $promoCodeOnceService;
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->authService = $authService;
+        $this->bonusService = $bonusService;
     }
 
     public function additionalServicesAction()
@@ -133,12 +141,16 @@ class AdditionalServicesController extends AbstractActionController
                 return $this->redirect()->toRoute('area-utente/additional-services');
             }
         }
-
+        
         $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
-
+        $customer = $this->authService->getIdentity();
+        $verify = count($this->bonusService->verifyWomenBonus($customer));
+        
         return new ViewModel([
             'promoCodeForm' => $form,
-            'bonusPackages' => $bonusPackages
+            'bonusPackages' => $bonusPackages,
+            'customer' => $customer,
+            'verify' => $verify
         ]);
     }
 

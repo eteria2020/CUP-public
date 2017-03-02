@@ -1,8 +1,9 @@
 <?php
 $form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
+$gender = $this->customer->getGender();
+$verify = $this->verify;
 ?>
-
 <!-- main -->
 <div id="main" class="detect-window-height">
 
@@ -54,7 +55,7 @@ $bonusPackages = $this->bonusPackages;
                                 </div>
                             </div>
                             <div class="block-wrapper-button content-align-center">
-                                <input type=submit name="" value="<?= $this->translate('Valida'); ?>">
+                                <input type="submit" name="" value="<?= $this->translate('Valida'); ?>">
                             </div>
                         <?php echo $this->form()->closeTag(); ?>
                     </div>
@@ -94,7 +95,11 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                if(!(substr($package->getName(),0, 4)==="GIFT") ){
+                                    if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
+                                        continue;
+                                    }
+                                    
                         ?>
                             <div class="bw-f w-1-4 clearfix">
                                 <div class="bw-f w-1-2 clearfix">
@@ -121,9 +126,13 @@ $bonusPackages = $this->bonusPackages;
                                         </p>
                                         <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                             <?php
-                                                // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                $months = floor($package->getDuration() / 30);
-                                                echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                if( $package->getCode()=="WOMEN"){
+                                                    echo 'h: 01 - 05';
+                                                } else {
+                                                    // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                                    $months = floor($package->getDuration() / 30);
+                                                    echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                }
                                             ?>
                                         </p>
                                     </div>
@@ -154,16 +163,36 @@ $bonusPackages = $this->bonusPackages;
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                        if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
+                                            continue;
+                                        }
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
+                                        $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
+                                        $validFrom = $package->validFromOrToday()->format("d-m-Y");
+                                        if ($package->getCode()=="WOMEN") {
+                                            $now = date("Y-m-d");
+                                            $validFrom = date_create($now.' 01:00:00');
+                                            $validTo = date_create($now.' 05:00:00');
+
+                                            $hour = date("G");
+
+                                                if ( intval($hour) >= 5 ) {
+                                                  //add 1 day to now in case of purchase after the 5am
+                                                    $validFrom = date_add($validFrom, date_interval_create_from_date_string('1 days'));
+                                                    $validTo = date_add($validTo, date_interval_create_from_date_string('1 days'));
+                                                }
+                                            $validTo = $validTo->format("d-m-Y H:i");
+                                            $validFrom = $validFrom->format("d-m-Y H:i");
+                                        }
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= sprintf($this->translate("per %d gg"), $package->getDuration()); ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $validFrom ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-7">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
