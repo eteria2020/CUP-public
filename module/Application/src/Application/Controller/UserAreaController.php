@@ -287,11 +287,13 @@ class UserAreaController extends AbstractActionController
         $customer = $this->userService->getIdentity();
         $activateLink = $this->customerService->isFirstTripManualPaymentNeeded($customer);
         $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
 
         return new ViewModel([
             'customer' => $customer,
             'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment,
+            'contract' => $contract,
             'activateLink' => $activateLink
         ]);
     }
