@@ -129,6 +129,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function lumsaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function marketAction()
     {
         return (new viewModel())->setTerminal(true);
