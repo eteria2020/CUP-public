@@ -103,7 +103,12 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    
+    public function internAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function kpmgAction()
     {
         return (new viewModel())->setTerminal(true);
