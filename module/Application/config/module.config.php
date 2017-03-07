@@ -644,6 +644,17 @@ return [
                     ],
                 ]
             ],
+            'lumsa' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{lumsa}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'lumsa',
+                    ],
+                ]
+            ],
             'market' => [
                 'type' => 'Segment',
                 'options' => [
