@@ -655,6 +655,17 @@ return [
                     ],
                 ]
             ],
+            'madama' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{madama}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'madama',
+                    ],
+                ]
+            ],
             'market' => [
                 'type' => 'Segment',
                 'options' => [
