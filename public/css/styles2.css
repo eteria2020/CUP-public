@@ -7396,7 +7396,7 @@ screen and (min-resolution: 1dppx) {
         margin-left: 0
     }
     .app .module-wrapper-app.hide-side-bar .module-column-app.side-sx .block-nav-app ul {
-        height: 400px;
+        height: 430px;
         overflow: hidden
     }
     .app .module-wrapper-app.hide-side-bar .module-column-app .module-heading-app .module-main-title {
