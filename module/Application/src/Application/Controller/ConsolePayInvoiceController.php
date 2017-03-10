@@ -129,7 +129,8 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
 
         $request = $this->getRequest();
-        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        //$this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $this->avoidEmails = true;  // force avoid send email during re try wong paiment
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
