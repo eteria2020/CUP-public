@@ -1466,6 +1466,17 @@ return [
                         ]
                     ]
                 ],
+                'retry-wrong-payments' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong payments [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-payments'
+                        ]
+                    ]
+                ],
                 'generate-trip-invoice' => [
                     'type' => 'simple',
                     'options' => [
