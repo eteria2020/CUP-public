@@ -577,18 +577,17 @@ return [
                     ],
                 ]
             ],
-            // remove 2017-02-13
-            /* 'gym16' => [
+            'gym17' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{gym16}',
+                    'route' => '/{gym17}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'gym16',
+                        'action'     => 'gym17',
                     ],
                 ],
-            ], */
+            ],
             'intern' => [
                 'type' => 'Segment',
                 'options' => [
