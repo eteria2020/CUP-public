@@ -787,6 +787,17 @@ return [
                     ],
                 ],
             ],
+            'vipzip' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{vip2zip}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'vipzip',
+                    ],
+                ],
+            ],
             'volontariocard' => [
                 'type' => 'Segment',
                 'options' => [
