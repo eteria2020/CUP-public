@@ -2545,12 +2545,12 @@ section.wrapper {
     display: inline-block;
     margin-right: 10px; }
     .main_foot .seguici ul li.facebook a {
-      background-image: url("../images/tw_icon.png");
+      background-image: url("../images/fb_icon.png");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 30px; }
     .main_foot .seguici ul li.twitter a {
-      background-image: url("../images/fb_icon.png");
+      background-image: url("../images/tw_icon.png");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 30px; }
