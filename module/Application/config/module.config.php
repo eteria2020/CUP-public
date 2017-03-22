@@ -577,18 +577,17 @@ return [
                     ],
                 ]
             ],
-            // remove 2017-02-13
-            /* 'gym16' => [
+            'gym17' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{gym16}',
+                    'route' => '/{gym17}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'gym16',
+                        'action'     => 'gym17',
                     ],
                 ],
-            ], */
+            ],
             'intern' => [
                 'type' => 'Segment',
                 'options' => [
@@ -652,6 +651,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'lumsa',
+                    ],
+                ]
+            ],
+            'madama' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{madama}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'madama',
                     ],
                 ]
             ],
@@ -774,6 +784,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'unirm1',
+                    ],
+                ],
+            ],
+            'vipzip' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{vip2zip}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'vipzip',
                     ],
                 ],
             ],
@@ -1461,6 +1482,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',
                             'action' => 'pay-invoice'
+                        ]
+                    ]
+                ],
+                'retry-wrong-payments' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong payments [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-payments'
                         ]
                     ]
                 ],
