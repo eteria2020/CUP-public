@@ -288,7 +288,7 @@ $this->headLink()
                 </div>
 
                 <div class="block-field last bw-f w-3-4">
-                    <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo Paese se risiedi all\'estero'); ?></label>
+                    <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo indirizzo di domicilio se diverso da residenza'); ?></label>
                         <?php
                         $addressInfo = $this->form->get('user')->get('addressInfo');
                         echo $this->formElement($addressInfo);
