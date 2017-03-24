@@ -22,6 +22,7 @@ use SharengoCore\Service\InvoicesService;
 use SharengoCore\Entity\Invoices;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Exception\BonusAssignmentException;
+use SharengoCore\Service\DisableContractService;
 
 use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
@@ -111,6 +112,11 @@ class UserAreaController extends AbstractActionController
     private $discounterUrl;
 
     /**
+     * @var DisableContractService
+     */
+    private $disableContractService;
+
+    /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
      * @param AuthenticationService $userService
@@ -124,6 +130,7 @@ class UserAreaController extends AbstractActionController
      * @param CartasiContractsService $cartasiContractsService
      * @param string $bannerJsonpUrl
      * @param string $discounterUrl
+     * @param DisableContractService $disableContractService
      */
     public function __construct(
         CustomersService $customerService,
@@ -138,7 +145,8 @@ class UserAreaController extends AbstractActionController
         TripPaymentsService $tripPaymentsService,
         CartasiContractsService $cartasiContractsService,
         $bannerJsonpUrl,
-        $discounterUrl
+        $discounterUrl,
+        DisableContractService $disableContractService
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -154,6 +162,7 @@ class UserAreaController extends AbstractActionController
         $this->cartasiContractsService = $cartasiContractsService;
         $this->bannerJsonpUrl = $bannerJsonpUrl;
         $this->discounterUrl = $discounterUrl;
+        $this->disableContractService = $disableContractService;
     }
 
     public function indexAction()
@@ -405,7 +414,7 @@ class UserAreaController extends AbstractActionController
         ]);
     }
 
-        public function packageMySharengoAction()
+    public function packageMySharengoAction()
     {
         return new ViewModel();
     }
@@ -413,5 +422,30 @@ class UserAreaController extends AbstractActionController
     public function paymentSecurecodeCartasiAction()
     {
         return new ViewModel();
+    }
+
+    public function disableContractAction()
+    {
+        $customer = $this->userService->getIdentity();
+        $contractId = $this->getRequest()->getQuery("contractId", null);
+
+        if (isset($contractId)) {
+            $contract = $this->cartasiContractsService->getContractById($contractId);
+            if($contract->getCustomerId()===$customer->getId()){
+                try {
+                    $this->disableContractService->disableContract($contract);
+
+                    $this->flashMessenger()->addSuccessMessage('Contratto disabilitato correttamente!');
+                } catch (\Exception $e) {
+                    $this->flashMessenger()->addErrorMessage('Errore durante la disabilitazione del contratto');
+                }
+            } else {
+                $this->flashMessenger()->addErrorMessage('Errore durante la disabilitazione del contratto');
+            }
+        } else {
+            $this->flashMessenger()->addErrorMessage('Errore durante la disabilitazione del contratto');
+        }
+
+        return $this->redirect()->toRoute('area-utente/dati-pagamento');
     }
 }

@@ -7488,7 +7488,8 @@ screen and (min-resolution: 1dppx) {
         padding-left: 0
     }
     .app .module-column-app.side-dx .block-user-info-app {
-        margin-right: 20px
+        margin-right: 20px;
+        visibility: hidden;
     }
     .app .module-column-app.side-dx .module-column-app-content {
         padding-right: 20px;
@@ -7504,7 +7505,8 @@ screen and (min-resolution: 1dppx) {
         webkit-backface-visibility: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: left
+        text-align: left;
+        font-size: 18px;
     }
     .app .module-column-app.side-dx .module-column-app-content {
         overflow: auto;
