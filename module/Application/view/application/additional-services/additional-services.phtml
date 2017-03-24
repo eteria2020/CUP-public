@@ -100,7 +100,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                         <?php
                             foreach ($bonusPackages as $package) {
                                 if(!(substr($package->getName(),0, 4)==="GIFT") ){
-                                    if( ($gender=="female" || $verify==3) && $package->getCode()=="WOMEN"){
+                                    if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
                                         continue;
                                     }
                                     
@@ -167,7 +167,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     if(!(substr($package->getName(),0, 4)==="GIFT")){
-                                        if( ($gender=="female" || $verify==3) && $package->getCode()=="WOMEN"){
+                                        if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
                                             continue;
                                         }
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
