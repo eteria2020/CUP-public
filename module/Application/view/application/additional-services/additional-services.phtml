@@ -89,6 +89,10 @@ $verify = 1; //$this->verify; verify number of one month trip
                                     (<a href="package-my-sharengo"><?= $this->translate('clicca qui') ?></a> <?= $this->translate('per ricevere tutte le informazioni necessarie') ?>).
                                 </span>
                             </span>
+                            <br>
+                            <span class="block-sub-title">
+                                <b style="color:red"><?= $this->translate('Attenzione: '); ?></b><?= $this->translate('prima di acquistare un pacchetto assicurati di aver pagato la quota di iscrizione'); ?>
+                            </span>    
                         </div>
                         <br><br>
                         <!-- packages -->
@@ -96,7 +100,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                         <?php
                             foreach ($bonusPackages as $package) {
                                 if(!(substr($package->getName(),0, 4)==="GIFT") ){
-                                    if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
+                                    if( ($gender=="female" || $verify==3) && $package->getCode()=="WOMEN"){
                                         continue;
                                     }
                                     
@@ -107,7 +111,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                                 </div>
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
-                                        <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
+                                        <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?>><?= strtoupper($this->translate($package->getName())) ?></p>
                                             <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
                                             <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
                                             <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
@@ -127,7 +131,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                                         <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                             <?php
                                                 if( $package->getCode()=="WOMEN"){
-                                                    echo 'h: 01 - 05';
+                                                    echo 'una notte';
                                                 } else {
                                                     // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
                                                     $months = floor($package->getDuration() / 30);
@@ -154,7 +158,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista'); ?></div>
                             </div>
@@ -163,7 +167,7 @@ $verify = 1; //$this->verify; verify number of one month trip
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     if(!(substr($package->getName(),0, 4)==="GIFT")){
-                                        if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
+                                        if( ($gender=="female" || $verify==3) && $package->getCode()=="WOMEN"){
                                             continue;
                                         }
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
@@ -173,8 +177,8 @@ $verify = 1; //$this->verify; verify number of one month trip
                                         if ($package->getCode()=="WOMEN") {
                                             $now = date("Y-m-d");
                                             $validFrom = date_create($now.' 01:00:00');
-                                            $validTo = date_create($now.' 05:00:00');
-
+                                            //$validTo = date_create($now.' 06:00:00');
+                                            $validTo = "per la notte";
                                             $hour = date("G");
 
                                                 if ( intval($hour) >= 5 ) {
@@ -182,8 +186,10 @@ $verify = 1; //$this->verify; verify number of one month trip
                                                     $validFrom = date_add($validFrom, date_interval_create_from_date_string('1 days'));
                                                     $validTo = date_add($validTo, date_interval_create_from_date_string('1 days'));
                                                 }
-                                            $validTo = $validTo->format("d-m-Y H:i");
-                                            $validFrom = $validFrom->format("d-m-Y H:i");
+                                            
+                                            $validFrom = $validFrom->format("d-m-Y");
+                                            //$validTo = $validTo->format("d-m-Y H:i");
+                                            $validTo = "per la notte";
                                         }
                             ?>
                             <!-- Table body -->
@@ -236,9 +242,21 @@ $this->headStyle()->captureStart() ?>
     .errors {
         list-style-type: none;
     }
-
     .errors li {
         color: red;
+    }
+    .women-voucher {
+        font-size: 1.2em;
+        width: 180px;
+        color: #43a34c;
+        word-wrap:break-word;
+        font-weight: 700;
+    }
+    @media (max-width: 680px) {
+        .women-voucher {
+            font-size: 1.2em;
+            width: auto;
+        }
     }
 <?php $this->headStyle()->captureEnd() ?>
 
