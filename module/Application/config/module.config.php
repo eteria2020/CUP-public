@@ -1015,6 +1015,15 @@ return [
                             ]
                         ]
                     ],
+                    'disable-contract' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/disable-contract',
+                            'defaults' => [
+                                'action' => 'disable-contract'
+                            ]
+                        ]
+                    ],
                     'send-discount-request' => [
                         'type' => 'Segment',
                         'options' => [

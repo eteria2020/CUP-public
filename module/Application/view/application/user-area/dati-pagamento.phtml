@@ -111,6 +111,12 @@
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <a href="<?= $this->url('area-utente/disable-contract', [], ['query' => ['contractId' => $this->contract->getId()]]) ?>"><button class="medium red" onclick="return confirm('<?= $this->translate("Voi cambiare la carta di credito?"); ?>')"><?= $this->translate("Cambia contratto"); ?></button></a>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             <?php else: ?>
