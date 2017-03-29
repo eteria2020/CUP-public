@@ -94,7 +94,7 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                 if($package->getType()==="Pacchetto"){
                         ?>
                             <div class="bw-f w-1-4 clearfix">
                                 <div class="bw-f w-1-2 clearfix">
@@ -153,7 +153,7 @@ $bonusPackages = $this->bonusPackages;
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                    if($package->getType()==="Pacchetto"){
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
                             ?>
