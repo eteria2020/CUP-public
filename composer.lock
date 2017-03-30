@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
-                "reference": "9cdfb391c54a3efbc5ac0738b406aaec7cb8f92a"
+                "reference": "1f3268f59a89efafc020f19b41452748bb06e7e9"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-02-20 11:34:10"
+            "time": "2017-03-30 12:48:30"
         },
         {
             "name": "cup-web/public-business-module",
