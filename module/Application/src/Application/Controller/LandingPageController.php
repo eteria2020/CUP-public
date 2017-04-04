@@ -99,11 +99,16 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
-    public function gym16Action()
+    public function gym17Action()
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    
+    public function internAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function kpmgAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -124,11 +129,21 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function lumsaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function marketAction()
     {
         return (new viewModel())->setTerminal(true);
     }
 
+    public function madamaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function ordingAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -184,6 +199,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function vipzipAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function volontariocardAction()
     {
         return (new viewModel())->setTerminal(true);

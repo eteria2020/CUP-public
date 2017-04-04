@@ -25,7 +25,8 @@ class UserAreaControllerFactory implements FactoryInterface
         $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
         $bannerJsonpUrl = $sharedLocator->get('Configuration')['banner-jsonp'];
         $discounterUrl = $sharedLocator->get('Configuration')['discounterSite']['url'];
-
+        $disableContractService = $sharedLocator->get('SharengoCore\Service\DisableContractService');
+        
         return new UserAreaController(
             $I_customerService,
             $I_tripService,
@@ -39,7 +40,8 @@ class UserAreaControllerFactory implements FactoryInterface
             $tripPaymentsService,
             $cartasiContractsService,
             $bannerJsonpUrl,
-            $discounterUrl
+            $discounterUrl,
+            $disableContractService
         );
     }
 }

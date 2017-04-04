@@ -18,7 +18,7 @@ $bonusPackages = $this->bonusPackages;
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('servizi aggiuntivi'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('promo e pacchetti'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
@@ -85,7 +85,7 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                 if($package->getType()==="Pacchetto"){
                         ?>
                             <div class="bw-f w-1-4 clearfix">
                                 <div class="bw-f w-1-2 clearfix">
@@ -144,7 +144,7 @@ $bonusPackages = $this->bonusPackages;
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if(!(substr($package->getName(),0, 4)==="GIFT")){
+                                    if($package->getType()==="Pacchetto"){
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
                             ?>

@@ -71,7 +71,7 @@
         <div class="top_head">
             <h1 class="logo">
             <span>Share'n Go</span>
-            <a href="http://site.sharengo.it" class="custom-logo-link" rel="home" itemprop="url"><img width="384" height="76" src="../images/logo-1.png" class="custom-logo" alt="logo" itemprop="logo" srcset="../images/logo-1.png 384w, ../images/logo-1-150x30.png 150w, ../images/logo-1-150x30@2x.png 300w" sizes="(max-width: 384px) 100vw, 384px"></a></h1>
+            <a href="http://site.sharengo.it" class="custom-logo-link" rel="home" itemprop="url"><img width="384" height="76" src="/images/logo-1.png" class="custom-logo" alt="logo" itemprop="logo" srcset="/images/logo-1.png 384w, /images/logo-1-150x30.png 150w, /images/logo-1-150x30@2x.png 300w" sizes="(max-width: 384px) 100vw, 384px"></a></h1>
         </div>
 
         <div class="button_container" id="toggle">
@@ -88,10 +88,10 @@
                 <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="http://site.sharengo.it/chi-e-sharen-go/">Chi è Share’nGo</a></li>
                 <?php if($this->loggedUser): ?>
                 <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('logout'); ?>">Logout</a></li>
-                <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('login2'); ?>">Area utente</a></li>
+                <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('login'); ?>">Area riservata</a></li>
                 <?php else: ?>
-                <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('login2'); ?>">Accedi</a></li>
-                <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('signup1'); ?>">Iscriviti</a></li>
+                <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('login'); ?>">Accedi</a></li>
+                <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('signup'); ?>">Iscriviti</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
@@ -164,8 +164,8 @@
                 © Share'ngo è un servizio di C.S. Group S.p.A. · Servizio clienti <strong>0586 1975772</strong>
             </p>
             <p>
-                Sede Legale: Via dei Pelaghi 162, 57124 - Livorno (LI) · Codice Fiscale e Partita IVA n. 01769950492 · Numero REA LI - 156608
-                <br> Sede operativa: Via San Martino, 7 – 20122 Milano (MI)
+                Sede Legale: Via dei Pelaghi 162 - 57124 Livorno (LI) · Codice Fiscale e Partita IVA n. 01769950492 · Numero REA LI - 156608
+                <br> Sede operativa: Via Noto 10 – 20122 Milano (MI)
             </p>
         </div>
     </div>
