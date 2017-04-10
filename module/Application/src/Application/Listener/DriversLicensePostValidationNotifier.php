@@ -57,12 +57,12 @@ final class DriversLicensePostValidationNotifier implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $content = file_get_contents(__DIR__.'/../../../view/emails/drivers-license-valid.html');
+        $mail = $this->emailService->getMail(2, $args['language']);
 
         $this->emailService->sendEmail(
             $args['email'],
-            'VALIDAZIONE PATENTE',
-            $content
+            $mail->getSubject(),//'VALIDAZIONE PATENTE',
+            $mail->getContent()
         );
     }
 
@@ -70,8 +70,9 @@ final class DriversLicensePostValidationNotifier implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $content = file_get_contents(__DIR__.'/../../../view/emails/drivers-license-unvalid.html');
-        $subject = 'Share\'ngo - Disabilitazione profilo';
+        $mail = $this->emailService->getMail(4, $args['language']);
+        $content = $mail->getContent();
+        $subject = $mail->getSubject();//'Share\'ngo - Disabilitazione profilo';
 
         $this->emailService->sendEmail($args['email'], $subject, $content);
     }
