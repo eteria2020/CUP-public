@@ -325,38 +325,37 @@ final class RegistrationService
      * @param string $name
      * @param string $surname
      * @param string $hash
+     * @param string $language
      */
-    public function sendEmail($email, $name, $surname, $hash)
+    public function sendEmail($email, $name, $surname, $hash, $language)
     {
         /** @var callable $url */
         $url = $this->viewHelperManager->get('url');
         /** @var callable $serverUrl */
         $serverUrl = $this->viewHelperManager->get('serverUrl');
-
+        
         $writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail(1, $language);
         $content = sprintf(
-            file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.html'),
+            $mail->getContent(),
             $name,
             $surname,
-            $serverUrl().$url('signup_insert').'?user='.$hash,
-            $writeTo
+            $serverUrl().$url('signup_insert').'?user='.$hash//,
+            //$writeTo
         );
 
-        $attachments = [
-            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
-            'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg'
-        ];
+        $attachments = [];
 
         $this->emailService->sendEmail(
             $email,
-            'Conferma la tua iscrizione a Share’nGo',
+            $mail->getSubject(), //'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );
 
         $this->emailService->sendEmail(
             $this->emailSettings['sharengoNotices'],
-            'Conferma la tua iscrizione a Share’nGo',
+            $mail->getSubject(),//'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );

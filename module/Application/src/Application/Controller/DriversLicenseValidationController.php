@@ -43,7 +43,8 @@ class DriversLicenseValidationController extends AbstractActionController
                 'birthDate' => ['date' => $birthDate],
                 'birthCountry' => $customer->getBirthCountry(),
                 'birthProvince' => $customer->getBirthProvince(),
-                'birthTown' => $customer->getBirthTown()
+                'birthTown' => $customer->getBirthTown(),
+                'language' => $customer->getLanguage()
             ];
 
             $this->enqueueValidationService->validateDriversLicense($data);

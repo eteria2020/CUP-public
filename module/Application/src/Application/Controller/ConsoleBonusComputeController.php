@@ -421,27 +421,29 @@ class ConsoleBonusComputeController extends AbstractActionController
             $this->logger->log("send email:".$trip->getCustomer()->getEmail()."\n");
 
             // send email to the customer
-            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName());
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage());
         }
 
         //Recap bonus assigned
 
         $this->logger->log("\nEnd computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
-        private function sendEmail($email, $name)
+        private function sendEmail($email, $name, $language)
     {
         //$writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail(16, $language);
         $content = sprintf(
-            file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+            $mail->getContent(),
+            //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
             $name
             //add another value,
         );
         $attachments = [
-            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+            //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
         ];
         $this->emailService->sendEmail(
             $email, //send to
-            'Share’ngo: bonus 5 minuti',//object email
+            $mail->getSubject(), //'Share’ngo: bonus 5 minuti',//object email
             $content,
             $attachments
         );
