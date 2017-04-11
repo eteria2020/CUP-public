@@ -255,7 +255,7 @@ class UserController extends AbstractActionController
         try {
             $this->registrationService->notifySharengoByMail($data);
             $this->registrationService->saveData($data);
-            $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash']);
+            $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash'], $data['language']);
             $this->registrationService->removeSessionData();
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage().' '.json_encode($e->getTrace()));
