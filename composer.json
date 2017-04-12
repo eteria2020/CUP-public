@@ -45,7 +45,7 @@
     },
     "repositories": [
         {
-            "url": "ssh://git@gitlab.bulweria.com/cup-web/public-business-module.git",
+            "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
             "type": "git"
         },
         {
