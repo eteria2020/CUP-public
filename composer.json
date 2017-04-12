@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.4.0",
         "zendframework/zendframework": "~2.4",
-        "doctrine/doctrine-orm-module": "0.8.*",
+        "doctrine/doctrine-orm-module": "0.9.*",
         "speckcommerce/speck-paypal": "dev-master#bbf9c1adf40f9db288051b8f5d8d9b76ed9ea9f0",
         "zf-commons/zfc-user-doctrine-orm": "1.0.*",
         "bjyoungblood/bjy-authorize": "1.4.0",
@@ -36,9 +36,30 @@
         "doctrine/doctrine-mongo-odm-module": "0.9.1",
         "mrclay/minify": "^2.3",
         "natxet/CssMin": "^3.0",
-        "natxet/cssmin": "^3.0"
+        "natxet/cssmin": "^3.0",
+        "cup-web/core-business": "dev-master",
+        "cup-web/public-business-module": "dev-master",
+        "rwoverdijk/assetmanager": "1.4.*",
+        "mvlabs/mvlabs-payments": "dev-master",
+        "mvlabs/omnipay-cartasi": "dev-master"
     },
     "repositories": [
+        {
+            "url": "ssh://git@gitlab.bulweria.com/cup-web/public-business-module.git",
+            "type": "git"
+        },
+        {
+            "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
+            "type": "git"
+        },
+        {
+            "url": "ssh://git@git.mvlabs.it:4222/internals/payments.git",
+            "type": "git"
+        },
+        {
+            "url": "ssh://git@git.mvlabs.it:4222/internals/omnipay-cartasi.git",
+            "type": "git"
+        },
         {
             "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
             "type": "git"

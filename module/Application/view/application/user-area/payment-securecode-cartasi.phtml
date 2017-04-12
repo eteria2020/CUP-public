@@ -5,17 +5,8 @@
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'dati-pagamento']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
