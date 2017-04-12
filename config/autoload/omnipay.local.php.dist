@@ -1,0 +1,19 @@
+<?php
+return [
+    'omnipay' => [
+        'environment' => 'test',//'production' for production
+        'first-payment' => [
+            'alias' => 'xxx',
+            'serviceType' => 'paga_rico',
+            'returnUrl' => '##domain name##/payment-concluded',
+            'cancelUrl' => '##domain name##/payment-cancelled',
+            'macKey' => 'xxx'
+        ],
+        'token-payment' => [
+            'alias' => 'xxx',
+            'serviceType' => 'paga_rico',
+            'requestType' => 'PR',
+            'macKey' => 'xxx'
+        ]
+    ]
+];

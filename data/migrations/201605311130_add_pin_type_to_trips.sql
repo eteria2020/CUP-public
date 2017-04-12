@@ -1,0 +1,1 @@
+ALTER TABLE trips ADD pin_type TEXT DEFAULT NULL;

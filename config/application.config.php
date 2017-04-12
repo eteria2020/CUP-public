@@ -28,9 +28,11 @@ $config = [
         // Our modules
         'Multilanguage',
         'SharengoCore',
+        'BusinessCore',
         'Cartasi',
         'MvLabsDriversLicenseValidation',
         'Application',
+        'CUPPublicBusinessModule',
     ],
 
     // These are various options for the listeners attached to the ModuleManager
