@@ -501,6 +501,17 @@ return [
                     ],
                 ],
             ],
+            'controradioclub' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{controradioclub}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'controradioclub',
+                    ],
+                ],
+            ],            
             'espresso' => [
                 'type' => 'Segment',
                 'options' => [
