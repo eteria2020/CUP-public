@@ -435,7 +435,6 @@ class ConsoleBonusComputeController extends AbstractActionController
         $content = sprintf(
             $mail->getContent(),
             $name
-            //add another value,
         );
         
         //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
