@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0839a5d4240cd84f50baf9f80f910af3",
-    "content-hash": "5c39f1e5ecc86b67a2eb078af7a9c37e",
+    "hash": "0a5bc6e214a8d78dece695a511888bb1",
+    "content-hash": "75bbd766d782562d2067c8ce760378c4",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2281,7 +2281,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/internals/payments.git",
+                "url": "https://git.mvlabs.it/internals/payments.git",
                 "reference": "7ff26873007c9331c3f3e4423f88fe280f775abb"
             },
             "require": {
@@ -2368,7 +2368,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/internals/omnipay-cartasi.git",
+                "url": "https://git.mvlabs.it/internals/omnipay-cartasi.git",
                 "reference": "10873be4c3ed27ce55caa7c9fd8acf65cefa17ac"
             },
             "require": {
