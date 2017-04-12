@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91004b7ad34e296e09174e4c191f85ca",
-    "content-hash": "5551dab0f9e1912c40e387871f79cdf8",
+    "hash": "48824f27e011fa78e77c495ed5a76312",
+    "content-hash": "807c73f5c3fac177837d1efde9c3fd36",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -480,7 +480,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
                 "reference": "1f3268f59a89efafc020f19b41452748bb06e7e9"
             },
             "require": {
