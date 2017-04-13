@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0839a5d4240cd84f50baf9f80f910af3",
-    "content-hash": "5c39f1e5ecc86b67a2eb078af7a9c37e",
+    "hash": "48824f27e011fa78e77c495ed5a76312",
+    "content-hash": "807c73f5c3fac177837d1efde9c3fd36",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -480,7 +480,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/core-business.git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
                 "reference": "1f3268f59a89efafc020f19b41452748bb06e7e9"
             },
             "require": {
@@ -509,7 +509,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/cup-web/public-business-module.git",
+                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
                 "reference": "b746acd2f263af35fa2917854f31c82832118a36"
             },
             "require": {
@@ -2281,7 +2281,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/internals/payments.git",
+                "url": "https://git.mvlabs.it/internals/payments.git",
                 "reference": "7ff26873007c9331c3f3e4423f88fe280f775abb"
             },
             "require": {
@@ -2368,7 +2368,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@git.mvlabs.it:4222/internals/omnipay-cartasi.git",
+                "url": "https://git.mvlabs.it/internals/omnipay-cartasi.git",
                 "reference": "10873be4c3ed27ce55caa7c9fd8acf65cefa17ac"
             },
             "require": {
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "384d502689132b82fc042801fcb68adadde5ac3b"
+                "reference": "279df49cb3cbdecf26dbda96d5cbc021ed520b66"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-04-11 09:07:06"
+            "time": "2017-04-12 08:57:37"
         },
         {
             "name": "natxet/CssMin",

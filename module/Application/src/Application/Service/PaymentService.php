@@ -46,12 +46,14 @@ final class PaymentService
         $mail = $this->emailService->getMail(3, $customer->getLanguage());
         $content = sprintf(
             $mail->getContent(),
-            //file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
-            $customer->getName(),
-            $customer->getSurname(),
-            $writeTo
+            $customer->getName()
         );
-
+            //$customer->getSurname(),
+            //$writeTo
+        
+        
+        //file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
+        
         $attachments = [
             //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
             //'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg',

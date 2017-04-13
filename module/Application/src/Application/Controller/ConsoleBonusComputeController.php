@@ -434,10 +434,11 @@ class ConsoleBonusComputeController extends AbstractActionController
         $mail = $this->emailService->getMail(16, $language);
         $content = sprintf(
             $mail->getContent(),
-            //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
             $name
-            //add another value,
         );
+        
+        //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+        
         $attachments = [
             //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
         ];
