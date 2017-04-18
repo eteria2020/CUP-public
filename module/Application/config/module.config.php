@@ -952,16 +952,16 @@ return [
                             ]
                         ]
                     ],
-                    'gift-packages' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{gift-packages}',
-                            'defaults' => [
-                                'controller' => 'AdditionalServices',
-                                'action' => 'gift-packages'
-                            ]
-                        ]
-                    ],
+//                    'gift-packages' => [
+//                        'type' => 'Segment',
+//                        'options' => [
+//                            'route' => '/{gift-packages}',
+//                            'defaults' => [
+//                                'controller' => 'AdditionalServices',
+//                                'action' => 'gift-packages'
+//                            ]
+//                        ]
+//                    ],
                     'bonus-package' => [
                         'type' => 'Segment',
                         'options' => [
@@ -1759,11 +1759,11 @@ return [
                 'route' => 'area-utente/additional-services',
                 'icon' => 'fa fa-plus',
             ],
-            [
-                'label' => $translator->translate("Gift Card"),
-                'route' => 'area-utente/gift-packages',
-                'icon' => 'fa fa-gift',
-            ],
+//            [
+//                'label' => $translator->translate("Gift Card"),
+//                'route' => 'area-utente/gift-packages',
+//                'icon' => 'fa fa-gift',
+//            ],
             [
                 'label' => $translator->translate("Bonus minuti"),
                 'route' => 'area-utente/bonus',
