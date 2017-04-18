@@ -15,17 +15,8 @@
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'activate-payments']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -51,50 +42,49 @@
                     <!-- Description -->
                     <div>
                         <p>Ciao <?= $name ?>,</p><br>
-                        <p>come puoi vedere nella sezione <a href="<?= $this->url('area-utente/rents') ?>">Corse Completate</a> hai esaurito i tuoi minuti bonus e hai effettuato una o pi&ugrave; corse &quot;a debito&quot;.</p><br>
-                        
-                        <p>Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata) scegliendo cos&igrave; la carta che vuoi associare in modo permanente al tuo profilo cliente.</p>
-                        <p>Dopo questo primo pagamento le corse ti saranno addebitate periodicamente in automatico su questa carta e potrai scaricare le fatture nella sezione <a href="<?= $this->url('area-utente/invoices-list') ?>">Fatture</a> il giorno successivo all&#39;addebito.</p>
+                        <p style="text-align: justify">come puoi vedere nella sezione <a href="<?= $this->url('area-utente/rents') ?>">Corse Completate</a> hai esaurito i tuoi minuti bonus e hai effettuato una o pi&ugrave; corse &quot;a debito&quot;. Di seguito riportiamo i dettagli di tali corse:</p>
 
-                        <p><br>Attenzione: nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il log-in sull&#39;App).</p>
+                        <!-- Trip table -->
+                        <div class="block-data-table clearboth clearfix margin-top-custom">
 
-                        <h2 class="margin-top-custom">Di seguito i dettagli della corsa di cui effettuare il pagamento:</h2>
+                            <!-- Trip table headers -->
+                            <div class="block-data-table-row clearfix">
+                                <div class="block-data-table-th cw-1-5 text-center">Data inizio</div>
+                                <div class="block-data-table-th cw-1-5 text-center">Targa</div>
+                                <div class="block-data-table-th cw-1-5 text-center">Durata (min)</div>
+                                <div class="block-data-table-th cw-1-5 text-center">Sosta (min)</div>
+                                <div class="block-data-table-th cw-1-5 text-center">Totale (&euro;)</div>
+                            </div>
+                            <!-- trip table headers -->
+
+                            <!-- Trip table body -->
+                            <div>
+                                <div class="block-data-table-row clearfix odd">
+                                    <div class="block-data-table-td cw-1-5 table-row-fix text-center"><?= $tripPayment->getTrip()->getTimestampBeginning()->format("Y-m-d H:i:s") ?></div>
+                                    <div class="block-data-table-td cw-1-5 table-row-fix text-center"><?= $tripPayment->getTrip()->getCar()->getPlate() ?></div>
+                                    <div class="block-data-table-td cw-1-5 table-row-fix text-center"><?= $tripPayment->getTripMinutes() ?></div>
+                                    <div class="block-data-table-td cw-1-5 table-row-fix text-center"><?= $tripPayment->getParkingMinutes() ?></div>
+                                    <div class="block-data-table-td cw-1-5 table-row-fix text-right">&euro; <?= number_format($tripPayment->getTotalCost() / 100, 2, ',', ' ') ?></div>
+                                </div>
+                            </div>
+                            <!-- trip table body -->
+                        </div>
+                        <!-- trip table --><br>
+
+                        <p style="text-align: justify">Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata).</p>
+                        <p style="text-align: justify">Dopo questo primo pagamento le corse ti saranno addebitate periodicamente in automatico su questa carta e potrai scaricare le fatture nella sezione <a href="<?= $this->url('area-utente/invoices-list') ?>">Fatture</a> il giorno successivo all&#39;addebito.</p>
+
+                        <!-- Confirm button -->
+                        <div class="block-wrapper-button content-align-center margin-top-custom">
+                            <a href="<?= $this->url('cartasi/primo-pagamento-corsa') ?>"><button><?= $this->translate("Effettua pagamento"); ?></button></a>
+                        </div><br>
+                        <!-- confirm button -->
+
+                        <p style="text-align: justify"><b>Attenzione</b>: nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il log-in sull&#39;App).</p>
                     </div>
                     <!-- description -->
 
-                    <!-- Trip table -->
-                    <div class="block-data-table clearboth clearfix margin-top-custom">
 
-                        <!-- Trip table headers -->
-                        <div class="block-data-table-row clearfix">
-                            <div class="block-data-table-th cw-1-5">Data inizio</div>
-                            <div class="block-data-table-th cw-1-5">Targa</div>
-                            <div class="block-data-table-th cw-1-5">Durata (min)</div>
-                            <div class="block-data-table-th cw-1-5">Sosta (min)</div>
-                            <div class="block-data-table-th cw-1-5">Totale (&euro;)</div>
-                        </div>
-                        <!-- trip table headers -->
-
-                        <!-- Trip table body -->
-                        <div>
-                            <div class="block-data-table-row clearfix odd">
-                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTrip()->getTimestampBeginning()->format("Y-m-d H:i:s") ?></div>
-                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTrip()->getCar()->getPlate() ?></div>
-                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getTripMinutes() ?></div>
-                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= $tripPayment->getParkingMinutes() ?></div>
-                                <div class="block-data-table-td cw-1-5 table-row-fix"><?= number_format($tripPayment->getTotalCost() / 100, 2, ',', ' ') ?></div>
-                            </div>
-                        </div>
-                        <!-- trip table body -->
-
-                    </div>
-                    <!-- trip table -->
-
-                    <!-- Confirm button -->
-                    <div class="block-wrapper-button content-align-center margin-top-custom">
-                        <a href="<?= $this->url('cartasi/primo-pagamento-corsa') ?>"><button><?= $this->translate("Effettua pagamento"); ?></button></a>
-                    </div>
-                    <!-- confirm button -->
 
                         <?php
                             // if customer has no credit card and no trips
@@ -107,14 +97,11 @@
                         // close no credit card if
                         }
                     ?>
-
                     <?php
                         // if customer has credit card
                         } else {
                     ?>
-
                     <h2>Carta di credito registrata con successo!</h2>
-
                     <?php
                         // close has credit card if
                         }
