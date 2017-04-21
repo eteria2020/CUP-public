@@ -1,8 +1,9 @@
 <?php
 $form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
+$gender = $this->customer->getGender();
+$verify = 1; //$this->verify; verify number of one month trip
 ?>
-
 <!-- main -->
 <div id="main" class="detect-window-height">
 
@@ -10,17 +11,8 @@ $bonusPackages = $this->bonusPackages;
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'additional-services']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -54,7 +46,7 @@ $bonusPackages = $this->bonusPackages;
                                 </div>
                             </div>
                             <div class="block-wrapper-button content-align-center">
-                                <input type=submit name="" value="<?= $this->translate('Valida'); ?>">
+                                <input type="submit" name="" value="<?= $this->translate('Valida'); ?>">
                             </div>
                         <?php echo $this->form()->closeTag(); ?>
                     </div>
@@ -82,19 +74,26 @@ $bonusPackages = $this->bonusPackages;
                         </div>
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
-                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi Share&#39ngo scende fino ad arrivare a 9 &euro; l&#39;ora, la tariffa di car sharing a flusso libero più bassa al mondo. Con l&#39;abbonamento mensile  puoi avere una Share&#39;ngo tutta per te') ?>
+                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi Share&#39ngo scende fino ad arrivare a 0,22 &euro;/min, la tariffa pi&ugrave; bassa tra tutti gli operatori di servizi di car sharing a flusso libero.<br>Con l\'abbonamento mensile puoi avere una Share&#39ngo tutta per te') ?>
                                 <br>
                                 <span style="font-size: 16px">
                                     (<a href="package-my-sharengo"><?= $this->translate('clicca qui') ?></a> <?= $this->translate('per ricevere tutte le informazioni necessarie') ?>).
                                 </span>
                             </span>
+                            <br>
+                            <span class="block-sub-title">
+                                <b style="color:red"><?= $this->translate('Attenzione: '); ?></b><?= $this->translate('prima di acquistare un pacchetto assicurati di aver pagato la quota di iscrizione'); ?>
+                            </span>    
                         </div>
                         <br><br>
                         <!-- packages -->
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                 if($package->getType()==="Pacchetto"){
+                                if($package->getType()==="Pacchetto"){
+                                    if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
+                                        continue;
+                                    }
                         ?>
                             <div class="bw-f w-1-4 clearfix">
                                 <div class="bw-f w-1-2 clearfix">
@@ -102,7 +101,7 @@ $bonusPackages = $this->bonusPackages;
                                 </div>
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
-                                        <p class="fa-2x highlight font-weight bold"><?= strtoupper($this->translate($package->getName())) ?></p>
+                                        <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?>><?= strtoupper($this->translate($package->getName())) ?></p>
                                             <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
                                             <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
                                             <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
@@ -121,9 +120,13 @@ $bonusPackages = $this->bonusPackages;
                                         </p>
                                         <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                             <?php
-                                                // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                $months = floor($package->getDuration() / 30);
-                                                echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                if( $package->getCode()=="WOMEN"){
+                                                    echo 'una notte';
+                                                } else {
+                                                    // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                                    $months = floor($package->getDuration() / 30);
+                                                    echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                }
                                             ?>
                                         </p>
                                     </div>
@@ -145,7 +148,7 @@ $bonusPackages = $this->bonusPackages;
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista'); ?></div>
                             </div>
@@ -154,16 +157,39 @@ $bonusPackages = $this->bonusPackages;
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     if($package->getType()==="Pacchetto"){
+                                        if( ($gender=="male" || $verify==3) && $package->getCode()=="WOMEN"){
+                                            continue;
+                                        }
+
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
+                                        $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
+                                        $validFrom = $package->validFromOrToday()->format("d-m-Y");
+                                        if ($package->getCode()=="WOMEN") {
+                                            $now = date("Y-m-d");
+                                            $validFrom = date_create($now.' 01:00:00');
+                                            //$validTo = date_create($now.' 06:00:00');
+                                            $validTo = "per la notte";
+                                            $hour = date("G");
+
+                                                if ( intval($hour) >= 5 ) {
+                                                  //add 1 day to now in case of purchase after the 5am
+                                                    $validFrom = date_add($validFrom, date_interval_create_from_date_string('1 days'));
+                                                    //$validTo = date_add($validTo, date_interval_create_from_date_string('1 days'));
+                                                }
+                                            
+                                            $validFrom = $validFrom->format("d-m-Y");
+                                            //$validTo = $validTo->format("d-m-Y H:i");
+                                            $validTo = "per la notte";
+                                        }
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->validFromOrToday()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= sprintf($this->translate("per %d gg"), $package->getDuration()); ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $validFrom ?></div>
+                                <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-7">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
@@ -207,9 +233,21 @@ $this->headStyle()->captureStart() ?>
     .errors {
         list-style-type: none;
     }
-
     .errors li {
         color: red;
+    }
+    .women-voucher {
+        font-size: 1.2em;
+        width: 180px;
+        color: #43a34c;
+        word-wrap:break-word;
+        font-weight: 700;
+    }
+    @media (max-width: 680px) {
+        .women-voucher {
+            font-size: 1.2em;
+            width: auto;
+        }
     }
 <?php $this->headStyle()->captureEnd() ?>
 

@@ -11,17 +11,8 @@
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'tariffe']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -66,11 +57,6 @@
                                         <td>&euro; 12,00</td>
                                     <tr>
                                     <tr>
-                                        <td><?= $this->translate('Tariffa per 1/2 giornata (4H)') ?></td>
-                                        <td>&euro; <?= number_format(30 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                        <td>&euro; 30,00</td>
-                                    <tr>
-                                    <tr>
                                         <td><?= $this->translate('Tariffa giornaliera') ?></td>
                                         <td>&euro; <?= number_format(50 * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
                                         <td>&euro; 50,00</td>
@@ -86,10 +72,6 @@
 
                         <ul>
                             <li><?= $this->translate('Il giorno del tuo compleanno ricevi 30 minuti bonus (per questo giorno)') ?></li>
-                            <li><?= $this->translate('La tariffa di sosta &egrave; sempre di &euro; 0,10 al minuto ') ?></li>
-                            <?php if ($this->customer->getGender() === 'female'): ?>
-                                <li><?= $this->translate('Per le donne, le corse notturne dalle ore 1.00 alle ore 6.00 sono gratuite.') ?></li>
-                            <?php endif; ?>
                         </ul>
                     </div>
                     <?php if ($this->showNewDiscount): ?>
