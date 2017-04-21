@@ -72,6 +72,9 @@
 
                         <ul>
                             <li><?= $this->translate('Il giorno del tuo compleanno ricevi 30 minuti bonus (per questo giorno)') ?></li>
+                            <?php if ($this->customer->getGender() === 'female'): ?>
+                                <li><?= $this->translate('Di notte, dall’1 alle 5, le donne possono acquistare un Women Night Voucher (30 minuti a 3 &euro;), cio&egrave; tornare a casa in piena sicurezza pagando 0,10 &euro;/min.') ?></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                     <?php if ($this->showNewDiscount): ?>
