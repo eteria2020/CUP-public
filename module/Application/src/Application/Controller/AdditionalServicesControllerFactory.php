@@ -18,6 +18,7 @@ class AdditionalServicesControllerFactory implements FactoryInterface
         $promoCodeService = $sharedLocator->get('SharengoCore\Service\PromoCodesService');
         $promoCodeOnceService = $sharedLocator->get('SharengoCore\Service\PromoCodesOnceService');
         $bonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
+        $bonusService = $sharedLocator->get('SharengoCore\Service\BonusService');
         $authService = $sharedLocator->get('zfcuser_auth_service');
 
         return new AdditionalServicesController(
@@ -27,7 +28,8 @@ class AdditionalServicesControllerFactory implements FactoryInterface
             $promoCodeService,
             $promoCodeOnceService,
             $bonusPackagesService,
-            $authService
+            $authService,
+            $bonusService
         );
     }
 }
