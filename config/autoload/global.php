@@ -54,6 +54,9 @@ return [
                 'minMinutes' => 5,
                 'total' => 30,
                 'duration' => 60
+            ],
+            'Firenze_Areoporto_500' => [
+                'cost' => 500
             ]
         ]
     ]

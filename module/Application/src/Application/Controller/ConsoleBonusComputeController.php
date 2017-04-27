@@ -111,6 +111,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->log("\nStarted computing for bonuses trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         $this->zoneBonusCompute();
+        $this->zoneExtraCompute();
     }
 
     public function zoneBonusCompute()
@@ -161,6 +162,27 @@ class ConsoleBonusComputeController extends AbstractActionController
             }
         }
     }
+
+    // Compute extra payments like Florence airport
+     private function zoneExtraCompute()
+    {
+        $tripsToBeComputed = $this->tripsService->getTripsForExtraComputation();
+
+        $this->logger->log("-------- Compute Zone Extra\n");
+        $this->logger->log("Trips to compute: ".count($tripsToBeComputed)."\n\n");
+        foreach ($tripsToBeComputed as $trip) {     // loop through trips
+            $zonesBonus = $this->zonesService->getListZonesBonusByFleet($trip->getFleet());
+
+            foreach($zonesBonus as $zoneBonus) {    // loop through bonus
+                if ($zoneBonus->getBonusType()==='Firenze_Areoporto_500') {
+                    if($this->isBeginningOrEndTripInsideZonesBonus($trip, $zoneBonus)){
+                        $this->createExtraTrip($trip, $zoneBonus);
+                    }
+                }
+            }
+        }
+    }
+
 
     private function verifyBonus(Trips $trip, array $zonesBonusByFleet, array &$residuals)
     {
@@ -448,5 +470,32 @@ class ConsoleBonusComputeController extends AbstractActionController
             $content,
             $attachments
         );
+    }
+
+    // Retur true if the "trip" has beginning or end trip inside at least one zonesBonus
+    private function isBeginningOrEndTripInsideZonesBonus(Trips $trip, array $zonesBonus){
+        $result = FALSE;
+        $events = $this->eventsService->getEventsByTrip($trip);
+
+        foreach($events as $event)
+        {
+            if ($event->getEventId() == 3) {
+                if ($event->getIntval() == 3 ||
+                    $event->getIntval() == 4) {          // Search stop begin (getIntval() == 3) Search stop end (getIntval() == 4)
+
+                    $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
+                        $zonesBonus,
+                        $event->getLon(),
+                        $event->getLat());
+
+                    if(count($zonesBonusInside) > 0){
+                        $result = TRUE;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return $result;
     }
 }
