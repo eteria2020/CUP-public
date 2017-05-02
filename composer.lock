@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
-                "reference": "b746acd2f263af35fa2917854f31c82832118a36"
+                "reference": "b2c380658d4ec359d6bce734fbd50d72a1078ada"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2017-02-20 11:29:43"
+            "time": "2017-05-02 10:06:59"
         },
         {
             "name": "dmregister/zf2-resque",
