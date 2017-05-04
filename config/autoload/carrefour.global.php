@@ -14,8 +14,15 @@ return [
             '1701',
             '1702',
             '1703',
-            '1704'
-        //dates of receipts
+            '1704',
+            '1705',
+            '1706',
+            '1707',
+            '1708',
+            '1709',
+            '1710',
+            '1711',
+            '1712'//dates of receipts (update 170504)
         ],
         'minutes' => 5,
         'description' => 'Bonus promozione Carrefour',
