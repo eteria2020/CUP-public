@@ -144,13 +144,13 @@ class AdditionalServicesController extends AbstractActionController
         
         $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
         $customer = $this->authService->getIdentity();
-        //$verify = count($this->bonusService->verifyWomenBonus($customer)); verify 3 bonus in 1 months
+        $verify = count($this->bonusService->verifyWomenBonus($customer));
         
         return new ViewModel([
             'promoCodeForm' => $form,
             'bonusPackages' => $bonusPackages,
-            'customer' => $customer
-            //'verify' => $verify
+            'customer' => $customer,
+            'verify' => $verify
         ]);
     }
 

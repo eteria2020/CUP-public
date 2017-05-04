@@ -233,7 +233,12 @@ $(function () {
                                     var mapCenterLongitude = $('#Roma').data('longitude');
         			    $('#Roma').html(name);
                                     break;
-			}
+                                case 4:
+                                    var mapCenterLatitude = $('#Modena').data('latitude');
+                                    var mapCenterLongitude = $('#Modena').data('longitude');
+        			    $('#Modena').html(name);
+                                    break;
+    }
 
     var view = new ol.View({
         // the view"s initial state

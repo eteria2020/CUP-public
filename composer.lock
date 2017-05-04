@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
-                "reference": "b746acd2f263af35fa2917854f31c82832118a36"
+                "reference": "b2c380658d4ec359d6bce734fbd50d72a1078ada"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2017-02-20 11:29:43"
+            "time": "2017-05-02 10:06:59"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "bd33403dd340a860490a0431fd79ca87966bfe04"
+                "reference": "943028ff310b232d6eb26609c56af1a139aae02f"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-04-21 10:59:14"
+            "time": "2017-04-28 12:25:22"
         },
         {
             "name": "natxet/CssMin",
