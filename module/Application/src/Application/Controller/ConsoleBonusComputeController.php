@@ -16,9 +16,7 @@ use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
-
 use Zend\Mvc\Controller\AbstractActionController;
-
 
 class ConsoleBonusComputeController extends AbstractActionController
 {
@@ -120,7 +118,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         $this->logger->log("\nStarted computing for bonuses trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        //$this->zoneBonusCompute();
+        //$this->zoneBonusCompute(); //TODO: de-comment in production
         $this->zoneExtraFareCompute("Firenze_Areoporto_500");
     }
 
@@ -183,11 +181,12 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".$bonusType.";".count($tripsToBeComputed)."\n");
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            $zonesBonus = $this->zonesService->getListZonesBonusByFleetByBonusType($trip->getFleet(), $bonusType);
+            $zonesBonus = $this->zonesService->getListZonesBonusByBonusTypeFeet($bonusType, $trip->getFleet());
             $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
             $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
         }
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;".$bonusType."\n");
     }
 
 
@@ -419,11 +418,11 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (!$trip instanceof Trips) {
                 continue;
             }
-            
+
             if ($trip->getDurationMinutes()<=5){
                 continue;
             }
-            
+
             //($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
 
             // Verify if customer reached max amount in zone bonuses passed and return a list of those available
@@ -431,7 +430,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (count($residuals) == 0){
                 continue;
             }
-            
+
             // Verify that only one bonus for trips with plate
             $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate());
             if (count($verified)>=1){
@@ -442,7 +441,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                 $this->logger->log("Trip ID:". $trip->getId() ."- Customer ID: ".$trip->getCustomer()->getId()." - Carplate:". $trip->getCar()->getPlate() ."\n\n");
                 continue;
             }
-            
+
             // Assign bonuses to customer
             $this->assigneBonus($trip, 5, 'POIS', 30, "Bonus parcheggio nei pressi di punto di ricarica - ".$trip->getCar()->getPlate());
 
@@ -465,9 +464,9 @@ class ConsoleBonusComputeController extends AbstractActionController
             $mail->getContent(),
             $name
         );
-        
+
         //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
-        
+
         $attachments = [
             //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
         ];
@@ -545,7 +544,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     if($trip->getPayable()) {
                         $reason = $zonesBonus[0]->getDescription();
                         if( strpos($trip->getAddressBeginning(), $reason) === false) { // check if the trip description dosn't contain already the reason
-                            $this->tripsService->setAddressByGeocode($trip, " (" . $reason .")");
+                            $this->tripsService->setAddressByGeocode($trip, false, " (" . $reason .")");
                             $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
                             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareApplyAmount;addAmount;".$trip->getId().";".$extraFareAmount."\n");
                         }
