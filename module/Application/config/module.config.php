@@ -501,6 +501,17 @@ return [
                     ],
                 ],
             ],
+            'comunedifirenze' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{comunedifirenze}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'comunedifirenze',
+                    ],
+                ],
+            ], 
             'controradioclub' => [
                 'type' => 'Segment',
                 'options' => [
