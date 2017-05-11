@@ -21,7 +21,12 @@ class CoherentTaxCode extends AbstractValidator
             'male' => 'M',
             'female' => 'F'
         ];
-
+        
+        if (!preg_match("/(\d{2})-(\d{2})-(\d{4})/", $context['birthDate'])) {
+            $this->error(self::INCOHERENT_TAX_CODE);
+            return false;
+        }
+        
         $calculator = new Calculator();
         $computedTaxCode = $calculator->calcola(
             $context['name'],
