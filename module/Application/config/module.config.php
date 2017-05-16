@@ -699,6 +699,17 @@ return [
                     ],
                 ]
             ],
+            'maxxi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{maxxi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'maxxi',
+                    ],
+                ]
+            ],
             'ording' => [
                 'type' => 'Segment',
                 'options' => [
