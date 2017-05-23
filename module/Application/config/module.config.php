@@ -600,6 +600,17 @@ return [
                     ],
                 ]
             ],
+            'green' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{green}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'green',
+                    ],
+                ],
+            ],
             'gym17' => [
                 'type' => 'Segment',
                 'options' => [
