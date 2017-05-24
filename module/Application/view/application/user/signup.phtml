@@ -548,35 +548,21 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
         // Criteo section
         var email = $("#email").val();
-        criteoViewHome(email);
+        var list = [];
+        $("#fleet option").each(function() {
+            list.push($(this).val());
+            });
 
-        $("#fleet").click(function () {
-            var email = $("#email").val();
-            var list = [];
-            $("#fleet option").each(function() {
-                list.push($(this).val());
-                });
-
-            criteoViewListing(email, list);
-        });
+        criteoViewListing(email, list);
 
         $("#fleet").change(function () {
             var email = $("#email").val();
-            var fleet_id = $(this).find(":selected").val();
-            var item = {id: fleet_id, price: 1, quantity: 1};
+            var fleetId = $(this).find(":selected").val();
+            var itemId = {id: fleetId, price: 1, quantity: 1};
 
-            criteoViewItem(email, item);
+            criteoViewBasketItem(email, itemId);
         });
 
-        $("form").on("submit", function() {
-            var email = $("#email").val();
-            var fleet_id = $(this).find(":selected").val();
-            var item = {id: fleet_id, price: 1, quantity: 1};
-            var basket = [];
-            basket.push(item);
-
-            criteoTrackTransaction(email, basket);
-        });
     });
 
 </script>
