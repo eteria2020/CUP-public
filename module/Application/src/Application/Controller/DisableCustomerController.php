@@ -8,6 +8,7 @@ use SharengoCore\Service\CustomerDeactivationService;
 use SharengoCore\Service\CustomerNoteService;
 use SharengoCore\Service\UsersService;
 use SharengoCore\Entity\Webuser;
+use SharengoCore\Service\EmailService;
 
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
@@ -39,18 +40,25 @@ class DisableCustomerController extends AbstractActionController
      */
     private $logger;
     
+    /**
+     * @var EmailService
+     */
+    private $emailService;
+    
     public function __construct(
         CustomersService $customersService,
         CustomerDeactivationService $customerDeactivationService,
         CustomerNoteService $customerNoteService,
         UsersService $usersService,
-        Logger $logger
+        Logger $logger,
+        EmailService $emailService
     ) {
         $this->customersService = $customersService;
         $this->customerDeactivationService = $customerDeactivationService;
         $this->customerNoteService = $customerNoteService;
         $this->usersService = $usersService;
         $this->logger = $logger;
+        $this->emailService = $emailService;
     }
 
     public function invalidDriversLicenseAction()
@@ -111,9 +119,28 @@ class DisableCustomerController extends AbstractActionController
             $webuser = $this->usersService->findUserById(12); 
 
             $this->customerNoteService->addNote($customer, $webuser ,"Messaggio di sistema: utente disattivato per patente scaduta.");
+            
+            $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage());
         
         }
         
         $this->logger->log("\nEnd time = " . date_create()->format('Y-m-d H:i:s') ."\n");
+    }
+    
+    private function sendEmail($email, $name, $language)
+    {
+        $mail = $this->emailService->getMail(10, $language);
+        $content = sprintf(
+            $mail->getContent(),
+            $name
+        );
+        
+        $attachments = [];
+        $this->emailService->sendEmail(
+            $email,
+            $mail->getSubject(),
+            $content,
+            $attachments
+        );
     }
 }
