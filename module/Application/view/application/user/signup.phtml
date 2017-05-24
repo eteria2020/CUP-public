@@ -546,22 +546,35 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
             });
         });
 
-        $("#fleet").change(function () {
+        // Criteo section
+        var email = $("#email").val();
+        criteoViewHome(email);
+
+        $("#fleet").click(function () {
             var email = $("#email").val();
-            //var fleet_id = $(this).find(":selected").val();
             var list = [];
             $("#fleet option").each(function() {
                 list.push($(this).val());
                 });
+
             criteoViewListing(email, list);
+        });
+
+        $("#fleet").change(function () {
+            var email = $("#email").val();
+            var fleet_id = $(this).find(":selected").val();
+            var item = {id: fleet_id, price: 1, quantity: 1};
+
+            criteoViewItem(email, item);
         });
 
         $("form").on("submit", function() {
             var email = $("#email").val();
             var fleet_id = $(this).find(":selected").val();
-            var item = {id: fleet_id, price: 0, quantity: 1};
+            var item = {id: fleet_id, price: 1, quantity: 1};
             var basket = [];
             basket.push(item);
+
             criteoTrackTransaction(email, basket);
         });
     });
