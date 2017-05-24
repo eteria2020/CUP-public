@@ -73,18 +73,36 @@ function criteoViewBasket(email, basket)
     }
 }
 
-// Sales page tag
-function criteoTrackTransaction(email, basket)
+// Basket/Item page tag
+function criteoViewBasketItem(email, itemId)
 {
     try {
-        var transaction = {id: new Date().getTime(), item: basket};
-
         window.criteo_q = window.criteo_q || [];
         window.criteo_q.push(
             { event: "setAccount", account: account_id },
             { event: "setHashedEmail", email:  md5(email) },
             { event: "setSiteType", type: getDeviceType() },
-            { event: "trackTransaction" , transaction }
+            { event: "viewItem", item: itemId },
+            { event: "viewBasket", item: [ 
+                { id: itemId, price: 1, quantity: 1 }
+            ]}
+        );
+    }
+    catch(err) {
+        console.log(err.message);
+    }
+}
+
+// Sales page tag
+function criteoTrackTransaction(email, basket)
+{
+    try {
+        window.criteo_q = window.criteo_q || [];
+        window.criteo_q.push(
+            { event: "setAccount", account: account_id },
+            { event: "setHashedEmail", email:  md5(email) },
+            { event: "setSiteType", type: getDeviceType() },
+            { event: "trackTransaction", id: new Date().getTime(), item: basket } 
         );
     }
     catch(err) {
