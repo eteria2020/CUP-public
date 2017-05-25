@@ -15,7 +15,7 @@ class DisableCustomerControllerFactory implements FactoryInterface
         $customerNoteService = $sharedServiceLocator->get('SharengoCore\Service\CustomerNoteService');
         $usersService = $sharedServiceLocator->get('SharengoCore\Service\UsersService');
         $logger = $sharedServiceLocator->get('SharengoCore\Service\SimpleLoggerService');
-        $emailService = $sharedServiceManager->get('\SharengoCore\Service\EmailService');
+        $emailService = $sharedServiceLocator->get('SharengoCore\Service\EmailService');
 
         return new DisableCustomerController(
             $customersService,
