@@ -526,7 +526,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     $(document).ready(function () {
         overlay = $('#sng-overlay');
 
-        var now = new Date( <? echo date("Y, n - 1, d, H, i, s") ?> );
+        var now = new Date( <? echo date("Y, n - 1, d, H, i, s"); ?> );
         var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
         var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
 
@@ -545,6 +545,25 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
                 overlay.remove();
             });
         });
+
+        // Criteo section
+        var email = $("#email").val();
+        var list = [];
+        $("#fleet option").each(function() {
+            if (parseInt($(this).val())!==0){
+                list.push(parseInt($(this).val()));
+            };
+        });
+
+        criteoViewListing(email, list);
+
+        $("#fleet").change(function () {
+            var email = $("#email").val();
+            var fleetId = parseInt($(this).find(":selected").val());
+
+            criteoViewBasketItem(email, fleetId);
+        });
+
     });
 
 </script>

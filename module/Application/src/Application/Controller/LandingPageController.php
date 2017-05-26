@@ -109,6 +109,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function greenAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function gym17Action()
     {
         return (new viewModel())->setTerminal(true);
@@ -144,12 +149,17 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
     
+    public function madamaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function marketAction()
     {
         return (new viewModel())->setTerminal(true);
     }
-
-    public function madamaAction()
+    
+    public function maxxiAction()
     {
         return (new viewModel())->setTerminal(true);
     }

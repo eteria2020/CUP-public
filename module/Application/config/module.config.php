@@ -76,7 +76,7 @@ return [
                     ],
                 ],
             ],
-            'carsharing' => [
+            /*'carsharing' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{carsharing}',
@@ -97,7 +97,7 @@ return [
                         'action'     => 'cosae',
                     ],
                 ]
-            ],
+            ],*/
             'map' => [
                 'type' => 'Segment',
                 'options' => [
@@ -120,7 +120,7 @@ return [
                     ],
                 ]
             ],
-            'quantocosta' => [
+            /*'quantocosta' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{quantocosta}',
@@ -141,7 +141,7 @@ return [
                         'action'     => 'comefunziona',
                     ],
                 ]
-            ],
+            ],*/
             'faq' => [
                 'type' => 'Segment',
                 'options' => [
@@ -153,7 +153,7 @@ return [
                     ],
                 ]
             ],
-            'contatti' => [
+            /*'contatti' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{contatti}',
@@ -163,7 +163,7 @@ return [
                         'action'     => 'contatti',
                     ],
                 ]
-            ],
+            ],*/
             'login' => [
                 'type' => 'Segment',
                 'options' => [
@@ -600,6 +600,17 @@ return [
                     ],
                 ]
             ],
+            'green' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{green}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'green',
+                    ],
+                ],
+            ],
             'gym17' => [
                 'type' => 'Segment',
                 'options' => [
@@ -696,6 +707,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'market',
+                    ],
+                ]
+            ],
+            'maxxi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{maxxi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'maxxi',
                     ],
                 ]
             ],
