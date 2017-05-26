@@ -486,7 +486,6 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         try {
             if(count($zonesBonus)>0){   // if there are zone bonus
-
                 // check if the beginning of trip is inside of zoneBonus
                 $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
                     $zonesBonus,
