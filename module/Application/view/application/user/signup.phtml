@@ -557,10 +557,9 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
         $("#fleet").change(function () {
             var email = $("#email").val();
-            var fleetId = $(this).find(":selected").val();
-            var itemId = {id: fleetId, price: 1, quantity: 1};
+            var fleetId = parseInt($(this).find(":selected").val());
 
-            criteoViewBasketItem(email, itemId);
+            criteoViewBasketItem(email, fleetId);
         });
 
     });
