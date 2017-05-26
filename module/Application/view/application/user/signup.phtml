@@ -550,8 +550,10 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
         var email = $("#email").val();
         var list = [];
         $("#fleet option").each(function() {
-            list.push($(this).val());
-            });
+            if (parseInt($(this).val())!==0){
+                list.push(parseInt($(this).val()));
+            };
+        });
 
         criteoViewListing(email, list);
 
