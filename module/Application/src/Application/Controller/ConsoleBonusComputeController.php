@@ -181,7 +181,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".$bonusType.";".count($tripsToBeComputed)."\n");
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            $zonesBonus = $this->zonesService->getListZonesBonusByBonusTypeFeet($bonusType, $trip->getFleet());
+            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare($bonusType);
             $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
             $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
@@ -487,7 +487,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         try {
             if(count($zonesBonus)>0){   // if there are zone bonus
 
-                // check if the beginniing of trip is inside of zoneBonus
+                // check if the beginning of trip is inside of zoneBonus
                 $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
                     $zonesBonus,
                     $trip->getLongitudeBeginning(),
