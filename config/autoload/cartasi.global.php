@@ -9,6 +9,7 @@ return [
         'recurring_payment_url' => 'https://ecommerce.keyclient.it/ecomm/ecomm/ServletS2S',
         'recurring_payment_description' => '',
         'number_of_retries' => 3,
-        'pause_between_retries' => 1
+        'pause_between_retries' => 1,
+        'valid_ip' => '127.0.0.1;185.58.119.117'
     ]
 ];
