@@ -120,7 +120,6 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         //$this->zoneBonusCompute(); //TODO: de-comment in production
         $this->zoneExtraFareCompute();
-        //$this->zoneExtraFareSingleCompute("Firenze_Areoporto_500");
     }
 
     public function zoneBonusCompute()
@@ -174,7 +173,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
     private function zoneExtraFareCompute()
     {
-        $tripsToBeComputed = $this->tripsService->getTripsForExtraFareComputation();
+        $tripsToBeComputed =  $this->tripsService->getTripsForExtraFareComputation();
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".count($tripsToBeComputed)."\n");
 
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
