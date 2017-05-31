@@ -119,7 +119,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->log("\nStarted computing for bonuses trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         //$this->zoneBonusCompute(); //TODO: de-comment in production
-        $this->zoneExtraFareCompute("Firenze_Areoporto_500");
+        $this->zoneExtraFareCompute();
+        //$this->zoneExtraFareSingleCompute("Firenze_Areoporto_500");
     }
 
     public function zoneBonusCompute()
@@ -171,24 +172,38 @@ class ConsoleBonusComputeController extends AbstractActionController
         }
     }
 
+    private function zoneExtraFareCompute()
+    {
+        $tripsToBeComputed = $this->tripsService->getTripsForExtraFareComputation();
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".count($tripsToBeComputed)."\n");
+
+        foreach ($tripsToBeComputed as $trip) {     // loop through trips
+            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
+            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+            //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
+        }
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
+
+    }
+
     /*
      * Compute extra payments like Florence airport
      */
-     private function zoneExtraFareCompute($bonusType)
-    {
-
-        $tripsToBeComputed = $this->tripsService->getTripsForExtraFareComputation();
-
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".$bonusType.";".count($tripsToBeComputed)."\n");
-        foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare($bonusType);
-            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
-        }
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;".$bonusType."\n");
-    }
-
+//    private function zoneExtraFareSingleCompute($bonusType)
+//    {
+//
+//        $tripsToBeComputed = $this->tripsService->getTripsForExtraFareComputation();
+//
+//        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".$bonusType.";".count($tripsToBeComputed)."\n");
+//        foreach ($tripsToBeComputed as $trip) {     // loop through trips
+//            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare($bonusType);
+//            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+//            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+//            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
+//        }
+//        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;".$bonusType."\n");
+//    }
 
     private function verifyBonus(Trips $trip, array $zonesBonusByFleet, array &$residuals)
     {
@@ -493,6 +508,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $trip->getLatitudeBeginning());
 
                 if(count($zonesBonusInside) > 0){
+                    $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
                     $result += $zonesBonusInside[0]->getCost();
                 }
 
@@ -503,6 +519,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $trip->getLatitudeEnd());
 
                 if(count($zonesBonusInside) > 0){
+                    $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside->getId()."\n");
                     $result += $zonesBonusInside[0]->getCost();
                 }
 
@@ -518,6 +535,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                                 $event->getLat());
 
                             if(count($zonesBonusInside) > 0){
+                                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;parking;".$trip->getId().";".$zonesBonusInside->getId()."\n");
                                 $result += $zonesBonusInside[0]->getCost();
                             }
                         }
