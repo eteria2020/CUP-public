@@ -611,6 +611,17 @@ return [
                     ],
                 ],
             ],
+            'greenfi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{greenfi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'greenfi',
+                    ],
+                ],
+            ],
             'gym17' => [
                 'type' => 'Segment',
                 'options' => [
