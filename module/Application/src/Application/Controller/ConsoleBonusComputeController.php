@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\TripsService;
+use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PoisService;
 use SharengoCore\Service\EditTripsService;
 use SharengoCore\Service\BonusService;
@@ -17,7 +18,6 @@ use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-
 class ConsoleBonusComputeController extends AbstractActionController
 {
     /**
@@ -29,6 +29,11 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var TripsService
      */
     private $tripsService;
+
+    /**
+     * @var TripPaymentsService
+     */
+    private $tripPaymentsService;
 
     /**
      * @var EditTripsService
@@ -73,6 +78,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
+     * @param TripPaymentsService $tripPaymentsService
      * @param EditTripsService $editTripService
      * @param BonusService $bonusService
      * @param ZonesService $zonesService
@@ -83,6 +89,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     public function __construct(
         CustomersService $customerService,
         TripsService $tripsService,
+        TripPaymentsService $tripPaymentsService,
         EditTripsService $editTripService,
         BonusService $bonusService,
         ZonesService $zonesService,
@@ -94,6 +101,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
+        $this->tripPaymentsService = $tripPaymentsService;
         $this->editTripService = $editTripService;
         $this->bonusService = $bonusService;
         $this->poisService = $poisService;
@@ -110,7 +118,8 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         $this->logger->log("\nStarted computing for bonuses trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        $this->zoneBonusCompute();
+        $this->zoneBonusCompute(); //TODO: de-comment in production
+        $this->zoneExtraFareCompute();
     }
 
     public function zoneBonusCompute()
@@ -160,6 +169,25 @@ class ConsoleBonusComputeController extends AbstractActionController
                 }
             }
         }
+    }
+
+    private function zoneExtraFareCompute()
+    {
+        $tripsToBeComputed =  $this->tripsService->getTripsForExtraFareComputation();
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".count($tripsToBeComputed)."\n");
+
+        foreach ($tripsToBeComputed as $trip) {     // loop through trips
+            if($trip->getCar()->getPlate()==="EH43571"){    // TODO: only for test, leave in production
+                $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
+                //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus)."\n");
+                $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+                $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
+            }
+        }
+
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
+
     }
 
     private function verifyBonus(Trips $trip, array $zonesBonusByFleet, array &$residuals)
@@ -390,11 +418,11 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (!$trip instanceof Trips) {
                 continue;
             }
-            
+
             if ($trip->getDurationMinutes()<=5){
                 continue;
             }
-            
+
             //($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
 
             // Verify if customer reached max amount in zone bonuses passed and return a list of those available
@@ -402,7 +430,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             if (count($residuals) == 0){
                 continue;
             }
-            
+
             // Verify that only one bonus for trips with plate
             $verified  = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate());
             if (count($verified)>=1){
@@ -413,7 +441,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                 $this->logger->log("Trip ID:". $trip->getId() ."- Customer ID: ".$trip->getCustomer()->getId()." - Carplate:". $trip->getCar()->getPlate() ."\n\n");
                 continue;
             }
-            
+
             // Assign bonuses to customer
             $this->assigneBonus($trip, 5, 'POIS', 30, "Bonus parcheggio nei pressi di punto di ricarica - ".$trip->getCar()->getPlate());
 
@@ -436,9 +464,9 @@ class ConsoleBonusComputeController extends AbstractActionController
             $mail->getContent(),
             $name
         );
-        
+
         //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
-        
+
         $attachments = [
             //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
         ];
@@ -449,4 +477,88 @@ class ConsoleBonusComputeController extends AbstractActionController
             $attachments
         );
     }
+
+    /*
+     * Return the amount of extra payment
+     */
+    private function zoneExtraFareGetAmount(Trips $trip, array $zonesBonus){
+        $result = 0;
+
+        try {
+            if(count($zonesBonus)>0){   // if there are zone bonus
+                // check if the beginning of trip is inside of zoneBonus
+                $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
+                    $zonesBonus,
+                    $trip->getLongitudeBeginning(),
+                    $trip->getLatitudeBeginning());
+
+                if(count($zonesBonusInside) > 0){
+                    $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
+                    $result += $zonesBonusInside[0]->getCost();
+                }
+
+                // check if the end of trip is inside of zoneBonus
+                $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
+                    $zonesBonus,
+                    $trip->getLongitudeEnd(),
+                    $trip->getLatitudeEnd());
+
+                if(count($zonesBonusInside) > 0){
+                    $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside->getId()."\n");
+                    $result += $zonesBonusInside[0]->getCost();
+                }
+
+                $events = $this->eventsService->getEventsByTrip($trip);
+                foreach($events as $event)
+                {
+                    if ($event->getEventId() == 3) {            // event RFID (parking)
+                        if ($event->getIntval() == 3) {          // inval parking start
+
+                            $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
+                                $zonesBonus,
+                                $event->getLon(),
+                                $event->getLat());
+
+                            if(count($zonesBonusInside) > 0){
+                                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;parking;".$trip->getId().";".$zonesBonusInside->getId()."\n");
+                                $result += $zonesBonusInside[0]->getCost();
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception $ex) {
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";ERR;zoneExtraFareGetAmount;".$ex->getMessage()."\n");
+        }
+
+        return $result;
+    }
+
+    /*
+     * Add cost of extra fare to the trip
+     */
+    private function zoneExtraFareAddAmount(Trips $trip, array $zonesBonus, $extraFareAmount){
+        $result = FALSE;
+
+        try {
+            if($extraFareAmount > 0){
+                if(count($zonesBonus)>0){
+                    if($trip->getPayable()) {
+                        $reason = $zonesBonus[0]->getDescription();
+                        if( strpos($trip->getAddressBeginning(), $reason) === false) { // check if the trip description dosn't contain already the reason
+                            $this->tripsService->setAddressByGeocode($trip, false, " (" . $reason .")");
+                            $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
+                            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareApplyAmount;addAmount;".$trip->getId().";".$extraFareAmount."\n");
+                        }
+                    }
+                }
+            }
+
+            $result = TRUE;
+        } catch (Exception $ex) {
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";ERR;zoneExtraFareApplyAmount;".$ex->getMessage()."\n");
+        }
+        return $result;
+    }
+
 }
