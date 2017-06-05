@@ -118,7 +118,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         $this->logger->log("\nStarted computing for bonuses trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        //$this->zoneBonusCompute(); //TODO: de-comment in production
+        $this->zoneBonusCompute(); //TODO: de-comment in production
         $this->zoneExtraFareCompute();
     }
 
