@@ -501,6 +501,17 @@ return [
                     ],
                 ],
             ],
+            'coa' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{coa}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'coa',
+                    ],
+                ],
+            ], 
             'comunedifirenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -608,6 +619,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'green',
+                    ],
+                ],
+            ],
+            'greenfi' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{greenfi}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'greenfi',
                     ],
                 ],
             ],
