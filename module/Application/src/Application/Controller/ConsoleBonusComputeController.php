@@ -177,33 +177,18 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".count($tripsToBeComputed)."\n");
 
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
-            //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus)."\n");
-            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
+            if($trip->getCar()->getPlate()==="EH43571"){    // TODO: only for test, leave in production
+                $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
+                //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus)."\n");
+                $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+                $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
+            }
         }
+
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
 
     }
-
-    /*
-     * Compute extra payments like Florence airport
-     */
-//    private function zoneExtraFareSingleCompute($bonusType)
-//    {
-//
-//        $tripsToBeComputed = $this->tripsService->getTripsForExtraFareComputation();
-//
-//        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".$bonusType.";".count($tripsToBeComputed)."\n");
-//        foreach ($tripsToBeComputed as $trip) {     // loop through trips
-//            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare($bonusType);
-//            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-//            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-//            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
-//        }
-//        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;".$bonusType."\n");
-//    }
 
     private function verifyBonus(Trips $trip, array $zonesBonusByFleet, array &$residuals)
     {
