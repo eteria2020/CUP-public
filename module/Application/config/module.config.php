@@ -501,6 +501,17 @@ return [
                     ],
                 ],
             ],
+            'coa' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{coa}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'coa',
+                    ],
+                ],
+            ], 
             'comunedifirenze' => [
                 'type' => 'Segment',
                 'options' => [
