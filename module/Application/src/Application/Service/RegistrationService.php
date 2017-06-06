@@ -295,9 +295,17 @@ final class RegistrationService
             if(is_null($promoCodeOnce)){
                 if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
                     // add 100 min bonus
+                    $total = $this->subscriptionBonus['total'];
+                    /* Florence ztl 1 euro subscription */
+                    $now = new \DateTime();
+                    $start = new \DateTime('2017-06-08 00:00:00');
+                    $end = new \DateTime('2017-07-31 23:59:59');
+                    if ($customer->getFleet()->getId() == 2 && ($now >= $start && $now <= $end)){
+                        $total = 0;
+                    }
                     $bonus100mins = CustomersBonus::createBonus(
                         $customer,
-                        $this->subscriptionBonus['total'],
+                        $total, //$this->subscriptionBonus['total'],
                         $this->subscriptionBonus['description'],
                         $this->subscriptionBonus['valid-to']
                     );
