@@ -180,8 +180,8 @@ class ConsoleBonusComputeController extends AbstractActionController
             //if($trip->getCar()->getPlate()==="EH43571"){    // TODO: only for test, leave in production
                 $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
                 $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus).";".$trip->getId()."\n");
-                //$extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-                //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+                $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
                 //$this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
             //}
         }
@@ -493,9 +493,11 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $trip->getLatitudeBeginning());
 
                 if(count($zonesBonusInside) > 0){
-                    $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
+                    //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
                     $result += intval($zonesBonusInside[0]->getCost());
                 }
+
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId().";".$result."\n");
 
                 // check if the end of trip is inside of zoneBonus
                 $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
@@ -504,28 +506,30 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $trip->getLatitudeEnd());
 
                 if(count($zonesBonusInside) > 0){
-                    $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside->getId()."\n");
+                    //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside->getId()."\n");
                     $result += intval($zonesBonusInside[0]->getCost());
                 }
 
-                $events = $this->eventsService->getEventsByTrip($trip);
-                foreach($events as $event)
-                {
-                    if ($event->getEventId() == 3) {            // event RFID (parking)
-                        if ($event->getIntval() == 3) {          // inval parking start
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside->getId().";".$result."\n");
 
-                            $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
-                                $zonesBonus,
-                                $event->getLon(),
-                                $event->getLat());
-
-                            if(count($zonesBonusInside) > 0){
-                                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;parking;".$trip->getId().";".$zonesBonusInside->getId()."\n");
-                                $result += intval($zonesBonusInside[0]->getCost());
-                            }
-                        }
-                    }
-                }
+//                $events = $this->eventsService->getEventsByTrip($trip);
+//                foreach($events as $event)
+//                {
+//                    if ($event->getEventId() == 3) {            // event RFID (parking)
+//                        if ($event->getIntval() == 3) {          // inval parking start
+//
+//                            $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
+//                                $zonesBonus,
+//                                $event->getLon(),
+//                                $event->getLat());
+//
+//                            if(count($zonesBonusInside) > 0){
+//                                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;parking;".$trip->getId().";".$zonesBonusInside->getId()."\n");
+//                                $result += intval($zonesBonusInside[0]->getCost());
+//                            }
+//                        }
+//                    }
+//                }
             }
 //        } catch (Exception $ex) {
 //            $this->logger->log(date_create()->format('y-m-d H:i:s').";ERR;zoneExtraFareGetAmount;".$ex->getMessage()."\n");
