@@ -118,7 +118,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
         $this->logger->log("\nStarted computing for bonuses trips\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
-        //$this->zoneBonusCompute(); // TODO: de-comment in production
+        $this->zoneBonusCompute(); // TODO: de-comment in production
         $this->zoneExtraFareCompute();
     }
 
@@ -177,13 +177,11 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;start;".count($tripsToBeComputed)."\n");
 
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            //if($trip->getCar()->getPlate()==="EH43571"){    // TODO: only for test, leave in production
-                $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus).";".$trip->getId()."\n");
-                $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-                //$this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
-            //}
+            $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus).";".$trip->getId()."\n");
+            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+            //$this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
         }
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
