@@ -484,7 +484,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     private function zoneExtraFareGetAmount(Trips $trip, array $zonesBonus){
         $result = 0;
 
-        try {
+//        try {
             if(count($zonesBonus)>0){   // if there are zone bonus
                 // check if the beginning of trip is inside of zoneBonus
                 $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
@@ -494,7 +494,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
                 if(count($zonesBonusInside) > 0){
                     $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
-                    $result += $zonesBonusInside[0]->getCost();
+                    $result += intval($zonesBonusInside[0]->getCost());
                 }
 
                 // check if the end of trip is inside of zoneBonus
@@ -505,7 +505,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
                 if(count($zonesBonusInside) > 0){
                     $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside->getId()."\n");
-                    $result += $zonesBonusInside[0]->getCost();
+                    $result += intval($zonesBonusInside[0]->getCost());
                 }
 
                 $events = $this->eventsService->getEventsByTrip($trip);
@@ -521,15 +521,15 @@ class ConsoleBonusComputeController extends AbstractActionController
 
                             if(count($zonesBonusInside) > 0){
                                 $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;parking;".$trip->getId().";".$zonesBonusInside->getId()."\n");
-                                $result += $zonesBonusInside[0]->getCost();
+                                $result += intval($zonesBonusInside[0]->getCost());
                             }
                         }
                     }
                 }
             }
-        } catch (Exception $ex) {
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";ERR;zoneExtraFareGetAmount;".$ex->getMessage()."\n");
-        }
+//        } catch (Exception $ex) {
+//            $this->logger->log(date_create()->format('y-m-d H:i:s').";ERR;zoneExtraFareGetAmount;".$ex->getMessage()."\n");
+//        }
 
         return $result;
     }
