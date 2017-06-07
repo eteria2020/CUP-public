@@ -181,7 +181,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus).";".$trip->getId()."\n");
             $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-            //$this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
+            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
         }
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
@@ -481,15 +481,18 @@ class ConsoleBonusComputeController extends AbstractActionController
      */
     private function zoneExtraFareGetAmount(Trips $trip, array $zonesBonus){
         $result = 0;
+        $zonesBonusInside = array();
 
 //        try {
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;init;".$trip->getId().";".$trip->getLongitudeBeginning().";".$trip->getLatitudeBeginning().";".$result."\n");
             if(count($zonesBonus)>0){   // if there are zone bonus
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;init;".$trip->getId().";".$trip->getLongitudeBeginning().";".$trip->getLatitudeBeginning().";".$result."\n");
                 // check if the beginning of trip is inside of zoneBonus
                 $zonesBonusInside = $this->zonesService->checkPointInBonusZones(
                     $zonesBonus,
                     $trip->getLongitudeBeginning(),
                     $trip->getLatitudeBeginning());
+
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;exit;\n");
 
                 if(count($zonesBonusInside) > 0){
                     //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
