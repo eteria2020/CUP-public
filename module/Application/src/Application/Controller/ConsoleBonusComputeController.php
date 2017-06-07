@@ -492,7 +492,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $trip->getLongitudeBeginning(),
                     $trip->getLatitudeBeginning());
 
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;exit;\n");
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;exit;".count($zonesBonusInside).";\n");
 
                 if(count($zonesBonusInside) > 0){
                     //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside->getId()."\n");
