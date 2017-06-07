@@ -178,10 +178,12 @@ class ConsoleBonusComputeController extends AbstractActionController
         $zonesBonus = $this->zonesService->getListZonesBonusForExtraFare();
 
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus).";".$trip->getId()."\n");
-            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
+            if($trip->getCar()->getPlate()==="EH43571"){
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus).";".$trip->getId()."\n");
+                $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+                $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount); // TODO: de-comment in production
+            }
         }
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
@@ -545,8 +547,8 @@ class ConsoleBonusComputeController extends AbstractActionController
                     if($trip->getPayable()) {
                         $reason = $zonesBonus[0]->getDescription();
                         if( strpos($trip->getAddressBeginning(), $reason) === false) { // check if the trip description dosn't contain already the reason
-//                            $this->tripsService->setAddressByGeocode($trip, false, " (" . $reason .")");
-//                            $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
+                            $this->tripsService->setAddressByGeocode($trip, false, " (" . $reason .")");
+                            $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
                             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareApplyAmount;addAmount;".$trip->getId().";".$extraFareAmount."\n");
                         }
                     }
