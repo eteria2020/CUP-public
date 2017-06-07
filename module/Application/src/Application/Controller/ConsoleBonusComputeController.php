@@ -546,7 +546,8 @@ class ConsoleBonusComputeController extends AbstractActionController
                 if(count($zonesBonus)>0){
                     if($trip->getPayable()) {
                         $reason = $zonesBonus[0]->getDescription();
-                        if( strpos($trip->getAddressBeginning(), $reason) === false) { // check if the trip description dosn't contain already the reason
+                        $pos = strpos($trip->getAddressBeginning(), $reason);
+                        if($pos === false) { // check if the trip description dosn't contain already the reason
                             $this->tripsService->setAddressByGeocode($trip, false, " (" . $reason .")");
                             $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
                             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareApplyAmount;addAmount;".$trip->getId().";".$extraFareAmount."\n");
