@@ -229,11 +229,14 @@ return [
             'signup' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{signup}',
+                    'route' => '/{signup}[/:mobile]',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action'     => 'signup',
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
                     ],
                 ]
             ],
@@ -251,23 +254,29 @@ return [
             'signup-2' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{signup-2}',
+                    'route' => '/{signup-2}[/:mobile]',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup2'
-                    ]
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
+                    ],
                 ]
             ],
             'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{signup-3}',
+                    'route' => '/{signup-3}[/:mobile]',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup3'
-                    ]
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
+                    ],
                 ]
             ],
             'signup-score' => [
