@@ -97,9 +97,11 @@ class UserController extends AbstractActionController
     {
         return new ViewModel();
     }
-
+    
     public function signupAction()
-    {
+    {   
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
         $registeredData = $this->form1->getRegisteredData();
         $registeredDataPromoCode = $this->form1->getRegisteredDataPromoCode();
@@ -122,12 +124,12 @@ class UserController extends AbstractActionController
             $this->form1->setData($formData);
 
             if ($this->form1->isValid()) {
-                return $this->proceed($this->form1, $formData['promocode']);
+                return $this->proceed($this->form1, $formData['promocode'], $mobile);
             } else {
-                return $this->signupForm($this->form1);
+                return $this->signupForm($this->form1, $mobile);
             }
         } else {
-            return $this->signupForm($this->form1);
+            return $this->signupForm($this->form1, $mobile);
         }
     }
 
@@ -201,15 +203,16 @@ class UserController extends AbstractActionController
         }
     }
 
-    private function proceed($form, $promoCode)
+    private function proceed($form, $promoCode, $mobile)
     {
         $form->registerData($promoCode);
-
-        return $this->redirect()->toRoute('signup-2');
+        return $this->redirect()->toRoute('signup-2', ['mobile' => $mobile]);
     }
 
     public function signup2Action()
     {
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
         $registeredData = $this->form2->getRegisteredData();
 
@@ -230,16 +233,16 @@ class UserController extends AbstractActionController
             $this->form2->setData($postData);
 
             if ($this->form2->isValid()) {
-                return $this->conclude($this->form2);
+                return $this->conclude($this->form2, $mobile);
             } else {
-                return $this->signupForm($this->form2);
+                return $this->signupForm($this->form2, $mobile);
             }
         } else {
-            return $this->signupForm($this->form2);
+            return $this->signupForm($this->form2, $mobile);
         }
     }
 
-    private function conclude($form)
+    private function conclude($form, $mobile)
     {
         $form->registerData();
 
@@ -249,7 +252,7 @@ class UserController extends AbstractActionController
         if (empty($data)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage()]);
+            return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData($data);
         try {
@@ -259,24 +262,33 @@ class UserController extends AbstractActionController
             $this->registrationService->removeSessionData();
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage().' '.json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage()]);
+            return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
 
         $this->getEventManager()->trigger('registrationCompleted', $this, $data);
 
-        return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage()]);
+        return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
     }
 
-    private function signupForm($form)
-    {
+    private function signupForm($form, $mobile)
+    {   
+        if ($mobile){
+            $this->layout('layout/map');
+        }
         return new ViewModel([
             'form' => $form,
-            'hasDiscount' => $this->customerHasDiscount()
+            'hasDiscount' => $this->customerHasDiscount(),
+            'mobile' => $mobile  
         ]);
     }
 
     public function signup3Action()
     {
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         return new ViewModel();
     }
 
