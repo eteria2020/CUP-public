@@ -558,6 +558,13 @@ a#submit:hover{
 	}
 }
 
+@media (min-height: 600px) {
+	.strong-big {
+            font-size: 1.8rem !important;
+            line-height: 1.19;
+	}
+}
+
 .content{
 	background-color: #333;
 	overflow: hidden;
