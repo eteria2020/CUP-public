@@ -179,11 +179,9 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus)."\n");
 
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            if($trip->getCar()->getPlate()==="EF87365"){
-                $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-                $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
-            }
+            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
+            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
         }
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
