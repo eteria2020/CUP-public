@@ -601,7 +601,7 @@ $this->headLink()
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
 
-                                    <?php if(!$this->customer->getFirstPaymentCompleted()):?>
+                                    <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
                                         <br />
                                         <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" style="color: #ff0000;">
                                             <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
