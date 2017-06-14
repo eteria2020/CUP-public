@@ -1,0 +1,70 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+?>
+
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
+
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate(''); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <!-- module-column-app-content -->
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-profile -->
+                <div class="module-profile clearfix">
+
+                    <!-- block-form -->
+                    <div class="block-form bw-f w-2-3  clearfix">
+                            <div class="block-form-section content-align-center" style="padding-top: 15px">
+                                <h2><i class="fa fa-wrench"></i> <?= $this->translate("Sistema in manutenzione"); ?></h2>
+                            </div>
+                                <!-- block-row-field -->
+                                <div class="block-row-field clearfix">
+                                    <br>
+                                    <center><img style="align-center" src="http://www.sharengo.it/green/application/images/Icone2.png"></center>
+                                    <p></p>
+                                    <div class="block-field bw-f w-2-4"></div>
+                                    <br>
+                            <div style="margin-top: 10px; max-width: 350px; margin: auto; text-align: center; font-size: 1.1rem; font-weight: 500;">
+                                <?= $this->translate("CI SCUSIAMO PER IL TEMPORANEO DISSERVIZIO, LA PAGINA TORNER&Agrave; PRESTO ONLINE."); ?>
+                            </div>
+                                </div>
+                                <!-- block-row-field -->
+                    </div>
+                    <!-- block-form -->
+
+
+                    <!-- block -->
+
+                </div>
+                <!-- module-profile -->
+
+            </div>
+            <!-- module-column-app-content -->
+
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->

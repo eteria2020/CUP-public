@@ -169,9 +169,10 @@ class UserAreaController extends AbstractActionController
     {
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
-        if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
+        //####disable for cartasi contract switch
+        /*if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
             $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
-        }
+        }*/
 
         // if not, continue with index action
         $this->setFormsData($this->customer);
@@ -447,5 +448,9 @@ class UserAreaController extends AbstractActionController
         }
 
         return $this->redirect()->toRoute('area-utente/dati-pagamento');
+    }
+    
+    public function maintenancePageAction() {  
+       return new ViewModel();
     }
 }

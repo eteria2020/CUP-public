@@ -995,7 +995,7 @@ return [
                         'options' => [
                             'route' => '/dati-pagamento',
                             'defaults' => [
-                                'action' => 'dati-pagamento'
+                                'action' => 'maintenance-page'//'dati-pagamento'
                             ]
                         ]
                     ],
@@ -1022,8 +1022,8 @@ return [
                         'options' => [
                             'route' => '/{servizi-aggiuntivi}',
                             'defaults' => [
-                                'controller' => 'AdditionalServices',
-                                'action' => 'additional-services'
+                                'controller' => 'UserArea',//'AdditionalServices',
+                                'action' => 'maintenance-page'//'additional-services'
                             ]
                         ]
                     ],
