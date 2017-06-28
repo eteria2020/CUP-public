@@ -188,8 +188,8 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-    
-    public function paybackAction()
+
+    public function pwcAction()
     {
         return (new viewModel())->setTerminal(true);
     }
@@ -205,6 +205,11 @@ class LandingPageController extends AbstractActionController
     }
 
     public function scoac1Action()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function scuolecivicheAction()
     {
         return (new viewModel())->setTerminal(true);
     }

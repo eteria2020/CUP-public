@@ -824,6 +824,17 @@ return [
                     ],
                 ],
             ],
+            'pwc' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pwc}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'pwc',
+                    ],
+                ],
+            ],
             'saba' => [
                 'type' => 'Segment',
                 'options' => [
@@ -843,6 +854,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'scoac1',
+                    ],
+                ]
+            ],
+            'scuoleciviche' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{scuoleciviche}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'scuoleciviche',
                     ],
                 ]
             ],
