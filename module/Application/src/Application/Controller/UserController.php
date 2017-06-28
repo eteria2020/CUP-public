@@ -1,5 +1,4 @@
 <?php
-
 namespace Application\Controller;
 
 // External Modules
@@ -9,6 +8,8 @@ use Zend\Form\Form;
 use Zend\Session\Container;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Stdlib\DateTime;
+
 
 // Internal Modules
 use Application\Service\RegistrationService;
@@ -20,8 +21,10 @@ use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
 
-class UserController extends AbstractActionController
-{
+class UserController extends AbstractActionController {
+
+    //variabile sessione
+    private $smsVerification;
     /**
      * @var \Zend\Form\Form
      */
@@ -74,15 +77,12 @@ class UserController extends AbstractActionController
      * @param HydratorInterface $hydrator
      */
     public function __construct(
-        Form $form1,
-        Form $form2,
-        RegistrationService $registrationService,
-        CustomersService $customersService,
-        LanguageService $languageService,
-        ProfilingPlaformService $profilingPlatformService,
-        Translator $translator,
-        HydratorInterface $hydrator
+    //$this->smsVerificationCode=new Zend_Session_Namespace('smsVerification');
+             
+
+    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator
     ) {
+        
         $this->form1 = $form1;
         $this->form2 = $form2;
         $this->registrationService = $registrationService;
@@ -93,13 +93,16 @@ class UserController extends AbstractActionController
         $this->hydrator = $hydrator;
     }
 
-    public function loginAction()
-    {
+    public function loginAction() {
         return new ViewModel();
     }
-    
-    public function signupAction()
-    {   
+
+    public function signupAction() {
+        
+        //if(!$smsVerification->offsetExists($key)){
+         //   $smsVerification=new Container('smsVerification');
+         //   $smsVerification->offsetSet('timeStamp', new \DateTime());
+        //}
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
@@ -118,11 +121,22 @@ class UserController extends AbstractActionController
                 'promocode' => $registeredDataPromoCode,
             ]);
         }
+        
+        
 
-        if ($this->getRequest()->isPost()) {
+        
+        if ($this->getRequest()->isPost()) {     
             $formData = $this->getRequest()->getPost();
             $this->form1->setData($formData);
-
+            
+            /*
+            $smsCode=$formData['user']['smsCode'];
+            if($smsCode!="" && $smsCode!=null){
+                $resultVerification=$this->signupVerifyCodeAction($smsCode);
+            }
+            $risultato=$resultVerification->getContent();
+            */
+            /*&& $risultato*/
             if ($this->form1->isValid()) {
                 return $this->proceed($this->form1, $formData['promocode'], $mobile);
             } else {
@@ -133,8 +147,7 @@ class UserController extends AbstractActionController
         }
     }
 
-    public function signupScoreAction()
-    {
+    public function signupScoreAction() {
         $email = strtolower(urldecode($this->params('email')));
 
         $customers = $this->customersService->findByEmail($email);
@@ -151,8 +164,7 @@ class UserController extends AbstractActionController
         }
     }
 
-    private function signupScoreUnknown($email)
-    {
+    private function signupScoreUnknown($email) {
         // Customer exists inside profiling platform?
         try {
             //throws an exception if the user doesn't have a discount
@@ -174,16 +186,16 @@ class UserController extends AbstractActionController
             $this->form1->registerPromoCodeData(['promocode' => $promoCode]);
 
             // we store in session the information that the user already have a discount, so we can avoid showing him the banner
-            $container = new Container('userDiscount');
+            $container = new Container('session');
             $container->offsetSet('hasDiscount', true);
         } catch (ProfilingPlatformException $ex) {
+            
         }
 
         return $this->redirect()->toRoute('signup');
     }
 
-    private function signupScoreKnown($customer)
-    {
+    private function signupScoreKnown($customer) {
         $this->customersService->increaseCustomerProfilingCounter($customer);
 
         try {
@@ -194,6 +206,7 @@ class UserController extends AbstractActionController
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
+            
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -203,14 +216,12 @@ class UserController extends AbstractActionController
         }
     }
 
-    private function proceed($form, $promoCode, $mobile)
-    {
+    private function proceed($form, $promoCode, $mobile) {
         $form->registerData($promoCode);
         return $this->redirect()->toRoute('signup-2', ['mobile' => $mobile]);
     }
 
-    public function signup2Action()
-    {
+    public function signup2Action() {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
@@ -241,9 +252,134 @@ class UserController extends AbstractActionController
             return $this->signupForm($this->form2, $mobile);
         }
     }
+    public function signupVerifyCodeAction($smsCode) {
+        //$smsVerification->code=$_SESSION["codice"]; 
+        $smsVerification=new Container('smsVerification');
+        //$insertedCode=$this->params()->fromPost('codiceUtenteSms');
+        if($smsVerification->offsetGet('code')==$smsCode){
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent(true);
+            return $response;
+            /*$this->response->setStatusCode(200);
+            return new JsonModel(array("message" => "COD ESATTO!"));*/
+        }else{
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent(false);
+            return $response;
+            /*$this->response->setStatusCode(200);
+            return new JsonModel(array("message" => "COD ERRATO!"));*/
+        }
+       
+    }
 
-    private function conclude($form, $mobile)
-    {
+    public function signupSmsAction() {
+     //$mex=$this->generateTextMex();
+     //$_SESSION["time"];   
+     //$session = new Container('userDiscount');
+         $smsVerification=new Container('smsVerification');
+        
+        
+     if (!$smsVerification->offsetExists('timeStamp')){
+          //$ora=new \DateTime();
+          //$session->offSet()
+          //$session->offsetSet('time', $ora);
+          //$code=$this->codeGenerator();
+          //$_SESSION["codice"]=$code;
+          //$phone=$_POST["telefono"];
+          //$_SESSION["cell"] = $phone;
+          $smsVerification->offsetSet('timeStamp', new \DateTime());
+          $smsVerification->offsetSet('mobile',$_POST["mobile"]);
+          $smsVerification->offsetSet('code',$this->codeGenerator()) ;
+          $this->gestioneInvioSms($smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+          $response = $this->getResponse();
+          $response->setStatusCode(200);
+          $response->setContent("SMS Inviato iniziale");
+          return $response;
+     }else{
+          /*$now= date("h:i:sa");
+          $sessionStart=$session->offsetGet('time');
+          $diffSeconds = $now->getTimestamp() - $sessionStart->getTimestamp();*/
+          //$s=$session->offsetGet('time');
+          $now = new \DateTime();
+          $diffSeconds = $now->getTimestamp()-$smsVerification->offsetGet('timeStamp')->getTimeStamp() ;
+         if($diffSeconds>60){
+              //$smsVerification->code=$this->codeGenerator();
+              //$_SESSION["codice"]=$code;
+              //$ora=new \DateTime();
+              //$session->offsetSet('time', $ora);
+              //$this->gestioneInvioSms($_SESSION["cell"],$_SESSION["codice"]);
+              $smsVerification->offsetSet('timeStamp', new \DateTime());
+              //in caso sbagliasse numero aggiorno il numero di telefono
+              $smsVerification->offsetSet('mobile',$_POST["mobile"]);
+              $smsVerification->offsetSet('code',$this->codeGenerator()) ;
+              $this->gestioneInvioSms($smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+              $response = $this->getResponse();
+              $response->setStatusCode(200);
+              $response->setContent("SMS Inviato dopo tot tempo");
+              return $response;
+        }else{
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent("Attendere messaggio");
+            return $response;
+             //attendere messaggio
+         }
+     }
+    
+     //$completeMex=$mex.": ".$code;
+    }
+    
+    private function gestioneInvioSms($phone,$code){
+         //invio sms
+                $username = 'SMSHY8YFB8Z1JHFFQD139';
+                $password = 'YHFODFXUGD9IE04U1PK0PIDKZ76SVFXO';
+                //$rnd = mt_rand(1000, 9999);
+                
+
+                $url = "https://api.smshosting.it/rest/api/sms/send";
+                $fields = array(
+                        'sandbox' => 'true',
+                        //'sandbox' => null,
+                        //'to' => "393407924757",
+                        'to' => $phone,
+                        'from' => "ShareNGO",
+                        'text' => utf8_encode("Codice di Verifica $code")
+                );
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+                curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
+
+                $out = curl_exec($ch);
+                //print "params: " . $postvars;
+                //print "error:" . curl_error($ch) . "<br />";
+                //print "output:" . $out . "<br /><br />";
+                curl_close($ch);
+
+                //fine invio sms
+    }//fine gestione invio
+    
+    private function generateTextMex(){
+        $testo="Gentile cliente ecco il codice di conferma per la registrazione";
+        return $testo;
+    }//fine genera testo
+    
+    private function codeGenerator(){
+     $codice = mt_rand(1000, 9999);
+     return $codice;
+    }//fine genera codice
+    
+    private function conclude($form, $mobile) {
         $form->registerData();
 
         $data = $this->registrationService->retrieveValidData();
@@ -261,7 +397,7 @@ class UserController extends AbstractActionController
             $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash'], $data['language']);
             $this->registrationService->removeSessionData();
         } catch (\Exception $e) {
-            $this->registrationService->notifySharengoErrorByEmail($e->getMessage().' '.json_encode($e->getTrace()));
+            $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
             return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
 
@@ -270,20 +406,18 @@ class UserController extends AbstractActionController
         return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
     }
 
-    private function signupForm($form, $mobile)
-    {   
-        if ($mobile){
+    private function signupForm($form, $mobile) {
+        if ($mobile) {
             $this->layout('layout/map');
         }
         return new ViewModel([
             'form' => $form,
             'hasDiscount' => $this->customerHasDiscount(),
-            'mobile' => $mobile  
+            'mobile' => $mobile
         ]);
     }
 
-    public function signup3Action()
-    {
+    public function signup3Action() {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
@@ -292,8 +426,7 @@ class UserController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function signupinsertAction()
-    {
+    public function signupinsertAction() {
         $hash = $this->params()->fromQuery('user');
 
         $message = $this->registrationService->registerUser($hash);
@@ -306,7 +439,7 @@ class UserController extends AbstractActionController
         }
 
         $needsDriversLicenseUpload = $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer) &&
-            !$this->customersService->customerHasAcceptedDriversLicenseForm($customer);
+                !$this->customersService->customerHasAcceptedDriversLicenseForm($customer);
 
         //NOTE add 'customerEmail' and 'customerFleetId' only for Criteo use
         return new ViewModel([
@@ -322,8 +455,7 @@ class UserController extends AbstractActionController
         ]);
     }
 
-    public function signupScoreCompletionAction()
-    {
+    public function signupScoreCompletionAction() {
         return new ViewModel();
     }
 
@@ -331,8 +463,7 @@ class UserController extends AbstractActionController
      *  This action autocomplete the signup form "PromoCode" field,
      *  from the given root parameter "promocode".
      */
-    public function promocodeSignupAction()
-    {
+    public function promocodeSignupAction() {
         $promoCode = strtoupper($this->params('promocode'));
 
         $this->form1->registerPromoCodeData(['promocode' => $promoCode]);
@@ -340,29 +471,29 @@ class UserController extends AbstractActionController
         $this->redirect()->toRoute('signup');
     }
 
-    private function customerHasDiscount()
-    {
+    private function customerHasDiscount() {
         $container = new Container('userDiscount');
         return $container->offsetGet('hasDiscount');
     }
 
-    private function getProfilingPlatformPromoCode($email)
-    {
+    private function getProfilingPlatformPromoCode($email) {
         try {
             return $this->profilingPlatformService->getPromoCodeByEmail($email);
         } catch (ProfilingPlatformException $ex) {
+            
         }
 
         return null;
     }
 
-    private function getProfilingPlatformFleet($email)
-    {
+    private function getProfilingPlatformFleet($email) {
         try {
             return $this->profilingPlatformService->getFleetByEmail($email);
         } catch (ProfilingPlatformException $ex) {
+            
         }
 
         return null;
     }
+
 }

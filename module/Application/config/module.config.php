@@ -265,6 +265,34 @@ return [
                     ],
                 ]
             ],
+             'signup-sms' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/signup-sms',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signup-sms'
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
+                    ],
+                ]
+            ],
+            'signup-verify-code' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/signup-verify-code',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signup-verify-code'
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
+                    ],
+                ]
+            ],
             'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
