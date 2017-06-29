@@ -77,7 +77,7 @@ class UserController extends AbstractActionController {
      * @param HydratorInterface $hydrator
      */
     public function __construct(
-    //$this->smsVerificationCode=new Zend_Session_Namespace('smsVerification');
+   
              
 
     Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator
@@ -99,10 +99,7 @@ class UserController extends AbstractActionController {
 
     public function signupAction() {
         
-        //if(!$smsVerification->offsetExists($key)){
-         //   $smsVerification=new Container('smsVerification');
-         //   $smsVerification->offsetSet('timeStamp', new \DateTime());
-        //}
+        
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
@@ -129,14 +126,7 @@ class UserController extends AbstractActionController {
             $formData = $this->getRequest()->getPost();
             $this->form1->setData($formData);
             
-            /*
-            $smsCode=$formData['user']['smsCode'];
-            if($smsCode!="" && $smsCode!=null){
-                $resultVerification=$this->signupVerifyCodeAction($smsCode);
-            }
-            $risultato=$resultVerification->getContent();
-            */
-            /*&& $risultato*/
+       
             if ($this->form1->isValid()) {
                 return $this->proceed($this->form1, $formData['promocode'], $mobile);
             } else {
@@ -253,68 +243,54 @@ class UserController extends AbstractActionController {
         }
     }
     public function signupVerifyCodeAction($smsCode) {
-        //$smsVerification->code=$_SESSION["codice"]; 
+        
         $smsVerification=new Container('smsVerification');
-        //$insertedCode=$this->params()->fromPost('codiceUtenteSms');
+        
         if($smsVerification->offsetGet('code')==$smsCode){
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent(true);
             return $response;
-            /*$this->response->setStatusCode(200);
-            return new JsonModel(array("message" => "COD ESATTO!"));*/
+            
         }else{
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent(false);
             return $response;
-            /*$this->response->setStatusCode(200);
-            return new JsonModel(array("message" => "COD ERRATO!"));*/
+           
         }
        
     }
 
     public function signupSmsAction() {
-     //$mex=$this->generateTextMex();
-     //$_SESSION["time"];   
-     //$session = new Container('userDiscount');
+     
          $smsVerification=new Container('smsVerification');
         
         
      if (!$smsVerification->offsetExists('timeStamp')){
-          //$ora=new \DateTime();
-          //$session->offSet()
-          //$session->offsetSet('time', $ora);
-          //$code=$this->codeGenerator();
-          //$_SESSION["codice"]=$code;
-          //$phone=$_POST["telefono"];
-          //$_SESSION["cell"] = $phone;
-          $smsVerification->offsetSet('timeStamp', new \DateTime());
+    
+          $smsVerification->offsetSet('timeStamp', new \DateTime()); 
           $smsVerification->offsetSet('mobile',$_POST["mobile"]);
+          $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
           $smsVerification->offsetSet('code',$this->codeGenerator()) ;
-          $this->gestioneInvioSms($smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+          $this->gestioneInvioSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
           $response = $this->getResponse();
           $response->setStatusCode(200);
           $response->setContent("SMS Inviato iniziale");
           return $response;
      }else{
-          /*$now= date("h:i:sa");
-          $sessionStart=$session->offsetGet('time');
-          $diffSeconds = $now->getTimestamp() - $sessionStart->getTimestamp();*/
-          //$s=$session->offsetGet('time');
+        
           $now = new \DateTime();
           $diffSeconds = $now->getTimestamp()-$smsVerification->offsetGet('timeStamp')->getTimeStamp() ;
          if($diffSeconds>60){
-              //$smsVerification->code=$this->codeGenerator();
-              //$_SESSION["codice"]=$code;
-              //$ora=new \DateTime();
-              //$session->offsetSet('time', $ora);
-              //$this->gestioneInvioSms($_SESSION["cell"],$_SESSION["codice"]);
               $smsVerification->offsetSet('timeStamp', new \DateTime());
+              
               //in caso sbagliasse numero aggiorno il numero di telefono
               $smsVerification->offsetSet('mobile',$_POST["mobile"]);
+              $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
               $smsVerification->offsetSet('code',$this->codeGenerator()) ;
-              $this->gestioneInvioSms($smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+              
+              $this->gestioneInvioSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
               $response = $this->getResponse();
               $response->setStatusCode(200);
               $response->setContent("SMS Inviato dopo tot tempo");
@@ -328,22 +304,20 @@ class UserController extends AbstractActionController {
          }
      }
     
-     //$completeMex=$mex.": ".$code;
+    
     }
     
-    private function gestioneInvioSms($phone,$code){
+    private function gestioneInvioSms($dialCode,$mobile,$code){
          //invio sms
                 $username = 'SMSHY8YFB8Z1JHFFQD139';
                 $password = 'YHFODFXUGD9IE04U1PK0PIDKZ76SVFXO';
-                //$rnd = mt_rand(1000, 9999);
-                
-
+              
                 $url = "https://api.smshosting.it/rest/api/sms/send";
                 $fields = array(
                         'sandbox' => 'true',
                         //'sandbox' => null,
                         //'to' => "393407924757",
-                        'to' => $phone,
+                        'to' => $dialCode.$mobile,
                         'from' => "ShareNGO",
                         'text' => utf8_encode("Codice di Verifica $code")
                 );
@@ -355,24 +329,19 @@ class UserController extends AbstractActionController {
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+
                 curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
 
                 $out = curl_exec($ch);
-                //print "params: " . $postvars;
-                //print "error:" . curl_error($ch) . "<br />";
-                //print "output:" . $out . "<br /><br />";
                 curl_close($ch);
 
                 //fine invio sms
     }//fine gestione invio
     
-    private function generateTextMex(){
-        $testo="Gentile cliente ecco il codice di conferma per la registrazione";
-        return $testo;
-    }//fine genera testo
+    
     
     private function codeGenerator(){
      $codice = mt_rand(1000, 9999);

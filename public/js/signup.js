@@ -18,15 +18,11 @@ $.ajax({
     //dataType:"text",
     type:"POST",
     url:"/signup-sms",
-    data: {'email':$('#email').val(),'mobile':$('#dialCode').val()+$('#mobile').val()},
+    data: {'email':$('#email').val(),'mobile':$('#mobile').val(),'dialCode':$('#dialCode').val()},
     beforeSend:function(){
          console.log("WAIT 1");
-        //$('#buttonCode').disable();
-        //$($this).hide(); 
-        //$($this).html("<div><img src='http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif' height='30' width='30'/>Invio sms...</div>");
-        //$($this).show();
         $('#buttonCode').hide(); 
-            $('#buttonCode').html("<div><img src='http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif' height='30' width='30'/>Invio sms...</div>");
+            $('#buttonCode').html("<div><img src='http://www.enterthemothership.com/wp-content/uploads/2014/06/ajax-loader.gif' height='30' width='30'/>Invio sms...</div>");
             $('#buttonCode').show();
     },
     success:function(data){
