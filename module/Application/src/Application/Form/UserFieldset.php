@@ -429,7 +429,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
     }
 
     public function getInputFilterSpecification() {
-        $smsVerification = new Container('smsVerification');
+        
         return [
             'email' => [
                 'required' => true,
@@ -660,7 +660,24 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'min' => 3
                         ]
-                    ]
+                    ],
+                      [
+                                    'name' => 'Callback',
+                                    'options' => [
+                                            'message' => [
+                                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello precedente'
+                                                //new \Zend\I18n\Translator\Translator->translate('Control Panel'),
+
+
+                                            ],
+                                            'callback' => function($value, $context=array()){
+                                            $smsVerification=new Container('smsVerification');
+
+                                            $isValid = $value==$smsVerification->offsetGet('mobile');
+                                            return $isValid;//$isValid;
+                                            }
+                                    ]
+                                    ]
                 ]
             ],
              'smsCode' => [
@@ -702,29 +719,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                     ]
                         ]
               ], 
-            /*'smsCode' => [
-                'required' => true,
-                'filters' => [
-                    [
-                        'name' => 'StringTrim'
-                    ]
-                ],
-                'validators' => [
-                    [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 4,
-                            'max' => 4
-                        ]
-                    ],
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => $smsVerification->offsetGet('code')
-                        ]
-                    ]
-                ]
-            ],*/
+        
             'phone' => [
                 'required' => false,
                 'filters' => [
