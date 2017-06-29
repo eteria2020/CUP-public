@@ -21,6 +21,8 @@ use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
 
+use Zend\Log\Logger;
+
 class UserController extends AbstractActionController {
 
     //variabile sessione
@@ -334,8 +336,106 @@ class UserController extends AbstractActionController {
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
-
+                
                 $out = curl_exec($ch);
+                //decode del json
+                $sms_msg = json_decode($out);
+                
+                
+                //$writer = new \Zend\Log\Writer\Stream('/home/dev1/Documenti/log.txt');
+                //$logger = new \Zend\Log\Logger();
+                //$logger->addWriter($writer);
+                //$logger->info($out);
+                
+                
+                
+                //print "params: " . $postvars;
+                //print "error:" . curl_error($ch) . "<br />";
+                //print "output:" . $out . "<br /><br />";
+                
+                //prepare Error log
+                $writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
+                $loggerError = new \Zend\Log\Logger();
+                $loggerError->addWriter($writerError);
+                
+                //prepare file to Success log
+                $writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
+                $loggerSuccess = new \Zend\Log\Logger();
+                $loggerSuccess->addWriter($writeSuccess);
+                
+                //write case logError
+                if(empty($out)) {
+                    //errore URL GENERICO
+                    //write log
+                    $loggerError->info('Errore generico prestare attenzione');
+
+                }
+                else{
+                    if($sms_msg->errorCode==400){
+                        switch ($sms_msg->errorMsg){
+                            case "NO_VALID_RECIPIENT":
+                                //destinatario non corretto
+                                //write log
+                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                
+                                break;
+                            
+                            case "BAD_CREDIT":
+                                //credito insufficente                               
+                                //write log
+                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                
+                                break;
+                            
+                            case "BAD_TEXT":
+                                //test errato
+                                //write log
+                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                
+                                break;
+                            
+                            case "GENERIC_ERROR":
+                                //errore generico
+                                //write log
+                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                
+                                break;
+                            
+                            default:
+                                //errore generico
+                                //write log
+                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                
+                                break;
+                            
+                        }
+                    }
+                    else if($sms_msg->errorCode==500){
+                        //errore generico
+                        //write log
+                        $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
+                    }
+                    else if($sms_msg->errorCode==401){
+                        //credenziali sbagliate
+                        //write log
+                        $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
+                    }
+                    else if($sms_msg->errorCode==405){
+                        //metodo http non consentito
+                        //write log
+                        $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
+                    }
+                    else
+                        //write succes log
+                        $loggerSuccess->info('Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                
+                }
+                
+                
+                
                 curl_close($ch);
 
                 //fine invio sms

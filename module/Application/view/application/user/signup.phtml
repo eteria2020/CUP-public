@@ -7,6 +7,7 @@ $this->headScript()
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
         ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+echo 'DIR PERCORSO: '.__DIR__;
 ?>
 
 <!-- main -->
@@ -32,6 +33,7 @@ $this->headLink()
     </div>
     <!-- overlay -->
 
+    
     <div class="content">
         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
         <?php if (!$this->hasDiscount): ?>
