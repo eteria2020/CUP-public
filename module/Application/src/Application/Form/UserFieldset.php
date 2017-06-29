@@ -7,14 +7,13 @@ use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
 use SharengoCore\Service\FleetService;
-//use Zend\I18n\Translator;
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Validator\Identical;
-//use Application\Form\Container;
 use Zend\Session\Container;
+use Zend\Validator\Callback;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface {
 
@@ -664,17 +663,15 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                       [
                                     'name' => 'Callback',
                                     'options' => [
-                                            'message' => [
+                                            'messages' => [
+                                              
                                                 \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello precedente'
-                                                //new \Zend\I18n\Translator\Translator->translate('Control Panel'),
-
-
                                             ],
                                             'callback' => function($value, $context=array()){
                                             $smsVerification=new Container('smsVerification');
 
                                             $isValid = $value==$smsVerification->offsetGet('mobile');
-                                            return $isValid;//$isValid;
+                                            return $isValid;
                                             }
                                     ]
                                     ]
@@ -701,19 +698,17 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                     [
                                     'name' => 'Callback',
                                     'options' => [
-                                            'message' => [
+                                            'messages' => [
+                                                
                                                 \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
-                                                //new \Zend\I18n\Translator\Translator->translate('Control Panel'),
-
-
+ 
                                             ],
                                             'callback' => function($value, $context=array()){
-                                            $smsVerification=new Container('smsVerification');
-                                            //$asdf = $smsVerification->offsetGet('code');
+                                            $smsVerification=new Container('smsVerification');                                            
                                             $isValid = $value==$smsVerification->offsetGet('code');
-                                            //$asd = $value;
+                                            
 
-                                            return $isValid;//$isValid;
+                                            return $isValid;
                                             }
                                     ]
                                     ]

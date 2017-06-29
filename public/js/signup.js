@@ -14,6 +14,7 @@ if($('#confermaCodiceSms ul.errors').html()){
 
 $(document).on("click", "#bInvia", function(){
     //console.log("Prima ajax")    ;
+ if($('#mobile').val().length>0){
 $.ajax({
     //dataType:"text",
     type:"POST",
@@ -49,6 +50,9 @@ $.ajax({
         console.log("ERROR 1");
     }
     });
+ }else{
+     alert("Inserire numero di telefono");
+ }
  }); 
  
  
