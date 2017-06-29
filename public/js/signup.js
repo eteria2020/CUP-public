@@ -9,7 +9,7 @@ if($('#mobile').val()=='' ||  $('#mobile').val().length<1){
 
 
 if($('#confermaCodiceSms ul.errors').html()){
-   $('#confermaCodiceSms').show();  
+   $('#confermaCodiceSms').show();
 }
 
 $(document).on("click", "#bInvia", function(){
