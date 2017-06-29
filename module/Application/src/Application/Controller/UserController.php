@@ -354,12 +354,12 @@ class UserController extends AbstractActionController {
                 //print "output:" . $out . "<br /><br />";
                 
                 //prepare Error log
-                $writerError = new \Zend\Log\Writer\Stream('/home/dev1/Documenti/logError.txt');
+                $writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
                 $loggerError = new \Zend\Log\Logger();
                 $loggerError->addWriter($writerError);
                 
                 //prepare file to Success log
-                $writeSuccess = new \Zend\Log\Writer\Stream('/home/dev1/Documenti/logSucces.txt');
+                $writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
                 $loggerSuccess = new \Zend\Log\Logger();
                 $loggerSuccess->addWriter($writeSuccess);
                 
