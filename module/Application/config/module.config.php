@@ -265,7 +265,7 @@ return [
                     ],
                 ]
             ],
-             /*'signup-sms' => [
+             'signup-sms' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/signup-sms',
@@ -278,7 +278,7 @@ return [
                         'mobile' => '[mobile]+'
                     ],
                 ]
-            ],*/
+            ],
             'signup-verify-code' => [
                 'type' => 'Segment',
                 'options' => [
