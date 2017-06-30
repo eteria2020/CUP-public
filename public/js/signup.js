@@ -8,15 +8,13 @@ if($('#mobile').val()=='' ||  $('#mobile').val().length<1){
 }
 
 
-if($('#confermaCodiceSms ul.errors').html()){
-   $('#confermaCodiceSms').show();
+if($('#confirmSmsCode ul.errors').html()){
+   $('#confirmSmsCode').show();
 }
 
-$(document).on("click", "#bInvia", function(){
-    //console.log("Prima ajax")    ;
+$(document).on("click", "#buttonSendCode", function(){
  if($('#mobile').val().length>0){
 $.ajax({
-    //dataType:"text",
     type:"POST",
     url:"/signup-sms",
     data: {'email':$('#email').val(),'mobile':$('#mobile').val(),'dialCode':$('#dialCode').val()},
@@ -27,22 +25,16 @@ $.ajax({
             $('#buttonCode').show();
     },
     success:function(data){
-        
         switch(data.toString()){
             case "Attendere messaggio":
                 alert("Messaggio già inviato,attendere");
-                $('#buttonCode').html("<div> <button id='bInvia' type='button' >INVIA CODICE </button> </div>");
+                $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
         break;
         
         default:
-            $('#confermaCodiceSms').fadeIn();
-            //$('#textCode').fadeIn();
-            //$('#buttonControlCode').fadeIn();
-            $('#buttonCode').html("<div> <button id='bInvia' type='button' >INVIA CODICE </button> </div>");
-            //$('#buttonControlCode').html('<div> <button type="button" id="bConferma">CONFERMA CODICE</button> </div>');
-            //$('#conferma').show();
+            $('#confirmSmsCode').fadeIn();
+            $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
         break;
-        //$($this).delay( 5000 ).fadeOut();
         }
         console.log("SUCCESS 1 "+data.toString());    
     },
@@ -56,36 +48,34 @@ $.ajax({
  }); 
  
  
-$(document).on("click", "#bConferma", function(){
-    //console.log("Prima ajax");
+$(document).on("click", "#buttonConfirm", function(){
 $.ajax({
-    //dataType:"text",
     type:"POST",
     url:"/signup-verify-code",
     data: {'codiceUtenteSms':$('#smsCode').val()},
-    
     beforeSend:function(){
          console.log("WAIT 2");
     },
     success:function(data){
-        //console.log("Risultato: "+data.toString());
-      
+
         switch(data.toString()){
             case "1":  $('#buttonControlCode').html("<div> <p style='color: green;'>NUMERO VERIFICATO</p> <img style='position:absolute; margin-left:190; margin-top:-50;' src='https://www.snapcard.io/img/wallet/check.svg' height='30' width='30' /> </div>");
                     break;
             case "2":$('#buttonControlCode').html("<div> <p style='color: red;'>CODICE ERRATO</p> <img style='margin-left:150; margin-top:-50;' src='http://www.drodd.com/images15/red-x21.jpg' height='30' width='30' /> </div>"); 
-                    $('#buttonCode').html("<div> <button id='bInvia' type='button' >INVIA CODICE </button> </div>");
-                    $('#confermaCodiceSms').show();
+                    $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
+                    $('#confirmSmsCode').show();
                     
                     break;
-        
-        }    
+
+        }
     },
     error:function(data){
         console.log("ERROR 2");
     }
 });
- }); 
+ });
+
+
 
     $("#birthCountry").change(function (event, params) {
         var birthProvince = $("#birthProvince"),

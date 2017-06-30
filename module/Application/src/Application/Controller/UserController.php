@@ -79,9 +79,6 @@ class UserController extends AbstractActionController {
      * @param HydratorInterface $hydrator
      */
     public function __construct(
-   
-             
-
     Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator
     ) {
         
@@ -181,7 +178,7 @@ class UserController extends AbstractActionController {
             $container = new Container('session');
             $container->offsetSet('hasDiscount', true);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return $this->redirect()->toRoute('signup');
@@ -198,7 +195,7 @@ class UserController extends AbstractActionController {
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -227,7 +224,6 @@ class UserController extends AbstractActionController {
 
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPost();
-
             if (!isset($postData['driver']['driverLicenseCategories'])) {
                 $driver = $postData['driver'];
                 $driver['driverLicenseCategories'] = [];
@@ -244,76 +240,67 @@ class UserController extends AbstractActionController {
             return $this->signupForm($this->form2, $mobile);
         }
     }
-    public function signupVerifyCodeAction($smsCode) {
-        
+
+    public function signupVerifyCodeAction($smsCode) { 
         $smsVerification=new Container('smsVerification');
-        
         if($smsVerification->offsetGet('code')==$smsCode){
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent(true);
             return $response;
-            
+
         }else{
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent(false);
             return $response;
-           
         }
-       
     }
 
     public function signupSmsAction() {
-     
-         $smsVerification=new Container('smsVerification');
-        
-        
+     $smsVerification=new Container('smsVerification');
      if (!$smsVerification->offsetExists('timeStamp')){
-    
           $smsVerification->offsetSet('timeStamp', new \DateTime()); 
           $smsVerification->offsetSet('mobile',$_POST["mobile"]);
           $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
           $smsVerification->offsetSet('code',$this->codeGenerator()) ;
-          $this->gestioneInvioSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+          $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
           $response = $this->getResponse();
           $response->setStatusCode(200);
-          $response->setContent("SMS Inviato iniziale");
+          $response->setContent("First Sms");
           return $response;
      }else{
-        
+
           $now = new \DateTime();
           $diffSeconds = $now->getTimestamp()-$smsVerification->offsetGet('timeStamp')->getTimeStamp() ;
          if($diffSeconds>60){
               $smsVerification->offsetSet('timeStamp', new \DateTime());
-              
+
               //in caso sbagliasse numero aggiorno il numero di telefono
               $smsVerification->offsetSet('mobile',$_POST["mobile"]);
               $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
               $smsVerification->offsetSet('code',$this->codeGenerator()) ;
-              
-              $this->gestioneInvioSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+
+              $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
               $response = $this->getResponse();
               $response->setStatusCode(200);
-              $response->setContent("SMS Inviato dopo tot tempo");
+              $response->setContent("Sms send after time");
               return $response;
         }else{
             $response = $this->getResponse();
             $response->setStatusCode(200);
-            $response->setContent("Attendere messaggio");
+            $response->setContent("Wait message");
             return $response;
              //attendere messaggio
          }
      }
+    }//fine signupSmsAction
     
-    
-    }
-    
-    private function gestioneInvioSms($dialCode,$mobile,$code){
+    private function manageSendSms($dialCode,$mobile,$code){
          //invio sms
                 $username = 'SMSHY8YFB8Z1JHFFQD139';
                 $password = 'YHFODFXUGD9IE04U1PK0PIDKZ76SVFXO';
-              
+
                 $url = "https://api.smshosting.it/rest/api/sms/send";
                 $fields = array(
                         'sandbox' => 'true',
@@ -336,22 +323,16 @@ class UserController extends AbstractActionController {
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
-                
+
                 $out = curl_exec($ch);
                 //decode del json
                 $sms_msg = json_decode($out);
-                
-                
+
                 //$writer = new \Zend\Log\Writer\Stream('/home/dev1/Documenti/log.txt');
                 //$logger = new \Zend\Log\Logger();
                 //$logger->addWriter($writer);
                 //$logger->info($out);
-                
-                
-                
-                //print "params: " . $postvars;
-                //print "error:" . curl_error($ch) . "<br />";
-                //print "output:" . $out . "<br /><br />";
+
                 
                 //prepare Error log
                 $writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
@@ -362,7 +343,7 @@ class UserController extends AbstractActionController {
                 $writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
                 $loggerSuccess = new \Zend\Log\Logger();
                 $loggerSuccess->addWriter($writeSuccess);
-                
+
                 //write case logError
                 if(empty($out)) {
                     //errore URL GENERICO
@@ -376,78 +357,71 @@ class UserController extends AbstractActionController {
                             case "NO_VALID_RECIPIENT":
                                 //destinatario non corretto
                                 //write log
-                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-                                
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
                                 break;
-                            
+
                             case "BAD_CREDIT":
                                 //credito insufficente                               
                                 //write log
-                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-                                
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
                                 break;
-                            
+
                             case "BAD_TEXT":
                                 //test errato
                                 //write log
-                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-                                
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
                                 break;
-                            
+
                             case "GENERIC_ERROR":
                                 //errore generico
                                 //write log
-                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-                                
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
                                 break;
-                            
+
                             default:
                                 //errore generico
                                 //write log
-                                $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-                                
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+
                                 break;
-                            
+
                         }
                     }
                     else if($sms_msg->errorCode==500){
                         //errore generico
                         //write log
-                        $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-
+                        $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
                     }
                     else if($sms_msg->errorCode==401){
                         //credenziali sbagliate
                         //write log
-                        $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-
+                        $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
                     }
                     else if($sms_msg->errorCode==405){
                         //metodo http non consentito
                         //write log
-                        $loggerError->info('Errore: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-
+                        $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
                     }
                     else
                         //write succes log
                         $loggerSuccess->info('Cell: ' .$phone. ' Sms text: ' .$fields['text']);
-                
                 }
-                
-                
-                
-                curl_close($ch);
 
+                curl_close($ch);
                 //fine invio sms
     }//fine gestione invio
-    
-    
-    
+
+
+
     private function codeGenerator(){
      $codice = mt_rand(1000, 9999);
      return $codice;
     }//fine genera codice
-    
+
     private function conclude($form, $mobile) {
         $form->registerData();
 
