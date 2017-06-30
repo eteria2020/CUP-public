@@ -23,14 +23,22 @@ $.ajax({
     beforeSend:function(){
          console.log("WAIT 1");
         $('#buttonCode').hide(); 
+           if($('#language').val()=="it"){
             $('#buttonCode').html("<div><img src='http://www.enterthemothership.com/wp-content/uploads/2014/06/ajax-loader.gif' height='30' width='30'/>Invio sms...</div>");
+            }else{
+             $('#buttonCode').html("<div><img src='http://www.enterthemothership.com/wp-content/uploads/2014/06/ajax-loader.gif' height='30' width='30'/>Sending sms...</div>");  
+            }
             $('#buttonCode').show();
     },
     success:function(data){
         
         switch(data.toString()){
             case "Attendere messaggio":
-                alert("Messaggio già inviato,attendere");
+                if($('#language').val()=="it"){
+                    alert("Messaggio già inviato,attendere");
+                }else{
+                    alert("Message already sent, wait");
+                }
                 $('#buttonCode').html("<div> <button id='bInvia' type='button' >INVIA CODICE </button> </div>");
         break;
         
@@ -51,7 +59,11 @@ $.ajax({
     }
     });
  }else{
-     alert("Inserire numero di telefono");
+     if($('#language').val()=="it"){
+        alert("Inserire numero di telefono");
+     }else{
+        alert("Insert phone number");
+     }
  }
  }); 
  
