@@ -192,7 +192,8 @@ class UserAreaController extends AbstractActionController
 //        } 
 
         if($customer->getFirstPaymentCompleted()){
-            if($this->customerService->getPaymentsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0){
+            
+            if($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0){
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }else {
 
@@ -446,7 +447,7 @@ class UserAreaController extends AbstractActionController
     {
         $customer = $this->userService->getIdentity();
         $tripsToBePayedAndWrong = null;
-        $totalCost = $this->customerService->getPaymentsToBePayedAndWrong($customer, $tripsToBePayedAndWrong);
+        $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $tripsToBePayedAndWrong);
 
         $isActivated = $this->cartasiContractsService->getCartasiContract($customer) != null;
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
@@ -469,7 +470,7 @@ class UserAreaController extends AbstractActionController
         if(!$scriptIsRunning){
             $trips = null;
             $customer = $this->userService->getIdentity();
-            $totalCost = $this->customerService->getPaymentsToBePayedAndWrong($customer, $trips);
+            $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
             if($totalCost>0){
                  if ($this->cartasiContractsService->hasCartasiContract($customer)) {
                     $response = $this->paymentsService->tryTripPaymentGroup($customer, $trips);
@@ -479,7 +480,7 @@ class UserAreaController extends AbstractActionController
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
                 } else {
-
+                    $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
                 }
             }else {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
