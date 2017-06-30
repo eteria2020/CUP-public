@@ -1,0 +1,7 @@
+2017-06-30T15:21:42+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 6024
+2017-06-30T15:23:32+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 6445
+2017-06-30T15:24:11+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 9720
+2017-06-30T15:25:46+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 6212
+2017-06-30T15:29:17+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 3039
+2017-06-30T15:31:17+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 8812
+2017-06-30T15:33:30+02:00 INFO (6): Error: 400 - NO_VALID_RECIPIENT | Cell:  Sms text: Codice di Verifica 1617

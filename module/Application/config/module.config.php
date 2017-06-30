@@ -581,7 +581,7 @@ return [
                         'action'     => 'controradioclub',
                     ],
                 ],
-            ],            
+            ],
             'espresso' => [
                 'type' => 'Segment',
                 'options' => [
