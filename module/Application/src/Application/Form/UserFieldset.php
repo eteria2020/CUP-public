@@ -321,7 +321,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'label' => $translator->translate('Cellulare'),
             ]
         ]);
-
+/*
         $this->add([
             'name' => 'smsCode',
             'type' => 'Zend\Form\Element\Text',
@@ -334,7 +334,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'label' => $translator->translate('Codice Sms'),
             ]
         ]);
-
+*/
         $this->add([
             'name' => 'phone',
             'type' => 'Zend\Form\Element\Text',
@@ -676,7 +676,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                     ]
                                     ]
                 ]
-            ],
+            ],/*
              'smsCode' => [
                         'required' => true,
                         'filters' => [
@@ -714,7 +714,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                     ]
                         ]
               ], 
-        
+        */
             'phone' => [
                 'required' => false,
                 'filters' => [

@@ -570,14 +570,14 @@ $this->headLink()
                        </p>
 
                        </div>
-                        
+                        <!--
                         <div class="block-field bw-f last w-2-4">
                             <label>&nbsp</label>
                          <div  style="display: block;" id="buttonCode" >
                               <button type="button" id="buttonSendCode">INVIA CODICE </button>
                          </div>
                        </div>
-                    
+                    -->
                     </div>
                  
             </div>
@@ -589,15 +589,16 @@ $this->headLink()
                  <div class="block-field bw-f w-2-4"  id="textCode">
                     <p> <label><?= $this->translate('Codice di Verifica'); ?></label>
                         <?php
-                        $smsCode = $this->form->get('user')->get('smsCode');
-                        echo $this->formElement($smsCode);
-                        echo $this->formElementErrors($smsCode, ['class' => 'errors']);
+                        //$smsCode = $this->form->get('user')->get('smsCode');
+                        //echo $this->formElement($smsCode);
+                        //echo $this->formElementErrors($smsCode, ['class' => 'errors']);
                         ?>
                     </p>
                 </div>
                 <br>
                 </div>
             </div>
+
             <!-- block-row-field -->
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
