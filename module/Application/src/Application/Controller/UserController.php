@@ -357,35 +357,35 @@ class UserController extends AbstractActionController {
                             case "NO_VALID_RECIPIENT":
                                 //destinatario non corretto
                                 //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
 
                                 break;
 
                             case "BAD_CREDIT":
                                 //credito insufficente                               
                                 //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
 
                                 break;
 
                             case "BAD_TEXT":
                                 //test errato
                                 //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
 
                                 break;
 
                             case "GENERIC_ERROR":
                                 //errore generico
                                 //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
 
                                 break;
 
                             default:
                                 //errore generico
                                 //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
 
                                 break;
 
@@ -394,21 +394,21 @@ class UserController extends AbstractActionController {
                     else if($sms_msg->errorCode==500){
                         //errore generico
                         //write log
-                        $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                        $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
                     }
                     else if($sms_msg->errorCode==401){
                         //credenziali sbagliate
                         //write log
-                        $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                        $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
                     }
                     else if($sms_msg->errorCode==405){
                         //metodo http non consentito
                         //write log
-                        $loggerError->info('Error: '.$sms_msg->errorCode. ' - ' .$sms_msg->errorMsg. ' | Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                        $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Cell: ' .$phone. ';Sms text: ' .$fields['text']);
                     }
                     else
                         //write succes log
-                        $loggerSuccess->info('Cell: ' .$phone. ' Sms text: ' .$fields['text']);
+                        $loggerSuccess->info('Cell: ' .$phone. ';Sms text: ' .$fields['text']);
                 }
 
                 curl_close($ch);
