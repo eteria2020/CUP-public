@@ -419,7 +419,8 @@ class UserController extends AbstractActionController {
 
 
     private function codeGenerator(){
-        $codice = mt_rand(1000, 9999);
+        //$codice = mt_rand(1000, 9999);
+        $codice=1234;
         return $codice."";
     }//fine genera codice
 
