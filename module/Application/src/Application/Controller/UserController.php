@@ -212,7 +212,7 @@ class UserController extends AbstractActionController {
 
     public function signup2Action() {
         //if there are mobile param change layout
-        $mobile = $this->params()->fromRoute('mobile');
+        $mobile = $this->params()->fromRoute('mobile'); 
         //if there are data in session, we use them to populate the form
         $registeredData = $this->form2->getRegisteredData();
 
@@ -242,7 +242,7 @@ class UserController extends AbstractActionController {
     }
 
     public function signupVerifyCodeAction($smsCode) { 
-        $smsVerification=new Container('smsVerification');
+        $smsVerification=new Container('smsVerification');     
         if($smsVerification->offsetGet('code')==$smsCode){
             $response = $this->getResponse();
             $response->setStatusCode(200);
@@ -256,9 +256,10 @@ class UserController extends AbstractActionController {
             return $response;
         }
     }
-
+    
     public function signupSmsAction() {
      $smsVerification=new Container('smsVerification');
+     //$session_formValidation = new Container('formValidation');
      if (!$smsVerification->offsetExists('timeStamp')){
           $smsVerification->offsetSet('timeStamp', new \DateTime()); 
           $smsVerification->offsetSet('mobile',$_POST["mobile"]);
@@ -418,8 +419,8 @@ class UserController extends AbstractActionController {
 
 
     private function codeGenerator(){
-     $codice = mt_rand(1000, 9999);
-     return $codice;
+        $codice = mt_rand(1000, 9999);
+        return $codice."";
     }//fine genera codice
 
     private function conclude($form, $mobile) {

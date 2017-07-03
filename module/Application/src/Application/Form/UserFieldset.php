@@ -669,7 +669,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                             ],
                                             'callback' => function($value, $context=array()){
                                             $smsVerification=new Container('smsVerification');
-
+                                            //$smsVerification = new Container('formValidation');
                                             $isValid = $value==$smsVerification->offsetGet('mobile');
                                             return $isValid;
                                             }
@@ -704,7 +704,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
  
                                             ],
                                             'callback' => function($value, $context=array()){
-                                            $smsVerification=new Container('smsVerification');                                            
+                                            $smsVerification=new Container('smsVerification');
+                                            //$smsVerification = new Container('formValidation');
                                             $isValid = $value==$smsVerification->offsetGet('code');
                                             
 
