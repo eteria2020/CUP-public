@@ -14,6 +14,11 @@ if($('#confirmSmsCode ul.errors').html()){
 
 $(document).on("click", "#buttonSendCode", function(){
  if($('#mobile').val().length>0){
+     var prefix = $('#dialCode').val();
+     var mobile = $('#mobile').val();
+     mobile = mobile.replace("+"+prefix, ""); 
+     mobile = mobile.replace("00"+prefix, "");
+     $('#mobile').val(mobile);
 $.ajax({
     type:"POST",
     url:"/signup-sms",
