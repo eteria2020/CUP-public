@@ -305,8 +305,6 @@ class UserController extends AbstractActionController {
                 $url = "https://api.smshosting.it/rest/api/sms/send";
                 $fields = array(
                         'sandbox' => 'true',
-                        //'sandbox' => null,
-                        //'to' => "393407924757",
                         'to' => $dialCode.$mobile,
                         'from' => "ShareNGO",
                         'text' => utf8_encode("Codice di Verifica $code")
