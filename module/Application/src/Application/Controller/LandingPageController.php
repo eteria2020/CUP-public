@@ -189,6 +189,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function paybackAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function pwcAction()
     {
         return (new viewModel())->setTerminal(true);
