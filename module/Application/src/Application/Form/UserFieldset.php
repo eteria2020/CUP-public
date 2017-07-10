@@ -410,6 +410,34 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'value' => 'off'
             ]
         ]);
+        //Add field to registration form privacyInformation, type checkbox
+        $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'privacyInformation',
+            'options' => [
+                'label' => $translator->translate("Ho letto e compreso l’Informativa sulla Privacy e do il mio consenso per il trattamento dei miei dati personali per finalità di marketing tramite e email, telefono, sms, mms e posta tradizionale con riferimento ai prodotti, servizi e promozioni Share’nGo, incluse le ricerche di mercato."),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
+            ]
+        ]);
+        //Add field to registration form Newsletter, type checkbox
+        $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'newsletter',
+            'options' => [
+                'label' => $translator->translate("Desidero iscrivermi alla newsletter di Share'nGO."),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
+            ]
+        ]);
 
         $this->add([
             'name' => 'profilingCounter',
@@ -740,6 +768,14 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         ],
                     ],
                 ]
+            ],
+            //Validation specifications to checkbox privacyInformation
+            'privacyInformation' => [
+                'required' => true
+            ],
+            ////Validation specifications to checkbox field newsletter
+            'newsletter' => [
+                'required' => true
             ],
             'fleet' => [
                 'validators' => [
