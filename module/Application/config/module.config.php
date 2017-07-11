@@ -796,6 +796,17 @@ return [
                     ],
                 ],
             ],
+            'pback' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pback}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'payback',
+                    ],
+                ],
+            ],
             'pwc' => [
                 'type' => 'Segment',
                 'options' => [
