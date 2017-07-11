@@ -598,6 +598,17 @@ return [
                     ],
                 ]
             ],
+            'fidelizzando' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{fidelizzando}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'fidelizzando',
+                    ],
+                ]
+            ],
             'firenze' => [
                 'type' => 'Segment',
                 'options' => [
