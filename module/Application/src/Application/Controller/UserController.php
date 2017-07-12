@@ -265,7 +265,7 @@ class UserController extends AbstractActionController {
           $smsVerification->offsetSet('mobile',$_POST["mobile"]);
           $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
           $smsVerification->offsetSet('code',$this->codeGenerator()) ;
-          $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+          $response_msg =  $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
           $response = $this->getResponse();
           $response->setStatusCode(200);
           $response->setContent("First Sms");
@@ -285,6 +285,9 @@ class UserController extends AbstractActionController {
               $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
               $response = $this->getResponse();
               $response->setStatusCode(200);
+              
+              //TODO TOMMASO
+              //controllare bene come gestite questo messaggio e sostituirlo con quello nuovo che ritorna l'invio sms
               $response->setContent("Sms send after time");
               return $response;
         }else{
@@ -298,6 +301,9 @@ class UserController extends AbstractActionController {
     }//fine signupSmsAction
     
     private function manageSendSms($dialCode,$mobile,$code){
+        
+        
+        $translator = new \Zend\I18n\Translator\Translator();
          //invio sms
                 $username = 'SMSHY8YFB8Z1JHFFQD139';
                 $password = 'YHFODFXUGD9IE04U1PK0PIDKZ76SVFXO';
@@ -342,12 +348,15 @@ class UserController extends AbstractActionController {
                 $writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
                 $loggerSuccess = new \Zend\Log\Logger();
                 $loggerSuccess->addWriter($writeSuccess);
+                
+                $response_message = "OK";
 
                 //write case logError
                 if(empty($out)) {
                     //errore URL GENERICO
                     //write log
                     $loggerError->info('Errore generico prestare attenzione');
+                    $response_message = $translator->translate("Errore invio sms");
 
                 }
                 else{
@@ -357,6 +366,7 @@ class UserController extends AbstractActionController {
                                 //destinatario non corretto
                                 //write log
                                 $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                $response_message = $translator->translate("Numero di telefono non corretto");
 
                                 break;
 
@@ -364,6 +374,7 @@ class UserController extends AbstractActionController {
                                 //credito insufficente                               
                                 //write log
                                 $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                $response_message = $translator->translate("Errore invio sms");
 
                                 break;
 
@@ -371,6 +382,7 @@ class UserController extends AbstractActionController {
                                 //test errato
                                 //write log
                                 $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                $response_message = $translator->translate("Errore invio sms");
 
                                 break;
 
@@ -378,6 +390,7 @@ class UserController extends AbstractActionController {
                                 //errore generico
                                 //write log
                                 $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                $response_message = $translator->translate("Errore invio sms");
 
                                 break;
 
@@ -385,6 +398,7 @@ class UserController extends AbstractActionController {
                                 //errore generico
                                 //write log
                                 $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                $response_message = $translator->translate("Errore invio sms");
 
                                 break;
 
@@ -411,6 +425,8 @@ class UserController extends AbstractActionController {
                 }
 
                 curl_close($ch);
+                return $response_message;
+                
                 //fine invio sms
     }//fine gestione invio
 
