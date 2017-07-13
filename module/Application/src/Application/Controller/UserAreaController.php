@@ -183,6 +183,10 @@ class UserAreaController extends AbstractActionController
         $this->paymentsService = $paymentsService;
     }
 
+    /**
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
         // check wether the customer still needs to register a credit card
@@ -192,14 +196,14 @@ class UserAreaController extends AbstractActionController
 //        } 
 
         if($customer->getFirstPaymentCompleted()){
-            
             if($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0){
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }else {
 
             }
         } else {
-            $this->redirect()->toRoute('cartasi/primo-pagamento', [], ['query' => ['customer' => $customer->getId()]]);
+            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+            //$this->redirect()->toRoute('cartasi/primo-pagamento', [], ['query' => ['customer' => $customer->getId()]]);
         }
 
         // if not, continue with index action
