@@ -730,6 +730,17 @@ return [
                     ],
                 ]
             ],
+            'link' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{link}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'link',
+                    ],
+                ]
+            ],
             'lumsa' => [
                 'type' => 'Segment',
                 'options' => [
