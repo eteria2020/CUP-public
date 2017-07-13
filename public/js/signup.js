@@ -12,6 +12,17 @@ if($('#confirmSmsCode ul.errors').html()){
    $('#confirmSmsCode').show();
 }
 
+
+//$('#fleet option:selected').change(function() {
+$('#fleet').change(function() {
+   if($(this).val()!="2"){
+       $('.smsClass').hide();
+   }else{
+       $('.smsClass').show();
+   }
+});
+
+
 $(document).on("click", "#buttonSendCode", function(){
  if($('#mobile').val().length>0){
      var prefix = $('#dialCode').val();
@@ -24,7 +35,7 @@ $.ajax({
     url:"/signup-sms",
     data: {'email':$('#email').val(),'mobile':$('#mobile').val(),'dialCode':$('#dialCode').val()},
     beforeSend:function(){
-         console.log("WAIT 1");
+        //console.log("WAIT 1");
         $('#buttonCode').hide(); 
            if($('#language').val()=="it"){
             $('#buttonCode').html("<div><img src='http://www.enterthemothership.com/wp-content/uploads/2014/06/ajax-loader.gif' height='30' width='30'/>Invio sms...</div>");
@@ -34,6 +45,39 @@ $.ajax({
             $('#buttonCode').show();
     },
     success:function(data){
+        $('#buttonCode').hide();
+        
+        switch(data.toString()){
+            case "Wait message":
+                if($('#language').val()=="it"){
+                    alert("Messaggio già inviato,attendere");
+                }else{
+                    alert("Message already sent,please wait");
+                }
+                //$('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
+            break;
+
+            case "OK":
+                $('#buttonCode').html("<div><p style='color:green;'><img src='http://www.fe.camcom.it/cciaa/immagini/spunta%20verde.png/image' height='30' width='30'/>Sms inviato</p></div>");
+            break;
+
+            case "Errore invio sms":
+                $('#buttonCode').html("<div><p style='color:red;'><img src='http://www.fe.camcom.it/cciaa/immagini/x%20rossa.png/image' height='30' width='30'/>Errore nell'invio sms</p></div>");
+            break;
+
+            case "Numero di telefono non corretto":
+                $('#buttonCode').html("<div><p style='color:red;'><img src='http://www.fe.camcom.it/cciaa/immagini/x%20rossa.png/image' height='30' width='30'/>Numero non corretto</p></div>");
+            break;
+        }
+        //console.log("SUCCESS 1 "+data.toString());
+
+        $('#buttonCode').show();
+        
+        setTimeout(function() {
+            $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
+        }, 60000);
+        
+        /*
         switch(data.toString()){
             case "Wait message":
                 if($('#language').val()=="it"){
@@ -48,7 +92,8 @@ $.ajax({
             $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
         break;
         }
-        console.log("SUCCESS 1 "+data.toString());    
+        console.log("SUCCESS 1 "+data.toString());
+        */
     },
     error:function(){
         console.log("ERROR 1");

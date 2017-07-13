@@ -262,13 +262,14 @@ class UserController extends AbstractActionController {
      //$session_formValidation = new Container('formValidation');
      if (!$smsVerification->offsetExists('timeStamp')){
           $smsVerification->offsetSet('timeStamp', new \DateTime()); 
-          $smsVerification->offsetSet('mobile',$_POST["mobile"]);
-          $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
+          $smsVerification->offsetSet('mobile',$this->params()->fromPost('mobile'));
+          $smsVerification->offsetSet('dialCode',$this->params()->fromPost('dialCode'));
           $smsVerification->offsetSet('code',$this->codeGenerator()) ;
-          $response_msg =  $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+          $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
           $response = $this->getResponse();
           $response->setStatusCode(200);
-          $response->setContent("First Sms");
+          //$response->setContent("First Sms");
+          $response->setContent($response_msg);
           return $response;
      }else{
 
@@ -278,17 +279,19 @@ class UserController extends AbstractActionController {
               $smsVerification->offsetSet('timeStamp', new \DateTime());
 
               //in caso sbagliasse numero aggiorno il numero di telefono
-              $smsVerification->offsetSet('mobile',$_POST["mobile"]);
-              $smsVerification->offsetSet('dialCode',$_POST["dialCode"]);
+              $smsVerification->offsetSet('mobile',$this->params()->fromPost('mobile'));
+              $smsVerification->offsetSet('dialCode',$this->params()->fromPost('dialCode'));
               $smsVerification->offsetSet('code',$this->codeGenerator()) ;
 
-              $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
+              $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'),$smsVerification->offsetGet('mobile'),$smsVerification->offsetGet('code'));
               $response = $this->getResponse();
               $response->setStatusCode(200);
               
               //TODO TOMMASO
               //controllare bene come gestite questo messaggio e sostituirlo con quello nuovo che ritorna l'invio sms
-              $response->setContent("Sms send after time");
+              
+              //$response->setContent("Sms send after time");
+              $response->setContent($response_msg);
               return $response;
         }else{
             $response = $this->getResponse();
@@ -360,70 +363,75 @@ class UserController extends AbstractActionController {
 
                 }
                 else{
-                    if($sms_msg->errorCode==400){
-                        switch ($sms_msg->errorMsg){
-                            case "NO_VALID_RECIPIENT":
-                                //destinatario non corretto
-                                //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
-                                $response_message = $translator->translate("Numero di telefono non corretto");
+                    if((strpos($out, "errorCode") != false)){
+                        $errorCode = $sms_msg->errorCode;
+                        if($errorCode==400){
+                            switch ($sms_msg->errorMsg){
+                                    case "NO_VALID_RECIPIENT":
+                                            //destinatario non corretto
+                                            //write log
+                                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                            $response_message = $translator->translate("Numero di telefono non corretto");
 
-                                break;
+                                            break;
 
-                            case "BAD_CREDIT":
-                                //credito insufficente                               
-                                //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
-                                $response_message = $translator->translate("Errore invio sms");
+                                    case "BAD_CREDIT":
+                                            //credito insufficente                               
+                                            //write log
+                                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                            $response_message = $translator->translate("Errore invio sms");
 
-                                break;
+                                            break;
 
-                            case "BAD_TEXT":
-                                //test errato
-                                //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
-                                $response_message = $translator->translate("Errore invio sms");
+                                    case "BAD_TEXT":
+                                            //test errato
+                                            //write log
+                                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                            $response_message = $translator->translate("Errore invio sms");
 
-                                break;
+                                            break;
 
-                            case "GENERIC_ERROR":
-                                //errore generico
-                                //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
-                                $response_message = $translator->translate("Errore invio sms");
+                                    case "GENERIC_ERROR":
+                                            //errore generico
+                                            //write log
+                                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                            $response_message = $translator->translate("Errore invio sms");
 
-                                break;
+                                            break;
 
-                            default:
-                                //errore generico
-                                //write log
-                                $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
-                                $response_message = $translator->translate("Errore invio sms");
+                                    default:
+                                            //errore generico
+                                            //write log
+                                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                                            $response_message = $translator->translate("Errore invio sms");
 
-                                break;
+                                            break;
 
-                        }
+                            }
                     }
-                    else if($sms_msg->errorCode==500){
-                        //errore generico
-                        //write log
-                        $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                    else if($errorCode==500){
+                            //errore generico
+                            //write log
+                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                     }
-                    else if($sms_msg->errorCode==401){
-                        //credenziali sbagliate
-                        //write log
-                        $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                    else if($errorCode==401){
+                            //credenziali sbagliate
+                            //write log
+                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                     }
-                    else if($sms_msg->errorCode==405){
-                        //metodo http non consentito
-                        //write log
-                        $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                    else if($errorCode==405){
+                            //metodo http non consentito
+                            //write log
+                            $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                     }
-                    else
-                        //write succes log
-                        $loggerSuccess->info(';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                    else{
+                            //write succes log
+                            $loggerSuccess->info(';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                    }
+                        
+                    }   
                 }
-
+                
                 curl_close($ch);
                 return $response_message;
                 
