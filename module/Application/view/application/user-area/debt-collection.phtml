@@ -115,7 +115,7 @@
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-right">
-                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customerId]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
+                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
                         </div>
                         <!-- confirm button -->
                         <?php } ?>
