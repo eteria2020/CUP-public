@@ -50,15 +50,18 @@ $.ajax({
         switch(data.toString()){
             case "Wait message":
                 if($('#language').val()=="it"){
-                    alert("Messaggio già inviato,attendere");
+                    //alert("Messaggio già inviato,attendere");
+                    $('#buttonCode').html("<div>Sms già inviato, attendere</div>");
                 }else{
-                    alert("Message already sent,please wait");
+                    //alert("Message already sent,please wait");
+                    $('#buttonCode').html("<div>Message already sent,please wait</div>");
                 }
                 //$('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
             break;
 
             case "OK":
                 $('#buttonCode').html("<div><p style='color:green;'><img src='http://www.fe.camcom.it/cciaa/immagini/spunta%20verde.png/image' height='30' width='30'/>Sms inviato</p></div>");
+                $('#confirmSmsCode').fadeIn();
             break;
 
             case "Errore invio sms":

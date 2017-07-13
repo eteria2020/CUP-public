@@ -23,6 +23,8 @@ use SharengoCore\Entity\Fleet;
 
 use Zend\Log\Logger;
 
+use SharengoCore\Service\EmailService as EmailService;
+
 class UserController extends AbstractActionController {
 
     //variabile sessione
@@ -67,6 +69,17 @@ class UserController extends AbstractActionController {
      * @var HydratorInterface
      */
     private $hydrator;
+    
+    /**
+     * @var array
+     */
+    private $smsConfig;
+    
+    /**
+     * @var EmailService
+     */
+    private $emailService;
+    
 
     /**
      * @param Form $form1
@@ -79,7 +92,17 @@ class UserController extends AbstractActionController {
      * @param HydratorInterface $hydrator
      */
     public function __construct(
-    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator
+        Form $form1,
+        Form $form2,
+        RegistrationService $registrationService,
+        CustomersService $customersService,
+        LanguageService $languageService,
+        ProfilingPlaformService $profilingPlatformService,
+        Translator $translator,
+        HydratorInterface $hydrator,
+        array $smsConfig,
+        EmailService $emailService
+
     ) {
         
         $this->form1 = $form1;
@@ -90,6 +113,9 @@ class UserController extends AbstractActionController {
         $this->profilingPlatformService = $profilingPlatformService;
         $this->translator = $translator;
         $this->hydrator = $hydrator;
+        $this->smsConfig = $smsConfig;
+        $this->emailService = $emailService;
+
     }
 
     public function loginAction() {
@@ -287,9 +313,6 @@ class UserController extends AbstractActionController {
               $response = $this->getResponse();
               $response->setStatusCode(200);
               
-              //TODO TOMMASO
-              //controllare bene come gestite questo messaggio e sostituirlo con quello nuovo che ritorna l'invio sms
-              
               //$response->setContent("Sms send after time");
               $response->setContent($response_msg);
               return $response;
@@ -304,19 +327,24 @@ class UserController extends AbstractActionController {
     }//fine signupSmsAction
     
     private function manageSendSms($dialCode,$mobile,$code){
-        
+
+        $attachman = [];
         
         $translator = new \Zend\I18n\Translator\Translator();
          //invio sms
-                $username = 'SMSHY8YFB8Z1JHFFQD139';
-                $password = 'YHFODFXUGD9IE04U1PK0PIDKZ76SVFXO';
+                $username = $this->smsConfig['username'];
+                $password = $this->smsConfig['password'];
 
-                $url = "https://api.smshosting.it/rest/api/sms/send";
+                $url = $this->smsConfig['url'];
+                
+                $textMsg = $this->smsConfig['text'].$code;
+                
+
                 $fields = array(
-                        'sandbox' => 'true',
+                        'sandbox' => $this->smsConfig['sandbox'],
                         'to' => $dialCode.$mobile,
-                        'from' => "ShareNGO",
-                        'text' => utf8_encode("Codice di Verifica $code")
+                        'from' => $this->smsConfig['from'],
+                        'text' => utf8_encode($textMsg)
                 );
 
                 $ch = curl_init();
@@ -343,12 +371,14 @@ class UserController extends AbstractActionController {
 
                 
                 //prepare Error log
-                $writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
+                //$writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
+                $writerError = new \Zend\Log\Writer\Stream('/tmp/logErrorSms.txt');
                 $loggerError = new \Zend\Log\Logger();
                 $loggerError->addWriter($writerError);
                 
                 //prepare file to Success log
-                $writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
+                //$writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
+                $writeSuccess = new \Zend\Log\Writer\Stream('/tmp/logSuccesSms.txt');
                 $loggerSuccess = new \Zend\Log\Logger();
                 $loggerSuccess->addWriter($writeSuccess);
                 
@@ -380,7 +410,14 @@ class UserController extends AbstractActionController {
                                             //write log
                                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                                             $response_message = $translator->translate("Errore invio sms");
-
+                                            
+                                            $this->emailService->sendEmail(
+                                                "----",
+                                                "Credito Esaurito SMS Hosting",
+                                                "Il credito del servizio SMS Hostin è finito, per inviare nuovi sms ricaricare",
+                                                $attachman
+                                            );
+                                            
                                             break;
 
                                     case "BAD_TEXT":
@@ -397,6 +434,13 @@ class UserController extends AbstractActionController {
                                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                                             $response_message = $translator->translate("Errore invio sms");
 
+                                            $this->emailService->sendEmail(
+                                                "----",
+                                                "Errore generico SMS Hosting",
+                                                "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ",
+                                                $attachman
+                                            );
+                                            
                                             break;
 
                                     default:
@@ -413,23 +457,38 @@ class UserController extends AbstractActionController {
                             //errore generico
                             //write log
                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                            
+                            $this->emailService->sendEmail(
+                                "----",
+                                "Errore generico SMS Hosting",
+                                "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ",
+                                $attachman
+                            );
+                            
                     }
                     else if($errorCode==401){
                             //credenziali sbagliate
                             //write log
                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
+                            
+                            $this->emailService->sendEmail(
+                                "----",
+                                "Credenziali SMS Hosting MODIFICATE",
+                                "Sono  state modificate le credenziali del servizio di SMS Hosting, login fallito",
+                                $attachman
+                            );
+                            
                     }
                     else if($errorCode==405){
                             //metodo http non consentito
                             //write log
                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                     }
-                    else{
+ 
+                    } else{
                             //write succes log
                             $loggerSuccess->info(';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
-                    }
-                        
-                    }   
+                    }  
                 }
                 
                 curl_close($ch);

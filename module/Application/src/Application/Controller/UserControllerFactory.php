@@ -5,6 +5,7 @@ namespace Application\Controller;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use SharengoCore\Service\EmailService;
 
 class UserControllerfactory implements FactoryInterface
 {
@@ -19,6 +20,10 @@ class UserControllerfactory implements FactoryInterface
         $translationService = $serviceLocator->getServiceLocator()->get('Translator');
         $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
+        $sharedLocator = $serviceLocator->getServiceLocator();
+        $config = $sharedLocator->get('Config');
+        $smsConfig = $config['sms'];
+        $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
 
         return new UserController(
             $form1,
@@ -28,7 +33,9 @@ class UserControllerfactory implements FactoryInterface
             $languageService,
             $profilingPlatformService,
             $translationService,
-            $hydrator
+            $hydrator,
+            $config['sms'],
+            $emailService
         );
     }
 }
