@@ -393,7 +393,8 @@ class UserController extends AbstractActionController {
 
                 }
                 else{
-                    if((strpos($out, "errorCode") != false)){
+                    //if((strpos($out, "errorCode") != false)){
+                    if(isset($sms_msg->errorCode)){//cambiaisset
                         $errorCode = $sms_msg->errorCode;
                         if($errorCode==400){
                             switch ($sms_msg->errorMsg){
@@ -412,7 +413,7 @@ class UserController extends AbstractActionController {
                                             $response_message = $translator->translate("Errore invio sms");
                                             
                                             $this->emailService->sendEmail(
-                                                "----",
+                                                "ufficiotecnico@sharengo.eu",
                                                 "Credito Esaurito SMS Hosting",
                                                 "Il credito del servizio SMS Hostin è finito, per inviare nuovi sms ricaricare",
                                                 $attachman
@@ -435,7 +436,7 @@ class UserController extends AbstractActionController {
                                             $response_message = $translator->translate("Errore invio sms");
 
                                             $this->emailService->sendEmail(
-                                                "----",
+                                                "ufficiotecnico@sharengo.eu",
                                                 "Errore generico SMS Hosting",
                                                 "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ",
                                                 $attachman
@@ -459,7 +460,7 @@ class UserController extends AbstractActionController {
                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                             
                             $this->emailService->sendEmail(
-                                "----",
+                                "ufficiotecnico@sharengo.eu",
                                 "Errore generico SMS Hosting",
                                 "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ",
                                 $attachman
@@ -472,7 +473,7 @@ class UserController extends AbstractActionController {
                             $loggerError->info('Error: '.$sms_msg->errorCode. ';' .$sms_msg->errorMsg. ';Mobile: ' .$mobile. ';Sms text: ' .$fields['text']);
                             
                             $this->emailService->sendEmail(
-                                "----",
+                                "ufficiotecnico@sharengo.eu",
                                 "Credenziali SMS Hosting MODIFICATE",
                                 "Sono  state modificate le credenziali del servizio di SMS Hosting, login fallito",
                                 $attachman

@@ -335,7 +335,7 @@ $this->headLink()
 
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
-                       <div class="block-field bw-f w-1-4 smsClass">
+                       <div class="block-field bw-f w-1-4 smsClass" style="display: none;">
                         <label><?= $this->translate('Prefisso'); ?></label>
                         <select id="dialCode">
                             <option data-countryCode="IT" value="39" selected>Italia (+39)</option>
@@ -570,7 +570,7 @@ $this->headLink()
                        </p>
 
                        </div>
-                        <div class="block-field bw-f last w-2-4 smsClass">
+                        <div class="block-field bw-f last w-2-4 smsClass" style="display: none;">
                             <label>&nbsp</label>
                          <div  style="display: block;" id="buttonCode" >
                               <button type="button" id="buttonSendCode">INVIA CODICE </button>
