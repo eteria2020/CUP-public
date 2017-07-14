@@ -476,7 +476,7 @@ class UserAreaController extends AbstractActionController
             $customer = $this->userService->getIdentity();
             $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
             if($totalCost>0){
-                 if ($this->cartasiContractsService->hasCartasiContract($customer)) {
+                 if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
                     $response = $this->paymentsService->tryTripPaymentGroup($customer, $trips);
                     if($response->getCompletedCorrectly()) {
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
@@ -484,7 +484,7 @@ class UserAreaController extends AbstractActionController
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
                 } else {
-                    $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
+                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
                 }
             }else {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
