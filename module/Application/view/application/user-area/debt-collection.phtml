@@ -1,6 +1,7 @@
 <?php
     // get data
     $customer = $this->customer;
+    $contract = $this->contract;
     $tripPayment = $this->tripPayment;
     $tripsToBePayedAndWrong = $this->tripsToBePayedAndWrong;
     $scriptIsRunning = $this->scriptIsRunning;
@@ -102,7 +103,11 @@
                         <?php } else { ?>
                         <!-- Confirm button -->
                         <div class="block-wrapper-button content-align-center margin-top-custom">
-                            <a href="<?= $this->url('area-utente/debt-collection-payment') ?>"><button><?= $this->translate("Effettua pagamento corse"); ?></button></a>
+                            <?php if(is_null($contract)) { ?>
+                                <a href="<?= $this->url('area-utente/debt-collection-payment') ?>"><button><?= $this->translate("Effettua pagamento corse"); ?></button></a>
+                            <?php } else { ?>
+                                <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi') ?>"><button><?= $this->translate("Effettua pagamento corse"); ?></button></a>
+                            <?php }?>
                         </div><br>
                         <!-- confirm button -->
                         <?php }?>
