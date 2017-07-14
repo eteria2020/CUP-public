@@ -598,6 +598,17 @@ return [
                     ],
                 ]
             ],
+            'fidelizzando' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{fidelizzando}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'fidelizzando',
+                    ],
+                ]
+            ],
             'firenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -716,6 +727,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'linear',
+                    ],
+                ]
+            ],
+            'link' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{link}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'link',
                     ],
                 ]
             ],
