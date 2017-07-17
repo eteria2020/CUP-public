@@ -191,19 +191,17 @@ class UserAreaController extends AbstractActionController
     {
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
-//        if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
-//            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
-//        } 
+//      if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
+//                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+//      }
 
-        if($customer->getFirstPaymentCompleted()){
-            if($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0){
+        if($customer->getFirstPaymentCompleted()) {
+            if($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
-            }else {
-
+            } else {
             }
         } else {
             $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
-            //$this->redirect()->toRoute('cartasi/primo-pagamento', [], ['query' => ['customer' => $customer->getId()]]);
         }
 
         // if not, continue with index action
