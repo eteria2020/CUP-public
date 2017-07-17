@@ -299,7 +299,7 @@ final class RegistrationService
                     /* Florence ztl 1 euro subscription */
                     $now = new \DateTime();
                     $start = new \DateTime('2017-06-08 00:00:00');
-                    $end = new \DateTime('2017-07-31 23:59:59');
+                    $end = new \DateTime('2017-08-31 23:59:59');
                     if ($customer->getFleet()->getId() == 2 && ($now >= $start && $now <= $end)){
                         $total = 0;
                     }
