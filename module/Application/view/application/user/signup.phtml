@@ -7,7 +7,6 @@ $this->headScript()
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
         ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
-
 ?>
 
 <!-- main -->
@@ -584,7 +583,7 @@ $this->headLink()
 
             <div class="block-row-field clearfix">
                 <div id="confirmSmsCode" style="display: none;">
-                 <div class="block-field bw-f w-2-4"  id="textCode">
+                 <div class="block-field bw-f w-1-4"  id="textCode">
                     <p> <label><?= $this->translate('Codice di Verifica'); ?></label>
                         <?php
                         $smsCode = $this->form->get('user')->get('smsCode');
@@ -594,6 +593,7 @@ $this->headLink()
                     </p>
                 </div>
                 <br>
+                <p>Inserisci qui il codice di verifica inviato via sms</p>
                 </div>
             </div>
 

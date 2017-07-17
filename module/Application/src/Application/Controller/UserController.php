@@ -9,6 +9,7 @@ use Zend\Session\Container;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Stdlib\DateTime;
+use SharengoCore\Service\FleetService;
 
 
 // Internal Modules
@@ -80,6 +81,11 @@ class UserController extends AbstractActionController {
      */
     private $emailService;
     
+    /**
+     * @var FleetService
+     */
+    private $fleetService;
+    
 
     /**
      * @param Form $form1
@@ -101,7 +107,8 @@ class UserController extends AbstractActionController {
         Translator $translator,
         HydratorInterface $hydrator,
         array $smsConfig,
-        EmailService $emailService
+        EmailService $emailService,
+        FleetService $fleetService
 
     ) {
         
@@ -115,6 +122,8 @@ class UserController extends AbstractActionController {
         $this->hydrator = $hydrator;
         $this->smsConfig = $smsConfig;
         $this->emailService = $emailService;
+        $this->fleetService = $fleetService;
+        
 
     }
 
@@ -122,9 +131,20 @@ class UserController extends AbstractActionController {
         return new ViewModel();
     }
 
+    public function fleetIdSmsVerificationAction() {
+        
+        $arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
+        
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent(json_encode($arrayIdFleet));
+        return $response;
+        
+    }
+    
     public function signupAction() {
         
-        
+      
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
@@ -372,13 +392,13 @@ class UserController extends AbstractActionController {
                 
                 //prepare Error log
                 //$writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
-                $writerError = new \Zend\Log\Writer\Stream('/tmp/logErrorSms.txt');
+                $writerError = new \Zend\Log\Writer\Stream($this->smsConfig['logError']);
                 $loggerError = new \Zend\Log\Logger();
                 $loggerError->addWriter($writerError);
                 
                 //prepare file to Success log
                 //$writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
-                $writeSuccess = new \Zend\Log\Writer\Stream('/tmp/logSuccesSms.txt');
+                $writeSuccess = new \Zend\Log\Writer\Stream($this->smsConfig['logSuccess']);
                 $loggerSuccess = new \Zend\Log\Logger();
                 $loggerSuccess->addWriter($writeSuccess);
                 

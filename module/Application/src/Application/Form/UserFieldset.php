@@ -14,6 +14,7 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Validator\Identical;
 use Zend\Session\Container;
 use Zend\Validator\Callback;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface {
 
@@ -664,21 +665,31 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                     'name' => 'Callback',
                                     'options' => [
                                             'messages' => [
-                                              
-                                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello precedente'
+                                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
                                             ],
                                             'callback' => function($value, $context=array()){
-                                            $smsVerification=new Container('smsVerification');
-                                            //$smsVerification = new Container('formValidation');
-                                            $isValid = $value==$smsVerification->offsetGet('mobile');
-                                            return $isValid;
+            
+                                                $arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
+                                                
+                                                $fleet = $context['fleet']."";
+                                                
+                                                //Firenze sms verify code
+                                                if(in_array($fleet, $arrayIdFleet)){
+                                                    $smsVerification=new Container('smsVerification');
+                                                    //$smsVerification = new Container('formValidation');
+                                                    $isValid = $value==$smsVerification->offsetGet('mobile');
+                                                    return $isValid;
+                                                }else{
+                                                    return true;
+                                                }
                                             }
                                     ]
                                     ]
                 ]
             ],
              'smsCode' => [
-                        'required' => true,
+                        //'required' => true,
+                        'required' => false,
                         'filters' => [
                                 [
                                 'name' => 'StringTrim'
@@ -704,13 +715,21 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
  
                                             ],
                                             'callback' => function($value, $context=array()){
-                                            $smsVerification=new Container('smsVerification');
-                                            //$smsVerification = new Container('formValidation');
-                                            $isValid = $value==$smsVerification->offsetGet('code');
-                                            
-
-                                            return $isValid;
-                                            }
+                                        
+                                                $arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
+                                                
+                                                $fleet = $context['fleet']."";
+                                                
+                                                //Firenze sms verify code
+                                                if(in_array($fleet, $arrayIdFleet)){
+                                                    $smsVerification=new Container('smsVerification');
+                                                    //$smsVerification = new Container('formValidation');
+                                                    $isValid = $value==$smsVerification->offsetGet('code');
+                                                    return $isValid;
+                                                }else{
+                                                    return true;
+                                                }
+                                                }
                                     ]
                                     ]
                         ]

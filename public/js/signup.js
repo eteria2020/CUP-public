@@ -2,6 +2,8 @@
 
 $(function () {
     "use strict";
+    
+
 
 if($('#mobile').val()=='' ||  $('#mobile').val().length<1){
   $('#smsCode').val('');
@@ -15,6 +17,7 @@ if($('#confirmSmsCode ul.errors').html()){
 
 //$('#fleet option:selected').change(function() {
 $('#fleet').change(function() {
+   
    if($(this).val()!="2"){
        $('.smsClass').hide();
    }else{
@@ -38,9 +41,9 @@ $.ajax({
         //console.log("WAIT 1");
         $('#buttonCode').hide(); 
            if($('#language').val()=="it"){
-            $('#buttonCode').html("<div><img src='http://www.enterthemothership.com/wp-content/uploads/2014/06/ajax-loader.gif' height='30' width='30'/>Invio sms...</div>");
+            $('#buttonCode').html("<div><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i>Invio sms...</div>");
             }else{
-             $('#buttonCode').html("<div><img src='http://www.enterthemothership.com/wp-content/uploads/2014/06/ajax-loader.gif' height='30' width='30'/>Sending sms...</div>");  
+             $('#buttonCode').html("<div><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i>Sending sms...</div>");  
             }
             $('#buttonCode').show();
     },
@@ -60,16 +63,16 @@ $.ajax({
             break;
 
             case "OK":
-                $('#buttonCode').html("<div><p style='color:green;'><img src='http://www.fe.camcom.it/cciaa/immagini/spunta%20verde.png/image' height='30' width='30'/>Sms inviato</p></div>");
+                $('#buttonCode').html("<div><p style='color:green;'><i class='fa fa-check fa-2x' style='color:green'></i>Sms inviato</p></div>");
                 $('#confirmSmsCode').fadeIn();
             break;
 
             case "Errore invio sms":
-                $('#buttonCode').html("<div><p style='color:red;'><img src='http://www.fe.camcom.it/cciaa/immagini/x%20rossa.png/image' height='30' width='30'/>Errore nell'invio sms</p></div>");
+                $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Errore nell'invio sms</p></div>");
             break;
 
             case "Numero di telefono non corretto":
-                $('#buttonCode').html("<div><p style='color:red;'><img src='http://www.fe.camcom.it/cciaa/immagini/x%20rossa.png/image' height='30' width='30'/>Numero non corretto</p></div>");
+                $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto</p></div>");
             break;
         }
         //console.log("SUCCESS 1 "+data.toString());
@@ -179,4 +182,24 @@ $.ajax({
     $("#birthProvince").trigger("change", {
         birthTownValue: birthTownValue
     });
+    
+    
+    
+    $.ajax({
+    type:"POST",
+    url:"/fleet-id-sms-verification",
+    success:function(data){
+         if($.inArray($('#fleet').val(),data)) {
+             console.log('ok');
+             $('.smsClass').show();
+         } 
+         else {
+            console.log('noooo') ;
+            $('.smsClass').hide();}
+    },
+    error:function(){
+        console.log("ERROR fleet");
+    }
+});
+
 });

@@ -8,6 +8,8 @@ return [
         'sandbox'   => 'true',
         //'sandbox' => 'false',
         'from'      => 'ShareNGO',
-        'text'      => 'Codice di Verifica '
+        'text'      => 'Codice di Verifica ',
+        'logError'   => '/tmp/logErrorSms.txt',
+        'logSuccess' => '/tmp/logSuccesSms.txt'
     ]
 ];
