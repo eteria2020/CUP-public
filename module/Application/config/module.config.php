@@ -637,6 +637,17 @@ return [
                     ],
                 ]
             ],
+            'fidelizzando' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{fidelizzando}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'fidelizzando',
+                    ],
+                ]
+            ],
             'firenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -758,6 +769,17 @@ return [
                     ],
                 ]
             ],
+            'link' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{link}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'link',
+                    ],
+                ]
+            ],
             'lumsa' => [
                 'type' => 'Segment',
                 'options' => [
@@ -828,6 +850,17 @@ return [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{payback}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'payback',
+                    ],
+                ],
+            ],
+            'pback' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pback}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
