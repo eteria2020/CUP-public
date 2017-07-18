@@ -71,7 +71,7 @@ $(function () {
                             break;
 
                         case "Numero di telefono non corretto":
-                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto, attendere 60 secondi</p></div>");
+                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto</p></div>");
                             break;
                     }
 
