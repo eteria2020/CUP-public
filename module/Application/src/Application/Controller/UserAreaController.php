@@ -195,13 +195,19 @@ class UserAreaController extends AbstractActionController
 //                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
 //      }
 
-        if($customer->getFirstPaymentCompleted()) {
-            if($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
-                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+        if ($customer->getFleet()->getCode()==='FI') {
+            if ($customer->getFirstPaymentCompleted()) {
+                if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
+                    $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+                } else {
+                }
             } else {
+                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }
         } else {
-            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+            if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
+                      $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+            }
         }
 
         // if not, continue with index action

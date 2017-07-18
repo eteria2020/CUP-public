@@ -104,23 +104,23 @@
                         <!-- Confirm button -->
                         <div class="block-wrapper-button content-align-center margin-top-custom">
                             <?php if(is_null($contract)) { ?>
-                                <a href="<?= $this->url('area-utente/debt-collection-payment') ?>"><button><?= $this->translate("Effettua pagamento corse"); ?></button></a>
+                                <a href="<?= $this->url('area-utente/debt-collection-payment') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
                             <?php } else { ?>
-                                <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi') ?>"><button><?= $this->translate("Effettua pagamento corse"); ?></button></a>
+                                <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
                             <?php }?>
                         </div><br>
                         <!-- confirm button -->
                         <?php }?>
 
                         <p style="text-align: justify">Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il log-in sull&#39;App).</p>
-                        
+
                         <?php } else {  // getFirstPaymentCompleted() false?>
                         <p style="text-align: justify">non hai provveduto al pagamento della prima iscrizione.</p>
                         <p style="text-align: justify">Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata).</p>
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-right">
-                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
+                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
                         </div>
                         <!-- confirm button -->
                         <?php } ?>
