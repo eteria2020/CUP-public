@@ -3,9 +3,7 @@
 $(function () {
     "use strict";
 
-
-
-    if ($('#mobile').val() == '' || $('#mobile').val().length < 1) {
+if ($('#mobile').val() == '' || $('#mobile').val().length < 1) {
         $('#smsCode').val('');
     }
 
@@ -13,7 +11,6 @@ $(function () {
     if ($('#confirmSmsCode ul.errors').html()) {
         $('#confirmSmsCode').show();
     }
-
 
 //$('#fleet option:selected').change(function() {
     $('#fleet').change(function () {
@@ -179,5 +176,12 @@ $(function () {
             console.log("ERROR fleet");
         }
     });
+    
+    $('#registration-form').submit(function(event) {
+        if($('#smsCode').val()=='' && $('#fleet').val() == "2"){
+            return false;
+        }
+    });
+    
 
 });

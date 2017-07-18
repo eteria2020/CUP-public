@@ -152,9 +152,8 @@ class UserController extends AbstractActionController {
 
 
         if ($this->getRequest()->isPost()) {
-            $formData = $this->getRequest()->getPost();
+            $formData = $this->getRequest()->getPost();            
             $this->form1->setData($formData);
-
 
             if ($this->form1->isValid()) {
                 return $this->proceed($this->form1, $formData['promocode'], $mobile);

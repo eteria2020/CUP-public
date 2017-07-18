@@ -429,7 +429,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
     }
 
     public function getInputFilterSpecification() {
-        
+
         return [
             'email' => [
                 'required' => true,
@@ -661,74 +661,68 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                             'min' => 3
                         ]
                     ],
-                      [
-                                    'name' => 'Callback',
-                                    'options' => [
-                                            'messages' => [
-                                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
-                                            ],
-                                            'callback' => function($value, $context=array()){
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                            ],
+                            'callback' => function($value, $context = array()) {
 
-                                                
-                                                //Firenze sms verify code
-                                                if($context['fleet']==2){
-                                                    $smsVerification=new Container('smsVerification');
-                                                    //$smsVerification = new Container('formValidation');
-                                                    $isValid = $value==$smsVerification->offsetGet('mobile');
-                                                    return $isValid;
-                                                }else{
-                                                    return true;
-                                                }
-                                            }
-                                    ]
-                                    ]
+
+                                //Firenze sms verify code
+                                if ($context['fleet'] == 2) {
+                                    $smsVerification = new Container('smsVerification');
+                                    //$smsVerification = new Container('formValidation');
+                                    $isValid = $value == $smsVerification->offsetGet('mobile');
+                                    return $isValid;
+                                } else {
+                                    return true;
+                                }
+                            }
+                        ]
+                    ]
                 ]
             ],
-             'smsCode' => [
-                        //'required' => true,
-                        'required' => false,
-                        'filters' => [
-                                [
-                                'name' => 'StringTrim'
-                                ]
-                        ],
-                        'validators' => [
-                                    [
-                                    'name' => 'StringLength',
-                                            'options' => [
-                                            'min' => 4,
-                                            'max' => 4
-                                            ]
-
-                                    ],
-
-
-                                    [
-                                    'name' => 'Callback',
-                                    'options' => [
-                                            'messages' => [
-                                                
-                                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
- 
-                                            ],
-                                            'callback' => function($value, $context=array()){
-
-                                                
-                                                //Firenze sms verify code
-                                                if($context['fleet']==2){
-                                                    $smsVerification=new Container('smsVerification');
-                                                    //$smsVerification = new Container('formValidation');
-                                                    $isValid = $value==$smsVerification->offsetGet('code');
-                                                    return $isValid;
-                                                }else{
-                                                    return true;
-                                                }
-                                                }
-                                    ]
-                                    ]
+            'smsCode' => [
+                //'required' => true,
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 4,
+                            'max' => 4
                         ]
-              ], 
-        
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                            ],
+                            'callback' => function($value, $context = array()) {
+
+                                $a = "";
+                                //Firenze sms verify code
+                                if ($context['fleet'] == 2) {
+                                    $smsVerification = new Container('smsVerification');
+                                    //$smsVerification = new Container('formValidation');
+                                    $isValid = $value == $smsVerification->offsetGet('code');
+                                    return $isValid;
+                                } else {
+                                    return true;
+                                }
+                            }
+                        ]
+                    ]
+                ]
+            ],
             'phone' => [
                 'required' => false,
                 'filters' => [
