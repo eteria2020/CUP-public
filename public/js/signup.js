@@ -17,7 +17,6 @@ if($('#confirmSmsCode ul.errors').html()){
 
 //$('#fleet option:selected').change(function() {
 $('#fleet').change(function() {
-   
    if($(this).val()!="2"){
        $('.smsClass').hide();
    }else{
@@ -49,7 +48,7 @@ $.ajax({
     },
     success:function(data){
         $('#buttonCode').hide();
-        
+
         switch(data.toString()){
             case "Wait message":
                 if($('#language').val()=="it"){
@@ -75,31 +74,12 @@ $.ajax({
                 $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto</p></div>");
             break;
         }
-        //console.log("SUCCESS 1 "+data.toString());
 
         $('#buttonCode').show();
         
         setTimeout(function() {
             $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
         }, 60000);
-        
-        /*
-        switch(data.toString()){
-            case "Wait message":
-                if($('#language').val()=="it"){
-                    alert("Messaggio già inviato,attendere");
-                }else{
-                    alert("Message already sent,please wait");
-                }
-                $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
-        break;
-        default:
-            $('#confirmSmsCode').fadeIn();
-            $('#buttonCode').html("<div> <button id='buttonSendCode' type='button' >INVIA CODICE </button> </div>");
-        break;
-        }
-        console.log("SUCCESS 1 "+data.toString());
-        */
     },
     error:function(){
         console.log("ERROR 1");
@@ -186,20 +166,20 @@ $.ajax({
     
     
     $.ajax({
-    type:"POST",
-    url:"/fleet-id-sms-verification",
-    success:function(data){
-         if($.inArray($('#fleet').val(),data)) {
-             console.log('ok');
-             $('.smsClass').show();
-         } 
-         else {
-            console.log('noooo') ;
-            $('.smsClass').hide();}
-    },
-    error:function(){
-        console.log("ERROR fleet");
-    }
-});
+        type:"POST",
+        url:"/fleet-id-sms-verification",
+        success:function(data){
+             if($.inArray($('#fleet').val(),data)) {
+                 //console.log('no');
+                 $('.smsClass').hide();
+             } 
+             else {
+                //console.log('si') ;
+                $('.smsClass').show();}
+        },
+        error:function(){
+            console.log("ERROR fleet");
+        }
+    });
 
 });

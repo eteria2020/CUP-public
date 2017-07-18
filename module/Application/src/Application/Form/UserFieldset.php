@@ -668,13 +668,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                                 \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
                                             ],
                                             'callback' => function($value, $context=array()){
-            
-                                                $arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
-                                                
-                                                $fleet = $context['fleet']."";
+
                                                 
                                                 //Firenze sms verify code
-                                                if(in_array($fleet, $arrayIdFleet)){
+                                                if($context['fleet']==2){
                                                     $smsVerification=new Container('smsVerification');
                                                     //$smsVerification = new Container('formValidation');
                                                     $isValid = $value==$smsVerification->offsetGet('mobile');
@@ -715,13 +712,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
  
                                             ],
                                             'callback' => function($value, $context=array()){
-                                        
-                                                $arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
-                                                
-                                                $fleet = $context['fleet']."";
+
                                                 
                                                 //Firenze sms verify code
-                                                if(in_array($fleet, $arrayIdFleet)){
+                                                if($context['fleet']==2){
                                                     $smsVerification=new Container('smsVerification');
                                                     //$smsVerification = new Container('formValidation');
                                                     $isValid = $value==$smsVerification->offsetGet('code');

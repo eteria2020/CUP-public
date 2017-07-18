@@ -294,15 +294,15 @@ return [
                 ]
             ],
             'fleet-id-sms-verification' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/fleet-id-sms-verification',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'fleet-id-sms-verification'
-                    ],
-                ]
+                    'type' => 'Segment',
+                    'options' => [
+                            'route' => '/fleet-id-sms-verification',
+                            'defaults' => [
+                                    '__NAMESPACE__' => 'Application\Controller',
+                                    'controller' => 'User',
+                                    'action' => 'fleet-id-sms-verification'
+                            ],
+                    ]
             ],
             'signup-3' => [
                 'type' => 'Segment',
