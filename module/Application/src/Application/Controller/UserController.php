@@ -296,8 +296,7 @@ class UserController extends AbstractActionController {
             $smsVerification->offsetSet('code', $this->codeGenerator());
             $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
             $response = $this->getResponse();
-            $response->setStatusCode(200);
-            //$response->setContent("First Sms");
+            $response->setStatusCode(200);;
             $response->setContent($response_msg);
             return $response;
         } else {
@@ -315,8 +314,6 @@ class UserController extends AbstractActionController {
                 $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
-
-                //$response->setContent("Sms send after time");
                 $response->setContent($response_msg);
                 return $response;
             } else {
@@ -324,13 +321,19 @@ class UserController extends AbstractActionController {
                 $response->setStatusCode(200);
                 $response->setContent("Wait message");
                 return $response;
-                //attendere messaggio
             }
         }
     }
 
-//fine signupSmsAction
-
+    /**
+     * manageSendSms -> send message with sms hostig provider
+     * 
+     * 
+     * @param int $dialCode - dialcode to phone number
+     * @param int $mobile - phone nuember
+     * @param int $code - random generate code
+     * @return type
+     */
     private function manageSendSms($dialCode, $mobile, $code) {
 
         $attachman = [];
@@ -366,21 +369,12 @@ class UserController extends AbstractActionController {
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
 
         $out = curl_exec($ch);
-        //decode del json
         $sms_msg = json_decode($out);
 
-        //$writer = new \Zend\Log\Writer\Stream('/home/dev1/Documenti/log.txt');
-        //$logger = new \Zend\Log\Logger();
-        //$logger->addWriter($writer);
-        //$logger->info($out);
-        //prepare Error log
-        //$writerError = new \Zend\Log\Writer\Stream(__DIR__ . '/logErrorSms.txt');
         $writerError = new \Zend\Log\Writer\Stream($this->smsConfig['logError']);
         $loggerError = new \Zend\Log\Logger();
         $loggerError->addWriter($writerError);
 
-        //prepare file to Success log
-        //$writeSuccess = new \Zend\Log\Writer\Stream(__DIR__ . '/logSuccesSms.txt');
         $writeSuccess = new \Zend\Log\Writer\Stream($this->smsConfig['logSuccess']);
         $loggerSuccess = new \Zend\Log\Logger();
         $loggerSuccess->addWriter($writeSuccess);
@@ -477,13 +471,14 @@ class UserController extends AbstractActionController {
         curl_close($ch);
         return $response_message;
 
-        //fine invio sms
     }
 
-//fine gestione invio
 
     /**
-     *
+     * codeGenerator -> generate random code to sms validation in registration form
+     * if sendbox is true (no send message) the code is 1234 (dafault)
+     * else sendobox is false (SEND message) the code is random generate
+     * 
      * @return type
      */
     private function codeGenerator() {
