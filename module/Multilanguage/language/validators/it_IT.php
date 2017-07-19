@@ -230,6 +230,8 @@ return array(
     // Zend\Validator\Identical
     "The two given tokens do not match" => "I due token dati non corrispondono",
     "No token was provided to match against" => "Non è stato dato nessun token per il confronto",
+    "The code entered does not match the one sent" => "Il codice inserito non corrisponde a quello inviato",
+    
 
     // Zend\Validator\InArray
     "The input was not found in the haystack" => "L'input non è stato trovato nell'array",
