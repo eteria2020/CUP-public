@@ -179,6 +179,7 @@ if ($('#mobile').val() == '' || $('#mobile').val().length < 1) {
     
     $('#registration-form').submit(function(event) {
         if($('#smsCode').val()=='' && $('#fleet').val() == "2"){
+            alert('Inserire il codice di verifica sms ');
             return false;
         }
     });
