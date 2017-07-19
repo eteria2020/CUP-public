@@ -3,13 +3,17 @@
 $(function () {
     "use strict";
 
-if ($('#mobile').val() == '' || $('#mobile').val().length < 1) {
+    if ($('#mobile').val() == '' || $('#mobile').val().length < 1) {
         $('#smsCode').val('');
     }
 
 
     if ($('#confirmSmsCode ul.errors').html()) {
         $('#confirmSmsCode').show();
+    }
+
+    if ($('#smsCode').val() !== '') {
+        $(this).show();
     }
 
 //$('#fleet option:selected').change(function() {
@@ -176,13 +180,13 @@ if ($('#mobile').val() == '' || $('#mobile').val().length < 1) {
             console.log("ERROR fleet");
         }
     });
-    
-    $('#registration-form').submit(function(event) {
-        if($('#smsCode').val()=='' && $('#fleet').val() == "2"){
+
+    $('#registration-form').submit(function (event) {
+        if ($('#smsCode').val() == '' && $('#fleet').val() == "2") {
             alert('Inserire il codice di verifica sms ');
             return false;
         }
     });
-    
+
 
 });
