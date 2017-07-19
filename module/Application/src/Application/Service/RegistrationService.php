@@ -21,6 +21,7 @@ use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\View\HelperPluginManager;
 use Zend\EventManager\EventManager;
+use Zend\Session\Container;
 
 final class RegistrationService
 {
@@ -155,8 +156,9 @@ final class RegistrationService
         }
         $userData = $dataForm1->toArray($this->hydrator);
         $driverData = $dataForm2->toArray($this->hydrator);
-
+        $smsVerification=new Container('smsVerification');
         // we compile manually some fields just for the sake of validation
+        $userData['smsCode']=$smsVerification->offsetGet('code') ;
         $userData['email2'] = $userData['email'];
         $userData['password2'] = $userData['password'];
         $userData['birthDate'] = $userData['birthDate']->format('d-m-Y');
@@ -299,7 +301,7 @@ final class RegistrationService
                     /* Florence ztl 1 euro subscription */
                     $now = new \DateTime();
                     $start = new \DateTime('2017-06-08 00:00:00');
-                    $end = new \DateTime('2017-07-31 23:59:59');
+                    $end = new \DateTime('2017-08-31 23:59:59');
                     if ($customer->getFleet()->getId() == 2 && ($now >= $start && $now <= $end)){
                         $total = 0;
                     }

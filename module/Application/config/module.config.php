@@ -265,6 +265,45 @@ return [
                     ],
                 ]
             ],
+             'signup-sms' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/signup-sms',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signup-sms'
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
+                    ],
+                ]
+            ],
+            'signup-verify-code' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/signup-verify-code',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signup-verify-code'
+                    ],
+                    'constraints' => [
+                        'mobile' => '[mobile]+'
+                    ],
+                ]
+            ],
+            'fleet-id-sms-verification' => [
+                    'type' => 'Segment',
+                    'options' => [
+                            'route' => '/fleet-id-sms-verification',
+                            'defaults' => [
+                                    '__NAMESPACE__' => 'Application\Controller',
+                                    'controller' => 'User',
+                                    'action' => 'fleet-id-sms-verification'
+                            ],
+                    ]
+            ],
             'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
@@ -553,7 +592,7 @@ return [
                         'action'     => 'controradioclub',
                     ],
                 ],
-            ],            
+            ],
             'espresso' => [
                 'type' => 'Segment',
                 'options' => [
@@ -595,6 +634,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'fao',
+                    ],
+                ]
+            ],
+            'fidelizzando' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{fidelizzando}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'fidelizzando',
                     ],
                 ]
             ],
@@ -716,6 +766,17 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action'     => 'linear',
+                    ],
+                ]
+            ],
+            'link' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{link}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action'     => 'link',
                     ],
                 ]
             ],

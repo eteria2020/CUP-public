@@ -7,15 +7,17 @@ use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
 use SharengoCore\Service\FleetService;
-
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Validator\Identical;
+use Zend\Session\Container;
+use Zend\Validator\Callback;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
-class UserFieldset extends Fieldset implements InputFilterProviderInterface
-{
+class UserFieldset extends Fieldset implements InputFilterProviderInterface {
+
     /**
      * @var CustomersService
      */
@@ -27,12 +29,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
     private $fleetService;
 
     public function __construct(
-        Translator $translator,
-        HydratorInterface $hydrator,
-        CountriesService $countriesService,
-        CustomersService $customersService,
-        ProvincesService $provincesService,
-        FleetService $fleetService
+    Translator $translator, HydratorInterface $hydrator, CountriesService $countriesService, CustomersService $customersService, ProvincesService $provincesService, FleetService $fleetService
     ) {
         $this->customersService = $customersService;
         $this->fleetService = $fleetService;
@@ -90,7 +87,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'id' => 'password2',
                 'placeholder' => 'Inserisci di nuovo la password',
                 'class' => 'required'
-
             ]
         ]);
 
@@ -167,8 +163,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $provinces = array_merge(
-            [''],
-            $provincesService->getAllProvinces()
+                [''], $provincesService->getAllProvinces()
         );
 
         $this->add([
@@ -283,7 +278,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'value_options' => $fleetService->getFleetsSelectorArray(
-                    [0 => '---']
+                        [0 => '---']
                 )
             ]
         ]);
@@ -325,6 +320,19 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Cellulare'),
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'smsCode',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'smsCode',
+                'maxlength' => 4,
+                'placeholder' => $translator->translate('xxxx'),
+            ],
+            'options' => [
+                'label' => $translator->translate('Codice Sms'),
             ]
         ]);
 
@@ -448,8 +456,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
     }
 
-    public function getInputFilterSpecification()
-    {
+    public function getInputFilterSpecification() {
+
         return [
             'email' => [
                 'required' => true,
@@ -680,6 +688,66 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'min' => 3
                         ]
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                            ],
+                            'callback' => function($value, $context = array()) {
+
+
+                                //Firenze sms verify code
+                                if ($context['fleet'] == 2) {
+                                    $smsVerification = new Container('smsVerification');
+                                    //$smsVerification = new Container('formValidation');
+                                    $isValid = $value == $smsVerification->offsetGet('mobile');
+                                    return $isValid;
+                                } else {
+                                    return true;
+                                }
+                            }
+                        ]
+                    ]
+                ]
+            ],
+            'smsCode' => [
+                //'required' => true,
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 4,
+                            'max' => 4
+                        ]
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                            ],
+                            'callback' => function($value, $context = array()) {
+
+                                $a = "";
+                                //Firenze sms verify code
+                                if ($context['fleet'] == 2) {
+                                    $smsVerification = new Container('smsVerification');
+                                    //$smsVerification = new Container('formValidation');
+                                    $isValid = $value == $smsVerification->offsetGet('code');
+                                    return $isValid;
+                                } else {
+                                    return true;
+                                }
+                            }
+                        ]
                     ]
                 ]
             ],
@@ -789,4 +857,5 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ]
         ];
     }
+
 }

@@ -104,6 +104,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function fidelizzandoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function firenzeAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -155,6 +160,11 @@ class LandingPageController extends AbstractActionController
     }
 
     public function linearAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function linkAction()
     {
         return (new viewModel())->setTerminal(true);
     }
