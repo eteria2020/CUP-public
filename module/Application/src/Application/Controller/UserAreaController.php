@@ -195,13 +195,8 @@ class UserAreaController extends AbstractActionController
 //                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
 //      }
 
-        if ($customer->getFleet()->getCode()==='FI') {
-            if ($customer->getFirstPaymentCompleted()) {
-                if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
-                    $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
-                } else {
-                }
-            } else {
+        if ($customer->getFleet()->getCode()==='FI') { // debug condition
+            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }
         } else {

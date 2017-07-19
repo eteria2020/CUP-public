@@ -104,9 +104,9 @@
                         <!-- Confirm button -->
                         <div class="block-wrapper-button content-align-center margin-top-custom">
                             <?php if(is_null($contract)) { ?>
-                                <a href="<?= $this->url('area-utente/debt-collection-payment') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
-                            <?php } else { ?>
                                 <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
+                            <?php } else { ?>
+                                <a href="<?= $this->url('area-utente/debt-collection-payment') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
                             <?php }?>
                         </div><br>
                         <!-- confirm button -->
