@@ -12,6 +12,7 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
+
     if ($('#smsCode').val() != '') {
         $('#confirmSmsCode').show();
     }
