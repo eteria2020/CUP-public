@@ -12,8 +12,8 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
-    if ($('#smsCode').val() !== '') {
-        $(this).show();
+    if ($('#smsCode').val() != '') {
+        $('#confirmSmsCode').show();
     }
 
 //$('#fleet option:selected').change(function() {
