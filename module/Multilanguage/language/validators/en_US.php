@@ -238,6 +238,8 @@ return array(
     // Zend\Validator\Identical
     "The two given tokens do not match" => "The two given tokens do not match",
     "No token was provided to match against" => "No token was provided to match against",
+    "The code entered does not match the one sent" => "The code entered does not match the one sent",
+    
 
     // Zend\Validator\InArray
     "The input was not found in the haystack" => "The input was not found in the haystack",
