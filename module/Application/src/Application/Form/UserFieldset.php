@@ -805,10 +805,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 ]
             ],
             'job_type' => [
-                'required' => true
+                'required' => false
             ],
             'how_to_know' => [
-                'required' => true
+                'required' => false
             ],
             'generalCondition1' => [
                 'required' => true,
