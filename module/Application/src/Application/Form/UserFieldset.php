@@ -162,6 +162,71 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             ]
         ]);
 
+        $this->add([
+            'name' => 'job_type',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'job_type',
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Professione'),
+                'value_options' => [
+                    " " => $translator->translate(""),
+                    "Imprenditore" => $translator->translate("Imprenditore"),
+                    "Dipendente di azienda privata" => $translator->translate("Dipendente di azienda privata"),
+                    "Dipendente di azienda partecipata" => $translator->translate("Dipendente di azienda partecipata"),
+                    "Agente assicurativo" => $translator->translate("Agente assicurativo"),
+                    "Agente di commercio" => $translator->translate("Agente di commercio"),
+                    "Avvocato" => $translator->translate("Avvocato"),
+                    "Notaio" => $translator->translate("Notaio"),
+                    "Commercialista" => $translator->translate("Commercialista"),
+                    "Dirigente" => $translator->translate("Dirigente"),
+                    "Dirigente/Funzionario P.A./Ufficiale" => $translator->translate("Dirigente / Funzionario P.A. / Ufficiale"),
+                    "Professore Universitario" => $translator->translate("Professore Universitario"),
+                    "Altra libera professione" => $translator->translate("Altra libera professione"),
+                    "Geometra" => $translator->translate("Geometra"),
+                    "Architetto" => $translator->translate("Architetto"),
+                    "Ingegnere" => $translator->translate("Ingegnere"),
+                    "Medico" => $translator->translate("Medico"),
+                    "Farmacista" => $translator->translate("Farmacista"),
+                    "Artigiano" => $translator->translate("Artigiano"),
+                    "Commerciante" => $translator->translate("Commerciante"),
+                    "Studente" => $translator->translate("Studente"),
+                    "Pensionato" => $translator->translate("Pensionato"),
+                    "Casalinga" => $translator->translate("Casalinga"),
+                    "Giornalista" => $translator->translate("Giornalista"),
+                    "Consulente" => $translator->translate("Consulente"),
+                    "Sportivo professionista" => $translator->translate("Sportivo professionista"),
+                    "Artista" => $translator->translate("Artista"),
+                    "Insegnante" => $translator->translate("Insegnante"),
+                    "Politico" => $translator->translate("Politico"),
+                    "Non occupato" => $translator->translate("Non occupato")
+                ]
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'how_to_know',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'how_to_know',
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Come hai conosciuto Sharengo?'),
+                'value_options' => [
+                    " " => $translator->translate(""),
+                    "Sito Sharengo" => $translator->translate("Sito Sharengo"),
+                    "Motore di ricerca" => $translator->translate("Motore di ricerca"),
+                    "Pubblicità online" => $translator->translate("Pubblicità online"),
+                    "Macchine Sharengo" => $translator->translate("Macchine Sharengo"),
+                    "Eventi" => $translator->translate("Eventi"),
+                    "Consigliato dagli utenti" => $translator->translate("Consigliato dagli utenti")
+                ]
+            ]
+        ]);
+
         $provinces = array_merge(
                 [''], $provincesService->getAllProvinces()
         );
@@ -738,6 +803,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         ]
                     ]
                 ]
+            ],
+            'job_type' => [
+                'required' => true
+            ],
+            'how_to_know' => [
+                'required' => true
             ],
             'generalCondition1' => [
                 'required' => true,
