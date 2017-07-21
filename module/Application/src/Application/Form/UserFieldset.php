@@ -163,10 +163,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
         ]);
 
         $this->add([
-            'name' => 'job_type',
+            'name' => 'jobType',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'job_type',
+                'id' => 'jobType',
                 'class' => 'required'
             ],
             'options' => [
@@ -207,10 +207,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
         ]);
 
         $this->add([
-            'name' => 'how_to_know',
+            'name' => 'howToKnow',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'how_to_know',
+                'id' => 'howToKnow',
                 'class' => 'required'
             ],
             'options' => [
@@ -733,8 +733,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                                 \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
                             ],
                             'callback' => function($value, $context = array()) {
-
-
                                 //Firenze sms verify code
                                 if ($context['fleet'] == 2) {
                                     $smsVerification = new Container('smsVerification');
@@ -804,10 +802,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                     ]
                 ]
             ],
-            'job_type' => [
+            'jobType' => [
                 'required' => false
             ],
-            'how_to_know' => [
+            'howToKnow' => [
                 'required' => false
             ],
             'generalCondition1' => [
