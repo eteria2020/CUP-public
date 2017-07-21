@@ -449,16 +449,18 @@ class UserAreaController extends AbstractActionController
     public function debtCollectionAction()
     {
         $customer = $this->userService->getIdentity();
+        
         $tripsToBePayedAndWrong = null;
         $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $tripsToBePayedAndWrong);
 
-        $isActivated = $this->cartasiContractsService->getCartasiContract($customer) != null;
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
         $scriptIsRunning =  $this->paymentScriptRunsService->isRunning();
 
         return new ViewModel([
             'customer' => $customer,
-            'isActivated' => $isActivated,
+            'contract' => $contract,
             'tripPayment' => $tripPayment,
             'tripsToBePayedAndWrong' => $tripsToBePayedAndWrong,
             'totalCost' => $totalCost,
