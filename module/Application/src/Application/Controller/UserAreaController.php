@@ -478,7 +478,7 @@ class UserAreaController extends AbstractActionController
             $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
             if($totalCost>0){
                  if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
-                    $response = $this->paymentsService->tryTripPaymentGroup($customer, $trips);
+                    $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if($response->getCompletedCorrectly()) {
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
                     } else {
