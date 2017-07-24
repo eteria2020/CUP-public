@@ -189,13 +189,15 @@ class UserAreaController extends AbstractActionController
      */
     public function indexAction()
     {
+        $customerForDebuging = array(22577, 19065, 2981, 39096, 63273);
+
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
 //      if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
 //                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
 //      }
 
-        if ($customer->getFleet()->getCode()==='FI') { // debug condition
+        if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
             if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }
