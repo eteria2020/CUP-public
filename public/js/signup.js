@@ -17,12 +17,11 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
-//$('#fleet option:selected').change(function() {
     $('#fleet').change(function () {
-        if ($(this).val() != "2") {
-            $('.smsClass').hide();
-        } else {
+        if ($(this).val() == "1" || $(this).val() == "2" || $(this).val() == "4") {
             $('.smsClass').show();
+        } else {
+            $('.smsClass').hide();
         }
     });
 
@@ -183,9 +182,11 @@ $(function () {
     });
 
     $('#registration-form').submit(function (event) {
-        if ($('#smsCode').val() == '' && $('#fleet').val() == "2") {
-            alert('Inserire il codice di verifica sms ');
-            return false;
+        if ($('#smsCode').val() == '') {
+            if ($('#fleet').val() == "1" || $('#fleet').val() == "2" || $('#fleet').val() == "4") {
+                alert('Inserire il codice di verifica sms ');
+                return false;
+            }
         }
     });
 
