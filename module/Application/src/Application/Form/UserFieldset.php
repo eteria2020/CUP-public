@@ -166,13 +166,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'name' => 'jobType',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'jobType',
-                'class' => 'required'
+                'id' => 'jobType'
             ],
             'options' => [
                 'label' => $translator->translate('Professione'),
                 'value_options' => [
-                    " " => $translator->translate(""),
+                    " " => $translator->translate(" "),
                     "Imprenditore" => $translator->translate("Imprenditore"),
                     "Dipendente di azienda privata" => $translator->translate("Dipendente di azienda privata"),
                     "Dipendente di azienda partecipata" => $translator->translate("Dipendente di azienda partecipata"),
@@ -210,13 +209,12 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'name' => 'howToKnow',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [
-                'id' => 'howToKnow',
-                'class' => 'required'
+                'id' => 'howToKnow'
             ],
             'options' => [
                 'label' => $translator->translate('Come hai conosciuto Sharengo?'),
                 'value_options' => [
-                    " " => $translator->translate(""),
+                    " " => $translator->translate(" "),
                     "Sito Sharengo" => $translator->translate("Sito Sharengo"),
                     "Motore di ricerca" => $translator->translate("Motore di ricerca"),
                     "Pubblicità online" => $translator->translate("Pubblicità online"),
@@ -803,10 +801,20 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 ]
             ],
             'jobType' => [
-                'required' => false
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
             ],
             'howToKnow' => [
-                'required' => false
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
             ],
             'generalCondition1' => [
                 'required' => true,
