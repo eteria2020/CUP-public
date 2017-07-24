@@ -32,6 +32,7 @@ $(function () {
             var mobile = $('#mobile').val();
             mobile = mobile.replace("+" + prefix, "");
             mobile = mobile.replace("00" + prefix, "");
+            mobile = mobile.replace( /\D/g,'');
             $('#mobile').val(mobile);
             $.ajax({
                 type: "POST",
