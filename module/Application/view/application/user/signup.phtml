@@ -786,23 +786,23 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
             var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
 var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
         var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
-        
+
         //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
     //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
-        
+
         if (now > dateStart) {
             if (now < dateEnd) {
                     overlay.css("visibility", "visible");
                     }
                     }
-                    
+
                     $(".sng-overlay-close").click(function (e) {
                     e.preventDefault();
                     overlay.fadeOut(600, function () {
                             overlay.remove();
                             });
                             });
-                            
+
                             // Criteo section
                             var email = $("#email").val();
                                 var list = [];
@@ -811,16 +811,16 @@ var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
                                     list.push(parseInt($(this).val()));
                                 };
                                 });
-                            
+
                         criteoViewListing(email, list);
-                
+
                 $("#fleet").change(function () {
                                     var email = $("#email").val();
                                     var fleetId = parseInt($(this).find(":selected").val());
 
                                     criteoViewBasketItem(email, fleetId);
                 });
-                
+
                 });
-                
+
 </script>

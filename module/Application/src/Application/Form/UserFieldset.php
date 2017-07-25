@@ -709,7 +709,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
 
                                 if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 4) {
                                     $smsVerification = new Container('smsVerification');
-                                    //$smsVerification = new Container('formValidation');
                                     $isValid = $value == $smsVerification->offsetGet('code');
                                     return $isValid;
                                 } else {
