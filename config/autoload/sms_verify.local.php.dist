@@ -7,7 +7,7 @@ return [
         'url'       => "https://api.smshosting.it/rest/api/sms/send",
         //'sandbox'   => 'true',
         'sandbox' => 'false',
-        'from'      => 'ShareNGO',
+        'from'      => 'Sharengo',
         'text'      => 'Codice di Verifica ',
         'logError'   => '/tmp/logErrorSms.txt',
         'logSuccess' => '/tmp/logSuccesSms.txt'
