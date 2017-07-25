@@ -2,7 +2,7 @@
 $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-        ->appendFile($this->basePath('js/signup.js?v=3.1'));
+        ->appendFile($this->basePath('js/signup.js?v=3.2'));
 
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
@@ -334,7 +334,7 @@ $this->headLink()
 
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
-                <div class="block-field bw-f w-1-4 smsClass" style="display: none;">
+                <div class="block-field bw-f w-1-4 smsClass">
                     <label><?= $this->translate('Prefisso'); ?></label>
                     <select id="dialCode">
                         <option data-countryCode="IT" value="39" selected>Italia (+39)</option>
@@ -569,7 +569,7 @@ $this->headLink()
                         </p>
 
                     </div>
-                    <div class="block-field bw-f last w-2-4 smsClass" style="display: none;">
+                    <div class="block-field bw-f last w-2-4 smsClass">
                         <label>&nbsp</label>
                         <div  style="display: block;" id="buttonCode" >
                             <button type="button" id="buttonSendCode">INVIA CODICE </button>
@@ -597,17 +597,6 @@ $this->headLink()
                 </div>
             </div>
 
-            <!-- block-row-field -->
-            <div class="block-field bw-f w-2-4">
-                <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
-                    <?php
-                    $phone = $this->form->get('user')->get('phone');
-                    echo $this->formElement($phone);
-                    echo $this->formElementErrors($phone, ['class' => 'errors']);
-                    ?>
-                </p>
-            </div>
-            </br></br></br>
             <?php
             $profilingCounter = $this->form->get('user')->get('profilingCounter');
             echo $this->formElement($profilingCounter);

@@ -118,7 +118,7 @@ class UserController extends AbstractActionController {
     public function fleetIdSmsVerificationAction() {
         //$arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
 
-        $arrayIdFleet = ['1', '2', '4'];
+        $arrayIdFleet = ['0', '1', '2', '3', '4'];
 
         $response = $this->getResponse();
         $response->setStatusCode(200);

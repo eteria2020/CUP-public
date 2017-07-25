@@ -17,14 +17,6 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
-    $('#fleet').change(function () {
-        if ($(this).val() == "1" || $(this).val() == "2" || $(this).val() == "4") {
-            $('.smsClass').show();
-        } else {
-            $('.smsClass').hide();
-        }
-    });
-
 
     $(document).on("click", "#buttonSendCode", function () {
         if ($('#mobile').val().length > 0) {
@@ -184,7 +176,7 @@ $(function () {
 
     $('#registration-form').submit(function (event) {
         if ($('#smsCode').val() == '') {
-            if ($('#fleet').val() == "1" || $('#fleet').val() == "2" || $('#fleet').val() == "4") {
+            if ($('#fleet').val() == "1" || $('#fleet').val() == "2" || $('#fleet').val() == "3" || $('#fleet').val() == "4") {
                 alert('Inserire il codice di verifica sms ');
                 return false;
             }
