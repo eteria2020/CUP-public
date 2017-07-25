@@ -296,7 +296,6 @@ class UserController extends AbstractActionController {
             $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
             $response = $this->getResponse();
             $response->setStatusCode(200);
-            ;
             $response->setContent($response_msg);
             return $response;
         } else {
