@@ -118,7 +118,7 @@ class UserController extends AbstractActionController {
     public function fleetIdSmsVerificationAction() {
         //$arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
 
-        $arrayIdFleet = ['1','2','4'];
+        $arrayIdFleet = ['1', '2', '4'];
 
         $response = $this->getResponse();
         $response->setStatusCode(200);
@@ -152,7 +152,7 @@ class UserController extends AbstractActionController {
 
 
         if ($this->getRequest()->isPost()) {
-            $formData = $this->getRequest()->getPost();            
+            $formData = $this->getRequest()->getPost();
             $this->form1->setData($formData);
 
             if ($this->form1->isValid()) {
@@ -295,7 +295,8 @@ class UserController extends AbstractActionController {
             $smsVerification->offsetSet('code', $this->codeGenerator());
             $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
             $response = $this->getResponse();
-            $response->setStatusCode(200);;
+            $response->setStatusCode(200);
+            ;
             $response->setContent($response_msg);
             return $response;
         } else {
@@ -395,7 +396,7 @@ class UserController extends AbstractActionController {
                         case "NO_VALID_RECIPIENT":
                             //destinatario non corretto
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Numero di telefono non corretto");
 
                             break;
@@ -403,7 +404,7 @@ class UserController extends AbstractActionController {
                         case "BAD_CREDIT":
                             //credito insufficente
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             $this->emailService->sendEmail(
@@ -415,7 +416,7 @@ class UserController extends AbstractActionController {
                         case "BAD_TEXT":
                             //test errato
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             break;
@@ -423,7 +424,7 @@ class UserController extends AbstractActionController {
                         case "GENERIC_ERROR":
                             //errore generico
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             $this->emailService->sendEmail(
@@ -435,7 +436,7 @@ class UserController extends AbstractActionController {
                         default:
                             //errore generico
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             break;
@@ -443,7 +444,7 @@ class UserController extends AbstractActionController {
                 } else if ($errorCode == 500) {
                     //errore generico
                     //write log
-                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
 
                     $this->emailService->sendEmail(
                             "ufficiotecnico@sharengo.eu", "Errore generico SMS Hosting", "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ", $attachman
@@ -451,7 +452,7 @@ class UserController extends AbstractActionController {
                 } else if ($errorCode == 401) {
                     //credenziali sbagliate
                     //write log
-                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
 
                     $this->emailService->sendEmail(
                             "ufficiotecnico@sharengo.eu", "Credenziali SMS Hosting MODIFICATE", "Sono  state modificate le credenziali del servizio di SMS Hosting, login fallito", $attachman
@@ -459,19 +460,17 @@ class UserController extends AbstractActionController {
                 } else if ($errorCode == 405) {
                     //metodo http non consentito
                     //write log
-                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                 }
             } else {
                 //write succes log
-                $loggerSuccess->info(';DialCode: ' . $dialCode. ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                $loggerSuccess->info(';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
             }
         }
 
         curl_close($ch);
         return $response_message;
-
     }
-
 
     /**
      * codeGenerator -> generate random code to sms validation in registration form
@@ -496,6 +495,16 @@ class UserController extends AbstractActionController {
         $form->registerData();
 
         $data = $this->registrationService->retrieveValidData();
+
+        $smsVerification = new Container('smsVerification');
+
+        $dp1 = "+";
+        $dp2 = "00";
+        $prefix = $smsVerification->offsetGet('dialCode');
+        $str1 = $data['mobile'];
+        $str1 = preg_replace('/^' . preg_quote($dp1 . $prefix, '/') . '/', '', $str1);
+        $str1 = preg_replace('/^' . preg_quote($dp2 . $prefix, '/') . '/', '', $str1);
+        $data['mobile'] = '+' . $smsVerification->offsetGet('dialCode') . ' ' . $str1;
 
         // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
         if (empty($data)) {
