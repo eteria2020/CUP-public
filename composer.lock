@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "f44adc5d489b2ccb501d6f280fc7dcfddeca6a1f"
+                "reference": "c546be3902bd5dc0bc90602a3693cc72e881c391"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-07-04 10:56:40"
+            "time": "2017-07-26 13:01:42"
         },
         {
             "name": "natxet/CssMin",
@@ -2942,7 +2942,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
-                "reference": "b9b6493d7daa309f109b21bedd34d6f0fa5de4b1"
+                "reference": "7df531932635e53a459abea64c86e30318853801"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2956,7 +2956,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2017-07-17 08:15:21"
+            "time": "2017-07-26 13:03:33"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
@@ -4661,7 +4661,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "Padraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
