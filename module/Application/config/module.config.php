@@ -1185,6 +1185,24 @@ return [
                             ]
                         ]
                     ],
+                    'debt-collection' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{debt-collection}',
+                            'defaults' => [
+                                'action' => 'debt-collection'
+                            ]
+                        ]
+                    ],
+                    'debt-collection-payment' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{debt-collection-payment}',
+                            'defaults' => [
+                                'action' => 'debt-collection-payment'
+                            ]
+                        ]
+                    ],
                     'disable-contract' => [
                         'type' => 'Segment',
                         'options' => [
