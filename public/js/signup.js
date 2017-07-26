@@ -157,31 +157,4 @@ $(function () {
         birthTownValue: birthTownValue
     });
 
-
-
-    $.ajax({
-        type: "POST",
-        url: "/fleet-id-sms-verification",
-        success: function (data) {
-            if ($.inArray($('#fleet').val(), data) != -1) {
-                $('.smsClass').show();
-            } else {
-                $('.smsClass').hide()
-            }
-        },
-        error: function () {
-            console.log("ERROR fleet");
-        }
-    });
-
-    $('#registration-form').submit(function (event) {
-        if ($('#smsCode').val() == '') {
-            if ($('#fleet').val() == "1" || $('#fleet').val() == "2" || $('#fleet').val() == "3" || $('#fleet').val() == "4") {
-                alert('Inserire il codice di verifica sms ');
-                return false;
-            }
-        }
-    });
-
-
 });

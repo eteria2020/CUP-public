@@ -26,6 +26,8 @@ use SharengoCore\Service\DisableContractService;
 
 use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
+use SharengoCore\Service\PaymentScriptRunsService;
+use SharengoCore\Service\PaymentsService;
 
 class UserAreaController extends AbstractActionController
 {
@@ -117,6 +119,16 @@ class UserAreaController extends AbstractActionController
     private $disableContractService;
 
     /**
+     * @var PaymentScriptRunsService
+     */
+    private $paymentScriptRunsService;
+
+    /**
+     * @var PaymentService
+     */
+    private $paymentsService;
+
+    /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
      * @param AuthenticationService $userService
@@ -131,6 +143,8 @@ class UserAreaController extends AbstractActionController
      * @param string $bannerJsonpUrl
      * @param string $discounterUrl
      * @param DisableContractService $disableContractService
+     * @param PaymentScriptRunsService $paymentScriptRunService
+     * @param PaymentService $paymentService
      */
     public function __construct(
         CustomersService $customerService,
@@ -146,7 +160,9 @@ class UserAreaController extends AbstractActionController
         CartasiContractsService $cartasiContractsService,
         $bannerJsonpUrl,
         $discounterUrl,
-        DisableContractService $disableContractService
+        DisableContractService $disableContractService,
+        PaymentScriptRunsService $paymentScriptRunService,
+        PaymentsService $paymentsService
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -163,14 +179,32 @@ class UserAreaController extends AbstractActionController
         $this->bannerJsonpUrl = $bannerJsonpUrl;
         $this->discounterUrl = $discounterUrl;
         $this->disableContractService = $disableContractService;
+        $this->paymentScriptRunsService = $paymentScriptRunService;
+        $this->paymentsService = $paymentsService;
     }
 
+    /**
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
+        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63273, 37841);
+
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
-        if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
-            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+//      if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
+//                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+//      }
+
+        if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
+            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
+                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+            }
+        } else {
+            if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
+                      $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+            }
         }
 
         // if not, continue with index action
@@ -412,6 +446,58 @@ class UserAreaController extends AbstractActionController
             'isActivated' => $isActivated,
             'tripPayment' => $tripPayment
         ]);
+    }
+
+    public function debtCollectionAction()
+    {
+        $customer = $this->userService->getIdentity();
+        
+        $tripsToBePayedAndWrong = null;
+        $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $tripsToBePayedAndWrong);
+
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
+        $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
+        $scriptIsRunning =  $this->paymentScriptRunsService->isRunning();
+
+        return new ViewModel([
+            'customer' => $customer,
+            'contract' => $contract,
+            'tripPayment' => $tripPayment,
+            'tripsToBePayedAndWrong' => $tripsToBePayedAndWrong,
+            'totalCost' => $totalCost,
+            'scriptIsRunning' => $scriptIsRunning
+        ]);
+    }
+
+    public function debtCollectionPaymentAction()
+    {
+        $scriptIsRunning =  $this->paymentScriptRunsService->isRunning();
+
+        if(!$scriptIsRunning){
+            $trips = null;
+            $customer = $this->userService->getIdentity();
+            $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
+            if($totalCost>0){
+                 if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
+                    $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
+                    if($response->getCompletedCorrectly()) {
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } else {
+                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
+                    }
+                } else {
+                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
+                }
+            }else {
+                $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
+            }
+        } else {
+            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+        }
+
+        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+
     }
 
     public function packageMySharengoAction()

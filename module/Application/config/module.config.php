@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -6,10 +7,9 @@
  * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 $translator = new \Zend\I18n\Translator\Translator();
 // Getting the siteroot path ( = sharengo-admin folder)
-$baseDir = realpath(__DIR__.'/../../../');
+$baseDir = realpath(__DIR__ . '/../../../');
 
 return [
     'router' => [
@@ -18,16 +18,16 @@ return [
             'home' => [
                 'type' => 'Literal',
                 'options' => [
-                    'route'    => '/',
+                    'route' => '/',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'index',
+                        'action' => 'index',
                     ],
                 ],
             ],
             'zone' => [
-                'type'    => 'Literal',
+                'type' => 'Literal',
                 'options' => [
                     'route' => '/zone',
                     'defaults' => [
@@ -38,7 +38,7 @@ return [
                 ],
             ],
             'zoneosm' => [
-                'type'    => 'Literal',
+                'type' => 'Literal',
                 'options' => [
                     'route' => '/zoneosm',
                     'defaults' => [
@@ -76,28 +76,28 @@ return [
                     ],
                 ],
             ],
-            /*'carsharing' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{carsharing}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'carsharing',
-                    ],
-                ]
-            ],
-            'cosae' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{cosa-e-sharengo}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'cosae',
-                    ],
-                ]
-            ],*/
+            /* 'carsharing' => [
+              'type' => 'Segment',
+              'options' => [
+              'route' => '/{carsharing}',
+              'defaults' => [
+              '__NAMESPACE__' => 'Application\Controller',
+              'controller' => 'Index',
+              'action'     => 'carsharing',
+              ],
+              ]
+              ],
+              'cosae' => [
+              'type' => 'Segment',
+              'options' => [
+              'route' => '/{cosa-e-sharengo}',
+              'defaults' => [
+              '__NAMESPACE__' => 'Application\Controller',
+              'controller' => 'Index',
+              'action'     => 'cosae',
+              ],
+              ]
+              ], */
             'map' => [
                 'type' => 'Segment',
                 'options' => [
@@ -105,7 +105,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'map',
+                        'action' => 'map',
                     ],
                 ]
             ],
@@ -116,32 +116,32 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'map2',
+                        'action' => 'map2',
                     ],
                 ]
             ],
-            /*'quantocosta' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{quantocosta}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'quantocosta',
-                    ],
-                ]
-            ],
-            'comefunziona' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{comefunziona}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'comefunziona',
-                    ],
-                ]
-            ],*/
+            /* 'quantocosta' => [
+              'type' => 'Segment',
+              'options' => [
+              'route' => '/{quantocosta}',
+              'defaults' => [
+              '__NAMESPACE__' => 'Application\Controller',
+              'controller' => 'Index',
+              'action'     => 'quantocosta',
+              ],
+              ]
+              ],
+              'comefunziona' => [
+              'type' => 'Segment',
+              'options' => [
+              'route' => '/{comefunziona}',
+              'defaults' => [
+              '__NAMESPACE__' => 'Application\Controller',
+              'controller' => 'Index',
+              'action'     => 'comefunziona',
+              ],
+              ]
+              ], */
             'faq' => [
                 'type' => 'Segment',
                 'options' => [
@@ -149,21 +149,21 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'faq',
+                        'action' => 'faq',
                     ],
                 ]
             ],
-            /*'contatti' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{contatti}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'contatti',
-                    ],
-                ]
-            ],*/
+            /* 'contatti' => [
+              'type' => 'Segment',
+              'options' => [
+              'route' => '/{contatti}',
+              'defaults' => [
+              '__NAMESPACE__' => 'Application\Controller',
+              'controller' => 'Index',
+              'action'     => 'contatti',
+              ],
+              ]
+              ], */
             'login' => [
                 'type' => 'Segment',
                 'options' => [
@@ -171,7 +171,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'zfcuser',
-                        'action'     => 'login',
+                        'action' => 'login',
                     ],
                 ]
             ],
@@ -182,7 +182,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'zfcuser',
-                        'action'     => 'login',
+                        'action' => 'login',
                     ],
                 ]
             ],
@@ -193,7 +193,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'zfcuser',
-                        'action'     => 'logout',
+                        'action' => 'logout',
                     ]
                 ],
                 'may_terminate' => true
@@ -217,10 +217,10 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'goalioforgotpassword_forgot',
-                        'action'     => 'reset',
+                        'action' => 'reset',
                     ],
                     'constraints' => [
-                        'userId'  => '[A-Fa-f0-9]+',
+                        'userId' => '[A-Fa-f0-9]+',
                         'token' => '[A-F0-9]+',
                     ],
                 ],
@@ -233,7 +233,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action'     => 'signup',
+                        'action' => 'signup',
                     ],
                     'constraints' => [
                         'mobile' => '[mobile]+'
@@ -247,7 +247,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action'     => 'signup',
+                        'action' => 'signup',
                     ],
                 ]
             ],
@@ -265,7 +265,7 @@ return [
                     ],
                 ]
             ],
-             'signup-sms' => [
+            'signup-sms' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/signup-sms',
@@ -293,17 +293,6 @@ return [
                     ],
                 ]
             ],
-            'fleet-id-sms-verification' => [
-                    'type' => 'Segment',
-                    'options' => [
-                            'route' => '/fleet-id-sms-verification',
-                            'defaults' => [
-                                    '__NAMESPACE__' => 'Application\Controller',
-                                    'controller' => 'User',
-                                    'action' => 'fleet-id-sms-verification'
-                            ],
-                    ]
-            ],
             'signup-3' => [
                 'type' => 'Segment',
                 'options' => [
@@ -325,7 +314,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action'     => 'signup-score',
+                        'action' => 'signup-score',
                     ],
                 ]
             ],
@@ -336,7 +325,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action'     => 'signup-score-completion',
+                        'action' => 'signup-score-completion',
                     ],
                 ]
             ],
@@ -391,7 +380,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'cookies',
+                        'action' => 'cookies',
                     ],
                 ]
             ],
@@ -402,7 +391,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'notelegali',
+                        'action' => 'notelegali',
                     ],
                 ]
             ],
@@ -413,7 +402,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'privacy',
+                        'action' => 'privacy',
                     ],
                 ]
             ],
@@ -424,7 +413,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'callcenter',
+                        'action' => 'callcenter',
                     ],
                 ]
             ],
@@ -435,7 +424,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'acea',
+                        'action' => 'acea',
                     ],
                 ],
             ],
@@ -446,7 +435,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'aeronautica',
+                        'action' => 'aeronautica',
                     ],
                 ]
             ],
@@ -457,7 +446,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'agoal',
+                        'action' => 'agoal',
                     ],
                 ]
             ],
@@ -468,7 +457,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'aidia',
+                        'action' => 'aidia',
                     ],
                 ]
             ],
@@ -479,7 +468,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'alcons',
+                        'action' => 'alcons',
                     ],
                 ]
             ],
@@ -490,7 +479,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'aldai',
+                        'action' => 'aldai',
                     ],
                 ]
             ],
@@ -501,7 +490,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'anas',
+                        'action' => 'anas',
                     ],
                 ],
             ],
@@ -512,7 +501,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'arci',
+                        'action' => 'arci',
                     ],
                 ],
             ],
@@ -523,7 +512,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'assocral',
+                        'action' => 'assocral',
                     ],
                 ],
             ],
@@ -533,8 +522,8 @@ return [
                     'route' => '/{bikemi}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',// Redirect to the Index page as require on Issue-1295
-                        'action'     => 'index',
+                        'controller' => 'Index', // Redirect to the Index page as require on Issue-1295
+                        'action' => 'index',
                     ],
                 ]
             ],
@@ -545,7 +534,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'chigi',
+                        'action' => 'chigi',
                     ],
                 ],
             ],
@@ -556,10 +545,10 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'coa',
+                        'action' => 'coa',
                     ],
                 ],
-            ], 
+            ],
             'coin' => [
                 'type' => 'Segment',
                 'options' => [
@@ -567,10 +556,10 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'coin',
+                        'action' => 'coin',
                     ],
                 ],
-            ], 
+            ],
             'comunedifirenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -578,10 +567,10 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'comunedifirenze',
+                        'action' => 'comunedifirenze',
                     ],
                 ],
-            ], 
+            ],
             'controradioclub' => [
                 'type' => 'Segment',
                 'options' => [
@@ -589,7 +578,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'controradioclub',
+                        'action' => 'controradioclub',
                     ],
                 ],
             ],
@@ -600,7 +589,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'espresso',
+                        'action' => 'espresso',
                     ],
                 ]
             ],
@@ -611,7 +600,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action'     => 'index',
+                        'action' => 'index',
                     ],
                 ]
             ],
@@ -622,7 +611,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'express',
+                        'action' => 'express',
                     ],
                 ],
             ],
@@ -633,7 +622,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'fao',
+                        'action' => 'fao',
                     ],
                 ]
             ],
@@ -644,7 +633,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'fidelizzando',
+                        'action' => 'fidelizzando',
                     ],
                 ]
             ],
@@ -655,7 +644,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'firenze',
+                        'action' => 'firenze',
                     ],
                 ]
             ],
@@ -666,7 +655,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'flcg',
+                        'action' => 'flcg',
                     ],
                 ]
             ],
@@ -677,7 +666,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'futura',
+                        'action' => 'futura',
                     ],
                 ]
             ],
@@ -688,7 +677,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'green',
+                        'action' => 'green',
                     ],
                 ],
             ],
@@ -699,7 +688,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'greenfi',
+                        'action' => 'greenfi',
                     ],
                 ],
             ],
@@ -710,7 +699,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'gym17',
+                        'action' => 'gym17',
                     ],
                 ],
             ],
@@ -721,7 +710,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'intern',
+                        'action' => 'intern',
                     ],
                 ],
             ],
@@ -732,7 +721,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'kpmg',
+                        'action' => 'kpmg',
                     ],
                 ],
             ],
@@ -743,7 +732,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'la7',
+                        'action' => 'la7',
                     ],
                 ],
             ],
@@ -754,7 +743,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'legambiente',
+                        'action' => 'legambiente',
                     ],
                 ],
             ],
@@ -765,7 +754,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'linear',
+                        'action' => 'linear',
                     ],
                 ]
             ],
@@ -776,7 +765,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'link',
+                        'action' => 'link',
                     ],
                 ]
             ],
@@ -787,7 +776,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'lumsa',
+                        'action' => 'lumsa',
                     ],
                 ]
             ],
@@ -798,7 +787,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'madama',
+                        'action' => 'madama',
                     ],
                 ]
             ],
@@ -809,7 +798,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'market',
+                        'action' => 'market',
                     ],
                 ]
             ],
@@ -820,7 +809,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'maxxi',
+                        'action' => 'maxxi',
                     ],
                 ]
             ],
@@ -831,7 +820,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'ording',
+                        'action' => 'ording',
                     ],
                 ],
             ],
@@ -842,7 +831,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'ordpro',
+                        'action' => 'ordpro',
                     ],
                 ],
             ],
@@ -853,7 +842,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'payback',
+                        'action' => 'payback',
                     ],
                 ],
             ],
@@ -864,7 +853,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'payback',
+                        'action' => 'payback',
                     ],
                 ],
             ],
@@ -875,7 +864,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'pwc',
+                        'action' => 'pwc',
                     ],
                 ],
             ],
@@ -886,7 +875,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'saba',
+                        'action' => 'saba',
                     ],
                 ]
             ],
@@ -897,7 +886,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'scoac1',
+                        'action' => 'scoac1',
                     ],
                 ]
             ],
@@ -908,22 +897,22 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'scuoleciviche',
+                        'action' => 'scuoleciviche',
                     ],
                 ]
             ],
             // disable 2017-02-13
-            /*'sim1' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{sim1}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action'     => 'sim1',
-                    ],
-                ]
-            ],*/
+            /* 'sim1' => [
+              'type' => 'Segment',
+              'options' => [
+              'route' => '/{sim1}',
+              'defaults' => [
+              '__NAMESPACE__' => 'Application\Controller',
+              'controller' => 'LandingPage',
+              'action'     => 'sim1',
+              ],
+              ]
+              ], */
             'svolta' => [
                 'type' => 'Segment',
                 'options' => [
@@ -931,7 +920,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'svolta',
+                        'action' => 'svolta',
                     ],
                 ]
             ],
@@ -942,7 +931,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'teatro-elfo',
+                        'action' => 'teatro-elfo',
                     ],
                 ]
             ],
@@ -953,7 +942,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'tevere',
+                        'action' => 'tevere',
                     ],
                 ]
             ],
@@ -964,7 +953,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'unirm1',
+                        'action' => 'unirm1',
                     ],
                 ],
             ],
@@ -975,7 +964,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'vipzip',
+                        'action' => 'vipzip',
                     ],
                 ],
             ],
@@ -986,7 +975,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
-                        'action'     => 'volontariocard',
+                        'action' => 'volontariocard',
                     ],
                 ]
             ],
@@ -997,7 +986,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
-                        'action'     => 'pay',
+                        'action' => 'pay',
                     ],
                 ]
             ],
@@ -1008,7 +997,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
-                        'action'     => 'pay-return',
+                        'action' => 'pay-return',
                     ],
                 ]
             ],
@@ -1019,7 +1008,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
-                        'action'     => 'pay-error',
+                        'action' => 'pay-error',
                     ],
                 ]
             ],
@@ -1030,7 +1019,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Payment',
-                        'action'     => 'pay-success',
+                        'action' => 'pay-success',
                     ],
                 ]
             ],
@@ -1196,6 +1185,24 @@ return [
                             ]
                         ]
                     ],
+                    'debt-collection' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{debt-collection}',
+                            'defaults' => [
+                                'action' => 'debt-collection'
+                            ]
+                        ]
+                    ],
+                    'debt-collection-payment' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{debt-collection-payment}',
+                            'defaults' => [
+                                'action' => 'debt-collection-payment'
+                            ]
+                        ]
+                    ],
                     'disable-contract' => [
                         'type' => 'Segment',
                         'options' => [
@@ -1276,17 +1283,17 @@ return [
             'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service'
         ],
         'factories' => [
-            'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'RegistrationService'      => 'Application\Service\RegistrationServiceFactory',
-            'RegistrationForm'         => 'Application\Form\RegistrationFormFactory',
-            'RegistrationForm2'        => 'Application\Form\RegistrationForm2Factory',
-            'PaypalRequest'            => 'Application\Service\PaypalRequestFactory',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'RegistrationService' => 'Application\Service\RegistrationServiceFactory',
+            'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
+            'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
+            'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
-            'PaymentService'           => 'Application\Service\PaymentServiceFactory',
-            'ProfileForm'              => 'Application\Form\ProfileFormFactory',
-            'PasswordForm'             => 'Application\Form\PasswordFormFactory',
-            'DriverLicenseForm'        => 'Application\Form\DriverLicenseFormFactory',
-            'PromoCodeForm'            => 'Application\Form\PromoCodeFormFactory',
+            'PaymentService' => 'Application\Service\PaymentServiceFactory',
+            'ProfileForm' => 'Application\Form\ProfileFormFactory',
+            'PasswordForm' => 'Application\Form\PasswordFormFactory',
+            'DriverLicenseForm' => 'Application\Form\DriverLicenseFormFactory',
+            'PromoCodeForm' => 'Application\Form\PromoCodeFormFactory',
             'ForeignDriversLicenseForm' => 'Application\Form\ForeignDriversLicenseFormFactory',
             'Application\Service\ProviderAuthentication' => 'Application\Service\ProviderAuthenticationServiceFactory',
             'Application\Listener\DriversLicenseValidationListener' => 'Application\Listener\DriversLicenseValidationListenerFactory',
@@ -1350,23 +1357,23 @@ return [
         ],
         'invokables' => [
             'IsUserArea' => 'Application\View\Helper\IsUserArea',
-            'Minute'     => 'Application\View\Helper\Minute',
+            'Minute' => 'Application\View\Helper\Minute',
             'IsLoggedIn' => 'Application\View\Helper\IsLoggedIn',
             'LoginProvider' => 'Application\View\Helper\LoginProvider'
         ]
     ],
     'view_manager' => [
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
         'template_map' => [
-            'layout/layout'           => __DIR__ . '/../view/layout/layout2.phtml',
+            'layout/layout' => __DIR__ . '/../view/layout/layout2.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
-            'zfc-user/user/login'     => __DIR__ . '/../view/zfc-user/user/login.phtml',
+            'error/404' => __DIR__ . '/../view/error/404.phtml',
+            'error/index' => __DIR__ . '/../view/error/index.phtml',
+            'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
@@ -1375,12 +1382,10 @@ return [
             'ViewJsonStrategy'
         ]
     ],
-
     // ACL
     'bjyauthorize' => [
         'guards' => [
             'BjyAuthorize\Guard\Controller' => [
-
                 ['controller' => 'zfcuser', 'roles' => []],
                 ['controller' => 'goalioforgotpassword_forgot', 'roles' => []],
                 ['controller' => 'Application\Controller\Index', 'roles' => []],
@@ -1421,13 +1426,12 @@ return [
             ],
         ],
     ],
-
     'asset_manager' => [
         'caching' => [
             'default' => [
-                'cache'     => 'Assetic\\Cache\\FilesystemCache',
+                'cache' => 'Assetic\\Cache\\FilesystemCache',
                 'options' => [
-                    'dir' => $baseDir.'/data/cache',
+                    'dir' => $baseDir . '/data/cache',
                 ],
             ],
         ],
@@ -1469,18 +1473,16 @@ return [
             ],
             'aliases' => [
                 // Bower Assets
-                'bower' => $baseDir.'/bower_components',
-
+                'bower' => $baseDir . '/bower_components',
                 // Public Assets
-                'public' => $baseDir.'/public',
-
+                'public' => $baseDir . '/public',
                 // Overlay Assets
-                'assets-modules/img/overlay' => $baseDir.'/public/images/overlay',
-                'assets-modules/images/overlay' => $baseDir.'/public/images/overlay'
+                'assets-modules/img/overlay' => $baseDir . '/public/images/overlay',
+                'assets-modules/images/overlay' => $baseDir . '/public/images/overlay'
             ],
             'paths' => [
                 __DIR__ . '/../public',
-                $baseDir.'/public',
+                $baseDir . '/public',
             ]
         ],
         'filters' => [
@@ -1498,7 +1500,6 @@ return [
             ],
         ],
     ],
-
     'console' => [
         'router' => [
             'routes' => [
@@ -1708,9 +1709,9 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePromoCodesOnceCompute',
                             'action' => 'promocode-once-main'
-			]
-	 	    ]
-		],
+                        ]
+                    ]
+                ],
                 'bonus-compute' => [
                     'type' => 'simple',
                     'options' => [

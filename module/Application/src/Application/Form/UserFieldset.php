@@ -656,23 +656,16 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                             ],
                             'callback' => function($value, $context = array()) {
 
-
-                                if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 3 || $context['fleet'] == 4) {
-                                    $smsVerification = new Container('smsVerification');
-                                    //$smsVerification = new Container('formValidation');
-                                    $isValid = $value == $smsVerification->offsetGet('mobile');
-                                    return $isValid;
-                                } else {
-                                    return true;
-                                }
+                                $smsVerification = new Container('smsVerification');
+                                $isValid = $value == $smsVerification->offsetGet('mobile');
+                                return $isValid;
                             }
                         ]
                     ]
                 ]
             ],
             'smsCode' => [
-                //'required' => true,
-                'required' => false,
+                'required' => true,
                 'filters' => [
                     [
                         'name' => 'StringTrim'
@@ -694,13 +687,9 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                             ],
                             'callback' => function($value, $context = array()) {
 
-                                if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 3 || $context['fleet'] == 4) {
-                                    $smsVerification = new Container('smsVerification');
-                                    $isValid = $value == $smsVerification->offsetGet('code');
-                                    return $isValid;
-                                } else {
-                                    return true;
-                                }
+                                $smsVerification = new Container('smsVerification');
+                                $isValid = $value == $smsVerification->offsetGet('code');
+                                return $isValid;
                             }
                         ]
                     ]
