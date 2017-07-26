@@ -115,17 +115,6 @@ class UserController extends AbstractActionController {
         return new ViewModel();
     }
 
-    public function fleetIdSmsVerificationAction() {
-        //$arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
-
-        $arrayIdFleet = ['0', '1', '2', '3', '4'];
-
-        $response = $this->getResponse();
-        $response->setStatusCode(200);
-        $response->setContent(json_encode($arrayIdFleet));
-        return $response;
-    }
-
     public function signupAction() {
 
 
