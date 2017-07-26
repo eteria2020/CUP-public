@@ -337,19 +337,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
         ]);
 
         $this->add([
-            'name' => 'phone',
-            'type' => 'Zend\Form\Element\Text',
-            'attributes' => [
-                'id' => 'phone',
-                'maxlength' => 13,
-                'placeholder' => $translator->translate('Telefono'),
-            ],
-            'options' => [
-                'label' => $translator->translate('Telefono'),
-            ]
-        ]);
-
-        $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition1',
             'options' => [
@@ -670,7 +657,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                             'callback' => function($value, $context = array()) {
 
 
-                                if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 4) {
+                                if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 3 || $context['fleet'] == 4) {
                                     $smsVerification = new Container('smsVerification');
                                     //$smsVerification = new Container('formValidation');
                                     $isValid = $value == $smsVerification->offsetGet('mobile');
@@ -707,31 +694,14 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                             ],
                             'callback' => function($value, $context = array()) {
 
-                                if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 4) {
+                                if ($context['fleet'] == 1 || $context['fleet'] == 2 || $context['fleet'] == 3 || $context['fleet'] == 4) {
                                     $smsVerification = new Container('smsVerification');
-                                    //$smsVerification = new Container('formValidation');
                                     $isValid = $value == $smsVerification->offsetGet('code');
                                     return $isValid;
                                 } else {
                                     return true;
                                 }
                             }
-                        ]
-                    ]
-                ]
-            ],
-            'phone' => [
-                'required' => false,
-                'filters' => [
-                    [
-                        'name' => 'StringTrim'
-                    ]
-                ],
-                'validators' => [
-                    [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 3
                         ]
                     ]
                 ]
