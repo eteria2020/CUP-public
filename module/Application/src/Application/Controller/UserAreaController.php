@@ -483,6 +483,7 @@ class UserAreaController extends AbstractActionController
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if($response->getCompletedCorrectly()) {
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                        $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
                     } else {
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
