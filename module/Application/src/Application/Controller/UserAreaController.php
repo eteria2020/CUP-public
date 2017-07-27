@@ -482,7 +482,7 @@ class UserAreaController extends AbstractActionController
                  if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if($response->getCompletedCorrectly()) {
-                        $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
                     } else {
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
@@ -490,7 +490,7 @@ class UserAreaController extends AbstractActionController
                     return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
                 }
             }else {
-                $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
             }
         } else {
             $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
