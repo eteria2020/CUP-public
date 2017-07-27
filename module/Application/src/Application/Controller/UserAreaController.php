@@ -482,7 +482,6 @@ class UserAreaController extends AbstractActionController
                  if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if($response->getCompletedCorrectly()) {
-                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
                         $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
                     } else {
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
