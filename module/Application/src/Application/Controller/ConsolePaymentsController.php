@@ -79,27 +79,4 @@ class ConsolePaymentsController extends AbstractActionController
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
-
-    /**
-     * @param TripPaymentsService $tripPaymentsService
-     * @param PaymentsService $paymentsService
-     * @param CustomersService $customersService
-     * @param Logger $logger
-     */
-
-    public function preAuthorizationAction() {
-        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
-        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
-
-        $request = $this->getRequest();
-        $avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
-        $avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
-        $avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
-
-        $customerId = $this->getRequest()->getParam('customerId');
-        $customer = $this->customersService->findById($customerId);
-
-        $this->logger->log("\ntest time = " . date_create()->format('Y-m-d H:i:s'));
-
-    }
 }
