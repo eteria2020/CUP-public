@@ -189,7 +189,7 @@ class UserAreaController extends AbstractActionController
      */
     public function indexAction()
     {
-        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63272, 37841);
+        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63272, 37841,  28759);
 
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
@@ -198,12 +198,13 @@ class UserAreaController extends AbstractActionController
 //      }
 
         if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
-            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
+            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0 || 
+                    (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }
         } else {
             if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
-                      $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
             }
         }
 
