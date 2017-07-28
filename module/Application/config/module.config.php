@@ -1679,6 +1679,17 @@ return [
                         ]
                     ]
                 ],
+                'pre-authorization' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'pre-authorization <cutomerId> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'pre-authorization'
+                        ]
+                    ]
+                ],
                 'generate-trip-invoice' => [
                     'type' => 'simple',
                     'options' => [
