@@ -60,7 +60,7 @@
                                         <div class="block-data-table-th cw-1-6 text-center">Fine</div>
                                         <div class="block-data-table-th cw-1-6 text-center">Durata (min.)</div>
                                         <div class="block-data-table-th cw-1-6 text-center">Sosta (min.)</div>
-                                        <div class="block-data-table-th cw-1-6 text-center">Importo (&euro;)</div>
+                                        <div class="block-data-table-th cw-1-6 text-center">Importo</div>
                                     </div>
                                     <!-- Trip table headers -->
 
@@ -80,7 +80,7 @@
                                                 $trip->getTimestampEnd()->format('d/m/y H:i'));
                                             echo sprintf('<div class="block-data-table-td cw-1-6 text-center">%d</div>', $trip->getDurationMinutes());
                                             echo sprintf('<div class="block-data-table-td cw-1-6 text-center">%d</div>', $trip->getParkSeconds()/60);
-                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-right">%s</div>', $trip->getTripPayment()->getTotalCost()/100);
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-right">&euro; %s</div>', $trip->getTripPayment()->getTotalCost()/100);
                                             echo('</div>');
                                         }
                                         ?>
@@ -93,7 +93,7 @@
                                             <div class="block-data-table-td cw-1-6"></div>
                                             <div class="block-data-table-td cw-1-6"></div>
                                             <div class="block-data-table-td cw-1-6 text-center">TOTALE</div>
-                                            <div class="block-data-table-td cw-1-6 text-right"><?=$totalCost/100; ?></div>
+                                            <div class="block-data-table-td cw-1-6 text-right">&euro; <?=$totalCost/100; ?></div>
                                         </div>
                                     </div>
 

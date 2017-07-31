@@ -189,7 +189,7 @@ class UserAreaController extends AbstractActionController
      */
     public function indexAction()
     {
-        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63272, 37841,  28759);
+        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63272, 37841);
 
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
