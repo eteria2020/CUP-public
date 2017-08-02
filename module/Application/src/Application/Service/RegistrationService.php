@@ -416,7 +416,7 @@ final class RegistrationService
     }
     
     /**
-     * Ripulisce il numero di telefono da eventuali doppi zero del DIALCODE e lo compone aggiungendo "+ DIALCODE MOBILE"
+     * Sanitize the mobile number from double zero and create the corret string with "+ dial_code mobile"
      * @param array $data
      * @return array $data
      */
