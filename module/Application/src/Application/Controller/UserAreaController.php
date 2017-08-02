@@ -198,10 +198,10 @@ class UserAreaController extends AbstractActionController
 //                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
 //      }
 //      
-//        if (in_array($customer->getId(), $customerForDebuging) ||
-//                in_array($customer->getFleet()->getCode(),$feetForDebuging)) { // debug condition
+        if (in_array($customer->getId(), $customerForDebuging) ||
+                in_array($customer->getFleet()->getCode(),$feetForDebuging)) { // debug condition
 
-        if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
+//        if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
 
             if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0 || 
                     (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
@@ -488,7 +488,7 @@ class UserAreaController extends AbstractActionController
                  if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if($response->getCompletedCorrectly()) {
-                        $this->flashMessenger()->addErrorMessage('Pagamento completato con successo');
+                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
                     } else {
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
