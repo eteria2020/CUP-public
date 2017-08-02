@@ -484,16 +484,6 @@ class UserController extends AbstractActionController {
 
         $data = $this->registrationService->retrieveValidData();
 
-        $smsVerification = new Container('smsVerification');
-
-        $dp1 = "+";
-        $dp2 = "00";
-        $prefix = $smsVerification->offsetGet('dialCode');
-        $str1 = $data['mobile'];
-        $str1 = preg_replace('/^' . preg_quote($dp1 . $prefix, '/') . '/', '', $str1);
-        $str1 = preg_replace('/^' . preg_quote($dp2 . $prefix, '/') . '/', '', $str1);
-        $data['mobile'] = '+' . $smsVerification->offsetGet('dialCode') . $str1;
-
         // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
         if (empty($data)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
@@ -501,7 +491,9 @@ class UserController extends AbstractActionController {
             return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData($data);
+        
         try {
+            $data = $this->registrationService->sanitizeDialMobile($data);
             $this->registrationService->notifySharengoByMail($data);
             $this->registrationService->saveData($data);
             $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash'], $data['language']);
