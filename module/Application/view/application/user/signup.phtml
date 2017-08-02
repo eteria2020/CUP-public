@@ -11,27 +11,6 @@ $this->headLink()
 
 <!-- main -->
 <div id="main">
-    <!-- overlay -->
-    <div id="sng-overlay" style="visibility: hidden">
-        <div class="table">
-            <div class="cell">
-                <div class="box" style="background:#fff;">
-                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
-                    <div id="sng-overlay-content1">
-                        <div class="content-more" style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
-                            <h3 style="background: #07ba50;color: #fff;">ATTENZIONE</h3>
-                            <br>
-                            <ul>
-                                <p style="color:black;text-align: justify; font-weight: 500;">Domenica 12 Febbraio dalle ore 9 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- overlay -->
-
 
     <div class="content">
         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
@@ -747,7 +726,26 @@ $this->headLink()
 
     </div>
     <!-- content -->
-
+    <!-- overlay -->
+    <!--<div id="sng-overlay" style="visibility: hidden">
+        <div class="table">
+            <div class="cell">
+                <div class="box" style="background:#fff;">
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
+                            <h3 style="background: #07ba50;color: #fff;">ATTENZIONE</h3>
+                            <br>
+                            <ul>
+                                <p style="color:black;text-align: justify; font-weight: 500;">Domenica 12 Febbraio dalle ore 9 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- overlay -->
 </div>
 <!-- main -->
 
@@ -773,11 +771,11 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
             overlay = $('#sng-overlay');
 
             var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
-var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
-        var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
+            var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
+            var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
 
-        //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
-    //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
+            //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
+            //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
 
         if (now > dateStart) {
             if (now < dateEnd) {
