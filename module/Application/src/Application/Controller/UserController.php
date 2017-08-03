@@ -506,7 +506,9 @@ class UserController extends AbstractActionController {
             return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData($data);
+        
         try {
+            $data = $this->registrationService->sanitizeDialMobile($data);
             $this->registrationService->notifySharengoByMail($data);
             $this->registrationService->saveData($data);
             $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash'], $data['language']);

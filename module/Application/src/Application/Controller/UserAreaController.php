@@ -189,21 +189,27 @@ class UserAreaController extends AbstractActionController
      */
     public function indexAction()
     {
-        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63272, 37841);
+        $customerForDebuging = array(2, 3, 4, 22577, 19065, 2981, 39096, 63272, 37841, 26388, 46382);
+        $feetForDebuging = array ("FI","MO");
 
         // check wether the customer still needs to register a credit card
         $customer = $this->userService->getIdentity();
 //      if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
 //                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
 //      }
+//      
+        if (in_array($customer->getId(), $customerForDebuging) ||
+                in_array($customer->getFleet()->getCode(),$feetForDebuging)) { // debug condition
 
-        if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
-            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0) {
+//        if (in_array($customer->getId(), $customerForDebuging)) { // debug condition
+
+            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0 || 
+                    (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
                 $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
             }
         } else {
             if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
-                      $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+                $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
             }
         }
 
@@ -482,7 +488,7 @@ class UserAreaController extends AbstractActionController
                  if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if($response->getCompletedCorrectly()) {
-                        $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
+                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
                     } else {
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
@@ -490,7 +496,7 @@ class UserAreaController extends AbstractActionController
                     return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
                 }
             }else {
-                $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
             }
         } else {
             $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
