@@ -67,6 +67,11 @@ $(function () {
                         case "Numero di telefono non corretto":
                             $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto</p></div>");
                             break;
+
+                        case "Found":
+                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero già presente</p></div>");
+                            break;
+
                     }
 
                     $('#buttonCode').show();
