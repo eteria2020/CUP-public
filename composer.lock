@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
-                "reference": "616ec0dec4ba9b09652c7608b600acaa13e02348"
+                "reference": "f3176dc7c2b3272e0b2ecfcdc3d5833b059d4c32"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-04-14 12:36:02"
+            "time": "2017-04-18 13:27:16"
         },
         {
             "name": "cup-web/public-business-module",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
