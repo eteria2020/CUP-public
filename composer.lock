@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
-                "reference": "f3176dc7c2b3272e0b2ecfcdc3d5833b059d4c32"
+                "reference": "d35c9cfeccb15ef25e73c2f6dbe8026c972f703b"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-04-18 13:27:16"
+            "time": "2017-08-08 07:43:46"
         },
         {
             "name": "cup-web/public-business-module",
