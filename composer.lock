@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
-                "reference": "616ec0dec4ba9b09652c7608b600acaa13e02348"
+                "reference": "d35c9cfeccb15ef25e73c2f6dbe8026c972f703b"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-04-14 12:36:02"
+            "time": "2017-08-08 07:43:46"
         },
         {
             "name": "cup-web/public-business-module",
@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
-                "reference": "d2c3c71ac6636808d8f1de64eba012a7cce42c64"
+                "reference": "28188a01dbd823bb426c6ce98eb8558dfa33331a"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2017-07-28 09:10:51"
+            "time": "2017-08-10 13:39:46"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2942,7 +2942,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
-                "reference": "7df531932635e53a459abea64c86e30318853801"
+                "reference": "f1444303dcdadfb9e19f43073567dcdb8131e604"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2956,7 +2956,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2017-07-26 13:03:33"
+            "time": "2017-08-07 13:22:10"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
