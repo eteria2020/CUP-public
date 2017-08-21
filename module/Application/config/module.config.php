@@ -236,7 +236,7 @@ return [
                         'action' => 'signup',
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -261,7 +261,7 @@ return [
                         'action' => 'signup2'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -275,7 +275,7 @@ return [
                         'action' => 'signup-sms'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -289,7 +289,7 @@ return [
                         'action' => 'signup-verify-code'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -303,7 +303,7 @@ return [
                         'action' => 'signup3'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -1031,18 +1031,30 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'action' => 'index',
                         'controller' => 'UserArea',
-                    ]
+                    ],
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
+                    'mobile' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{mobile}',
+                            'defaults' => [
+                                'action' => 'index'
+                            ]
+                        ]
+                    ],
                     'tariffe' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{tariffe}',
+                            'route' => '/{tariffe}[/:mobile]',
                             'defaults' => [
                                 'action' => 'rates'
                             ]
-                        ]
+                        ],
+                        'constraints' => [
+                            'mobile' => 'mobile'
+                        ],
                     ],
                     'utente' => [
                         'type' => 'Segment',
@@ -1085,9 +1097,12 @@ return [
                     'patente' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{patente}',
+                            'route' => '/{patente}[/:mobile]',
                             'defaults' => [
                                 'action' => 'drivingLicence'
+                            ],
+                            'constraints' => [
+                                  'mobile' => 'mobile'
                             ]
                         ]
                     ],
@@ -1188,9 +1203,12 @@ return [
                     'debt-collection' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{debt-collection}',
+                            'route' => '/{debt-collection}[/:mobile]',
                             'defaults' => [
                                 'action' => 'debt-collection'
+                            ],
+                            'constraints' => [
+                            'mobile' => 'mobile'
                             ]
                         ]
                     ],

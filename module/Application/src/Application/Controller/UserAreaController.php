@@ -189,11 +189,21 @@ class UserAreaController extends AbstractActionController
      */
     public function indexAction()
     {
+        //if there are mobile param change layout
+        $mobile = substr($this->getRequest()->getUriString(),-6);
+        $userAreaMobile = '';
+        $mobileParam = NULL;
+        if ($mobile == 'mobile') {
+            $this->layout('layout/map');
+            $mobileParam = 'mobile';
+            $userAreaMobile = '/'.$mobileParam;
+        }
+
         $customer = $this->userService->getIdentity();
 
         if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0 || 
                 (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
-            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
         }
 
         // if not, continue with index action
@@ -241,7 +251,7 @@ class UserAreaController extends AbstractActionController
             }
 
             if ($editForm) {
-                return $this->redirect()->toRoute('area-utente');
+                return $this->redirect()->toRoute('area-utente'.$userAreaMobile);
             }
         }
 
@@ -340,6 +350,11 @@ class UserAreaController extends AbstractActionController
     public function drivingLicenceAction()
     {
         /** @var DriverLicenseForm $form */
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $form = $this->driverLicenseForm;
         $customerData = $this->hydrator->extract($this->customer);
         $form->setData(['driver' => $customerData]);
@@ -378,7 +393,7 @@ class UserAreaController extends AbstractActionController
                     $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. Ci scusiamo per l\'inconveniente');
                 }
 
-                return $this->redirect()->toRoute('area-utente/patente');
+                return $this->redirect()->toRoute('area-utente/patente', ['mobile' => $mobile]);
             } else {
                 $this->showError = true;
             }
@@ -439,6 +454,11 @@ class UserAreaController extends AbstractActionController
 
     public function debtCollectionAction()
     {
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $customer = $this->userService->getIdentity();
         
         $tripsToBePayedAndWrong = null;
@@ -461,6 +481,12 @@ class UserAreaController extends AbstractActionController
 
     public function debtCollectionPaymentAction()
     {
+        $mobile = $this->params()->fromRoute('mobile');
+        $userAreaMobile = '';
+        if($mobile){
+            $this->layout('layout/map');
+            $userAreaMobile = '/'.$mobile;
+        }
         $scriptIsRunning =  $this->paymentScriptRunsService->isRunning();
 
         if(!$scriptIsRunning){
@@ -479,13 +505,13 @@ class UserAreaController extends AbstractActionController
                     return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
                 }
             }else {
-                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente'));
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente'.$userAreaMobile));
             }
         } else {
             $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
         }
 
-        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection'));
+        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
 
     }
 
