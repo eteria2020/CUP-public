@@ -69,7 +69,7 @@ $(function () {
                             break;
 
                         case "Found":
-                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero già presente</p></div>");
+                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero gi&agrave presente</p></div>");
                             break;
 
                     }
