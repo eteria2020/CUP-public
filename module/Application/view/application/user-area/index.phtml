@@ -600,6 +600,23 @@ $this->headLink()
                                     <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualBonuses()?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
+                                    
+                                    <br />
+                                    
+                                    <strong><?= $this->translate("QUESTA &Egrave; LA SITUAZIONE DEI TUOI PUNTI BONUS. "); ?></strong>
+                                    <br />
+
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPoints()?>">
+                                    <div style="margin-top: 5px;"></div>
+                                    <h2><?= $this->translate('Accreditati'); ?></h2>
+                                    <div style="margin-bottom: 15px;"></div>
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; font-size: 26px; color: red; margin-top: 5px;" type="text" value="<?php echo $this->customer->getUsedPoints()?>">
+                                    <div style="margin-top: 5px;"></div>
+                                    <h2><?= $this->translate('Utilizzati'); ?></h2>
+                                    <div style="margin-bottom: 15px;"></div>
+                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints()?>">
+                                    <div style="margin-top: 5px;"></div>
+                                    <h2><?= $this->translate('Rimanenti'); ?></h2>
 
                                     <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
                                         <br />
