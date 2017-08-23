@@ -585,8 +585,6 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field block-avatar-app content-align-center">
-                                    <strong><?= $this->translate("QUESTA &Egrave; LA SITUAZIONE DEI TUOI MINUTI BONUS. "); ?></strong>
-                                    <br />
 
                                     <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalBonuses() ?>">
                                     <div style="margin-top: 5px;"></div>
@@ -604,22 +602,15 @@ $this->headLink()
                             <!-- block-row-field -->
                             <br />
                             <div class="block-form-section content-align-center margin-bottom">
-                                <h2><?= $this->translate("I tuoi punti Bonus"); ?></h2>
+                                <h2><?= $this->translate("I tuoi punti INQUINAMENTO"); ?></h2>
                             </div>
                             
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field block-avatar-app content-align-center">
-                                    <strong><?= $this->translate("QUESTA &Egrave; LA SITUAZIONE DEI TUOI PUNTI BONUS. "); ?></strong>
-                                    <br />
-
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPoints() ?>">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPointsCurrentMonth() ?>">
                                     <div style="margin-top: 5px;"></div>
-                                    <h2><?= $this->translate('Accreditati'); ?></h2>
-                                    <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; font-size: 26px; color: red; margin-top: 5px;" type="text" value="<?php echo $this->customer->getUsedPoints() ?>">
-                                    <div style="margin-top: 5px;"></div>
-                                    <h2><?= $this->translate('Utilizzati'); ?></h2>
+                                    <h2><?= $this->translate('Accreditati questo mese'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
                                     <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
                                     <div style="margin-top: 5px;"></div>
