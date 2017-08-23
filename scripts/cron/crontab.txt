@@ -14,7 +14,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 47 00   * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 52 00   1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 
-40 02  * * *    root            /usr/local/scripts/clean.sh
+40 02  * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/clean.sh
 30 02  * * *    sharengo        /usr/local/scripts/clean_commands.sh
 50 02 11 * *    root            /etc/init.d/ntp restart
 
@@ -24,7 +24,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */9 * * * *     root            /usr/local/scripts/account_compute.sh
 
 # every day
-00 01 * * *     root            /usr/local/scripts/backup.sh
+00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 10 03 * * *     root            /usr/local/scripts/pay_invoice.sh
 45 07 * * *     root            /usr/local/scripts/pay_invoice_wrong.sh
 
