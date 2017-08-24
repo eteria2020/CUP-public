@@ -201,12 +201,15 @@ return [
             'forgot' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{forgot-password}',
+                    'route' => '/{forgot-password}[/:mobile]',
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'goalioforgotpassword_forgot',
                         'action' => 'forgot'
-                    ]
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
                 ],
                 'may_terminate' => true
             ],
@@ -1086,11 +1089,14 @@ return [
                         ]
                     ],
                     'dati-pagamento' => [
-                        'type' => 'Literal',
+                        'type' => 'Segment',
                         'options' => [
-                            'route' => '/dati-pagamento',
+                            'route' => '/dati-pagamento[/:mobile]',
                             'defaults' => [
                                 'action' => 'dati-pagamento'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
@@ -1109,19 +1115,25 @@ return [
                     'bonus' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{bonus}',
+                            'route' => '/{bonus}[/:mobile]',
                             'defaults' => [
                                 'action' => 'bonus'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
                     'additional-services' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{servizi-aggiuntivi}',
+                            'route' => '/{servizi-aggiuntivi}[/:mobile]',
                             'defaults' => [
                                 'controller' => 'AdditionalServices',
                                 'action' => 'additional-services'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
@@ -1158,18 +1170,24 @@ return [
                     'invoices-list' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{fatture}',
+                            'route' => '/{fatture}[/:mobile]',
                             'defaults' => [
                                 'action' => 'invoices-list'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
                     'package-my-sharengo' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/package-my-sharengo',
+                            'route' => '/package-my-sharengo[/:mobile]',
                             'defaults' => [
                                 'action' => 'package-my-sharengo'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],

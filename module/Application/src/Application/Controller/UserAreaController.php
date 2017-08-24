@@ -189,7 +189,7 @@ class UserAreaController extends AbstractActionController
      */
     public function indexAction()
     {
-        //if there are mobile param change layout
+        //if there is mobile param the layout changes
         $mobile = substr($this->getRequest()->getUriString(),-6);
         $userAreaMobile = '';
         $mobileParam = NULL;
@@ -295,6 +295,11 @@ class UserAreaController extends AbstractActionController
 
     public function ratesAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $customer = $this->identity();
 
         if (!$customer instanceof Customers) {
@@ -326,6 +331,11 @@ class UserAreaController extends AbstractActionController
 
     public function datiPagamentoAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $customer = $this->userService->getIdentity();
         $activateLink = $this->customerService->isFirstTripManualPaymentNeeded($customer);
         $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
@@ -349,12 +359,12 @@ class UserAreaController extends AbstractActionController
 
     public function drivingLicenceAction()
     {
-        /** @var DriverLicenseForm $form */
-        //if there are mobile param change layout
+        //if there is mobile param the layout changes
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
             $this->layout('layout/map');
         }
+        /** @var DriverLicenseForm $form */
         $form = $this->driverLicenseForm;
         $customerData = $this->hydrator->extract($this->customer);
         $form->setData(['driver' => $customerData]);
@@ -412,6 +422,11 @@ class UserAreaController extends AbstractActionController
 
     public function bonusAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         return new ViewModel([
             'customer'  => $this->customer,
             'listBonus' => $this->customerService->getAllBonus($this->customer)
@@ -420,6 +435,12 @@ class UserAreaController extends AbstractActionController
 
     public function invoicesListAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
         $customer = $this->userService->getIdentity();
         $availableDates = $this->invoicesService->getDistinctDatesForCustomerByMonth($customer);
 
@@ -454,7 +475,7 @@ class UserAreaController extends AbstractActionController
 
     public function debtCollectionAction()
     {
-        //if there are mobile param change layout
+        //if there is mobile param the layout changes
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
             $this->layout('layout/map');
@@ -481,6 +502,7 @@ class UserAreaController extends AbstractActionController
 
     public function debtCollectionPaymentAction()
     {
+        //if there is mobile param the layout changes
         $mobile = $this->params()->fromRoute('mobile');
         $userAreaMobile = '';
         if($mobile){
@@ -517,6 +539,11 @@ class UserAreaController extends AbstractActionController
 
     public function packageMySharengoAction()
     {
+        //if there is mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         return new ViewModel();
     }
 

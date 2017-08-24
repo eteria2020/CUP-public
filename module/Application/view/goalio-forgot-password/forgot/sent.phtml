@@ -1,3 +1,9 @@
+<?php
+//if there is mobile param the layout changes
+if ($this->mobile) {
+$this->layout('layout/map');
+}
+?>
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Recupero password'); ?></h1>
