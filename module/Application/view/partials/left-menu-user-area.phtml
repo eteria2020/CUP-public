@@ -1,12 +1,15 @@
 <div class="module-column-app side-sx">
     <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-    <nav class="block-nav-app">
+    <nav class="block-nav-app" >
         <ul>
             <!--the definition of the left menu is in the config/module.config.php at the key "navigation"-->
             <?php
             $menu = '';
             $mobile = substr($this->serverUrl(true), -6) == 'mobile' ? '/mobile' : '';
             foreach ($this->container as $page) {
+                if ($mobile && ($page->getRoute()=='area-utente/pin' || $page->getRoute()=='area-utente/tariffe' || $page->getRoute()=='area-utente/rents')){
+                    continue;
+                }
                 $menu .= '<li>';
                 $menu .= sprintf('<a href="%s" class="%s">', $page->getHref().$mobile, $page->isActive() ? 'active' : '');
                 $menu .= sprintf('<i class="%s"></i>', $page->get('icon'));
@@ -19,3 +22,15 @@
         </ul>
     </nav>
 </div>
+<?php
+if ($mobile){ ?>
+    <style>
+        @media (max-width: 690px) {
+            .app .module-wrapper-app.hide-side-bar .module-column-app.side-sx .block-nav-app ul {
+                height: 300px !important;
+            }
+        }
+    </style>
+    <?php
+}
+?>
