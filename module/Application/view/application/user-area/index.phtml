@@ -9,14 +9,13 @@ $this->headLink()
 ?>
 
 <!-- main -->
-<div id="main" class="detect-window-height">
+<div id="main" class="detect-window-height" >
 
     <!-- module-wrapper-app -->
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
         <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
-
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -492,6 +491,14 @@ $this->headLink()
                         <div class="block-form-section content-align-center margin-bottom" style="margin-top: 20px;">
                             <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate("I tuoi dati per l'accesso"); ?></h2>
                         </div>
+                        
+                        <div class="block-row-field clearfix">
+                                <div class="block-field block-avatar-app content-align-center">
+                                    <strong><?= $this->translate("GUIDANDO ELETTRICO HAI RISPARMIATO EMISSIONI DI CO2 PER"); ?></strong>
+                                    <div id="co2"></div>
+                                    <strong style="color:green"><?= $this->translate("GRAZIE!"); ?></strong>
+                                </div>
+                            </div>
 
                         <div id="viewEditPwd">
 
@@ -602,7 +609,7 @@ $this->headLink()
                             <!-- block-row-field -->
                             <br />
                             <div class="block-form-section content-align-center margin-bottom">
-                                <h2><?= $this->translate("I tuoi punti INQUINAMENTO"); ?></h2>
+                                <h2><?= $this->translate("Punti OSSIGENO"); ?></h2>
                             </div>
                             
                             <div class="block-row-field clearfix">
@@ -617,6 +624,8 @@ $this->headLink()
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
                                 </div>
                             </div>
+                            
+                            
 
                             <?php if (!$this->customer->getFirstPaymentCompleted()): ?>
                                 <br />
@@ -712,4 +721,23 @@ $this->inlineScript()->captureEnd();
             pageLink = "<?= $this->serverUrl(true) ?>";
 
     loadBanner(bannerJsonpUrl, userId, pageLink);
+    
+    if (document.location.pathname == "/area-utente") {
+        //console.log("11111");
+        //calculateCO2(userId);
+        $.ajax({
+            type: "POST",
+            url: "/co2",
+            data: {id: userId},
+            beforeSend: function () {
+                $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
+            },
+            success: function (data) {
+                $('#co2').html("<p>" + data.toString() + " KG </p>");
+            },
+            error: function () {
+                $('#co2').html("<p>" + data.toString() + "</p>");
+            }
+        });
+    }
 </script>

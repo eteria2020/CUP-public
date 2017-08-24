@@ -20,6 +20,7 @@ use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
+use SharengoCore\Service\TripsService;
 use Zend\Log\Logger;
 use SharengoCore\Service\EmailService as EmailService;
 
@@ -83,6 +84,11 @@ class UserController extends AbstractActionController {
      * @var FleetService
      */
     private $fleetService;
+    
+    /**
+     * @var TripsService
+     */
+    private $tripsService;
 
     /**
      * @param Form $form1
@@ -93,9 +99,10 @@ class UserController extends AbstractActionController {
      * @param ProfilingPlaformService $profilingPlatformService
      * @param Translator $translator
      * @param HydratorInterface $hydrator
+     * @param TripsService $tripsService
      */
     public function __construct(
-    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService
+    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
     ) {
 
         $this->form1 = $form1;
@@ -109,6 +116,7 @@ class UserController extends AbstractActionController {
         $this->smsConfig = $smsConfig;
         $this->emailService = $emailService;
         $this->fleetService = $fleetService;
+        $this->tripsService = $tripsService;
     }
 
     public function loginAction() {
@@ -272,6 +280,46 @@ class UserController extends AbstractActionController {
             $response->setContent(false);
             return $response;
         }
+    }
+    
+    public function  co2Action(){
+
+        $customerId = $this->params()->fromPost('id');
+        $customer = $this->customersService->findById($customerId);
+        $trips = $this->tripsService->getTripsByCustomer($customerId);
+        
+        $KG="";
+        $gr=106;
+        $Mc="";
+        
+        switch ($customer->getFleet()):
+            case 1:
+                $Vm=17;
+                break;
+            case 2:
+                $Vm=15;
+                break;
+            case 3:
+                $Vm=15;
+                break;
+            case 4:
+                $Vm=20;
+                break;
+        endswitch;
+
+        
+        foreach ($trips as $trip){
+            $Mc += date_diff($trip->getTimestampEnd()->modify("-".$trip->getParkSeconds()."second"),$trip->getTimestampBeginning());
+        }
+        
+        //KG = (((MINUTI CORSI/60) * VM)* GR/KM)/1000
+        $KG=((($Mc/60)*$Vm)*$gr)/1000;
+        
+        
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent($KG);
+        return $response;
     }
 
     public function signupSmsAction() {
@@ -597,5 +645,7 @@ class UserController extends AbstractActionController {
 
         return null;
     }
+    
+    
 
 }

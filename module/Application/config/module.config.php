@@ -340,6 +340,17 @@ return [
                     ]
                 ]
             ],
+            'co2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/co2',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'co2'
+                    ],
+                ]
+            ],
             'promocode-signup' => [
                 'type' => 'Segment',
                 'options' => [
