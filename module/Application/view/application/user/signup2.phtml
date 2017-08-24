@@ -46,7 +46,9 @@
          <div class="block-row-field clearfix">
 
             <div class="block-field bw-f w-2-4">
-                <p> <label><?= $this->translate('Numero patente'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                <p> <label><?= $this->translate('Numero patente'); ?></label> 
+                    <small><?= $this->translate('(Driver\'s license number)'); ?></small>
+                    <a href=""><i class="fa fa-info-circle"></i></a>
                     <?php
                         $driverLicense = $this->form->get('driver')->get('driverLicense');
                         echo $this->formElement($driverLicense);
@@ -58,7 +60,9 @@
 
         <div class="block-field bw-f w-2-4">
             <p>
-                <label><?= $this->translate('Rilascio da autorit&agrave;'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                <label><?= $this->translate('Rilascio da autorit&agrave;'); ?></label>
+                <small><?= $this->translate('(Issuing authority)'); ?></small>
+                <a href=""><i class="fa fa-info-circle"></i></a>
                 <?php
                     $driverLicenseAuthority = $this->form->get('driver')->get('driverLicenseAuthority');
                     echo $this->formElement($driverLicenseAuthority);
@@ -74,7 +78,9 @@
     <div class="block-row-field clearfix">
 
      <div class="block-field bw-f w-2-4">
-        <p> <label><?= $this->translate('Conseguita il'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+        <p> <label><?= $this->translate('Conseguita il'); ?></label> 
+            <small><?= $this->translate('(Issue date)'); ?></small> 
+            <a href=""><i class="fa fa-info-circle"></i></a>
             <?php
                 $driverLicenseReleaseDate = $this->form->get('driver')->get('driverLicenseReleaseDate');
                 echo $this->formElement($driverLicenseReleaseDate);
@@ -85,6 +91,7 @@
 
     <div class="block-field bw-f w-2-4">
         <p> <label><?= $this->translate('Data di scadenza'); ?></label>
+            <small><?= $this->translate('(Expiry date)'); ?></small>
             <?php
                 $driverLicenseExpire = $this->form->get('driver')->get('driverLicenseExpire');
                 echo $this->formElement($driverLicenseExpire);
@@ -101,6 +108,7 @@
 
     <div class="block-field bw-f w-2-4">
         <p> <label><?= $this->translate('Nome sulla patente'); ?></label>
+            <small><?= $this->translate('(Driver\'s license name)'); ?></small>
             <?php
                 $driverLicenseName = $this->form->get('driver')->get('driverLicenseName');
                 echo $this->formElement($driverLicenseName);
@@ -112,6 +120,7 @@
 
     <div class="block-field bw-f w-2-4">
         <p> <label><?= $this->translate('Cognome sulla patente'); ?></label>
+            <small><?= $this->translate('(Driver\'s license surname)'); ?></small>
             <?php
                 $driverLicenseSurname = $this->form->get('driver')->get('driverLicenseSurname');
                 echo $this->formElement($driverLicenseSurname);
@@ -125,6 +134,7 @@
 <div>
     <div class="block-field bw-f w-2-4">
          <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
+             <small><?= $this->translate('(Foreign driver license?)'); ?></small>
              <?php $driverLicenseForeign = $this->form->get('driver')->get('driverLicenseForeign'); ?>
              <?php echo $this->formRow($driverLicenseForeign); ?>
          </p>
@@ -132,6 +142,7 @@
 
      <div class="block-field bw-f w-2-4">
         <p> <label><?= $this->translate('Rilasciata (nazione)'); ?></label>
+            <small><?= $this->translate('(Issuing country)'); ?></small>
             <?php
                 $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
                 echo $this->formElement($driverLicenseCountry);
@@ -144,7 +155,7 @@
 
 
 <div class="block-form-section content-align-center margin-bottom">
-    <h2><i class="fa fa-folder-open"></i> <?= $this->translate('Categoria patente'); ?></h2>
+    <h2><i class="fa fa-folder-open"></i> <?= $this->translate('Categoria patente - Driver license category'); ?></h2>
 </div>
 
 <!-- block-row-field -->
@@ -170,8 +181,9 @@
 
 
 <div class="block-wrapper-button content-align-center">
-        <a href="<?= $this->url('signup', ['lang' => $this->lang,'mobile' => $this->mobile]); ?>" class="reset"><?= $this->translate('Indietro'); ?></a>
-    <input type="submit" name="" value="<?= $this->translate('Avanti'); ?>">
+        <a href="<?= $this->url('signup', ['lang' => $this->lang,'mobile' => $this->mobile]); ?>" class="reset">
+        <?= $this->translate('Indietro (Back)'); ?></a>
+    <input type="submit" name="" value="<?= $this->translate('Avanti (Next)'); ?>">
 </div>
 
 </form>
