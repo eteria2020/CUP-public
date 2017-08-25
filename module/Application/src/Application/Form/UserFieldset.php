@@ -269,7 +269,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 ]
             ]
         ]);
-
+        
         $this->add([
             'name' => 'fleet',
             'type' => 'Zend\Form\Element\Select',

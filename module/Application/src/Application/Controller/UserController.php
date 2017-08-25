@@ -345,8 +345,23 @@ class UserController extends AbstractActionController {
         return $seconds;
     }
 
-    public function signupSmsAction() {
+    /**
+     * 
+     * Send sms check code
+     * 
+     * @return type check code status
+     */
+    public function signupSmsAction() {                        
         $smsVerification = new Container('smsVerification');
+        
+        //CSD-1142 - check if mobile number already exixts
+        if ($this->checkDuplicateMobileAction() > 0){
+                $response = $this->getResponse();
+                $response->setStatusCode(200);
+                $response->setContent("Found");
+                return $response;
+        }
+
         //$session_formValidation = new Container('formValidation');
         if (!$smsVerification->offsetExists('timeStamp')) {
             $smsVerification->offsetSet('timeStamp', new \DateTime());
@@ -356,7 +371,7 @@ class UserController extends AbstractActionController {
             $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
             $response = $this->getResponse();
             $response->setStatusCode(200);
-            $response->setContent($response_msg);
+            $response->setContent($response_msg);            
             return $response;
         } else {
 
@@ -369,7 +384,7 @@ class UserController extends AbstractActionController {
                 $smsVerification->offsetSet('mobile', $this->params()->fromPost('mobile'));
                 $smsVerification->offsetSet('dialCode', $this->params()->fromPost('dialCode'));
                 $smsVerification->offsetSet('code', $this->codeGenerator());
-
+                
                 $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
@@ -671,4 +686,20 @@ class UserController extends AbstractActionController {
     
     
 
+    /**
+     * 
+     * Check if mobile number already exixts
+     * 
+     * Check without dial code to evaluate numbers already in the DB
+     * 
+     * @return int      0 = not found
+     *                  >0 = found
+     */
+    private function checkDuplicateMobileAction()
+    {     
+        //$value = sprintf('%s%s',$this->params()->fromPost('dialCode'), $this->params()->fromPost('mobile'));
+        $found = $this->customersService->checkMobileNumber($this->params()->fromPost('mobile'));
+        return $found;
+    }
+    
 }

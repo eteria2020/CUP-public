@@ -1,5 +1,38 @@
 /* global $ municipalitiesUrl birthTownValue */
 
+const promoCodeTitle_IT = "Codice promo";
+const promoCodeTitle_EN = "Promo code";
+
+const generalConditionTitle_IT = "Condizioni Generali di Contratto";
+const generalConditionTitle_EN = "Main Service Contract";
+const generalConditionLink_IT = "Scarica il documento e verifica le condizioni";
+const generalConditionLink_EN = "Download the document and check the Main Service Contract";
+const generalCondition1_IT = "ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e le sue controllate";
+const generalCondition1_EN = "I HAVE READ AND AGREE TO THE MAIN SERVICE CONTRACT  OF THE CAR SHARING SERVICE PROVIDED BY C.S. GROUP S.P.A. AND ITS SUBSIDIARIES";       
+const generalCondition2_IT = "dichiaro ai sensi e per gli effetti di cui all’art. 1341 c.c. e segg., di accettare espressamente ed approvare specificatamente le condizioni di cui agli articoli: 1 (premesse), 2 (definizioni), 3 (oggetto e parti del contratto), 4 (divieto di sostituzione), 5 (modifica unilaterale del Contratto e del Regolamento del servizio di car sharing), 6 (iscrizione e prenotazione online del Car Sharing SHARE’NGO), 7 (garanzia economica del noleggio), 8 (tariffe), 9 (obblighi, fatturazione e pagamenti), 10 (divieto di sublocazione e di cessione), 11 (esonero di responsabilità), 12 (permesso di guida), 13 (utilizzo dei veicoli. Clausola risolutiva espressa), 14 (sinistro o avaria del veicolo), 15 (furti e vandalismi), 16 (sanzioni in materia di circolazione stradale), 17 (responsabilità del Cliente), 18 (assicurazioni – oneri a carico del Cliente), 19 (limiti di responsabilità), 20 (dati personali), 21 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 22 (reclami), 23 (diritto di recesso del Cliente), 24 (penali), 25 (comunicazioni) 26 (foro competente), 27 (varie).";
+const generalCondition2_EN = "ACCORDINGLY TO ARTICLES 1341 AND 1342 C.C. OF ITALIAN LAW (CIVIL CODE),  I HEREBY DECLARE TO SPECIFICALLY ACCEPT  ARTICLES: 1 (PREMISE), 2 (DEFINITIONS), 3 (OBJECT AND CONTRACT PARTS), 4 (EXCLUSIVITY OF UTILIZATION), 5 (UNILATERAL MODIFICATION OF THE CONTRACT AND SERVICE TERMS AND CONDITIONS), 6 (ONLINE REGISTRATION AND BOOKING), 7 (RENTAL FEE GUARANTEE), 8 (FEES), 9 (OBLIGATIONS, INVOICING AND PAYMENTS), 10 (PROHIBITION OF SUB LOCATION), 11 ( RESPONSIBILITY), 12 (DRIVER’S LICENSE), 13 (UTILIZATION OF VEHICLES) 14 (DAMAGES AND BREAKDOWNS), 15 (THEFTS AND VANDALISM), 16 (LIABILITIES FOR BREACHING  ROAD CIRCULATION LAWS AND REGULATIONS), 17 (CUSTOMER'S RESPONSIBILITY), 18 (INSURANCE , EXEMPTIONS AND DEDUCTIONS), 19 (RESPONSIBILITY LIMITS), 20 (PERSONAL DATA), 21 (LENGTH, DURATION, RENEWAL, SUSPENSION, WITHDRAWAL and RESOLUTION OF THE CONTRACT), 22 (CLAIMS), 23 (CUSTOMER'S WITHDRAWAL), 24 (PENALTIES), 25 (COMMUNICATIONS) 26 (RULING LAW), 27 (MISCELLANEOUS).";
+
+const regulationConditionTitle_IT = "Regolamento";
+const regulationConditionTitle_EN = "Service Terms and Conditions";  
+const regulationConditionLink_IT = "Scarica il documento e verifica le condizioni";
+const regulationConditionLink_EN = "Download the document and check the Service Terms and conditions";  
+const regulationCondition1_IT = "ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e le sue controllate";
+const regulationCondition1_EN = "I HAVE READ AND AGREE TO THE GENERAL TERMS AND CONDITIONS OF THE CAR SHARING SERVICE PROVIDED BY C.S. GROUP S.P.A. AND YOUR SUBSIDIARIES.";       
+const regulationCondition2_IT = "dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).";
+const regulationCondition2_EN = "ACCORDINGLY TO ARTICLES 1341 AND 1342 C.C. OF ITALIAN LAW (CIVIL CODE),  I HEREBY DECLARE TO SPECIFICALLY ACCEPT THE FOLLOWING CLAUSES OF THIS REGULATION : 1 (ADMISSION TO SERVICE), 2 (REGISTRATION), 3 (VEHICLE BOOKING), 4 (START OF RENTAL) , 5 (VEHICLE PRELIMINARY CHEKS AND START), 6 (BATTERY AND RANGE), 7 (VEHICLE UTILIZATION), 8 (VEHICLE RETURN, PARKING), 9 (CLEANING OF THE VEHICLE AND LOST&FOUND), 10 (RATES), 11 (PERSONAL RATES), 12 (INVOICING), 13 (DAMAGES AND VEHICLE MANFUNCTIONING), 14 (CAR CRASH AND BREAKDOWNS), 15 ( FIRE, THEFT, VANDALISM), 16 (MISCELLANEA).";
+
+const privacyConditionLink_IT = "Scarica il documento e verifica le condizioni";
+const privacyConditionLink_EN = "Download the document and check our Privacy Policy";        
+const privacyCondition_IT = "ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate";
+const privacyCondition_EN = "HEREBY CONFIRM THAT I HAVE RECEIVED, REVIEWED AND UNDERSTAND THE SHARE’NGO PRIVACY POLICY. I ACKNOWLEDGE AND ACCEPT THIS  POLICY AS IT RELATES TO ANY INFORMATION I PROVIDE AS PART OF MY APPLICATION, SUBSEQUENT SHARE’NGO MEMBERSHIP AND CAR UTILIZATION.";        
+
+const buttonSendCode_IT = "Invia codice";
+const buttonSendCode_EN = "Send code";
+const cancelBtn_IT = "Annulla";
+const cancelBtn_EN = "Cancel";
+const nextBtn_IT = "Avanti";
+const nextBtn_EN = "Next";
+
 $(function () {
     "use strict";
 
@@ -84,6 +117,11 @@ $(function () {
                         case "Numero di telefono non corretto":
                             $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto</p></div>");
                             break;
+
+                        case "Found":
+                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero gi&agrave presente</p></div>");
+                            break;
+
                     }
 
                     $('#buttonCode').show();
@@ -106,6 +144,9 @@ $(function () {
     });
 
     $("#birthCountry").change(function (event, params) {
+        
+        setLanguage(); //CSD947-170822-doublelanguagesignupforms//
+                
         var birthProvince = $("#birthProvince"),
                 birthProvinceHidden = $("[type=hidden][name='user[birthProvince]'], [type=hidden][name='customer[birthProvince]']"),
                 birthTownSelect = $("select#birthTown"),
@@ -173,5 +214,42 @@ $(function () {
     $("#birthProvince").trigger("change", {
         birthTownValue: birthTownValue
     });
-
+        
+    //CSD947-170822-doublelanguagesignupforms//
+    function setLanguage() {
+        if ($('#birthCountry').val() !== "it"){
+            $('#promoCodeTitle').text(promoCodeTitle_EN);            
+            $('#generalConditionTitle').text(generalConditionTitle_EN);            
+            $('#generalConditionLink').text(generalConditionLink_EN);            
+            $('#generalCondition1Text').text(generalCondition1_EN);
+            $('#generalCondition2Text').text(generalCondition2_EN);
+            $('#regulationConditionTitle').text(regulationConditionTitle_EN);            
+            $('#regulationConditionLink').text(regulationConditionLink_EN);            
+            $('#regulationCondition1Text').text(regulationCondition1_EN);
+            $('#regulationCondition2Text').text(regulationCondition2_EN);
+            $('#privacyConditionLink').text(privacyConditionLink_EN);            
+            $('#privacyConditionText').text(privacyCondition_EN);
+            $('#buttonSendCode').text(buttonSendCode_EN);            
+            $('#cancelBtn').val(cancelBtn_EN);
+            $('#nextBtn').val(nextBtn_EN);  
+        }
+        else {
+            $('#promoCodeTitle').text(promoCodeTitle_IT);            
+            $('#generalConditionTitle').text(generalConditionTitle_IT);            
+            $('#generalConditionLink').text(generalConditionLink_IT);            
+            $('#generalCondition1Text').text(generalCondition1_IT);                
+            $('#generalCondition2Text').text(generalCondition2_IT);
+            $('#regulationConditionTitle').text(regulationConditionTitle_IT);                        
+            $('#regulationConditionLink').text(regulationConditionLink_IT);
+            $('#regulationCondition1Text').text(regulationCondition1_IT);
+            $('#regulationCondition2Text').text(regulationCondition2_IT);
+            $('#privacyConditionLink').text(privacyConditionLink_IT);            
+            $('#privacyConditionText').text(privacyCondition_IT);
+            $('#buttonSendCode').text(buttonSendCode_IT);            
+            $('#cancelBtn').val(cancelBtn_IT);
+            $('#nextBtn').val(nextBtn_IT);
+            '<%Session["currLang"] = "' + 'it' + '"; %>';            
+        }      
+    }
+    
 });
