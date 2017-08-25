@@ -3,7 +3,7 @@ $form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
 $gender = $this->customer->getGender();
 $verify = $this->verify; //verify number of one month trip
-
+$mobile = $this->mobile;
 ?>
 <!-- main -->
 <div id="main" class="detect-window-height">
@@ -77,7 +77,7 @@ $verify = $this->verify; //verify number of one month trip
                             <span class="block-sub-title">
                                 <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi Share&#39ngo scende fino ad arrivare a 0,22 &euro;/min, la tariffa di car sharing a flusso libero pi&ugrave; bassa al mondo.<br>Con l\'abbonamento mensile puoi avere una Share&#39ngo tutta per te') ?>
                                 <span>
-                                    (<a href="package-my-sharengo"><?= $this->translate('clicca qui') ?></a> <?= $this->translate('per ricevere tutte le informazioni necessarie') ?>).
+                                    (<a href="<?php echo $mobile == true ? '/area-utente/package-my-sharengo/mobile' : '/area-utente/package-my-sharengo';?>"><?= $this->translate('clicca qui') ?></a> <?= $this->translate('per ricevere tutte le informazioni necessarie') ?>).
                                 </span>
                             </span>
                             <br>

@@ -45,7 +45,13 @@
                 array('async' => 'true'))
             ->appendFile($this->basePath('js/criteo.js'), 'text/javascript');
 
-
+            $mobile = substr($this->serverUrl(true), -6) == 'mobile' ? true : false;
+            if ($mobile) {
+                $this->headScript()
+                    // Intercom section
+                    ->appendScript($this->intercomSettings())
+                    ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
+            }
             if ($this->config('googleAnalytics', 'key')) {
                 $this->headScript()->appendScript(
                     "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -93,7 +99,7 @@
                     z-index: 9999;
                     background: url(images/loading.gif) center no-repeat #fff;
             }
-            
+
         </style>
     </head>
     <body <?= $this->isUserArea($this->currentRoute()) ? 'class="app"' : ''; ?>>
