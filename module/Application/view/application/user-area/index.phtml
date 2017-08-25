@@ -491,14 +491,6 @@ $this->headLink()
                         <div class="block-form-section content-align-center margin-bottom" style="margin-top: 20px;">
                             <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate("I tuoi dati per l'accesso"); ?></h2>
                         </div>
-                        
-                        <div class="block-row-field clearfix">
-                                <div class="block-field block-avatar-app content-align-center">
-                                    <strong><?= $this->translate("GUIDANDO ELETTRICO HAI RISPARMIATO EMISSIONI DI CO2 PER"); ?></strong>
-                                    <div id="co2"></div>
-                                    <strong style="color:green"><?= $this->translate("GRAZIE!"); ?></strong>
-                                </div>
-                            </div>
 
                         <div id="viewEditPwd">
 
@@ -625,7 +617,17 @@ $this->headLink()
                                 </div>
                             </div>
                             
-                            
+                            <div class="block-row-field clearfix">
+                                <div class="block-field block-avatar-app content-align-center">
+                                    <div>
+                                        <!--<img src="/img/C02ICONnera.jpg" alt="CO2">
+                                        --><img src="/img/CO2ICON.jpg" alt="CO2">
+                                    </div>
+                                    <strong><?= $this->translate("GUIDANDO ELETTRICO HAI RISPARMIATO EMISSIONI DI CO2 PER"); ?></strong>
+                                    <div id="co2"></div>
+                                    <strong style="color:green"><?= $this->translate("GRAZIE!"); ?></strong>
+                                </div>
+                            </div>
 
                             <?php if (!$this->customer->getFirstPaymentCompleted()): ?>
                                 <br />

@@ -284,15 +284,17 @@ class UserController extends AbstractActionController {
     
     public function  co2Action(){
 
+        //get $customerId param in post && get customer from $customerId && get all trip from $customerId
         $customerId = $this->params()->fromPost('id');
         $customer = $this->customersService->findById($customerId);
         $trips = $this->tripsService->getTripsByCustomer($customerId);
         
         $KG="";
-        $gr=106;
-        $Mc="";
-        
-        switch ($customer->getFleet()):
+        $gr=106;//constant
+        $secondsTrips=0;
+
+        //$Vm is different for a city, get from customer fleetId
+        switch ($customer->getFleet()->getId()):
             case 1:
                 $Vm=17;
                 break;
@@ -307,19 +309,40 @@ class UserController extends AbstractActionController {
                 break;
         endswitch;
 
-        
         foreach ($trips as $trip){
-            $Mc += date_diff($trip->getTimestampEnd()->modify("-".$trip->getParkSeconds()."second"),$trip->getTimestampBeginning());
+            $timeTrip = date_diff($trip->getTimestampEnd()->modify("-".$trip->getParkSeconds()."second"),$trip->getTimestampBeginning());
+            $secondsTrips += $this->calculateTripInSecond($timeTrip);
         }
         
-        //KG = (((MINUTI CORSI/60) * VM)* GR/KM)/1000
-        $KG=((($Mc/60)*$Vm)*$gr)/1000;
-        
+        //KG = ((((secondi corsa/60)/60) * VM)* GR/KM)/1000
+        $KG=(((($secondsTrips/60)/60)*$Vm)*$gr)/1000;
+        $KG = round($KG, 3);
         
         $response = $this->getResponse();
         $response->setStatusCode(200);
         $response->setContent($KG);
         return $response;
+    }
+    
+    private function calculateTripInSecond($timeTrip) {
+        
+        $seconds = 0;
+        
+        $days = $timeTrip->format('%a');
+        if ($days) {
+            $seconds += 24 * 60 * 60 * $days;
+        }
+        $hours = $timeTrip->format('%H');
+        if ($hours) {
+            $seconds += 60 * 60 * $hours;
+        }
+        $minutes = $timeTrip->format('%i');
+        if ($minutes) {
+            $seconds += 60 * $minutes;
+        }
+        $seconds += $timeTrip->format('%s');
+        
+        return $seconds;
     }
 
     public function signupSmsAction() {
