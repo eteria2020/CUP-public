@@ -310,13 +310,14 @@ class UserController extends AbstractActionController {
         endswitch;
 
         foreach ($trips as $trip){
+            //diff between timeStamp_end trip (timeStamp_end - parkSecondo) and timeStamp_start trip
             $timeTrip = date_diff($trip->getTimestampEnd()->modify("-".$trip->getParkSeconds()."second"),$trip->getTimestampBeginning());
             $secondsTrips += $this->calculateTripInSecond($timeTrip);
         }
         
         //KG = ((((secondi corsa/60)/60) * VM)* GR/KM)/1000
         $KG=(((($secondsTrips/60)/60)*$Vm)*$gr)/1000;
-        $KG = round($KG, 3);
+        $KG = round($KG, 0);
         
         $response = $this->getResponse();
         $response->setStatusCode(200);
