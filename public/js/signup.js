@@ -50,23 +50,9 @@ $(function () {
         $('#confirmSmsCode').show();
     }
     
-    /*function calculateCO2(userId){
-        console.log("prima di ajax");
-        $.ajax({
-            type: "POST",
-            url: "/co2",
-            data: {},
-            beforeSend: function () {
-                $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
-            },
-            success: function (data) {
-                $('#co2').html("<p>" + data.toString() + " KG </p>");
-            },
-            error: function () {
-                $('#co2').html("<p>" + data.toString() + "</p>");
-            }
-        });
-    }*/
+    if(true){
+        
+    }
 
     $(document).on("click", "#buttonSendCode", function () {
         if ($('#mobile').val().length > 0) {

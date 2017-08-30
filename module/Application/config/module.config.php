@@ -271,8 +271,8 @@ return [
                     'route' => '/signup-sms',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'signup-sms'
+                        'controller' => 'ConsoleBonusCompute',
+                        'action' => 'add-point-day'
                     ],
                     'constraints' => [
                         'mobile' => '[mobile]+'
@@ -1742,6 +1742,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'bonus-pois'
+                        ]
+                    ]
+                ],
+                'add-point-day' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'add point day',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'add-point-day'
                         ]
                     ]
                 ],

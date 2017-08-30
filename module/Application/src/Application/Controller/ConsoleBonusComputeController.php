@@ -385,6 +385,95 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
 
+    public function addPointDayAction(){        
+        
+        $dateYesterdayStart = new \DateTime();
+        $dateYesterdayStart = $dateYesterdayStart->modify("-1 day");
+        $dateYesterdayStart = $dateYesterdayStart->format("Y-m-d 00:00:00");
+        
+        $dateTodayStart = new \DateTime();
+        $dateTodayStart = $dateTodayStart->format("Y-m-d 00:00:00");
+        
+        
+        $dateCurrentMonthStart = new \DateTime('first day of this month');
+        $dateCurrentMonthStart = $dateCurrentMonthStart->format("Y-m-d 00:00:00");
+        
+        $dateNextMonthStart = new \DateTime('first day of next month');
+        $dateNextMonthStart = $dateNextMonthStart->format("Y-m-d 00:00:00");
+        
+        
+        $customers= $this->customerService->getCustomersRunYesterday($dateYesterdayStart, $dateTodayStart);
+        
+        
+        
+        
+        echo "\n";
+        
+        foreach ($customers as $c){
+            
+            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $dateYesterdayStart, $dateTodayStart);
+            $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $dateCurrentMonthStart, $dateNextMonthStart);
+            
+            if(count($tripsMonth)>0)
+                foreach ($tripsMonth as $tripMonth){
+                    //$a = $c[0]->getKmBeginning();
+                    $timeTripsMonth = date_diff($tripMonth->getTimestampEnd(),$tripMonth->getTimestampBeginning());
+                    $secondsTripsMonth += $this->calculateTripInSecond($timeTripsMonth);
+                }
+            
+            if(count($tripsYesterday))
+                foreach ($tripsYesterday as $tripYesterday){
+                    $timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(),$tripYesterday->getTimestampBeginning());
+                    $secondsTripsYesterday += $this->calculateTripInSecond($timeTripsYesterday);
+                }
+                
+            $minuteTripsMonth = $secondsTripsMonth/60;
+            $minuteTripsYesterday = $secondsTripsYesterday/60;
+            
+            if($minuteTripsMonth < 80){
+                
+            }else{
+                if($minuteTripsMonth >= 80 && $minuteTripsMonth < 200){
+                    
+                }else{
+                    if($minuteTripsMonth >= 200 && $minuteTripsMonth < 600){
+                        
+                    }else{
+                        if($minuteTripsMonth <= 600){
+                            
+                        }//end else if 600
+                    }//end else if between 200 and 600
+                }//end else if between 80 and 200
+            }//end else if 80
+            
+        }//end foreach custimers
+        
+        echo "\n";
+        echo "\n";
+    }
+    
+    private function calculateTripInSecond($timeTrip) {
+        
+        $seconds = 0;
+        
+        $days = $timeTrip->format('%a');
+        if ($days) {
+            $seconds += 24 * 60 * 60 * $days;
+        }
+        $hours = $timeTrip->format('%H');
+        if ($hours) {
+            $seconds += 60 * 60 * $hours;
+        }
+        $minutes = $timeTrip->format('%i');
+        if ($minutes) {
+            $seconds += 60 * $minutes;
+        }
+        $seconds += $timeTrip->format('%s');
+        
+        return $seconds;
+    }
+
+
     public function bonusPoisAction()
     {
         $this->prepareLogger();
