@@ -189,9 +189,10 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;zonesBonus;".count($zonesBonus)."\n");
 
         foreach ($tripsToBeComputed as $trip) {     // loop through trips
-            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus);
+            $extraFareDescription = "";
+            $extraFareAmount = $this->zoneExtraFareGetAmount($trip, $zonesBonus, $extraFareDescription);
             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;amount;".$trip->getId().";".$extraFareAmount."\n");
-            $this->zoneExtraFareAddAmount($trip, $zonesBonus, $extraFareAmount);
+            $this->zoneExtraFareAddAmount($trip, $extraFareDescription, $extraFareAmount);
         }
 
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareCompute;end;\n");
@@ -621,7 +622,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     /*
      * Return the amount of extra payment
      */
-    private function zoneExtraFareGetAmount(Trips $trip, array $zonesBonus){
+    private function zoneExtraFareGetAmount(Trips $trip, array $zonesBonus, &$extraFareDescription){
         $result = 0;
 
         try {
@@ -635,6 +636,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
                 if(count($zonesBonusInside) > 0){
                     $result += intval($zonesBonusInside[0]->getCost());
+                    $extraFareDescription = $zonesBonusInside[0]->getDescription();
                     $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;start;".$trip->getId().";".$zonesBonusInside[0]->getId().";".$result."\n");
                 }
 
@@ -646,6 +648,7 @@ class ConsoleBonusComputeController extends AbstractActionController
 
                 if(count($zonesBonusInside) > 0){
                     $result += intval($zonesBonusInside[0]->getCost());
+                    $extraFareDescription = $zonesBonusInside[0]->getDescription();
                     $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;end;".$trip->getId().";".$zonesBonusInside[0]->getId().";".$result."\n");
                 }
 
@@ -663,6 +666,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                             if(count($zonesBonusInside) > 0){
                                 $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareGetAmount;parking;".$trip->getId().";".$zonesBonusInside[0]->getId().";".$result."\n");
                                 $result += intval($zonesBonusInside[0]->getCost());
+                                $extraFareDescription = $zonesBonusInside[0]->getDescription();
                             }
                         }
                     }
@@ -675,20 +679,23 @@ class ConsoleBonusComputeController extends AbstractActionController
         return $result;
     }
 
-    /*
-     * Add cost of extra fare to the trip
-     */
-    private function zoneExtraFareAddAmount(Trips $trip, array $zonesBonus, $extraFareAmount){
+/**
+ * Add cost of extra fare to the trip
+ * @param Trips $trip
+ * @param type $extraFareBonusType
+ * @param type $extraFareAmount
+ * @return boolean
+ */
+    private function zoneExtraFareAddAmount(Trips $trip, $extraFareDescription, $extraFareAmount){
         $result = FALSE;
 
         try {
             if($extraFareAmount > 0){
-                if(count($zonesBonus)>0){
-                    if($trip->getPayable()) {
-                        $reason = $zonesBonus[0]->getDescription();
-                        $pos = strpos($trip->getAddressBeginning(), $reason);
-                        if($pos === false) { // check if the trip description dosn't contain already the reason
-                            $this->tripsService->setAddressByGeocode($trip, false, " (" . $reason .")");
+                if(strlen($extraFareDescription) > 0){
+                    if($trip->getPayable()){
+                        $pos = strpos($trip->getAddressBeginning(), $extraFareDescription);
+                        if($pos === false){ // check if the trip description dosn't contain already the reason
+                            $this->tripsService->setAddressByGeocode($trip, false, " (" . $extraFareDescription .")");
                             $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
                             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;zoneExtraFareApplyAmount;addAmount;".$trip->getId().";".$extraFareAmount."\n");
                         }

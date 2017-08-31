@@ -39,5 +39,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 00 21 * * *     root            /usr/local/scripts/assign_birthday_bonuses.sh
 00 22 * * *     root            /usr/bin/pm2 restart webservices
-58 23 * * *     root            /usr/local/scripts/bonus_compute.sh
+58 23 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_compute.sh
 00 05 * * *     root            /usr/local/scripts/expired_license.sh

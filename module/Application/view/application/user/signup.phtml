@@ -599,6 +599,32 @@ $this->headLink()
                 </div>
             </div>
 
+            <!-- row to field Job_type and 'How do you know share'ngo'-->
+            <div class="block-row-field clearfix">
+                
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Professione (Opzionale)'); ?></label>
+                        <small><?= $this->translate('(Job [optional])'); ?></small>
+                        <?php
+                        $jobType = $this->form->get('user')->get('jobType');
+                        echo $this->formElement($jobType);
+                        echo $this->formElementErrors($jobType, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Come hai conosciuto Sharengo? (Opzionale)'); ?></label>
+                        <small><?= $this->translate('(How do you know Sharengo? [optional])'); ?></small>
+                        <?php
+                        $howToKnow = $this->form->get('user')->get('howToKnow');
+                        echo $this->formElement($howToKnow);
+                        echo $this->formElementErrors($howToKnow, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+            
             <?php
             $profilingCounter = $this->form->get('user')->get('profilingCounter');
             echo $this->formElement($profilingCounter);

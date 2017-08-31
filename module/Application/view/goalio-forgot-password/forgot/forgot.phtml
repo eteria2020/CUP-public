@@ -1,3 +1,6 @@
+<?php
+$mobile = substr($this->serverUrl(true), -6) == 'mobile' ? '/mobile' : '';
+?>
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Login'); ?></h1>
@@ -13,7 +16,7 @@
         <?php
         $form = $this->forgotForm;
         $form->prepare();
-        $form->setAttribute('action', $this->url('forgot'));
+        $form->setAttribute('action', $this->url('forgot').$mobile);
         $form->setAttribute('method', 'post');
         ?>
 

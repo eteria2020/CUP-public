@@ -94,6 +94,11 @@ class AdditionalServicesController extends AbstractActionController
 
     public function additionalServicesAction()
     {
+        //if there is mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $form = $this->promoCodeForm;
 
         if ($this->getRequest()->isPost()) {
@@ -150,7 +155,8 @@ class AdditionalServicesController extends AbstractActionController
             'promoCodeForm' => $form,
             'bonusPackages' => $bonusPackages,
             'customer' => $customer,
-            'verify' => $verify
+            'verify' => $verify,
+            'mobile' => $mobile
         ]);
     }
 

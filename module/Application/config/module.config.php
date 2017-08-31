@@ -201,12 +201,15 @@ return [
             'forgot' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{forgot-password}',
+                    'route' => '/{forgot-password}[/:mobile]',
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'goalioforgotpassword_forgot',
                         'action' => 'forgot'
-                    ]
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
                 ],
                 'may_terminate' => true
             ],
@@ -236,7 +239,7 @@ return [
                         'action' => 'signup',
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -261,7 +264,7 @@ return [
                         'action' => 'signup2'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -275,7 +278,7 @@ return [
                         'action' => 'add-point-day'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -289,7 +292,7 @@ return [
                         'action' => 'signup-verify-code'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -303,7 +306,7 @@ return [
                         'action' => 'signup3'
                     ],
                     'constraints' => [
-                        'mobile' => '[mobile]+'
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -1042,18 +1045,30 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'action' => 'index',
                         'controller' => 'UserArea',
-                    ]
+                    ],
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
+                    'mobile' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{mobile}',
+                            'defaults' => [
+                                'action' => 'index'
+                            ]
+                        ]
+                    ],
                     'tariffe' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{tariffe}',
+                            'route' => '/{tariffe}[/:mobile]',
                             'defaults' => [
                                 'action' => 'rates'
                             ]
-                        ]
+                        ],
+                        'constraints' => [
+                            'mobile' => 'mobile'
+                        ],
                     ],
                     'utente' => [
                         'type' => 'Segment',
@@ -1085,39 +1100,51 @@ return [
                         ]
                     ],
                     'dati-pagamento' => [
-                        'type' => 'Literal',
+                        'type' => 'Segment',
                         'options' => [
-                            'route' => '/dati-pagamento',
+                            'route' => '/dati-pagamento[/:mobile]',
                             'defaults' => [
                                 'action' => 'dati-pagamento'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
                     'patente' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{patente}',
+                            'route' => '/{patente}[/:mobile]',
                             'defaults' => [
                                 'action' => 'drivingLicence'
+                            ],
+                            'constraints' => [
+                                  'mobile' => 'mobile'
                             ]
                         ]
                     ],
                     'bonus' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{bonus}',
+                            'route' => '/{bonus}[/:mobile]',
                             'defaults' => [
                                 'action' => 'bonus'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
                     'additional-services' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{servizi-aggiuntivi}',
+                            'route' => '/{servizi-aggiuntivi}[/:mobile]',
                             'defaults' => [
                                 'controller' => 'AdditionalServices',
                                 'action' => 'additional-services'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
@@ -1154,18 +1181,24 @@ return [
                     'invoices-list' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{fatture}',
+                            'route' => '/{fatture}[/:mobile]',
                             'defaults' => [
                                 'action' => 'invoices-list'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
                     'package-my-sharengo' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/package-my-sharengo',
+                            'route' => '/package-my-sharengo[/:mobile]',
                             'defaults' => [
                                 'action' => 'package-my-sharengo'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
@@ -1199,9 +1232,12 @@ return [
                     'debt-collection' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/{debt-collection}',
+                            'route' => '/{debt-collection}[/:mobile]',
                             'defaults' => [
                                 'action' => 'debt-collection'
+                            ],
+                            'constraints' => [
+                            'mobile' => 'mobile'
                             ]
                         ]
                     ],
