@@ -13,9 +13,11 @@ use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
+use SharengoCore\Entity\CustomersPoints;
 use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
+use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ConsoleBonusComputeController extends AbstractActionController
@@ -74,6 +76,11 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var Config
      */
     private $config;
+    
+    /**
+     * @var
+     */
+    private $customerPointForm;
 
     /**
      * @param CustomersService $customerService
@@ -85,6 +92,7 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @param EventsService $eventsService
      * @param Logger $logger
      * @param array $config
+     * @param Form $customerPointForm
      */
     public function __construct(
         CustomersService $customerService,
@@ -97,7 +105,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         PoisService $poisService,
         EventsService $eventsService,
         Logger $logger,
-        $config
+        $config,
+        Form $customerPointForm
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -110,6 +119,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->eventsService = $eventsService;
         $this->logger = $logger;
         $this->config = $config;
+        $this->customerPointForm = $customerPointForm;
     }
 
     public function bonusComputeAction()
@@ -401,22 +411,18 @@ class ConsoleBonusComputeController extends AbstractActionController
         $dateNextMonthStart = new \DateTime('first day of next month');
         $dateNextMonthStart = $dateNextMonthStart->format("Y-m-d 00:00:00");
         
-        
         $customers= $this->customerService->getCustomersRunYesterday($dateYesterdayStart, $dateTodayStart);
-        
-        
-        
-        
-        echo "\n";
         
         foreach ($customers as $c){
             
             $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $dateYesterdayStart, $dateTodayStart);
-            $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $dateCurrentMonthStart, $dateNextMonthStart);
+            $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $dateCurrentMonthStart, $dateYesterdayStart);
+            
+            $secondsTripsMonth = 0;
+            $secondsTripsYesterday = 0;
             
             if(count($tripsMonth)>0)
                 foreach ($tripsMonth as $tripMonth){
-                    //$a = $c[0]->getKmBeginning();
                     $timeTripsMonth = date_diff($tripMonth->getTimestampEnd(),$tripMonth->getTimestampBeginning());
                     $secondsTripsMonth += $this->calculateTripInSecond($timeTripsMonth);
                 }
@@ -426,31 +432,78 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(),$tripYesterday->getTimestampBeginning());
                     $secondsTripsYesterday += $this->calculateTripInSecond($timeTripsYesterday);
                 }
-                
-            $minuteTripsMonth = $secondsTripsMonth/60;
-            $minuteTripsYesterday = $secondsTripsYesterday/60;
+              
+            $minuteTripsMonth = round($secondsTripsMonth/60, 0);
+            $minuteTripsYesterday = round($secondsTripsYesterday/60, 0);
             
-            if($minuteTripsMonth < 80){
-                
-            }else{
-                if($minuteTripsMonth >= 80 && $minuteTripsMonth < 200){
-                    
-                }else{
-                    if($minuteTripsMonth >= 200 && $minuteTripsMonth < 600){
-                        
-                    }else{
-                        if($minuteTripsMonth <= 600){
-                            
-                        }//end else if 600
-                    }//end else if between 200 and 600
-                }//end else if between 80 and 200
-            }//end else if 80
+            $risultato[0] = 0;
+            $risultato[1] = $minuteTripsYesterday;
+            $risultato[2] = $minuteTripsMonth;
+            
+            do{
+                $risultato = $this->howManyPointsAddToUser($risultato);
+            }while($risultato[1]>0);
+            
+            //add point in customers_points
+            $point = $this->customerPointForm;
+            
+            $data = $this->customerService->setPointField1($risultato[0]);
+ 
+            $point->setData($data);
+            $dffdfff=$point->isValid();
+            $this->customerService->setPointField2($point->getData(), $c['id']);
             
         }//end foreach custimers
         
+        echo "";
         echo "\n";
         echo "\n";
     }
+    
+    private function howManyPointsAddToUser($risultato) {
+        
+        if($risultato[2] < 80){
+            if(($risultato[2] + $risultato[1]) < 80){
+                $risultato[0] += $risultato[1];
+                $risultato[1] = -1;
+            }else{
+                $risultato[0] += (80 - $risultato[2]);
+                $risultato[1] = $risultato[1] - (80 - $risultato[2]);
+                $risultato[2] = 80;
+            }
+            return $risultato;     
+        }else{
+            if($risultato[2] >= 80 && $risultato[2] < 200){
+                if(($risultato[2] + $risultato[1]) < 200){
+                    $risultato[0] += $risultato[1]*2;
+                    $risultato[1] = -1;
+                }else{
+                    $risultato[0] += (200 - $risultato[2])*2;
+                    $risultato[1] = $risultato[1] - (200 - $risultato[2]);
+                    $risultato[2] = 200;
+                }
+                return $risultato;
+            }else{
+                if($risultato[2] >= 200 && $risultato[2] < 600){
+                    if(($risultato[2] + $risultato[1]) < 600){
+                        $risultato[0] += $risultato[1]*3;
+                        $risultato[1] = -1;
+                    }else{
+                        $risultato[0] += (600 - $risultato[2])*3;
+                        $risultato[1] = $risultato[1] - (600 - $risultato[2]);
+                        $risultato[2] = 600;
+                    }
+                    return $risultato;
+                }else{
+                    if($risultato[2] >= 600){
+                        $risultato[0] += $risultato[1]*4;
+                        $risultato[1] = -1;
+                        return $risultato;
+                    }//end else if 600
+                }//end else if between 200 and 600
+            }//end else if between 80 and 200
+        }//end else if 80
+    }//end howManyPointsAddToUser
     
     private function calculateTripInSecond($timeTrip) {
         

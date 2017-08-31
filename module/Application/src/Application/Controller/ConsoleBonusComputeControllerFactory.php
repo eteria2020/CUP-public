@@ -20,7 +20,7 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
         $emailService = $sharedServiceManager->get('\SharengoCore\Service\EmailService');
         $zonesService = $sharedServiceManager->get('\SharengoCore\Service\ZonesService');
         $eventsService = $sharedServiceManager->get('\SharengoCore\Service\EventsService'); //MongoDB
-
+        $customerPointForm = $sharedServiceManager->get('CustomerPointForm');
         $logger = $sharedServiceManager->get('\SharengoCore\Service\SimpleLoggerService');
         $config = $sharedServiceManager->get('\Configuration')['bonus']['zones'];
 
@@ -35,7 +35,8 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
             $poisService,
             $eventsService,
             $logger,
-            $config
+            $config,
+            $customerPointForm
         );
     }
 }

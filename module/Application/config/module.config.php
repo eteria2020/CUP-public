@@ -1305,6 +1305,7 @@ return [
             'PasswordForm' => 'Application\Form\PasswordFormFactory',
             'DriverLicenseForm' => 'Application\Form\DriverLicenseFormFactory',
             'PromoCodeForm' => 'Application\Form\PromoCodeFormFactory',
+            'CustomerPointForm' => 'Application\Form\CustomerPointFormFactory',
             'ForeignDriversLicenseForm' => 'Application\Form\ForeignDriversLicenseFormFactory',
             'Application\Service\ProviderAuthentication' => 'Application\Service\ProviderAuthenticationServiceFactory',
             'Application\Listener\DriversLicenseValidationListener' => 'Application\Listener\DriversLicenseValidationListenerFactory',
