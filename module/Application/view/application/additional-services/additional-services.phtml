@@ -2,7 +2,7 @@
 $form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
 $gender = $this->customer->getGender();
-$verify = $this->verify; //verify number of one month trip
+$verifyWomenVoucher = $this->verifyWomenVoucher; //verify number of one month trip
 $mobile = $this->mobile;
 ?>
 <!-- main -->
@@ -96,6 +96,9 @@ $mobile = $this->mobile;
                                     if(($gender=="male" || (($hour >= 0 && $hour <= 59) || $hour > 500)) && $package->getCode()=="WOMEN" ){
                                         continue;
                                     }
+                                    if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
+                                        continue;
+                                    }
                         ?>
                             <div class="bw-f w-1-4 clearfix">
                                 <div class="bw-f w-1-2 clearfix">
@@ -162,7 +165,9 @@ $mobile = $this->mobile;
                                         if(($gender=="male" || (($hour >= 0 && $hour <= 59) || $hour > 500)) && $package->getCode()=="WOMEN" ){
                                             continue;
                                         }
-
+                                        if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
+                                            continue;
+                                        }
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
                                         $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
