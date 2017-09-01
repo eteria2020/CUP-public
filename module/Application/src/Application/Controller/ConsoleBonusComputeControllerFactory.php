@@ -23,6 +23,8 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
         $customerPointForm = $sharedServiceManager->get('CustomerPointForm');
         $logger = $sharedServiceManager->get('\SharengoCore\Service\SimpleLoggerService');
         $config = $sharedServiceManager->get('\Configuration')['bonus']['zones'];
+        $config = $sharedServiceManager->get('Config');
+        $pointConfig = $config['point'];
 
         return new ConsoleBonusComputeController(
             $customerService,
@@ -36,7 +38,8 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
             $eventsService,
             $logger,
             $config,
-            $customerPointForm
+            $customerPointForm,
+            $pointConfig
         );
     }
 }

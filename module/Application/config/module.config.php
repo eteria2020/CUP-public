@@ -275,7 +275,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'ConsoleBonusCompute',
-                        'action' => 'add-point-day'
+                        'action' => 'add-point-cluster'
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -1790,6 +1790,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'add-point-day'
+                        ]
+                    ]
+                ],
+                'add-point-cluster' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'add point cluster',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'add-point-cluster'
                         ]
                     ]
                 ],
