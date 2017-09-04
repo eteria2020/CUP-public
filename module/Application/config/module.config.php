@@ -1190,7 +1190,7 @@ return [
                             ]
                         ]
                     ],
-                    'package-my-sharengo' => [
+                    /*'package-my-sharengo' => [
                         'type' => 'Segment',
                         'options' => [
                             'route' => '/package-my-sharengo[/:mobile]',
@@ -1201,7 +1201,7 @@ return [
                                 'mobile' => 'mobile'
                             ]
                         ]
-                    ],
+                    ],*/
                     'payment-securecode-cartasi' => [
                         'type' => 'Segment',
                         'options' => [
