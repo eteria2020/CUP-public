@@ -463,6 +463,8 @@ class ConsoleBonusComputeController extends AbstractActionController
     
     /*
      * create obj customer and add to db
+     * for clas customerPoint Form, FormFactory e Fieldset
+     * are copied to the same class from admin
      */
     private function addCustomersPoints($numeberAddPoint, $customerId, $nameScript, $type){
         $point = $this->customerPointForm;
