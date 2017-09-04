@@ -161,13 +161,20 @@ class AdditionalServicesController extends AbstractActionController
         $customer = $this->authService->getIdentity();
         $verifyWomenVoucher = count($this->bonusService->verifyWomenBonusPackage($customer));
 
-        //TODO: verifica primo pagamento e che la prima corsa sia stata pagata // contare numero di pacchetti benvenuto acquistati max 1 per sempre(?)
         $verifyWelcomePackage = count($this->bonusService->verifyWelcomeBonusPackage($customer));
-        $firstPayment = $customer->getFirstPaymentCompleted();
-        $firstTrip = count($this->tripsService->getFirstTripInvoicedByCustomer($customer));
+        $firstTrip = $this->tripsService->getFirstTripInvoicedByCustomer($customer);
+
+        $verifyFirstTrip = false;
+        if (count($firstTrip) == 1) {
+            $now = new \DateTime();
+            $firstTripDate = $firstTrip->getTimestampBeginning()->add(new \DateInterval(P1Y)); //first invoiced trip + 1 year
+            if ($now >= $firstTrip->getTimestampBeginning() && $now <= $firstTripDate) {
+                $verifyFirstTrip = true;
+            }
+        }
 
         $showWelcomePackage = false;
-        if($verifyWelcomePackage == 0 && $firstPayment && $firstTrip == 1){
+        if ($verifyWelcomePackage == 0 && $customer->getFirstPaymentCompleted() && $verifyFirstTrip){
             $showWelcomePackage = true;
         }
 
