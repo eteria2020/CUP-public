@@ -298,12 +298,12 @@ final class RegistrationService
                 if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
                     // add 100 min bonus
                     $total = $this->subscriptionBonus['total'];
-                    /* Florence ztl 1 euro subscription */
+                    /* 1 euro subscription CSD-1204 */
                     $now = new \DateTime();
-                    $start = new \DateTime('2017-06-08 00:00:00');
-                    $end = new \DateTime('2017-08-31 23:59:59');
-                    if ($customer->getFleet()->getId() == 2 && ($now >= $start && $now <= $end)){
-                        $total = 0;
+                    $start = new \DateTime('2017-09-16 00:00:00');
+                    $end = new \DateTime('2017-09-22 23:59:59');
+                    if ($now >= $start && $now <= $end){
+                        $total = 15;
                     }
                     $bonus100mins = CustomersBonus::createBonus(
                         $customer,
