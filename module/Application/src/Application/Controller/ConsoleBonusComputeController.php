@@ -415,11 +415,12 @@ class ConsoleBonusComputeController extends AbstractActionController
     public function addPointDayAction(){        
         
         $this->prepareLogger();
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;strat\n");
+        $format = "%s;INF;addPointDayAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
         $request = $this->getRequest();
-        //$paramDate = $request->getParam('date');
-        $paramDate="2017-09-05";
+        $paramDate = $request->getParam('date');
+        //$paramDate="2017-09-05";
         
         if(!is_null($paramDate)){
             $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;script with date param\n");
@@ -429,16 +430,19 @@ class ConsoleBonusComputeController extends AbstractActionController
                 $arrayDates = $this->createDate($date);
                 $this->scriptAddPointDay($arrayDates);
             }else{
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;date param NOT VALID!;DateParam=".$paramDate."\n");
+                $format = "%s;INF;addPointDayAction;date param NOT VALID!;DateParam= %s \n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
             }
         }else{
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;script NO with date param\n");
+            $format = "%s;INF;addPointDayAction;script NO with date param\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
             $this->checkIfCallAddPointClusterAction();
             $arrayDates = $this->createDate();
             $this->scriptAddPointDay($arrayDates);   
         }
 
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;end\n");
+        $format = "%s;INF;addPointDayAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
     }// end addPointDayAction
     
@@ -532,23 +536,23 @@ class ConsoleBonusComputeController extends AbstractActionController
             return $dates;
         }else{
             
-            $dateTodayStart = $date->format("Y-m-d 00:00:00");
+            $dateStart = $date->format("Y-m-d 00:00:00");
             
-            $dateCurrentMonthStart = $date->format("Y-m-d 00:00:00");
-            $dateCurrentMonthStart = date("Y-m-01 00:00:00", strtotime($dateCurrentMonthStart));
+            $dateMonthStart = $date->format("Y-m-d 00:00:00");
+            $dateMonthStart = date("Y-m-01 00:00:00", strtotime($dateMonthStart));
             
             $date1 = new \DateTime($date->format("Y-m-d 00:00:00"));
-            $dateYesterdayStart = $date1->modify("-1 day");
-            $dateYesterdayStart = $dateYesterdayStart->format("Y-m-d 00:00:00");
+            $dateLastStart = $date1->modify("-1 day");
+            $dateLastStart = $dateLastStart->format("Y-m-d 00:00:00");
             
             $date2 = new \DateTime($date->format("Y-m-d 00:00:00"));
             $dateNextMonthStart = ($date2->modify("+1 month")->format("Y-m-d 00:00:00"));
             $dateNextMonthStart = date("Y-m-01 00:00:00", strtotime($dateNextMonthStart));
             
             
-            $dates[0] = $dateYesterdayStart;
-            $dates[1] = $dateTodayStart;
-            $dates[2] = $dateCurrentMonthStart;
+            $dates[0] = $dateLastStart;
+            $dates[1] = $dateStart;
+            $dates[2] = $dateMonthStart;
             $dates[3] = $dateNextMonthStart;
             
             return $dates;
@@ -577,7 +581,8 @@ class ConsoleBonusComputeController extends AbstractActionController
      */
     private function addCustomersPoints($numeberAddPoint, $customerId, $nameScript, $type){
         
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addCustomersPoints;Customer_id=".$customerId.";Add=".$numeberAddPoint.";Script name=".$nameScript."\n");
+        $format = "%s;INF;addCustomersPoints;Customer_id= %d;Add= %d;Script name= %s\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $nameScript));
         
         $point = new \SharengoCore\Entity\CustomersPoints();
         
@@ -597,9 +602,10 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->customerService->setPointField($point, $customerId, $type);
     }
     
-    private function updateCustomersPoints($numeberAddPoint, CustomersPoints $customerPoint, $cusomerId){
+    private function updateCustomersPoints($numeberAddPoint, CustomersPoints $customerPoint, $customerId){
         
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;updateCustomersPoints;Customer_id=".$cusomerId.";Add=".$numeberAddPoint.";PrevPoints".$customerPoint->getTotal()."\n");
+        $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
         
         $customerPoint->setTotal($customerPoint->getTotal() + $numeberAddPoint);
         $customerPoint->setUpdateTs(new \DateTime());
@@ -661,7 +667,8 @@ class ConsoleBonusComputeController extends AbstractActionController
     public function  addPointClusterAction(){
         
         $this->prepareLogger();
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointClusterAction;strat\n");
+        $format = "%s;INF;addPointClusterAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
         $dateStartCurrentMonth = new \DateTime('first day of this month');
         $dateStartCurrentMonth = $dateStartCurrentMonth->format("Y-m-d 00:00:00");
@@ -724,7 +731,8 @@ class ConsoleBonusComputeController extends AbstractActionController
 
             }//end checkCustomerAlreadyAddPointsCluster
         }//end foreach
-        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointClusterAction;end\n");
+        $format = "%s;INF;addPointClusterAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }//end addPointClusterAction
     
     
