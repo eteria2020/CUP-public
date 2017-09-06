@@ -275,7 +275,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'ConsoleBonusCompute',
-                        'action' => 'add-point-cluster'
+                        'action' => 'add-point-day'
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -1785,7 +1785,7 @@ return [
                 'add-point-day' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'add point day',
+                        'route' => 'add point day [<date>]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
