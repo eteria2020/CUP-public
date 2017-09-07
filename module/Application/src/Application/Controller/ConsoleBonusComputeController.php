@@ -423,9 +423,11 @@ class ConsoleBonusComputeController extends AbstractActionController
         //$paramDate="2017-09-05";
         
         if(!is_null($paramDate)){
-            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;script with date param\n");
+            $format = "%s;INF;addPointDayAction;script with date param\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
             if ($this->validateDate($paramDate)) {
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;addPointDayAction;DateParam=".$paramDate."\n");
+                $format = "%s;INF;addPointDayAction;DateParam= %s\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
                 $date = new \DateTime($paramDate);
                 $arrayDates = $this->createDate($date);
                 $this->scriptAddPointDay($arrayDates);

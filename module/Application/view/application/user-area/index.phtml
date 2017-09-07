@@ -600,41 +600,46 @@ $this->headLink()
                             </div>
                             <!-- block-row-field -->
                             <br />
-                            <div class="block-row-field clearfix">
-                                <div class="block-field block-avatar-app content-align-center">
-                                    <div id="imgOssigeno">
-                                    </div>
-                                    <div class="block-form-section content-align-center margin-bottom">
-                                        <h2><?= $this->translate("Punti OSSIGENO"); ?></h2>
+                            
+                            <?php if ($this->customer->haveDiscountRate80()): ?>
+                            
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <div id="imgOssigeno">
+                                        </div>
+                                        <div class="block-form-section content-align-center margin-bottom">
+                                            <h2><?= $this->translate("Punti OSSIGENO"); ?></h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="block-row-field clearfix">
 
-                                <div class="block-field block-avatar-app content-align-center">
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPointsCurrentMonth() ?>">
-                                    <div style="margin-top: 5px;"></div>
-                                    <h2><?= $this->translate('Accreditati questo mese'); ?></h2>
-                                    <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
-                                    <div style="margin-top: 5px;"></div>
-                                    <h2><?= $this->translate('Rimanenti'); ?></h2>
-                                    <input id="OssigenoPoint" display="none" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getPositivePoints() ?>">
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="block-row-field clearfix">
-                                <div class="block-field block-avatar-app content-align-center">
-                                    <div>
-                                        <img src="/img/CO2ICON.jpg" alt="CO2">
+                                <div class="block-row-field clearfix">
+
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPointsCurrentMonth() ?>">
+                                        <div style="margin-top: 5px;"></div>
+                                        <h2><?= $this->translate('Accreditati questo mese'); ?></h2>
+                                        <div style="margin-bottom: 15px;"></div>
+                                        <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
+                                        <div style="margin-top: 5px;"></div>
+                                        <h2><?= $this->translate('Rimanenti'); ?></h2>
+                                        <input id="OssigenoPoint" display="none" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getPositivePoints() ?>">
                                     </div>
-                                    <strong><?= $this->translate("GUIDANDO ELETTRICO HAI RISPARMIATO EMISSIONI DI CO2 PER"); ?></strong>
-                                    <div id="co2"></div>
-                                    <h2><?= $this->translate('GRAZIE!'); ?></h2>
                                 </div>
-                            </div>
+
+
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <div>
+                                            <img src="/img/CO2ICON.jpg" alt="CO2">
+                                        </div>
+                                        <strong><?= $this->translate("GUIDANDO ELETTRICO HAI RISPARMIATO EMISSIONI DI CO2 PER"); ?></strong>
+                                        <div id="co2"></div>
+                                        <h2><?= $this->translate('GRAZIE!'); ?></h2>
+                                    </div>
+                                </div>
+                            
+                            <?php endif; ?>
 
                             <?php if (!$this->customer->getFirstPaymentCompleted()): ?>
                                 <br />
