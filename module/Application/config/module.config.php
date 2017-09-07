@@ -871,6 +871,17 @@ return [
                     ],
                 ],
             ],
+            'politecnico' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{politecnico}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'politecnico',
+                    ],
+                ],
+            ],
             'pwc' => [
                 'type' => 'Segment',
                 'options' => [
