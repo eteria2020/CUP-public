@@ -508,6 +508,17 @@ return [
                     ],
                 ],
             ],
+            'anteo' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{anteo}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'anteo',
+                    ],
+                ],
+            ],
             'arci' => [
                 'type' => 'Segment',
                 'options' => [

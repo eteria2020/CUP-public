@@ -49,6 +49,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function anteoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function arciAction()
     {
         return (new viewModel())->setTerminal(true);
