@@ -209,6 +209,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function politecnicoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function pwcAction()
     {
         return (new viewModel())->setTerminal(true);
