@@ -274,8 +274,8 @@ return [
                     'route' => '/signup-sms',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'ConsoleBonusCompute',
-                        'action' => 'add-point-day'
+                        'controller' => 'User',
+                        'action' => 'signup-sms'
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
