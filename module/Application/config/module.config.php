@@ -874,7 +874,7 @@ return [
             'politecnico' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{politecnico}',
+                    'route' => '/{polimi}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
