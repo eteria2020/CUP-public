@@ -462,7 +462,6 @@ class ConsoleBonusComputeController extends AbstractActionController
             
             if(count($tripsMonth)>0){
                 foreach ($tripsMonth as $tripMonth){
-                    $rt=$tripMonth->getTimestampEnd();
                     if(is_null($tripMonth->getTimestampEnd()) && is_null($tripMonth->getEndTx())){
                         continue;
                     }else{
