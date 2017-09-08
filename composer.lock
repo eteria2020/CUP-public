@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
-                "reference": "616ec0dec4ba9b09652c7608b600acaa13e02348"
+                "reference": "d35c9cfeccb15ef25e73c2f6dbe8026c972f703b"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-04-14 12:36:02"
+            "time": "2017-08-08 07:43:46"
         },
         {
             "name": "cup-web/public-business-module",
@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
-                "reference": "f1a9efb1b261f6827d2644ce0befdb5b0ad56ac4"
+                "reference": "6f01708217d547fbba75e224cbc2b4593d065ee9"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2017-05-17 02:50:59"
+            "time": "2017-08-25 08:03:53"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "f44adc5d489b2ccb501d6f280fc7dcfddeca6a1f"
+                "reference": "33b32b910e2958696ebf979fc146b024f07c8043"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-07-04 10:56:40"
+            "time": "2017-08-29 07:17:16"
         },
         {
             "name": "natxet/CssMin",
@@ -2942,7 +2942,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
-                "reference": "b9b6493d7daa309f109b21bedd34d6f0fa5de4b1"
+                "reference": "764612994abc7cff6844c38929db94c8846f2832"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2956,7 +2956,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2017-07-17 08:15:21"
+            "time": "2017-09-04 13:02:11"
         },
         {
             "name": "sharengo-web/drivers-license-validation",

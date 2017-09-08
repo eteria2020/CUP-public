@@ -2,7 +2,7 @@
 $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-        ->appendFile($this->basePath('js/signup.js?v=3.1'));
+        ->appendFile($this->basePath('js/signup.js?v=3.4'));
 
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
@@ -11,27 +11,6 @@ $this->headLink()
 
 <!-- main -->
 <div id="main">
-    <!-- overlay -->
-    <div id="sng-overlay" style="visibility: hidden">
-        <div class="table">
-            <div class="cell">
-                <div class="box" style="background:#fff;">
-                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
-                    <div id="sng-overlay-content1">
-                        <div class="content-more" style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
-                            <h3 style="background: #07ba50;color: #fff;">ATTENZIONE</h3>
-                            <br>
-                            <ul>
-                                <p style="color:black;text-align: justify; font-weight: 500;">Domenica 12 Febbraio dalle ore 9 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- overlay -->
-
 
     <div class="content">
         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
@@ -44,6 +23,12 @@ $this->headLink()
                         <br>
                         <?= $this->translate('Se serve aiuto durante l’iscrizione usa il pulsante chat.'); ?>
                         <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
+                    </label>
+                    <br>
+                    <label class="small-form content-align-center" style="line-height: 1;color:#ccc3c3">
+                        <?= $this->translate('The registration fee is 10€ with 30 minutes bonus (standard condition without promotions).'); ?>
+                        <br>
+                        <?= $this->translate('If you need help during the registration process use our chat.'); ?>
                     </label>
                 </div>
             </div>
@@ -70,9 +55,9 @@ $this->headLink()
 
         <div class="block-form w-3-4 auto-margin clearfix">
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><i class="fa fa-globe"></i> <?= $this->translate('Città preferita'); ?></h2>
+                <h2><i class="fa fa-globe"></i> <?= $this->translate('Citt&agrave; preferita - Favourite city'); ?></h2>
             </div>
-
+                
             <div class="block-field auto-margin w-1-3">
                 <p>
                     <?php
@@ -83,8 +68,6 @@ $this->headLink()
                 </p>
             </div>
         </div>
-
-
 
         <!-- block-form -->
         <div class="block-form w-3-4 auto-margin clearfix">
@@ -108,6 +91,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Ripeti l\'email'); ?></label>
+                        <small><?= $this->translate('(Repeat email)'); ?></small>
                         <?php
                         $email2 = $this->form->get('user')->get('email2');
                         echo $this->formElement($email2);
@@ -133,7 +117,8 @@ $this->headLink()
                 </div>
 
                 <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Password'); ?></label>
+                    <p> <label><?= $this->translate('Ripeti password'); ?></label>
+                        <small><?= $this->translate('(Repeat password)'); ?></small >
                         <?php
                         $password2 = $this->form->get('user')->get('password2');
                         echo $this->formElement($password2);
@@ -154,6 +139,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Genere'); ?></label>
+                        <small><?= $this->translate('(Gender)'); ?></small>
                         <?php
                         $gender = $this->form->get('user')->get('gender');
                         echo $this->formElement($gender);
@@ -166,6 +152,7 @@ $this->headLink()
 
                     <div class="block-field bw-f w-2-4">
                         <p> <label><?= $this->translate('Nome'); ?></label>
+                            <small><?= $this->translate('(Name on Driver’s license)'); ?></small>
                             <?php
                             $name = $this->form->get('user')->get('name');
                             echo $this->formElement($name);
@@ -176,6 +163,7 @@ $this->headLink()
 
                     <div class="block-field bw-f w-2-4">
                         <p> <label><?= $this->translate('Cognome'); ?></label>
+                            <small><?= $this->translate('(Surname on Driver’s license)'); ?></small>
                             <?php
                             $surname = $this->form->get('user')->get('surname');
                             echo $this->formElement($surname);
@@ -194,6 +182,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3">
                     <p> <label><?= $this->translate('Data di nascita'); ?></label>
+                        <small><?= $this->translate('(Date of birth)'); ?></small>
                         <?php
                         $birthDate = $this->form->get('user')->get('birthDate');
                         echo $this->formElement($birthDate);
@@ -204,6 +193,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3">
                     <p> <label><?= $this->translate('Stato di nascita'); ?></label>
+                        <small><?= $this->translate('(State of birth)'); ?></small>
                         <?php
                         $birthCountry = $this->form->get('user')->get('birthCountry');
                         echo $this->formElement($birthCountry);
@@ -214,6 +204,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3 last">
                     <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
+                        <small><?= $this->translate('(Province of birth)'); ?></small>
                         <?php
                         $birthProvince = $this->form->get('user')->get('birthProvince');
                         echo $this->formElement($birthProvince);
@@ -231,6 +222,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Comune di nascita'); ?></label>
+                        <small><?= $this->translate('(City of birth)'); ?></small>
                         <?php
                         $birthTown = $this->form->get('user')->get('birthTown');
                         $select = '<select name="' . $birthTown->getName() . '" ';
@@ -254,6 +246,7 @@ $this->headLink()
 
                     <div class="block-field bw-f w-3-4">
                         <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
+                            <small><?= $this->translate('(Residence address)'); ?></small>
                             <?php
                             $address = $this->form->get('user')->get('address');
                             echo $this->formElement($address);
@@ -263,7 +256,8 @@ $this->headLink()
                     </div>
 
                     <div class="block-field bw-f last w-1-4">
-                        <p> <label><?= $this->translate('Cap'); ?></label>
+                        <p> <label><?= $this->translate('Cap'); ?></label><br/>
+                            <small><?= $this->translate('(Zip code)'); ?></small>
                             <?php
                             $zipCode = $this->form->get('user')->get('zipCode');
                             echo $this->formElement($zipCode);
@@ -282,6 +276,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Citt&agrave;'); ?></label>
+                        <small><?= $this->translate('(Country)'); ?></small>
                         <?php
                         $town = $this->form->get('user')->get('town');
                         echo $this->formElement($town);
@@ -292,6 +287,7 @@ $this->headLink()
 
                 <div class="block-field last bw-f w-3-4">
                     <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo indirizzo di domicilio se diverso da residenza'); ?></label>
+                        <small><?= $this->translate('(Additional information - Insert here your domicile address)'); ?></small>
                         <?php
                         $addressInfo = $this->form->get('user')->get('addressInfo');
                         echo $this->formElement($addressInfo);
@@ -308,6 +304,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Codice Fiscale'); ?></label>
+                        <small><?= $this->translate('(Tax code)'); ?></small>
                         <?php
                         $taxCode = $this->form->get('user')->get('taxCode');
                         echo $this->formElement($taxCode);
@@ -317,10 +314,9 @@ $this->headLink()
                     </p>
                 </div>
 
-
-
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Partita IVA (solo per ditte individuali e professionisti)'); ?></label>
+                        <small><?= $this->translate('(Italian VAT NUMBER only)'); ?></small>
                         <?php
                         $vat = $this->form->get('user')->get('vat');
                         echo $this->formElement($vat);
@@ -333,9 +329,10 @@ $this->headLink()
             <!-- block-row-field -->
 
             <!-- block-row-field -->
-            <div class="block-row-field clearfix">
-                <div class="block-field bw-f w-1-4 smsClass" style="display: none;">
+            <div class="block-row-field clearfix">                
+                <div class="block-field bw-f w-1-4">
                     <label><?= $this->translate('Prefisso'); ?></label>
+                    <small><?= $this->translate('(Prefix)'); ?></small>
                     <select id="dialCode">
                         <option data-countryCode="IT" value="39" selected>Italia (+39)</option>
                         <option disabled="disabled">----------</option>
@@ -561,6 +558,7 @@ $this->headLink()
                     <div class="block-field bw-f w-2-4 ">
 
                         <p> <label><?= $this->translate('Cellulare'); ?></label>
+                            <small><?= $this->translate('(Mobile phone)'); ?></small>
                             <?php
                             $mobile = $this->form->get('user')->get('mobile');
                             echo $this->formElement($mobile);
@@ -569,10 +567,10 @@ $this->headLink()
                         </p>
 
                     </div>
-                    <div class="block-field bw-f last w-2-4 smsClass" style="display: none;">
+                    <div class="block-field bw-f last w-2-4">
                         <label>&nbsp</label>
                         <div  style="display: block;" id="buttonCode" >
-                            <button type="button" id="buttonSendCode">INVIA CODICE </button>
+                            <button type="button" id="buttonSendCode">INVIA CODICE</button>
                         </div>
                     </div>
                 </div>
@@ -585,6 +583,7 @@ $this->headLink()
                 <div id="confirmSmsCode" style="display: none;">
                     <div class="block-field bw-f w-1-4"  id="textCode">
                         <p> <label><?= $this->translate('Codice di Verifica'); ?></label>
+                            <small><?= $this->translate('(Verification code)'); ?></small>
                             <?php
                             $smsCode = $this->form->get('user')->get('smsCode');
                             echo $this->formElement($smsCode);
@@ -593,21 +592,39 @@ $this->headLink()
                         </p>
                     </div>
                     <br>
-                    <p>Inserisci qui il codice di verifica inviato via sms</p>
+                    <p>
+                        Inserisci qui il codice di verifica inviato via sms<br/>
+                        <small>(Enter here the verification code received by sms)</small>
+                    </p>
                 </div>
             </div>
 
-            <!-- block-row-field -->
-            <div class="block-field bw-f w-2-4">
-                <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
-                    <?php
-                    $phone = $this->form->get('user')->get('phone');
-                    echo $this->formElement($phone);
-                    echo $this->formElementErrors($phone, ['class' => 'errors']);
-                    ?>
-                </p>
+            <!-- row to field Job_type and 'How do you know share'ngo'-->
+            <div class="block-row-field clearfix">
+                
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Professione (Opzionale)'); ?></label>
+                        <small><?= $this->translate('(Job [optional])'); ?></small>
+                        <?php
+                        $jobType = $this->form->get('user')->get('jobType');
+                        echo $this->formElement($jobType);
+                        echo $this->formElementErrors($jobType, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Come hai conosciuto Sharengo? (Opzionale)'); ?></label>
+                        <small><?= $this->translate('(How do you know Sharengo? [optional])'); ?></small>
+                        <?php
+                        $howToKnow = $this->form->get('user')->get('howToKnow');
+                        echo $this->formElement($howToKnow);
+                        echo $this->formElementErrors($howToKnow, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
             </div>
-            </br></br></br>
+            
             <?php
             $profilingCounter = $this->form->get('user')->get('profilingCounter');
             echo $this->formElement($profilingCounter);
@@ -634,7 +651,7 @@ $this->headLink()
             <!-- block-row-field -->
 
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Codice promo'); ?></h2>
+                <h2 id="promoCodeTitle"><?= $this->translate('Codice promo'); ?></h2>
             </div>
 
             <!-- block-row-field -->
@@ -654,7 +671,7 @@ $this->headLink()
             <!-- block-row-field -->
 
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
+                <h2 id="generalConditionTitle"><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
             </div>
 
             <!-- block-row-field -->
@@ -663,21 +680,21 @@ $this->headLink()
                 <div class="block-field w-4-4">
 
                     <p class="text-align-center">
-                        <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links">
+                        <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links" id="generalConditionLink">
                             <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
                         </a>
                     </p>
                     <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($generalCondition1) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
+                        <span class='control-indicator' id="generalCondition1Text"><?php echo ' ' . $generalCondition1->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
                     <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($generalCondition2) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
+                        <span class='control-indicator' id="generalCondition2Text"><?php echo ' ' . $generalCondition2->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
@@ -688,7 +705,7 @@ $this->headLink()
             <!-- block-row-field -->
 
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Regolamento'); ?></h2>
+                <h2 id="regulationConditionTitle"><?= $this->translate('Regolamento'); ?></h2>
             </div>
 
             <!-- block-row-field -->
@@ -697,21 +714,21 @@ $this->headLink()
                 <div class="block-field w-4-4">
 
                     <p class="text-align-center">
-                        <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
+                        <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links" id="regulationConditionLink">
                             <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
                         </a>
                     </p>
                     <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($regulationCondition1) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
+                        <span class='control-indicator' id="regulationCondition1Text"><?php echo ' ' . $regulationCondition1->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($regulationCondition1, ['class' => 'errors']); ?>
                     <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($regulationCondition2) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
+                        <span class='control-indicator' id="regulationCondition2Text"><?php echo ' ' . $regulationCondition2->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($regulationCondition2, ['class' => 'errors']); ?>
@@ -730,13 +747,13 @@ $this->headLink()
 
                 <div class="block-field w-4-4">
 
-                    <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
+                    <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links" id="privacyConditionLink">
                         <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
                     </a>
                     <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($privacyCondition) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
+                        <span class='control-indicator' id="privacyConditionText"><?php echo ' ' . $privacyCondition->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
@@ -797,11 +814,11 @@ $this->headLink()
             
 
             <div class="block-wrapper-button content-align-center">
-                <input type="reset" class="reset" name="" value="Annulla">
-                <input type="submit" name="" value="Avanti">
+                <input type="reset" class="reset" name="" id="cancelBtn" value="Annulla">
+                <input type="submit" name="" id="nextBtn" value="Avanti">
             </div>
-
-
+            
+            
             </form>
 
         </div>
@@ -809,7 +826,26 @@ $this->headLink()
 
     </div>
     <!-- content -->
-
+    <!-- overlay -->
+    <!--<div id="sng-overlay" style="visibility: hidden">
+        <div class="table">
+            <div class="cell">
+                <div class="box" style="background:#fff;">
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
+                            <h3 style="background: #07ba50;color: #fff;">ATTENZIONE</h3>
+                            <br>
+                            <ul>
+                                <p style="color:black;text-align: justify; font-weight: 500;">Domenica 12 Febbraio dalle ore 9 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- overlay -->
 </div>
 <!-- main -->
 
@@ -835,25 +871,25 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
             overlay = $('#sng-overlay');
 
             var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
-var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
-        var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
-        
-        //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
-    //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
-        
+            var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
+            var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
+
+            //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
+            //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
+
         if (now > dateStart) {
             if (now < dateEnd) {
                     overlay.css("visibility", "visible");
                     }
                     }
-                    
+
                     $(".sng-overlay-close").click(function (e) {
                     e.preventDefault();
                     overlay.fadeOut(600, function () {
                             overlay.remove();
                             });
                             });
-                            
+
                             // Criteo section
                             var email = $("#email").val();
                                 var list = [];
@@ -862,16 +898,16 @@ var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
                                     list.push(parseInt($(this).val()));
                                 };
                                 });
-                            
+
                         criteoViewListing(email, list);
-                
+
                 $("#fleet").change(function () {
                                     var email = $("#email").val();
                                     var fleetId = parseInt($(this).find(":selected").val());
 
                                     criteoViewBasketItem(email, fleetId);
                 });
-                
+
                 });
-                
+
 </script>

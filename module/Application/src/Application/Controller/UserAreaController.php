@@ -26,6 +26,8 @@ use SharengoCore\Service\DisableContractService;
 
 use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
+use SharengoCore\Service\PaymentScriptRunsService;
+use SharengoCore\Service\PaymentsService;
 
 class UserAreaController extends AbstractActionController
 {
@@ -117,6 +119,16 @@ class UserAreaController extends AbstractActionController
     private $disableContractService;
 
     /**
+     * @var PaymentScriptRunsService
+     */
+    private $paymentScriptRunsService;
+
+    /**
+     * @var PaymentService
+     */
+    private $paymentsService;
+
+    /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
      * @param AuthenticationService $userService
@@ -131,6 +143,8 @@ class UserAreaController extends AbstractActionController
      * @param string $bannerJsonpUrl
      * @param string $discounterUrl
      * @param DisableContractService $disableContractService
+     * @param PaymentScriptRunsService $paymentScriptRunService
+     * @param PaymentService $paymentService
      */
     public function __construct(
         CustomersService $customerService,
@@ -146,7 +160,9 @@ class UserAreaController extends AbstractActionController
         CartasiContractsService $cartasiContractsService,
         $bannerJsonpUrl,
         $discounterUrl,
-        DisableContractService $disableContractService
+        DisableContractService $disableContractService,
+        PaymentScriptRunsService $paymentScriptRunService,
+        PaymentsService $paymentsService
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -163,14 +179,31 @@ class UserAreaController extends AbstractActionController
         $this->bannerJsonpUrl = $bannerJsonpUrl;
         $this->discounterUrl = $discounterUrl;
         $this->disableContractService = $disableContractService;
+        $this->paymentScriptRunsService = $paymentScriptRunService;
+        $this->paymentsService = $paymentsService;
     }
 
+    /**
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
-        // check wether the customer still needs to register a credit card
+        //if there is mobile param the layout changes
+        $mobile = substr($this->getRequest()->getUriString(),-6);
+        $userAreaMobile = '';
+        $mobileParam = NULL;
+        if ($mobile == 'mobile') {
+            $this->layout('layout/map');
+            $mobileParam = 'mobile';
+            $userAreaMobile = '/'.$mobileParam;
+        }
+
         $customer = $this->userService->getIdentity();
-        if ($this->customerService->isFirstTripManualPaymentNeeded($customer)) {
-            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/activate-payments'));
+
+        if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong)>0 || 
+                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
+            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
         }
 
         // if not, continue with index action
@@ -218,7 +251,7 @@ class UserAreaController extends AbstractActionController
             }
 
             if ($editForm) {
-                return $this->redirect()->toRoute('area-utente');
+                return $this->redirect()->toRoute('area-utente'.$userAreaMobile);
             }
         }
 
@@ -262,6 +295,11 @@ class UserAreaController extends AbstractActionController
 
     public function ratesAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $customer = $this->identity();
 
         if (!$customer instanceof Customers) {
@@ -293,6 +331,11 @@ class UserAreaController extends AbstractActionController
 
     public function datiPagamentoAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         $customer = $this->userService->getIdentity();
         $activateLink = $this->customerService->isFirstTripManualPaymentNeeded($customer);
         $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
@@ -316,6 +359,11 @@ class UserAreaController extends AbstractActionController
 
     public function drivingLicenceAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         /** @var DriverLicenseForm $form */
         $form = $this->driverLicenseForm;
         $customerData = $this->hydrator->extract($this->customer);
@@ -355,7 +403,7 @@ class UserAreaController extends AbstractActionController
                     $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. Ci scusiamo per l\'inconveniente');
                 }
 
-                return $this->redirect()->toRoute('area-utente/patente');
+                return $this->redirect()->toRoute('area-utente/patente', ['mobile' => $mobile]);
             } else {
                 $this->showError = true;
             }
@@ -374,6 +422,11 @@ class UserAreaController extends AbstractActionController
 
     public function bonusAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         return new ViewModel([
             'customer'  => $this->customer,
             'listBonus' => $this->customerService->getAllBonus($this->customer)
@@ -382,6 +435,12 @@ class UserAreaController extends AbstractActionController
 
     public function invoicesListAction()
     {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
         $customer = $this->userService->getIdentity();
         $availableDates = $this->invoicesService->getDistinctDatesForCustomerByMonth($customer);
 
@@ -414,8 +473,77 @@ class UserAreaController extends AbstractActionController
         ]);
     }
 
+    public function debtCollectionAction()
+    {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+        $customer = $this->userService->getIdentity();
+        
+        $tripsToBePayedAndWrong = null;
+        $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $tripsToBePayedAndWrong);
+
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
+        $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
+        $scriptIsRunning =  $this->paymentScriptRunsService->isRunning();
+
+        return new ViewModel([
+            'customer' => $customer,
+            'contract' => $contract,
+            'tripPayment' => $tripPayment,
+            'tripsToBePayedAndWrong' => $tripsToBePayedAndWrong,
+            'totalCost' => $totalCost,
+            'scriptIsRunning' => $scriptIsRunning
+        ]);
+    }
+
+    public function debtCollectionPaymentAction()
+    {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        $userAreaMobile = '';
+        if($mobile){
+            $this->layout('layout/map');
+            $userAreaMobile = '/'.$mobile;
+        }
+        $scriptIsRunning =  $this->paymentScriptRunsService->isRunning();
+
+        if(!$scriptIsRunning){
+            $trips = null;
+            $customer = $this->userService->getIdentity();
+            $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
+            if($totalCost>0){
+                 if ($this->cartasiContractsService->hasCartasiContract($customer)) { 
+                    $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
+                    if($response->getCompletedCorrectly()) {
+                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
+                    } else {
+                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
+                    }
+                } else {
+                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
+                }
+            }else {
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente'.$userAreaMobile));
+            }
+        } else {
+            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+        }
+
+        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
+
+    }
+
     public function packageMySharengoAction()
     {
+        //if there is mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
         return new ViewModel();
     }
 

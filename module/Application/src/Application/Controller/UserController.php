@@ -115,6 +115,7 @@ class UserController extends AbstractActionController {
         return new ViewModel();
     }
 
+
     public function fleetIdSmsVerificationAction() {
         //$arrayIdFleet = $this->fleetService->getFleetSmsVerificationActive();
 
@@ -207,7 +208,7 @@ class UserController extends AbstractActionController {
             $container = new Container('session');
             $container->offsetSet('hasDiscount', true);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return $this->redirect()->toRoute('signup');
@@ -224,7 +225,7 @@ class UserController extends AbstractActionController {
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -285,8 +286,23 @@ class UserController extends AbstractActionController {
         }
     }
 
-    public function signupSmsAction() {
+    /**
+     * 
+     * Send sms check code
+     * 
+     * @return type check code status
+     */
+    public function signupSmsAction() {                        
         $smsVerification = new Container('smsVerification');
+        
+        //CSD-1142 - check if mobile number already exixts
+        if ($this->checkDuplicateMobileAction() > 0){
+                $response = $this->getResponse();
+                $response->setStatusCode(200);
+                $response->setContent("Found");
+                return $response;
+        }
+
         //$session_formValidation = new Container('formValidation');
         if (!$smsVerification->offsetExists('timeStamp')) {
             $smsVerification->offsetSet('timeStamp', new \DateTime());
@@ -296,7 +312,8 @@ class UserController extends AbstractActionController {
             $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
             $response = $this->getResponse();
             $response->setStatusCode(200);
-            $response->setContent($response_msg);
+            $response->setContent($response_msg);            
+
             return $response;
         } else {
 
@@ -309,7 +326,7 @@ class UserController extends AbstractActionController {
                 $smsVerification->offsetSet('mobile', $this->params()->fromPost('mobile'));
                 $smsVerification->offsetSet('dialCode', $this->params()->fromPost('dialCode'));
                 $smsVerification->offsetSet('code', $this->codeGenerator());
-
+                
                 $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
@@ -326,8 +343,8 @@ class UserController extends AbstractActionController {
 
     /**
      * manageSendSms -> send message with sms hostig provider
-     * 
-     * 
+     *
+     *
      * @param int $dialCode - dialcode to phone number
      * @param int $mobile - phone nuember
      * @param int $code - random generate code
@@ -475,7 +492,7 @@ class UserController extends AbstractActionController {
      * codeGenerator -> generate random code to sms validation in registration form
      * if sendbox is true (no send message) the code is 1234 (dafault)
      * else sendobox is false (SEND message) the code is random generate
-     * 
+     *
      * @return type
      */
     private function codeGenerator() {
@@ -502,7 +519,9 @@ class UserController extends AbstractActionController {
             return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData($data);
+        
         try {
+            $data = $this->registrationService->sanitizeDialMobile($data);
             $this->registrationService->notifySharengoByMail($data);
             $this->registrationService->saveData($data);
             $this->registrationService->sendEmail($data['email'], $data['name'], $data['surname'], $data['hash'], $data['language']);
@@ -591,7 +610,7 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getPromoCodeByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return null;
@@ -601,10 +620,26 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getFleetByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return null;
     }
 
+    /**
+     * 
+     * Check if mobile number already exixts
+     * 
+     * Check without dial code to evaluate numbers already in the DB
+     * 
+     * @return int      0 = not found
+     *                  >0 = found
+     */
+    private function checkDuplicateMobileAction()
+    {     
+        //$value = sprintf('%s%s',$this->params()->fromPost('dialCode'), $this->params()->fromPost('mobile'));
+        $found = $this->customersService->checkMobileNumber($this->params()->fromPost('mobile'));
+        return $found;
+    }
+    
 }

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /cartasi
+Disallow: /cartasi/pagamento-ricorrente
+Disallow: /cartasi/primo-pagamento
