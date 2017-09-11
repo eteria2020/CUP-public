@@ -284,45 +284,49 @@ class UserController extends AbstractActionController {
     
     public function  co2Action(){
 
-        //get $customerId param in post && get customer from $customerId && get all trip from $customerId
-        $customerId = $this->params()->fromPost('id');
-        $customer = $this->customersService->findById($customerId);
-        $trips = $this->tripsService->getTripsByCustomer($customerId);
-        
-        $KG="";
-        $gr=106;//constant
-        $secondsTrips=0;
+            //get $customerId param in post && get customer from $customerId && get all trip from $customerId
+            $customerId = $this->params()->fromPost('id');
+            $customer = $this->customersService->findById($customerId);
+            $trips = $this->tripsService->getTripsByCustomerCO2($customerId);
 
-        //$Vm is different for a city, get from customer fleetId
-        switch ($customer->getFleet()->getId()):
-            case 1:
-                $Vm=17;
-                break;
-            case 2:
-                $Vm=15;
-                break;
-            case 3:
-                $Vm=15;
-                break;
-            case 4:
-                $Vm=20;
-                break;
-        endswitch;
+            $KG="";
+            $gr=106;//constant
+            $secondsTrips=0;
 
-        foreach ($trips as $trip){
-            //diff between timeStamp_end trip (timeStamp_end - parkSecondo) and timeStamp_start trip
-            $timeTrip = date_diff($trip->getTimestampEnd()->modify("-".$trip->getParkSeconds()."second"),$trip->getTimestampBeginning());
-            $secondsTrips += $this->calculateTripInSecond($timeTrip);
-        }
-        
-        //KG = ((((secondi corsa/60)/60) * VM)* GR/KM)/1000
-        $KG=(((($secondsTrips/60)/60)*$Vm)*$gr)/1000;
-        $KG = round($KG, 0);
-        
-        $response = $this->getResponse();
-        $response->setStatusCode(200);
-        $response->setContent($KG);
-        return $response;
+            //$Vm is different for a city, get from customer fleetId
+            switch ($customer->getFleet()->getId()):
+                    case 1:
+                            $Vm=17;
+                            break;
+                    case 2:
+                            $Vm=15;
+                            break;
+                    case 3:
+                            $Vm=15;
+                            break;
+                    case 4:
+                            $Vm=20;
+                            break;
+            endswitch;
+
+            foreach ($trips as $trip){
+                    //diff between timeStamp_end trip (timeStamp_end - parkSecondo) and timeStamp_start trip
+                    $parkseconds = 0;
+                    if(!is_null($trip->getParkSeconds())){
+                            $parkseconds = $trip->getParkSeconds();
+                    }
+                    $timeTrip = date_diff($trip->getEndTx()->modify("-".$parkseconds." second"),$trip->getTimestampBeginning());
+                    $secondsTrips += $this->calculateTripInSecond($timeTrip);
+            }        
+
+            //KG = ((((secondi corsa/60)/60) * VM)* GR/KM)/1000
+            $KG=(((($secondsTrips/60)/60)*$Vm)*$gr)/1000;
+            $KG = round($KG, 0);
+
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent($KG);
+            return $response;
     }
     
     private function calculateTripInSecond($timeTrip) {
