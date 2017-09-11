@@ -2,7 +2,7 @@
 $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-        ->appendFile($this->basePath('js/signup.js?v=3.4'));
+        ->appendFile($this->basePath('js/signup.js?v=3.5'));
 
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
@@ -766,7 +766,7 @@ $this->headLink()
             <!-- checkbox informativa praivacy -->
             
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Informativa sulla privacy'); ?></h2>
+                <h2 id="InfoPravacyTitle"><?= $this->translate('Informativa sulla privacy'); ?></h2>
             </div>
             
             <div class="block-row-field clearfix">
@@ -776,7 +776,7 @@ $this->headLink()
                     <?php $privacyInformation = $this->form->get('user')->get('privacyInformation'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($privacyInformation) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $privacyInformation->getLabel(); ?>
+                        <span id="InfoPravacyText" class='control-indicator'></span><?php echo ' ' . $privacyInformation->getLabel(); ?>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($privacyInformation, ['class' => 'errors']); ?>
@@ -791,7 +791,7 @@ $this->headLink()
             <!-- checkbox newsletter -->
             
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Newsletter'); ?></h2>
+                <h2 id="newsletterTitle"><?= $this->translate('Newsletter'); ?></h2>
             </div>
             
             <div class="block-row-field clearfix">
@@ -801,7 +801,7 @@ $this->headLink()
                     <?php $newsletter = $this->form->get('user')->get('newsletter'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($newsletter) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $newsletter->getLabel(); ?>
+                        <span id="newsletterText" class='control-indicator'></span><?php echo ' ' . $newsletter->getLabel(); ?>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($newsletter, ['class' => 'errors']); ?>
