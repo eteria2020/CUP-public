@@ -343,6 +343,17 @@ return [
                     ]
                 ]
             ],
+            'co2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/co2',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'co2'
+                    ],
+                ]
+            ],
             'promocode-signup' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1352,6 +1363,7 @@ return [
             'PasswordForm' => 'Application\Form\PasswordFormFactory',
             'DriverLicenseForm' => 'Application\Form\DriverLicenseFormFactory',
             'PromoCodeForm' => 'Application\Form\PromoCodeFormFactory',
+            'CustomerPointForm' => 'Application\Form\CustomerPointFormFactory',
             'ForeignDriversLicenseForm' => 'Application\Form\ForeignDriversLicenseFormFactory',
             'Application\Service\ProviderAuthentication' => 'Application\Service\ProviderAuthenticationServiceFactory',
             'Application\Listener\DriversLicenseValidationListener' => 'Application\Listener\DriversLicenseValidationListenerFactory',
@@ -1789,6 +1801,28 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'bonus-pois'
+                        ]
+                    ]
+                ],
+                'add-point-day' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'add point day [<date>]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'add-point-day'
+                        ]
+                    ]
+                ],
+                'add-point-cluster' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'add point cluster',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'add-point-cluster'
                         ]
                     ]
                 ],

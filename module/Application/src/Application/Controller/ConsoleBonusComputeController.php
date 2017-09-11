@@ -13,9 +13,11 @@ use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
+use SharengoCore\Entity\CustomersPoints;
 use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
+use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ConsoleBonusComputeController extends AbstractActionController
@@ -74,6 +76,16 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var Config
      */
     private $config;
+    
+    /**
+     * @var array
+     */
+    private $pointConfig;
+    
+    /**
+     * @var
+     */
+    private $customerPointForm;
 
     /**
      * @param CustomersService $customerService
@@ -85,6 +97,7 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @param EventsService $eventsService
      * @param Logger $logger
      * @param array $config
+     * @param Form $customerPointForm
      */
     public function __construct(
         CustomersService $customerService,
@@ -97,7 +110,9 @@ class ConsoleBonusComputeController extends AbstractActionController
         PoisService $poisService,
         EventsService $eventsService,
         Logger $logger,
-        $config
+        $config,
+        Form $customerPointForm,
+        array $pointConfig
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -110,6 +125,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->eventsService = $eventsService;
         $this->logger = $logger;
         $this->config = $config;
+        $this->customerPointForm = $customerPointForm;
+        $this->pointConfig = $pointConfig;
     }
 
     public function bonusComputeAction()
@@ -385,9 +402,386 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
+    
+    private function validateDate($date)
+        {
+            $d = \DateTime::createFromFormat('Y-m-d', $date);
+            return $d && $d->format('Y-m-d') === $date;
+        }
 
-    public function bonusPoisAction()
-    {
+    /*
+     * this method verify/calculate if one customer can receive point day
+     */
+    public function addPointDayAction(){        
+        
+        $this->prepareLogger();
+        $format = "%s;INF;addPointDayAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $request = $this->getRequest();
+        $paramDate = $request->getParam('date');
+        //$paramDate="2017-09-05";
+        
+        if(!is_null($paramDate)){
+            $format = "%s;INF;addPointDayAction;script with date param\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+            if ($this->validateDate($paramDate)) {
+                $format = "%s;INF;addPointDayAction;DateParam= %s\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
+                $date = new \DateTime($paramDate);
+                $arrayDates = $this->createDate($date);
+                $this->scriptAddPointDay($arrayDates);
+            }else{
+                $format = "%s;INF;addPointDayAction;date param NOT VALID!;DateParam= %s \n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
+            }
+        }else{
+            $format = "%s;INF;addPointDayAction;script NO with date param\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+            $this->checkIfCallAddPointClusterAction();
+            $arrayDates = $this->createDate();
+            $this->scriptAddPointDay($arrayDates);   
+        }
+
+        $format = "%s;INF;addPointDayAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }// end addPointDayAction
+    
+    private function scriptAddPointDay($arrayDates){
+        
+        $customers= $this->customerService->getCustomersRunYesterday($arrayDates[0], $arrayDates[1]);        
+        
+        foreach ($customers as $c){
+            
+            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
+            $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $arrayDates[2], $arrayDates[0]);
+            
+            $secondsTripsMonth = 0;
+            $secondsTripsYesterday = 0;
+            
+            if(count($tripsMonth)>0){
+                foreach ($tripsMonth as $tripMonth){
+                    if(is_null($tripMonth->getTimestampEnd()) && is_null($tripMonth->getEndTx())){
+                        continue;
+                    }else{
+                        if(!is_null($tripMonth->getEndTx())){
+                            $timeTripsMonth = date_diff($tripMonth->getEndTx(),$tripMonth->getTimestampBeginning());
+                        }else{
+                            $timeTripsMonth = date_diff($tripMonth->getTimestampEnd(),$tripMonth->getTimestampBeginning());
+                        }
+                    }
+                    $secondsTripsMonth += $this->calculateTripInSecond($timeTripsMonth);
+                }
+            }
+            
+            if(count($tripsYesterday)){
+                foreach ($tripsYesterday as $tripYesterday){
+                    if(is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())){
+                        continue;
+                    }else{
+                        if(!is_null($tripYesterday->getEndTx())){
+                            $timeTripsYesterday = date_diff($tripYesterday->getEndTx(),$tripYesterday->getTimestampBeginning());
+                        }else{
+                            $timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(),$tripYesterday->getTimestampBeginning());
+                        }
+                    }
+                    $secondsTripsYesterday += $this->calculateTripInSecond($timeTripsYesterday);
+                }
+            }
+              
+            $minuteTripsMonth = round($secondsTripsMonth/60, 0);
+            $minuteTripsYesterday = round($secondsTripsYesterday/60, 0);
+            
+            $result[0] = 0;
+            $result[1] = $minuteTripsYesterday;
+            $result[2] = $minuteTripsMonth;
+            
+            do{
+                $result = $this->howManyPointsAddToUser($result);
+            }while($result[1]>0);
+            
+            //add point in customers_points
+            $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3]);
+            if(count($customerPoints) > 0){
+                $this->updateCustomersPoints($result[0], $customerPoints[0], $c['id']);
+            }else{
+                $this->addCustomersPoints($result[0], $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
+            }
+                
+        }//end foreach custimers
+        
+    }//scriptAddPointDay
+
+    private function createDate(\DateTime $date = null){
+        if(is_null($date)){
+            $dateYesterdayStart = new \DateTime();
+            $dateYesterdayStart = $dateYesterdayStart->modify("-1 day");
+            $dateYesterdayStart = $dateYesterdayStart->format("Y-m-d 00:00:00");
+
+            $dateTodayStart = new \DateTime();
+            $dateTodayStart = $dateTodayStart->format("Y-m-d 00:00:00");
+
+
+            $dateCurrentMonthStart = new \DateTime('first day of this month');
+            $dateCurrentMonthStart = $dateCurrentMonthStart->format("Y-m-d 00:00:00");
+
+            $dateNextMonthStart = new \DateTime('first day of next month');
+            $dateNextMonthStart = $dateNextMonthStart->format("Y-m-d 00:00:00");
+
+            $dates[0] = $dateYesterdayStart;
+            $dates[1] = $dateTodayStart;
+            $dates[2] = $dateCurrentMonthStart;
+            $dates[3] = $dateNextMonthStart;
+
+            return $dates;
+        }else{
+            
+            $dateStart = $date->format("Y-m-d 00:00:00");
+            
+            $dateMonthStart = $date->format("Y-m-d 00:00:00");
+            $dateMonthStart = date("Y-m-01 00:00:00", strtotime($dateMonthStart));
+            
+            $date1 = new \DateTime($date->format("Y-m-d 00:00:00"));
+            $dateLastStart = $date1->modify("-1 day");
+            $dateLastStart = $dateLastStart->format("Y-m-d 00:00:00");
+            
+            $date2 = new \DateTime($date->format("Y-m-d 00:00:00"));
+            $dateNextMonthStart = ($date2->modify("+1 month")->format("Y-m-d 00:00:00"));
+            $dateNextMonthStart = date("Y-m-01 00:00:00", strtotime($dateNextMonthStart));
+            
+            
+            $dates[0] = $dateLastStart;
+            $dates[1] = $dateStart;
+            $dates[2] = $dateMonthStart;
+            $dates[3] = $dateNextMonthStart;
+            
+            return $dates;
+        }
+    }
+
+    private function checkIfCallAddPointClusterAction(){
+        //check if now is the first day of month
+        //Y-> call method that check cluster point
+        //N-> continue
+        $today = new \DateTime();
+        $today = $today->format('Y-m-d');
+        $firstDay = new \DateTime('first day of this month');
+        $firstDay = $firstDay->format('Y-m-d');
+        
+        if($today == $firstDay){
+            $this->addPointClusterAction();
+        }
+    }
+
+
+    /*
+     * create obj customer and add to db
+     * for clas customerPoint Form, FormFactory e Fieldset
+     * they are copied to the same admin class 
+     */
+    private function addCustomersPoints($numeberAddPoint, $customerId, $nameScript, $type){
+        
+        $format = "%s;INF;addCustomersPoints;Customer_id= %d;Add= %d;Script name= %s\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $nameScript));
+        
+        $point = new \SharengoCore\Entity\CustomersPoints();
+        
+        $date = new \DateTime();
+        $date2 = new \DateTime();
+        $dateAdd10year = $date2->modify('+10 years');
+        
+        $point->setTotal($numeberAddPoint);
+        $point->setDescription("add row to script: ".$nameScript);
+        $point->setValidFrom($date);
+        $point->setValidTo($dateAdd10year);
+        $point->setInsertTs($date);
+        $point->setUpdateTs($date);
+        $point->setResidual(0);
+        $point->setType($type);
+        
+        $this->customerService->setPointField($point, $customerId, $type);
+    }
+    
+    private function updateCustomersPoints($numeberAddPoint, CustomersPoints $customerPoint, $customerId){
+        
+        $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
+        
+        $customerPoint->setTotal($customerPoint->getTotal() + $numeberAddPoint);
+        $customerPoint->setUpdateTs(new \DateTime());
+        $this->customerService->updateCustomerPointRow($customerPoint);
+        
+    }
+
+    /*
+     * this method calculate how many point add to customer
+     */
+    private function howManyPointsAddToUser($result) {
+        
+        if($result[2] < $this->pointConfig['range1AddPointDay']){
+            if(($result[2] + $result[1]) < $this->pointConfig['range1AddPointDay']){
+                $result[0] += $result[1]*$this->pointConfig['multiplierRange0AddPointDay'];
+                $result[1] = -1;
+            }else{
+                $result[0] += ($this->pointConfig['range1AddPointDay'] - $result[2])*$this->pointConfig['multiplierRange0AddPointDay'];
+                $result[1] = $result[1] - ($this->pointConfig['range1AddPointDay'] - $result[2]);
+                $result[2] = $this->pointConfig['range1AddPointDay'];
+            }
+            return $result;     
+        }else{
+            if($result[2] >= $this->pointConfig['range1AddPointDay'] && $result[2] < $this->pointConfig['range2AddPointDay']){
+                if(($result[2] + $result[1]) < $this->pointConfig['range2AddPointDay']){
+                    $result[0] += $result[1]*$this->pointConfig['multiplierRange1AddPointDay'];
+                    $result[1] = -1;
+                }else{
+                    $result[0] += ($this->pointConfig['range2AddPointDay'] - $result[2])*$this->pointConfig['multiplierRange1AddPointDay'];
+                    $result[1] = $result[1] - ($this->pointConfig['range2AddPointDay'] - $result[2]);
+                    $result[2] = $this->pointConfig['range2AddPointDay'];
+                }
+                return $result;
+            }else{
+                if($result[2] >= $this->pointConfig['range2AddPointDay'] && $result[2] < $this->pointConfig['range3AddPointDay']){
+                    if(($result[2] + $result[1]) < $this->pointConfig['range3AddPointDay']){
+                        $result[0] += $result[1]*$this->pointConfig['multiplierRange2AddPointDay'];
+                        $result[1] = -1;
+                    }else{
+                        $result[0] += ($this->pointConfig['range3AddPointDay'] - $result[2])*$this->pointConfig['multiplierRange2AddPointDay'];
+                        $result[1] = $result[1] - ($this->pointConfig['range3AddPointDay'] - $result[2]);
+                        $result[2] = $this->pointConfig['range3AddPointDay'];
+                    }
+                    return $result;
+                }else{
+                    if($result[2] >= $this->pointConfig['range3AddPointDay']){
+                        $result[0] += $result[1]*$this->pointConfig['multiplierRange3AddPointDay'];
+                        $result[1] = -1;
+                        return $result;
+                    }//end else if 600
+                }//end else if between 200 and 600
+            }//end else if between 80 and 200
+        }//end else if 80
+    }//end howManyPointsAddToUser
+    
+    /*
+     * this method verify if one customer can receive this bonus
+     */
+    public function  addPointClusterAction(){
+        
+        $this->prepareLogger();
+        $format = "%s;INF;addPointClusterAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $dateStartCurrentMonth = new \DateTime('first day of this month');
+        $dateStartCurrentMonth = $dateStartCurrentMonth->format("Y-m-d 00:00:00");
+        
+        $dateStartLastMonth = new \DateTime('first day of this month');
+        $dateStartLastMonth = $dateStartLastMonth->modify("-1 month");
+        $dateStartLastMonth = $dateStartLastMonth->format("Y-m-d 00:00:00");
+        
+        $dateStartTwotMonthAgo = new \DateTime('first day of this month');
+        $dateStartTwotMonthAgo = $dateStartTwotMonthAgo->modify("-2 month");
+        $dateStartTwotMonthAgo = $dateStartTwotMonthAgo->format("Y-m-d 00:00:00");
+        
+        $customers= $this->customerService->getCustomersRunThisMonth($dateStartLastMonth, $dateStartCurrentMonth);
+        
+        foreach ($customers as $c){
+            
+            if(!$this->checkCustomerAlreadyAddPointsCluster($c['id'])){
+                $tripsLastMonth = $this->tripsService->getTripsByCustomerForAddPointClusterLastMonth($c['id'], $dateStartLastMonth, $dateStartCurrentMonth);
+                $secondsTripsLastMonth = 0;
+                if(count($tripsLastMonth)>0){
+                    foreach ($tripsLastMonth as $tripLastMonth){
+                        if(is_null($tripLastMonth->getTimestampEnd()) && is_null($tripLastMonth->getEndTx())){
+                            continue;
+                        }else{
+                            if(!is_null($tripLastMonth->getEndTx())){
+                                $timeTripsLastMonth = date_diff($tripLastMonth->getEndTx(), $tripLastMonth->getTimestampBeginning());
+                            }else{
+                                $timeTripsLastMonth = date_diff($tripLastMonth->getTimestampEnd(), $tripLastMonth->getTimestampBeginning());
+                            }
+                        }
+                        $secondsTripsLastMonth += $this->calculateTripInSecond($timeTripsLastMonth);
+                    }
+                }
+                $minuteTripsLastMonth = round($secondsTripsLastMonth/60, 0);
+
+                if($minuteTripsLastMonth >= pointConfig['newCheckPointCluster']){
+                    $tripsTwotMonthAgo = $this->tripsService->getTripsByCustomerForAddPointClusterTwotMonthAgo($c['id'], $dateStartLastMonth, $dateStartTwotMonthAgo);
+                    $secondsTripsTwotMonthAgo = 0;
+                    if(count($tripsTwotMonthAgo)>0){
+                        foreach ($tripsTwotMonthAgo as $tripTwotMonthAgo){
+                            if(is_null($tripTwotMonthAgo->getTimestampEnd()) && is_null($tripTwotMonthAgo->getEndTx())){
+                                continue;
+                            }else{
+                                if(!is_null($tripTwotMonthAgo->getEndTx())){
+                                    $timeTripsTwotMonthAgo = date_diff($tripTwotMonthAgo->getEndTx(), $tripTwotMonthAgo->getTimestampBeginning());
+                                }else{
+                                    $timeTripsTwotMonthAgo = date_diff($tripTwotMonthAgo->getTimestampEnd(), $tripTwotMonthAgo->getTimestampBeginning());
+                                }
+                            }
+                            $secondsTripsTwotMonthAgo += $this->calculateTripInSecond($timeTripsTwotMonthAgo);
+                        }
+                    }
+                    $minuteTripsTwotMonthAgo = round($secondsTripsTwotMonthAgo/60, 0);
+                    
+                    if($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']){
+                       //add 80 points for pass cluster 0 to 1
+                       $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
+                    }
+                }
+
+            }//end checkCustomerAlreadyAddPointsCluster
+        }//end foreach
+        $format = "%s;INF;addPointClusterAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+    }//end addPointClusterAction
+    
+    
+    /*
+     * this method check if customer have already received the cluster bonus
+     */
+    private function checkCustomerAlreadyAddPointsCluster($customerId){
+        $points = $this->customerService->getCustomerPointsByCustomer($customerId);
+        if(count($points) > 0){
+            foreach ($points as $p){
+                if(strtoupper($p->getType()) == $this->pointConfig['typeCluster'])
+                   return true; 
+            }//end foreach $trips
+        }
+        return false;
+    }
+    
+    private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart){
+        return $this->customerService->checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart);
+    }
+    
+    /*
+     * this method calculate in second how much one cluster
+     * have runnig with param
+     * Param is an object DateInterval
+     */
+    private function calculateTripInSecond($timeTrip) {
+        
+        $seconds = 0;
+        
+        $days = $timeTrip->format('%a');
+        if ($days) {
+            $seconds += 24 * 60 * 60 * $days;
+        }
+        $hours = $timeTrip->format('%H');
+        if ($hours) {
+            $seconds += 60 * 60 * $hours;
+        }
+        $minutes = $timeTrip->format('%i');
+        if ($minutes) {
+            $seconds += 60 * $minutes;
+        }
+        $seconds += $timeTrip->format('%s');
+        
+        return $seconds;
+    }//end calculateTripInSecond
+
+    public function bonusPoisAction(){
         $this->prepareLogger();
         $request = $this->getRequest();
         $debug = $request->getParam('debug-mode') || $request->getParam('dm');

@@ -1,22 +1,21 @@
 <?php
 $this->headScript()
-    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
-    ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-    ->appendFile($this->basePath('js/signup.js'))
-    ->appendFile($this->basePath('js/banner.js'));
+        ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+        ->appendFile($this->basePath('js/ui.datepicker-it.js'))
+        ->appendFile($this->basePath('js/signup.js?v=1.1'))
+        ->appendFile($this->basePath('js/banner.js'));
 $this->headLink()
-    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+        ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
 ?>
 
 <!-- main -->
-<div id="main" class="detect-window-height">
+<div id="main" class="detect-window-height" >
 
     <!-- module-wrapper-app -->
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
         <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
-
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -38,456 +37,456 @@ $this->headLink()
 
                         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
 
-                            <div class="block-form-section content-align-center margin-bottom">
-                                <h2><i class="fa fa-user"></i><?= $this->translate("I tuoi dati personali"); ?></h2>
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-user"></i><?= $this->translate("I tuoi dati personali"); ?></h2>
+                        </div>
+
+                        <div id="viewProfile">
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Email"); ?></label>
+                                        <input type="text" name="" class="disabled" value="<?= $this->customer->getEmail(); ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-2-4"></div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Titolo"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-3-4 last">
+
+                                    <div class="block-field bw-f w-2-4">
+                                        <p> <label><?= $this->translate("Nome"); ?></label>
+                                            <input type="text" name="" class="required disabled"  value="<?= $this->customer->getName(); ?>" >
+                                        </p>
+                                    </div>
+
+                                    <div class="block-field bw-f w-2-4">
+                                        <p> <label><?= $this->translate("Cognome"); ?></label>
+                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getSurname(); ?>" >
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-3">
+                                    <p>
+                                        <label><?= $this->translate("Data di nascita"); ?></label>
+                                        <input type="text" name="" class="required datepicker-date disabled" value="<?= $this->customer->getBirthDate()->format('d-m-Y'); ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-1-3">
+                                    <p> <label><?= $this->translate("Stato di nascita"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthCountry(); ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-1-3 last">
+                                    <p> <label><?= $this->translate("Provincia di nascita"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthProvince(); ?>" >
+                                    </p>
+                                </div>
+
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Comune di nascita"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthTown(); ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-3-4 last">
+
+                                    <div class="block-field bw-f w-3-4">
+                                        <p> <label><?= $this->translate("Indirizzo di residenza"); ?></label>
+                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getAddress(); ?>" >
+                                        </p>
+                                    </div>
+
+                                    <div class="block-field bw-f last w-1-4">
+                                        <p> <label><?= $this->translate("Cap"); ?></label>
+                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getZipCode(); ?>" >
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Citt&agrave;"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getTown(); ?>">
+                                    </p>
+                                </div>
+
+                                <div class="block-field last bw-f w-3-4">
+                                    <p> <label><?= $this->translate("Informazioni aggiuntive"); ?></label>
+                                        <input type="text" name="" class="disabled" value="<?= $this->customer->getAddressInfo(); ?>" >
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Codice Fiscale"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getTaxCode(); ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Partita IVA (Opzionale)"); ?></label>
+                                        <input type="text" name="" class="disabled" value="<?= $this->customer->getVat(); ?>" >
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Cellulare"); ?></label>
+                                        <input type="text" name="" class="disabled" value="<?= $this->customer->getMobile(); ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Telefono"); ?></label>
+                                        <input type="text" name="" class="disabled" value="<?= $this->customer->getPhone(); ?>" >
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Lingua"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->longLanguage($this->customer->getLanguage()); ?>" >
+                                    </p>
+                                </div>
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Citt&agrave; preferita"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getFleet()->getName(); ?>">
+                                    </p>
+                                </div>
                             </div>
 
-                            <div id="viewProfile">
+                            <div class="block-wrapper-button content-align-center">
+                                <button type="button" id="js-edit-form"><?= $this->translate("Modifica profilo"); ?></button>
+                            </div>
 
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
+                        </div><!-- end viewProfile -->
+
+                        <div id="editProfile" style="display: none;">
+
+                            <?php
+                            $this->profileForm->prepare();
+                            echo $this->form()->openTag($this->profileForm);
+                            ?>
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Email"); ?></label>
+                                        <?php
+                                        $email = $this->profileForm->get('customer')->get('email');
+                                        $email->setValue($this->customer->getEmail());
+                                        echo $this->formElement($email->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($email, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Ripeti Email"); ?></label>
+                                        <?php
+                                        $email2 = $this->profileForm->get('customer')->get('email2');
+                                        $email2->setValue($this->customer->getEmail());
+                                        echo $this->formElement($email2->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($email2, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Titolo"); ?></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-3-4 last">
 
                                     <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Email"); ?></label>
-                                            <input type="text" name="" class="disabled" value="<?= $this->customer->getEmail(); ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-2-4"></div>
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-1-4">
-                                        <p> <label><?= $this->translate("Titolo"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-3-4 last">
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Nome"); ?></label>
-                                                <input type="text" name="" class="required disabled"  value="<?= $this->customer->getName(); ?>" >
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Cognome"); ?></label>
-                                                <input type="text" name="" class="required disabled" value="<?= $this->customer->getSurname(); ?>" >
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-1-3">
-                                        <p>
-                                            <label><?= $this->translate("Data di nascita"); ?></label>
-                                            <input type="text" name="" class="required datepicker-date disabled" value="<?= $this->customer->getBirthDate()->format('d-m-Y'); ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-1-3">
-                                        <p> <label><?= $this->translate("Stato di nascita"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthCountry(); ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-1-3 last">
-                                        <p> <label><?= $this->translate("Provincia di nascita"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthProvince(); ?>" >
-                                        </p>
-                                    </div>
-
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-1-4">
-                                        <p> <label><?= $this->translate("Comune di nascita"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthTown(); ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-3-4 last">
-
-                                        <div class="block-field bw-f w-3-4">
-                                            <p> <label><?= $this->translate("Indirizzo di residenza"); ?></label>
-                                                <input type="text" name="" class="required disabled" value="<?= $this->customer->getAddress(); ?>" >
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f last w-1-4">
-                                            <p> <label><?= $this->translate("Cap"); ?></label>
-                                                <input type="text" name="" class="required disabled" value="<?= $this->customer->getZipCode(); ?>" >
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-1-4">
-                                        <p> <label><?= $this->translate("Citt&agrave;"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getTown(); ?>">
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field last bw-f w-3-4">
-                                        <p> <label><?= $this->translate("Informazioni aggiuntive"); ?></label>
-                                            <input type="text" name="" class="disabled" value="<?= $this->customer->getAddressInfo(); ?>" >
-                                        </p>
-                                    </div>
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Codice Fiscale"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getTaxCode(); ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Partita IVA (Opzionale)"); ?></label>
-                                            <input type="text" name="" class="disabled" value="<?= $this->customer->getVat(); ?>" >
-                                        </p>
-                                    </div>
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Cellulare"); ?></label>
-                                            <input type="text" name="" class="disabled" value="<?= $this->customer->getMobile(); ?>" >
-                                        </p>
-                                    </div>
-
-                                    <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Telefono"); ?></label>
-                                            <input type="text" name="" class="disabled" value="<?= $this->customer->getPhone(); ?>" >
-                                        </p>
-                                    </div>
-
-                                </div>
-                                <!-- block-row-field -->
-
-                                <div class="block-row-field clearfix">
-                                    <div class="block-field bw-f w-1-4">
-                                        <p> <label><?= $this->translate("Lingua"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->longLanguage($this->customer->getLanguage()); ?>" >
-                                        </p>
-                                    </div>
-                                    <div class="block-field bw-f w-1-4">
-                                        <p> <label><?= $this->translate("Citt&agrave; preferita"); ?></label>
-                                            <input type="text" name="" class="required disabled" value="<?= $this->customer->getFleet()->getName(); ?>">
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="block-wrapper-button content-align-center">
-                                    <button type="button" id="js-edit-form"><?= $this->translate("Modifica profilo"); ?></button>
-                                </div>
-
-                            </div><!-- end viewProfile -->
-
-                            <div id="editProfile" style="display: none;">
-
-                                <?php
-                                $this->profileForm->prepare();
-                                echo $this->form()->openTag($this->profileForm);
-                                ?>
-
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
-
-                                    <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Email"); ?></label>
+                                        <p> <label><?= $this->translate("Nome"); ?></label>
                                             <?php
-                                            $email = $this->profileForm->get('customer')->get('email');
-                                            $email->setValue($this->customer->getEmail());
-                                            echo $this->formElement($email->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($email, ['class' => 'error-sign-up']);
+                                            $name = $this->profileForm->get('customer')->get('name');
+                                            $name->setValue($this->customer->getName());
+                                            echo $this->formElement($name->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($name, ['class' => 'error-sign-up']);
                                             ?>
                                         </p>
                                     </div>
 
                                     <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Ripeti Email"); ?></label>
+                                        <p> <label><?= $this->translate("Cognome"); ?></label>
                                             <?php
-                                            $email2 = $this->profileForm->get('customer')->get('email2');
-                                            $email2->setValue($this->customer->getEmail());
-                                            echo $this->formElement($email2->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($email2, ['class' => 'error-sign-up']);
+                                            $surname = $this->profileForm->get('customer')->get('surname');
+                                            $surname->setValue($this->customer->getSurname());
+                                            echo $this->formElement($surname->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($surname, ['class' => 'error-sign-up']);
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-3">
+                                    <p> <label><?= $this->translate("Data di nascita"); ?></label>
+                                        <?php
+                                        $birthDate = $this->profileForm->get('customer')->get('birthDate');
+                                        $birthDate->setValue($this->customer->getBirthDate()->format('d-m-Y'));
+                                        echo $this->formElement($birthDate->setAttribute('class', 'required datepicker-date'));
+                                        echo $this->formElementErrors($birthDate, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-1-3">
+                                    <p> <label><?= $this->translate("Stato di nascita"); ?></label>
+                                        <?php
+                                        $birthCountry = $this->profileForm->get('customer')->get('birthCountry');
+                                        $birthCountry->setValue($this->customer->getBirthCountry());
+                                        echo $this->formElement($birthCountry->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($birthCountry, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-1-3 last">
+                                    <p> <label><?= $this->translate("Provincia di nascita"); ?></label>
+                                        <?php
+                                        $birthProvince = $this->profileForm->get('customer')->get('birthProvince');
+                                        $birthProvince->setValue($this->customer->getBirthProvince());
+                                        echo $this->formElement($birthProvince->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($birthProvince, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Comune di nascita"); ?></label>
+                                        <?php
+                                        $birthTown = $this->profileForm->get('customer')->get('birthTown');
+                                        $select = '<select name="' . $birthTown->getName() . '" ';
+                                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                                            $select .= $attribute . '="' . $value . '" ';
+                                        }
+                                        $select .= '><option></option></select>';
+                                        echo $select;
+                                        $input = '<input name="' . $birthTown->getName() . '" ';
+                                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                                            $input .= $attribute . '="' . $value . '" ';
+                                        }
+                                        $input .= ' style="display: none;" value="' . $birthTown->getValue() . '" disabled></ipnut>';
+                                        echo $input;
+                                        echo $this->formElementErrors($birthTown, ['class' => 'errors']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-3-4 last">
+
+                                    <div class="block-field bw-f w-3-4">
+                                        <p> <label><?= $this->translate("Indirizzo di residenza"); ?></label>
+                                            <?php
+                                            $address = $this->profileForm->get('customer')->get('address');
+                                            $address->setValue($this->customer->getAddress());
+                                            echo $this->formElement($address->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($address, ['class' => 'error-sign-up']);
+                                            ?>
+                                        </p>
+                                    </div>
+
+                                    <div class="block-field bw-f last w-1-4">
+                                        <p> <label><?= $this->translate("Cap"); ?></label>
+                                            <?php
+                                            $zipCode = $this->profileForm->get('customer')->get('zipCode');
+                                            $zipCode->setValue($this->customer->getZipCode());
+                                            echo $this->formElement($zipCode->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($zipCode, ['class' => 'error-sign-up']);
                                             ?>
                                         </p>
                                     </div>
 
                                 </div>
-                                <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-                                        <div class="block-field bw-f w-1-4">
-                                            <p> <label><?= $this->translate("Titolo"); ?></label>
-                                                <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-3-4 last">
-
-                                            <div class="block-field bw-f w-2-4">
-                                                <p> <label><?= $this->translate("Nome"); ?></label>
-                                                    <?php
-                                                    $name = $this->profileForm->get('customer')->get('name');
-                                                    $name->setValue($this->customer->getName());
-                                                    echo $this->formElement($name->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($name, ['class' => 'error-sign-up']);
-                                                    ?>
-                                                </p>
-                                            </div>
-
-                                            <div class="block-field bw-f w-2-4">
-                                                <p> <label><?= $this->translate("Cognome"); ?></label>
-                                                    <?php
-                                                    $surname = $this->profileForm->get('customer')->get('surname');
-                                                    $surname->setValue($this->customer->getSurname());
-                                                    echo $this->formElement($surname->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($surname, ['class' => 'error-sign-up']);
-                                                    ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-
-                                        <div class="block-field bw-f w-1-3">
-                                            <p> <label><?= $this->translate("Data di nascita"); ?></label>
-                                                <?php
-                                                $birthDate = $this->profileForm->get('customer')->get('birthDate');
-                                                $birthDate->setValue($this->customer->getBirthDate()->format('d-m-Y'));
-                                                echo $this->formElement($birthDate->setAttribute('class', 'required datepicker-date'));
-                                                echo $this->formElementErrors($birthDate, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-1-3">
-                                            <p> <label><?= $this->translate("Stato di nascita"); ?></label>
-                                                <?php
-                                                $birthCountry = $this->profileForm->get('customer')->get('birthCountry');
-                                                $birthCountry->setValue($this->customer->getBirthCountry());
-                                                echo $this->formElement($birthCountry->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($birthCountry, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-1-3 last">
-                                            <p> <label><?= $this->translate("Provincia di nascita"); ?></label>
-                                                <?php
-                                                $birthProvince = $this->profileForm->get('customer')->get('birthProvince');
-                                                $birthProvince->setValue($this->customer->getBirthProvince());
-                                                echo $this->formElement($birthProvince->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($birthProvince, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-
-                                        <div class="block-field bw-f w-1-4">
-                                            <p> <label><?= $this->translate("Comune di nascita"); ?></label>
-                                                <?php
-                                                    $birthTown = $this->profileForm->get('customer')->get('birthTown');
-                                                    $select = '<select name="'.$birthTown->getName().'" ';
-                                                    foreach ($birthTown->getAttributes() as $attribute => $value) {
-                                                        $select .= $attribute.'="'.$value.'" ';
-                                                    }
-                                                    $select .= '><option></option></select>';
-                                                    echo $select;
-                                                    $input = '<input name="'.$birthTown->getName().'" ';
-                                                    foreach ($birthTown->getAttributes() as $attribute => $value) {
-                                                        $input .= $attribute.'="'.$value.'" ';
-                                                    }
-                                                    $input .= ' style="display: none;" value="'.$birthTown->getValue().'" disabled></ipnut>';
-                                                    echo $input;
-                                                    echo $this->formElementErrors($birthTown, ['class' => 'errors']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-3-4 last">
-
-                                            <div class="block-field bw-f w-3-4">
-                                                <p> <label><?= $this->translate("Indirizzo di residenza"); ?></label>
-                                                    <?php
-                                                    $address = $this->profileForm->get('customer')->get('address');
-                                                    $address->setValue($this->customer->getAddress());
-                                                    echo $this->formElement($address->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($address, ['class' => 'error-sign-up']);
-                                                    ?>
-                                                </p>
-                                            </div>
-
-                                            <div class="block-field bw-f last w-1-4">
-                                                <p> <label><?= $this->translate("Cap"); ?></label>
-                                                    <?php
-                                                    $zipCode = $this->profileForm->get('customer')->get('zipCode');
-                                                    $zipCode->setValue($this->customer->getZipCode());
-                                                    echo $this->formElement($zipCode->setAttribute('class', 'required'));
-                                                    echo $this->formElementErrors($zipCode, ['class' => 'error-sign-up']);
-                                                    ?>
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-
-                                        <div class="block-field bw-f w-1-4">
-                                            <p> <label><?= $this->translate("Citt&agrave;"); ?></label>
-                                                <?php
-                                                $town = $this->profileForm->get('customer')->get('town');
-                                                $town->setValue($this->customer->getTown());
-                                                echo $this->formElement($town->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($town, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field last bw-f w-3-4">
-                                            <p> <label><?= $this->translate("Informazioni aggiuntive"); ?></label>
-                                                <?php
-                                                $addressInfo = $this->profileForm->get('customer')->get('addressInfo');
-                                                $addressInfo->setValue($this->customer->getAddressInfo());
-                                                echo $this->formElement($addressInfo);
-                                                echo $this->formElementErrors($addressInfo, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Codice Fiscale"); ?></label>
-                                                <?php
-                                                $taxCode = $this->profileForm->get('customer')->get('taxCode');
-                                                $taxCode->setValue($this->customer->getTaxCode());
-                                                echo $this->formElement($taxCode->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($taxCode, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Partita IVA (Opzionale)"); ?></label>
-                                                <?php
-                                                $vat = $this->profileForm->get('customer')->get('vat');
-                                                $vat->setValue($this->customer->getVat());
-                                                echo $this->formElement($vat);
-                                                echo $this->formElementErrors($vat, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Cellulare"); ?></label>
-                                                <?php
-                                                $mobile = $this->profileForm->get('customer')->get('mobile');
-                                                $mobile->setValue($this->customer->getMobile());
-                                                echo $this->formElement($mobile);
-                                                echo $this->formElementErrors($mobile, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Telefono"); ?></label>
-                                                <?php
-                                                $phone = $this->profileForm->get('customer')->get('phone');
-                                                $phone->setValue($this->customer->getPhone());
-                                                echo $this->formElement($phone);
-                                                echo $this->formElementErrors($phone, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <!-- block-row-field -->
-                                    <div class="block-row-field clearfix">
-
-                                        <div class="block-field bw-f w-1-4">
-                                            <p><label><?= $this->translate("Lingua"); ?></label>
-                                                <?php
-                                                $language = $this->profileForm->get('customer')->get('language');
-                                                $language->setValue($this->customer->getLanguage());
-                                                echo $this->formElement($language->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($language, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-1-4">
-                                            <p><label><?= $this->translate("Citt&agrave; preferita"); ?></label>
-                                                <?php
-                                                $fleet = $this->profileForm->get('customer')->get('fleet');
-                                                $fleet->setValue($this->customer->getFleet()->getId());
-                                                echo $this->formElement($fleet->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($fleet, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- block-row-field -->
-
-                                    <div class="block-wrapper-button content-align-center">
-                                        <button class="reset" id="js-reset-editProfile" type="button"><?= $this->translate('Annulla'); ?></button>
-                                        <button type="submit"><?= $this->translate('Salva modifiche'); ?></button>
-                                    </div>
-
-                                <?= $this->form()->closeTag(); ?>
                             </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Citt&agrave;"); ?></label>
+                                        <?php
+                                        $town = $this->profileForm->get('customer')->get('town');
+                                        $town->setValue($this->customer->getTown());
+                                        echo $this->formElement($town->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($town, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field last bw-f w-3-4">
+                                    <p> <label><?= $this->translate("Informazioni aggiuntive"); ?></label>
+                                        <?php
+                                        $addressInfo = $this->profileForm->get('customer')->get('addressInfo');
+                                        $addressInfo->setValue($this->customer->getAddressInfo());
+                                        echo $this->formElement($addressInfo);
+                                        echo $this->formElementErrors($addressInfo, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Codice Fiscale"); ?></label>
+                                        <?php
+                                        $taxCode = $this->profileForm->get('customer')->get('taxCode');
+                                        $taxCode->setValue($this->customer->getTaxCode());
+                                        echo $this->formElement($taxCode->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($taxCode, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Partita IVA (Opzionale)"); ?></label>
+                                        <?php
+                                        $vat = $this->profileForm->get('customer')->get('vat');
+                                        $vat->setValue($this->customer->getVat());
+                                        echo $this->formElement($vat);
+                                        echo $this->formElementErrors($vat, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Cellulare"); ?></label>
+                                        <?php
+                                        $mobile = $this->profileForm->get('customer')->get('mobile');
+                                        $mobile->setValue($this->customer->getMobile());
+                                        echo $this->formElement($mobile);
+                                        echo $this->formElementErrors($mobile, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-2-4">
+                                    <p> <label><?= $this->translate("Telefono"); ?></label>
+                                        <?php
+                                        $phone = $this->profileForm->get('customer')->get('phone');
+                                        $phone->setValue($this->customer->getPhone());
+                                        echo $this->formElement($phone);
+                                        echo $this->formElementErrors($phone, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p><label><?= $this->translate("Lingua"); ?></label>
+                                        <?php
+                                        $language = $this->profileForm->get('customer')->get('language');
+                                        $language->setValue($this->customer->getLanguage());
+                                        echo $this->formElement($language->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($language, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-1-4">
+                                    <p><label><?= $this->translate("Citt&agrave; preferita"); ?></label>
+                                        <?php
+                                        $fleet = $this->profileForm->get('customer')->get('fleet');
+                                        $fleet->setValue($this->customer->getFleet()->getId());
+                                        echo $this->formElement($fleet->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($fleet, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- block-row-field -->
+
+                            <div class="block-wrapper-button content-align-center">
+                                <button class="reset" id="js-reset-editProfile" type="button"><?= $this->translate('Annulla'); ?></button>
+                                <button type="submit"><?= $this->translate('Salva modifiche'); ?></button>
+                            </div>
+
+                            <?= $this->form()->closeTag(); ?>
+                        </div>
 
                         <div class="block-form-section content-align-center margin-bottom" style="margin-top: 20px;">
                             <h2><i class="fa fa-unlock-alt"></i> <?= $this->translate("I tuoi dati per l'accesso"); ?></h2>
@@ -520,47 +519,47 @@ $this->headLink()
                             echo $this->form()->openTag($this->passwordForm);
                             ?>
 
-                                <!-- block-row-field -->
-                                <div class="block-row-field clearfix">
+                            <!-- block-row-field -->
+                            <div class="block-row-field clearfix">
 
-                                    <div class="block-field bw-f w-1-4">
-                                        <p> <label><?= $this->translate("Vecchia Password"); ?></label>
+                                <div class="block-field bw-f w-1-4">
+                                    <p> <label><?= $this->translate("Vecchia Password"); ?></label>
+                                        <?php
+                                        $oldPassword = $this->passwordForm->get('oldPassword');
+                                        echo $this->formElement($oldPassword->setAttribute('class', 'required'));
+                                        echo $this->formElementErrors($oldPassword, ['class' => 'error-sign-up']);
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="block-field bw-f w-3-4 last">
+
+                                    <div class="block-field bw-f w-2-4">
+                                        <p> <label><?= $this->translate("Password"); ?></label>
                                             <?php
-                                            $oldPassword = $this->passwordForm->get('oldPassword');
-                                            echo $this->formElement($oldPassword->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($oldPassword, ['class' => 'error-sign-up']);
+                                            $password = $this->passwordForm->get('password');
+                                            echo $this->formElement($password->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($password, ['class' => 'error-sign-up']);
                                             ?>
                                         </p>
                                     </div>
 
-                                    <div class="block-field bw-f w-3-4 last">
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Password"); ?></label>
-                                                <?php
-                                                $password = $this->passwordForm->get('password');
-                                                echo $this->formElement($password->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($password, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="block-field bw-f w-2-4">
-                                            <p> <label><?= $this->translate("Ripeti Password"); ?></label>
-                                                <?php
-                                                $password2 = $this->passwordForm->get('password2');
-                                                echo $this->formElement($password2->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($password2, ['class' => 'error-sign-up']);
-                                                ?>
-                                            </p>
-                                        </div>
+                                    <div class="block-field bw-f w-2-4">
+                                        <p> <label><?= $this->translate("Ripeti Password"); ?></label>
+                                            <?php
+                                            $password2 = $this->passwordForm->get('password2');
+                                            echo $this->formElement($password2->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($password2, ['class' => 'error-sign-up']);
+                                            ?>
+                                        </p>
                                     </div>
-                                </div><!-- block-row-field -->
-
-                                <div class="block-wrapper-button content-align-center">
-                                    <button class="reset" id="js-reset-editPwd" type="button"><?= $this->translate('Annulla'); ?></button>
-                                    <button type="submit"><?= $this->translate('Salva modifiche'); ?></button>
                                 </div>
+                            </div><!-- block-row-field -->
+
+                            <div class="block-wrapper-button content-align-center">
+                                <button class="reset" id="js-reset-editPwd" type="button"><?= $this->translate('Annulla'); ?></button>
+                                <button type="submit"><?= $this->translate('Salva modifiche'); ?></button>
+                            </div>
                             <?= $this->form()->closeTag(); ?>
                         </div><!-- editPwd -->
 
@@ -585,32 +584,71 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field block-avatar-app content-align-center">
-                                    <?= $this->translate("CON IL PAGAMENTO DELLA TUA ISCRIZIONE, LA REGISTRAZIONE AL SERVIZIO DI SHARE'NGO DIVENTA EFFETTIVA. "); ?><br />
-                                    <strong><?= $this->translate("QUESTA &Egrave; LA SITUAZIONE DEI TUOI MINUTI BONUS. "); ?></strong>
-                                    <br />
 
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalBonuses()?>">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalBonuses() ?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Accreditati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px; font-size: 26px; color: red; margin-top: 5px;" type="text" value="<?php echo $this->customer->getUsedBonuses()?>">
+                                    <input class="required disabled" style="text-align: center; max-width: 200px; font-size: 26px; color: red; margin-top: 5px;" type="text" value="<?php echo $this->customer->getUsedBonuses() ?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Utilizzati'); ?></h2>
                                     <div style="margin-bottom: 15px;"></div>
-                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualBonuses()?>">
+                                    <input id="" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualBonuses() ?>">
                                     <div style="margin-top: 5px;"></div>
                                     <h2><?= $this->translate('Rimanenti'); ?></h2>
-
-                                    <?php if(!$this->customer->getFirstPaymentCompleted()): ?>
-                                        <br />
-                                        <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" style="color: #ff0000;">
-                                            <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
-                                        </a>
-                                    <?php endif; ?>
-
                                 </div>
                             </div>
                             <!-- block-row-field -->
+                            <br />
+                            
+                            <?php if ($this->customer->haveDiscountRate80()): ?>
+                            
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <div id="imgOssigeno">
+                                        </div>
+                                        <div class="block-form-section content-align-center margin-bottom">
+                                            <h2><?= $this->translate("Punti OSSIGENO"); ?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="block-row-field clearfix">
+
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPointsCurrentMonth() ?>">
+                                        <div style="margin-top: 5px;"></div>
+                                        <h2><?= $this->translate('Accreditati questo mese'); ?></h2>
+                                        <div style="margin-bottom: 15px;"></div>
+                                        <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
+                                        <div style="margin-top: 5px;"></div>
+                                        <h2><?= $this->translate('Rimanenti'); ?></h2>
+                                        <input id="OssigenoPoint" display="none" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getPositivePoints() ?>">
+                                    </div>
+                                </div>
+
+
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <div>
+                                            <img src="/img/CO2ICON.jpg" alt="CO2">
+                                        </div>
+                                        <strong><?= $this->translate("GUIDANDO ELETTRICO HAI RISPARMIATO EMISSIONI DI CO2 PER"); ?></strong>
+                                        <div id="co2"></div>
+                                        <h2><?= $this->translate('GRAZIE!'); ?></h2>
+                                    </div>
+                                </div>
+                            
+                            <?php endif; ?>
+
+                            <?php if (!$this->customer->getFirstPaymentCompleted()): ?>
+                                <br />
+                                <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" style="color: #ff0000;">
+                                    <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
+                                </a>
+                            <?php endif; ?>
+
+
 
                         </div>
                         <!-- block-form -->
@@ -632,19 +670,18 @@ $this->headLink()
 
 </div>
 <!-- main -->
-<?php
-$this->headStyle()->captureStart() ?>
+<?php $this->headStyle()->captureStart() ?>
 .error-sign-up {
-    list-style-type: none;
+list-style-type: none;
 }
 
 .error-sign-up li {
-    color: red;
+color: red;
 }
 <?php $this->headStyle()->captureEnd() ?>
 
 <?php
-if($this->showError) {
+if ($this->showError) {
     $this->inlineScript()->captureStart();
 
     echo <<<JS
@@ -687,14 +724,34 @@ echo <<<JS
         });
     });
 JS;
-$this->inlineScript()->captureEnd(); ?>
+$this->inlineScript()->captureEnd();
+?>
 
 <script>
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
-        birthTownValue = "<?= $birthTown->getValue() ?>",
-        userId = <?= (string)$this->customer->getId() ?>,
-        bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url'] ?>",
-        pageLink = "<?= $this->serverUrl(true) ?>";
+            birthTownValue = "<?= $birthTown->getValue() ?>",
+            userId = <?= (string) $this->customer->getId() ?>,
+            bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url'] ?>",
+            pageLink = "<?= $this->serverUrl(true) ?>";
 
-    loadBanner(bannerJsonpUrl,userId,pageLink);
+    loadBanner(bannerJsonpUrl, userId, pageLink);
+    
+    if (document.location.pathname == "/area-utente") {
+        //console.log("11111");
+        //calculateCO2(userId);
+        $.ajax({
+            type: "POST",
+            url: "/co2",
+            data: {id: userId},
+            beforeSend: function () {
+                $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
+            },
+            success: function (data) {
+                $('#co2').html("<p>" + data.toString() + " KG </p>");
+            },
+            error: function () {
+                $('#co2').html("<p>" + data.toString() + "</p>");
+            }
+        });
+    }
 </script>
