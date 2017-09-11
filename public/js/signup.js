@@ -49,7 +49,31 @@ $(function () {
     if ($('#smsCode').val() != '') {
         $('#confirmSmsCode').show();
     }
-
+    
+    if($('#OssigenoPoint').val() < 5000){
+        //ossigeno bianco
+        $('#imgOssigeno').html('<img src="/img/ossigenoBianco.png" alt="bianco">');
+    }else{
+        if($('#OssigenoPoint').val() >= 5000 && $('#OssigenoPoint').val() < 10000){
+            //ossigeno celeste
+            $('#imgOssigeno').html('<img src="/img/ossigenoCeleste.png" alt="celeste">');
+        }else{
+            if($('#OssigenoPoint').val() >= 10000 && $('#OssigenoPoint').val() < 20000){
+                //ossigeno azzurro
+                $('#imgOssigeno').html('<img src="/img/ossigenoAzzurro.png" alt="azzurro">');
+            }else{
+                if($('#OssigenoPoint').val() >= 20000 && $('#OssigenoPoint').val() < 30000){
+                    // ossigeno indaco
+                    $('#imgOssigeno').html('<img src="/img/ossigenoIndaco.png" alt="indaco">');
+                }else{
+                    if($('#OssigenoPoint').val() >= 30000){
+                        //ossigeno blu
+                        $('#imgOssigeno').html('<img src="/img/ossigenoBlu.png" alt="blu">');
+                    }
+                }
+            }
+        }
+    }
 
     $(document).on("click", "#buttonSendCode", function () {
         if ($('#mobile').val().length > 0) {
