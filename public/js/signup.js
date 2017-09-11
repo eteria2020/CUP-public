@@ -51,28 +51,28 @@ $(function () {
     }
     
     if($('#OssigenoPoint').val() < 5000){
-        //ossigeno bianco
-        $('#imgOssigeno').html('<img src="/img/ossigenoBianco.png" alt="bianco">');
+            //ossigeno bianco
+            $('#imgOssigeno').html('<img src="/img/ossigenoBianco.png" alt="bianco" height="200" width="200">');
     }else{
-        if($('#OssigenoPoint').val() >= 5000 && $('#OssigenoPoint').val() < 10000){
-            //ossigeno celeste
-            $('#imgOssigeno').html('<img src="/img/ossigenoCeleste.png" alt="celeste">');
-        }else{
-            if($('#OssigenoPoint').val() >= 10000 && $('#OssigenoPoint').val() < 20000){
-                //ossigeno azzurro
-                $('#imgOssigeno').html('<img src="/img/ossigenoAzzurro.png" alt="azzurro">');
+            if($('#OssigenoPoint').val() >= 5000 && $('#OssigenoPoint').val() < 10000){
+                    //ossigeno celeste
+                    $('#imgOssigeno').html('<img src="/img/ossigenoCeleste.png" alt="celeste"  height="200" width="200">');
             }else{
-                if($('#OssigenoPoint').val() >= 20000 && $('#OssigenoPoint').val() < 30000){
-                    // ossigeno indaco
-                    $('#imgOssigeno').html('<img src="/img/ossigenoIndaco.png" alt="indaco">');
-                }else{
-                    if($('#OssigenoPoint').val() >= 30000){
-                        //ossigeno blu
-                        $('#imgOssigeno').html('<img src="/img/ossigenoBlu.png" alt="blu">');
+                    if($('#OssigenoPoint').val() >= 10000 && $('#OssigenoPoint').val() < 20000){
+                            //ossigeno azzurro
+                            $('#imgOssigeno').html('<img src="/img/ossigenoAzzurro.png" alt="azzurro"  height="200" width="200">');
+                    }else{
+                            if($('#OssigenoPoint').val() >= 20000 && $('#OssigenoPoint').val() < 30000){
+                                    // ossigeno indaco
+                                    $('#imgOssigeno').html('<img src="/img/ossigenoIndaco.png" alt="indaco"  height="200" width="200">');
+                            }else{
+                                    if($('#OssigenoPoint').val() >= 30000){
+                                            //ossigeno blu
+                                            $('#imgOssigeno').html('<img src="/img/ossigenoBlu.png" alt="blu"  height="200" width="200">');
+                                    }
+                            }
                     }
-                }
             }
-        }
     }
 
     $(document).on("click", "#buttonSendCode", function () {
