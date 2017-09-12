@@ -15,7 +15,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 52 00   1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 
 40 02  * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/clean.sh
-30 02  * * *    sharengo        /usr/local/scripts/clean_commands.sh
+30 02  * * *    sharengo        /srv/apps/sharengo-publicsite/scripts/cron/clean_commands.sh
 50 02 11 * *    root            /etc/init.d/ntp restart
 
 # every minute
@@ -27,13 +27,13 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # every day
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 00 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
-10 03 * * *     root            /usr/local/scripts/pay_invoice.sh
-45 07 * * *     root            /usr/local/scripts/pay_invoice_wrong.sh
+10 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
+45 08 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice_wrong.sh
 
 00 10 * * *     www-data        /usr/local/scripts/registration_invoices.sh
-10 10 * * *     root            /usr/local/scripts/disable_late_payers.sh
-20 10 * * *     root            /usr/local/scripts/invoice_extra.sh
-30 10 * * *     root            /usr/local/scripts/export_registries.sh
+10 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_late_payers.sh
+20 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/invoice_extra.sh
+30 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/export_registries.sh
 35 10 * * *     root            /usr/bin/pm2 restart webservices
 40 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/notify_discount_expiry.sh
 00 11 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_old_discounts.sh
