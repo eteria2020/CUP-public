@@ -3,6 +3,7 @@ $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
         ->appendFile($this->basePath('js/signup.js?v=1.1'))
+        ->appendFile($this->basePath('js/points.js'))
         ->appendFile($this->basePath('js/banner.js'));
 $this->headLink()
         ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
@@ -502,7 +503,6 @@ $this->headLink()
                                         <input type="text" class="required disabled" name="" value="********" >
                                     </p>
                                 </div>
-
                             </div>
                             <!-- block-row-field -->
 
@@ -600,50 +600,45 @@ $this->headLink()
                             </div>
                             <!-- block-row-field -->
                             <br />
-                            
+
                             <?php if ($this->customer->haveDiscountRate80()): ?>
 
-                                    <div class="block-row-field clearfix">
-                                            <div class="block-field block-avatar-app content-align-center">
-                                                    <div class="block-form-section content-align-center margin-bottom">
-                                                            <h2><?= $this->translate("Punti OSSIGENO"); ?></h2>
-                                                    </div>
-                                                    <div id="imgOssigeno">
-                                                    </div>
-                                            </div>
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <div class="block-form-section content-align-center margin-bottom">
+                                            <h2><?= $this->translate("Punti OSSIGENO"); ?></h2>
+                                        </div>
+                                        <div id="PointsO2Img" style="border: 0"></div>
                                     </div>
+                                </div>
 
-                                    <div class="block-row-field clearfix">
-
-                                            <div class="block-field block-avatar-app content-align-center">
-                                                    <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPointsCurrentMonth() ?>">
-                                                    <div style="margin-top: 5px;"></div>
-                                                    <h2><?= $this->translate('Accreditati questo mese'); ?></h2>
-                                                    <div style="margin-bottom: 15px;"></div>
-                                                    <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
-                                                    <div style="margin-top: 5px;"></div>
-                                                    <h2><?= $this->translate('Rimanenti'); ?></h2>
-                                                    <input id="OssigenoPoint" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px; display: none" type="text" value="<?php echo $this->customer->getPositivePoints() ?>">
-                                            </div>
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <input class="required disabled" style="text-align: center; max-width: 200px; margin-top: 10px; font-size: 26px;" type="text" value="<?php echo $this->customer->getTotalPointsCurrentMonth() ?>">
+                                        <div style="margin-top: 5px;"></div>
+                                        <h2><?= $this->translate('Accreditati questo mese'); ?></h2>
+                                        <div style="margin-bottom: 15px;"></div>
+                                        <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
+                                        <div style="margin-top: 5px;"></div>
+                                        <h2><?= $this->translate('Utilizzati'); ?></h2>
+                                        <input id="PointsOxygen" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px; display: none" type="text" value="<?php echo $this->customer->getPositivePoints() ?>">
                                     </div>
-
-                                    <br />
-                                    <br />
-
-                                    <div class="block-row-field clearfix">
-                                            <div class="block-field block-avatar-app content-align-center">
-                                                    <div class="block-form-section content-align-center margin-bottom">
-                                                            <h2><?= $this->translate("CO2"); ?></h2>
-                                                    </div>
-                                                    <div>
-                                                            <img src="/img/CO2ICON.jpg" alt="CO2" height="200" width="200">
-                                                    </div>
-                                                    <br/>
-                                                    <div>
-                                                    <h2 id="co2"></h2>
-                                                    </div>
-                                            </div>
+                                </div>
+                                <br />
+                                <div class="block-row-field clearfix">
+                                    <div class="block-field block-avatar-app content-align-center">
+                                        <div class="block-form-section content-align-center margin-bottom">
+                                            <h2><?= $this->translate("Contributo ambientale"); ?></h2>
+                                        </div>
+                                        <div>
+                                            <img src="/img/points_co2.png" alt="CO2" height="200" width="200" style="border: 0">
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            <h2 id="co2"></h2>
+                                        </div>
                                     </div>
+                                </div>
 
                             <?php endif; ?>
 
@@ -741,8 +736,8 @@ $this->inlineScript()->captureEnd();
             pageLink = "<?= $this->serverUrl(true) ?>";
 
     loadBanner(bannerJsonpUrl, userId, pageLink);
-    
-    if (document.location.pathname == "/area-utente") {
+
+    if (document.location.pathname === "/area-utente") {
         //console.log("11111");
         //calculateCO2(userId);
         $.ajax({
@@ -750,13 +745,13 @@ $this->inlineScript()->captureEnd();
             url: "/co2",
             data: {id: userId},
             beforeSend: function () {
-                    $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
+                $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
             },
             success: function (data) {
-                    $('#co2').html("<p> Hai risparmiato " + data.toString() + " KG di CO2</p>");
+                $('#co2').html("<p> Hai risparmiato " + data.toString() + " KG di CO<small><sub>2</sub></small></p><p>Grazie !</p>");
             },
             error: function () {
-                    $('#co2').html("<p>" + data.toString() + "</p>");
+                $('#co2').html("<p>" + data.toString() + "</p>");
             }
         });
     }
