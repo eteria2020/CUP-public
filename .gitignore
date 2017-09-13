@@ -24,6 +24,8 @@ data/export
 
 // log
 data/log
+data/maintenance
+data/DoctrineMongoODMModule
 data/*.log
 data/dumps/*
 /bower_components
