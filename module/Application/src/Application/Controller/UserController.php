@@ -289,23 +289,25 @@ class UserController extends AbstractActionController {
         $customer = $this->customersService->findById($customerId);
         $trips = $this->tripsService->getTripsByCustomerCO2($customerId);
 
-        $kg = "";
-        $gr = 106; //constant
+        $kgOfCo2Save = "";
+        define("GR_CO2_KM", 106); //constant
+        //$GR_CO2_KM = 106; //constant
         $secondsTrips = 0;
 
         //$Vm is different for a city, get from customer fleetId
+        $averageSpeed = 20; // defaul, id the fleet is not present
         switch ($customer->getFleet()->getId()):
             case 1:
-                $Vm = 17;
+                $averageSpeed = 17;
                 break;
             case 2:
-                $Vm = 15;
+                $averageSpeed = 15;
                 break;
             case 3:
-                $Vm = 15;
+                $averageSpeed = 15;
                 break;
             case 4:
-                $Vm = 20;
+                $averageSpeed = 20;
                 break;
         endswitch;
 
@@ -320,15 +322,20 @@ class UserController extends AbstractActionController {
         }
 
         //KG = ((((secondi corsa/60)/60) * VM)* GR/KM)/1000
-        $kg = (((($secondsTrips / 60) / 60) * $Vm) * $gr) / 1000;
-        $kg = round($kg, 0);
+        $kgOfCo2Save = (((($secondsTrips / 60) / 60) * $averageSpeed) * GR_CO2_KM) / 1000;
+        $kgOfCo2Save = round($kgOfCo2Save, 0);
 
         $response = $this->getResponse();
         $response->setStatusCode(200);
-        $response->setContent($kg);
+        $response->setContent($kgOfCo2Save);
         return $response;
     }
 
+    /**
+     * Get seconds of $timeTrip DateInterval
+     * @param type $timeTrip
+     * @return type
+     */
     private function calculateTripInSecond($timeTrip) {
 
         $seconds = 0;
