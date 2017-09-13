@@ -19,16 +19,15 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 50 02 11 * *    root            /etc/init.d/ntp restart
 
 # every minute
-*/1 * * * *     www-data        /usr/local/scripts/alarms.sh
-*/1 * * * *     www-data        /usr/local/scripts/reservations.sh
-*/9 * * * *     root            /usr/local/scripts/account_compute.sh
+*/1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
+*/1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/reservations.sh
+*/9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 
 # every day
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
-00 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
-10 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
-45 08 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice_wrong.sh
+#00 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
+10 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 
 00 10 * * *     www-data        /usr/local/scripts/registration_invoices.sh
 10 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_late_payers.sh
