@@ -54,6 +54,25 @@ $this->headLink()
         ?>
 
         <div class="block-form w-3-4 auto-margin clearfix">
+            <!-- block-row-field -->
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2 id="promoCodeTitle"><?= $this->translate('Codice promo'); ?></h2>
+            </div>
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <div class="block-field auto-margin w-1-3">
+                    <p>
+                        <?php
+                        $promocode = $this->form->get('promocode')->get('promocode');
+                        echo $this->formElement($promocode);
+                        echo $this->formElementErrors($promocode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>    
+        </div>
+
+        <div class="block-form w-3-4 auto-margin clearfix">
             <div class="block-form-section content-align-center margin-bottom">
                 <h2><i class="fa fa-globe"></i> <?= $this->translate('Citt&agrave; preferita - Favourite city'); ?></h2>
             </div>
@@ -648,28 +667,8 @@ $this->headLink()
                 </div>
 
             </div>
+            
             <!-- block-row-field -->
-
-            <div class="block-form-section content-align-center margin-bottom">
-                <h2 id="promoCodeTitle"><?= $this->translate('Codice promo'); ?></h2>
-            </div>
-
-            <!-- block-row-field -->
-            <div class="block-row-field clearfix">
-
-                <div class="block-field auto-margin w-1-3">
-                    <p>
-                        <?php
-                        $promocode = $this->form->get('promocode')->get('promocode');
-                        echo $this->formElement($promocode);
-                        echo $this->formElementErrors($promocode, ['class' => 'errors']);
-                        ?>
-                    </p>
-                </div>
-
-            </div>
-            <!-- block-row-field -->
-
             <div class="block-form-section content-align-center margin-bottom">
                 <h2 id="generalConditionTitle"><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
             </div>
