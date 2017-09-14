@@ -475,7 +475,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                 }
             }
             
-            if(count($tripsYesterday)){
+            if(count($tripsYesterday)>0){
                 foreach ($tripsYesterday as $tripYesterday){
                     if(is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())){
                         continue;
