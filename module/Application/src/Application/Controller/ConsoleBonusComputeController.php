@@ -705,7 +705,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                 }
                 $minuteTripsLastMonth = round($secondsTripsLastMonth/60, 0);
 
-                if($minuteTripsLastMonth >= pointConfig['newCheckPointCluster']){
+                if($minuteTripsLastMonth >= $this->pointConfig['newCheckPointCluster']){
                     $tripsTwotMonthAgo = $this->tripsService->getTripsByCustomerForAddPointClusterTwotMonthAgo($c['id'], $dateStartLastMonth, $dateStartTwotMonthAgo);
                     $secondsTripsTwotMonthAgo = 0;
                     if(count($tripsTwotMonthAgo)>0){
