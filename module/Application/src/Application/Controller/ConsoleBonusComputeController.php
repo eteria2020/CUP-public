@@ -459,6 +459,8 @@ class ConsoleBonusComputeController extends AbstractActionController
             
             $secondsTripsMonth = 0;
             $secondsTripsYesterday = 0;
+            $minuteTripsMonth = 0;
+            $minuteTripsYesterday = 0;
             
             if(count($tripsMonth)>0){
                 foreach ($tripsMonth as $tripMonth){
@@ -685,7 +687,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         $customers= $this->customerService->getCustomersRunThisMonth($dateStartLastMonth, $dateStartCurrentMonth);
         
         foreach ($customers as $c){
-            
+            $minuteTripsTwotMonthAgo=0;
+            $minuteTripsLastMonth=0;
             if(!$this->checkCustomerAlreadyAddPointsCluster($c['id'])){
                 $tripsLastMonth = $this->tripsService->getTripsByCustomerForAddPointClusterLastMonth($c['id'], $dateStartLastMonth, $dateStartCurrentMonth);
                 $secondsTripsLastMonth = 0;
@@ -703,6 +706,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                         $secondsTripsLastMonth += $this->calculateTripInSecond($timeTripsLastMonth);
                     }
                 }
+                
                 $minuteTripsLastMonth = round($secondsTripsLastMonth/60, 0);
 
                 if($minuteTripsLastMonth >= $this->pointConfig['newCheckPointCluster']){
@@ -725,7 +729,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $minuteTripsTwotMonthAgo = round($secondsTripsTwotMonthAgo/60, 0);
                     
                     if($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']){
-                       //add 80 points for pass cluster 0 to 1
+                       //add 1000 points for pass cluster 0 to 1
                        $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
                     }
                 }

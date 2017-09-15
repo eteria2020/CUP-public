@@ -4,7 +4,8 @@ return [
     'point' => [
         'typeCluster'  => 'CLUSTER',
         'descriptionScriptAddPointCluster'  => 'add point cluster(scipt)',
-        'pointToAddCluster' => 80,
+        //'pointToAddCluster' => 80,
+        'pointToAddCluster' => 1000,
         'newCheckPointCluster' => 80,
         'oldCheckPointCluster' => 80,
         'typeDrive'  => 'DRIVE',
