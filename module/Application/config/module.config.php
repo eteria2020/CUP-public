@@ -1015,6 +1015,17 @@ return [
                     ],
                 ]
             ],
+            'wave5' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{wave5}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'wave5',
+                    ],
+                ]
+            ],
             'pay' => [
                 'type' => 'Segment',
                 'options' => [
