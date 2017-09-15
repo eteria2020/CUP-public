@@ -620,7 +620,7 @@ $this->headLink()
                                         <div style="margin-bottom: 15px;"></div>
                                         <input class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px;" type="text" value="<?php echo $this->customer->getResidualPoints() ?>">
                                         <div style="margin-top: 5px;"></div>
-                                        <h2><?= $this->translate('Utilizzati'); ?></h2>
+                                        <h2><?= $this->translate('Utilizzabili'); ?></h2>
                                         <input id="PointsOxygen" class="required disabled" style="text-align: center; max-width: 200px;  font-size: 26px; margin-top: 5px; display: none" type="text" value="<?php echo $this->customer->getPositivePoints() ?>">
                                     </div>
                                 </div>
@@ -748,7 +748,7 @@ $this->inlineScript()->captureEnd();
                 $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
             },
             success: function (data) {
-                $('#co2').html("<p> Hai risparmiato " + data.toString() + " KG di CO<small><sub>2</sub></small></p><p>Grazie !</p>");
+                $('#co2').html("<p> Hai risparmiato " + data.toString() + " KG di CO<small><sub>2</sub></small></p><p>Grazie!</p>");
             },
             error: function () {
                 $('#co2').html("<p>" + data.toString() + "</p>");
