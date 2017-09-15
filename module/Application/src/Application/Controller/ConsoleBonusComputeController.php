@@ -706,6 +706,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                         $secondsTripsLastMonth += $this->calculateTripInSecond($timeTripsLastMonth);
                     }
                 }
+                
                 $minuteTripsLastMonth = round($secondsTripsLastMonth/60, 0);
 
                 if($minuteTripsLastMonth >= $this->pointConfig['newCheckPointCluster']){
