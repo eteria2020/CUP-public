@@ -62,6 +62,20 @@ return [
                     ],
                 ],
             ],
+            'cars-api' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/cars-api/:fleetId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-cars-by-fleet-api',
+                    ],
+                    'constraints' => [
+                        'fleetId' => '[0-9]+'
+                    ],
+                ],
+            ],
             'pois' => [
                 'type' => 'Segment',
                 'options' => [

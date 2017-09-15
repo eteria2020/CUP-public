@@ -179,7 +179,7 @@ $(function () {
                         anchorXUnits: 'fraction',
                         anchorYUnits: 'fraction',
                         opacity: 1,
-                        src: poisMarkerPath
+                        src: poisMarkerPathFree15
                     }))
                 });
             } else {
@@ -321,7 +321,7 @@ $(function () {
             xhrVehicles.abort();
         }
 
-        xhrVehicles = $.get('cars/' + fleet, function(vehicles) {
+        xhrVehicles = $.get('cars-api/' + fleet, function(vehicles) {
             $.each(vehicles, function(index, vehicle) {
                 // position of the vehicle
                 var latitude = parseFloat(vehicle.latitude);
@@ -330,7 +330,17 @@ $(function () {
                 var extCleanliness = vehicle.extCleanliness;
                 var battery = vehicle.battery;
                 var plate = vehicle.plate;
-
+                
+                var bonus_car = "";
+		var b_car = vehicle.bonus;
+		for(var ib=0;ib<b_car.length;ib++){
+                    if((b_car[ib].type=="nouse")&&(b_car[ib].value==15)&&(b_car[ib].status==true)){
+                        bonus_car = "<br>I primi "+b_car[ib].value+" minuti di guida sono gratuiti";
+                    }
+		}
+		//document.getElementById("bonus_message").innerHTML = bonus_car;
+		//document.getElementById("bonus_message").style.fontWeight="normal";
+                
                 // Create the Vehicle Feature
                 vehiclesFC[plate] = new ol.Feature({
                     geometry: new ol.geom.Point(
@@ -339,6 +349,14 @@ $(function () {
                             'EPSG:4326', 'EPSG:3857'
                         )
                     ),
+                    image: new ol.style.Icon(({
+                        scale: 1,
+                        anchor: [0.5, 1],
+                        anchorXUnits: 'fraction',
+                        anchorYUnits: 'fraction',
+                        opacity: 1,
+                        src: poisMarkerPathFree15
+                    })),
                     intClean: intCleanliness,
                     extClean: extCleanliness,
                     battery: battery,
