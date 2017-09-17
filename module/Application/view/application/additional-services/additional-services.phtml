@@ -194,7 +194,7 @@ $mobile = $this->mobile;
                                 <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
                                 <div class="block-data-table-td cw-1-7">
-                                    <?php if ($package->getCode()=="WOMEN" && $verify>=1) { ?>
+                                    <?php if ($package->getCode()=="WOMEN" && $verifyWomenVoucher>=1) { ?>
                                     <a onclick="verify()">
                                         <i class="fa fa-cart-plus"></i>
                                     </a>
