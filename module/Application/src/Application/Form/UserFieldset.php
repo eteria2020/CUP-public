@@ -332,7 +332,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 ]
             ]
         ]);
-        
+
         $this->add([
             'name' => 'fleet',
             'type' => 'Zend\Form\Element\Select',
@@ -479,7 +479,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'unchecked_value' => 'off',
             ],
             'attributes' => [
-                'value' => 'off'
+                'value' => 'on'
             ]
         ]);
         //Add field to registration form Newsletter, type checkbox
@@ -493,7 +493,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'unchecked_value' => 'off',
             ],
             'attributes' => [
-                'value' => 'off'
+                'value' => 'on'
             ]
         ]);
 
