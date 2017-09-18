@@ -26,7 +26,8 @@ class UserControllerfactory implements FactoryInterface
         $smsConfig = $config['sms'];
         $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
         $fleetService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\FleetService');
-
+        $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
+        
         return new UserController(
             $form1,
             $form2,
@@ -38,7 +39,8 @@ class UserControllerfactory implements FactoryInterface
             $hydrator,
             $config['sms'],
             $emailService,
-            $fleetService
+            $fleetService,
+            $tripService
         );
     }
 }

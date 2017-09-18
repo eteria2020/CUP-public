@@ -1,0 +1,22 @@
+<?php
+
+return [
+    'point' => [
+        'typeCluster'  => 'CLUSTER',
+        'descriptionScriptAddPointCluster'  => 'add point cluster(scipt)',
+        //'pointToAddCluster' => 80,
+        'pointToAddCluster' => 1000,
+        'newCheckPointCluster' => 80,
+        'oldCheckPointCluster' => 80,
+        'typeDrive'  => 'DRIVE',
+        'descriptionScriptAddPointDay'  => 'add point day(script)',
+        'range0AddPointDay' => 0,
+        'range1AddPointDay' => 80,
+        'range2AddPointDay' => 200,
+        'range3AddPointDay' => 600,
+        'multiplierRange0AddPointDay' => 1,
+        'multiplierRange1AddPointDay' => 2,
+        'multiplierRange2AddPointDay' => 3,
+        'multiplierRange3AddPointDay' => 4
+    ]
+];

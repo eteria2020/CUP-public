@@ -20,6 +20,7 @@ use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
+use SharengoCore\Service\TripsService;
 use Zend\Log\Logger;
 use SharengoCore\Service\EmailService as EmailService;
 
@@ -85,6 +86,11 @@ class UserController extends AbstractActionController {
     private $fleetService;
 
     /**
+     * @var TripsService
+     */
+    private $tripsService;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param RegistrationService $registrationService
@@ -93,9 +99,10 @@ class UserController extends AbstractActionController {
      * @param ProfilingPlaformService $profilingPlatformService
      * @param Translator $translator
      * @param HydratorInterface $hydrator
+     * @param TripsService $tripsService
      */
     public function __construct(
-    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService
+    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
     ) {
 
         $this->form1 = $form1;
@@ -109,6 +116,7 @@ class UserController extends AbstractActionController {
         $this->smsConfig = $smsConfig;
         $this->emailService = $emailService;
         $this->fleetService = $fleetService;
+        $this->tripsService = $tripsService;
     }
 
     public function loginAction() {
@@ -274,21 +282,96 @@ class UserController extends AbstractActionController {
         }
     }
 
+    public function co2Action() {
+
+        //get $customerId param in post && get customer from $customerId && get all trip from $customerId
+        $customerId = $this->params()->fromPost('id');
+        $customer = $this->customersService->findById($customerId);
+        $trips = $this->tripsService->getTripsByCustomerCO2($customerId);
+
+        $kgOfCo2Save = "";
+        define("GR_CO2_KM", 106); //constant
+        //$GR_CO2_KM = 106; //constant
+        $secondsTrips = 0;
+
+        //$Vm is different for a city, get from customer fleetId
+        $averageSpeed = 20; // defaul, id the fleet is not present
+        switch ($customer->getFleet()->getId()):
+            case 1:
+                $averageSpeed = 17;
+                break;
+            case 2:
+                $averageSpeed = 15;
+                break;
+            case 3:
+                $averageSpeed = 15;
+                break;
+            case 4:
+                $averageSpeed = 20;
+                break;
+        endswitch;
+
+        foreach ($trips as $trip) {
+            //diff between timeStamp_end trip (timeStamp_end - parkSecondo) and timeStamp_start trip
+            $parkseconds = 0;
+            if (!is_null($trip->getParkSeconds())) {
+                $parkseconds = $trip->getParkSeconds();
+            }
+            $timeTrip = date_diff($trip->getEndTx()->modify("-" . $parkseconds . " second"), $trip->getTimestampBeginning());
+            $secondsTrips += $this->calculateTripInSecond($timeTrip);
+        }
+
+        //KG = ((((secondi corsa/60)/60) * VM)* GR/KM)/1000
+        $kgOfCo2Save = (((($secondsTrips / 60) / 60) * $averageSpeed) * GR_CO2_KM) / 1000;
+        $kgOfCo2Save = round($kgOfCo2Save, 0);
+
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent($kgOfCo2Save);
+        return $response;
+    }
+
     /**
-     * 
+     * Get seconds of $timeTrip DateInterval
+     * @param type $timeTrip
+     * @return type
+     */
+    private function calculateTripInSecond($timeTrip) {
+
+        $seconds = 0;
+
+        $days = $timeTrip->format('%a');
+        if ($days) {
+            $seconds += 24 * 60 * 60 * $days;
+        }
+        $hours = $timeTrip->format('%H');
+        if ($hours) {
+            $seconds += 60 * 60 * $hours;
+        }
+        $minutes = $timeTrip->format('%i');
+        if ($minutes) {
+            $seconds += 60 * $minutes;
+        }
+        $seconds += $timeTrip->format('%s');
+
+        return $seconds;
+    }
+
+    /**
+     *
      * Send sms check code
-     * 
+     *
      * @return type check code status
      */
-    public function signupSmsAction() {                        
+    public function signupSmsAction() {
         $smsVerification = new Container('smsVerification');
-        
+
         //CSD-1142 - check if mobile number already exixts
-        if ($this->checkDuplicateMobileAction() > 0){
-                $response = $this->getResponse();
-                $response->setStatusCode(200);
-                $response->setContent("Found");
-                return $response;
+        if ($this->checkDuplicateMobileAction() > 0) {
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent("Found");
+            return $response;
         }
 
         //$session_formValidation = new Container('formValidation');
@@ -300,8 +383,7 @@ class UserController extends AbstractActionController {
             $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
             $response = $this->getResponse();
             $response->setStatusCode(200);
-            $response->setContent($response_msg);            
-
+            $response->setContent($response_msg);
             return $response;
         } else {
 
@@ -314,7 +396,7 @@ class UserController extends AbstractActionController {
                 $smsVerification->offsetSet('mobile', $this->params()->fromPost('mobile'));
                 $smsVerification->offsetSet('dialCode', $this->params()->fromPost('dialCode'));
                 $smsVerification->offsetSet('code', $this->codeGenerator());
-                
+
                 $response_msg = $this->manageSendSms($smsVerification->offsetGet('dialCode'), $smsVerification->offsetGet('mobile'), $smsVerification->offsetGet('code'));
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
@@ -507,7 +589,7 @@ class UserController extends AbstractActionController {
             return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData($data);
-        
+
         try {
             $data = $this->registrationService->sanitizeDialMobile($data);
             $this->registrationService->notifySharengoByMail($data);
@@ -615,19 +697,18 @@ class UserController extends AbstractActionController {
     }
 
     /**
-     * 
+     *
      * Check if mobile number already exixts
-     * 
+     *
      * Check without dial code to evaluate numbers already in the DB
-     * 
+     *
      * @return int      0 = not found
      *                  >0 = found
      */
-    private function checkDuplicateMobileAction()
-    {     
+    private function checkDuplicateMobileAction() {
         //$value = sprintf('%s%s',$this->params()->fromPost('dialCode'), $this->params()->fromPost('mobile'));
         $found = $this->customersService->checkMobileNumber($this->params()->fromPost('mobile'));
         return $found;
     }
-    
+
 }

@@ -57,7 +57,9 @@ final class DriversLicensePostValidationNotifier implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $mail = $this->emailService->getMail(2, $args['language']);
+        //TODO: check the problem for the language  arg
+        //$mail = $this->emailService->getMail(2, $args['language']);
+        $mail = $this->emailService->getMail(2, "it");
 
         $this->emailService->sendEmail(
             $args['email'],
@@ -70,7 +72,10 @@ final class DriversLicensePostValidationNotifier implements SharedListenerAggreg
     {
         $args = $e->getParam('args');
 
-        $mail = $this->emailService->getMail(4, $args['language']);
+        //TODO: check the problem for the language  arg
+        //$mail = $this->emailService->getMail(4, $args['language']);
+        $mail = $this->emailService->getMail(4, "it");
+        
         $content = $mail->getContent();
         $subject = $mail->getSubject();//'Share\'ngo - Disabilitazione profilo';
 
