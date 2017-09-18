@@ -3,6 +3,7 @@
 namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\CarsService;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PoisService;
@@ -26,6 +27,11 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var CustomersService
      */
     private $customerService;
+    
+    /**
+     * @var CarsService
+     */
+    private $carsService;
 
     /**
      * @var TripsService
@@ -101,6 +107,7 @@ class ConsoleBonusComputeController extends AbstractActionController
      */
     public function __construct(
         CustomersService $customerService,
+        CarsService $carsService,
         TripsService $tripsService,
         TripPaymentsService $tripPaymentsService,
         EditTripsService $editTripService,
@@ -114,6 +121,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         Form $customerPointForm
     ) {
         $this->customerService = $customerService;
+        $this->carsService = $carsService;
         $this->tripsService = $tripsService;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->editTripService = $editTripService;
@@ -964,5 +972,44 @@ class ConsoleBonusComputeController extends AbstractActionController
         }
         return $result;
     }
+    
+   public function forceEndAction(){
+         echo "test";
+         $tripsId = $this->customerService->getMaintainerTripsOpen();
+         echo count($tripsId);
+         foreach ($tripsId as $ti){
+             $carDetails = $this->tripsService->getCarsByTripId($ti['id']);
+             $trip= $this->tripsService->getTripById($ti);
+             
+            foreach ($carDetails as $cd)
+                 {
+                 $interval = $this->carsService->checkOnlineStatus($cd->getLastContact());
+                 if ($interval > '30')
+                    {
+                     $nextTrips = $this->tripsService->getCarOpenTrips($cd->getPlate());
+                     if((count($nextTrips))==1)
+                        {
+                         $parkStatus=$cd->getParking();
+                         $keyStatus=$cd->getKeyStatus();
+                         $runStatus=$cd->getRunning();
+                         if(!($parkStatus=='t' || $keyStatus=="on" || $runStatus=='t'))
+                            {
+                             $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd);
+                            } 
+                        }
+                     else  
+                        {
+                            $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd);
+                        }
+                    } 
+                 else 
+                    {
+                     $signal=true;
+                     $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd, $signal);
+                     echo "ok?";
+                    }             
+             }
+         }
+     }
 
 }
