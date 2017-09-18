@@ -76,12 +76,12 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var Config
      */
     private $config;
-    
+
     /**
      * @var array
      */
     private $pointConfig;
-    
+
     /**
      * @var
      */
@@ -111,8 +111,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         EventsService $eventsService,
         Logger $logger,
         $config,
-        Form $customerPointForm,
-        array $pointConfig
+        Form $customerPointForm
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -126,7 +125,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger = $logger;
         $this->config = $config;
         $this->customerPointForm = $customerPointForm;
-        $this->pointConfig = $pointConfig;
+        $this->pointConfig = $config['point'];
     }
 
     public function bonusComputeAction()
@@ -402,7 +401,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
-    
+
     private function validateDate($date)
         {
             $d = \DateTime::createFromFormat('Y-m-d', $date);
@@ -412,16 +411,16 @@ class ConsoleBonusComputeController extends AbstractActionController
     /*
      * this method verify/calculate if one customer can receive point day
      */
-    public function addPointDayAction(){        
-        
+    public function addPointDayAction(){
+
         $this->prepareLogger();
         $format = "%s;INF;addPointDayAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
         $request = $this->getRequest();
         $paramDate = $request->getParam('date');
         //$paramDate="2017-09-05";
-        
+
         if(!is_null($paramDate)){
             $format = "%s;INF;addPointDayAction;script with date param\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -440,28 +439,28 @@ class ConsoleBonusComputeController extends AbstractActionController
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
             $this->checkIfCallAddPointClusterAction();
             $arrayDates = $this->createDate();
-            $this->scriptAddPointDay($arrayDates);   
+            $this->scriptAddPointDay($arrayDates);
         }
 
         $format = "%s;INF;addPointDayAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
     }// end addPointDayAction
-    
+
     private function scriptAddPointDay($arrayDates){
-        
-        $customers= $this->customerService->getCustomersRunYesterday($arrayDates[0], $arrayDates[1]);        
-        
+
+        $customers= $this->customerService->getCustomersRunYesterday($arrayDates[0], $arrayDates[1]);
+
         foreach ($customers as $c){
-            
+
             $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
             $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $arrayDates[2], $arrayDates[0]);
-            
+
             $secondsTripsMonth = 0;
             $secondsTripsYesterday = 0;
             $minuteTripsMonth = 0;
             $minuteTripsYesterday = 0;
-            
+
             if(count($tripsMonth)>0){
                 foreach ($tripsMonth as $tripMonth){
                     if(is_null($tripMonth->getTimestampEnd()) && is_null($tripMonth->getEndTx())){
@@ -476,7 +475,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $secondsTripsMonth += $this->calculateTripInSecond($timeTripsMonth);
                 }
             }
-            
+
             if(count($tripsYesterday)>0){
                 foreach ($tripsYesterday as $tripYesterday){
                     if(is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())){
@@ -491,18 +490,18 @@ class ConsoleBonusComputeController extends AbstractActionController
                     $secondsTripsYesterday += $this->calculateTripInSecond($timeTripsYesterday);
                 }
             }
-              
+
             $minuteTripsMonth = round($secondsTripsMonth/60, 0);
             $minuteTripsYesterday = round($secondsTripsYesterday/60, 0);
-            
+
             $result[0] = 0;
             $result[1] = $minuteTripsYesterday;
             $result[2] = $minuteTripsMonth;
-            
+
             do{
                 $result = $this->howManyPointsAddToUser($result);
             }while($result[1]>0);
-            
+
             //add point in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3]);
             if(count($customerPoints) > 0){
@@ -510,9 +509,9 @@ class ConsoleBonusComputeController extends AbstractActionController
             }else{
                 $this->addCustomersPoints($result[0], $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
-                
+
         }//end foreach custimers
-        
+
     }//scriptAddPointDay
 
     private function createDate(\DateTime $date = null){
@@ -538,26 +537,26 @@ class ConsoleBonusComputeController extends AbstractActionController
 
             return $dates;
         }else{
-            
+
             $dateStart = $date->format("Y-m-d 00:00:00");
-            
+
             $dateMonthStart = $date->format("Y-m-d 00:00:00");
             $dateMonthStart = date("Y-m-01 00:00:00", strtotime($dateMonthStart));
-            
+
             $date1 = new \DateTime($date->format("Y-m-d 00:00:00"));
             $dateLastStart = $date1->modify("-1 day");
             $dateLastStart = $dateLastStart->format("Y-m-d 00:00:00");
-            
+
             $date2 = new \DateTime($date->format("Y-m-d 00:00:00"));
             $dateNextMonthStart = ($date2->modify("+1 month")->format("Y-m-d 00:00:00"));
             $dateNextMonthStart = date("Y-m-01 00:00:00", strtotime($dateNextMonthStart));
-            
-            
+
+
             $dates[0] = $dateLastStart;
             $dates[1] = $dateStart;
             $dates[2] = $dateMonthStart;
             $dates[3] = $dateNextMonthStart;
-            
+
             return $dates;
         }
     }
@@ -570,7 +569,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $today = $today->format('Y-m-d');
         $firstDay = new \DateTime('first day of this month');
         $firstDay = $firstDay->format('Y-m-d');
-        
+
         if($today == $firstDay){
             $this->addPointClusterAction();
         }
@@ -580,19 +579,19 @@ class ConsoleBonusComputeController extends AbstractActionController
     /*
      * create obj customer and add to db
      * for clas customerPoint Form, FormFactory e Fieldset
-     * they are copied to the same admin class 
+     * they are copied to the same admin class
      */
     private function addCustomersPoints($numeberAddPoint, $customerId, $nameScript, $type){
-        
+
         $format = "%s;INF;addCustomersPoints;Customer_id= %d;Add= %d;Script name= %s\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $nameScript));
-        
+
         $point = new \SharengoCore\Entity\CustomersPoints();
-        
+
         $date = new \DateTime();
         $date2 = new \DateTime();
         $dateAdd10year = $date2->modify('+10 years');
-        
+
         $point->setTotal($numeberAddPoint);
         $point->setDescription("add row to script: ".$nameScript);
         $point->setValidFrom($date);
@@ -601,26 +600,26 @@ class ConsoleBonusComputeController extends AbstractActionController
         $point->setUpdateTs($date);
         $point->setResidual(0);
         $point->setType($type);
-        
+
         $this->customerService->setPointField($point, $customerId, $type);
     }
-    
+
     private function updateCustomersPoints($numeberAddPoint, CustomersPoints $customerPoint, $customerId){
-        
+
         $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
-        
+
         $customerPoint->setTotal($customerPoint->getTotal() + $numeberAddPoint);
         $customerPoint->setUpdateTs(new \DateTime());
         $this->customerService->updateCustomerPointRow($customerPoint);
-        
+
     }
 
     /*
      * this method calculate how many point add to customer
      */
     private function howManyPointsAddToUser($result) {
-        
+
         if($result[2] < $this->pointConfig['range1AddPointDay']){
             if(($result[2] + $result[1]) < $this->pointConfig['range1AddPointDay']){
                 $result[0] += $result[1]*$this->pointConfig['multiplierRange0AddPointDay'];
@@ -630,7 +629,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                 $result[1] = $result[1] - ($this->pointConfig['range1AddPointDay'] - $result[2]);
                 $result[2] = $this->pointConfig['range1AddPointDay'];
             }
-            return $result;     
+            return $result;
         }else{
             if($result[2] >= $this->pointConfig['range1AddPointDay'] && $result[2] < $this->pointConfig['range2AddPointDay']){
                 if(($result[2] + $result[1]) < $this->pointConfig['range2AddPointDay']){
@@ -663,29 +662,29 @@ class ConsoleBonusComputeController extends AbstractActionController
             }//end else if between 80 and 200
         }//end else if 80
     }//end howManyPointsAddToUser
-    
+
     /*
      * this method verify if one customer can receive this bonus
      */
     public function  addPointClusterAction(){
-        
+
         $this->prepareLogger();
         $format = "%s;INF;addPointClusterAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
         $dateStartCurrentMonth = new \DateTime('first day of this month');
         $dateStartCurrentMonth = $dateStartCurrentMonth->format("Y-m-d 00:00:00");
-        
+
         $dateStartLastMonth = new \DateTime('first day of this month');
         $dateStartLastMonth = $dateStartLastMonth->modify("-1 month");
         $dateStartLastMonth = $dateStartLastMonth->format("Y-m-d 00:00:00");
-        
+
         $dateStartTwotMonthAgo = new \DateTime('first day of this month');
         $dateStartTwotMonthAgo = $dateStartTwotMonthAgo->modify("-2 month");
         $dateStartTwotMonthAgo = $dateStartTwotMonthAgo->format("Y-m-d 00:00:00");
-        
+
         $customers= $this->customerService->getCustomersRunThisMonth($dateStartLastMonth, $dateStartCurrentMonth);
-        
+
         foreach ($customers as $c){
             $minuteTripsTwotMonthAgo=0;
             $minuteTripsLastMonth=0;
@@ -706,7 +705,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                         $secondsTripsLastMonth += $this->calculateTripInSecond($timeTripsLastMonth);
                     }
                 }
-                
+
                 $minuteTripsLastMonth = round($secondsTripsLastMonth/60, 0);
 
                 if($minuteTripsLastMonth >= $this->pointConfig['newCheckPointCluster']){
@@ -727,7 +726,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                         }
                     }
                     $minuteTripsTwotMonthAgo = round($secondsTripsTwotMonthAgo/60, 0);
-                    
+
                     if($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']){
                        //add 1000 points for pass cluster 0 to 1
                        $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
@@ -739,8 +738,8 @@ class ConsoleBonusComputeController extends AbstractActionController
         $format = "%s;INF;addPointClusterAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }//end addPointClusterAction
-    
-    
+
+
     /*
      * this method check if customer have already received the cluster bonus
      */
@@ -749,25 +748,25 @@ class ConsoleBonusComputeController extends AbstractActionController
         if(count($points) > 0){
             foreach ($points as $p){
                 if(strtoupper($p->getType()) == $this->pointConfig['typeCluster'])
-                   return true; 
+                   return true;
             }//end foreach $trips
         }
         return false;
     }
-    
+
     private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart){
         return $this->customerService->checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart);
     }
-    
+
     /*
      * this method calculate in second how much one cluster
      * have runnig with param
      * Param is an object DateInterval
      */
     private function calculateTripInSecond($timeTrip) {
-        
+
         $seconds = 0;
-        
+
         $days = $timeTrip->format('%a');
         if ($days) {
             $seconds += 24 * 60 * 60 * $days;
@@ -781,7 +780,7 @@ class ConsoleBonusComputeController extends AbstractActionController
             $seconds += 60 * $minutes;
         }
         $seconds += $timeTrip->format('%s');
-        
+
         return $seconds;
     }//end calculateTripInSecond
 
