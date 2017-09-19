@@ -975,7 +975,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     
    public function forceEndAction(){
        $this->prepareLogger();
-       $this->logger->log("-------- Started close trips helper\n");
+       $this->logger->log("-------- Started close trips helper - ". date_create()->format('Y-m-d H:i:s')."\n");
        $tripsId = $this->customerService->getMaintainerTripsOpen();
        $this->logger->log("Trips to compute: ".count($tripsId)."\n\n");
          foreach ($tripsId as $ti){
