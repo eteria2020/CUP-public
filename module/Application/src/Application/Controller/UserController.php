@@ -204,7 +204,7 @@ class UserController extends AbstractActionController {
             $container = new Container('session');
             $container->offsetSet('hasDiscount', true);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return $this->redirect()->toRoute('signup');
@@ -221,7 +221,7 @@ class UserController extends AbstractActionController {
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -358,9 +358,9 @@ class UserController extends AbstractActionController {
     }
 
     /**
-     * 
+     *
      * Send sms check code
-     * 
+     *
      * @return type check code status
      */
     public function signupSmsAction() {
@@ -680,7 +680,7 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getPromoCodeByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return null;
@@ -690,18 +690,18 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getFleetByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return null;
     }
 
     /**
-     * 
+     *
      * Check if mobile number already exixts
-     * 
+     *
      * Check without dial code to evaluate numbers already in the DB
-     * 
+     *
      * @return int      0 = not found
      *                  >0 = found
      */
