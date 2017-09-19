@@ -3,8 +3,9 @@
 const promoCodeTitle_IT = "Codice promo";
 const promoCodeTitle_EN = "Promo code";
 
-const generalConditionTitle_IT = "Condizioni Generali di Contratto";
 const generalConditionTitle_EN = "Main Service Contract";
+const generalConditionTitle_IT = "Condizioni Generali di Contratto";
+const generalConditionTgeneralConditionTitle_ITitle_EN = "Main Service Contract";
 const generalConditionLink_IT = "Scarica il documento e verifica le condizioni";
 const generalConditionLink_EN = "Download the document and check the Main Service Contract";
 const generalCondition1_IT = "ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e le sue controllate";
@@ -25,6 +26,16 @@ const privacyConditionLink_IT = "Scarica il documento e verifica le condizioni";
 const privacyConditionLink_EN = "Download the document and check our Privacy Policy";
 const privacyCondition_IT = "ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate";
 const privacyCondition_EN = "HEREBY CONFIRM THAT I HAVE RECEIVED, REVIEWED AND UNDERSTAND THE SHARE’NGO PRIVACY POLICY. I ACKNOWLEDGE AND ACCEPT THIS  POLICY AS IT RELATES TO ANY INFORMATION I PROVIDE AS PART OF MY APPLICATION, SUBSEQUENT SHARE’NGO MEMBERSHIP AND CAR UTILIZATION.";
+
+const privacyPolicyTitle_IT = "Informativa sulla privacy";
+const privacyPolicyTitle_EN = "Privacy Policy";
+const privacyPolicyText_IT = "HO LETTO E COMPRESO L’INFORMATIVA SULLA PRIVACY E DO IL MIO CONSENSO PER IL TRATTAMENTO DEI MIEI DATI PERSONALI PER FINALITÀ DI MARKETING TRAMITE E EMAIL, TELEFONO, SMS, MMS E POSTA TRADIZIONALE CON RIFERIMENTO AI PRODOTTI, SERVIZI E PROMOZIONI SHARE’NGO, INCLUSE LE RICERCHE DI MERCATO. ";
+const privacyPolicyText_EN = "I BOTH AND INCLUDE THE INFORMATION ON PRIVACY AND I DO MY CONSENT FOR THE PERSONAL DATA PROCESSING FOR MARKETING PURPOSES THROUGH EMAIL, TELEPHONE, SMS, MMS AND TRADITIONAL POSITION WITH REFERENCE TO SHARE'NGO PRODUCTS, SERVICES AND PROMOTIONS, INCLUDING MARKET RESEARCH.";
+
+const neswletterTitle_IT = "Newsletter";
+const neswletterTitle_EN = "Newsletter";
+const neswletterText_IT = "DESIDERO ISCRIVERMI ALLA NEWSLETTER DI SHARE'NGO. ";
+const neswletterText_EN = "I WANT TO JOIN THE SHARE'NGO NEWSLETTER.";
 
 const buttonSendCode_IT = "Invia codice";
 const buttonSendCode_EN = "Send code";
@@ -214,7 +225,12 @@ $(function () {
             $('#buttonSendCode').text(buttonSendCode_EN);
             $('#cancelBtn').val(cancelBtn_EN);
             $('#nextBtn').val(nextBtn_EN);
-        } else {
+            $('#newsletterTitle').text(neswletterTitle_EN);
+            $('#newsletterText').text(neswletterText_EN);
+            $('#InfoPravacyTitle').text(privacyPolicyTitle_EN);
+            $('#InfoPravacyText').text(privacyPolicyText_EN);
+        }
+        else {
             $('#promoCodeTitle').text(promoCodeTitle_IT);
             $('#generalConditionTitle').text(generalConditionTitle_IT);
             $('#generalConditionLink').text(generalConditionLink_IT);
@@ -229,8 +245,13 @@ $(function () {
             $('#buttonSendCode').text(buttonSendCode_IT);
             $('#cancelBtn').val(cancelBtn_IT);
             $('#nextBtn').val(nextBtn_IT);
+            $('#newsletterTitle').text(neswletterTitle_IT);
+            $('#InfoPravacyTitle').text(privacyPolicyTitle_IT);
+            $('#InfoPravacyText').text(privacyPolicyText_IT);
+            $('#newsletterText').text(neswletterText_IT);
             '<%Session["currLang"] = "' + 'it' + '"; %>';
         }
+
     }
 
 });
