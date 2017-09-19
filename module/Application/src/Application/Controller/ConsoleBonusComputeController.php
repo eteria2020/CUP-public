@@ -667,7 +667,7 @@ class ConsoleBonusComputeController extends AbstractActionController
      * this method verify if one customer can receive this bonus
      */
     public function  addPointClusterAction(){
-
+        
         $this->prepareLogger();
         $format = "%s;INF;addPointClusterAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -730,6 +730,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     if($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']){
                        //add 1000 points for pass cluster 0 to 1
                        $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
+                       $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
                     }
                 }
 
@@ -845,17 +846,17 @@ class ConsoleBonusComputeController extends AbstractActionController
             $this->logger->log("send email:".$trip->getCustomer()->getEmail()."\n");
 
             // send email to the customer
-            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage());
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), 16);
         }
 
         //Recap bonus assigned
 
         $this->logger->log("\nEnd computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
-        private function sendEmail($email, $name, $language)
+        private function sendEmail($email, $name, $language, $category)
     {
         //$writeTo = $this->emailSettings['from'];
-        $mail = $this->emailService->getMail(16, $language);
+        $mail = $this->emailService->getMail($category, $language);
         $content = sprintf(
             $mail->getContent(),
             $name
