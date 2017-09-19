@@ -974,9 +974,10 @@ class ConsoleBonusComputeController extends AbstractActionController
     }
     
    public function forceEndAction(){
-         echo "test";
-         $tripsId = $this->customerService->getMaintainerTripsOpen();
-         echo count($tripsId);
+       $this->prepareLogger();
+       $this->logger->log("-------- Started close trips helper\n");
+       $tripsId = $this->customerService->getMaintainerTripsOpen();
+       $this->logger->log("Trips to compute: ".count($tripsId)."\n\n");
          foreach ($tripsId as $ti){
              $carDetails = $this->tripsService->getCarsByTripId($ti['id']);
              $trip= $this->tripsService->getTripById($ti);
@@ -995,18 +996,20 @@ class ConsoleBonusComputeController extends AbstractActionController
                          if(!($parkStatus=='t' || $keyStatus=="on" || $runStatus=='t'))
                             {
                              $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd);
+                             $this->logger->log("Trips to close: ".$trip->getId()."\n");
                             } 
                         }
                      else  
                         {
                             $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd);
+                            $this->logger->log("Trips to close: ".$trip->getId()."\n");
                         }
                     } 
                  else 
                     {
                      $signal=true;
                      $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd, $signal);
-                     echo "ok?";
+                     $this->logger->log("Trips to close: ".$trip->getId()."\n");
                     }             
              }
          }
