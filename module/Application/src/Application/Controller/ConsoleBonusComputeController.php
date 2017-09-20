@@ -667,10 +667,13 @@ class ConsoleBonusComputeController extends AbstractActionController
      * this method verify if one customer can receive this bonus
      */
     public function  addPointClusterAction(){
-        
+
         $this->prepareLogger();
         $format = "%s;INF;addPointClusterAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $request = $this->getRequest();
+        $sendEmail = $request->getParam('sendEmail');
 
         $dateStartCurrentMonth = new \DateTime('first day of this month');
         $dateStartCurrentMonth = $dateStartCurrentMonth->format("Y-m-d 00:00:00");
@@ -730,7 +733,9 @@ class ConsoleBonusComputeController extends AbstractActionController
                     if($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']){
                        //add 1000 points for pass cluster 0 to 1
                        $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
-                       $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
+                        if(!is_null($sendEmail) && strtoupper($sendEmail) == 'TRUE'){
+                            $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
+                        }
                     }
                 }
 
