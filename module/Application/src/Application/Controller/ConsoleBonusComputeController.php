@@ -3,6 +3,7 @@
 namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\CarsService;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PoisService;
@@ -26,6 +27,11 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @var CustomersService
      */
     private $customerService;
+    
+    /**
+     * @var CarsService
+     */
+    private $carsService;
 
     /**
      * @var TripsService
@@ -73,7 +79,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     private $logger;
 
     /**
-     * @var Config
+     * @var array
      */
     private $config;
 
@@ -97,10 +103,12 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @param EventsService $eventsService
      * @param Logger $logger
      * @param array $config
+     * @param array $pointConfig
      * @param Form $customerPointForm
      */
     public function __construct(
         CustomersService $customerService,
+        CarsService $carsService,
         TripsService $tripsService,
         TripPaymentsService $tripPaymentsService,
         EditTripsService $editTripService,
@@ -111,9 +119,11 @@ class ConsoleBonusComputeController extends AbstractActionController
         EventsService $eventsService,
         Logger $logger,
         $config,
+        $pointConfig,
         Form $customerPointForm
     ) {
         $this->customerService = $customerService;
+        $this->carsService = $carsService;
         $this->tripsService = $tripsService;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->editTripService = $editTripService;
@@ -125,7 +135,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger = $logger;
         $this->config = $config;
         $this->customerPointForm = $customerPointForm;
-        $this->pointConfig = $config['point'];
+        $this->pointConfig = $pointConfig['point'];
     }
 
     public function bonusComputeAction()
@@ -964,5 +974,47 @@ class ConsoleBonusComputeController extends AbstractActionController
         }
         return $result;
     }
+    
+   public function forceEndAction(){
+       $this->prepareLogger();
+       $this->logger->log("-------- Started close trips helper - ". date_create()->format('Y-m-d H:i:s')."\n");
+       $tripsId = $this->customerService->getMaintainerTripsOpen();
+       $this->logger->log("Trips to compute: ".count($tripsId)."\n\n");
+         foreach ($tripsId as $ti){
+             $carDetails = $this->tripsService->getCarsByTripId($ti['id']);
+             $trip= $this->tripsService->getTripById($ti);
+             
+            foreach ($carDetails as $cd)
+                 {
+                 $interval = $this->carsService->checkOnlineStatus($cd->getLastContact());
+                 if ($interval > '30')
+                    {
+                     $nextTrips = $this->tripsService->getCarOpenTrips($cd->getPlate());
+                     if((count($nextTrips))==1)
+                        {
+                         $parkStatus=$cd->getParking();
+                         $keyStatus=$cd->getKeyStatus();
+                         $runStatus=$cd->getRunning();
+                         if(!($parkStatus=='t' || $keyStatus=="on" || $runStatus=='t'))
+                            {
+                             $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd);
+                             $this->logger->log("Trips to close: ".$trip->getId()."\n");
+                            } 
+                        }
+                     else  
+                        {
+                            $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd);
+                            $this->logger->log("Trips to close: ".$trip->getId()."\n");
+                        }
+                    } 
+                 else 
+                    {
+                     $signal=true;
+                     $this->tripsService->closeTripNoSignal($trip, new \DateTime(), false, $cd, $signal);
+                     $this->logger->log("Trips to close: ".$trip->getId()."\n");
+                    }             
+             }
+         }
+     }
 
 }
