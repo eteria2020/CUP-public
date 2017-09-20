@@ -406,20 +406,8 @@ $(function () {
                         bonus_message = "<br>I primi "+b_car[ib].value+" minuti di guida sono gratuiti";
                     }
 		}
-		
-		//document.getElementById("bonus_message").style.fontWeight="normal";
                 
                 // Create the Vehicle Feature
-                /*
-                    image: new ol.style.Icon(({
-                        scale: 1,
-                        anchor: [0.5, 1],
-                        anchorXUnits: 'fraction',
-                        anchorYUnits: 'fraction',
-                        opacity: 1,
-                        src: carMarkerPathFree15
-                    })),
-                 */
                 
                 if(bonus_message==""){
                     vehiclesFC[plate] = new ol.Feature({
@@ -437,7 +425,6 @@ $(function () {
                     });
                     vehiclesFC[plate].setId(plate);
                     drawVehicle(plate);
-                    console.log(plate+" NB");
                     auto_nb++;
                 }else{
                     vehiclesFCF15[plate] = new ol.Feature({
@@ -455,7 +442,6 @@ $(function () {
                     });
                     vehiclesFCF15[plate].setId(plate);
                     drawVehicleFree15(plate);
-                    console.log(plate+" F15");
                     auto_bonus++;
                 }
             });
@@ -464,8 +450,6 @@ $(function () {
             vehicleMarkersSet = true;
             toggleButtonColor(vehicleToggle, vehicleMarkersSet);
             removeMapLoader();
-            console.log('nbt: '+Object.keys(vehiclesFC).length+'\n bt: '+Object.keys(vehiclesFCF15).length);
-            console.log('nb: '+auto_nb+'\n b: '+auto_bonus);
         });
     };
 
@@ -677,7 +661,6 @@ $(function () {
                 
                 // get the location and set it in the popup
                 getAddress(coordinates[1], coordinates[0], function(results, status) {
-                    console.log(results);
                     if (typeof results.display_name !== "undefined") {
                         setLocationText(results.display_name);
                     }
