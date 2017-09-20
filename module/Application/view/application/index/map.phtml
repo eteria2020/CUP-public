@@ -56,10 +56,10 @@ echo $this->partial('partials/car-popup.phtml');
 //var carsUrl = "<?= "//".$_SERVER['HTTP_HOST']; ?>:8021/v3/cars";
 var carMarkerPath = "<?= $this->basePath('images/marker-car.png'); ?>";
 var carMarkerPathFree15 = "<?= $this->basePath('images/marker-car-free15.png'); ?>";
-//var carMarkerPathReserved = "<?= $this->basePath('images/marker-car-reserved.png'); ?>";
-//var poisUrl = "<?= $this->url('core/pois'); ?>";
-//var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
-//var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
+var carMarkerPathReserved = "<?= $this->basePath('images/marker-car-reserved.png'); ?>";
+var poisUrl = "<?= $this->url('core/pois'); ?>";
+var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
+var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
 var zonesUrl = "<?= $this->url('zoneosm'); ?>";
 var citta = <? if (isset($_GET['citta'])) {
                         switch ($_GET['citta']){

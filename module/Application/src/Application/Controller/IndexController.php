@@ -152,8 +152,8 @@ class IndexController extends AbstractActionController
             $data = shell_exec("curl '".$link."'");
             $data = json_decode($data, true);
             $data = $data['data'];
-            $this->getResponse()->setContent(json_encode($data));
-            return $this->getResponse();
+            //$this->getResponse()->setContent(json_encode($data));
+            return new JsonModel($data);
         } catch (Exception $exception) {
             return "{}";
         }

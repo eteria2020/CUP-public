@@ -6,11 +6,13 @@ $(function () {
 
     // Set the vector source; will contain the map data
     var vectorSourceVehicles = {},
+        vectorSourceVehiclesFree15 = {},
         vectorSourceZones = {},
         vectorSourcePois = {};
 
     // Set the features collection
     var vehiclesFC = {},
+        vehiclesFCF15 = {},
         zonesFC = {},
         poisFC = {};
 
@@ -31,6 +33,9 @@ $(function () {
     var drawVehicle = function (vehiclePlate) {
         vectorSourceVehicles.addFeature(vehiclesFC[vehiclePlate]);
     };
+    var drawVehicleFree15 = function (vehiclePlate) {
+        vectorSourceVehiclesFree15.addFeature(vehiclesFCF15[vehiclePlate]);
+    };
     var drawZone = function (id) {
         vectorSourceZones.addFeature(zonesFC[id]);
     };
@@ -41,6 +46,9 @@ $(function () {
     // Clear Functions
     var clearVehicles = function () {
         vectorSourceVehicles.clear();
+    };
+    var clearVehiclesFree15 = function () {
+        vectorSourceVehiclesFree15.clear();
     };
     var clearPois = function () {
         vectorSourcePois.clear();
@@ -60,10 +68,18 @@ $(function () {
         projection: "EPSG:3857",
         format: format
     });
+    vectorSourceVehiclesFree15 = new ol.source.Vector({
+        projection: "EPSG:3857",
+        format: format
+    });
 
     var clusterSourceVehicles = new ol.source.Cluster({
         distance: 60,
         source: vectorSourceVehicles
+    });
+    var clusterSourceVehiclesFree15 = new ol.source.Cluster({
+        distance: 0,
+        source: vectorSourceVehiclesFree15
     });
 
     // POIS POPUP
@@ -109,7 +125,7 @@ $(function () {
             } else {
                 return new ol.style.Style({
                     image: new ol.style.Circle({
-                        radius: 20,
+                        radius: 15,
                         stroke: new ol.style.Stroke({
                             color: '#ffffff'
                         }),
@@ -124,6 +140,53 @@ $(function () {
                         text: size.toString(),
                         fill: new ol.style.Fill({
                             color: '#ffffff'
+                        }),
+                        stroke: new ol.style.Stroke({
+                            color: '#43a34c',
+                            width: 1
+                        }),
+                        offsetX: 0,
+                        offsetY: 0,
+                        rotation: 0
+                    })
+                });
+            }
+        }
+    });
+        var vehiclesLayerFree15 = new ol.layer.Vector({
+        source: clusterSourceVehiclesFree15,
+        style: function (feature) {
+            var size = feature.get('features').length;
+
+            if (size === 1){
+                return new ol.style.Style({
+                    image: new ol.style.Icon(({
+                        scale: 1,
+                        anchor: [0.5, 1],
+                        anchorXUnits: 'fraction',
+                        anchorYUnits: 'fraction',
+                        opacity: 1,
+                        src: carMarkerPathFree15
+                    }))
+                });
+            } else {
+                return new ol.style.Style({
+                    image: new ol.style.Circle({
+                        radius: 15,
+                        stroke: new ol.style.Stroke({
+                            color: '#ffffff'
+                        }),
+                        fill: new ol.style.Fill({
+                            color: '#43a34c'
+                        })
+                    }),
+                    text: new ol.style.Text({
+                        textAlign: "center",
+                        textBaseline: "middle",
+                        font: 'Normal 16px Arial',
+                        text: size.toString(),
+                        fill: new ol.style.Fill({
+                            color: '#ffff00'
                         }),
                         stroke: new ol.style.Stroke({
                             color: '#43a34c',
@@ -179,7 +242,7 @@ $(function () {
                         anchorXUnits: 'fraction',
                         anchorYUnits: 'fraction',
                         opacity: 1,
-                        src: poisMarkerPathFree15
+                        src: poisMarkerPath
                     }))
                 });
             } else {
@@ -247,7 +310,7 @@ $(function () {
     });
 
     var map = new ol.Map({
-        layers: [OSM, zonesLayer, poisLayer, vehiclesLayer],
+        layers: [OSM, zonesLayer, poisLayer, vehiclesLayer, vehiclesLayerFree15],
         overlays: [popup],
         target: document.getElementById("map_canvas"),
         interactions: ol.interaction.defaults({ mouseWheelZoom: false }),
@@ -285,6 +348,7 @@ $(function () {
     // set click event listeners
     vehicleToggle.addEventListener('click', function() {
         vehiclesLayer.setVisible(!vehicleMarkersSet);
+        vehiclesLayerFree15.setVisible(!vehicleMarkersSet);
         vehicleMarkersSet = !vehicleMarkersSet;
         toggleButtonColor(vehicleToggle, vehicleMarkersSet);
     });
@@ -311,6 +375,7 @@ $(function () {
     var loadVehicles = function(fleet) {
         // Clear Vehicles Features
         clearVehicles();
+        clearVehiclesFree15();
 
         // Add Map Loader (remove other ones)
         removeMapLoader();
@@ -320,6 +385,9 @@ $(function () {
         if (xhrVehicles !== null) {
             xhrVehicles.abort();
         }
+
+        var auto_bonus=0;
+        var auto_nb=0;
 
         xhrVehicles = $.get('cars-api/' + fleet, function(vehicles) {
             $.each(vehicles, function(index, vehicle) {
@@ -331,45 +399,73 @@ $(function () {
                 var battery = vehicle.battery;
                 var plate = vehicle.plate;
                 
-                var bonus_car = "";
+                var bonus_message = "";
 		var b_car = vehicle.bonus;
 		for(var ib=0;ib<b_car.length;ib++){
-                    if((b_car[ib].type=="nouse")&&(b_car[ib].value==15)&&(b_car[ib].status==true)){
-                        bonus_car = "<br>I primi "+b_car[ib].value+" minuti di guida sono gratuiti";
+                    if((b_car[ib].type=="nouse")&&(b_car[ib].status==true)){
+                        bonus_message = "<br>I primi "+b_car[ib].value+" minuti di guida sono gratuiti";
                     }
 		}
-		//document.getElementById("bonus_message").innerHTML = bonus_car;
+		
 		//document.getElementById("bonus_message").style.fontWeight="normal";
                 
                 // Create the Vehicle Feature
-                vehiclesFC[plate] = new ol.Feature({
-                    geometry: new ol.geom.Point(
-                        ol.proj.transform(
-                            [longitude, latitude],
-                            'EPSG:4326', 'EPSG:3857'
-                        )
-                    ),
+                /*
                     image: new ol.style.Icon(({
                         scale: 1,
                         anchor: [0.5, 1],
                         anchorXUnits: 'fraction',
                         anchorYUnits: 'fraction',
                         opacity: 1,
-                        src: poisMarkerPathFree15
+                        src: carMarkerPathFree15
                     })),
-                    intClean: intCleanliness,
-                    extClean: extCleanliness,
-                    battery: battery,
-                    type: "vehicle"
-                });
-                vehiclesFC[plate].setId(plate);
-
-                drawVehicle(plate);
+                 */
+                
+                if(bonus_message==""){
+                    vehiclesFC[plate] = new ol.Feature({
+                        geometry: new ol.geom.Point(
+                            ol.proj.transform(
+                                [longitude, latitude],
+                                'EPSG:4326', 'EPSG:3857'
+                            )
+                        ),
+                        intClean: intCleanliness,
+                        extClean: extCleanliness,
+                        battery: battery,
+                        bonus_message: bonus_message,
+                        type: "vehicle"
+                    });
+                    vehiclesFC[plate].setId(plate);
+                    drawVehicle(plate);
+                    console.log(plate+" NB");
+                    auto_nb++;
+                }else{
+                    vehiclesFCF15[plate] = new ol.Feature({
+                        geometry: new ol.geom.Point(
+                            ol.proj.transform(
+                                [longitude, latitude],
+                                'EPSG:4326', 'EPSG:3857'
+                            )
+                        ),
+                        intClean: intCleanliness,
+                        extClean: extCleanliness,
+                        bonus_message: bonus_message,
+                        battery: battery,
+                        type: "vehicle"
+                    });
+                    vehiclesFCF15[plate].setId(plate);
+                    drawVehicleFree15(plate);
+                    console.log(plate+" F15");
+                    auto_bonus++;
+                }
             });
             vehiclesLayer.setVisible(true);
+            vehiclesLayerFree15.setVisible(true);
             vehicleMarkersSet = true;
             toggleButtonColor(vehicleToggle, vehicleMarkersSet);
             removeMapLoader();
+            console.log('nbt: '+Object.keys(vehiclesFC).length+'\n bt: '+Object.keys(vehiclesFCF15).length);
+            console.log('nb: '+auto_nb+'\n b: '+auto_bonus);
         });
     };
 
@@ -552,32 +648,33 @@ $(function () {
                 feature.get("features").length === 1) {
                 feature = feature.get("features")[0];
             }
-
+            
             var type = feature.get('type');
-
+            
             if (type === "vehicle") {
                 // if an infowindow is open, close it
                 if (openInfoWindow !== null) {
                     openInfoWindow.close();
                 }
-
+                
                 var plate = feature.getId();
                 var extClean = feature.get('extClean');
                 var intClean = feature.get('intClean');
                 var battery = feature.get('battery');
+                var bonus_message = feature.get('bonus_message');
                 var coordinates = ol.proj.transform(
                     feature.getGeometry().getCoordinates(),
                     "EPSG:3857",
                     "EPSG:4326"
                 );
-
+                
                 // modify the elements
                 setPlateText(plate);
                 setIntCleanliness(intClean);
                 setExtCleanliness(extClean);
                 setCarBattery(battery);
                 setCarPos(coordinates);
-
+                
                 // get the location and set it in the popup
                 getAddress(coordinates[1], coordinates[0], function(results, status) {
                     console.log(results);
@@ -585,10 +682,11 @@ $(function () {
                         setLocationText(results.display_name);
                     }
                 });
-
+                
+                document.getElementById("bonus_message").innerHTML = bonus_message;
                 // show the popup
                 showPopup(plate, feature);
-
+                
                 // Set the main button's behavior
                 setReservationButton(plate, false);
             } else if (type === "poi") {
