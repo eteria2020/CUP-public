@@ -39,8 +39,8 @@
 
 
 <script>
-var port = "<?php echo ':8024'; ?>";
-var version = "<?php echo '/v2'; ?>";
+//var port = "<?php echo ':8024'; ?>";
+//var version = "<?php echo '/v2'; ?>";
 // texts to be translated
 var textCarOccupied = '<?= $this->translate("L\'auto è occupata"); ?>';
 var textCarReserved = '<?= $this->translate("Annulla prenotazione"); ?>';
@@ -53,8 +53,9 @@ var textSearchAddress = '<?= $this->translate('Cerca indirizzo'); ?>';
 echo $this->partial('partials/car-popup.phtml');
 ?>
 <script>
-var carsUrl = "<?= $this->url('core/publiccars'); ?>";
+//var carsUrl = "<?= "//".$_SERVER['HTTP_HOST']; ?>:8021/v3/cars";
 var carMarkerPath = "<?= $this->basePath('images/marker-car.png'); ?>";
+var carMarkerPathFree15 = "<?= $this->basePath('images/marker-car-free15.png'); ?>";
 var carMarkerPathReserved = "<?= $this->basePath('images/marker-car-reserved.png'); ?>";
 var poisUrl = "<?= $this->url('core/pois'); ?>";
 var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
