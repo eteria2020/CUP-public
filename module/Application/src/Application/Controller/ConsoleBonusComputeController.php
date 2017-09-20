@@ -79,7 +79,7 @@ class ConsoleBonusComputeController extends AbstractActionController
     private $logger;
 
     /**
-     * @var Config
+     * @var array
      */
     private $config;
 
@@ -103,6 +103,7 @@ class ConsoleBonusComputeController extends AbstractActionController
      * @param EventsService $eventsService
      * @param Logger $logger
      * @param array $config
+     * @param array $pointConfig
      * @param Form $customerPointForm
      */
     public function __construct(
@@ -118,6 +119,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         EventsService $eventsService,
         Logger $logger,
         $config,
+        $pointConfig,
         Form $customerPointForm
     ) {
         $this->customerService = $customerService;
@@ -133,7 +135,7 @@ class ConsoleBonusComputeController extends AbstractActionController
         $this->logger = $logger;
         $this->config = $config;
         $this->customerPointForm = $customerPointForm;
-        $this->pointConfig = $config['point'];
+        $this->pointConfig = $pointConfig['point'];
     }
 
     public function bonusComputeAction()
