@@ -212,6 +212,7 @@ final class RegistrationService
      */
     public function formatData($data)
     {
+        $data['taxCode'] = strtoupper(trim($data['taxCode']));
         $data['driverLicenseCategories'] = '{' .implode(',', $data['driverLicenseCategories']). '}';
         $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
@@ -343,7 +344,7 @@ final class RegistrationService
         $url = $this->viewHelperManager->get('url');
         /** @var callable $serverUrl */
         $serverUrl = $this->viewHelperManager->get('serverUrl');
-        
+
         $writeTo = $this->emailSettings['from'];
         $mail = $this->emailService->getMail(1, $language);
         $content = sprintf(
@@ -414,7 +415,7 @@ final class RegistrationService
 
         return $message;
     }
-    
+
     /**
      * Sanitize the mobile number from double zero and create the corret string with "+ dial_code mobile"
      * @param array $data
@@ -430,8 +431,8 @@ final class RegistrationService
         $str1 = preg_replace('/^' . preg_quote($dp1 . $prefix, '/') . '/', '', $str1);
         $str1 = preg_replace('/^' . preg_quote($dp2 . $prefix, '/') . '/', '', $str1);
         $data['mobile'] = '+' . $smsVerification->offsetGet('dialCode') . $str1;
-        
+
         return $data;
     }
-    
+
 }
