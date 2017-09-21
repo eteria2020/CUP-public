@@ -2,7 +2,7 @@ INSERT INTO mails (subject,content,enable,language,category) VALUES ('1.000 Punt
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>SHARE''NGO</title>
+<title>SHARE&#39;NGO</title>
 <link href=''https://fonts.googleapis.com/css?family=Lato:400,900'' rel=''stylesheet'' type=''text/css''>
 </head>
 
@@ -27,8 +27,8 @@ INSERT INTO mails (subject,content,enable,language,category) VALUES ('1.000 Punt
 <td width="10">&nbsp;</td>
 <td style="font-family: ''Lato'', arial, sans-serif; font-size: 14px; color: #333; font-weight: regular; line-height: 20px;" bgcolor="#FFFFFF" width="480">
 <p>Ciao %1$s,</p>
-<p>in questi giorni hai superato per la prima volta gli 80 minuti di utilizzo mensile di Share''ngo, il car sharing elettrico della tua citt&agrave;.</p>
-<p><strong>Nell''auspicio che la mobilit&agrave; sostenibile e condivisa diventi anche per te una piacevole abitudine, ti abbiamo accreditato 1.000 Punti Ossigeno extra rispetto a quelli che stai guadagnando con le tue corse.</strong><br /><br /> Puoi verificare il tuo saldo punti in Area Riservata su <a style="color: #08bd53; text-decoration: none;" href="http://site.sharengo.it" target="_blank" rel="noopener">www.sharengo.it</a> alla sezione &ldquo;<strong>PROFILO</strong>&rdquo; e vedere anche quanto hai personalmente contribuito a ridurre le emissioni di CO2 nell''ambiente.<br /><br /> Un caro saluto,</p>
+<p>in questi giorni hai superato per la prima volta gli 80 minuti di utilizzo mensile di Share&#39;ngo, il car sharing elettrico della tua citt&agrave;.</p>
+<p><strong>Nell&#39;auspicio che la mobilit&agrave; sostenibile e condivisa diventi anche per te una piacevole abitudine, ti abbiamo accreditato 1.000 Punti Ossigeno extra rispetto a quelli che stai guadagnando con le tue corse.</strong><br /><br /> Puoi verificare il tuo saldo punti in Area Riservata su <a style="color: #08bd53; text-decoration: none;" href="http://site.sharengo.it" target="_blank" rel="noopener">www.sharengo.it</a> alla sezione &ldquo;<strong>PROFILO</strong>&rdquo; e vedere anche quanto hai personalmente contribuito a ridurre le emissioni di CO2 nell&#39;ambiente.<br /><br /> Un caro saluto,</p>
 </td>
 <td width="10">&nbsp;</td>
 </tr>
