@@ -743,7 +743,7 @@ class ConsoleBonusComputeController extends AbstractActionController
                     if($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']){
                        //add 1000 points for pass cluster 0 to 1
                        $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
-                        if(!is_null($sendEmail) && strtoupper($sendEmail) == 'TRUE'){
+                        if(is_null($sendEmail) || strtoupper($sendEmail) != 'FALSE'){
                             $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
                         }
                     }
