@@ -124,6 +124,40 @@ class IndexController extends AbstractActionController
             $this->carsService->getPublicFreeCarsByFleet($fleet)
         );
     }
+    
+    public function getListCarsByFleetApiAction()
+    {
+        $fleetId = $this->params()->fromRoute('fleetId', 0);
+        //$lon=9.192831;
+        //$lat=45.465718;
+        $radius=40000;
+        try {
+            $fleet = $this->fleetService->getFleetById($fleetId);
+        } catch (FleetNotFoundException $exception) {
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+            return false;
+        }
+        
+        $lat = $fleet->getLatitude();
+        $lon = $fleet->getLongitude();
+        
+        try {
+            $ctx = stream_context_create(array(
+                'http' => array(
+                    'timeout' => 40
+                    )
+                )
+            );
+            $link = "http://localhost:8021/v2/cars?lat=".$lat."&lon=".$lon."&radius=".$radius;
+            $data = shell_exec("curl '".$link."'");
+            $data = json_decode($data, true);
+            $data = $data['data'];
+            //$this->getResponse()->setContent(json_encode($data));
+            return new JsonModel($data);
+        } catch (Exception $exception) {
+            return "{}";
+        }
+    }
 
     public function getListPoisByFleetAction()
     {

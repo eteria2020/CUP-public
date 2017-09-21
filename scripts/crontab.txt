@@ -24,6 +24,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 
+# every hour
+00   * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_helper_maintainers.sh
+
 # every day
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 00 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh

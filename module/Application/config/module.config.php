@@ -62,6 +62,20 @@ return [
                     ],
                 ],
             ],
+            'cars-api' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/cars-api/:fleetId',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'get-list-cars-by-fleet-api',
+                    ],
+                    'constraints' => [
+                        'fleetId' => '[0-9]+'
+                    ],
+                ],
+            ],
             'pois' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1823,6 +1837,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'add-point-day'
+                        ]
+                    ]
+                ],
+                'close-maintainer' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'close maintainer',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'force-end'
                         ]
                     ]
                 ],
