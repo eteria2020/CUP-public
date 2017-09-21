@@ -733,7 +733,7 @@ $this->inlineScript()->captureEnd();
 
     loadBanner(bannerJsonpUrl, userId, pageLink);
 
-    if (document.location.pathname === "/area-utente") {
+    if (document.location.pathname === "/area-utente" || document.location.pathname === "/area-utente/mobile" ) {
         //console.log("11111");
         //calculateCO2(userId);
         $.ajax({
