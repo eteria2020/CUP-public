@@ -77,4 +77,4 @@ INSERT INTO mails (subject,content,enable,language,category) VALUES ('1.000 Punt
 </tbody>
 </table>
 </body>
-</html>', true, 'it', 19);
+</html>', true, 'it', 19) ;
