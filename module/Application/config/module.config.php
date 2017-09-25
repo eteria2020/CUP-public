@@ -1854,7 +1854,7 @@ return [
                 'add-point-cluster' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'add point cluster',
+                        'route' => 'add point cluster [--no-email|-e]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
