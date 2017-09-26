@@ -1,7 +1,7 @@
 #!/bin/sh
 #clean old commands and old archive reservations
 
-time='1 year'
+time='6 months'
 
 PSQL='psql -p 5433'
 
