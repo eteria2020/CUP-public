@@ -18,6 +18,7 @@ use Application\Service\ProfilingPlaformService;
 use Application\Exception\ProfilingPlatformException;
 use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
 use SharengoCore\Service\TripsService;
@@ -49,6 +50,12 @@ class UserController extends AbstractActionController {
      * @var SharengoCore\Service\CustomersService
      */
     private $customersService;
+
+    /**
+     *
+     * @var SharengoCore\Service\PromoCodeService
+     */
+    private $promoCodeService;
 
     /**
      * @var \Multilanguage\Service\LanguageService
@@ -100,10 +107,11 @@ class UserController extends AbstractActionController {
      * @param Translator $translator
      * @param HydratorInterface $hydrator
      * @param TripsService $tripsService
+     * @param PromoCodesService $promoCodeService
      */
     public function __construct(
     Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
-    ) {
+    , PromoCodesService $promoCodeService) {
 
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -117,6 +125,7 @@ class UserController extends AbstractActionController {
         $this->emailService = $emailService;
         $this->fleetService = $fleetService;
         $this->tripsService = $tripsService;
+        $this->promoCodeService = $promoCodeService;
     }
 
     public function loginAction() {
@@ -204,7 +213,7 @@ class UserController extends AbstractActionController {
             $container = new Container('session');
             $container->offsetSet('hasDiscount', true);
         } catch (ProfilingPlatformException $ex) {
-
+            
         }
 
         return $this->redirect()->toRoute('signup');
@@ -221,7 +230,7 @@ class UserController extends AbstractActionController {
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
-
+            
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -360,7 +369,6 @@ class UserController extends AbstractActionController {
     /**
      *
      * Send sms check code
-     *
      * @return type check code status
      */
     public function signupSmsAction() {
@@ -671,6 +679,24 @@ class UserController extends AbstractActionController {
         $this->redirect()->toRoute('signup');
     }
 
+    public function promocodeVerifyAction() { // momo controle if the promo code is ok. return the min and eur.        
+        if ($this->promoCodeService->isValid(strtoupper($this->getRequest()->getPost('promocode')))) {
+            $promo = $this->promoCodeService->getPromoCode(strtoupper($this->getRequest()->getPost('promocode')));
+            $info['min'] = $promo->getPromocodesinfo()->getMinutes();
+            $info['cost'] = $promo->getPromocodesinfo()->getOverriddenSubscriptionCost() / 100;
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent(json_encode($info));
+
+            return $response;
+        } else {
+            $response = $this->getResponse();
+            $response->setStatusCode(400);
+            $response->setContent(false);
+            return $response;
+        }
+    }
+
     private function customerHasDiscount() {
         $container = new Container('userDiscount');
         return $container->offsetGet('hasDiscount');
@@ -680,7 +706,7 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getPromoCodeByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-
+            
         }
 
         return null;
@@ -690,7 +716,7 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getFleetByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-
+            
         }
 
         return null;

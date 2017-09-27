@@ -253,5 +253,45 @@ $(function () {
         }
 
     }
+    
+    
+     $(document).on("click", "#buttonVerifyPromo", function () { // momo send the promo code to controller then adjust min and eur in the html
+                            if ($('#name').val().length > 0) {
+                                
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/signup-promocodeverify",
+                                    
+                                    data: {'promocode': $('#name').val()},
+                                    beforeSend: function () {
+                                        //console.log("WAIT 1");
+                                        $('#buttonVerifyPromo').hide();
+                                        if ($('#language').val() == "it") {
+                                            $('#name').html("<div><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i></div>");
+                                        } else {
+                                            $('#name').html("<div><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i>Verify</div>");
+                                        }
+                                        $('#buttonVerifyPromo').show();
+                                    },
+                                    success: function (data) {
+                                        var info = JSON.parse(data);
+                                         document.getElementById('errorepromo').style.display = "none";
+                                        $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>L’iscrizione al servizio costa "+ info.cost + " euro con "+ info.min+ " minuti bonus.</div>");
+                                        
+                                        setTimeout(function () {
+                                            $('#buttonVerifyPromo').html("<div> <button id='buttonVerifyPromo' type='button' >Applica </button> </div>");
+                                        }, 600000);
+                                    },
+                                    error: function () {
+                                         $('#promodiv').html("<div id='promodiv' ></div>");
+                                         document.getElementById('errorepromo').style.display = "block";
+                                         $('#errorepromo').html("<div id='errorepromo'><ul class='errors'><li>Il codice inserito non è valido</li></ul></div>");
+                                        
+                                        
+                                        console.log("ERROR PromoVerifyCode");
+                                    }
+                                });
+                            }
+                        });
 
 });
