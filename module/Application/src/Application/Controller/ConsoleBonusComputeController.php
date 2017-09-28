@@ -389,9 +389,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
         } else {
             $format = "%s;INF;addPointDayAction;script NO with date param\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-            $this->checkIfCallAddPointClusterAction();
             $arrayDates = $this->createDate();
             $this->scriptAddPointDay($arrayDates);
+            $this->addPointClusterAction();
         }
 
         $format = "%s;INF;addPointDayAction;end\n";
@@ -504,27 +504,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $dateNextMonthStart = ($date2->modify("+1 month")->format("Y-m-d 00:00:00"));
             $dateNextMonthStart = date("Y-m-01 00:00:00", strtotime($dateNextMonthStart));
 
-
             $dates[0] = $dateLastStart;
             $dates[1] = $dateStart;
             $dates[2] = $dateMonthStart;
             $dates[3] = $dateNextMonthStart;
 
             return $dates;
-        }
-    }
-
-    private function checkIfCallAddPointClusterAction() {
-        //check if now is the first day of month
-        //Y-> call method that check cluster point
-        //N-> continue
-        $today = new \DateTime();
-        $today = $today->format('Y-m-d');
-        $firstDay = new \DateTime('first day of this month');
-        $firstDay = $firstDay->format('Y-m-d');
-
-        if ($today == $firstDay) {
-            $this->addPointClusterAction();
         }
     }
 
@@ -614,14 +599,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }//end else if between 200 and 600
             }//end else if between 80 and 200
         }//end else if 80
-    }
-
-//end howManyPointsAddToUser
+    }//end howManyPointsAddToUser
 
     /*
      * this method verify if one customer can receive this bonus
      */
-
     public function addPointClusterAction() {
 
         $this->prepareLogger();
@@ -629,69 +611,38 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
         $request = $this->getRequest();
-        //$sendEmail = $request->getParam('sendEmail');
         $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
 
-        $dateStartCurrentMonth = new \DateTime('first day of this month');
+        $dateTodayStart = new \DateTime();
+        $dateTodayStart = $dateTodayStart->format("Y-m-d 00:00:00");
+
+        $dateYesterdayStart = new \DateTime("2017-10-01");
+        $dateYesterdayStart = $dateYesterdayStart->modify('-1 day');
+        
+        $dateStartCurrentMonth = new \DateTime($dateYesterdayStart->format("Y-m-d 00:00:00"));
+        $dateStartCurrentMonth = $dateStartCurrentMonth->modify('first day of this month');
         $dateStartCurrentMonth = $dateStartCurrentMonth->format("Y-m-d 00:00:00");
 
-        $dateStartLastMonth = new \DateTime('first day of this month');
+        $dateStartLastMonth = new \DateTime($dateStartCurrentMonth);
         $dateStartLastMonth = $dateStartLastMonth->modify("-1 month");
         $dateStartLastMonth = $dateStartLastMonth->format("Y-m-d 00:00:00");
 
-        $dateStartTwotMonthAgo = new \DateTime('first day of this month');
-        $dateStartTwotMonthAgo = $dateStartTwotMonthAgo->modify("-2 month");
-        $dateStartTwotMonthAgo = $dateStartTwotMonthAgo->format("Y-m-d 00:00:00");
-
-        $customers = $this->customerService->getCustomersRunThisMonth($dateStartLastMonth, $dateStartCurrentMonth);
+        $customers = $this->customerService->getCustomersRunThisMonth($dateTodayStart, $dateStartCurrentMonth);
 
         foreach ($customers as $c) {
-            $minuteTripsTwotMonthAgo = 0;
-            $minuteTripsLastMonth = 0;
-            if (!$this->checkCustomerAlreadyAddPointsCluster($c['id'])) {
-                $tripsLastMonth = $this->tripsService->getTripsByCustomerForAddPointClusterLastMonth($c['id'], $dateStartLastMonth, $dateStartCurrentMonth);
-                $secondsTripsLastMonth = 0;
-                if (count($tripsLastMonth) > 0) {
-                    foreach ($tripsLastMonth as $tripLastMonth) {
-                        if (is_null($tripLastMonth->getTimestampEnd()) && is_null($tripLastMonth->getEndTx())) {
-                            continue;
-                        } else {
-                            if (!is_null($tripLastMonth->getEndTx())) {
-                                $timeTripsLastMonth = date_diff($tripLastMonth->getEndTx(), $tripLastMonth->getTimestampBeginning());
-                            } else {
-                                $timeTripsLastMonth = date_diff($tripLastMonth->getTimestampEnd(), $tripLastMonth->getTimestampBeginning());
-                            }
-                        }
-                        $secondsTripsLastMonth += $this->calculateTripInSecond($timeTripsLastMonth);
-                    }
-                }
-
-                $minuteTripsLastMonth = round($secondsTripsLastMonth / 60, 0);
-
-                if ($minuteTripsLastMonth >= $this->pointConfig['newCheckPointCluster']) {
-                    $tripsTwotMonthAgo = $this->tripsService->getTripsByCustomerForAddPointClusterTwotMonthAgo($c['id'], $dateStartLastMonth, $dateStartTwotMonthAgo);
-                    $secondsTripsTwotMonthAgo = 0;
-                    if (count($tripsTwotMonthAgo) > 0) {
-                        foreach ($tripsTwotMonthAgo as $tripTwotMonthAgo) {
-                            if (is_null($tripTwotMonthAgo->getTimestampEnd()) && is_null($tripTwotMonthAgo->getEndTx())) {
-                                continue;
-                            } else {
-                                if (!is_null($tripTwotMonthAgo->getEndTx())) {
-                                    $timeTripsTwotMonthAgo = date_diff($tripTwotMonthAgo->getEndTx(), $tripTwotMonthAgo->getTimestampBeginning());
-                                } else {
-                                    $timeTripsTwotMonthAgo = date_diff($tripTwotMonthAgo->getTimestampEnd(), $tripTwotMonthAgo->getTimestampBeginning());
+            if ($this->checkCustomerAlreadyAddPointsCluster($c['id'])) {
+                $earnedPointsThisMonth = $this->customerService->getTripsByCustomerForAddPointClusterLastMonth($c['id'], $dateTodayStart, $dateStartCurrentMonth);
+                if (count($earnedPointsThisMonth) > 0) {
+                    if ($earnedPointsThisMonth[0]->getTotal() >= $this->pointConfig['newCheckPointCluster']) {
+                        $earnedPointsLastMonth = $this->customerService->getTripsByCustomerForAddPointClusterTwotMonthAgo($c['id'], $dateStartLastMonth, $dateStartCurrentMonth);
+                        if (count($earnedPointsLastMonth) > 0) {
+                            if ($earnedPointsLastMonth[0]->getTotal() < $this->pointConfig['oldCheckPointCluster']) {
+                                //add 1000 points for pass cluster 0 to 1
+                                $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
+                                if (!$this->avoidEmails) {
+                                    $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
                                 }
                             }
-                            $secondsTripsTwotMonthAgo += $this->calculateTripInSecond($timeTripsTwotMonthAgo);
-                        }
-                    }
-                    $minuteTripsTwotMonthAgo = round($secondsTripsTwotMonthAgo / 60, 0);
-
-                    if ($minuteTripsTwotMonthAgo < $this->pointConfig['oldCheckPointCluster']) {
-                        //add 1000 points for pass cluster 0 to 1
-                        $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
-                        if (!$this->avoidEmails) {
-                            $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
                         }
                     }
                 }
@@ -709,14 +660,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
      */
 
     private function checkCustomerAlreadyAddPointsCluster($customerId) {
-        $points = $this->customerService->getCustomerPointsByCustomer($customerId);
-        if (count($points) > 0) {
-            foreach ($points as $p) {
-                if (strtoupper($p->getType()) == $this->pointConfig['typeCluster'])
-                    return true;
-            }//end foreach $trips
-        }
-        return false;
+        $points = $this->customerService->getCustomerPointsCheckCluster($customerId);
+        
+        return (count($points) > 0) ? false : true;
     }
 
     private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart) {
