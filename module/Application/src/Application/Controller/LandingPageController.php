@@ -128,7 +128,12 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    
+    public function gemelliAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function greenAction()
     {
         return (new viewModel())->setTerminal(true);

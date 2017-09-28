@@ -709,6 +709,17 @@ return [
                     ],
                 ]
             ],
+            'gemelli' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{gemelli}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'gemelli',
+                    ],
+                ]
+            ],
             'green' => [
                 'type' => 'Segment',
                 'options' => [
