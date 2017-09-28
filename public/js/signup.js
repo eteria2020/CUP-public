@@ -265,24 +265,30 @@ $(function () {
                                     data: {'promocode': $('#name').val()},
                                     beforeSend: function () {
                                         //console.log("WAIT 1");
-                                        $('#buttonVerifyPromo').hide();
+                                       // $('#buttonVerifyPromo').hide();
                                         if ($('#language').val() == "it") {
-                                            $('#name').html("<div><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i></div>");
+                                            $('#buttonVerifyPromo').html("<div ><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i></div>");
                                         } else {
-                                            $('#name').html("<div><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i>Verify</div>");
+                                            $('#buttonVerifyPromo').html("<div'><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i>Verify</div>");
                                         }
                                         $('#buttonVerifyPromo').show();
+                                       
                                     },
                                     success: function (data) {
+                                        $('#buttonVerifyPromo').hide();
+                                         $('#buttonVerifyPromo').html("Applica");
+                                         $('#buttonVerifyPromo').show();
                                         var info = JSON.parse(data);
                                          document.getElementById('errorepromo').style.display = "none";
                                         $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>L’iscrizione al servizio costa "+ info.cost + " euro con "+ info.min+ " minuti bonus.</div>");
                                         
                                         setTimeout(function () {
-                                            $('#buttonVerifyPromo').html("<div> <button id='buttonVerifyPromo' type='button' >Applica </button> </div>");
+                                            $('#buttonVerifyPromo').html("");
                                         }, 600000);
                                     },
                                     error: function () {
+                                         $('#buttonVerifyPromo').html("Applica");
+                                        
                                          $('#promodiv').html("<div id='promodiv' ></div>");
                                          document.getElementById('errorepromo').style.display = "block";
                                          $('#errorepromo').html("<div id='errorepromo'><ul class='errors'><li>Il codice inserito non è valido</li></ul></div>");
