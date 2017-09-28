@@ -1,11 +1,26 @@
 RewriteEngine On
 RewriteRule ^$ http://site.sharengo.it/ [R=301,L]
+
+#app mobile rules - fleets images
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-firenze.png     api/images/icona_trasparente-firenze.png
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-firenze.svg     api/images/icona_trasparente-firenze.svg
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-milano.png     api/images/icona_trasparente-milano.png
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-milano.svg     api/images/icona_trasparente-milano.svg
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-modena.png     api/images/icona_trasparente-modena.png
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-modena.svg     api/images/icona_trasparente-modena.svg
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-roma.png     api/images/icona_trasparente-roma.png
+RewriteRule ^sites/default/files/assets/images/icona_trasparente-roma.svg     api/images/icona_trasparente-roma.svg
+
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
+
+#app mobile rules - fleets list
+RewriteRule ^feed/cities/list$  api/index.php [L,QSA]
+
 # The following rewrites all other queries to index.php. The 
 # condition ensures that if you are using Apache aliases to do
 # mass virtual hosting, the base path will be prepended to 
