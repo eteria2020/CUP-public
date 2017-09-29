@@ -87,13 +87,10 @@
                         
                         CODICE PROMO</span>
                         <div class="text-center space">
-                        <a href="http://www.sharengo.it/signup" id="submit" class="button">FPG17</a>
+                            <a href="<?= $this->url('promocode-signup',['promocode' => 'FPG17']); ?>" class="button" id="submit" onClick="ga('send', 'event', { eventCategory: 'landing', eventAction: 'click', eventLabel: 'FPG17'});">FPG17</a>
                         </div>
-				</div>
-                        </p>
                     </div>
-    			</div>  			
-    		</div>
+                </div>
     	</div>
     </body>
     
