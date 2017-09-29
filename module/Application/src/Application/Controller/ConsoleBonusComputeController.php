@@ -905,3 +905,4 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }
 
 }
+
