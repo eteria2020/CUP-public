@@ -534,6 +534,38 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
         }//end foreach custimers
     }//end executeScriptAddPointDay
+    
+    private function updateInfoScriptServerScript($serverScript, $customers, $param){
+        if($param){
+            $numbCustomerProcessed = json_decode($serverScript->getInfoScript());
+            $numbCustomerProcessedMoreOne = $numbCustomerProcessed->numbCustomerProcessed + 1;
+            $serverScript->setInfoScript(json_encode([
+                                                'totaNumbCustomerProcess' => count($customers),
+                                                'numbCustomerProcessed' => $numbCustomerProcessedMoreOne,
+                                                'lastCustomer' => $c['id']
+                                            ])
+                                        );
+        }else{
+             $serverScript->setInfoScript(json_encode([
+                                            'totaNumbCustomerProcess' => count($customers),
+                                            'numbCustomerProcessed' => 0,
+                                            'lastCustomer' => -1
+                                        ])
+                                    );  
+        }
+        
+        $this->serverScriptService->writeRow($serverScript);
+    }
+    
+    private function calculateNewCustomers($customers, $lastCustomerProcessed) {
+        //create a new array's customers
+        $newCustomers = array();
+        foreach ($customers as $customer){
+            if($customer['id'] > $lastCustomerProcessed)
+                $newCustomers [] = $customer;
+        }
+        return $newCustomers;
+    }
 
     private function createDate(\DateTime $date = null) {
         if (is_null($date)) {
@@ -589,9 +621,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     private function addCustomersPoints($numeberAddPoint, $customerId, $nameScript, $type) {
 
-        $format = "%s;INF;addCustomersPoints;Customer_id= %d;Add= %d;Script name= %s\n";
-        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $nameScript));
-
         $point = new \SharengoCore\Entity\CustomersPoints();
 
         $date = new \DateTime();
@@ -608,16 +637,21 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $point->setType($type);
 
         $this->customerService->setPointField($point, $customerId, $type);
+        
+        $format = "%s;INF;addCustomersPoints;Customer_id= %d;Add= %d;Script name= %s\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $nameScript));
+
     }
 
     private function updateCustomersPoints($numeberAddPoint, CustomersPoints $customerPoint, $customerId) {
 
-        $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
-        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
-
         $customerPoint->setTotal($customerPoint->getTotal() + $numeberAddPoint);
         $customerPoint->setUpdateTs(new \DateTime());
         $this->customerService->updateCustomerPointRow($customerPoint);
+        
+        $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
+
     }
 
     /*
@@ -718,9 +752,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         }//end foreach
         $format = "%s;INF;addPointClusterAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-    }
-
-//end addPointClusterAction
+    }//end addPointClusterAction
 
 
     /*
