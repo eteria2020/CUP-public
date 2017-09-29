@@ -393,9 +393,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $this->scriptAddPointDay($arrayDates);
             $this->addPointClusterAction();
         }
-
-        $format = "%s;INF;addPointDayAction;end\n";
-        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
 
 // end addPointDayAction
@@ -463,6 +460,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $this->addCustomersPoints($result[0], $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
         }//end foreach custimers
+        
+        $format = "%s;INF;addPointDayAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
     }
 
 //scriptAddPointDay
@@ -616,7 +617,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $dateTodayStart = new \DateTime();
         $dateTodayStart = $dateTodayStart->format("Y-m-d 00:00:00");
 
-        $dateYesterdayStart = new \DateTime("2017-10-01");
+        $dateYesterdayStart = new \DateTime();
         $dateYesterdayStart = $dateYesterdayStart->modify('-1 day');
         
         $dateStartCurrentMonth = new \DateTime($dateYesterdayStart->format("Y-m-d 00:00:00"));
