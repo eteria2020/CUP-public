@@ -378,38 +378,99 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
         $request = $this->getRequest();
+        //explain corret format paramDate ->
+        //$paramDate="2017-09-25";
         $paramDate = $request->getParam('date');
-        //$paramDate="2017-09-05";
+        
+        $serverScript = new \SharengoCore\Entity\ServerScripts();
+        
+        try{
 
-        if (!is_null($paramDate)) {
-            $format = "%s;INF;addPointDayAction;script with date param\n";
-            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-            if ($this->validateDate($paramDate)) {
-                $format = "%s;INF;addPointDayAction;DateParam= %s\n";
-                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
-                $date = new \DateTime($paramDate);
-                $arrayDates = $this->createDate($date);
-                $this->scriptAddPointDay($arrayDates);
+            if (!is_null($paramDate)) {
+                $format = "%s;INF;addPointDayAction;script with date param\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+                if ($this->validateDate($paramDate)) {
+                    $format = "%s;INF;addPointDayAction;DateParam= %s\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
+                    $date = new \DateTime($paramDate);
+                    $arrayDates = $this->createDate($date);
+                    $this->scriptAddPointDay($arrayDates, TRUE, $serverScript);
+                } else {
+                    $format = "%s;INF;addPointDayAction;date param NOT VALID!;DateParam= %s \n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
+                }
             } else {
-                $format = "%s;INF;addPointDayAction;date param NOT VALID!;DateParam= %s \n";
-                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $paramDate));
+                $format = "%s;INF;addPointDayAction;script NO with date param\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+                $arrayDates = $this->createDate();
+                $this->scriptAddPointDay($arrayDates, FALSE, $serverScript);
+                $this->addPointClusterAction();
             }
-        } else {
-            $format = "%s;INF;addPointDayAction;script NO with date param\n";
+        } catch (\Exception $e) { 
+            $this->writeServerScript($serverScript, $paramDate, $e, "ERROR");
+            $format = "%s;ERROR;addPointDayAction;end with Exception consult table server_scripts!\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-            $arrayDates = $this->createDate();
-            $this->scriptAddPointDay($arrayDates);
-            $this->addPointClusterAction();
         }
+    }// end addPointDayAction
+    
+    private function writeServerScript($serverScript, $paramDate = null, \Exception $e = null, $note = null) {
+        
+        $serverScript->setStartTs(new \DateTime());
+        $serverScript->setName($this->pointConfig['nameAddPointDay']);
+        $serverScript->setFullPath($this->pointConfig['fullPathAddPointDay']);
+        $serverScript->setParam((!is_null($paramDate) ? json_encode(['date' => $paramDate]) : null));
+        /*$serverScript->setInfoScript(json_encode([
+                                            'totaNumbCustomerProcess' => -1,
+                                            'numbCustomerProcessed' => -1,
+                                            'lastCustomer' => -1
+                                        ])
+                                    );
+         
+         */
+        $serverScript->setError((!is_null($e) ? $e->getMessage() : null));
+        $serverScript->setNote((!is_null($note) ? $note : null));
+        
+        $this->serverScriptService->writeRow($serverScript);
     }
 
-// end addPointDayAction
+    private function scriptAddPointDay($arrayDates, $param, $serverScript) {
 
-    private function scriptAddPointDay($arrayDates) {
-
+        //get ccustomer in range date
         $customers = $this->customerService->getCustomersRunYesterday($arrayDates[0], $arrayDates[1]);
 
-        foreach ($customers as $c) {
+        if($param){
+            $oldServerScript = $this->serverScriptService->getOldServerScript($arrayDates[1]);
+            
+            $this->writeServerScript($serverScript, $arrayDates[1]);
+            
+            //if row number > 0 -> diff customer
+            if(count($oldServerScript)>0){ 
+                //if there are more row of 0, i take first element, because i order the result i query
+                $dataOldServerScript = json_decode($oldServerScript[0]->getInfoScript());
+                $lastCustomer = $dataOldServerScript->lastCustomer;
+                //diff customer
+                $newCustomers = $this->calculateNewCustomers($customers, $lastCustomer);
+                $this->executeScriptAddPointDay($newCustomers, $arrayDates, $serverScript);
+            }/*else{
+                //if no row -> never lunch script for this date, process all customer
+                $this->executeScriptAddPointDay($customers, $arrayDates, $serverScript);
+            }*/
+        }else{
+            $this->writeServerScript($serverScript);
+            
+            $this->executeScriptAddPointDay($customers, $arrayDates, $serverScript);
+        }
+        
+        $format = "%s;INF;addPointDayAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }//scriptAddPointDay
+    
+    private function executeScriptAddPointDay($customers, $arrayDates, $serverScript){
+        //update field InfoScript in tabel server_scripts before customer procressed
+        $this->updateInfoScriptServerScript($serverScript, $customers, FALSE);
+        
+        foreach ($customers as $c){
 
             $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
             $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $arrayDates[2], $arrayDates[0]);
@@ -460,21 +521,19 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $result = $this->howManyPointsAddToUser($result);
             } while ($result[1] > 0);
 
-            //add point in customers_points
+            //add or update point in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3]);
             if (count($customerPoints) > 0) {
                 $this->updateCustomersPoints($result[0], $customerPoints[0], $c['id']);
             } else {
                 $this->addCustomersPoints($result[0], $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
-        }//end foreach custimers
-        
-        $format = "%s;INF;addPointDayAction;end\n";
-        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
-    }
 
-//scriptAddPointDay
+            //update the field InfoScript in tabel server_scripts after customer procressed
+            $this->updateInfoScriptServerScript($serverScript, $customers, TRUE);
+
+        }//end foreach custimers
+    }//end executeScriptAddPointDay
 
     private function createDate(\DateTime $date = null) {
         if (is_null($date)) {
