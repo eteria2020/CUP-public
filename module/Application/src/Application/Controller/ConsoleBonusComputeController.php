@@ -12,6 +12,7 @@ use SharengoCore\Service\BonusService;
 use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
+use SharengoCore\Service\ServerScriptsService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\CustomersPoints;
@@ -26,6 +27,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @var CustomersService
      */
     private $customerService;
+    
+    /**
+     * @var ServerScriptService
+     */
+    private $serverScriptService;
 
     /**
      * @var CarsService
@@ -99,6 +105,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     /**
      * @param CustomersService $customerService
+     * @param ServerScriptsService $serverScriptServic
      * @param TripsService $tripsService
      * @param TripPaymentsService $tripPaymentsService
      * @param EditTripsService $editTripService
@@ -111,9 +118,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param Form $customerPointForm
      */
     public function __construct(
-    CustomersService $customerService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
+    CustomersService $customerService, ServerScriptsService $serverScriptService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
     ) {
         $this->customerService = $customerService;
+        $this->serverScriptService = $serverScriptService;
         $this->carsService = $carsService;
         $this->tripsService = $tripsService;
         $this->tripPaymentsService = $tripPaymentsService;
