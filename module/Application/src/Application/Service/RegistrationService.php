@@ -277,7 +277,7 @@ final class RegistrationService
                         $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
                         $customer->setDiscountRate($promoCodeInfo->discountPercentage());
                     } else { // error in set promocode once
-                        throw new Exception('Promocode once '.$data['promoCode'].' not found,');
+                        throw new \Exception('Promocode once '.$data['promoCode'].' not found,');
                     }
                 } else { // is a promocode standard
                     $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
