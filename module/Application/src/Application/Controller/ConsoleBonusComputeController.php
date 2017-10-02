@@ -373,6 +373,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     public function addPointDayAction() {
 
+        
         $this->prepareLogger();
         $format = "%s;INF;addPointDayAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -414,12 +415,15 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }// end addPointDayAction
     
     private function writeServerScript($scriptName, $serverScript, $paramDate = null, \Exception $e = null, $note = null) {
+        
+        //get info script
+        $info_scritp = get_included_files();
         //get script path
-        $a = get_included_files();
+        $path_script = $info_scritp[0];
         
         $serverScript->setStartTs(new \DateTime());
         $serverScript->setName($scriptName);
-        $serverScript->setFullPath($a[0]);
+        $serverScript->setFullPath($path_script);
         $serverScript->setParam((!is_null($paramDate) ? json_encode(['date' => $paramDate]) : null));
         $serverScript->setError((!is_null($e) ? $e->getMessage() : null));
         $serverScript->setNote((!is_null($note) ? $note : null));
