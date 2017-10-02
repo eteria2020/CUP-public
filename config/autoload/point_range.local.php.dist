@@ -19,8 +19,8 @@ return [
         'multiplierRange2AddPointDay' => 3,
         'multiplierRange3AddPointDay' => 4,
         'nameAddPointDay' => 'addPointDay_scrpit',
-        'fullPathAddPointDay' => '/var/www/sharengo/public/public/index.php',
+        //'fullPathAddPointDay' => '/var/www/sharengo/public/public/index.php',
         'nameAddPointCluster' => 'addpointCluster_script',
-        'fullPathAddPointCluster' => '/var/www/sharengo/public/public/index.php'
+        //'fullPathAddPointCluster' => '/var/www/sharengo/public/public/index.php'
     ]
 ];

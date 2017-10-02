@@ -373,7 +373,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     public function addPointDayAction() {
 
-        
         $this->prepareLogger();
         $format = "%s;INF;addPointDayAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -448,10 +447,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
             
             //if row number > 0 -> diff customer
             if(count($oldServerScript)>0){ 
-                //if there are more row of 0, i take first element, because i order the result i query
+                //if there are more row of 0, i take first element, because i order the resul query.
+                //get the last run of script with index 0.
                 $dataOldServerScript = json_decode($oldServerScript[0]->getInfoScript());
                 $lastCustomer = $dataOldServerScript->lastCustomer;
-                //diff customer
+                //diff customer, calculate new array of customers
                 $newCustomers = $this->calculateNewCustomers($customers, $lastCustomer);
                 $this->executeScriptAddPointDay($newCustomers, $arrayDates, $serverScriptDay);
             }
@@ -461,6 +461,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $this->executeScriptAddPointDay($customers, $arrayDates, $serverScriptDay);
         }
         
+        //write in customer-points the end scirpt
         $this->writeEndServerScript($serverScriptDay);
         
         $format = "%s;INF;addPointDayAction;end\n";
@@ -470,6 +471,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     
     private function executeScriptAddPointDay($customers, $arrayDates, $serverScriptDay){
         //update field InfoScript in tabel server_scripts before customer procressed
+        //set field infoScript with data preExecte
         $this->updateInfoScriptServerScript($serverScriptDay, $customers);
         
         foreach ($customers as $c){
@@ -523,8 +525,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $result = $this->howManyPointsAddToUser($result);
             } while ($result[1] > 0);
 
-            //add or update point in customers_points
+            //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3]);
+            //add or update line point in customers_points
             if (count($customerPoints) > 0) {
                 $this->updateCustomersPoints($result[0], $customerPoints[0], $c['id']);
             } else {
@@ -532,6 +535,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
 
             //update the field InfoScript in tabel server_scripts after customer procressed
+            //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
 
         }//end foreach custimers
@@ -570,6 +574,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }
 
     private function createDate(\DateTime $date = null) {
+        
         if (is_null($date)) {
             $dateYesterdayStart = new \DateTime();
             $dateYesterdayStart = $dateYesterdayStart->modify("-1 day");
@@ -591,8 +596,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $dates[3] = $dateNextMonthStart;
 
             return $dates;
+            
         } else {
-
             $dateStart = $date->format("Y-m-d 00:00:00");
 
             $dateMonthStart = $date->format("Y-m-d 00:00:00");
