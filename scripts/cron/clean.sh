@@ -1,4 +1,4 @@
-#!/bin/bash
+    #!/bin/bash
 
 sudo rm /var/log/redis.log
 
@@ -17,3 +17,6 @@ mongo_log_path="/var/log/mongodb/"
 
 echo "rm -rf "$mongo_log_path"mongodb.log."$timestamp"T*"
 sudo rm -rf "$mongo_log_path"mongodb.log."$timestamp"T*
+
+sudo rm /srv/apps/sharengo-publicsite/data/log/queue-system-dlv.log
+sudo touch /srv/apps/sharengo-publicsite/data/log/queue-system-dlv.log

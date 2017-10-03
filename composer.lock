@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
-                "reference": "3e53650a420e48bd5082ecc5158415e7546dc232"
+                "reference": "42c56bfbdb93ec810afe81f090ef1db9a9df97a8"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2017-09-19 13:44:10"
+            "time": "2017-09-29 01:44:37"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "163ee01ffa9c0dbea64a4cb254bf3f0126d6842c"
+                "reference": "ece9ca05ffbe0a958b59a56e136482acf95a2c95"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-09-25 03:55:57"
+            "time": "2017-09-29 08:44:03"
         },
         {
             "name": "natxet/CssMin",
