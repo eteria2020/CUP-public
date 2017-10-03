@@ -684,6 +684,7 @@ class UserController extends AbstractActionController {
             $promo = $this->promoCodeService->getPromoCode(strtoupper($this->getRequest()->getPost('promocode')));
             $info['min'] = $promo->getPromocodesinfo()->getMinutes();
             $info['cost'] = $promo->getPromocodesinfo()->getOverriddenSubscriptionCost() / 100;
+            $info['disc'] =$promo->getPromocodesinfo()->discountPercentage();
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent(json_encode($info));
