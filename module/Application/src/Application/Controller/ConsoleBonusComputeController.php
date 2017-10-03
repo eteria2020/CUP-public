@@ -379,7 +379,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
         $request = $this->getRequest();
         //explain corret format paramDate ->
-        //$paramDate="2017-09-25";
+        //$paramDate="2017-10-03";
         $paramDate = $request->getParam('date');
         
         $serverScriptDay = new \SharengoCore\Entity\ServerScripts();
@@ -789,7 +789,21 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }
 
     private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart) {
-        return $this->customerService->checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart);
+   
+        $firstDayOfThisMonth = date('Y-m-01');
+        $firstDayOfThisMonth = $firstDayOfThisMonth.(" 00:00:00");
+
+        //Check if this date is the first day of this month
+        if($dateCurrentMonthStart === $firstDayOfThisMonth){
+            //if yes, i change the range date, now i see the last month
+            $newDateMonthStart = new \DateTime($dateCurrentMonthStart);
+            $newDateMonthStart = $newDateMonthStart->modify("-1 month");
+            $newDateMonthStart = $newDateMonthStart->format("Y-m-d 00:00:00");
+            
+            return $this->customerService->checkCustomerIfAlreadyAddPointsThisMonth($customerId, $newDateMonthStart, $dateCurrentMonthStart);
+        }else{
+            return $this->customerService->checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart);
+        }
     }
 
     /*
@@ -797,7 +811,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * have runnig with param
      * Param is an object DateInterval
      */
-
     private function calculateTripInSecond($timeTrip) {
 
         $seconds = 0;
