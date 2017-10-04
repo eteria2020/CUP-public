@@ -385,6 +385,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $serverScriptDay = new \SharengoCore\Entity\ServerScripts();
         
         try{
+            
+            
 
             if (!is_null($paramDate)) {
                 $format = "%s;INF;addPointDayAction;script with date param\n";
@@ -420,6 +422,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
         //get script path
         $path_script = $info_scritp[0];
         
+        if(!is_null($e))
+            $serverScript->setEndTs(new \DateTime());
         $serverScript->setName($scriptName);
         $serverScript->setFullPath($path_script);
         $serverScript->setParam((!is_null($paramDate) ? json_encode(['date' => $paramDate]) : null));
