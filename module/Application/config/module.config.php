@@ -379,6 +379,17 @@ return [
                     ]
                 ]
             ],
+            'signup-promocodeverify' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/signup-promocodeverify',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'promocode-verify'
+                    ]
+                ]
+            ],
             'foreign-drivers-license' => [
                 'type' => 'Segment',
                 'options' => [
