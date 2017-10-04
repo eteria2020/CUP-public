@@ -420,18 +420,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
         //get script path
         $path_script = $info_scritp[0];
         
-        $serverScript->setStartTs(new \DateTime());
         $serverScript->setName($scriptName);
         $serverScript->setFullPath($path_script);
         $serverScript->setParam((!is_null($paramDate) ? json_encode(['date' => $paramDate]) : null));
         $serverScript->setError((!is_null($e) ? $e->getMessage() : null));
         $serverScript->setNote((!is_null($note) ? $note : null));
         
-        $this->serverScriptService->writeRow($serverScript);
-    }
-    
-    private function writeEndServerScript($serverScript) {
-        $serverScript->setEndTs(new \DateTime());
         $this->serverScriptService->writeRow($serverScript);
     }
 
@@ -443,6 +437,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         if($param){
             $oldServerScript = $this->serverScriptService->getOldServerScript($arrayDates[1]);
             
+            $this->serverScriptService->writeStartServerScript($serverScriptDay);
             $this->writeServerScript($this->pointConfig['nameAddPointDay'], $serverScriptDay, $arrayDates[1]);
             
             //if row number > 0 -> diff customer
@@ -456,13 +451,15 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $this->executeScriptAddPointDay($newCustomers, $arrayDates, $serverScriptDay);
             }
         }else{
+            
+            $this->serverScriptService->writeStartServerScript($serverScriptDay);
             $this->writeServerScript($this->pointConfig['nameAddPointDay'], $serverScriptDay);
             
             $this->executeScriptAddPointDay($customers, $arrayDates, $serverScriptDay);
         }
         
         //write in customer-points the end scirpt
-        $this->writeEndServerScript($serverScriptDay);
+        $this->serverScriptService->writeEndServerScript($serverScriptDay);
         
         $format = "%s;INF;addPointDayAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -720,13 +717,14 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format = "%s;INF;addPointClusterAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
-        $request = $this->getRequest();
-        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
-        
-        $serverScriptCluster = new \SharengoCore\Entity\ServerScripts();
-        
         try{
+        
+            $serverScriptCluster = new \SharengoCore\Entity\ServerScripts();
+            $this->serverScriptService->writeStartServerScript($serverScriptCluster);
             
+            $request = $this->getRequest();
+            $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+
             $this->writeServerScript($this->pointConfig['nameAddPointCluster'], $serverScriptCluster);
 
             $dateTodayStart = new \DateTime();
@@ -765,7 +763,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }//end checkCustomerAlreadyAddPointsCluster
             }//end foreach
             
-            $this->writeEndServerScript($serverScriptCluster);
+            $this->serverScriptService->writeEndServerScript($serverScriptCluster);
             
             $format = "%s;INF;addPointClusterAction;end\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
