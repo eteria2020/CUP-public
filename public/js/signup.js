@@ -61,6 +61,11 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
+    if ($('#name').val().length > 0) {
+
+        verifyPromo();
+    }
+
     $(document).on("click", "#buttonSendCode", function () {
         if ($('#mobile').val().length > 0) {
             var prefix = $('#dialCode').val();
@@ -229,8 +234,7 @@ $(function () {
             $('#newsletterText').text(neswletterText_EN);
             $('#InfoPravacyTitle').text(privacyPolicyTitle_EN);
             $('#InfoPravacyText').text(privacyPolicyText_EN);
-        }
-        else {
+        } else {
             $('#promoCodeTitle').text(promoCodeTitle_IT);
             $('#generalConditionTitle').text(generalConditionTitle_IT);
             $('#generalConditionLink').text(generalConditionLink_IT);
@@ -253,5 +257,64 @@ $(function () {
         }
 
     }
+
+    function verifyPromo()
+    {
+        $.ajax({
+            type: "POST",
+            url: "/signup-promocodeverify",
+
+            data: {'promocode': $('#name').val()},
+            beforeSend: function () {
+                //console.log("WAIT 1");
+                // $('#buttonVerifyPromo').hide();
+                if ($('#language').val() == "it") {
+                    $('#buttonVerifyPromo').html("<div ><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i></div>");
+                } else {
+                    $('#buttonVerifyPromo').html("<div'><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i>Verify</div>");
+                }
+                $('#buttonVerifyPromo').show();
+
+            },
+            success: function (data) {
+                $('#buttonVerifyPromo').hide();
+                $('#buttonVerifyPromo').html("Applica");
+                $('#buttonVerifyPromo').show();
+                var info = JSON.parse(data);
+                document.getElementById('errorepromo').style.display = "none";
+                if(info.min != null )
+                {
+                  var a =  "con  "+ info.min +  " minuti bonus ";
+                }
+         
+                 if(info.disc != null )
+                {
+                   a = a +  "e la tariffa scontata del "+ info.disc +  "%";
+                }
+                
+                $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>Con questo codice promo l'iscrizione costa " + info.cost +" euro "+ a +". </div>");
+
+                setTimeout(function () {
+                    $('#buttonVerifyPromo').html("");
+                }, 600000);
+            },
+            error: function () {
+                $('#buttonVerifyPromo').html("Applica");
+
+                $('#promodiv').html("<div id='promodiv' ></div>");
+                document.getElementById('errorepromo').style.display = "block";
+                $('#errorepromo').html("<div id='errorepromo'><ul class='errors'><li>Il codice inserito non è valido</li></ul></div>");
+
+
+                console.log("ERROR PromoVerifyCode");
+            }
+        });
+    }
+    $(document).on("click", "#buttonVerifyPromo", function () { // momo send the promo code to controller then adjust min and eur in the html
+        if ($('#name').val().length > 0) {
+
+            verifyPromo();
+        }
+    });
 
 });
