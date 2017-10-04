@@ -771,7 +771,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
             
         } catch (\Exception $e) { 
-            $this->writeServerScript($this->pointConfig['nameAddPointCluster'], $serverScriptCluster, $paramDate, $e, "ERROR");
+            $this->writeServerScript($this->pointConfig['nameAddPointCluster'], $serverScriptCluster, null, $e, "ERROR");
             $format = "%s;ERROR;addPointClusterAction;end with Exception consult table server_scripts!\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         }
