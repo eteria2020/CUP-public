@@ -788,7 +788,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }
 
     private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart, $dateTodayStart) {
-   
+    
         $firstDayOfThisMonth = date('Y-m-01');
         $firstDayOfThisMonth = $firstDayOfThisMonth.(" 00:00:00");
 
