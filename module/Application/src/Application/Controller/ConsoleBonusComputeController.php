@@ -370,7 +370,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
     /*
      * this method verify/calculate if one customer can receive point day
      */
-
     public function addPointDayAction() {
 
         $this->prepareLogger();
