@@ -523,7 +523,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             } while ($result[1] > 0);
 
             //check if customer have alrady line, for this month, in customers_points
-            $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3]);
+            $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
             //add or update line point in customers_points
             if (count($customerPoints) > 0) {
                 $this->updateCustomersPoints($result[0], $customerPoints[0], $c['id']);
@@ -787,13 +787,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
         return (count($points) > 0) ? false : true;
     }
 
-    private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart) {
+    private function checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart, $dateTodayStart) {
    
         $firstDayOfThisMonth = date('Y-m-01');
         $firstDayOfThisMonth = $firstDayOfThisMonth.(" 00:00:00");
 
         //Check if this date is the first day of this month
-        if($dateCurrentMonthStart === $firstDayOfThisMonth){
+        if($dateTodayStart === $firstDayOfThisMonth){
             //if yes, i change the range date, now i see the last month
             $newDateMonthStart = new \DateTime($dateCurrentMonthStart);
             $newDateMonthStart = $newDateMonthStart->modify("-1 month");
