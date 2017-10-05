@@ -12,6 +12,7 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
         $sharedServiceManager = $serviceLocator->getServiceLocator();
 
         $customerService = $sharedServiceManager->get('\SharengoCore\Service\CustomersService');
+        $serverScriptService = $sharedServiceManager->get('\SharengoCore\Service\ServerScriptsService');
         $carsService = $sharedServiceManager->get('\SharengoCore\Service\CarsService');
         $tripsService = $sharedServiceManager->get('\SharengoCore\Service\TripsService');
         $tripPaymentsService = $sharedServiceManager->get('\SharengoCore\Service\TripPaymentsService');
@@ -28,6 +29,7 @@ class ConsoleBonusComputeControllerFactory implements FactoryInterface
 
         return new ConsoleBonusComputeController(
             $customerService,
+            $serverScriptService,
             $carsService,
             $tripsService,
             $tripPaymentsService,
