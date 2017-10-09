@@ -7,7 +7,7 @@
             $menu = '';
             $mobile = substr($this->serverUrl(true), -6) == 'mobile' ? '/mobile' : '';
             foreach ($this->container as $page) {
-                if ($mobile && ($page->getRoute()=='area-utente/pin' || $page->getRoute()=='area-utente/tariffe' || $page->getRoute()=='area-utente/rents')){
+                if ($mobile && ($page->getRoute()=='area-utente/tariffe' || $page->getRoute()=='area-utente/rents')){
                     continue;
                 }
                 $menu .= '<li>';
