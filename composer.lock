@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/public-business-module.git",
-                "reference": "42c56bfbdb93ec810afe81f090ef1db9a9df97a8"
+                "reference": "378d5954f2c719bfe74548ab25b37ea8c3de7415"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2017-09-29 01:44:37"
+            "time": "2017-10-09 09:08:55"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
