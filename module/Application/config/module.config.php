@@ -621,6 +621,17 @@ return [
                     ],
                 ],
             ],
+            'confesercenti' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{confesercenti}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'confesercenti',
+                    ],
+                ],
+            ],
             'controradioclub' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1294,7 +1305,7 @@ return [
                         'options' => [
                             'route' => '/{attivazione}',
                             'defaults' => [
-                                'action' => 'activate-payments'
+                                'action' => 'index'     //TODO: remove activate-payments
                             ]
                         ]
                     ],

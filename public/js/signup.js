@@ -282,17 +282,18 @@ $(function () {
                 $('#buttonVerifyPromo').show();
                 var info = JSON.parse(data);
                 document.getElementById('errorepromo').style.display = "none";
-                if(info.min != null )
+                var a = '';
+                if(info.min != null && info.min > 0)
                 {
-                  var a =  "con  "+ info.min +  " minuti bonus ";
+                  a =  "con  "+ info.min +  " minuti bonus ";
                 }
          
-                 if(info.disc != null )
+                 if(info.disc != null && info.disc > 0 )
                 {
-                   a = a +  "e la tariffa scontata del "+ info.disc +  "%";
+                   a = a +  "e hai la tariffa scontata del "+ info.disc +  "%";
                 }
                 
-                $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>Con questo codice promo l'iscrizione costa " + info.cost +" euro "+ a +". </div>");
+                $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>Con questo codice promo l'iscrizione costa " + info.cost +" euro "+ a +"</div>");
 
                 setTimeout(function () {
                     $('#buttonVerifyPromo').html("");

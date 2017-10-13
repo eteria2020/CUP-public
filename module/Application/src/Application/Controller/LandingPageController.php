@@ -78,6 +78,11 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
+
+    public function confesercentiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
     
     public function controradioclubAction()
     {
