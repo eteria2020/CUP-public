@@ -621,6 +621,17 @@ return [
                     ],
                 ],
             ],
+            'confesercenti' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{confesercenti}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'confesercenti',
+                    ],
+                ],
+            ],
             'controradioclub' => [
                 'type' => 'Segment',
                 'options' => [
