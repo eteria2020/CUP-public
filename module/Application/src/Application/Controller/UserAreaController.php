@@ -76,6 +76,11 @@ class UserAreaController extends AbstractActionController
     /**
      * @var \Zend\Form\Form
      */
+    private $mobileForm;
+    
+    /**
+     * @var \Zend\Form\Form
+     */
     private $typeForm;
 
     /**
@@ -135,6 +140,7 @@ class UserAreaController extends AbstractActionController
      * @param InvoicesService $invoicesService
      * @param Form $profileForm
      * @param Form $passwordForm
+     * @param Form $mobileForm
      * @param Form $driverLicenseForm
      * @param HydratorInterface $hydrator
      * @param CartasiPaymentsService $cartasiPaymentsService
@@ -153,6 +159,7 @@ class UserAreaController extends AbstractActionController
         InvoicesService $invoicesService,
         Form $profileForm,
         Form $passwordForm,
+        Form $mobileForm,
         Form $driverLicenseForm,
         HydratorInterface $hydrator,
         CartasiPaymentsService $cartasiPaymentsService,
@@ -171,6 +178,7 @@ class UserAreaController extends AbstractActionController
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
+        $this->mobileForm = $mobileForm;
         $this->driverLicenseForm = $driverLicenseForm;
         $this->hydrator = $hydrator;
         $this->cartasiPaymentsService = $cartasiPaymentsService;
@@ -260,6 +268,7 @@ class UserAreaController extends AbstractActionController
             'customer'     => $this->customer,
             'profileForm'  => $this->profileForm,
             'passwordForm' => $this->passwordForm,
+            'mobileForm' => $this->mobileForm,
             'showError'    => $this->showError,
             'typeForm'     => $this->typeForm,
         ]);

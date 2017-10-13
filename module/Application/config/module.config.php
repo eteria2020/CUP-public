@@ -1408,6 +1408,7 @@ return [
             'PaymentService' => 'Application\Service\PaymentServiceFactory',
             'ProfileForm' => 'Application\Form\ProfileFormFactory',
             'PasswordForm' => 'Application\Form\PasswordFormFactory',
+            'MobileForm' => 'Application\Form\MobileFormFactory',
             'DriverLicenseForm' => 'Application\Form\DriverLicenseFormFactory',
             'PromoCodeForm' => 'Application\Form\PromoCodeFormFactory',
             'CustomerPointForm' => 'Application\Form\CustomerPointFormFactory',

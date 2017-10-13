@@ -10,6 +10,7 @@ use SharengoCore\Service\FleetService;
 use SharengoCore\Service\ProvincesService;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Fieldset;
+use Zend\Session\Container;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\InputFilter\InputFilterProviderInterface;
@@ -290,7 +291,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => $translator->translate('Partita IVA (opzionale)'),
             ]
         ]);
-
+/*
         $this->add([
             'name' => 'mobile',
             'type' => 'Zend\Form\Element\Text',
@@ -303,7 +304,20 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => $translator->translate('Cellulare'),
             ]
         ]);
-
+        
+        $this->add([
+            'name' => 'smsCode',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'smsCode',
+                'maxlength' => 4,
+                'placeholder' => $translator->translate('xxxx'),
+            ],
+            'options' => [
+                'label' => $translator->translate('Codice Sms'),
+            ]
+        ]);
+*/
         $this->add([
             'name' => 'phone',
             'type' => 'Zend\Form\Element\Text',
@@ -490,7 +504,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
-            'mobile' => [
+            /*'mobile' => [
                 'required' => true,
                 'filters' => [
                     [
@@ -503,9 +517,63 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'min' => 3
                         ]
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                            ],
+                            'callback' => function($value, $context = array()) {
+                                $smsVerification = new Container('smsVerification');
+                                if(is_null($smsVerification->offsetGet('mobile'))){
+                                    return true;
+                                }else{
+                                    $isValid = $value == $smsVerification->offsetGet('mobile');
+                                    return $isValid;
+                                }
+                                
+                            }
+                        ]
                     ]
                 ]
             ],
+            'smsCode' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 4,
+                            'max' => 4
+                        ]
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                            ],
+                            'callback' => function($value, $context = array()) {
+
+                                $smsVerification = new Container('smsVerification');
+                                
+                                if(is_null($smsVerification->offsetGet('code'))){
+                                    return true;
+                                }else{
+                                    $isValid = $value == $smsVerification->offsetGet('code');
+                                    return $isValid;
+                                }
+                            }
+                        ]
+                    ]
+                ]
+            ],*/
             'phone' => [
                 'required' => false,
                 'filters' => [
