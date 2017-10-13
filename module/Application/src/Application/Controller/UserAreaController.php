@@ -256,7 +256,12 @@ class UserAreaController extends AbstractActionController
                 $postData['id'] = $this->userService->getIdentity()->getId();
                 $editForm = $this->processForm($this->passwordForm, $postData);
                 $this->typeForm = 'edit-pwd';
-            }
+            } else
+                if(isset($postData['mobile'])) {
+                    $postData['id'] = $this->userService->getIdentity()->getId();
+                    $editForm = $this->processForm($this->mobileForm, $postData);
+                    $this->typeForm = 'edit-mobile';
+                }
 
             if ($editForm) {
                 return $this->redirect()->toRoute('area-utente'.$userAreaMobile);

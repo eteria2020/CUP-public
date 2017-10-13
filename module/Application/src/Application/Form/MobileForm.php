@@ -9,6 +9,7 @@ use Zend\Authentication\AuthenticationService;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Doctrine\ORM\EntityManager;
+use Zend\Session\Container;
 
 class MobileForm extends Form implements InputFilterProviderInterface
 {
@@ -141,14 +142,10 @@ class MobileForm extends Form implements InputFilterProviderInterface
      */
     public function saveData()
     {
-        
         $customer = $this->getData();
-        
-        /*
-        $customer->setPassword(hash("MD5", $customer->getPassword()));
+        $customer->setMobile($customer->getMobile());
         $this->entityManager->persist($customer);
         $this->entityManager->flush();
-        */
         return $customer;
         
     }
