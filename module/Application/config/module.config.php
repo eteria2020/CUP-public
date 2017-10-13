@@ -1305,7 +1305,7 @@ return [
                         'options' => [
                             'route' => '/{attivazione}',
                             'defaults' => [
-                                'action' => 'activate-payments'
+                                'action' => 'index'     //TODO: remove activate-payments
                             ]
                         ]
                     ],
