@@ -640,7 +640,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
 
-    }
+    } 
 
     /*
      * this method verify if one customer can receive this bonus
