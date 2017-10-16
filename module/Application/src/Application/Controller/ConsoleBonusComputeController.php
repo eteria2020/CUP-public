@@ -20,6 +20,7 @@ use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
+use SharengoCore\Utils\Interval;
 
 class ConsoleBonusComputeController extends AbstractActionController {
 
@@ -433,7 +434,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     private function scriptAddPointDay($arrayDates, $param, $serverScriptDay) {
 
-        //get ccustomer in range date
+        //get customer in range date
         $customers = $this->customerService->getCustomersRunYesterday($arrayDates[0], $arrayDates[1]);
 
         if($param){
@@ -474,61 +475,44 @@ class ConsoleBonusComputeController extends AbstractActionController {
         foreach ($customers as $c){
 
             $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
-            $tripsMonth = $this->tripsService->getTripsByCustomerForAddPointMonth($c['id'], $arrayDates[2], $arrayDates[0]);
 
-            $secondsTripsMonth = 0;
-            $secondsTripsYesterday = 0;
-            $minuteTripsMonth = 0;
             $minuteTripsYesterday = 0;
-
-            if (count($tripsMonth) > 0) {
-                foreach ($tripsMonth as $tripMonth) {
-                    if (is_null($tripMonth->getTimestampEnd()) && is_null($tripMonth->getEndTx())) {
-                        continue;
-                    } else {
-                        if (!is_null($tripMonth->getEndTx())) {
-                            $timeTripsMonth = date_diff($tripMonth->getEndTx(), $tripMonth->getTimestampBeginning());
-                        } else {
-                            $timeTripsMonth = date_diff($tripMonth->getTimestampEnd(), $tripMonth->getTimestampBeginning());
-                        }
-                    }
-                    $secondsTripsMonth += $this->calculateTripInSecond($timeTripsMonth);
-                }
-            }
+            $interval = 0;
+            $pointToAdd = 0;
 
             if (count($tripsYesterday) > 0) {
                 foreach ($tripsYesterday as $tripYesterday) {
-                    if (is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())) {
+                    /*$tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
+                    $pointToAdd = tripPayments*/
+                    
+                    /*if (is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())) {
                         continue;
                     } else {
                         if (!is_null($tripYesterday->getEndTx())) {
-                            $timeTripsYesterday = date_diff($tripYesterday->getEndTx(), $tripYesterday->getTimestampBeginning());
-                        } else {
-                            $timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(), $tripYesterday->getTimestampBeginning());
-                        }
-                    }
-                    $secondsTripsYesterday += $this->calculateTripInSecond($timeTripsYesterday);
+                            //$timeTripsYesterday = date_diff($tripYesterday->getEndTx(), $tripYesterday->getTimestampBeginning());
+                            $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getEndTx());
+                        } else {*/
+                            //$timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(), $tripYesterday->getTimestampBeginning());
+                            $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
+                        /*}
+                    }*/
+                    $minuteTripsYesterday += $interval->minutes();
                 }
             }
-
-            $minuteTripsMonth = round($secondsTripsMonth / 60, 0);
-            $minuteTripsYesterday = round($secondsTripsYesterday / 60, 0);
-
-            $result[0] = 0;
-            $result[1] = $minuteTripsYesterday;
-            $result[2] = $minuteTripsMonth;
-
-            do {
-                $result = $this->howManyPointsAddToUser($result);
-            } while ($result[1] > 0);
-
+            
+            if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
+                $pointToAdd = $this->pointConfig['maxValPointDay'];
+            }else{
+                $pointToAdd = $minuteTripsYesterday;
+            }
+             
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
             //add or update line point in customers_points
             if (count($customerPoints) > 0) {
-                $this->updateCustomersPoints($result[0], $customerPoints[0], $c['id']);
+                $this->updateCustomersPoints($pointToAdd, $customerPoints[0], $c['id']);
             } else {
-                $this->addCustomersPoints($result[0], $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
+                $this->addCustomersPoints($pointToAdd, $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
 
             //update the field InfoScript in tabel server_scripts after customer procressed
