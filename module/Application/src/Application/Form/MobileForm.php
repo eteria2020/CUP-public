@@ -94,8 +94,16 @@ class MobileForm extends Form implements InputFilterProviderInterface
                             ],
                             'callback' => function($value, $context = array()) {
                                 $smsVerification = new Container('smsVerification');
+                                
                                 $isValid = $value == $smsVerification->offsetGet('mobile');
                                 return $isValid;
+                                /*
+                                if(is_null($smsVerification->offsetGet('mobile'))){
+                                    return true;
+                                }else{
+                                    $isValid = $value == $smsVerification->offsetGet('mobile');
+                                    return $isValid;
+                                }*/
                             }
                         ]
                     ]
@@ -127,6 +135,13 @@ class MobileForm extends Form implements InputFilterProviderInterface
                                 $smsVerification = new Container('smsVerification');
                                 $isValid = $value == $smsVerification->offsetGet('code');
                                 return $isValid;
+                                /*
+                                if(is_null($smsVerification->offsetGet('code'))){
+                                    return true;
+                                }else{
+                                    $isValid = $value == $smsVerification->offsetGet('code');
+                                    return $isValid;
+                                }*/
                             }
                         ]
                     ]

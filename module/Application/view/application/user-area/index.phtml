@@ -485,9 +485,9 @@ $this->headLink()
                             echo $this->form()->openTag($this->mobileForm);
                             ?>
 
-                            <div class="block-field content-align-center auto-margin clearfix w-2-3">
+                            <div class="block-field content-align-center auto-margin clearfix w-1-1">
 
-                                    <div class="block-field bw-f w-1-3">
+                                    <div class="block-field bw-f w-1-4">
                                         <label><?= $this->translate('Prefisso'); ?></label>
                                         <select id="dialCode">
                                             <option data-countryCode="IT" value="39" selected>Italia (+39)</option>
@@ -730,9 +730,9 @@ $this->headLink()
 
                             </div>
 
-                            <div class="block-row-field clearfix content-align-center">
+                            <div class="block-row-field content-align-center clearfix w-1-1">
                                 <div id="confirmSmsCode" style="display: none;">
-                                    <div class="block-field bw-f w-1-4"  id="textCode">
+                                    <div class="block-field bw-f w-1-3"  id="textCode">
                                         <p> <label><?= $this->translate('Codice di Verifica'); ?></label>
                                             <?php
                                             $smsCode = $this->mobileForm->get('smsCode');
@@ -967,6 +967,10 @@ if ($this->showError) {
 
             case 'edit-pwd':
                 $('#viewEditPwd, #editPwd').toggle();
+            break;
+            
+            case 'edit-mobile':
+                $('#viewEditMobile, #editMobile').toggle();
             break;
         }
     });
