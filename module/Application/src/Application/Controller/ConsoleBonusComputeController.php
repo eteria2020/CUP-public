@@ -643,55 +643,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }
 
     /*
-     * this method calculate how many point add to customer
-     */
-
-    private function howManyPointsAddToUser($result) {
-
-        if ($result[2] < $this->pointConfig['range1AddPointDay']) {
-            if (($result[2] + $result[1]) < $this->pointConfig['range1AddPointDay']) {
-                $result[0] += $result[1] * $this->pointConfig['multiplierRange0AddPointDay'];
-                $result[1] = -1;
-            } else {
-                $result[0] += ($this->pointConfig['range1AddPointDay'] - $result[2]) * $this->pointConfig['multiplierRange0AddPointDay'];
-                $result[1] = $result[1] - ($this->pointConfig['range1AddPointDay'] - $result[2]);
-                $result[2] = $this->pointConfig['range1AddPointDay'];
-            }
-            return $result;
-        } else {
-            if ($result[2] >= $this->pointConfig['range1AddPointDay'] && $result[2] < $this->pointConfig['range2AddPointDay']) {
-                if (($result[2] + $result[1]) < $this->pointConfig['range2AddPointDay']) {
-                    $result[0] += $result[1] * $this->pointConfig['multiplierRange1AddPointDay'];
-                    $result[1] = -1;
-                } else {
-                    $result[0] += ($this->pointConfig['range2AddPointDay'] - $result[2]) * $this->pointConfig['multiplierRange1AddPointDay'];
-                    $result[1] = $result[1] - ($this->pointConfig['range2AddPointDay'] - $result[2]);
-                    $result[2] = $this->pointConfig['range2AddPointDay'];
-                }
-                return $result;
-            } else {
-                if ($result[2] >= $this->pointConfig['range2AddPointDay'] && $result[2] < $this->pointConfig['range3AddPointDay']) {
-                    if (($result[2] + $result[1]) < $this->pointConfig['range3AddPointDay']) {
-                        $result[0] += $result[1] * $this->pointConfig['multiplierRange2AddPointDay'];
-                        $result[1] = -1;
-                    } else {
-                        $result[0] += ($this->pointConfig['range3AddPointDay'] - $result[2]) * $this->pointConfig['multiplierRange2AddPointDay'];
-                        $result[1] = $result[1] - ($this->pointConfig['range3AddPointDay'] - $result[2]);
-                        $result[2] = $this->pointConfig['range3AddPointDay'];
-                    }
-                    return $result;
-                } else {
-                    if ($result[2] >= $this->pointConfig['range3AddPointDay']) {
-                        $result[0] += $result[1] * $this->pointConfig['multiplierRange3AddPointDay'];
-                        $result[1] = -1;
-                        return $result;
-                    }//end else if 600
-                }//end else if between 200 and 600
-            }//end else if between 80 and 200
-        }//end else if 80
-    }//end howManyPointsAddToUser
-
-    /*
      * this method verify if one customer can receive this bonus
      */
     public function addPointClusterAction() {
