@@ -15,6 +15,7 @@ use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\EventManager\EventManager;
 use Zend\Stdlib\Parameters;
+use Zend\Session\Container;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
@@ -259,8 +260,22 @@ class UserAreaController extends AbstractActionController
             } else
                 if(isset($postData['mobile'])) {
                     $postData['id'] = $this->userService->getIdentity()->getId();
+                    //$customer = $this->customerService->findById($postData['id']);
+                    //$userMobile = $customer->getMobile();
+                    
+                    if($customer->getMobile() == $postData['mobile'] && $postData['smsCode'] == ""){
+                        $postData['smsCode'] = "0000";
+                    }
                     $editForm = $this->processForm($this->mobileForm, $postData);
+                    $postData['smsCode'] = "";
                     $this->typeForm = 'edit-mobile';
+                    
+                    
+                    
+                    //unset the session
+                    $smsVerification = new Container('smsVerification');
+                    $smsVerification->offsetUnset('mobile');
+                    $smsVerification->offsetUnset('code');
                 }
 
             if ($editForm) {

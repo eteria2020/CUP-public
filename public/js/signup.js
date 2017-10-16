@@ -51,7 +51,10 @@ $(function () {
         $('#smsCode').val('');
     }
 
-
+    if ($('#confirmSmsCode ul.error-sign-up').html()) {
+        $('#confirmSmsCode').show();
+    }
+    
     if ($('#confirmSmsCode ul.errors').html()) {
         $('#confirmSmsCode').show();
     }

@@ -94,16 +94,17 @@ class MobileForm extends Form implements InputFilterProviderInterface
                             ],
                             'callback' => function($value, $context = array()) {
                                 $smsVerification = new Container('smsVerification');
-                                
+                                /*$A = $smsVerification->offsetGet('mobile');
                                 $isValid = $value == $smsVerification->offsetGet('mobile');
-                                return $isValid;
-                                /*
+                                return $isValid;*/
+                                
                                 if(is_null($smsVerification->offsetGet('mobile'))){
-                                    return true;
+                                    $isValid = true;
+                                    return $isValid;
                                 }else{
                                     $isValid = $value == $smsVerification->offsetGet('mobile');
                                     return $isValid;
-                                }*/
+                                }
                             }
                         ]
                     ]
@@ -133,15 +134,16 @@ class MobileForm extends Form implements InputFilterProviderInterface
                             'callback' => function($value, $context = array()) {
 
                                 $smsVerification = new Container('smsVerification');
-                                $isValid = $value == $smsVerification->offsetGet('code');
-                                return $isValid;
-                                /*
+                                /*$isValid = $value == $smsVerification->offsetGet('code');
+                                return $isValid;*/
+                                $E=$smsVerification->offsetGet('code');
                                 if(is_null($smsVerification->offsetGet('code'))){
-                                    return true;
+                                    $isValid = true;
+                                    return $isValid;
                                 }else{
                                     $isValid = $value == $smsVerification->offsetGet('code');
                                     return $isValid;
-                                }*/
+                                }
                             }
                         ]
                     ]
