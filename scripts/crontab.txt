@@ -25,7 +25,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 
 # every hour
-00   * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_helper_maintainers.sh
+#00   * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_helper_maintainers.sh
 
 # every day
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
