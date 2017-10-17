@@ -1873,6 +1873,17 @@ return [
                         ]
                     ]
                 ],
+                'recalculate-points' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'recalculate points',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'recalculate points'
+                        ]
+                    ]
+                ],
                 'close-maintainer' => [
                     'type' => 'simple',
                     'options' => [

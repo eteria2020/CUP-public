@@ -482,8 +482,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
             if (count($tripsYesterday) > 0) {
                 foreach ($tripsYesterday as $tripYesterday) {
-                    /*$tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
-                    $pointToAdd = tripPayments*/
+                    $tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
+                    if(count($tripPayments) > 0)
+                        $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
                     
                     /*if (is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())) {
                         continue;
@@ -493,10 +494,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
                             $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getEndTx());
                         } else {*/
                             //$timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(), $tripYesterday->getTimestampBeginning());
-                            $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
+                            //$interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                         /*}
                     }*/
-                    $minuteTripsYesterday += $interval->minutes();
+                    //$minuteTripsYesterday += $interval->minutes();
                 }
             }
             
@@ -739,34 +740,18 @@ class ConsoleBonusComputeController extends AbstractActionController {
             return $this->customerService->checkCustomerIfAlreadyAddPointsThisMonth($customerId, $dateCurrentMonthStart, $dateNextMonthStart);
         }
     }
-
-    /*
-     * this method calculate in second how much one cluster
-     * have runnig with param
-     * Param is an object DateInterval
-     */
-    private function calculateTripInSecond($timeTrip) {
-
-        $seconds = 0;
-
-        $days = $timeTrip->format('%a');
-        if ($days) {
-            $seconds += 24 * 60 * 60 * $days;
-        }
-        $hours = $timeTrip->format('%H');
-        if ($hours) {
-            $seconds += 60 * 60 * $hours;
-        }
-        $minutes = $timeTrip->format('%i');
-        if ($minutes) {
-            $seconds += 60 * $minutes;
-        }
-        $seconds += $timeTrip->format('%s');
-
-        return $seconds;
+    
+    public function recalculatePointsAction() {
+        echo "dentro: recalculatePointsAction()";
+        //settembre
+        //Get all customer in customers_points in range date 18/09/2017 to 30/09/2017
+        $customerSet = $this->customerService->getAllCustomerInCustomersPoints('2017-09-18', '2017-10-01');
+        
+        //ottobre
+        $today = new \DateTime();
+        $today = $today->format("Y-m-d 00:00:00");
+        $customerOtt = $this->customerService->getAllCustomerInCustomersPoints('2017-10-01', $today);
     }
-
-//end calculateTripInSecond
 
     public function bonusPoisAction() {
         $this->prepareLogger();
