@@ -299,7 +299,7 @@ final class RegistrationService
                 if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
                     // add 100 min bonus
                     $total = $this->subscriptionBonus['total'];
-                    /* 1 euro subscription CSD-1401 */
+                    /* 1 euro subscription CSD-1406 */
                     $now = new \DateTime();
                     $start = new \DateTime('2017-11-01 00:00:00');
                     $end = new \DateTime('2017-12-31 23:59:59');
