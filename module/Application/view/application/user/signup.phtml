@@ -28,12 +28,13 @@ $this->headLink()
                         if ($startdate <= $now && $now <= $enddate) {
                             echo $this->translate('L’iscrizione al servizio costa 1 euro con 15 minuti bonus (condizioni valide dal 16 al 22 settembre in occasione della settimana europea della mobilità sostenibile).');
                         } else {
-                            echo $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).');
+                            echo $this->translate('Costo iscrizione 10 euro con 30 minuti bonus, salvo promozioni. Premi chat ');?>
+                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
+                            <?php
+                            echo $this->translate('per aiuto.');
+                            
                         }
                         ?>
-                            <br>
-                        <?= $this->translate('Se serve aiuto durante l’iscrizione usa il pulsante chat.'); ?>
-                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
                         </label>
                         <br>
                         <label class="small-form content-align-center" style="line-height: 1;color:#ccc3c3">
@@ -43,11 +44,12 @@ $this->headLink()
                         if ($startdate <= $now && $now <= $enddate) {
                             echo $this->translate('The registration fee is 1€ with 15 minutes bonus (conditions valid from 16 to 22 September for the European Mobility Week).');
                         } else {
-                            echo $this->translate('The registration fee is 10€ with 30 minutes bonus (standard condition without promotions).');
+                            echo $this->translate('Registration fee 10 euro with 30 bonus minutes, except for promotion. Push chat ');?>
+                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
+                            <?php
+                            echo $this->translate('for help.');
                         }
                         ?>
-                            <br>
-                        <?= $this->translate('If you need help during the registration process use our chat.'); ?>
                         </label>
                     </div>
                 </div>
