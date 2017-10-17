@@ -21,34 +21,32 @@ $this->headLink()
                         <label class="small-form content-align-center" style="line-height: 1;color:#000000">
                             <!-- <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?> -->
                         <?php
-                        // CSD1290-170913-signup-europeanmobilityweek
+                        /* 1 euro subscription CSD-1401 */
                         $now = new DateTime();
-                        $startdate = new DateTime("2017-09-16");
-                        $enddate = new DateTime("2017-09-23");
+                        $startdate = new DateTime("2017-11-01 00:00:00");
+                        $enddate = new DateTime("2017-12-31 23:59:59");
                         if ($startdate <= $now && $now <= $enddate) {
-                            echo $this->translate('L’iscrizione al servizio costa 1 euro con 15 minuti bonus (condizioni valide dal 16 al 22 settembre in occasione della settimana europea della mobilità sostenibile).');
+                            echo $this->translate('Costo iscrizione 1 euro con 15 minuti bonus. Premi chat ');
                         } else {
-                            echo $this->translate('Costo iscrizione 10 euro con 30 minuti bonus, salvo promozioni. Premi chat ');?>
+                            echo $this->translate('Costo iscrizione 10 euro con 30 minuti bonus, salvo promozioni. Premi chat ');
+                        }?>
                             <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
-                            <?php
-                            echo $this->translate('per aiuto.');
-                            
-                        }
-                        ?>
+                            <?php echo $this->translate('per aiuto.'); ?>
                         </label>
                         <br>
                         <label class="small-form content-align-center" style="line-height: 1;color:#ccc3c3">
                             <!-- <?= $this->translate('The registration fee is 10€ with 30 minutes bonus (standard condition without promotions).'); ?> -->
                         <?php
-                        // CSD1290-170913-signup-europeanmobilityweek
+                        /* 1 euro subscription CSD-1401 */
                         if ($startdate <= $now && $now <= $enddate) {
-                            echo $this->translate('The registration fee is 1€ with 15 minutes bonus (conditions valid from 16 to 22 September for the European Mobility Week).');
+                            echo $this->translate('Registration fee is 1€ with 15 bonus minutes. Push chat ');
                         } else {
-                            echo $this->translate('Registration fee 10 euro with 30 bonus minutes, except for promotion. Push chat ');?>
+                            echo $this->translate('Registration fee 10 euro with 30 bonus minutes, except for promotion. Push chat ');
+                        }?>
                             <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
                             <?php
                             echo $this->translate('for help.');
-                        }
+
                         ?>
                         </label>
                     </div>
