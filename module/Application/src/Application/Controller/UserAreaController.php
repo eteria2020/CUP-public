@@ -260,22 +260,17 @@ class UserAreaController extends AbstractActionController
             } else
                 if(isset($postData['mobile'])) {
                     $postData['id'] = $this->userService->getIdentity()->getId();
-                    $smsVerification = new Container('smsVerification');
                     
-                    if(is_null($smsVerification->offsetGet('mobile'))){
-                        if($customer->getMobile() == $postData['mobile'] && $postData['smsCode'] == ""){
-                        $postData['smsCode'] = "0000";
-                        }
+                    if($customer->getMobile() == $postData['mobile'] && $postData['smsCode'] == ""){
+                    $postData['smsCode'] = "0000";
                     }
                     $editForm = $this->processForm($this->mobileForm, $postData);
                     $postData['smsCode'] = "";
                     $this->typeForm = 'edit-mobile';
-                    
-                    
-                    
+
                     //unset the session
                     $smsVerification = new Container('smsVerification');
-                    $smsVerification->offsetUnset('mobile');
+                    //$smsVerification->offsetUnset('mobile');
                     $smsVerification->offsetUnset('code');
                 }
 
