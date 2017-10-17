@@ -749,7 +749,7 @@ class UserController extends AbstractActionController {
                 return true;
             }
         }else{
-            return false;
+            return true;
         }
     }
 
