@@ -743,14 +743,92 @@ class ConsoleBonusComputeController extends AbstractActionController {
     
     public function recalculatePointsAction() {
         echo "dentro: recalculatePointsAction()";
+        
+        $tripsDivisionDay = null;
+        $tripsDivisionDay = null;
+        $tripsDay = null;
+        $minuteTripsYesterday = 0;
+        $pointToAddDay = 0;
+        $totalPoint = 0;
+        
+        $tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
+        
+        foreach ($tripsInMonth as $tripMonth){
+            $endTx = $tripMonth->getEndTx();
+            $endTx = $endTx->format("Y-m-d ");
+            $tripsDivisionDay[$endTx][]= $tripMonth;
+        }
+        echo "";
+        foreach($tripsDivisionDay as $key => $tripsDay){
+            foreach ($tripsDay as $trip) {
+                $tripPayment = $this->tripPaymentsService->getByTrip($tripYesterday);
+                if(count($tripPayment) > 0)
+                    $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
+            }
+            if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
+                $pointToAddDay = $this->pointConfig['maxValPointDay'];
+            }else{
+                $pointToAddDay = $minuteTripsYesterday;
+            }
+            $totalPoint += $pointToAddDay;
+        }
+        
+        echo "test";
+        
+
+
         //settembre
         //Get all customer in customers_points in range date 18/09/2017 to 30/09/2017
-        $customerSet = $this->customerService->getAllCustomerInCustomersPoints('2017-09-18', '2017-10-01');
+        $dateStartSett = '2017-09-18';
+        $dateEndSett = '2017-10-01';
+        $customerSet = $this->customerService->getAllCustomerInCustomersPoints($dateStartSett, $dateEndSett);
+        
+        $this->clicleOfCustomers($customerSet);
         
         //ottobre
+        //Get all customer in customers_points in range date 01/10/2017 to today
+        $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
-        $customerOtt = $this->customerService->getAllCustomerInCustomersPoints('2017-10-01', $today);
+        $customerOtt = $this->customerService->getAllCustomerInCustomersPoints($dateStartOtt, $today);
+        
+        $this->clicleOfCustomers($customerOtt, $today);
+    }
+    
+    public function clicleOfCustomers($customers, $dateStart, $dateEnd) {
+        foreach ($customers as $customer){
+            
+            $tripsDivisionDay = null;
+            $tripsDivisionDay = null;
+            $tripsDay = null;
+            $pointToAddDay = 0;
+            $totalPoint = 0;
+
+            //$tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
+            $tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
+
+            foreach ($tripsInMonth as $tripMonth){
+                $endTx = $tripMonth->getEndTx();
+                $endTx = $endTx->format("Y-m-d ");
+                $tripsDivisionDay[$endTx][]= $tripMonth;
+            }
+            
+            foreach($tripsDivisionDay as $key => $tripsDay){
+                $minuteTripsYesterday = 0;
+                foreach ($tripsDay as $trip) {
+                    $tripPayment = $this->tripPaymentsService->getByTrip($tripYesterday);
+                    if(count($tripPayment) > 0)
+                        $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
+                }
+                if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
+                    $pointToAddDay = $this->pointConfig['maxValPointDay'];
+                }else{
+                    $pointToAddDay = $minuteTripsYesterday;
+                }
+                $totalPoint += $pointToAddDay;
+            }
+
+        }
     }
 
     public function bonusPoisAction() {
