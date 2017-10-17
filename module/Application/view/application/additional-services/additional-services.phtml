@@ -90,7 +90,7 @@ $mobile = $this->mobile;
                                 if($package->getType()==="Pacchetto"){
                                     $hour = date("Gi");
                                     $hour = intval($hour);
-                                    if(($gender=="male" || (($hour >= 0 && $hour <= 59) || $hour > 500)) && $package->getCode()=="WOMEN" ){
+                                    if($gender=="male" && $package->getCode()=="WOMEN" ){
                                         continue;
                                     }
                                     if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
@@ -159,7 +159,7 @@ $mobile = $this->mobile;
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     if($package->getType()==="Pacchetto"){
-                                        if(($gender=="male" || (($hour >= 0 && $hour <= 59) || $hour > 500)) && $package->getCode()=="WOMEN" ){
+                                        if($gender=="male" && $package->getCode()=="WOMEN" ){
                                             continue;
                                         }
                                         if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
