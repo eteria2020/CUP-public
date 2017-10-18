@@ -742,8 +742,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
     }
     
     public function recalculatePointsAction() {
-        echo "dentro: recalculatePointsAction()";
-        
+        $this->prepareLogger();
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points Script \n");
+        /*
         $tripsDivisionDay = null;
         $tripsDivisionDay = null;
         $tripsDay = null;
@@ -771,8 +772,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $pointToAddDay = $minuteTripsYesterday;
             }
             $totalPoint += $pointToAddDay;
+            //update customer
+            $customerPoint->setTotal($totalPoint);
+            $this->customerService->updateCustomerPointRow($customerPoint);
         }
-        
+        */
         echo "test";
         
 
@@ -781,22 +785,26 @@ class ConsoleBonusComputeController extends AbstractActionController {
         //Get all customer in customers_points in range date 18/09/2017 to 30/09/2017
         $dateStartSett = '2017-09-18';
         $dateEndSett = '2017-10-01';
-        $customerSet = $this->customerService->getAllCustomerInCustomersPoints($dateStartSett, $dateEndSett);
+        $customersPointSet = $this->customerService->getAllCustomerInCustomersPoints($dateStartSett, $dateEndSett);
         
-        $this->clicleOfCustomers($customerSet);
-        
+        $this->clicleOfCustomers($customersPointSet, $dateStartSett, $dateEndSett);
+        /*
         //ottobre
         //Get all customer in customers_points in range date 01/10/2017 to today
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
-        $customerOtt = $this->customerService->getAllCustomerInCustomersPoints($dateStartOtt, $today);
+        $customersPointOtt = $this->customerService->getAllCustomerInCustomersPoints($dateStartOtt, $today);
         
-        $this->clicleOfCustomers($customerOtt, $today);
+        $this->clicleOfCustomers($customersPointOtt, $dateStartOtt, $today);
+        */
+        
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - END recalculate Points Script \n");
     }
     
-    public function clicleOfCustomers($customers, $dateStart, $dateEnd) {
-        foreach ($customers as $customer){
+    public function clicleOfCustomers($customersPoints, $dateStart, $dateEnd) {
+        
+        foreach ($customersPoints as $customerPoint){
             
             $tripsDivisionDay = null;
             $tripsDivisionDay = null;
@@ -804,19 +812,18 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $pointToAddDay = 0;
             $totalPoint = 0;
 
-            //$tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
-            $tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
+            $tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
 
             foreach ($tripsInMonth as $tripMonth){
                 $endTx = $tripMonth->getEndTx();
-                $endTx = $endTx->format("Y-m-d ");
+                $endTx = $endTx->format("Y-m-d");
                 $tripsDivisionDay[$endTx][]= $tripMonth;
             }
             
             foreach($tripsDivisionDay as $key => $tripsDay){
                 $minuteTripsYesterday = 0;
                 foreach ($tripsDay as $trip) {
-                    $tripPayment = $this->tripPaymentsService->getByTrip($tripYesterday);
+                    $tripPayment = $this->tripPaymentsService->getByTrip($trip);
                     if(count($tripPayment) > 0)
                         $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
                 }
@@ -827,7 +834,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
                 $totalPoint += $pointToAddDay;
             }
-
+            //update customer
+            $customerPoint->setTotal($totalPoint);
+            $this->customerService->updateCustomerPointRow($customerPoint);        
         }
     }
 
