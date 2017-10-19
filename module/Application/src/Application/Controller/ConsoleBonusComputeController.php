@@ -774,13 +774,16 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         foreach ($customersPoints as $customerPoint){
             
+            $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - START proces! \n");
+            
             $tripsDivisionDay = null;
             $tripsDivisionDay = null;
             $tripsDay = null;
             $pointToAddDay = 0;
             $totalPoint = 0;
-
-            $tripsInMonth = $this->tripsService->getTripInMonth($customerPoint['id'], $dateStart, $dateEnd);
+            
+            $tripsInMonth = $this->tripsService->getTripInMonth($customerPoint->getCustomer(), $dateStart, $dateEnd);
+            //$tripsInMonth = $this->tripsService->getTripInMonth(73, $dateStart, $dateEnd);
 
             foreach ($tripsInMonth as $tripMonth){
                 $endTx = $tripMonth->getEndTx();
@@ -793,7 +796,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 foreach ($tripsDay as $trip) {
                     $tripPayment = $this->tripPaymentsService->getByTrip($trip);
                     if(count($tripPayment) > 0)
-                        $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
+                        $minuteTripsYesterday += $tripPayment[0]->getTripMinutes();
                 }
                 if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                     $pointToAddDay = $this->pointConfig['maxValPointDay'];
@@ -804,8 +807,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
             $customerPoint->setTotal($totalPoint);
             $this->customerService->updateCustomerPointRow($customerPoint);        
-
+            
+            $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - END proces! \n");
         }
+        
     }
 
     public function bonusPoisAction() {
