@@ -385,10 +385,8 @@ return [
                     'route' => '/signup-promocodeverify',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        //'controller' => 'User',
-                        //'action' => 'promocode-verify'
-                        'controller' => 'ConsoleBonusCompute',
-                            'action' => 'recalculate points'
+                        'controller' => 'User',
+                        'action' => 'promocode-verify'
                     ]
                 ]
             ],
