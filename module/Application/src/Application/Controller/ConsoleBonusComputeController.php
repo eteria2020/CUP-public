@@ -743,7 +743,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     
     public function recalculatePointsAction() {
         echo "dentro: recalculatePointsAction()";
-        
+        /*
         $tripsDivisionDay = null;
         $tripsDivisionDay = null;
         $tripsDay = null;
@@ -772,7 +772,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
             $totalPoint += $pointToAddDay;
         }
-        
+        */
         echo "test";
         
 
@@ -783,7 +783,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $dateEndSett = '2017-10-01';
         $customerSet = $this->customerService->getAllCustomerInCustomersPoints($dateStartSett, $dateEndSett);
         
-        $this->clicleOfCustomers($customerSet);
+        $this->clicleOfCustomers($customerSet, $dateStartSett, $customerSet);
         
         //ottobre
         //Get all customer in customers_points in range date 01/10/2017 to today
@@ -792,7 +792,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $today = $today->format("Y-m-d 00:00:00");
         $customerOtt = $this->customerService->getAllCustomerInCustomersPoints($dateStartOtt, $today);
         
-        $this->clicleOfCustomers($customerOtt, $today);
+        $this->clicleOfCustomers($customerOtt, $dateStartOtt, $today);
     }
     
     public function clicleOfCustomers($customers, $dateStart, $dateEnd) {
@@ -804,8 +804,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $pointToAddDay = 0;
             $totalPoint = 0;
 
-            //$tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
-            $tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
+            $tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
+            //$tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
 
             foreach ($tripsInMonth as $tripMonth){
                 $endTx = $tripMonth->getEndTx();
@@ -827,7 +827,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
                 $totalPoint += $pointToAddDay;
             }
-
+            //update customer
+            
         }
     }
 
