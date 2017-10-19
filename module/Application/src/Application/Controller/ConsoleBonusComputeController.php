@@ -746,42 +746,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points Script \n");
         
-        /*
-        $tripsDivisionDay = null;
-        $tripsDivisionDay = null;
-        $tripsDay = null;
-        $minuteTripsYesterday = 0;
-        $pointToAddDay = 0;
-        $totalPoint = 0;
-        
-        $tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
-        
-        foreach ($tripsInMonth as $tripMonth){
-            $endTx = $tripMonth->getEndTx();
-            $endTx = $endTx->format("Y-m-d ");
-            $tripsDivisionDay[$endTx][]= $tripMonth;
-        }
-        echo "";
-        foreach($tripsDivisionDay as $key => $tripsDay){
-            foreach ($tripsDay as $trip) {
-                $tripPayment = $this->tripPaymentsService->getByTrip($tripYesterday);
-                if(count($tripPayment) > 0)
-                    $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
-            }
-            if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
-                $pointToAddDay = $this->pointConfig['maxValPointDay'];
-            }else{
-                $pointToAddDay = $minuteTripsYesterday;
-            }
-            $totalPoint += $pointToAddDay;
-            //update customer
-            $customerPoint->setTotal($totalPoint);
-            $this->customerService->updateCustomerPointRow($customerPoint);
-        }
-        */
-        
-
-
         //settembre
         //Get all customer in customers_points in range date 18/09/2017 to 30/09/2017
         $dateStartSett = '2017-09-18';
@@ -816,9 +780,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $pointToAddDay = 0;
             $totalPoint = 0;
 
-            $tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
-            //$tripsInMonth = $this->tripsService->getTripInMonth(4508, '2016-06-01', '2016-06-10');
-
+            $tripsInMonth = $this->tripsService->getTripInMonth($customerPoint['id'], $dateStart, $dateEnd);
 
             foreach ($tripsInMonth as $tripMonth){
                 $endTx = $tripMonth->getEndTx();
