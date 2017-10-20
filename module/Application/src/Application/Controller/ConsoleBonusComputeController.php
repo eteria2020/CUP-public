@@ -16,7 +16,6 @@ use SharengoCore\Service\ServerScriptsService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\CustomersPoints;
-use SharengoCore\Entity\CustomersPointsTmp;
 use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use Zend\Form\Form;
@@ -809,7 +808,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
             }
             //new line in customers_points_tmp
-            $this->addNewLineCustomersPoints($totalPoint, $customer['id']);
+            $this->addNewLineCustomersPoints($totalPoint, $customer['id'], $dateStart);
             
             
             //$this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - END proces! \n");
@@ -819,20 +818,22 @@ class ConsoleBonusComputeController extends AbstractActionController {
     
     private function addNewLineCustomersPoints($totalPoint, $customer_id){
         
-        $customerPointTmp = new \SharengoCore\Entity\CustomersPointsTmp();
+        $customerPointTmp = new \SharengoCore\Entity\CustomersPoints();
+
+        $customerPointTmp->setTotal($totalPoint);
+        $customerPointTmp->setDescription("recalculate points script");
+        $customerPointTmp->setResidual(0);
+        $customerPointTmp->setType("DRIVE");
+        
         
         $date = new \DateTime('2017-09-25 00:00:00');
         $date2 = new \DateTime('2017-09-25 00:00:00');
         $dateAdd10year = $date2->modify('+10 years');
         
-        $customerPointTmp->setTotal($totalPoint);
-        $customerPointTmp->setDescription("-----------------------------------");
         $customerPointTmp->setValidFrom($date);
         $customerPointTmp->setValidTo($dateAdd10year);
         $customerPointTmp->setInsertTs($date);
         $customerPointTmp->setUpdateTs($date);
-        $customerPointTmp->setResidual(0);
-        $customerPointTmp->setType("DRIVE");
         
         $this->customerService->addCustomerPointTmp($customerPointTmp, $customer_id);
         
