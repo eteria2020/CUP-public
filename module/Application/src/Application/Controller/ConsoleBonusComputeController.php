@@ -16,6 +16,7 @@ use SharengoCore\Service\ServerScriptsService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\CustomersPoints;
+use SharengoCore\Entity\CustomersPointsTmp;
 use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use Zend\Form\Form;
@@ -746,35 +747,36 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points Script \n");
         
+        //delete table customers_points
+        $this->customerService->truncateCustomersPoints();
+        
         //settembre
-        //Get all customer in customers_points in range date 18/09/2017 to 30/09/2017
         $dateStartSett = '2017-09-18';
         $dateEndSett = '2017-10-01';
+        
+        $customersRunSet = $this->customerService->getAllCustomerRunInMonth($dateStartSett, $dateEndSett);
 
-        $customersPointSet = $this->customerService->getAllCustomerInCustomersPoints($dateStartSett, $dateEndSett);
-
-        $this->clicleOfCustomers($customersPointSet, $dateStartSett, $dateEndSett);
-        /*
+        $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett);
+        
         //ottobre
-        //Get all customer in customers_points in range date 01/10/2017 to today
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
-        $customersPointOtt = $this->customerService->getAllCustomerInCustomersPoints($dateStartOtt, $today);
         
-
-        $this->clicleOfCustomers($customersPointOtt, $dateStartOtt, $today);
-        */
+        $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $today);
+        
+        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today);
+        
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - END recalculate Points Script \n");
 
     }
     
-    public function clicleOfCustomers($customersPoints, $dateStart, $dateEnd) {
+    public function clicleOfCustomers($customers, $dateStart, $dateEnd) {
         
-        foreach ($customersPoints as $customerPoint){
+        foreach ($customers as $customer){
             
-            $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - START proces! \n");
+            $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - id: " . $customer['id'] . " - processed! \n");
             
             $tripsDivisionDay = null;
             $tripsDivisionDay = null;
@@ -782,8 +784,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $pointToAddDay = 0;
             $totalPoint = 0;
             
-            $tripsInMonth = $this->tripsService->getTripInMonth($customerPoint->getCustomer(), $dateStart, $dateEnd);
-            //$tripsInMonth = $this->tripsService->getTripInMonth(73, $dateStart, $dateEnd);
+            $tripsInMonth = $this->tripsService->getTripInMonth($customer['id'], $dateStart, $dateEnd);
 
             foreach ($tripsInMonth as $tripMonth){
                 $endTx = $tripMonth->getEndTx();
@@ -791,25 +792,49 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $tripsDivisionDay[$endTx][]= $tripMonth;
             }
             
-            foreach($tripsDivisionDay as $key => $tripsDay){
-                $minuteTripsYesterday = 0;
-                foreach ($tripsDay as $trip) {
-                    $tripPayment = $this->tripPaymentsService->getByTrip($trip);
-                    if(count($tripPayment) > 0)
-                        $minuteTripsYesterday += $tripPayment[0]->getTripMinutes();
+            if(count($tripsDivisionDay) > 0){
+                foreach($tripsDivisionDay as $key => $tripsDay){
+                    $minuteTripsYesterday = 0;
+                    foreach ($tripsDay as $trip) {
+                        $tripPayment = $this->tripPaymentsService->getByTrip($trip);
+                        if(count($tripPayment) > 0)
+                            $minuteTripsYesterday += $tripPayment[0]->getTripMinutes();
+                    }
+                    if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
+                        $pointToAddDay = $this->pointConfig['maxValPointDay'];
+                    }else{
+                        $pointToAddDay = $minuteTripsYesterday;
+                    }
+                    $totalPoint += $pointToAddDay;
                 }
-                if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
-                    $pointToAddDay = $this->pointConfig['maxValPointDay'];
-                }else{
-                    $pointToAddDay = $minuteTripsYesterday;
-                }
-                $totalPoint += $pointToAddDay;
             }
-            $customerPoint->setTotal($totalPoint);
-            $this->customerService->updateCustomerPointRow($customerPoint);        
+            //new line in customers_points_tmp
+            $this->addNewLineCustomersPoints($totalPoint, $customer['id']);
             
-            $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - END proces! \n");
+            
+            //$this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - END proces! \n");
         }
+        
+    }
+    
+    private function addNewLineCustomersPoints($totalPoint, $customer_id){
+        
+        $customerPointTmp = new \SharengoCore\Entity\CustomersPointsTmp();
+        
+        $date = new \DateTime('2017-09-25 00:00:00');
+        $date2 = new \DateTime('2017-09-25 00:00:00');
+        $dateAdd10year = $date2->modify('+10 years');
+        
+        $customerPointTmp->setTotal($totalPoint);
+        $customerPointTmp->setDescription("-----------------------------------");
+        $customerPointTmp->setValidFrom($date);
+        $customerPointTmp->setValidTo($dateAdd10year);
+        $customerPointTmp->setInsertTs($date);
+        $customerPointTmp->setUpdateTs($date);
+        $customerPointTmp->setResidual(0);
+        $customerPointTmp->setType("DRIVE");
+        
+        $this->customerService->addCustomerPointTmp($customerPointTmp, $customer_id);
         
     }
 
