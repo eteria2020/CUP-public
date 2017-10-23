@@ -477,7 +477,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
 
             $minuteTripsYesterday = 0;
-            $interval = 0;
             $pointToAdd = 0;
 
             if (count($tripsYesterday) > 0) {
@@ -485,22 +484,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
                     if(count($tripPayments) > 0)
                         $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
-                    
-                    /*if (is_null($tripYesterday->getTimestampEnd()) && is_null($tripYesterday->getEndTx())) {
-                        continue;
-                    } else {
-                        if (!is_null($tripYesterday->getEndTx())) {
-                            //$timeTripsYesterday = date_diff($tripYesterday->getEndTx(), $tripYesterday->getTimestampBeginning());
-                            $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getEndTx());
-                        } else {*/
-                            //$timeTripsYesterday = date_diff($tripYesterday->getTimestampEnd(), $tripYesterday->getTimestampBeginning());
-                            //$interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
-                        /*}
-                    }*/
-                    //$minuteTripsYesterday += $interval->minutes();
                 }
             }
-            
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                 $pointToAdd = $this->pointConfig['maxValPointDay'];
             }else{
@@ -768,10 +753,16 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
-        
+        /*
+        $yesterday = new \DateTime();
+        $yesterday = $yesterday->modify("-1 day");
+        $yesterday = $yesterday->format("Y-m-d 00:00:00");
+        */
+
         $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $today);
+        //$customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $yesterday);
         
-        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today);
+        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today, true);
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN OCTOBER -------------\n");
         
@@ -780,7 +771,18 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     }
     
-    public function clicleOfCustomers($customers, $dateStart, $dateEnd) {
+    public function clicleOfCustomers($customers, $dateStart, $dateEnd, $param = null) {
+        
+        //set date for insert in customer_points
+        if(is_null($param)){
+            $date1 = new \DateTime('2017-09-25 00:00:00');
+            $date2 = new \DateTime('2017-09-25 00:00:00');
+            $date2 = $date2->modify('+10 years');
+        }else{
+            $date1 = new \DateTime('2017-10-10 00:00:00');
+            $date2 = new \DateTime('2017-10-10 00:00:00');
+            $date2 = $date2->modify('+10 years');
+        }
         
         foreach ($customers as $customer){
             
@@ -817,15 +819,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
             }
             //new line in customers_points_tmp
-            $this->addNewLineCustomersPoints($totalPoint, $customer['id'], $dateStart);
+            $this->addNewLineCustomersPoints($totalPoint, $customer['id'], $date1, $date2);
             
-            
-            //$this->logger->log(date_create()->format('Y-m-d H:i:s') . " - Customer_id: " . $customerPoint->getCustomer()->getId() . " - END proces! \n");
         }
         
     }
     
-    private function addNewLineCustomersPoints($totalPoint, $customer_id){
+    private function addNewLineCustomersPoints($totalPoint, $customer_id, \DateTime $date1, \DateTime $date2){
         
         $customerPointTmp = new \SharengoCore\Entity\CustomersPoints();
 
@@ -833,18 +833,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $customerPointTmp->setDescription("recalculate points script");
         $customerPointTmp->setResidual(0);
         $customerPointTmp->setType("DRIVE");
+        $customerPointTmp->setValidFrom($date1);
+        $customerPointTmp->setValidTo($date2);
+        $customerPointTmp->setInsertTs($date1);
+        $customerPointTmp->setUpdateTs($date1);
         
-        
-        $date = new \DateTime('2017-09-25 00:00:00');
-        $date2 = new \DateTime('2017-09-25 00:00:00');
-        $dateAdd10year = $date2->modify('+10 years');
-        
-        $customerPointTmp->setValidFrom($date);
-        $customerPointTmp->setValidTo($dateAdd10year);
-        $customerPointTmp->setInsertTs($date);
-        $customerPointTmp->setUpdateTs($date);
-        
-        $this->customerService->addCustomerPointTmp($customerPointTmp, $customer_id);
+        $this->customerService->addCustomerPoint($customerPointTmp, $customer_id);
         
     }
 
