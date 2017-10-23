@@ -15,6 +15,7 @@ use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\EventManager\EventManager;
 use Zend\Stdlib\Parameters;
+use Zend\Session\Container;
 
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
@@ -73,6 +74,11 @@ class UserAreaController extends AbstractActionController
      */
     private $passwordForm;
 
+    /**
+     * @var \Zend\Form\Form
+     */
+    private $mobileForm;
+    
     /**
      * @var \Zend\Form\Form
      */
@@ -135,6 +141,7 @@ class UserAreaController extends AbstractActionController
      * @param InvoicesService $invoicesService
      * @param Form $profileForm
      * @param Form $passwordForm
+     * @param Form $mobileForm
      * @param Form $driverLicenseForm
      * @param HydratorInterface $hydrator
      * @param CartasiPaymentsService $cartasiPaymentsService
@@ -153,6 +160,7 @@ class UserAreaController extends AbstractActionController
         InvoicesService $invoicesService,
         Form $profileForm,
         Form $passwordForm,
+        Form $mobileForm,
         Form $driverLicenseForm,
         HydratorInterface $hydrator,
         CartasiPaymentsService $cartasiPaymentsService,
@@ -171,6 +179,7 @@ class UserAreaController extends AbstractActionController
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
         $this->passwordForm = $passwordForm;
+        $this->mobileForm = $mobileForm;
         $this->driverLicenseForm = $driverLicenseForm;
         $this->hydrator = $hydrator;
         $this->cartasiPaymentsService = $cartasiPaymentsService;
@@ -248,7 +257,22 @@ class UserAreaController extends AbstractActionController
                 $postData['id'] = $this->userService->getIdentity()->getId();
                 $editForm = $this->processForm($this->passwordForm, $postData);
                 $this->typeForm = 'edit-pwd';
-            }
+            } else
+                if(isset($postData['mobile'])) {
+                    $postData['id'] = $this->userService->getIdentity()->getId();
+                    
+                    if($customer->getMobile() == $postData['mobile'] && $postData['smsCode'] == ""){
+                    $postData['smsCode'] = "0000";
+                    }
+                    $editForm = $this->processForm($this->mobileForm, $postData);
+                    $postData['smsCode'] = "";
+                    $this->typeForm = 'edit-mobile';
+
+                    //unset the session
+                    $smsVerification = new Container('smsVerification');
+                    //$smsVerification->offsetUnset('mobile');
+                    $smsVerification->offsetUnset('code');
+                }
 
             if ($editForm) {
                 return $this->redirect()->toRoute('area-utente'.$userAreaMobile);
@@ -260,6 +284,7 @@ class UserAreaController extends AbstractActionController
             'customer'     => $this->customer,
             'profileForm'  => $this->profileForm,
             'passwordForm' => $this->passwordForm,
+            'mobileForm' => $this->mobileForm,
             'showError'    => $this->showError,
             'typeForm'     => $this->typeForm,
         ]);
