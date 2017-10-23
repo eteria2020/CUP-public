@@ -747,7 +747,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points Script \n");
         
         //delete table customers_points
-        $this->customerService->truncateCustomersPoints();
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE ALL RECORD CUSTOMERS_POINTS -------------\n");
+        $this->customerService->deleteCustomersPoints();
+        
+        
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN SEPTEMBER -------------\n");
         
         //settembre
         $dateStartSett = '2017-09-18';
@@ -757,6 +761,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
         $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett);
         
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN SEPTEMBER -------------\n");
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
+        
         //ottobre
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
@@ -765,6 +772,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $today);
         
         $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today);
+        
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN OCTOBER -------------\n");
         
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - END recalculate Points Script \n");
