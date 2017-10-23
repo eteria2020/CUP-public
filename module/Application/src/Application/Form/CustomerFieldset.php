@@ -10,6 +10,7 @@ use SharengoCore\Service\FleetService;
 use SharengoCore\Service\ProvincesService;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Fieldset;
+use Zend\Session\Container;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\InputFilter\InputFilterProviderInterface;
@@ -290,20 +291,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => $translator->translate('Partita IVA (opzionale)'),
             ]
         ]);
-
-        $this->add([
-            'name' => 'mobile',
-            'type' => 'Zend\Form\Element\Text',
-            'attributes' => [
-                'id' => 'mobile',
-                'maxlength' => 13,
-                'placeholder' => $translator->translate('Cellulare'),
-            ],
-            'options' => [
-                'label' => $translator->translate('Cellulare'),
-            ]
-        ]);
-
+        
         $this->add([
             'name' => 'phone',
             'type' => 'Zend\Form\Element\Text',
@@ -487,22 +475,6 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\VatNumber'
-                    ]
-                ]
-            ],
-            'mobile' => [
-                'required' => true,
-                'filters' => [
-                    [
-                        'name' => 'StringTrim'
-                    ]
-                ],
-                'validators' => [
-                    [
-                        'name' => 'StringLength',
-                        'options' => [
-                            'min' => 3
-                        ]
                     ]
                 ]
             ],
