@@ -64,7 +64,7 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
-    if (document.location.pathname === "/signup" || document.location.pathname === "/signup/mobile" ) {
+    if (document.location.pathname === "/signup" || document.location.pathname === "/signup/mobile" ){
         if ($('#name').val().length > 0) {
             verifyPromo();
         }
