@@ -7,7 +7,7 @@ use SharengoCore\Service\TripsService;
 use SharengoCore\Service\AccountTripsService;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\ReservationsService;
-use SharengoCore\Service\ReservationsArchiveService;
+//use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
@@ -454,5 +454,21 @@ class ConsoleController extends AbstractActionController
 
             $this->writeToConsole("Exception message: ".$e->getMessage());
         }
+    }
+
+    public function closeOldTripMaintainerAction()
+    {
+        $this->verbose = true;
+
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;start\n");
+        $trips = $this->tripsService->getTripsForCloseOldTripMaintainer('-120 minute', '-30 minute');
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trips;".count($trips)."\n");
+
+        foreach ($trips as $trip) {
+            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip;".$trip->getId()."\n");
+            //$this->tripsService->closeTrip($trip, null);
+        }
+
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;stop\n");
     }
 }

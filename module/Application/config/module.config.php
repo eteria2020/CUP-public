@@ -1719,6 +1719,17 @@ return [
                         ]
                     ]
                 ],
+                'close-old-trip-maintainer' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'close old trip maintainer',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'close-old-trip-maintainer'
+                        ]
+                    ]
+                ],
                 'remove-gold' => [
                     'type' => 'simple',
                     'options' => [
@@ -1870,17 +1881,6 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'add-point-day'
-                        ]
-                    ]
-                ],
-                'close-maintainer' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'close maintainer',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsoleBonusCompute',
-                            'action' => 'force-end'
                         ]
                     ]
                 ],
