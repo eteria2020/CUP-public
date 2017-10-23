@@ -785,7 +785,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         foreach ($customers as $customer){
             
             $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - id: " . $customer['id'] . " - processed! \n");
-            
+             
             $tripsDivisionDay = null;
             $tripsDivisionDay = null;
             $tripsDay = null;
