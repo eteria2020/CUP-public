@@ -51,7 +51,10 @@ $(function () {
         $('#smsCode').val('');
     }
 
-
+    if ($('#confirmSmsCode ul.error-sign-up').html()) {
+        $('#confirmSmsCode').show();
+    }
+    
     if ($('#confirmSmsCode ul.errors').html()) {
         $('#confirmSmsCode').show();
     }
@@ -61,9 +64,10 @@ $(function () {
         $('#confirmSmsCode').show();
     }
 
-    if ($('#name').val().length > 0) {
-
-        verifyPromo();
+    if (document.location.pathname === "/signup" || document.location.pathname === "/signup/mobile" ){
+        if ($('#name').val().length > 0) {
+            verifyPromo();
+        }
     }
 
     $(document).on("click", "#buttonSendCode", function () {

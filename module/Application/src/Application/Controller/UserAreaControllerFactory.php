@@ -18,6 +18,7 @@ class UserAreaControllerFactory implements FactoryInterface
         $invoicesService = $sharedLocator->get('SharengoCore\Service\Invoices');
         $profileForm = $sharedLocator->get('ProfileForm');
         $passwordForm = $sharedLocator->get('PasswordForm');
+        $mobileForm = $sharedLocator->get('MobileForm');
         $driverLicenseForm = $sharedLocator->get('DriverLicenseForm');
         $hydrator = new Reflection();
         $cartasiPaymentsService = $sharedLocator->get('Cartasi\Service\CartasiPayments');
@@ -36,6 +37,7 @@ class UserAreaControllerFactory implements FactoryInterface
             $invoicesService,
             $profileForm,
             $passwordForm,
+            $mobileForm,
             $driverLicenseForm,
             $hydrator,
             $cartasiPaymentsService,

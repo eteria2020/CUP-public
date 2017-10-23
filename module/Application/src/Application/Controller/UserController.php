@@ -376,10 +376,12 @@ class UserController extends AbstractActionController {
 
         //CSD-1142 - check if mobile number already exixts
         if ($this->checkDuplicateMobileAction() > 0) {
-            $response = $this->getResponse();
-            $response->setStatusCode(200);
-            $response->setContent("Found");
-            return $response;
+            if($this->checkTheSameModifyNumber()){
+                $response = $this->getResponse();
+                $response->setStatusCode(200);
+                $response->setContent("Found");
+                return $response;
+            }
         }
 
         //$session_formValidation = new Container('formValidation');
@@ -736,6 +738,19 @@ class UserController extends AbstractActionController {
         //$value = sprintf('%s%s',$this->params()->fromPost('dialCode'), $this->params()->fromPost('mobile'));
         $found = $this->customersService->checkMobileNumber($this->params()->fromPost('mobile'));
         return $found;
+    }
+    
+    public function checkTheSameModifyNumber() {
+        $customer = $this->customersService->findByEmail($this->params()->fromPost('email'));
+        if(count($customer) > 0 ){
+            if($customer[0]->getMobile() == $this->params()->fromPost('mobile')){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return true;
+        }
     }
 
 }
