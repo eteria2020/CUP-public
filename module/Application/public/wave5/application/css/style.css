@@ -54,7 +54,7 @@ body {
 .visore {
 	height: 640px;
 	margin-bottom: 0;
-	background-image: url(/wave5/application/images/sfondo_verticale.jpg);
+	background-image: url(../images/sfondo_verticale.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -79,9 +79,9 @@ body {
 	font-size: 1.0rem;
 }
 
-@media (max-width: 767px){
+@media only screen and (max-width: 767px){
 .visore {
-	background-image: url(/wave5/application/images/sfondo_verticale_mobile.jpg);
+	background-image: url(../images/sfondo_verticale_mobile.jpg);
 }
 
 .testo {
