@@ -461,16 +461,16 @@ class ConsoleController extends AbstractActionController
         $this->verbose = true;
 
         $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;start\n");
-        $trips = $this->tripsService->getTripsForCloseOldTripMaintainer('-120 minute', '-30 minute');
+        $trips = $this->tripsService->getTripsForCloseOldTripMaintainer('-120 minute', '-80 minute');
         $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trips;".count($trips)."\n");
 
         foreach ($trips as $trip) {
             $openTrips = $this->tripsService->getTripsOpenByCarPlate($trip->getCar()->getPlate());
             $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count($openTrips)=".count($openTrips)."\n");
             if(count($openTrips)==1) {
-               // $this->tripsService->closeTripParam($trips, null, true, true);
+//               $this->tripsService->closeTripParam($trips, null, true, true);
             } else {
-               // $this->tripsService->closeTripParam($trips, null, false, true);
+//               $this->tripsService->closeTripParam($trips, null, false, true);
             }
         }
 
