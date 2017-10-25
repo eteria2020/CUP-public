@@ -738,7 +738,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN SEPTEMBER -------------\n");
         
-        //settembre
+        //-------------------------SETTEMBRE-------------------------------------
         $dateStartSett = '2017-09-18';
         $dateEndSett = '2017-10-01';
         
@@ -747,20 +747,15 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett);
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN SEPTEMBER -------------\n");
+        
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
         
-        //ottobre
+        //-------------------------OTTOBRE-------------------------------------
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
-        /*
-        $yesterday = new \DateTime();
-        $yesterday = $yesterday->modify("-1 day");
-        $yesterday = $yesterday->format("Y-m-d 00:00:00");
-        */
 
         $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $today);
-        //$customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $yesterday);
         
         $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today, true);
         
@@ -775,13 +770,16 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         //set date for insert in customer_points
         if(is_null($param)){
-            $date1 = new \DateTime('2017-09-25 00:00:00');
-            $date2 = new \DateTime('2017-09-25 00:00:00');
-            $date2 = $date2->modify('+10 years');
+            $dateInsert = new \DateTime('2017-09-18 00:00:00');
+            $dateUpdate = new \DateTime('2017-09-30 00:00:00');
+            $dateValidTo = new \DateTime('2017-09-18 00:00:00');
+            $dateValidTo = $dateValidTo->modify('+10 years');            
         }else{
-            $date1 = new \DateTime('2017-10-10 00:00:00');
-            $date2 = new \DateTime('2017-10-10 00:00:00');
-            $date2 = $date2->modify('+10 years');
+            $dateInsert = new \DateTime('2017-10-01 00:00:00');
+            $dateUpdate = new \DateTime();
+            $dateUpdate = $dateUpdate->format("Y-m-d 00:00:00");
+            $dateValidTo = new \DateTime('2017-10-01 00:00:00');
+            $dateValidTo = $dateValidTo->modify('+10 years');
         }
         
         foreach ($customers as $customer){
@@ -819,13 +817,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
             }
             //new line in customers_points_tmp
-            $this->addNewLineCustomersPoints($totalPoint, $customer['id'], $date1, $date2);
+            $this->addNewLineCustomersPoints($totalPoint, $customer['id'], $dateInsert, $dateUpdate, $dateValidTo);
             
         }
         
     }
     
-    private function addNewLineCustomersPoints($totalPoint, $customer_id, \DateTime $date1, \DateTime $date2){
+    private function addNewLineCustomersPoints($totalPoint, $customer_id, \DateTime $dateInsert, \DateTime $dateUpdate, \DateTime $dateValidTo){
         
         $customerPointTmp = new \SharengoCore\Entity\CustomersPoints();
 
@@ -833,10 +831,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $customerPointTmp->setDescription("recalculate points script");
         $customerPointTmp->setResidual(0);
         $customerPointTmp->setType("DRIVE");
-        $customerPointTmp->setValidFrom($date1);
-        $customerPointTmp->setValidTo($date2);
-        $customerPointTmp->setInsertTs($date1);
-        $customerPointTmp->setUpdateTs($date1);
+        $customerPointTmp->setValidFrom($dateInsert);
+        $customerPointTmp->setValidTo($dateValidTo);
+        $customerPointTmp->setInsertTs($dateInsert);
+        $customerPointTmp->setUpdateTs($dateUpdate);
         
         $this->customerService->addCustomerPoint($customerPointTmp, $customer_id);
         
