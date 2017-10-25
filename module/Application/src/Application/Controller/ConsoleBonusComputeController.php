@@ -732,10 +732,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points Script \n");
         
         //delete table customers_points
-        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE ALL RECORD CUSTOMERS_POINTS -------------\n");
-        $this->customerService->deleteCustomersPoints();
+        //$this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE ALL RECORD CUSTOMERS_POINTS -------------\n");
+        //$this->customerService->deleteCustomersPoints();
         
-        
+        /*
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN SEPTEMBER -------------\n");
         
         //-------------------------SETTEMBRE-------------------------------------
@@ -747,7 +747,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett);
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN SEPTEMBER -------------\n");
-        
+        */
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
         
         //-------------------------OTTOBRE-------------------------------------
@@ -776,8 +776,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $dateValidTo = $dateValidTo->modify('+10 years');            
         }else{
             $dateInsert = new \DateTime('2017-10-01 00:00:00');
-            $dateUpdate = new \DateTime();
-            $dateUpdate = $dateUpdate->format("Y-m-d 00:00:00");
+            $date = new \DateTime();
+            //$dateUpdate = $dateUpdate->format("Y-m-d 00:00:00");
+            $dateUpdate = new \DateTime($date->format("Y-m-d 00:00:00"));
             $dateValidTo = new \DateTime('2017-10-01 00:00:00');
             $dateValidTo = $dateValidTo->modify('+10 years');
         }
