@@ -1874,14 +1874,25 @@ return [
                         ]
                     ]
                 ],
-                'recalculate-points' => [
+                'recalculate-points-september' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'recalculate points',
+                        'route' => 'recalculate points september',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
-                            'action' => 'recalculate points'
+                            'action' => 'recalculate points september'
+                        ]
+                    ]
+                ],
+                'recalculate-points-october' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'recalculate points october',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'recalculate points october'
                         ]
                     ]
                 ],
