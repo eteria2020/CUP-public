@@ -186,6 +186,7 @@ class ConsoleController extends AbstractActionController
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $carsToOperative = [];
         $carsToMaintenance = [];
+        $batterySafetyTime = 10;
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -213,7 +214,8 @@ class ConsoleController extends AbstractActionController
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                         $car->getCharging() ||
                         $isOutOfBounds ||
-                        $status == self::MAINTENANCE_STATUS;
+                        $status == self::MAINTENANCE_STATUS ||
+                        ($car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60 ));
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
