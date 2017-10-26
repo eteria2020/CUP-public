@@ -84,6 +84,11 @@ class ConsoleController extends AbstractActionController
     private $delay;
 
     /**
+     * @var array
+     */
+    private $batterySafetyPlates;
+
+    /**
      * @param CustomersService $customerService
      * @param CarsService $carsService
      * @param ReservationsService $reservationsService
@@ -93,6 +98,7 @@ class ConsoleController extends AbstractActionController
      * @param AccountTripsService $accountTripsService
      * @param array $alarmConfig
      * @param InvoicesService $invoicesService
+     * @param array $batterySafetyPlates
      */
     public function __construct(
         CustomersService $customerService,
@@ -103,7 +109,8 @@ class ConsoleController extends AbstractActionController
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
         $alarmConfig,
-        InvoicesService $invoicesService
+        InvoicesService $invoicesService,
+        $batterySafetyPlates
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -115,6 +122,7 @@ class ConsoleController extends AbstractActionController
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
+        $this->batterySafetyPlates = $batterySafetyPlates;
     }
 
     public function getDiscountsAction()
@@ -214,8 +222,12 @@ class ConsoleController extends AbstractActionController
                         time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                         $car->getCharging() ||
                         $isOutOfBounds ||
-                        $status == self::MAINTENANCE_STATUS ||
-                        ($car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60 ));
+                        $status == self::MAINTENANCE_STATUS;
+            //check only for battery safety cars
+            if (!$isAlarm && in_array($car->getPlate(), $this->batterySafetyPlates)){
+                $isAlarm = ($car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
+            }
+
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
