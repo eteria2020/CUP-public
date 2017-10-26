@@ -481,9 +481,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
             if (count($tripsYesterday) > 0) {
                 foreach ($tripsYesterday as $tripYesterday) {
-                    $tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
+                    /*$tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
                     if(count($tripPayments) > 0)
                         $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
+                    */
+                    $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
+                    $minuteTripsYesterday += $interval->minutes();
                 }
             }
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
@@ -735,13 +738,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE ALL RECORD CUSTOMERS_POINTS -------------\n");
         $this->customerService->deleteCustomersPoints();
         
-        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN SEPTEMBER -------------\n");
-        
         //-------------------------SETTEMBRE-------------------------------------
         $dateStartSett = '2017-09-18';
         $dateEndSett = '2017-10-01';
         
         $customersRunSet = $this->customerService->getAllCustomerRunInMonth($dateStartSett, $dateEndSett);
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN SEPTEMBER -------------\n");
 
         $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett);
         
@@ -755,14 +757,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points October Script \n");
         
-        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
-        
         //-------------------------OTTOBRE-------------------------------------
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
-
+        
         $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $today);
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
         
         $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today, true);
         
@@ -825,7 +826,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $totalPoint += $pointToAddDay;
                 }
             }
-            //new line in customers_points_tmp
+            //new line in customers_points
             $this->addNewLineCustomersPoints($totalPoint, $customer['id'], $dateInsert, $dateUpdate, $dateValidTo);
             
         }
