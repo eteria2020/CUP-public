@@ -675,7 +675,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
                                     //add 1000 points for pass cluster 0 to 1
                                     $this->addCustomersPoints($this->pointConfig['pointToAddCluster'], $c['id'], $this->pointConfig['descriptionScriptAddPointCluster'], $this->pointConfig['typeCluster']);
                                     if (!$this->avoidEmails) {
-                                        $this->sendEmail($c->getEmail(), $c->getName(), $c->getLanguage(), 19);
+                                        $customer = $this->customerService->findById($c['id']);
+                                        $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 19);
                                     }
                                 }
                             }
