@@ -735,7 +735,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE ALL RECORD CUSTOMERS_POINTS -------------\n");
         $this->customerService->deleteCustomersPoints();
         
-        //-------------------------SETTEMBRE-------------------------------------
+        //-------------------------SETTEMBRE------------------------------------
         $dateStartSett = '2017-09-18';
         $dateEndSett = '2017-10-01';
         
@@ -754,7 +754,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points October Script \n");
         
-        //-------------------------OTTOBRE-------------------------------------
+        //-------------------------OTTOBRE--------------------------------------
         $dateStartOtt = '2017-10-01';
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
