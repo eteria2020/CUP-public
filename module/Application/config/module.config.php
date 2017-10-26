@@ -1720,6 +1720,17 @@ return [
                         ]
                     ]
                 ],
+                'close-old-trip-maintainer' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'close old trip maintainer',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'close-old-trip-maintainer'
+                        ]
+                    ]
+                ],
                 'remove-gold' => [
                     'type' => 'simple',
                     'options' => [

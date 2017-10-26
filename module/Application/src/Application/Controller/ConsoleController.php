@@ -7,7 +7,7 @@ use SharengoCore\Service\TripsService;
 use SharengoCore\Service\AccountTripsService;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\ReservationsService;
-use SharengoCore\Service\ReservationsArchiveService;
+//use SharengoCore\Service\ReservationsArchiveService;
 use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
@@ -84,6 +84,11 @@ class ConsoleController extends AbstractActionController
     private $delay;
 
     /**
+     * @var array
+     */
+    private $batterySafetyPlates;
+
+    /**
      * @param CustomersService $customerService
      * @param CarsService $carsService
      * @param ReservationsService $reservationsService
@@ -93,6 +98,7 @@ class ConsoleController extends AbstractActionController
      * @param AccountTripsService $accountTripsService
      * @param array $alarmConfig
      * @param InvoicesService $invoicesService
+     * @param array $batterySafetyPlates
      */
     public function __construct(
         CustomersService $customerService,
@@ -103,7 +109,8 @@ class ConsoleController extends AbstractActionController
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
         $alarmConfig,
-        InvoicesService $invoicesService
+        InvoicesService $invoicesService,
+        $batterySafetyPlates
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -115,6 +122,7 @@ class ConsoleController extends AbstractActionController
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
+        $this->batterySafetyPlates = $batterySafetyPlates;
     }
 
     public function getDiscountsAction()
@@ -186,6 +194,7 @@ class ConsoleController extends AbstractActionController
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $carsToOperative = [];
         $carsToMaintenance = [];
+        $batterySafetyTime = 10;
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -214,6 +223,11 @@ class ConsoleController extends AbstractActionController
                         $car->getCharging() ||
                         $isOutOfBounds ||
                         $status == self::MAINTENANCE_STATUS;
+            //check only for battery safety cars
+            if (!$isAlarm && in_array($car->getPlate(), $this->batterySafetyPlates)){
+                $isAlarm = ($car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
+            }
+
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
@@ -454,5 +468,48 @@ class ConsoleController extends AbstractActionController
 
             $this->writeToConsole("Exception message: ".$e->getMessage());
         }
+    }
+
+    public function closeOldTripMaintainerAction()
+    {
+        $this->verbose = true;
+        $tripsClose = array();
+
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;start\n");
+
+        //Found the trips open more that 24 h
+        $tripsOpen24 = $this->tripsService->findTripsForCloseOldTripMaintainer("-24 hour", null, "AND (ca.keyStatus='OFF' OR (ca.keyStatus='ON' AND ca.parking=true)) ");
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;count(tripsOpen24);".count($tripsOpen24)."\n");
+
+        foreach ($tripsOpen24 as $trip) {
+            if(!in_array($trip, $tripsClose)) {
+                $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsOpen24=".$trip->getId()."\n");
+                array_push($tripsClose, $trip);
+                //$this->tripsService->closeTripParam($tripsOpen24, null, true, true);
+            }
+        }
+
+        //Found the trip duplicated
+        $tripsOpenMaintainer = $this->tripsService->findTripsForCloseOldTripMaintainer(null, null, null);
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;count(tripsOpenMaintainer);".count($tripsOpenMaintainer)."\n");
+        foreach ($tripsOpenMaintainer as $trip) {
+            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;carPlate;".$trip->getCar()->getPlate()."\n");
+
+            $openTrips = $this->tripsService->getTripsOpenByCarPlate($trip->getCar());
+            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count(openTrips)=".count($openTrips)."\n");
+
+            for($i=0; $i<count($openTrips)-1; $i++){ // loop until the last
+                if(in_array($openTrips[$i], $tripsOpenMaintainer)) { // it's a trip open from maintainer 
+                     if(!in_array($trip, $tripsClose)) {
+                        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsDuplicate=".$openTrips[$i]->getId()."\n");
+                        array_push($tripsClose, $trip);
+                        //$this->tripsService->closeTripParam($openTrips[$i], null, false, true);
+                     }
+                     
+                }
+            }
+        }
+
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;stop\n");
     }
 }
