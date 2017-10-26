@@ -810,9 +810,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 foreach($tripsDivisionDay as $key => $tripsDay){
                     $minuteTripsYesterday = 0;
                     foreach ($tripsDay as $trip) {
-                        $tripPayment = $this->tripPaymentsService->getByTrip($trip);
+                        /*$tripPayment = $this->tripPaymentsService->getByTrip($trip);
                         if(count($tripPayment) > 0)
                             $minuteTripsYesterday += $tripPayment[0]->getTripMinutes();
+                        */
+                        $interval = new Interval($trip->getTimestampBeginning(), $trip->getTimestampEnd());
+                        $minuteTripsYesterday += $interval->minutes();
                     }
                     if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                         $pointToAddDay = $this->pointConfig['maxValPointDay'];
