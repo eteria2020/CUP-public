@@ -1907,17 +1907,6 @@ return [
                         ]
                     ]
                 ],
-                'close-maintainer' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'close maintainer',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsoleBonusCompute',
-                            'action' => 'force-end'
-                        ]
-                    ]
-                ],
                 'add-point-cluster' => [
                     'type' => 'simple',
                     'options' => [
