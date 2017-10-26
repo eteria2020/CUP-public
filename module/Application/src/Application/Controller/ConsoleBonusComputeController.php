@@ -481,10 +481,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
             if (count($tripsYesterday) > 0) {
                 foreach ($tripsYesterday as $tripYesterday) {
-                    /*$tripPayments = $this->tripPaymentsService->getByTrip($tripYesterday);
-                    if(count($tripPayments) > 0)
-                        $minuteTripsYesterday += $tripPayments[0]->getTripMinutes();
-                    */
                     $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                     $minuteTripsYesterday += $interval->minutes();
                 }
@@ -811,10 +807,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 foreach($tripsDivisionDay as $key => $tripsDay){
                     $minuteTripsYesterday = 0;
                     foreach ($tripsDay as $trip) {
-                        /*$tripPayment = $this->tripPaymentsService->getByTrip($trip);
-                        if(count($tripPayment) > 0)
-                            $minuteTripsYesterday += $tripPayment[0]->getTripMinutes();
-                        */
                         $interval = new Interval($trip->getTimestampBeginning(), $trip->getTimestampEnd());
                         $minuteTripsYesterday += $interval->minutes();
                     }
