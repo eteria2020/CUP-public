@@ -459,18 +459,41 @@ class ConsoleController extends AbstractActionController
     public function closeOldTripMaintainerAction()
     {
         $this->verbose = true;
+        $tripsClose = array();
 
         $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;start\n");
-        $trips = $this->tripsService->getTripsForCloseOldTripMaintainer('-120 minute', '-80 minute');
-        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trips;".count($trips)."\n");
 
-        foreach ($trips as $trip) {
-            $openTrips = $this->tripsService->getTripsOpenByCarPlate($trip->getCar()->getPlate());
-            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count($openTrips)=".count($openTrips)."\n");
-            if(count($openTrips)==1) {
-//               $this->tripsService->closeTripParam($trips, null, true, true);
-            } else {
-//               $this->tripsService->closeTripParam($trips, null, false, true);
+        //Found the trips open more that 24 h
+        $tripsOpen24 = $this->tripsService->findTripsForCloseOldTripMaintainer("-24 hour", null, "AND (ca.keyStatus='OFF' OR (ca.keyStatus='ON' AND ca.parking=true)) ");
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;count(tripsOpen24);".count($tripsOpen24)."\n");
+
+        foreach ($tripsOpen24 as $trip) {
+            if(!in_array($trip, $tripsClose)) {
+                $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsOpen24=".$trip->getId()."\n");
+                array_push($tripsClose, $trip);
+                //$this->tripsService->closeTripParam($tripsOpen24, null, true, true);
+            }
+
+        }
+
+        //Found the trip duplicated
+        $tripsOpenMaintainer = $this->tripsService->findTripsForCloseOldTripMaintainer(null, null, null);
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;count(tripsOpenMaintainer);".count($tripsOpenMaintainer)."\n");
+        foreach ($tripsOpenMaintainer as $trip) {
+            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;carPlate;".$trip->getCar()->getPlate()."\n");
+
+            $openTrips = $this->tripsService->getTripsOpenByCarPlate($trip->getCar());
+            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count(openTrips)=".count($openTrips)."\n");
+
+            for($i=0; $i<count($openTrips)-1; $i++){ // loop until the last
+                if(in_array($openTrips[$i], $tripsOpenMaintainer)) { // it's a trip open from maintainer 
+                     if(!in_array($trip, $tripsClose)) {
+                        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsDuplicate=".$openTrips[$i]->getId()."\n");
+                        array_push($tripsClose, $trip);
+                        //$this->tripsService->closeTripParam($openTrips[$i], null, false, true);
+                     }
+                     
+                }
             }
         }
 
