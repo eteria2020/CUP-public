@@ -154,8 +154,10 @@ class MobileForm extends Form implements InputFilterProviderInterface
      */
     public function saveData()
     {
+        $smsVerification = new Container('smsVerification');
+        $dialCode = $smsVerification->offsetGet('dialCode');
         $customer = $this->getData();
-        $customer->setMobile($customer->getMobile());
+        $customer->setMobile("+".$dialCode.$customer->getMobile());
         $this->entityManager->persist($customer);
         $this->entityManager->flush();
         return $customer;
