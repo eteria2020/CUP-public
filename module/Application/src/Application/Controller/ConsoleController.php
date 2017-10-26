@@ -473,7 +473,6 @@ class ConsoleController extends AbstractActionController
                 array_push($tripsClose, $trip);
                 //$this->tripsService->closeTripParam($tripsOpen24, null, true, true);
             }
-
         }
 
         //Found the trip duplicated
