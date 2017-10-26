@@ -225,7 +225,7 @@ class ConsoleController extends AbstractActionController
                         $status == self::MAINTENANCE_STATUS;
             //check only for battery safety cars
             if (!$isAlarm && in_array($car->getPlate(), $this->batterySafetyPlates)){
-                $isAlarm = ($car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
+                $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
             }
 
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
