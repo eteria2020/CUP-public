@@ -485,7 +485,8 @@ class ConsoleController extends AbstractActionController
             if(!in_array($trip, $tripsClose)) {
                 $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsOpen24=".$trip->getId()."\n");
                 array_push($tripsClose, $trip);
-                $this->tripsService->closeTripParam($tripsOpen24, null, true, true);
+
+                $this->tripsService->closeTripParam($trip, false, null, true, true);
             }
         }
 
@@ -495,15 +496,15 @@ class ConsoleController extends AbstractActionController
         foreach ($tripsOpenMaintainer as $trip) {
             $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;carPlate;".$trip->getCar()->getPlate()."\n");
 
-            $openTrips = $this->tripsService->getTripsOpenByCarPlate($trip->getCar());
+            $openTrips = $this->tripsService->getTripsOpenByCar($trip->getCar());
             $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count(openTrips)=".count($openTrips)."\n");
 
             for($i=0; $i<count($openTrips)-1; $i++){ // loop until the last
                 if(in_array($openTrips[$i], $tripsOpenMaintainer)) { // it's a trip open from maintainer 
-                     if(!in_array($trip, $tripsClose)) {
+                     if(!in_array($openTrips[$i], $tripsClose)) {
                         $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsDuplicate=".$openTrips[$i]->getId()."\n");
-                        array_push($tripsClose, $trip);
-                        $this->tripsService->closeTripParam($openTrips[$i], null, false, true);
+                        array_push($tripsClose, $openTrips[$i]);
+                        $this->tripsService->closeTripParam($openTrips[$i], false, null, false, true);
                      }
                      
                 }
