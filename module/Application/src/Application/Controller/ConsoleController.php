@@ -496,7 +496,7 @@ class ConsoleController extends AbstractActionController
         foreach ($tripsOpenMaintainer as $trip) {
             $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;carPlate;".$trip->getCar()->getPlate()."\n");
 
-            $openTrips = $this->tripsService->getTripsOpenByCarPlate($trip->getCar());
+            $openTrips = $this->tripsService->getTripsOpenByCar($trip->getCar());
             $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count(openTrips)=".count($openTrips)."\n");
 
             for($i=0; $i<count($openTrips)-1; $i++){ // loop until the last
