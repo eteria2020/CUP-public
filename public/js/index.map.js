@@ -392,11 +392,11 @@ $(function () {
         xhrVehicles = $.get('cars-api/' + fleet, function(vehicles) {
             $.each(vehicles, function(index, vehicle) {
                 // position of the vehicle
-                var latitude = parseFloat(vehicle.latitude);
-                var longitude = parseFloat(vehicle.longitude);
-                var intCleanliness = vehicle.intCleanliness;
-                var extCleanliness = vehicle.extCleanliness;
-                var battery = vehicle.battery;
+                var latitude = parseFloat(vehicle.lat);
+                var longitude = parseFloat(vehicle.lon);
+                var intCleanliness = "clean";
+                var extCleanliness = "clean";
+                var battery = vehicle.soc;
                 var plate = vehicle.plate;
                 
                 var bonus_message = "";
