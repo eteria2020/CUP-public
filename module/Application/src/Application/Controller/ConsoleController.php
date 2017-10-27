@@ -485,7 +485,7 @@ class ConsoleController extends AbstractActionController
             if(!in_array($trip, $tripsClose)) {
                 $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsOpen24=".$trip->getId()."\n");
                 array_push($tripsClose, $trip);
-                //$this->tripsService->closeTripParam($tripsOpen24, null, true, true);
+                $this->tripsService->closeTripParam($tripsOpen24, null, true, true);
             }
         }
 
@@ -503,7 +503,7 @@ class ConsoleController extends AbstractActionController
                      if(!in_array($trip, $tripsClose)) {
                         $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsDuplicate=".$openTrips[$i]->getId()."\n");
                         array_push($tripsClose, $trip);
-                        //$this->tripsService->closeTripParam($openTrips[$i], null, false, true);
+                        $this->tripsService->closeTripParam($openTrips[$i], null, false, true);
                      }
                      
                 }
