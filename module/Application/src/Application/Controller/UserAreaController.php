@@ -484,20 +484,6 @@ class UserAreaController extends AbstractActionController
         );
     }
 
-    public function activatePaymentsAction()
-    {
-        $customer = $this->userService->getIdentity();
-
-        $isActivated = $this->cartasiContractsService->getCartasiContract($customer) != null;
-        $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
-
-        return new ViewModel([
-            'customer' => $customer,
-            'isActivated' => $isActivated,
-            'tripPayment' => $tripPayment
-        ]);
-    }
-
     public function debtCollectionAction()
     {
         //if there is mobile param the layout changes
