@@ -12,20 +12,14 @@ use SharengoCore\Entity\Reservations;
 use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
-
 use Zend\Mvc\Controller\AbstractActionController;
 
-class ConsoleController extends AbstractActionController
-{
+class ConsoleController extends AbstractActionController {
 
     const OPERATIVE_STATUS = 'operative';
-
     const NON_OPERATIVE_STATUS = 'out_of_order';
-
     const MAINTENANCE_STATUS = 'maintenance';
-
     const OPERATIVE_ACTION = 0;
-
     const MAINTENANCE_ACTION = 1;
 
     /**
@@ -101,16 +95,7 @@ class ConsoleController extends AbstractActionController
      * @param array $batterySafetyPlates
      */
     public function __construct(
-        CustomersService $customerService,
-        CarsService $carsService,
-        ReservationsService $reservationsService,
-        EntityManager $entityManager,
-        ProfilingPlaformService $profilingPlatformService,
-        TripsService $tripsService,
-        AccountTripsService $accountTripsService,
-        $alarmConfig,
-        InvoicesService $invoicesService,
-        $batterySafetyPlates
+    CustomersService $customerService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService, $batterySafetyPlates
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -125,8 +110,7 @@ class ConsoleController extends AbstractActionController
         $this->batterySafetyPlates = $batterySafetyPlates;
     }
 
-    public function getDiscountsAction()
-    {
+    public function getDiscountsAction() {
         $customers = $this->customerService->getListCustomers();
 
         foreach ($customers as $customer) {
@@ -141,15 +125,14 @@ class ConsoleController extends AbstractActionController
 
                 $this->customerService->setCustomerDiscountRate($customer, $discount);
 
-                echo "customer done: ".$email."\n";
+                echo "customer done: " . $email . "\n";
             }
         }
 
         echo "done\n";
     }
 
-    public function assignBonusAction()
-    {
+    public function assignBonusAction() {
         $customers = $this->customerService->getListCustomers();
 
         $startDateBonus100Mins = \DateTime::createFromFormat('Y-m-d H:i:s', '2015-06-14 23:59:59');
@@ -162,7 +145,7 @@ class ConsoleController extends AbstractActionController
                 $bonusValue = 100;
                 $bonusDesc = 'Bonus iscrizione utente';
                 if (null == $customer->getInsertedTs() ||
-                    $customer->getInsertedTs() < $startDateBonus100Mins) {
+                        $customer->getInsertedTs() < $startDateBonus100Mins) {
                     $bonusValue = 500;
                     $bonusDesc = 'Bonus iscrizione utente prima del 15-06-2015';
                 }
@@ -184,11 +167,9 @@ class ConsoleController extends AbstractActionController
         }
 
         echo "\n\nDONE\n";
-
     }
 
-    public function checkAlarmsAction()
-    {
+    public function checkAlarmsAction() {
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
@@ -218,13 +199,13 @@ class ConsoleController extends AbstractActionController
             // holds the car's status
             $status = $car->getStatus();
             // defines if car should be in non_operative || is in maintenance
-            $isAlarm =  $car->getBattery() < $this->battery ||
-                        time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                        $car->getCharging() ||
-                        $isOutOfBounds ||
-                        $status == self::MAINTENANCE_STATUS;
+            $isAlarm = $car->getBattery() < $this->battery ||
+                    time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
+                    $car->getCharging() ||
+                    $isOutOfBounds ||
+                    $status == self::MAINTENANCE_STATUS;
             //check only for battery safety cars
-            if (!$isAlarm && in_array($car->getPlate(), $this->batterySafetyPlates)){
+            if (!$isAlarm && in_array($car->getPlate(), $this->batterySafetyPlates)) {
                 $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
             }
 
@@ -245,7 +226,7 @@ class ConsoleController extends AbstractActionController
                     }
                     $this->writeToConsole("status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                 }
-            // the car should be operative
+                // the car should be operative
             } elseif ($status == self::NON_OPERATIVE_STATUS) {
                 // change the car's status to operative
                 $car->setStatus(self::OPERATIVE_STATUS);
@@ -256,15 +237,12 @@ class ConsoleController extends AbstractActionController
                     array_push($carsToOperative, $car->getPlate());
                 }
                 $this->writeToConsole("status changed to " . self::OPERATIVE_STATUS . "\n");
-
             }
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
                 $this->writeToConsole("Entity manager: car persisted\n");
-
             }
-
         }
 
         if (!$dryRun) {
@@ -292,8 +270,7 @@ class ConsoleController extends AbstractActionController
      * @param integer
      * @param Cars
      */
-    private function sendAlarmCommand($alarmCode, $car)
-    {
+    private function sendAlarmCommand($alarmCode, $car) {
         $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
         // get all active reservations for car
@@ -305,13 +282,13 @@ class ConsoleController extends AbstractActionController
             // remove current active reservation
             foreach ($reservations as $reservation) {
                 $reservation->setActive(false)
-                    ->setToSend(true);
+                        ->setToSend(true);
                 $this->writeToConsole("set reservation.active to false\n");
 
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
             }
-        // car should have maintainers reservation
+            // car should have maintainers reservation
         } elseif ($alarmCode == self::MAINTENANCE_ACTION) {
             // car does not have active reservations
             if (count($reservations) == 0) {
@@ -331,15 +308,13 @@ class ConsoleController extends AbstractActionController
 
                 $this->entityManager->persist($reservation);
                 $this->writeToConsole("Entity manager: reservation persisted\n");
-
             } else {
                 $this->writeToConsole("reservation found, skipping creation...\n");
             }
         }
     }
 
-    public function archiveReservationsAction()
-    {
+    public function archiveReservationsAction() {
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
@@ -369,15 +344,15 @@ class ConsoleController extends AbstractActionController
             } elseif ($reservation->getDeletedTs() != null) {
                 $reason = 'DELETED';
             } elseif ($reservation->getActive()) {
-                    // deactivate reservation and send it to car
-                    $this->writeToConsole("Expired reservation found. Deactivating...\n");
-                    $reservation->setActive(false);
-                    $reservation->setToSend(true);
-                    $this->writeToConsole("Reservation deactivated\n");
-                    $this->entityManager->persist($reservation);
-                    $this->writeToConsole("EntityManager: reservation persisted\n");
-                    array_push($reservationsDeleted['DEACTIVATED'], $reservation->getId());
-                    continue;
+                // deactivate reservation and send it to car
+                $this->writeToConsole("Expired reservation found. Deactivating...\n");
+                $reservation->setActive(false);
+                $reservation->setToSend(true);
+                $this->writeToConsole("Reservation deactivated\n");
+                $this->entityManager->persist($reservation);
+                $this->writeToConsole("EntityManager: reservation persisted\n");
+                array_push($reservationsDeleted['DEACTIVATED'], $reservation->getId());
+                continue;
             } elseif ($reservation->getLength() == -1) {
                 $reason = 'ALARM-OFF';
             } else {
@@ -396,7 +371,6 @@ class ConsoleController extends AbstractActionController
             $this->entityManager->remove($reservation);
             array_push($reservationsDeleted[$reason], $reservation->getId());
             $this->writeToConsole("EntityManager: reservation removed\n\n");
-
         }
 
         if (!$dryRun) {
@@ -416,18 +390,15 @@ class ConsoleController extends AbstractActionController
         }
 
         $this->writeToConsole("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
     }
 
-    private function writeToConsole($string)
-    {
+    private function writeToConsole($string) {
         if ($this->verbose) {
             fwrite(STDOUT, $string);
         }
     }
 
-    public function invoiceRegistrationsAction()
-    {
+    public function invoiceRegistrationsAction() {
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
@@ -466,24 +437,23 @@ class ConsoleController extends AbstractActionController
         } catch (\Exception $e) {
             $this->entityManager->rollback();
 
-            $this->writeToConsole("Exception message: ".$e->getMessage());
+            $this->writeToConsole("Exception message: " . $e->getMessage());
         }
     }
 
-    public function closeOldTripMaintainerAction()
-    {
+    public function closeOldTripMaintainerAction() {
         $this->verbose = true;
         $tripsClose = array();
 
-        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;start\n");
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;start\n");
 
         //Found the trips open more that 24 h
         $tripsOpen24 = $this->tripsService->findTripsForCloseOldTripMaintainer("-24 hour", null, "AND (ca.keyStatus='OFF' OR (ca.keyStatus='ON' AND ca.parking=true)) ");
-        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;count(tripsOpen24);".count($tripsOpen24)."\n");
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;count(tripsOpen24);" . count($tripsOpen24) . "\n");
 
         foreach ($tripsOpen24 as $trip) {
-            if(!in_array($trip, $tripsClose)) {
-                $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsOpen24=".$trip->getId()."\n");
+            if (!in_array($trip, $tripsClose)) {
+                $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;close;tripsOpen24=" . $trip->getId() . "\n");
                 array_push($tripsClose, $trip);
 
                 $this->tripsService->closeTripParam($trip, false, null, true, true);
@@ -492,25 +462,25 @@ class ConsoleController extends AbstractActionController
 
         //Found the trip duplicated
         $tripsOpenMaintainer = $this->tripsService->findTripsForCloseOldTripMaintainer(null, null, null);
-        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;count(tripsOpenMaintainer);".count($tripsOpenMaintainer)."\n");
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;count(tripsOpenMaintainer);" . count($tripsOpenMaintainer) . "\n");
         foreach ($tripsOpenMaintainer as $trip) {
-            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;carPlate;".$trip->getCar()->getPlate()."\n");
+            //$this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;carPlate;".$trip->getCar()->getPlate()."\n");
 
             $openTrips = $this->tripsService->getTripsOpenByCar($trip->getCar());
-            $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count(openTrips)=".count($openTrips)."\n");
+            //$this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;trip=".$trip->getId().";count(openTrips)=".count($openTrips)."\n");
 
-            for($i=0; $i<count($openTrips)-1; $i++){ // loop until the last
-                if(in_array($openTrips[$i], $tripsOpenMaintainer)) { // it's a trip open from maintainer 
-                     if(!in_array($openTrips[$i], $tripsClose)) {
-                        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;close;tripsDuplicate=".$openTrips[$i]->getId()."\n");
+            for ($i = 0; $i < count($openTrips) - 1; $i++) { // loop until the last
+                if (in_array($openTrips[$i], $tripsOpenMaintainer)) { // it's a trip open from maintainer
+                    if (!in_array($openTrips[$i], $tripsClose)) {
+                        $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;close;tripsDuplicate=" . $openTrips[$i]->getId() . "\n");
                         array_push($tripsClose, $openTrips[$i]);
                         $this->tripsService->closeTripParam($openTrips[$i], false, null, false, true);
-                     }
-                     
+                    }
                 }
             }
         }
 
-        $this->writeToConsole(date_create()->format('y-m-d H:i:s').";INF;closeOldTripMaintainerAction;stop\n");
+        $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;stop\n");
     }
+
 }
