@@ -77,10 +77,6 @@ class ConsoleController extends AbstractActionController {
      */
     private $delay;
 
-    /**
-     * @var array
-     */
-    private $batterySafetyPlates;
 
     /**
      * @param CustomersService $customerService
@@ -92,10 +88,9 @@ class ConsoleController extends AbstractActionController {
      * @param AccountTripsService $accountTripsService
      * @param array $alarmConfig
      * @param InvoicesService $invoicesService
-     * @param array $batterySafetyPlates
      */
     public function __construct(
-    CustomersService $customerService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService, $batterySafetyPlates
+    CustomersService $customerService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -107,7 +102,6 @@ class ConsoleController extends AbstractActionController {
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
-        $this->batterySafetyPlates = $batterySafetyPlates;
     }
 
     public function getDiscountsAction() {
@@ -175,7 +169,7 @@ class ConsoleController extends AbstractActionController {
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $carsToOperative = [];
         $carsToMaintenance = [];
-        $batterySafetyTime = 10;
+        $batterySafetyTime = 5;
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
@@ -205,7 +199,7 @@ class ConsoleController extends AbstractActionController {
                     $isOutOfBounds ||
                     $status == self::MAINTENANCE_STATUS;
             //check only for battery safety cars
-            if (!$isAlarm && in_array($car->getPlate(), $this->batterySafetyPlates)) {
+            if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || $car->getSoftwareVersion() == "0.106.8")){
                 $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
             }
 

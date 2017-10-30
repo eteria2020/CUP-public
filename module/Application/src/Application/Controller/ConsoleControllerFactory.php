@@ -20,8 +20,6 @@ class ConsoleControllerfactory implements FactoryInterface
 
         $configurationService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ConfigurationsService');
         $alarmConfig = $configurationService->getConfigurationsKeyValueBySlug(Configurations::ALARM);
-        $config = $serviceLocator->getServiceLocator()->get('Config');
-        $batterySafetyPlates = $config['battery_safety_plates'];
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
 
         return new ConsoleController(
@@ -33,8 +31,7 @@ class ConsoleControllerfactory implements FactoryInterface
             $tripsService,
             $accountTripsService,
             $alarmConfig,
-            $invoicesService,
-            $batterySafetyPlates
+            $invoicesService
         );
     }
 }
