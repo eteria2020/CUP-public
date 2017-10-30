@@ -83,6 +83,15 @@
                     <ul class="lato-regular strong-big white marginleft" style="list-style-type:none; padding-bottom:10px;">
                      <li>&#8226; Iscrizione ridotta da 10 a 1€</li>
                      <li>&#8226; 15 minuti di corse gratuite</li>
+                        <?php
+                        $now = new \DateTime();
+                        $start = new \DateTime('2017-11-01 00:00:00');
+
+                        if($now >= $start) { ?>
+                            <li>&#8226; 15% di sconto sulle tariffe di noleggio</li>
+                        <?php
+                        }
+                        ?>
                      </ul>
                      </span>
                         </div>
