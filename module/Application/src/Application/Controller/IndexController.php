@@ -148,7 +148,7 @@ class IndexController extends AbstractActionController
                     )
                 )
             );
-            $link = "http://localhost:8021/v2/cars?lat=".$lat."&lon=".$lon."&radius=".$radius;
+            $link = "http://localhost:8021/v3/cars?lat=".$lat."&lon=".$lon."&radius=".$radius;
             $data = shell_exec("curl '".$link."'");
             $data = json_decode($data, true);
             $data = $data['data'];

@@ -1300,15 +1300,6 @@ return [
                             ]
                         ]
                     ],
-                    'activate-payments' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{attivazione}',
-                            'defaults' => [
-                                'action' => 'index'     //TODO: remove activate-payments
-                            ]
-                        ]
-                    ],
                     'debt-collection' => [
                         'type' => 'Segment',
                         'options' => [
@@ -1720,6 +1711,17 @@ return [
                         ]
                     ]
                 ],
+                'close-old-trip-maintainer' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'close old trip maintainer',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'close-old-trip-maintainer'
+                        ]
+                    ]
+                ],
                 'remove-gold' => [
                     'type' => 'simple',
                     'options' => [
@@ -1874,14 +1876,25 @@ return [
                         ]
                     ]
                 ],
-                'close-maintainer' => [
+                'recalculate-points-september' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'close maintainer',
+                        'route' => 'recalculate points september',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
-                            'action' => 'force-end'
+                            'action' => 'recalculate points september'
+                        ]
+                    ]
+                ],
+                'recalculate-points-october' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'recalculate points october',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'recalculate points october'
                         ]
                     ]
                 ],

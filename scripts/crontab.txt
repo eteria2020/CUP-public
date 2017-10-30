@@ -18,18 +18,20 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 30 02  * * *    sharengo        /srv/apps/sharengo-publicsite/scripts/cron/clean_commands.sh
 50 02 11 * *    root            /etc/init.d/ntp restart
 
+#15 00 30 * *    root            /tmp/point_september.sh
+
 # every minute
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/reservations.sh
 */9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 
-# every hour
-#00   * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_helper_maintainers.sh
+# every 3 hour
+05 */3 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_old_trip_maintainers.sh
 
 # every day
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
-00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
+#00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
 10 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 
 00 10 * * *     www-data        /usr/local/scripts/registration_invoices.sh
