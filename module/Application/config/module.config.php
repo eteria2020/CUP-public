@@ -1300,15 +1300,6 @@ return [
                             ]
                         ]
                     ],
-                    'activate-payments' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/{attivazione}',
-                            'defaults' => [
-                                'action' => 'index'     //TODO: remove activate-payments
-                            ]
-                        ]
-                    ],
                     'debt-collection' => [
                         'type' => 'Segment',
                         'options' => [
