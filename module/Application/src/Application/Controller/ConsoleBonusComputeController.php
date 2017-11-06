@@ -490,6 +490,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }else{
                 $pointToAdd = $minuteTripsYesterday;
             }
+            $pointToAdd = $pointToAdd*3;
              
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
@@ -815,7 +816,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     }else{
                         $pointToAddDay = $minuteTripsYesterday;
                     }
-                    $totalPoint += $pointToAddDay;
+                    $totalPoint += $pointToAddDay*3;
                 }
             }
             //new line in customers_points
