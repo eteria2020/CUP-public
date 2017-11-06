@@ -756,13 +756,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         //-------------------------OTTOBRE--------------------------------------
         $dateStartOtt = '2017-10-01';
-        $today = new \DateTime();
-        $today = $today->format("Y-m-d 00:00:00");
+        $dateEndOtt = '2017-11-01';
         
-        $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $today);
+        $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $dateEndOtt);
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
         
-        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $today, true);
+        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $dateEndOtt, true);
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN OCTOBER -------------\n");
         
