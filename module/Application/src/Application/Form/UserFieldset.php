@@ -429,34 +429,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulationCondition1',
-            'options' => [
-                'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e le sue controllate"),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'off'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulationCondition2',
-            'options' => [
-                'label' => $translator->translate('dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).'),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'off'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'privacyCondition',
             'options' => [
                 'label' => $translator->translate("Ho letto, compreso e accettato l’Informativa Privacy per i Clienti SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le modalità indicate "),
@@ -482,8 +454,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'value' => 'off'
             ]
         ]);
-        //Add field to registration form Newsletter, type checkbox
-
         $this->add([
             'name' => 'profilingCounter',
             'type' => 'Zend\Form\Element\Hidden',
@@ -816,34 +786,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                     ],
                 ]
             ],
-            'regulationCondition1' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
-            ],
-            'regulationCondition2' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
-            ],
             'privacyCondition' => [
                 'required' => true,
                 'validators' => [
@@ -860,11 +802,18 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             ],
             //Validation specifications to checkbox privacyInformation
             'privacyInformation' => [
-                'required' => true
-            ],
-            ////Validation specifications to checkbox field newsletter
-            'newsletter' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'fleet' => [
                 'validators' => [
