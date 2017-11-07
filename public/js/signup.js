@@ -3,39 +3,28 @@
 const promoCodeTitle_IT = "Codice promo";
 const promoCodeTitle_EN = "Promo code";
 
-const generalConditionTitle_EN = "Main Service Contract";
-const generalConditionTitle_IT = "Condizioni Generali di Contratto";
+const generalConditionTitle_EN = "Terms and Conditions of Contract, Tariff Regulations and Privacy";
+const generalConditionTitle_IT = "Termini e Condizioni Generali di Contratto, Regolamento Tariffario e Privacy";
 const generalConditionTgeneralConditionTitle_ITitle_EN = "Main Service Contract";
-const generalConditionLink_IT = "Scarica il documento e verifica le condizioni";
-const generalConditionLink_EN = "Download the document and check the Main Service Contract";
-const generalCondition1_IT = "ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e le sue controllate";
-const generalCondition1_EN = "I HAVE READ AND AGREE TO THE MAIN SERVICE CONTRACT  OF THE CAR SHARING SERVICE PROVIDED BY C.S. GROUP S.P.A. AND ITS SUBSIDIARIES";
-const generalCondition2_IT = "dichiaro ai sensi e per gli effetti di cui all’art. 1341 c.c. e segg., di accettare espressamente ed approvare specificatamente le condizioni di cui agli articoli: 1 (premesse), 2 (definizioni), 3 (oggetto e parti del contratto), 4 (divieto di sostituzione), 5 (modifica unilaterale del Contratto e del Regolamento del servizio di car sharing), 6 (iscrizione e prenotazione online del Car Sharing SHARE’NGO), 7 (garanzia economica del noleggio), 8 (tariffe), 9 (obblighi, fatturazione e pagamenti), 10 (divieto di sublocazione e di cessione), 11 (esonero di responsabilità), 12 (permesso di guida), 13 (utilizzo dei veicoli. Clausola risolutiva espressa), 14 (sinistro o avaria del veicolo), 15 (furti e vandalismi), 16 (sanzioni in materia di circolazione stradale), 17 (responsabilità del Cliente), 18 (assicurazioni – oneri a carico del Cliente), 19 (limiti di responsabilità), 20 (dati personali), 21 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 22 (reclami), 23 (diritto di recesso del Cliente), 24 (penali), 25 (comunicazioni) 26 (foro competente), 27 (varie).";
-const generalCondition2_EN = "ACCORDINGLY TO ARTICLES 1341 AND 1342 C.C. OF ITALIAN LAW (CIVIL CODE),  I HEREBY DECLARE TO SPECIFICALLY ACCEPT  ARTICLES: 1 (PREMISE), 2 (DEFINITIONS), 3 (OBJECT AND CONTRACT PARTS), 4 (EXCLUSIVITY OF UTILIZATION), 5 (UNILATERAL MODIFICATION OF THE CONTRACT AND SERVICE TERMS AND CONDITIONS), 6 (ONLINE REGISTRATION AND BOOKING), 7 (RENTAL FEE GUARANTEE), 8 (FEES), 9 (OBLIGATIONS, INVOICING AND PAYMENTS), 10 (PROHIBITION OF SUB LOCATION), 11 ( RESPONSIBILITY), 12 (DRIVER’S LICENSE), 13 (UTILIZATION OF VEHICLES) 14 (DAMAGES AND BREAKDOWNS), 15 (THEFTS AND VANDALISM), 16 (LIABILITIES FOR BREACHING  ROAD CIRCULATION LAWS AND REGULATIONS), 17 (CUSTOMER'S RESPONSIBILITY), 18 (INSURANCE , EXEMPTIONS AND DEDUCTIONS), 19 (RESPONSIBILITY LIMITS), 20 (PERSONAL DATA), 21 (LENGTH, DURATION, RENEWAL, SUSPENSION, WITHDRAWAL and RESOLUTION OF THE CONTRACT), 22 (CLAIMS), 23 (CUSTOMER'S WITHDRAWAL), 24 (PENALTIES), 25 (COMMUNICATIONS) 26 (RULING LAW), 27 (MISCELLANEOUS).";
+const generalConditionLink_IT = "Termini e Condizioni Generali di Contratto";
+const generalConditionLink_EN = "Terms and Conditions of Contract";
+const generalCondition1_IT = "Ho letto, compreso e accettato i Termini e Condizioni Generali di Contratto e il Regolamento Tariffario del servizio di car sharing SHARE’NGO®, fornito da C.S. Group S.p.A. e dalle sue controllate: C.S. Firenze S.r.l., C.S. Milano S.r.l. e C.S. Roma S.r.l.";
+const generalCondition1_EN = "I have read, understood and accepted the Terms and Conditions of Contract and the SHARE'NGO® car sharing service fee, provided by C.S. Group S.p.A. and its subsidiaries: C.S. Firenze S.r.l., C.S. Milano S.r.l. and C.S. Roma S.r.l.";
+const generalCondition2_IT = "Dichiaro ai sensi e per gli effetti di cui agli artt. 1341 e 1342 c.c., avendo letto i presenti Termini e Condizioni Generali di Contratto di accettare espressamente e approvare specificatamente le condizioni di cui agli articoli: 3 (oggetto e parti del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online del Car Sharing SHARE’NGO®), 6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente).";
+const generalCondition2_EN = "I declare to the senses and for the effects of cui to the artt. 1341 and 1342 of the Italian Civil Code, having read these General Terms and Conditions of Contract to expressly accept and approve the conditions specified in the articles: 3 (the object and parts of the contract), 4 (unilateral amendment of the Contract), 5 (registration and reservation (SHARE'NGO® Car Sharing), 6 (billing and billing), 7 (prohibition of sublicense and transfer), 8 (liability exemption), 9 (driving permit), 10 (use of vehicles). ), 11 (car accident or damage), 12 (theft and vandalism), 13 (road traffic penalties), 14 (insurance), 16 (termination, renewal, suspension, termination, termination of contract) 17 (complaints), 18 (criminal), 20 (competent court).";
 
-const regulationConditionTitle_IT = "Regolamento";
-const regulationConditionTitle_EN = "Service Terms and Conditions";
-const regulationConditionLink_IT = "Scarica il documento e verifica le condizioni";
-const regulationConditionLink_EN = "Download the document and check the Service Terms and conditions";
-const regulationCondition1_IT = "ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e le sue controllate";
-const regulationCondition1_EN = "I HAVE READ AND AGREE TO THE GENERAL TERMS AND CONDITIONS OF THE CAR SHARING SERVICE PROVIDED BY C.S. GROUP S.P.A. AND YOUR SUBSIDIARIES.";
-const regulationCondition2_IT = "dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).";
-const regulationCondition2_EN = "ACCORDINGLY TO ARTICLES 1341 AND 1342 C.C. OF ITALIAN LAW (CIVIL CODE),  I HEREBY DECLARE TO SPECIFICALLY ACCEPT THE FOLLOWING CLAUSES OF THIS REGULATION : 1 (ADMISSION TO SERVICE), 2 (REGISTRATION), 3 (VEHICLE BOOKING), 4 (START OF RENTAL) , 5 (VEHICLE PRELIMINARY CHEKS AND START), 6 (BATTERY AND RANGE), 7 (VEHICLE UTILIZATION), 8 (VEHICLE RETURN, PARKING), 9 (CLEANING OF THE VEHICLE AND LOST&FOUND), 10 (RATES), 11 (PERSONAL RATES), 12 (INVOICING), 13 (DAMAGES AND VEHICLE MANFUNCTIONING), 14 (CAR CRASH AND BREAKDOWNS), 15 ( FIRE, THEFT, VANDALISM), 16 (MISCELLANEA).";
+const regulationConditionLink_IT = "Regolamento Tariffario";
+const regulationConditionLink_EN = "Tariff Regulations";
 
-const privacyConditionLink_IT = "Scarica il documento e verifica le condizioni";
-const privacyConditionLink_EN = "Download the document and check our Privacy Policy";
-const privacyCondition_IT = "ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate";
-const privacyCondition_EN = "HEREBY CONFIRM THAT I HAVE RECEIVED, REVIEWED AND UNDERSTAND THE SHARE’NGO PRIVACY POLICY. I ACKNOWLEDGE AND ACCEPT THIS  POLICY AS IT RELATES TO ANY INFORMATION I PROVIDE AS PART OF MY APPLICATION, SUBSEQUENT SHARE’NGO MEMBERSHIP AND CAR UTILIZATION.";
+const privacyConditionLink_IT = "Informativa Privacy";
+const privacyConditionLink_EN = "Privacy disclaimer";
+const privacyCondition_IT = "Ho letto, compreso e accettato l’Informativa Privacy per i Clienti SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le modalità indicate.";
+const privacyCondition_EN = "I have read, understood and accepted the Privacy Statement for SHARE'NGO® Customers and I agree to the processing of my personal details as indicated.";
 
 const privacyPolicyTitle_IT = "Informativa sulla privacy";
 const privacyPolicyTitle_EN = "Privacy Policy";
-const privacyPolicyText_IT = "HO LETTO E COMPRESO L’INFORMATIVA SULLA PRIVACY E DO IL MIO CONSENSO PER IL TRATTAMENTO DEI MIEI DATI PERSONALI PER FINALITÀ DI MARKETING TRAMITE E EMAIL, TELEFONO, SMS, MMS E POSTA TRADIZIONALE CON RIFERIMENTO AI PRODOTTI, SERVIZI E PROMOZIONI SHARE’NGO, INCLUSE LE RICERCHE DI MERCATO. ";
-const privacyPolicyText_EN = "I BOTH AND INCLUDE THE INFORMATION ON PRIVACY AND I DO MY CONSENT FOR THE PERSONAL DATA PROCESSING FOR MARKETING PURPOSES THROUGH EMAIL, TELEPHONE, SMS, MMS AND TRADITIONAL POSITION WITH REFERENCE TO SHARE'NGO PRODUCTS, SERVICES AND PROMOTIONS, INCLUDING MARKET RESEARCH.";
-
-const neswletterTitle_IT = "Newsletter";
-const neswletterTitle_EN = "Newsletter";
-const neswletterText_IT = "DESIDERO ISCRIVERMI ALLA NEWSLETTER DI SHARE'NGO. ";
-const neswletterText_EN = "I WANT TO JOIN THE SHARE'NGO NEWSLETTER.";
+const privacyPolicyText_IT = "Al fine di migliorare il servizio ed essere aggiornato sulle offerte di SHARE’NGO® e dei partner di SHARE’NGO® riservate in via preferenziale e/o esclusiva ai clienti SHARE’NGO®, do il mio consenso a ricevere comunicazioni di SHARE’NGO® via email, SMS o posta, inclusi gli inviti a partecipare a indagini di mercato e sondaggi.";
+const privacyPolicyText_EN = "In order to improve the service and be up-to-date on SHARE'NGO® and SHARE'NGO® Partner's preferred and / or exclusive deals to SHARE'NGO® customers, I agree to receive SHARE'NGO ® by email, SMS or mail, including invitations to participate in market surveys and surveys.";
 
 const buttonSendCode_IT = "Invia codice";
 const buttonSendCode_EN = "Send code";
@@ -225,17 +214,12 @@ $(function () {
             $('#generalConditionLink').text(generalConditionLink_EN);
             $('#generalCondition1Text').text(generalCondition1_EN);
             $('#generalCondition2Text').text(generalCondition2_EN);
-            $('#regulationConditionTitle').text(regulationConditionTitle_EN);
             $('#regulationConditionLink').text(regulationConditionLink_EN);
-            $('#regulationCondition1Text').text(regulationCondition1_EN);
-            $('#regulationCondition2Text').text(regulationCondition2_EN);
             $('#privacyConditionLink').text(privacyConditionLink_EN);
             $('#privacyConditionText').text(privacyCondition_EN);
             $('#buttonSendCode').text(buttonSendCode_EN);
             $('#cancelBtn').val(cancelBtn_EN);
             $('#nextBtn').val(nextBtn_EN);
-            $('#newsletterTitle').text(neswletterTitle_EN);
-            $('#newsletterText').text(neswletterText_EN);
             $('#InfoPravacyTitle').text(privacyPolicyTitle_EN);
             $('#InfoPravacyText').text(privacyPolicyText_EN);
         } else {
@@ -244,19 +228,14 @@ $(function () {
             $('#generalConditionLink').text(generalConditionLink_IT);
             $('#generalCondition1Text').text(generalCondition1_IT);
             $('#generalCondition2Text').text(generalCondition2_IT);
-            $('#regulationConditionTitle').text(regulationConditionTitle_IT);
             $('#regulationConditionLink').text(regulationConditionLink_IT);
-            $('#regulationCondition1Text').text(regulationCondition1_IT);
-            $('#regulationCondition2Text').text(regulationCondition2_IT);
             $('#privacyConditionLink').text(privacyConditionLink_IT);
             $('#privacyConditionText').text(privacyCondition_IT);
             $('#buttonSendCode').text(buttonSendCode_IT);
             $('#cancelBtn').val(cancelBtn_IT);
             $('#nextBtn').val(nextBtn_IT);
-            $('#newsletterTitle').text(neswletterTitle_IT);
             $('#InfoPravacyTitle').text(privacyPolicyTitle_IT);
             $('#InfoPravacyText').text(privacyPolicyText_IT);
-            $('#newsletterText').text(neswletterText_IT);
             '<%Session["currLang"] = "' + 'it' + '"; %>';
         }
 

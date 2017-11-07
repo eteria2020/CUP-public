@@ -403,7 +403,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition1',
             'options' => [
-                'label' => $translator->translate('ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e le sue controllate'),
+                'label' => $translator->translate("Ho letto, compreso e accettato i Termini e Condizioni Generali di Contratto e il Regolamento Tariffario del servizio di car sharing SHARE’NGO®, fornito da C.S. Group S.p.A. e dalle sue controllate: C.S. Firenze S.r.l., C.S. Milano S.r.l. e C.S. Roma S.r.l."),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -417,35 +417,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition2',
             'options' => [
-                'label' => $translator->translate('dichiaro ai sensi e per gli effetti di cui all’art. 1341 c.c. e segg., di accettare espressamente ed approvare specificatamente le condizioni di cui agli articoli: 1 (premesse), 2 (definizioni), 3 (oggetto e parti del contratto), 4 (divieto di sostituzione), 5 (modifica unilaterale del Contratto e del Regolamento del servizio di car sharing), 6 (iscrizione e prenotazione online del Car Sharing SHARE’NGO), 7 (garanzia economica del noleggio), 8 (tariffe), 9 (obblighi, fatturazione e pagamenti), 10 (divieto di sublocazione e di cessione), 11 (esonero di responsabilità), 12 (permesso di guida), 13 (utilizzo dei veicoli. Clausola risolutiva espressa), 14 (sinistro o avaria del veicolo), 15 (furti e vandalismi), 16 (sanzioni in materia di circolazione stradale), 17 (responsabilità del Cliente), 18 (assicurazioni – oneri a carico del Cliente), 19 (limiti di responsabilità), 20 (dati personali), 21 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 22 (reclami), 23 (diritto di recesso del Cliente), 24 (penali), 25 (comunicazioni) 26 (foro competente), 27 (varie).'),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'off'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulationCondition1',
-            'options' => [
-                'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e le sue controllate"),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'off'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulationCondition2',
-            'options' => [
-                'label' => $translator->translate('dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).'),
+                'label' => $translator->translate('Dichiaro ai sensi e per gli effetti di cui agli artt. 1341 e 1342 c.c., avendo letto i presenti Termini e Condizioni Generali di Contratto di accettare espressamente e approvare specificatamente le condizioni di cui agli articoli: 3 (oggetto e parti del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online del Car Sharing SHARE’NGO®), 6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente).'),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -459,7 +431,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'privacyCondition',
             'options' => [
-                'label' => $translator->translate("ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate"),
+                'label' => $translator->translate("Ho letto, compreso e accettato l’Informativa Privacy per i Clienti SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le modalità indicate "),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -473,30 +445,15 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'privacyInformation',
             'options' => [
-                'label' => $translator->translate("Ho letto e compreso l’Informativa sulla Privacy e do il mio consenso per il trattamento dei miei dati personali per finalità di marketing tramite e email, telefono, sms, mms e posta tradizionale con riferimento ai prodotti, servizi e promozioni Share’nGo, incluse le ricerche di mercato."),
+                'label' => $translator->translate("Al fine di migliorare il servizio ed essere aggiornato sulle offerte di SHARE’NGO® e dei partner di SHARE’NGO® riservate in via preferenziale e/o esclusiva ai clienti SHARE’NGO®, do il mio consenso a ricevere comunicazioni di SHARE’NGO® via email, SMS o posta, inclusi gli inviti a partecipare a indagini di mercato e sondaggi."),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
             ],
             'attributes' => [
-                'value' => 'on'
+                'value' => 'off'
             ]
         ]);
-        //Add field to registration form Newsletter, type checkbox
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'newsletter',
-            'options' => [
-                'label' => $translator->translate("Desidero iscrivermi alla newsletter di Share'nGO."),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'on'
-            ]
-        ]);
-
         $this->add([
             'name' => 'profilingCounter',
             'type' => 'Zend\Form\Element\Hidden',
@@ -829,34 +786,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                     ],
                 ]
             ],
-            'regulationCondition1' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
-            ],
-            'regulationCondition2' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
-            ],
             'privacyCondition' => [
                 'required' => true,
                 'validators' => [
@@ -873,11 +802,18 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             ],
             //Validation specifications to checkbox privacyInformation
             'privacyInformation' => [
-                'required' => true
-            ],
-            ////Validation specifications to checkbox field newsletter
-            'newsletter' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
             ],
             'fleet' => [
                 'validators' => [
