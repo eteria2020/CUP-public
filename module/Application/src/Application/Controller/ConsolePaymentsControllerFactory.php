@@ -10,16 +10,19 @@ class ConsolePaymentsControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $sharedServiceManager = $serviceLocator->getServiceLocator();
-
+        $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $tripPaymentsService = $sharedServiceManager->get('SharengoCore\Service\TripPaymentsService');
         $paymentsService = $sharedServiceManager->get('SharengoCore\Service\PaymentsService');
         $customersService = $sharedServiceManager->get('SharengoCore\Service\CustomersService');
+        $tripsService = $sharedServiceManager->get('SharengoCore\Service\TripsService');
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
 
         return new ConsolePaymentsController(
+            $entityManager,
             $tripPaymentsService,
             $paymentsService,
             $customersService,
+            $tripsService,
             $logger
         );
     }
