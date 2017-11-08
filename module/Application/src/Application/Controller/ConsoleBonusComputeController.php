@@ -742,7 +742,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         //delete table customers_points
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE ALL RECORD CUSTOMERS_POINTS -------------\n");
-        $this->customerService->deleteCustomersPoints();
+        $this->customerService->deleteCustomersPoints('2017-08-31');
         
         //-------------------------SETTEMBRE------------------------------------
         $dateStartSett = '2017-09-18';
@@ -751,7 +751,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $customersRunSet = $this->customerService->getAllCustomerRunInMonth($dateStartSett, $dateEndSett);
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN SEPTEMBER -------------\n");
 
-        $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett);
+        $this->clicleOfCustomers($customersRunSet, $dateStartSett, $dateEndSett, 0);
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN SEPTEMBER -------------\n");
         
@@ -765,7 +765,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         //delete row customers_points of october
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE RECORD CUSTOMERS_POINTS OF OCTOBER-------------\n");
-        $this->customerService->deleteCustomersPointsOct('2017-09-30');
+        $this->customerService->deleteCustomersPoints('2017-09-30');
         
         //-------------------------OTTOBRE--------------------------------------
         $dateStartOtt = '2017-10-01';
@@ -774,7 +774,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartOtt, $dateEndOtt);
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN OCTOBER -------------\n");
         
-        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $dateEndOtt, true);
+        $this->clicleOfCustomers($customersRunOtt, $dateStartOtt, $dateEndOtt, 1);
         
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN OCTOBER -------------\n");
         
@@ -782,20 +782,54 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     }
     
-    public function clicleOfCustomers($customers, $dateStart, $dateEnd, $param = null) {
+    public function recalculatePointsNovemberAction() {
+        
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - START recalculate Points November Script \n");
+        
+        //delete row customers_points of november
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE RECORD CUSTOMERS_POINTS OF NOVEMBER-------------\n");
+        $this->customerService->deleteCustomersPoints('2017-10-31');
+        
+        //-------------------------NOVEMBRE-------------------------------------
+        $dateStartNov = '2017-11-01';
+        $todayStart = new \DateTime();
+        $todayStart = $todayStart->format("Y-m-d");
+        
+        $customersRunOtt = $this->customerService->getAllCustomerRunInMonth($dateStartNov, $todayStart);
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- SATRT CUSTOMERS RUN IN NOVEMBER -------------\n");
+        
+        $this->clicleOfCustomers($customersRunOtt, $dateStartNov, $todayStart, 2);
+        
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- END CUSTOMERS RUN IN NOVEMBER -------------\n");
+        
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . " - END recalculate Points November Script \n");
+
+    }
+    
+    public function clicleOfCustomers($customers, $dateStart, $dateEnd, $param) {
         
         //set date for insert in customer_points
-        if(is_null($param)){
-            $dateInsert = new \DateTime('2017-09-18 00:00:00');
-            $dateUpdate = new \DateTime('2017-09-30 00:00:00');
-            $dateValidTo = new \DateTime('2017-09-18 00:00:00');
-            $dateValidTo = $dateValidTo->modify('+10 years');            
-        }else{
-            $dateInsert = new \DateTime('2017-10-01 00:00:00');
-            $date = new \DateTime();
-            $dateUpdate = new \DateTime($date->format("Y-m-d 00:00:00"));
-            $dateValidTo = new \DateTime('2017-10-01 00:00:00');
-            $dateValidTo = $dateValidTo->modify('+10 years');
+        switch ($param) {
+            case 0://settembre
+                $dateInsert = new \DateTime('2017-09-18 00:00:00');
+                $dateUpdate = new \DateTime('2017-09-30 00:00:00');
+                $dateValidTo = new \DateTime('2017-09-18 00:00:00');
+                $dateValidTo = $dateValidTo->modify('+10 years');
+                break;
+            case 1://ottobre
+                $dateInsert = new \DateTime('2017-10-01 00:00:00');
+                $date = new \DateTime('2017-10-31 00:00:00');
+                $dateUpdate = new \DateTime($date->format("Y-m-d 00:00:00"));
+                $dateValidTo = new \DateTime('2017-10-01 00:00:00');
+                $dateValidTo = $dateValidTo->modify('+10 years');
+                break;
+            case 2://novembre
+                $dateInsert = new \DateTime('2017-11-01 00:00:00');
+                $date = new \DateTime();
+                $dateUpdate = new \DateTime($date->format("Y-m-d 00:00:00"));
+                $dateValidTo = new \DateTime('2017-11-01 00:00:00');
+                $dateValidTo = $dateValidTo->modify('+10 years');
+                break;
         }
         
         foreach ($customers as $customer){
