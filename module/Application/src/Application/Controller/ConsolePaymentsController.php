@@ -6,11 +6,18 @@ use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
-
+use SharengoCore\Entity\Customers;
+use SharengoCore\Service\TripsService;
+use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ConsolePaymentsController extends AbstractActionController
 {
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
     /**
      * @var TripPaymentsService
      */
@@ -27,25 +34,37 @@ class ConsolePaymentsController extends AbstractActionController
     private $paymentsService;
 
     /**
+     * @var TripsService
+     */
+    private $tripsService;
+
+
+    /**
      * @var Logger
      */
     private $logger;
 
     /**
+     * @param EntityManager $entityManager
      * @param TripPaymentsService $tripPaymentsService
      * @param PaymentsService $paymentsService
      * @param CustomersService $customersService
+     * @param TripsService $tripsService
      * @param Logger $logger
      */
     public function __construct(
+        EntityManager $entityManager,
         TripPaymentsService $tripPaymentsService,
         PaymentsService $paymentsService,
         CustomersService $customersService,
+        TripsService $tripsService,
         Logger $logger
     ) {
+        $this->entityManager = $entityManager;
         $this->tripPaymentsService = $tripPaymentsService;
         $this->paymentsService = $paymentsService;
         $this->customersService = $customersService;
+        $this->tripsService = $tripsService;
         $this->logger = $logger;
     }
 
@@ -79,4 +98,38 @@ class ConsolePaymentsController extends AbstractActionController
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
+
+    public function preauthorizationAction()
+    {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        $request = $this->getRequest();
+        $avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
+        $avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+
+        $customerId = $request->getParam('customerId');
+
+        $tripId = $request->getParam('tripId');
+        $customer = $this->customersService->findById($customerId);
+        $trip = $this->tripsService->getTripById($tripId);
+
+        $response = $this->paymentsService->tryPreAuthorization(
+            $customer,
+            $trip,
+            $avoidEmails,
+            $avoidCartasi,
+            $avoidPersistance
+        );
+        //TODO: aggiornare l'error code nei vari casi - nb su error code deve essere numero positivo
+        $this->entityManager->beginTransaction();
+        $this->entityManager->persist($trip->setErrorCode($response));
+        $this->entityManager->flush();
+        $this->entityManager->commit();
+
+        $log = json_encode(['response'=>-$response,'customer_id'=>$customerId, 'trip_id'=>$tripId, 'date' => date_create()->format('Y-m-d H:i:s')]);
+        $this->logger->log("\n" . $log);
+    }
+
 }
