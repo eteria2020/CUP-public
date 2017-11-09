@@ -1808,6 +1808,17 @@ return [
                         ]
                     ]
                 ],
+                'preauthorization' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'preauthorization <customerId> <tripId> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayments',
+                            'action' => 'preauthorization'
+                        ]
+                    ]
+                ],
                 'retry-wrong-payments' => [
                     'type' => 'simple',
                     'options' => [
