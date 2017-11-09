@@ -789,6 +789,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         //delete row customers_points of november
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . " ------------- DELETE RECORD CUSTOMERS_POINTS OF NOVEMBER-------------\n");
         $this->customerService->deleteCustomersPoints('2017-10-31');
+        echo 'canc';
         
         //-------------------------NOVEMBRE-------------------------------------
         $dateStartNov = '2017-11-01';
