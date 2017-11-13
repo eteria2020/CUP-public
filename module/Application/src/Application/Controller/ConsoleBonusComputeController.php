@@ -513,7 +513,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
 
-        }//end foreach custimers
+            $this->customerService->clearEntityManager();
+            
+        }//end foreach customers
     }//end executeScriptAddPointDay
 
     private function updateInfoScriptServerScript($serverScript, $customers, $id = null){
