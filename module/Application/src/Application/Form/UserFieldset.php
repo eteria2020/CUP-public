@@ -802,18 +802,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             ],
             //Validation specifications to checkbox privacyInformation
             'privacyInformation' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
+                'required' => false
             ],
             'fleet' => [
                 'validators' => [
