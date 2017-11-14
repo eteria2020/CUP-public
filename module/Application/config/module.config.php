@@ -1918,6 +1918,17 @@ return [
                         ]
                     ]
                 ],
+                'recalculate-points-november' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'recalculate points november',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'recalculate points november'
+                        ]
+                    ]
+                ],
                 'add-point-cluster' => [
                     'type' => 'simple',
                     'options' => [
