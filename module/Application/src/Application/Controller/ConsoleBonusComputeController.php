@@ -103,11 +103,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @var boolean
      */
     private $avoidEmails;
-    
-     /**
-     * @var EntityManager
-     */
-    private $entityManager;
+
 
     /**
      * @param CustomersService $customerService
@@ -122,11 +118,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param array $config
      * @param array $pointConfig
      * @param Form $customerPointForm
-     * @param EntityManager $entityManager
      */
     public function __construct(
     CustomersService $customerService, ServerScriptsService $serverScriptService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
-    //, EntityManager $entityManager
     ) {
         $this->customerService = $customerService;
         $this->serverScriptService = $serverScriptService;
@@ -143,7 +137,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->config = $config;
         $this->customerPointForm = $customerPointForm;
         $this->pointConfig = $pointConfig['point'];
-        //$this->entityManager = $entityManager;
     }
 
     public function bonusComputeAction() {
