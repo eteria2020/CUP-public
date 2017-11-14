@@ -4,7 +4,8 @@ $this->headScript()
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
         ->appendFile($this->basePath('js/signup.js?v=1.2'))
         ->appendFile($this->basePath('js/points.js'))
-        ->appendFile($this->basePath('js/banner.js'));
+        ->appendFile($this->basePath('js/banner.js'))
+        ->appendFile($this->basePath('js/phone.js'));
 $this->headLink()
         ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
 ?>
@@ -984,6 +985,9 @@ echo <<<JS
         });
         $("#js-edit-mobile, #js-reset-editMobile").click(function() {
             $('#viewEditMobile, #editMobile').toggle();
+            result = phoneJs($("#mobile").val());
+            $("#mobile").val(result["number"]);
+            $('#dialCode').val(result["dial_code"]);
         });
     });
 JS;
