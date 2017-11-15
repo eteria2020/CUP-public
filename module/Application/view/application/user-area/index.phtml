@@ -4,7 +4,8 @@ $this->headScript()
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
         ->appendFile($this->basePath('js/signup.js?v=1.2'))
         ->appendFile($this->basePath('js/points.js'))
-        ->appendFile($this->basePath('js/banner.js'));
+        ->appendFile($this->basePath('js/banner.js'))
+        ->appendFile($this->basePath('js/phone.js'));
 $this->headLink()
         ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
 ?>
@@ -965,9 +966,8 @@ JS;
 }
 ?>
 
-<?php
-$this->inlineScript()->captureStart();
-echo <<<JS
+<script>
+
     $(document).ready(function() {
         $(".datepicker-date" ).datepicker({
             dateFormat: "dd-mm-yy",
@@ -984,13 +984,12 @@ echo <<<JS
         });
         $("#js-edit-mobile, #js-reset-editMobile").click(function() {
             $('#viewEditMobile, #editMobile').toggle();
+            result = phoneJs("<?= $this->customer->getMobile() ?>");
+            $("#mobile").val(result["number"]);
+            $('#dialCode').val(result["dial_code"]);
         });
     });
-JS;
-$this->inlineScript()->captureEnd();
-?>
 
-<script>
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
             birthTownValue = "<?= $birthTown->getValue() ?>",
             userId = <?= (string) $this->customer->getId() ?>,
@@ -1000,8 +999,6 @@ $this->inlineScript()->captureEnd();
     loadBanner(bannerJsonpUrl, userId, pageLink);
 
     if (document.location.pathname === "/area-utente" || document.location.pathname === "/area-utente/mobile" ) {
-        //console.log("11111");
-        //calculateCO2(userId);
         $.ajax({
             type: "POST",
             url: "/co2",
