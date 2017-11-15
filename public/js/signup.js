@@ -83,7 +83,7 @@ $(function () {
                 },
                 success: function (data) {
                     $('#buttonCode').hide();
-
+                    
                     switch (data.toString()) {
                         case "Wait message":
                             if ($('#language').val() == "it") {
@@ -99,6 +99,7 @@ $(function () {
                         case "OK":
                             $('#buttonCode').html("<div><p style='color:green;'><i class='fa fa-check fa-2x' style='color:green'></i>Sms inviato</p></div>");
                             $('#confirmSmsCode').fadeIn();
+                            $("#js-sumbimit-editMobile").fadeIn();
                             break;
 
                         case "Errore invio sms":
