@@ -10,6 +10,7 @@ use SharengoCore\Entity\Customers;
 use SharengoCore\Service\TripsService;
 use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Controller\AbstractActionController;
+use \Cartasi\Entity\Repository\TransactionsRepository;
 
 class ConsolePaymentsController extends AbstractActionController
 {
@@ -45,12 +46,19 @@ class ConsolePaymentsController extends AbstractActionController
     private $logger;
 
     /**
+     * @var TransactionsRepository
+     */
+    private $cartasiTransactionsRepository;
+
+
+    /**
      * @param EntityManager $entityManager
      * @param TripPaymentsService $tripPaymentsService
      * @param PaymentsService $paymentsService
      * @param CustomersService $customersService
      * @param TripsService $tripsService
      * @param Logger $logger
+     * @param TransactionsRepository
      */
     public function __construct(
         EntityManager $entityManager,
@@ -58,7 +66,8 @@ class ConsolePaymentsController extends AbstractActionController
         PaymentsService $paymentsService,
         CustomersService $customersService,
         TripsService $tripsService,
-        Logger $logger
+        Logger $logger,
+        TransactionsRepository $cartasiTransactionsRepository
     ) {
         $this->entityManager = $entityManager;
         $this->tripPaymentsService = $tripPaymentsService;
@@ -66,6 +75,7 @@ class ConsolePaymentsController extends AbstractActionController
         $this->customersService = $customersService;
         $this->tripsService = $tripsService;
         $this->logger = $logger;
+        $this->cartasiTransactionsRepository = $cartasiTransactionsRepository;
     }
 
     public function makeUserPayAction()
@@ -131,5 +141,33 @@ class ConsolePaymentsController extends AbstractActionController
         $log = json_encode(['response'=>-$response,'customer_id'=>$customerId, 'trip_id'=>$tripId, 'date' => date_create()->format('Y-m-d H:i:s')]);
         $this->logger->log("\n" . $log);
     }
+
+    public function refundAction() {
+        $request = $this->getRequest();
+        $customerId = $request->getParam('customer'); // not use
+        $transactionId = $request->getParam('transaction'); //codTrans
+        $amount = $request->getParam('amount');
+
+        $transactionId = explode("-", $transactionId);
+        $customerId = $transactionId[1];
+        $transactionId = $transactionId[0];
+
+        $customer = $this->customersService->findById($customerId);
+        $transaction = $this->cartasiTransactionsRepository->findOneById($transactionId);
+
+        if (is_null($transaction)) {
+            echo 'no transaction ('.$transactionId.') found';
+            exit();
+        }else if (is_null($customer)){
+            echo 'no customer ('.$customerId.') found';
+            exit();
+        } else {
+            if (is_null($amount)){
+                $amount = $transaction->getAmount();
+            }
+            $this->paymentsService->refund($transactionId, $customer, $amount);
+        }
+    }
+
 
 }
