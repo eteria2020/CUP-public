@@ -1822,7 +1822,7 @@ return [
                 'refund' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'refund <customer> <amount> <transaction> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'route' => 'refund <transaction> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]', //<customer> <amount>
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayments',

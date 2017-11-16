@@ -144,9 +144,9 @@ class ConsolePaymentsController extends AbstractActionController
 
     public function refundAction() {
         $request = $this->getRequest();
-        $customerId = $request->getParam('customer'); // not use
+        //$customerId = $request->getParam('customer'); // not use
         $transactionId = $request->getParam('transaction'); //codTrans
-        $amount = $request->getParam('amount');
+        //$amount = $request->getParam('amount');
 
         $transactionId = explode("-", $transactionId);
         $customerId = $transactionId[1];
@@ -156,16 +156,15 @@ class ConsolePaymentsController extends AbstractActionController
         $transaction = $this->cartasiTransactionsRepository->findOneById($transactionId);
 
         if (is_null($transaction)) {
-            echo 'no transaction ('.$transactionId.') found';
+            echo "no transaction ('.$transactionId.') found\n";
             exit();
         }else if (is_null($customer)){
-            echo 'no customer ('.$customerId.') found';
+            echo "no customer ('.$customerId.') found\n";
             exit();
         } else {
-            if (is_null($amount)){
-                $amount = $transaction->getAmount();
-            }
+            $amount = $transaction->getAmount();
             $this->paymentsService->refund($transactionId, $customer, $amount);
+            echo "finished ".$transactionId . "\n";
         }
     }
 
