@@ -219,7 +219,7 @@ var phoneJs = function (mobile) {
 
     var result = mobile;
     var prefix = "";
-    var dialcode = "";
+    var dialcode = "39";
 
     if (mobile.charAt(0) == '+') {
         var country = getCountry(mobile);
