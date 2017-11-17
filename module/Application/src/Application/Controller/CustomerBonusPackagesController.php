@@ -11,6 +11,7 @@ use SharengoCore\Exception\PackageNotFoundException;
 use SharengoCore\Exception\CustomerNotFoundException;
 use Cartasi\Entity\Contracts;
 use Cartasi\Service\CartasiContractsService;
+use SharengoCore\Service\CustomersPointsService;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -35,20 +36,28 @@ class CustomerBonusPackagesController extends AbstractActionController
      * @var CartasiContractsService
      */
     private $cartasiContractsService;
+    
+    /**
+     * @var CustomersPointsService
+     */
+    private $customersPointsService;
 
     /**
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
      * @param CartasiContractsService $cartasiContractsService
+     * @param CustomersPointsService $customersPointsService
      */
     public function __construct(
         CustomersBonusPackagesService $customersBonusPackagesService,
         BuyCustomerBonusPackage $buyCustomerBonusPackage,
-        CartasiContractsService $cartasiContractsService
+        CartasiContractsService $cartasiContractsService,
+        CustomersPointsService $customersPointsService
     ) {
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->buyCustomerBonusPackage = $buyCustomerBonusPackage;
         $this->cartasiContractsService = $cartasiContractsService;
+        $this->customersPointsService = $customersPointsService;
     }
 
     public function packageAction()
@@ -58,11 +67,15 @@ class CustomerBonusPackagesController extends AbstractActionController
         $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
 
         $customer = $this->identity();
-        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+        if($package->getType() === "Pacchetto"){
+            $contract = $this->cartasiContractsService->getCartasiContract($customer);
+        }else{
+            $contractPoint = $this->customersPointsService->buyPacketPoints($customer);
+        }
 
         $viewModel = new ViewModel([
             'package' => $package,
-            'hasContract' => $contract instanceof Contracts
+            'hasContract' => (($package->getType() === "Pacchetto") ? $contract instanceof Contracts : $contractPoint)
         ]);
 
         return $viewModel->setTerminal(true);
