@@ -16,14 +16,15 @@ class ConsolePaymentsControllerFactory implements FactoryInterface
         $customersService = $sharedServiceManager->get('SharengoCore\Service\CustomersService');
         $tripsService = $sharedServiceManager->get('SharengoCore\Service\TripsService');
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
-
+        $cartasiTransactionsRepository =  $entityManager->getRepository('\Cartasi\Entity\Transactions');
         return new ConsolePaymentsController(
             $entityManager,
             $tripPaymentsService,
             $paymentsService,
             $customersService,
             $tripsService,
-            $logger
+            $logger,
+            $cartasiTransactionsRepository
         );
     }
 }
