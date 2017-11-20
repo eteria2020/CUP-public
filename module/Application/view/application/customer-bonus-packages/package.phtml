@@ -37,11 +37,12 @@ if ($package->getCode()=="WOMEN") {
                             <p id="minutes" class="sng-text"><?= $this->package->getMinutes() ?></p>
                         </td>
                         <td class="sng-w-1-2">
-                            <h2>Prezzo:</h2>
                             <?php if($this->package->getType() === "Pacchetto"){ ?>
+                                <h2>Prezzo:</h2>
                                 <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
                             <?php }else{ ?>
-                                <p id="cost" class="sng-text">PUNTI <?= $this->package->getCost() ?></p>
+                                <h2>Punti:</h2>
+                                <p id="cost" class="sng-text"><?= $this->package->getCost() ?></p>
                             <?php } ?>
                         </td>
                     </tr>
@@ -75,7 +76,7 @@ if ($package->getCode()=="WOMEN") {
                         <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>">Conferma</a>
                     <?php endif; ?>
                 <?php }else{ ?>
-                    <p class="sng-text">Confermare l'acquisto del pacchetto utilizzando i punti ossigeno?</p>
+                    <p class="sng-text">Conferma per convertire i tuoi Punti Ossigeno</p>
                     <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
                 <?php } ?>
             </div>

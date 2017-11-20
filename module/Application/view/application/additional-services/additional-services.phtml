@@ -122,7 +122,7 @@ $mobile = $this->mobile;
                                             ?>
                                             </p>
                                         <?php }else{?>
-                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f PUNTI", $package->getCost()) ?></p>
+                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f punti", $package->getCost()) ?></p>
 
                                             <p class="block-sub-title">
                                             <?php
@@ -165,11 +165,11 @@ $mobile = $this->mobile;
                             <div class="block-data-table-row clearfix">
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Nome'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo/Punti'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista/Converti'); ?></div>
                             </div>
                             <!-- table header -->
                             <?php
@@ -209,7 +209,7 @@ $mobile = $this->mobile;
                                 <?php if($package->getType()==="Pacchetto"){ ?>
                                     <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <?php }else{ ?>
-                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.0f PUNTI", $package->getCost()) ?></div>
+                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.0f punti", $package->getCost()) ?></div>
                                 <?php } ?>
                                 <div class="block-data-table-td cw-1-7"><?= $validFrom ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
