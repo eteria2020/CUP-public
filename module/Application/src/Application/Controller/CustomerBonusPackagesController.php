@@ -5,13 +5,13 @@ namespace Application\Controller;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Entity\CustomersBonusPackages;
 use SharengoCore\Entity\Customers;
+use SharengoCore\Entity\CustomersPoints;
 use SharengoCore\Service\BuyCustomerBonusPackage;
 use SharengoCore\Traits\CallableParameter;
 use SharengoCore\Exception\PackageNotFoundException;
 use SharengoCore\Exception\CustomerNotFoundException;
 use Cartasi\Entity\Contracts;
 use Cartasi\Service\CartasiContractsService;
-use SharengoCore\Service\CustomersPointsService;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -36,28 +36,20 @@ class CustomerBonusPackagesController extends AbstractActionController
      * @var CartasiContractsService
      */
     private $cartasiContractsService;
-    
-    /**
-     * @var CustomersPointsService
-     */
-    private $customersPointsService;
 
     /**
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
      * @param CartasiContractsService $cartasiContractsService
-     * @param CustomersPointsService $customersPointsService
      */
     public function __construct(
         CustomersBonusPackagesService $customersBonusPackagesService,
         BuyCustomerBonusPackage $buyCustomerBonusPackage,
-        CartasiContractsService $cartasiContractsService,
-        CustomersPointsService $customersPointsService
+        CartasiContractsService $cartasiContractsService
     ) {
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->buyCustomerBonusPackage = $buyCustomerBonusPackage;
         $this->cartasiContractsService = $cartasiContractsService;
-        $this->customersPointsService = $customersPointsService;
     }
 
     public function packageAction()
@@ -67,15 +59,12 @@ class CustomerBonusPackagesController extends AbstractActionController
         $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
 
         $customer = $this->identity();
-        if($package->getType() === "Pacchetto"){
-            $contract = $this->cartasiContractsService->getCartasiContract($customer);
-        }else{
-            $contractPoint = $this->customersPointsService->buyPacketPoints($customer);
-        }
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
 
         $viewModel = new ViewModel([
             'package' => $package,
-            'hasContract' => (($package->getType() === "Pacchetto") ? $contract instanceof Contracts : $contractPoint)
+            'hasContract' => $contract instanceof Contracts
         ]);
 
         return $viewModel->setTerminal(true);
@@ -109,7 +98,7 @@ class CustomerBonusPackagesController extends AbstractActionController
             $success = $this->buyCustomerBonusPackage($customer, $package);
 
             if ($success) {
-                $this->flashMessenger()->addSuccessMessage('Acquisto del pacchetto bonus completato correttamente');
+                $this->flashMessenger()->addSuccessMessage('Acquisto del pacchetto completato correttamente');
             } else {
                 $this->flashMessenger()->addErrorMessage('Si è verificato un errore durante l\'acquisto del pacchetto richiesto');
             }
