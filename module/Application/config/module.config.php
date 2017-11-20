@@ -1907,39 +1907,6 @@ return [
                         ]
                     ]
                 ],
-                'recalculate-points-september' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'recalculate points september',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsoleBonusCompute',
-                            'action' => 'recalculate points september'
-                        ]
-                    ]
-                ],
-                'recalculate-points-october' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'recalculate points october',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsoleBonusCompute',
-                            'action' => 'recalculate points october'
-                        ]
-                    ]
-                ],
-                'recalculate-points-november' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'recalculate points november',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'ConsoleBonusCompute',
-                            'action' => 'recalculate points november'
-                        ]
-                    ]
-                ],
                 'add-point-cluster' => [
                     'type' => 'simple',
                     'options' => [
