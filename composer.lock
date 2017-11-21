@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "d3ddf582d7ab3e40a217cc3d3c0dfde5e2ed4399"
+                "reference": "8b3c184713ac68ec32adc749748da1dc51bb98b3"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-11-21 09:14:03"
+            "time": "2017-11-21 16:24:11"
         },
         {
             "name": "natxet/CssMin",
