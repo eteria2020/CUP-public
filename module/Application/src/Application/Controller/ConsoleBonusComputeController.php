@@ -526,8 +526,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
                                             'totaNumbCustomerProcess' => count($customers),
                                             'numbCustomerProcessed' => 0,
                                             'lastCustomer' => -1
-                                        ])
-                                    );
+                                            ])
+                                        );
         }
 
         $this->serverScriptService->writeRow($serverScript);
