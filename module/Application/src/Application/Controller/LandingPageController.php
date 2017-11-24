@@ -64,6 +64,11 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function b2bpromoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function chigiAction()
     {
         return (new viewModel())->setTerminal(true);
