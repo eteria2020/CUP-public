@@ -566,6 +566,17 @@ return [
                     ],
                 ],
             ],
+            'b2bpromo' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{b2bpromo}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'b2bpromo',
+                    ],
+                ],
+            ],
             'bikemi' => [
                 'type' => 'Segment',
                 'options' => [
