@@ -169,7 +169,7 @@ class ConsoleController extends AbstractActionController {
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $carsToOperative = [];
         $carsToMaintenance = [];
-        $batterySafetyTime = 5;
+        $batterySafetyTime = 1;
 
         $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
