@@ -38,7 +38,11 @@ if ($package->getCode()=="WOMEN") {
                         </td>
                         <td class="sng-w-1-2">
                             <h2>Prezzo:</h2>
-                            <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
+                            <?php if($this->package->getType() === "Pacchetto"){ ?>
+                                <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
+                            <?php }else{ ?>
+                                <p id="cost" class="sng-text">€ 0</p>
+                            <?php } ?>
                         </td>
                     </tr>
                     <tr>
@@ -62,13 +66,17 @@ if ($package->getCode()=="WOMEN") {
             </div>
 
             <div class="sng-footer">
-                <?php if ($this->hasContract): ?>
-                    <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                <?php if($this->package->getType() === "Pacchetto"){ ?>
+                    <?php if ($this->hasContract): ?>
+                        <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                        <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
+                    <?php else: ?>
+                        <p class="sng-text">Confermare l'acquisto registrando una carta di credito con Cartasi</p>
+                        <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>">Conferma</a>
+                    <?php endif; ?>
+                <?php }else{ ?>
                     <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
-                <?php else: ?>
-                    <p class="sng-text">Confermare l'acquisto registrando una carta di credito con Cartasi</p>
-                    <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>">Conferma</a>
-                <?php endif; ?>
+                <?php } ?>
             </div>
 
         </div>

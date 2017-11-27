@@ -87,7 +87,7 @@ $mobile = $this->mobile;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if($package->getType()==="Pacchetto"){
+                                if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti"){
                                     $hour = date("Gi");
                                     $hour = intval($hour);
                                     if($gender=="male" && $package->getCode()=="WOMEN" ){
@@ -104,33 +104,54 @@ $mobile = $this->mobile;
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
                                         <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?> <?= $package->getCode()=="CODE13" ? 'style="color:red"' :''?>><?= strtoupper($this->translate($package->getName())) ?></p>
-                                            <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
-                                            <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
+                                        <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
+                                        <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
+                                        <?php if($package->getType()==="Pacchetto"){ ?>
                                             <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
 
-                                        <p class="block-sub-title">
-                                        <?php
-                                        if($package->getMinutes()>0) {
-                                            $cost = ($package->getCost()/100) / $package->getMinutes();
-                                            $cost_round = sprintf("%.3f", $cost);
-                                            if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
-                                                $cost_round = substr($cost_round,0,strlen($cost_round)-1);
-                                            }
-                                            echo sprintf("%s &euro;/", $cost_round).$this->translate('min');
-                                        }
-                                        ?>
-                                        </p>
-                                        <p class="block-sub-title"><?= $this->translate('Validità') ?>
+                                            <p class="block-sub-title">
                                             <?php
-                                                if( $package->getCode()=="WOMEN"){
-                                                    echo 'una notte';
-                                                } else {
-                                                    // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                    $months = floor($package->getDuration() / 30);
-                                                    echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                            if($package->getMinutes()>0) {
+                                                $cost = ($package->getCost()/100) / $package->getMinutes();
+                                                $cost_round = sprintf("%.3f", $cost);
+                                                if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
+                                                    $cost_round = substr($cost_round,0,strlen($cost_round)-1);
                                                 }
+                                                echo sprintf("%s &euro;/", $cost_round).$this->translate('min');
+                                            }
                                             ?>
-                                        </p>
+                                            </p>
+                                            <p class="block-sub-title"><?= $this->translate('Validità') ?>
+                                                <?php
+                                                    if( $package->getCode()=="WOMEN"){
+                                                        echo 'una notte';
+                                                    } else {
+                                                        // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                                        $months = floor($package->getDuration() / 30);
+                                                        echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                    }
+                                                ?>
+                                            </p>
+                                        <?php }else{?>
+                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f", $package->getCost()) ?></p>
+                                            <p class="block-sub-title">
+                                            <?php
+                                                $cost_round = "0,0";
+                                                echo sprintf("%.1f &euro;/", $cost_round).$this->translate('min');
+                                            ?>
+                                            </p>
+                                            <p class="block-sub-title"><?= $this->translate('Validità') ?>
+                                                <?php
+                                                    if( $package->getCode()=="WOMEN"){
+                                                        echo 'una notte';
+                                                    } else {
+                                                        // Duration is expressed in days for packet points
+                                                        $day = floor($package->getDuration());
+                                                        echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
+                                                    }
+                                                ?>
+                                            </p>
+                                        <?php }?>  
                                     </div>
                                 </div>
                             </div>
@@ -152,13 +173,13 @@ $mobile = $this->mobile;
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista'); ?></div>
+                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista/Converti'); ?></div>
                             </div>
                             <!-- table header -->
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if($package->getType()==="Pacchetto"){
+                                    if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti"){
                                         if($gender=="male" && $package->getCode()=="WOMEN" ){
                                             continue;
                                         }
@@ -189,7 +210,11 @@ $mobile = $this->mobile;
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                <?php if($package->getType()==="Pacchetto"){ ?>
+                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                <?php }else{ ?>
+                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.0f &euro;", 0) ?></div>
+                                <?php } ?>
                                 <div class="block-data-table-td cw-1-7"><?= $validFrom ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
