@@ -133,7 +133,7 @@ $mobile = $this->mobile;
                                                 ?>
                                             </p>
                                         <?php }else{?>
-                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f punti", $package->getCost()) ?></p>
+                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f", $package->getCost()) ?></p>
                                             <p class="block-sub-title">
                                             <?php
                                                 $cost_round = "0,0";
