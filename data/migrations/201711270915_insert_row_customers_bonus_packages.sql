@@ -1,3 +1,2 @@
-
 INSERT INTO customers_bonus_packages (code, inserted_ts, minutes, type, valid_from, duration, valid_to, buyable_until, description, cost, notes, name, display_priority)
 VALUES ('BUONO_CORSA1400PUNTI', '2017-11-27 00:00:00', 25, 'PacchettoPunti', '2017-11-27 00:00:00', 7, null, '2017-12-31 23:59:59', 'Pacchetto Punti da 25 minuti con 1400 punti', 1400, 'Con questo buono corsa potrai guidare per 25 minuti una Share''ngo utilizzando i Punti Ossigeno che hai accumulato. I tuoi 25 minuti saranno aggiunti ai tuoi minuti bonus e potrai utilizzarli nei successivi 7 giorni.', 'BUONO 1.400 PUNTI', 8);
