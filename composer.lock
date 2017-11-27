@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core-business.git",
-                "reference": "a225e046c0249a5cbca9c2649f4e9207c351e2d2"
+                "reference": "8612fa0bd7ebeda9ee3ba572f60db123dde368c6"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-11-13 16:10:07"
+            "time": "2017-11-16 10:58:03"
         },
         {
             "name": "cup-web/public-business-module",
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
-                "reference": "f408f9ca68484de1dc313d77876711bda5da0ddd"
+                "reference": "e4ce5ec247af555af368f9da29e74f8b2f3a9964"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2017-11-22 15:56:45"
+            "time": "2017-11-27 08:40:26"
         },
         {
             "name": "natxet/CssMin",
