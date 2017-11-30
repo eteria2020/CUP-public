@@ -106,7 +106,6 @@ class ConsolePayInvoiceController extends AbstractActionController
 
         if (!$this->paymentScriptRunsService->isRunning()) {
             $scriptId = $this->paymentScriptRunsService->scriptStarted();
-
             $this->processPayments();
 
             $this->paymentScriptRunsService->scriptEnded($scriptId);
@@ -151,17 +150,30 @@ class ConsolePayInvoiceController extends AbstractActionController
     private function processPayments()
     {
         $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
-        $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-40 days');
-        $this->logger->log("Processing payments for " . count($tripPayments) . " trips\n");
-
-        $this->processPaymentsService->processPayments(
-            $tripPayments,
-            $this->avoidEmails,
-            $this->avoidCartasi,
-            $this->avoidPersistance
-        );
-
+        //$tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-40 days');
+        $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('40 days')[0];
+        $count = $verify["count"];
+        $this->logger->log("Processing payments for " . $count . " TOTAL trips\n");
+        $limit = 200;
+        $lastId = null;
+        while ($count > 0){
+            $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('40 days', $lastId, $limit)[0];
+            if ($verify["count"] == 0) {
+                break;
+            }
+            $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-40 days', $lastId, $limit);
+            $lastId = $verify["last"];
+            $count = $verify["count"];
+            $this->logger->log("Processing payments for " . count($tripPayments) . " trips\n");
+            $this->processPaymentsService->processPayments(
+                $tripPayments,
+                $this->avoidEmails,
+                $this->avoidCartasi,
+                $this->avoidPersistance
+            );
+            // clear the entity manager cache
+            $this->entityManager->clear();
+        }
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
