@@ -106,7 +106,6 @@ class ConsolePayInvoiceController extends AbstractActionController
 
         if (!$this->paymentScriptRunsService->isRunning()) {
             $scriptId = $this->paymentScriptRunsService->scriptStarted();
-
             $this->processPayments();
 
             $this->paymentScriptRunsService->scriptEnded($scriptId);
@@ -151,10 +150,11 @@ class ConsolePayInvoiceController extends AbstractActionController
     private function processPayments()
     {
         $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
-
+        //$tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-40 days');
         $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('40 days')[0];
         $count = $verify["count"];
-        $limit = 500;
+        $this->logger->log("Processing payments for " . $count . " TOTAL trips\n");
+        $limit = 200;
         $lastId = null;
         while ($count > 0){
             $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('40 days', $lastId, $limit)[0];
@@ -171,10 +171,9 @@ class ConsolePayInvoiceController extends AbstractActionController
                 $this->avoidCartasi,
                 $this->avoidPersistance
             );
-
+            // clear the entity manager cache
             $this->entityManager->clear();
         }
-
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
