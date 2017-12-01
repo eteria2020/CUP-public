@@ -174,6 +174,9 @@ class ConsolePayInvoiceController extends AbstractActionController
             // clear the entity manager cache
             $this->entityManager->clear();
         }
+
+        $this->processPaymentsService->processPaymentsCompleted($this->avoidEmails);
+
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
