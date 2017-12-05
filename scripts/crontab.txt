@@ -32,7 +32,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # every day
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
-10 02 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
+30 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 
 00 10 * * *     www-data        /usr/local/scripts/registration_invoices.sh
 10 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_late_payers.sh
