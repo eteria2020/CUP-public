@@ -8,9 +8,9 @@ echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/pay_invo
 php /srv/apps/sharengo-publicsite/public/index.php generate locations
 php /srv/apps/sharengo-publicsite/public/index.php pay invoice | tee -a /srv/apps/sharengo-publicsite/data/log/pay_invoice.log
 
-ts=$(date +'%D %T')
-echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/pay_invoice_wrong.log
-php /srv/apps/sharengo-publicsite/public/index.php retry wrong payments | tee -a /srv/apps/sharengo-publicsite/data/log/pay_invoice_wrong.log
+#ts=$(date +'%D %T')
+#echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/pay_invoice_wrong.log
+#php /srv/apps/sharengo-publicsite/public/index.php retry wrong payments | tee -a /srv/apps/sharengo-publicsite/data/log/pay_invoice_wrong.log
 
 ts=$(date +'%D %T')
 echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/business_pay_invoice.log
