@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f46d21ee0ed53bf3e4053c5bcb7c6758",
-    "content-hash": "25ab21353e0957eb79ddbb928961263f",
+    "hash": "d586ea1e9b8b493521cd5221a89d3ff0",
+    "content-hash": "811e95ce0b6871911c43cc6b950ea61e",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2422,7 +2422,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/core.git",
+                "url": "ssh://git@git.sharengo.it/cup-it/core.git",
                 "reference": "efb823b0a4c5098b62f5344d1c3ae2ee8de2605a"
             },
             "require": {
@@ -2941,7 +2941,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://git@gitlab.bulweria.com/sharengo-web/cartasi.git",
+                "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
                 "reference": "3cf1666d9f151850783d3317349f8edefb2cbb5a"
             },
             "require": {
