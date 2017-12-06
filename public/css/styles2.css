@@ -787,7 +787,7 @@ textarea {
     background-image: -o-linear-gradient(top, #08c, #0077b3);
     background-image: linear-gradient(to bottom, #08c, #0077b3);
     background-repeat: repeat-x;
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 }
 .dropdown-menu>.active>a,
 .dropdown-menu>.active>a:hover,
@@ -802,7 +802,7 @@ textarea {
     background-image: -o-linear-gradient(top, #08c, #0077b3);
     background-image: linear-gradient(to bottom, #08c, #0077b3);
     background-repeat: repeat-x;
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 }
 .dropdown-menu>.disabled>a,
 .dropdown-menu>.disabled>a:hover,
@@ -814,7 +814,7 @@ textarea {
     text-decoration: none;
     background-color: transparent;
     background-image: none;
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
     cursor: default
 }
 .open {
@@ -2465,7 +2465,7 @@ h4 {
     vertical-align: -15%
 }
 .fa-2x {
-    font-size: 2em
+    font-size: 1.8em
 }
 .fa-3x {
     font-size: 3em
@@ -2544,31 +2544,31 @@ h4 {
     }
 }
 .fa-rotate-90 {
-    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=1);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg)
 }
 .fa-rotate-180 {
-    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=2);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg)
 }
 .fa-rotate-270 {
-    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=3);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
     -webkit-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     transform: rotate(270deg)
 }
 .fa-flip-horizontal {
-    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
     -webkit-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1)
 }
 .fa-flip-vertical {
-    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
     -webkit-transform: scale(1, -1);
     -ms-transform: scale(1, -1);
     transform: scale(1, -1)
@@ -7396,7 +7396,7 @@ screen and (min-resolution: 1dppx) {
         margin-left: 0
     }
     .app .module-wrapper-app.hide-side-bar .module-column-app.side-sx .block-nav-app ul {
-        height: 400px;
+        height: 430px;
         overflow: hidden
     }
     .app .module-wrapper-app.hide-side-bar .module-column-app .module-heading-app .module-main-title {
@@ -7488,7 +7488,8 @@ screen and (min-resolution: 1dppx) {
         padding-left: 0
     }
     .app .module-column-app.side-dx .block-user-info-app {
-        margin-right: 20px
+        margin-right: 20px;
+        visibility: hidden;
     }
     .app .module-column-app.side-dx .module-column-app-content {
         padding-right: 20px;
@@ -7504,7 +7505,8 @@ screen and (min-resolution: 1dppx) {
         webkit-backface-visibility: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: left
+        text-align: left;
+        font-size: 18px;
     }
     .app .module-column-app.side-dx .module-column-app-content {
         overflow: auto;

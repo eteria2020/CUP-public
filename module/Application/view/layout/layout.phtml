@@ -21,6 +21,7 @@
                 'href' => $this->basePath() . '/img/favicon.ico'
             ])
             ->appendStylesheet('//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300')
+            ->appendStylesheet($this->basePath('css/icons.css'), 'screen')
             ->appendStylesheet($this->basePath('css/styles.css'), 'screen')
             ->appendStylesheet($this->basePath('css/addons.css'), 'screen')
             ->appendStylesheet($this->basePath('css/print.css'), 'print')
@@ -41,10 +42,19 @@
             ->appendFile('//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js')
             ->appendFile($this->basePath('js/jquery.cookiesdirective.js'));
 
+        $this->headScript()->setAllowArbitraryAttributes(true);
         $this->headScript()
+            // Intercom section
             ->appendScript($this->intercomSettings())
-            ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
+            ->appendFile($this->basePath('js/intercom.js'), 'text/javascript')
 
+            // Criteo section
+            ->appendFile('//static.criteo.net/js/ld/ld.js',
+                'text/javascript',
+                array('async' => 'true'))
+            ->appendFile($this->basePath('js/criteo.js'), 'text/javascript');
+
+            // Google Analytics section
             if ($this->config('googleAnalytics', 'key')) {
                 $this->headScript()->appendScript(
                     "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

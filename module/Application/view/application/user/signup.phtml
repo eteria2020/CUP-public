@@ -2,7 +2,7 @@
 $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-        ->appendFile($this->basePath('js/signup.js'));
+        ->appendFile($this->basePath('js/signup.js?v=3.7'));
 
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
@@ -11,41 +11,46 @@ $this->headLink()
 
 <!-- main -->
 <div id="main">
-    <!-- overlay -->
-    <div id="sng-overlay" style="visibility: hidden">
-        <div class="table">
-            <div class="cell">
-                <div class="box">
-                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
-                    <div id="sng-overlay-content1">
-                        <div class="content-more" style="background-color:#666666">
-                            <h3>ATTENZIONE</h3>
-                            <br>
-                            <ul>
-                                <p style="color:#b30000;text-align: justify;"><b>Domenica 4 Dicembre dalle ore 8 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</b></p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- overlay -->
 
     <div class="content">
         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
         <?php if (!$this->hasDiscount): ?>
-            <div class="block-form w-3-4 auto-margin clearfix">
-                <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
-                    <img src="<?= $this->basePath('images/banner_benvenuto.jpg') ?>"/>
-                    <label class="small-form content-align-center" style="line-height: 1;color:#000000">
-                        <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?>
+                <div class="block-form w-3-4 auto-margin clearfix">
+                    <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
+                        <img src="<?= $this->basePath('images/banner_benvenuto.jpg') ?>"/>
+                        <label class="small-form content-align-center" style="line-height: 1;color:#000000">
+                            <!-- <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?> -->
+                        <?php
+                        /* 1 euro subscription CSD-1406 */
+                        $now = new DateTime();
+                        $startdate = new DateTime("2017-11-01 00:00:00");
+                        $enddate = new DateTime("2017-12-31 23:59:59");
+                        if ($startdate <= $now && $now <= $enddate) {
+                            echo $this->translate('Costo iscrizione 1 euro con 15 minuti bonus. Premi chat ');
+                        } else {
+                            echo $this->translate('Costo iscrizione 10 euro con 30 minuti bonus, salvo promozioni. Premi chat ');
+                        }?>
+                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
+                            <?php echo $this->translate('per aiuto.'); ?>
+                        </label>
                         <br>
-                        <?= $this->translate('Se serve aiuto durante l’iscrizione usa il pulsante chat.'); ?>
-                        <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
-                    </label>
+                        <label class="small-form content-align-center" style="line-height: 1;color:#ccc3c3">
+                            <!-- <?= $this->translate('The registration fee is 10€ with 30 minutes bonus (standard condition without promotions).'); ?> -->
+                        <?php
+                        /* 1 euro subscription CSD-1401 */
+                        if ($startdate <= $now && $now <= $enddate) {
+                            echo $this->translate('Registration fee is 1€ with 15 bonus minutes. Push chat ');
+                        } else {
+                            echo $this->translate('Registration fee 10 euro with 30 bonus minutes, except for promotion. Push chat ');
+                        }?>
+                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
+                            <?php
+                            echo $this->translate('for help.');
+
+                        ?>
+                        </label>
+                    </div>
                 </div>
-            </div>
         <?php endif; ?>
     </div>
 
@@ -68,8 +73,44 @@ $this->headLink()
         ?>
 
         <div class="block-form w-3-4 auto-margin clearfix">
+            <!-- block-row-field -->
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><i class="fa fa-globe"></i> <?= $this->translate('Città preferita'); ?></h2>
+                <h2 id="promoCodeTitle"><?= $this->translate('Codice promo'); ?></h2>
+            </div>
+            <!-- block-row-field -->
+            <div class="block-row-field  content-align-center  clearfix">
+                <div class='block-field  auto-margin w-2-3 '>
+                <div class="block-field bw-f  w-2-3">
+                    <p>
+                        <?php
+                        $promocode = $this->form->get('promocode')->get('promocode');
+                        echo $this->formElement($promocode);
+                        ?>
+                    </p>
+
+
+
+                </div>
+                <div class="block-field bw-f last  w-1-3">
+                    <button  type="button" id="buttonVerifyPromo">Applica</button>
+                </div>
+                    <div id="promodiv" class=""></div>
+                    <div id="errorepromo">
+                        <?php echo $this->formElementErrors($promocode, ['class' => 'errors']); ?>
+
+                    </div>
+                </div>
+               
+            </div>
+            
+            
+            
+            
+        </div>
+
+        <div class="block-form w-3-4 auto-margin clearfix">
+            <div class="block-form-section content-align-center margin-bottom">
+                <h2><i class="fa fa-globe"></i> <?= $this->translate('Citt&agrave; preferita - Favourite city'); ?></h2>
             </div>
 
             <div class="block-field auto-margin w-1-3">
@@ -105,6 +146,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Ripeti l\'email'); ?></label>
+                        <small><?= $this->translate('(Repeat email)'); ?></small>
                         <?php
                         $email2 = $this->form->get('user')->get('email2');
                         echo $this->formElement($email2);
@@ -130,7 +172,8 @@ $this->headLink()
                 </div>
 
                 <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Password'); ?></label>
+                    <p> <label><?= $this->translate('Ripeti password'); ?></label>
+                        <small><?= $this->translate('(Repeat password)'); ?></small >
                         <?php
                         $password2 = $this->form->get('user')->get('password2');
                         echo $this->formElement($password2);
@@ -151,6 +194,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Genere'); ?></label>
+                        <small><?= $this->translate('(Gender)'); ?></small>
                         <?php
                         $gender = $this->form->get('user')->get('gender');
                         echo $this->formElement($gender);
@@ -163,6 +207,7 @@ $this->headLink()
 
                     <div class="block-field bw-f w-2-4">
                         <p> <label><?= $this->translate('Nome'); ?></label>
+                            <small><?= $this->translate('(Name on Driver’s license)'); ?></small>
                             <?php
                             $name = $this->form->get('user')->get('name');
                             echo $this->formElement($name);
@@ -173,6 +218,7 @@ $this->headLink()
 
                     <div class="block-field bw-f w-2-4">
                         <p> <label><?= $this->translate('Cognome'); ?></label>
+                            <small><?= $this->translate('(Surname on Driver’s license)'); ?></small>
                             <?php
                             $surname = $this->form->get('user')->get('surname');
                             echo $this->formElement($surname);
@@ -191,6 +237,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3">
                     <p> <label><?= $this->translate('Data di nascita'); ?></label>
+                        <small><?= $this->translate('(Date of birth)'); ?></small>
                         <?php
                         $birthDate = $this->form->get('user')->get('birthDate');
                         echo $this->formElement($birthDate);
@@ -201,6 +248,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3">
                     <p> <label><?= $this->translate('Stato di nascita'); ?></label>
+                        <small><?= $this->translate('(State of birth)'); ?></small>
                         <?php
                         $birthCountry = $this->form->get('user')->get('birthCountry');
                         echo $this->formElement($birthCountry);
@@ -211,6 +259,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3 last">
                     <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
+                        <small><?= $this->translate('(Province of birth)'); ?></small>
                         <?php
                         $birthProvince = $this->form->get('user')->get('birthProvince');
                         echo $this->formElement($birthProvince);
@@ -228,6 +277,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Comune di nascita'); ?></label>
+                        <small><?= $this->translate('(City of birth)'); ?></small>
                         <?php
                         $birthTown = $this->form->get('user')->get('birthTown');
                         $select = '<select name="' . $birthTown->getName() . '" ';
@@ -251,6 +301,7 @@ $this->headLink()
 
                     <div class="block-field bw-f w-3-4">
                         <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
+                            <small><?= $this->translate('(Residence address)'); ?></small>
                             <?php
                             $address = $this->form->get('user')->get('address');
                             echo $this->formElement($address);
@@ -260,7 +311,8 @@ $this->headLink()
                     </div>
 
                     <div class="block-field bw-f last w-1-4">
-                        <p> <label><?= $this->translate('Cap'); ?></label>
+                        <p> <label><?= $this->translate('Cap'); ?></label><br/>
+                            <small><?= $this->translate('(Zip code)'); ?></small>
                             <?php
                             $zipCode = $this->form->get('user')->get('zipCode');
                             echo $this->formElement($zipCode);
@@ -279,6 +331,7 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Citt&agrave;'); ?></label>
+                        <small><?= $this->translate('(Country)'); ?></small>
                         <?php
                         $town = $this->form->get('user')->get('town');
                         echo $this->formElement($town);
@@ -288,7 +341,8 @@ $this->headLink()
                 </div>
 
                 <div class="block-field last bw-f w-3-4">
-                    <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo Paese se risiedi all\'estero'); ?></label>
+                    <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo indirizzo di domicilio se diverso da residenza'); ?></label>
+                        <small><?= $this->translate('(Additional information - Insert here your domicile address)'); ?></small>
                         <?php
                         $addressInfo = $this->form->get('user')->get('addressInfo');
                         echo $this->formElement($addressInfo);
@@ -305,16 +359,19 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Codice Fiscale'); ?></label>
+                        <small><?= $this->translate('(Tax code)'); ?></small>
                         <?php
                         $taxCode = $this->form->get('user')->get('taxCode');
                         echo $this->formElement($taxCode);
                         echo $this->formElementErrors($taxCode, ['class' => 'errors']);
                         ?>
+
                     </p>
                 </div>
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Partita IVA (solo per ditte individuali e professionisti)'); ?></label>
+                        <small><?= $this->translate('(Italian VAT NUMBER only)'); ?></small>
                         <?php
                         $vat = $this->form->get('user')->get('vat');
                         echo $this->formElement($vat);
@@ -328,29 +385,300 @@ $this->headLink()
 
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-4">
+                    <label><?= $this->translate('Prefisso'); ?></label>
+                    <small><?= $this->translate('(Prefix)'); ?></small>
+                    <select id="dialCode">
+                        <option data-countryCode="IT" value="39" selected>Italia (+39)</option>
+                        <option disabled="disabled">----------</option>
+                        <option data-countryCode="AT" value="43">Austria (+43)</option>
+                        <option data-countryCode="BE" value="32">Belgium (+32)</option>
+                        <option data-countryCode="BG" value="359">Bulgaria (+359)</option>
+                        <option data-countryCode="HR" value="385">Croatia (+385)</option>
+                        <option data-countryCode="CY" value="90">Cyprus - North (+90)</option>
+                        <option data-countryCode="CY" value="357">Cyprus - South (+357)</option>
+                        <option data-countryCode="CZ" value="420">Czech Republic (+420)</option>
+                        <option data-countryCode="DK" value="45">Denmark (+45)</option>
+                        <option data-countryCode="EE" value="372">Estonia (+372)</option>
+                        <option data-countryCode="FI" value="358">Finland (+358)</option>
+                        <option data-countryCode="FR" value="33">France (+33)</option>
+                        <option data-countryCode="DE" value="49">Germany (+49)</option>
+                        <option data-countryCode="GR" value="30">Greece (+30)</option>
+                        <option data-countryCode="HU" value="36">Hungary (+36)</option>
+                        <option data-countryCode="IE" value="353">Ireland (+353)</option>
+                        <option data-countryCode="LV" value="371">Latvia (+371)</option>
+                        <option data-countryCode="LI" value="417">Liechtenstein (+417)</option>
+                        <option data-countryCode="LT" value="370">Lithuania (+370)</option>
+                        <option data-countryCode="LU" value="352">Luxembourg (+352)</option>
+                        <option data-countryCode="MT" value="356">Malta (+356)</option>
+                        <option data-countryCode="MC" value="377">Monaco (+377)</option>
+                        <option data-countryCode="NL" value="31">Netherlands (+31)</option>
+                        <option data-countryCode="PL" value="48">Poland (+48)</option>
+                        <option data-countryCode="PT" value="351">Portugal (+351)</option>
+                        <option data-countryCode="RO" value="40">Romania (+40)</option>
+                        <option data-countryCode="RU" value="7">Russia (+7)</option>
+                        <option data-countryCode="SM" value="378">San Marino (+378)</option>
+                        <option data-countryCode="SK" value="421">Slovak Republic (+421)</option>
+                        <option data-countryCode="SI" value="386">Slovenia (+386)</option>
+                        <option data-countryCode="ES" value="34">Spain (+34)</option>
+                        <option data-countryCode="SE" value="46">Sweden (+46)</option>
+                        <option data-countryCode="CH" value="41">Switzerland (+41)</option>
+                        <option data-countryCode="GB" value="44">UK (+44)</option>
+                        <option data-countryCode="VA" value="379">Vatican City (+379)</option>
+                        <option disabled="disabled">Other Countries</option>
+                        <option data-countryCode="DZ" value="213">Algeria (+213)</option>
+                        <option data-countryCode="AD" value="376">Andorra (+376)</option>
+                        <option data-countryCode="AO" value="244">Angola (+244)</option>
+                        <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
+                        <option data-countryCode="AG" value="1268">Antigua &amp; Barbuda (+1268)</option>
+                        <option data-countryCode="AR" value="54">Argentina (+54)</option>
+                        <option data-countryCode="AM" value="374">Armenia (+374)</option>
+                        <option data-countryCode="AW" value="297">Aruba (+297)</option>
+                        <option data-countryCode="AU" value="61">Australia (+61)</option>
+                        <option data-countryCode="AZ" value="994">Azerbaijan (+994)</option>
+                        <option data-countryCode="BS" value="1242">Bahamas (+1242)</option>
+                        <option data-countryCode="BH" value="973">Bahrain (+973)</option>
+                        <option data-countryCode="BD" value="880">Bangladesh (+880)</option>
+                        <option data-countryCode="BB" value="1246">Barbados (+1246)</option>
+                        <option data-countryCode="BY" value="375">Belarus (+375)</option>
+                        <option data-countryCode="BZ" value="501">Belize (+501)</option>
+                        <option data-countryCode="BJ" value="229">Benin (+229)</option>
+                        <option data-countryCode="BM" value="1441">Bermuda (+1441)</option>
+                        <option data-countryCode="BT" value="975">Bhutan (+975)</option>
+                        <option data-countryCode="BO" value="591">Bolivia (+591)</option>
+                        <option data-countryCode="BA" value="387">Bosnia Herzegovina (+387)</option>
+                        <option data-countryCode="BW" value="267">Botswana (+267)</option>
+                        <option data-countryCode="BR" value="55">Brazil (+55)</option>
+                        <option data-countryCode="BN" value="673">Brunei (+673)</option>
+                        <option data-countryCode="BF" value="226">Burkina Faso (+226)</option>
+                        <option data-countryCode="BI" value="257">Burundi (+257)</option>
+                        <option data-countryCode="KH" value="855">Cambodia (+855)</option>
+                        <option data-countryCode="CM" value="237">Cameroon (+237)</option>
+                        <option data-countryCode="CA" value="1">Canada (+1)</option>
+                        <option data-countryCode="CV" value="238">Cape Verde Islands (+238)</option>
+                        <option data-countryCode="KY" value="1345">Cayman Islands (+1345)</option>
+                        <option data-countryCode="CF" value="236">Central African Republic (+236)</option>
+                        <option data-countryCode="CL" value="56">Chile (+56)</option>
+                        <option data-countryCode="CN" value="86">China (+86)</option>
+                        <option data-countryCode="CO" value="57">Colombia (+57)</option>
+                        <option data-countryCode="KM" value="269">Comoros (+269)</option>
+                        <option data-countryCode="CG" value="242">Congo (+242)</option>
+                        <option data-countryCode="CK" value="682">Cook Islands (+682)</option>
+                        <option data-countryCode="CR" value="506">Costa Rica (+506)</option>
+                        <!-- <option data-countryCode="CU" value="53">Cuba (+53)</option> -->
+                        <option data-countryCode="DJ" value="253">Djibouti (+253)</option>
+                        <option data-countryCode="DM" value="1809">Dominica (+1809)</option>
+                        <option data-countryCode="DO" value="1809">Dominican Republic (+1809)</option>
+                        <option data-countryCode="EC" value="593">Ecuador (+593)</option>
+                        <option data-countryCode="EG" value="20">Egypt (+20)</option>
+                        <option data-countryCode="SV" value="503">El Salvador (+503)</option>
+                        <option data-countryCode="GQ" value="240">Equatorial Guinea (+240)</option>
+                        <option data-countryCode="ER" value="291">Eritrea (+291)</option>
+                        <option data-countryCode="ET" value="251">Ethiopia (+251)</option>
+                        <option data-countryCode="FK" value="500">Falkland Islands (+500)</option>
+                        <option data-countryCode="FO" value="298">Faroe Islands (+298)</option>
+                        <option data-countryCode="FJ" value="679">Fiji (+679)</option>
+                        <option data-countryCode="GF" value="594">French Guiana (+594)</option>
+                        <option data-countryCode="PF" value="689">French Polynesia (+689)</option>
+                        <option data-countryCode="GA" value="241">Gabon (+241)</option>
+                        <option data-countryCode="GM" value="220">Gambia (+220)</option>
+                        <option data-countryCode="GE" value="7880">Georgia (+7880)</option>
+                        <option data-countryCode="GH" value="233">Ghana (+233)</option>
+                        <option data-countryCode="GI" value="350">Gibraltar (+350)</option>
+                        <option data-countryCode="GL" value="299">Greenland (+299)</option>
+                        <option data-countryCode="GD" value="1473">Grenada (+1473)</option>
+                        <option data-countryCode="GP" value="590">Guadeloupe (+590)</option>
+                        <option data-countryCode="GU" value="671">Guam (+671)</option>
+                        <option data-countryCode="GT" value="502">Guatemala (+502)</option>
+                        <option data-countryCode="GN" value="224">Guinea (+224)</option>
+                        <option data-countryCode="GW" value="245">Guinea - Bissau (+245)</option>
+                        <option data-countryCode="GY" value="592">Guyana (+592)</option>
+                        <option data-countryCode="HT" value="509">Haiti (+509)</option>
+                        <option data-countryCode="HN" value="504">Honduras (+504)</option>
+                        <option data-countryCode="HK" value="852">Hong Kong (+852)</option>
+                        <option data-countryCode="IS" value="354">Iceland (+354)</option>
+                        <option data-countryCode="IN" value="91">India (+91)</option>
+                        <option data-countryCode="ID" value="62">Indonesia (+62)</option>
+                        <option data-countryCode="IQ" value="964">Iraq (+964)</option>
+                        <!-- <option data-countryCode="IR" value="98">Iran (+98)</option> -->
+                        <option data-countryCode="IL" value="972">Israel (+972)</option>
+                        <option data-countryCode="JM" value="1876">Jamaica (+1876)</option>
+                        <option data-countryCode="JP" value="81">Japan (+81)</option>
+                        <option data-countryCode="JO" value="962">Jordan (+962)</option>
+                        <option data-countryCode="KZ" value="7">Kazakhstan (+7)</option>
+                        <option data-countryCode="KE" value="254">Kenya (+254)</option>
+                        <option data-countryCode="KI" value="686">Kiribati (+686)</option>
+                        <!-- <option data-countryCode="KP" value="850">Korea - North (+850)</option> -->
+                        <option data-countryCode="KR" value="82">Korea - South (+82)</option>
+                        <option data-countryCode="KW" value="965">Kuwait (+965)</option>
+                        <option data-countryCode="KG" value="996">Kyrgyzstan (+996)</option>
+                        <option data-countryCode="LA" value="856">Laos (+856)</option>
+                        <option data-countryCode="LB" value="961">Lebanon (+961)</option>
+                        <option data-countryCode="LS" value="266">Lesotho (+266)</option>
+                        <option data-countryCode="LR" value="231">Liberia (+231)</option>
+                        <option data-countryCode="LY" value="218">Libya (+218)</option>
+                        <option data-countryCode="MO" value="853">Macao (+853)</option>
+                        <option data-countryCode="MK" value="389">Macedonia (+389)</option>
+                        <option data-countryCode="MG" value="261">Madagascar (+261)</option>
+                        <option data-countryCode="MW" value="265">Malawi (+265)</option>
+                        <option data-countryCode="MY" value="60">Malaysia (+60)</option>
+                        <option data-countryCode="MV" value="960">Maldives (+960)</option>
+                        <option data-countryCode="ML" value="223">Mali (+223)</option>
+                        <option data-countryCode="MH" value="692">Marshall Islands (+692)</option>
+                        <option data-countryCode="MQ" value="596">Martinique (+596)</option>
+                        <option data-countryCode="MR" value="222">Mauritania (+222)</option>
+                        <option data-countryCode="YT" value="269">Mayotte (+269)</option>
+                        <option data-countryCode="MX" value="52">Mexico (+52)</option>
+                        <option data-countryCode="FM" value="691">Micronesia (+691)</option>
+                        <option data-countryCode="MD" value="373">Moldova (+373)</option>
+                        <option data-countryCode="MN" value="976">Mongolia (+976)</option>
+                        <option data-countryCode="MS" value="1664">Montserrat (+1664)</option>
+                        <option data-countryCode="MA" value="212">Morocco (+212)</option>
+                        <option data-countryCode="MZ" value="258">Mozambique (+258)</option>
+                        <option data-countryCode="MN" value="95">Myanmar (+95)</option>
+                        <option data-countryCode="NA" value="264">Namibia (+264)</option>
+                        <option data-countryCode="NR" value="674">Nauru (+674)</option>
+                        <option data-countryCode="NP" value="977">Nepal (+977)</option>
+                        <option data-countryCode="NC" value="687">New Caledonia (+687)</option>
+                        <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
+                        <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
+                        <option data-countryCode="NE" value="227">Niger (+227)</option>
+                        <option data-countryCode="NG" value="234">Nigeria (+234)</option>
+                        <option data-countryCode="NU" value="683">Niue (+683)</option>
+                        <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
+                        <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
+                        <option data-countryCode="NO" value="47">Norway (+47)</option>
+                        <option data-countryCode="OM" value="968">Oman (+968)</option>
+                        <option data-countryCode="PK" value="92">Pakistan (+92)</option>
+                        <option data-countryCode="PW" value="680">Palau (+680)</option>
+                        <option data-countryCode="PA" value="507">Panama (+507)</option>
+                        <option data-countryCode="PG" value="675">Papua New Guinea (+675)</option>
+                        <option data-countryCode="PY" value="595">Paraguay (+595)</option>
+                        <option data-countryCode="PE" value="51">Peru (+51)</option>
+                        <option data-countryCode="PH" value="63">Philippines (+63)</option>
+                        <option data-countryCode="PR" value="1787">Puerto Rico (+1787)</option>
+                        <option data-countryCode="QA" value="974">Qatar (+974)</option>
+                        <option data-countryCode="RE" value="262">Reunion (+262)</option>
+                        <option data-countryCode="RW" value="250">Rwanda (+250)</option>
+                        <option data-countryCode="ST" value="239">Sao Tome &amp; Principe (+239)</option>
+                        <option data-countryCode="SA" value="966">Saudi Arabia (+966)</option>
+                        <option data-countryCode="SN" value="221">Senegal (+221)</option>
+                        <option data-countryCode="CS" value="381">Serbia (+381)</option>
+                        <option data-countryCode="SC" value="248">Seychelles (+248)</option>
+                        <option data-countryCode="SL" value="232">Sierra Leone (+232)</option>
+                        <option data-countryCode="SG" value="65">Singapore (+65)</option>
+                        <option data-countryCode="SB" value="677">Solomon Islands (+677)</option>
+                        <option data-countryCode="SO" value="252">Somalia (+252)</option>
+                        <option data-countryCode="ZA" value="27">South Africa (+27)</option>
+                        <option data-countryCode="LK" value="94">Sri Lanka (+94)</option>
+                        <option data-countryCode="SH" value="290">St. Helena (+290)</option>
+                        <option data-countryCode="KN" value="1869">St. Kitts (+1869)</option>
+                        <option data-countryCode="SC" value="1758">St. Lucia (+1758)</option>
+                        <option data-countryCode="SR" value="597">Suriname (+597)</option>
+                        <option data-countryCode="SD" value="249">Sudan (+249)</option>
+                        <option data-countryCode="SZ" value="268">Swaziland (+268)</option>
+                        <!-- <option data-countryCode="SY" value="963">Syria (+963)</option> -->
+                        <option data-countryCode="TW" value="886">Taiwan (+886)</option>
+                        <option data-countryCode="TJ" value="992">Tajikistan (+992)</option>
+                        <option data-countryCode="TH" value="66">Thailand (+66)</option>
+                        <option data-countryCode="TG" value="228">Togo (+228)</option>
+                        <option data-countryCode="TO" value="676">Tonga (+676)</option>
+                        <option data-countryCode="TT" value="1868">Trinidad &amp; Tobago (+1868)</option>
+                        <option data-countryCode="TN" value="216">Tunisia (+216)</option>
+                        <option data-countryCode="TR" value="90">Turkey (+90)</option>
+                        <option data-countryCode="TM" value="993">Turkmenistan (+993)</option>
+                        <option data-countryCode="TC" value="1649">Turks &amp; Caicos Islands (+1649)</option>
+                        <option data-countryCode="TV" value="688">Tuvalu (+688)</option>
+                        <option data-countryCode="UG" value="256">Uganda (+256)</option>
+                        <option data-countryCode="UA" value="380">Ukraine (+380)</option>
+                        <option data-countryCode="AE" value="971">United Arab Emirates (+971)</option>
+                        <option data-countryCode="UY" value="598">Uruguay (+598)</option>
+                        <option data-countryCode="US" value="1">USA (+1)</option>
+                        <option data-countryCode="UZ" value="998">Uzbekistan (+998)</option>
+                        <option data-countryCode="VU" value="678">Vanuatu (+678)</option>
+                        <option data-countryCode="VE" value="58">Venezuela (+58)</option>
+                        <option data-countryCode="VN" value="84">Vietnam (+84)</option>
+                        <option data-countryCode="VG" value="1">Virgin Islands - British (+1)</option>
+                        <option data-countryCode="VI" value="1">Virgin Islands - US (+1)</option>
+                        <option data-countryCode="WF" value="681">Wallis &amp; Futuna (+681)</option>
+                        <option data-countryCode="YE" value="969">Yemen (North)(+969)</option>
+                        <option data-countryCode="YE" value="967">Yemen (South)(+967)</option>
+                        <option data-countryCode="ZM" value="260">Zambia (+260)</option>
+                        <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
 
-                <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Cellulare'); ?></label>
-                        <?php
-                        $mobile = $this->form->get('user')->get('mobile');
-                        echo $this->formElement($mobile);
-                        echo $this->formElementErrors($mobile, ['class' => 'errors']);
-                        ?>
-                    </p>
+                    </select>
                 </div>
 
-                <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Telefono (Opzionale)'); ?></label>
-                        <?php
-                        $phone = $this->form->get('user')->get('phone');
-                        echo $this->formElement($phone);
-                        echo $this->formElementErrors($phone, ['class' => 'errors']);
-                        ?>
-                    </p>
+                <div class="block-field bw-f w-3-4 last ">
+                    <div class="block-field bw-f w-2-4 ">
+
+                        <p> <label><?= $this->translate('Cellulare'); ?></label>
+                            <small><?= $this->translate('(Mobile phone)'); ?></small>
+                            <?php
+                            $mobile = $this->form->get('user')->get('mobile');
+                            echo $this->formElement($mobile);
+                            echo $this->formElementErrors($mobile, ['class' => 'errors']);
+                            ?>
+                        </p>
+
+                    </div>
+                    <div class="block-field bw-f last w-2-4">
+                        <label>&nbsp</label>
+                        <div  style="display: block;" id="buttonCode" >
+                            <button type="button" id="buttonSendCode">INVIA CODICE</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-            <!-- block-row-field -->
+
+
+
+            <div class="block-row-field clearfix">
+                <div id="confirmSmsCode" style="display: none;">
+                    <div class="block-field bw-f w-1-4"  id="textCode">
+                        <p> <label><?= $this->translate('Codice di Verifica'); ?></label>
+                            <small><?= $this->translate('(Verification code)'); ?></small>
+                            <?php
+                            $smsCode = $this->form->get('user')->get('smsCode');
+                            echo $this->formElement($smsCode);
+                            echo $this->formElementErrors($smsCode, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+                    <br>
+                    <p>
+                        Inserisci qui il codice di verifica inviato via sms<br/>
+                        <small>(Enter here the verification code received by sms)</small>
+                    </p>
+                </div>
+            </div>
+
+            <!-- row to field Job_type and 'How do you know share'ngo'-->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Professione (Opzionale)'); ?></label>
+                        <small><?= $this->translate('(Job [optional])'); ?></small>
+                        <?php
+                        $jobType = $this->form->get('user')->get('jobType');
+                        echo $this->formElement($jobType);
+                        echo $this->formElementErrors($jobType, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Come hai conosciuto Sharengo? (Opzionale)'); ?></label>
+                        <small><?= $this->translate('(How do you know Sharengo? [optional])'); ?></small>
+                        <?php
+                        $howToKnow = $this->form->get('user')->get('howToKnow');
+                        echo $this->formElement($howToKnow);
+                        echo $this->formElementErrors($howToKnow, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
 
             <?php
             $profilingCounter = $this->form->get('user')->get('profilingCounter');
@@ -375,124 +703,67 @@ $this->headLink()
                 </div>
 
             </div>
-            <!-- block-row-field -->
 
+            <!-- block-row-field -->
             <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Codice promo'); ?></h2>
+                <h2 id="generalConditionTitle"><?= $this->translate('Termini e Condizioni Generali di Contratto, Regolamento Tariffario e Privacy'); ?></h2>
             </div>
 
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
 
-                <div class="block-field auto-margin w-1-3">
-                    <p>
-                        <?php
-                        $promocode = $this->form->get('promocode')->get('promocode');
-                        echo $this->formElement($promocode);
-                        echo $this->formElementErrors($promocode, ['class' => 'errors']);
-                        ?>
-                    </p>
-                </div>
-
-            </div>
-            <!-- block-row-field -->
-
-            <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Condizioni Generali di Contratto'); ?></h2>
-            </div>
-
-            <!-- block-row-field -->
-            <div class="block-row-field clearfix">
-
-                <div class="block-field w-4-4">
+                <div class="block-field w-4-4" style="text-align: justify">
 
                     <p class="text-align-center">
-                        <a href="<?= $this->basePath('pdf/Contratto_Sharengo.pdf'); ?>" class="document-links">
-                            <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+                        <a href="<?= $this->basePath('pdf/car_sharing_def.pdf'); ?>" class="document-links" id="generalConditionLink">
+                            <?= $this->translate('Termini e Condizioni Generali di Contratto'); ?>
+                        </a>
+                        <a href="<?= $this->basePath('pdf/Regolamento_IT.pdf'); ?>" class="document-links" id="regulationConditionLink">
+                            <?= $this->translate('Regolamento Tariffario'); ?>
                         </a>
                     </p>
                     <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($generalCondition1) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $generalCondition1->getLabel(); ?>
+                        <span class='control-indicator' id="generalCondition1Text"><?php echo ' ' . $generalCondition1->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
                     <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($generalCondition2) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $generalCondition2->getLabel(); ?>
+                        <span class='control-indicator' id="generalCondition2Text"><?php echo ' ' . $generalCondition2->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
-
-                </div>
-
-            </div>
-            <!-- block-row-field -->
-
-            <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Regolamento'); ?></h2>
-            </div>
-
-            <!-- block-row-field -->
-            <div class="block-row-field clearfix">
-
-                <div class="block-field w-4-4">
-
-                    <p class="text-align-center">
-                        <a href="<?= $this->basePath('pdf/Regolamento_Sharengo.pdf'); ?>" class="document-links">
-                            <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
-                        </a>
-                    </p>
-                    <?php $regulationCondition1 = $this->form->get('user')->get('regulationCondition1'); ?>
-                    <label class='control checkbox small-form'>
-                        <?php echo $this->formElement($regulationCondition1) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $regulationCondition1->getLabel(); ?>
-                    </label>
-                    <br></br>
-                    <?php echo $this->formElementErrors($regulationCondition1, ['class' => 'errors']); ?>
-                    <?php $regulationCondition2 = $this->form->get('user')->get('regulationCondition2'); ?>
-                    <label class='control checkbox small-form'>
-                        <?php echo $this->formElement($regulationCondition2) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $regulationCondition2->getLabel(); ?>
-                    </label>
-                    <br></br>
-                    <?php echo $this->formElementErrors($regulationCondition2, ['class' => 'errors']); ?>
-
-                </div>
-
-            </div>
-            <!-- block-row-field -->
-
-            <div class="block-form-section content-align-center margin-bottom">
-                <h2><?= $this->translate('Privacy'); ?></h2>
-            </div>
-
-            <!-- block-row-field -->
-            <div class="block-row-field clearfix">
-
-                <div class="block-field w-4-4">
-
-                    <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links">
-                        <?= $this->translate('Scarica il documento e verifica le condizioni'); ?>
+                    <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links" id="privacyConditionLink">
+                        <?= $this->translate('Informativa Privacy'); ?>
                     </a>
                     <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($privacyCondition) ?>
-                        <span class='control-indicator'></span><?php echo ' ' . $privacyCondition->getLabel(); ?>
+                        <span class='control-indicator' id="privacyConditionText"><?php echo ' ' . $privacyCondition->getLabel(); ?></span>
                     </label>
                     <br></br>
                     <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
+                    <?php $privacyInformation = $this->form->get('user')->get('privacyInformation'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($privacyInformation) ?>
+                        <span id="InfoPravacyText" class='control-indicator'></span>
+                    </label>
+                    <br></br>
+                    <?php echo $this->formElementErrors($privacyInformation, ['class' => 'errors']); ?>
+                    
                 </div>
-
             </div>
             <!-- block-row-field -->
 
+
             <div class="block-wrapper-button content-align-center">
-                <input type="reset" class="reset" name="" value="Annulla">
-                <input type="submit" name="" value="Avanti">
+                <input type="reset" class="reset" name="" id="cancelBtn" value="Annulla">
+                <input type="submit" name="" id="nextBtn" value="Avanti">
             </div>
+
 
             </form>
 
@@ -501,7 +772,26 @@ $this->headLink()
 
     </div>
     <!-- content -->
-
+    <!-- overlay -->
+    <!--<div id="sng-overlay" style="visibility: hidden">
+        <div class="table">
+            <div class="cell">
+                <div class="box" style="background:#fff;">
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
+                            <h3 style="background: #07ba50;color: #fff;">ATTENZIONE</h3>
+                            <br>
+                            <ul>
+                                <p style="color:black;text-align: justify; font-weight: 500;">Domenica 12 Febbraio dalle ore 9 alle ore 14 una manutenzione programmata del sistema di verifica delle patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le patenti verranno comunque convalidate entro luned&igrave; mattina.</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- overlay -->
 </div>
 <!-- main -->
 
@@ -524,27 +814,46 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
             birthTownValue = "<?= $birthTown->getValue() ?>";
 
     $(document).ready(function () {
-        overlay = $('#sng-overlay');
+            overlay = $('#sng-overlay');
 
-        var now = new Date( <? echo date("Y, n - 1, d, H, i, s") ?> );
-        var dateStart = new Date(2016, 11, 4,  7, 0, 0, 0);
-        var dateEnd   = new Date(2016, 11, 4, 15, 0, 0, 0);
+            var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
+var dateStart = new Date(2017, 1, 12,  9, 0, 0, 0);
+        var dateEnd   = new Date(2017, 1, 12, 14, 0, 0, 0);
 
-//        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
-//        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
+        //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
+    //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
 
         if (now > dateStart) {
             if (now < dateEnd) {
-                overlay.css("visibility", "visible");
-            }
-        }
+                    overlay.css("visibility", "visible");
+                }
+                }
 
-        $(".sng-overlay-close").click(function (e) {
-            e.preventDefault();
-            overlay.fadeOut(600, function () {
-                overlay.remove();
-            });
-        });
-    });
+                $(".sng-overlay-close").click(function (e) {
+                    e.preventDefault();
+                    overlay.fadeOut(600, function () {
+                            overlay.remove();
+                    });
+                    });
+
+                        // Criteo section
+                        var email = $("#email").val();
+                        var list = [];
+                        $("#fleet option").each(function() {
+                            if (parseInt($(this).val()) !== 0) {
+                                    list.push(parseInt($(this).val()));
+                        };
+                        });
+
+                        criteoViewListing(email, list);
+
+                        $("#fleet").change(function () {
+                                    var email = $("#email").val();
+                                    var fleetId = parseInt($(this).find(":selected").val());
+
+                                    criteoViewBasketItem(email, fleetId);
+                            });
+
+                            });
 
 </script>

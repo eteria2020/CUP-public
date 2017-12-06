@@ -2425,7 +2425,7 @@ section.wrapper {
     .menu_main ul.menu li a {
       font-weight: 500;
       color: #888;
-      font-size: 13px;
+      font-size: 12px;
       padding: 0 5px; }
       .no-touch .menu_main ul.menu li a:hover {
         color: black; }
@@ -2545,12 +2545,12 @@ section.wrapper {
     display: inline-block;
     margin-right: 10px; }
     .main_foot .seguici ul li.facebook a {
-      background-image: url("../images/tw_icon.png");
+      background-image: url("../images/fb_icon.png");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 30px; }
     .main_foot .seguici ul li.twitter a {
-      background-image: url("../images/fb_icon.png");
+      background-image: url("../images/tw_icon.png");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 30px; }

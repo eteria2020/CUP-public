@@ -55,13 +55,14 @@ class AvailableFleets extends AbstractHelper
             '<div class="block-languages block-menu">
                 <ul>
                     <li>
-                        <a class="js-show-element" data-longitude="%s" data-latitude="%s">
+                        <a class="js-show-element" data-longitude="%s" data-latitude="%s"  data-id="%s">
                             <span>%s</span>
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="js-collapse-box block-available-languages hidden">',
             $currentFleet->getLongitude(),
             $currentFleet->getLatitude(),
+            $currentFleet->getId(),
             $currentFleet->getName()
         );
 

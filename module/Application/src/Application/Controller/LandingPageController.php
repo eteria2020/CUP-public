@@ -29,13 +29,27 @@ class LandingPageController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    public function aidiaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function aldaiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function alconsAction()
     {
         return (new viewModel())->setTerminal(true);
     }
 
     public function anasAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function anteoAction()
     {
         return (new viewModel())->setTerminal(true);
     }
@@ -50,11 +64,46 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function b2bpromoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function chigiAction()
     {
         return (new viewModel())->setTerminal(true);
     }
 
+    public function coaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function coinAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function confesercentiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function controradioclubAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function comunedifirenzeAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function espressoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function eqSharingAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -70,21 +119,51 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function fidelizzandoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
     public function firenzeAction()
     {
         return (new viewModel())->setTerminal(true);
     }
 
+    public function flcgAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function futuraAction()
     {
         return (new viewModel())->setTerminal(true);
     }
-
-    public function gym16Action()
+    
+    public function gemelliAction()
     {
         return (new viewModel())->setTerminal(true);
     }
-
+    
+    public function greenAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function greenfiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function gym17Action()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function internAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function kpmgAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -105,11 +184,31 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
-    public function marketAction()
+    public function linkAction()
     {
         return (new viewModel())->setTerminal(true);
     }
 
+    public function lumsaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function madamaAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function marketAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function maxxiAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function ordingAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -120,6 +219,21 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function paybackAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function politecnicoAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function pwcAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function romaAction()
     {
         return (new viewModel())->setTerminal(true);
@@ -131,6 +245,11 @@ class LandingPageController extends AbstractActionController
     }
 
     public function scoac1Action()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+
+    public function scuolecivicheAction()
     {
         return (new viewModel())->setTerminal(true);
     }
@@ -160,7 +279,17 @@ class LandingPageController extends AbstractActionController
         return (new viewModel())->setTerminal(true);
     }
 
+    public function vipzipAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
     public function volontariocardAction()
+    {
+        return (new viewModel())->setTerminal(true);
+    }
+    
+    public function wave5Action()
     {
         return (new viewModel())->setTerminal(true);
     }

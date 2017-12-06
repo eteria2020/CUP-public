@@ -9,24 +9,14 @@ $bonusPackages = $this->bonusPackages;
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
-
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'gift-packages']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('servizi aggiuntivi'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('gift card'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
@@ -70,7 +60,7 @@ $bonusPackages = $this->bonusPackages;
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                 if(substr($package->getName(),0, 4)==="GIFT"){
+                                 if($package->getType()==="PacchettoRegalo"){
                         ?>
                             <div class="bw-f w-1-3 clearfix" style="margin-right: 0px;">
                                 <div class="bw-f w-1-2 clearfix" style="margin-right: 5px;">
@@ -112,7 +102,7 @@ $bonusPackages = $this->bonusPackages;
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if(substr($package->getName(),0, 4)==="GIFT"){
+                                    if($package->getType()==="PacchettoRegalo"){
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
                             ?>

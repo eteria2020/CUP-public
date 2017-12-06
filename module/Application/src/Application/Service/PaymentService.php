@@ -43,24 +43,28 @@ final class PaymentService
     public function sendCompletionEmail($customer)
     {
         $writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail(3, $customer->getLanguage());
         $content = sprintf(
-            file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
-            $customer->getName(),
-            $customer->getSurname(),
-            $writeTo
+            $mail->getContent(),
+            $customer->getName()
         );
-
+            //$customer->getSurname(),
+            //$writeTo
+        
+        
+        //file_get_contents(__DIR__.'/../../../view/emails/payment-confirmation-' . $this->translator->getLocale() . '.html'),
+        
         $attachments = [
-            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
-            'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg',
-            'facebook.png' => __DIR__.'/../../../../../public/images/social/facebook.png',
-            'twitter.png' => __DIR__.'/../../../../../public/images/social/twitter.png',
+            //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
+            //'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg',
+            //'facebook.png' => __DIR__.'/../../../../../public/images/social/facebook.png',
+            //'twitter.png' => __DIR__.'/../../../../../public/images/social/twitter.png',
         ];
 
         $this->emailService->sendEmail(
             $customer->getEmail(),
-            'Benvenuto in Share’nGo: ecco come guidare la tua prima auto',
-            $content,
+            $mail->getSubject(),//'Benvenuto in Share’nGo: ecco come guidare la tua prima auto',
+            $mail->getContent(),
             $attachments
         );
     }

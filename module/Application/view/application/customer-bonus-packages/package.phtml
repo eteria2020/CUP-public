@@ -1,3 +1,21 @@
+<?php
+$validFrom = date_create()->format('d-m-Y');
+$validTo = sprintf($this->translate("per %d gg"), $this->package->getDuration());
+if ($package->getCode()=="WOMEN") {
+        $now = date("Y-m-d");
+        $validFrom = date_create($now.' 01:00:00');
+        $validTo = date_create($now.' 05:00:00');
+        $hour = date("G");
+        if ( intval($hour) >= 5 ) {
+            //add 1 day to now in case of purchase after the 5am
+            $validFrom = date_add($validFrom, date_interval_create_from_date_string('1 days'));
+            $validTo = date_add($validTo, date_interval_create_from_date_string('1 days'));
+        }
+        //$validTo = $validTo->format("d-m-Y H:i");
+        $validFrom = $validFrom->format("d-m-Y");
+        $validTo = "per la notte";
+}
+?>
 <div id="pack-popup-container" class="sng-pack-popup-container">
     <div class="sng-pack-popup-inner">
         <!-- Actual container -->
@@ -20,17 +38,21 @@
                         </td>
                         <td class="sng-w-1-2">
                             <h2>Prezzo:</h2>
-                            <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
+                            <?php if($this->package->getType() === "Pacchetto"){ ?>
+                                <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
+                            <?php }else{ ?>
+                                <p id="cost" class="sng-text">€ 0</p>
+                            <?php } ?>
                         </td>
                     </tr>
                     <tr>
                         <td class="sng-w-1-2">
                             <h2>Valido dal:</h2>
-                            <p id="valid-from" class="sng-text"><?= date_create()->format('d-m-Y') ?></p>
+                            <p id="valid-from" class="sng-text"><?= $validFrom ?></p>
                         </td>
                         <td class="sng-w-1-2">
                             <h2>Valido al:</h2>
-                            <p id="valid-to" class="sng-text"><?= sprintf($this->translate("per %d gg"), $this->package->getDuration()); ?></p>
+                            <p id="valid-to" class="sng-text"><?= $validTo ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -44,13 +66,17 @@
             </div>
 
             <div class="sng-footer">
-                <?php if ($this->hasContract): ?>
-                    <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                <?php if($this->package->getType() === "Pacchetto"){ ?>
+                    <?php if ($this->hasContract): ?>
+                        <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                        <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
+                    <?php else: ?>
+                        <p class="sng-text">Confermare l'acquisto registrando una carta di credito con Cartasi</p>
+                        <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>">Conferma</a>
+                    <?php endif; ?>
+                <?php }else{ ?>
                     <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
-                <?php else: ?>
-                    <p class="sng-text">Confermare l'acquisto registrando una carta di credito con Cartasi</p>
-                    <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>">Conferma</a>
-                <?php endif; ?>
+                <?php } ?>
             </div>
 
         </div>

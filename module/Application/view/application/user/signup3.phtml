@@ -47,22 +47,31 @@ var google_remarketing_only = false;
  <div class="block-form w-3-4 auto-margin clearfix">
 
     <div class="block-form-section content-align-center margin-bottom">
-        <h2><i class="fa fa-thumbs-up"></i> <?= $this->translate('Registrazione completata con successo!'); ?></h2>
+        <h2><i class="fa fa-thumbs-up"></i><?= $this->translate('Registrazione completata con successo!'); ?></h2>
     </div>
 
     <!-- block-alert -->
     <div class="block-alert margin-bottom right">
-        <h2 class="block-title"><i class="fa fa-check-circle"></i> <?= $this->translate('Attivazione account'); ?></h2>
+        <h2 class="block-title"><i class="fa fa-check-circle"></i><?= $this->translate('Attivazione account'); ?></h2>
         <p>
-            <?= $this->translate('Controlla nella tua casella di posta e clicca sul link suggerito dalla mail inviata per ATTIVARE l\'account.'); ?>
+            <?= $this->translate('Controlla nella tua casella di posta e clicca sul link suggerito dalla mail inviata per ATTIVARE l\'account.'); ?><br/>
         </p>
     </div>
     <!-- block-alert -->
 
-    <!--div class="content-align-center margin-bottom">
-        Le app per smartphone saranno disponibili da metà Giugno, prima in versione HTML e successivamente in versione nativa.
-        Continua a controllare il sito per sapere quando sarà disponibile
-    </div-->
+    <!-- English block-alert -->
+    <div class="block-alert margin-bottom right">
+        <h2 class="block-title"><i class="fa fa-check-circle"></i><?= $this->translate('Account creation completed'); ?></h2>
+        <p>
+            <?= $this->translate('Check your email and click on the suggested link to complete account activation'); ?><br/>
+        </p>
+    </div>
+    <!-- English block-alert -->
+
+    <div class="content-align-center margin-bottom" style="color:#000000">
+        <b style="color:#07BA50">ATTENZIONE:</b> potrai effettuare l’accesso all’<b style="color:#07BA50">APP</b> solo se tua patente è stata verificata con successo
+        e se avrai effettuato il pagamento dell’iscrizione (in Area Riservata sul nostro sito).
+    </div>
 
 </div>
 <!-- block-form -->

@@ -104,33 +104,103 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
-        $scriptId = $this->paymentScriptRunsService->scriptStarted();
+        if (!$this->paymentScriptRunsService->isRunning()) {
+            $scriptId = $this->paymentScriptRunsService->scriptStarted();
+            $this->processPayments();
 
-        $this->processPayments();
+            $this->paymentScriptRunsService->scriptEnded($scriptId);
 
-        $this->paymentScriptRunsService->scriptEnded($scriptId);
+            // clear the entity manager cache
+            $this->entityManager->clear();
 
-        // clear the entity manager cache
-        $this->entityManager->clear();
+            $this->generateInvoices();
+        } else {
+            $this->logger->log("\nError: Pay invoice is running\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        }
+    }
 
-        $this->generateInvoices();
+    /*
+     * Re try to pay trips marked as "wrong payments" in last -2 days
+     */
+       public function retryWrongPaymentsAction()
+    {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        $request = $this->getRequest();
+        //$this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $this->avoidEmails = true;  // force avoid send email during re try wong paiment
+        $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
+        $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+
+        if (!$this->paymentScriptRunsService->isRunning()) {
+            $scriptId = $this->paymentScriptRunsService->scriptStarted();
+
+            $this->reProcessWrongPayments();
+
+            $this->paymentScriptRunsService->scriptEnded($scriptId);
+            $this->entityManager->clear();
+
+            $this->generateInvoices();
+        } else {
+            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsAction;Error Retry: Pay invoice is running\n");
+        }
     }
 
     private function processPayments()
     {
         $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        //$tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-40 days');
+        $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('60 days')[0];
+        $count = $verify["count"];
+        $this->logger->log("Processing payments for " . $count . " TOTAL trips\n");
+        $limit = 200;
+        $lastId = null;
+        while ($count > 0){
+            $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('60 days', $lastId, $limit)[0];
+            if ($verify["count"] == 0) {
+                break;
+            }
+            $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-60 days', $lastId, $limit);
+            $lastId = $verify["last"];
+            $count = $verify["count"];
+            $this->logger->log("Processing payments for " . count($tripPayments) . " trips\n");
+            $this->processPaymentsService->processPayments(
+                $tripPayments,
+                $this->avoidEmails,
+                $this->avoidCartasi,
+                $this->avoidPersistance
+            );
+            // clear the entity manager cache
+            $this->entityManager->clear();
+        }
 
-        $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment();
-        $this->logger->log("Processing payments for " . count($tripPayments) . " trips\n");
+        $this->processPaymentsService->processPaymentsCompleted($this->avoidEmails);
+
+        $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    private function reProcessWrongPayments()
+    {
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPayments;start\n");
+        $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, '-48 hours');  //TODO only dev put -2 days
+        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
 
         $this->processPaymentsService->processPayments(
-            $tripPayments,
+            $tripPaymentsWrong,
             $this->avoidEmails,
             $this->avoidCartasi,
             $this->avoidPersistance
         );
 
-        $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->processPaymentsService->processCustomersDisabledAfterReProcess(
+            $tripPaymentsWrong,
+            $this->avoidEmails,
+            $this->avoidCartasi,
+            $this->avoidPersistance
+        );
+
+        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;end\n");
     }
 
     private function generateInvoices()

@@ -39,7 +39,7 @@ function refreshTable(period)
             var diffMinutes = trip['duration'];    //minutes
 
             var tripMinutes = diffMinutes;
-            var parkingMinutes = Math.ceil(trip['parkSeconds'] / 60);
+            var parkingMinutes = Math.round(trip['parkSeconds'] / 60);
             var totalAmount = 'in elaborazione';
             var totalAmountValue = 0;
             var mustPay = 'in elaborazione';

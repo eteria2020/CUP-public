@@ -21,6 +21,7 @@ use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\View\HelperPluginManager;
 use Zend\EventManager\EventManager;
+use Zend\Session\Container;
 
 final class RegistrationService
 {
@@ -155,8 +156,9 @@ final class RegistrationService
         }
         $userData = $dataForm1->toArray($this->hydrator);
         $driverData = $dataForm2->toArray($this->hydrator);
-
+        $smsVerification=new Container('smsVerification');
         // we compile manually some fields just for the sake of validation
+        $userData['smsCode']=$smsVerification->offsetGet('code') ;
         $userData['email2'] = $userData['email'];
         $userData['password2'] = $userData['password'];
         $userData['birthDate'] = $userData['birthDate']->format('d-m-Y');
@@ -210,6 +212,7 @@ final class RegistrationService
      */
     public function formatData($data)
     {
+        $data['taxCode'] = strtoupper(trim($data['taxCode']));
         $data['driverLicenseCategories'] = '{' .implode(',', $data['driverLicenseCategories']). '}';
         $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
@@ -274,7 +277,7 @@ final class RegistrationService
                         $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
                         $customer->setDiscountRate($promoCodeInfo->discountPercentage());
                     } else { // error in set promocode once
-                        throw new Exception('Promocode once '.$data['promoCode'].' not found,');
+                        throw new \Exception('Promocode once '.$data['promoCode'].' not found,');
                     }
                 } else { // is a promocode standard
                     $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
@@ -295,9 +298,17 @@ final class RegistrationService
             if(is_null($promoCodeOnce)){
                 if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
                     // add 100 min bonus
+                    $total = $this->subscriptionBonus['total'];
+                    /* 1 euro subscription CSD-1406 */
+                    $now = new \DateTime();
+                    $start = new \DateTime('2017-11-01 00:00:00');
+                    $end = new \DateTime('2017-12-31 23:59:59');
+                    if ($now >= $start && $now <= $end){
+                        $total = 15;
+                    }
                     $bonus100mins = CustomersBonus::createBonus(
                         $customer,
-                        $this->subscriptionBonus['total'],
+                        $total, //$this->subscriptionBonus['total'],
                         $this->subscriptionBonus['description'],
                         $this->subscriptionBonus['valid-to']
                     );
@@ -325,8 +336,9 @@ final class RegistrationService
      * @param string $name
      * @param string $surname
      * @param string $hash
+     * @param string $language
      */
-    public function sendEmail($email, $name, $surname, $hash)
+    public function sendEmail($email, $name, $surname, $hash, $language)
     {
         /** @var callable $url */
         $url = $this->viewHelperManager->get('url');
@@ -334,29 +346,27 @@ final class RegistrationService
         $serverUrl = $this->viewHelperManager->get('serverUrl');
 
         $writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail(1, $language);
         $content = sprintf(
-            file_get_contents(__DIR__.'/../../../view/emails/registration-' . $this->translator->getLocale() . '.html'),
+            $mail->getContent(),
             $name,
             $surname,
-            $serverUrl().$url('signup_insert').'?user='.$hash,
-            $writeTo
+            $serverUrl().$url('signup_insert').'?user='.$hash//,
+            //$writeTo
         );
 
-        $attachments = [
-            'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg',
-            'barbarabacci.jpg' => __DIR__.'/../../../../../public/images/barbarabacci.jpg'
-        ];
+        $attachments = [];
 
         $this->emailService->sendEmail(
             $email,
-            'Conferma la tua iscrizione a Share’nGo',
+            $mail->getSubject(), //'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );
 
         $this->emailService->sendEmail(
             $this->emailSettings['sharengoNotices'],
-            'Conferma la tua iscrizione a Share’nGo',
+            $mail->getSubject(),//'Conferma la tua iscrizione a Share’nGo',
             $content,
             $attachments
         );
@@ -405,4 +415,24 @@ final class RegistrationService
 
         return $message;
     }
+
+    /**
+     * Sanitize the mobile number from double zero and create the corret string with "+ dial_code mobile"
+     * @param array $data
+     * @return array $data
+     */
+    public function sanitizeDialMobile($data){
+        $smsVerification = new Container('smsVerification');
+
+        $dp1 = "+";
+        $dp2 = "00";
+        $prefix = $smsVerification->offsetGet('dialCode');
+        $str1 = $data['mobile'];
+        $str1 = preg_replace('/^' . preg_quote($dp1 . $prefix, '/') . '/', '', $str1);
+        $str1 = preg_replace('/^' . preg_quote($dp2 . $prefix, '/') . '/', '', $str1);
+        $data['mobile'] = '+' . $smsVerification->offsetGet('dialCode') . $str1;
+
+        return $data;
+    }
+
 }

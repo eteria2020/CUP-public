@@ -10,17 +10,8 @@
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'rents']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -41,7 +32,7 @@
                         if (!empty($availableDates)) {
                     ?>
 
-                    <!-- Map popup -->
+                    <!-- map popup -->
                     <div id="map-popup" class="map-popup"></div>
                     <!-- map popup -->
 
@@ -73,8 +64,8 @@
                     </div>
                     <!-- filter -->
 
-                    <div class="rents-message">
-                        <p>Con un semplice mouse-over per ogni singola corsa puoi vedere le coordinate della partenza e dell'arrivo, il consumo di minuti bonus e le gratuità che ti sono state riconosciute (es. per corse notturne, se sei una nostra cliente). In fondo alla tabella trovi il totale degli addebiti del mese applicando la tua tariffa personale (non vengono contabilizzate e addebitate da SHARE’NGO le corse inferiori al minuto). </p>
+                    <div class="rents-message" style="width: 100%">
+                        <p style="text-align: justify">Con un semplice mouse-over per ogni singola corsa puoi vedere le coordinate della partenza e dell&#39;arrivo, il consumo di minuti bonus e le gratuit&agrave; qualora ti siano state riconosciute. In fondo alla tabella trovi il totale degli addebiti del mese applicando la tua tariffa personale.</p>
                     </div>
 
                     <!-- Invoices table -->
@@ -82,12 +73,12 @@
 
                         <!-- Invoices table headers -->
                         <div class="block-data-table-row clearfix">
-                            <div class="block-data-table-th cw-1-6">Inizio</div>
-                            <div class="block-data-table-th cw-1-6">Fine</div>
-                            <div class="block-data-table-th cw-1-6">Durata (min.)</div>
-                            <div class="block-data-table-th cw-1-6">Sosta (min.)</div>
-                            <div class="block-data-table-th cw-1-6">Totale</div>
-                            <div class="block-data-table-th cw-1-6">Da saldare</div>
+                            <div class="block-data-table-th cw-1-6 text-center">Inizio</div>
+                            <div class="block-data-table-th cw-1-6 text-center">Fine</div>
+                            <div class="block-data-table-th cw-1-6 text-center">Durata (min.)</div>
+                            <div class="block-data-table-th cw-1-6 text-center">Sosta (min.)</div>
+                            <div class="block-data-table-th cw-1-6 text-center">Totale</div>
+                            <div class="block-data-table-th cw-1-6 text-center">Da saldare</div>
                         </div>
                         <!-- invoices table headers -->
 
@@ -97,7 +88,7 @@
                     <!-- invoices table -->
 
                     <div style="margin-top: 10px">
-                        <p style="color: red"><strong>Attenzione</strong>: l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da saldare non effettuate nella giornata di oggi vuol dire che ci sono stati problemi di addebito sulla tua carta di credito e che il tuo account è temporaneamente sospeso. Contatta il Customer Service di SHARE'NGO per la riattivazione.</p>
+                        <p style="color: red; text-align: justify"><strong>Attenzione</strong>: l&#39;addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da saldare non effettuate nella giornata di oggi vuol dire che ci sono stati problemi di addebito sulla tua carta di credito e che il tuo account &egrave; temporaneamente sospeso. Contatta il Customer Service di SHARE&#39;NGO per la riattivazione.</p>
                     </div>
 
                     <?php

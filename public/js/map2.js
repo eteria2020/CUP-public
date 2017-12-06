@@ -127,10 +127,12 @@ $(function () {
 				case 3:
 				var latitude = $('#Roma').data('latitude');
 				var	longitude = $('#Roma').data('longitude');
-					/*name = $('#Roma').data('name'),
-					id = $('#Roma').data('id'),
-					latLng;*/
 					$('#Roma').html(name);
+				break;
+                                case 4:
+				var latitude = $('#Modena').data('latitude');
+				var	longitude = $('#Modena').data('longitude');
+					$('#Modena').html(name);
 				break;
 			}
         //var latitude = $('div.block-languages.block-menu ul li a.js-show-element').data('latitude');

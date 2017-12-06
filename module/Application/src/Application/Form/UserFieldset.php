@@ -7,15 +7,17 @@ use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
 use SharengoCore\Service\FleetService;
-
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Validator\Identical;
+use Zend\Session\Container;
+use Zend\Validator\Callback;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
-class UserFieldset extends Fieldset implements InputFilterProviderInterface
-{
+class UserFieldset extends Fieldset implements InputFilterProviderInterface {
+
     /**
      * @var CustomersService
      */
@@ -27,12 +29,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
     private $fleetService;
 
     public function __construct(
-        Translator $translator,
-        HydratorInterface $hydrator,
-        CountriesService $countriesService,
-        CustomersService $customersService,
-        ProvincesService $provincesService,
-        FleetService $fleetService
+    Translator $translator, HydratorInterface $hydrator, CountriesService $countriesService, CustomersService $customersService, ProvincesService $provincesService, FleetService $fleetService
     ) {
         $this->customersService = $customersService;
         $this->fleetService = $fleetService;
@@ -90,7 +87,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'id' => 'password2',
                 'placeholder' => 'Inserisci di nuovo la password',
                 'class' => 'required'
-
             ]
         ]);
 
@@ -166,9 +162,71 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ]
         ]);
 
+        $this->add([
+            'name' => 'jobType',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'jobType'
+            ],
+            'options' => [
+                'label' => $translator->translate('Professione'),
+                'value_options' => [
+                    " " => $translator->translate(" "),
+                    "Imprenditore" => $translator->translate("Imprenditore"),
+                    "Dipendente di azienda privata" => $translator->translate("Dipendente di azienda privata"),
+                    "Dipendente di azienda partecipata" => $translator->translate("Dipendente di azienda partecipata"),
+                    "Agente assicurativo" => $translator->translate("Agente assicurativo"),
+                    "Agente di commercio" => $translator->translate("Agente di commercio"),
+                    "Avvocato" => $translator->translate("Avvocato"),
+                    "Notaio" => $translator->translate("Notaio"),
+                    "Commercialista" => $translator->translate("Commercialista"),
+                    "Dirigente" => $translator->translate("Dirigente"),
+                    "Dirigente/Funzionario P.A./Ufficiale" => $translator->translate("Dirigente / Funzionario P.A. / Ufficiale"),
+                    "Professore Universitario" => $translator->translate("Professore Universitario"),
+                    "Altra libera professione" => $translator->translate("Altra libera professione"),
+                    "Geometra" => $translator->translate("Geometra"),
+                    "Architetto" => $translator->translate("Architetto"),
+                    "Ingegnere" => $translator->translate("Ingegnere"),
+                    "Medico" => $translator->translate("Medico"),
+                    "Farmacista" => $translator->translate("Farmacista"),
+                    "Artigiano" => $translator->translate("Artigiano"),
+                    "Commerciante" => $translator->translate("Commerciante"),
+                    "Studente" => $translator->translate("Studente"),
+                    "Pensionato" => $translator->translate("Pensionato"),
+                    "Casalinga" => $translator->translate("Casalinga"),
+                    "Giornalista" => $translator->translate("Giornalista"),
+                    "Consulente" => $translator->translate("Consulente"),
+                    "Sportivo professionista" => $translator->translate("Sportivo professionista"),
+                    "Artista" => $translator->translate("Artista"),
+                    "Insegnante" => $translator->translate("Insegnante"),
+                    "Politico" => $translator->translate("Politico"),
+                    "Non occupato" => $translator->translate("Non occupato")
+                ]
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'howToKnow',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'howToKnow'
+            ],
+            'options' => [
+                'label' => $translator->translate('Come hai conosciuto Sharengo?'),
+                'value_options' => [
+                    " " => $translator->translate(" "),
+                    "Sito Sharengo" => $translator->translate("Sito Sharengo"),
+                    "Motore di ricerca" => $translator->translate("Motore di ricerca"),
+                    "Pubblicità online" => $translator->translate("Pubblicità online"),
+                    "Macchine Sharengo" => $translator->translate("Macchine Sharengo"),
+                    "Eventi" => $translator->translate("Eventi"),
+                    "Consigliato dagli utenti" => $translator->translate("Consigliato dagli utenti")
+                ]
+            ]
+        ]);
+
         $provinces = array_merge(
-            [''],
-            $provincesService->getAllProvinces()
+                [''], $provincesService->getAllProvinces()
         );
 
         $this->add([
@@ -283,7 +341,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'value_options' => $fleetService->getFleetsSelectorArray(
-                    [0 => '---']
+                        [0 => '---']
                 )
             ]
         ]);
@@ -329,15 +387,15 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'name' => 'phone',
+            'name' => 'smsCode',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'phone',
-                'maxlength' => 13,
-                'placeholder' => $translator->translate('Telefono'),
+                'id' => 'smsCode',
+                'maxlength' => 4,
+                'placeholder' => $translator->translate('xxxx'),
             ],
             'options' => [
-                'label' => $translator->translate('Telefono'),
+                'label' => $translator->translate('Codice Sms'),
             ]
         ]);
 
@@ -345,7 +403,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition1',
             'options' => [
-                'label' => $translator->translate('ho letto e accetto le condizioni generali di contratto del servizio di car sharing fornito da C.S. Group S.p.A. e le sue controllate'),
+                'label' => $translator->translate("Ho letto, compreso e accettato i Termini e Condizioni Generali di Contratto e il Regolamento Tariffario del servizio di car sharing SHARE’NGO®, fornito da C.S. Group S.p.A. e dalle sue controllate: C.S. Firenze S.r.l., C.S. Milano S.r.l. e C.S. Roma S.r.l."),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -359,35 +417,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition2',
             'options' => [
-                'label' => $translator->translate('dichiaro ai sensi e per gli effetti di cui all’art. 1341 c.c. e segg., di accettare espressamente ed approvare specificatamente le condizioni di cui agli articoli: 1 (premesse), 2 (definizioni), 3 (oggetto e parti del contratto), 4 (divieto di sostituzione), 5 (modifica unilaterale del Contratto e del Regolamento del servizio di car sharing), 6 (iscrizione e prenotazione online del Car Sharing SHARE’NGO), 7 (garanzia economica del noleggio), 8 (tariffe), 9 (obblighi, fatturazione e pagamenti), 10 (divieto di sublocazione e di cessione), 11 (esonero di responsabilità), 12 (permesso di guida), 13 (utilizzo dei veicoli. Clausola risolutiva espressa), 14 (sinistro o avaria del veicolo), 15 (furti e vandalismi), 16 (sanzioni in materia di circolazione stradale), 17 (responsabilità del Cliente), 18 (assicurazioni – oneri a carico del Cliente), 19 (limiti di responsabilità), 20 (dati personali), 21 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 22 (reclami), 23 (diritto di recesso del Cliente), 24 (penali), 25 (comunicazioni) 26 (foro competente), 27 (varie).'),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'off'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulationCondition1',
-            'options' => [
-                'label' => $translator->translate("ho letto e accetto il Regolamento di servizio di car sharing Share'nGo fornito da C.S. Group S.p.A. e le sue controllate"),
-                'use_hidden_element' => true,
-                'checked_value' => 'on',
-                'unchecked_value' => 'off',
-            ],
-            'attributes' => [
-                'value' => 'off'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'regulationCondition2',
-            'options' => [
-                'label' => $translator->translate('dichiaro ai fini di cui agli articoli 1341 e 1342 c.c. e ad ogni altro fine di legge, di accettare integralmente ed approvare specificamente le seguenti clausole del presente regolamento di cui agli articoli: 1 (adesione al servizio), 2 (iscrizione), 3 (prenotazione del veicolo), 4 (inizio del noleggio), 5 (avvio e verifiche preliminari del veicolo), 6 (batterie ed autonomia), 7 (utilizzo dei veicoli), 8 (restituzione del veicolo, parcheggio), 9 (pulizia del veicolo e ritrovamento oggetti), 10 (tariffe), 11 (profili tariffari), 12 (fatturazione), 13 (danni e malfunzionamento del veicolo C.S.), 14 (sinistro o avaria del veicolo), 15 (incendio, furto, rapina, atti vandalici), 16 (varie).'),
+                'label' => $translator->translate('Dichiaro ai sensi e per gli effetti di cui agli artt. 1341 e 1342 c.c., avendo letto i presenti Termini e Condizioni Generali di Contratto di accettare espressamente e approvare specificatamente le condizioni di cui agli articoli: 3 (oggetto e parti del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online del Car Sharing SHARE’NGO®), 6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente).'),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -401,7 +431,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'privacyCondition',
             'options' => [
-                'label' => $translator->translate("ho letto l’Informativa Privacy ed acconsento al trattamento dei miei dati personali secondo le modalità indicate"),
+                'label' => $translator->translate("Ho letto, compreso e accettato l’Informativa Privacy per i Clienti SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le modalità indicate "),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -410,7 +440,20 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'value' => 'off'
             ]
         ]);
-
+        //Add field to registration form privacyInformation, type checkbox
+        $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'privacyInformation',
+            'options' => [
+                'label' => $translator->translate("Al fine di migliorare il servizio ed essere aggiornato sulle offerte di SHARE’NGO® e dei partner di SHARE’NGO® riservate in via preferenziale e/o esclusiva ai clienti SHARE’NGO®, do il mio consenso a ricevere comunicazioni di SHARE’NGO® via email, SMS o posta, inclusi gli inviti a partecipare a indagini di mercato e sondaggi."),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
+            ]
+        ]);
         $this->add([
             'name' => 'profilingCounter',
             'type' => 'Zend\Form\Element\Hidden',
@@ -420,8 +463,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
     }
 
-    public function getInputFilterSpecification()
-    {
+    public function getInputFilterSpecification() {
+
         return [
             'email' => [
                 'required' => true,
@@ -652,11 +695,24 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'min' => 3
                         ]
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                            ],
+                            'callback' => function($value, $context = array()) {
+                                $smsVerification = new Container('smsVerification');
+                                $isValid = $value == $smsVerification->offsetGet('mobile');
+                                return $isValid;
+                                }
+                        ]
                     ]
                 ]
             ],
-            'phone' => [
-                'required' => false,
+            'smsCode' => [
+                'required' => true,
                 'filters' => [
                     [
                         'name' => 'StringTrim'
@@ -666,8 +722,39 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 3
+                            'min' => 4,
+                            'max' => 4
                         ]
+                    ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                            ],
+                            'callback' => function($value, $context = array()) {
+
+                                $smsVerification = new Container('smsVerification');
+                                $isValid = $value == $smsVerification->offsetGet('code');
+                                return $isValid;
+                            }
+                        ]
+                    ]
+                ]
+            ],
+            'jobType' => [
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
+            ],
+            'howToKnow' => [
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
                     ]
                 ]
             ],
@@ -699,34 +786,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ],
                 ]
             ],
-            'regulationCondition1' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
-            ],
-            'regulationCondition2' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Identical',
-                        'options' => [
-                            'token' => 'on',
-                            'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
-                            ]
-                        ],
-                    ],
-                ]
-            ],
             'privacyCondition' => [
                 'required' => true,
                 'validators' => [
@@ -741,6 +800,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     ],
                 ]
             ],
+            //Validation specifications to checkbox privacyInformation
+            'privacyInformation' => [
+                'required' => false
+            ],
             'fleet' => [
                 'validators' => [
                     [
@@ -753,4 +816,5 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             ]
         ];
     }
+
 }

@@ -53,6 +53,7 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
                 'id' => 'name',
                 'maxlength' => 24,
                 'placeholder' => $translator->translate('Promo code'),
+                 'oninput'=>'this.value=this.value.toUpperCase()'
             ]
         ]);
 

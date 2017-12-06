@@ -16,7 +16,8 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
 /></noscript>
 ');
 ?>
-
+<script src="//onetag-sys.com/sync/a,63/2"></script>
+<img src="https://secure.adnxs.com/px?id=878451&t=2" width="1" height="1" />
 <!-- module-section-bookmark -->
 <div class="module-section-bookmark content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
@@ -47,22 +48,6 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
     </div>
 
     <?php if ($this->enable_payment) { ?>
-     <!--div class="margin-bottom">
-        <h1><? //= $this->translate('Completa l\'attivazione del servizio')?></h1>
-        <p><? //= $this->translate('Per completare l\'attivazione del servizio, esegui il pagamento di 10&euro; via PayPal.')?></p>
-     </div>
-
-
-     <!--div class="module-wrapper-button margin-bottom content-align-center">
-         <a href="<? //$this->url('pay', ['email' => $this->email]) ?>" class="btn-link x-large ct2"><? //= $this->translate('Esegui il pagamento di 10€'); ?> <i class="fa fa-plus-circle"></i></a>
-     </div-->
-
-    <!--div class="block-form-section content-align-center">
-        <h2><? //= $this->translate('GRAZIE'); ?></h2>
-        <div style="color: black; line-height: 1.5; margin-bottom: 30px;"><? //= $this->translate('Qualche giorno prima dell’attivazione del servizio a Milano, prevista per lunedi 15 giugno, ti verrà richiesto di completare la tua iscrizione con il pagamento dei 10€ che comprende i primi 500 minuti di utilizzazione dell’Equomobile.'); ?></div>
-        <div style="color: black; line-height: 1.5; font-size: 1em;"><? //= $this->translate('Il mancato pagamento dell’iscrizione entro il 14 giugno a mezzanotte comporterà la perdita del diritto che hai maturato ai 500 minuti gratuiti previsti con la promozione di lancio di SHARE’NGO'); ?></div>
-    </div-->
-
     <div class="margin-bottom">
         <h1><?= $this->translate('Completa l\'attivazione del servizio')?></h1>
         <br>
@@ -97,3 +82,36 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
 
 </div>
 <!-- main -->
+<script type="text/javascript">
+    // Criteo section
+    var email = "<?= $this->customerEmail;?>";
+    var fleet = parseInt(<?= $this->customerFleetId;?>);
+    var basket = [ { id: fleet, price: 1, quantity: 1 } ];
+    criteoTrackTransaction(email, basket);
+</script>
+
+<?php
+if($this->customerFleetId){
+    echo '
+<!-- Adform Tracking Code BEGIN -->
+<script type="text/javascript">
+    window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+    window._adftrack.push({
+        pm: 1171594,
+        divider: encodeURIComponent(\'|\'),
+        pagename: encodeURIComponent(\'RD-PIXEL_SharenGo_MILANO_TYP\'),
+        order : { 
+             orderid: \'<insert order id value here>\'
+        }
+    });
+    (function () { var s = document.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'https://track.adform.net/serving/scripts/trackpoint/async/\'; var x = document.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); })();
+
+</script>
+<noscript>
+    <p style="margin:0;padding:0;border:0;">
+        <img src="https://track.adform.net/Serving/TrackPoint/?pm=1171594&ADFPageName=RD-PIXEL_SharenGo_MILANO_TYP&ADFdivider=|" width="1" height="1" alt="" />
+    </p>
+</noscript>
+<!-- Adform Tracking Code END -->';
+}
+?>

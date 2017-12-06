@@ -5,17 +5,8 @@
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'dati-pagamento']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -32,78 +23,118 @@
                 <div class="module-manage-card padding-top">
 
                     <!-- block-form -->
-                    <div class="block-form bw-f w-2-3  clearfix">
+                    <div class="block-form bw-f w-3-3 clearfix">
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-money"></i> <?= $this->translate('Stato pagamenti') ?></h2>
+                        </div>
 
+                        <div class="block-alert margin-bottom info">
                         <?php if($this->customer->getFirstPaymentCompleted()): ?>
-
-                            <?php //if (!$this->cartasiCompletedFirstPayment): ?>
-
-                                <!--div class="block-alert margin-bottom info">
-                                    <p><? //echo $this->translate('Il primo pagamento è stato effettuato. Per abilitare i pagamenti ricorrenti è necessario registrare la proprio carta nel circuito Cartasi effettuando un pagamento iniziale di 10 €.') ?></p>
-                                    <a href="<? //echo $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>">
-                                        <button class="medium red"><? //echo $this->translate("Clicca qui"); ?></button>
-                                    </a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p>
-                                </div-->
-
-                            <? //php else: ?>
-
-                                <div class="block-alert margin-bottom info">
-                                    <p>
-                                        <?= $this->translate('Il pagamento della quota di iscrizione è andato a buon fine, grazie'); ?>.
-                                    </p>
-                                </div>
-
-                            <?php // endif; ?>
-
+                            
+                                <p>
+                                    <?= $this->translate('Il pagamento della quota di iscrizione &egrave; andato a buon fine, grazie'); ?>.
+                                </p>
                         <?php else: ?>
-                            <div class="block-alert margin-bottom info">
-                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>. <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l'attivazione del servizio"); ?>.</p><br>
+                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>, <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
                                 <p><font color="red"><?= $this->translate('Attenzione!') ?></font> <?= $this->translate(' Per completare il pagamento dell’iscrizione e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?></p><br>
-                                <p><?= $this->translate('Se non avessi il Secure Code o non l’avessi mai utilizzato, chiedine l’attivazione al gestore della tua carta, prima di proseguire '); ?>(<b><a href="payment-securecode-cartasi">maggiori info</a></b>)</p>
-                            </div>
+                                <p><?= $this->translate('Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine l&#39;attivazione al gestore della tua carta, prima di proseguire '); ?>(<b><a href="payment-securecode-cartasi">maggiori info</a></b>)</p>
                         <?php endif; ?>
+                        </div>
                     </div>
                     <!-- block-form -->
-
-                    <!-- block -->
-                    <div class="bw-f w-1-3 last  clearfix">
-
-                    </div>
-                    <!-- block -->
-
                 </div>
                 <!-- module-manage-card -->
-
             </div>
             <!-- module-column-app-content -->
-
         <?php
         // if necessary create link to the activation page
             if ($this->activateLink) {
         ?>
             <div class="module-column-app-content clearfix">
-
                 <!-- module-manage-card -->
                 <div class="module-manage-card padding-top">
-
                     <p>Hai esaurito i tuoi minuti bonus e hai effettuato una o più corse "a debito". Puoi effettuare manualmente il primo pagamento cliccando sul seguente link.</p>
                     <!-- Activation button -->
                     <div class="block-wrapper-button content-align-center margin-top-custom">
                         <a href="<?= $this->url('area-utente/activate-payments') ?>"><button><?= $this->translate("Maggiori informazioni"); ?></button></a>
                     </div>
                     <!-- activation button -->
-
                 </div>
             </div>
         <?php
             }
         ?>
+            <div class="module-column-app-content clearfix">
 
+                <!-- module-manage-card -->
+                <div class="module-manage-card padding-top">
+
+                    <!-- block-form -->
+                    <div class="block-form bw-f w-3-3 clearfix">
+
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-credit-card"></i> <?= $this->translate("Carta di credito"); ?></h2>
+                        </div>
+
+                        <div class="margin-bottom info">
+                            <?php if ($this->contract): ?>
+                                <table id ="contract" align="center" class="bw-f" style="width: 70%">
+                                    <tbody>
+                                        <tr>
+                                            <td><?= $this->translate("Data attivazione carta"); ?></td>
+                                            <td><?= $this->contract->getInsertedTs()->format('d/m/Y'); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= $this->translate("Numero carta"); ?></td>
+                                            <td><?= $this->contract->getPan(); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= $this->translate("Scadenza"); ?></td>
+                                            <td><?= implode('/', str_split($this->contract->getPanExpiry(), 4)); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= $this->translate("Stato"); ?></td>
+                                            <td>
+                                                <?php if ($this->contract->getDisabledDate()): ?>
+                                                    <?= $this->translate("Carta disabilitata "); ?> <?= $this->contract->getDisabledDate()->format('Y-m-d H:i:s'); ?>
+                                                <?php else: ?>
+                                                    <?= $this->translate("Carta attiva "); ?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <a href="<?= $this->url('area-utente/disable-contract', [], ['query' => ['contractId' => $this->contract->getId()]]) ?>"><button class="medium red" onclick="return confirm('<?= $this->translate("Voi cambiare la carta di credito?"); ?>')"><?= $this->translate("Cambia carta"); ?></button></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                             <?php if( $this->customer->getFirstPaymentCompleted()): ?>
+                                <div class="col-lg-12 block-alert margin-bottom info">
+                                    <p> <?= $this->translate("Per inserire una nuova carta di credito o prepagata:"); ?> </p>
+                                    <ul>
+                                        <li><p> <?= $this->translate('Se hai corse da saldare puoi inserire subito i dati della nuova carta cliccando sulla voce &#x22;Pagamento corse&#x22;.'); ?></p></li>
+                                         <li><p> <?= $this->translate('Se non hai corse da pagare, invece, potrai inserire i dati della nuova carta <u><strong>solo dopo</u></strong> aver effettuato un noleggio, cliccando sulla voce &#x22;Pagamento corse&#x201D; (potrai effettuare la prima corsa anche senza una carta associata). In alternativa, potrai inserire subito i dati della carta, acquistando un pacchetto minuti nella sezione &#x22;Promo e pacchetti&#x22; (con cui corri a tariffe scontate fino a &#x20AC;0,22 al minuto).'); ?></p></li>
+                                    </ul>
+                                    <p> <?= $this->translate("I dati della carta saranno poi memorizzati per le successive corse."); ?> </p>
+                                </div>
+                             <?php else: ?>
+                                 <div class="col-lg-12"><?= $this->translate("Non hai ancora inserito una carta di credito o prepagata sul tuo profilo."); ?></div>
+                           
+                            <?php endif; ?>
+                               <?php endif; ?>
+
+                        </div>
+                    </div>
+                    <!-- block-form -->
+                </div>
+                <!-- module-manage-card -->
+            </div>
         </div>
         <!-- module-column-app dx -->
-
     </div>
     <!-- module-wrapper-app -->
-
 </div>
 <!-- main -->

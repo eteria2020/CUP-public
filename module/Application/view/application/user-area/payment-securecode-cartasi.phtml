@@ -5,17 +5,8 @@
     <div class="module-wrapper-app">
 
         <!-- module-column-app sx -->
-        <div class="module-column-app side-sx">
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
-            <a class="btn-toogle-column-app js-toogle-column-app"><i class="fa fa-angle-left"></i></a>
-
-            <!-- block-nav-app -->
-            <nav class="block-nav-app">
-                <?php echo $this->partial('partials/menu-user-area', ['route' => 'dati-pagamento']); ?>
-            </nav>
-            <!-- block-nav-app -->
-
-        </div>
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
@@ -50,17 +41,17 @@
                         <tr>
                             <td class="Content MainText" style="font-family: Trebuchet MS, Verdana, Helvetica, sans-serif;" valign="top" align="justify" data-gcf-font-size="12pt">
                                 <br>
-                                <?= $this->translate('Il <b>SECURE CODE</b> (chiamato anche 3D Secure, Verified by Visa, SecureCode MasterCard o One Time Password - OTP) è un codice di sicurezza per i pagamenti online che molti siti richiedono per una maggiore sicurezza delle transazioni sul web. Sia che effettui regolarmente acquisti online, o meno, usare e fare affidamento sul Secure Code è fondamentale perché permette di prevenire eventuali utilizzi illeciti della carta e di evitare addebiti indesiderati.') ?>
+                                <?= $this->translate('Il <b>SECURE CODE</b> (chiamato anche 3D Secure, Verified by Visa, SecureCode MasterCard o One Time Password - OTP) &egrave; un codice di sicurezza per i pagamenti online che molti siti richiedono per una maggiore sicurezza delle transazioni sul web. Sia che effettui regolarmente acquisti online, o meno, usare e fare affidamento sul Secure Code &egrave; fondamentale perch&eacute; permette di prevenire eventuali utilizzi illeciti della carta e di evitare addebiti indesiderati.') ?>
                                 <br><br>
-                                <?= $this->translate('Il Secure Code richiede l’autenticazione del pagamento da parte del titolare della carta di credito (o prepagata), che deve inserire una password. La password viene richiesta durante ogni acquisto effettuato presso un esercente che aderisce al servizio. Questa password può essere personale e standard, o inviata tramite SMS ad ogni transazione, oppure generata dalla chiavetta elettronica fornita dalla propria banca che ne genera una diversa ad ogni pagamento (password monouso).') ?>
+                                <?= $this->translate('Il Secure Code richiede l&#39;autenticazione del pagamento da parte del titolare della carta di credito (o prepagata), che deve inserire una password. La password viene richiesta durante ogni acquisto effettuato presso un esercente che aderisce al servizio. Questa password pu&ograve; essere personale e standard, o inviata tramite SMS ad ogni transazione, oppure generata dalla chiavetta elettronica fornita dalla propria banca che ne genera una diversa ad ogni pagamento (password monouso).') ?>
                                 <br><br>
                                 <?= $this->translate('Per attivare il Secure Code (se non hai già la chiavetta elettronica) bastano pochi semplici passi.') ?>
                                 <ul>
-                                    <li><b><?= $this->translate('POSTEPAY:')?></b><?= $this->translate(' basta recarsi in posta, o agli sportelli Postamat, fornire il numero di carta e il proprio numero di telefono (ogni volta che verrà effettuato un pagamento la posta invierà un SMS gratuito al numero fornito che rappresenta la password da inserire).') ?></li>
-                                    <li><b><?= $this->translate('POSTEPAY EVOLUTION:')?></b><?= $this->translate(' è possibile attivare il Secure Code anche nel momento stesso in cui viene effettuato il pagamento. Basta inserire il codice fiscale e il numero di telefono (da associare alla carta). A quel numero di telefono verrà inviato l’SMS con il codice di sicurezza da inserire per completare il pagamento.') ?></li>
-                                    <li><b><?= $this->translate('CARTASI:')?></b><?= $this->translate(' per attivare il Secure Code occorre registrarsi nell’area “3D Secure” del portale Titolari sul sito di <a href="https://titolari.cartasi.it/portal/registrazione/registrazione_step1.xhtml?faces-redirect=true">CartaSì</a>. Il processo di attivazione è facile e veloce: una volta inseriti i dati occorre solo impostare la propria frase identificativa e inserire il numero di cellulare al quale verrà inviato l’SMS contenente un codice di sicurezza unico (di 6 cifre) da inserire al momento del pagamento per confermarlo. Per maggiori info leggi le <a href="https://www.cartasi.it/gtwpages/common/index.jsp?id=obbBpvVgJm">FAQ</a>.') ?></li>
-                                    <li><b><?= $this->translate('MASTERCARD:')?></b><?= $this->translate(' basta contattare il servizio clienti della propria banca o rivolgersi alla filiale di riferimento per richiederne l’attivazione. Per maggiori info leggi le <a href="https://www.mastercard.it/it-it/faq.html">FAQ</a>.') ?></li>
-                                    <li><b><?= $this->translate('VISA:')?></b><?= $this->translate(' si può aderire al servizio tramite la banca o l’organizzazione che emette la carta Visa, scegliendo una password e un messaggio personale. Dopo l’adesione sarà possibile fare acquisti presso qualunque negozio online che offre Verified by Visa. Per maggiori info leggi le <a href="https://www.visaitalia.com/pagare-con-visa/pagamenti-online/">FAQ</a>.') ?></li>
+                                    <li><b><?= $this->translate('POSTEPAY:')?></b><?= $this->translate(' basta recarsi in posta, o agli sportelli Postamat, fornire il numero di carta e il proprio numero di telefono (ogni volta che verr&agrave; effettuato un pagamento la posta invier&agrave; un SMS gratuito al numero fornito che rappresenta la password da inserire).') ?></li>
+                                    <li><b><?= $this->translate('POSTEPAY EVOLUTION:')?></b><?= $this->translate(' è possibile attivare il Secure Code anche nel momento stesso in cui viene effettuato il pagamento. Basta inserire il codice fiscale e il numero di telefono (da associare alla carta). A quel numero di telefono verrà inviato l&#39;SMS con il codice di sicurezza da inserire per completare il pagamento.') ?></li>
+                                    <li><b><?= $this->translate('CARTASI:')?></b><?= $this->translate(' per attivare il Secure Code occorre registrarsi nell’area “3D Secure” del portale Titolari sul sito di <a href="https://titolari.cartasi.it/portal/registrazione/registrazione_step1.xhtml?faces-redirect=true">CartaS&igrave;</a>. Il processo di attivazione &egrave; facile e veloce: una volta inseriti i dati occorre solo impostare la propria frase identificativa e inserire il numero di cellulare al quale verr&agrave; inviato l&#39;SMS contenente un codice di sicurezza unico (di 6 cifre) da inserire al momento del pagamento per confermarlo. Per maggiori info leggi le <a href="https://www.cartasi.it/gtwpages/common/index.jsp?id=obbBpvVgJm">FAQ</a>.') ?></li>
+                                    <li><b><?= $this->translate('MASTERCARD:')?></b><?= $this->translate(' basta contattare il servizio clienti della propria banca o rivolgersi alla filiale di riferimento per richiederne l&#39;attivazione. Per maggiori info leggi le <a href="https://www.mastercard.it/it-it/faq.html">FAQ</a>.') ?></li>
+                                    <li><b><?= $this->translate('VISA:')?></b><?= $this->translate(' si pu&ograve; aderire al servizio tramite la banca o l&#39;organizzazione che emette la carta Visa, scegliendo una password e un messaggio personale. Dopo l&#39;adesione sar&agrave; possibile fare acquisti presso qualunque negozio online che offre Verified by Visa. Per maggiori info leggi le <a href="https://www.visaitalia.com/pagare-con-visa/pagamenti-online/">FAQ</a>.') ?></li>
                                 </ul>
                             </td>
                         </tr>

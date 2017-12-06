@@ -5,10 +5,7 @@
     $this->headMeta()->appendName('og:image', 'http://mobile.sharengo.it/_template_style/images/sharengo_logo.png');
     $this->headMeta()->appendName('og:site_name', 'SHARE\'N GO');
     $this->headMeta()->setProperty('og:description', 'Dal 22 giugno è attivo a Milano il servizio di car sharing a flusso libero, con le nostre Equomobili elettriche. Le iscrizioni al servizio sono aperte su www.equomobili.it. Dal 1° maggio inoltre 10 veicoli SHARE\'NGO sono disponibili c/o la stazione delle Ferrovie Nord di Busto Arsizio e possono essere prenotate telefonando al n 370.3325086. Gli orari per il ritiro e la consegna sono 7.30-10.30 oppure 17.00-19.00 tutti i giorni della settimana.');
-    $this->inlineScript()->appendFile($this->basePath('js/overlay.js'));
-    $this->inlineScript()->appendFile($this->basePath('js/perfect-scrollbar.jquery.min.js'));
-    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
-    $this->headLink()->appendStylesheet($this->basePath('css/find-address.css'));
+    $this->headLink()->appendStylesheet($this->basePath('/assets-modules/css/vendor.index.css'));
 ?>
 
 <!-- module-car-map -->
@@ -16,6 +13,7 @@
 
     <div id="map_wrapper">
         <div id="map_canvas" class="mapping"></div>
+        <div id="popup" class="ol-popup"></div>
     </div>
 
     <!-- block-map-tool-filter -->
@@ -27,30 +25,10 @@
     </div>
 
     <!-- module-map-tool -->
-    <div class="module-map-tool bg-ct2 g-top g-left">
-
-        <!-- block-list-map-tool -->
-        <div class="block-list-map-tool">
-            <input id="find-address" class="controls" type="text" placeholder="<?= $this->translate('CERCA INDIRIZZO'); ?>">
-        </div>
-        <!-- block-list-map-tool -->
-
-    </div>
-
-    <!-- module-map-tool -->
     <div class="module-map-tool bg-ct2 g-bottom g-right">
 
         <!-- block-list-map-tool -->
-        <div class="block-list-map-tool">
-            <ul>
-                <li>
-                    <a class="js-toggle-map-height active" >
-                        <span class="block-info-1"><?= $this->translate('Riduci la mappa'); ?></span>
-                        <span class="block-info-2"><?= $this->translate('Estendi la mappa'); ?></span> <i class="fa fa-angle-up"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+
         <!-- block-list-map-tool -->
 
     </div>
@@ -102,7 +80,7 @@
                 <h2 class="block-sub-title"><?= $this->translate('Il car sharing elettrico a flusso libero è un nuovo primato europeo per la città'); ?></h2>
 
                 <p>
-                    <?= $this->translate('Martedì 19 maggio al Politecnico di Milano è stato presentato il nuovo car sharing elettrico di Milano SHARE‘NGO: le auto potranno circolare liberamente all’interno della città, dal 15 giugno, senza preoccuparci della ricarica. I costi al minuto varieranno da un massimo di 0,28 euro a un minimo di 0,14 euro, a secondo della profilazione dell’utente, e le donne non pagheranno il servizio dall’una di notte fino alle sei del mattino. Alla presentazione del servizio hanno partecipato Alfredo  Bacci, l’inventore delle EQUOMOBILI,  l’Assessore alla Mobilità e Ambiente Pierfrancesco Maran e Emiliano Niccolai, Amministratore Delegato di CS Group che gestirà il servizio (nella foto). Penso sia una grande innovazione che piacerà molto ai milanesi- ha detto Maran- e la velocità con cui sono partite e crescono le registrazioni al servizio  sembrano confermarlo.');
+                    <?= $this->translate('Martedì 19 maggio al Politecnico di Milano è stato presentato il nuovo car sharing elettrico di Milano SHARE‘NGO: le auto potranno circolare liberamente all’interno della città, dal 15 giugno, senza preoccuparci della ricarica. Alla presentazione del servizio hanno partecipato Alfredo Bacci, l’inventore delle EQUOMOBILI,  l’Assessore alla Mobilità e Ambiente Pierfrancesco Maran e Emiliano Niccolai, Amministratore Delegato di CS Group che gestirà il servizio (nella foto). Penso sia una grande innovazione che piacerà molto ai milanesi- ha detto Maran- e la velocità con cui sono partite e crescono le registrazioni al servizio  sembrano confermarlo.');
                     ?>
                 </p>
 
@@ -177,65 +155,7 @@
 <!-- main -->
 
 
-<!-- overlay -->
-<?php if (!$this->identity()): ?>
-<div id="sng-overlay">
-    <div class="table">
-        <div class="cell">
-            <div class="box">
-                <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
-                <div id="sng-overlay-content1" class="table">
-                    <div class="cell content-left">
-                        <div id="sng-overlay-slider">
-                            <div class="slide" style="background-image:url(images/overlay/01.jpg)">
-                                <h1>
-                                    Elettrica,<br>
-                                    condivisa,<br>
-                                    sotto casa.
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell content-right">
-                        <h2>La nuova mobilità urbana è SHARE’Ngo</h2>
-                        <a href="<?= $this->url('signup') ?>" class="sng-overlay-button">Iscriviti oggi</a>
-                        <h4>Bastano 5 minuti e 10€ per salire a bordo (con 30 minuti bonus)</h4>
-                        <p>Servono solo la tua patente e una carta di credito, anche prepagata.</p>
-                        <a href="<?= $this->url('scn-social-auth-user/authenticate/provider', ['provider' => 'facebook']) ?>" class="sng-overlay-button">Registrati con Facebook</a>
-                        <p class="upper">Riceverai via mail tutti i dettagli per completare la tua iscrizione</p>
-                        <a href="#" class="more sng-overlay-button sng-overlay-button-cyan">Scopri di più</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div id="sng-overlay-content2">
-                    <div class="content-more">
-                        <h3>Con SHARE’Ngo è facile guidare senza inquinare</h3>
-                        <ul>
-                            <li class="item1">
-                                <img src="images/overlay/img1.png" alt="Elettrica e divertente">
-                                <h4>Elettrica e divertente</h4>
-                                <p>Le nostre auto sono amiche dell’ambiente perché sono elettriche, senza emissioni e silenziose. Le trovi in giro per la città, le prenoti con il telefonino e le puoi lasciare dove vuoi. Sono facili e divertenti da guidare e a ricaricarle ci pensiamo sempre noi!</p>
-                            </li>
-                            <li class="item2">
-                                <img src="images/overlay/img2.png" alt="Conveniente">
-                                <h4>Conveniente</h4>
-                                <p>Più ne hai bisogno e meno costano! Con la tua tariffa personalizzata potresti avere fino al 35% di sconto. E con i pacchetti da 100/250/500 e 1.000 minuti la tariffa di noleggio può scendere fino a 0.10 € al minuto, cioè a 6 € l’ora. Il prezzo più basso al mondo per un servizio di car sharing a flusso libero. Di notte, poi, per le donne le corse sono gratis!</p>
-                            </li>
-                            <li class="item3">
-                                <img src="images/overlay/img3.png" alt="Pratica e brillante">
-                                <h4>Pratica e brillante</h4>
-                                <p>Le usi solo quando ti servono e vai dove ti pare. Nessuna limitazione di ingresso in ZTL (area C a Milano), parcheggio gratuito sulle strisce blu (anche sulle strisce gialle a Milano). 300 litri di bagagliaio, 2 posti comodi, una ripresa e una supermobilità nel traffico che ti sorprenderanno.</p>
-                            </li>
-                        </ul>
-                        <a href="<?= $this->url('signup') ?>" class="sng-overlay-button">Iscriviti oggi a SHARE’Ngo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php endif; ?>
-<!-- overlay -->
+
 
 <script>
 var port = "<?php echo ':8024'; ?>";
@@ -245,6 +165,7 @@ var textCarOccupied = '<?= $this->translate("L\'auto è occupata"); ?>';
 var textCarReserved = '<?= $this->translate("Annulla prenotazione"); ?>';
 var textCarReserve = '<?= $this->translate("Prenota l\'auto"); ?>';
 var textRegister = '<?= $this->translate("Registrati e prenota"); ?>';
+var textSearchAddress = '<?= $this->translate('Cerca indirizzo'); ?>';
 </script>
 <?php
 // load the popup to show when a car is selected
@@ -258,5 +179,8 @@ var poisUrl = "<?= $this->url('core/pois'); ?>";
 var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
 var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
 var zonesUrl = "<?= $this->url('zone'); ?>";
+var citta = 1;
 </script>
-<script type="text/javascript" src="js/index.js"></script>
+<?php
+    $this->inlineScript()->appendFile($this->basePath('/assets-modules/js/vendor.index.js'));
+?>
