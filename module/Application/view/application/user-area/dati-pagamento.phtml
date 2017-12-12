@@ -105,7 +105,11 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <a href="<?= $this->url('area-utente/disable-contract', [], ['query' => ['contractId' => $this->contract->getId()]]) ?>"><button class="medium red" onclick="return confirm('<?= $this->translate("Voi cambiare la carta di credito?"); ?>')"><?= $this->translate("Cambia carta"); ?></button></a>
+                                                <?php if($this->customer->getFleet()->getId() == 2){ ?>
+                                                    <button class="medium red" onclick="openChangeCard()"><?= $this->translate("Cambia carta"); ?></button>
+                                                <?php }else{ ?>
+                                                    <a href="<?= $this->url('area-utente/disable-contract', [], ['query' => ['contractId' => $this->contract->getId()]]) ?>"><button class="medium red" onclick="openChangeCard()"><?= $this->translate("Cambia carta"); ?></button></a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -136,5 +140,63 @@
         <!-- module-column-app dx -->
     </div>
     <!-- module-wrapper-app -->
+    <?php if ($this->contract): ?>
+        <!-- overlay change credit card -->
+        <div id="sng-overlay" style="visibility: hidden">
+            <div class="table">
+                <div class="cell">
+                    <div class="box" style="background:#fff;">
+                        <div id="sng-overlay-content1">
+                            <div class="content-more" style="background-image: none;">
+                                <h3 style="background: #43a34c;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ATTENZIONE</h3>
+                                <br>
+                                <ul>
+                                    <p style="color:black;text-align: center; font-weight: 500;">Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che verr&agrave; immediatamente rimborsato al termine della procedura.</p>
+                                </ul>
+                                <br>
+                                <div id="button-alert" class="block-wrapper-button content-align-center">
+                                    <a href="<?= $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $this->contract->getId()]]) ?>"><button type="button" id="js-edit-form">PROCEDI</button></a>
+                                    <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()">CHIUDI</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- overlay -->
+    <?php endif; ?>
 </div>
 <!-- main -->
+<?php $this->headStyle()->captureStart() ?>
+.errors {
+list-style-type: none;
+}
+.errors li {
+color: red;
+}
+
+<?php $this->headStyle()->captureEnd() ?>
+<!-- JavaScript -->
+<?php
+$this->inlineScript()->appendFile($this->basePath('js/magnific-popup.min.js'));
+$this->headLink()->appendStylesheet($this->basePath('css/magnific-popup.css'), 'screen');
+$this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+?>
+<script type="text/javascript">
+    function openChangeCard() {
+        overlay = $('#sng-overlay');
+        overlay.css("visibility", "visible");
+        button = $('#button-alert');
+        button.css("visibility", "visible");
+    }
+    function closeChangeCard() {
+        //e.preventDefault();
+        button.css("visibility", "hidden");
+        //button.css("display","initial");
+        overlay.fadeOut(400, function () {
+            overlay.css("visibility", "hidden");
+            overlay.css("display","initial");
+        });
+    }
+</script>
