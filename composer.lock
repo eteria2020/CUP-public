@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core-business.git",
-                "reference": "8612fa0bd7ebeda9ee3ba572f60db123dde368c6"
+                "reference": "7d5ea7d7bc8f138f12891891419f652835acae54"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-11-16 10:58:03"
+            "time": "2017-12-13 09:38:13"
         },
         {
             "name": "cup-web/public-business-module",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
