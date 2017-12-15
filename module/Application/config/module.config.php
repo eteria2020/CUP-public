@@ -167,6 +167,21 @@ return [
                     ],
                 ]
             ],
+            'appred' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{appred}/:plate',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'appred',
+                    ],
+                    'constraints' => [
+                        'plate' => '[a-zA-Z0-9]*',
+                    ],
+                ],
+                'may_terminate' => true
+            ],
             /* 'contatti' => [
               'type' => 'Segment',
               'options' => [

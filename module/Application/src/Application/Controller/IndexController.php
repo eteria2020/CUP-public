@@ -243,4 +243,10 @@ class IndexController extends AbstractActionController
     {
         return (new viewModel())->setTerminal(true);
     }
+
+    public function appredAction()
+    {
+        $plate = $this->params()->fromRoute('plate');
+        $this->redirect()->toUrl("http://mobile.sharengo.it/index.php?plate=$plate");
+    }
 }
