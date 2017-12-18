@@ -105,11 +105,7 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <?php if($this->customer->getFleet()->getId() == 2){ ?>
-                                                    <button class="medium red" onclick="openChangeCard()"><?= $this->translate("Cambia carta"); ?></button>
-                                                <?php }else{ ?>
-                                                    <a href="<?= $this->url('area-utente/disable-contract', [], ['query' => ['contractId' => $this->contract->getId()]]) ?>"><button class="medium red" onclick="return confirm('<?= $this->translate("Voi cambiare la carta di credito?"); ?>')"><?= $this->translate("Cambia carta"); ?></button></a>
-                                                <?php } ?>
+                                                <button class="medium red" onclick="openChangeCard()"><?= $this->translate("Cambia carta"); ?></button>
                                             </td>
                                         </tr>
                                     </tbody>
