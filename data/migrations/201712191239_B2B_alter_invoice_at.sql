@@ -1,0 +1,1 @@
+ALTER TABLE business.extra_payment ALTER invoice_at  DROP DEFAULT;
