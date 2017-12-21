@@ -631,7 +631,7 @@ class UserController extends AbstractActionController {
         $hash = $this->params()->fromQuery('user');
         $customer = $this->customersService->getUserFromHash($hash);
 
-        $customerFleetId  = $customer->getFleet();
+        $customerFleetId  = $customer->getFleet()->getId();
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
