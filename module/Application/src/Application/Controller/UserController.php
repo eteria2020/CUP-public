@@ -628,12 +628,18 @@ class UserController extends AbstractActionController {
     }
 
     public function signup3Action() {
+        $hash = $this->params()->fromQuery('user');
+        $customer = $this->customersService->getUserFromHash($hash);
+
+        $customerFleetId  = $customer->getFleet();
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
             $this->layout('layout/map');
         }
-        return new ViewModel();
+        return new ViewModel([
+            'customerFleetId' => $customerFleetId,
+        ]);
     }
 
     public function signupinsertAction() {
