@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core-business.git",
-                "reference": "15bddad0443162b3fa8521cd65382810e696e0c5"
+                "reference": "24e037a55f4b705ccfc581a5e62814fb876999fe"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2017-12-21 08:28:07"
+            "time": "2017-12-27 11:56:38"
         },
         {
             "name": "cup-web/public-business-module",
