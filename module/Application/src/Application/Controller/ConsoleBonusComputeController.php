@@ -488,7 +488,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $minuteTripsYesterday = 0;
             $pointToAdd = 0;
 
-            if (count($tripsYesterday) > 0) { 
+            if (count($tripsYesterday) > 0) {
                 foreach ($tripsYesterday as $tripYesterday) {
                     $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                     $minuteTripsYesterday += $interval->minutes();
@@ -497,6 +497,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         $minuteTripsYesterday -= $freeMinutes->getMinutes();
                 }
             }
+            
+            if($minuteTripsYesterday < 0)
+                $minuteTripsYesterday = 0;
+            
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                 $pointToAdd = $this->pointConfig['maxValPointDay'];
             }else{
