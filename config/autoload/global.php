@@ -13,7 +13,7 @@
 
 return [
     'sharengo' => [
-        'card-cost' => 10
+        'card-cost' => 5
     ],
     'profiling-platform' => [
         'endpoint' => 'http://www.equomobili.it/',
@@ -34,7 +34,7 @@ return [
         'password' => 'f477ur3!'
     ],
     'subscription-bonus' => [
-        'total' => 30,
+        'total' => 15,
         'description' => 'Bonus iscrizione utente',
         'valid-to' => '+ 90 days'
     ],
