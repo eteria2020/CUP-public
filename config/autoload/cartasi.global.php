@@ -2,7 +2,7 @@
 
 return [
     'cartasi' => [
-        'first_payment_amount' => 1000,
+        'first_payment_amount' => 500,
         'preauthorization_amount' => 5,
         'currency' => 'EUR',
         'currency_ecreq' => 978,
