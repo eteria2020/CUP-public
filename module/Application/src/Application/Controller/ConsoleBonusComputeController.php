@@ -13,6 +13,7 @@ use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\ServerScriptsService;
+use SharengoCore\Service\AccountedTripsService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\CustomersPoints;
@@ -29,6 +30,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
      */
     private $customerService;
 
+    /**
+     * @var AccountedTripsService
+     */
+    private $accountedTripsService;
+    
     /**
      * @var ServerScriptService
      */
@@ -108,6 +114,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     /**
      * @param CustomersService $customerService
      * @param ServerScriptsService $serverScriptServic
+     * @param AccountedTripsService $accountedTripsService
      * @param TripsService $tripsService
      * @param TripPaymentsService $tripPaymentsService
      * @param EditTripsService $editTripService
@@ -120,10 +127,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param Form $customerPointForm
      */
     public function __construct(
-    CustomersService $customerService, ServerScriptsService $serverScriptService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
+    CustomersService $customerService, ServerScriptsService $serverScriptService, AccountedTripsService $accountedTripsService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
     ) {
         $this->customerService = $customerService;
         $this->serverScriptService = $serverScriptService;
+        $this->accountedTripsService = $accountedTripsService;
         $this->carsService = $carsService;
         $this->tripsService = $tripsService;
         $this->tripPaymentsService = $tripPaymentsService;
@@ -480,10 +488,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $minuteTripsYesterday = 0;
             $pointToAdd = 0;
 
-            if (count($tripsYesterday) > 0) {
+            if (count($tripsYesterday) > 0) { 
                 foreach ($tripsYesterday as $tripYesterday) {
                     $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                     $minuteTripsYesterday += $interval->minutes();
+                    $freeMinutes = $this->accountedTripsService->findFreeMinutesByTripId($tripYesterday->getId());
+                    if(count($freeMinutes) > 0)
+                        $minuteTripsYesterday -= $freeMinutes->getMinutes();
                 }
             }
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
