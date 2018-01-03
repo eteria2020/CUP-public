@@ -491,8 +491,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }else{
                 $pointToAdd = $minuteTripsYesterday;
             }
-            $pointToAdd = $pointToAdd*3;
-             
+            
+            
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
             //add or update line point in customers_points
@@ -505,7 +505,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             //update the field InfoScript in tabel server_scripts after customer procressed
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
-
+            
             $this->customerService->clearEntityManager();
             
         }//end foreach customers
