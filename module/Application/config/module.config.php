@@ -735,10 +735,21 @@ return [
                     ],
                 ]
             ],
-            'flcg' => [
+            'falacosagiusta' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{falacosagiusta}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'flcg',
+                    ],
+                ]
+            ],
+            'flcg' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{flcg}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
