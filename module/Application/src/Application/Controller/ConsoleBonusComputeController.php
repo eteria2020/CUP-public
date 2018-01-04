@@ -483,7 +483,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
         foreach ($customers as $c){
 
-            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
+            //$tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
+            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday(35942, "2016-12-07", "2016-12-07");
 
             $minuteTripsYesterday = 0;
             $pointToAdd = 0;
@@ -492,12 +493,27 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 foreach ($tripsYesterday as $tripYesterday) {
                     $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                     $minuteTripsYesterday += $interval->minutes();
-                    $freeMinutes = $this->accountedTripsService->findFreeMinutesByTripId($tripYesterday->getId());
-                    if(count($freeMinutes) > 0)
-                        $minuteTripsYesterday -= $freeMinutes->getMinutes();
+
+                    //remove minutes from table trip_free_fares
+                    $freeMinutesTripFreeFares = $this->accountedTripsService->findFreeMinutesByTripIdFromTripFreeFraes($tripYesterday->getId());
+                    if (count($freeMinutesTripFreeFares) > 0)
+                        $minuteTripsYesterday -= $freeMinutesTripFreeFares->getMinutes();
+
+                    //remove minutes from table trip_bonuses mapped type in table customers_bonus
+                    $freeMinutesTripBonuses = $this->accountedTripsService->findFreeMinutesByTripIdFromTripBonuses($tripYesterday->getId());
+                    if (count($freeMinutesTripBonuses) > 0)
+                        foreach ($freeMinutesTripBonuses as $item) {
+                            if ($item->getBonus()->getType() == "promo" ||
+                                    $item->getBonus()->getType() == "zone-POIS" ||
+                                    $item->getBonus()->getType() == "zone-carrefour" ||
+                                    $item->getBonus()->getType() == "birthday" ||
+                                    $item->getBonus()->getType() == "bonus" ||
+                                    $item->getBonus()->getType() == "PacchettoPunti"
+                            )
+                                $minuteTripsYesterday -= $item->getMinutes();
+                        }
                 }
             }
-            
 
             if($minuteTripsYesterday < 0)
                 $minuteTripsYesterday = 0;
@@ -507,8 +523,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }else{
                 $pointToAdd = $minuteTripsYesterday;
             }
-            
-            
+            /*
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
             //add or update line point in customers_points
@@ -517,7 +532,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
             } else {
                 $this->addCustomersPoints($pointToAdd, $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
-
+            */
+            
+            $this->addCustomersPoints($pointToAdd, 35942, "TEST SOTTRAZIONE MINUTI", "TEST SOTTRAZIONE MINUTI");
+            
             //update the field InfoScript in tabel server_scripts after customer procressed
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
