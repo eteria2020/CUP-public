@@ -483,8 +483,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
         foreach ($customers as $c){
 
-            //$tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
-            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday(4572, "2017-09-24", "2017-09-25");
+            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
 
             $minuteTripsYesterday = 0;
             $pointToAdd = 0;
@@ -494,12 +493,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                     $minuteTripsYesterday += $interval->minutes();
 
-                    //remove minutes from table trip_free_fares
+                    //remove minutes from table trip_free_fares     ---> return zero or one result
                     $freeMinutesTripFreeFares = $this->accountedTripsService->findFreeMinutesByTripIdFromTripFreeFraes($tripYesterday->getId());
                     if (count($freeMinutesTripFreeFares) > 0)
                         $minuteTripsYesterday -= $freeMinutesTripFreeFares[0]->getMinutes();
 
-                    //remove minutes from table trip_bonuses mapped type in table customers_bonus
+                    //remove minutes from table trip_bonuses mapped type in table customers_bonus     ---> return zero, one or more result
                     $freeMinutesTripBonuses = $this->accountedTripsService->findFreeMinutesByTripIdFromTripBonuses($tripYesterday->getId());
                     if (count($freeMinutesTripBonuses) > 0)
                         foreach ($freeMinutesTripBonuses as $item) {
@@ -515,9 +514,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
             }
 
+            //if $minuteTripsYesterday < 0 set $minuteTripsYesterday = 0 because not generate points negative
             if($minuteTripsYesterday < 0)
                 $minuteTripsYesterday = 0;
             
+            //check if $minuteTripsYesterday exceeds the point limit to day
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                 $pointToAdd = $this->pointConfig['maxValPointDay'];
             }else{
@@ -536,8 +537,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
             //update the field InfoScript in tabel server_scripts after customer procressed
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
-            
-            $this->addCustomersPoints($pointToAdd, 4572, "TEST SOTTRAZIONE MINUTI", "TEST SOTTRAZIONE MINUTI");
             
             $this->customerService->clearEntityManager();
             
