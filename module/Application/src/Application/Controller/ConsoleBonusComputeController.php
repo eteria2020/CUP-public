@@ -486,6 +486,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $minuteTripsYesterday += $interval->minutes();
                 }
             }
+            
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                 $pointToAdd = $this->pointConfig['maxValPointDay'];
             }else{
