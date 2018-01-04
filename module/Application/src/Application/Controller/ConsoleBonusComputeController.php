@@ -484,7 +484,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         foreach ($customers as $c){
 
             //$tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday($c['id'], $arrayDates[0], $arrayDates[1]);
-            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday(35942, "2016-12-07", "2016-12-07");
+            $tripsYesterday = $this->tripsService->getTripsByCustomerForAddPointYesterday(4572, "2017-09-24", "2017-09-25");
 
             $minuteTripsYesterday = 0;
             $pointToAdd = 0;
@@ -497,7 +497,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     //remove minutes from table trip_free_fares
                     $freeMinutesTripFreeFares = $this->accountedTripsService->findFreeMinutesByTripIdFromTripFreeFraes($tripYesterday->getId());
                     if (count($freeMinutesTripFreeFares) > 0)
-                        $minuteTripsYesterday -= $freeMinutesTripFreeFares->getMinutes();
+                        $minuteTripsYesterday -= $freeMinutesTripFreeFares[0]->getMinutes();
 
                     //remove minutes from table trip_bonuses mapped type in table customers_bonus
                     $freeMinutesTripBonuses = $this->accountedTripsService->findFreeMinutesByTripIdFromTripBonuses($tripYesterday->getId());
@@ -523,7 +523,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }else{
                 $pointToAdd = $minuteTripsYesterday;
             }
-            /*
+            
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
             //add or update line point in customers_points
@@ -532,13 +532,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
             } else {
                 $this->addCustomersPoints($pointToAdd, $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
-            */
-            
-            $this->addCustomersPoints($pointToAdd, 35942, "TEST SOTTRAZIONE MINUTI", "TEST SOTTRAZIONE MINUTI");
             
             //update the field InfoScript in tabel server_scripts after customer procressed
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
+            
+            $this->addCustomersPoints($pointToAdd, 4572, "TEST SOTTRAZIONE MINUTI", "TEST SOTTRAZIONE MINUTI");
             
             $this->customerService->clearEntityManager();
             
