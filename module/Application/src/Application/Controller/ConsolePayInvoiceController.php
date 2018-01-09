@@ -113,7 +113,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             // clear the entity manager cache
             $this->entityManager->clear();
 
-            $this->generateInvoices();
+            //$this->generateInvoices();
         } else {
             $this->logger->log("\nError: Pay invoice is running\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
         }

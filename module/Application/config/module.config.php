@@ -1878,17 +1878,6 @@ return [
                         ]
                     ]
                 ],
-                'generate-trip-invoice' => [
-                    'type' => 'simple',
-                    'options' => [
-                        'route' => 'generate trip invoice <tripPaymentId>',
-                        'defaults' => [
-                            '__NAMESPACE__' => 'Application\Controller',
-                            'controller' => 'GenerateTripInvoice',
-                            'action' => 'generate-invoice'
-                        ]
-                    ]
-                ],
                 'account-compute' => [
                     'type' => 'simple',
                     'options' => [
@@ -2010,6 +1999,17 @@ return [
                         ]
                     ]
                 ],
+                'generate-trip-invoice' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate trip invoice <tripPaymentId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'GenerateTripInvoice',
+                            'action' => 'generate-invoice'
+                        ]
+                    ]
+                ],
                 'generate-extra-invoices' => [
                     'type' => 'simple',
                     'options' => [
@@ -2029,6 +2029,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'GeneratePackageInvoices',
                             'action' => 'generate-package-invoices'
+                        ]
+                    ]
+                ],
+                'generate-trip-invoices' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'generate trip invoices <time> [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'GenerateTripInvoice',
+                            'action' => 'generate-trip-invoices'
                         ]
                     ]
                 ],
