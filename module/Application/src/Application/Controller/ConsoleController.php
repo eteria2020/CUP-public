@@ -481,4 +481,34 @@ class ConsoleController extends AbstractActionController {
         $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;stop\n");
     }
 
+    public function aletrCreditCardExpirationAction() {
+        echo "test aletrCreditCardExpirationAction\n";
+        
+        $this->prepareLogger();
+        $format = "%s;INF;aletrCreditCardExpirationActionstrat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $today = new \DateTime();
+        $today = $today->format("Y-m-d 00:00:00");
+        
+        $firstDayThisMonth = new \DateTime('first day of this month');
+        $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
+        
+        //if today is the first day of this month
+        if($today === $firstDayThisMonth){
+            
+        }else{
+            $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        }
+        
+        $format = "%s;INF;aletrCreditCardExpirationAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }
+    
+    public function disableCreditCardAction() {
+        echo "test disableCreditCardAction";
+    }
+    
 }

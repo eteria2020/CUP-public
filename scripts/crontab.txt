@@ -45,3 +45,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 22 * * *     root            /usr/bin/pm2 restart webservices
 58 23 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_compute.sh
 00 05 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/expired_license.sh
+
+# evrry month
+#credit_card_expiration
+

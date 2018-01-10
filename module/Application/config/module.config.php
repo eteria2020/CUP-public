@@ -1955,6 +1955,28 @@ return [
                         ]
                     ]
                 ],
+                'aletr-credit-card-expiration' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'aletr credit card expiration',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'aletr-credit-card-expiration'
+                        ]
+                    ]
+                ],
+                'disable-credit-card' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'disable credit card',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'disable-credit-card'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [
