@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
 use Zend\Mvc\Controller\AbstractActionController;
+use Cartasi\Service\CartasiContractsService;
 
 class ConsoleController extends AbstractActionController {
 
@@ -76,10 +77,16 @@ class ConsoleController extends AbstractActionController {
      * @var string
      */
     private $delay;
+    
+    /**
+     * @var CartasiContractsService
+     */
+    private $cartasiContractsService;
 
 
     /**
      * @param CustomersService $customerService
+     * @param CartasiContractsService $cartasiContractsService
      * @param CarsService $carsService
      * @param ReservationsService $reservationsService
      * @param EntityManager $entityManager
@@ -90,7 +97,7 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+    CustomersService $customerService, CartasiContractsService $cartasiContractsService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -102,6 +109,7 @@ class ConsoleController extends AbstractActionController {
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
+        $this->cartasiContractsService = $cartasiContractsService;
     }
 
     public function getDiscountsAction() {
@@ -483,11 +491,11 @@ class ConsoleController extends AbstractActionController {
 
     public function aletrCreditCardExpirationAction() {
         echo "test aletrCreditCardExpirationAction\n";
-        
+        /*
         $this->prepareLogger();
         $format = "%s;INF;aletrCreditCardExpirationActionstrat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+        */
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
         
@@ -495,16 +503,26 @@ class ConsoleController extends AbstractActionController {
         $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
         
         //if today is the first day of this month
-        if($today === $firstDayThisMonth){
+        //if($today === $firstDayThisMonth){
+            ///querry su contract per recuperare 
+            $customers = $this->cartasiContractsService->getCustomersExpiringNextMonth($firstDayThisMonth);
             
-        }else{
+            foreach ($customers as $customer){
+                if($customer->getCustomer()->getEnabled()){
+                    //mail
+                }
+            }
+       // }else{
+            $a = "";
+            /*
             $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        }
-        
+            */
+        //}
+        /*
         $format = "%s;INF;aletrCreditCardExpirationAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+        */
     }
     
     public function disableCreditCardAction() {

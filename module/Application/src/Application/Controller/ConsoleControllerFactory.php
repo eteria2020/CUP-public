@@ -22,8 +22,12 @@ class ConsoleControllerfactory implements FactoryInterface
         $alarmConfig = $configurationService->getConfigurationsKeyValueBySlug(Configurations::ALARM);
         $invoicesService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\Invoices');
         $cartasiTransactionsRepository = $entityManager->getRepository('\Cartasi\Entity\Transactions');
+        $cartasiContractsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiContracts');
+        
+        
         return new ConsoleController(
             $customerService,
+            $cartasiContractsService,
             $carsService,
             $reservationsService,
             $entityManager,
