@@ -14,6 +14,7 @@ use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Cartasi\Service\CartasiContractsService;
+use SharengoCore\Service\SimpleLoggerService as Logger;
 
 class ConsoleController extends AbstractActionController {
 
@@ -82,11 +83,17 @@ class ConsoleController extends AbstractActionController {
      * @var CartasiContractsService
      */
     private $cartasiContractsService;
+    
+    /**
+     * @var Logger
+     */
+    private $logger;
 
 
     /**
      * @param CustomersService $customerService
      * @param CartasiContractsService $cartasiContractsService
+     * @param Logger $logger
      * @param CarsService $carsService
      * @param ReservationsService $reservationsService
      * @param EntityManager $entityManager
@@ -97,7 +104,7 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CartasiContractsService $cartasiContractsService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -110,6 +117,7 @@ class ConsoleController extends AbstractActionController {
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
         $this->cartasiContractsService = $cartasiContractsService;
+        $this->logger = $logger;
     }
 
     public function getDiscountsAction() {
@@ -491,11 +499,11 @@ class ConsoleController extends AbstractActionController {
 
     public function aletrCreditCardExpirationAction() {
         echo "test aletrCreditCardExpirationAction\n";
-        /*
+        
         $this->prepareLogger();
-        $format = "%s;INF;aletrCreditCardExpirationActionstrat\n";
+        $format = "%s;INF;aletrCreditCardExpirationAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        */
+        
         $today = new \DateTime();
         $today = $today->format("Y-m-d 00:00:00");
         
@@ -512,21 +520,26 @@ class ConsoleController extends AbstractActionController {
                     //mail
                 }
             }
-       // }else{
+        /*}else{
             $a = "";
-            /*
+            
             $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-            */
-        //}
-        /*
+            
+        }*/
+        
         $format = "%s;INF;aletrCreditCardExpirationAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        */
+        
     }
     
     public function disableCreditCardAction() {
         echo "test disableCreditCardAction";
+    }
+    
+    private function prepareLogger() {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
     
 }
