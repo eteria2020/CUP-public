@@ -18,9 +18,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 30 02  * * *    sharengo        /srv/apps/sharengo-publicsite/scripts/cron/clean_commands.sh
 50 02 11 * *    root            /etc/init.d/ntp restart
 
-# every month
-10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
-
 # every minute
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/reservations.sh
@@ -48,3 +45,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 22 * * *     root            /usr/bin/pm2 restart webservices
 58 23 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_compute.sh
 00 05 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/expired_license.sh
+
+# every month
+10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
