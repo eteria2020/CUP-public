@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core-business.git",
-                "reference": "a28e4deaf2aa8a186a4e5d58ab6736715e586fe9"
+                "reference": "9e8d239533094f56e6097ea9105a7bf58dd0199a"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2018-01-10 16:26:33"
+            "time": "2018-01-11 15:41:48"
         },
         {
             "name": "cup-web/public-business-module",
@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/public-business-module.git",
-                "reference": "4d2e05ecb5ce328c3b74ec820598b5c91d60868d"
+                "reference": "db66fbe8d91ee78ee20e036485b8ffc23c7b9523"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2018-01-10 16:35:05"
+            "time": "2018-01-11 15:40:34"
         },
         {
             "name": "dmregister/zf2-resque",
