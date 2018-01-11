@@ -497,7 +497,7 @@ class ConsoleController extends AbstractActionController {
         $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;stop\n");
     }
 
-    public function aletrCreditCardExpirationAction() {
+    public function alertCreditCardExpirationAction() {
         
         $this->prepareLogger();
         $format = "%s;INF;aletrCreditCardExpirationAction;strat\n";
@@ -507,14 +507,22 @@ class ConsoleController extends AbstractActionController {
         if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare 
             $c = $this->cartasiContractsService->getContractById(176347);
-            $contracts = $this->cartasiContractsService->getContractsExpiringNextMonth(date_create('first day of next month')->format('ym'));
+            $contracts = $this->cartasiContractsService->getContractsExpiringNextMonth('20'.date_create('first day of next month')->format('ym'));
             
             foreach ($contracts as $contract){
                 if($contract->getCustomer()->getEnabled()){
-                    //mail
-                    //---
+                    echo $contract->getId();
+                    echo "\n";
+                    //-------------------------------                    
+                    //send mail
+                    //-------------------------------
                     
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                    
+                    //-------------------------------
                     //pulizia dell'entity manager
+                    //-------------------------------
                 }
             }
         }else{
@@ -536,27 +544,28 @@ class ConsoleController extends AbstractActionController {
         //if today is the first day of this month
         if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare
-            $contracts = $this->cartasiContractsService->getContractsExpiring(date_create('first day of last month')->format('ym'));
+            $contracts = $this->cartasiContractsService->getContractsExpiring('20'.date_create('first day of last month')->format('ym'));
             
             foreach ($contracts as $contract){
                 if($contract->getCustomer()->getEnabled()){
                     //disable contract
                     $this->cartasiContractsService->disableContract($contract);
                     //disable user
-                    //----
-                    $customer = $contract->getCustomer();
-                    $customer->setPaymentAble(false);
-                    $customer->disable();
-                    $customerDeactivation = new CustomerDeactivation(
-                        $customer,
-                        $reason,
-                        $details,
-                        $startTs,
-                        $webuser
-                    );
-                                //slavare il customer cambiato
+                    $this->customerService->disableCustomer($contract->getCustomer());
                     
+                    //chiedere CustomerDeactivation
+                        
+                    //-------------------------------
+                    //sendEmail
+                    //-------------------------------
+                    
+                    
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                    
+                    //-------------------------------
                     //pulizia dell'entity manager
+                    //-------------------------------
                 }
             }
         }else{

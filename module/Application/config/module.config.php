@@ -400,8 +400,10 @@ return [
                     'route' => '/signup-promocodeverify',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'promocode-verify'
+                        //'controller' => 'User',
+                        //'action' => 'promocode-verify'
+                        'controller' => 'Console',
+                            'action' => 'alert-credit-card-expiration'
                     ]
                 ]
             ],
@@ -1955,14 +1957,14 @@ return [
                         ]
                     ]
                 ],
-                'aletr-credit-card-expiration' => [
+                'alert-credit-card-expiration' => [
                     'type' => 'simple',
                     'options' => [
                         'route' => 'aletr credit card expiration',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
-                            'action' => 'aletr-credit-card-expiration'
+                            'action' => 'alert-credit-card-expiration'
                         ]
                     ]
                 ],
