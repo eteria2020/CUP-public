@@ -498,35 +498,29 @@ class ConsoleController extends AbstractActionController {
     }
 
     public function aletrCreditCardExpirationAction() {
-        echo "test aletrCreditCardExpirationAction\n";
         
         $this->prepareLogger();
         $format = "%s;INF;aletrCreditCardExpirationAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
-        $today = new \DateTime();
-        $today = $today->format("Y-m-d 00:00:00");
-        
-        $firstDayThisMonth = new \DateTime('first day of this month');
-        $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
-        
         //if today is the first day of this month
-        //if($today === $firstDayThisMonth){
+        if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare 
-            $customers = $this->cartasiContractsService->getCustomersExpiringNextMonth($firstDayThisMonth);
+            $c = $this->cartasiContractsService->getContractById(176347);
+            $contracts = $this->cartasiContractsService->getContractsExpiringNextMonth(date_create('first day of next month')->format('ym'));
             
-            foreach ($customers as $customer){
-                if($customer->getCustomer()->getEnabled()){
+            foreach ($contracts as $contract){
+                if($contract->getCustomer()->getEnabled()){
                     //mail
+                    //---
+                    
+                    //pulizia dell'entity manager
                 }
             }
-        /*}else{
-            $a = "";
-            
+        }else{
             $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-            
-        }*/
+        }
         
         $format = "%s;INF;aletrCreditCardExpirationAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -534,7 +528,59 @@ class ConsoleController extends AbstractActionController {
     }
     
     public function disableCreditCardAction() {
-        echo "test disableCreditCardAction";
+        
+        $this->prepareLogger();
+        $format = "%s;INF;disableCreditCardAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        //if today is the first day of this month
+        if($this->checkFristDayOfThisMonth()){
+            ///querry su contract per recuperare
+            $contracts = $this->cartasiContractsService->getContractsExpiring(date_create('first day of last month')->format('ym'));
+            
+            foreach ($contracts as $contract){
+                if($contract->getCustomer()->getEnabled()){
+                    //disable contract
+                    $this->cartasiContractsService->disableContract($contract);
+                    //disable user
+                    //----
+                    $customer = $contract->getCustomer();
+                    $customer->setPaymentAble(false);
+                    $customer->disable();
+                    $customerDeactivation = new CustomerDeactivation(
+                        $customer,
+                        $reason,
+                        $details,
+                        $startTs,
+                        $webuser
+                    );
+                                //slavare il customer cambiato
+                    
+                    //pulizia dell'entity manager
+                }
+            }
+        }else{
+            $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        }
+        
+        $format = "%s;INF;disableCreditCardAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+    }
+    
+    
+    private function checkFristDayOfThisMonth() {
+        $today = new \DateTime();
+        $today = $today->format("Y-m-d 00:00:00");
+        
+        $firstDayThisMonth = new \DateTime('first day of this month');
+        $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
+        
+        //if($today === $firstDayThisMonth)
+        if(true)
+            return true;
+        else
+            return false;
     }
     
     private function prepareLogger() {
