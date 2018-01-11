@@ -815,7 +815,7 @@ return [
             'intern' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{intern}',
+                    'route' => '/{interni}',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
@@ -944,7 +944,7 @@ return [
                     ],
                 ],
             ],
-            'payback' => [
+            /*'payback' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{payback}',
@@ -965,7 +965,7 @@ return [
                         'action' => 'payback',
                     ],
                 ],
-            ],
+            ],*/
             'politecnico' => [
                 'type' => 'Segment',
                 'options' => [
