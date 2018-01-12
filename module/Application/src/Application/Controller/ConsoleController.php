@@ -16,6 +16,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Cartasi\Service\CartasiContractsService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use SharengoCore\Service\EmailService;
+use SharengoCore\Service\CustomerDeactivationService;
 
 class ConsoleController extends AbstractActionController {
 
@@ -95,11 +96,18 @@ class ConsoleController extends AbstractActionController {
      */
     private $emailService;
     
+    /**
+     * @var CustomerDeactivationService
+     */
+    private $customerDeactivationService;
+    
 
     /**
      * @param CustomersService $customerService
      * @param CartasiContractsService $cartasiContractsService
      * @param Logger $logger
+     * @param EmailService $emailService
+     * @param CustomerDeactivationService $customerDeactivationService
      * @param CarsService $carsService
      * @param ReservationsService $reservationsService
      * @param EntityManager $entityManager
@@ -110,7 +118,7 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, EmailService $emailService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, EmailService $emailService, CustomerDeactivationService $customerDeactivationService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -125,6 +133,7 @@ class ConsoleController extends AbstractActionController {
         $this->cartasiContractsService = $cartasiContractsService;
         $this->logger = $logger;
         $this->emailService = $emailService;
+        $this->customerDeactivationService = $customerDeactivationService;
     }
 
     public function getDiscountsAction() {
@@ -555,7 +564,7 @@ class ConsoleController extends AbstractActionController {
                     //disable contract
                     $this->cartasiContractsService->disableContract($contract);
                     //disable user
-                    $this->customerService->disableCustomer($contract->getCustomer());
+                    $this->customerDeactivationService->deactivateByScriptDisableCreditCard($contract->getCustomer());
                     
                     $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;Disable Contract and Customer;\n";
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));

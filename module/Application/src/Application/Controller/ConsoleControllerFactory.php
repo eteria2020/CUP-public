@@ -25,6 +25,7 @@ class ConsoleControllerfactory implements FactoryInterface
         $cartasiContractsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiContracts');
         $logger = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\SimpleLoggerService');
         $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
+        $customerDeactivationService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\CustomerDeactivationService');
         
         
         return new ConsoleController(
@@ -32,6 +33,7 @@ class ConsoleControllerfactory implements FactoryInterface
             $cartasiContractsService,
             $logger,
             $emailService,
+            $customerDeactivationService,
             $carsService,
             $reservationsService,
             $entityManager,
