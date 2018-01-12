@@ -101,6 +101,11 @@ class ConsoleController extends AbstractActionController {
      */
     private $customerDeactivationService;
     
+    /**
+     * @var boolean
+     */
+    private $avoidEmails;
+    
 
     /**
      * @param CustomersService $customerService
@@ -519,6 +524,9 @@ class ConsoleController extends AbstractActionController {
         $format = "%s;INF;alertCreditCardExpirationAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
+        $request = $this->getRequest();
+        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        
         //if today is the first day of this month
         if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare 
@@ -527,15 +535,12 @@ class ConsoleController extends AbstractActionController {
             
             foreach ($contracts as $contract){
                 if($contract->getCustomer()->getEnabled()){                    
-                    //send mail
-                    $this->sendEmail($contract->getCustomer()->getEmail(), $contract->getCustomer()->getName(), $contract->getCustomer()->getLanguage(), 20);
-                    
-                    $format = "%s;INF;alertCreditCardExpirationAction;Contratc= %d;Customer_id= %d;SendEmail;\n";
-                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
-                    
-                    //-------------------------------
-                    //pulizia dell'entity manager
-                    //-------------------------------
+                    if (!$this->avoidEmails){
+                        $this->sendEmail($contract->getCustomer()->getEmail(), $contract->getCustomer()->getName(), $contract->getCustomer()->getLanguage(), 20);
+                        $format = "%s;INF;alertCreditCardExpirationAction;Contratc= %d;Customer_id= %d;SendEmail;\n";
+                        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                    }
+                    $this->customerService->clearAllEntityManager();
                 }
             }
         }else{
@@ -554,6 +559,9 @@ class ConsoleController extends AbstractActionController {
         $format = "%s;INF;disableCreditCardAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
+        $request = $this->getRequest();
+        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        
         //if today is the first day of this month
         if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare
@@ -563,21 +571,20 @@ class ConsoleController extends AbstractActionController {
                 if($contract->getCustomer()->getEnabled()){
                     //disable contract
                     $this->cartasiContractsService->disableContract($contract);
-                    //disable user
+                    //disable customer
                     $this->customerDeactivationService->deactivateByScriptDisableCreditCard($contract->getCustomer());
                     
                     $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;Disable Contract and Customer;\n";
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
                     
                     //sendEmail
-                    $this->sendEmail($contract->getCustomer()->getEmail(), $contract->getCustomer()->getName(), $contract->getCustomer()->getLanguage(), 21);                    
+                    if (!$this->avoidEmails){
+                        $this->sendEmail($contract->getCustomer()->getEmail(), $contract->getCustomer()->getName(), $contract->getCustomer()->getLanguage(), 21);                    
+                        $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;SendEmail;\n";
+                        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                    }
                     
-                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;SendEmail;\n";
-                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
-                    
-                    //-------------------------------
-                    //pulizia dell'entity manager
-                    //-------------------------------
+                    $this->customerService->clearAllEntityManager();
                 }
             }
         }else{
