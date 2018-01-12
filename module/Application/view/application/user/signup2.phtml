@@ -131,22 +131,29 @@
     </div>
 </div>
 
-<div>
+<div class="block-row-field clearfix">
     <div class="block-field bw-f w-2-4">
-         <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
-             <small><?= $this->translate('(Foreign driver license?)'); ?></small>
-             <?php $driverLicenseForeign = $this->form->get('driver')->get('driverLicenseForeign'); ?>
-             <?php echo $this->formRow($driverLicenseForeign); ?>
-         </p>
-     </div>
+        <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
+            <small><?= $this->translate('(Foreign driver license?)'); ?></small>
+            <?php $driverLicenseForeign = $this->form->get('driver')->get('driverLicenseForeign'); ?>
+            <?php echo $this->formRow($driverLicenseForeign); ?>
+        </p>
 
-     <div class="block-field bw-f w-2-4">
+        <div id ="self_declaretion" >
+            <p>Scarica il documento di autocertificazione e compilalo dopo aver completato l’iscrizione.</p>
+            <p><small>(Download the self-declaration form, complete your registration and fill and send the form).</small></p>
+            <a href="pdf/AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf" class="document-links" download>Italiano</a>
+            <a href="pdf/AUTOCERTIFICAZIONE_PATENTE_ESTERA_ENG.pdf" class="document-links" download>English</a>
+        </div>
+    </div>
+
+    <div class="block-field bw-f w-2-4">
         <p> <label><?= $this->translate('Rilasciata (nazione)'); ?></label>
             <small><?= $this->translate('(Issuing country)'); ?></small>
             <?php
-                $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
-                echo $this->formElement($driverLicenseCountry);
-                echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
+            $driverLicenseCountry = $this->form->get('driver')->get('driverLicenseCountry');
+            echo $this->formElement($driverLicenseCountry);
+            echo $this->formElementErrors($driverLicenseCountry, ['class' => 'errors']);
             ?>
         </p>
     </div>
@@ -250,3 +257,17 @@
         });'
     );
 ?>
+
+<script>
+    if($('#driverLicenseForeign').is(":checked"))
+        $('#self_declaretion').show();
+    else
+        $('#self_declaretion').hide();
+        
+    $('#driverLicenseForeign').change(function(){
+        if($('#driverLicenseForeign').is(":checked"))
+            $('#self_declaretion').show();
+        else
+            $('#self_declaretion').hide();
+    });
+</script>
