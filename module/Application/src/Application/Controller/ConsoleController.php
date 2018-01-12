@@ -15,6 +15,7 @@ use SharengoCore\Service\InvoicesService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Cartasi\Service\CartasiContractsService;
 use SharengoCore\Service\SimpleLoggerService as Logger;
+use SharengoCore\Service\EmailService;
 
 class ConsoleController extends AbstractActionController {
 
@@ -88,7 +89,12 @@ class ConsoleController extends AbstractActionController {
      * @var Logger
      */
     private $logger;
-
+    
+    /**
+     * @var EmailService
+     */
+    private $emailService;
+    
 
     /**
      * @param CustomersService $customerService
@@ -104,7 +110,7 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, EmailService $emailService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -118,6 +124,7 @@ class ConsoleController extends AbstractActionController {
         $this->invoicesService = $invoicesService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->logger = $logger;
+        $this->emailService = $emailService;
     }
 
     public function getDiscountsAction() {
@@ -500,7 +507,7 @@ class ConsoleController extends AbstractActionController {
     public function alertCreditCardExpirationAction() {
         
         $this->prepareLogger();
-        $format = "%s;INF;aletrCreditCardExpirationAction;strat\n";
+        $format = "%s;INF;alertCreditCardExpirationAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
         //if today is the first day of this month
@@ -510,14 +517,11 @@ class ConsoleController extends AbstractActionController {
             $contracts = $this->cartasiContractsService->getContractsExpiringNextMonth('20'.date_create('first day of next month')->format('ym'));
             
             foreach ($contracts as $contract){
-                if($contract->getCustomer()->getEnabled()){
-                    echo $contract->getId();
-                    echo "\n";
-                    //-------------------------------                    
+                if($contract->getCustomer()->getEnabled()){                    
                     //send mail
-                    //-------------------------------
+                    $this->sendEmail($contract->getCustomer()->getEmail(), $contract->getCustomer()->getName(), $contract->getCustomer()->getLanguage(), 20);
                     
-                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;\n";
+                    $format = "%s;INF;alertCreditCardExpirationAction;Contratc= %d;Customer_id= %d;SendEmail;\n";
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
                     
                     //-------------------------------
@@ -526,11 +530,11 @@ class ConsoleController extends AbstractActionController {
                 }
             }
         }else{
-            $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
+            $format = "%s;INF;alertCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         }
         
-        $format = "%s;INF;aletrCreditCardExpirationAction;end\n";
+        $format = "%s;INF;alertCreditCardExpirationAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
     }
@@ -553,14 +557,13 @@ class ConsoleController extends AbstractActionController {
                     //disable user
                     $this->customerService->disableCustomer($contract->getCustomer());
                     
-                    //chiedere CustomerDeactivation
-                        
-                    //-------------------------------
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;Disable Contract and Customer;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                    
                     //sendEmail
-                    //-------------------------------
+                    $this->sendEmail($contract->getCustomer()->getEmail(), $contract->getCustomer()->getName(), $contract->getCustomer()->getLanguage(), 21);                    
                     
-                    
-                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;\n";
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;SendEmail;\n";
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
                     
                     //-------------------------------
@@ -590,6 +593,25 @@ class ConsoleController extends AbstractActionController {
             return true;
         else
             return false;
+    }
+    
+    private function sendEmail($email, $name, $language, $category) {
+        //$writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail($category, $language);
+        $content = sprintf(
+                $mail->getContent(), $name
+        );
+
+        //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+
+        $attachments = [
+                //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+        ];
+        $this->emailService->sendEmail(
+                $email, //send to
+                $mail->getSubject(), //'Share’ngo: bonus 5 minuti',//object email
+                $content, $attachments
+        );
     }
     
     private function prepareLogger() {
