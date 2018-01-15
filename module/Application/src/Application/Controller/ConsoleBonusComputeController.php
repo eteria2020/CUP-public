@@ -504,7 +504,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         foreach ($freeMinutesTripBonuses as $item) {
                             if ($item->getBonus()->getType() == "promo" ||
                                     $item->getBonus()->getType() == "zone-POIS" ||
-                                    $item->getBonus()->getType() == "zone-carrefour" ||
+                                    $item->getBonus()->getType() == "zone-carrefour" || 
                                     $item->getBonus()->getType() == "birthday" ||
                                     $item->getBonus()->getType() == "bonus" ||
                                     $item->getBonus()->getType() == "PacchettoPunti"
