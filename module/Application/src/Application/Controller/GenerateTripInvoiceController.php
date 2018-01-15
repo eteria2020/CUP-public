@@ -56,10 +56,6 @@ class GenerateTripInvoiceController extends AbstractActionController
                 $firstDay = null;
                 $lastDay = null;
                 break;
-            case "weekly": //last week trip_payments
-                $firstDay = new \DateTime('last monday');
-                $lastDay = new \DateTime('last sunday');
-                break;
             case "monthly": //previous month
                 $firstDay = new \DateTime('first day of previous month');
                 $lastDay = new \DateTime('last day of previous month');
@@ -72,7 +68,7 @@ class GenerateTripInvoiceController extends AbstractActionController
         $this->logger->log("Started generating invoices\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
 
         // get all trip_payments without invoice
-        $tripPayments = $this->tripPaymentsService->getTripPaymentsNoInvoiceGrouped();
+        $tripPayments = $this->tripPaymentsService->getTripPaymentsNoInvoiceGrouped($firstDay, $lastDay);
         $this->logger->log("Generating invoices for " . count($tripPayments) . "trips\n");
 
         // generate the invoices
