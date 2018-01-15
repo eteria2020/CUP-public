@@ -13,6 +13,7 @@ use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\ServerScriptsService;
+use SharengoCore\Service\AccountedTripsService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
 use SharengoCore\Entity\CustomersPoints;
@@ -29,6 +30,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
      */
     private $customerService;
 
+    /**
+     * @var AccountedTripsService
+     */
+    private $accountedTripsService;
+    
     /**
      * @var ServerScriptService
      */
@@ -108,6 +114,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     /**
      * @param CustomersService $customerService
      * @param ServerScriptsService $serverScriptServic
+     * @param AccountedTripsService $accountedTripsService
      * @param TripsService $tripsService
      * @param TripPaymentsService $tripPaymentsService
      * @param EditTripsService $editTripService
@@ -120,10 +127,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param Form $customerPointForm
      */
     public function __construct(
-    CustomersService $customerService, ServerScriptsService $serverScriptService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
+    CustomersService $customerService, ServerScriptsService $serverScriptService, AccountedTripsService $accountedTripsService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
     ) {
         $this->customerService = $customerService;
         $this->serverScriptService = $serverScriptService;
+        $this->accountedTripsService = $accountedTripsService;
         $this->carsService = $carsService;
         $this->tripsService = $tripsService;
         $this->tripPaymentsService = $tripPaymentsService;
@@ -484,15 +492,38 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 foreach ($tripsYesterday as $tripYesterday) {
                     $interval = new Interval($tripYesterday->getTimestampBeginning(), $tripYesterday->getTimestampEnd());
                     $minuteTripsYesterday += $interval->minutes();
+
+                    //remove minutes from table trip_free_fares     ---> return zero or one result
+                    $freeMinutesTripFreeFares = $this->accountedTripsService->findFreeMinutesByTripIdFromTripFreeFraes($tripYesterday->getId());
+                    if (count($freeMinutesTripFreeFares) > 0)
+                        $minuteTripsYesterday -= $freeMinutesTripFreeFares[0]->getMinutes();
+
+                    //remove minutes from table trip_bonuses mapped type in table customers_bonus     ---> return zero, one or more result
+                    $freeMinutesTripBonuses = $this->accountedTripsService->findFreeMinutesByTripIdFromTripBonuses($tripYesterday->getId());
+                    if (count($freeMinutesTripBonuses) > 0)
+                        foreach ($freeMinutesTripBonuses as $item) {
+                            if ($item->getBonus()->getType() == "promo" ||
+                                    $item->getBonus()->getType() == "zone-POIS" ||
+                                    $item->getBonus()->getType() == "zone-carrefour" || 
+                                    $item->getBonus()->getType() == "birthday" ||
+                                    $item->getBonus()->getType() == "bonus" ||
+                                    $item->getBonus()->getType() == "PacchettoPunti"
+                            )
+                                $minuteTripsYesterday -= $item->getMinutes();
+                        }
                 }
             }
+
+            //if $minuteTripsYesterday < 0 set $minuteTripsYesterday = 0 because not generate points negative
+            if($minuteTripsYesterday < 0)
+                $minuteTripsYesterday = 0;
             
+            //check if $minuteTripsYesterday exceeds the point limit to day
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                 $pointToAdd = $this->pointConfig['maxValPointDay'];
             }else{
                 $pointToAdd = $minuteTripsYesterday;
             }
-            
             
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
@@ -502,7 +533,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             } else {
                 $this->addCustomersPoints($pointToAdd, $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
-
+            
             //update the field InfoScript in tabel server_scripts after customer procressed
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
