@@ -530,8 +530,7 @@ class ConsoleController extends AbstractActionController {
         //if today is the first day of this month
         if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare 
-            $c = $this->cartasiContractsService->getContractById(176347);
-            $contracts = $this->cartasiContractsService->getContractsExpiringNextMonth('20'.date_create('first day of next month')->format('ym'));
+            $contracts = $this->cartasiContractsService->getContractsExpiringNextMonth('20' . date_create('first day of next month')->format('ym'));
             
             foreach ($contracts as $contract){
                 if($contract->getCustomer()->getEnabled()){                    
@@ -565,7 +564,7 @@ class ConsoleController extends AbstractActionController {
         //if today is the first day of this month
         if($this->checkFristDayOfThisMonth()){
             ///querry su contract per recuperare
-            $contracts = $this->cartasiContractsService->getContractsExpiring('20'.date_create('first day of last month')->format('ym'));
+            $contracts = $this->cartasiContractsService->getContractsExpiring('20' . date_create('first day of last month')->format('ym'));
             
             foreach ($contracts as $contract){
                 if($contract->getCustomer()->getEnabled()){
