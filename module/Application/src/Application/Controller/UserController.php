@@ -19,6 +19,7 @@ use Application\Exception\ProfilingPlatformException;
 use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
 use SharengoCore\Service\TripsService;
@@ -56,6 +57,12 @@ class UserController extends AbstractActionController {
      * @var SharengoCore\Service\PromoCodeService
      */
     private $promoCodeService;
+
+    /**
+     *
+     * @var SharengoCore\Service\PromoCodesOnceService
+     */
+    private $promoCodesOnceService;
 
     /**
      * @var \Multilanguage\Service\LanguageService
@@ -108,10 +115,11 @@ class UserController extends AbstractActionController {
      * @param HydratorInterface $hydrator
      * @param TripsService $tripsService
      * @param PromoCodesService $promoCodeService
+     * @param PromoCodesOnceService $promoCodesOnceService
      */
     public function __construct(
     Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
-    , PromoCodesService $promoCodeService) {
+    , PromoCodesService $promoCodeService, PromoCodesOnceService $promoCodesOnceService) {
 
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -126,6 +134,7 @@ class UserController extends AbstractActionController {
         $this->fleetService = $fleetService;
         $this->tripsService = $tripsService;
         $this->promoCodeService = $promoCodeService;
+        $this->promoCodesOnceService = $promoCodesOnceService;
     }
 
     public function loginAction() {
@@ -213,7 +222,7 @@ class UserController extends AbstractActionController {
             $container = new Container('session');
             $container->offsetSet('hasDiscount', true);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return $this->redirect()->toRoute('signup');
@@ -230,7 +239,7 @@ class UserController extends AbstractActionController {
                 $this->customersService->setCustomerDiscountRate($customer, $discount);
             }
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         if ($customer->getFirstPaymentCompleted()) {
@@ -376,7 +385,7 @@ class UserController extends AbstractActionController {
 
         //CSD-1142 - check if mobile number already exixts
         if ($this->checkDuplicateMobileAction() > 0) {
-            if($this->checkTheSameModifyNumber()){
+            if ($this->checkTheSameModifyNumber()) {
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
                 $response->setContent("Found");
@@ -687,23 +696,35 @@ class UserController extends AbstractActionController {
         $this->redirect()->toRoute('signup');
     }
 
-    public function promocodeVerifyAction() { // momo controle if the promo code is ok. return the min and eur.        
-        if ($this->promoCodeService->isValid(strtoupper($this->getRequest()->getPost('promocode')))) {
-            $promo = $this->promoCodeService->getPromoCode(strtoupper($this->getRequest()->getPost('promocode')));
-            $info['min'] = $promo->getPromocodesinfo()->getMinutes();
-            $info['cost'] = $promo->getPromocodesinfo()->getOverriddenSubscriptionCost() / 100;
-            $info['disc'] =$promo->getPromocodesinfo()->discountPercentage();
-            $response = $this->getResponse();
-            $response->setStatusCode(200);
-            $response->setContent(json_encode($info));
+    public function promocodeVerifyAction() { // momo controle if the promo code is ok. return the min and eur.
+        $promoCodeInfo = null;
 
-            return $response;
+        $pc = trim(strtoupper($this->getRequest()->getPost('promocode')));
+        if ($this->promoCodeService->isValid(strtoupper($pc))) {
+            $promoCode = $this->promoCodeService->getPromoCode($pc);
+            $promoCodeInfo = $promoCode->getPromoCodesInfo();
         } else {
+            if ($this->promoCodesOnceService->isValid($pc)) {
+                $promoCodeOnce = $this->promoCodesOnceService->getByPromoCode($pc);
+                $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
+            }
+        }
+
+        if (is_null($promoCodeInfo)) {
             $response = $this->getResponse();
             $response->setStatusCode(400);
             $response->setContent(false);
-            return $response;
+        } else {
+            $info['min'] = $promoCodeInfo->getMinutes();
+            $info['cost'] = $promoCodeInfo->getOverriddenSubscriptionCost() / 100;
+            $info['disc'] = $promoCodeInfo->discountPercentage();
+
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent(json_encode($info));
         }
+
+        return $response;
     }
 
     private function customerHasDiscount() {
@@ -715,7 +736,7 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getPromoCodeByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return null;
@@ -725,7 +746,7 @@ class UserController extends AbstractActionController {
         try {
             return $this->profilingPlatformService->getFleetByEmail($email);
         } catch (ProfilingPlatformException $ex) {
-            
+
         }
 
         return null;
@@ -745,16 +766,16 @@ class UserController extends AbstractActionController {
         $found = $this->customersService->checkMobileNumber($this->params()->fromPost('mobile'));
         return $found;
     }
-    
+
     public function checkTheSameModifyNumber() {
         $customer = $this->customersService->findByEmail($this->params()->fromPost('email'));
-        if(count($customer) > 0 ){
-            if($customer[0]->getMobile() == $this->params()->fromPost('mobile')){
+        if (count($customer) > 0) {
+            if ($customer[0]->getMobile() == $this->params()->fromPost('mobile')) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
-        }else{
+        } else {
             return true;
         }
     }
