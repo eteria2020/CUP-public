@@ -72,7 +72,7 @@ class GenerateTripInvoiceController extends AbstractActionController
         $this->logger->log("Generating invoices for " . count($tripPayments) . "trips\n");
 
         // generate the invoices
-        $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$avoidPersistance);
+        $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$avoidPersistance, $monthly = true);
 
         $this->logger->log("Done generating invoices\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
