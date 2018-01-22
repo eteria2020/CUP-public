@@ -481,7 +481,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core-business.git",
-                "reference": "9e8d239533094f56e6097ea9105a7bf58dd0199a"
+                "reference": "390a15868bf785e276d63ef0c7c9e0f76b5ece3f"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -502,7 +502,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2018-01-11 15:41:48"
+            "time": "2018-01-22 15:41:32"
         },
         {
             "name": "cup-web/public-business-module",
@@ -510,7 +510,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/public-business-module.git",
-                "reference": "db66fbe8d91ee78ee20e036485b8ffc23c7b9523"
+                "reference": "ccdd15cdd036582d6cb1d9353790858860510ead"
             },
             "require": {
                 "php": ">=5.4",
@@ -527,7 +527,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2018-01-11 15:40:34"
+            "time": "2018-01-22 15:41:36"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
