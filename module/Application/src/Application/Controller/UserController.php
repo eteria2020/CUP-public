@@ -476,9 +476,9 @@ class UserController extends AbstractActionController {
         $out = curl_exec($ch);
         $sms_msg = json_decode($out);
 
-        $writerError = new \Zend\Log\Writer\Stream($this->smsConfig['logError']);
-        $loggerError = new \Zend\Log\Logger();
-        $loggerError->addWriter($writerError);
+        //$writerError = new \Zend\Log\Writer\Stream($this->smsConfig['logError']);
+        //$loggerError = new \Zend\Log\Logger();
+        //$loggerError->addWriter($writerError);
 
         $writeSuccess = new \Zend\Log\Writer\Stream($this->smsConfig['logSuccess']);
         $loggerSuccess = new \Zend\Log\Logger();
@@ -490,7 +490,7 @@ class UserController extends AbstractActionController {
         if (empty($out)) {
             //errore URL GENERICO
             //write log
-            $loggerError->info('Errore generico prestare attenzione');
+            //$loggerError->info('Errore generico prestare attenzione');
             $response_message = $translator->translate("Errore invio sms");
         } else {
             //if((strpos($out, "errorCode") != false)){
@@ -501,7 +501,7 @@ class UserController extends AbstractActionController {
                         case "NO_VALID_RECIPIENT":
                             //destinatario non corretto
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Numero di telefono non corretto");
 
                             break;
@@ -509,7 +509,7 @@ class UserController extends AbstractActionController {
                         case "BAD_CREDIT":
                             //credito insufficente
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             $this->emailService->sendEmail(
@@ -521,7 +521,7 @@ class UserController extends AbstractActionController {
                         case "BAD_TEXT":
                             //test errato
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             break;
@@ -529,7 +529,7 @@ class UserController extends AbstractActionController {
                         case "GENERIC_ERROR":
                             //errore generico
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             $this->emailService->sendEmail(
@@ -541,7 +541,7 @@ class UserController extends AbstractActionController {
                         default:
                             //errore generico
                             //write log
-                            $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                            //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                             $response_message = $translator->translate("Errore invio sms");
 
                             break;
@@ -549,7 +549,7 @@ class UserController extends AbstractActionController {
                 } else if ($errorCode == 500) {
                     //errore generico
                     //write log
-                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                    //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
 
                     $this->emailService->sendEmail(
                             "ufficiotecnico@sharengo.eu", "Errore generico SMS Hosting", "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ", $attachman
@@ -557,7 +557,7 @@ class UserController extends AbstractActionController {
                 } else if ($errorCode == 401) {
                     //credenziali sbagliate
                     //write log
-                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                    //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
 
                     $this->emailService->sendEmail(
                             "ufficiotecnico@sharengo.eu", "Credenziali SMS Hosting MODIFICATE", "Sono  state modificate le credenziali del servizio di SMS Hosting, login fallito", $attachman
@@ -565,11 +565,11 @@ class UserController extends AbstractActionController {
                 } else if ($errorCode == 405) {
                     //metodo http non consentito
                     //write log
-                    $loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                    //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
                 }
             } else {
                 //write succes log
-                $loggerSuccess->info(';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
+                //$loggerSuccess->info(';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
             }
         }
 
