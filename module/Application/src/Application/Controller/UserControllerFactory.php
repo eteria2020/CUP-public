@@ -17,6 +17,7 @@ class UserControllerfactory implements FactoryInterface
         $registrationService = $serviceLocator->getServiceLocator()->get('RegistrationService');
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $promoCodeService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesService');
+        $promoCodesOnceService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesOnceService');
         $languageService = $serviceLocator->getServiceLocator()->get('LanguageService');
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
         $translationService = $serviceLocator->getServiceLocator()->get('Translator');
@@ -42,7 +43,8 @@ class UserControllerfactory implements FactoryInterface
             $emailService,
             $fleetService,
             $tripService,
-            $promoCodeService
+            $promoCodeService,
+            $promoCodesOnceService
         );
     }
 }
