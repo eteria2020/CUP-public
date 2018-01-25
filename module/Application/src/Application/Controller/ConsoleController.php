@@ -552,17 +552,16 @@ class ConsoleController extends AbstractActionController {
     }
     
     public function disableCreditCardAction() {
-        $tr = '20' . date_create('first day of last month')->format('ym');
         $this->prepareLogger();
         $format = "%s;INF;disableCreditCardAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
-        $request = $this->getRequest();
-        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        //$request = $this->getRequest();
+        //$this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
         
         //if today is the first day of this month
         if($this->checkFristDayOfThisMonth()){
-            
+            /*
             $contracts = $this->cartasiContractsService->getContractsExpiring('20' . date_create('first day of last month')->format('ym'));
             foreach ($contracts as $contract) {
                 if ($contract->getCustomer()->getEnabled()) {
@@ -576,10 +575,19 @@ class ConsoleController extends AbstractActionController {
                 }
                 $this->customerService->clearAllEntityManager();
             }
-            
+            */
             $customersid = $this->cartasiContractsService->getCustomersContractExpiring('20' . date_create('first day of last month')->format('ym'));
             foreach ($customersid as $customerid) {
-                $customer = $this->customerService->findById($customerId);
+                $customer = $this->customerService->findById($customerid);
+                                
+                $contracts = $this->cartasiContractsService->findByCustomerId($customer->getId(), '20' . date_create('first day of last month')->format('ym'));
+                foreach ($contracts as $contract) {
+                    $this->cartasiContractsService->disableContract($contract);
+                    $this->customerDeactivationService->deactivateByScriptDisableCreditCard($contract->getCustomer());
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;Disable Contract and Customer;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                }
+                
                 //sendEmail
                 if (!$this->avoidEmails) {
                     $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 21);
@@ -605,7 +613,8 @@ class ConsoleController extends AbstractActionController {
         $firstDayThisMonth = new \DateTime('first day of this month');
         $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
         
-        if($today === $firstDayThisMonth)
+        //if($today === $firstDayThisMonth)
+        if(true)
             return true;
         else
             return false;
