@@ -48,5 +48,3 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # every month
 10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
-11 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiration.sh
-
