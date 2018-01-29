@@ -47,5 +47,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 05 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/expired_license.sh
 
 # every month
-10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiration.sh
-
+10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
