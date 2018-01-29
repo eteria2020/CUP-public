@@ -400,8 +400,10 @@ return [
                     'route' => '/signup-promocodeverify',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'promocode-verify'
+                        //'controller' => 'User',
+                        //'action' => 'promocode-verify'
+                        'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-nivea'
                     ]
                 ]
             ],
@@ -1952,6 +1954,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'add-point-cluster'
+                        ]
+                    ]
+                ],
+                'bonus-nivea' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus nivea',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-nivea'
                         ]
                     ]
                 ],

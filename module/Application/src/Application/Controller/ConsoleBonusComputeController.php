@@ -933,4 +933,35 @@ class ConsoleBonusComputeController extends AbstractActionController {
         return $result;
     }
 
+    public function bonusNiveaAction() {
+
+        $this->prepareLogger();
+        $format = "%s;INF;bonusNiveaAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+
+        //get all customer
+        $customers = $this->customerService->getCustomerBonusNivea();
+
+        foreach ($customers as $customer) {
+            $bonus = new \SharengoCore\Entity\CustomersBonus();
+            $bonus->setInsertTs(date_create());
+            $bonus->setTotal(15);
+            $bonus->setResidual(15);
+            $bonus->setUpdateTs(date_create());
+            $bonus->setValidFrom(date_create());
+            $bonus->setValidTo(date_create());
+            $bonus->setDescription("Courtesy of NIVEA");
+
+            $this->customerService->addBonus($customer, $bonus);
+
+            $format = "%s;INF;bonusNiveaAction;Customer_id= %d;Processed!\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+            
+            $this->customerService->clearAllEntityManager();
+        }
+
+        $format = "%s;INF;bonusNiveaAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+    }
+
 }
