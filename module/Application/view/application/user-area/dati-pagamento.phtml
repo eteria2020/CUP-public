@@ -113,12 +113,11 @@
                             <?php else: ?>
                              <?php if( $this->customer->getFirstPaymentCompleted()): ?>
                                 <div class="col-lg-12 block-alert margin-bottom info">
-                                    <p> <?= $this->translate("Per inserire una nuova carta di credito o prepagata:"); ?> </p>
-                                    <ul>
-                                        <li><p> <?= $this->translate('Se hai corse da saldare puoi inserire subito i dati della nuova carta cliccando sulla voce &#x22;Pagamento corse&#x22;.'); ?></p></li>
-                                         <li><p> <?= $this->translate('Se non hai corse da pagare, invece, potrai inserire i dati della nuova carta <u><strong>solo dopo</u></strong> aver effettuato un noleggio, cliccando sulla voce &#x22;Pagamento corse&#x201D; (potrai effettuare la prima corsa anche senza una carta associata). In alternativa, potrai inserire subito i dati della carta, acquistando un pacchetto minuti nella sezione &#x22;Promo e pacchetti&#x22; (con cui corri a tariffe scontate fino a &#x20AC;0,22 al minuto).'); ?></p></li>
-                                    </ul>
-                                    <p> <?= $this->translate("I dati della carta saranno poi memorizzati per le successive corse."); ?> </p>
+                                    <p> <?= $this->translate("La tua carta di credito (o prepagata) risulta scaduta o non presente:"); ?> </p>
+                                    <br>
+                                    <p> <?= $this->translate('Clicca su <button class="medium red" onclick="openChangeCard()">CAMBIA CARTA</button> per inserirne una nuova.'); ?></p>
+                                    <br>
+                                    <p> <?= $this->translate('Attenzione: se non provvederai ad inserire una nuova carta di credito (o prepagata) il tuo profilo rimarrà disabilitato.'); ?></p>
                                 </div>
                              <?php else: ?>
                                  <div class="col-lg-12"><?= $this->translate("Non hai ancora inserito una carta di credito o prepagata sul tuo profilo."); ?></div>
@@ -136,7 +135,14 @@
         <!-- module-column-app dx -->
     </div>
     <!-- module-wrapper-app -->
-    <?php if ($this->contract): ?>
+    <?php //if ($this->contract):
+    if (is_null($this->contract)) {
+        //$contract = $this->contract->getId();
+        $contract = 'no_contract';
+    } else {
+        $contract = $this->contract->getId();
+    }
+    ?>
         <!-- overlay change credit card -->
         <div id="sng-overlay" style="visibility: hidden">
             <div class="table">
@@ -151,7 +157,7 @@
                                 </ul>
                                 <br>
                                 <div id="button-alert" class="block-wrapper-button content-align-center">
-                                    <a href="<?= $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $this->contract->getId()]]) ?>"><button type="button" id="js-edit-form">PROCEDI</button></a>
+                                    <a href="<?= $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) ?>"><button type="button" id="js-edit-form">PROCEDI</button></a>
                                     <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()">CHIUDI</button></a>
                                 </div>
                             </div>
@@ -161,7 +167,7 @@
             </div>
         </div>
         <!-- overlay -->
-    <?php endif; ?>
+    <?php //endif; ?>
 </div>
 <!-- main -->
 <?php $this->headStyle()->captureStart() ?>
