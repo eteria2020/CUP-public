@@ -938,18 +938,20 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $format = "%s;INF;bonusNiveaAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-
-        //get all customer
+        
         $customers = $this->customerService->getCustomerBonusNivea();
+        
+        $date = date_create();
+        $date2 = date_create('+ 30 day');       
 
         foreach ($customers as $customer) {
             $bonus = new \SharengoCore\Entity\CustomersBonus();
-            $bonus->setInsertTs(date_create());
+            $bonus->setInsertTs($date);
             $bonus->setTotal(15);
             $bonus->setResidual(15);
-            $bonus->setUpdateTs(date_create());
-            $bonus->setValidFrom(date_create());
-            $bonus->setValidTo(date_create());
+            $bonus->setUpdateTs($date);
+            $bonus->setValidFrom($date);
+            $bonus->setValidTo($date2);
             $bonus->setDescription("Courtesy of NIVEA");
 
             $this->customerService->addBonus($customer, $bonus);
