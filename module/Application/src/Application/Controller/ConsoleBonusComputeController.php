@@ -959,7 +959,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $format = "%s;INF;bonusNiveaAction;Customer_id= %d;Processed!\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
             
-            $this->customerService->clearAllEntityManager();
+            $this->customerService->clearEntityManagerBonus();
         }
 
         $format = "%s;INF;bonusNiveaAction;end\n";
