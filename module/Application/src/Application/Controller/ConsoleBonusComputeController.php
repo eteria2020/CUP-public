@@ -939,7 +939,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format = "%s;INF;bonusNiveaAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
-        $customers = $this->customerService->getCustomerBonusNivea();
+        $descriptionBonusNivea = "Courtesy of NIVEA";
+        
+        $customers = $this->customerService->getCustomerBonusNivea($descriptionBonusNivea);
         
         $date = date_create();
         $date2 = date_create('+ 30 day');       
@@ -952,7 +954,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $bonus->setUpdateTs($date);
             $bonus->setValidFrom($date);
             $bonus->setValidTo($date2);
-            $bonus->setDescription("Courtesy of NIVEA");
+            $bonus->setDescription($descriptionBonusNivea);
 
             $this->customerService->addBonus($customer, $bonus);
 
