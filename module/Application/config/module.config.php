@@ -134,6 +134,20 @@ return [
                     ],
                 ]
             ],
+            'rescueCode' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{s}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'rescueCode',
+                    ],
+                    'constraints' => [
+                        'userId' => '[0-9&]+',
+                    ],
+                ]
+            ],
             /* 'quantocosta' => [
               'type' => 'Segment',
               'options' => [
