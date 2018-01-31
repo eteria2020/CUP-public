@@ -966,4 +966,5 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
 
+    
 }
