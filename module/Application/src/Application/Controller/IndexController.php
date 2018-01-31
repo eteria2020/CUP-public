@@ -272,7 +272,7 @@ class IndexController extends AbstractActionController
         if ($customer->getEnabled() == true){
             return $this->notFoundAction();
         }
-        $this->redirect()->toUrl("http://public.localhost.eu/cartasi/primo-pagamento?customer=$userId");//https://www.sharengo.it
+        $this->redirect()->toUrl("https://www.sharengo.it/cartasi/primo-pagamento?customer=$userId");
 
     }
 
