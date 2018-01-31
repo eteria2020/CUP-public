@@ -1977,6 +1977,17 @@ return [
                         ]
                     ]
                 ],
+                'bonus-nivea' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus nivea',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-nivea'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [
