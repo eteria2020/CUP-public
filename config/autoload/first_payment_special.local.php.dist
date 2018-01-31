@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'special_list' => [
+        'sms_rescue'  => []
+    ]
+];
