@@ -50,7 +50,7 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'promocode',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
-                'id' => 'name',
+                'id' => 'promocode',
                 'maxlength' => 24,
                 'placeholder' => $translator->translate('Promo code'),
                  'oninput'=>'this.value=this.value.toUpperCase()'
