@@ -54,7 +54,7 @@ $(function () {
     }
 
     if (document.location.pathname === "/signup" || document.location.pathname === "/signup/mobile" ){
-        if ($('#name').val().length > 0) {
+        if ($('#promocode').val().length > 0) {
             verifyPromo();
         }
     }
@@ -248,7 +248,7 @@ $(function () {
             type: "POST",
             url: "/signup-promocodeverify",
 
-            data: {'promocode': $('#name').val()},
+            data: {'promocode': $('#promocode').val()},
             beforeSend: function () {
                 //console.log("WAIT 1");
                 // $('#buttonVerifyPromo').hide();
@@ -296,7 +296,7 @@ $(function () {
         });
     }
     $(document).on("click", "#buttonVerifyPromo", function () { // momo send the promo code to controller then adjust min and eur in the html
-        if ($('#name').val().length > 0) {
+        if ($('#promocode').val().length > 0) {
 
             verifyPromo();
         }

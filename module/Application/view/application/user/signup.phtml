@@ -100,7 +100,7 @@ $this->headLink()
                     <p>
                         <?php
                         $promocode = $this->form->get('promocode')->get('promocode');
-                        echo $this->formElement($promocode);
+                        echo $this->formElement($promocode); 
                         ?>
                     </p>
 
@@ -302,12 +302,12 @@ $this->headLink()
                         }
                         $select .= '><option></option></select>';
                         echo $select;
-                        $input = '<input name="' . $birthTown->getName() . '" ';
+                        /*$input = '<input name="' . $birthTown->getName() . '" ';
                         foreach ($birthTown->getAttributes() as $attribute => $value) {
                             $input .= $attribute . '="' . $value . '" ';
                         }
                         $input .= ' style="display: none;" value="' . $birthTown->getValue() . '" disabled></ipnut>';
-                        echo $input;
+                        echo $input;*/
                         echo $this->formElementErrors($birthTown, ['class' => 'errors']);
                         ?>
                     </p>
