@@ -302,12 +302,13 @@ $this->headLink()
                         }
                         $select .= '><option></option></select>';
                         echo $select;
-                        /*$input = '<input name="' . $birthTown->getName() . '" ';
-                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                        $birthTown2 = $this->form->get('user')->get('birthTown');
+                        $input = '<input name="' . $birthTown2->getName() . '" ';
+                        foreach ($birthTown2->getAttributes() as $attribute => $value) {
                             $input .= $attribute . '="' . $value . '" ';
                         }
-                        $input .= ' style="display: none;" value="' . $birthTown->getValue() . '" disabled></ipnut>';
-                        echo $input;*/
+                        $input .= ' style="display: none;" value="' . $birthTown2->getValue() . '" disabled></ipnut>';
+                        echo $input;
                         echo $this->formElementErrors($birthTown, ['class' => 'errors']);
                         ?>
                     </p>
