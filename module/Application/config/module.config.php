@@ -414,8 +414,10 @@ return [
                     'route' => '/signup-promocodeverify',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'promocode-verify'
+                        //'controller' => 'User',
+                        //'action' => 'promocode-verify'
+                        'controller' => 'Console',
+                        'action' => 'disable-credit-card'
                     ]
                 ]
             ],
