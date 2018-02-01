@@ -305,7 +305,7 @@ $this->headLink()
                         $birthTown2 = $this->form->get('user')->get('birthTown');
                         $input = '<input name="' . $birthTown2->getName() . '" ';
                         foreach ($birthTown2->getAttributes() as $attribute => $value) {
-                            $input .= $attribute . '="' . $value . '" ';
+                            $input .= $attribute . '="'.$value .'" ';
                         }
                         $input .= ' style="display: none;" value="' . $birthTown2->getValue() . '" disabled></ipnut>';
                         echo $input;
