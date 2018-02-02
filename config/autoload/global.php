@@ -39,7 +39,7 @@ return [
         'valid-to' => '+ 90 days'
     ],
     'banner-jsonp' => [
-        'url' => 'http://manage.sharengo.it/banner.php'
+        'url' => 'banner'
     ],
     'bonus' => [
         'birthday' => [
