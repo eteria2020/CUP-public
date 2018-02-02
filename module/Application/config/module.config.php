@@ -1974,7 +1974,7 @@ return [
                 'alert-credit-card-expiration' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'alert credit card expiration [--no-email|-e]',
+                        'route' => 'alert credit card expiration [--dry-run|-d] [--no-email|-e]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
@@ -1985,7 +1985,7 @@ return [
                 'disable-credit-card' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'disable credit card [--no-email|-e]',
+                        'route' => 'disable credit card [--dry-run|-d] [--no-email|-e]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
