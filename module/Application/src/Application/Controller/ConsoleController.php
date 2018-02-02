@@ -563,13 +563,32 @@ class ConsoleController extends AbstractActionController {
         if($this->checkFristDayOfThisMonth()){
             
             $pan_expiry = '20' . date_create('first day of last month')->format('ym');
-            
+
             $customersid = $this->cartasiContractsService->getCustomersContractExpiring($pan_expiry);
             foreach ($customersid as $customerid) {
                 $customer = $this->customerService->findById($customerid);
-                     
-                $sendMail = false;
-                
+
+                //$sendMail = false;
+
+                $contract = $this->cartasiContractsService->findValidContractByCustomer($customer);
+                if(count($contract) > 0){
+                if ($contract->getPanExpiry() = $pan_expiry) {
+                    $this->customerDeactivationService->deactivateByScriptDisableCreditCard($customer);
+                    $this->cartasiContractsService->disableContract($contract);
+                    $format = "%s;INF;disableCreditCardAction;Customer_id = %d;Contract_id = %d;Disable Customer and Contract;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $contract->getId()));
+                    
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Disable Contract;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId()));
+
+                    if (!$this->avoidEmails) {
+                        $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 21);
+                        $format = "%s;INF;disableCreditCardAction;Customer_id= %d;Send Email;\n";
+                        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+                    }
+                }}
+
+                /*
                 $contracts = $this->cartasiContractsService->findByCustomerId($customer->getId(), $pan_expiry);
                 if(count($contracts) < 1){
                     $this->customerDeactivationService->deactivateByScriptDisableCreditCard($customer);
@@ -592,7 +611,7 @@ class ConsoleController extends AbstractActionController {
                         $format = "%s;INF;disableCreditCardAction;Customer_id= %d;Send Email;\n";
                         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
                     }
-                }
+                }*/
                 $this->customerService->clearAllEntityManager();
             }
         }else{
