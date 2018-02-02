@@ -148,6 +148,17 @@ return [
                     ],
                 ]
             ],
+            'banner' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{banner}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'banner',
+                    ],
+                ]
+            ],
             /* 'quantocosta' => [
               'type' => 'Segment',
               'options' => [

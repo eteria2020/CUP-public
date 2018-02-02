@@ -276,5 +276,42 @@ class IndexController extends AbstractActionController
 
     }
 
+    public function bannerAction(){
+        $customerId = $this->params()->fromQuery('id', '');
+        $callback = $this->params()->fromQuery('callback', '');
+        $link = $this->params()->fromQuery('link', '');
+
+        $resp = "";
+        $this->getResponse()->setContent($resp);
+
+        if(intval($customerId) <= 0){
+            return $this->getResponse();
+        }
+
+        if(end(explode('/',$link)) != "area-utente"){
+            return $this->getResponse();
+        }
+
+        if($callback != "setBanner"){
+            return $this->getResponse();
+        }
+
+        // Get cURL resource
+        $curl = curl_init();
+        // Set some options - we are passing in a useragent too here
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'http://manage.sharengo.it/banner.php?id='.$customerId.'&callback='.$callback.'&link='.$link,
+            CURLOPT_USERAGENT => 'Sharengo Public Banner'
+        ));
+        // Send the request & save response to $resp
+        $resp = curl_exec($curl);
+        // Close request to clear up some resources
+        curl_close($curl);
+        //$resp = $customerId.$callback.$link;
+        $this->getResponse()->setContent($resp);
+        return $this->getResponse();
+    }
+
 
 }
