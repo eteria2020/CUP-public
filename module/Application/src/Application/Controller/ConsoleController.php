@@ -13,6 +13,10 @@ use Doctrine\ORM\EntityManager;
 use Application\Service\ProfilingPlaformService;
 use SharengoCore\Service\InvoicesService;
 use Zend\Mvc\Controller\AbstractActionController;
+use Cartasi\Service\CartasiContractsService;
+use SharengoCore\Service\SimpleLoggerService as Logger;
+use SharengoCore\Service\EmailService;
+use SharengoCore\Service\CustomerDeactivationService;
 
 class ConsoleController extends AbstractActionController {
 
@@ -76,10 +80,39 @@ class ConsoleController extends AbstractActionController {
      * @var string
      */
     private $delay;
-
+    
+    /**
+     * @var CartasiContractsService
+     */
+    private $cartasiContractsService;
+    
+    /**
+     * @var Logger
+     */
+    private $logger;
+    
+    /**
+     * @var EmailService
+     */
+    private $emailService;
+    
+    /**
+     * @var CustomerDeactivationService
+     */
+    private $customerDeactivationService;
+    
+    /**
+     * @var boolean
+     */
+    private $avoidEmails;
+    
 
     /**
      * @param CustomersService $customerService
+     * @param CartasiContractsService $cartasiContractsService
+     * @param Logger $logger
+     * @param EmailService $emailService
+     * @param CustomerDeactivationService $customerDeactivationService
      * @param CarsService $carsService
      * @param ReservationsService $reservationsService
      * @param EntityManager $entityManager
@@ -90,7 +123,7 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, EmailService $emailService, CustomerDeactivationService $customerDeactivationService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -102,6 +135,10 @@ class ConsoleController extends AbstractActionController {
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
         $this->invoicesService = $invoicesService;
+        $this->cartasiContractsService = $cartasiContractsService;
+        $this->logger = $logger;
+        $this->emailService = $emailService;
+        $this->customerDeactivationService = $customerDeactivationService;
     }
 
     public function getDiscountsAction() {
@@ -481,4 +518,115 @@ class ConsoleController extends AbstractActionController {
         $this->writeToConsole(date_create()->format('y-m-d H:i:s') . ";INF;closeOldTripMaintainerAction;stop\n");
     }
 
+    public function alertCreditCardExpirationAction() {
+        
+        $this->prepareLogger();
+        $format = "%s;INF;alertCreditCardExpirationAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $request = $this->getRequest();
+        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        
+        //if today is the first day of this month
+        if($this->checkFristDayOfThisMonth()){
+             
+            $customersid = $this->cartasiContractsService->getCustomersContractExpiring('20' . date_create('first day of next month')->format('ym'));
+            
+            foreach ($customersid as $customerId) {
+                $customer = $this->customerService->findById($customerId);
+                if (!$this->avoidEmails) {
+                    $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 20);
+                    $format = "%s;INF;alertCreditCardExpirationAction;Customer_id= %d;Send Email;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+                }
+                $this->customerService->clearAllEntityManager();
+            }
+        }else{
+            $format = "%s;INF;alertCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        }
+        
+        $format = "%s;INF;alertCreditCardExpirationAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }
+    
+    public function disableCreditCardAction() {
+        $this->prepareLogger();
+        $format = "%s;INF;disableCreditCardAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $request = $this->getRequest();
+        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        
+        //if today is the first day of this month
+        if($this->checkFristDayOfThisMonth()){
+            
+            $customersid = $this->cartasiContractsService->getCustomersContractExpiring('20' . date_create('first day of last month')->format('ym'));
+            foreach ($customersid as $customerid) {
+                $customer = $this->customerService->findById($customerid);
+                                
+                $contracts = $this->cartasiContractsService->findByCustomerId($customer->getId(), '20' . date_create('first day of last month')->format('ym'));
+                foreach ($contracts as $contract) {
+                    $this->cartasiContractsService->disableContract($contract);
+                    $this->customerDeactivationService->deactivateByScriptDisableCreditCard($contract->getCustomer());
+                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;Disable Contract and Customer;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+                }
+                
+                //sendEmail
+                if (!$this->avoidEmails) {
+                    $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 21);
+                    $format = "%s;INF;disableCreditCardAction;Customer_id= %d;Send Email;\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+                }
+                $this->customerService->clearAllEntityManager();
+            }
+        }else{
+            $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        }
+        
+        $format = "%s;INF;disableCreditCardAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+    }
+    
+    
+    private function checkFristDayOfThisMonth() {
+        $today = new \DateTime();
+        $today = $today->format("Y-m-d 00:00:00");
+        
+        $firstDayThisMonth = new \DateTime('first day of this month');
+        $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
+        
+        if($today === $firstDayThisMonth)
+            return true;
+        else
+            return false;
+    }
+    
+    private function sendEmail($email, $name, $language, $category) {
+        //$writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail($category, $language);
+        $content = sprintf(
+                $mail->getContent(), $name
+        );
+
+        //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+
+        $attachments = [
+                //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+        ];
+        $this->emailService->sendEmail(
+                $email, //send to
+                $mail->getSubject(), //'Share’ngo: bonus 5 minuti',//object email
+                $content, $attachments
+        );
+    }
+    
+    private function prepareLogger() {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+    }
+    
 }

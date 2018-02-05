@@ -2,7 +2,7 @@
 $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-        ->appendFile($this->basePath('js/signup.js?v=3.7'));
+        ->appendFile($this->basePath('js/signup.js?v=3.9'));
 
 $this->headLink()
         ->appendStylesheet($this->basePath('css/overlay.css'))
@@ -100,7 +100,7 @@ $this->headLink()
                     <p>
                         <?php
                         $promocode = $this->form->get('promocode')->get('promocode');
-                        echo $this->formElement($promocode);
+                        echo $this->formElement($promocode); 
                         ?>
                     </p>
 
@@ -302,11 +302,12 @@ $this->headLink()
                         }
                         $select .= '><option></option></select>';
                         echo $select;
-                        $input = '<input name="' . $birthTown->getName() . '" ';
-                        foreach ($birthTown->getAttributes() as $attribute => $value) {
-                            $input .= $attribute . '="' . $value . '" ';
+                        $birthTown2 = $this->form->get('user')->get('birthTown');
+                        $input = '<input name="' . $birthTown2->getName() . '" ';
+                        foreach ($birthTown2->getAttributes() as $attribute => $value) {
+                            $input .= $attribute . '="'.$value .'" ';
                         }
-                        $input .= ' style="display: none;" value="' . $birthTown->getValue() . '" disabled></ipnut>';
+                        $input .= ' style="display: none;" value="' . $birthTown2->getValue() . '" disabled></ipnut>';
                         echo $input;
                         echo $this->formElementErrors($birthTown, ['class' => 'errors']);
                         ?>

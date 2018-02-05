@@ -15,6 +15,9 @@ use SharengoCore\Service\CarsService;
 use SharengoCore\Service\FleetService;
 use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\PoisService;
+use SharengoCore\Service\CustomersService;
+use SharengoCore\Entity\Customers;
+
 // Externals
 use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -47,6 +50,12 @@ class IndexController extends AbstractActionController
     /**
      * @var PoisService
      */
+    private $poisService;
+
+    /**
+     * @var CustomersService
+     */
+    private $customerService;
 
     /**
      * @param string $mobileUrl
@@ -56,13 +65,15 @@ class IndexController extends AbstractActionController
         ZonesService $zoneService,
         CarsService $carsService,
         FleetService $fleetService,
-        PoisService $poisService
+        PoisService $poisService,
+        CustomersService $customersService
     ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
         $this->carsService = $carsService;
         $this->fleetService = $fleetService;
         $this->poisService = $poisService;
+        $this->customerService = $customersService;
     }
 
     public function indexAction()
@@ -249,4 +260,58 @@ class IndexController extends AbstractActionController
         $plate = $this->params()->fromRoute('plate');
         $this->redirect()->toUrl("http://mobile.sharengo.it/index.php?plate=$plate");
     }
+
+    public function rescueCodeAction(){
+        $userId = $this->params()->fromRoute('userId');
+
+        $customer = $this->customerService->findById($userId);
+
+        if(!$customer instanceof Customers) {
+            return $this->notFoundAction();
+        }
+        if ($customer->getEnabled() == true){
+            return $this->notFoundAction();
+        }
+        $this->redirect()->toUrl("https://www.sharengo.it/cartasi/primo-pagamento?customer=$userId");
+
+    }
+
+    public function bannerAction(){
+        $customerId = $this->params()->fromQuery('id', '');
+        $callback = $this->params()->fromQuery('callback', '');
+        $link = $this->params()->fromQuery('link', '');
+
+        $resp = "";
+        $this->getResponse()->setContent($resp);
+
+        if(intval($customerId) <= 0){
+            return $this->getResponse();
+        }
+
+        if(end(explode('/',$link)) != "area-utente"){
+            return $this->getResponse();
+        }
+
+        if($callback != "setBanner"){
+            return $this->getResponse();
+        }
+
+        // Get cURL resource
+        $curl = curl_init();
+        // Set some options - we are passing in a useragent too here
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'http://manage.sharengo.it/banner.php?id='.$customerId.'&callback='.$callback.'&link='.$link,
+            CURLOPT_USERAGENT => 'Sharengo Public Banner'
+        ));
+        // Send the request & save response to $resp
+        $resp = curl_exec($curl);
+        // Close request to clear up some resources
+        curl_close($curl);
+        //$resp = $customerId.$callback.$link;
+        $this->getResponse()->setContent($resp);
+        return $this->getResponse();
+    }
+
+
 }
