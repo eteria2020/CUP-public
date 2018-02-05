@@ -1994,7 +1994,7 @@ return [
                 'disable-credit-card' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'disable credit card [--dry-run|-d] [--no-email|-e]',
+                        'route' => 'disable credit card [<date>] [--dry-run|-d] [--no-email|-e]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'Console',
