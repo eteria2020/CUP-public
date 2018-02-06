@@ -551,7 +551,7 @@ class ConsoleController extends AbstractActionController {
 
             $contract = $this->cartasiContractsService->getCartasiContract($customer);
             if (count($contract) > 0) {
-                if ($contract->getPanExpiry() == $pan_expiry) {
+                if ($contract->getPanExpiry() == $pan_expiry){
                     if (!$this->avoidEmails) {
                         if (!$dryRun) {
                             $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 20);
