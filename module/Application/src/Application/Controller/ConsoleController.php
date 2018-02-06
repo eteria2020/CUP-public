@@ -519,92 +519,109 @@ class ConsoleController extends AbstractActionController {
     }
 
     public function alertCreditCardExpirationAction() {
-        
+
         $this->prepareLogger();
         $format = "%s;INF;alertCreditCardExpirationAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
         $request = $this->getRequest();
         $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+
+        $format = "%s;INF;alertCreditCardExpirationAction;";
+        if(!$this->avoidEmails)
+            $format .= "SendEmails = TRUE;";
+        else
+            $format .= "SendEmails = FALSE;";
         
-        //if today is the first day of this month
-        if($this->checkFristDayOfThisMonth()){
-             
-            $customersid = $this->cartasiContractsService->getCustomersContractExpiring('20' . date_create('first day of next month')->format('ym'));
-            
-            foreach ($customersid as $customerId) {
-                $customer = $this->customerService->findById($customerId);
-                if (!$this->avoidEmails) {
-                    $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 20);
-                    $format = "%s;INF;alertCreditCardExpirationAction;Customer_id= %d;Send Email;\n";
-                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+        if (!$dryRun)
+            $format .= "DryRun = TRUE;";
+        else
+            $format .= "DryRun = FALSE;";
+        
+        $format .= "\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+
+        $pan_expiry = '20' . date_create()->format('ym');
+
+        $customersid = $this->cartasiContractsService->getCustomersContractExpiring($pan_expiry);
+
+        foreach ($customersid as $customerId) {
+            $customer = $this->customerService->findById($customerId);
+
+            $contract = $this->cartasiContractsService->getCartasiContract($customer);
+            if (count($contract) > 0) {
+                if ($contract->getPanExpiry() == $pan_expiry){
+                    if (!$this->avoidEmails) {
+                        if (!$dryRun) {
+                            $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 20);
+                        }
+                    }
                 }
-                $this->customerService->clearAllEntityManager();
             }
-        }else{
-            $format = "%s;INF;alertCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
-            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+            $this->customerService->clearAllEntityManager();
         }
-        
+
         $format = "%s;INF;alertCreditCardExpirationAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
     }
-    
+
     public function disableCreditCardAction() {
         $this->prepareLogger();
         $format = "%s;INF;disableCreditCardAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
         $request = $this->getRequest();
         $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $paramDate = $request->getParam('date');
         
-        //if today is the first day of this month
-        if($this->checkFristDayOfThisMonth()){
-            
-            $customersid = $this->cartasiContractsService->getCustomersContractExpiring('20' . date_create('first day of last month')->format('ym'));
-            foreach ($customersid as $customerid) {
-                $customer = $this->customerService->findById($customerid);
-                                
-                $contracts = $this->cartasiContractsService->findByCustomerId($customer->getId(), '20' . date_create('first day of last month')->format('ym'));
-                foreach ($contracts as $contract) {
-                    $this->cartasiContractsService->disableContract($contract);
-                    $this->customerDeactivationService->deactivateByScriptDisableCreditCard($contract->getCustomer());
-                    $format = "%s;INF;disableCreditCardAction;Contratc= %d;Customer_id= %d;Disable Contract and Customer;\n";
-                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $contract->getId(), $contract->getCustomer()->getId()));
+        $format = "%s;INF;disableCreditCardAction;";
+        if(!$this->avoidEmails)
+            $format .= "SendEmails = TRUE;";
+        else
+            $format .= "SendEmails = FALSE;";
+        
+        if (!$dryRun) 
+            $format .= "DryRun = TRUE;";
+        else
+            $format .= "DryRun = FALSE;";
+
+        if (!is_null($paramDate))
+            $pan_expiry = $paramDate;
+        else
+            $pan_expiry = '20' . date_create('first day of last month')->format('ym');
+        $format .= "PanExpiry = " . $pan_expiry . ";";
+        
+        $format .= "\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+
+        $customersId = $this->cartasiContractsService->getCustomersContractExpiring($pan_expiry);
+        foreach ($customersId as $customerId) {
+            $customer = $this->customerService->findById($customerId);
+            $contract = $this->cartasiContractsService->getCartasiContract($customer);
+            if (count($contract) > 0) {
+                if ($contract->getPanExpiry() == $pan_expiry) {
+                    if (!$dryRun) {
+                        $this->customerDeactivationService->deactivateByScriptDisableCreditCard($customer);
+                        $this->cartasiContractsService->disableContract($contract);
+                    }
+                    $format = "%s;INF;disableCreditCardAction;Customer_id = %d;Contract_id = %d\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $contract->getId()));
+                    if (!$this->avoidEmails) {
+                        if (!$dryRun) {
+                            $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 21);
+                        }
+                    }
                 }
-                
-                //sendEmail
-                if (!$this->avoidEmails) {
-                    $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 21);
-                    $format = "%s;INF;disableCreditCardAction;Customer_id= %d;Send Email;\n";
-                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
-                }
-                $this->customerService->clearAllEntityManager();
             }
-        }else{
-            $format = "%s;INF;aletrCreditCardExpirationAction;the day that was execute this script is not the first day of month\n";
-            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+            $this->customerService->clearAllEntityManager();
         }
-        
+
         $format = "%s;INF;disableCreditCardAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
-    
-    
-    private function checkFristDayOfThisMonth() {
-        $today = new \DateTime();
-        $today = $today->format("Y-m-d 00:00:00");
-        
-        $firstDayThisMonth = new \DateTime('first day of this month');
-        $firstDayThisMonth = $firstDayThisMonth->format("Y-m-d 00:00:00");
-        
-        if($today === $firstDayThisMonth)
-            return true;
-        else
-            return false;
-    }
-    
+
     private function sendEmail($email, $name, $language, $category) {
         //$writeTo = $this->emailSettings['from'];
         $mail = $this->emailService->getMail($category, $language);
