@@ -41,7 +41,7 @@ class GenerateTripInvoiceController extends AbstractActionController
         return "invoice created correctly\n";
     }
 
-    public function generateTripInvoices()
+    public function generateTripInvoicesAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
@@ -69,10 +69,10 @@ class GenerateTripInvoiceController extends AbstractActionController
 
         // get all trip_payments without invoice
         $tripPayments = $this->tripPaymentsService->getTripPaymentsNoInvoiceGrouped($firstDay, $lastDay);
-        $this->logger->log("Generating invoices for " . count($tripPayments) . "trips\n");
+        $this->logger->log("Generating invoices for " . count($tripPayments) . "trips - ". date_create()->format('Y-m-d H:i:s')."\n");
 
         // generate the invoices
-        $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$avoidPersistance, $monthly = true);
+        $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$avoidPersistance, $lastDay);
 
         $this->logger->log("Done generating invoices\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
