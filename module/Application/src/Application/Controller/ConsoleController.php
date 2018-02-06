@@ -596,7 +596,7 @@ class ConsoleController extends AbstractActionController {
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
-        $customersId = $this->cartasiContractsService->getCustomersContractExpiring($pan_expiry, true);
+        $customersId = $this->cartasiContractsService->getCustomersContractExpiring($pan_expiry);
         foreach ($customersId as $customerId) {
             $customer = $this->customerService->findById($customerId);
             $contract = $this->cartasiContractsService->getCartasiContract($customer);
