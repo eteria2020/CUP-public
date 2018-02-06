@@ -601,7 +601,7 @@ class ConsoleController extends AbstractActionController {
             $customer = $this->customerService->findById($customerId);
             $contract = $this->cartasiContractsService->getCartasiContract($customer);
             if (count($contract) > 0) {
-                if ($contract->getPanExpiry() <= $pan_expiry) {
+                if ($contract->getPanExpiry() = $pan_expiry) {
                     if (!$dryRun) {
                         $this->customerDeactivationService->deactivateByScriptDisableCreditCard($customer);
                         $this->cartasiContractsService->disableContract($contract);
