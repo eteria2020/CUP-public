@@ -13,10 +13,12 @@ class GenerateTripInvoiceControllerFactory implements FactoryInterface
 
         $tripPaymentsService = $sharedLocator->get('SharengoCore\Service\TripPaymentsService');
         $invoicesService = $sharedLocator->get('SharengoCore\Service\Invoices');
+        $logger = $sharedLocator->get('SharengoCore\Service\SimpleLoggerService');
 
         return new GenerateTripInvoiceController(
             $tripPaymentsService,
-            $invoicesService
+            $invoicesService,
+            $logger
         );
     }
 }
