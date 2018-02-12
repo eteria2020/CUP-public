@@ -236,12 +236,16 @@ class ConsoleController extends AbstractActionController {
                     $isOutOfBounds ||
                     $status == self::MAINTENANCE_STATUS;
             //check only for battery safety cars
-            if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false)){
+            if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false || strpos($car->getSoftwareVersion(), "0.107") !== false)){
                 if(is_null($car->getBatterySafetyTs())){
                     $isAlarm = false;
                 } else {
                     $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
                 }
+            }
+            //check only for nogps
+            if (!$isAlarm && strpos($car->getSoftwareVersion(), "0.107") !== false){
+                $isAlarm = $car->getNogps() == true;
             }
 
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
