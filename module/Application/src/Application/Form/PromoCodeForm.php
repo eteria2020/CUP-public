@@ -21,8 +21,10 @@ class PromoCodeForm extends Form {
                     'dotNoiseLevel' => 40,
                     'lineNoiseLevel' => 3,
                     'font' => './public/fonts/arial.ttf',
-                    'imgDir' => './public/captcha',
-                    'imgUrl' => '/captcha/')));
+                    'imgDir' => './public/cache',
+                    'imgUrl' => '/cache/')));
+
+        $captcha->setOptions(array('label' =>'Inserire il codice che vedi nell\'immagine'));
 
         $this->add($promoCodeFieldset);
         $this->add($captcha);
