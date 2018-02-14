@@ -80,32 +80,36 @@ class ConsoleController extends AbstractActionController {
      * @var string
      */
     private $delay;
-    
+
+    /**
+     * @var string
+     */
+    private $batteryUnplug;
+
     /**
      * @var CartasiContractsService
      */
     private $cartasiContractsService;
-    
+
     /**
      * @var Logger
      */
     private $logger;
-    
+
     /**
      * @var EmailService
      */
     private $emailService;
-    
+
     /**
      * @var CustomerDeactivationService
      */
     private $customerDeactivationService;
-    
+
     /**
      * @var boolean
      */
     private $avoidEmails;
-    
 
     /**
      * @param CustomersService $customerService
@@ -134,6 +138,7 @@ class ConsoleController extends AbstractActionController {
         $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
+        $this->batteryUnplug = $alarmConfig['unplug_enable'];
         $this->invoicesService = $invoicesService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->logger = $logger;
@@ -231,11 +236,11 @@ class ConsoleController extends AbstractActionController {
             $status = $car->getStatus();
             // defines if car should be in non_operative || is in maintenance
             $isAlarm = $car->getBattery() < $this->battery ||
-                    time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                    !$car->getCarsInfoUnplugEnable() ||
-                    $car->getCharging() ||
-                    $isOutOfBounds ||
-                    $status == self::MAINTENANCE_STATUS;
+                time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
+                ($car->getCharging() && ($car->getBattery() < $this->batteryUnplug || !$car->getCarsInfo()->getCarsInfoUnplugEnable())) ||
+                $car->getCharging() ||
+                $isOutOfBounds ||
+                $status == self::MAINTENANCE_STATUS;
             //check only for battery safety cars
             if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false || strpos($car->getSoftwareVersion(), "0.107") !== false)){
                 if(is_null($car->getBatterySafetyTs())){
@@ -538,12 +543,12 @@ class ConsoleController extends AbstractActionController {
             $format .= "SendEmails = TRUE;";
         else
             $format .= "SendEmails = FALSE;";
-        
+
         if (!$dryRun)
             $format .= "DryRun = TRUE;";
         else
             $format .= "DryRun = FALSE;";
-        
+
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
@@ -580,14 +585,14 @@ class ConsoleController extends AbstractActionController {
         $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $paramDate = $request->getParam('date');
-        
+
         $format = "%s;INF;disableCreditCardAction;";
         if(!$this->avoidEmails)
             $format .= "SendEmails = TRUE;";
         else
             $format .= "SendEmails = FALSE;";
-        
-        if (!$dryRun) 
+
+        if (!$dryRun)
             $format .= "DryRun = TRUE;";
         else
             $format .= "DryRun = FALSE;";
@@ -597,7 +602,7 @@ class ConsoleController extends AbstractActionController {
         else
             $pan_expiry = '20' . date_create('first day of last month')->format('ym');
         $format .= "PanExpiry = " . $pan_expiry . ";";
-        
+
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
@@ -645,10 +650,10 @@ class ConsoleController extends AbstractActionController {
                 $content, $attachments
         );
     }
-    
+
     private function prepareLogger() {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
-    
+
 }

@@ -11,36 +11,25 @@ INSERT INTO configurations (id, slug, config_key, config_value) VALUES (3, 'alar
 
 CREATE OR REPLACE FUNCTION public.f_unplug_car_cordset()
 RETURNS trigger AS $$
-	DECLARE unplug_enable_new BOOLEAN := FALSE;
-		unplug_enable_old BOOLEAN := FALSE;
-		config_soc_min INTEGER := 80;
-		pois_distance FLOAT := 99999.9;
-		POIS_DISTANCE_MAX CONSTANT FLOAT := 100.0;
+
+DECLARE
+    pois_distance FLOAT := 99999.9;
+    POIS_DISTANCE_MAX CONSTANT FLOAT := 100.0;
 
 BEGIN
+    IF (OLD.plug = FALSE AND NEW.plug = TRUE) THEN
+        pois_distance = (SELECT MIN(COALESCE(ST_Distance_Sphere(ST_MakePoint(NEW.longitude, NEW.latitude) , ST_MakePoint(p.lon, p.lat)), 9999999)) dist
+        FROM  pois p 
+        WHERE p.unplug_enable=TRUE);
 
-	unplug_enable_old := (SELECT unplug_enable FROM cars_info WHERE car_plate=NEW.plate);
+        IF pois_distance<=POIS_DISTANCE_MAX THEN
+            UPDATE cars_info SET unplug_enable=TRUE WHERE car_plate=NEW.plate;
+        END IF; 
 
-	IF (NEW.plug AND NEW.charging) THEN
-		config_soc_min := (SELECT CAST (MAX (config_value) AS INT) FROM configurations WHERE config_key='unplug_enable');
-		
-		IF (NEW.soc>=config_soc_min) THEN
-			pois_distance = (SELECT MIN(COALESCE(ST_Distance_Sphere(ST_MakePoint(c.longitude, c.latitude) , ST_MakePoint(p.lon, p.lat)), 9999999)) dist
-				FROM cars c
-				CROSS JOIN pois p 
-				WHERE p.unplug_enable=TRUE AND c.plate = NEW.plate);
-			
-			IF pois_distance<=POIS_DISTANCE_MAX THEN
-				unplug_enable_new = TRUE;
-			END IF;
-		END IF;
-	END IF;
-
-	IF (unplug_enable_new <> unplug_enable_old) THEN
-		UPDATE cars_info SET unplug_enable=unplug_enable_new WHERE car_plate=NEW.plate;
-	END IF;
-	
-   RETURN NEW;
+    ELSIF (OLD.charging = TRUE AND NEW.charging = FALSE) THEN 
+        UPDATE cars_info SET unplug_enable=FALSE WHERE car_plate=NEW.plate;
+    END IF;
+    RETURN NEW;
 END;
 
 $$ LANGUAGE 'plpgsql';
