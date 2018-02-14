@@ -37,13 +37,25 @@ $mobile = $this->mobile;
                         <?= $this->form()->openTag($form); ?>
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-4-4">
-                                    <p> <label><?= $this->translate('Inserisci il codice promo'); ?></label>
-                                        <?php
-                                        $promoCode = $form->get('promocode')->get('promocode');
-                                        echo $this->formElement($promoCode->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($promoCode, ['class' => 'errors']);
-                                        ?>
-                                    </p>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <label><?= $this->translate('Inserisci il codice promo'); ?></label></td>
+                                            <td  rowspan="2">
+                                                <?php  echo $this->formRow($form->get('captcha'));?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            <?php
+                                                $promoCode = $form->get('promocode')->get('promocode');
+                                                echo $this->formElement($promoCode->setAttribute('class', 'required'));
+                                                echo $this->formElementErrors($promoCode, ['class' => 'errors']);
+
+                                                echo $this->form()->openTag($form);
+                                                ?>
+                                            </td></tr>
+                                    </table>
                                 </div>
                             </div>
                             <div class="block-wrapper-button content-align-center">
