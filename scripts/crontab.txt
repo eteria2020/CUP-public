@@ -31,6 +31,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
 30 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
+00 07 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry.sh
 
 00 10 * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/registration_invoices.sh
 10 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_late_payers.sh
@@ -41,6 +42,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 11 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_old_discounts.sh
 10 11 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_park.sh
 
+00 19 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry.sh
 00 21 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/assign_birthday_bonuses.sh
 00 22 * * *     root            /usr/bin/pm2 restart webservices
 58 23 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_compute.sh
