@@ -141,7 +141,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $this->paymentScriptRunsService->scriptEnded($scriptId);
             $this->entityManager->clear();
 
-            $this->generateInvoices();
+            //$this->generateInvoices();
         } else {
             $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsAction;Error Retry: Pay invoice is running\n");
         }
