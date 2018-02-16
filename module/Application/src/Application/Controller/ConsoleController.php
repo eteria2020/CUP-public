@@ -138,7 +138,7 @@ class ConsoleController extends AbstractActionController {
         $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
-        $this->batteryUnplug = $alarmConfig['unplug_enable'];
+        $this->batteryUnplug = intval($alarmConfig['unplug_enable']);
         $this->invoicesService = $invoicesService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->logger = $logger;
