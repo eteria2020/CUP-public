@@ -218,6 +218,7 @@ class ConsoleController extends AbstractActionController {
         // get all cars without reservation or with maintenance/non_operative reservation
         $cars = $this->carsService->getCarsEligibleForAlarmCheck();
         $this->writeToConsole("Cars number = " . count($cars) . "\n");
+        $this->writeToConsole("Battery Unplug = " . $this->batteryUnplug . "\n");
 
         foreach ($cars as $car) {
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
@@ -240,6 +241,7 @@ class ConsoleController extends AbstractActionController {
                 ($car->getCharging() && ($car->getBattery() < $this->batteryUnplug || !$car->getCarsInfoUnplugEnable())) ||
                 $isOutOfBounds ||
                 $status == self::MAINTENANCE_STATUS;
+            $this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for battery safety cars
             if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false || strpos($car->getSoftwareVersion(), "0.107") !== false)){
                 if(is_null($car->getBatterySafetyTs())){
@@ -248,6 +250,7 @@ class ConsoleController extends AbstractActionController {
                     $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
                 }
             }
+            $this->writeToConsole("2. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for nogps
             if (!$isAlarm && strpos($car->getSoftwareVersion(), "0.107") !== false){
                 $isAlarm = $car->getNogps() == true;
