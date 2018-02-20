@@ -1,8 +1,8 @@
 ALTER TABLE pois ADD COLUMN unplug_enable BOOLEAN NOT NULL DEFAULT FALSE;
 COMMENT ON COLUMN pois.unplug_enable IS 'Abilitazione al distacco cordset da cliente';
 
-ALTER TABLE cars_info ADD COLUMN unplug_enable BOOLEAN  NOT NULL DEFAULT FALSE;
-COMMENT ON COLUMN cars_info.unplug_enable IS 'Abilitazione al distacco cordset da cliente';
+ALTER TABLE cars_bonus ADD COLUMN unplug_enable BOOLEAN  NOT NULL DEFAULT FALSE;
+COMMENT ON COLUMN cars_bonus.unplug_enable IS 'Abilitazione al distacco cordset da cliente';
 
 INSERT INTO free_fares (id, conditions, description, active) VALUES (11, '{"unplug_enable": {"value": 4}}', 'Distacco cordset da cliente', true);
 
@@ -23,11 +23,11 @@ BEGIN
         WHERE p.unplug_enable=TRUE);
 
         IF pois_distance<=POIS_DISTANCE_MAX THEN
-            UPDATE cars_info SET unplug_enable=TRUE WHERE car_plate=NEW.plate;
+            UPDATE cars_bonus SET unplug_enable=TRUE WHERE car_plate=NEW.plate;
         END IF; 
 
     ELSIF (OLD.charging = TRUE AND NEW.charging = FALSE) THEN 
-        UPDATE cars_info SET unplug_enable=FALSE WHERE car_plate=NEW.plate;
+        UPDATE cars_bonus SET unplug_enable=FALSE WHERE car_plate=NEW.plate;
     END IF;
     RETURN NEW;
 END;
