@@ -294,7 +294,7 @@ class IndexController extends AbstractActionController
         if(!$customer instanceof Customers) {
             return $this->notFoundAction();
         }
-        if ($customer->getEnabled() == true){
+        if (!$customer->getEnabled()){
             return $this->notFoundAction();
         }
 
