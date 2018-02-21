@@ -6,15 +6,15 @@ $(function () {
 
     // Set the vector source; will contain the map data
     var vectorSourceVehicles = {},
-        vectorSourceVehiclesFree15 = {},
-        vectorSourceZones = {},
-        vectorSourcePois = {};
+            vectorSourceVehiclesFree15 = {},
+            vectorSourceZones = {},
+            vectorSourcePois = {};
 
     // Set the features collection
     var vehiclesFC = {},
-        vehiclesFCF15 = {},
-        zonesFC = {},
-        poisFC = {};
+            vehiclesFCF15 = {},
+            zonesFC = {},
+            poisFC = {};
 
     // Define variables to interact with map elements
     var openInfoWindow = null;
@@ -90,20 +90,20 @@ $(function () {
     var popup = new ol.Overlay({
         element: popupElement
     });
-    var getHTMLPopup = function(
-        address,
-        town,
-        province,
-        zipCode
-    ){
+    var getHTMLPopup = function (
+            address,
+            town,
+            province,
+            zipCode
+            ) {
         return '<div id="popup" class="ol-popup">' +
-            '<a href="#" id="popup-closer" class="ol-popup-closer"></a>' +
-            '<div id="popup-content">' +
-            'Address: ' + address + '<br>' +
-            'Town: ' + town + '<br>' +
-            'Province: ' + province + '<br>' +
-            'ZIP Code: ' + zipCode +
-            '</div></div>';
+                '<a href="#" id="popup-closer" class="ol-popup-closer"></a>' +
+                '<div id="popup-content">' +
+                'Address: ' + address + '<br>' +
+                'Town: ' + town + '<br>' +
+                'Province: ' + province + '<br>' +
+                'ZIP Code: ' + zipCode +
+                '</div></div>';
     };
 
     var vehiclesLayer = new ol.layer.Vector({
@@ -111,7 +111,7 @@ $(function () {
         style: function (feature) {
             var size = feature.get('features').length;
 
-            if (size === 1){
+            if (size === 1) {
                 return new ol.style.Style({
                     image: new ol.style.Icon(({
                         scale: 1,
@@ -153,12 +153,18 @@ $(function () {
             }
         }
     });
-        var vehiclesLayerFree15 = new ol.layer.Vector({
+    var vehiclesLayerFree15 = new ol.layer.Vector({
         source: clusterSourceVehiclesFree15,
         style: function (feature) {
             var size = feature.get('features').length;
+            var features = feature.get("features")[0];
+            
+            var carMarkerPath = carMarkerPathFree15;
+            if(features.get("unplug_message")!=="") {
+                carMarkerPath = carMarkerPathUnplug;
+            }
 
-            if (size === 1){
+            if (size === 1) {
                 return new ol.style.Style({
                     image: new ol.style.Icon(({
                         scale: 1,
@@ -166,7 +172,7 @@ $(function () {
                         anchorXUnits: 'fraction',
                         anchorYUnits: 'fraction',
                         opacity: 1,
-                        src: carMarkerPathFree15
+                        src: carMarkerPath
                     }))
                 });
             } else {
@@ -234,7 +240,7 @@ $(function () {
         style: function (feature) {
             var size = feature.get('features').length;
 
-            if (size === 1){
+            if (size === 1) {
                 return new ol.style.Style({
                     image: new ol.style.Icon(({
                         scale: 1,
@@ -280,27 +286,27 @@ $(function () {
     //var mapCenterLatitude = $('div.block-languages.block-menu ul li a.js-show-element').data('latitude');
     //var mapCenterLongitude = $('div.block-languages.block-menu ul li a.js-show-element').data('longitude');
     var fleetId = citta;
-    			switch (citta) {
-				case 1:
-                                    var mapCenterLatitude = $('#Milano').data('latitude');
-                                    var mapCenterLongitude = $('#Milano').data('longitude');
-                                    $('#Milano').html(name);
-                                    break;
-				case 2:
-                                    var mapCenterLatitude = $('#Firenze').data('latitude');
-                                    var mapCenterLongitude = $('#Firenze').data('longitude');
-                                    $('#Firenze').html(name);
-                                    break;
-				case 3:
-                                    var mapCenterLatitude = $('#Roma').data('latitude');
-                                    var mapCenterLongitude = $('#Roma').data('longitude');
-        			    $('#Roma').html(name);
-                                    break;
-                                case 4:
-                                    var mapCenterLatitude = $('#Modena').data('latitude');
-                                    var mapCenterLongitude = $('#Modena').data('longitude');
-        			    $('#Modena').html(name);
-                                    break;
+    switch (citta) {
+        case 1:
+            var mapCenterLatitude = $('#Milano').data('latitude');
+            var mapCenterLongitude = $('#Milano').data('longitude');
+            $('#Milano').html(name);
+            break;
+        case 2:
+            var mapCenterLatitude = $('#Firenze').data('latitude');
+            var mapCenterLongitude = $('#Firenze').data('longitude');
+            $('#Firenze').html(name);
+            break;
+        case 3:
+            var mapCenterLatitude = $('#Roma').data('latitude');
+            var mapCenterLongitude = $('#Roma').data('longitude');
+            $('#Roma').html(name);
+            break;
+        case 4:
+            var mapCenterLatitude = $('#Modena').data('latitude');
+            var mapCenterLongitude = $('#Modena').data('longitude');
+            $('#Modena').html(name);
+            break;
     }
 
     var view = new ol.View({
@@ -313,7 +319,7 @@ $(function () {
         layers: [OSM, zonesLayer, poisLayer, vehiclesLayer, vehiclesLayerFree15],
         overlays: [popup],
         target: document.getElementById("map_canvas"),
-        interactions: ol.interaction.defaults({ mouseWheelZoom: false }),
+        interactions: ol.interaction.defaults({mouseWheelZoom: false}),
         controls: ol.control.defaults({
             attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
                 collapsible: false
@@ -346,33 +352,33 @@ $(function () {
     toggleButtonColor(poiToggle, poiMarkersSet);
 
     // set click event listeners
-    vehicleToggle.addEventListener('click', function() {
+    vehicleToggle.addEventListener('click', function () {
         vehiclesLayer.setVisible(!vehicleMarkersSet);
         vehiclesLayerFree15.setVisible(!vehicleMarkersSet);
         vehicleMarkersSet = !vehicleMarkersSet;
         toggleButtonColor(vehicleToggle, vehicleMarkersSet);
     });
 
-    poiToggle.addEventListener('click', function() {
+    poiToggle.addEventListener('click', function () {
         poisLayer.setVisible(!poiMarkersSet);
         poiMarkersSet = !poiMarkersSet;
         toggleButtonColor(poiToggle, poiMarkersSet);
     });
 
-    var addMapLoader = function() {
+    var addMapLoader = function () {
         $("#map_wrapper").prepend(
-            "<div class=\"load-overlay\"><div>" +
-            "<p><i class=\"fa fa-refresh fa-spin\">" +
-            "</i></p></div></div>"
-        );
+                "<div class=\"load-overlay\"><div>" +
+                "<p><i class=\"fa fa-refresh fa-spin\">" +
+                "</i></p></div></div>"
+                );
     };
-    var removeMapLoader = function() {
+    var removeMapLoader = function () {
         $("#map_wrapper > div.load-overlay").remove();
     };
 
     //////////////////// DATA LOAD ////////////////////
 
-    var loadVehicles = function(fleet) {
+    var loadVehicles = function (fleet) {
         // Clear Vehicles Features
         clearVehicles();
         clearVehiclesFree15();
@@ -386,11 +392,11 @@ $(function () {
             xhrVehicles.abort();
         }
 
-        var auto_bonus=0;
-        var auto_nb=0;
+        var auto_bonus = 0;
+        var auto_nb = 0;
 
-        xhrVehicles = $.get('cars-api/' + fleet, function(vehicles) {
-            $.each(vehicles, function(index, vehicle) {
+        xhrVehicles = $.get('cars-api/' + fleet, function (vehicles) {
+            $.each(vehicles, function (index, vehicle) {
                 // position of the vehicle
                 var latitude = parseFloat(vehicle.lat);
                 var longitude = parseFloat(vehicle.lon);
@@ -398,45 +404,54 @@ $(function () {
                 var extCleanliness = "clean";
                 var battery = vehicle.soc;
                 var plate = vehicle.plate;
-                
+
                 var bonus_message = "";
-		var b_car = vehicle.bonus;
-		for(var ib=0;ib<b_car.length;ib++){
-                    if((b_car[ib].type=="nouse")&&(b_car[ib].status==true)){
-                        bonus_message = "<br>I primi "+b_car[ib].value+" minuti di guida sono gratuiti";
+                var b_car = vehicle.bonus;
+                for (var ib = 0; ib < b_car.length; ib++) {
+                    if ((b_car[ib].type === "nouse") && (b_car[ib].status === true)) {
+                        bonus_message = "<br>I primi " + b_car[ib].value + " minuti di guida sono gratuiti";
                     }
-		}
-                
+                }
+
+                var unplug_value = vehicle.unplug.value;
+                var unplug_message = "";
+                if(unplug_value !== undefined){
+                    if(unplug_value > 0) {
+                        unplug_message = "<br>I primi " + unplug_value + " minuti di guida sono gratuiti, se scolleghi il cavo di rete";
+                    }
+                }
                 // Create the Vehicle Feature
-                
-                if(bonus_message==""){
+
+                if (bonus_message === "" && unplug_message === "") {
                     vehiclesFC[plate] = new ol.Feature({
                         geometry: new ol.geom.Point(
-                            ol.proj.transform(
-                                [longitude, latitude],
-                                'EPSG:4326', 'EPSG:3857'
-                            )
-                        ),
+                                ol.proj.transform(
+                                        [longitude, latitude],
+                                        'EPSG:4326', 'EPSG:3857'
+                                        )
+                                ),
                         intClean: intCleanliness,
                         extClean: extCleanliness,
                         battery: battery,
                         bonus_message: bonus_message,
+                        unplug_message: unplug_message,
                         type: "vehicle"
                     });
                     vehiclesFC[plate].setId(plate);
                     drawVehicle(plate);
                     auto_nb++;
-                }else{
+                } else {
                     vehiclesFCF15[plate] = new ol.Feature({
                         geometry: new ol.geom.Point(
-                            ol.proj.transform(
-                                [longitude, latitude],
-                                'EPSG:4326', 'EPSG:3857'
-                            )
-                        ),
+                                ol.proj.transform(
+                                        [longitude, latitude],
+                                        'EPSG:4326', 'EPSG:3857'
+                                        )
+                                ),
                         intClean: intCleanliness,
                         extClean: extCleanliness,
                         bonus_message: bonus_message,
+                        unplug_message: unplug_message,
                         battery: battery,
                         type: "vehicle"
                     });
@@ -457,8 +472,8 @@ $(function () {
         url: zonesUrl,
         type: "POST",
         dataType: "json"
-    }).success(function(data){
-        $.each(data, function( index, zone) {
+    }).success(function (data) {
+        $.each(data, function (index, zone) {
             if (typeof zone.id !== "undefined") {
                 var id = zone.id;
                 var zoneGeometry = zone.areaUse;
@@ -467,8 +482,8 @@ $(function () {
                 // Create the new feature object
                 zonesFC[id] = new ol.Feature({
                     geometry: format.readGeometry(
-                        zoneGeometry,
-                        {featureProjection: 'EPSG:3857'}
+                            zoneGeometry,
+                            {featureProjection: 'EPSG:3857'}
                     ),
                     name: name,
                     type: "zone"
@@ -480,19 +495,19 @@ $(function () {
         });
     });
 
-    var loadPois = function(fleet){
+    var loadPois = function (fleet) {
         clearPois();
 
         if (xhrPois !== null) {
             xhrPois.abort();
         }
 
-        xhrPois = $.get('pois/' + fleet, function(pois) {
+        xhrPois = $.get('pois/' + fleet, function (pois) {
             poisLayer.setVisible(false);
             poiMarkersSet = false;
             toggleButtonColor(poiToggle, poiMarkersSet);
 
-            $.each(pois, function( index, poi) {
+            $.each(pois, function (index, poi) {
                 if (typeof poi.id !== "undefined") {
                     var id = poi.id;
                     var latitude = parseFloat(poi.latitude);
@@ -508,11 +523,11 @@ $(function () {
                     // Create the new feature object
                     poisFC[id] = new ol.Feature({
                         geometry: new ol.geom.Point(
-                            ol.proj.transform(
-                                [longitude, latitude],
-                                'EPSG:4326', 'EPSG:3857'
-                            )
-                        ),
+                                ol.proj.transform(
+                                        [longitude, latitude],
+                                        'EPSG:4326', 'EPSG:3857'
+                                        )
+                                ),
                         name: name,
                         poiType: type,
                         code: code,
@@ -537,15 +552,15 @@ $(function () {
     // Bind Change Fleet
     $('ul.js-collapse-box.block-available-languages li a').click(function () {
         var latitude = parseFloat($(this).data('latitude')),
-            longitude = parseFloat($(this).data('longitude')),
-            name = $(this).data('name'),
-            id = $(this).data('id');
+                longitude = parseFloat($(this).data('longitude')),
+                name = $(this).data('name'),
+                id = $(this).data('id');
 
         // change the name in the menu
         $('div.block-languages.block-menu ul li a.js-show-element span').html(name);
         $('div.block-languages.block-menu a.js-show-element').data("id", id);
 
-        if (fleetId !== id){
+        if (fleetId !== id) {
             // Load new features
             loadVehicles(id);
             loadPois(id);
@@ -555,11 +570,11 @@ $(function () {
         // move the map
         if (typeof map !== 'undefined') {
             view.setCenter(
-                ol.proj.transform(
-                    [longitude, latitude],
-                    'EPSG:4326', 'EPSG:3857'
-                )
-            );
+                    ol.proj.transform(
+                            [longitude, latitude],
+                            'EPSG:4326', 'EPSG:3857'
+                            )
+                    );
         }
 
         // close the dropdown sending a click to the above menu
@@ -575,7 +590,7 @@ $(function () {
         if (userEnabled) {
             if (isLoggedIn) {
                 // user is logged in
-                $.get(reservationsUrl + '?plate=' + plate, function(jsonData) {
+                $.get(reservationsUrl + '?plate=' + plate, function (jsonData) {
 
                     var isReserved = false;
                     var isReservedByMe = false;
@@ -619,9 +634,11 @@ $(function () {
 
     // Map Vehicle click
     // display popup on click
-    map.on('click', function(evt) {
+    map.on('click', function (evt) {
         var feature = map.forEachFeatureAtPixel(
-            evt.pixel, function(f) {return f;}
+                evt.pixel, function (f) {
+                    return f;
+                }
         );
 
         // Close Other Popup
@@ -629,47 +646,53 @@ $(function () {
 
         if (feature) {
             if (typeof feature.get("features") === "object" &&
-                feature.get("features").length === 1) {
+                    feature.get("features").length === 1) {
                 feature = feature.get("features")[0];
             }
-            
+
             var type = feature.get('type');
-            
+
             if (type === "vehicle") {
                 // if an infowindow is open, close it
                 if (openInfoWindow !== null) {
                     openInfoWindow.close();
                 }
-                
+
                 var plate = feature.getId();
                 var extClean = feature.get('extClean');
                 var intClean = feature.get('intClean');
                 var battery = feature.get('battery');
                 var bonus_message = feature.get('bonus_message');
+                var unplug_message = feature.get('unplug_message');
                 var coordinates = ol.proj.transform(
-                    feature.getGeometry().getCoordinates(),
-                    "EPSG:3857",
-                    "EPSG:4326"
-                );
-                
+                        feature.getGeometry().getCoordinates(),
+                        "EPSG:3857",
+                        "EPSG:4326"
+                        );
+
                 // modify the elements
                 setPlateText(plate);
                 setIntCleanliness(intClean);
                 setExtCleanliness(extClean);
                 setCarBattery(battery);
                 setCarPos(coordinates);
-                
+
                 // get the location and set it in the popup
-                getAddress(coordinates[1], coordinates[0], function(results, status) {
+                getAddress(coordinates[1], coordinates[0], function (results, status) {
                     if (typeof results.display_name !== "undefined") {
                         setLocationText(results.display_name);
                     }
                 });
-                
-                document.getElementById("bonus_message").innerHTML = bonus_message;
+
+                if (unplug_message !==""){
+                    document.getElementById("bonus_message").innerHTML = unplug_message;
+                } else {
+                    document.getElementById("bonus_message").innerHTML = bonus_message;
+                }
+
                 // show the popup
                 showPopup(plate, feature);
-                
+
                 // Set the main button's behavior
                 setReservationButton(plate, false);
             } else if (type === "poi") {
@@ -690,11 +713,11 @@ $(function () {
                     animation: false,
                     html: true,
                     content: getHTMLPopup(
-                        address,
-                        town,
-                        province,
-                        zipCode
-                    ),
+                            address,
+                            town,
+                            province,
+                            zipCode
+                            ),
                     title: title
                 });
                 $(element).popover('show');
@@ -705,9 +728,9 @@ $(function () {
     // Reverse Geocode
     var getAddress = function name(latitude, longitude, callback) {
         $.get('http://nominatim.openstreetmap.org/reverse?format=json&lat=' +
-            latitude + '&lon=' + longitude + '&addressdetails=1' + '&accept-language=it',
-            callback
-        );
+                latitude + '&lon=' + longitude + '&addressdetails=1' + '&accept-language=it',
+                callback
+                );
     };
 
     // Map Reseize
@@ -718,7 +741,7 @@ $(function () {
     };
 
     // Map Resize Action Bind
-     $('.js-toggle-map-height').on('click', function(e) {
+    $('.js-toggle-map-height').on('click', function (e) {
         e.preventDefault();
 
         $('.module-car-map').toggleClass("small-height");
