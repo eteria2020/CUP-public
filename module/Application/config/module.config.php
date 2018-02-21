@@ -148,6 +148,20 @@ return [
                     ],
                 ]
             ],
+            'expiredCreditCard' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{c}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'expiredCreditCard',
+                    ],
+                    'constraints' => [
+                        'userId' => '[0-9&]+',
+                    ],
+                ]
+            ],
             'banner' => [
                 'type' => 'Segment',
                 'options' => [
