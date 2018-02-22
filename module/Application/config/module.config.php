@@ -148,6 +148,20 @@ return [
                     ],
                 ]
             ],
+            'expiredCreditCard' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{c}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'expiredCreditCard',
+                    ],
+                    'constraints' => [
+                        'userId' => '[0-9&]+',
+                    ],
+                ]
+            ],
             'banner' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1900,6 +1914,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',
                             'action' => 'retry-wrong-payments'
+                        ]
+                    ]
+                ],
+                'retry-wrong-payments-time' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong payments time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-payments-time'
                         ]
                     ]
                 ],

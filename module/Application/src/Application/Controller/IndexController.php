@@ -17,6 +17,8 @@ use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\PoisService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
+use Cartasi\Service\CartasiContractsService;
+use Cartasi\Entity\Contracts;
 
 // Externals
 use Zend\Http\Response;
@@ -58,6 +60,11 @@ class IndexController extends AbstractActionController
     private $customerService;
 
     /**
+     * @var CartasiContractsService
+     */
+    private $cartasiContractsService;
+
+    /**
      * @param string $mobileUrl
      */
     public function __construct(
@@ -66,7 +73,8 @@ class IndexController extends AbstractActionController
         CarsService $carsService,
         FleetService $fleetService,
         PoisService $poisService,
-        CustomersService $customersService
+        CustomersService $customersService,
+        CartasiContractsService $cartasiContractsService
     ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
@@ -74,6 +82,8 @@ class IndexController extends AbstractActionController
         $this->fleetService = $fleetService;
         $this->poisService = $poisService;
         $this->customerService = $customersService;
+        $this->cartasiContractsService = $cartasiContractsService;
+
     }
 
     public function indexAction()
@@ -273,6 +283,31 @@ class IndexController extends AbstractActionController
             return $this->notFoundAction();
         }
         $this->redirect()->toUrl("https://www.sharengo.it/cartasi/primo-pagamento?customer=$userId");
+
+    }
+
+    public function expiredCreditCardAction(){
+        $userId = $this->params()->fromRoute('userId');
+
+        $customer = $this->customerService->findById($userId);
+
+        if(!$customer instanceof Customers) {
+            return $this->notFoundAction();
+        }
+        if (!$customer->getEnabled()){
+            return $this->notFoundAction();
+        }
+
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
+        if (is_null($contract)) {
+            $contract = 'no_contract';
+        } else if($contract instanceof  Contracts){
+            $contract = $contract->getId();
+        }
+
+        $url = "https://www.sharengo.it/cartasi/cambio-carta?customer=".$customer->getId()."&contract=$contract";
+        $this->redirect()->toUrl($url);
 
     }
 

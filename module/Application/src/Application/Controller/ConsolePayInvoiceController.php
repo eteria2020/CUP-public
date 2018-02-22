@@ -122,7 +122,7 @@ class ConsolePayInvoiceController extends AbstractActionController
     /*
      * Re try to pay trips marked as "wrong payments" in last -2 days
      */
-       public function retryWrongPaymentsAction()
+    public function retryWrongPaymentsAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
@@ -141,7 +141,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $this->paymentScriptRunsService->scriptEnded($scriptId);
             $this->entityManager->clear();
 
-            $this->generateInvoices();
+            //$this->generateInvoices();
         } else {
             $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsAction;Error Retry: Pay invoice is running\n");
         }
@@ -215,5 +215,76 @@ class ConsolePayInvoiceController extends AbstractActionController
         $invoices = $this->invoicesService->createInvoicesForTrips($tripPayments, !$this->avoidPersistance);
 
         $this->logger->log("Done generating invoices\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    /*
+     * Re try to pay trips marked as "wrong payments" in a defined period of time
+     */
+    public function retryWrongPaymentsTimeAction()
+    {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        $request = $this->getRequest();
+        $start = $request->getParam('startTimestamp');
+        $end = $request->getParam('endTimestamp');
+        $this->avoidEmails = true;  // force avoid send email during re try wong paiment
+        $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
+        $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+
+        if (is_null($start) && is_null($end)){
+            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
+            exit();
+        }
+
+        if (!$this->paymentScriptRunsService->isRunning()) {
+            $scriptId = $this->paymentScriptRunsService->scriptStarted();
+
+            $this->reProcessWrongTimePayments($start, $end);
+
+            $this->paymentScriptRunsService->scriptEnded($scriptId);
+            $this->entityManager->clear();
+
+        } else {
+            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: Pay invoice is running\n");
+        }
+    }
+
+    private function reProcessWrongTimePayments($start, $end)
+    {
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPaymentsTime;start\n");
+        $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end)[0];
+        $count = $verify["count"];
+        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . $count . "\n");
+        $limit = 200;
+        $lastId = null;
+        while ($count > 0){
+            $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end, $lastId, $limit)[0];
+            if ($verify["count"] == 0) {
+                break;
+            }
+            $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrongTime(null, $start, $end, $lastId, $limit);
+            $lastId = $verify["last"];
+            $count = $verify["count"];
+
+            $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
+            $this->processPaymentsService->processPayments(
+                $tripPaymentsWrong,
+                $this->avoidEmails,
+                $this->avoidCartasi,
+                $this->avoidPersistance
+            );
+
+            $this->processPaymentsService->processCustomersDisabledAfterReProcess(
+                $tripPaymentsWrong,
+                $this->avoidEmails,
+                $this->avoidCartasi,
+                $this->avoidPersistance
+            );
+            // clear the entity manager cache
+            $this->entityManager->clear();
+
+        }
+        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;end\n");
     }
 }
