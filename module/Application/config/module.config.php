@@ -521,7 +521,7 @@ return [
                     ],
                 ],
             ],
-            'aeronautica' => [
+            /*'aeronautica' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{isma}',
@@ -575,7 +575,7 @@ return [
                         'action' => 'aldai',
                     ],
                 ]
-            ],
+            ],*/
             'anas' => [
                 'type' => 'Segment',
                 'options' => [
@@ -598,7 +598,7 @@ return [
                     ],
                 ],
             ],
-            'arci' => [
+            /*'arci' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{arci}',
@@ -608,7 +608,7 @@ return [
                         'action' => 'arci',
                     ],
                 ],
-            ],
+            ],*/
             'assocral' => [
                 'type' => 'Segment',
                 'options' => [
@@ -697,7 +697,7 @@ return [
                     ],
                 ],
             ],
-            'controradioclub' => [
+            /*'controradioclub' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{controradioclub}',
@@ -718,7 +718,7 @@ return [
                         'action' => 'espresso',
                     ],
                 ]
-            ],
+            ],*/
             'eq-sharing' => [
                 'type' => 'Segment',
                 'options' => [
@@ -752,7 +752,7 @@ return [
                     ],
                 ]
             ],
-            'fidelizzando' => [
+            /*'fidelizzando' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{fidelizzando}',
@@ -762,7 +762,7 @@ return [
                         'action' => 'fidelizzando',
                     ],
                 ]
-            ],
+            ],*/
             'firenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -906,7 +906,7 @@ return [
                     ],
                 ]
             ],
-            'link' => [
+            /*'link' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{link}',
@@ -927,7 +927,7 @@ return [
                         'action' => 'lumsa',
                     ],
                 ]
-            ],
+            ],*/
             'madama' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1038,7 +1038,7 @@ return [
                     ],
                 ]
             ],
-            'scoac1' => [
+            /*'scoac1' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{scontato}',
@@ -1059,7 +1059,7 @@ return [
                         'action' => 'scuoleciviche',
                     ],
                 ]
-            ],
+            ],*/
             // disable 2017-02-13
             /* 'sim1' => [
               'type' => 'Segment',
@@ -1071,7 +1071,7 @@ return [
               'action'     => 'sim1',
               ],
               ]
-              ], */
+              ],
             'svolta' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1082,7 +1082,7 @@ return [
                         'action' => 'svolta',
                     ],
                 ]
-            ],
+            ],*/
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1116,7 +1116,7 @@ return [
                     ],
                 ],
             ],
-            'vipzip' => [
+            /*'vipzip' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{vip2zip}',
@@ -1137,7 +1137,7 @@ return [
                         'action' => 'volontariocard',
                     ],
                 ]
-            ],
+            ],*/
             'wave5' => [
                 'type' => 'Segment',
                 'options' => [
