@@ -158,9 +158,9 @@ $(function () {
         style: function (feature) {
             var size = feature.get('features').length;
             var features = feature.get("features")[0];
-            
+
             var carMarkerPath = carMarkerPathFree15;
-            if(features.get("unplug_message")!=="") {
+            if(features.get("bonus_type")==="unplug") {
                 carMarkerPath = carMarkerPathUnplug;
             }
 
@@ -406,23 +406,22 @@ $(function () {
                 var plate = vehicle.plate;
 
                 var bonus_message = "";
+                var bonus_type = "";
+
                 var b_car = vehicle.bonus;
                 for (var ib = 0; ib < b_car.length; ib++) {
                     if ((b_car[ib].type === "nouse") && (b_car[ib].status === true)) {
+                        bonus_type = b_car[ib].type;
                         bonus_message = "<br>I primi " + b_car[ib].value + " minuti di guida sono gratuiti";
+                    } else if ((b_car[ib].type === "unplug") && (b_car[ib].status === true)) {
+                        bonus_type = b_car[ib].type;
+                        bonus_message = "<br>I primi " + b_car[ib].value + " minuti di guida sono gratuiti, se scolleghi il cavo di ricarica";
                     }
                 }
 
-                var unplug_value = vehicle.unplug.value;
-                var unplug_message = "";
-                if(unplug_value !== undefined){
-                    if(unplug_value > 0) {
-                        unplug_message = "<br>I primi " + unplug_value + " minuti di guida sono gratuiti, se scolleghi il cavo di rete";
-                    }
-                }
                 // Create the Vehicle Feature
 
-                if (bonus_message === "" && unplug_message === "") {
+                if (bonus_message === "") {
                     vehiclesFC[plate] = new ol.Feature({
                         geometry: new ol.geom.Point(
                                 ol.proj.transform(
@@ -434,7 +433,7 @@ $(function () {
                         extClean: extCleanliness,
                         battery: battery,
                         bonus_message: bonus_message,
-                        unplug_message: unplug_message,
+                        bonus_type: bonus_type,
                         type: "vehicle"
                     });
                     vehiclesFC[plate].setId(plate);
@@ -451,7 +450,7 @@ $(function () {
                         intClean: intCleanliness,
                         extClean: extCleanliness,
                         bonus_message: bonus_message,
-                        unplug_message: unplug_message,
+                        bonus_type: bonus_type,
                         battery: battery,
                         type: "vehicle"
                     });
@@ -663,7 +662,7 @@ $(function () {
                 var intClean = feature.get('intClean');
                 var battery = feature.get('battery');
                 var bonus_message = feature.get('bonus_message');
-                var unplug_message = feature.get('unplug_message');
+                var bonus_type = feature.get('bonus_type');
                 var coordinates = ol.proj.transform(
                         feature.getGeometry().getCoordinates(),
                         "EPSG:3857",
@@ -684,11 +683,7 @@ $(function () {
                     }
                 });
 
-                if (unplug_message !==""){
-                    document.getElementById("bonus_message").innerHTML = unplug_message;
-                } else {
-                    document.getElementById("bonus_message").innerHTML = bonus_message;
-                }
+                document.getElementById("bonus_message").innerHTML = bonus_message;
 
                 // show the popup
                 showPopup(plate, feature);
