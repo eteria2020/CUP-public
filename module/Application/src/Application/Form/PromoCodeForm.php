@@ -22,7 +22,11 @@ class PromoCodeForm extends Form {
                     'lineNoiseLevel' => 3,
                     'font' => './public/fonts/arial.ttf',
                     'imgDir' => './public/cache',
-                    'imgUrl' => '/cache/')));
+                    'imgUrl' => '/cache/',
+                    'messages' => array(
+                        'badCaptcha' => 'Codice di controllo errato.'
+                        )
+                    )));
 
         $captcha->setOptions(array('label' =>'Inserire il codice che vedi nell\'immagine'));
 
