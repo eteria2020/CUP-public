@@ -4,7 +4,7 @@ COMMENT ON COLUMN pois.unplug_enable IS 'Abilitazione al distacco cordset da cli
 ALTER TABLE cars_bonus ADD COLUMN unplug_enable BOOLEAN  NOT NULL DEFAULT FALSE;
 COMMENT ON COLUMN cars_bonus.unplug_enable IS 'Abilitazione al distacco cordset da cliente';
 
-INSERT INTO free_fares (id, conditions, description, active) VALUES (11, '{"unplug_enable": {"value": 4}}', 'Distacco cordset da cliente', true);
+INSERT INTO free_fares (id, conditions, description, active) VALUES (11, '{"car":{"type":"unplug", "value": 4}}', 'Distacco cordset da cliente', true);
 
 INSERT INTO configurations (id, slug, config_key, config_value) VALUES (3, 'alarm', 'unplug_enable', '80');
 
