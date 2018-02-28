@@ -237,7 +237,8 @@ class AdditionalServicesController extends AbstractActionController {
     }
 
     /**
-     *
+     * Check if captacha is valid.
+     * 
      * @return boolean
      */
     private function captchaIsValid($captchaCode) {
@@ -257,7 +258,6 @@ class AdditionalServicesController extends AbstractActionController {
             ));
 
         if ($captcha->isValid($captchaCode)) {
-        //if ($captcha->isValid($_POST['captcha'])) {
             $result = true;
         }
         return $result;
