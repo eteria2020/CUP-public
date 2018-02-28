@@ -3,9 +3,9 @@
 namespace Application\Controller;
 
 use Application\Form\PromoCodeForm;
-use SharengoCore\Entity\Customers;
-use SharengoCore\Entity\CustomersBonus;
-use SharengoCore\Entity\PromoCodes;
+//use SharengoCore\Entity\Customers;
+//use SharengoCore\Entity\CustomersBonus;
+//use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Exception\BonusAssignmentException;
 use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Exception\CodeAlreadyUsedException;
