@@ -29,7 +29,21 @@ class UserAreaControllerFactory implements FactoryInterface {
         $paymentService = $sharedLocator->get('SharengoCore\Service\PaymentsService');
 
         return new UserAreaController(
-                $I_customerService, $I_tripService, $userService, $invoicesService, $profileForm, $passwordForm, $mobileForm, $driverLicenseForm, $hydrator, $cartasiPaymentsService, $tripPaymentsService, $cartasiContractsService, $bannerJsonpUrl, $disableContractService, $paymentScriptRunService, $paymentService
+            $I_customerService,
+            $I_tripService, $userService,
+            $invoicesService,
+            $profileForm,
+            $passwordForm,
+            $mobileForm,
+            $driverLicenseForm,
+            $hydrator,
+            $cartasiPaymentsService,
+            $tripPaymentsService,
+            $cartasiContractsService,
+            $bannerJsonpUrl,
+            $disableContractService,
+            $paymentScriptRunService,
+            $paymentService
         );
     }
 
