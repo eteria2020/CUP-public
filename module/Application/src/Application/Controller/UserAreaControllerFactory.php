@@ -30,7 +30,8 @@ class UserAreaControllerFactory implements FactoryInterface {
 
         return new UserAreaController(
             $I_customerService,
-            $I_tripService, $userService,
+            $I_tripService,
+            $userService,
             $invoicesService,
             $profileForm,
             $passwordForm,
