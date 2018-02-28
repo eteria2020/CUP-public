@@ -70,7 +70,7 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
     <div class="module-wrapper-button margin-bottom content-align-center">
         <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customerId]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Esegui il pagamento'); ?> <i class="fa fa-plus-circle"></i></a>
     </div>
-
+    <?php echo $this->partial('partials/credit-card-refuse'); ?>
     <?php } ?>
 
 
