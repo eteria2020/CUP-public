@@ -92,7 +92,7 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
      * was under the province of BG, all the More cities were under the province of CO
      */
     private function changeProvinceForValidationDriverLicense($data) {
-        switch ($data['birthProvince']){
+        switch ($data['birthProvince']) {
             //Monza-Brinaza --> Milano
             case 'MB':
                 $birthProvince = 'MI';
