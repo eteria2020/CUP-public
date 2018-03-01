@@ -36,7 +36,7 @@ $mobile = $this->mobile;
                         </div>
                         <?= $this->form()->openTag($form); ?>
                             <div class="block-row-field clearfix">
-                                <div class="block-field bw-f w-4-2">
+                                <div class="block-field bw-f w-4-4">
                                     <div>
                                         <label><?= $this->translate('Inserisci il codice promo'); ?></label>
                                         <?php
@@ -46,11 +46,6 @@ $mobile = $this->mobile;
 
                                                 echo $this->form()->openTag($form);
                                                 ?>
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <label><?= $this->translate('Codice di controllo'); ?></label>
-                                        <?php  echo $this->formRow($form->get('captcha'));?>
                                     </div>
                                 </div>
                             </div>
