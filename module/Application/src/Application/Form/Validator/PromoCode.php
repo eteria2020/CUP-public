@@ -41,8 +41,8 @@ class PromoCode extends AbstractValidator
      * @var string[]
      */
     protected $messageTemplates = [
-        self::WRONG_CODE => "Il codice inserito non è valido",
-        self::USED_CODE => "Il codice è già stato utilizzato"
+        self::WRONG_CODE => "Il codice promo inserito non è valido",
+        self::USED_CODE => "Il codice promo è già stato utilizzato"
     ];
 
     /**

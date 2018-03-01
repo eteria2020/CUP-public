@@ -39,6 +39,11 @@ class DisableOldDiscountsController extends AbstractActionController
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
 
+    /**
+     * Disabled the discount of the customer, and send a email.
+     * 
+     * N.B. Send mail is disabled.
+     */
     public function disableOldDiscountsAction()
     {
         $this->logger->log(
@@ -65,6 +70,12 @@ class DisableOldDiscountsController extends AbstractActionController
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
+    /**
+     * 
+     * One week bebore the discoun expired, sen an email to notify the customer.
+     * 
+     * N.B. deprecated: batch disabled in crontab
+     */
     public function notifyDisableDiscountAction()
     {
         $this->logger->log(
