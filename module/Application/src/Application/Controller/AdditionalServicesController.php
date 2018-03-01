@@ -20,7 +20,6 @@ use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Captcha;
 
 class AdditionalServicesController extends AbstractActionController {
 
@@ -80,7 +79,15 @@ class AdditionalServicesController extends AbstractActionController {
      * @param TripsService $tripsService
      */
     public function __construct(
-    CustomersService $customersService, CarrefourService $carrefourService, Form $promoCodeForm, PromoCodesService $promoCodeService, PromoCodesOnceService $promoCodeOnceService, CustomersBonusPackagesService $customersBonusPackagesService, AuthenticationService $authService, BonusService $bonusService, TripsService $tripsService
+        CustomersService $customersService,
+        CarrefourService $carrefourService,
+        Form $promoCodeForm,
+        PromoCodesService $promoCodeService,
+        PromoCodesOnceService $promoCodeOnceService,
+        CustomersBonusPackagesService $customersBonusPackagesService,
+        AuthenticationService $authService,
+        BonusService $bonusService,
+        TripsService $tripsService
     ) {
         $this->customersService = $customersService;
         $this->carrefourService = $carrefourService;
@@ -106,47 +113,42 @@ class AdditionalServicesController extends AbstractActionController {
             $postData = $this->getRequest()->getPost()->toArray();
             $form->setData($postData);
 
-            if ($this->captchaIsValid($postData['captcha'])) {
+            if ($form->isValid()) {
+                $code = $postData['promocode']['promocode'];
 
-                if ($form->isValid()) {
-                    $code = $postData['promocode']['promocode'];
-
-                    if ($this->promoCodeService->isStandardPromoCode($code)) {
-                        try {
-                            $promoCode = $this->promoCodeService->getPromoCode($code);
-                            $this->customersService->addBonusFromPromoCode($customer, $promoCode);
-                            $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-                        } catch (BonusAssignmentException $e) {
-                            $this->flashMessenger()->addErrorMessage($e->getMessage());
-                        } catch (\Exception $e) {
-                            $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
-                        }
-                    } else if ($this->promoCodeOnceService->isValid($code)) {
-                        try {
-                            $this->promoCodeOnceService->usePromoCode($customer, $code);
-                            $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-                        } catch (\Exception $ex) {
-                            $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo PCO.');
-                        }
-                    } else {
-                        try {
-                            $this->carrefourService->addFromCode($customer, $code);
-                            $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-                        } catch (NotAValidCodeException $ex) {
-                            $this->flashMessenger()->addErrorMessage('Promocode non valido.');
-                        } catch (CodeAlreadyUsedException $ex) {
-                            $this->flashMessenger()->addErrorMessage('Promocode già utilizzato.');
-                        } catch (\Exception $e) {
-                            $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo CR.');
-                        }
+                if ($this->promoCodeService->isStandardPromoCode($code)) {
+                    try {
+                        $promoCode = $this->promoCodeService->getPromoCode($code);
+                        $this->customersService->addBonusFromPromoCode($customer, $promoCode);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (BonusAssignmentException $e) {
+                        $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
                     }
-
-                    return $this->redirect()->toRoute('area-utente/additional-services');
+                } else if ($this->promoCodeOnceService->isValid($code)) {
+                    try {
+                        $this->promoCodeOnceService->usePromoCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (\Exception $ex) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo PCO.');
+                    }
+                } else {
+                    try {
+                        $this->carrefourService->addFromCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    } catch (NotAValidCodeException $ex) {
+                        $this->flashMessenger()->addErrorMessage('Promocode non valido.');
+                    } catch (CodeAlreadyUsedException $ex) {
+                        $this->flashMessenger()->addErrorMessage('Promocode già utilizzato.');
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo CR.');
+                    }
                 }
-            } else {
-                $this->flashMessenger()->addErrorMessage('Codice di controllo errato.');
+
                 return $this->redirect()->toRoute('area-utente/additional-services');
             }
+
         }
 
         $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
@@ -234,33 +236,6 @@ class AdditionalServicesController extends AbstractActionController {
             'promoCodeForm' => $form,
             'bonusPackages' => $bonusPackages
         ]);
-    }
-
-    /**
-     * Check if captacha is valid.
-     * 
-     * @return boolean
-     */
-    private function captchaIsValid($captchaCode) {
-        $result = false;
-        $captcha = new Captcha\Image(array(
-            'name' => 'foo',
-            'wordLen' => 6,
-            'timeout' => 300,
-            'dotNoiseLevel' => 40,
-            'lineNoiseLevel' => 3,
-            'font' => './public/fonts/arial.ttf',
-            'imgDir' => './public/cache',
-            'imgUrl' => '/cache/',
-            'messages' => array(
-                'badCaptcha' => 'Codice di controllo errato.'
-                )
-            ));
-
-        if ($captcha->isValid($captchaCode)) {
-            $result = true;
-        }
-        return $result;
     }
 
 }
