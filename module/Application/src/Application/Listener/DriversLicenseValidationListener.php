@@ -77,9 +77,9 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         // motorizzazione civile is the customer has a foreign drivers license
         if (!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)) {
             $data['birthCountryMCTC'] = $this->countriesService->getMctcCode($data['birthCountry']);
-            var_dump($data);
+            
             $data['birthProvince'] = $this->changeProvinceForValidationDriverLicense($data);            
-            var_dump($data);
+            
             $this->enqueueValidationService->validateDriversLicense($data);
         }
     }
@@ -92,16 +92,42 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
      * was under the province of BG, all the More cities were under the province of CO
      */
     private function changeProvinceForValidationDriverLicense($data) {
-        switch ($data['birthProvince']) {
+        switch ($data['birthProvince']){
+            //Monza-Brinaza --> Milano
             case 'MB':
                 $birthProvince = 'MI';
                 break;
+            //Lecco --> Bergamo || Como
             case 'LC':
                 $municipalities_lecco_special = array("CALOLZIOCORTE", "CARENNO", "ERVE", "MONTE MARENZO", "VERCURAGO");
                 if (in_array($data['birthTown'], $municipalities_lecco_special))
                     $birthProvince = 'BG';
                 else
                     $birthProvince = 'CO';
+                break;
+            //Biella --> Vercelli
+            case 'BI':
+                $birthProvince = 'VC';
+                break;
+            //Barletta-Andria-Trani --> Bari
+            case 'BT':
+                $birthProvince = 'BA';
+                break;
+            //Forlì-Cesena --> Forlì(old)
+            case 'FC':
+                $birthProvince = 'FO';
+                break;
+            //Pesaro-Urbino --> Pesaro(old)
+            case 'PU':
+                $birthProvince = 'PS';
+                break;
+            //Vibo-Valentia --> Catanzaro
+            case 'VV':
+                $birthProvince = 'CZ';
+                break;
+            //Carbonia-Iglesias --> Cagliari
+            case 'CI':
+                $birthProvince = 'CA';
                 break;
         }
         return $birthProvince;
