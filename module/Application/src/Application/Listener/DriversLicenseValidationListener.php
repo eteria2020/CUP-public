@@ -72,26 +72,30 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         $data = $e->getParams();
 
         $customer = $this->customersService->findByEmail($data['email'])[0];
-        
+
         // we do not request the validation of the drivers license to the
         // motorizzazione civile is the customer has a foreign drivers license
         if (!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)) {
             $data['birthCountryMCTC'] = $this->countriesService->getMctcCode($data['birthCountry']);
-            
-            $data['birthProvince'] = $this->changeProvinceForValidationDriverLicense($data);            
-            
+
+            $data['birthProvince'] = $this->changeProvinceForValidationDriverLicense($data);
+
             $this->enqueueValidationService->validateDriversLicense($data);
         }
     }
-    
-    /*This method returns a different birthPrertince,
+
+    /**
+     * This method returns a different birthPrertince,
      * so if birthProvince == 'MB' changes to 'MI'
      * because after creating an MB province the whole city was under the MI province.
      * While birthProvince == 'LC' and the city is in array$municipalities_lecco_special
      * sets birthProvince = 'BG' because the city in $municipalities_lecco_special
      * was under the province of BG, all the More cities were under the province of CO
+     * @param array $data
+     * @return string
      */
     private function changeProvinceForValidationDriverLicense($data) {
+        $birthProvince = $data['birthProvince'];
         switch ($data['birthProvince']) {
             //Monza-Brinaza --> Milano
             case 'MB':
@@ -100,10 +104,11 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
             //Lecco --> Bergamo || Como
             case 'LC':
                 $municipalities_lecco_special = array("CALOLZIOCORTE", "CARENNO", "ERVE", "MONTE MARENZO", "VERCURAGO");
-                if (in_array($data['birthTown'], $municipalities_lecco_special))
+                if (in_array($data['birthTown'], $municipalities_lecco_special)){
                     $birthProvince = 'BG';
-                else
+                }else{
                     $birthProvince = 'CO';
+                }
                 break;
             //Biella --> Vercelli
             case 'BI':
