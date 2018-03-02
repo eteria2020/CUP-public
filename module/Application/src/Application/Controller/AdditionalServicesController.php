@@ -3,9 +3,9 @@
 namespace Application\Controller;
 
 use Application\Form\PromoCodeForm;
-use SharengoCore\Entity\Customers;
-use SharengoCore\Entity\CustomersBonus;
-use SharengoCore\Entity\PromoCodes;
+//use SharengoCore\Entity\Customers;
+//use SharengoCore\Entity\CustomersBonus;
+//use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Exception\BonusAssignmentException;
 use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Exception\CodeAlreadyUsedException;
@@ -16,15 +16,13 @@ use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesOnceService;
-
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+class AdditionalServicesController extends AbstractActionController {
 
-class AdditionalServicesController extends AbstractActionController
-{
     /**
      * @var CustomersService
      */
@@ -94,16 +92,15 @@ class AdditionalServicesController extends AbstractActionController
         $this->customersService = $customersService;
         $this->carrefourService = $carrefourService;
         $this->promoCodeForm = $promoCodeForm;
-        $this->promoCodeService =  $promoCodeService;
-        $this->promoCodeOnceService =  $promoCodeOnceService;
+        $this->promoCodeService = $promoCodeService;
+        $this->promoCodeOnceService = $promoCodeOnceService;
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->authService = $authService;
         $this->bonusService = $bonusService;
         $this->tripsService = $tripsService;
     }
 
-    public function additionalServicesAction()
-    {
+    public function additionalServicesAction() {
         //if there is mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
@@ -117,11 +114,9 @@ class AdditionalServicesController extends AbstractActionController
             $form->setData($postData);
 
             if ($form->isValid()) {
-
                 $code = $postData['promocode']['promocode'];
 
                 if ($this->promoCodeService->isStandardPromoCode($code)) {
-
                     try {
                         $promoCode = $this->promoCodeService->getPromoCode($code);
                         $this->customersService->addBonusFromPromoCode($customer, $promoCode);
@@ -131,7 +126,6 @@ class AdditionalServicesController extends AbstractActionController
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
                     }
-
                 } else if ($this->promoCodeOnceService->isValid($code)) {
                     try {
                         $this->promoCodeOnceService->usePromoCode($customer, $code);
@@ -139,14 +133,13 @@ class AdditionalServicesController extends AbstractActionController
                     } catch (\Exception $ex) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo PCO.');
                     }
-                }
-                else {
+                } else {
                     try {
                         $this->carrefourService->addFromCode($customer, $code);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-                    } catch(NotAValidCodeException $ex){
+                    } catch (NotAValidCodeException $ex) {
                         $this->flashMessenger()->addErrorMessage('Promocode non valido.');
-                    } catch(CodeAlreadyUsedException $ex){
+                    } catch (CodeAlreadyUsedException $ex) {
                         $this->flashMessenger()->addErrorMessage('Promocode già utilizzato.');
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo CR.');
@@ -155,8 +148,9 @@ class AdditionalServicesController extends AbstractActionController
 
                 return $this->redirect()->toRoute('area-utente/additional-services');
             }
+
         }
-        
+
         $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
         $customer = $this->authService->getIdentity();
 
@@ -175,7 +169,7 @@ class AdditionalServicesController extends AbstractActionController
             }
         }
         $showWelcomePackage = false;
-        if ($verifyWelcomePackage == 0 && $customer->getFirstPaymentCompleted() && $verifyFirstTrip){
+        if ($verifyWelcomePackage == 0 && $customer->getFirstPaymentCompleted() && $verifyFirstTrip) {
             $showWelcomePackage = true;
         }
 
@@ -189,8 +183,7 @@ class AdditionalServicesController extends AbstractActionController
         ]);
     }
 
-    public function giftPackagesAction()
-    {
+    public function giftPackagesAction() {
         $form = $this->promoCodeForm;
 
         if ($this->getRequest()->isPost()) {
@@ -213,7 +206,6 @@ class AdditionalServicesController extends AbstractActionController
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
                     }
-
                 } else if ($this->promoCodeOnceService->isValid($code)) {
                     try {
                         $this->promoCodeOnceService->usePromoCode($customer, $code);
@@ -221,14 +213,13 @@ class AdditionalServicesController extends AbstractActionController
                     } catch (\Exception $ex) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo PCO.');
                     }
-                }
-                else {
+                } else {
                     try {
                         $this->carrefourService->addFromCode($customer, $code);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
-                    } catch(NotAValidCodeException $ex){
+                    } catch (NotAValidCodeException $ex) {
                         $this->flashMessenger()->addErrorMessage('Promocode non valido.');
-                    } catch(CodeAlreadyUsedException $ex){
+                    } catch (CodeAlreadyUsedException $ex) {
                         $this->flashMessenger()->addErrorMessage('Promocode già utilizzato.');
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo CR.');

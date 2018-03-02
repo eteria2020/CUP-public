@@ -37,13 +37,16 @@ $mobile = $this->mobile;
                         <?= $this->form()->openTag($form); ?>
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-4-4">
-                                    <p> <label><?= $this->translate('Inserisci il codice promo'); ?></label>
+                                    <div>
+                                        <label><?= $this->translate('Inserisci il codice promo'); ?></label>
                                         <?php
-                                        $promoCode = $form->get('promocode')->get('promocode');
-                                        echo $this->formElement($promoCode->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($promoCode, ['class' => 'errors']);
-                                        ?>
-                                    </p>
+                                                $promoCode = $form->get('promocode')->get('promocode');
+                                                echo $this->formElement($promoCode->setAttribute('class', 'required'));
+                                                echo $this->formElementErrors($promoCode, ['class' => 'errors']);
+
+                                                echo $this->form()->openTag($form);
+                                                ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="block-wrapper-button content-align-center">

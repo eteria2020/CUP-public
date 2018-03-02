@@ -569,6 +569,8 @@ class ConsoleController extends AbstractActionController {
                             $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), 20);
                         }
                     }
+                    $format = "%s;INF;alertCreditCardExpirationAction;Customer_id = %d;Email = %s\n";
+                    $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $customer->getEmail()));
                 }
             }
             $this->customerService->clearAllEntityManager();

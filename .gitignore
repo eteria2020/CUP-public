@@ -28,4 +28,5 @@ data/maintenance
 data/DoctrineMongoODMModule
 data/*.log
 data/dumps/*
+public/cache
 /bower_components
