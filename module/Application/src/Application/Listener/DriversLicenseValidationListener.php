@@ -104,10 +104,11 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
             //Lecco --> Bergamo || Como
             case 'LC':
                 $municipalities_lecco_special = array("CALOLZIOCORTE", "CARENNO", "ERVE", "MONTE MARENZO", "VERCURAGO");
-                if (in_array($data['birthTown'], $municipalities_lecco_special))
+                if (in_array($data['birthTown'], $municipalities_lecco_special)){
                     $birthProvince = 'BG';
-                else
+                }else{
                     $birthProvince = 'CO';
+                }
                 break;
             //Biella --> Vercelli
             case 'BI':
