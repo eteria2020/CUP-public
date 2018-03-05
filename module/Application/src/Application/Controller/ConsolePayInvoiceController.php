@@ -183,7 +183,12 @@ class ConsolePayInvoiceController extends AbstractActionController
     private function reProcessWrongPayments()
     {
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPayments;start\n");
-        $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, '-48 hours');  //TODO only dev put -2 days
+        $now = date_create();
+        $timestampEndParam = '-48 hours';
+        if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
+            $timestampEndParam = '-168 hours';
+        }
+        $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, $timestampEndParam);  //TODO only dev put -2 days
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
 
         $this->processPaymentsService->processPayments(
