@@ -134,7 +134,7 @@ return [
                     ],
                 ]
             ],
-            'rescueCode' => [
+            /*'rescueCode' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{s}/[:userId]',
@@ -147,7 +147,7 @@ return [
                         'userId' => '[0-9&]+',
                     ],
                 ]
-            ],
+            ],*/
             'expiredCreditCard' => [
                 'type' => 'Segment',
                 'options' => [
