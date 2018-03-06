@@ -235,12 +235,21 @@ class ConsoleController extends AbstractActionController {
             $flagPersist = false;
             // holds the car's status
             $status = $car->getStatus();
+
+            // define chargin for unplug feature
+            $charging = $car->getCharging();
+            if($car->getSoftwareVersion() == "0.107.4-unplug-stage") {  //TODO: da aggiornare prima di mettere in produzione
+                $charging = ($car->getCharging() && 
+                    ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()));
+            }
+
             // defines if car should be in non_operative || is in maintenance
             $isAlarm = $car->getBattery() < $this->battery ||
                 time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                ($car->getCharging() && ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable())) ||
+                $charging ||
                 $isOutOfBounds ||
                 $status == self::MAINTENANCE_STATUS;
+
             $this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for battery safety cars
             if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false || strpos($car->getSoftwareVersion(), "0.107") !== false)){
