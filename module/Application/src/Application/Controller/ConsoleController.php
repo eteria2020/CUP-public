@@ -259,7 +259,7 @@ class ConsoleController extends AbstractActionController {
             $isAlarm = $car->getBattery() < $this->battery ||
                 time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                 $charging ||
-                $isOutOfBounds ||
+                $this->carsService->isCarOutOfBounds($car) ||
                 $status == self::MAINTENANCE_STATUS;
 
             //$this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
