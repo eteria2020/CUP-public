@@ -127,7 +127,19 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, EmailService $emailService, CustomerDeactivationService $customerDeactivationService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+        CustomersService $customerService,
+        CartasiContractsService $cartasiContractsService,
+        Logger $logger,
+        EmailService $emailService,
+        CustomerDeactivationService $customerDeactivationService,
+        CarsService $carsService,
+        ReservationsService $reservationsService,
+        EntityManager $entityManager,
+        ProfilingPlaformService $profilingPlatformService,
+        TripsService $tripsService,
+        AccountTripsService $accountTripsService,
+        $alarmConfig,
+        InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -221,15 +233,19 @@ class ConsoleController extends AbstractActionController {
         $this->writeToConsole("Battery Unplug = " . $this->batteryUnplug . "\n");
 
         foreach ($cars as $car) {
+            $softwareVerNum = $this->getSoftwareVersionNumber($car->getSoftwareVersion());
+            $firmwareVerNum = $this->getFirmwareVersionNumbert($car->getSoftwareVersion());
+
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
             $this->writeToConsole(", battery = " . $car->getBattery());
+            $this->writeToConsole(", sw ver num = " . $softwareVerNum);
+            $this->writeToConsole(", fm ver num = " . $firmwareVerNum);
 
             $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
             $this->writeToConsole(", last time = " . $lastContact);
             $this->writeToConsole(", charging = " . (($car->getCharging()) ? 'true' : 'false'));
             $isOutOfBounds = $this->carsService->isCarOutOfBounds($car);
             $this->writeToConsole(", is " . (($isOutOfBounds) ? "NOT " : "") . "in bounds\n");
-
 
             // defines if car status should be saved
             $flagPersist = false;
@@ -238,8 +254,8 @@ class ConsoleController extends AbstractActionController {
 
             // define chargin for unplug feature
             $charging = $car->getCharging();
-            if($car->getSoftwareVersion() == "0.107.4-unplug-stage") {  //TODO: da aggiornare prima di mettere in produzione
-                $charging = ($car->getCharging() && 
+            if($softwareVerNum >=10740) {  //TODO: da aggiornare prima di mettere in produzione
+                $charging = ($car->getCharging() &&
                     ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()));
             }
 
@@ -669,4 +685,72 @@ class ConsoleController extends AbstractActionController {
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
 
+    /**
+     * Return an integer rappresentation of software version.
+     * Example, for version star width "0.":
+     * 0.103.4-sk9 --> 10349
+     * 0.105.6tris --> 10563
+     * 0.106.7     --> 10670
+     * 0.107.2.3   --> 10723
+     * 0.107       --> 10700
+     *
+     * If dosn't start width "0.", use x.yyy.x
+     * @param type $strVersion
+     * @return integer
+     */
+    private function getSoftwareVersionNumber($strVersion) {
+        $result = 0;
+
+        if(is_null($strVersion)) {
+            return $result;
+        }
+
+        $strNormalized = trim(strtolower($strVersion));
+
+        if (substr( $strNormalized, 0, 2 )=='0.' ) {  // ver 0.xxx.y.z
+            $strNormalized = str_replace("bis","2",$strNormalized);
+            $strNormalized = str_replace("tris","3",$strNormalized);
+            $result = intval(preg_replace("/[^0-9]/", "", $strNormalized ));
+
+            if($result==105 || $result==107) {
+                $result = $result * 100;
+            } else if($result>=100 && $result<10000) {
+               $result = $result * 10;
+            }
+        } else {    //ver x.yyy.z es 1.001.0 -->10010 2.004.3 --> 20043
+            $ver_str_array = explode(".", $strNormalized);
+            $result = intval($ver_str_array[0].$ver_str_array[1].$ver_str_array[2]);
+        }
+
+        return $result;
+
+    }
+
+    /** Return an integer rappresentation of software version.
+     * Example, for version star width "0.":
+     * V4.6     --> 4600
+     * V4.7.2~1 --> 4721
+     * V4.7.3   --> 4730
+     * @param type $strVersion
+     * @return int
+     */
+    function getFirmwareVersionNumber($strVersion) {
+        $result = 0;
+
+        if(is_null($strVersion)) {
+            return $result;
+        }
+
+        $strNormalized = trim(strtolower($strVersion));
+        $result = intval(preg_replace("/[^0-9]/", "", $strNormalized ));
+
+        if ($result<100) {
+            $result = $result * 100;
+        } else if ($result<1000) {
+            $result = $result * 10;
+        }
+
+        return $result;
+
+    }
 }
