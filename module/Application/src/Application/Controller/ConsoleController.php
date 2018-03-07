@@ -283,7 +283,7 @@ class ConsoleController extends AbstractActionController {
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
-            $strLog = format("%s;INF;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
+            $strLog = sprintf("%s;INF;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
                 date('ymd-His'),
                 $car->getPlate(),
                 $car->getBattery(),
