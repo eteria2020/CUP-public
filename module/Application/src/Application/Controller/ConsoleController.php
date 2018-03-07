@@ -238,8 +238,7 @@ class ConsoleController extends AbstractActionController {
 
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
             $this->writeToConsole(", battery = " . $car->getBattery());
-            $this->writeToConsole(", sw ver num = " . $softwareVerNum);
-            $this->writeToConsole(", fm ver num = " . $firmwareVerNum);
+            $this->writeToConsole(", sw/fm ver num = " . $softwareVerNum . "/" .$firmwareVerNum);
 
             $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
             $this->writeToConsole(", last time = " . $lastContact);
@@ -268,7 +267,7 @@ class ConsoleController extends AbstractActionController {
 
             $this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for battery safety cars
-            if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false || strpos($car->getSoftwareVersion(), "0.107") !== false)){
+            if (!$isAlarm && $firmwareVerNum>= 4730 && $softwareVerNum >=10670){
                 if(is_null($car->getBatterySafetyTs())){
                     $isAlarm = false;
                 } else {
@@ -277,7 +276,7 @@ class ConsoleController extends AbstractActionController {
             }
             $this->writeToConsole("2. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for nogps
-            if (!$isAlarm && strpos($car->getSoftwareVersion(), "0.107") !== false){
+            if (!$isAlarm && $softwareVerNum >=10700){
                 $isAlarm = $car->getNogps() == true;
             }
 
