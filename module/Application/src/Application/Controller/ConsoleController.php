@@ -225,26 +225,23 @@ class ConsoleController extends AbstractActionController {
         $carsToMaintenance = [];
         $batterySafetyTime = 1;
 
-        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->writeToConsole(date('ymd-His').";INF;start;\n");
 
         // get all cars without reservation or with maintenance/non_operative reservation
         $cars = $this->carsService->getCarsEligibleForAlarmCheck();
-        $this->writeToConsole("Cars number = " . count($cars) . "\n");
-        $this->writeToConsole("Battery Unplug = " . $this->batteryUnplug . "\n");
+
+        $strLog = sprintf("%s;INF;cars;dry-run=%s;verbose=%s;cars=%d;unplug=%d\n",
+            date('ymd-His'),
+            $dryRun,
+            $this->verbose,
+            count($cars),
+            $this->batteryUnplug);
+
+        $this->writeToConsole($strLog);
 
         foreach ($cars as $car) {
             $softwareVerNum = $this->getSoftwareVersionNumber($car->getSoftwareVersion());
             $firmwareVerNum = $this->getFirmwareVersionNumber($car->getFirmwareVersion());
-
-            $this->writeToConsole("\nCar: plate = " . $car->getPlate());
-            $this->writeToConsole(", battery = " . $car->getBattery());
-            $this->writeToConsole(", sw/fm ver num = " . $softwareVerNum . "/" .$firmwareVerNum);
-
-            $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
-            $this->writeToConsole(", last time = " . $lastContact);
-            $this->writeToConsole(", charging = " . (($car->getCharging()) ? 'true' : 'false'));
-            $isOutOfBounds = $this->carsService->isCarOutOfBounds($car);
-            $this->writeToConsole(", is " . (($isOutOfBounds) ? "NOT " : "") . "in bounds\n");
 
             // defines if car status should be saved
             $flagPersist = false;
@@ -279,9 +276,6 @@ class ConsoleController extends AbstractActionController {
             if (!$isAlarm && $softwareVerNum >=10700){
                 $isAlarm = $car->getNogps() == true;
             }
-
-            $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
-            $this->writeToConsole("status = " . $status . "\n");
 
             $strLog = sprintf("%s;INF;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
                 date('ymd-His'),
@@ -348,7 +342,7 @@ class ConsoleController extends AbstractActionController {
             }
         }
 
-        $this->writeToConsole("\n\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->writeToConsole(date('ymd-His').";INF;end;\n");
     }
 
     /**
