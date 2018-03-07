@@ -253,7 +253,7 @@ class ConsoleController extends AbstractActionController {
 
             // define chargin for unplug feature
             $charging = $car->getCharging();
-            if($softwareVerNum >=10740) {  //TODO: da aggiornare prima di mettere in produzione
+            if($softwareVerNum >=10740) {  //TODO: condizione unplug, da aggiornare prima di mettere in produzione
                 $charging = ($car->getCharging() &&
                     ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()));
             }
@@ -565,15 +565,17 @@ class ConsoleController extends AbstractActionController {
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
 
         $format = "%s;INF;alertCreditCardExpirationAction;";
-        if(!$this->avoidEmails)
+        if(!$this->avoidEmails){
             $format .= "SendEmails = TRUE;";
-        else
+        } else {
             $format .= "SendEmails = FALSE;";
+        }
 
-        if (!$dryRun)
+        if (!$dryRun) {
             $format .= "DryRun = TRUE;";
-        else
+        } else {
             $format .= "DryRun = FALSE;";
+        }
 
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -615,20 +617,24 @@ class ConsoleController extends AbstractActionController {
         $paramDate = $request->getParam('date');
 
         $format = "%s;INF;disableCreditCardAction;";
-        if(!$this->avoidEmails)
+        if(!$this->avoidEmails) {
             $format .= "SendEmails = TRUE;";
-        else
+        } else {
             $format .= "SendEmails = FALSE;";
+        }
 
-        if (!$dryRun)
+        if (!$dryRun){
             $format .= "DryRun = TRUE;";
-        else
+        } else {
             $format .= "DryRun = FALSE;";
+        }
 
-        if (!is_null($paramDate))
+        if (!is_null($paramDate)) {
             $pan_expiry = $paramDate;
-        else
+        } else {
             $pan_expiry = '20' . date_create('first day of last month')->format('ym');
+        }
+
         $format .= "PanExpiry = " . $pan_expiry . ";";
 
         $format .= "\n";
