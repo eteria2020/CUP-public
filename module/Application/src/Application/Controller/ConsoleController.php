@@ -265,7 +265,7 @@ class ConsoleController extends AbstractActionController {
                 $isOutOfBounds ||
                 $status == self::MAINTENANCE_STATUS;
 
-            $this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
+            //$this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for battery safety cars
             if (!$isAlarm && $firmwareVerNum>= 4730 && $softwareVerNum >=10670){
                 if(is_null($car->getBatterySafetyTs())){
@@ -274,7 +274,7 @@ class ConsoleController extends AbstractActionController {
                     $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
                 }
             }
-            $this->writeToConsole("2. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
+            //$this->writeToConsole("2. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for nogps
             if (!$isAlarm && $softwareVerNum >=10700){
                 $isAlarm = $car->getNogps() == true;
@@ -283,6 +283,20 @@ class ConsoleController extends AbstractActionController {
             $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             $this->writeToConsole("status = " . $status . "\n");
 
+            $strLog = format("%s;INF;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
+                date('ymd-His'),
+                $car->getPlate(),
+                $car->getBattery(),
+                $softwareVerNum,
+                $firmwareVerNum,
+                (($car->getLastContact()) ? $car->getLastContact()->format('Y-m-d H:i:s') : ''),
+                (($car->getCharging()) ? 'YES' : 'NO'),
+                (($this->carsService->isCarOutOfBounds($car)) ? 'YES':'NO'),
+                (($isAlarm) ? 'YES' : 'NO'),
+                $status
+                );
+
+            $this->writeToConsole($strLog);
             // the car should have a maintainer's reservation
             if ($isAlarm) {
                 // create reservation if !exists
