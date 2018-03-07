@@ -47,14 +47,23 @@ class PartnerController extends AbstractActionController {
     public function getInfoAction() {
 
         if (isset($_GET["name"])) {
-            $response_msg = $this->partnerData(strtoupper($_GET["name"]));
+            if (strtoupper($_GET["name"]) == 'FREE2MOVE') {
+                $param = "2MOVE";
 
-            $values = array_values(explode(",", $response_msg));
+                $response_msg = $this->partnerData($param);
 
-            $response = $this->getResponse();
-            $response->setStatusCode(200);
-            $response->setContent(json_encode(array_combine(array("lead", "free2move"), $values)));
-            return $response;
+                $values = array_values(explode(",", $response_msg));
+
+                $response = $this->getResponse();
+                $response->setStatusCode(200);
+                $response->setContent(json_encode(array_combine(array("lead", "free2move"), $values)));
+                return $response;
+            } else {
+                $response = $this->getResponse();
+                $response->setStatusCode(200);
+                $response->setContent(json_encode(array("response" => "Parameters NOT VALID")));
+                return $response;
+            }
         } else {
             $response = $this->getResponse();
             $response->setStatusCode(200);
