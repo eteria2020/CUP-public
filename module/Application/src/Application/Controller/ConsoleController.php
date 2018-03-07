@@ -241,7 +241,7 @@ class ConsoleController extends AbstractActionController {
 
         foreach ($cars as $car) {
             $softwareVerNum = $car->getSoftwareVersionNumber();
-            $firmwareVerNum = $car->getFirmwareVersionNumber;
+            $firmwareVerNum = $car->getFirmwareVersionNumber();
 
             // defines if car status should be saved
             $flagPersist = false;
