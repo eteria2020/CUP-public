@@ -234,7 +234,7 @@ class ConsoleController extends AbstractActionController {
 
         foreach ($cars as $car) {
             $softwareVerNum = $this->getSoftwareVersionNumber($car->getSoftwareVersion());
-            $firmwareVerNum = $this->getFirmwareVersionNumber($car->getSoftwareVersion());
+            $firmwareVerNum = $this->getFirmwareVersionNumber($car->getFirmwareVersion());
 
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
             $this->writeToConsole(", battery = " . $car->getBattery());
