@@ -225,12 +225,12 @@ class ConsoleController extends AbstractActionController {
         $carsToMaintenance = [];
         $batterySafetyTime = 1;
 
-        $this->writeToConsole(date('ymd-His').";INF;start;\n");
+        $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;start;\n");
 
         // get all cars without reservation or with maintenance/non_operative reservation
         $cars = $this->carsService->getCarsEligibleForAlarmCheck();
 
-        $strLog = sprintf("%s;INF;cars;dry-run=%s;verbose=%s;cars=%d;unplug=%d\n",
+        $strLog = sprintf("%s;INF;checkAlarmsAction;dry-run=%s;verbose=%s;cars=%d;unplug=%d\n",
             date('ymd-His'),
             $dryRun,
             $this->verbose,
@@ -277,7 +277,7 @@ class ConsoleController extends AbstractActionController {
                 $isAlarm = $car->getNogps() == true;
             }
 
-            $strLog = sprintf("%s;INF;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
+            $strLog = sprintf("%s;INF;checkAlarmsAction;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
                 date('ymd-His'),
                 $car->getPlate(),
                 $car->getBattery(),
@@ -303,7 +303,7 @@ class ConsoleController extends AbstractActionController {
                     if ($this->verbose) {
                         array_push($carsToMaintenance, $car->getPlate());
                     }
-                    $this->writeToConsole("status changed to " . self::NON_OPERATIVE_STATUS . "\n");
+                    $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                 }
                 // the car should be operative
             } elseif ($status == self::NON_OPERATIVE_STATUS) {
@@ -315,19 +315,19 @@ class ConsoleController extends AbstractActionController {
                 if ($this->verbose) {
                     array_push($carsToOperative, $car->getPlate());
                 }
-                $this->writeToConsole("status changed to " . self::OPERATIVE_STATUS . "\n");
+                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;status changed to " . self::OPERATIVE_STATUS . "\n");
             }
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
-                $this->writeToConsole("Entity manager: car persisted\n");
+                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Entity manager: car persisted;\n");
             }
         }
 
         if (!$dryRun) {
-            $this->writeToConsole("\nEntity manager: about to flush\n");
+            $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Entity manager: about to flush;\n");
             $this->entityManager->flush();
-            $this->writeToConsole("Entity manager: flushed\n");
+            $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Entity manager: flushed;\n");
         }
 
         if ($this->verbose) {
@@ -342,7 +342,7 @@ class ConsoleController extends AbstractActionController {
             }
         }
 
-        $this->writeToConsole(date('ymd-His').";INF;end;\n");
+        $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;end;\n");
     }
 
     /**
