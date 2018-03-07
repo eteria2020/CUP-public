@@ -234,7 +234,7 @@ class ConsoleController extends AbstractActionController {
 
         foreach ($cars as $car) {
             $softwareVerNum = $this->getSoftwareVersionNumber($car->getSoftwareVersion());
-            $firmwareVerNum = $this->getFirmwareVersionNumbert($car->getSoftwareVersion());
+            $firmwareVerNum = $this->getFirmwareVersionNumber($car->getSoftwareVersion());
 
             $this->writeToConsole("\nCar: plate = " . $car->getPlate());
             $this->writeToConsole(", battery = " . $car->getBattery());
@@ -734,7 +734,7 @@ class ConsoleController extends AbstractActionController {
      * @param type $strVersion
      * @return int
      */
-    function getFirmwareVersionNumber($strVersion) {
+    private function getFirmwareVersionNumber($strVersion) {
         $result = 0;
 
         if(is_null($strVersion)) {
