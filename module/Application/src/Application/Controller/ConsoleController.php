@@ -350,32 +350,43 @@ class ConsoleController extends AbstractActionController {
      * @param Cars
      */
     private function sendAlarmCommand($alarmCode, $car) {
-        $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
+        $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;code=%s",
+            date('ymd-His'),
+            $car->getPlate(),
+            $alarmCode);
+        $this->writeToConsole($strLog);
+
+        //$this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
         // get all active reservations for car
         $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
-        $this->writeToConsole("reservations retrieved\n");
+        //$this->writeToConsole("reservations retrieved\n");
 
         // car should not have active reservations
         if ($alarmCode == self::OPERATIVE_ACTION) {
             // remove current active reservation
             foreach ($reservations as $reservation) {
-                $reservation->setActive(false)
-                        ->setToSend(true);
-                $this->writeToConsole("set reservation.active to false\n");
+                $reservation->setActive(false)->setToSend(true);
+
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;set reservation.active to false",
+                    date('ymd-His'),
+                    $car->getPlate());
+                $this->writeToConsole($strLog);
+
+                //$this->writeToConsole("set reservation.active to false\n");
 
                 $this->entityManager->persist($reservation);
-                $this->writeToConsole("Entity manager: reservation persisted\n");
+                //$this->writeToConsole("Entity manager: reservation persisted\n");
             }
             // car should have maintainers reservation
         } elseif ($alarmCode == self::MAINTENANCE_ACTION) {
             // car does not have active reservations
             if (count($reservations) == 0) {
-                $this->writeToConsole("no reservation found, creating...\n");
+                //$this->writeToConsole("no reservation found, creating...\n");
                 // create reservation for all maintainers
                 $cardsArray = [];
                 $maintainersCardCodes = $this->customerService->getListMaintainersCards();
-                $this->writeToConsole("cards retrieved\n");
+                //$this->writeToConsole("cards retrieved\n");
                 // create single json string with all maintainer's card codes
                 foreach ($maintainersCardCodes as $cardCode) {
                     array_push($cardsArray, $cardCode['1']);
@@ -383,13 +394,20 @@ class ConsoleController extends AbstractActionController {
                 $cardsString = json_encode($cardsArray);
                 // create maintainers reservation
                 $reservation = Reservations::createMaintenanceReservation($car, $cardsString);
-                $this->writeToConsole("reservation created\n");
+                //$this->writeToConsole("reservation created\n");
 
                 $this->entityManager->persist($reservation);
-                $this->writeToConsole("Entity manager: reservation persisted\n");
+                //$this->writeToConsole("Entity manager: reservation persisted\n");
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;reservation created\n",
+                    date('ymd-His'),
+                    $car->getPlate());
             } else {
-                $this->writeToConsole("reservation found, skipping creation...\n");
+                //$this->writeToConsole("reservation found, skipping creation...\n");
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;reservation found, skipping creation\n",
+                    date('ymd-His'),
+                    $car->getPlate());
             }
+            $this->writeToConsole($strLog);
         }
     }
 
