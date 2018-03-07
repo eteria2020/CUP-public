@@ -350,7 +350,7 @@ class ConsoleController extends AbstractActionController {
      * @param Cars
      */
     private function sendAlarmCommand($alarmCode, $car) {
-        $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;code=%s",
+        $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;code=%s\n",
             date('ymd-His'),
             $car->getPlate(),
             $alarmCode);
@@ -368,7 +368,7 @@ class ConsoleController extends AbstractActionController {
             foreach ($reservations as $reservation) {
                 $reservation->setActive(false)->setToSend(true);
 
-                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;set reservation.active to false",
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;set reservation.active to false\n",
                     date('ymd-His'),
                     $car->getPlate());
                 $this->writeToConsole($strLog);
