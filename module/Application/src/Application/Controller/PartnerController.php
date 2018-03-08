@@ -72,9 +72,8 @@ class PartnerController extends AbstractActionController {
         }
     }
 
-    private function partnerData($name) {
-        $response = $this->customersService->partnerData($name);
-        return $response;
+    private function partnerData($param) {
+        return $this->customersService->partnerData($param);
     }
 
 }
