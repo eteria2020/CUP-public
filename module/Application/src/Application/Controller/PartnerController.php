@@ -55,10 +55,9 @@ class PartnerController extends AbstractActionController {
 
         if (isset($_GET["utm_source"])) {
             if (strtoupper($_GET["utm_source"]) == 'FREE2MOVE') {
-                $param = "2MOVE";
-
-                $response_msg = $this->partnerData($param);
                 
+                $param = "2MOVE";
+                $response_msg = $this->partnerData($param);
                 $values = array_values(array_map('intval', explode(",", $response_msg)));
 
                 $response = $this->getResponse();
