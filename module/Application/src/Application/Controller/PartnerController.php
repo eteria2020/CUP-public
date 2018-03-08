@@ -44,10 +44,17 @@ class PartnerController extends AbstractActionController {
         $this->customersService = $customersService;
     }
 
+    
+    /**
+     * API for partner 
+     * https://en.wikipedia.org/wiki/UTM_parameters
+     * @param utm_source
+     * @return json
+     */
     public function getInfoAction() {
 
-        if (isset($_GET["name"])) {
-            if (strtoupper($_GET["name"]) == 'FREE2MOVE') {
+        if (isset($_GET["utm_source"])) {
+            if (strtoupper($_GET["utm_source"]) == 'FREE2MOVE') {
                 $param = "2MOVE";
 
                 $response_msg = $this->partnerData($param);
@@ -66,8 +73,8 @@ class PartnerController extends AbstractActionController {
             }
         } else {
             $response = $this->getResponse();
-            $response->setStatusCode(200);
-            $response->setContent(json_encode(array("response" => "Parameters NOT FOUND")));
+            $response->setStatusCode(400);
+            //$response->setContent(json_encode(array("response" => "Parameters NOT FOUND")));
             return $response;
         }
     }
