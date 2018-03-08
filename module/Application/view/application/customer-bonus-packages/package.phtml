@@ -15,6 +15,11 @@ if ($package->getCode()=="WOMEN") {
         $validFrom = $validFrom->format("d-m-Y");
         $validTo = "per la notte";
 }
+
+$nowFree = date_create();
+$start = date_create('2018-03-08 06:00:00');
+$end = date_create('2018-03-09 04:55:00');
+
 ?>
 <div id="pack-popup-container" class="sng-pack-popup-container">
     <div class="sng-pack-popup-inner">
@@ -39,7 +44,7 @@ if ($package->getCode()=="WOMEN") {
                         <td class="sng-w-1-2">
                             <h2>Prezzo:</h2>
                             <?php if($this->package->getType() === "Pacchetto"){ ?>
-                                <p id="cost" class="sng-text">€ <?= number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
+                                <p id="cost" class="sng-text"><?= ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : "&euro; ".number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
                             <?php }else{ ?>
                                 <p id="cost" class="sng-text">€ 0</p>
                             <?php } ?>
@@ -67,8 +72,12 @@ if ($package->getCode()=="WOMEN") {
 
             <div class="sng-footer">
                 <?php if($this->package->getType() === "Pacchetto"){ ?>
-                    <?php if ($this->hasContract): ?>
-                        <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                    <?php if ($this->hasContract || ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end))): ?>
+                        <?php if ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) {?>
+                            <p class="sng-text"> Vuoi confermare questo pacchetto?</p>
+                            <?php } else { ?>
+                            <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                            <?php } ?>
                         <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
                     <?php else: ?>
                         <p class="sng-text">Confermare l'acquisto registrando una carta di credito con Cartasi</p>
