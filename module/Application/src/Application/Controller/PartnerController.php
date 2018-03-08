@@ -67,14 +67,12 @@ class PartnerController extends AbstractActionController {
                 return $response;
             } else {
                 $response = $this->getResponse();
-                $response->setStatusCode(200);
-                $response->setContent(json_encode(array("response" => "Parameters NOT VALID")));
+                $response->setStatusCode(404);
                 return $response;
             }
         } else {
             $response = $this->getResponse();
             $response->setStatusCode(400);
-            //$response->setContent(json_encode(array("response" => "Parameters NOT FOUND")));
             return $response;
         }
     }
