@@ -297,6 +297,17 @@ return [
                 ],
                 'may_terminate' => true
             ],
+            'partner' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/partner',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Partner',
+                        'action' => 'get-info',
+                    ],
+                ]
+            ],
             'signup' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1546,6 +1557,7 @@ return [
             'Application\Controller\AdditionalServices' => 'Application\Controller\AdditionalServicesControllerFactory',
             'Application\Controller\ImportDriversLicenseValidations' => 'Application\Controller\ImportDriversLicenseValidationsControllerFactory',
             'Application\Controller\BirthdayBonus' => 'Application\Controller\BirthdayBonusControllerFactory',
+            'Application\Controller\Partner' => 'Application\Controller\PartnerControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
@@ -1628,6 +1640,7 @@ return [
                 ['controller' => 'Application\Controller\AdditionalServices', 'roles' => ['user']],
                 ['controller' => 'Application\Controller\ImportDriversLicenseValidations', 'roles' => []],
                 ['controller' => 'Application\Controller\BirthdayBonus', 'roles' => []],
+                ['controller' => 'Application\Controller\Partner', 'roles' => []],
             ],
         ],
     ],
