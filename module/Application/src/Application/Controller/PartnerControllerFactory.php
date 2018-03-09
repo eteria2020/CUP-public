@@ -8,14 +8,14 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\FleetService;
 
-class PartnerControllerfactory implements FactoryInterface
+class PartnerControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
+        $partnerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PartnerService');
         
         return new PartnerController(
-            $customerService
+            $partnerService
         );
     }
 }
