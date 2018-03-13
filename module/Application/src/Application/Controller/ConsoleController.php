@@ -256,13 +256,14 @@ class ConsoleController extends AbstractActionController {
             }
 
             // defines if car should be in non_operative || is in maintenance
-            $isAlarm = $car->getBattery() < $this->battery ||
+            $isAlarm = ($car->getFleet()->getId() == 4 && $car->getBattery() < 35) || ($car->getFleet()->getId() != 4 && $car->getBattery() < $this->battery) ||
                 time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                 $charging ||
                 $this->carsService->isCarOutOfBounds($car) ||
                 $status == self::MAINTENANCE_STATUS;
 
             //$this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
+
             //check only for battery safety cars
             if (!$isAlarm && $firmwareVerNum>= 4730 && $softwareVerNum >=10670){
                 if(is_null($car->getBatterySafetyTs())){
