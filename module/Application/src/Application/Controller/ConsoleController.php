@@ -80,32 +80,36 @@ class ConsoleController extends AbstractActionController {
      * @var string
      */
     private $delay;
-    
+
+    /**
+     * @var string
+     */
+    private $batteryUnplug;
+
     /**
      * @var CartasiContractsService
      */
     private $cartasiContractsService;
-    
+
     /**
      * @var Logger
      */
     private $logger;
-    
+
     /**
      * @var EmailService
      */
     private $emailService;
-    
+
     /**
      * @var CustomerDeactivationService
      */
     private $customerDeactivationService;
-    
+
     /**
      * @var boolean
      */
     private $avoidEmails;
-    
 
     /**
      * @param CustomersService $customerService
@@ -123,7 +127,19 @@ class ConsoleController extends AbstractActionController {
      * @param InvoicesService $invoicesService
      */
     public function __construct(
-    CustomersService $customerService, CartasiContractsService $cartasiContractsService, Logger $logger, EmailService $emailService, CustomerDeactivationService $customerDeactivationService, CarsService $carsService, ReservationsService $reservationsService, EntityManager $entityManager, ProfilingPlaformService $profilingPlatformService, TripsService $tripsService, AccountTripsService $accountTripsService, $alarmConfig, InvoicesService $invoicesService
+        CustomersService $customerService,
+        CartasiContractsService $cartasiContractsService,
+        Logger $logger,
+        EmailService $emailService,
+        CustomerDeactivationService $customerDeactivationService,
+        CarsService $carsService,
+        ReservationsService $reservationsService,
+        EntityManager $entityManager,
+        ProfilingPlaformService $profilingPlatformService,
+        TripsService $tripsService,
+        AccountTripsService $accountTripsService,
+        $alarmConfig,
+        InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
         $this->carsService = $carsService;
@@ -134,6 +150,7 @@ class ConsoleController extends AbstractActionController {
         $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
         $this->delay = $alarmConfig['delay'];
+        $this->batteryUnplug = intval($alarmConfig['unplug_enable']);
         $this->invoicesService = $invoicesService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->logger = $logger;
@@ -208,49 +225,73 @@ class ConsoleController extends AbstractActionController {
         $carsToMaintenance = [];
         $batterySafetyTime = 1;
 
-        $this->writeToConsole("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;start;\n");
 
         // get all cars without reservation or with maintenance/non_operative reservation
         $cars = $this->carsService->getCarsEligibleForAlarmCheck();
-        $this->writeToConsole("Cars number = " . count($cars) . "\n");
+
+        $strLog = sprintf("%s;INF;checkAlarmsAction;dry-run=%s;verbose=%s;cars=%d;unplug=%d\n",
+            date('ymd-His'),
+            $dryRun,
+            $this->verbose,
+            count($cars),
+            $this->batteryUnplug);
+
+        $this->writeToConsole($strLog);
 
         foreach ($cars as $car) {
-            $this->writeToConsole("\nCar: plate = " . $car->getPlate());
-            $this->writeToConsole(", battery = " . $car->getBattery());
-
-            $lastContact = $car->getLastContact() ? $car->getLastContact()->format('Y-m-d H:i:s') : '';
-            $this->writeToConsole(", last time = " . $lastContact);
-            $this->writeToConsole(", charging = " . (($car->getCharging()) ? 'true' : 'false'));
-            $isOutOfBounds = $this->carsService->isCarOutOfBounds($car);
-            $this->writeToConsole(", is " . (($isOutOfBounds) ? "NOT " : "") . "in bounds\n");
-
+            $softwareVerNum = $car->getSoftwareVersionNumber();
+            $firmwareVerNum = $car->getFirmwareVersionNumber();
 
             // defines if car status should be saved
             $flagPersist = false;
             // holds the car's status
             $status = $car->getStatus();
+
+            // define chargin for unplug feature
+            $charging = $car->getCharging();
+            if($softwareVerNum >=10740) {  //TODO: condizione unplug, da aggiornare prima di mettere in produzione
+                $charging = ($car->getCharging() &&
+                    ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()));
+            }
+
             // defines if car should be in non_operative || is in maintenance
-            $isAlarm = $car->getBattery() < $this->battery ||
-                    time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
-                    $car->getCharging() ||
-                    $isOutOfBounds ||
-                    $status == self::MAINTENANCE_STATUS;
+            $isAlarm = ($car->getFleet()->getId() == 4 && $car->getBattery() < 35) || ($car->getFleet()->getId() != 4 && $car->getBattery() < $this->battery) ||
+                time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
+                $charging ||
+                $this->carsService->isCarOutOfBounds($car) ||
+                $status == self::MAINTENANCE_STATUS;
+
+            //$this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
+
             //check only for battery safety cars
-            if (!$isAlarm && $car->getFirmwareVersion() == "V4.7.3" && ($car->getSoftwareVersion() == "0.106.7" || strpos($car->getSoftwareVersion(), "0.106.8") !== false || strpos($car->getSoftwareVersion(), "0.107") !== false)){
+            if (!$isAlarm && $firmwareVerNum>= 4730 && $softwareVerNum >=10670){
                 if(is_null($car->getBatterySafetyTs())){
                     $isAlarm = false;
                 } else {
                     $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
                 }
             }
+            //$this->writeToConsole("2. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for nogps
-            if (!$isAlarm && strpos($car->getSoftwareVersion(), "0.107") !== false){
+            if (!$isAlarm && $softwareVerNum >=10700){
                 $isAlarm = $car->getNogps() == true;
             }
 
-            $this->writeToConsole("isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
-            $this->writeToConsole("status = " . $status . "\n");
+            $strLog = sprintf("%s;INF;checkAlarmsAction;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
+                date('ymd-His'),
+                $car->getPlate(),
+                $car->getBattery(),
+                $softwareVerNum,
+                $firmwareVerNum,
+                (($car->getLastContact()) ? $car->getLastContact()->format('Y-m-d H:i:s') : ''),
+                (($car->getCharging()) ? 'YES' : 'NO'),
+                (($this->carsService->isCarOutOfBounds($car)) ? 'YES':'NO'),
+                (($isAlarm) ? 'YES' : 'NO'),
+                $status
+                );
 
+            $this->writeToConsole($strLog);
             // the car should have a maintainer's reservation
             if ($isAlarm) {
                 // create reservation if !exists
@@ -263,7 +304,7 @@ class ConsoleController extends AbstractActionController {
                     if ($this->verbose) {
                         array_push($carsToMaintenance, $car->getPlate());
                     }
-                    $this->writeToConsole("status changed to " . self::NON_OPERATIVE_STATUS . "\n");
+                    $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                 }
                 // the car should be operative
             } elseif ($status == self::NON_OPERATIVE_STATUS) {
@@ -275,19 +316,19 @@ class ConsoleController extends AbstractActionController {
                 if ($this->verbose) {
                     array_push($carsToOperative, $car->getPlate());
                 }
-                $this->writeToConsole("status changed to " . self::OPERATIVE_STATUS . "\n");
+                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;status changed to " . self::OPERATIVE_STATUS . "\n");
             }
 
             if ($flagPersist) {
                 $this->entityManager->persist($car);
-                $this->writeToConsole("Entity manager: car persisted\n");
+                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Entity manager: car persisted;\n");
             }
         }
 
         if (!$dryRun) {
-            $this->writeToConsole("\nEntity manager: about to flush\n");
+            $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Entity manager: about to flush;\n");
             $this->entityManager->flush();
-            $this->writeToConsole("Entity manager: flushed\n");
+            $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Entity manager: flushed;\n");
         }
 
         if ($this->verbose) {
@@ -302,7 +343,7 @@ class ConsoleController extends AbstractActionController {
             }
         }
 
-        $this->writeToConsole("\n\nDone\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;end;\n");
     }
 
     /**
@@ -310,32 +351,43 @@ class ConsoleController extends AbstractActionController {
      * @param Cars
      */
     private function sendAlarmCommand($alarmCode, $car) {
-        $this->writeToConsole("Alarm code = " . $alarmCode . "\n");
+        $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;code=%s\n",
+            date('ymd-His'),
+            $car->getPlate(),
+            $alarmCode);
+        $this->writeToConsole($strLog);
+
+        //$this->writeToConsole("Alarm code = " . $alarmCode . "\n");
 
         // get all active reservations for car
         $reservations = $this->reservationsService->getActiveReservationsByCar($car->getPlate());
-        $this->writeToConsole("reservations retrieved\n");
+        //$this->writeToConsole("reservations retrieved\n");
 
         // car should not have active reservations
         if ($alarmCode == self::OPERATIVE_ACTION) {
             // remove current active reservation
             foreach ($reservations as $reservation) {
-                $reservation->setActive(false)
-                        ->setToSend(true);
-                $this->writeToConsole("set reservation.active to false\n");
+                $reservation->setActive(false)->setToSend(true);
+
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;set reservation.active to false\n",
+                    date('ymd-His'),
+                    $car->getPlate());
+                $this->writeToConsole($strLog);
+
+                //$this->writeToConsole("set reservation.active to false\n");
 
                 $this->entityManager->persist($reservation);
-                $this->writeToConsole("Entity manager: reservation persisted\n");
+                //$this->writeToConsole("Entity manager: reservation persisted\n");
             }
             // car should have maintainers reservation
         } elseif ($alarmCode == self::MAINTENANCE_ACTION) {
             // car does not have active reservations
             if (count($reservations) == 0) {
-                $this->writeToConsole("no reservation found, creating...\n");
+                //$this->writeToConsole("no reservation found, creating...\n");
                 // create reservation for all maintainers
                 $cardsArray = [];
                 $maintainersCardCodes = $this->customerService->getListMaintainersCards();
-                $this->writeToConsole("cards retrieved\n");
+                //$this->writeToConsole("cards retrieved\n");
                 // create single json string with all maintainer's card codes
                 foreach ($maintainersCardCodes as $cardCode) {
                     array_push($cardsArray, $cardCode['1']);
@@ -343,13 +395,20 @@ class ConsoleController extends AbstractActionController {
                 $cardsString = json_encode($cardsArray);
                 // create maintainers reservation
                 $reservation = Reservations::createMaintenanceReservation($car, $cardsString);
-                $this->writeToConsole("reservation created\n");
+                //$this->writeToConsole("reservation created\n");
 
                 $this->entityManager->persist($reservation);
-                $this->writeToConsole("Entity manager: reservation persisted\n");
+                //$this->writeToConsole("Entity manager: reservation persisted\n");
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;reservation created\n",
+                    date('ymd-His'),
+                    $car->getPlate());
             } else {
-                $this->writeToConsole("reservation found, skipping creation...\n");
+                //$this->writeToConsole("reservation found, skipping creation...\n");
+                $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;reservation found, skipping creation\n",
+                    date('ymd-His'),
+                    $car->getPlate());
             }
+            $this->writeToConsole($strLog);
         }
     }
 
@@ -533,16 +592,18 @@ class ConsoleController extends AbstractActionController {
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
 
         $format = "%s;INF;alertCreditCardExpirationAction;";
-        if(!$this->avoidEmails)
+        if(!$this->avoidEmails){
             $format .= "SendEmails = TRUE;";
-        else
+        } else {
             $format .= "SendEmails = FALSE;";
-        
-        if (!$dryRun)
+        }
+
+        if (!$dryRun) {
             $format .= "DryRun = TRUE;";
-        else
+        } else {
             $format .= "DryRun = FALSE;";
-        
+        }
+
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
@@ -581,24 +642,28 @@ class ConsoleController extends AbstractActionController {
         $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $paramDate = $request->getParam('date');
-        
-        $format = "%s;INF;disableCreditCardAction;";
-        if(!$this->avoidEmails)
-            $format .= "SendEmails = TRUE;";
-        else
-            $format .= "SendEmails = FALSE;";
-        
-        if (!$dryRun) 
-            $format .= "DryRun = TRUE;";
-        else
-            $format .= "DryRun = FALSE;";
 
-        if (!is_null($paramDate))
+        $format = "%s;INF;disableCreditCardAction;";
+        if(!$this->avoidEmails) {
+            $format .= "SendEmails = TRUE;";
+        } else {
+            $format .= "SendEmails = FALSE;";
+        }
+
+        if (!$dryRun){
+            $format .= "DryRun = TRUE;";
+        } else {
+            $format .= "DryRun = FALSE;";
+        }
+
+        if (!is_null($paramDate)) {
             $pan_expiry = $paramDate;
-        else
+        } else {
             $pan_expiry = '20' . date_create('first day of last month')->format('ym');
+        }
+
         $format .= "PanExpiry = " . $pan_expiry . ";";
-        
+
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
@@ -646,10 +711,10 @@ class ConsoleController extends AbstractActionController {
                 $content, $attachments
         );
     }
-    
+
     private function prepareLogger() {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
-    
+
 }
