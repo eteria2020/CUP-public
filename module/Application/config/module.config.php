@@ -308,6 +308,17 @@ return [
                     ],
                 ]
             ],
+            'partner-signup' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/partner/signup',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Partner',
+                        'action' => 'signup',
+                    ],
+                ]
+            ],
             'signup' => [
                 'type' => 'Segment',
                 'options' => [
