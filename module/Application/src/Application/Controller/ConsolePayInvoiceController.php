@@ -186,7 +186,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $now = date_create();
         $timestampEndParam = '-48 hours';
         if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
-            $timestampEndParam = '-168 hours';
+            $timestampEndParam = '-60 days';
         }
         $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, $timestampEndParam);  //TODO only dev put -2 days
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
