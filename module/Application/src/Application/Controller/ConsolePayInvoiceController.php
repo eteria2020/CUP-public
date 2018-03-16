@@ -238,7 +238,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
-        if (is_null($start) && is_null($end)){
+        if ($start == '' && $end == ''){
             $now = date_create();
             if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
                 $start = date_create('-60 days');
