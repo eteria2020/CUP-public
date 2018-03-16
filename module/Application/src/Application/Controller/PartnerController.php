@@ -5,25 +5,34 @@ namespace Application\Controller;
 // External Modules
 use Zend\Mvc\Controller\AbstractActionController;
 use SharengoCore\Service\PartnerService;
+use SharengoCore\Service\UserEventsService;
+use SharengoCore\Entity\Repository\ProvincesRepository;
 
 class PartnerController extends AbstractActionController {
 
     /**
      *
-     * @var SharengoCore\Service\PartnerService
+     * @var PartnerService partnerService
      */
     private $partnerService;
 
-    /**
-     * @param PartenerService $partnerService
+    /*
+     * @var ProvincesRepository provincesRepository
      */
+    private $provincesRepository;
+
+    /*
+     * @var UserEventsService userEventsService
+     */
+    private $userEventsService;
+
     public function __construct(
-        PartnerService $partnerService
+    PartnerService $partnerService, ProvincesRepository $provincesRepository, UserEventsService $userEventsService
     ) {
-
         $this->partnerService = $partnerService;
+        $this->provincesRepository = $provincesRepository;
+        $this->userEventsService = $userEventsService;
     }
-
 
     /**
      * API for partner
@@ -60,53 +69,99 @@ class PartnerController extends AbstractActionController {
         return $this->partnerService->partnerData($param);
     }
 
+    /**
+     * Signup action for partners.
+     *
+     * TODO
+     * - partners table (id, name, description, code, enable)
+     * - userEvents, insert
+     *
+     * @return Request
+     */
     public function signupAction() {
-        $request = $this->getRequest();
+        $statusCode = 404;
+        $partnerResponse = null;
+
         $response = $this->getResponse();
-        $debug ="";
 
         try {
 
             if ($this->getRequest()->isPost()) {
+                $authorization = $this->getRequest()->getHeader('Authorization', '');
+                if (is_array($authorization)) $authorization = $authorization[0];
+                //var_dump($this->getRequest()->getHeader('Authorization',''));
+                //var_dump($this->getRequest()->getHeaders());
                 $content = file_get_contents('php://input');
+                $contentArray = json_decode($content, true);
+
+                //$this->userEventsService->saveNewEvent($webUser,  "customer-partner", $contentArray);     //TODO: to implement
                 //$contentObject = json_decode($content);
-                $contentArray = json_decode($content,true);
                 //$debug=$contentArray['partnerName'];
-                $partnerName = $this->getDataFormatedLower($contentArray, "partnerName");
-                if ($partnerName=="telepass"){
-                    if($this->checkPartnerContentForTelepass($contentArray, $partnerResponse)) {
-                        $this->partnerService->saveNewCustomer($contentArray);
-    //                    $partnerResponse = array(
-    //                        "created"=> false,
-    //                        "userId"=>"",
-    //                        "password"=>"",
-    //                        "pin"=>"",
-    //                        "debug" => $debug,
-    //                        );
+                $partnerName = $this->getDataFormatedLower($contentArray, 'partnerName');
 
-
-
-                    } else {
-                        $response->setStatusCode(404);
+                //if ($authorization == 'telepassAPIKey') {
+                    if ($partnerName == 'telepass') {
+                        $statusCode = $this->telepassSignupMain($contentArray, $partnerResponse);
                     }
+                //}
+            }
 
-                    $response->setStatusCode(200);
-                    $response->setContent(json_encode($partnerResponse));
-                }
-
-                //$contentObject = json_decode($content);
-                //$debug=$contentObject->{'username'};
-
-                //$debug = $content;
-                //$debug = var_dump($params);
-
-
-
-            } else {
-                $response->setStatusCode(404);
+            $response->setStatusCode($statusCode);
+            if (!is_null($partnerResponse)) {
+                $response->setContent(json_encode($partnerResponse));
             }
         } catch (\Exception $ex) {
             $response->setStatusCode(500);
+        }
+
+        return $response;
+    }
+
+    private function telepassSignupMain($contentArray, &$partnerResponse) {
+        $partnerResponse = null;
+        $response = 200;
+        $debug = "";
+
+        if ($this->telepassSignupCheckAndFormat($contentArray, $partnerResponse)) {
+
+            $customerOld = $this->partnerService->findCustomerByMainFields(
+                    $contentArray['email'], $contentArray['fiscalCode'], $contentArray['drivingLicense']['number']);
+
+//            var_dump($contentArray['birthDate']);
+//            var_dump($contentArray['drivingLicense']['releaseDate']);
+//            var_dump($this->provincesRepository->findOneBy(array('code' => 'RE')));
+//            return;
+
+            if (is_null($customerOld)) {
+                $customerNew = $this->partnerService->saveNewCustomer($contentArray);
+                if (!is_null($customerNew)) {
+                    $partnerResponse = array(
+                        "created" => true,
+                        "userId" => $customerNew->getId(),
+                        "password" => $customerNew->getPassword(),
+                        "pin" => $customerNew->getPrimaryPin(),
+                        "debug" => $debug,
+                    );
+                } else {
+                    $partnerResponse = array(
+                        "uri" => "partner/signup",
+                        "status" => 401,
+                        "statusFromProvider" => false,
+                        "message" => "insert fail",
+                        "debug" => $debug,
+                    );
+                }
+            } else { // else, customer alredy exist
+                $partnerResponse = array(
+                    "created" => false,
+                    "userId" => $customerOld->getId(),
+                    "password" => $customerOld->getPassword(),
+                    "pin" => $customerOld->getPrimaryPin(),
+                    "debug" => $debug,
+                );
+            }
+        } else {
+            $response = 404;
         }
 
         return $response;
@@ -118,9 +173,9 @@ class PartnerController extends AbstractActionController {
      * @param string[] $response
      * @return boolean
      */
-    private function checkPartnerContentForTelepass($contentArray, &$response) {
+    private function telepassSignupCheckAndFormat(&$contentArray, &$response) {
         $debug = "";
-        $strError ="";
+        $strError = "";
 
         try {
 
@@ -128,21 +183,21 @@ class PartnerController extends AbstractActionController {
             //if($contentArray->{'username'}=="telepass") {
             $key = 'partnerName';
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if($value=='telepass'){
+            if ($value == 'telepass') {
                 $contentArray[$key] = $value;
             } else {
-                $strError .= ' Invalid value '. $key;
+                $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
             $key = 'gender';
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if($value=='m') {
+            if ($value == 'm') {
                 $value = 'male';
             }
-            if($value=='f') {
+            if ($value == 'f') {
                 $value = 'female';
             }
-            if($value=='male' || $value=='female'){
+            if ($value == 'male' || $value == 'female') {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -150,7 +205,7 @@ class PartnerController extends AbstractActionController {
 
             $key = 'name';
             $value = $this->getDataFormatedLower($contentArray, $key, FALSE);
-            if(strlen($value)>=3){
+            if (strlen($value) >= 3) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -158,7 +213,7 @@ class PartnerController extends AbstractActionController {
 
             $key = 'surname';
             $value = $this->getDataFormatedLower($contentArray, $key, FALSE);
-            if(strlen($value)>=3){
+            if (strlen($value) >= 3) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -166,15 +221,15 @@ class PartnerController extends AbstractActionController {
 
             $key = 'birthDate';
             $value = $this->getDataFormatedDateTime($contentArray, $key);
-            if(!is_null($value)){
-
+            if (!is_null($value)) {
+                
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
             $key = 'birthTown';
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)>0){
+            if (strlen($value) > 0) {
                 $contentArray[$key] = strtoupper($value);
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -182,24 +237,25 @@ class PartnerController extends AbstractActionController {
 
             $key = 'birthProvince';
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)==2){
-                $contentArray[$key] = strtoupper($value);
+            $province = $this->provincesRepository->findOneBy(array('code' => strtoupper($value)));
+            if (!is_null($province)) {
+                $contentArray[$key] = $province->getCode();
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
             $key = 'birthCountry';
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)==2){
+            if (strlen($value) == 2) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
-            
-            $key = 'fiscalCode';
+
+            $key = 'fiscalCode';    //TODO: additional check
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)>0){
+            if (strlen($value) > 0) {
                 $contentArray[$key] = strtoupper($value);
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -213,17 +269,17 @@ class PartnerController extends AbstractActionController {
             $value = $this->getDataFormatedLower($contentArray, $key);
             $contentArray[$key] = $value;
 
-            $key = 'mobile';
+            $key = 'mobile'; //TODO: additional check
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)>0){
+            if (strlen($value) > 0) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
-            $key = 'email';
+            $key = 'email'; //TODO: additional check
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)>0){
+            if (strlen($value) > 0) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -231,7 +287,7 @@ class PartnerController extends AbstractActionController {
 
             $key = 'password';
             $value = $this->getDataFormatedLower($contentArray, $key, FALSE);
-            if(strlen($value)>0){
+            if (strlen($value) > 0) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
@@ -239,21 +295,21 @@ class PartnerController extends AbstractActionController {
 
             $key = 'pin';
             $value = $this->getDataFormatedLower($contentArray, $key);
-            if(strlen($value)==4){
+            if (strlen($value) == 4 && is_numeric($value)) {
                 $contentArray[$key] = $value;
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
             $key = 'address';
-            if( isset($contentArray[$key]) ){
+            if (isset($contentArray[$key])) {
                 $address = $contentArray[$key];
                 $key2 = 'street';
                 $value = $this->getDataFormatedLower($address, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray[$key][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
 //                $key2 = 'streetNumber';
@@ -264,163 +320,190 @@ class PartnerController extends AbstractActionController {
 
                 $key2 = 'town';
                 $value = $this->getDataFormatedLower($address, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray['address'][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'zip';
                 $value = $this->getDataFormatedLower($address, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray['address'][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'province';
                 $value = $this->getDataFormatedLower($address, $key2);
-                if(strlen($value)==2){
-                    $contentArray['address'][$key2] = strtoupper($value);
+                $province = $this->provincesRepository->findOneBy(array('code' => strtoupper($value)));
+                if (!is_null($province)) {
+                    $contentArray['address'][$key2] = $province->getCode();
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'country';
                 $value = $this->getDataFormatedLower($address, $key2);
-                if(strlen($value)==2){
+                if (strlen($value) == 2) {
                     $contentArray['address'][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
-
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
             $key = 'drivingLicense';
-            if( isset($contentArray[$key]) ){
+            if (isset($contentArray[$key])) {
                 $drivingLicense = $contentArray[$key];
 
                 $key2 = 'number';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray[$key][$key2] = strtoupper($value);
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'country';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2);
-                if(strlen($value)==2){
+                if (strlen($value) == 2) {
                     $contentArray[$key][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'town';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray[$key][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'authority';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2);
-                if($value=='dtt' || $value=='mc' || $value=='co' || $value=='ae' || $value=='uco' || $value=='pre'){
+                if ($value == 'dtt' || $value == 'mc' || $value == 'co' || $value == 'ae' || $value == 'uco' || $value == 'pre') {
                     $contentArray[$key][$key2] = strtoupper($value);
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
-                $key2 = 'realeaseDate';
+                $key2 = 'releaseDate';
                 $value = $this->getDataFormatedDateTime($drivingLicense, $key2);
-                if(!is_null($value)){
-                    $contentArray[$key][$key2] = $value;
+                if (!is_null($value)) {
+                    
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'expire';
                 $value = $this->getDataFormatedDateTime($drivingLicense, $key2);
-                if(!is_null($value)){
-                    $contentArray[$key][$key2] = $value;
+                if (!is_null($value)) {
+                    
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'firstname';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray[$key][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'surname';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray[$key][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'category';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2, FALSE);
-                if(strlen($value)>0){
+                if (strlen($value) > 0) {
                     $contentArray[$key][$key2] = strtoupper($value);
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
 
                 $key2 = 'foreign';
                 $value = $this->getDataFormatedLower($drivingLicense, $key2);
-                if($value=='true' || $value=='false'){
-                    $contentArray[$key][$key2] = strtoupper($value);
+                if ($value == 'true' || $value == 'false') {
+                    $contentArray[$key][$key2] = $value;
                 } else {
-                    $strError .= sprintf('Invalid value [%s]. ', $key2);
+                    $strError .= sprintf('Invalid value [%s][%s]. ', $key, $key2);
                 }
-
             } else {
                 $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
-            if($strError=="") {
-                $result= true;
-                $response = null;
+            $key = 'generalCondition1';
+            $value = $this->getDataFormatedLower($contentArray, $key);
+            if ($value == 'true' || $value == 'false') {
+                $contentArray[$key] = $value;
             } else {
-                $result= false;
-                $response= array(
-                    "uri"=> "partner/signup",
-                    "status"=>401,
-                    "statusFromProvider"=>false,
-                    "message" => $strError,
-                    "debug" => $debug,
-                    );
-
+                $strError .= sprintf('Invalid value [%s]. ', $key);
             }
 
-        } catch (\Exception $ex) {
-            $result= false;
-            $response= array(
-                "uri"=> "partner/signup",
-                "status"=>401,
-                "statusFromProvider"=>false,
-                "message" => $ex->getMessage(),
+            $key = 'generalCondition2';
+            $value = $this->getDataFormatedLower($contentArray, $key);
+            if ($value == 'true' || $value == 'false') {
+                $contentArray[$key] = $value;
+            } else {
+                $strError .= sprintf('Invalid value [%s]. ', $key);
+            }
+
+            $key = 'privacyCondition';
+            $value = $this->getDataFormatedLower($contentArray, $key);
+            if ($value == 'true' || $value == 'false') {
+                $contentArray[$key] = $value;
+            } else {
+                $strError .= sprintf('Invalid value [%s]. ', $key);
+            }
+
+            $key = 'privacyInformation';
+            $value = $this->getDataFormatedLower($contentArray, $key);
+            if ($value == 'true' || $value == 'false') {
+                $contentArray[$key] = $value;
+            } else {
+                $strError .= sprintf('Invalid value [%s]. ', $key);
+            }
+
+            if ($strError == '') {
+                $result = true;
+                $response = null;
+            } else {
+                $result = false;
+                $response = array(
+                    "uri" => "partner/signup",
+                    "status" => 401,
+                    "statusFromProvider" => false,
+                    "message" => $strError,
+                    "debug" => $debug,
                 );
+            }
+        } catch (\Exception $ex) {
+            $result = false;
+            $response = array(
+                "uri" => "partner/signup",
+                "status" => 401,
+                "statusFromProvider" => false,
+                "message" => $ex->getMessage(),
+            );
         }
 
         return $result;
-
     }
 
-
-    private function getDataFormatedLower($contentArray, $keyValue, $toLower = true) {
+    private function getDataFormatedLower(array $contentArray, $keyValue, $toLower = true) {
         $result = "";
 
-        if(isset($contentArray[$keyValue])){
-            if($toLower) {
+        if (isset($contentArray[$keyValue])) {
+            if ($toLower) {
                 $result = trim(strtolower($contentArray[$keyValue]));
             } else {
                 $result = trim($contentArray[$keyValue]);
@@ -429,20 +512,19 @@ class PartnerController extends AbstractActionController {
         return $result;
     }
 
-    private function getDataFormatedDateTime($contentArray, $keyValue) {
+    private function getDataFormatedDateTime(array $contentArray, $keyValue) {
         $result = null;
 
-        if(isset($contentArray[$keyValue])){
-            if(is_array($contentArray[$keyValue])){
-                if(count($contentArray[$keyValue])==3){
-                    if(checkdate($contentArray[$keyValue][1],
-                        $contentArray[$keyValue][2],
-                        $contentArray[$keyValue][0])){
-                        $result = date('Y-m-d', strtotime(sprintf('%d-%d-%d',$contentArray[$keyValue][0], $contentArray[$keyValue][1], $contentArray[$keyValue][2])));
+        if (isset($contentArray[$keyValue])) {
+            if (is_array($contentArray[$keyValue])) {
+                if (count($contentArray[$keyValue]) == 3) {
+                    if (checkdate($contentArray[$keyValue][1], $contentArray[$keyValue][2], $contentArray[$keyValue][0])) {
+                        $result = date('Y-m-d', strtotime(sprintf('%d-%d-%d', $contentArray[$keyValue][0], $contentArray[$keyValue][1], $contentArray[$keyValue][2])));
                     }
                 }
             }
         }
         return $result;
     }
+
 }
