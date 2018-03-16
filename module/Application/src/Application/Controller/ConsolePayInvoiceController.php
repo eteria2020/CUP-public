@@ -202,7 +202,8 @@ class ConsolePayInvoiceController extends AbstractActionController
             $tripPaymentsWrong,
             $this->avoidEmails,
             $this->avoidCartasi,
-            $this->avoidPersistance
+            $this->avoidPersistance,
+            '-8 days'
         );
 
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;end\n");
@@ -238,8 +239,15 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
         if (is_null($start) && is_null($end)){
-            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
-            exit();
+            $now = date_create();
+            if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
+                $start = date_create('-60 days');
+                $start = $start->format('y-m-d H:i:s');
+                $end = $now->format('y-m-d H:i:s');
+            } else {
+                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
+                exit();
+            }
         }
 
         if (!$this->paymentScriptRunsService->isRunning()) {
