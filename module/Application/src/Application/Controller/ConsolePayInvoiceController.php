@@ -242,8 +242,8 @@ class ConsolePayInvoiceController extends AbstractActionController
             $now = date_create();
             if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
                 $start = date_create('-60 days');
-                $start = $start->format('y-m-d H:i:s');
-                $end = $now->format('y-m-d H:i:s');
+                $start = $start->format('Y-m-d H:i:s');
+                $end = $now->format('Y-m-d H:i:s');
             } else {
                 $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
                 exit();
@@ -269,7 +269,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end)[0];
         $count = $verify["count"];
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . $count . "\n");
-        $limit = 200;
+        $limit = 100;
         $lastId = null;
         while ($count > 0){
             $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end, $lastId, $limit)[0];

@@ -30,3 +30,4 @@ data/*.log
 data/dumps/*
 public/cache
 /bower_components
+bin/
