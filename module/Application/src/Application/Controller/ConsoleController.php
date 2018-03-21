@@ -265,13 +265,13 @@ class ConsoleController extends AbstractActionController {
             //$this->writeToConsole("1. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
 
             //check only for battery safety cars
-            if (!$isAlarm && $firmwareVerNum>= 4730 && $softwareVerNum >=10670){
+            /*if (!$isAlarm && $firmwareVerNum>= 4730 && $softwareVerNum >=10670){
                 if(is_null($car->getBatterySafetyTs())){
                     $isAlarm = false;
                 } else {
                     $isAlarm = (!$car->getBatterySafety() && ((time() - $car->getBatterySafetyTs()->getTimestamp()) > $batterySafetyTime * 60));
                 }
-            }
+            }*/
             //$this->writeToConsole("2. isAlarm = " . (($isAlarm) ? 'true' : 'false') . "\n");
             //check only for nogps
             if (!$isAlarm && $softwareVerNum >=10700){

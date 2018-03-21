@@ -148,6 +148,20 @@ return [
                     ],
                 ]
             ],*/
+            'registrationCompleted' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{r}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'registration-completed',
+                    ],
+                    'constraints' => [
+                        'userId' => '[0-9&]+',
+                    ],
+                ]
+            ],
             'expiredCreditCard' => [
                 'type' => 'Segment',
                 'options' => [

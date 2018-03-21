@@ -17,6 +17,7 @@ class IndexControllerfactory implements FactoryInterface
         $poisService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PoisService');
         $customersService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $cartasiContractsService = $serviceLocator->getServiceLocator()->get('Cartasi\Service\CartasiContracts');
+        $registrationService = $serviceLocator->getServiceLocator()->get('RegistrationService');
 
         return new IndexController(
             $mobileUrl,
@@ -25,7 +26,8 @@ class IndexControllerfactory implements FactoryInterface
             $fleetService,
             $poisService,
             $customersService,
-            $cartasiContractsService
+            $cartasiContractsService,
+            $registrationService
         );
     }
 }

@@ -10,6 +10,7 @@
 namespace Application\Controller;
 
 // Internals
+use Application\Service\RegistrationService;
 use SharengoCore\Exception\FleetNotFoundException;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\FleetService;
@@ -65,6 +66,11 @@ class IndexController extends AbstractActionController
     private $cartasiContractsService;
 
     /**
+     * @var CartasiContractsService
+     */
+    private $registrationService;
+
+    /**
      * @param string $mobileUrl
      */
     public function __construct(
@@ -74,7 +80,8 @@ class IndexController extends AbstractActionController
         FleetService $fleetService,
         PoisService $poisService,
         CustomersService $customersService,
-        CartasiContractsService $cartasiContractsService
+        CartasiContractsService $cartasiContractsService,
+        RegistrationService $registrationService
     ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
@@ -83,7 +90,7 @@ class IndexController extends AbstractActionController
         $this->poisService = $poisService;
         $this->customerService = $customersService;
         $this->cartasiContractsService = $cartasiContractsService;
-
+        $this->registrationService = $registrationService;
     }
 
     public function indexAction()
@@ -282,6 +289,24 @@ class IndexController extends AbstractActionController
         if ($customer->getEnabled() == true){
             return $this->notFoundAction();
         }
+        $this->redirect()->toUrl("https://www.sharengo.it/cartasi/primo-pagamento?customer=$userId");
+
+    }
+
+    public function registrationCompletedAction(){
+        $userId = $this->params()->fromRoute('userId');
+
+        $customer = $this->customerService->findById($userId);
+
+        if(!$customer instanceof Customers) {
+            return $this->notFoundAction();
+        }
+        if ($customer->getEnabled() == true){
+            return $this->notFoundAction();
+        }
+        //update the registration_completed field -> TRUE
+        $this->registrationService->registerUser($customer->getHash());
+
         $this->redirect()->toUrl("https://www.sharengo.it/cartasi/primo-pagamento?customer=$userId");
 
     }

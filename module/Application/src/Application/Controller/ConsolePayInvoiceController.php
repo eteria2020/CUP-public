@@ -186,7 +186,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $now = date_create();
         $timestampEndParam = '-48 hours';
         if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
-            $timestampEndParam = '-168 hours';
+            $timestampEndParam = '-60 days';
         }
         $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, $timestampEndParam);  //TODO only dev put -2 days
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
@@ -202,7 +202,8 @@ class ConsolePayInvoiceController extends AbstractActionController
             $tripPaymentsWrong,
             $this->avoidEmails,
             $this->avoidCartasi,
-            $this->avoidPersistance
+            $this->avoidPersistance,
+            '-8 days'
         );
 
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;end\n");
@@ -237,9 +238,16 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
-        if (is_null($start) && is_null($end)){
-            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
-            exit();
+        if ($start == '' && $end == ''){
+            $now = date_create();
+            if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
+                $start = date_create('-60 days');
+                $start = $start->format('Y-m-d H:i:s');
+                $end = $now->format('Y-m-d H:i:s');
+            } else {
+                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
+                exit();
+            }
         }
 
         if (!$this->paymentScriptRunsService->isRunning()) {
@@ -261,7 +269,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end)[0];
         $count = $verify["count"];
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . $count . "\n");
-        $limit = 200;
+        $limit = 100;
         $lastId = null;
         while ($count > 0){
             $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end, $lastId, $limit)[0];
