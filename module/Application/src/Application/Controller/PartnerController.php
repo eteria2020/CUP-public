@@ -7,6 +7,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use SharengoCore\Service\PartnerService;
 use SharengoCore\Service\UserEventsService;
 use SharengoCore\Entity\Repository\ProvincesRepository;
+use SharengoCore\Service\TelepassPayService;
+use SharengoCore\Service\TripPaymentsService;
 
 class PartnerController extends AbstractActionController {
 
@@ -26,12 +28,21 @@ class PartnerController extends AbstractActionController {
      */
     private $userEventsService;
 
+    private $telepassPayService;
+    private $tripPaymentsService;
+
     public function __construct(
-    PartnerService $partnerService, ProvincesRepository $provincesRepository, UserEventsService $userEventsService
+        PartnerService $partnerService, 
+        ProvincesRepository $provincesRepository,
+        UserEventsService $userEventsService,
+        TelepassPayService $telepassPayService,
+        TripPaymentsService $tripPaymentsService
     ) {
         $this->partnerService = $partnerService;
         $this->provincesRepository = $provincesRepository;
         $this->userEventsService = $userEventsService;
+        $this->telepassPayService = $telepassPayService;
+        $this->tripPaymentsService = $tripPaymentsService;
     }
 
     /**
@@ -85,10 +96,27 @@ class PartnerController extends AbstractActionController {
         $response = $this->getResponse();
 
         try {
+//            $telepassResponse = "";
+//            $this->telepassPayService->sendPreAthorization(
+//                    "test@email.com",
+//                    "4234",
+//                    array("reason"=>"ride"),
+//                    432,
+//                    "EUR",
+//                    $telepassResponse);
+
+//            $this->telepassPayService->tryPayment("432",
+//                "54353",
+//                42332,
+//                "EUR",
+//                $telepassResponse);
+//
+            $this->testPayment();
+            return $response;
 
             if ($this->getRequest()->isPost()) {
                 $authorization = $this->getRequest()->getHeader('Authorization', '');
-                if (is_array($authorization)) $authorization = $authorization[0];
+
                 //var_dump($this->getRequest()->getHeader('Authorization',''));
                 //var_dump($this->getRequest()->getHeaders());
                 $content = file_get_contents('php://input');
@@ -169,8 +197,9 @@ class PartnerController extends AbstractActionController {
 
     /**
      * Check the Json data match with the constarints
-     * @param string[] $contentArray
-     * @param string[] $response
+     * 
+     * @param array $contentArray
+     * @param array $response
      * @return boolean
      */
     private function telepassSignupCheckAndFormat(&$contentArray, &$response) {
@@ -527,4 +556,10 @@ class PartnerController extends AbstractActionController {
         return $result;
     }
 
+    private function testPayment() {
+        $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', null, 200);
+        //var_dump(count($tripPayments));
+        $response = $this->telepassPayService->sendPaymentRequest($tripPayments[0]);
+        var_dump($response);
+    }
 }
