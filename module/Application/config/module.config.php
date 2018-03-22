@@ -865,7 +865,7 @@ return [
                     ],
                 ],
             ],
-            'gym17' => [
+/*            'gym17' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{gym17}',
@@ -875,7 +875,7 @@ return [
                         'action' => 'gym17',
                     ],
                 ],
-            ],
+            ],*/
             'intern' => [
                 'type' => 'Segment',
                 'options' => [
