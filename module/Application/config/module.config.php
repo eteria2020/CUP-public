@@ -148,6 +148,34 @@ return [
                     ],
                 ]
             ],*/
+            'outstandingPayments' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{w}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'outstandingPayments',
+                    ],
+                    'constraints' => [
+                        'userId' => '[0-9&]+',
+                    ],
+                ]
+            ],
+            'outstandingPaymentsDo' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{outstanding}[/:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'outstandingPaymentsDo',
+                    ],
+                    'constraints' => [
+                        'userId' => '[0-9&]+',
+                    ],
+                ]
+            ],
             'registrationCompleted' => [
                 'type' => 'Segment',
                 'options' => [
