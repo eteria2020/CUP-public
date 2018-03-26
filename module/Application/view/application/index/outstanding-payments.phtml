@@ -1,0 +1,157 @@
+<?php
+    // get data
+    $customer = $this->customer;
+    $contract = $this->contract;
+    $tripPayment = $this->tripPayment;
+    $tripsToBePayedAndWrong = $this->tripsToBePayedAndWrong;
+    $scriptIsRunning = $this->scriptIsRunning;
+    $totalCost = $this->totalCost;
+
+    // parse data
+    $name = ucwords(strtolower($customer->getName() . ' ' . $customer->getSurname()));
+?>
+<style>
+    body {background: #efefef; color: #1c2329;}
+</style>
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title" style="text-align: center; padding-left: unset !important"><?= $this->translate('Pagamento insoluti'); ?></h1>
+
+            </div>
+
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-sharing-resmume content -->
+                <div class="module-sharing-resmume padding-top">
+                    <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
+                    <br>
+                    <!-- Description -->
+                    <div>
+                    <p>Ciao <?= $name ?>,</p><br>
+                        <?php if ($customer->getFirstPaymentCompleted()) {
+                            if ($totalCost===0) {?>
+                                <p style="text-align: justify">complimenti, tutte le tue corse risultano regolarmente pagate.</p>
+                            <?php } else { ?>
+
+                                <p style="text-align: justify">hai esaurito i tuoi minuti bonus e hai effettuato corse a debito.</p>
+                                <p style="text-align: justify">Ti invitiamo ad effettuare il pagamento con un carta di credito valida, ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione "Dati di Pagamento" dell'area riservata.</p>
+                                <br>
+                                <p style="text-align: justify">Di seguito i dettagli:</p>
+                                <!-- map popup -->
+                                <div id="map-popup" class="map-popup"></div>
+                                <!-- map popup -->
+
+                                <!-- Trip table -->
+                                <div class="block-data-table clearboth clearfix margin-top-custom">
+
+                                    <!-- Trip table headers -->
+                                    <div class="block-data-table-row clearfix">
+                                        <div class="block-data-table-th cw-1-6 text-center">ID</div>
+                                        <div class="block-data-table-th cw-1-6 text-center">Inizio</div>
+                                        <div class="block-data-table-th cw-1-6 text-center">Fine</div>
+                                        <div class="block-data-table-th cw-1-6 text-center">Durata (min.)</div>
+                                        <div class="block-data-table-th cw-1-6 text-center">Sosta (min.)</div>
+                                        <div class="block-data-table-th cw-1-6 text-center">Importo</div>
+                                    </div>
+                                    <!-- Trip table headers -->
+
+                                    <!-- Trip table body -->
+                                    <div class="block-data-table-row-group clearfix">
+                                        <?php
+                                        foreach ($tripsToBePayedAndWrong as $trip){
+                                            echo('<div class="block-data-table-row clearfix even">');
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-center">%s</div>', $trip->getId());
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-center" onclick="loadMapPopup(%s, %s)"><span class="fa fa-map-marker"></span> %s</div>',
+                                                $trip->getLatitudeBeginning(),
+                                                $trip->getLongitudeBeginning(),
+                                                $trip->getTimestampBeginning()->format('d/m/y H:i'));
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-center" onclick="loadMapPopup(%s, %s)"><span class="fa fa-map-marker"></span> %s</div>',
+                                                $trip->getLatitudeEnd(),
+                                                $trip->getLongitudeEnd(),
+                                                $trip->getTimestampEnd()->format('d/m/y H:i'));
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-center">%d</div>', $trip->getDurationMinutes());
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-center">%d</div>', $trip->getParkSeconds()/60);
+                                            echo sprintf('<div class="block-data-table-td cw-1-6 text-right">&euro; %s</div>', $trip->getTripPayment()->getTotalCost()/100);
+                                            echo('</div>');
+                                        }
+                                        ?>
+                                    </div>
+                                    <!-- Trip table body -->
+                                    <div class="block-data-table-row-group clearfix border-top">
+                                        <div class="block-data-table-row clearfix odd">
+                                            <div class="block-data-table-td cw-1-6"></div>
+                                            <div class="block-data-table-td cw-1-6"></div>
+                                            <div class="block-data-table-td cw-1-6"></div>
+                                            <div class="block-data-table-td cw-1-6"></div>
+                                            <div class="block-data-table-td cw-1-6 text-center">TOTALE</div>
+                                            <div class="block-data-table-td cw-1-6 text-right">&euro; <?=$totalCost/100; ?></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <?php if($scriptIsRunning) { ?>
+                                <div style="margin-top: 20px;margin-bottom: 20px">
+                                    <span class="block-sub-title">
+                                        <b style="color:red">Attenzione: </b> Pagamento momentaneamente sospeso, riprova più tardi.
+                                    </span>
+                                </div>
+                                <?php } else { ?>
+                                <!-- Confirm button -->
+                                <div class="block-wrapper-button content-align-center margin-top-custom">
+                                    <?php if(is_null($contract)) { ?>
+                                        <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
+                                    <?php } else { ?>
+                                        <a href="../outstanding/<?=$customer->getId()?>"><button onclick="return confirm('Procedere con il pagamento?')"><?= $this->translate("Pagamento corse"); ?></button></a>
+                                    <?php }?>
+                                </div><br>
+                                <!-- confirm button -->
+                                <?php }?>
+
+                                <p style="text-align: justify">Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il login sull&#39;App).</p>
+
+                            <?php } ?>
+
+                        <?php } else {  // getFirstPaymentCompleted() false?>
+                        <p>il tuo profilo &egrave; disabilitato perch&egrave; non hai ancora provveduto a completare il pagamento dell&#39;iscrizione. Per farlo ti basteranno un paio di minuti e una carta di credito, ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione "Dati di Pagamento" dell'area utente.</p>
+                        <br>
+                        <!-- Confirm button -->
+                        <div class="module-wrapper-button margin-bottom content-align-center">
+                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
+                        </div>
+                        <!-- confirm button -->
+                        <?php echo $this->partial('partials/credit-card-refuse'); ?>
+                        <?php } ?>
+                    </div>
+                    <!-- description -->
+
+                    <?php
+                        // close no credit card if
+
+                    ?>
+
+
+                </div>
+                <!-- module-sharing-resmume -->
+
+            </div>
+            <!-- module-column-app-content -->
+
+        </div>
+        <!-- module-column-app dx -->
+
+    </div>
+    <!-- module-wrapper-app -->
+
+</div>
+<!-- main -->
+<script type="text/javascript" src="<?= $this->basePath(); ?>/js/debt-collection.js"></script>

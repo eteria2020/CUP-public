@@ -14,9 +14,13 @@ use Application\Service\RegistrationService;
 use SharengoCore\Exception\FleetNotFoundException;
 use SharengoCore\Service\CarsService;
 use SharengoCore\Service\FleetService;
+use SharengoCore\Service\TripsService;
 use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\PoisService;
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\TripPaymentsService;
+use SharengoCore\Service\PaymentsService;
+use SharengoCore\Service\PaymentScriptRunsService;
 use SharengoCore\Entity\Customers;
 use Cartasi\Service\CartasiContractsService;
 use Cartasi\Entity\Contracts;
@@ -71,8 +75,27 @@ class IndexController extends AbstractActionController
     private $registrationService;
 
     /**
-     * @param string $mobileUrl
+     * @var TripPaymentsService
      */
+    private $tripPaymentsService;
+
+    /**
+     * @var PaymentsService
+     */
+    private $paymentsService;
+
+    /**
+     * @var PaymentScriptRunsService
+     */
+    private $paymentScriptRunsService;
+
+    /**
+     * @var TripsService
+     */
+    private $tripsService;
+
+
+
     public function __construct(
         $mobileUrl,
         ZonesService $zoneService,
@@ -81,7 +104,11 @@ class IndexController extends AbstractActionController
         PoisService $poisService,
         CustomersService $customersService,
         CartasiContractsService $cartasiContractsService,
-        RegistrationService $registrationService
+        RegistrationService $registrationService,
+        TripPaymentsService $tripPaymentsService,
+        PaymentScriptRunsService $paymentScriptRunsService,
+        PaymentsService $paymentsService,
+        TripsService $tripsService
     ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
@@ -91,6 +118,10 @@ class IndexController extends AbstractActionController
         $this->customerService = $customersService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->registrationService = $registrationService;
+        $this->tripPaymentsService = $tripPaymentsService;
+        $this->paymentScriptRunsService = $paymentScriptRunsService;
+        $this->paymentsService = $paymentsService;
+        $this->tripsService = $tripsService;
     }
 
     public function indexAction()
@@ -334,6 +365,71 @@ class IndexController extends AbstractActionController
         $url = "https://www.sharengo.it/cartasi/cambio-carta?customer=".$customer->getId()."&contract=$contract";
         $this->redirect()->toUrl($url);
 
+    }
+
+    public function outstandingPaymentsAction(){
+        $userId = $this->params()->fromRoute('userId');
+
+        $customer = $this->customerService->findById($userId);
+
+        if(!$customer instanceof Customers) {
+            return $this->notFoundAction();
+        }
+
+        $tripsToBePayedAndWrong = null;
+        $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $tripsToBePayedAndWrong);
+
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
+        $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
+        $scriptIsRunning = $this->paymentScriptRunsService->isRunning();
+
+        return new ViewModel([
+            'customer' => $customer,
+            'contract' => $contract,
+            'tripPayment' => $tripPayment,
+            'tripsToBePayedAndWrong' => $tripsToBePayedAndWrong,
+            'totalCost' => $totalCost,
+            'scriptIsRunning' => $scriptIsRunning
+        ]);
+
+    }
+
+    public function outstandingPaymentsDoAction() {
+
+        $userId = $this->params()->fromRoute('userId');
+
+        $customer = $this->customerService->findById($userId);
+
+        if(!$customer instanceof Customers) {
+            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+            return $this->redirect()->toUrl($this->url()->fromRoute('outstanding', ['userId' => $userId]));
+        }
+
+        $scriptIsRunning = $this->paymentScriptRunsService->isRunning();
+
+        if (!$scriptIsRunning) {
+            $trips = null;
+            $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
+            if ($totalCost > 0) {
+                if ($this->cartasiContractsService->hasCartasiContract($customer)) {
+                    $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
+                    if ($response->getCompletedCorrectly()) {
+                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
+                    } else {
+                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
+                    }
+                } else {
+                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
+                }
+            } else {
+                return $this->redirect()->toUrl($this->url()->fromRoute('outstandingPayments', ['userId' => $userId]));
+            }
+        } else {
+            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+        }
+
+        return $this->redirect()->toUrl($this->url()->fromRoute('outstandingPayments', ['userId' => $userId]));
     }
 
     public function bannerAction(){
