@@ -83,15 +83,12 @@ class PartnerController extends AbstractActionController {
 
         try {
 
-
             $this->testPayment();
             return $response;
 
             if ($this->getRequest()->isPost()) {
                 $authorization = $this->getRequest()->getHeader('Authorization', '');
  
-                //var_dump($this->getRequest()->getHeader('Authorization',''));
-                //var_dump($this->getRequest()->getHeaders());
                 $content = file_get_contents('php://input');
                 $contentArray = json_decode($content, true);
 
@@ -99,13 +96,11 @@ class PartnerController extends AbstractActionController {
                 //$contentObject = json_decode($content);
                 //$debug=$contentArray['partnerName'];
                 $partnerCode = $this->partnerService->getPartnerCode($contentArray, 'partnerName');
-                $partner = $this->partnerService->findEnabledBycode(strtolower($partnerCode));
+                $partner = $this->partnerService->findEnabledBycode($partnerCode);
 
                 if(!is_null($partner)) {
-                    if ($partner->getCode() == 'telepass') {
-                        var_dump(json_decode($partner->getParams(), true)['payments']['uri']);
-                        $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
-                    }
+                    //var_dump(json_decode($partner->getParams(), true)['payments']['uri']);
+                    $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
                 }
                 //if ($authorization == 'telepassAPIKey') {
 //                    if ($partnerName == 'telepass') {
@@ -129,6 +124,6 @@ class PartnerController extends AbstractActionController {
         $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', null, 200);
         //var_dump(count($tripPayments));
         $response = $this->telepassPayService->sendPaymentRequest($tripPayments[0]);
-        var_dump($response);
+        //var_dump($response);
     }
 }
