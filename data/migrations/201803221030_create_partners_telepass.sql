@@ -21,3 +21,8 @@ ALTER TABLE partners_customers ALTER COLUMN inserted_ts SET DEFAULT now();
 
 ALTER TABLE ONLY partners_customers ADD CONSTRAINT customer_id FOREIGN KEY (customer_id) REFERENCES customers(id);
 ALTER TABLE ONLY partners_customers ADD CONSTRAINT partner_id  FOREIGN KEY (partner_id)  REFERENCES partners(id);
+
+ALTER TABLE ONLY contracts ADD COLUMN partner_id integer;
+ALTER TABLE ONLY contracts ADD CONSTRAINT partner_id  FOREIGN KEY (partner_id)  REFERENCES partners(id);
+
+ALTER TABLE ONLY contracts ADD COLUMN priority integer NOT NULL DEFAULT 0;

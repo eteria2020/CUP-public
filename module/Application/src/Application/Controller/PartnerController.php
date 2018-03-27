@@ -7,6 +7,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use SharengoCore\Service\PartnerService;
 use SharengoCore\Service\TelepassPayService;
 use SharengoCore\Service\TripPaymentsService;
+use SharengoCore\Entity\Customers;
 
 class PartnerController extends AbstractActionController {
 
@@ -123,7 +124,10 @@ class PartnerController extends AbstractActionController {
     private function testPayment() {
         $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', null, 200);
         //var_dump(count($tripPayments));
-        $response = $this->telepassPayService->sendPaymentRequest($tripPayments[0]);
-        //var_dump($response);
+        //$response = $this->telepassPayService->sendTripPaymentRequest($tripPayments[0]);
+        $customer = $tripPayments[0]->getCustomer();
+        //var_dump($customer->getId());
+        $response = $this->telepassPayService->sendPaymentRequest($customer, 456);
+        var_dump($response);
     }
 }
