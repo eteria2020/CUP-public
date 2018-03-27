@@ -1,3 +1,5 @@
+-- psql --host=127.0.0.1  --username=sharengo --password sharengo -f /srv/apps/sharengo-publicsite/data/migrations/201803221030_create_partners_telepass.sql
+
 CREATE TABLE partners (
     id SERIAL PRIMARY KEY,
     name text NOT NULL,
