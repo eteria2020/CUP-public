@@ -87,7 +87,7 @@ class PartnerController extends AbstractActionController {
 //            return $response;
 
             if ($this->getRequest()->isPost()) {
-                $authorization = $this->getRequest()->getHeader('Authorization', '');
+                //$authorization = $this->getRequest()->getHeader('Authorization', '');
  
                 $content = file_get_contents('php://input');
                 $contentArray = json_decode($content, true);
@@ -99,7 +99,6 @@ class PartnerController extends AbstractActionController {
                 $partner = $this->partnerService->findEnabledBycode($partnerCode);
 
                 if(!is_null($partner)) {
-                    //var_dump(json_decode($partner->getParams(), true)['payments']['uri']);
                     $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
                 }
                 //if ($authorization == 'telepassAPIKey') {
