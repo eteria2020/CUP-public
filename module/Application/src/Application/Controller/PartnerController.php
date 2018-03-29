@@ -83,8 +83,8 @@ class PartnerController extends AbstractActionController {
         $response->setStatusCode($statusCode);
 
         try {
-//            $this->testPayment();
-//            return $response;
+            $this->testPayment();
+            return $response;
 
             if ($this->getRequest()->isPost()) {
                 //$authorization = $this->getRequest()->getHeader('Authorization', '');
