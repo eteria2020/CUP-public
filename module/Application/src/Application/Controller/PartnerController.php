@@ -7,7 +7,6 @@ use Zend\Mvc\Controller\AbstractActionController;
 use SharengoCore\Service\PartnerService;
 use SharengoCore\Service\TelepassPayService;
 use SharengoCore\Service\TripPaymentsService;
-use SharengoCore\Entity\Customers;
 
 class PartnerController extends AbstractActionController {
 
@@ -70,7 +69,8 @@ class PartnerController extends AbstractActionController {
      * Receive a POST request whit the customer data in json format and give response.
      *
      * TODO
-     * - partners table (id, name, description, code, enable)
+     * - eliminare campo debug nella response
+     * - rimuovere funzione di test
      *
      * @return Request
      */
