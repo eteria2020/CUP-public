@@ -412,16 +412,16 @@ class IndexController extends AbstractActionController
             $trips = null;
             $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
             if ($totalCost > 0) {
-                if ($this->cartasiContractsService->hasCartasiContract($customer)) {
+                /*if ($this->cartasiContractsService->hasCartasiContract($customer)) {
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if ($response->getCompletedCorrectly()) {
                         $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
                     } else {
                         $this->flashMessenger()->addErrorMessage('Pagamento fallito');
                     }
-                } else {
-                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
-                }
+                } else {*/
+                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['userId' => $customer->getId()]]);
+               // }
             } else {
                 return $this->redirect()->toUrl($this->url()->fromRoute('outstandingPayments', ['userId' => $userId]));
             }
