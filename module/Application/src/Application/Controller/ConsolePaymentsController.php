@@ -124,14 +124,19 @@ class ConsolePaymentsController extends AbstractActionController
         $tripId = $request->getParam('tripId');
         $customer = $this->customersService->findById($customerId);
         $trip = $this->tripsService->getTripById($tripId);
-
-        $response = $this->paymentsService->tryPreAuthorization(
-            $customer,
-            $trip,
-            $avoidEmails,
-            $avoidCartasi,
-            $avoidPersistance
-        );
+        try {
+            $response = $this->paymentsService->tryPreAuthorization(
+                $customer,
+                $trip,
+                $avoidEmails,
+                $avoidCartasi,
+                $avoidPersistance
+            );
+        } catch (\Exception $e){
+            $log = json_encode(['response'=>-21,'customer_id'=>$customerId, 'trip_id'=>$tripId, 'date' => date_create()->format('Y-m-d H:i:s')]);
+            $this->logger->log("\n" . $log);
+            exit();
+        }
         //TODO: aggiornare l'error code nei vari casi - nb su error code deve essere numero positivo
         $this->entityManager->beginTransaction();
         $this->entityManager->persist($trip->setErrorCode($response));
