@@ -16,7 +16,7 @@ CREATE TABLE partners_customers (
     partner_id integer NOT NULL,
     customer_id integer NOT NULL,
     inserted_ts timestamp NOT NULL,
-    enabled boolean NOT NULL DEFAULT TRUE
+    disabled_ts timestamp DEFAULT NULL
 );
 
 ALTER TABLE partners_customers ALTER COLUMN inserted_ts SET DEFAULT now();
