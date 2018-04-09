@@ -109,6 +109,7 @@ class PartnerController extends AbstractActionController {
             }
 
             if (!is_null($partnerResponse)) {
+                $response->setStatusCode($statusCode);
                 $response->setContent(json_encode($partnerResponse));
             }
         } catch (\Exception $ex) {
