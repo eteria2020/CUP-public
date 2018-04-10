@@ -2217,7 +2217,7 @@ return [
                 'periodic-check-valid-license' => [
                     'type' => 'Simple',
                     'options' => [
-                        'route' => 'periodic check valid license [--debug-mode|-dm]',
+                        'route' => 'periodic check valid license',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableCustomerController',

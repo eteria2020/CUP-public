@@ -144,15 +144,16 @@ class DisableCustomerController extends AbstractActionController
         );
     }
 
-        /**
+     /**
      * Periodic check of italian's driver license (no foreign license).
-     * We select the oldest driver license width check old and repeat the check.
+     * We select the oldest driver license of active customers width check old and repeat the check.
      */
     public function periodicCheckValidLicenseAction() {
 
         $this->logger->log(sprintf(
-            "%s;INF;periodicCheckDriverLicenseAction;strat\n",
-            date_create()->format('y-m-d H:i:s')));
+            "%s;INF;periodicCheckDriverLicenseAction;strat;%s\n",
+            date_create()->format('y-m-d H:i:s'),
+            $debug));
 
         $customersId = $this->customersService->getCustomersValidLicenseOldCheck(null, 10);
 
