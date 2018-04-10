@@ -2214,6 +2214,17 @@ return [
                         ]
                     ]
                 ],
+                'periodic-check-valid-license' => [
+                    'type' => 'Simple',
+                    'options' => [
+                        'route' => 'periodic check valid license [--debug-mode|-dm]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableCustomerController',
+                            'action' => 'periodic-check-valid-license'
+                        ]
+                    ]
+                ],
                 'disable-old-discounts' => [
                     'type' => 'simple',
                     'options' => [

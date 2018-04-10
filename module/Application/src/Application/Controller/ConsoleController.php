@@ -347,45 +347,6 @@ class ConsoleController extends AbstractActionController {
     }
 
     /**
-     * Periodic check of driver license. 
-     * We select the oldest driver license width check old and repeat the check.
-     */
-    public function checkDriverLicenseValidationAction() {
-        $this->prepareLogger();
-
-        $this->logger->log(sprintf(
-            "%s;INF;checkDriverLicenseValidationAction;strat\n",
-            date_create()->format('y-m-d H:i:s')));
-
-        $customers = $this->customerService->getCustomersDriverLicenseCheckOld(null);
-        foreach($customers as $customer){
-            $params = [
-                'email' => $customer->getEmail(),
-                'driverLicense' => $customer->getDriverLicense(),
-                'taxCode' => $customer->getTaxCode(),
-                'driverLicenseName' => $customer->getDriverLicenseName(),
-                'driverLicenseSurname' => $customer->getDriverLicenseSurname(),
-                'birthDate' => ['date' => $customer->getBirthDate()->format('Y-m-d')],
-                'birthCountry' => $customer->getBirthCountry(),
-                'birthProvince' => $customer->getBirthProvince(),
-                'birthTown' => $customer->getBirthTown()
-            ];
-
-            $this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
-
-            $this->logger->log(
-                sprintf("%s;INF;checkDriverLicenseValidationAction;event;%s;%s\n", 
-                date_create()->format('y-m-d H:i:s'),
-                $customer->getId(),
-                $customer->getEmail()));
-        }
-
-        $this->logger->log(sprintf(
-            "%s;INF;checkDriverLicenseValidationAction;end\n",
-            date_create()->format('y-m-d H:i:s')));
-    }
-
-    /**
      * @param integer
      * @param Cars
      */
