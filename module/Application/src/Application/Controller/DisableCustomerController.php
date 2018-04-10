@@ -154,7 +154,7 @@ class DisableCustomerController extends AbstractActionController
             "%s;INF;periodicCheckDriverLicenseAction;strat\n",
             date_create()->format('y-m-d H:i:s')));
 
-        $customersId = $this->customersService->getCustomersDriverLicenseCheckOld(null, 10);
+        $customersId = $this->customersService->getCustomersValidLicenseOldCheck(null, 10);
 
         foreach($customersId as $customerId){
             $customer =$this->customersService->findById($customerId['id']);
