@@ -151,9 +151,8 @@ class DisableCustomerController extends AbstractActionController
     public function periodicCheckValidLicenseAction() {
 
         $this->logger->log(sprintf(
-            "%s;INF;periodicCheckDriverLicenseAction;strat;%s\n",
-            date_create()->format('y-m-d H:i:s'),
-            $debug));
+            "%s;INF;periodicCheckDriverLicenseAction;strat\n",
+            date_create()->format('y-m-d H:i:s')));
 
         $customersId = $this->customersService->getCustomersValidLicenseOldCheck(null, 10);
 
