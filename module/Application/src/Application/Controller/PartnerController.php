@@ -26,12 +26,8 @@ class PartnerController extends AbstractActionController {
 
     
     /**
-     * API for partner 
-     * https://en.wikipedia.org/wiki/UTM_parameters
      * @param utm_source
      * @return json
-     * 
-     * ..../partner?utm_source=free2move
      */
     public function getInfoAction() {
 
