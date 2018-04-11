@@ -41,7 +41,7 @@ class PartnerController extends AbstractActionController {
                 $param = "2MOVE";
                 $response_msg = $this->partnerData($param);
                 $values1 = array_values(array_map('intval', explode(",", $response_msg)));
-                $values1 = json_encode(array_combine(array("lead", "free2move"), $values1));
+                $values1 = json_encode(array_combine(array("lead", "F2MOVE"), $values1));
                 
                 $param = "2MAPR";
                 $response_msg = $this->partnerData($param);
