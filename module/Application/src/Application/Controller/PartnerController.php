@@ -26,8 +26,15 @@ class PartnerController extends AbstractActionController {
 
     
     /**
-     * @param utm_source
-     * @return json
+     * API for FREE2MOVE partner 
+     * https://en.wikipedia.org/wiki/UTM_parameters
+     * .../partner?utm_source=free2move
+     * This method is a API that return Response obj of zf2.
+     * Return two json:
+     * - first json contain the number of customer who are leads and the number of customer who are sign in with promocode like "F2MOVE"
+     * - second json contain the number of customer who are leads and the number of customer who are sign in with promocode like "F2MAPR"
+     * 
+     * @return Response
      */
     public function getInfoAction() {
 
