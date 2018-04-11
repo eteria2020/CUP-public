@@ -10,6 +10,8 @@ use SharengoCore\Service\UsersService;
 use SharengoCore\Entity\Webuser;
 use SharengoCore\Service\EmailService;
 
+use MvLabsDriversLicenseValidation\Service\PortaleAutomobilistaValidationService;
+
 use SharengoCore\Service\SimpleLoggerService as Logger;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -45,13 +47,25 @@ class DisableCustomerController extends AbstractActionController
      */
     private $emailService;
 
+    /**
+     * @var PortaleAutomobilistaValidationService
+     */
+    private $portaleAutomobilistaValidationService;
+
+    /**
+     * @var DriversLicenseValidationService
+     */
+    private $driversLicenseValidationService;
+
     public function __construct(
         CustomersService $customersService,
         CustomerDeactivationService $customerDeactivationService,
         CustomerNoteService $customerNoteService,
         UsersService $usersService,
         Logger $logger,
-        EmailService $emailService
+        EmailService $emailService,
+        PortaleAutomobilistaValidationService $portaleAutomobilistaValidationService,
+        DriversLicenseValidationService $driversLicenseValidationService
     ) {
         $this->customersService = $customersService;
         $this->customerDeactivationService = $customerDeactivationService;
@@ -59,6 +73,8 @@ class DisableCustomerController extends AbstractActionController
         $this->usersService = $usersService;
         $this->logger = $logger;
         $this->emailService = $emailService;
+        $this->portaleAutomobilistaValidationService = $portaleAutomobilistaValidationService;
+        $this->driversLicenseValidationService = $driversLicenseValidationService;
     }
 
     public function invalidDriversLicenseAction()
@@ -171,7 +187,14 @@ class DisableCustomerController extends AbstractActionController
                 'birthTown' => $customer->getBirthTown()
             ];
 
-            $this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
+            $response = $this->portaleAutomobilistaValidationService->validateDriversLicense($params);
+            $this->validationService->addFromResponse($customer, $response, $params);
+            if ($response->valid()) {
+
+            } else {
+                $this->customerDeactivationForExpireLicense($customer, "Messaggio di sistema: controllo periodico, patente non valida.");
+            }
+            //$this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
 
             $this->logger->log(
                 sprintf("%s;INF;periodicCheckDriverLicenseAction;event;%s;%s\n",
@@ -185,4 +208,11 @@ class DisableCustomerController extends AbstractActionController
             date_create()->format('y-m-d H:i:s')));
     }
 
+    private function customerDeactivationForExpireLicense(Customers $customer, $message) {
+        $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
+        //CustomerNoteService.php in service sharengo-coremodule
+        $webuser = $this->usersService->findUserById(12);
+        $this->customerNoteService->addNote($customer, $webuser ,$message);
+        $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage());
+    }
 }
