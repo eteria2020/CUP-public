@@ -967,6 +967,60 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format = "%s;INF;bonusNiveaAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
+    
+    public function addBonusByAlgebris(){
+        
+        $this->prepareLogger();
+        $format = "%s;INF;addBonusByAlgebris;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+
+        $request = $this->getRequest();
+        $avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+
+        $format = "%s;INF;addBonusByAlgebris;";
+        if(!$avoidEmails){
+            $format .= "SendEmails = TRUE;";
+        } else {
+            $format .= "SendEmails = FALSE;";
+        }
+
+        if (!$dryRun) {
+            $format .= "DryRun = TRUE;";
+        } else {
+            $format .= "DryRun = FALSE;";
+        }
+
+        $format .= "\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        
+        $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
+        
+        $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris);//aggiungere date di start ed end
+        
+        foreach ($customers as $customer) {
+            $bonus = new \SharengoCore\Entity\CustomersBonus();
+            $bonus->setInsertTs();//datat di oggi
+            $bonus->setTotal(60);
+            $bonus->setResidual(60);
+            $bonus->setUpdateTs();//datat di oggi
+            $bonus->setValidFrom();//datat di oggi
+            $bonus->setValidTo();//datat di oggi
+            $bonus->setDescription($descriptionBonusAlgebris);
+
+            $this->customerService->addBonus($customer, $bonus);
+
+            $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Processed!\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+            
+            $this->customerService->clearEntityManagerBonus();
+        }
+        
+        $format = "%s;INF;addBonusByAlgebris;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }
 
     
 }
