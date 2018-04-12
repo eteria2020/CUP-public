@@ -968,7 +968,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
     
-    public function addBonusByAlgebris(){
+    public function BonusAlgebrisAction(){
         
         $this->prepareLogger();
         $format = "%s;INF;addBonusByAlgebris;strat\n";
@@ -994,22 +994,37 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
-        
         $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
         
-        $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris);//aggiungere date di start ed end
+        $yesterday = new \DateTime();
+        $yesterday = $yesterday->modify("-1 day");
+        $yesterday = $yesterday->format("Y-m-d 00:00:00");
+        
+        $startMonth = new \DateTime($yesterday);
+        $startMonth = $startMonth->modify("first day of this month");
+        $startMonth = $startMonth->format("Y-m-d 00:00:00");
+
+        $endMonth = new \DateTime($yesterday);
+        $endMonth = $endMonth->modify("first day of next month");
+        $endMonth = $endMonth->format("Y-m-d 00:00:00");
+        
+        $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
+        
         
         foreach ($customers as $customer) {
-            $bonus = new \SharengoCore\Entity\CustomersBonus();
-            $bonus->setInsertTs();//datat di oggi
-            $bonus->setTotal(60);
-            $bonus->setResidual(60);
-            $bonus->setUpdateTs();//datat di oggi
-            $bonus->setValidFrom();//datat di oggi
-            $bonus->setValidTo();//datat di oggi
-            $bonus->setDescription($descriptionBonusAlgebris);
+            if (!$dryRun) {
+                $bonus = new \SharengoCore\Entity\CustomersBonus();
+                $bonus->setInsertTs(date_create());
+                $bonus->setTotal(60);
+                $bonus->setResidual(60);
+                $bonus->setUpdateTs(date_create());
+                $bonus->setValidFrom(date_create());
+                $bonus->setValidTo(date_create('+ 60 day'));
+                $bonus->setType("bonus");
+                $bonus->setDescription($descriptionBonusAlgebris);
 
-            $this->customerService->addBonus($customer, $bonus);
+                $this->customerService->addBonus($customer, $bonus);
+            }
 
             $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Processed!\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
