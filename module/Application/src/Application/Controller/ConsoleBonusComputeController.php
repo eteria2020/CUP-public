@@ -975,16 +975,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
 
         $request = $this->getRequest();
-        $avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
 
         $format = "%s;INF;addBonusByAlgebris;";
-        if(!$avoidEmails){
-            $format .= "SendEmails = TRUE;";
-        } else {
-            $format .= "SendEmails = FALSE;";
-        }
-
         if (!$dryRun) {
             $format .= "DryRun = TRUE;";
         } else {
@@ -1010,31 +1003,36 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
         
-        
         foreach ($customers as $customer) {
-            if (!$dryRun) {
-                $bonus = new \SharengoCore\Entity\CustomersBonus();
-                $bonus->setInsertTs(date_create());
-                $bonus->setTotal(60);
-                $bonus->setResidual(60);
-                $bonus->setUpdateTs(date_create());
-                $bonus->setValidFrom(date_create());
-                $bonus->setValidTo(date_create('+ 60 day'));
-                $bonus->setType("bonus");
-                $bonus->setDescription($descriptionBonusAlgebris);
+            if($this->runBeforeAprilMonth($customer)) {
+                if (!$dryRun) {
+                    $bonus = new \SharengoCore\Entity\CustomersBonus();
+                    $bonus->setInsertTs(date_create());
+                    $bonus->setTotal(60);
+                    $bonus->setResidual(60);
+                    $bonus->setUpdateTs(date_create());
+                    $bonus->setValidFrom(date_create());
+                    $bonus->setValidTo(date_create('+ 60 day'));
+                    $bonus->setType("bonus");
+                    $bonus->setDescription($descriptionBonusAlgebris);
 
-                $this->customerService->addBonus($customer, $bonus);
-            }
-
-            $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Processed!\n";
-            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+                    $this->customerService->addBonus($customer, $bonus);
+                }
             
+                $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Processed!\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+            }
             $this->customerService->clearEntityManagerBonus();
         }
         
         $format = "%s;INF;addBonusByAlgebris;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
+    }
+    
+    public function runBeforeAprilMonth(Customers $customer) {
+        $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeAprilMonth($customer);
+        return $nTripBeforeAprilMonth > 0 ? false : true; 
     }
 
     
