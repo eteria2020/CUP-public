@@ -16,9 +16,9 @@ class DisableCustomerControllerFactory implements FactoryInterface
         $usersService = $sharedServiceLocator->get('SharengoCore\Service\UsersService');
         $logger = $sharedServiceLocator->get('SharengoCore\Service\SimpleLoggerService');
         $emailService = $sharedServiceLocator->get('SharengoCore\Service\EmailService');
-        $portaleAutomobilistaValidationService = $sharedServiceLocator->get('MvLabsDriversLicenseValidation\Service\PortaleAutomobilistaValidationService');
-        $driversLicenseValidationService = $serviceLocator->get('SharengoCore\Service\DriversLicenseValidationService');
-        $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
+        $portaleAutomobilistaValidationService = $sharedServiceLocator->get('MvLabsDriversLicenseValidation\PortaleAutomobilista');
+        $driversLicenseValidationService = $sharedServiceLocator->get('SharengoCore\Service\DriversLicenseValidationService');
+        $countriesService = $sharedServiceLocator->get('SharengoCore\Service\CountriesService');
 
         return new DisableCustomerController(
             $customersService,
