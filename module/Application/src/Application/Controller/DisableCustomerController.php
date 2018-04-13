@@ -133,19 +133,16 @@ class DisableCustomerController extends AbstractActionController
                 continue;
             }
 
-            $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
-            //CustomerNoteService.php in service sharengo-coremodule
-            $webuser = $this->usersService->findUserById(12);
-            $this->customerNoteService->addNote($customer, $webuser ,"Messaggio di sistema: utente disattivato per patente scaduta.");
-            $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage());
+            $this->customerDeactivationForExpireLicense($customer, "Messaggio di sistema: utente disattivato per patente scaduta.", 10);
+
         }
 
         $this->logger->log("\nEnd time = " . date_create()->format('Y-m-d H:i:s') ."\n");
     }
 
-    private function sendEmail($email, $name, $language)
+    private function sendEmail($email, $name, $language, $mailCategory)
     {
-        $mail = $this->emailService->getMail(10, $language);
+        $mail = $this->emailService->getMail($mailCategory, $language);
         $content = sprintf(
             $mail->getContent(),
             $name
@@ -174,13 +171,14 @@ class DisableCustomerController extends AbstractActionController
 
         foreach($customersId as $customerId){
             $customer =$this->customersService->findById($customerId['id']);
-            $this->periodicCheckValidLicenseCustomer($customer);
+            $checkResult = $this->periodicCheckValidLicenseCustomer($customer);
 
             $this->logger->log(
-                sprintf("%s;INF;periodicCheckDriverLicenseAction;event;%s;%s\n",
+                sprintf("%s;INF;periodicCheckDriverLicenseAction;event;%s;%s;%s\n",
                 date_create()->format('y-m-d H:i:s'),
                 $customer->getId(),
-                $customer->getEmail()));
+                $customer->getEmail()),
+                $checkResult);
         }
 
         $this->logger->log(sprintf(
@@ -188,12 +186,23 @@ class DisableCustomerController extends AbstractActionController
             date_create()->format('y-m-d H:i:s')));
     }
 
-    private function customerDeactivationForExpireLicense(Customers $customer, $message) {
+    /**
+     * Deactivate the customer, send an email and add a note for the deactivations reason
+     * 
+     * @param Customers $customer
+     * @param string $message
+     * @param integer $mailCategory
+     */
+    private function customerDeactivationForExpireLicense(Customers $customer, $message, $mailCategory = null) {
         $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
         //CustomerNoteService.php in service sharengo-coremodule
         $webuser = $this->usersService->findUserById(12);
         $this->customerNoteService->addNote($customer, $webuser ,$message);
-        $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage());
+
+        if(!is_null($mailCategory)) {
+            $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), $mailCategory);
+        }
+
     }
 
     /**
@@ -225,7 +234,7 @@ class DisableCustomerController extends AbstractActionController
         if ($response->valid()) {
             $result = true;
         } else {
-            $this->customerDeactivationForExpireLicense($customer, "Messaggio di sistema: controllo periodico, patente non valida.");
+            $this->customerDeactivationForExpireLicense($customer, "Messaggio di sistema: controllo periodico, patente non valida.", 4);
         }
         //$this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
 
