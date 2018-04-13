@@ -110,6 +110,10 @@ class DisableCustomerController extends AbstractActionController
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
 
+    /**
+     * Check if driver license is expired. 
+     * If true, disable the customer and send an email.
+     */
     public function expiredDriversLicenseAction(){
 
         $request = $this->getRequest();
@@ -143,6 +147,14 @@ class DisableCustomerController extends AbstractActionController
         $this->logger->log("\nEnd time = " . date_create()->format('Y-m-d H:i:s') ."\n");
     }
 
+    /**
+     * Send a mail to $email, where the body text is linked to $mailCategory.
+     * 
+     * @param string $email
+     * @param string $name
+     * @param string $language
+     * @param integer $mailCategory
+     */
     private function sendEmail($email, $name, $language, $mailCategory)
     {
         $mail = $this->emailService->getMail($mailCategory, $language);
@@ -217,7 +229,7 @@ class DisableCustomerController extends AbstractActionController
      * @return boolean
      */
      private function periodicCheckValidLicenseCustomer(Customers $customer) {
-        $result=false;
+        $result = false;
 
         $data = [
             'email' => $customer->getEmail(),
@@ -244,7 +256,6 @@ class DisableCustomerController extends AbstractActionController
                 "Messaggio di sistema: controllo periodico, patente non valida.",
                 4);
         }
-        //$this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
 
          return $result;
      }
