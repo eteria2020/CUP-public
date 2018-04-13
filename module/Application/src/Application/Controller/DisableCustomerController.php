@@ -163,9 +163,7 @@ class DisableCustomerController extends AbstractActionController
      */
     public function periodicCheckValidLicenseAction() {
 
-        $this->logger->log(sprintf(
-            "%s;INF;periodicCheckDriverLicenseAction;start\n",
-            date_create()->format('y-m-d H:i:s')));
+        $this->logger->log(sprintf("%s;INF;periodicCheckDriverLicenseAction;start\n", date_create()->format('y-m-d H:i:s')));
 
         $customersId = $this->customersService->getCustomersValidLicenseOldCheck(null, 10);
 
@@ -173,17 +171,14 @@ class DisableCustomerController extends AbstractActionController
             $customer =$this->customersService->findById($customerId['id']);
             $checkResult = $this->periodicCheckValidLicenseCustomer($customer);
 
-            $this->logger->log(
-                sprintf("%s;INF;periodicCheckDriverLicenseAction;event;%s;%s;%s\n",
+            $this->logger->log(sprintf("%s;INF;periodicCheckDriverLicenseAction;event;%s;%s;%s\n",
                 date_create()->format('y-m-d H:i:s'),
                 $customer->getId(),
-                $customer->getEmail()),
-                $checkResult);
+                $customer->getEmail(),
+                $checkResult));
         }
 
-        $this->logger->log(sprintf(
-            "%s;INF;periodicCheckDriverLicenseAction;end\n",
-            date_create()->format('y-m-d H:i:s')));
+        $this->logger->log(sprintf("%s;INF;periodicCheckDriverLicenseAction;end\n", date_create()->format('y-m-d H:i:s')));
     }
 
     /**
