@@ -221,7 +221,7 @@ class DisableCustomerController extends AbstractActionController
         $data['birthProvince'] = $this->driversLicenseValidationService->changeProvinceForValidationDriverLicense($data);
 
         $response = $this->portaleAutomobilistaValidationService->validateDriversLicense($data);
-        $this->validationService->addFromResponse($customer, $response, $data);
+        $this->driversLicenseValidationService->addFromResponse($customer, $response, $data);
         if ($response->valid()) {
             $result = true;
         } else {
