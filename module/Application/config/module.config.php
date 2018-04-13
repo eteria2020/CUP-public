@@ -717,17 +717,6 @@ return [
                     ],
                 ],
             ],
-            'coin' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{coin}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action' => 'coin',
-                    ],
-                ],
-            ],
             'comunedifirenze' => [
                 'type' => 'Segment',
                 'options' => [
