@@ -133,7 +133,10 @@ class DisableCustomerController extends AbstractActionController
                 continue;
             }
 
-            $this->customerDeactivationForExpireLicense($customer, "Messaggio di sistema: utente disattivato per patente scaduta.", 10);
+            $this->customerDeactivationForDriverLicenseProblem(
+                $customer,
+                "Messaggio di sistema: utente disattivato per patente scaduta.",
+                10);
 
         }
 
@@ -182,27 +185,34 @@ class DisableCustomerController extends AbstractActionController
     }
 
     /**
-     * Deactivate the customer, send an email and add a note for the deactivations reason
-     * 
+     * Deactivate the customer, send an email and add a note width the deactivations reason.
+     *
      * @param Customers $customer
      * @param string $message
      * @param integer $mailCategory
      */
-    private function customerDeactivationForExpireLicense(Customers $customer, $message, $mailCategory = null) {
-        $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
+    private function customerDeactivationForDriverLicenseProblem(Customers $customer, $message, $mailCategory) {
         //CustomerNoteService.php in service sharengo-coremodule
         $webuser = $this->usersService->findUserById(12);
         $this->customerNoteService->addNote($customer, $webuser ,$message);
 
-        if(!is_null($mailCategory)) {
-            $this->sendEmail($customer->getEmail(), $customer->getName(), $customer->getLanguage(), $mailCategory);
+        if($mailCategory==4) {
+            $this->customerDeactivationService->deactivateForDriversLicense($customer);
+        } else if($mailCategory==10){
+            $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
         }
+
+        $this->sendEmail(
+            $customer->getEmail(),
+            $customer->getName(),
+            $customer->getLanguage(),
+            $mailCategory);
 
     }
 
     /**
      * Check driver's license of customer
-     * 
+     *
      * @param Customers $customer
      * @return boolean
      */
@@ -229,7 +239,10 @@ class DisableCustomerController extends AbstractActionController
         if ($response->valid()) {
             $result = true;
         } else {
-            $this->customerDeactivationForExpireLicense($customer, "Messaggio di sistema: controllo periodico, patente non valida.", 4);
+            $this->customerDeactivationForDriverLicenseProblem(
+                $customer,
+                "Messaggio di sistema: controllo periodico, patente non valida.",
+                4);
         }
         //$this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
 
