@@ -1042,7 +1042,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     
     public function runBeforeAprilMonth(Customers $customer) {
         $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeAprilMonth($customer);
-        return $nTripBeforeAprilMonth > 0 ? false : true; 
+        return $nTripBeforeAprilMonth == 0 ? true : false; 
     }
 
     
