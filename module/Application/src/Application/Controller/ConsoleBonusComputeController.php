@@ -973,7 +973,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $format = "%s;INF;addBonusByAlgebris;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-
+/*
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
 
@@ -985,7 +985,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         }
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+      */  
         $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
         
         $yesterday = new \DateTime();
@@ -999,6 +999,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $endMonth = new \DateTime($yesterday);
         $endMonth = $endMonth->modify("first day of next month");
         $endMonth = $endMonth->format("Y-m-d 00:00:00");
+        
+        
+        
+        $this->runBeforeAprilMonth($this->customerService->findById(12990));
+        
+        
         
         $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
         
@@ -1047,8 +1053,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
     
     public function runBeforeAprilMonth(Customers $customer) {
         $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeAprilMonth($customer);
-        echo(var_dump($nTripBeforeAprilMonth));
-        return $nTripBeforeAprilMonth == 0 ? true : false; 
+        return $nTripBeforeAprilMonth[0][1] == 0 ? true : false; 
     }
 
     
