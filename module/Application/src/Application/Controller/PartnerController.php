@@ -30,10 +30,15 @@ class PartnerController extends AbstractActionController {
     }
 
     /**
-     * API for partner
+     * API for FREE2MOVE partner 
      * https://en.wikipedia.org/wiki/UTM_parameters
-     * @param utm_source
-     * @return json
+     * .../partner?utm_source=free2move
+     * This method is a API that return Response obj of zf2.
+     * Return two json:
+     * - first json contain the number of customer who are leads and the number of customer who are sign in with promocode like "F2MOVE"
+     * - second json contain the number of customer who are leads and the number of customer who are sign in with promocode like "F2MAPR"
+     * 
+     * @return Response
      */
     public function getInfoAction() {
 
@@ -42,11 +47,19 @@ class PartnerController extends AbstractActionController {
 
                 $param = "2MOVE";
                 $response_msg = $this->partnerData($param);
-                $values = array_values(array_map('intval', explode(",", $response_msg)));
+                $values1 = array_values(array_map('intval', explode(",", $response_msg)));
+                $values1 = json_encode(array_combine(array("lead", "F2MOVE"), $values1));
+                
+                $param = "2MAPR";
+                $response_msg = $this->partnerData($param);
+                $values2 = array_values(array_map('intval', explode(",", $response_msg)));
+                $values2 = json_encode(array_combine(array("lead", "F2MAPR"), $values2));
+                
+                $output = $values1 . $values2;
 
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
-                $response->setContent(json_encode(array_combine(array("lead", "free2move"), $values)));
+                $response->setContent($output);
                 return $response;
             } else {
                 $response = $this->getResponse();

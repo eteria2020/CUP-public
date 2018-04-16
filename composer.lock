@@ -2083,7 +2083,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2423,7 +2423,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "7fbeeb03d4897cd46580b1af0f1bc3f170005b4b"
+                "reference": "513c0a3c72d1fd105cd7ed593335446dd5326c6e"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2444,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2018-04-03 08:43:52"
+            "time": "2018-04-11 09:26:43"
         },
         {
             "name": "natxet/CssMin",
@@ -2942,7 +2942,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
-                "reference": "34656804c606ae89d5793a43ff480265d025a163"
+                "reference": "f813e134787fb5e72e7837945947d512b6cc30df"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2956,7 +2956,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2018-04-03 09:03:00"
+            "time": "2018-04-09 14:43:08"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
@@ -5736,7 +5736,6 @@
             "keywords": [
                 "Socket"
             ],
-            "abandoned": "react/socket",
             "time": "2016-03-27 18:31:39"
         },
         {
