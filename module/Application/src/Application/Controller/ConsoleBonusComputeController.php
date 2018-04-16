@@ -973,7 +973,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $format = "%s;INF;addBonusByAlgebris;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-
+/*
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
 
@@ -985,7 +985,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         }
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+        */
         $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
         
         $yesterday = new \DateTime();
@@ -999,11 +999,14 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $endMonth = new \DateTime($yesterday);
         $endMonth = $endMonth->modify("first day of next month");
         $endMonth = $endMonth->format("Y-m-d 00:00:00");
+        
+        $date_zero = new \DateTime("2018-04-01");
+        $date_zero = $date_zero->format("Y-m-d 00:00:00");
 
         $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
         
         foreach ($customers as $customer) {
-            if ($this->runBeforeAprilMonth($customer)) {
+            if ($this->runBeforeDate($customer, $date_zero)) {
                 if (!$dryRun) {
                     $bonus = new \SharengoCore\Entity\CustomersBonus();
                     $bonus->setInsertTs(date_create());
@@ -1029,8 +1032,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
     }
     
-    public function runBeforeAprilMonth(Customers $customer) {
-        $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeAprilMonth($customer);
+    public function runBeforeDate(Customers $customer, $date_zero) {
+        $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeDate($customer, $date_zero);
         return $nTripBeforeAprilMonth[0][1] == 0 ? true : false; 
     }
 
