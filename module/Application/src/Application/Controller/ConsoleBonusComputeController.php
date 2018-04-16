@@ -1007,7 +1007,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         echo ("-----------------------------\n");
         echo ("-----------------------------\n");
         foreach ($customers as $customer) {
-            echo ("customer da processare:" . $customer . "\n");
+            echo ("customer da processare:" . $customer->getId() . "\n");
             echo ("-----------------------------\n");
             echo ("-----------------------------\n");
             if ($this->runBeforeAprilMonth($customer)) {
