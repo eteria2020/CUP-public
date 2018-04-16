@@ -1021,7 +1021,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $this->customerService->addBonus($customer, $bonus);
                 }
             
-                $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Email: %s\n";
+                $format = "%s;INF;addBonusByAlgebris;%d;%s\n";
                 $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $customer->getEmail()));
             }
             $this->customerService->clearEntityManagerBonus();
