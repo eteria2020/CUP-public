@@ -1015,6 +1015,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
             echo ("-----------------------------\n");
             */
             if ($this->runBeforeAprilMonth($customer)) {
+                echo ("-----------------------------\n");
+                echo ("-----------------------------\n");
+                echo ("assegnamento punti perchè ritorna true: s" . $customer->getId() . "\n");
+                echo ("-----------------------------\n");
+                echo ("-----------------------------\n");
                 if (!$dryRun) {
                     $bonus = new \SharengoCore\Entity\CustomersBonus();
                     $bonus->setInsertTs(date_create());
