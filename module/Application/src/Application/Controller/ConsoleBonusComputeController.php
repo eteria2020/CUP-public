@@ -983,7 +983,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
         } else {
             $format .= "DryRun = FALSE;";
         }
-
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         
@@ -1002,9 +1001,16 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $endMonth = $endMonth->format("Y-m-d 00:00:00");
         
         $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
-        
+        echo ("-----------------------------\n");
+        echo ("-----------------------------\n");
+        echo ("count di customer:" . count($customers) . "\n");
+        echo ("-----------------------------\n");
+        echo ("-----------------------------\n");
         foreach ($customers as $customer) {
-            if($this->runBeforeAprilMonth($customer)) {
+            echo ("customer da processare:" . $customer . "\n");
+            echo ("-----------------------------\n");
+            echo ("-----------------------------\n");
+            if ($this->runBeforeAprilMonth($customer)) {
                 if (!$dryRun) {
                     $bonus = new \SharengoCore\Entity\CustomersBonus();
                     $bonus->setInsertTs(date_create());
