@@ -1001,15 +1001,19 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $endMonth = $endMonth->format("Y-m-d 00:00:00");
         
         $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
+        /*
         echo ("-----------------------------\n");
         echo ("-----------------------------\n");
         echo ("count di customer:" . count($customers) . "\n");
         echo ("-----------------------------\n");
         echo ("-----------------------------\n");
+        */
         foreach ($customers as $customer) {
+            /*
             echo ("customer da processare:" . $customer->getId() . "\n");
             echo ("-----------------------------\n");
             echo ("-----------------------------\n");
+            */
             if ($this->runBeforeAprilMonth($customer)) {
                 if (!$dryRun) {
                     $bonus = new \SharengoCore\Entity\CustomersBonus();
