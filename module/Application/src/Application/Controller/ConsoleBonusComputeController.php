@@ -973,7 +973,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $format = "%s;INF;addBonusByAlgebris;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-/*
+
         $request = $this->getRequest();
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
 
@@ -985,7 +985,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         }
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        */
+        
         $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
         
         $yesterday = new \DateTime();
@@ -1021,8 +1021,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $this->customerService->addBonus($customer, $bonus);
                 }
             
-                $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Processed!\n";
-                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
+                $format = "%s;INF;addBonusByAlgebris;Customer_id= %d;Email: %s\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $customer->getEmail()));
             }
             $this->customerService->clearEntityManagerBonus();
         }
