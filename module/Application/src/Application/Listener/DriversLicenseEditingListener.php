@@ -48,6 +48,12 @@ final class DriversLicenseEditingListener implements SharedListenerAggregateInte
         );
 
         $this->listeners[] = $events->attach(
+            'Application\Controller\DisableCustomerController',
+            'driversLicenseEdited',
+            [$this, 'disableCustomer']
+        );
+
+        $this->listeners[] = $events->attach(
             'Application\Controller\UserAreaController',
             'taxCodeEdited',
             [$this, 'disableCustomer']

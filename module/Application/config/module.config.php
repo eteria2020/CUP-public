@@ -717,17 +717,6 @@ return [
                     ],
                 ],
             ],
-            'coin' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{coin}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action' => 'coin',
-                    ],
-                ],
-            ],
             'comunedifirenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -2222,6 +2211,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableCustomerController',
                             'action' => 'expired-drivers-license'
+                        ]
+                    ]
+                ],
+                'periodic-check-valid-license' => [
+                    'type' => 'Simple',
+                    'options' => [
+                        'route' => 'periodic check valid license',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableCustomerController',
+                            'action' => 'periodic-check-valid-license'
                         ]
                     ]
                 ],
