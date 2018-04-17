@@ -756,20 +756,6 @@ class ConsoleController extends AbstractActionController {
             $result = TRUE;
         }
 
-//        if ($car->getFleet()->getId() == 3) {           //rome battery check
-//            if ($car->getBattery() < 30) {
-//                $result = TRUE;
-//            }
-//        } else if ($car->getFleet()->getId() == 4) {    //modena battery check
-//            if ($car->getBattery() < 35) {
-//                $result = TRUE;
-//            }
-//        } else {    //other cities battery check
-//            if ($car->getBattery() < $this->battery) {
-//                $result = TRUE;
-//            }
-//        }
-
         return $result;
     }
 }
