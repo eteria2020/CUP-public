@@ -79,6 +79,11 @@ class ConsoleController extends AbstractActionController {
     /**
      * @var string
      */
+    private $batterySpecific;
+
+    /**
+     * @var string
+     */
     private $delay;
 
     /**
@@ -112,6 +117,11 @@ class ConsoleController extends AbstractActionController {
     private $avoidEmails;
 
     /**
+     * @var array
+     */
+    private $alarmConfigSpecific;
+
+    /**
      * @param CustomersService $customerService
      * @param CartasiContractsService $cartasiContractsService
      * @param Logger $logger
@@ -124,6 +134,7 @@ class ConsoleController extends AbstractActionController {
      * @param TripsService $tripsService
      * @param AccountTripsService $accountTripsService
      * @param array $alarmConfig
+     * @param array $alarmConfigSpecific
      * @param InvoicesService $invoicesService
      */
     public function __construct(
@@ -139,6 +150,7 @@ class ConsoleController extends AbstractActionController {
         TripsService $tripsService,
         AccountTripsService $accountTripsService,
         $alarmConfig,
+        $alarmConfigSpecific,
         InvoicesService $invoicesService
     ) {
         $this->customerService = $customerService;
@@ -149,8 +161,10 @@ class ConsoleController extends AbstractActionController {
         $this->tripsService = $tripsService;
         $this->accountTripsService = $accountTripsService;
         $this->battery = $alarmConfig['battery'];
+        $this->batterySpecific = json_decode($alarmConfigSpecific['battery'], true);
         $this->delay = $alarmConfig['delay'];
         $this->batteryUnplug = intval($alarmConfig['unplug_enable']);
+        $this->alarmConfigSpecific = $alarmConfigSpecific;
         $this->invoicesService = $invoicesService;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->logger = $logger;
@@ -256,9 +270,7 @@ class ConsoleController extends AbstractActionController {
             }
 
             // defines if car should be in non_operative || is in maintenance
-            $isAlarm = ($car->getFleet()->getId() == 4 && $car->getBattery() < 35) || //modena battery check
-				($car->getFleet()->getId() == 3 && $car->getBattery() < 30) || //rome battery check
-				($car->getFleet()->getId() != 4 && $car->getFleet()->getId() != 3 && $car->getBattery() < $this->battery) || //other cities battery check
+            $isAlarm = $this->checkBatteryConditions($car) || //other cities battery check
                 time() - $car->getLastContact()->getTimestamp() > $this->delay * 60 ||
                 $charging ||
                 $this->carsService->isCarOutOfBounds($car) ||
@@ -719,4 +731,45 @@ class ConsoleController extends AbstractActionController {
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
     }
 
+    /**
+     * Check the condition by fleet_id and bettery lever, for ooo.
+     * 
+     * @param \SharengoCore\Entity\Cars $car
+     * @return boolean
+     */
+    private function checkBatteryConditions(\SharengoCore\Entity\Cars $car) {
+        $result = FALSE;
+
+        if(!is_null($this->batterySpecific)) {
+            foreach($this->batterySpecific as $condition){
+                if(isset($condition["fleet_id"]) && isset($condition["fleet_id"])) {
+                    if ($car->getFleet()->getId() == $condition["fleet_id"]) {
+                         if ($car->getBattery() < $condition["battery"]) {
+                             return TRUE;
+                         }
+                    }
+                }
+            }
+        }
+
+        if ($car->getBattery() < $this->battery) {
+            $result = TRUE;
+        }
+
+//        if ($car->getFleet()->getId() == 3) {           //rome battery check
+//            if ($car->getBattery() < 30) {
+//                $result = TRUE;
+//            }
+//        } else if ($car->getFleet()->getId() == 4) {    //modena battery check
+//            if ($car->getBattery() < 35) {
+//                $result = TRUE;
+//            }
+//        } else {    //other cities battery check
+//            if ($car->getBattery() < $this->battery) {
+//                $result = TRUE;
+//            }
+//        }
+
+        return $result;
+    }
 }
