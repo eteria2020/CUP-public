@@ -183,9 +183,9 @@ class UserAreaController extends AbstractActionController {
 
         $customer = $this->userService->getIdentity();
 
-        if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
-                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
-            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+        $redirect = $this->redirectRegistration($customer, $mobile);
+        if ($redirect != null) {
+            return $redirect;
         }
 
         // if not, continue with index action
@@ -544,6 +544,30 @@ class UserAreaController extends AbstractActionController {
 
     public function maintenancePageAction() {
         return new ViewModel();
+    }
+
+    private function redirectRegistration(Customers $customer, $mobile){
+        $userAreaMobile = '';
+
+        $mobileParam = NULL;
+        if ($mobile == 'mobile') {
+            $this->layout('layout/map');
+            $mobileParam = 'mobile';
+            $userAreaMobile = '/' . $mobileParam;
+        }
+
+        if(is_null($customer->getTaxCode())){
+            error_log('tax_code null');
+            $signupSession = new Container('newSignup');
+            $signupSession->offsetSet("customer", $customer);
+            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));
+        }
+
+        if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
+            (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+        }
+
     }
 
 }

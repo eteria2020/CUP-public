@@ -6,7 +6,7 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
-class NewRegistrationFormFactory implements FactoryInterface
+class OptionalRegistrationFormFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -19,15 +19,11 @@ class NewRegistrationFormFactory implements FactoryInterface
         $translator = $serviceLocator->get('Translator');
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
-        $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
-        $fleetService = $serviceLocator->get('SharengoCore\Service\FleetService');
-        $userFieldset = new NewUserFieldset(
+        $optionalFieldset = new OptionalFieldset(
             $translator,
-            $hydrator,
-            $customersService,
-            $fleetService
+            $hydrator
         );
 
-        return new NewRegistrationForm($translator, $userFieldset);
+        return new OptionalRegistrationForm($translator, $optionalFieldset);
     }
 }

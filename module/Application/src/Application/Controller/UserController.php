@@ -42,25 +42,40 @@ class UserController extends AbstractActionController {
     private $form2;
 
     /**
+     * @var \Zend\Form\Form
+     */
+    private $newForm;
+
+    /**
+     * @var \Zend\Form\Form
+     */
+    private $newForm2;
+
+    /**
+     * @var \Zend\Form\Form
+     */
+    private $optionalForm;
+
+    /**
      * @var \Application\Service\RegistrationService
      */
     private $registrationService;
 
     /**
      *
-     * @var SharengoCore\Service\CustomersService
+     * @var \SharengoCore\Service\CustomersService
      */
     private $customersService;
 
     /**
      *
-     * @var SharengoCore\Service\PromoCodeService
+     * @var \SharengoCore\Service\PromoCodeService
      */
     private $promoCodeService;
 
     /**
      *
-     * @var SharengoCore\Service\PromoCodesOnceService
+     * @var \SharengoCore\Service\PromoCodesOnceService
      */
     private $promoCodesOnceService;
 
@@ -107,6 +122,7 @@ class UserController extends AbstractActionController {
     /**
      * @param Form $form1
      * @param Form $form2
+     * @param Form $newForm
      * @param RegistrationService $registrationService
      * @param CustomersService $customersService
      * @param LanguageService $languageService
@@ -118,11 +134,14 @@ class UserController extends AbstractActionController {
      * @param PromoCodesOnceService $promoCodesOnceService
      */
     public function __construct(
-    Form $form1, Form $form2, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
+    Form $form1, Form $form2, Form $newForm, Form $newForm2, Form $optionalForm, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
     , PromoCodesService $promoCodeService, PromoCodesOnceService $promoCodesOnceService) {
 
         $this->form1 = $form1;
         $this->form2 = $form2;
+        $this->newForm = $newForm;
+        $this->newForm2 = $newForm2;
+        $this->optionalForm = $optionalForm;
         $this->registrationService = $registrationService;
         $this->customersService = $customersService;
         $this->languageService = $languageService;
@@ -143,7 +162,6 @@ class UserController extends AbstractActionController {
 
     public function signupAction() {
 
-
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
         //if there are data in session, we use them to populate the form
@@ -162,9 +180,6 @@ class UserController extends AbstractActionController {
                 'promocode' => $registeredDataPromoCode,
             ]);
         }
-
-
-
 
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
@@ -778,6 +793,201 @@ class UserController extends AbstractActionController {
         } else {
             return true;
         }
+    }
+
+    /* === NEW SIGNUP  === */
+
+    public function newSignupAction() {
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        //if there are data in session, we use them to populate the form
+        $registeredData = $this->newForm->getRegisteredData();
+
+        if (!empty($registeredData)) {
+            $this->newForm->setData([
+                'user' => $registeredData->toArray($this->hydrator)
+            ]);
+        }
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            $this->newForm->setData($formData);
+            if ($this->newForm->isValid()) {
+                return $this->newConclude($this->newForm, $mobile);
+            } else {
+                return $this->newForm($this->newForm, $mobile);
+            }
+        } else {
+            return $this->newForm($this->newForm, $mobile);
+        }
+    }
+
+    private function newForm($newForm, $mobile) {
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        return new ViewModel([
+            'form' => $newForm,
+            'mobile' => $mobile
+        ]);
+    }
+
+    private function newConclude($form, $mobile) {
+        $form->registerData();
+
+        $data = $this->registrationService->newRetrieveValidData();
+
+        // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
+        if (empty($data)) {
+            $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
+            $this->flashMessenger()->addErrorMessage($message);
+            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
+        $data = $this->registrationService->newFormatData($data);
+
+        try {
+            $this->registrationService->notifySharengoByMail($data);
+            $customer = $this->registrationService->newSaveData($data);
+            $this->registrationService->sendEmail($data['email'], '', '', $data['hash'], $data['language']);
+            $this->registrationService->newRemoveSessionData();
+
+        } catch (\Exception $e) {
+            $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
+            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
+
+        $this->getEventManager()->trigger('firstFormCompleted', $this, $data);
+        $signupSession = new Container('newSignup');
+        $signupSession->offsetSet("customer", $customer);
+        return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+    }
+
+    public function newSignup2Action(){
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        $signupSession = new Container('newSignup');
+        $customerSession = $signupSession->offsetGet("customer");
+        $id = 2;
+        //if(is_null($customerSession)){
+
+            if(!is_null($customerSession)){
+                $id = $customerSession->getId();
+            }
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        //}
+        $registeredData = $this->newForm2->getRegisteredData();
+        $registeredDataPromoCode = $this->newForm2->getRegisteredDataPromoCode();
+
+        if (!empty($registeredDataPromoCode)) {
+            $this->newForm2->setData([
+                'promocode' => $registeredDataPromoCode
+            ]);
+        }
+        if (!empty($registeredData)) {
+            $this->newForm2->setData([
+                'user1' => $registeredData->toArray($this->hydrator),
+                'promocode' => $registeredDataPromoCode
+            ]);
+        }
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+
+            $this->newForm2->setData($formData);
+            if ($this->newForm2->isValid()) {
+                error_log(json_encode($formData));
+                return $this->newConclude2($this->newForm2, $formData['promocode'], $formData['user1']['civico'], $customerSession, $mobile);
+            } else {
+                foreach ($this->newForm2->getMessages() as $messageId => $message) {
+                    error_log(json_encode($message));
+                }
+                return $this->newForm2($this->newForm2, $mobile);
+            }
+        } else {
+               return $this->newForm2($this->newForm2, $mobile);
+        }
+    }
+
+    private function newForm2($newForm2, $mobile) {
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        return new ViewModel([
+            'form' => $newForm2,
+            'mobile' => $mobile,
+        ]);
+    }
+
+    private function newConclude2($form, $promocode, $civico, $customer, $mobile) {
+        $form->registerData($promocode);
+
+        $data = $this->registrationService->newRetrieveValidData2($civico);
+
+        // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
+        if (empty($data)) {
+            $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
+            $this->flashMessenger()->addErrorMessage($message);
+            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
+        $data = $this->registrationService->newFormatData2($data, $civico, $customer);
+
+        try {
+            //$data = $this->registrationService->sanitizeDialMobile($data);
+            $customer = $this->registrationService->updateData2($data);
+            $this->registrationService->newRemoveSessionData2();
+
+        } catch (\Exception $e) {
+            $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
+            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
+        //$this->getEventManager()->trigger('registrationCompleted', $this, $data);
+        $signupSession = new Container('newSignup');
+        $signupSession->offsetSet("customer", $customer);
+
+
+        return $this->redirect()->toRoute('cartasi/primo-pagamento',[], ['query' => ['customer' => $customer->getId(), 'signup' => true]] );
+    }
+
+
+    public function OptionalAction(){
+
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        $message = $this->params()->fromQuery('messaggio');
+        $outcome = $this->params()->fromQuery('outcome');
+
+        $signupSession = new Container('newSignup');
+        $customerSession = $signupSession->offsetGet("customer");
+
+        if ($customerSession instanceof Customers){
+            if($customerSession->getId() == $this->params()->fromQuery('c')){
+                error_log('stesso utente');
+            }
+        }
+
+        return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile);
+
+    }
+
+    private function optionalForm($optionalForm, $message, $outcome, $mobile) {
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        return new ViewModel([
+            'form' => $optionalForm,
+            'message' => $message,
+            'outcome' => $outcome,
+            'mobile' => $mobile
+        ]);
     }
 
 }

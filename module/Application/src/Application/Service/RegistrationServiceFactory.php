@@ -13,6 +13,8 @@ class RegistrationServiceFactory implements FactoryInterface
     {
         $form1 = $serviceLocator->get('RegistrationForm');
         $form2 = $serviceLocator->get('RegistrationForm2');
+        $newForm = $serviceLocator->get('NewRegistrationForm');
+        $newForm2 = $serviceLocator->get('NewRegistrationForm2');
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
@@ -25,10 +27,13 @@ class RegistrationServiceFactory implements FactoryInterface
         $deactivationService = $serviceLocator->get('SharengoCore\Service\CustomerDeactivationService');
         $events = $serviceLocator->get('EventManager');
         $events->addIdentifiers('Application\Service\RegistrationService');
+        $municipalityRepository = $serviceLocator->get('SharengoCore\Service\MunicipalitiesService');
 
         return new RegistrationService(
             $form1,
             $form2,
+            $newForm,
+            $newForm2,
             $entityManager,
             $hydrator,
             $emailSettings,
@@ -39,7 +44,8 @@ class RegistrationServiceFactory implements FactoryInterface
             $promoCodesOnceService,
             $subscriptionBonus,
             $deactivationService,
-            $events
+            $events,
+            $municipalityRepository
         );
     }
 }

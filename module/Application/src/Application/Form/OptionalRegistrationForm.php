@@ -8,7 +8,7 @@ use Application\Form\NewUserFieldset;
 use Zend\Session\Container;
 use SharengoCore\Entity\Customers;
 
-class NewRegistrationForm extends Form
+class OptionalRegistrationForm extends Form
 {
     const SESSION_KEY = 'formValidation';
 
@@ -18,13 +18,13 @@ class NewRegistrationForm extends Form
 
     public function __construct(
         Translator $translator,
-        NewUserFieldset $userFieldset
+        OptionalFieldset $optionalFieldset
     ) {
         parent::__construct('registration-form');
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
 
-        $this->add($userFieldset);
+        $this->add($optionalFieldset);
 
 
         $this->add([

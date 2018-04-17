@@ -364,6 +364,20 @@ return [
                     ],
                 ]
             ],
+            'new-signup' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{new-signup}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'new-signup',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
             'signup1' => [
                 'type' => 'Segment',
                 'options' => [
@@ -372,6 +386,20 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup',
+                    ],
+                ]
+            ],
+            'new-signup-2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{new-signup-2}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'new-signup2',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -411,6 +439,20 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup-verify-code'
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            'optional-signup' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{optional}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'optional'
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -1542,6 +1584,9 @@ return [
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'RegistrationService' => 'Application\Service\RegistrationServiceFactory',
             'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
+            'NewRegistrationForm' => 'Application\Form\NewRegistrationFormFactory',
+            'NewRegistrationForm2' => 'Application\Form\NewRegistrationForm2Factory',
+            'OptionalRegistrationForm' => 'Application\Form\OptionalRegistrationFormFactory',
             'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',

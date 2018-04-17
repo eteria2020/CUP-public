@@ -62,6 +62,37 @@ class Module
             }
         );
 
+        $eventManager->getSharedManager()->attach(
+            'Application\Controller\UserController',
+            'firstFormCompleted',
+            function (EventInterface $e) use ($serviceManager) {
+                $params = $e->getParams();
+
+                // store discount rate
+                $profilingPlatformService = $serviceManager->get('ProfilingPlatformService');
+                $customerService = $serviceManager->get('SharengoCore\Service\CustomersService');
+
+                $customer = $customerService->findByEmail($params['email']);
+
+                if (empty($customer)) {
+                    return;
+                } else {
+                    $customer = $customer[0];
+                }
+
+                // retrieve discout from equomobili
+                try {
+                    $discount = $profilingPlatformService->getDiscountByEmail($params['email']);
+                    $customerService->setCustomerDiscountRate($customer, $discount);
+                } catch (ProfilingPlatformException $ex) {
+                } catch (\Exception $e){
+                }
+
+                // assign card to user
+                $customerService->assignCard($customer);
+            }
+        );
+
         // attach driver's license validation listener
         $driversLicenseValidationListener = $serviceManager->get('Application\Listener\DriversLicenseValidationListener');
         $eventManager->getSharedManager()->attachAggregate($driversLicenseValidationListener);
