@@ -1972,6 +1972,28 @@ return [
                         ]
                     ]
                 ],
+                'retry-wrong-extra' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong extra [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-extra'
+                        ]
+                    ]
+                ],
+                'retry-wrong-extra-time' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong extra time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-extra-time'
+                        ]
+                    ]
+                ],
                 'account-compute' => [
                     'type' => 'simple',
                     'options' => [
