@@ -635,6 +635,11 @@ class UserController extends AbstractActionController {
             return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
 
+        if (!is_null($data['email'])){
+            $customer = $this->customersService->findByEmail($data['email'])[0];
+            $this->customersService->assignCard($customer);
+        }
+
         $this->getEventManager()->trigger('registrationCompleted', $this, $data);
 
         return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);

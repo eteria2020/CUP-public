@@ -55,10 +55,11 @@ class Module
                     $discount = $profilingPlatformService->getDiscountByEmail($params['email']);
                     $customerService->setCustomerDiscountRate($customer, $discount);
                 } catch (ProfilingPlatformException $ex) {
+                } catch (\Exception $e){
                 }
 
                 // assign card to user
-                $customerService->assignCard($customer);
+                //$customerService->assignCard($customer);
             }
         );
 

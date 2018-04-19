@@ -759,17 +759,6 @@ return [
                     ],
                 ],
             ],
-            'coin' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{coin}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action' => 'coin',
-                    ],
-                ],
-            ],
             'comunedifirenze' => [
                 'type' => 'Segment',
                 'options' => [
@@ -2127,6 +2116,17 @@ return [
                         ]
                     ]
                 ],
+                'bonus-algebris' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus algebris [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-algebris'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [
@@ -2256,6 +2256,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableCustomerController',
                             'action' => 'expired-drivers-license'
+                        ]
+                    ]
+                ],
+                'periodic-check-valid-license' => [
+                    'type' => 'Simple',
+                    'options' => [
+                        'route' => 'periodic check valid license',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableCustomerController',
+                            'action' => 'periodic-check-valid-license'
                         ]
                     ]
                 ],
