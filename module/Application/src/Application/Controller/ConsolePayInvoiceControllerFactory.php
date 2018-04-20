@@ -16,9 +16,10 @@ class ConsolePayInvoiceControllerFactory implements FactoryInterface
         $invoicesService = $sharedServiceManager->get('SharengoCore\Service\Invoices');
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
         $processPaymentsService = $sharedServiceManager->get('SharengoCore\Service\ProcessPaymentsService');
+        $processExtraService = $sharedServiceManager->get('SharengoCore\Service\ProcessExtraService');
         $entityManager = $sharedServiceManager->get('doctrine.entitymanager.orm_default');
         $paymentScriptRunService = $sharedServiceManager->get('SharengoCore\Service\PaymentScriptRunsService');
-        $extraScriptRunService = $sharedServiceManager->get('SharengoCore\Service\PxtraScriptRunsService');
+        $extraScriptRunService = $sharedServiceManager->get('SharengoCore\Service\ExtraScriptRunsService');
 
         return new ConsolePayInvoiceController(
             $tripPaymentsService,
@@ -26,6 +27,7 @@ class ConsolePayInvoiceControllerFactory implements FactoryInterface
             $invoicesService,
             $logger,
             $processPaymentsService,
+            $processExtraService,
             $entityManager,
             $paymentScriptRunService,
             $extraScriptRunService
