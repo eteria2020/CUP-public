@@ -51,11 +51,6 @@ class ConsolePayInvoiceController extends AbstractActionController
      * @var ProcessPaymentsService
      */
     private $processPaymentsService;
-    
-    /**
-     * @var ProcessExtraService
-     */
-    private $processExtraService;
 
     /**
      * @var boolean
@@ -86,6 +81,11 @@ class ConsolePayInvoiceController extends AbstractActionController
      * @var ExtraScriptRunsService
      */
     private $extraScriptRunsService;
+    
+    /**
+     * @var ProcessExtraService
+     */
+    private $processExtraService;
 
     /**
      * @param TripPaymentsService $tripPaymentsService

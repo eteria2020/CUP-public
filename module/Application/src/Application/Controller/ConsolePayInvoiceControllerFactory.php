@@ -14,7 +14,7 @@ class ConsolePayInvoiceControllerFactory implements FactoryInterface
         $tripPaymentsService = $sharedServiceManager->get('SharengoCore\Service\TripPaymentsService');
         $extraPaymentsService = $sharedServiceManager->get('SharengoCore\Service\ExtraPaymentsService');
         $invoicesService = $sharedServiceManager->get('SharengoCore\Service\Invoices');
-        $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
+        $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService'); 
         $processPaymentsService = $sharedServiceManager->get('SharengoCore\Service\ProcessPaymentsService');
         $processExtraService = $sharedServiceManager->get('SharengoCore\Service\ProcessExtraService');
         $entityManager = $sharedServiceManager->get('doctrine.entitymanager.orm_default');
