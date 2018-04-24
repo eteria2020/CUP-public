@@ -3,7 +3,8 @@ $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
     ->appendFile($this->basePath('js/ui.datepicker-it.js'));
 $this->headLink()
-    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css'));
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
 ?>
@@ -17,7 +18,7 @@ $this->inlineScript()
 <div id="main">
 
     <!-- module-wizard -->
-    <div class="module-wizard clearfix" style="width: 430px; margin: 0 auto; padding-bottom: 15px;">
+    <div class="module-wizard clearfix">
         <ul>
             <li class="active"><i class="fa fa-user"></i></li>
             <li class="active"><i class="fa fa-tachometer"></i></li>

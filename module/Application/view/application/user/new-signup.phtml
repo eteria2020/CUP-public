@@ -1,12 +1,11 @@
 <?php
 $this->headScript()
-    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
-    ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-    ->appendFile($this->basePath('js/signup.js?v=3.9'));
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'));
 
 $this->headLink()
     ->appendStylesheet($this->basePath('css/overlay.css'))
-    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'));
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css'));
 ?>
 
 <!-- Facebook Pixel Code -->
@@ -39,7 +38,7 @@ $this->headLink()
 <div id="main">
     <!-- module-section-bookmark -->
     <div class="module-section-bookmark content-align-center">
-        <h1 class="module-main-title"><?= $this->translate('Crea un account Share\'ngo'); ?></h1>
+        <h1 class="module-main-title"><?= $this->translate('Iscriviti a Share\'ngo'); ?></h1>
     </div>
     <!-- module-section-bookmark -->
     <script>fbq('track', 'Lead');</script>
@@ -176,10 +175,9 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 ?>
 
 <script type="text/javascript">
-    var municipalitiesUrl = "<?//= $this->url('core/municipalities') ?>",
-        birthTownValue = "<?//= $birthTown->getValue() ?>";
-
     $(document).ready(function () {
+        tryAPIGeolocation();
+
         overlay = $('#sng-overlay');
 
         var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
@@ -223,38 +221,30 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     /*signup favourite city draft*/
 
-    //$(document).ready(function () {
-        console.log('ciao');
-        var apiGeolocationSuccess = function(position) {
-            //alert("API geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+    function nearBy(fleetLat, fleetLon, userLat, userLon){
+        return Math.abs(fleetLat-userLat)+Math.abs(fleetLon-userLon);
+    }
 
-            var MilanoLat = 45.4542119, MilanoLon = 9.1113509617797;
-            var FirenzeLat = 43.8461388, FirenzeLon = 11.3743562543917;
-            var ModenaLat = 44.6458885, ModenaLon = 10.9255707;
-            var RomaLat = 41.8935085, RomaLon = 12.4825526;
-            var arr = [];
-            arr[1] = Math.abs(MilanoLat-position.coords.latitude)+Math.abs(MilanoLon-position.coords.longitude);
-            arr[2] = Math.abs(FirenzeLat-position.coords.latitude)+Math.abs(FirenzeLon-position.coords.longitude);
-            arr[3] = Math.abs(RomaLat-position.coords.latitude)+Math.abs(RomaLon-position.coords.longitude);
-            arr[4] = Math.abs(ModenaLat-position.coords.latitude)+Math.abs(ModenaLon-position.coords.longitude);
+    var apiGeolocationSuccess = function(position) {
+        var arr = [];
+        <?
+            $arr = "";
+            foreach($this->fleets as $f){
+                echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
+                $arr .= "arr[".$f->getId()."]";$arr .= ",";
+            }
+        ?>
+        var i = arr.indexOf(Math.min(<?= $arr; ?>));
+        $('select#fleet>option:eq('+i+')').attr('selected', true);
+    };
 
-            var min = Math.min(arr[1], arr[2], arr[3], arr[4]);
-            var i = arr.indexOf(min);
-
-            $('select#fleet>option:eq('+i+')').attr('selected', true);
-        };
-
-        var tryAPIGeolocation = function() {
-            jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
-                apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
-            })
-                .fail(function(err) {
-                    //alert("API Geolocation error! \n\n"+err);
-                    console.log(err);
-                });
-        };
-
-        tryAPIGeolocation();
-    //});
+    var tryAPIGeolocation = function() {
+        jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
+            apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+        })
+            .fail(function(err) {
+                console.log(err);
+            });
+    };
 
 </script>

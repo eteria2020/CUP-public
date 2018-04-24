@@ -11,9 +11,8 @@ class TaxCodeSignup extends AbstractValidator
     const EIGHTEEN = 'eighteen';
 
     protected $messageTemplates = array(
-        self::NOTVALID => " codice fiscale non valido",
-        self::EIGHTEEN  => " età non consentita per la guida",
-
+        self::NOTVALID => "Codice fiscale non valido",
+        self::EIGHTEEN  => "Età non consentita per la guida",
     );
 
     public function isValid($value)

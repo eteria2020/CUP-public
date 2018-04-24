@@ -12,10 +12,10 @@ class Password extends AbstractValidator
     const DIGIT  = 'digit';
 
     protected $messageTemplates = array(
-        self::LENGTH => " deve essere lunga almeno 8 caratteri",
-        self::UPPER  => " deve contenere almeno una maiuscola",
-        self::LOWER  => " deve contenere almeno una minuscola",
-        self::DIGIT  => " deve contenere almeno un numero"
+        self::LENGTH => "Deve essere lunga almeno 8 caratteri",
+        self::UPPER  => "Deve contenere almeno una maiuscola",
+        self::LOWER  => "Deve contenere almeno una minuscola",
+        self::DIGIT  => "Deve contenere almeno un numero"
     );
 
     public function isValid($value)

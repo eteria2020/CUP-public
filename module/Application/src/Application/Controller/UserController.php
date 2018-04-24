@@ -23,6 +23,7 @@ use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
 use SharengoCore\Service\TripsService;
+use SharengoCore\Form\DTO\UploadedFile;
 use Zend\Log\Logger;
 use SharengoCore\Service\EmailService as EmailService;
 
@@ -834,7 +835,8 @@ class UserController extends AbstractActionController {
 
         return new ViewModel([
             'form' => $newForm,
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'fleets' => $this->fleetService->getAllFleetsNoDummy()
         ]);
     }
 
@@ -900,11 +902,26 @@ class UserController extends AbstractActionController {
         }
 
         if ($this->getRequest()->isPost()) {
-            $formData = $this->getRequest()->getPost();
-
+            //$formData = $this->getRequest()->getPost();
+            $formData = array_merge_recursive(
+                $this->getRequest()->getPost()->toArray(),
+                $this->getRequest()->getFiles()->toArray()
+            );
+//            $this->getRequest()->getFiles()->toArray();
             $this->newForm2->setData($formData);
             if ($this->newForm2->isValid()) {
                 error_log(json_encode($formData));
+                error_log('c'.count($formData['drivers-license-file']));
+/*                foreach ($formData['foreignDriversLicenseUploads'] as $file) {
+
+                    $uploadedFile = new UploadedFile(
+                        $file['name'],
+                        $file['type'],
+                        $file['tmp_name'],
+                        $file['size']
+                    );
+                    $files[] = $uploadedFile;
+                }*/
                 return $this->newConclude2($this->newForm2, $formData['promocode'], $formData['user1']['civico'], $customerSession, $mobile);
             } else {
                 foreach ($this->newForm2->getMessages() as $messageId => $message) {

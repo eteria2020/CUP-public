@@ -171,9 +171,11 @@ $(function () {
 
         birthProvince.change();
     });
-    $("#birthCountry").trigger("change", {
-        birthTownValue: birthTownValue
-    });
+    if (typeof birthTownValue != "undefined") {
+        $("#birthCountry").trigger("change", {
+            birthTownValue: birthTownValue
+        });
+    }
 
     $("#birthProvince").change(function (event, params) {
         var province = $(this).val(),
@@ -203,9 +205,11 @@ $(function () {
             $("#birthTown").append($("<option>"));
         }
     });
-    $("#birthProvince").trigger("change", {
-        birthTownValue: birthTownValue
-    });
+    if (typeof birthTownValue != "undefined") {
+        $("#birthProvince").trigger("change", {
+            birthTownValue: birthTownValue
+        });
+    }
 
     //CSD947-170822-doublelanguagesignupforms//
     function setLanguage() {

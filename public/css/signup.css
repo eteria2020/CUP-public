@@ -1,0 +1,64 @@
+.module-wizard {
+    width: 430px !important;
+    /*margin: 0 auto;*/
+    padding-bottom: 15px;
+}
+
+#generalCondition1Text{
+    text-transform: none;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+#driverLicenseForeign {
+    font-size: 14px;
+    font-weight: normal;
+    color: #07BA50;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 6px 12px;
+
+    line-height: 1.428571429;
+
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.module-modal {
+    margin-top: -250px;
+}
+
+p.codicePromo{
+    text-align: center; padding: 10px 0 10px 0 !important;
+}
+
+/* mobile view */
+@media only screen and (max-width: 420px) {
+    .module-wizard ul li .fa {
+        font-size: 25px !important;
+    }
+
+    .module-wizard ul li {
+        width: 45px !important;
+        height: 45px !important;
+        line-height: 35px !important;
+        margin-right: 15px !important;
+    }
+
+    .module-wizard ul li:after {
+        height: 4px !important;
+        margin-top: 20px !important;
+        /*width: 20px !important;*/
+
+    }
+
+    .module-wizard {
+        width: 240px !important;
+    }
+}
