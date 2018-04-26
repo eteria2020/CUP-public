@@ -332,16 +332,16 @@ class ConsolePayInvoiceController extends AbstractActionController
     /*
      * Re try to pay extra marked as "wrong payments" in last -2 days
      */
-    public function retryWrongExtrasAction()
+    public function retryWrongExtraAction()
     {
         $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
         $this->logger->setOutputType(Logger::TYPE_CONSOLE);
-
+        
         $request = $this->getRequest();
         //$this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
         $this->avoidEmails = true;  // force avoid send email during re try wong paiment
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
-        $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+        $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');   
 
         if (!$this->extraScriptRunsService->isRunning()) {
             $scriptId = $this->extraScriptRunsService->scriptStarted();
