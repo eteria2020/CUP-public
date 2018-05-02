@@ -2071,6 +2071,17 @@ return [
                         ]
                     ]
                 ],
+                'bonus-algebris' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus algebris [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-algebris'
+                        ]
+                    ]
+                ],
                 'generate-locations' => [
                     'type' => 'simple',
                     'options' => [
