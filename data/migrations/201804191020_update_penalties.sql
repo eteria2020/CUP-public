@@ -1,0 +1,30 @@
+update penalties  set reason = 'Gestione della singola multa', amount = 2000 where id = 1;
+update penalties  set reason = 'Gestione pratiche rimozione veicolo o danni autoinflitti al veicolo', amount = 5000 where id = 2;
+update penalties  set reason = 'Per inadempienza del Cliente (Pulizia straordinaria, riparazione del veicolo e utilizzo improprio)', amount = 5000 where id = 4;
+update penalties  set reason = 'Sanificazione dovuta a trasporto animali', amount = 15000 where id = 5;
+update penalties  set reason = 'Fumare all''interno del veicolo', amount = 5000 where id = 6;
+update penalties  set reason = 'Rilascio del veicolo con luci accese, quadro acceso o finestrini abbassati, e/o parcheggio in spazi privati e coperti/interrati', amount = 5000 where id = 7;
+update penalties  set reason = 'Rimozione del veicolo in caso di parcheggio in divieto di sosta e/o rimozione forzata a seguito di infrazione', amount = NULL where id = 8;
+update penalties  set reason = 'Soccorso stradale: per danni causati dal Cliente, con o senza controparte e perch&egrave; il Cliente non avendo osservato il segnale di riserva ha lasciato il veicolo con carica/autonomia inferiore al 5 %', amount = 12000 where id = 11;
+update penalties  set reason = 'Smarrimento o danneggiamento dei documenti del veicolo', amount = 5000 where id = 13;
+update penalties  set reason = 'Smarrimento cavo elettrico di ricarica sito nel baule', amount = 25000 where id = 14;
+update penalties  set reason = 'Smarrimento Kit emergenza sito nel baule', amount = 5000 where id = 15;
+update penalties  set reason = 'Mancato rispetto delle istruzioni ricevute dal servizio clienti SHARE''NGO e/o dall’operatore intervenuto sul posto in caso di guasto e/o incidente', amount = 5000 where id = 16;
+update penalties  set reason = 'Penale per aver lasciato che soggetti terzi diversi dal Cliente guidassero il veicolo', amount = 50000 where id = 19;
+update penalties  set reason = 'Sinistro non comunicato dal Cliente', amount = 10000 where id = 20;
+update penalties  set reason = 'Recupero del veicolo per responsabilit&agrave; del Cliente perch&egrave; fuori dall''area operativa della citt&agrave; o batteria scarica', amount = 20000 where id = 21;
+update penalties  set reason = 'Mancata pronta restituzione a seguito di richiesta del servizio clienti SHAREN''GO', amount = NULL where id = 22;
+update penalties  set reason = 'Dichiarazioni verificatesi inequivocabilmente false in fase di registrazione', amount = NULL where id = 23;
+update penalties  set reason = 'Affidamento del veicolo a minore anche se in possesso di patente B1', amount = NULL where id = 25;
+update penalties  set reason = 'Riposizionamento veicolo lasciato dall’utente in divieto di sosta o area privata, eseguito da operatori SHARE''NGO', amount = 5000 where id = 26;
+update penalties  set reason = 'Manomissione del sistema di accensione', amount = 30000 where id = 27;
+update penalties  set reason = 'Guida del veicolo sulle autostrade e sulle strade di cui all''art. 175 comma 1 del codice della strada (autostrade e strade extraurbane principali)', amount = 10000 where id = 28;
+update penalties  set reason = 'Occupazione del veicolo con più di due persone', amount = 50000 where id = 29;
+update penalties  set reason = 'Messa in atto di condotta illecita a bordo del veicolo quale, a mero titolo esemplificativo, guida in stato di ebbrezza o guida sotto effetto di sostanze stupefacenti', amount = 50000 where id = 30;
+update penalties  set reason = 'Altre violazioni contrattuali di cui, a titolo esemplificativo e non esaustivo quelle di cui all’articolo 10 del contratto SHARE''NGO', amount = NULL where id = 31;
+update penalties  set reason = 'Franchigia nel caso di incidente (casco)', amount = 50000 where id = 32;
+
+delete from penalties where id = 9;
+delete from penalties where id = 12;
+
+insert into penalties values((select max(id)+1 from penalties), 'Spese di sollecito', 250, 'penalties');
