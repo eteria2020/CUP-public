@@ -463,4 +463,62 @@ class ConsolePayInvoiceController extends AbstractActionController
         }
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongTimeExtra;end\n");
     }
+    
+    public function payInvoiceExtraAction()
+    {
+        $this->logger->setOutputEnvironment(Logger::OUTPUT_ON);
+        $this->logger->setOutputType(Logger::TYPE_CONSOLE);
+
+        $request = $this->getRequest();
+        $this->avoidEmails = $request->getParam('no-emails') || $request->getParam('e');
+        $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
+        $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+
+        if (!$this->extraScriptRunsService->isRunning()) {
+            $scriptId = $this->extraScriptRunsService->scriptStarted();
+            $this->processExtra();
+
+            $this->extraScriptRunsService->scriptEnded($scriptId);
+
+            // clear the entity manager cache
+            $this->entityManager->clear();
+
+            //$this->generateInvoices();
+        } else {
+            $this->logger->log("\nError: Pay invoice Extra is running\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        }
+    }
+    
+    private function processExtra()
+    {
+        $this->logger->log("\nStarted processing extra\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        $verify = $this->extraPaymentsService->getExtraPaymentsForPaymentDetails('180 days')[0];
+        $count = $verify["count"];
+        $this->logger->log("Processing extra for " . $count . " TOTAL extra\n");
+        $limit = 200;
+        $lastId = null;
+        while ($count > 0){
+            $verify = $this->extraPaymentsService->getExtraPaymentsForPaymentDetails('180 days', $lastId, $limit)[0];
+            if ($verify["count"] == 0) {
+                break;
+            }
+            $extraPayments = $this->extraPaymentsService->getExtraPaymentsForPayment(null, '-180 days', $lastId, $limit);
+            $lastId = $verify["last"];
+            $count = $verify["count"];
+            $this->logger->log("Processing payments for " . count($extraPayments) . " trips\n");
+            $this->processExtraService->processPayments(
+                $extraPayments,
+                $this->avoidEmails,
+                $this->avoidCartasi,
+                $this->avoidPersistance
+            );
+            // clear the entity manager cache
+            $this->entityManager->clear();
+        }
+
+        $this->processExtraService->processPaymentsCompleted($this->avoidEmails);
+
+        $this->logger->log("Done processing extra\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
 }

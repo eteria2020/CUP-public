@@ -1928,6 +1928,17 @@ return [
                         ]
                     ]
                 ],
+                'pay-invoice-extra' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'pay invoice extra [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'pay-invoice-extra'
+                        ]
+                    ]
+                ],
                 'preauthorization' => [
                     'type' => 'simple',
                     'options' => [
