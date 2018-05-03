@@ -30,6 +30,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # every day
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
+10 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/discounts.sh
 30 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus.sh
 30 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 00 05 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/expired_license.sh
@@ -41,12 +42,10 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 20 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/invoice_extra.sh
 30 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/export_registries.sh
 35 10 * * *     root            /usr/bin/pm2 restart webservices
-40 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/notify_discount_expiry.sh
-00 11 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_old_discounts.sh
 
 00 19 * * 0-4,6 root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry_time.sh
 
-30 22 * * *     root            /usr/bin/pm2 restart webservices
+30 21 * * *     root            /usr/bin/pm2 restart webservices
 58 23 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_compute.sh
 
 # every week
