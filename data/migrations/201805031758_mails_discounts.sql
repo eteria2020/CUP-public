@@ -1,6 +1,4 @@
-UPDATE mails 
-SET 
-content ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+UPDATE mails SET content ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -67,7 +65,7 @@ content ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:/
                                             <td width="5"></td>
                                             <td><a href="https://twitter.com/share_n_go" target="_blank" style="color:#08bd53; text-decoration:none;"><img src="http://www.sharengo.it/images/mails/Sharengo_Social_TW.gif" width="30" height="30" alt="sharengo twitter" /></a></td>
                                             <td width="5"></td>
-                                            <td><a href="https://www.linkedin.com/company/share''ngo" target="_blank" style="color:#08bd53; text-decoration:none;"><img src="http://www.sharengo.it/images/mails/Sharengo_Social_IN.gif" width="30" height="30" alt="sharengo in" /></a></td>
+                                            <td><a href="https://www.linkedin.com/company/share&#39;ngo" target="_blank" style="color:#08bd53; text-decoration:none;"><img src="http://www.sharengo.it/images/mails/Sharengo_Social_IN.gif" width="30" height="30" alt="sharengo in" /></a></td>
                                         </tr></table>
                                     <!-- FINE TABELLA SOCIAL -->
                                 </td>
@@ -145,7 +143,7 @@ content ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:/
                                         <td width="5"></td>
                                         <td><a href="https://twitter.com/share_n_go" target="_blank" style="color:#08bd53; text-decoration:none;"><img src="http://www.sharengo.it/images/mails/Sharengo_Social_TW.gif" width="30" height="30" alt="sharengo twitter" /></a></td>
                                         <td width="5"></td>
-                                        <td><a href="https://www.linkedin.com/company/share''ngo" target="_blank" style="color:#08bd53; text-decoration:none;"><img src="http://www.sharengo.it/images/mails/Sharengo_Social_IN.gif" width="30" height="30" alt="sharengo in" /></a></td>
+                                        <td><a href="https://www.linkedin.com/company/share&#39;ngo" target="_blank" style="color:#08bd53; text-decoration:none;"><img src="http://www.sharengo.it/images/mails/Sharengo_Social_IN.gif" width="30" height="30" alt="sharengo in" /></a></td>
                                     </tr>
                                 </table>
                                 <!-- FINE TABELLA SOCIAL -->
