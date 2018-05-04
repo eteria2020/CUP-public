@@ -506,7 +506,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $extraPayments = $this->extraPaymentsService->getExtraPaymentsForPayment(null, '-180 days', $lastId, $limit);
             $lastId = $verify["last"];
             $count = $verify["count"];
-            $this->logger->log("Processing payments for " . count($extraPayments) . " trips\n");
+            $this->logger->log("Processing payments for " . count($extraPayments) . " extra\n");
             $this->processExtraService->processPayments(
                 $extraPayments,
                 $this->avoidEmails,
