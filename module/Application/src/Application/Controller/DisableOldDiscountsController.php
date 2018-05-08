@@ -120,9 +120,6 @@ class DisableOldDiscountsController extends AbstractActionController
         $dryRun = $request->getParam('dry-run') || $request->getParam('d');
         $noEmail = $request->getparam('no-email') || $request->getParam('e');
 
-        $this->oldCustomerDiscountsService->renewCustomerDiscount($this->customersService->findById(22577), !$dryRun, !$noEmail, $newDiscount);
-        return;
-
         $customersOneYearOld = $this->customersService->retrieveOneYearOldCustomers();
         foreach ($customersOneYearOld as $customer) {
             $this->logger->log(
