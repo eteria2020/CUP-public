@@ -1,7 +1,7 @@
 #!/bin/sh
 #clean old commands and old archive reservations
 
-time='6 months'
+time='3 months'
 
 PSQL='psql -p 5433'
 
@@ -10,4 +10,6 @@ DELETE FROM commands
 WHERE queued < (now() - interval'$time');
 DELETE FROM reservations_archive
 WHERE ts < (now() - interval'$time');
+DELETE FROM customer_locations
+WHERE timestamp < (now() - interval '1 month');
 THE_END

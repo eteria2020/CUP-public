@@ -2280,6 +2280,17 @@ return [
                         ]
                     ]
                 ],
+                'renew-old-discounts' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'renew old discounts [--dry-run|-d] [--no-email|-e]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'renew-old-discounts'
+                        ]
+                    ]
+                ],
                 'test-license-validation' => [
                     'type' => 'simple',
                     'options' => [
