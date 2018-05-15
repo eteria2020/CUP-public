@@ -137,6 +137,7 @@
                 "zf2",
                 "zfc-user"
             ],
+            "abandoned": true,
             "time": "2013-07-05 11:59:46"
         },
         {
@@ -2423,7 +2424,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "73b6795671c538713b50ca1f868690bf1fc83ec8"
+                "reference": "c8117afc9ebbfc04827e3156960892bbb0faa0ef"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2444,7 +2445,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2018-05-08 12:38:36"
+            "time": "2018-05-15 12:49:33"
         },
         {
             "name": "natxet/CssMin",
