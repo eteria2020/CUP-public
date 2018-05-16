@@ -2424,7 +2424,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "01039ef3e083bff66f73ce540cb2a991b8a16f96"
+                "reference": "27e63d04007ac1713353baf4a38af7d9d4c140a1"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2445,7 +2445,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2018-05-16 07:44:37"
+            "time": "2018-05-16 12:17:00"
         },
         {
             "name": "natxet/CssMin",
