@@ -401,16 +401,11 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
-        if ($start == '' && $end == ''){
+        if ($start == '' && $end == '') {
             $now = date_create();
-            if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
-                $start = date_create('-60 days');
-                $start = $start->format('Y-m-d H:i:s');
-                $end = $now->format('Y-m-d H:i:s');
-            } else {
-                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongExtraTimeAction;Error Retry: missing time parameters\n");
-                exit();
-            }
+            $start = date_create('-60 days');
+            $start = $start->format('Y-m-d H:i:s');
+            $end = $now->format('Y-m-d H:i:s');
         }
 
         if (!$this->extraScriptRunsService->isRunning()) {
