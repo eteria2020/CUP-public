@@ -105,6 +105,20 @@ class OptionalFieldset extends Fieldset implements InputFilterProviderInterface 
                 'label' => $translator->translate('Partita IVA'),
             ]
         ]);
+
+        $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'newsletter',
+            'options' => [
+                'label' => $translator->translate("Vorrei ricevere notizie e informazioni da Sharengo riguardanti la mia città. Posso annullare la mia iscrizione alla Newsletter in ogni momento tramite collegamento presente nelle e-mail e nelle Newsletter di Sharengo."),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
+            ]
+        ]);
     }
 
     public function getInputFilterSpecification() {
@@ -138,6 +152,9 @@ class OptionalFieldset extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Application\Form\Validator\VatNumber'
                     ]
                 ]
+            ],
+            'newsletter' => [
+                'required' => false,
             ],
         ];
     }

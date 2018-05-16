@@ -54,6 +54,12 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         );
 
         $this->listeners[] = $events->attach(
+            'Application\Controller\UserController',
+            'secondFormCompleted',
+            [$this, 'validateDriversLicenseNewSignup']
+        );
+
+        $this->listeners[] = $events->attach(
             'Application\Controller\UserAreaController',
             'driversLicenseEdited',
             [$this, 'validateDriversLicense']
@@ -90,5 +96,19 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         }
     }
 
+    public function validateDriversLicenseNewSignup(EventInterface $e)
+    {
+        $data = $e->getParams();
+
+        $customer = $this->customersService->findByEmail($data['email'])[0];
+
+        // we do not request the validation of the drivers license to the
+        // motorizzazione civile is the customer has a foreign drivers license
+        if ($customer->getDriverLicenseForeign()) { //!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)
+            $data['birthCountryMCTC'] = $this->countriesService->getMctcCode($data['birthCountry']);
+            $data['birthProvince'] = $this->driversLicenseValidationService->changeProvinceForValidationDriverLicense($data);
+            $this->enqueueValidationService->validateDriversLicense($data);
+        }
+    }
 
 }

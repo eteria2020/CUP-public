@@ -32,7 +32,8 @@ class UserControllerfactory implements FactoryInterface
         $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
         $fleetService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\FleetService');
         $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
-        
+        $foreignDriversLicenseService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ForeignDriversLicenseService');
+
         return new UserController(
             $form1,
             $form2,
@@ -50,7 +51,8 @@ class UserControllerfactory implements FactoryInterface
             $fleetService,
             $tripService,
             $promoCodeService,
-            $promoCodesOnceService
+            $promoCodesOnceService,
+            $foreignDriversLicenseService
         );
     }
 }

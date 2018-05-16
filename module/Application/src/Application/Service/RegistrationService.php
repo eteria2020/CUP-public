@@ -9,6 +9,7 @@ use SharengoCore\Entity\PromoCodesInfo;
 use SharengoCore\Entity\PromoCodesOnce;
 use CodiceFiscale\Checker;
 
+use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomerDeactivationService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\MunicipalitiesService;
@@ -46,6 +47,11 @@ final class RegistrationService
      * @var Form
      */
     private $newForm2;
+
+    /**
+     * @var Form
+     */
+    private $optionalForm;
 
     /**
      * @var EntityManager
@@ -113,6 +119,11 @@ final class RegistrationService
     private $municipalitiesService;
 
     /**
+     * @var CountriesService
+     */
+    private $countriesService;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
@@ -134,6 +145,7 @@ final class RegistrationService
         Form $form2,
         Form $newForm,
         Form $newForm2,
+        Form $optionalForm,
         EntityManager $entityManager,
         AbstractHydrator $hydrator,
         array $emailSettings,
@@ -145,13 +157,15 @@ final class RegistrationService
         array $subscriptionBonus,
         CustomerDeactivationService $deactivationService,
         EventManager $events,
-        MunicipalitiesService $municipalitiesService
+        MunicipalitiesService $municipalitiesService,
+        CountriesService $countriesService
 
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
         $this->newForm = $newForm;
         $this->newForm2 = $newForm2;
+        $this->optionalForm = $optionalForm;
         $this->entityManager = $entityManager;
         $this->hydrator = $hydrator;
         $this->emailSettings = $emailSettings;
@@ -165,6 +179,7 @@ final class RegistrationService
         $this->deactivationService = $deactivationService;
         $this->events = $events;
         $this->municipalitiesService = $municipalitiesService;
+        $this->countriesService = $countriesService;
     }
 
     /**
@@ -326,13 +341,6 @@ final class RegistrationService
                 if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
                     // add 100 min bonus
                     $total = $this->subscriptionBonus['total'];
-                    /* 1 euro subscription CSD-1406 */
-                    $now = new \DateTime();
-                    $start = new \DateTime('2017-11-01 00:00:00');
-                    $end = new \DateTime('2017-12-31 23:59:59');
-                    if ($now >= $start && $now <= $end){
-                        $total = 15;
-                    }
                     $bonus100mins = CustomersBonus::createBonus(
                         $customer,
                         $total, //$this->subscriptionBonus['total'],
@@ -498,14 +506,14 @@ final class RegistrationService
         $data['email'] = strtolower($data['email']);
 
         // ensure the vat is not NULL, but a string
-        if (is_null($data['vat'])) {
+        if (!isset($data['vat']) || is_null($data['vat'])) {
             $data['vat'] = '';
         }
 
         return $data;
     }
 
-    public function newSaveData($data)
+    public function saveData1($data)
     {
         $this->entityManager->getConnection()->beginTransaction();
 
@@ -519,6 +527,7 @@ final class RegistrationService
             $pins = ['primary' => $primary];
 
             $customer->setPin(json_encode($pins));
+            $customer->setRegistrationCompleted(true);
 
             $this->entityManager->persist($customer);
 
@@ -539,20 +548,25 @@ final class RegistrationService
      * @param array $data
      * @return array
      */
-    public function newFormatData($data)
+    public function formatData1($data)
     {
         //$data['taxCode'] = strtoupper(trim($data['taxCode']));
         //$data['driverLicenseCategories'] = '{' .implode(',', $data['driverLicenseCategories']). '}';
         $data['vat'] = '';
         $data['language'] = 'it';
-        /* DRIVER LICENSE FAKE DATA */
+
+        /* DRIVER LICENSE TEMP DATA */
         $data['driverLicenseForeign'] = false;
         $data['driverLicenseReleaseDate'] = null;
         $data['driverLicenseExpire'] = null;
+
         /* GENERAL CONDITION AND PRIVACY */
         $data['generalCondition1'] = 1;
         $data['generalCondition2'] = 1;
         $data['privacyInformation'] = 1;
+
+        /* SET REGISTRATION COMPLETE TRUE */
+        $data['registrationCompleted'] = 1;
 
         $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
@@ -560,18 +574,20 @@ final class RegistrationService
         return $data;
     }
 
-    public function newRemoveSessionData()
+    public function removeSessionData1()
     {
         $this->newForm->clearRegisteredData();
         //$this->newForm->clearRegisteredData();
     }
 
     /**
+     * @param $civico
+     * @param $files
      * returns an array with the data of the user, or null if the data expired
      *
      * @return array|null
      */
-    public function newRetrieveValidData2($civico)
+    public function retrieveValidData2($civico, $files)
     {
         $dataForm2 = $this->newForm2->getRegisteredData();
         $promoCode = $this->newForm2->getRegisteredDataPromoCode();
@@ -591,17 +607,16 @@ final class RegistrationService
         $this->newForm2->setData([
             'user1' => $userData,
             'promocode' => $promoCode,
+            'signature' => $files['signature'],
+            'drivers-license-front' => $files['drivers-license-front'],
+            'drivers-license-back' => $files['drivers-license-back'],
+            'identity-front' => $files['drivers-license-front'],
+            'identity-back' => $files['drivers-license-back'],
         ]);
-        var_dump($userData);
 
         if (!$this->newForm2->isValid()) {
-            foreach ($this->newForm2->getMessages() as $messageId => $message) {
-                error_log(json_encode($message));
-            }
-            exit();
             return null;
         } else {
-            error_log('qui entro?2');
             $dataForm2 = $this->hydrator->extract($dataForm2);
         }
 
@@ -618,7 +633,6 @@ final class RegistrationService
         if ('' != $promoCode) {
             $data['promoCode'] = $promoCode['promocode'];
         }
-        error_log('12');
         return $data;
     }
 
@@ -626,16 +640,18 @@ final class RegistrationService
      * @param array $data
      * @return array
      */
-    public function newFormatData2($data, $civico, Customers $customer)
+    public function formatData2($data, $civico, Customers $customer)
     {
         $data['id'] = $customer->getId();
         $data['pin'] = $customer->getPin();
+        $data['email'] = $customer->getEmail();
         $data['generalCondition1'] = 1;
         $data['generalCondition2'] = 1;
         $data['privacyCondition'] = 1;
-        $data['driverLicenseSurname'] = $data['surname'];
-        $data['driverLicenseName'] = $data['name'];
+        $data['surname'] = ($data['surname'] == null || $data['surname'] == '') ? $data['driverLicenseSurname'] : $data['surname'];
+        $data['name'] = ($data['name'] == null || $data['name'] == '') ? $data['driverLicenseName'] : $data['name'];;
         $data['address'] = $data['address'].' '.$civico;
+        $data['taxCode'] = strtoupper($data['taxCode']);
         $chk = new Checker();
         if ($chk->isFormallyCorrect($data['taxCode'])){
             $birthYear = $chk->getYearBirth();
@@ -656,14 +672,19 @@ final class RegistrationService
                 default:
                     $gender = 'male';
             }
+            $data['gender'] = $gender;
 
             if ($chk->getCountryBirth()[0] != 'Z') { //born in italy
-                $data['gender'] = $gender;
                 $municipality = $this->municipalitiesService->getMunicipalityByCadastralCode($chk->getCountryBirth())[0];
                 $data['birthProvince'] = $municipality->getProvince();
                 $data['birthTown'] = $municipality->getName();
                 $data['birthCountry'] = 'it';
-            } else {} //foreign
+            } else {
+                //foreign born
+                $data['birthProvince'] = 'EE';
+                $data['birthTown'] = 'EE';
+                $data['birthCountry'] = $this->countriesService->getCountryByCadastralCode($chk->getCountryBirth());
+            }
 
         } else {
             return null;
@@ -679,9 +700,54 @@ final class RegistrationService
         try {
             $customer = new Customers();
 
-
             $customer = $this->hydrator->hydrate($data, $customer);
 
+            // has customer used a promo code?
+            $promoCode = $data['promoCode'];
+            $promoCodeOnce = NULL;
+
+            if ('' != $promoCode) {
+                $promoCode = $this->promoCodesService->getPromoCode($promoCode);
+
+                if (is_null($promoCode)) { // is a promocode once
+                    $this->entityManager->persist($customer);
+                    $promoCodeOnce = $this->promoCodesOnceService->usePromoCode($customer, $data['promoCode']);
+
+                    if(!is_null($promoCodeOnce)){
+                        $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
+                        $customer->setDiscountRate($promoCodeInfo->discountPercentage());
+                    } else { // error in set promocode once
+                        throw new \Exception('Promocode once '.$data['promoCode'].' not found,');
+                    }
+                } else { // is a promocode standard
+                    $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
+                    $customerBonus->setCustomer($customer);
+                    $this->entityManager->persist($customerBonus);
+
+                    // promo codes has a discount percentage
+                    if ($promoCode->discountPercentage() > 0) {
+                        $discountPercentage = max(
+                            $customer->getDiscountRate(),
+                            $promoCode->discountPercentage()
+                        );
+                        $customer->setDiscountRate($discountPercentage);
+                    }
+                }
+            }
+
+            if(is_null($promoCodeOnce)){
+                if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
+                    // add 100 min bonus
+                    $total = $this->subscriptionBonus['total'];
+                    $bonus100mins = CustomersBonus::createBonus(
+                        $customer,
+                        $total, //$this->subscriptionBonus['total'],
+                        $this->subscriptionBonus['description'],
+                        $this->subscriptionBonus['valid-to']
+                    );
+                    $this->entityManager->persist($bonus100mins);
+                }
+            }
 
             $this->entityManager->persist($customer);
 
@@ -698,10 +764,76 @@ final class RegistrationService
         }
     }
 
-    public function newRemoveSessionData2()
+    public function removeSessionData2()
     {
         $this->newForm2->clearRegisteredData();
-        //$this->newForm->clearRegisteredData();
+    }
+
+    /**
+     * returns an array with the data of the user, or null if the data expired
+     *
+     * @return array|null
+     */
+    public function retrieveValidOptionalData()
+    {
+        $optionalForm = $this->optionalForm->getRegisteredData();
+
+        if (is_null($optionalForm)) {
+            return null;
+        }
+
+        $optionalData = $optionalForm->toArray($this->hydrator);
+
+        $this->optionalForm->setData([
+            'optional' => $optionalData,
+        ]);
+
+        if (!$this->optionalForm->isValid()) {
+            return null;
+        } else {
+            $optionalForm = $this->hydrator->extract($optionalForm);
+        }
+
+        $data = [];
+
+        foreach ($optionalForm as $key => $value) {
+            if (!is_null($value)) { //!
+                /*$data[$key] = $dataForm2[$key];
+                  } else {*/
+                $data[$key] = $optionalForm[$key];
+            }
+        }
+
+        return $data;
+    }
+
+    public function updateOptionalData($data, $customerId)
+    {
+        $customer = $this->customersRepository->findOneById($customerId);
+        $customer->setVat($data["vat"]);
+        $customer->setNewsletter(($data["newsletter"] == "on"));
+        $customer->setHowToKnow($data["howToKnow"]);
+        $customer->setJobType($data["jobType"]);
+
+        $this->entityManager->getConnection()->beginTransaction();
+
+        try {
+
+            $this->entityManager->persist($customer);
+
+            $this->entityManager->flush();
+            $this->entityManager->getConnection()->commit();
+            //return $customer;
+        } catch (\Exception $e) {
+
+            $this->entityManager->getConnection()->rollback();
+            throw $e;
+        }
+    }
+
+    public function removeSessionOptionalData()
+    {
+        $this->optionalForm->clearRegisteredData();
     }
 
 }

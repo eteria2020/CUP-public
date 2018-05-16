@@ -445,7 +445,7 @@ return [
                     ],
                 ]
             ],
-            'optional-signup' => [
+            'optional' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{optional}[/:mobile]',

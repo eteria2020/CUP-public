@@ -26,7 +26,7 @@ class VatNumber extends AbstractValidator
         }
 
         if (!(
-            strlen($value) === 11 ||
+            strlen(str_replace('IT', '', strtoupper($value))) === 11 ||
             (strlen($value) === 13 && strtoupper(substr($value, 0, 2)) === 'IT')
         )) {
             $this->error(self::LENGTH);

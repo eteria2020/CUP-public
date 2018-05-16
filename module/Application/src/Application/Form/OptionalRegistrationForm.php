@@ -12,7 +12,7 @@ class OptionalRegistrationForm extends Form
 {
     const SESSION_KEY = 'formValidation';
 
-    const FORM_DATA = 'userData';
+    const FORM_DATA = 'optional';
 
     private $container;
 

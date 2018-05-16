@@ -9,11 +9,20 @@ $this->headLink()
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
 ?>
-<!-- module-section-bookmark -->
-<div class="module-section-bookmark content-align-center">
-    <h1 class="module-main-title"><?= $this->translate('Completa il tuo profilo'); ?></h1>
+<div class="module-section-bookmark yellow content-align-center">
+    <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
+    <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
+        <p>
+            <b>40 minuti a soli 10&euro;</b><br>
+            e guidi subito la tua Sharengo!
+        </p>
+    </div>
 </div>
-<!-- module-section-bookmark -->
+
+<div class="module-main-subtitle content-align-center">
+    <p>Benvenuto <?= $this->email ?><br>
+        Solo pochi istanti per completare il tuo profilo</p>
+</div>
 
 <!-- main -->
 <div id="main">
@@ -21,10 +30,10 @@ $this->inlineScript()
     <!-- module-wizard -->
     <div class="module-wizard clearfix">
         <ul>
-            <li class="active"><i class="fa fa-user"></i></li>
-            <li class="active"><i class="fa fa-tachometer"></i></li>
-            <li><i class="fa fa-credit-card"></i></li>
-            <li><i class="fa fa-flag-checkered"></i></li>
+            <li class="active">1</i></li>
+            <li class="active">2</li>
+            <li>3</li>
+            <li><i class="icon-auto"></i></li>
         </ul>
     </div>
     <!-- module-wizard -->
@@ -73,9 +82,9 @@ $this->inlineScript()
                 </div>
 
             </div>
-            <? if($this->formElementErrors($this->form->get('user1')->get('name')) != "" || $this->formElementErrors($this->form->get('user1')->get('surname')) != "") { ?>
             <!-- block-row-field -->
-            <div class="block-row-field clearfix">
+            <div class="block-row-field clearfix" id="coherenceTaxCode">
+                 <? //if($this->formElementErrors($this->form->get('user1')->get('name')) != ""){ ?>
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Nome codice fiscale'); ?></label>
                         <?php
@@ -85,7 +94,8 @@ $this->inlineScript()
                         ?>
                     </p>
                 </div>
-
+                 <? //}
+                 //if ($this->formElementErrors($this->form->get('user1')->get('surname')) != "") {?>
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Cognome codice fiscale'); ?></label>
                         <?php
@@ -95,8 +105,9 @@ $this->inlineScript()
                         ?>
                     </p>
                 </div>
+                <? //} ?>
             </div>
-            <? } ?>
+
 
             <div class="block-row-field clearfix">
                 <div class="block-field bw-f w-2-4">
@@ -429,25 +440,78 @@ $this->inlineScript()
                 </div>
 
             </div>
+            <div id="driverLicenseUpload">
+                <div class="block-field auto-margin">
+                    <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"); ?><br><?= $this->translate("CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"); ?></div>
+                    <div style="font-weight: bold; text-align: center">(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)</div>
+                    <div class="message font">
+                        <?= $this->translate("Il sottoscritto") . ' ' .
+                        '<span id="fName"></span> <span id="fSurname"></span>' . ' '
+                        ?>,
+                        <?= $this->translate("consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di dichiarazioni mendaci, sanzioni penali previste dal Codice penale e dalle leggi speciali in materia ed espressamente richiamate dall'art. 76 del D.P.R. N. 445 DEL 28/12/2000, sotto la sua responsabilit&agrave"); ?>
+                        <br>
 
-            <div class="block-row-field clearfix" id ="driverLicenseUpload" >
-                <p>Carica i tuoi documenti.</p><br>
-                <div class="block-field bw-f w-1-3">
-                    <p> <label style="margin-right: 5px;"><?= $this->translate('ho una patente estera'); ?></label>
+                        <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARA"); ?></div>
+                        <br>
+                        <?= $this->translate("di essere titolare di patente di guida in corso di validit&agrave "); ?> <?= "<span id='fDriverLicense'></span>"?>.
+                        <?= $this->translate("E altresì dichiara che suddetto documento di guida è valido, in relazione alle norme internazionali di circolazione (legate alla residenza del cittadino straniero su territorio italiano e alla durata della stessa), ai fini della guida sul territorio italiano.");?>
+                    </div>
+                    <br>
+                    <div>
                         <?php $signature = $this->form->get('signature');
                         echo $this->formElement($signature);
-                        echo $this->formElementErrors($signature, ['class' => 'errors']); ?>
-                    </p>
+                        ?>
+                        <label style="margin-right: 5px;"><?= $this->translate("Letto, confermato e sottoscritto"); ?></label>
+                        <? echo $this->formElementErrors($signature, ['class' => 'errors']); ?>
+                    </div>
+                    <br>
+                    <div>
+                        Livorno, lì <?= date("d/m/Y")?>
+                    </div>
+                    <br>
+                    <div style="font-size: 70%">
+                        <?= $this->translate("Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente dichiarazione sono relativi ad  informazioni strettamente necessarie al conseguimento di finalit&agrave previste dalle vigenti normative e sono trattati e custoditi esclusivamente dall'ufficio responsabile del procedimento."); ?>
+                    </div>
+                    <div style="font-size: 80%; font-weight: bold; text-decoration: underline;">
+                        <?= $this->translate("Esente da Autentica"); ?>
+                    </div>
+                    <br>
                 </div>
-                <div class="block-field bw-f w-1-3">
-                    <p> <label style="margin-right: 5px;"><?= $this->translate('ho una patente estera'); ?></label>
-                        <?php $driverLicenseForeignUpload = $this->form->get('drivers-license-file'); ?>
-                        <?php echo $this->formFile($driverLicenseForeignUpload);
-                        echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
-                    </p>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro"); ?></label><br><br>
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('fronte patente di guida'); ?></label>
+                            <?php $driverLicenseForeignUpload = $this->form->get('drivers-license-front'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('retro patente di guida'); ?></label>
+                            <?php $driverLicenseForeignUpload = $this->form->get('drivers-license-back'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('fronte carta di identità'); ?></label>
+                            <?php $driverLicenseForeignUpload = $this->form->get('identity-front'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('retro carta di identità'); ?></label>
+                            <?php $driverLicenseForeignUpload = $this->form->get('identity-back'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
                 </div>
             </div>
-            <!-- block-row-field -->
+            </div>
 
             <!-- block-row-field -->
             <div class="block-form w-4-4 auto-margin clearfix">
@@ -548,7 +612,6 @@ $this->inlineScript()
         });'
     );
     ?>
-
     <script>
         if($('#driverLicenseForeign').is(":checked"))
             $('#driverLicenseUpload').show();
@@ -561,4 +624,24 @@ $this->inlineScript()
             else
                 $('#driverLicenseUpload').hide();
         });
+
+        <? // in case driver license' name and surname are different from tax code
+        if($this->formElementErrors($this->form->get('user1')->get('name')) != "" || $this->formElementErrors($this->form->get('user1')->get('surname')) != ""){?>
+            $('#coherenceTaxCode').show();
+        <?} else { ?>
+            $('#coherenceTaxCode').hide();
+        <?} ?>
+
+        $('#driverLicenseName').blur(function(){
+            $('#fName').text($('#driverLicenseName').val());
+        });
+
+        $('#driverLicenseSurname').blur(function(){
+            $('#fSurname').text($('#driverLicenseSurname').val());
+        });
+
+        $('#driverLicense').blur(function(){
+            $('#fDriverLicense').text('n. ' + $('#driverLicense').val());
+        });
+
     </script>

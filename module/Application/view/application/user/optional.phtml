@@ -8,11 +8,29 @@ $this->headLink()
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
 ?>
-<!-- module-section-bookmark -->
-<div class="module-section-bookmark content-align-center">
-    <h1 class="module-main-title"><?= $this->translate('Completa il tuo profilo'); ?></h1>
+<div class="module-section-bookmark yellow content-align-center">
+    <h1 class="module-main-title"><?= $this->translate('Ora sei dei nostri!'); ?></h1>
+    <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
+        <p>
+            <b>Scarica l'App e...</b><br>
+            <img style="width: 100%;max-width: 500px;height: auto; padding-top: 10px;" src="<?= $this->basePath('images/gosharengo.png') ?>">
+        </p>
+    </div>
 </div>
-<!-- module-section-bookmark -->
+
+<?php if ($this->outcome == 'OK'): ?>
+    <div class="module-main-subtitle content-align-center">
+        <p><?= $this->translate('Pagamento avvenuto!' )?></p>
+    </div>
+<?php else: ?>
+    <div class="module-main-subtitle content-align-center">
+            <p><?= $this->translate('Si è verificato un problema' )?></p>
+            <span><?= $this->translate('Il pagamento non è andato a buon fine.') ?><br>
+                <?= $this->translate('Il messaggio di errore che abbiamo ricevuto è: "').$this->message.'"' ?><br>
+                <?= $this->translate('Contattare l\'assistenza per maggiori informazioni')?><br>
+                <?= $this->translate('Sarà possibile riprovare il pagamento in Area Riservata')?></span>
+    </div>
+<?php endif; ?>
 
 <!-- main -->
 <div id="main">
@@ -20,36 +38,16 @@ $this->inlineScript()
     <!-- module-wizard -->
     <div class="module-wizard clearfix">
         <ul>
-            <li class="active"><i class="fa fa-user"></i></li>
-            <li class="active"><i class="fa fa-tachometer"></i></li>
-            <li class="active"><i class="fa fa-credit-card"></i></li>
-            <li class="active"><i class="fa fa-flag-checkered"></i></li>
+            <li class="active">1</li>
+            <li class="active">2</li>
+            <li class="active">3</li>
+            <li class="active"><i class="icon-auto active"></i></li>
         </ul>
     </div>
     <!-- module-wizard -->
 
     <!-- content -->
     <div class="content">
-
-
-        <?php if ($this->outcome == 'OK'): ?>
-            <!-- block-form -->
-            <div class="block-form w-3-4 auto-margin clearfix">
-
-                <div class="content-align-center margin-bottom">
-                    <h2><?= $this->translate('Pagamento completato')?></h2>
-                    <p><?= $this->translate('Ti confermiamo la ricezione del pagamento')?></p>
-                </div>
-
-            </div>
-            <!-- block-form -->
-
-
-            <div class="block-form w-3-4 auto-margin clearfix">
-                <h3>Completa il tuo profilo per l'accredito dei tuoi minuti bonus!</h3>
-                <br>
-            </div>
-
             <!-- block-form -->
             <div class="block-form w-3-4 auto-margin clearfix">
 
@@ -96,15 +94,29 @@ $this->inlineScript()
                             ?>
                         </p>
                     </div>
-
                 </div>
-                <div class="block-wrapper-button content-align-center">
-                    <br>
-                    <hr>
-                    <br>
 
-                    <!--<input type="submit" name="" value="<?/*= $this->translate('Attiva il tuo account'); */?>">-->
-                    <input type="button" style="    background: #43a34c;
+                <!-- block-row-field -->
+                <div class="block-row-field clearfix">
+
+                    <div class="block-field w-4-4" style="text-align: justify">
+
+                        <?php $newsletter = $this->form->get('optional')->get('newsletter'); ?>
+                        <label class='control checkbox small-form'>
+                            <?php echo $this->formElement($newsletter) ?>
+                            <span class='control-indicator'
+                                  id="generalCondition1Text"><?= $newsletter->getLabel(); ?></span>
+                        </label>
+                        <?php echo $this->formElementErrors($newsletter, ['class' => 'errors']); ?>
+
+                    </div>
+                </div>
+                <!-- block-row-field -->
+                <br>
+                <div class="block-wrapper-button content-align-center">
+
+                    <input type="submit" name="" value="<?= $this->translate('Conferma');?>">
+                    <!--<input type="button" style="    background: #43a34c;
     width: auto;
     text-align: center;
     color: #000;
@@ -128,64 +140,19 @@ $this->inlineScript()
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-transform: uppercase;
-" value="Scopri gli altri vantaggi per te" onclick="location.href='http://site.sharengo.it/vantaggi-per-te/';"></input>
+" value="Scopri gli altri vantaggi per te" onclick="location.href='http://site.sharengo.it/vantaggi-per-te/';"></input>-->
                 </div>
 
                 </form>
 
             </div>
             <!-- block-form -->
-        <?php else: ?>
-            <!-- block-form -->
-            <div class="block-form w-3-4 auto-margin clearfix">
-
-                <div class="content-align-center margin-bottom">
-                    <h2><?= $this->translate('Si è verificato un problema' )?></h2>
-                    <p><?= $this->translate('Il pagamento non è andato a buon fine.') ?>
-                    <p><?= $this->translate('Il messaggio di errore che abbiamo ricevuto è: "').$this->message.'"' ?>
-                    <p><?= $this->translate('Contattare l\'assistenza per maggiori informazioni')?></p>
-                </div>
-
-            </div>
-            <!-- block-form -->
-        <?php endif; ?>
 
         </div>
         <!-- content -->
 
     </div>
     <!-- main -->
-
-    <!-- module-modal -->
-    <div class="module-modal" style="height:2400px; display: none;">
-        <!-- modal-overlay -->
-        <div class="modal-overlay">
-            <!-- module-pop-up -->
-            <div class="module-pop-up" style="margin:180px auto;">
-
-                <a class="btn-close"><i class="fa fa-close"></i></a>
-
-                <!-- module-pop-up-content -->
-                <div class="module-pop-up-content">
-
-                    <!-- block-pop-up-generic-content -->
-                    <div class="block-pop-up-generic-content">
-                        <img src="<?= $this->basePath('images/patente-fac-simile.jpg'); ?>" alt="">
-                        <p>
-                            <?= $this->translate('5. Numero Patente<br>4. Data di rilascio<br>4c. Autorit&agrave; di rilascio<br>'); ?>
-                        </p>
-                    </div>
-                    <!-- block-pop-up-generic-content -->
-
-                </div>
-                <!-- module-pop-up-content -->
-
-            </div>
-            <!-- module-pop-up -->
-        </div>
-        <!-- modal-overlay -->
-    </div>
-    <!-- module-modal -->
 
     <?
     $this->inlineScript()->appendScript(

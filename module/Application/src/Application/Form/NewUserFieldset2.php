@@ -3,19 +3,19 @@
 namespace Application\Form;
 
 use SharengoCore\Entity\Customers;
-use SharengoCore\Service\CountriesService;
+
 use SharengoCore\Service\CustomersService;
-use SharengoCore\Service\ProvincesService;
-use SharengoCore\Service\FleetService;
+
+
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
-use Zend\Validator\Identical;
 use Zend\Session\Container;
+use Zend\Validator\NotEmpty;
 use Zend\Validator\Callback;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Validator\File\MimeType;
+
 
 class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface {
 
@@ -67,7 +67,6 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
 
         $this->add([
             'name' => 'name',
-            'continue_if_empty' => true,
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'name',
@@ -238,27 +237,6 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             ]
         ]);
 
-/*        $this->add([
-            'name' => 'signature',
-            'type' => 'Zend\Form\Element\Checkbox',
-            'attributes' => [
-                'id' => 'signature'
-            ],
-            'options' => [
-                'use_hidden_element' => true,
-                'checked_value' => 'true',
-                'unchecked_value' => 'false'
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'drivers-license-file',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => [
-                'id' => 'drivers-license-file',
-                'multiple' => false
-            ]
-        ]);*/
     }
 
     public function getInputFilterSpecification() {
@@ -308,10 +286,10 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                 'validators' => [
                     [
                         'name' => 'not_empty',
-                        'break_chain_on_failure' => true,
                         'options' => [
-                            'messages' => [\Zend\Validator\NotEmpty::IS_EMPTY => 'Il nome sulla patente non coincide con quello del codice fiscale, inserisci qui quello corretto']
+                            'messages' => [NotEmpty::IS_EMPTY => 'Il nome sulla patente non coincide col codice fiscale. Verifica di averlo inserito correttamente, se effettivamente diverso inserisci qui quello corretto']
                         ],
+                        'break_chain_on_failure' => true
                     ],
                     [
                         'name' => 'StringLength',
@@ -320,6 +298,17 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                             'max' => 32
                         ]
                     ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                Callback::INVALID_VALUE => 'Il nome non coincide con quello presente sul codice fiscale'
+                            ],
+                            'callback' => function($value, $context = array()) {
+                                return ($this->isNameRequired() && $this->nameCode($this->get('name')->getValue()) == strtoupper(substr($this->get('taxCode')->getValue(), 3, 3)));
+                            }
+                        ]
+                    ]
                 ]
             ],
             'surname' => [
@@ -332,10 +321,10 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                 'validators' => [
                     [
                         'name' => 'not_empty',
-                        'break_chain_on_failure' => true,
                         'options' => [
-                            'messages' => [\Zend\Validator\NotEmpty::IS_EMPTY => 'Il cognome sulla patente non coincide con quello del codice fiscale, inserisci qui quello corretto']
+                            'messages' => [NotEmpty::IS_EMPTY => 'Il cognome sulla patente non coincide con quello del codice fiscale, inserisci qui quello corretto']
                         ],
+                        'break_chain_on_failure' => true,
                     ],
                     [
                         'name' => 'StringLength',
@@ -344,6 +333,17 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                             'max' => 32
                         ]
                     ],
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'messages' => [
+                                Callback::INVALID_VALUE => 'Il cognome non coincide con quello presente sul codice fiscale'
+                            ],
+                            'callback' => function($value, $context = array()) {
+                                return ($this->isSurnameRequired() && $this->surnameCode($this->get('surname')->getValue()) == strtoupper(substr($this->get('taxCode')->getValue(), 0, 3)));
+                            }
+                        ]
+                    ]
                 ]
             ],
             'address' => [
@@ -417,7 +417,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                                Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
                             ],
                             'callback' => function($value, $context = array()) {
                                 $smsVerification = new Container('smsVerification');
@@ -447,7 +447,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                                Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
                             ],
                             'callback' => function($value, $context = array()) {
 
@@ -459,42 +459,39 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                     ]
                 ]
             ],
-            'signature' => [
-                'required' => $this->get('driverLicenseForeign')->getValue() == 'true',
+            'driverLicense' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
                 'validators' => [
                     [
-                        'name' => 'Identical',
+                        'name' => 'StringLength',
+                        'break_chain_on_failure' => true,
                         'options' => [
-                            'token' => 'true',
-                            'messages' => [
-                                Identical::NOT_SAME => 'E\' necessario confermare e sottoscrivere la dichiarazione',
-                            ],
-                        ],
+                            'min' => 6,
+                            'max' => 32
+                        ]
                     ],
-                ]
-            ],
-            'drivers-license-file' => [
-                'required' => $this->get('driverLicenseForeign')->getValue() == 'true',
-                'validators' => [
                     [
-                        'name' => 'File/MimeType',
+                        'name' => 'Application\Form\Validator\DuplicateDriversLicense',
                         'options' => [
-                            'mimeType' => 'image,application/pdf',
-                            'messages' => [
-                                MimeType::FALSE_TYPE => 'Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf',
-                                MimeType::NOT_DETECTED => 'Non è stato possibile verificare il formato del file',
-                                MimeType::NOT_READABLE => 'Il file caricato non è leggibile o non esiste'
-                            ]
+                            'customerService' => $this->customersService
                         ]
                     ]
                 ]
             ],
-
         ];
     }
 
     public function isNameRequired()
     {
+        if ($this->get('taxCode')->getValue() == ""){
+            return false;
+        }
+
         $name = strtoupper(substr($this->get('taxCode')->getValue(), 3, 3));
         if($name != $this->nameCode($this->get('driverLicenseName')->getValue())){
             return true;
@@ -504,6 +501,10 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
 
     public function isSurnameRequired()
     {
+        if ($this->get('taxCode')->getValue() == ""){
+            return false;
+        }
+
         $name = strtoupper(substr($this->get('taxCode')->getValue(), 0, 3));
 
         if($name != $this->surnameCode($this->get('driverLicenseSurname')->getValue())){

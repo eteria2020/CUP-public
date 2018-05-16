@@ -86,7 +86,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'privacyCondition',
             'options' => [
-                'label' => $translator->translate("Ho letto, compreso e accettato l’Informativa Privacy per i Clienti SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le modalità indicate "),
+                'label' => $translator->translate("Do il mio consenso al trattamento dei miei dati personali per comunicazioni sia cartacee che digitali relative al servizio, ai prodotti e alle promozioni Sharengo."),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
@@ -100,6 +100,19 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Hidden',
             'attributes' => [
                 'id' => 'profilingCounter'
+            ]
+        ]);
+        $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'generalCondition2',
+            'options' => [
+                'label' => $translator->translate('Accetto le clausole qui sotto elencate.'),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
             ]
         ]);
     }
@@ -158,7 +171,21 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                         ]
                     ]
                 ]
-            ]
+            ],
+            'generalCondition2' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'on',
+                            'messages' => [
+                                Identical::NOT_SAME => "Value is required and can't be empty",
+                            ]
+                        ],
+                    ],
+                ]
+            ],
         ];
     }
 

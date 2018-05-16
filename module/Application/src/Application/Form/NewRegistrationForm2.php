@@ -11,6 +11,7 @@ use SharengoCore\Entity\Customers;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\Validator\File\MimeType;
+use Zend\Stdlib\Hydrator\HydratorInterface;
 
 class NewRegistrationForm2 extends Form
 {
@@ -24,7 +25,7 @@ class NewRegistrationForm2 extends Form
 
     private $entityManager;
 
-    private $newUserFieldset2;
+
 
     public function __construct(
         Translator $translator,
@@ -35,7 +36,7 @@ class NewRegistrationForm2 extends Form
         parent::__construct('registration-form-2');
 
         $this->entityManager = $entityManager;
-        $this->newUserFieldset2 = $newUserFieldset2;
+
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
 
@@ -69,11 +70,38 @@ class NewRegistrationForm2 extends Form
         ]);
 
         $this->add([
-            'name' => 'drivers-license-file',
+            'name' => 'drivers-license-front',
             'type' => 'Zend\Form\Element\File',
             'attributes' => [
-                'id' => 'drivers-license-file',
-                'multiple' => true
+                'id' => 'drivers-license-front',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'drivers-license-back',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'drivers-license-back',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'identity-front',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'identity-front',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'identity-back',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'identity-back',
+                'multiple' => false
             ]
         ]);
     }
@@ -135,20 +163,53 @@ class NewRegistrationForm2 extends Form
         $promoCodeContainer->offsetUnset(self::PROMO_CODE);
     }
 
-    /*private function addInputFilter()
+    public function getInputFilter()
     {
-        $inputFilter = new InputFilter();
+        $inputFilter = parent::getInputFilter();
+        $inputFilter->remove('signature');
+        $inputFilter->remove('drivers-license-front');
+        $inputFilter->remove('drivers-license-back');
+        $inputFilter->remove('identity-front');
+        $inputFilter->remove('identity-back');
+
         $inputFactory = new InputFactory();
-        error_log($this->newUserFieldset2->get('driverLicenseForeign'));
+
+        $fieldValidator = [
+            [
+                'name' => 'Callback',
+                'options' => [
+                    'callback' => function($value, $context = array()) {
+                        return true;
+                    }
+                ]
+            ]
+        ];
+
+        if($this->get('user1')->get('driverLicenseForeign')->getValue() == 'true'){
+            $fieldValidator = [
+                [
+                    'name' => 'File/MimeType',
+                    'options' => [
+                        'mimeType' => 'image,application/pdf',
+                        'messages' => [
+                            MimeType::FALSE_TYPE => 'Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf',
+                            MimeType::NOT_DETECTED => 'Non è stato possibile verificare il formato del file',
+                            MimeType::NOT_READABLE => 'Il file caricato non è leggibile o non esiste'
+                        ]
+                    ]
+                ]
+            ];
+        }
+
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'signature',
-                'required' => $this->newUserFieldset2->get('driverLicenseForeign')->getValue() == 'true',
+                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
                 'validators' => [
                     [
                         'name' => 'Identical',
                         'options' => [
-                            'token' => 'true',
+                            'token' => $this->get('user1')->get('driverLicenseForeign')->getValue(),
                             'messages' => [
                                 Identical::NOT_SAME => 'E\' necessario confermare e sottoscrivere la dichiarazione',
                             ],
@@ -159,25 +220,36 @@ class NewRegistrationForm2 extends Form
         );
         $inputFilter->add(
             $inputFactory->createInput([
-                'name' => 'drivers-license-file',
-                'required' => $this->newUserFieldset2->get('driverLicenseForeign')->getValue() == 'true',
-                'validators' => [
-                    [
-                        'name' => 'File/MimeType',
-                        'options' => [
-                            'mimeType' => 'image,application/pdf',
-                            'messages' => [
-                                MimeType::FALSE_TYPE => 'Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf',
-                                MimeType::NOT_DETECTED => 'Non è stato possibile verificare il formato del file',
-                                MimeType::NOT_READABLE => 'Il file caricato non è leggibile o non esiste'
-                            ]
-                        ]
-                    ]
-                ]
+                'name' => 'drivers-license-front',
+                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'validators' => $fieldValidator
+            ])
+        );
+        $inputFilter->add(
+            $inputFactory->createInput([
+                'name' => 'drivers-license-back',
+                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'validators' => $fieldValidator
             ])
         );
 
-        $this->setInputFilter($inputFilter);
-    }*/
+        $inputFilter->add(
+            $inputFactory->createInput([
+            'name' => 'identity-front',
+            'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+            'validators' => $fieldValidator
+            ])
+        );
+
+        $inputFilter->add(
+            $inputFactory->createInput([
+                'name' => 'identity-back',
+                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'validators' => $fieldValidator
+            ])
+        );
+        //$this->setInputFilter($inputFilter);
+        return $inputFilter;
+    }
 
 }

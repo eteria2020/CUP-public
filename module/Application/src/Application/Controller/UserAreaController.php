@@ -557,7 +557,7 @@ class UserAreaController extends AbstractActionController {
         }
 
         if(is_null($customer->getTaxCode())){
-            error_log('tax_code null');
+
             $signupSession = new Container('newSignup');
             $signupSession->offsetSet("customer", $customer);
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));

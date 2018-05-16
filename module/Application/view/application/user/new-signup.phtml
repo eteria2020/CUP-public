@@ -37,19 +37,31 @@ $this->headLink()
 <!-- main -->
 <div id="main">
     <!-- module-section-bookmark -->
-    <div class="module-section-bookmark content-align-center">
-        <h1 class="module-main-title"><?= $this->translate('Iscriviti a Share\'ngo'); ?></h1>
+    <div class="module-section-bookmark yellow content-align-center">
+        <h1 class="module-main-title"><?= $this->translate('Il car sharing non inquina e ti conviene!'); ?></h1>
+            <div style="display: inline-block;">
+            <ul style="text-align: left; margin-top: 10px">
+                <li>Area C/ZTL/Tridente Roma + park gratis</li>
+                <li>Auto disponibili vicino a te giorno e notte</li>
+                <li>Pacchetti fino a 20 centesimi al minuto</li>
+            </ul>
+        </div>
     </div>
+
+    <div class="module-main-subtitle content-align-center">
+        <p>Iscriverti non ti costa nulla!</p>
+    </div>
+
     <!-- module-section-bookmark -->
     <script>fbq('track', 'Lead');</script>
 
     <!-- module-wizard -->
-    <div class="module-wizard clearfix" style="width: 430px; margin: 0 auto; padding-bottom: 15px;">
+    <div class="module-wizard clearfix">
         <ul>
-            <li class="active"><i class="fa fa-user"></i></li>
-            <li><i class="fa fa-tachometer"></i></li>
-            <li><i class="fa fa-credit-card"></i></li>
-            <li><i class="fa fa-flag-checkered"></i></li>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li><i class="icon-auto"></i></li>
         </ul>
     </div>
     <!-- module-wizard -->
@@ -117,14 +129,31 @@ $this->headLink()
             </div>
             <!-- block-row-field -->
 
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field w-4-4" style="text-align: justify">
+
+                    <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($generalCondition2) ?>
+                        <span class='control-indicator'
+                              id="generalCondition1Text"><?= $generalCondition2->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
+
+                </div>
+            </div>
+            <!-- block-row-field -->
+
 
             <div class="block-wrapper-button content-align-center">
-<!--                <input type="reset" class="reset" name="" id="cancelBtn" value="Annulla">-->
-                <input type="submit" name="" id="nextBtn" value="REGISTRATI">
-                <p style="font-size: 15px; font-weight: 300; color: #07BA50; padding-top: 15px;">Facendo clic su REGISTRATI accetti<br>
-                    le <a style="font-size: 15px; font-weight: 400; color: #07BA50; text-decoration: underline;" href="<?= $this->basePath('pdf/car_sharing_def.pdf'); ?>">condizioni contrattuali</a> di Share'ngo</p>
+                <input type="submit" name="" id="nextBtn" value="ISCRIVITI">
+                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">Cliccando sul tasto Iscriviti accetti l'<a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="http://site.sharengo.it/privacy/">Informativa sulla Privacy</a> e <br>
+                    le <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/car_sharing_def.pdf'); ?>">Condizioni Contrattuali</a> di Share'ngo</p>
+                <br>
+                <p style="font-size: 12px; font-weight: 300; padding-top: 15px;">Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del Codice Civile Italiano, di accettare integralmente e specificatamente le clausole dei seguenti articoli: 3 (oggetto e parti del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online del Car Sharing Sharengo), 6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente).</p>
             </div>
-
 
             </form>
 
