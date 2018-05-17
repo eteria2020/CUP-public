@@ -352,14 +352,19 @@ class UserAreaController extends AbstractActionController {
         if ($mobile) {
             $this->layout('layout/map');
         }
+        $customer = $this->userService->getIdentity();
+
+        $redirect = $this->redirectRegistration($customer, $mobile);
+        if ($redirect != null) {
+            return $redirect;
+        }
+
         /** @var DriverLicenseForm $form */
         $form = $this->driverLicenseForm;
         $customerData = $this->hydrator->extract($this->customer);
         $form->setData(['driver' => $customerData]);
-
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPost()->toArray();
-            $customer = $this->userService->getIdentity();
             $postData['driver']['id'] = $customer->getId();
             if (!isset($postData['driver']['driverLicenseCategories'])) {
                 $driver = $postData['driver'];
@@ -556,8 +561,7 @@ class UserAreaController extends AbstractActionController {
             $userAreaMobile = '/' . $mobileParam;
         }
 
-        if(is_null($customer->getTaxCode())){
-
+        if(is_null($customer->getTaxCode())){ // if tax code is null customer has to complete signup 2
             $signupSession = new Container('newSignup');
             $signupSession->offsetSet("customer", $customer);
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));

@@ -888,9 +888,14 @@ class UserController extends AbstractActionController {
         $signupSession = new Container('newSignup');
         $customerSession = $signupSession->offsetGet("customer");
 
-/*        if(is_null($customerSession)){ //TODO: AGGIUNGERE CONTROLLO IN CASO SIA LOGGATO E VISITI NUOVAMENTE QUESTA PAGINA
+        /*if(is_null($customerSession)){ //TODO: AGGIUNGERE CONTROLLO IN CASO SIA LOGGATO E VISITI NUOVAMENTE QUESTA PAGINA
             return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
+
+        if($customerSession instanceOf Customers && $customerSession->getTaxCode() != null){
+            return $this->redirect()->toRoute('area-utente', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }*/
+
         $registeredData = $this->newForm2->getRegisteredData();
         $registeredDataPromoCode = $this->newForm2->getRegisteredDataPromoCode();
 
@@ -997,7 +1002,7 @@ class UserController extends AbstractActionController {
 
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
         $this->getEventManager()->trigger('secondFormCompleted', $this, $data); //driver license validation
         $signupSession = new Container('newSignup');
@@ -1024,7 +1029,7 @@ class UserController extends AbstractActionController {
         }*/
 
         if ($customerSession instanceof Customers){
-            if($customerSession->getId() == $this->params()->fromQuery('c')){
+            if($customerSession->getId() != $this->params()->fromQuery('c')){
                 //error_log('stesso utente');
             }
         }
@@ -1043,7 +1048,7 @@ class UserController extends AbstractActionController {
 
             $this->optionalForm->setData($formData);
             if ($this->optionalForm->isValid()) {
-                error_log(json_encode($formData));
+                //error_log(json_encode($formData));
                 return $this->optionalConclude($this->optionalForm, $customerSession, $mobile);
             } else {
                 /*foreach ($this->newForm2->getMessages() as $messageId => $message) {

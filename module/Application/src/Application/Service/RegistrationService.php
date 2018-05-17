@@ -527,7 +527,7 @@ final class RegistrationService
             $pins = ['primary' => $primary];
 
             $customer->setPin(json_encode($pins));
-            $customer->setRegistrationCompleted(true);
+            //$customer->setRegistrationCompleted(true);
 
             $this->entityManager->persist($customer);
 
@@ -566,7 +566,7 @@ final class RegistrationService
         $data['privacyInformation'] = 1;
 
         /* SET REGISTRATION COMPLETE TRUE */
-        $data['registrationCompleted'] = 1;
+        //$data['registrationCompleted'] = true;
 
         $data['password'] = hash("MD5", $data['password']);
         $data['hash'] = hash("MD5", strtoupper($data['email']).strtoupper($data['password']));
@@ -652,6 +652,7 @@ final class RegistrationService
         $data['name'] = ($data['name'] == null || $data['name'] == '') ? $data['driverLicenseName'] : $data['name'];;
         $data['address'] = $data['address'].' '.$civico;
         $data['taxCode'] = strtoupper($data['taxCode']);
+        $data['driverLicenseCountry'] = $data['driverLicenseForeign'] == 'true' ? 'ee' : 'it';
         $chk = new Checker();
         if ($chk->isFormallyCorrect($data['taxCode'])){
             $birthYear = $chk->getYearBirth();
@@ -661,7 +662,7 @@ final class RegistrationService
             } else {
                 $birthYear = '20'.$birthYear;
             }
-            $data['birthDate'] = $chk->getDayBirth().'-'.$chk->getMonthBirth().'-'.$birthYear;
+            $data['birthDate'] = date_create($chk->getDayBirth().'-'.$chk->getMonthBirth().'-'.$birthYear);
             switch ($chk->getSex()){
                 case 'M':
                     $gender = 'male';
@@ -749,11 +750,13 @@ final class RegistrationService
                 }
             }
 
+            $customer->setRegistrationCompleted(true);
+
             $this->entityManager->persist($customer);
 
             //$this->deactivationService->deactivateAtRegistration($customer);
 
-            //$this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
+            $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
@@ -823,6 +826,7 @@ final class RegistrationService
 
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
+            $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
             //return $customer;
         } catch (\Exception $e) {
 

@@ -66,13 +66,13 @@ $this->headLink()
 
                                 <div class="block-field bw-f w-2-4">
                                     <p> <label><?= $this->translate('Conseguita il'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
-                                        <input type="text" class="required disabled" name="" value="<?= $this->customer->getDriverLicenseReleaseDate()->format('d-m-Y'); ?>" >
+                                        <input type="text" class="required disabled" name="" value="<?= is_null($this->customer->getDriverLicenseReleaseDate()) ? '' : $this->customer->getDriverLicenseReleaseDate()->format('d-m-Y'); ?>" >
                                     </p>
                                 </div>
 
                                 <div class="block-field bw-f w-2-4">
                                     <p> <label><?= $this->translate('Data di scadenza'); ?></label>
-                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getDriverLicenseExpire()->format('d-m-Y'); ?>" >
+                                        <input type="text" name="" class="required disabled" value="<?= is_null($this->customer->getDriverLicenseExpire()) ? '' : $this->customer->getDriverLicenseExpire()->format('d-m-Y'); ?>" >
                                     </p>
                                 </div>
 
