@@ -1939,6 +1939,17 @@ return [
                         ]
                     ]
                 ],
+                'pay-invoice-extra' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'pay invoice extra [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'pay-invoice-extra'
+                        ]
+                    ]
+                ],
                 'preauthorization' => [
                     'type' => 'simple',
                     'options' => [
@@ -1980,6 +1991,28 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',
                             'action' => 'retry-wrong-payments-time'
+                        ]
+                    ]
+                ],
+                'retry-wrong-extra' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong extra [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-extra'
+                        ]
+                    ]
+                ],
+                'retry-wrong-extra-time' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong extra time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-extra-time'
                         ]
                     ]
                 ],
@@ -2079,6 +2112,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'bonus-nivea'
+                        ]
+                    ]
+                ],
+                'bonus-algebris' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus algebris [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-algebris'
                         ]
                     ]
                 ],
@@ -2244,6 +2288,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableOldDiscountsController',
                             'action' => 'notify-disable-discount'
+                        ]
+                    ]
+                ],
+                'renew-old-discounts' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'renew old discounts [--dry-run|-d] [--no-email|-e]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'renew-old-discounts'
                         ]
                     ]
                 ],

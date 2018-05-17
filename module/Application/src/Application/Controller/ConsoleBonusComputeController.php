@@ -967,6 +967,75 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format = "%s;INF;bonusNiveaAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
+    
+    public function BonusAlgebrisAction(){
+        
+        $this->prepareLogger();
+        $format = "%s;INF;addBonusByAlgebris;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+
+        $format = "%s;INF;addBonusByAlgebris;";
+        if (!$dryRun) {
+            $format .= "DryRun = TRUE;";
+        } else {
+            $format .= "DryRun = FALSE;";
+        }
+        $format .= "\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
+        
+        $yesterday = new \DateTime();
+        $yesterday = $yesterday->modify("-1 day");
+        $yesterday = $yesterday->format("Y-m-d 00:00:00");
+        
+        $startMonth = new \DateTime($yesterday);
+        $startMonth = $startMonth->modify("first day of this month");
+        $startMonth = $startMonth->format("Y-m-d 00:00:00");
+
+        $endMonth = new \DateTime($yesterday);
+        $endMonth = $endMonth->modify("first day of next month");
+        $endMonth = $endMonth->format("Y-m-d 00:00:00");
+        
+        $date_zero = new \DateTime("2018-04-01");
+        $date_zero = $date_zero->format("Y-m-d 00:00:00");
+
+        $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
+        
+        foreach ($customers as $customer) {
+            if ($this->runBeforeDate($customer, $date_zero)) {
+                if (!$dryRun) {
+                    $bonus = new \SharengoCore\Entity\CustomersBonus();
+                    $bonus->setInsertTs(date_create());
+                    $bonus->setTotal(60);
+                    $bonus->setResidual(60);
+                    $bonus->setUpdateTs(date_create());
+                    $bonus->setValidFrom(date_create());
+                    $bonus->setValidTo(date_create('+ 60 day'));
+                    $bonus->setType("bonus");
+                    $bonus->setDescription($descriptionBonusAlgebris);
+
+                    $this->customerService->addBonus($customer, $bonus);
+                }
+            
+                $format = "%s;INF;addBonusByAlgebris;%d;%s\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $customer->getEmail()));
+            }
+            $this->customerService->clearEntityManagerBonus();
+        }
+        
+        $format = "%s;INF;addBonusByAlgebris;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }
+    
+    public function runBeforeDate(Customers $customer, $date_zero) {
+        $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeDate($customer, $date_zero);
+        return $nTripBeforeAprilMonth[0][1] == 0 ? true : false; 
+    }
 
     
 }
