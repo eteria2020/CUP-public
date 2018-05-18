@@ -10,6 +10,7 @@ CREATE TABLE partners (
 
 INSERT INTO partners (name, code, params, enabled) VALUES ('Free2move', 'FREE2MOVE', '{"info" :{ "utm_source" : "FREE2MOVE"} }', true);
 INSERT INTO partners (name, code, params, enabled) VALUES ('Telepass', 'telepass', '{"payments" :{ "uri" : "https://api-dev.urbi.co", "authorization" : "sharengo_test_key"} }', true);
+INSERT INTO partners (name, code, params, enabled) VALUES ('Nugo', 'nugo', '{"payments" :{ "uri" : "https://api-dev.nugo.co", "authorization" : "sharengo_test_key"} }', true);
 
 CREATE TABLE partners_customers (
     id SERIAL PRIMARY KEY,

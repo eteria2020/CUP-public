@@ -5,7 +5,7 @@ namespace Application\Controller;
 // External Modules
 use Zend\Mvc\Controller\AbstractActionController;
 use SharengoCore\Service\PartnerService;
-use SharengoCore\Service\TelepassPayService;
+use SharengoCore\Service\Partner\TelepassPayService;
 use SharengoCore\Service\TripPaymentsService;
 
 class PartnerController extends AbstractActionController {
