@@ -666,23 +666,29 @@ class UserController extends AbstractActionController {
 
         if (null != $customer) {
             $enablePayment = !$customer->getFirstPaymentCompleted();
+
+            $needsDriversLicenseUpload = $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer) &&
+                    !$this->customersService->customerHasAcceptedDriversLicenseForm($customer);
+
+            //NOTE add 'customerEmail' and 'customerFleetId' only for Criteo use
+            return new ViewModel([
+                'message' => $message,
+                'enable_payment' => $enablePayment,
+                'customerId' => $customer->getId(),
+                'customerEmail' => $customer->getEmail(),
+                'customerFleetId' => $customer->getFleet()->getId(),
+                'benefitsFromDiscountedSubscriptionAmount' => $customer->benefitsFromDiscoutedSubscriptionAmount(),
+                'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100,
+                'needsDriversLicenseUpload' => $needsDriversLicenseUpload,
+                'hash' => $hash
+            ]);
+        }else{
+            return new ViewModel([
+                'message' => $message,
+                'enable_payment' => $enablePayment,
+                'hash' => $hash
+            ]);
         }
-
-        $needsDriversLicenseUpload = $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer) &&
-                !$this->customersService->customerHasAcceptedDriversLicenseForm($customer);
-
-        //NOTE add 'customerEmail' and 'customerFleetId' only for Criteo use
-        return new ViewModel([
-            'message' => $message,
-            'enable_payment' => $enablePayment,
-            'customerId' => $customer->getId(),
-            'customerEmail' => $customer->getEmail(),
-            'customerFleetId' => $customer->getFleet()->getId(),
-            'benefitsFromDiscountedSubscriptionAmount' => $customer->benefitsFromDiscoutedSubscriptionAmount(),
-            'subscriptionDiscountedAmount' => $customer->findDiscountedSubscriptionAmount() / 100,
-            'needsDriversLicenseUpload' => $needsDriversLicenseUpload,
-            'hash' => $hash
-        ]);
     }
 
     public function signupScoreCompletionAction() {
