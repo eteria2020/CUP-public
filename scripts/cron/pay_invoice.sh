@@ -15,3 +15,7 @@ php /srv/apps/sharengo-publicsite/public/index.php pay invoice | tee -a /srv/app
 ts=$(date +'%D %T')
 echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/business_pay_invoice.log
 php /srv/apps/sharengo-publicsite/public/index.php business pay invoice >> /srv/apps/sharengo-publicsite/data/log/business_pay_invoice.log
+
+ts=$(date +'%D %T')
+echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/pay_invoice_extra.log
+php /srv/apps/sharengo-publicsite/public/index.php pay invoice extra | tee -a /srv/apps/sharengo-publicsite/data/log/pay_invoice_extra.log
