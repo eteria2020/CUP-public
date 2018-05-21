@@ -7,9 +7,6 @@
             $menu = '';
             $mobile = substr($this->serverUrl(true), -6) == 'mobile' ? '/mobile' : '';
             foreach ($this->container as $page) {
-                if ($mobile && ($page->getRoute()=='area-utente/tariffe' || $page->getRoute()=='area-utente/rents')){
-                    continue;
-                }
                 $menu .= '<li>';
                 $menu .= sprintf('<a href="%s" class="%s">', $page->getHref().$mobile, $page->isActive() ? 'active' : '');
                 $menu .= sprintf('<i class="%s"></i>', $page->get('icon'));
