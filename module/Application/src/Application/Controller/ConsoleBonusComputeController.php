@@ -904,9 +904,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     /**
      * Add cost of extra fare to the trip
+     * 
+     * @todo we need to account extra fare for business trip
+     * 
      * @param Trips $trip
-     * @param type $extraFareBonusType
-     * @param type $extraFareAmount
+     * @param string $extraFareDescription A description concatenate to address_beginnin and mark the extra payment alredy computed
+     * @param int $extraFareAmount
      * @return boolean
      */
     private function zoneExtraFareAddAmount(Trips $trip, $extraFareDescription, $extraFareAmount) {
@@ -920,11 +923,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         if ($pos === false) { // check if the trip description dosn't contain already the reason
                             $this->tripsService->setAddressByGeocode($trip, false, " (" . $extraFareDescription . ")");
                             if($trip->isBusiness()) {
-                                
-                                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareAddAmount;B2B;addAmount;" . $trip->getId() . ";" . $extraFareAmount . "\n");
+                                //TODO: we need to account extra fare for business trip
+                                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareAddAmount;B2B;" . $trip->getId() . ";" . $extraFareAmount . "\n");
                             } else {
                                 $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
-                                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareAddAmount;;addAmount;" . $trip->getId() . ";" . $extraFareAmount . "\n");
+                                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareAddAmount;;" . $trip->getId() . ";" . $extraFareAmount . "\n");
                             }
                         }
                     }
