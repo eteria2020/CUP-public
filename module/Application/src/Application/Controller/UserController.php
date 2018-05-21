@@ -664,7 +664,7 @@ class UserController extends AbstractActionController {
 
         $customer = $this->customersService->getUserFromHash($hash);
 
-        if (null != $customer) {
+        if (is_null($customer)) {
             $enablePayment = !$customer->getFirstPaymentCompleted();
 
             $needsDriversLicenseUpload = $this->customersService->customerNeedsToAcceptDriversLicenseForm($customer) &&
