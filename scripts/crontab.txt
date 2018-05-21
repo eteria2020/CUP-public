@@ -33,6 +33,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 10 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/discounts.sh
 30 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus.sh
 40 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/driver_license.sh
+# NB Evitare pianificazioni comprese fra le 02:00 e le 03:00, per cambio ora legale/solare
 30 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 00 07 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry.sh
 #30 07 * * 0     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
