@@ -919,8 +919,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         $pos = strpos($trip->getAddressBeginning(), $extraFareDescription);
                         if ($pos === false) { // check if the trip description dosn't contain already the reason
                             $this->tripsService->setAddressByGeocode($trip, false, " (" . $extraFareDescription . ")");
-                            $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
-                            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareApplyAmount;addAmount;" . $trip->getId() . ";" . $extraFareAmount . "\n");
+                            if($trip->isBusiness()) {
+                                
+                                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareAddAmount;B2B;addAmount;" . $trip->getId() . ";" . $extraFareAmount . "\n");
+                            } else {
+                                $this->tripPaymentsService->setExtraFare($trip, $extraFareAmount);
+                                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;zoneExtraFareAddAmount;;addAmount;" . $trip->getId() . ";" . $extraFareAmount . "\n");
+                            }
                         }
                     }
                 }
