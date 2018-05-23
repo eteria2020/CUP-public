@@ -93,18 +93,7 @@ class OptionalFieldset extends Fieldset implements InputFilterProviderInterface 
             ]
         ]);
 
-        $this->add([
-            'name' => 'vat',
-            'type' => 'Zend\Form\Element\Text',
-            'attributes' => [
-                'id' => 'vat',
-                'maxlength' => 13,
-                'placeholder' => 'Partita IVA'
-            ],
-            'options' => [
-                'label' => $translator->translate('Partita IVA'),
-            ]
-        ]);
+
 
         $this->add([
             'type' => 'Zend\Form\Element\Checkbox',

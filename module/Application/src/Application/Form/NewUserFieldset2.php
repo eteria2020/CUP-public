@@ -225,6 +225,19 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
         ]);
 
         $this->add([
+            'name' => 'vat',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'vat',
+                'maxlength' => 13,
+                'placeholder' => 'Partita IVA'
+            ],
+            'options' => [
+                'label' => $translator->translate('Partita IVA'),
+            ]
+        ]);
+
+        $this->add([
             'name' => 'driverLicenseForeign',
             'type' => 'Zend\Form\Element\Checkbox',
             'attributes' => [
@@ -480,6 +493,19 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'options' => [
                             'customerService' => $this->customersService
                         ]
+                    ]
+                ]
+            ],
+            'vat' => [
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\VatNumber'
                     ]
                 ]
             ],

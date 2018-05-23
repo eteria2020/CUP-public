@@ -106,7 +106,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'generalCondition2',
             'options' => [
-                'label' => $translator->translate('Accetto le clausole qui sotto elencate.'),
+                'label' => $translator->translate('Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del Codice Civile Italiano, di accettare integralmente e specificatamente le clausole dei seguenti articoli: 3 (oggetto e parti del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online del Car Sharing Sharengo), 6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente).'),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',

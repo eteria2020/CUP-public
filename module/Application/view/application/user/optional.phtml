@@ -41,7 +41,7 @@ $this->inlineScript()
             <li class="active">1</li>
             <li class="active">2</li>
             <li class="active">3</li>
-            <li class="active"><i class="icon-auto active"></i></li>
+            <li class="active last"><i class="icon-auto active"></i></li>
         </ul>
     </div>
     <!-- module-wizard -->
@@ -55,46 +55,10 @@ $this->inlineScript()
                 $this->form->prepare();
                 echo $this->form()->openTag($this->form);
                 ?>
-
-                <!-- block-row-field -->
-                <div class="block-row-field clearfix">
-
-                    <div class="block-field bw-f w-2-4">
-                        <p> <label><?= $this->translate('Professione'); ?></label>
-                            <?php
-                            $jobType = $this->form->get('optional')->get('jobType');
-                            echo $this->formElement($jobType);
-                            echo $this->formElementErrors($jobType, ['class' => 'errors']);
-                            ?>
-                        </p>
-                    </div>
-
-                    <div class="block-field bw-f w-2-4">
-                        <p> <label><?= $this->translate('Come hai conosciuto Sharengo?'); ?></label>
-                            <?php
-                            $howToKnow = $this->form->get('optional')->get('howToKnow');
-                            echo $this->formElement($howToKnow);
-                            echo $this->formElementErrors($howToKnow, ['class' => 'errors']);
-                            ?>
-                        </p>
-                    </div>
+                <div class="content-align-center">
+                    <h3><?= $this->translate('Invita i tuoi amici e regala un bonus di 15 min. sulla prima corsa. Tu riceverai 15 min. gratis.' )?></h3>
                 </div>
-                <!-- block-row-field -->
-
-
-                <!-- block-row-field -->
-                <div class="block-row-field clearfix">
-
-                    <div class="block-field bw-f w-2-4">
-                        <p> <label><?= $this->translate('Partita IVA (solo per ditte individuali e professionisti)'); ?></label>
-                            <?php
-                            $vat = $this->form->get('optional')->get('vat');
-                            echo $this->formElement($vat);
-                            echo $this->formElementErrors($vat, ['class' => 'errors']);
-                            ?>
-                        </p>
-                    </div>
-                </div>
+                <br>
 
                 <!-- block-row-field -->
                 <div class="block-row-field clearfix">
@@ -114,33 +78,7 @@ $this->inlineScript()
                 <!-- block-row-field -->
                 <br>
                 <div class="block-wrapper-button content-align-center">
-
-                    <input type="submit" name="" value="<?= $this->translate('Conferma');?>">
-                    <!--<input type="button" style="    background: #43a34c;
-    width: auto;
-    text-align: center;
-    color: #000;
-    font-weight: normal;
-    line-height: 1em;
-    height: 40px;
-    display: inline-block;
-    padding: 12px 20px 10px 20px;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    font-size: 18px;
-    text-decoration: none;
-    border: 1px solid #255b2a;
-    -moz-transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    backface-visibility: hidden;
-    webkit-backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-transform: uppercase;
-" value="Scopri gli altri vantaggi per te" onclick="location.href='http://site.sharengo.it/vantaggi-per-te/';"></input>-->
+                    <input type="submit" name="" value="<?= $this->translate('Vai in area riservata');?>">
                 </div>
 
                 </form>
