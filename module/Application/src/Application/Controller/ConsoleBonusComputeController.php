@@ -766,26 +766,50 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $request = $this->getRequest();
         $debug = $request->getParam('debug-mode') || $request->getParam('dm');
-        $this->logger->log("\nStarted computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n");
-
-        if ($debug) {
-            $this->logger->log("\n---- Debug mode ----\n");
-        }
         $date_ts = $request->getParam('data-run');
         $radius = $request->getParam('radius');
         $carplate = $request->getParam('carplate');
 
-        $this->logger->log("\nShell date: " . $date_ts . "\n");
-        $this->logger->log("Radius: " . $radius . " meters\n\n");
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;start;debug=" . $debug . ";\n");
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;start;date_ts=" . $date_ts . ";radius=" . $radius . ";carplate=" . $carplate . ";\n");
 
-        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug);
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug,  5, 'POIS',    30, "Bonus parcheggio nei pressi di punto di ricarica - ", 25, 16);
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 15, 'POIS-FI', 30, "Bonus parcheggio nei pressi di punto di ricarica Firenze - ", 101, 16); //TODO: change email category
+
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;end\n");
     }
 
-    private function zoneBonusPark($date_ts, $radius, $carplate, $debug) {
-        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate);
+    /**
+     * 
+     * @param datetime $date_ts Time stamp of trips
+     * @param string $radius    Radius from pois in meters
+     * @param string $carplate  Car plate
+     * @param string $debug     Debug flag
+     * @param integer $bonus_to_assign Total minutes of bonus
+     * @param string $bonusType Type of bonus
+     * @param integer $duration Number of days of bonus duration
+     * @param string $description Bonus description
+     * @param integer $batteryMinLevel Minimum level of battery
+     * @param integer $emailCategory Category of email
+     */
+    private function zoneBonusPark($date_ts, $radius, $carplate, $debug, $bonus_to_assign, $bonusType, $duration, $description, $batteryMinLevel, $emailCategory) {
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;date_ts=".$date_ts.";radius=".$radius.";carplate=".$carplate.";debug=".$debug."\n");
+        
+        $this->logger->log(sprintf("%s;INF;zoneBonusPark;date_ts=%s;radius=%s;carplate=%s;debug=%s;bonus_to_assign=%s;bonusType=%s;duration=%s;description=%s;batteryMinLevel=%s\n",
+            date_create()->format('Y-m-d H:i:s'),
+            $date_ts,
+            $radius,
+            $carplate,
+            $debug,
+            $bonus_to_assign,
+            $bonusType,
+            $duration,
+            $description,
+            $batteryMinLevel));
 
-        $this->logger->log("-------- Compute Zone Bonuses Park POIS\n");
-        $this->logger->log("Trips to compute: " . count($tripsToBeComputed) . "\n\n");
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate, $batteryMinLevel);
+
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;count=".count($tripsToBeComputed)."\n");
 
         foreach ($tripsToBeComputed as $trip) {
 
@@ -811,23 +835,29 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
 
             if ($debug) {
-                $this->logger->log("Trip ID:" . $trip->getId() . "- Customer ID: " . $trip->getCustomer()->getId() . " - Carplate:" . $trip->getCar()->getPlate() . "\n\n");
+                $this->logger->log(sprintf("%s;INF;zoneBonusPark;tripId=%s;customerId=%s;carPlate=%s\n",
+                    date_create()->format('Y-m-d H:i:s'),
+                    $trip->getId(),
+                    $trip->getCustomer()->getId(),
+                    $trip->getCar()->getPlate()));
+
                 continue;
             }
 
             // Assign bonuses to customer
-            $this->assigneBonus($trip, 5, 'POIS', 30, "Bonus parcheggio nei pressi di punto di ricarica - " . $trip->getCar()->getPlate());
+            $this->assigneBonus($trip, $bonus_to_assign, $bonusType, $duration, $description . $trip->getCar()->getPlate());
 
             //send email to customer -> notification bonuses
-            $this->logger->log("send email:" . $trip->getCustomer()->getEmail() . "\n");
+            $this->logger->log(sprintf("%s;INF;zoneBonusPark;%s;%s\n",
+                date_create()->format('Y-m-d H:i:s'),
+                $trip->getCustomer()->getId(),
+                $trip->getCustomer()->getEmail()));
 
             // send email to the customer
-            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), 16);
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), $emailCategory);
         }
 
         //Recap bonus assigned
-
-        $this->logger->log("\nEnd computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
     private function sendEmail($email, $name, $language, $category) {
