@@ -770,11 +770,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $radius = $request->getParam('radius');
         $carplate = $request->getParam('carplate');
 
-        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;start;debug=" . $debug . ";\n");
-        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;start;date_ts=" . $date_ts . ";radius=" . $radius . ";carplate=" . $carplate . ";\n");
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;start;debug=" . $debug . "\n");
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;start;date_ts=" . $date_ts . ";radius=" . $radius . ";carplate=" . $carplate . "\n");
 
-        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug,  5, 'POIS',    30, "Bonus parcheggio nei pressi di punto di ricarica - ", 25, 16);
-        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 15, 'POIS-FI', 30, "Bonus parcheggio nei pressi di punto di ricarica Firenze - ", 101, 16); //TODO: change email category
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS');
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS-FI');
 
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;end\n");
     }
@@ -792,9 +792,31 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param integer $batteryMinLevel Minimum level of battery
      * @param integer $emailCategory Category of email
      */
-    private function zoneBonusPark($date_ts, $radius, $carplate, $debug, $bonus_to_assign, $bonusType, $duration, $description, $batteryMinLevel, $emailCategory) {
-        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;date_ts=".$date_ts.";radius=".$radius.";carplate=".$carplate.";debug=".$debug."\n");
-        
+    private function zoneBonusPark($date_ts, $radius, $carplate, $debug, $bonusType) {
+        $debug = true;  //TODO REMOVE
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;date_ts=".$date_ts.";radius=".$radius.";carplate=".$carplate.";debug=".$debug.";bonusType=".$bonusType."\n");
+
+        if($bonusType=='POIS') {
+            $bonus_to_assign = 5;
+            $duration =30;
+            $description = 'Bonus parcheggio nei pressi di punto di ricarica - ';
+            $batteryMinLevel = 25;
+            $emailCategory = 16;
+            $durationMin = 5;
+            $fleets = array(1,4);   // only Milan and Modena
+        } else if ($bonusType=='POIS-FI') {
+            $bonus_to_assign = 15;
+            $duration =30;
+            $description = 'Bonus parcheggio nei pressi di punto di ricarica Firenze - ';
+            $batteryMinLevel = null;
+            $emailCategory = 16;    //TODO: change width new email
+            $durationMin = 0;
+            $fleets = array(2);     // only Florence
+        }
+        else {
+            return;
+        }
+
         $this->logger->log(sprintf("%s;INF;zoneBonusPark;date_ts=%s;radius=%s;carplate=%s;debug=%s;bonus_to_assign=%s;bonusType=%s;duration=%s;description=%s;batteryMinLevel=%s\n",
             date_create()->format('Y-m-d H:i:s'),
             $date_ts,
@@ -807,17 +829,20 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $description,
             $batteryMinLevel));
 
-        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate, $batteryMinLevel);
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate, $batteryMinLevel, $fleets);
 
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;count=".count($tripsToBeComputed)."\n");
 
         foreach ($tripsToBeComputed as $trip) {
 
-            if (!$trip instanceof Trips) {
-                continue;
-            }
+//            $this->logger->log(sprintf("%s;INF;zoneBonusPark;tripId=%s;%s;%s\n",
+//                date_create()->format('Y-m-d H:i:s'),
+//                $trip->getId(),
+//                is_null($trip->getTripPayment()) ? '-' : $trip->getTripPayment()->getTripMinutes(),
+//                $trip->getDurationMinutes()));
 
-            if ($trip->getDurationMinutes() <= 5) {
+            // check constraint on duration
+            if ($durationMin >0 && $trip->getDurationMinutes() <= $durationMin) {
                 continue;
             }
 
@@ -857,7 +882,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), $emailCategory);
         }
 
-        //Recap bonus assigned
     }
 
     private function sendEmail($email, $name, $language, $category) {
