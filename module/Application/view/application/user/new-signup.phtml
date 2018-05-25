@@ -8,32 +8,6 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/signup.css'));
 ?>
 
-<!-- Facebook Pixel Code -->
-<script>
-    !function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        }
-        ;
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '423565347840059');
-    fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-               src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"/></noscript>
-<!-- End Facebook Pixel Code -->
 <!-- main -->
 <div id="main">
     <!-- module-section-bookmark -->
@@ -56,15 +30,16 @@ $this->headLink()
     <script>fbq('track', 'Lead');</script>
 
     <!-- module-wizard -->
-    <div class="module-wizard clearfix">
+    <!--<div class="module-wizard clearfix">
         <ul>
             <li class="active">1</li>
             <li>2</li>
             <li>3</li>
             <li class="last"><i class="icon-auto"></i></li>
         </ul>
-    </div>
+    </div>-->
     <!-- module-wizard -->
+    <br>
 
     <!-- content -->
     <div class="content">
@@ -128,7 +103,12 @@ $this->headLink()
                 </div>
             </div>
             <!-- block-row-field -->
-
+            <div class="block-wrapper-button content-align-center">
+                <input type="submit" name="" id="nextBtn" value="CREA IL TUO ACCOUNT">
+                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">Cliccando sul tasto Iscriviti accetti l'<a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="http://site.sharengo.it/privacy/">Informativa sulla Privacy</a> e <br>
+                    le <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/Contratto_di_servizio_e_tariffe.pdf'); ?>">Condizioni Contrattuali</a> di Share'ngo</p>
+            </div>
+            <br>
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
 
@@ -145,13 +125,6 @@ $this->headLink()
                 </div>
             </div>
             <!-- block-row-field -->
-
-
-            <div class="block-wrapper-button content-align-center">
-                <input type="submit" name="" id="nextBtn" value="CREA IL TUO ACCOUNT">
-                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">Cliccando sul tasto Iscriviti accetti l'<a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="http://site.sharengo.it/privacy/">Informativa sulla Privacy</a> e <br>
-                    le <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/car_sharing_def.pdf'); ?>">Condizioni Contrattuali</a> di Share'ngo</p>
-            </div>
 
             </form>
 

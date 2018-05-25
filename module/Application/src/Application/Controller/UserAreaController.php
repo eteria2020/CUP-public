@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 //use SharengoCore\Entity\CustomersBonus;
 //use SharengoCore\Entity\PromoCodes;
+use SharengoCore\Entity\CustomerDeactivation;
 use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
 use Zend\Authentication\AuthenticationService;
@@ -362,9 +363,8 @@ class UserAreaController extends AbstractActionController {
         }
         $customer = $this->userService->getIdentity();
 
-        $redirect =$this->redirectDeactivation($customer, $mobile);
-        if ($redirect != null) {
-            return $redirect;
+        if ($this->redirectRegistrationNotCompleted($customer)){
+            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
         }
 
         /** @var DriverLicenseForm $form */
@@ -569,45 +569,56 @@ class UserAreaController extends AbstractActionController {
             $userAreaMobile = '/' . $mobileParam;
         }
 
-        //FORM 2 REDIRECT
-        if(is_null($customer->getTaxCode())){ // if tax code is null customer has to complete signup 2
-            $signupSession = new Container('newSignup');
-            $signupSession->offsetSet("customer", $customer);
+        if ($this->redirectRegistrationNotCompleted($customer)){
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));
-        }
-        //FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
-        if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
-            (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
-            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
         }
 
         $deactivations = $this->customerDeactivationService->getAllActive($customer);
         if(count($deactivations) > 0){
             foreach($deactivations as $deactivation){
                 switch ($deactivation->getReason()) {
-                    case 'EXPIRED_CREDIT_CARD':
+                    case CustomerDeactivation::FIRST_PAYMENT_NOT_COMPLETED:
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+                        break;
+                    case CustomerDeactivation::FAILED_PAYMENT:
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+                        break;
+                    case CustomerDeactivation::EXPIRED_CREDIT_CARD:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati.');
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
                         break;
-                    case 'INVALID_DRIVERS_LICENSE':
+                    case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti.');
-                        if (explode("/area-utente/", $this->getRequest()->getUriString())[1] != 'patente'){
                             return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
-                        }
                         break;
-                    case 'EXPIRED_DRIVERS_LICENSE':
+                    case CustomerDeactivation::EXPIRED_DRIVERS_LICENSE:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato per patente scaduta, inserisci i nuovi dati.');
-                        if (explode("/area-utente/", $this->getRequest()->getUriString())[1] != 'patente'){
                             return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
-                        }
                         break;
                     /*case 'DISABLED_BY_WEBUSER':
                         return 'Disabilitato manualmente';
                         break;*/
                 }
             }
+            //DOUBLE CHECK FOR FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
+            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
+                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+            }
         }
 
+    }
+
+    private function redirectRegistrationNotCompleted($customer)
+    {
+        $registrationNotCompleted = $this->customerDeactivationService->getAllActive($customer, CustomerDeactivation::REGISTRATION_NOT_COMPLETED);
+        if (is_null($registrationNotCompleted)) {
+            return false;
+        } else {
+            $signupSession = new Container('newSignup');
+            $signupSession->offsetSet("customer", $customer);
+            return true;
+        }
     }
 
 }

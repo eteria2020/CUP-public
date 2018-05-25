@@ -112,7 +112,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'unchecked_value' => 'off',
             ],
             'attributes' => [
-                'value' => 'off'
+                'value' => 'on'
             ]
         ]);
     }

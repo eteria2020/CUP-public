@@ -2,6 +2,7 @@
 
 namespace Application\Service;
 
+use SharengoCore\Entity\CustomerDeactivation;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Entity\PromoCodes;
@@ -532,6 +533,7 @@ final class RegistrationService
             $this->entityManager->persist($customer);
 
             $this->deactivationService->deactivateAtRegistration($customer);
+            $this->deactivationService->deactivateRegistrationNotCompleted($customer);
 
             $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
@@ -754,12 +756,21 @@ final class RegistrationService
 
             $this->entityManager->persist($customer);
 
-            //$this->deactivationService->deactivateAtRegistration($customer);
 
             $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
+
+            /* remove REGISTRATION NOT COMPLETED in customer_deactivations */
+
+            $deactivation = $this->deactivationService->getAllActive(
+                $customer,
+                CustomerDeactivation::REGISTRATION_NOT_COMPLETED
+            );
+
+            $this->deactivationService->reactivateForRegistrationCompleted($deactivation);
+
             return $customer;
         } catch (\Exception $e) {
             $this->entityManager->getConnection()->rollback();
@@ -838,6 +849,21 @@ final class RegistrationService
     public function removeSessionOptionalData()
     {
         $this->optionalForm->clearRegisteredData();
+    }
+
+    public function isRegistrationCompleted($customer){
+        $completed = false;
+        //return ($customer instanceOf Customers && $customer->getTaxCode() != null);
+        if ($customer instanceOf Customers){
+            return is_null($this->deactivationService->getAllActive($customer, CustomerDeactivation::REGISTRATION_NOT_COMPLETED));
+        }
+        return $completed;
+    }
+
+    public function getSignupCustomerSession()
+    {
+        $signupSession = new Container('newSignup');
+        return $signupSession->offsetGet("customer");
     }
 
 }

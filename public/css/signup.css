@@ -1,6 +1,6 @@
 .module-section-bookmark.yellow {
     margin-top: 30px;
-    background: #f8e731bd !important;
+    background: #faed66 !important;
     padding-bottom: 0;
     padding-top: 30px;
     margin-bottom: 15px;
@@ -40,23 +40,8 @@ h1.module-main-title{
     font-weight: 700;
 }
 
-@media (max-width: 610px) {
-    h1.module-main-title {
-        font-size: 1.2em !important;
-    }
-    .module-section-bookmark.yellow ul{
-        font-size: 1.0em;
-    }
-    .module-main-subtitle p{
-        font-size: 1.0em;
-    }
-    .module-main-title-2{
-        font-size: 1.0em;
-    }
-}
-
 .module-wizard {
-    width: 280px !important;
+    width: 250px !important;
     /*margin: 0 auto;*/
     display: inline-block;
     padding-bottom: 15px;
@@ -66,7 +51,11 @@ h1.module-main-title{
 
 .module-wizard ul li:after {
     height: 15px !important;
-    margin-top: 15px !important;
+    margin-top: 12px !important;
+    background: none !important;
+    border-bottom: 4px dotted #289941  !important;
+    width: 40px !important;
+    right: -38px !important;
 }
 
 .module-wizard ul li.active:after {
@@ -83,21 +72,14 @@ h1.module-main-title{
     padding-top: 0 !important;
     color: #ffea00 !important;
     background: #289941 !important;
-    width: 45px !important;
-    height: 45px !important;
-    line-height: 45px !important;
-}
-
-.module-wizard ul li:after {
-    background: none !important;
-    border-bottom: 4px dotted #289941  !important;
-    width: 50px !important;
-    right: -38px !important;
+    width: 37px !important;
+    height: 37px !important;
+    line-height: 37px !important;
 }
 
 #generalCondition1Text{
     text-transform: none;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 200;
 }
 
@@ -133,60 +115,87 @@ p.codicePromo{
     border: 1px solid #289941 !important;
 }
 
-/* mobile view */
-@media only screen and (max-width: 320px) {
-/*    .module-wizard ul li .fa {
-        font-size: 25px !important;
-    }
-
-    .module-wizard ul li {
-        font-size: 35px !important;
-        width: 45px !important;
-        height: 45px !important;
-        line-height: 35px !important;
-        margin-right: 15px !important;
-        padding-top: 5px !important;
-    }
-
-    .module-wizard ul li:after {
-        height: 4px !important;
-        margin-top: 20px !important;
-        !*width: 20px !important;*!
-    }
-*/
-    .module-wizard {
-        width: 240px !important;
-    }
-/*
-    .icon-auto {
-        background-size: 35px 42px !important;
-        background-position: 0px 0px !important;
-        margin: 5px 5px 5px 5px;
-        width: 35px !important;
-        height: 21px !important;
-    }
-
-    .icon-auto.active {
-        background-size: 35px 42px !important;
-        background-position: 0px -21px !important;
-    }*/
-}
-
 .icon-auto {
     display: inline-block;
     text-indent: -9999px;
     background-image: url(../images/icon-auto.png);
     background-repeat: no-repeat;
-    -webkit-background-size: 35px 42px;
-    -moz-background-size: 35px 42px;
-    background-size: 35px 42px;
+    -webkit-background-size: 30px 36px;
+    -moz-background-size: 30px 36px;
+    background-size: 30px 36px;
     background-position: 0px 0px;
-    margin-bottom:2px;
-    width: 35px;
-    height: 21px;
+    margin-bottom:4px;
+    width: 30px;
+    height: 18px;
 }
 
 .icon-auto.active {
-    background-position: 0px -21px;
+    background-position: 0px -18px;
 }
 .last {margin-right: 0px !important}
+
+/* tablet view */
+@media (max-width: 1024px) {
+    h1.module-main-title {
+        font-size: 1.2em !important;
+    }
+    .module-section-bookmark.yellow ul{
+        font-size: 1em;
+    }
+    .module-main-subtitle p{
+        font-size: 1.1em;
+    }
+    .module-main-title-2{
+        font-size: 1.1em;
+    }
+}
+
+/* smartphone view */
+@media only screen and (max-width: 480px) {
+    h1.module-main-title {
+        font-size: 1em !important;
+    }
+    .module-section-bookmark.yellow ul{
+        font-size: 0.82em;
+    }
+    .module-main-subtitle p{
+        font-size: 0.9em;
+    }
+    .module-main-title-2{
+        font-size: 0.8em;
+    }
+
+    .module-wizard {
+        width: 220px !important;
+    }
+
+    .module-wizard ul li {
+        font-size: 25px !important;
+        width: 30px !important;
+        height: 30px !important;
+        line-height: 30px !important;
+    }
+    .module-wizard ul li:after {
+        margin-top: 5px !important;
+    }
+
+    .icon-auto {
+        -webkit-background-size: 25px 30px;
+        -moz-background-size: 25px 30px;
+        background-size: 25px 30px;
+        margin-bottom:2px;
+        width: 25px;
+        height: 15px;
+    }
+
+    .icon-auto.active {
+        background-position: 0px -15px;
+    }
+}
+.app-link {
+    background: #33393f;
+    width: auto;
+    height: 45px;
+    margin-top: 10px;
+}
+
