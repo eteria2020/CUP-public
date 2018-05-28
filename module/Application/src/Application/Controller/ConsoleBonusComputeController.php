@@ -802,22 +802,22 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $description = 'Bonus parcheggio nei pressi di punto di ricarica - ';
             $batteryMinLevel = 25;
             $emailCategory = 16;
-            $durationMin = 5;
+            $tripMinutes = 5;
             $fleets = array(1,4);   // only Milan and Modena
         } else if ($bonusType=='POIS-FI') {
             $bonus_to_assign = 15;
             $duration =30;
-            $description = 'Bonus parcheggio nei pressi di punto di ricarica Firenze - ';
+            $description = 'Parcheggio centro Firenze - ';
             $batteryMinLevel = null;
             $emailCategory = 16;    //TODO: change width new email
-            $durationMin = 0;
+            $tripMinutes = null;
             $fleets = array(2);     // only Florence
         }
         else {
             return;
         }
 
-        $this->logger->log(sprintf("%s;INF;zoneBonusPark;date_ts=%s;radius=%s;carplate=%s;debug=%s;bonus_to_assign=%s;bonusType=%s;duration=%s;description=%s;batteryMinLevel=%s\n",
+        $this->logger->log(sprintf("%s;INF;zoneBonusPark;date_ts=%s;radius=%s;carplate=%s;debug=%s;bonus_to_assign=%s;bonusType=%s;duration=%s;description=%s;batteryMinLevel=%s;tripMinutes=%s\n",
             date_create()->format('Y-m-d H:i:s'),
             $date_ts,
             $radius,
@@ -827,9 +827,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $bonusType,
             $duration,
             $description,
-            $batteryMinLevel));
+            $batteryMinLevel,
+            $tripMinutes));
 
-        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate, $batteryMinLevel, $fleets);
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate, $tripMinutes, $batteryMinLevel, $fleets);
 
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;count=".count($tripsToBeComputed)."\n");
 
@@ -841,10 +842,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
 //                is_null($trip->getTripPayment()) ? '-' : $trip->getTripPayment()->getTripMinutes(),
 //                $trip->getDurationMinutes()));
 
-            // check constraint on duration
-            if ($durationMin >0 && $trip->getDurationMinutes() <= $durationMin) {
-                continue;
-            }
+//            // check constraint on duration
+//            if ($durationMin >0 && $trip->getDurationMinutes() <= $durationMin) {
+//                continue;
+//            }
 
             //($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
             // Verify if customer reached max amount in zone bonuses passed and return a list of those available
