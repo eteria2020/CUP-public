@@ -578,14 +578,12 @@ class UserAreaController extends AbstractActionController {
             foreach($deactivations as $deactivation){
                 switch ($deactivation->getReason()) {
                     case CustomerDeactivation::FIRST_PAYMENT_NOT_COMPLETED:
-                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
-                        break;
                     case CustomerDeactivation::FAILED_PAYMENT:
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::EXPIRED_CREDIT_CARD:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati.');
-                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti.');
