@@ -893,10 +893,10 @@ class UserController extends AbstractActionController {
 
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
-        /*if(is_null($customerSession)){
+        /* redirect if session is empty */
+        if(empty($customerSession)){
             return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
-        */
 
         if($this->registrationService->isRegistrationCompleted($customerSession)){
             return $this->redirect()->toRoute('area-utente', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
@@ -1029,9 +1029,10 @@ class UserController extends AbstractActionController {
 
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
-        /*if(is_null($customerSession)){
+        /* redirect if session is empty */
+        if(empty($customerSession)){
             return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
-        }*/
+        }
 
         if ($customerSession instanceof Customers){
             if($customerSession->getId() != $this->params()->fromQuery('c')){
