@@ -987,7 +987,7 @@ class UserController extends AbstractActionController {
         $data = $this->registrationService->retrieveValidData2($civico, $files["files"]);
 
         // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
-        if (empty($data)) {
+        if (empty($data) || !($customer instanceof Customers)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
             return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);

@@ -11,7 +11,7 @@ $this->inlineScript()
 <div class="module-section-bookmark yellow content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Ora sei dei nostri!'); ?></h1>
     <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
-        <img style="width: 100%;max-width: 500px;height: auto; padding-top: 10px;" src="<?= $this->basePath('images/gosharengo.png') ?>">
+        <img style="width: 85%;max-width: 500px;height: auto; padding-top: 10px;" src="<?= $this->basePath('images/gosharengo.png') ?>">
     </div>
 </div>
 
@@ -57,6 +57,10 @@ $this->inlineScript()
                 </div>
                 <br>-->
                 <div class="content-align-center">
+                    <h3>Scarica l'App Sharengo</h3>
+                </div>
+                <br>
+                <div class="content-align-center">
                     <a href="https://itunes.apple.com/it/app/sharengo-cs/id1093104891?mt=8" target="_blank"><img class="app-link" src="../images/footer_apple_icn.png"></a>
                     <a href="https://play.google.com/store/apps/details?id=it.sharengo.eteria" target="_blank"><img class="app-link" src="../images/footer_gplay_icn.png"></a>
                 </div>
@@ -65,8 +69,12 @@ $this->inlineScript()
                 <!-- block-row-field -->
                 <div class="block-row-field clearfix">
 
-                    <div class="block-field w-4-4" style="text-align: justify">
+                    <div class="block-field w-4-4" style="text-align: center">
+                        Codice Member Get Member: <h3>12345-67890</h3>
+                    </div>
 
+                    <!--
+                    <div class="block-field w-4-4" style="text-align: justify">
                         <?php $newsletter = $this->form->get('optional')->get('newsletter'); ?>
                         <label class='control checkbox small-form'>
                             <?php echo $this->formElement($newsletter) ?>
@@ -74,11 +82,12 @@ $this->inlineScript()
                                   id="generalCondition1Text"><?= $newsletter->getLabel(); ?></span>
                         </label>
                         <?php echo $this->formElementErrors($newsletter, ['class' => 'errors']); ?>
-
                     </div>
+                    -->
+
                 </div>
                 <!-- block-row-field -->
-                <br>
+
                 <div class="block-wrapper-button content-align-center">
                     <input type="submit" name="" value="<?= $this->translate('Vai in area riservata');?>">
                 </div>
