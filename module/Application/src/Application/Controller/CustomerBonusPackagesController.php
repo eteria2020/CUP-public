@@ -104,7 +104,7 @@ class CustomerBonusPackagesController extends AbstractActionController
     }
 
     /**
-     * Check the data befoem to assign package
+     * Check the data before to assign package
      * 
      * @param Customers $customer
      * @param CustomersBonusPackages $package
