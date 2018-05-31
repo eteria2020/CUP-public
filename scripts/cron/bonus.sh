@@ -31,5 +31,5 @@ php /srv/apps/sharengo-publicsite/public/index.php assign birthday bonuses >> /s
 
 #####################################################################################################################################################
 #BONUS ALGEBRIS
-php /srv/apps/sharengo-publicsite/public/index.php bonus algebris  >> /srv/apps/sharengo-publicsite/data/log/bonus_algebris.log
+#php /srv/apps/sharengo-publicsite/public/index.php bonus algebris  >> /srv/apps/sharengo-publicsite/data/log/bonus_algebris.log
 #####################################################################################################################################################
