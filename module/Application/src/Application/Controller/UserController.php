@@ -20,6 +20,7 @@ use Application\Exception\ProfilingPlatformException;
 use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\PromoCodesService;
+use SharengoCore\Service\PromoCodesMemberGetMemberService;
 use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
@@ -62,6 +63,11 @@ class UserController extends AbstractActionController {
      * @var \Application\Service\RegistrationService
      */
     private $registrationService;
+
+    /**
+     * @var SharengoCore\Service\PromoCodesMemberGetMemberService
+     */
+    private $promoCodesMemberGetMemberService;
 
     /**
      *
@@ -139,11 +145,29 @@ class UserController extends AbstractActionController {
      * @param TripsService $tripsService
      * @param PromoCodesService $promoCodeService
      * @param PromoCodesOnceService $promoCodesOnceService
+     * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param ForeignDriversLicenseService $foreignDriversLicenseService
      */
     public function __construct(
-    Form $form1, Form $form2, Form $newForm, Form $newForm2, Form $optionalForm, RegistrationService $registrationService, CustomersService $customersService, LanguageService $languageService, ProfilingPlaformService $profilingPlatformService, Translator $translator, HydratorInterface $hydrator, array $smsConfig, EmailService $emailService, FleetService $fleetService, TripsService $tripsService
-    , PromoCodesService $promoCodeService, PromoCodesOnceService $promoCodesOnceService, ForeignDriversLicenseService $foreignDriversLicenseService) {
+        Form $form1,
+        Form $form2,
+        Form $newForm,
+        Form $newForm2,
+        Form $optionalForm,
+        RegistrationService $registrationService,
+        CustomersService $customersService,
+        LanguageService $languageService,
+        ProfilingPlaformService $profilingPlatformService,
+        Translator $translator,
+        HydratorInterface $hydrator,
+        array $smsConfig,
+        EmailService $emailService,
+        FleetService $fleetService,
+        TripsService $tripsService,
+        PromoCodesService $promoCodeService,
+        PromoCodesOnceService $promoCodesOnceService,
+        PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
+        ForeignDriversLicenseService $foreignDriversLicenseService) {
 
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -162,6 +186,7 @@ class UserController extends AbstractActionController {
         $this->tripsService = $tripsService;
         $this->promoCodeService = $promoCodeService;
         $this->promoCodesOnceService = $promoCodesOnceService;
+        $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
     }
 
@@ -742,6 +767,12 @@ class UserController extends AbstractActionController {
             if ($this->promoCodesOnceService->isValid($pc)) {
                 $promoCodeOnce = $this->promoCodesOnceService->getByPromoCode($pc);
                 $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
+            } else {
+                if ($this->promoCodesMemberGetMemberService->isValid($pc)) {
+                    $pcMgm = $this->promoCodesMemberGetMemberService->getPromoCodeNameWidthoutCustomerId($pc, true);
+                    $promoCode = $this->promoCodeService->getPromoCode($pcMgm);
+                    $promoCodeInfo = $promoCode->getPromoCodesInfo();
+                }
             }
         }
 
@@ -1018,6 +1049,7 @@ class UserController extends AbstractActionController {
     }
 
     public function optionalAction(){
+        $promocodeMemberGetMember = '';
 
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
@@ -1035,6 +1067,7 @@ class UserController extends AbstractActionController {
         }
 
         if ($customerSession instanceof Customers){
+            $promocodeMemberGetMember = $this->customersService->getPromocodeMemberGetMember($customerSession);
             if($customerSession->getId() != $this->params()->fromQuery('c')){
                 return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
             }
@@ -1060,14 +1093,14 @@ class UserController extends AbstractActionController {
                 /*foreach ($this->newForm2->getMessages() as $messageId => $message) {
                     error_log(json_encode($message));
                 }*/
-                return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile);
+                return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile, $promocodeMemberGetMember);
             }
         } else {
-            return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile);
+            return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile, $promocodeMemberGetMember);
         }
     }
 
-    private function optionalForm($optionalForm, $message, $outcome, $mobile) {
+    private function optionalForm($optionalForm, $message, $outcome, $mobile, $promocodeMemberGetMember) {
         if ($mobile) {
             $this->layout('layout/map');
         }
@@ -1076,7 +1109,8 @@ class UserController extends AbstractActionController {
             'form' => $optionalForm,
             'message' => $message,
             'outcome' => $outcome,
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'promocodeMemberGetMember' => $promocodeMemberGetMember
         ]);
     }
 

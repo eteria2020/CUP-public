@@ -20,12 +20,11 @@ class NewRegistrationForm2Factory implements FactoryInterface
         $translator = $serviceLocator->get('Translator');
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
-        $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
-        $authorityService = $serviceLocator->get('SharengoCore\Service\AuthorityService');
         $promoCodeService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
         $promoCodeOnceService = $serviceLocator->get('SharengoCore\Service\PromoCodesOnceService');
-        $promoCodeFieldset = new PromoCodeFieldset($translator, $promoCodeService, $promoCodeOnceService);
+        $promoCodesMemberGetMemberService = $serviceLocator->get('SharengoCore\Service\PromoCodesMemberGetMemberService');
+        $promoCodeFieldset = new PromoCodeFieldset($translator, $promoCodeService, $promoCodeOnceService, null, $promoCodesMemberGetMemberService);
         $newUserFieldset2 = new NewUserFieldset2( $translator, $hydrator, $customersService);
 
         return new NewRegistrationForm2($translator, $promoCodeFieldset, $newUserFieldset2, $entityManager);

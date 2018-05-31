@@ -16,6 +16,7 @@ use SharengoCore\Service\EmailService;
 use SharengoCore\Service\MunicipalitiesService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesOnceService;
+use SharengoCore\Service\PromoCodesMemberGetMemberService;
 
 use Doctrine\ORM\EntityManager;
 use Zend\Form\Form;
@@ -125,6 +126,11 @@ final class RegistrationService
     private $countriesService;
 
     /**
+     * @var PromoCodesMemberGetMemberService;
+     */
+    private $promoCodesMemberGetMemberService;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
@@ -137,6 +143,7 @@ final class RegistrationService
      * @param HelperPluginManager $viewHelperManager
      * @param PromoCodesService $promoCodesService
      * @param PromoCodesOnceService $promoCodesOnceService
+     * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param array $subscriptionBonus
      * @param EventManager $events
      * @param MunicipalitiesService $municipalitiesService
@@ -155,6 +162,7 @@ final class RegistrationService
         HelperPluginManager $viewHelperManager,
         PromoCodesService $promoCodesService,
         PromoCodesOnceService $promoCodesOnceService,
+        PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
         array $subscriptionBonus,
         CustomerDeactivationService $deactivationService,
         EventManager $events,
@@ -175,6 +183,7 @@ final class RegistrationService
         $this->viewHelperManager = $viewHelperManager;
         $this->promoCodesService = $promoCodesService;
         $this->promoCodesOnceService = $promoCodesOnceService;
+        $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->subscriptionBonus = $subscriptionBonus;
         $this->customersRepository = $this->entityManager->getRepository('\SharengoCore\Entity\Customers');
         $this->deactivationService = $deactivationService;
@@ -705,57 +714,11 @@ final class RegistrationService
 
             $customer = $this->hydrator->hydrate($data, $customer);
 
-            // has customer used a promo code?
-            $promoCode = $data['promoCode'];
-            $promoCodeOnce = NULL;
-
-            if ('' != $promoCode) {
-                $promoCode = $this->promoCodesService->getPromoCode($promoCode);
-
-                if (is_null($promoCode)) { // is a promocode once
-                    $this->entityManager->persist($customer);
-                    $promoCodeOnce = $this->promoCodesOnceService->usePromoCode($customer, $data['promoCode']);
-
-                    if(!is_null($promoCodeOnce)){
-                        $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
-                        $customer->setDiscountRate($promoCodeInfo->discountPercentage());
-                    } else { // error in set promocode once
-                        throw new \Exception('Promocode once '.$data['promoCode'].' not found,');
-                    }
-                } else { // is a promocode standard
-                    $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
-                    $customerBonus->setCustomer($customer);
-                    $this->entityManager->persist($customerBonus);
-
-                    // promo codes has a discount percentage
-                    if ($promoCode->discountPercentage() > 0) {
-                        $discountPercentage = max(
-                            $customer->getDiscountRate(),
-                            $promoCode->discountPercentage()
-                        );
-                        $customer->setDiscountRate($discountPercentage);
-                    }
-                }
-            }
-
-            if(is_null($promoCodeOnce)){
-                if (!($promoCode instanceof PromoCodes && $promoCode->noStandardBonus())) {
-                    // add 100 min bonus
-                    $total = $this->subscriptionBonus['total'];
-                    $bonus100mins = CustomersBonus::createBonus(
-                        $customer,
-                        $total, //$this->subscriptionBonus['total'],
-                        $this->subscriptionBonus['description'],
-                        $this->subscriptionBonus['valid-to']
-                    );
-                    $this->entityManager->persist($bonus100mins);
-                }
-            }
-
             $customer->setRegistrationCompleted(true);
 
             $this->entityManager->persist($customer);
 
+            $this->assingPromocode($data['promoCode'], $customer);
 
             $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
@@ -864,6 +827,100 @@ final class RegistrationService
     {
         $signupSession = new Container('newSignup');
         return $signupSession->offsetGet("customer");
+    }
+
+/**
+     * Assin a promocode (standard, onece, memberGetMember) to customer
+     * 
+     * @param string $promoCodeName
+     * @param Customers $customer
+     * @return type
+     * @throws \Exception
+     */
+    private function assingPromocode($promoCodeName, Customers $customer){
+        $result = null;
+        $promoCode = null;
+        $promoCodeOnce = null;
+
+        if($promoCodeName != '') {
+            if($this->promoCodesService->isValid($promoCodeName)) { // it's a standard promocode
+                $promoCode = $this->promoCodesService->getPromoCode($promoCodeName);
+                $customerBonus = CustomersBonus::createFromPromoCode($promoCode);
+                $customerBonus->setCustomer($customer);
+                $this->entityManager->persist($customerBonus);
+                $result = $customerBonus;
+
+                // promo codes has a discount percentage
+                if ($promoCode->discountPercentage() > 0) {
+                    $discountPercentage = max(
+                        $customer->getDiscountRate(),
+                        $promoCode->discountPercentage()
+                    );
+                    $customer->setDiscountRate($discountPercentage);
+                }
+            } elseif ($this->promoCodesOnceService->isValid($promoCodeName)) { // it's an once promocode
+                $promoCodeOnce = $this->promoCodesOnceService->usePromoCode($customer, $promoCodeName);
+
+                if(!is_null($promoCodeOnce)){
+                    $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
+                    $customer->setDiscountRate($promoCodeInfo->discountPercentage());
+                    $result = $promoCodeOnce;
+                } else { // error in set promocode once
+                    throw new \Exception('Promocode once '.$promoCodeName.' not found,');
+                }
+            } elseif ($this->promoCodesMemberGetMemberService->isValid($promoCodeName)) {  // it's a MemberGetMember promocode
+                $result = $this->assignPromocodeMemberGetMember($promoCodeName, $customer);
+            }
+        }
+
+        if(is_null($result)){   // if no bonus assigned
+            $total = $this->subscriptionBonus['total'];
+            $subBonus = CustomersBonus::createBonus(
+                $customer,
+                $total, //$this->subscriptionBonus['total'],
+                $this->subscriptionBonus['description'],
+                $this->subscriptionBonus['valid-to']
+            );
+            $this->entityManager->persist($subBonus);
+        }
+
+        $this->entityManager->persist($customer);
+        return $result;
+    }
+
+    /**
+     * Assign a promocode oncet for Member get Member
+     * @param string $promoCodeName
+     * @param Customers $customer
+     */
+    private function assignPromocodeMemberGetMember($promoCodeName, Customers $customer) {
+        $result = null;
+        $newPromoCodeOnce = $this->promoCodesMemberGetMemberService->createPromoCodeOnceForNewCustomer($promoCodeName, $customer);
+
+        if(!is_null($newPromoCodeOnce)) {   // assign a bonus to old customer
+            $promoCodeOnce = $this->promoCodesOnceService->usePromoCode($customer, $newPromoCodeOnce->getPromocode());
+            $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
+            $customer->setDiscountRate($promoCodeInfo->discountPercentage());
+            $customerOldBonus = $this->promoCodesMemberGetMemberService->assignBonusForOldCustomer($customer);
+
+            if(!is_null($customerOldBonus)){    // send an email to old customer
+                $customerOld = $customerOldBonus->getCustomer();
+                $mail = $this->emailService->getMail(22, 'it');
+                $content = sprintf(
+                    $mail->getContent(),
+                    $customerOld->getName().' '. $customerOld->getSurname(),
+                    $customerOldBonus->getTotal()
+                );
+
+                $this->emailService->sendEmail(
+                    $customerOld->getEmail(),
+                    $mail->getSubject(),
+                    $content
+                );
+            }
+
+            $result = $promoCodeOnce;
+        }
     }
 
 }

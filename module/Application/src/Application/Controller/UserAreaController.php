@@ -417,7 +417,8 @@ class UserAreaController extends AbstractActionController {
             'customer' => $this->customer,
             'driverLicenseForm' => $form,
             'showError' => $this->showError,
-            'driversLicenseUpload' => $driversLicenseUpload
+            'driversLicenseUpload' => $driversLicenseUpload,
+            'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer)
         ]);
     }
 
@@ -429,7 +430,8 @@ class UserAreaController extends AbstractActionController {
         }
         return new ViewModel([
             'customer' => $this->customer,
-            'listBonus' => $this->customerService->getAllBonus($this->customer)
+            'listBonus' => $this->customerService->getAllBonus($this->customer),
+            'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer)
         ]);
     }
 

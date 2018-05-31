@@ -21,6 +21,7 @@ class UserControllerfactory implements FactoryInterface
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
         $promoCodeService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesService');
         $promoCodesOnceService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesOnceService');
+        $promoCodesMemberGetMemberService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesMemberGetMemberService');
         $languageService = $serviceLocator->getServiceLocator()->get('LanguageService');
         $profilingPlatformService =  $serviceLocator->getServiceLocator()->get('ProfilingPlatformService');
         $translationService = $serviceLocator->getServiceLocator()->get('Translator');
@@ -28,7 +29,7 @@ class UserControllerfactory implements FactoryInterface
         $hydrator = new DoctrineHydrator($entityManager);
         //$sharedLocator = $serviceLocator->getServiceLocator();
         $config = $serviceLocator->getServiceLocator()->get('Config');
-        $smsConfig = $config['sms'];
+        //$smsConfig = $config['sms'];
         $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
         $fleetService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\FleetService');
         $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
@@ -52,6 +53,7 @@ class UserControllerfactory implements FactoryInterface
             $tripService,
             $promoCodeService,
             $promoCodesOnceService,
+            $promoCodesMemberGetMemberService,
             $foreignDriversLicenseService
         );
     }

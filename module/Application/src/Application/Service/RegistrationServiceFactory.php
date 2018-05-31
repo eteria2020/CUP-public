@@ -24,6 +24,7 @@ class RegistrationServiceFactory implements FactoryInterface
         $viewHelperManager = $serviceLocator->get('viewHelperManager');
         $promoCodesService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
         $promoCodesOnceService = $serviceLocator->get('SharengoCore\Service\PromoCodesOnceService');
+        $promoCodesMemberGetMemberService = $serviceLocator->get('SharengoCore\Service\PromoCodesMemberGetMemberService');
         $subscriptionBonus = $serviceLocator->get('Configuration')['subscription-bonus'];
         $deactivationService = $serviceLocator->get('SharengoCore\Service\CustomerDeactivationService');
         $events = $serviceLocator->get('EventManager');
@@ -45,6 +46,7 @@ class RegistrationServiceFactory implements FactoryInterface
             $viewHelperManager,
             $promoCodesService,
             $promoCodesOnceService,
+            $promoCodesMemberGetMemberService,
             $subscriptionBonus,
             $deactivationService,
             $events,

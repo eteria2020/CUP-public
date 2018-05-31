@@ -5,6 +5,7 @@ namespace Application\Form;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesOnceService;
+use SharengoCore\Service\PromoCodesMemberGetMemberService;
 
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
@@ -28,19 +29,28 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
     private $carrefourService;
 
     /**
+     * @var PromoCodesMemberGetMemberService
+     */
+    private $promoCodesMemberGetMemberService;
+
+    /**
      * @param Translator $translator
      * @param PromoCodesService $promoCodesService
+     * @param PromoCodesOnceService $promoCodesOnceService
      * @param CarrefourService|null $carrefourService
+     * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      */
     public function __construct(
         Translator $translator,
         PromoCodesService $promoCodesService,
         PromoCodesOnceService $promoCodesOnceService,
-        CarrefourService $carrefourService = null
+        CarrefourService $carrefourService = null,
+        PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
     ) {
         $this->promoCodesService = $promoCodesService;
         $this->promoCodesOnceService = $promoCodesOnceService;
         $this->carrefourService = $carrefourService;
+        $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
 
         parent::__construct('promocode', [
             'use_as_base_fieldset' => false
@@ -53,7 +63,7 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
                 'id' => 'promocode',
                 'maxlength' => 24,
                 'placeholder' => $translator->translate('Promo code'),
-                 'oninput'=>'this.value=this.value.toUpperCase()'
+                'oninput'=>'this.value=this.value.toUpperCase()'
             ]
         ]);
 
@@ -75,7 +85,8 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'promoCodesService' => $this->promoCodesService,
                             'promoCodesOnceService' => $this->promoCodesOnceService,
-                            'carrefourService' => $this->carrefourService
+                            'carrefourService' => $this->carrefourService,
+                            'promoCodesMemberGetMemberService' => $this->promoCodesMemberGetMemberService,
                         ]
                     ]
                 ]
