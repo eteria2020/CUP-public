@@ -24,6 +24,7 @@ use SharengoCore\Service\PromoCodesMemberGetMemberService;
 use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
+use SharengoCode\Entity\Cards;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Form\DTO\UploadedFile;
 use Zend\Log\Logger;
@@ -1059,7 +1060,8 @@ class UserController extends AbstractActionController {
         $message = $this->params()->fromQuery('messaggio');
         $outcome = $this->params()->fromQuery('outcome');
 
-        $customerSession = $this->registrationService->getSignupCustomerSession();
+        //$customerSession = $this->registrationService->getSignupCustomerSession();    // non deserializza correttamente (_PHP_Incomplete_Class
+        $customerSession = $this->customersService->findById($this->params()->fromQuery('c'));
 
         /* redirect if session is empty */
         if(empty($customerSession)){
@@ -1083,18 +1085,21 @@ class UserController extends AbstractActionController {
 
         if ($this->getRequest()->isPost()) {
 
-            $formData = $this->getRequest()->getPost();
+             return $this->redirect()->toRoute('area-utente');
+            //return $this->optionalConclude($this->optionalForm, $customerSession, $mobile);
 
-            $this->optionalForm->setData($formData);
-            if ($this->optionalForm->isValid()) {
-                //error_log(json_encode($formData));
-                return $this->optionalConclude($this->optionalForm, $customerSession, $mobile);
-            } else {
-                /*foreach ($this->newForm2->getMessages() as $messageId => $message) {
-                    error_log(json_encode($message));
-                }*/
-                return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile, $promocodeMemberGetMember);
-            }
+//            $formData = $this->getRequest()->getPost();
+//
+//            $this->optionalForm->setData($formData);
+//            if ($this->optionalForm->isValid()) {
+//                //error_log(json_encode($formData));
+//                return $this->optionalConclude($this->optionalForm, $customerSession, $mobile);
+//            } else {
+//                /*foreach ($this->newForm2->getMessages() as $messageId => $message) {
+//                    error_log(json_encode($message));
+//                }*/
+//                return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile, $promocodeMemberGetMember);
+//            }
         } else {
             return $this->optionalForm($this->optionalForm, $message, $outcome, $mobile, $promocodeMemberGetMember);
         }

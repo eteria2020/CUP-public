@@ -890,37 +890,60 @@ final class RegistrationService
 
     /**
      * Assign a promocode oncet for Member get Member
+     * 
      * @param string $promoCodeName
      * @param Customers $customer
      */
     private function assignPromocodeMemberGetMember($promoCodeName, Customers $customer) {
-        $result = null;
-        $newPromoCodeOnce = $this->promoCodesMemberGetMemberService->createPromoCodeOnceForNewCustomer($promoCodeName, $customer);
 
-        if(!is_null($newPromoCodeOnce)) {   // assign a bonus to old customer
-            $promoCodeOnce = $this->promoCodesOnceService->usePromoCode($customer, $newPromoCodeOnce->getPromocode());
-            $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
-            $customer->setDiscountRate($promoCodeInfo->discountPercentage());
-            $customerOldBonus = $this->promoCodesMemberGetMemberService->assignBonusForOldCustomer($customer);
+        $result = $this->promoCodesMemberGetMemberService->assingCustomerBonusForNewCustomer($customer);
+        $pcoOldCustomer = $this->promoCodesMemberGetMemberService->assignPromoCodeOnceForOldCustomer($promoCodeName, $customer);
 
-            if(!is_null($customerOldBonus)){    // send an email to old customer
-                $customerOld = $customerOldBonus->getCustomer();
-                $mail = $this->emailService->getMail(22, 'it');
-                $content = sprintf(
-                    $mail->getContent(),
-                    $customerOld->getName().' '. $customerOld->getSurname(),
-                    $customerOldBonus->getTotal()
-                );
+        if(!is_null($pcoOldCustomer)){
+            $customerOld = $pcoOldCustomer->getCustomer();
+            $mail = $this->emailService->getMail(22, 'it');
+            $content = sprintf(
+                $mail->getContent(),
+                $customerOld->getName().' '. $customerOld->getSurname(),
+                $customerOld->getDiscountRate()
+            );
 
-                $this->emailService->sendEmail(
-                    $customerOld->getEmail(),
-                    $mail->getSubject(),
-                    $content
-                );
-            }
+            $this->emailService->sendEmail(
+                $customerOld->getEmail(),
+                $mail->getSubject(),
+                $content
+            );
+    }
 
-            $result = $promoCodeOnce;
-        }
+
+//        $newPromoCodeOnce = $this->promoCodesMemberGetMemberService->createPromoCodeOnceForNewCustomer($promoCodeName, $customer);
+//
+//        if(!is_null($newPromoCodeOnce)) {   // assign a bonus to old customer
+//            $promoCodeOnce = $this->promoCodesOnceService->usePromoCode($customer, $newPromoCodeOnce->getPromocode());
+//            $promoCodeInfo = $promoCodeOnce->getPromoCodesInfo();
+//            $customer->setDiscountRate($promoCodeInfo->discountPercentage());
+//            $customerOldBonus = $this->promoCodesMemberGetMemberService->assignBonusForOldCustomer($customer);
+//
+//            if(!is_null($customerOldBonus)){    // send an email to old customer
+//                $customerOld = $customerOldBonus->getCustomer();
+//                $mail = $this->emailService->getMail(22, 'it');
+//                $content = sprintf(
+//                    $mail->getContent(),
+//                    $customerOld->getName().' '. $customerOld->getSurname(),
+//                    $customerOldBonus->getTotal()
+//                );
+//
+//                $this->emailService->sendEmail(
+//                    $customerOld->getEmail(),
+//                    $mail->getSubject(),
+//                    $content
+//                );
+//            }
+//
+//            $result = $promoCodeOnce;
+//        }
+
+        return $result;
     }
 
 }

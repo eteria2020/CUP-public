@@ -68,22 +68,20 @@ $this->inlineScript()
 
                 <!-- block-row-field -->
                 <div class="block-row-field clearfix">
-
-                    <div class="block-field w-4-4" style="text-align: center">
-                        Codice Member Get Member: <h3><?php echo $this->promocodeMemberGetMember; ?></h3>
+                    <div class="module-main-subtitle content-align-center">
+                        <p>Invita un amico!</p>
                     </div>
-
-                    <!--
                     <div class="block-field w-4-4" style="text-align: justify">
-                        <?php $newsletter = $this->form->get('optional')->get('newsletter'); ?>
-                        <label class='control checkbox small-form'>
-                            <?php echo $this->formElement($newsletter) ?>
-                            <span class='control-indicator'
-                                  id="generalCondition1Text"><?= $newsletter->getLabel(); ?></span>
-                        </label>
-                        <?php echo $this->formElementErrors($newsletter, ['class' => 'errors']); ?>
+                        Invia il codice che vedi sotto a un amico, a un parente, a un collega, appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi riceverete 30 minuti gratis come premio.<br><br>
                     </div>
-                    -->
+                    <div class="block-field w-4-4" style="text-align: center">
+                        <table align="center">
+                            <tr>
+                                <td style="background-color: #ffffff; color: #ff0000; border-style:solid; border-color: #000000; font-weight: 600; font-size: 25px; width: 190px"><?php echo $this->promocodeMemberGetMember; ?></td>
+                            </tr>
+                        </table>
+                    </div>
+
 
                 </div>
                 <!-- block-row-field -->
