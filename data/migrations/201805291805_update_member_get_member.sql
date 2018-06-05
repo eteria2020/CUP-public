@@ -1,8 +1,8 @@
 INSERT INTO promo_codes_info (id, webuser_id, active, insert_ts, type, minutes, valid_from, bonus_duration_days, valid_to, overridden_subscription_cost, bonus_valid_from, bonus_valid_to, discount_percentage, no_standard_bonus) VALUES (nextval('promocodesinfo_id_seq'),NULL, TRUE, now(),'smgm', 30,'2018-05-01 00:00:00',30,'2020-12-31 23:59:59',100,'2018-05-01 00:00:00','2020-12-31 23:59:59',18,TRUE);
-INSERT INTO promo_codes (id, promocodesinfo_id, promocode, description, active) VALUES (nextval('promocodes_id_seq'),  (SELECT MAX(id) FROM  promo_codes_info), 'SHARENGO_MGM_NEW','Iscrizione a 1 euro, 30 minuti e 18% di sconto per promo codice amico Share''n Go (utente nuovo)',TRUE);
+INSERT INTO promo_codes (id, promocodesinfo_id, promocode, description, active) VALUES (nextval('promocodes_id_seq'),  (SELECT MAX(id) FROM  promo_codes_info), 'SHARENGO_MGM_NEW','Bonus iscrizione con codice amico Share''n Go a 1 euro, 30 minuti e 18% di sconto',TRUE);
 
 INSERT INTO promo_codes_info (id, webuser_id, active, insert_ts, type, minutes, valid_from, bonus_duration_days, valid_to, overridden_subscription_cost, bonus_valid_from, bonus_valid_to, discount_percentage, no_standard_bonus) VALUES (nextval('promocodesinfo_id_seq'),NULL, TRUE, now(),'smgm', 30,'2018-05-01 00:00:00',30,'2020-12-31 23:59:59',0,'2018-05-01 00:00:00','2020-12-31 23:59:59',18,TRUE);
-INSERT INTO promo_codes (id, promocodesinfo_id, promocode, description, active) VALUES (nextval('promocodes_id_seq'),  (SELECT MAX(id) FROM  promo_codes_info), 'SHARENGO_MGM_OLD','Iscrizione a 0 euro, 30 minuti e 18% di sconto per promo codice amico Share''n Go (utente registarto)',TRUE);
+INSERT INTO promo_codes (id, promocodesinfo_id, promocode, description, active) VALUES (nextval('promocodes_id_seq'),  (SELECT MAX(id) FROM  promo_codes_info), 'SHARENGO_MGM_OLD','Bonus codice amico Share''n Go 30 minuti',TRUE);
 
 INSERT INTO mails (id, subject,content,enable,language, category) VALUES (
 nextval('mails_id_seq'),
