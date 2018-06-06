@@ -6,8 +6,8 @@ use SharengoCore\Entity\CustomerDeactivation;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\CustomersBonus;
 use SharengoCore\Entity\PromoCodes;
-use SharengoCore\Entity\PromoCodesInfo;
-use SharengoCore\Entity\PromoCodesOnce;
+//use SharengoCore\Entity\PromoCodesInfo;
+//use SharengoCore\Entity\PromoCodesOnce;
 use CodiceFiscale\Checker;
 
 use SharengoCore\Service\CountriesService;
@@ -20,8 +20,8 @@ use SharengoCore\Service\PromoCodesMemberGetMemberService;
 
 use Doctrine\ORM\EntityManager;
 use Zend\Form\Form;
-use Zend\Mail\Message;
-use Zend\Mime;
+//use Zend\Mail\Message;
+//use Zend\Mime;
 use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\AbstractHydrator;
 use Zend\View\HelperPluginManager;
@@ -713,7 +713,7 @@ final class RegistrationService
             $customer = new Customers();
 
             $customer = $this->hydrator->hydrate($data, $customer);
-
+            $customer->setNewsletter(true);
             $customer->setRegistrationCompleted(true);
 
             $this->entityManager->persist($customer);
@@ -904,8 +904,7 @@ final class RegistrationService
             $mail = $this->emailService->getMail(22, 'it');
             $content = sprintf(
                 $mail->getContent(),
-                $customerOld->getName().' '. $customerOld->getSurname(),
-                $customerOld->getDiscountRate()
+                $customer->getName().' '. $customer->getSurname()
             );
 
             $this->emailService->sendEmail(
