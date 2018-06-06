@@ -129,7 +129,7 @@ class CustomerBonusPackagesController extends AbstractActionController
         if($package->getType()=='Pacchetto') {
 
         } elseif($package->getType()=='PacchettoPunti') {
-            if($customer->getResidualBonuses()<$package->getCost()) {
+            if($customer->getResidualPoints()<$package->getCost()) {
                 return 'Punti ossigeno insufficenti';
             }
         } else {
