@@ -104,6 +104,7 @@ $this->headLink()
                                     <p> <label style="margin-right: 5px;"><?= $this->translate('Patente estera?'); ?></label>
                                         <?php
                                         $driverLicenseForeign = $form->get('driver')->get('driverLicenseForeign');
+                                        $driverLicenseForeign->setChecked($this->customer->hasForeignDriverLicense());
                                         echo $this->formElement($driverLicenseForeign->setAttribute('class', 'disabled'));
                                         ?>
                                     </p>
