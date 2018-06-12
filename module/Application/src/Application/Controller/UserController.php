@@ -1060,7 +1060,7 @@ class UserController extends AbstractActionController {
         $message = $this->params()->fromQuery('messaggio');
         $outcome = $this->params()->fromQuery('outcome');
 
-        $customerSession = $this->registrationService->getSignupCustomerSession();    // non deserializza correttamente (_PHP_Incomplete_Class
+        //$customerSession = $this->registrationService->getSignupCustomerSession();    // non deserializza correttamente (_PHP_Incomplete_Class
         $customerSession = $this->customersService->findById($this->params()->fromQuery('c'));
 
         /* redirect if session is empty */
@@ -1075,13 +1075,13 @@ class UserController extends AbstractActionController {
             }
         }
 
-        $optionalData = $this->optionalForm->getRegisteredData();
+        //$optionalData = $this->optionalForm->getRegisteredData();
 
-        if (!empty($optionalData)) {
+        /*if (!empty($optionalData)) {
             $this->optionalForm->setData([
                 'optional' => $optionalData
             ]);
-        }
+        }*/
 
         if ($this->getRequest()->isPost()) {
 
