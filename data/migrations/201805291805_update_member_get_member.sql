@@ -25,8 +25,9 @@ nextval('mails_id_seq'),
                                 <img style="width:600px; max-width:100%%;" src="http://site.sharengo.it/wp-content/uploads/2018/06/30minutigratis.jpg" alt="" class="banner"></img>
                                 <br />
                                 <div class="body-text" style="padding-left:15px;padding-right:15px;padding-top:5px;padding-bottom:10px;font-family:''Arial'', sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
-                                    Complimenti, ora sei dei nostri!<br /><br />
-                                    hai acquistato il tuo Pacchetto Benvenuto e grazie a %1$s ti sono gi&agrave; stati accreditati 30 minuti gratis.	<br /><br />
+                                    Complimenti, ti sono stati accreditati 30 minuti bonus!<br /><br />
+                                    %1$s ha appena utilizzato la promozione &quot;Invita un Amico&quot; con il tuo codice personale.<br />
+                                    Continua a condividere il tuo codice con nuovi utenti Sharengo per ricevere altri punti bonus.<br /><br />
 
                                     La tua Sharengo ti aspetta! <img width="40px" style=" vertical-align: middle;   margin-left: -14px;" src="http://site.sharengo.it/wp-content/uploads/2018/05/cuore_giallo.png" alt=""></img><br /><br />
 
