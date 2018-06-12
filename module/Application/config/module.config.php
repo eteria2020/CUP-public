@@ -2270,6 +2270,17 @@ return [
                         ]
                     ]
                 ],
+                'drivers-license-validation-by-customer-id' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'validate drivers licenses by customer id <listOfCustomerId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DriversLicenseValidation',
+                            'action' => 'validate-drivers-license-by-customer-id'
+                        ]
+                    ]
+                ],
                 'disable-customer-drivers-license' => [
                     'type' => 'Simple',
                     'options' => [
