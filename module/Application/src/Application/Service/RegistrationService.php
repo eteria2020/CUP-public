@@ -841,6 +841,7 @@ final class RegistrationService
         $result = null;
         $promoCode = null;
         $promoCodeOnce = null;
+        $promoCodeName = trim($promoCodeName);
 
         if($promoCodeName != '') {
             if($this->promoCodesService->isValid($promoCodeName)) { // it's a standard promocode
