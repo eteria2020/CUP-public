@@ -833,7 +833,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     $(document).ready(function () {
             overlay = $('#sng-overlay');
-        tryAPIGeolocation();
+        <?php if (!$this->mobile){ echo 'tryAPIGeolocation();'; } ?>
 
         var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
         var dateStart = new Date(2018, 1, 11,  7, 0, 0, 0);
