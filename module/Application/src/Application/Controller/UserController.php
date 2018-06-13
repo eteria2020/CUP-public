@@ -687,7 +687,8 @@ class UserController extends AbstractActionController {
         return new ViewModel([
             'form' => $form,
             'hasDiscount' => $this->customerHasDiscount(),
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'fleets' => $this->fleetService->getAllFleetsNoDummy()
         ]);
     }
 
