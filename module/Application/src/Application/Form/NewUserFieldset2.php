@@ -225,6 +225,22 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
         ]);
 
         $this->add([
+            'name' => 'driverLicenseExpire',
+            'type' => 'Zend\Form\Element\Date',
+            'attributes' => [
+                'id' => 'driverLicenseExpire',
+                'class' => 'required datepicker-date',
+                'min' => date_create()->format('d-m-Y'),
+                'placeholder' => $translator->translate('dd-mm-aaaa'),
+                'type' => 'text'
+            ],
+            'options' => [
+                'label' => $translator->translate('Data di scadenza'),
+                'format' => 'd-m-Y'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'vat',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
@@ -493,6 +509,23 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'options' => [
                             'customerService' => $this->customersService
                         ]
+                    ]
+                ]
+            ],
+            'driverLicenseExpire' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\DateFormat'
+                    ],
+                    [
+                        'name' => 'Date',
+                        'options' => [
+                            'format' => 'd-m-Y'
+                        ]
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\DateFromToday'
                     ]
                 ]
             ],
