@@ -114,7 +114,7 @@ $this->headLink()
                                     <p> <label><?= $this->translate('Rilasciata (nazione)'); ?></label>
                                         <?php
                                         $driverLicenseCountry= $form->get('driver')->get('driverLicenseCountry');
-                                        echo $this->formElement($driverLicenseCountry->setAttribute('class', 'disabled'));
+                                        echo is_null($driverLicenseCountry->getValue()) ? '<input type="text" name="" class="required disabled">' : $this->formElement($driverLicenseCountry->setAttribute('class', 'disabled'));
                                         ?>
                                     </p>
                                 </div>

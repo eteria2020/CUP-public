@@ -612,7 +612,7 @@ final class RegistrationService
         // we compile manually some fields just for the sake of validation
         $userData['smsCode']=$smsVerification->offsetGet('code');
         $userData['driverLicenseReleaseDate'] = null;
-        $userData['driverLicenseExpire'] = null;
+        $userData['driverLicenseExpire'] = $userData['driverLicenseExpire']->format('d-m-Y');
         $userData['civico'] = $civico;
 
         $this->newForm2->setData([
@@ -663,7 +663,7 @@ final class RegistrationService
         $data['name'] = ($data['name'] == null || $data['name'] == '') ? $data['driverLicenseName'] : $data['name'];;
         $data['address'] = $data['address'].' '.$civico;
         $data['taxCode'] = strtoupper($data['taxCode']);
-        $data['driverLicenseCountry'] = $data['driverLicenseForeign'] == 'true' ? 'ee' : 'it';
+        $data['driverLicenseCountry'] = $data['driverLicenseForeign'] == 'true' ? null : 'it';
         $chk = new Checker();
         if ($chk->isFormallyCorrect($data['taxCode'])){
             $birthYear = $chk->getYearBirth();
