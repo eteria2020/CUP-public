@@ -54,6 +54,12 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         );
 
         $this->listeners[] = $events->attach(
+            'Application\Controller\UserController',
+            'secondFormCompleted',
+            [$this, 'validateDriversLicense']
+        );
+
+        $this->listeners[] = $events->attach(
             'Application\Controller\UserAreaController',
             'driversLicenseEdited',
             [$this, 'validateDriversLicense']
@@ -89,6 +95,5 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
             $this->enqueueValidationService->validateDriversLicense($data);
         }
     }
-
 
 }

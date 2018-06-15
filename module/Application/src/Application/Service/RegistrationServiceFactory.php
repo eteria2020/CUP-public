@@ -13,6 +13,9 @@ class RegistrationServiceFactory implements FactoryInterface
     {
         $form1 = $serviceLocator->get('RegistrationForm');
         $form2 = $serviceLocator->get('RegistrationForm2');
+        $newForm = $serviceLocator->get('NewRegistrationForm');
+        $newForm2 = $serviceLocator->get('NewRegistrationForm2');
+        $optionalForm = $serviceLocator->get('OptionalRegistrationForm');
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
         $emailSettings = $serviceLocator->get('Configuration')['emailSettings'];
@@ -21,14 +24,20 @@ class RegistrationServiceFactory implements FactoryInterface
         $viewHelperManager = $serviceLocator->get('viewHelperManager');
         $promoCodesService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
         $promoCodesOnceService = $serviceLocator->get('SharengoCore\Service\PromoCodesOnceService');
+        $promoCodesMemberGetMemberService = $serviceLocator->get('SharengoCore\Service\PromoCodesMemberGetMemberService');
         $subscriptionBonus = $serviceLocator->get('Configuration')['subscription-bonus'];
         $deactivationService = $serviceLocator->get('SharengoCore\Service\CustomerDeactivationService');
         $events = $serviceLocator->get('EventManager');
         $events->addIdentifiers('Application\Service\RegistrationService');
+        $municipalityRepository = $serviceLocator->get('SharengoCore\Service\MunicipalitiesService');
+        $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
 
         return new RegistrationService(
             $form1,
             $form2,
+            $newForm,
+            $newForm2,
+            $optionalForm,
             $entityManager,
             $hydrator,
             $emailSettings,
@@ -37,9 +46,12 @@ class RegistrationServiceFactory implements FactoryInterface
             $viewHelperManager,
             $promoCodesService,
             $promoCodesOnceService,
+            $promoCodesMemberGetMemberService,
             $subscriptionBonus,
             $deactivationService,
-            $events
+            $events,
+            $municipalityRepository,
+            $countriesService
         );
     }
 }

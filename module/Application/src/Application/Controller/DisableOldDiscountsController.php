@@ -113,7 +113,7 @@ class DisableOldDiscountsController extends AbstractActionController
      * Renew the old customer's discounts.
      */
     public function renewOldDiscountsAction() {
-        $newDiscount = 14;
+        $newDiscount = 15;
 
         $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;renewOldDiscountsAction;start;" . $newDiscount."\n");
         $request = $this->getRequest();

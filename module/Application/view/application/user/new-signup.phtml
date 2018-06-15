@@ -1,0 +1,250 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'));
+
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/overlay.css'))
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css'));
+?>
+
+<!-- main -->
+<div id="main">
+    <!-- module-section-bookmark -->
+    <div class="module-section-bookmark yellow content-align-center">
+        <h1 class="module-main-title"><?= $this->translate('Il car sharing elettrico<br>non inquina e ti conviene!'); ?></h1>
+            <div style="display: inline-block;">
+            <ul style="text-align: left; margin-top: 10px">
+                <li>Area C/ZTL/Tridente Roma + park gratis</li>
+                <li>Auto disponibili vicino a te giorno e notte</li>
+                <li>Pacchetti fino a 22 centesimi al minuto</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="module-main-subtitle content-align-center">
+        <p>Iscriverti non ti costa nulla!</p>
+    </div>
+
+    <!-- module-section-bookmark -->
+    <script>//fbq('track', 'Lead');</script>
+
+    <!-- module-wizard -->
+    <!--<div class="module-wizard clearfix">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li class="last"><i class="icon-auto"></i></li>
+        </ul>
+    </div>-->
+    <!-- module-wizard -->
+    <br>
+
+    <!-- content -->
+    <div class="content">
+
+        <?php
+        $this->form->prepare();
+        echo $this->form()->openTag($this->form);
+        ?>
+
+        <!-- block-form -->
+        <div class="block-form w-3-4 auto-margin clearfix">
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-1-3">
+                    <p><label><?= $this->translate('Email'); ?></label>
+                        <?php
+                        $email = $this->form->get('user')->get('email');
+                        echo $this->formElement($email);
+                        echo $this->formElementErrors($email, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-3">
+                    <p><label><?= $this->translate('Password'); ?></label>
+                        <?php
+                        $password = $this->form->get('user')->get('password');
+                        echo $this->formElement($password);
+                        echo $this->formElementErrors($password, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Citt&agrave; preferita'); ?></label>
+                        <?php
+                        $fleet = $this->form->get('user')->get('fleet');
+                        echo $this->formElement($fleet);
+                        echo $this->formElementErrors($fleet, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field w-4-4" style="text-align: justify">
+
+                    <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($privacyCondition) ?>
+                        <span class='control-indicator'
+                              id="generalCondition1Text"><?= $privacyCondition->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
+
+                </div>
+            </div>
+            <!-- block-row-field -->
+            <div class="block-wrapper-button content-align-center">
+                <input type="submit" name="" id="nextBtn" value="CREA IL TUO ACCOUNT">
+                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">Cliccando sul tasto Iscriviti accetti l'<a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="http://site.sharengo.it/privacy/">Informativa sulla Privacy</a> e <br>
+                    le <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/Contratto_di_servizio_e_tariffe.pdf'); ?>">Condizioni Contrattuali</a> di Share'ngo</p>
+            </div>
+            <br>
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+
+                <div class="block-field w-4-4" style="text-align: justify">
+
+                    <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($generalCondition2) ?>
+                        <span class='control-indicator'
+                              id="generalCondition1Text"><?= $generalCondition2->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
+
+                </div>
+            </div>
+            <!-- block-row-field -->
+
+            </form>
+
+        </div>
+        <!-- block-form -->
+
+    </div>
+    <!-- content -->
+    <!-- overlay -->
+    <div id="sng-overlay" style="visibility: hidden">
+        <div class="table">
+            <div class="cell">
+                <div class="box" style="background:#fff;">
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                    <div id="sng-overlay-content1">
+                        <div class="content-more"
+                             style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
+                            <h3 style="background: #07ba50;color: #fff;">ATTENZIONE</h3>
+                            <br>
+                            <ul>
+                                <p style="color:black;text-align: justify; font-weight: 500;">Domenica 11 Febbraio dalle
+                                    ore 7:30 alle ore 13:30 una manutenzione programmata del sistema di verifica delle
+                                    patenti potrebbe causare qualche rallentamento nella procedure di controllo. Le
+                                    patenti verranno comunque convalidate entro luned&igrave; mattina.</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+</div>
+<!-- main -->
+
+<?
+$this->inlineScript()->appendScript(
+    '$(document).ready(function() {
+$( ".datepicker-date" ).datepicker({
+dateFormat: "dd-mm-yy",
+changeMonth: true,
+changeYear: true,
+yearRange: "-100:+0",
+maxDate: new Date(new Date().getFullYear(), 11, 31)
+});
+});'
+);
+?>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        tryAPIGeolocation();
+
+        overlay = $('#sng-overlay');
+
+        var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
+        var dateStart = new Date(2018, 1, 11, 7, 0, 0, 0);
+        var dateEnd = new Date(2018, 1, 11, 14, 0, 0, 0);
+
+        //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
+        //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
+
+        if (now >= dateStart && now <= dateEnd) {
+            overlay.css("visibility", "visible");
+        }
+
+        $(".sng-overlay-close").click(function (e) {
+            e.preventDefault();
+            overlay.fadeOut(600, function () {
+                overlay.remove();
+            });
+        });
+
+        // Criteo section
+        var email = $("#email").val();
+        var list = [];
+        $("#fleet option").each(function () {
+            if (parseInt($(this).val()) !== 0) {
+                list.push(parseInt($(this).val()));
+            }
+            ;
+        });
+
+        criteoViewListing(email, list);
+
+        $("#fleet").change(function () {
+            var email = $("#email").val();
+            var fleetId = parseInt($(this).find(":selected").val());
+
+            criteoViewBasketItem(email, fleetId);
+        });
+
+    });
+
+    /*signup favourite city draft*/
+
+    function nearBy(fleetLat, fleetLon, userLat, userLon){
+        return Math.abs(fleetLat-userLat)+Math.abs(fleetLon-userLon);
+    }
+
+    var apiGeolocationSuccess = function(position) {
+        var arr = [];
+        <?
+            $arr = "";
+            foreach($this->fleets as $f){
+                echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
+                $arr .= "arr[".$f->getId()."]";$arr .= ",";
+            }
+        ?>
+        var i = arr.indexOf(Math.min(<?= $arr; ?>));
+        $('select#fleet>option:eq('+i+')').attr('selected', true);
+    };
+
+    var tryAPIGeolocation = function() {
+        jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
+            apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+        })
+            .fail(function(err) {
+                console.log(err);
+            });
+    };
+
+</script>

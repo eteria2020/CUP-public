@@ -8,13 +8,13 @@ var $shop_car, $shop_pop, $shop_pin, title_line = Tweene.line(),
     left_shop, left_show, left_sport;
 Tweene.defaultTimeUnit = "ms", Tweene.defaultDriver = "velocity", enquire.register("screen and (max-width: 400px)", {
     setup: function() {
-        left_shop = "20%", left_sport = "40%", left_show = "30%", console.log("setup")
+        left_shop = "20%", left_sport = "40%", left_show = "30%"
     },
     match: function() {
-        left_shop = "10%", left_sport = "10%", left_show = "10%", console.log("sotto")
+        left_shop = "10%", left_sport = "10%", left_show = "10%"
     },
     unmatch: function() {
-        left_shop = "20%", left_sport = "40%", left_show = "30%", console.log("sopra")
+        left_shop = "20%", left_sport = "40%", left_show = "30%"
     }
 }), jQuery(function($) {
     $shop_car = $("#shop_car"), $sport_car = $("#sport_car"), $show_car = $("#show_car"), $shop_pop = $("#shop_pop"), $sport_pop = $("#sport_pop"), $show_pop = $("#show_pop"), $shop_pin = $("#shop_pin"), $sport_pin = $("#sport_pin"), $show_pin = $("#show_pin");

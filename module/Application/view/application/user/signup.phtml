@@ -833,6 +833,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     $(document).ready(function () {
             overlay = $('#sng-overlay');
+        <?php if (!$this->mobile){ echo 'tryAPIGeolocation();'; } ?>
 
         var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
         var dateStart = new Date(2018, 1, 11,  7, 0, 0, 0);
@@ -871,5 +872,33 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
                             });
 
                             });
+    function nearBy(fleetLat, fleetLon, userLat, userLon){
+        return Math.abs(fleetLat-userLat)+Math.abs(fleetLon-userLon);
+    }
+
+    var apiGeolocationSuccess = function(position) {
+        var arr = [];
+        <?
+        $arr = "";
+        foreach($this->fleets as $f){
+            echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
+            $arr .= "arr[".$f->getId()."]";$arr .= ",";
+        }
+        ?>
+        var i = arr.indexOf(Math.min(<?= $arr; ?>));
+        //if geolocation is near by Florence: redirect to new signup
+        if (i == 2 || i == 4){ //Florence and Modena
+            window.location.replace("https://www.sharengo.it/new-signup");
+        }
+    };
+
+    var tryAPIGeolocation = function() {
+        jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
+            apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+        })
+            .fail(function(err) {
+                console.log(err);
+            });
+    };
 
 </script>
