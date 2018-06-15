@@ -588,12 +588,12 @@ class UserAreaController extends AbstractActionController {
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
-                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti.');
-                            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell\'area "Patente".');
+                        //return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::EXPIRED_DRIVERS_LICENSE:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato per patente scaduta, inserisci i nuovi dati.');
-                            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;
                     /*case 'DISABLED_BY_WEBUSER':
                         return 'Disabilitato manualmente';
