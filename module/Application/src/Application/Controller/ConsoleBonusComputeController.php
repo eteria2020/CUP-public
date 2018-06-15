@@ -781,6 +781,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             date_create()->format('Y-m-d H:i:s'),
             $debug,
             $date_ts,
+            $radius,
             $carplate
             ));
 
