@@ -574,6 +574,7 @@ class UserAreaController extends AbstractActionController {
         if ($this->redirectRegistrationNotCompleted($customer)){
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));
         }
+        $returnRedirect = true;
 
         $deactivations = $this->customerDeactivationService->getAllActive($customer);
         if(count($deactivations) > 0){
@@ -588,12 +589,13 @@ class UserAreaController extends AbstractActionController {
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
-                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti.');
-                            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell\'area "Patente".');
+                        $returnRedirect = false;
+                        //return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::EXPIRED_DRIVERS_LICENSE:
                         $this->flashMessenger()->addErrorMessage('Sei disabilitato per patente scaduta, inserisci i nuovi dati.');
-                            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;
                     /*case 'DISABLED_BY_WEBUSER':
                         return 'Disabilitato manualmente';
@@ -601,8 +603,8 @@ class UserAreaController extends AbstractActionController {
                 }
             }
             //DOUBLE CHECK FOR FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
-            if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
-                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
+            if ($returnRedirect && ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
+                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted()))) {
                 return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
             }
         }
