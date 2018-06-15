@@ -156,7 +156,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
+                                Identical::NOT_SAME => "Il dato è richiesto per procedere",
                             ]
                         ],
                     ],
@@ -180,7 +180,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
+                                Identical::NOT_SAME => "Il dato è richiesto per procedere",
                             ]
                         ],
                     ],

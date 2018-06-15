@@ -458,7 +458,7 @@ class UserController extends AbstractActionController {
 
             $now = new \DateTime();
             $diffSeconds = $now->getTimestamp() - $smsVerification->offsetGet('timeStamp')->getTimeStamp();
-            if ($diffSeconds > 60) {
+            if ($diffSeconds > 50) {
                 $smsVerification->offsetSet('timeStamp', new \DateTime());
 
                 //in caso sbagliasse numero aggiorno il numero di telefono
