@@ -811,7 +811,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $emailCategory = 16;
             $tripMinutes = 5;
             $fleets = array(1,4);   // only Milan and Modena
-        } else if ($bonusType=='POIS-15') {
+        } else if ($bonusType=='POIS-FI-15') {
             $bonus_to_assign = 15;
             $duration =30;
             $description = 'Parcheggio centro Firenze - ';
