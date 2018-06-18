@@ -851,7 +851,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
 
             // Verify that only one bonus for trips with plate
-            $verified = $this->bonusService->verifyBonusPoisAssigned($trip->getCustomer(), $date_ts);
+            //$verified = $this->bonusService->verifyBonusPoisAssigned($trip->getCustomer(), $date_ts);
+            $verified = $this->bonusService->verifyBonusPoisAssigned($trip->getCustomer(), date_create()->format('Y-m-d'));
             if (count($verified) > 0) {
                 continue;
             }
