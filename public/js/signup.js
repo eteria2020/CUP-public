@@ -107,11 +107,11 @@ $(function () {
                             break;
 
                         case "Numero di telefono non corretto":
-                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto</p></div>");
+                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero non corretto, attendere 60 secondi per riprovare</p></div>");
                             break;
 
                         case "Found":
-                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero gi&agrave presente</p></div>");
+                            $('#buttonCode').html("<div><p style='color:red;'><i class='fa fa-times fa-2x' style='color:red'></i>Numero gi&agrave presente, attendere 60 secondi per riprovare</p></div>");
                             break;
 
                     }
@@ -171,9 +171,11 @@ $(function () {
 
         birthProvince.change();
     });
-    $("#birthCountry").trigger("change", {
-        birthTownValue: birthTownValue
-    });
+    if (typeof birthTownValue != "undefined") {
+        $("#birthCountry").trigger("change", {
+            birthTownValue: birthTownValue
+        });
+    }
 
     $("#birthProvince").change(function (event, params) {
         var province = $(this).val(),
@@ -203,9 +205,11 @@ $(function () {
             $("#birthTown").append($("<option>"));
         }
     });
-    $("#birthProvince").trigger("change", {
-        birthTownValue: birthTownValue
-    });
+    if (typeof birthTownValue != "undefined") {
+        $("#birthProvince").trigger("change", {
+            birthTownValue: birthTownValue
+        });
+    }
 
     //CSD947-170822-doublelanguagesignupforms//
     function setLanguage() {

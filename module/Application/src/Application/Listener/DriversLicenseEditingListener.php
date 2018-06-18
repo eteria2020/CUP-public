@@ -42,6 +42,12 @@ final class DriversLicenseEditingListener implements SharedListenerAggregateInte
         );
 
         $this->listeners[] = $events->attach(
+            'Application\Controller\UserController',
+            'secondFormCompleted',
+            [$this, 'disableCustomer']
+        );
+
+        $this->listeners[] = $events->attach(
             'Application\Controller\UserAreaController',
             'driversLicenseEdited',
             [$this, 'disableCustomer']

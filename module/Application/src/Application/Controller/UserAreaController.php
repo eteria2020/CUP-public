@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 //use SharengoCore\Entity\CustomersBonus;
 //use SharengoCore\Entity\PromoCodes;
+use SharengoCore\Entity\CustomerDeactivation;
 use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
 use Zend\Authentication\AuthenticationService;
@@ -26,6 +27,7 @@ use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
 use SharengoCore\Service\PaymentScriptRunsService;
 use SharengoCore\Service\PaymentsService;
+use SharengoCore\Service\CustomerDeactivationService;
 
 class UserAreaController extends AbstractActionController {
 
@@ -87,7 +89,7 @@ class UserAreaController extends AbstractActionController {
     private $driverLicenseForm;
 
     /**
-     * @var Cartasi\Service\CartasiPaymentsService
+     * @var \Cartasi\Service\CartasiPaymentsService
      */
     private $cartasiPaymentsService;
 
@@ -122,9 +124,14 @@ class UserAreaController extends AbstractActionController {
     private $paymentScriptRunsService;
 
     /**
-     * @var PaymentService
+     * @var PaymentsService
      */
     private $paymentsService;
+
+    /**
+     * @var CustomerDeactivationService
+     */
+    private $customerDeactivationService;
 
     /**
      * @param CustomersService $customerService
@@ -143,9 +150,10 @@ class UserAreaController extends AbstractActionController {
      * @param DisableContractService $disableContractService
      * @param PaymentScriptRunsService $paymentScriptRunService
      * @param PaymentService $paymentsService
+     * @param CustomerDeactivationService $customerDeactivationService
      */
     public function __construct(
-    CustomersService $customerService, TripsService $tripsService, AuthenticationService $userService, InvoicesService $invoicesService, Form $profileForm, Form $passwordForm, Form $mobileForm, Form $driverLicenseForm, HydratorInterface $hydrator, CartasiPaymentsService $cartasiPaymentsService, TripPaymentsService $tripPaymentsService, CartasiContractsService $cartasiContractsService, $bannerJsonpUrl, DisableContractService $disableContractService, PaymentScriptRunsService $paymentScriptRunService, PaymentsService $paymentsService
+    CustomersService $customerService, TripsService $tripsService, AuthenticationService $userService, InvoicesService $invoicesService, Form $profileForm, Form $passwordForm, Form $mobileForm, Form $driverLicenseForm, HydratorInterface $hydrator, CartasiPaymentsService $cartasiPaymentsService, TripPaymentsService $tripPaymentsService, CartasiContractsService $cartasiContractsService, $bannerJsonpUrl, DisableContractService $disableContractService, PaymentScriptRunsService $paymentScriptRunService, PaymentsService $paymentsService, CustomerDeactivationService $customerDeactivationService
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -164,6 +172,7 @@ class UserAreaController extends AbstractActionController {
         $this->disableContractService = $disableContractService;
         $this->paymentScriptRunsService = $paymentScriptRunService;
         $this->paymentsService = $paymentsService;
+        $this->customerDeactivationService = $customerDeactivationService;
     }
 
     /**
@@ -183,9 +192,9 @@ class UserAreaController extends AbstractActionController {
 
         $customer = $this->userService->getIdentity();
 
-        if ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
-                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted())) {
-            $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+        $redirect = $this->redirectDeactivation($customer, $mobile);
+        if ($redirect != null) {
+            return $redirect;
         }
 
         // if not, continue with index action
@@ -352,14 +361,18 @@ class UserAreaController extends AbstractActionController {
         if ($mobile) {
             $this->layout('layout/map');
         }
+        $customer = $this->userService->getIdentity();
+
+        if ($this->redirectRegistrationNotCompleted($customer)){
+            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
+        }
+
         /** @var DriverLicenseForm $form */
         $form = $this->driverLicenseForm;
         $customerData = $this->hydrator->extract($this->customer);
         $form->setData(['driver' => $customerData]);
-
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPost()->toArray();
-            $customer = $this->userService->getIdentity();
             $postData['driver']['id'] = $customer->getId();
             if (!isset($postData['driver']['driverLicenseCategories'])) {
                 $driver = $postData['driver'];
@@ -404,7 +417,8 @@ class UserAreaController extends AbstractActionController {
             'customer' => $this->customer,
             'driverLicenseForm' => $form,
             'showError' => $this->showError,
-            'driversLicenseUpload' => $driversLicenseUpload
+            'driversLicenseUpload' => $driversLicenseUpload,
+            'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer)
         ]);
     }
 
@@ -416,7 +430,8 @@ class UserAreaController extends AbstractActionController {
         }
         return new ViewModel([
             'customer' => $this->customer,
-            'listBonus' => $this->customerService->getAllBonus($this->customer)
+            'listBonus' => $this->customerService->getAllBonus($this->customer),
+            'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer)
         ]);
     }
 
@@ -544,6 +559,68 @@ class UserAreaController extends AbstractActionController {
 
     public function maintenancePageAction() {
         return new ViewModel();
+    }
+
+    private function redirectDeactivation(Customers $customer, $mobile){
+        $userAreaMobile = '';
+
+        $mobileParam = NULL;
+        if ($mobile == 'mobile') {
+            $this->layout('layout/map');
+            $mobileParam = 'mobile';
+            $userAreaMobile = '/' . $mobileParam;
+        }
+
+        if ($this->redirectRegistrationNotCompleted($customer)){
+            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));
+        }
+        $returnRedirect = true;
+
+        $deactivations = $this->customerDeactivationService->getAllActive($customer);
+        if(count($deactivations) > 0){
+            foreach($deactivations as $deactivation){
+                switch ($deactivation->getReason()) {
+                    case CustomerDeactivation::FIRST_PAYMENT_NOT_COMPLETED:
+                    case CustomerDeactivation::FAILED_PAYMENT:
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+                        break;
+                    case CustomerDeactivation::EXPIRED_CREDIT_CARD:
+                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati.');
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
+                        break;
+                    case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
+                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell\'area "Patente".');
+                        $returnRedirect = false;
+                        //return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        break;
+                    case CustomerDeactivation::EXPIRED_DRIVERS_LICENSE:
+                        $this->flashMessenger()->addErrorMessage('Sei disabilitato per patente scaduta, inserisci i nuovi dati.');
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        break;
+                    /*case 'DISABLED_BY_WEBUSER':
+                        return 'Disabilitato manualmente';
+                        break;*/
+                }
+            }
+            //DOUBLE CHECK FOR FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
+            if ($returnRedirect && ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
+                (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted()))) {
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+            }
+        }
+
+    }
+
+    private function redirectRegistrationNotCompleted($customer)
+    {
+        $registrationNotCompleted = $this->customerDeactivationService->getAllActive($customer, CustomerDeactivation::REGISTRATION_NOT_COMPLETED);
+        if (is_null($registrationNotCompleted)) {
+            return false;
+        } else {
+            $signupSession = new Container('newSignup');
+            $signupSession->offsetSet("customer", $customer);
+            return true;
+        }
     }
 
 }

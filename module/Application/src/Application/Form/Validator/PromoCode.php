@@ -7,6 +7,7 @@ use SharengoCore\Exception\NotAValidCodeException;
 use SharengoCore\Service\CarrefourService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesOnceService;
+use SharengoCore\Service\PromoCodesMemberGetMemberService;
 
 use Zend\Validator\AbstractValidator;
 
@@ -38,6 +39,11 @@ class PromoCode extends AbstractValidator
     private $carrefourService;
 
     /**
+     * PromoCodesMemberGetMemberService
+     */
+    private $promoCodesMemberGetMemberService;
+
+    /**
      * @var string[]
      */
     protected $messageTemplates = [
@@ -54,6 +60,7 @@ class PromoCode extends AbstractValidator
         $this->promoCodesService = $options['promoCodesService'];
         $this->promoCodesOnceService = $options['promoCodesOnceService'];
         $this->carrefourService = $options['carrefourService'];
+        $this->promoCodesMemberGetMemberService = $options['promoCodesMemberGetMemberService'];
     }
 
     /**
@@ -82,7 +89,11 @@ class PromoCode extends AbstractValidator
                         $this->error(self::WRONG_CODE);
                     }
                 }else {
-                    $this->error(self::WRONG_CODE);
+                    if($this->promoCodesMemberGetMemberService->isValid($value)) {
+                        $result =TRUE;
+                    } else {
+                        $this->error(self::WRONG_CODE);
+                    }
                 }
             }
         }

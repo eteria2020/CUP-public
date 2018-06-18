@@ -27,6 +27,7 @@ class UserAreaControllerFactory implements FactoryInterface {
         $disableContractService = $sharedLocator->get('SharengoCore\Service\DisableContractService');
         $paymentScriptRunService = $sharedLocator->get('SharengoCore\Service\PaymentScriptRunsService');
         $paymentService = $sharedLocator->get('SharengoCore\Service\PaymentsService');
+        $customerDeactivationService = $sharedLocator->get('SharengoCore\Service\CustomerDeactivationService');
 
         return new UserAreaController(
             $I_customerService,
@@ -44,7 +45,8 @@ class UserAreaControllerFactory implements FactoryInterface {
             $bannerJsonpUrl,
             $disableContractService,
             $paymentScriptRunService,
-            $paymentService
+            $paymentService,
+            $customerDeactivationService
         );
     }
 

@@ -24,8 +24,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 
-# every 2 hour
-05 */2 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_old_trip_maintainers.sh
+# every 1 hour
+05 */1 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_old_trip_maintainers.sh
 
 # every day
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
@@ -33,6 +33,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 10 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/discounts.sh
 30 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus.sh
 40 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/driver_license.sh
+# NB Evitare pianificazioni comprese fra le 02:00 e le 03:00, per cambio ora legale/solare
 30 03 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 00 07 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry.sh
 #30 07 * * 0     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
@@ -43,6 +44,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 30 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/export_registries.sh
 35 10 * * *     root            /usr/bin/pm2 restart webservices
 
+00 17 * * 0-4,6 root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry_extra_time.sh
 00 19 * * 0-4,6 root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry_time.sh
 
 30 21 * * *     root            /usr/bin/pm2 restart webservices
