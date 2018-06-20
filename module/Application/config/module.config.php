@@ -357,7 +357,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action' => 'signup',
+                        'action' => 'new-signup', //signup
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -378,7 +378,8 @@ return [
                     ],
                 ]
             ],
-            'signup1' => [
+            //Lorenzo: not in use anymore
+            /*'signup1' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup1}',
@@ -388,7 +389,7 @@ return [
                         'action' => 'signup',
                     ],
                 ]
-            ],
+            ],*/
             'new-signup-2' => [
                 'type' => 'Segment',
                 'options' => [
