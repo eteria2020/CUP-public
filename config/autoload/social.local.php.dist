@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'facebook' => [
+        'app_id' => '656356018031505',
+        'app_secret' => 'be838318b6d1cb77d331135ca2cd6471',
+        'default_graph_version' => 'v3.0',
+        'redirect'  => [],
+        'permission' => ['email, user_birthday, user_hometown, user_location'],
+    ]
+];

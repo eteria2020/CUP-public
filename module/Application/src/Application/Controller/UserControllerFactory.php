@@ -35,6 +35,15 @@ class UserControllerfactory implements FactoryInterface
         $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $foreignDriversLicenseService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ForeignDriversLicenseService');
 
+        $facebook = null;
+        try {
+            $facebook = new \Facebook\Facebook([
+                'app_id' => $config['facebook']['app_id'],
+                'app_secret' => $config['facebook']['app_secret'],
+                'default_graph_version' => $config['facebook']['default_graph_version'],
+            ]);
+        }catch (\Facebook\Exceptions\FacebookSDKException $e){}
+
         return new UserController(
             $form1,
             $form2,
@@ -54,7 +63,8 @@ class UserControllerfactory implements FactoryInterface
             $promoCodeService,
             $promoCodesOnceService,
             $promoCodesMemberGetMemberService,
-            $foreignDriversLicenseService
+            $foreignDriversLicenseService,
+            $facebook
         );
     }
 }

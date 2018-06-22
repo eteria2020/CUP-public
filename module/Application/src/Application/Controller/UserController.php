@@ -24,7 +24,7 @@ use SharengoCore\Service\PromoCodesMemberGetMemberService;
 use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\Fleet;
-use SharengoCode\Entity\Cards;
+use SharengoCore\Entity\Cards;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Form\DTO\UploadedFile;
 use Zend\Log\Logger;
@@ -66,7 +66,7 @@ class UserController extends AbstractActionController {
     private $registrationService;
 
     /**
-     * @var SharengoCore\Service\PromoCodesMemberGetMemberService
+     * @var \SharengoCore\Service\PromoCodesMemberGetMemberService
      */
     private $promoCodesMemberGetMemberService;
 
@@ -134,6 +134,11 @@ class UserController extends AbstractActionController {
     private $foreignDriversLicenseService;
 
     /**
+     * @var $facebook
+     */
+    private $facebook;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
@@ -148,6 +153,7 @@ class UserController extends AbstractActionController {
      * @param PromoCodesOnceService $promoCodesOnceService
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param ForeignDriversLicenseService $foreignDriversLicenseService
+     * @param $facebook
      */
     public function __construct(
         Form $form1,
@@ -168,8 +174,9 @@ class UserController extends AbstractActionController {
         PromoCodesService $promoCodeService,
         PromoCodesOnceService $promoCodesOnceService,
         PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
-        ForeignDriversLicenseService $foreignDriversLicenseService) {
-
+        ForeignDriversLicenseService $foreignDriversLicenseService,
+        $facebook
+    ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
         $this->newForm = $newForm;
@@ -189,6 +196,7 @@ class UserController extends AbstractActionController {
         $this->promoCodesOnceService = $promoCodesOnceService;
         $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
+        $this->facebook = $facebook;
     }
 
     public function loginAction() {

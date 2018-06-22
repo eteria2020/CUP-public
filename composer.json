@@ -41,7 +41,8 @@
         "cup-web/public-business-module": "dev-master",
         "rwoverdijk/assetmanager": "1.4.*",
         "mvlabs/mvlabs-payments": "dev-master",
-        "mvlabs/omnipay-cartasi": "dev-master"
+        "mvlabs/omnipay-cartasi": "dev-master",
+        "facebook/graph-sdk": "^5.6"
     },
     "repositories": [
         {
