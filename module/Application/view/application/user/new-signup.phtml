@@ -7,7 +7,6 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
     ->appendStylesheet($this->basePath('css/signup.css'));
 ?>
-
 <!-- main -->
 <div id="main">
     <!-- module-section-bookmark -->
@@ -43,6 +42,12 @@ $this->headLink()
 
     <!-- content -->
     <div class="content">
+        <div class="block-wrapper-button content-align-center">
+            <button class="loginBtn loginBtn--facebook" style="margin-bottom:10px !important; background-color: #4267B2 !important; border: none !important">
+                Registrati con Facebook
+            </button>
+        </div>
+        <hr>
 
         <?php
         $this->form->prepare();
@@ -54,7 +59,6 @@ $this->headLink()
 
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
-
                 <div class="block-field bw-f w-1-3">
                     <p><label><?= $this->translate('Email'); ?></label>
                         <?php

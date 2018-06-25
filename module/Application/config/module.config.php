@@ -378,6 +378,17 @@ return [
                     ],
                 ]
             ],
+            'fb-callback' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{fb-callback}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'fb-callback',
+                    ],
+                ]
+            ],
             //Lorenzo: not in use anymore
             /*'signup1' => [
                 'type' => 'Segment',
@@ -404,7 +415,7 @@ return [
                     ],
                 ]
             ],
-            'signup-2' => [
+/*            'signup-2' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup-2}[/:mobile]',
@@ -417,7 +428,7 @@ return [
                         'mobile' => 'mobile'
                     ],
                 ]
-            ],
+            ],*/
             'signup-sms' => [
                 'type' => 'Segment',
                 'options' => [
