@@ -2943,7 +2943,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
-                "reference": "f1e198459411805064488e59a4c7d2d51ccd537c"
+                "reference": "11df260b3c364a556ec11189cbfb5977693b8711"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2957,7 +2957,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2018-06-25 14:29:24"
+            "time": "2018-06-26 07:51:41"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
