@@ -2084,7 +2084,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2370,7 +2370,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/omnipay-cartasi.git",
-                "reference": "8f2ff0712b5187241f5b51d95fa6ef7b43bf7f27"
+                "reference": "a4fd262b9b4af5fef489961e4de946d877c7289d"
             },
             "require": {
                 "omnipay/common": "~2.0"
@@ -2416,7 +2416,7 @@
                 "cartasi",
                 "omnipay"
             ],
-            "time": "2017-12-01 16:25:57"
+            "time": "2018-06-26 08:10:20"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
