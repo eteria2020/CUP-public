@@ -82,12 +82,12 @@ class Module
                 }
 
                 // retrieve discout from equomobili
-                try {
+                /*try {
                     $discount = $profilingPlatformService->getDiscountByEmail($params['email']);
                     $customerService->setCustomerDiscountRate($customer, $discount);
                 } catch (ProfilingPlatformException $ex) {
                 } catch (\Exception $e){
-                }
+                }*/
 
                 // assign card to user
                 $customerService->assignCard($customer);
