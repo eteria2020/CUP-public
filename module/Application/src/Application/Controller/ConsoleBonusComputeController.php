@@ -34,7 +34,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @var AccountedTripsService
      */
     private $accountedTripsService;
-    
+
     /**
      * @var ServerScriptService
      */
@@ -282,7 +282,14 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
         $bonus = $this->bonusService->createBonusForCustomerFromData($trip->getCustomer(), $bonus_to_assign, 'zone-' . $bonus_type, $description, $valTo, $valFrom);
 
-        $this->logger->log("Bonus " . $bonus_type . " assigned: " . $bonus->getId() . " to customer " . $trip->getCustomer()->getId() . "\n");
+        $this->logger->log(sprintf("%s;INF;assigneBonus;tripId=%s;bonusId=%s;customerId=%s;email=%s;carPlate=%s\n",
+            date_create()->format('Y-m-d H:i:s'),
+            $trip->getId(),
+            $bonus->getId(),
+            $trip->getCustomer()->getId(),
+            $trip->getCustomer()->getEmail(),
+            $trip->getCar()->getPlate()));
+
     }
 
     private function findBonusUsable(Trips $trip, array &$zonesBonus) {
@@ -504,7 +511,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         foreach ($freeMinutesTripBonuses as $item) {
                             if ($item->getBonus()->getType() == "promo" ||
                                     $item->getBonus()->getType() == "zone-POIS" ||
-                                    $item->getBonus()->getType() == "zone-carrefour" || 
+                                    $item->getBonus()->getType() == "zone-carrefour" ||
                                     $item->getBonus()->getType() == "birthday" ||
                                     $item->getBonus()->getType() == "bonus" ||
                                     $item->getBonus()->getType() == "PacchettoPunti"
@@ -517,14 +524,14 @@ class ConsoleBonusComputeController extends AbstractActionController {
             //if $minuteTripsYesterday < 0 set $minuteTripsYesterday = 0 because not generate points negative
             if($minuteTripsYesterday < 0)
                 $minuteTripsYesterday = 0;
-            
+
             //check if $minuteTripsYesterday exceeds the point limit to day
             if($minuteTripsYesterday > $this->pointConfig['maxValPointDay']){
                 $pointToAdd = $this->pointConfig['maxValPointDay'];
             }else{
                 $pointToAdd = $minuteTripsYesterday;
             }
-            
+
             //check if customer have alrady line, for this month, in customers_points
             $customerPoints = $this->checkCustomerIfAlreadyAddPointsThisMonth($c['id'], $arrayDates[2], $arrayDates[3], $arrayDates[1]);
             //add or update line point in customers_points
@@ -533,13 +540,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
             } else {
                 $this->addCustomersPoints($pointToAdd, $c['id'], $this->pointConfig['descriptionScriptAddPointDay'], $this->pointConfig['typeDrive']);
             }
-            
+
             //update the field InfoScript in tabel server_scripts after customer procressed
             //set field infoScript with data customers precessed
             $this->updateInfoScriptServerScript($serverScriptDay, $customers, $c['id']);
-            
+
             $this->customerService->clearEntityManager();
-            
+
         }//end foreach customers
     }//end executeScriptAddPointDay
 
@@ -661,7 +668,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $format = "%s;INF;updateCustomersPoints;Customer_id= %d;Add= %d;PrevPoints= %d\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customerId, $numeberAddPoint, $customerPoint->getTotal()));
 
-    } 
+    }
 
     /*
      * this method verify if one customer can receive this bonus
@@ -766,38 +773,77 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $request = $this->getRequest();
         $debug = $request->getParam('debug-mode') || $request->getParam('dm');
-        $this->logger->log("\nStarted computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n");
-
-        if ($debug) {
-            $this->logger->log("\n---- Debug mode ----\n");
-        }
         $date_ts = $request->getParam('data-run');
         $radius = $request->getParam('radius');
         $carplate = $request->getParam('carplate');
 
-        $this->logger->log("\nShell date: " . $date_ts . "\n");
-        $this->logger->log("Radius: " . $radius . " meters\n\n");
+        $this->logger->log(sprintf("%s;INF;bonusPoisAction;start;debug=%s;date_ts=%s;;radius=%s;carplate=%s\n",
+            date_create()->format('Y-m-d H:i:s'),
+            $debug,
+            $date_ts,
+            $radius,
+            $carplate
+            ));
 
-        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug);
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS');
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS-FI-30');
+
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;end\n");
     }
 
-    private function zoneBonusPark($date_ts, $radius, $carplate, $debug) {
-        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate);
+    /**
+     *
+     * @param datetime $date_ts Time stamp of trips
+     * @param string $radius    Radius from pois in meters
+     * @param string $carplate  Car plate
+     * @param string $debug     Debug flag
+     * @param integer $bonus_to_assign Total minutes of bonus
+     * @param string $bonusType Type of bonus
+     */
+    private function zoneBonusPark($date_ts, $radius, $carplate, $debug, $bonusType) {
+        //$debug = true;  //TODO REMOVE
 
-        $this->logger->log("-------- Compute Zone Bonuses Park POIS\n");
-        $this->logger->log("Trips to compute: " . count($tripsToBeComputed) . "\n\n");
+        if($bonusType=='POIS') {
+            $bonus_to_assign = 5;
+            $duration =30;
+            $description = 'Bonus parcheggio nei pressi di punto di ricarica - ';
+            $batteryMinLevel = 25;
+            $emailCategory = 16;
+            $tripMinutes = 5;
+            $fleets = array(1,4);   // only Milan and Modena
+        } else if ($bonusType=='POIS-FI-30') {
+            $bonus_to_assign = 30;
+            $duration =30;
+            $description = 'Parcheggio centro Firenze - ';
+            $batteryMinLevel = null;
+            $emailCategory = 23;    //TODO: change width new email
+            $tripMinutes = null;
+            $fleets = array(2);     // only Florence
+        }
+        else {
+            $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";WRN;zoneBonusPark;bonus type unknow;bonusType=".$bonusType."\n");
+            return;
+        }
+
+        $this->logger->log(sprintf("%s;INF;zoneBonusPark;date_ts=%s;radius=%s;carplate=%s;debug=%s;bonus_to_assign=%s;bonusType=%s;duration=%s;description=%s;batteryMinLevel=%s;tripMinutes=%s\n",
+            date_create()->format('Y-m-d H:i:s'),
+            $date_ts,
+            $radius,
+            $carplate,
+            $debug,
+            $bonus_to_assign,
+            $bonusType,
+            $duration,
+            $description,
+            $batteryMinLevel,
+            $tripMinutes));
+
+        $tripsToBeComputed = $this->tripsService->getTripsForBonusParkComputation($date_ts, $carplate, $tripMinutes, $batteryMinLevel, $fleets);
+
+        $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;zoneBonusPark;count=".count($tripsToBeComputed)."\n");
 
         foreach ($tripsToBeComputed as $trip) {
 
-            if (!$trip instanceof Trips) {
-                continue;
-            }
-
-            if ($trip->getDurationMinutes() <= 5) {
-                continue;
-            }
-
-            //($trip->getCustomer()->getGoldList() || $trip->getCustomer()->getMaintainer())
             // Verify if customer reached max amount in zone bonuses passed and return a list of those available
             $residuals = $this->poisService->checkPointInDigitalIslands($trip->getFleet()->getId(), $trip->getLatitudeEnd(), $trip->getLongitudeEnd(), $radius);
             if (count($residuals) == 0) {
@@ -805,29 +851,30 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
 
             // Verify that only one bonus for trips with plate
-            $verified = $this->bonusService->verifyBonusPoisAssigned($trip->getCar()->getPlate());
-            if (count($verified) >= 1) {
+            //$verified = $this->bonusService->verifyBonusPoisAssigned($trip->getCustomer(), $date_ts);
+            $verified = $this->bonusService->verifyBonusPoisAssigned($trip->getCustomer(), date_create()->format('Y-m-d'));
+            if (count($verified) > 0) {
                 continue;
             }
 
+            $this->logger->log(sprintf("%s;INF;zoneBonusPark;tripId=%s;customerId=%s;email=%s;carPlate=%s\n",
+                date_create()->format('Y-m-d H:i:s'),
+                $trip->getId(),
+                $trip->getCustomer()->getId(),
+                $trip->getCustomer()->getEmail(),
+                $trip->getCar()->getPlate()));
+
             if ($debug) {
-                $this->logger->log("Trip ID:" . $trip->getId() . "- Customer ID: " . $trip->getCustomer()->getId() . " - Carplate:" . $trip->getCar()->getPlate() . "\n\n");
                 continue;
             }
 
             // Assign bonuses to customer
-            $this->assigneBonus($trip, 5, 'POIS', 30, "Bonus parcheggio nei pressi di punto di ricarica - " . $trip->getCar()->getPlate());
-
-            //send email to customer -> notification bonuses
-            $this->logger->log("send email:" . $trip->getCustomer()->getEmail() . "\n");
+            //$this->assigneBonus($trip, $bonus_to_assign, $bonusType, $duration, $description . $trip->getCar()->getPlate());
 
             // send email to the customer
-            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), 16);
+            //$this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), $emailCategory);
         }
 
-        //Recap bonus assigned
-
-        $this->logger->log("\nEnd computing for POIS bonuses \ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
     private function sendEmail($email, $name, $language, $category) {
@@ -904,9 +951,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
     /**
      * Add cost of extra fare to the trip
-     * 
+     *
      * @todo we need to account extra fare for business trip
-     * 
+     *
      * @param Trips $trip
      * @param string $extraFareDescription A description concatenate to address_beginnin and mark the extra payment alredy computed
      * @param int $extraFareAmount
@@ -946,13 +993,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->prepareLogger();
         $format = "%s;INF;bonusNiveaAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
         $descriptionBonusNivea = "Courtesy of NIVEA";
-        
+
         $customers = $this->customerService->getCustomerBonusNivea($descriptionBonusNivea);
-        
+
         $date = date_create();
-        $date2 = date_create('+ 30 day');       
+        $date2 = date_create('+ 30 day');
 
         foreach ($customers as $customer) {
             $bonus = new \SharengoCore\Entity\CustomersBonus();
@@ -968,16 +1015,16 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
             $format = "%s;INF;bonusNiveaAction;Customer_id= %d;Processed!\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId()));
-            
+
             $this->customerService->clearEntityManagerBonus();
         }
 
         $format = "%s;INF;bonusNiveaAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
-    
+
     public function BonusAlgebrisAction(){
-        
+
         $this->prepareLogger();
         $format = "%s;INF;addBonusByAlgebris;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -993,13 +1040,13 @@ class ConsoleBonusComputeController extends AbstractActionController {
         }
         $format .= "\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
+
         $descriptionBonusAlgebris = "Courtesy of ALGEBRIS";
-        
+
         $yesterday = new \DateTime();
         $yesterday = $yesterday->modify("-1 day");
         $yesterday = $yesterday->format("Y-m-d 00:00:00");
-        
+
         $startMonth = new \DateTime($yesterday);
         $startMonth = $startMonth->modify("first day of this month");
         $startMonth = $startMonth->format("Y-m-d 00:00:00");
@@ -1007,12 +1054,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $endMonth = new \DateTime($yesterday);
         $endMonth = $endMonth->modify("first day of next month");
         $endMonth = $endMonth->format("Y-m-d 00:00:00");
-        
+
         $date_zero = new \DateTime("2018-04-01");
         $date_zero = $date_zero->format("Y-m-d 00:00:00");
 
         $customers = $this->customerService->getCustomerBonusAlgebris($descriptionBonusAlgebris, $startMonth, $endMonth);
-        
+
         foreach ($customers as $customer) {
             if ($this->runBeforeDate($customer, $date_zero)) {
                 if (!$dryRun) {
@@ -1028,22 +1075,22 @@ class ConsoleBonusComputeController extends AbstractActionController {
 
                     $this->customerService->addBonus($customer, $bonus);
                 }
-            
+
                 $format = "%s;INF;addBonusByAlgebris;%d;%s\n";
                 $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $customer->getId(), $customer->getEmail()));
             }
             $this->customerService->clearEntityManagerBonus();
         }
-        
+
         $format = "%s;INF;addBonusByAlgebris;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-        
-    }
-    
-    public function runBeforeDate(Customers $customer, $date_zero) {
-        $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeDate($customer, $date_zero);
-        return $nTripBeforeAprilMonth[0][1] == 0 ? true : false; 
+
     }
 
-    
+    public function runBeforeDate(Customers $customer, $date_zero) {
+        $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeDate($customer, $date_zero);
+        return $nTripBeforeAprilMonth[0][1] == 0 ? true : false;
+    }
+
+
 }
