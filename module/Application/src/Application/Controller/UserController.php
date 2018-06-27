@@ -754,6 +754,7 @@ class UserController extends AbstractActionController {
         $promoCode = strtoupper($this->params('promocode'));
 
         $this->form1->registerPromoCodeData(['promocode' => $promoCode]);
+        $this->newForm2->registerPromoCodeData(['promocode' => $promoCode]);
 
         $this->redirect()->toRoute('signup');
     }
@@ -853,6 +854,12 @@ class UserController extends AbstractActionController {
     public function newSignupAction() {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
+
+        $customerSession = $this->registrationService->getSignupCustomerSession();
+
+        if(!is_null($customerSession) && !$this->registrationService->isRegistrationCompleted($customerSession)){
+            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
         //if there are data in session, we use them to populate the form
         $registeredData = $this->newForm->getRegisteredData();
 
