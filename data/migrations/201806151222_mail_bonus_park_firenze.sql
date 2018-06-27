@@ -20,9 +20,22 @@ nextval('mails_id_seq'),
                                 <br />
                                 <div class="body-text" style="padding-left:15px;padding-right:15px;padding-top:5px;padding-bottom:10px;font-family:''Arial'', sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
                                     Ciao %1$s,<br />
-                                    grazie di aver lasciato l&#39;auto vicino ad una stazione di ricarica.<br />
-                                    Ti confermiamo che riceverai 15 minuti bonus sul tuo profilo.<br /><br />
-                                    Puoi verificare i tuoi bonus in Area Riservata su <a href="http://site.sharengo.it" target="_blank" style="color:#08bd53; text-decoration:none;">www.sharengo.it</a> alla sezione &#34;<strong>BONUS MINUTI</strong>&#34;.<br /><br /> 
+                                    Sharengo ti offre 30 minuti gratis se parcheggi nel centro di Firenze in una delle seguenti aree riservate al car sharing:<br />
+                                    <ul>
+                                        <li>Piazza della Stazione</li>
+                                        <li>Via Montebello</li>
+                                        <li>Via de&#39; Vecchietti</li>
+                                        <li>Via Giuseppe Verdi</li>
+                                        <li>Piazza dei Cavalleggeri</li>
+                                        <li>Piazza Cesare Beccaria</li>
+                                        <li>Piazza Massimo D&#39;Azeglio</li>
+                                        <li>Via Luigi Salvatore Cherubini</li>
+                                        <li>Via Giorgio la Pira</li>
+                                        <li>Piazza della Indipendenza</li>
+                                        <li>Via Bernardo Cennini</li>
+                                    </ul>
+                                    Puoi consultare l&#39;ubicazione dei posteggi anche sul tablet di bordo.
+                                    Andare e parcheggiare in centro non &egrave; mai stato cos&igrave; comodo e conveniente!
 
                                     La tua Sharengo ti aspetta! <img width="40px" style=" vertical-align: middle;   margin-left: -14px;" src="http://site.sharengo.it/wp-content/uploads/2018/05/cuore_giallo.png" alt=""></img><br /><br />
 
