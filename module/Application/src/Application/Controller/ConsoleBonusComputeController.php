@@ -769,6 +769,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
         }
     }
 
+    /**
+     * Check it the trips are closed near a pois then assign a bonus.
+     *
+     * If 'data-run' is empty (run by script), check the thips of the previous day, otherwise use the specified day (yyyy-mm-dd)
+     */
     public function bonusPoisAction() {
         $this->prepareLogger();
         $request = $this->getRequest();
@@ -776,6 +781,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $date_ts = $request->getParam('data-run');
         $radius = $request->getParam('radius');
         $carplate = $request->getParam('carplate');
+
+        if(is_null($date_ts) || $date_ts=='') {
+            $date_ts = date('Y-m-d', strtotime(' -1 day'));
+        }
 
         $this->logger->log(sprintf("%s;INF;bonusPoisAction;start;debug=%s;date_ts=%s;;radius=%s;carplate=%s\n",
             date_create()->format('Y-m-d H:i:s'),
@@ -869,10 +878,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
 
             // Assign bonuses to customer
-            //$this->assigneBonus($trip, $bonus_to_assign, $bonusType, $duration, $description . $trip->getCar()->getPlate());
+            $this->assigneBonus($trip, $bonus_to_assign, $bonusType, $duration, $description . $trip->getCar()->getPlate());
 
             // send email to the customer
-            //$this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), $emailCategory);
+            $this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), $emailCategory);
         }
 
     }
