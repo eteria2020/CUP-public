@@ -786,7 +786,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             ));
 
         $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS');
-        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS-FI-15');
+        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS-FI-30');
 
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;end\n");
     }
@@ -811,8 +811,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $emailCategory = 16;
             $tripMinutes = 5;
             $fleets = array(1,4);   // only Milan and Modena
-        } else if ($bonusType=='POIS-FI-15') {
-            $bonus_to_assign = 15;
+        } else if ($bonusType=='POIS-FI-30') {
+            $bonus_to_assign = 30;
             $duration =30;
             $description = 'Parcheggio centro Firenze - ';
             $batteryMinLevel = null;
@@ -869,7 +869,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
 
             // Assign bonuses to customer
-            $this->assigneBonus($trip, $bonus_to_assign, $bonusType, $duration, $description . $trip->getCar()->getPlate());
+            //$this->assigneBonus($trip, $bonus_to_assign, $bonusType, $duration, $description . $trip->getCar()->getPlate());
 
             // send email to the customer
             //$this->sendEmail(strtoupper($trip->getCustomer()->getEmail()), $trip->getCustomer()->getName(), $trip->getCustomer()->getLanguage(), $emailCategory);
