@@ -1,12 +1,6 @@
-INSERT INTO promo_codes_info (id, webuser_id, active, insert_ts, type, minutes, valid_from, bonus_duration_days, valid_to, overridden_subscription_cost, bonus_valid_from, bonus_valid_to, discount_percentage, no_standard_bonus) VALUES (nextval('promocodesinfo_id_seq'),NULL, TRUE, now(),'smgm', 45,'2018-05-01 00:00:00',90,'2020-12-31 23:59:59',100,'2018-05-01 00:00:00','2020-12-31 23:59:59',18,TRUE);
-INSERT INTO promo_codes (id, promocodesinfo_id, promocode, description, active) VALUES (nextval('promocodes_id_seq'),  (SELECT MAX(id) FROM  promo_codes_info), 'SHARENGO_MGM_NEW','Bonus pacchetto benvenuto con invita un amico Share''n Go a 1 euro, 45 minuti e 18% di sconto',TRUE);
-
-INSERT INTO promo_codes_info (id, webuser_id, active, insert_ts, type, minutes, valid_from, bonus_duration_days, valid_to, overridden_subscription_cost, bonus_valid_from, bonus_valid_to, discount_percentage, no_standard_bonus) VALUES (nextval('promocodesinfo_id_seq'),NULL, TRUE, now(),'smgm', 30,'2018-05-01 00:00:00',90,'2020-12-31 23:59:59',0,'2018-05-01 00:00:00','2020-12-31 23:59:59',18,TRUE);
-INSERT INTO promo_codes (id, promocodesinfo_id, promocode, description, active) VALUES (nextval('promocodes_id_seq'),  (SELECT MAX(id) FROM  promo_codes_info), 'SHARENGO_MGM_OLD','Bonus invita un amico Share''n Go 30 minuti',TRUE);
-
 INSERT INTO mails (id, subject,content,enable,language, category) VALUES (
 nextval('mails_id_seq'),
-'Share''ngo: Invita un amico',
+'Share''ngo: bonus parcheggi Firenze',
 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -25,9 +19,23 @@ nextval('mails_id_seq'),
                                 <img style="width:600px; max-width:100%%;" src="http://site.sharengo.it/wp-content/uploads/2018/06/30minutigratis.jpg" alt="" class="banner"></img>
                                 <br />
                                 <div class="body-text" style="padding-left:15px;padding-right:15px;padding-top:5px;padding-bottom:10px;font-family:''Arial'', sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
-                                    Complimenti, ti sono stati accreditati 30 minuti bonus!<br /><br />
-                                    %1$s ha appena utilizzato la promozione &quot;Invita un Amico&quot; con il tuo codice personale.<br />
-                                    Continua a condividere il tuo codice con nuovi utenti Sharengo per ricevere altri punti bonus.<br /><br />
+                                    Ciao %1$s,<br />
+                                    Sharengo ti offre 30 minuti gratis se parcheggi nel centro di Firenze in una delle seguenti aree riservate al car sharing:<br />
+                                    <ul>
+                                        <li>Piazza della Stazione</li>
+                                        <li>Via Montebello</li>
+                                        <li>Via de&#39; Vecchietti</li>
+                                        <li>Via Giuseppe Verdi</li>
+                                        <li>Piazza dei Cavalleggeri</li>
+                                        <li>Piazza Cesare Beccaria</li>
+                                        <li>Piazza Massimo D&#39;Azeglio</li>
+                                        <li>Via Luigi Salvatore Cherubini</li>
+                                        <li>Via Giorgio la Pira</li>
+                                        <li>Piazza della Indipendenza</li>
+                                        <li>Via Bernardo Cennini</li>
+                                    </ul>
+                                    Puoi consultare l&#39;ubicazione dei posteggi anche sul tablet di bordo.
+                                    Andare e parcheggiare in centro non &egrave; mai stato cos&igrave; comodo e conveniente!
 
                                     La tua Sharengo ti aspetta! <img width="40px" style=" vertical-align: middle;   margin-left: -14px;" src="http://site.sharengo.it/wp-content/uploads/2018/05/cuore_giallo.png" alt=""></img><br /><br />
 
@@ -72,5 +80,5 @@ nextval('mails_id_seq'),
 </html>',
 true,
 'it',
-'22'
+'23'
 );

@@ -5,7 +5,7 @@ $this->headScript()
     ->appendFile($this->basePath('js/signup.js?v=4.0'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
-    ->appendStylesheet($this->basePath('css/signup.css'));
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
 ?>
@@ -567,7 +567,7 @@ $this->inlineScript()
                 <p style="font-size: 14px ; text-align: center; padding: 0px 0 10px 0">Attivazione include il controllo della Patente<br>con il Ministero dei Trasporti.</p>
                 <div class="block-wrapper-button content-align-center">
 
-                    <input type="submit" name="" value="<?= $this->translate('Continua'); ?>">
+                    <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate('Continua'); ?>">
                 </div>
 
                 </form>
@@ -666,4 +666,17 @@ $this->inlineScript()
             $('#fDriverLicense').text('n. ' + $('#driverLicense').val());
         });
 
+        $(function() {
+            $('#registration-form-2').on('submit', function(e) {
+                $("#nextBtn").attr("disabled", true);
+                addLoader();
+            });
+        });
+
+        var addLoader = function() {
+            $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        };
+        var removeLoader = function() {
+            $("#outer > div.load-overlay").remove();
+        };
     </script>

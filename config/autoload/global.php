@@ -34,8 +34,8 @@ return [
         'password' => 'f477ur3!'
     ],
     'subscription-bonus' => [
-        'total' => 15,
-        'description' => 'Bonus iscrizione utente',
+        'total' => 21,
+        'description' => 'Pacchetto di Benvenuto 21 minuti',
         'valid-to' => '+ 90 days'
     ],
     'banner-jsonp' => [
