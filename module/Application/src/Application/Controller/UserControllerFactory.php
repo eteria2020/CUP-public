@@ -44,6 +44,7 @@ class UserControllerfactory implements FactoryInterface
             ]);
         }catch (\Facebook\Exceptions\FacebookSDKException $e){}
 
+
         return new UserController(
             $form1,
             $form2,

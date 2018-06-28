@@ -42,13 +42,14 @@ $this->headLink()
 
     <!-- content -->
     <div class="content">
+        <?php if (!is_null($this->facebookURL)){ ?>
         <div class="block-wrapper-button content-align-center">
-            <button class="loginBtn loginBtn--facebook" style="margin-bottom:10px !important; background-color: #4267B2 !important; border: none !important">
+            <button class="loginBtn loginBtn--facebook" onclick="window.location = '<?php echo $this->facebookURL ?>';" style="margin-bottom:10px !important; background-color: #4267B2 !important; border: none !important">
                 Registrati con Facebook
             </button>
         </div>
         <hr>
-
+        <? } ?>
         <?php
         $this->form->prepare();
         echo $this->form()->openTag($this->form);

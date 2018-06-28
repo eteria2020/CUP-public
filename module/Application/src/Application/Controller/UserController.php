@@ -134,9 +134,11 @@ class UserController extends AbstractActionController {
     private $foreignDriversLicenseService;
 
     /**
-     * @var $facebook
+     * @var \Facebook\Facebook | null $facebook
      */
     private $facebook;
+
+
 
     /**
      * @param Form $form1
@@ -895,10 +897,20 @@ class UserController extends AbstractActionController {
             $this->layout('layout/map');
         }
 
+        $facebookURL = null;
+
+        if(!is_null($this->facebook)){
+            $helper = $this->facebook->getRedirectLoginHelper();
+            $redirectURL = 'https://public.localhost.eu/fb-callback';
+            $permissions = ['email, user_birthday, user_hometown, user_location'];
+            $facebookURL = $helper->getLoginUrl($redirectURL, $permissions);
+        }
+
         return new ViewModel([
             'form' => $newForm,
             'mobile' => $mobile,
-            'fleets' => $this->fleetService->getAllFleetsNoDummy()
+            'fleets' => $this->fleetService->getAllFleetsNoDummy(),
+            'facebookURL' => $facebookURL,
         ]);
     }
 
@@ -1158,6 +1170,33 @@ class UserController extends AbstractActionController {
         }
 
         return $this->redirect()->toRoute('area-utente');
+    }
+
+    public function fbCallbackAction(){
+
+        try {
+            $accessToken = $this->facebook->getRedirectLoginHelper()->getAccessToken();
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            echo "Response Exception: " . $e->getMessage();
+            exit();
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            echo "SDK Exception: " . $e->getMessage();
+            exit();
+        }
+
+        $oAuth2Client = $this->facebook->getOAuth2Client();
+        if (!$accessToken->isLongLived())
+            $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+
+        $response = $this->facebook->get("/me?fields=id, first_name, last_name, email, birthday, hometown, location{location}", $accessToken);  //user_age_range, user_birthday, user_gender, user_hometown, user_location
+        $userData = $response->getGraphNode()->asArray();
+        /*	$_SESSION['userData'] = $userData;
+            $_SESSION['access_token'] = (string) $accessToken;
+            header('Location: index.php');
+            exit();*/
+        echo '<pre>';
+        var_dump($userData);
+        exit();
     }
 
 }
