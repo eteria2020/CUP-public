@@ -608,11 +608,12 @@ class UserAreaController extends AbstractActionController {
                         break;*/
                 }
             }
+        }
             //DOUBLE CHECK FOR FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
             if ($returnRedirect && ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
                 (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted()))) {
                 return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
-            }
+
         }
 
     }
