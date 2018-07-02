@@ -972,18 +972,18 @@ class UserController extends AbstractActionController {
                 if ($customerSession instanceof Customers){
                     $email = $customerSession->getEmail();
                 }
-                return $this->newForm2($this->newForm2, $email, $mobile);
+                return $this->newForm2($this->newForm2, $email, $mobile, $customerSession);
             }
         } else {
                 $email = '';
                 if ($customerSession instanceof Customers){
                     $email = $customerSession->getEmail();
                 }
-               return $this->newForm2($this->newForm2, $email, $mobile);
+               return $this->newForm2($this->newForm2, $email, $mobile, $customerSession);
         }
     }
 
-    private function newForm2($newForm2, $email, $mobile) {
+    private function newForm2($newForm2, $email, $mobile, $customer = null) {
         if ($mobile) {
             $this->layout('layout/map');
         }
@@ -992,10 +992,16 @@ class UserController extends AbstractActionController {
             $email = explode('@', $email)[0] . '@';
         }
 
+        $customerFleet = null;
+        if(!is_null($customer) && !is_null($customer->getFleet())){
+            $customerFleet = $customer->getFleet()->getId();
+        }
+
         return new ViewModel([
             'form' => $newForm2,
             'email' => $email,
             'mobile' => $mobile,
+            'customerFleetId' => $customerFleet,
         ]);
     }
 
