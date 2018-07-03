@@ -264,7 +264,7 @@ class ConsoleController extends AbstractActionController {
 
             // define chargin for unplug feature
             $charging = $car->getCharging();
-            if($softwareVerNum >=10740) {  //TODO: condizione unplug, da aggiornare prima di mettere in produzione
+            if($softwareVerNum >=10800) {  //TODO: condizione unplug, da aggiornare prima di mettere in produzione
                 $charging = ($car->getCharging() &&
                     ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()));
             }
