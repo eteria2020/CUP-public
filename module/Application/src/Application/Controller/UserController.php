@@ -991,7 +991,7 @@ class UserController extends AbstractActionController {
         $customer = null;
 
         if($email != ''){
-            $customer = $this->customersService->findByEmail($email);
+            $customer = $this->customersService->findOneByEmail($email);
             $email = explode('@', $email)[0] . '@';
         }
 
