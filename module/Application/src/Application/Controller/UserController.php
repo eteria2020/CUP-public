@@ -972,23 +972,26 @@ class UserController extends AbstractActionController {
                 if ($customerSession instanceof Customers){
                     $email = $customerSession->getEmail();
                 }
-                return $this->newForm2($this->newForm2, $email, $mobile, $customerSession);
+                return $this->newForm2($this->newForm2, $email, $mobile);
             }
         } else {
                 $email = '';
                 if ($customerSession instanceof Customers){
                     $email = $customerSession->getEmail();
                 }
-               return $this->newForm2($this->newForm2, $email, $mobile, $customerSession);
+               return $this->newForm2($this->newForm2, $email, $mobile);
         }
     }
 
-    private function newForm2($newForm2, $email, $mobile, $customer = null) {
+    private function newForm2($newForm2, $email, $mobile) {
         if ($mobile) {
             $this->layout('layout/map');
         }
 
+        $customer = null;
+
         if($email != ''){
+            $customer = $this->customersService->findByEmail($email);
             $email = explode('@', $email)[0] . '@';
         }
 
