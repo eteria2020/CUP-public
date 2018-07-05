@@ -7,6 +7,8 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
+$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/KloPCOu_i4UBEO2l1sYD\'});</script>');
+$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', {currency: \'EUR\', value: 5.00});</script>');
 ?>
 <div class="module-section-bookmark yellow content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Ora sei dei nostri!'); ?></h1>
