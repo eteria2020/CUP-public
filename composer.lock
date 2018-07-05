@@ -511,7 +511,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/public-business-module.git",
-                "reference": "bdf7946010d5d26466051fc1f1bef91cadf16e30"
+                "reference": "6b9b57f05a309fb745eacb5a442be88f1bb6eab6"
             },
             "require": {
                 "php": ">=5.4",
@@ -528,7 +528,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2018-06-07 08:54:37"
+            "time": "2018-07-05 08:24:23"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2084,7 +2084,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
