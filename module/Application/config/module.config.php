@@ -424,8 +424,12 @@ return [
                     'route' => '/signup-sms',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'User',
-                        'action' => 'signup-sms'
+                        //'controller' => 'User',
+                        //'action' => 'signup-sms'
+                        'controller' => 'ConsoleBonusCompute',
+                            'action' => 'assign-bonus-car-free'
+                        //'controller' => 'ConsoleBonusCompute',
+                          //  'action' => 'bonus-nivea'
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -2114,6 +2118,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'add-point-cluster'
+                        ]
+                    ]
+                ],
+                'assign-bonus-car-free' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'assign bonus car free',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'assign-bonus-car-free'
                         ]
                     ]
                 ],

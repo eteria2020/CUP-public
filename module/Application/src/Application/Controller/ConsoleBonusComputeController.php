@@ -12,11 +12,15 @@ use SharengoCore\Service\BonusService;
 use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
+use SharengoCore\Service\CarsBonusService;
 use SharengoCore\Service\ServerScriptsService;
 use SharengoCore\Service\AccountedTripsService;
+use SharengoCore\Service\FleetService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Entity\ZoneBonus;
+use SharengoCore\Entity\CarsBonus;
 use SharengoCore\Entity\CustomersPoints;
+use SharengoCore\Entity\Fleet;
 use SharengoCore\Entity\Trips;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use Zend\Form\Form;
@@ -109,6 +113,21 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @var boolean
      */
     private $avoidEmails;
+    
+    /**
+     * @var FleetService
+     */
+    private $fleetService;
+    
+    /**
+     * @var array
+     */
+    private $positionConfig;
+    
+    /**
+     * @var CarsBonusService
+     */
+    private $carsBonusService;
 
 
     /**
@@ -125,9 +144,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param array $config
      * @param array $pointConfig
      * @param Form $customerPointForm
+     * @param FleetService $fleetService
+     * @param array $positionConfig
+     * @param CarsBonusService $carsBonusService
      */
     public function __construct(
-    CustomersService $customerService, ServerScriptsService $serverScriptService, AccountedTripsService $accountedTripsService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm
+    CustomersService $customerService, ServerScriptsService $serverScriptService, AccountedTripsService $accountedTripsService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm, FleetService $fleetService, $positionConfig, CarsBonusService $carsBonusService
     ) {
         $this->customerService = $customerService;
         $this->serverScriptService = $serverScriptService;
@@ -145,6 +167,9 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->config = $config;
         $this->customerPointForm = $customerPointForm;
         $this->pointConfig = $pointConfig['point'];
+        $this->fleetService = $fleetService;
+        $this->positionConfig = $positionConfig;
+        $this->carsBonusService = $carsBonusService;
     }
 
     public function bonusComputeAction() {
@@ -1099,6 +1124,68 @@ class ConsoleBonusComputeController extends AbstractActionController {
     public function runBeforeDate(Customers $customer, $date_zero) {
         $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeDate($customer, $date_zero);
         return $nTripBeforeAprilMonth[0][1] == 0 ? true : false;
+    }
+    
+    public function assignBonusCarFreeAction() {
+        $this->prepareLogger();
+        $format = "%s;INF;assignBonusCarFreeAction;strat\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+        $fleets = $this->fleetService->getAllFleetsNoDummy();
+        foreach ($fleets as $fleet) {
+            $format = "%s;INF;assignBonusCarFreeAction;Fleet: %s\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $fleet->getName()));
+            
+            $format = "%s;INF;assignBonusCarFreeAction;Call to operators...\n";
+            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $fleet->getName()));
+            $permanance_areas = file_get_contents('http://operators.sharengo.it/dev/get_permanency.php?city='.strtolower($fleet->getCode()).'&hour='.date('H'));
+            
+            $result = json_decode($permanance_areas);
+            $result = get_object_vars($result);
+
+            if(isset($result['Error'])){
+                $format = "%s;ERR;assignBonusCarFreeAction;ERROR CALL TO OPERATORS\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+            }else{
+                $format = "%s;INF;assignBonusCarFreeAction;Success call to operators...\n";
+                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+                
+                $matrix = $this->createMatrix($result['Value'], $this->positionConfig['l']);
+
+                //recupero le macchine disponibili
+                $cars = $this->carsService->getPublicCarsForAddFreeX($fleet->getId());
+                foreach ($cars as $car) {
+                    if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['end_lat']) {
+                        $x = (int)floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $this->positionConfig['dis_lon']);
+                        $y = floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $this->positionConfig['dis_lat']);
+                        $permanance_car = (int)$matrix[$x][$y];
+                        //controli sulle permanenza
+                        
+                        //aggiunta in car bonus il campo freeX valorizzato secondo la permanenza
+                        $car_bonus = $this->carsBonusService->findOneByPLate($car->getPlate());
+                        $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $val);//val il valore della freeX
+                        //aggiunta riga in tab nuova 
+                        
+                    }
+                }//end foreach cars
+                
+                //pulizia entity manager
+                
+            }
+        }//end foreach fleets
+        
+        $format = "%s;INF;assignBonusCarFreeAction;end\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        
+    }
+    
+    private function createMatrix($permanance_areas, $side) {
+        $matrix = array();
+        for($i = 0; $i < count($permanance_areas)/$side; $i++){
+            $row = array_slice($permanance_areas, $side*$i, $side);
+            array_push($matrix, $row);
+        }
+        return $matrix;
     }
 
 

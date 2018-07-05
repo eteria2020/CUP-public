@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'position' => [
+        'Milano' => [
+            'start_lon'  =>  9.06589,
+            'start_lat'  => 45.3926,
+            'end_lon'  => 9.278054,
+            'end_lat'  => 45.535974,
+        ],
+        'Roma' => [
+            'start_lon'  => 12.384625,
+            'start_lat'  => 41.803164,
+            'end_lon'  => 12.615725,
+            'end_lat'  => 41.985826
+        ],
+        'Firenze' => [
+            'start_lon'  => 11.177751,
+            'start_lat'  => 43.722216,
+            'end_lon'  => 43.822767,
+            'end_lat'  => 11.319316
+        ],
+        'Modena' => [
+            'start_lon'  => 10.847053,
+            'start_lat'  => 44.586324,
+            'end_lon'  => 10.970060,
+            'end_lat'  => 44.675948
+        ],
+        'dis_lon' => 0.004553,//500m
+        'dis_lat' => 0.004497,//500m
+        'l' => 34
+    ]
+];
