@@ -13,6 +13,7 @@ use SharengoCore\Service\ZonesService;
 use SharengoCore\Service\EventsService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\CarsBonusService;
+use SharengoCore\Service\CarsBonusHistoryService;
 use SharengoCore\Service\ServerScriptsService;
 use SharengoCore\Service\AccountedTripsService;
 use SharengoCore\Service\FleetService;
@@ -22,6 +23,7 @@ use SharengoCore\Entity\CarsBonus;
 use SharengoCore\Entity\CustomersPoints;
 use SharengoCore\Entity\Fleet;
 use SharengoCore\Entity\Trips;
+use SharengoCore\Entity\CarsBonusHistory;
 use SharengoCore\Service\SimpleLoggerService as Logger;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -128,6 +130,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @var CarsBonusService
      */
     private $carsBonusService;
+    
+    /**
+     * @var CarsBonusHistoryService
+     */
+    private $carsBonusHistoryService;
 
 
     /**
@@ -147,9 +154,10 @@ class ConsoleBonusComputeController extends AbstractActionController {
      * @param FleetService $fleetService
      * @param array $positionConfig
      * @param CarsBonusService $carsBonusService
+     * @param CarsBonusHistoryService $carsBonusHistoryService
      */
     public function __construct(
-    CustomersService $customerService, ServerScriptsService $serverScriptService, AccountedTripsService $accountedTripsService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm, FleetService $fleetService, $positionConfig, CarsBonusService $carsBonusService
+    CustomersService $customerService, ServerScriptsService $serverScriptService, AccountedTripsService $accountedTripsService, CarsService $carsService, TripsService $tripsService, TripPaymentsService $tripPaymentsService, EditTripsService $editTripService, BonusService $bonusService, ZonesService $zonesService, EmailService $emailService, PoisService $poisService, EventsService $eventsService, Logger $logger, $config, $pointConfig, Form $customerPointForm, FleetService $fleetService, $positionConfig, CarsBonusService $carsBonusService, CarsBonusHistoryService $carsBonusHistoryService
     ) {
         $this->customerService = $customerService;
         $this->serverScriptService = $serverScriptService;
@@ -170,6 +178,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $this->fleetService = $fleetService;
         $this->positionConfig = $positionConfig;
         $this->carsBonusService = $carsBonusService;
+        $this->carsBonusHistoryService = $carsBonusHistoryService;
     }
 
     public function bonusComputeAction() {
@@ -1159,12 +1168,23 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         $x = (int)floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $this->positionConfig['dis_lon']);
                         $y = floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $this->positionConfig['dis_lat']);
                         $permanance_car = (int)$matrix[$x][$y];
-                        //controli sulle permanenza
+
+                        $freeX = null;
+                        if($permanance_car <= $this->positionConfig['limit_free5']){
+                            $freeX = 5;
+                        } else {
+                            if($permanance_car > $this->positionConfig['limit_free5'] && $permanance_car <= $this->positionConfig['limit_free10']) {
+                                $freeX = 10;
+                            } else {
+                                    $freeX = 15; //$permanance_car > $this->positionConfig['limit_free15']
+                            }
+                        }
                         
                         //aggiunta in car bonus il campo freeX valorizzato secondo la permanenza
                         $car_bonus = $this->carsBonusService->findOneByPLate($car->getPlate());
-                        $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $val);//val il valore della freeX
-                        //aggiunta riga in tab nuova 
+                        $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $freeX);
+                        
+                        $cars_bonus_history = $this->carsBonusHistoryService->createRecord($freeX, true , $car->getPlate());
                         
                     }
                 }//end foreach cars
