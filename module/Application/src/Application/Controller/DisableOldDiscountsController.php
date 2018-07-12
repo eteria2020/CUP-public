@@ -41,7 +41,7 @@ class DisableOldDiscountsController extends AbstractActionController
 
     /**
      * Disabled the discount of the customer, and send a email.
-     * 
+     *
      * N.B. Send mail is disabled.
      */
     public function disableOldDiscountsAction()
@@ -71,9 +71,9 @@ class DisableOldDiscountsController extends AbstractActionController
     }
 
     /**
-     * 
+     *
      * One week bebore the discoun expired, sen an email to notify the customer.
-     * 
+     *
      * N.B. deprecated: batch disabled in crontab
      */
     public function notifyDisableDiscountAction()
@@ -107,5 +107,28 @@ class DisableOldDiscountsController extends AbstractActionController
         }
 
         $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+    }
+
+    /**
+     * Renew the old customer's discounts.
+     */
+    public function renewOldDiscountsAction() {
+        $newDiscount = 15;
+
+        $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;renewOldDiscountsAction;start;" . $newDiscount."\n");
+        $request = $this->getRequest();
+        $dryRun = $request->getParam('dry-run') || $request->getParam('d');
+        $noEmail = $request->getparam('no-email') || $request->getParam('e');
+
+        $customersOneYearOld = $this->customersService->retrieveOneYearOldCustomers();
+        foreach ($customersOneYearOld as $customer) {
+            $this->logger->log(
+                date_create()->format('y-m-d H:i:s') .
+                ";INF;renewOldDiscountsAction;" . $customer->getId() .
+                ";" . $customer->getEmail() . "\n"
+            );
+            $this->oldCustomerDiscountsService->renewCustomerDiscount($customer, !$dryRun, !$noEmail, $newDiscount);
+        }
+        $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;renewOldDiscountsAction;end\n");
     }
 }

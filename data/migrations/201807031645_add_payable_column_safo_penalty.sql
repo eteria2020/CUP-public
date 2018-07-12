@@ -1,0 +1,1 @@
+ALTER TABLE "public"."safo_penalty" ADD COLUMN "payable" boolean NOT NULL DEFAULT TRUE;

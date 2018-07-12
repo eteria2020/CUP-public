@@ -108,11 +108,7 @@
                                 <?php } else { ?>
                                 <!-- Confirm button -->
                                 <div class="block-wrapper-button content-align-center margin-top-custom">
-                                    <?php if(is_null($contract)) { ?>
-                                        <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
-                                    <?php } else { ?>
-                                        <a href="../outstanding/<?=$customer->getId()?>"><button onclick="return confirm('Procedere con il pagamento?')"><?= $this->translate("Pagamento corse"); ?></button></a>
-                                    <?php }?>
+                                     <a href="<?= $this->url('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['userId' => $this->customer->getId()]]) ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
                                 </div><br>
                                 <!-- confirm button -->
                                 <?php }?>

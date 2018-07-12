@@ -357,14 +357,29 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action' => 'signup',
+                        'action' => 'new-signup', //signup
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
                     ],
                 ]
             ],
-            'signup1' => [
+            'new-signup' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{new-signup}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'new-signup',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            //Lorenzo: not in use anymore
+            /*'signup1' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup1}',
@@ -372,6 +387,20 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup',
+                    ],
+                ]
+            ],*/
+            'new-signup-2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{new-signup-2}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'new-signup2',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
@@ -411,6 +440,20 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signup-verify-code'
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            'optional' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{optional}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'optional'
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -714,17 +757,6 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'LandingPage',
                         'action' => 'coa',
-                    ],
-                ],
-            ],
-            'coin' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{coin}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action' => 'coin',
                     ],
                 ],
             ],
@@ -1542,6 +1574,9 @@ return [
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'RegistrationService' => 'Application\Service\RegistrationServiceFactory',
             'RegistrationForm' => 'Application\Form\RegistrationFormFactory',
+            'NewRegistrationForm' => 'Application\Form\NewRegistrationFormFactory',
+            'NewRegistrationForm2' => 'Application\Form\NewRegistrationForm2Factory',
+            'OptionalRegistrationForm' => 'Application\Form\OptionalRegistrationFormFactory',
             'RegistrationForm2' => 'Application\Form\RegistrationForm2Factory',
             'PaypalRequest' => 'Application\Service\PaypalRequestFactory',
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
@@ -1939,6 +1974,17 @@ return [
                         ]
                     ]
                 ],
+                'pay-invoice-extra' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'pay invoice extra [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'pay-invoice-extra'
+                        ]
+                    ]
+                ],
                 'preauthorization' => [
                     'type' => 'simple',
                     'options' => [
@@ -1980,6 +2026,28 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',
                             'action' => 'retry-wrong-payments-time'
+                        ]
+                    ]
+                ],
+                'retry-wrong-extra' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong extra [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-extra'
+                        ]
+                    ]
+                ],
+                'retry-wrong-extra-time' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'retry wrong extra time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'retry-wrong-extra-time'
                         ]
                     ]
                 ],
@@ -2079,6 +2147,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'bonus-nivea'
+                        ]
+                    ]
+                ],
+                'bonus-algebris' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'bonus algebris [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'bonus-algebris'
                         ]
                     ]
                 ],
@@ -2192,6 +2271,17 @@ return [
                         ]
                     ]
                 ],
+                'drivers-license-validation-by-customer-id' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'validate drivers licenses by customer id <listOfCustomerId>',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DriversLicenseValidation',
+                            'action' => 'validate-drivers-license-by-customer-id'
+                        ]
+                    ]
+                ],
                 'disable-customer-drivers-license' => [
                     'type' => 'Simple',
                     'options' => [
@@ -2214,6 +2304,17 @@ return [
                         ]
                     ]
                 ],
+                'periodic-check-valid-license' => [
+                    'type' => 'Simple',
+                    'options' => [
+                        'route' => 'periodic check valid license',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableCustomerController',
+                            'action' => 'periodic-check-valid-license'
+                        ]
+                    ]
+                ],
                 'disable-old-discounts' => [
                     'type' => 'simple',
                     'options' => [
@@ -2233,6 +2334,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'DisableOldDiscountsController',
                             'action' => 'notify-disable-discount'
+                        ]
+                    ]
+                ],
+                'renew-old-discounts' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'renew old discounts [--dry-run|-d] [--no-email|-e]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'DisableOldDiscountsController',
+                            'action' => 'renew-old-discounts'
                         ]
                     ]
                 ],

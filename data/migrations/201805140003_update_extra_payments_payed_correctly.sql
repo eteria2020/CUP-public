@@ -1,0 +1,1 @@
+update extra_payments set status = 'payed_correctly';

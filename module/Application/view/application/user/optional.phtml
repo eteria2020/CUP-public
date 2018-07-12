@@ -1,0 +1,142 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-it.js'));
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
+$this->inlineScript()
+    ->appendFile($this->basePath('js/driver-license-popup.js'));
+$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/KloPCOu_i4UBEO2l1sYD\'});</script>');
+$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', {currency: \'EUR\', value: 5.00});</script>');
+?>
+<div class="module-section-bookmark yellow content-align-center">
+    <h1 class="module-main-title"><?= $this->translate('Ora sei dei nostri!'); ?></h1>
+    <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
+        <img style="width: 85%;max-width: 500px;height: auto; padding-top: 10px;" src="<?= $this->basePath('images/gosharengo.png') ?>">
+    </div>
+</div>
+
+<?php if ($this->outcome == 'OK'): ?>
+    <div class="module-main-subtitle content-align-center">
+        <p><?= $this->translate('Pagamento avvenuto!' )?></p>
+    </div>
+<?php else: ?>
+    <div class="module-main-subtitle content-align-center">
+            <p><?= $this->translate('Si è verificato un problema' )?></p>
+            <span><?= $this->translate('Il pagamento non è andato a buon fine.') ?><br>
+                <?= $this->translate('Il messaggio di errore che abbiamo ricevuto è: "').$this->message.'"' ?><br>
+                <?= $this->translate('Contattare l\'assistenza per maggiori informazioni')?><br>
+                <?= $this->translate('Sarà possibile riprovare il pagamento in Area Riservata')?></span>
+    </div>
+<?php endif; ?>
+
+<!-- main -->
+<div id="main">
+
+    <!-- module-wizard -->
+    <div class="module-wizard clearfix">
+        <ul>
+            <li class="active">1</li>
+            <li class="active">2</li>
+            <li class="active">3</li>
+            <li class="active last"><i class="icon-auto active"></i></li>
+        </ul>
+    </div>
+    <!-- module-wizard -->
+
+    <!-- content -->
+    <div class="content">
+            <!-- block-form -->
+            <div class="block-form w-3-4 auto-margin clearfix">
+
+                <?php
+                $this->form->prepare();
+                echo $this->form()->openTag($this->form);
+                ?>
+                <!--<div class="content-align-center">
+                    <h3><?/*= $this->translate('Invita i tuoi amici e regala un bonus di 15 min. sulla prima corsa. Tu riceverai 15 min. gratis.' )*/?></h3>
+                </div>
+                <br>-->
+                <div class="module-main-subtitle content-align-center">
+                    <p>Scarica l'App Sharengo</p>
+                </div>
+                <br>
+                <div class="content-align-center">
+                    <a href="https://itunes.apple.com/it/app/sharengo-cs/id1093104891?mt=8" target="_blank"><img class="app-link" style="background-color: transparent" src="../images/footer_apple_icn.png"></a>
+                    <a href="https://play.google.com/store/apps/details?id=it.sharengo.eteria" target="_blank"><img class="app-link" style="background-color: transparent" src="../images/footer_gplay_icn.png"></a>
+                </div>
+                <br>
+
+                <!-- block-row-field -->
+                <div class="block-row-field clearfix">
+                    <div class="module-main-subtitle content-align-center">
+                        <p>Invita un amico!</p>
+                    </div>
+                    <div class="block-field w-4-4" style="text-align: justify">
+                        Invia il codice che vedi sotto a un amico, a un parente, a un collega, appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi riceverete 30 minuti gratis come premio.<br><br>
+                    </div>
+                    <div class="block-field w-4-4" style="text-align: center">
+                        <table align="center">
+                            <tr>
+                                <td style="background-color: #ffffff; color: #ff0000; border-style:solid; border-color: #000000; font-weight: 600; font-size: 25px; width: 190px"><?php echo $this->promocodeMemberGetMember; ?></td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- block-row-field -->
+
+                <div class="block-wrapper-button content-align-center">
+                    <input type="submit" name="" value="<?= $this->translate('Vai in area riservata');?>">
+                </div>
+
+                </form>
+
+            </div>
+            <!-- block-form -->
+
+        </div>
+        <!-- content -->
+
+    </div>
+    <!-- main -->
+
+    <?
+    $this->inlineScript()->appendScript(
+        '$(document).ready(function() {
+            $( "#driverLicenseReleaseDate" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                maxDate: new Date(new Date().getFullYear(), 11, 31)
+            });
+        });
+        $(document).ready(function() {
+            $( "#driverLicenseExpire" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "+0:+100",
+                minDate: new Date(new Date().getFullYear(), 0, 1)
+            });
+        });'
+    );
+    ?>
+
+    <script>
+        $(function() {
+            $('#registration-form').on('submit', function(e) {
+               addLoader();
+            });
+        });
+
+        var addLoader = function() {
+            $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        };
+        var removeLoader = function() {
+            $("#outer > div.load-overlay").remove();
+        };
+    </script>
