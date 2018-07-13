@@ -1,0 +1,1 @@
+UPDATE promo_codes_info SET minutes=21 WHERE id=177;
