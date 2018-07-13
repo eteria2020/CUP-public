@@ -471,7 +471,7 @@ class UserController extends AbstractActionController {
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent($response_msg);
-            $this->updateCustomerNoteForSmsCode($this->params()->fromPost('email'), $this->smsConfig['text'] . $smsVerification->offsetGet('code'));
+            $this->signupSmsCustomerNote($this->params()->fromPost('email'), $this->params()->fromPost('mobile'), $this->smsConfig['text'] . $smsVerification->offsetGet('code'));
             return $response;
         } else {
 
@@ -489,7 +489,7 @@ class UserController extends AbstractActionController {
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
                 $response->setContent($response_msg);
-                $this->updateCustomerNoteForSmsCode($this->params()->fromPost('email'), $this->smsConfig['text'] . $smsVerification->offsetGet('code'));
+                $this->signupSmsCustomerNote($this->params()->fromPost('email'), $this->params()->fromPost('mobile'), $this->smsConfig['text'] . $smsVerification->offsetGet('code'));
                 return $response;
             } else {
                 $response = $this->getResponse();
@@ -666,13 +666,24 @@ class UserController extends AbstractActionController {
         return $codice . "";
     }
 
-    private function updateCustomerNoteForSmsCode($email, $message) {
+    /**
+     * Insert a row in CustomersNote, for Admin check
+     * 
+     * @param string $email
+     * @param string $mobile
+     * @param string $message
+     */
+    private function signupSmsCustomerNote($email, $mobile, $message) {
 
-        $customer = $this->customersService->findByEmail($email)[0];
-        $webuser = $this->usersService->findUserById(12);
+        try {
+            $customer = $this->customersService->findByEmail($email)[0];
+            $webuser = $this->usersService->findUserById(12);
 
-        if(!is_null($customer) && !is_null($webuser)) {
-            $this->customerNoteService->addNote($customer, $webuser, "SmsHosting: " . $message);
+            if(!is_null($customer) && !is_null($webuser)) {
+                $this->customerNoteService->addNote($customer, $webuser, "SmsHosting;" . $mobile . ";" . $message);
+            }
+        } catch (Exception $ex) {
+
         }
 
     }
