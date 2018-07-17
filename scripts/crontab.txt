@@ -26,6 +26,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # every 1 hour
 05 */1 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_old_trip_maintainers.sh
+08 * * * *      root            /srv/apps/sharengo-publicsite/scripts/cron/assign_bonus_car_free.sh
 
 # every day
 30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
