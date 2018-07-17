@@ -1215,10 +1215,12 @@ class ConsoleBonusComputeController extends AbstractActionController {
                             $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $freeX);
                         }
                         
-                        $format = "%s;INF;assignBonusCarFreeAction;Create record on CarsBonusHistory...\n";
-                        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-                        if (!$dryRun) {
-                            $cars_bonus_history = $this->carsBonusHistoryService->createRecord($freeX, true , $car);
+                        if(!is_null($freeX)){
+                            $format = "%s;INF;assignBonusCarFreeAction;Create record on CarsBonusHistory...\n";
+                            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+                            if (!$dryRun) {
+                                $cars_bonus_history = $this->carsBonusHistoryService->createRecord($freeX, true , $car);
+                            }
                         }
                         
                     } else {
@@ -1230,6 +1232,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $this->customerService->clearEntityManagerBonusCarFreeX(false);
             }
         }//end foreach fleets
+        
+        $format = "%s;INF;assignBonusCarFreeAction;Delete old record...\n";
+        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+        $this->carsBonusHistoryService->deleteOldRecord();
+        
         $format = "%s;INF;assignBonusCarFreeAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
     }
