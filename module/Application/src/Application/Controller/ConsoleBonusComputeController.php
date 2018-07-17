@@ -1210,7 +1210,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                         
                         $format = "%s;INF;assignBonusCarFreeAction;Update record on CarsBonus, add value to freeX...\n";
                         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-                        if (!$dryRun) {
+                        if (!$dryRun){
                             $car_bonus = $this->carsBonusService->findOneByPLate($car->getPlate())[0];
                             $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $freeX);
                         }
