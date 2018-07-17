@@ -1204,13 +1204,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
                                 }
                             }
                         }
-                        
-                        if (!is_null($freeX)) {
-                            $format = "%s;INF;assignBonusCarFreeAction;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %s\n";
-                            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $x+1));
-                            $format = "%s;INF;assignBonusCarFreeAction;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %s\n";
-                            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $y+1));
-                        }
 
                         $format = "%s;INF;assignBonusCarFreeAction;Car: %s have value to freeX = %d\n";
                         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $car->getPlate(), $freeX));

@@ -33,6 +33,7 @@ return [
         'limit_free5' => 43200,//12h
         'limit_free10' => 86400,//24h
         'limit_free15' => 172800,//48h
-        'url_operator' => 'http://operators.sharengo.it/dev/get_permanency.php',
+        'url_operator_prod' => 'http://operators.sharengo.it/get_permanency.php',
+        'url_operator_dev' => 'http://operators.sharengo.it/dev/get_permanency.php',
     ]
 ];
