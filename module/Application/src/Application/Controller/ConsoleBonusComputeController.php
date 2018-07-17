@@ -1233,7 +1233,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             }
         }//end foreach fleets
         
-        $format = "%s;INF;assignBonusCarFreeAction;Delete old record\n";
+        $format = "%s;INF;assignBonusCarFreeAction;Delete old record...\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
         $this->carsBonusHistoryService->deleteOldRecord();
         
