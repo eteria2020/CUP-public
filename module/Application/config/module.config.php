@@ -2117,6 +2117,17 @@ return [
                         ]
                     ]
                 ],
+                'assign-bonus-car-free' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'assign bonus car free [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'assign-bonus-car-free'
+                        ]
+                    ]
+                ],
                 'alert-credit-card-expiration' => [
                     'type' => 'simple',
                     'options' => [
