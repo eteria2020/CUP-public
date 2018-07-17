@@ -860,7 +860,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $description = 'Parcheggio centro Firenze - ';
             $batteryMinLevel = null;
             $emailCategory = 23;    //TODO: change width new email
-            $tripMinutes = null;
+            $tripMinutes = 5;
             $fleets = array(2);     // only Florence
         }
         else {
