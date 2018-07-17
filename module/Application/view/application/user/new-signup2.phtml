@@ -8,21 +8,8 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
-$this->placeholder('facebook-pixel')->set('
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version=\'2.0\';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,\'script\',\'https://connect.facebook.net/en_US/fbevents.js\');
-
-fbq(\'init\', \'423565347840059\');
-fbq(\'track\', "PageView");
-fbq(\'track\', \'CompleteRegistration\');</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
-/></noscript>
-');
+$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'CompleteRegistration\');</script>');
+$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/wYOdCOz65lwQ7aXWxgM\'});</script>');
 ?>
 <div class="module-section-bookmark yellow content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>

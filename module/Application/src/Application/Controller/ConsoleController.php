@@ -264,7 +264,7 @@ class ConsoleController extends AbstractActionController {
 
             // define chargin for unplug feature
             $charging = $car->getCharging();
-            if($softwareVerNum >=10740) {  //TODO: condizione unplug, da aggiornare prima di mettere in produzione
+            if($softwareVerNum >=10800) {  //TODO: condizione unplug, da aggiornare prima di mettere in produzione
                 $charging = ($car->getCharging() &&
                     ($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()));
             }
@@ -742,10 +742,12 @@ class ConsoleController extends AbstractActionController {
 
         if(!is_null($this->batterySpecific)) {
             foreach($this->batterySpecific as $condition){
-                if(isset($condition["fleet_id"]) && isset($condition["fleet_id"])) {
+                if(isset($condition["fleet_id"]) && isset($condition["battery"])) {
                     if ($car->getFleet()->getId() == $condition["fleet_id"]) {
                          if ($car->getBattery() < $condition["battery"]) {
                              return TRUE;
+                         } else {
+                             return FALSE;
                          }
                     }
                 }
