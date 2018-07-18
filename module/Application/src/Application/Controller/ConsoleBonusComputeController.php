@@ -1190,8 +1190,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['end_lat']) {
                         $x = (int) floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $dist_lon);
                         $y = (int) floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $dist_lat);
-                        $x = -1;
-                        $y = 76;
 
                         if ($x >= 0 && $x < $this->positionConfig[$fleet->getName()]['l'] && $y >= 0 && $y < count($matrix)) {
                             $permanance_car = $matrix[$y][$x];
