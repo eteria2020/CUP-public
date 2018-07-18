@@ -1,0 +1,39 @@
+<?php
+
+return [
+    'position' => [
+        'Milano' => [
+            'start_lon'  =>  9.06589,
+            'start_lat'  => 45.3926,
+            'end_lon'  => 9.278054,
+            'end_lat'  => 45.535974,
+            'l' => 34,
+        ],
+        'Roma' => [
+            'start_lon'  => 12.384625,
+            'start_lat'  => 41.803164,
+            'end_lon'  => 12.615725,
+            'end_lat'  => 41.985826,
+            'l' => 39,
+        ],
+        'Firenze' => [
+            'start_lon'  => 11.177751,
+            'start_lat'  => 43.722216,
+            'end_lon'  => 11.319316,
+            'end_lat'  => 43.822767,
+            'l' => 23,
+        ],
+        'Modena' => [
+            'start_lon'  => 10.847053,
+            'start_lat'  => 44.586324,
+            'end_lon'  => 10.970060,
+            'end_lat'  => 44.675948,
+            'l' => 20,
+        ],
+        'limit_free5' => 43200,//12h
+        'limit_free10' => 86400,//24h
+        'limit_free15' => 172800,//48h
+        'url_operator_prod' => 'http://operators.sharengo.it/get_permanency.php',
+        'url_operator_dev' => 'http://operators.sharengo.it/dev/get_permanency.php',
+    ]
+];
