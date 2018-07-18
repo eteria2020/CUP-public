@@ -540,7 +540,7 @@ class ConsolePayInvoiceController extends AbstractActionController
 //        $scriptId = $this->paymentScriptRunsService->scriptStarted();
             $this->refundPreautPayments();
 
-            $this->paymentScriptRunsService->scriptEnded($scriptId);
+//            $this->paymentScriptRunsService->scriptEnded($scriptId);
 
             // clear the entity manager cache
             $this->entityManager->clear();

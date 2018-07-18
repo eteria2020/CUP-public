@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use SharengoCore\Entity\Trips;
 use SharengoCore\Service\TripPaymentsService;
 use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\CustomersService;
@@ -124,6 +125,13 @@ class ConsolePaymentsController extends AbstractActionController
         $tripId = $request->getParam('tripId');
         $customer = $this->customersService->findById($customerId);
         $trip = $this->tripsService->getTripById($tripId);
+
+        if(!($customer instanceof Customers) || !($trip instanceof Trips)){
+            $log = json_encode(['response'=>-21,'customer_id'=>$customerId, 'trip_id'=>$tripId, 'date' => date_create()->format('Y-m-d H:i:s')]);
+            $this->logger->log("\n" . $log);
+            exit();
+        }
+
         try {
             $response = $this->paymentsService->tryPreAuthorization(
                 $customer,
