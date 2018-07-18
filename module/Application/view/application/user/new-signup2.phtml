@@ -383,6 +383,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     <div class="block-field bw-f last w-1-4">
                         <label>&nbsp</label>
                         <div style="display: block;" id="buttonCode">
+                            <input type="text" id="email" hidden="true" value="<?= $this->customerEmail ?>" >
                             <button type="button" id="buttonSendCode">INVIA CODICE</button>
                         </div>
                     </div>
@@ -390,11 +391,11 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
             </div>
 
-
             <div class="block-row-field clearfix">
                 <div id="confirmSmsCode" style="display: none;">
                     <div class="block-field bw-f w-1-4" id="textCode">
-                        <p><label><?= $this->translate('Codice di Verifica'); ?></label>
+                        <p>
+                            <label><?= $this->translate('Codice di Verifica'); ?></label>
                             <?php
                             $smsCode = $this->form->get('user1')->get('smsCode');
                             echo $this->formElement($smsCode);
@@ -402,10 +403,13 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                             ?>
                         </p>
                     </div>
-                    <br>
-                    <p>
-                        Inserisci qui il codice di verifica inviato via sms<br/>
-                    </p>
+                    <div>
+                        <p>
+                            <label class="small-form">
+                                INSERISCI QUI IL CODICE DI VERIFICA INVIATO VIA SMS, SE NON RICEVI IL MESSAGGIO, CONTATTA IL SERVIZIO CLIENTI
+                            </label>
+                        </p>
+                    </div>
                 </div>
             </div>
             <!-- FINE -->
