@@ -75,6 +75,8 @@ class BirthdayBonusController extends AbstractActionController
 
         // Get all customers
         $date = date_create('tomorrow');
+        $endDate = clone $date;
+        $endDate->add(new \DateInterval("P7D"));
         $this->logger->log("Acquiring customers for date: " . $date->format('Y-m-d') . "...");
         $customers = $this->customersService->getAllForBirthdayBonusAssignement($date);
         $this->logger->log("got " . count($customers) . " customers\n");
@@ -83,8 +85,9 @@ class BirthdayBonusController extends AbstractActionController
 
             // Prepare dates
             $date = $date->format('Y-m-d');
+            $endDate = $endDate->format("Y-m-d");
             $from = $date . ' 00:00:00';
-            $to = $date . ' 23:59:59';
+            $to = $endDate . ' 23:59:59';
             $this->logger->log("Bonuses will be valid from: " . $from . " to: " . $to . "\n\n");
 
             // Generate CustomersBonuses
