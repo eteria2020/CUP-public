@@ -1186,43 +1186,47 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     
                     $format = "%s;INF;assignBonusCarFreeAction;Car to process: %s\n";
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $car->getPlate()));
-                     
-                    if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['end_lat']) {
-                        $x = (int)floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $dist_lon);
-                        $y = (int)floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $dist_lat);
-                        $permanance_car = $matrix[$y][$x];
 
-                        $freeX = null;
-                        if($permanance_car >= $this->positionConfig['limit_free5'] && $permanance_car < $this->positionConfig['limit_free10']){
-                            $freeX = 5;
-                        } else {
-                            if($permanance_car >= $this->positionConfig['limit_free10'] && $permanance_car < $this->positionConfig['limit_free15']) {
-                                $freeX = 10;
+                    if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['end_lat']) {
+                        $x = (int) floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $dist_lon);
+                        $y = (int) floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $dist_lat);
+
+                        if ($x >= 0 && $x < $this->positionConfig[$fleet->getName()]['l'] && $y >= 0 && $y < count($matrix)){
+                            $permanance_car = $matrix[$y][$x];
+                            $freeX = null;
+                            if ($permanance_car >= $this->positionConfig['limit_free5'] && $permanance_car < $this->positionConfig['limit_free10']) {
+                                $freeX = 5;
                             } else {
-                                if($permanance_car >= $this->positionConfig['limit_free15']) {
-                                    $freeX = 15; 
+                                if ($permanance_car >= $this->positionConfig['limit_free10'] && $permanance_car < $this->positionConfig['limit_free15']) {
+                                    $freeX = 10;
+                                } else {
+                                    if ($permanance_car >= $this->positionConfig['limit_free15']) {
+                                        $freeX = 15;
+                                    }
                                 }
                             }
-                        }
 
-                        $format = "%s;INF;assignBonusCarFreeAction;Car: %s have value to freeX = %d\n";
-                        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $car->getPlate(), $freeX));
-                        
-                        $format = "%s;INF;assignBonusCarFreeAction;Update record on CarsBonus, add value to freeX...\n";
-                        $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-                        if (!$dryRun){
-                            $car_bonus = $this->carsBonusService->findOneByPLate($car->getPlate())[0];
-                            $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $freeX);
-                        }
-                        
-                        if(!is_null($freeX)){
-                            $format = "%s;INF;assignBonusCarFreeAction;Create record on CarsBonusHistory...\n";
+                            $format = "%s;INF;assignBonusCarFreeAction;Car: %s have value to freeX = %d\n";
+                            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $car->getPlate(), $freeX));
+
+                            $format = "%s;INF;assignBonusCarFreeAction;Update record on CarsBonus, add value to freeX...\n";
                             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
                             if (!$dryRun) {
-                                $cars_bonus_history = $this->carsBonusHistoryService->createRecord($freeX, true , $car);
+                                $car_bonus = $this->carsBonusService->findOneByPLate($car->getPlate())[0];
+                                $car_bonus = $this->carsBonusService->addFreeBonus($car_bonus, $freeX);
                             }
+
+                            if (!is_null($freeX)) {
+                                $format = "%s;INF;assignBonusCarFreeAction;Create record on CarsBonusHistory...\n";
+                                $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
+                                if (!$dryRun) {
+                                    $cars_bonus_history = $this->carsBonusHistoryService->createRecord($freeX, true, $car);
+                                }
+                            }
+                        } else {
+                            $format = "%s;INF;assignBonusCarFreeAction;Undefined offset X = %d and Y = %d\n";
+                            $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $x, $y));
                         }
-                        
                     } else {
                         $format = "%s;INF;assignBonusCarFreeAction;Car is not in area...\n";
                         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
