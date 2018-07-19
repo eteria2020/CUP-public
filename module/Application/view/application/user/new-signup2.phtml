@@ -5,9 +5,11 @@ $this->headScript()
     ->appendFile($this->basePath('js/signup.js?v=4.0'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
-    ->appendStylesheet($this->basePath('css/signup.css'));
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
+$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'CompleteRegistration\');</script>');
+$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/wYOdCOz65lwQ7aXWxgM\'});</script>');
 ?>
 <div class="module-section-bookmark yellow content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
@@ -381,6 +383,7 @@ $this->inlineScript()
                     <div class="block-field bw-f last w-1-4">
                         <label>&nbsp</label>
                         <div style="display: block;" id="buttonCode">
+                            <input type="text" id="email" hidden="true" value="<?= $this->customerEmail ?>" >
                             <button type="button" id="buttonSendCode">INVIA CODICE</button>
                         </div>
                     </div>
@@ -388,11 +391,11 @@ $this->inlineScript()
 
             </div>
 
-
             <div class="block-row-field clearfix">
                 <div id="confirmSmsCode" style="display: none;">
                     <div class="block-field bw-f w-1-4" id="textCode">
-                        <p><label><?= $this->translate('Codice di Verifica'); ?></label>
+                        <p>
+                            <label><?= $this->translate('Codice di Verifica'); ?></label>
                             <?php
                             $smsCode = $this->form->get('user1')->get('smsCode');
                             echo $this->formElement($smsCode);
@@ -400,10 +403,13 @@ $this->inlineScript()
                             ?>
                         </p>
                     </div>
-                    <br>
-                    <p>
-                        Inserisci qui il codice di verifica inviato via sms<br/>
-                    </p>
+                    <div>
+                        <p>
+                            <label class="small-form">
+                                INSERISCI QUI IL CODICE DI VERIFICA INVIATO VIA SMS, SE NON RICEVI IL MESSAGGIO, CONTATTA IL SERVIZIO CLIENTI
+                            </label>
+                        </p>
+                    </div>
                 </div>
             </div>
             <!-- FINE -->
@@ -567,7 +573,7 @@ $this->inlineScript()
                 <p style="font-size: 14px ; text-align: center; padding: 0px 0 10px 0">Attivazione include il controllo della Patente<br>con il Ministero dei Trasporti.</p>
                 <div class="block-wrapper-button content-align-center">
 
-                    <input type="submit" name="" value="<?= $this->translate('Continua'); ?>">
+                    <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate('Continua'); ?>">
                 </div>
 
                 </form>
@@ -666,4 +672,53 @@ $this->inlineScript()
             $('#fDriverLicense').text('n. ' + $('#driverLicense').val());
         });
 
+        $(function() {
+            $('#registration-form-2').on('submit', function(e) {
+                $("#nextBtn").attr("disabled", true);
+                addLoader();
+            });
+        });
+
+        var addLoader = function() {
+            $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        };
+        var removeLoader = function() {
+            $("#outer > div.load-overlay").remove();
+        };
     </script>
+    <script type="text/javascript">
+        // Criteo section
+        var email = "<?= $this->customerEmail;?>";
+        var fleet = parseInt(<?= $this->customerFleetId;?>);
+        var basket = [ { id: fleet, price: 1, quantity: 1 } ];
+        criteoTrackTransaction(email, basket);
+    </script>
+    <script async src="//onetag-sys.com/sync/a,63/2"></script>
+    <?php
+    if($this->customerFleetId == 1){
+        echo '
+        <!-- Adform Tracking Code BEGIN -->
+        <script type="text/javascript">
+            window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+            window._adftrack.push({
+                pm: 1171594,
+                divider: encodeURIComponent(\'|\'),
+                pagename: encodeURIComponent(\'RD-PIXEL_SharenGo_MILANO_TYP\'),
+                order : { 
+                     orderid: \'<insert order id value here>\'
+                }
+            });
+            (function () { var s = document.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'https://track.adform.net/serving/scripts/trackpoint/async/\'; var x = document.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); })();
+    
+        </script>
+        <noscript>
+            <p style="margin:0;padding:0;border:0;">
+                <img src="https://track.adform.net/Serving/TrackPoint/?pm=1171594&ADFPageName=RD-PIXEL_SharenGo_MILANO_TYP&ADFdivider=|" width="1" height="1" alt="" />
+            </p>
+        </noscript>
+        <!-- Adform Tracking Code END -->
+        <script src="https://secure.adnxs.com/px?id=993709&t=1" type="text/javascript"></script>';
+    }else if($this->customerFleetId == 3){
+        echo '<script src="https://secure.adnxs.com/px?id=993711&t=1" type="text/javascript"></script>';
+    }
+    ?>

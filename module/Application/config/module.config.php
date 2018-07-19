@@ -368,7 +368,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
-                        'action' => 'signup',
+                        'action' => 'new-signup', //signup
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -389,7 +389,8 @@ return [
                     ],
                 ]
             ],
-            'signup1' => [
+            //Lorenzo: not in use anymore
+            /*'signup1' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{signup1}',
@@ -399,7 +400,7 @@ return [
                         'action' => 'signup',
                     ],
                 ]
-            ],
+            ],*/
             'new-signup-2' => [
                 'type' => 'Segment',
                 'options' => [
@@ -2124,6 +2125,17 @@ return [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsoleBonusCompute',
                             'action' => 'add-point-cluster'
+                        ]
+                    ]
+                ],
+                'assign-bonus-car-free' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'assign bonus car free [--dry-run|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsoleBonusCompute',
+                            'action' => 'assign-bonus-car-free'
                         ]
                     ]
                 ],

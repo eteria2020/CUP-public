@@ -19,6 +19,8 @@ use Application\Service\ProfilingPlaformService;
 use Application\Exception\ProfilingPlatformException;
 use Application\Form\RegistrationForm;
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\CustomerNoteService;
+use SharengoCore\Service\UsersService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesMemberGetMemberService;
 use SharengoCore\Service\PromoCodesOnceService;
@@ -75,6 +77,18 @@ class UserController extends AbstractActionController {
      * @var \SharengoCore\Service\CustomersService
      */
     private $customersService;
+
+     /**
+     *
+     * @var \SharengoCore\Service\CustomerNoteService
+     */
+    private $customerNoteService;
+
+     /**
+     *
+     * @var \SharengoCore\Service\UsersService
+     */
+    private $usersService;
 
     /**
      *
@@ -157,6 +171,8 @@ class UserController extends AbstractActionController {
         Form $optionalForm,
         RegistrationService $registrationService,
         CustomersService $customersService,
+        CustomerNoteService $customerNoteService,
+        UsersService $usersService,
         LanguageService $languageService,
         ProfilingPlaformService $profilingPlatformService,
         Translator $translator,
@@ -177,6 +193,8 @@ class UserController extends AbstractActionController {
         $this->optionalForm = $optionalForm;
         $this->registrationService = $registrationService;
         $this->customersService = $customersService;
+        $this->customerNoteService = $customerNoteService;
+        $this->usersService = $usersService;
         $this->languageService = $languageService;
         $this->profilingPlatformService = $profilingPlatformService;
         $this->translator = $translator;
@@ -453,6 +471,7 @@ class UserController extends AbstractActionController {
             $response = $this->getResponse();
             $response->setStatusCode(200);
             $response->setContent($response_msg);
+            $this->signupSmsCustomerNote($this->params()->fromPost('email'), $this->params()->fromPost('mobile'), $this->smsConfig['text'] . $smsVerification->offsetGet('code'));
             return $response;
         } else {
 
@@ -470,6 +489,7 @@ class UserController extends AbstractActionController {
                 $response = $this->getResponse();
                 $response->setStatusCode(200);
                 $response->setContent($response_msg);
+                $this->signupSmsCustomerNote($this->params()->fromPost('email'), $this->params()->fromPost('mobile'), $this->smsConfig['text'] . $smsVerification->offsetGet('code'));
                 return $response;
             } else {
                 $response = $this->getResponse();
@@ -644,6 +664,28 @@ class UserController extends AbstractActionController {
         }
 
         return $codice . "";
+    }
+
+    /**
+     * Insert a row in CustomersNote, for Admin check
+     * 
+     * @param string $email
+     * @param string $mobile
+     * @param string $message
+     */
+    private function signupSmsCustomerNote($email, $mobile, $message) {
+
+        try {
+            $customer = $this->customersService->findByEmail($email)[0];
+            $webuser = $this->usersService->findUserById(12);
+
+            if(!is_null($customer) && !is_null($webuser)) {
+                $this->customerNoteService->addNote($customer, $webuser, "SmsHosting;" . $mobile . ";" . $message);
+            }
+        } catch (Exception $ex) {
+
+        }
+
     }
 
     private function conclude($form, $mobile) {
@@ -854,6 +896,12 @@ class UserController extends AbstractActionController {
     public function newSignupAction() {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
+
+        $customerSession = $this->registrationService->getSignupCustomerSession();
+
+        if(!is_null($customerSession) && !$this->registrationService->isRegistrationCompleted($customerSession)){
+            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        }
         //if there are data in session, we use them to populate the form
         $registeredData = $this->newForm->getRegisteredData();
 
@@ -982,14 +1030,25 @@ class UserController extends AbstractActionController {
             $this->layout('layout/map');
         }
 
+        $customer = null;
+        $customerEmail = $email;
+
         if($email != ''){
+            $customer = $this->customersService->findOneByEmail($email);
             $email = explode('@', $email)[0] . '@';
+        }
+
+        $customerFleet = null;
+        if(!is_null($customer) && !is_null($customer->getFleet())){
+            $customerFleet = $customer->getFleet()->getId();
         }
 
         return new ViewModel([
             'form' => $newForm2,
             'email' => $email,
+            'customerEmail' => $customerEmail,
             'mobile' => $mobile,
+            'customerFleetId' => $customerFleet,
         ]);
     }
 

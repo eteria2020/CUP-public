@@ -336,6 +336,12 @@ class UserAreaController extends AbstractActionController {
             $this->layout('layout/map');
         }
         $customer = $this->userService->getIdentity();
+
+        //fix redirect handled by app: in case the user has not completed the registration we redirect to new-signup-2
+        if ($this->redirectRegistrationNotCompleted($customer)){
+            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
+        }
+
         $activateLink = $this->customerService->isFirstTripManualPaymentNeeded($customer);
         $cartasiCompletedFirstPayment = $this->cartasiPaymentsService->customerCompletedFirstPayment($customer);
         $contract = $this->cartasiContractsService->getCartasiContract($customer);
@@ -602,11 +608,12 @@ class UserAreaController extends AbstractActionController {
                         break;*/
                 }
             }
+        }
             //DOUBLE CHECK FOR FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
             if ($returnRedirect && ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
                 (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted()))) {
                 return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
-            }
+
         }
 
     }

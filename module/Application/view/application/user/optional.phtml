@@ -4,9 +4,11 @@ $this->headScript()
     ->appendFile($this->basePath('js/ui.datepicker-it.js'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
-    ->appendStylesheet($this->basePath('css/signup.css'));
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 $this->inlineScript()
     ->appendFile($this->basePath('js/driver-license-popup.js'));
+$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/KloPCOu_i4UBEO2l1sYD\'});</script>');
+$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', {currency: \'EUR\', value: 5.00});</script>');
 ?>
 <div class="module-section-bookmark yellow content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Ora sei dei nostri!'); ?></h1>
@@ -125,15 +127,16 @@ $this->inlineScript()
     ?>
 
     <script>
-        if($('#driverLicenseForeign').is(":checked"))
-            $('#self_declaretion').show();
-        else
-            $('#self_declaretion').hide();
-
-        $('#driverLicenseForeign').change(function(){
-            if($('#driverLicenseForeign').is(":checked"))
-                $('#self_declaretion').show();
-            else
-                $('#self_declaretion').hide();
+        $(function() {
+            $('#registration-form').on('submit', function(e) {
+               addLoader();
+            });
         });
+
+        var addLoader = function() {
+            $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        };
+        var removeLoader = function() {
+            $("#outer > div.load-overlay").remove();
+        };
     </script>

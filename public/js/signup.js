@@ -270,18 +270,19 @@ $(function () {
                 $('#buttonVerifyPromo').show();
                 var info = JSON.parse(data);
                 document.getElementById('errorepromo').style.display = "none";
-                var a = '';
-                if(info.min != null && info.min > 0)
+
+                var message = 'Pacc. Benvenuto a ' + info.cost + " &euro; ";
+                if(info.min !== null && info.min > 0)
                 {
-                  a =  "con  "+ info.min +  " minuti bonus ";
+                    message = message + "e "+ info.min +  " min ";
                 }
-         
-                 if(info.disc != null && info.disc > 0 )
+
+                if(info.disc !== null && info.disc > 0 )
                 {
-                   a = a +  "e hai la tariffa scontata del "+ info.disc +  "%";
+                    message = message + "con tariffa scontata al "+ info.disc +  "&#37;";
                 }
-                
-                $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>Con questo codice promo l'iscrizione costa " + info.cost +" euro "+ a +"</div>");
+
+                $('#promodiv').html("<div id='promodiv' class='block-field bw-f auto-margin  w-3-3 '>"+ message +"</div>");
 
                 setTimeout(function () {
                     $('#buttonVerifyPromo').html("");
@@ -292,7 +293,7 @@ $(function () {
 
                 $('#promodiv').html("<div id='promodiv' ></div>");
                 document.getElementById('errorepromo').style.display = "block";
-                $('#errorepromo').html("<div id='errorepromo'><ul class='errors'><li>Il codice inserito non è valido</li></ul></div>");
+                $('#errorepromo').html("<div id='errorepromo'><ul class='errors'><li>Il codice inserito non &egrave; valido</li></ul></div>");
 
 
                 console.log("ERROR PromoVerifyCode");
