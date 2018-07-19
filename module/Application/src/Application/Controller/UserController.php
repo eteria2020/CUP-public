@@ -1031,6 +1031,7 @@ class UserController extends AbstractActionController {
         }
 
         $customer = null;
+        $customerEmail = $email;
 
         if($email != ''){
             $customer = $this->customersService->findOneByEmail($email);
@@ -1045,7 +1046,7 @@ class UserController extends AbstractActionController {
         return new ViewModel([
             'form' => $newForm2,
             'email' => $email,
-            'customerEmail' => $customer->getEmail(),
+            'customerEmail' => $customerEmail,
             'mobile' => $mobile,
             'customerFleetId' => $customerFleet,
         ]);
