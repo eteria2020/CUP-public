@@ -96,7 +96,7 @@ class PartnerController extends AbstractActionController {
         $response->setStatusCode($statusCode);
 
         try {
-//            $this->testPayment();
+//            $this->testTelepassPayment();
 //            return $response;
 
             if ($this->getRequest()->isPost()) {
@@ -133,7 +133,7 @@ class PartnerController extends AbstractActionController {
     }
 
 
-    private function testPayment() {
+    private function testTelepassPayment() {
         $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', null, 200);
         //var_dump(count($tripPayments));
         //$response = $this->telepassPayService->sendTripPaymentRequest($tripPayments[0]);
@@ -142,4 +142,8 @@ class PartnerController extends AbstractActionController {
         $response = $this->telepassPayService->sendPaymentRequest($customer, 456);
         var_dump($response);
     }
+
+//    public function notifyCustomerStatusAction(){
+//        $response = $this->partnerService->notifyCustomerStatus($customer);
+//    }
 }
