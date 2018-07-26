@@ -99,13 +99,9 @@ $end = date_create('2018-03-09 04:55:00');
                                             </p>
                                             <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                                 <?php
-                                                    if( $package->getCode()=="WOMEN"){
-                                                        echo 'una notte';
-                                                    } else {
-                                                        // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                        $months = floor($package->getDuration() / 30);
-                                                        echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
-                                                    }
+                                                    // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                                    $months = floor($package->getDuration() / 30);
+                                                    echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
                                                 ?>
                                             </p>
                                         <?php }else{?>
@@ -118,13 +114,9 @@ $end = date_create('2018-03-09 04:55:00');
                                             </p>
                                             <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                                 <?php
-                                                    if( $package->getCode()=="WOMEN"){
-                                                        echo 'una notte';
-                                                    } else {
-                                                        // Duration is expressed in days for packet points
-                                                        $day = floor($package->getDuration());
-                                                        echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
-                                                    }
+                                                    // Duration is expressed in days for packet points
+                                                    $day = floor($package->getDuration());
+                                                    echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
                                                 ?>
                                             </p>
                                         <?php }?>  
@@ -166,7 +158,7 @@ $end = date_create('2018-03-09 04:55:00');
                                         $i++;
                                         $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
                                         $validFrom = $package->validFromOrToday()->format("d-m-Y");
-                                        if ($package->getCode()=="WOMEN") {
+/*                                        if ($package->getCode()=="WOMEN") {
                                             $now = date("Y-m-d");
                                             $validFrom = date_create($now.' 01:00:00');
                                             $validTo = "per la notte";
@@ -180,7 +172,7 @@ $end = date_create('2018-03-09 04:55:00');
                                             
                                             $validFrom = $validFrom->format("d-m-Y");
                                             $validTo = "per la notte";
-                                        }
+                                        }*/
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
