@@ -97,6 +97,7 @@ class PartnerController extends AbstractActionController {
 
         try {
 //            $this->testTelepassPayment();
+//            $this->testNugoNotifyCustomerStatus();
 //            return $response;
 
             if ($this->getRequest()->isPost()) {
@@ -143,7 +144,29 @@ class PartnerController extends AbstractActionController {
         var_dump($response);
     }
 
-//    public function notifyCustomerStatusAction(){
-//        $response = $this->partnerService->notifyCustomerStatus($customer);
-//    }
+    private function testNugoNotifyCustomerStatus() {
+
+        $customer = $customeRepository->findOneBy(array('id'=>'22577'));
+
+        $response = $this->partnerService->notifyCustomerStatus($customer);
+    }
+
+    public function importInvoiceAction() {
+        $dryRun = $this->request->getParam('dry-run') || $this->request->getParam('d');
+        $partnerCode = $this->request->getParam('partner');
+        $date = $this->request->getParam('date');
+        $fleetId = $this->request->getParam('fleetId');
+
+        if(!is_null($date)) {
+            $date = date_create_from_format('Y-m-d', $date);
+        }
+
+        $partner = $this->partnerService->findEnabledBycode($partnerCode);
+
+        if(!is_null($partner)){
+            $this->partnerService->importInvoice($dryRun, $partner, $date, $fleetId);
+        }
+
+    }
+
 }

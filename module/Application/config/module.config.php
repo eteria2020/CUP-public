@@ -2402,7 +2402,18 @@ return [
                             'action' => 'assign-birthday-bonuses'
                         ]
                     ]
-                ]
+                ],
+                'partner-import-invoice' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'partner import invoice [--dry-run|-d] [--partner=] [--date=] [--fleet=]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Partner',
+                            'action' => 'import-invoice'
+                        ]
+                    ]
+                ],
             ],
         ],
     ],
