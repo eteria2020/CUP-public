@@ -1159,7 +1159,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $hour = strpos(date('H'), '0') === 0 ? ltrim(date('H'), '0') : date('H');
             $format = "%s;INF;assignBonusCarFreeAction;Call to operators...\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $fleet->getName()));
-            $permanance_areas = file_get_contents($this->positionConfig['url_operator_prod'].'?city='.strtolower($fleet->getCode()).'&hour='.$hour);
+            $permanance_areas = file_get_contents($this->positionConfig['url_operator_dev'].'?city='.strtolower($fleet->getCode()).'&hour='.$hour);
             
             $result = json_decode($permanance_areas);
             $result = get_object_vars($result);
