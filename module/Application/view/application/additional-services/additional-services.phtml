@@ -45,17 +45,13 @@ $end = date_create('2018-03-09 04:55:00');
                         </div>
                         <!-- title -->
 
-                        <!-- Description -->
-                        <div class="content-align-center block-title highlight">
-                            <?= $this->translate('TIPO CHE SEI, PACCHETTO CHE TROVI') ?>
-                        </div>
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
-                                <?= $this->translate('Scegli il pacchetto minuti che preferisci e il costo dei tuoi noleggi Share&#39ngo scende fino ad arrivare a 0,22 &euro;/min, la tariffa di car sharing a flusso libero pi&ugrave; bassa al mondo.') ?>
+                                <?= $this->translate('Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle nostre tariffe scontate.') ?>
                             </span>
                             <br>
                             <span class="block-sub-title">
-                                <b style="color:red"><?= $this->translate('Attenzione: '); ?></b><?= $this->translate('prima di acquistare un pacchetto assicurati di aver pagato la quota di iscrizione'); ?>
+                                <?= $this->translate('Prima di scegliere il tuo preferito assicurati di aver completato la tua registrazione con l\'acquisto del Pacchetto Benvenuto.'); ?>
                             </span>    
                         </div>
                         <br><br>
@@ -93,19 +89,19 @@ $end = date_create('2018-03-09 04:55:00');
                                                 if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
                                                     $cost_round = substr($cost_round,0,strlen($cost_round)-1);
                                                 }
+                                                if($package->getName()=="ESTATE") {
+                                                    $cost_round = "0,22";
+                                                }
                                                 echo sprintf("%s &euro;/", $cost_round).$this->translate('min');
+
                                             }
                                             ?>
                                             </p>
                                             <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                                 <?php
-                                                    if( $package->getCode()=="WOMEN"){
-                                                        echo 'una notte';
-                                                    } else {
-                                                        // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                        $months = floor($package->getDuration() / 30);
-                                                        echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
-                                                    }
+                                                    // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                                    $months = floor($package->getDuration() / 30);
+                                                    echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
                                                 ?>
                                             </p>
                                         <?php }else{?>
@@ -118,13 +114,9 @@ $end = date_create('2018-03-09 04:55:00');
                                             </p>
                                             <p class="block-sub-title"><?= $this->translate('Validità') ?>
                                                 <?php
-                                                    if( $package->getCode()=="WOMEN"){
-                                                        echo 'una notte';
-                                                    } else {
-                                                        // Duration is expressed in days for packet points
-                                                        $day = floor($package->getDuration());
-                                                        echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
-                                                    }
+                                                    // Duration is expressed in days for packet points
+                                                    $day = floor($package->getDuration());
+                                                    echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
                                                 ?>
                                             </p>
                                         <?php }?>  
@@ -166,20 +158,8 @@ $end = date_create('2018-03-09 04:55:00');
                                         $i++;
                                         $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
                                         $validFrom = $package->validFromOrToday()->format("d-m-Y");
-                                        if ($package->getCode()=="WOMEN") {
-                                            $now = date("Y-m-d");
-                                            $validFrom = date_create($now.' 01:00:00');
-                                            $validTo = "per la notte";
-                                            $hour = date("G");
-
-                                                if ( $hour >= 5 ) {
-                                                  //add 1 day to now in case of purchase after the 5am
-                                                    $validFrom = date_add($validFrom, date_interval_create_from_date_string('1 days'));
-                                                    
-                                                }
-                                            
-                                            $validFrom = $validFrom->format("d-m-Y");
-                                            $validTo = "per la notte";
+                                        if($package->getName()=="ESTATE"){
+                                            $validTo = "31 agosto 2018";
                                         }
                             ?>
                             <!-- Table body -->
