@@ -1126,7 +1126,7 @@ input[type="text"], input[type="password"], textarea {
 .boxed {
   *zoom: 1;
   width: auto;
-  max-width: 1260px;
+  max-width: 1300px;
   float: none;
   display: block;
   margin-right: auto;
