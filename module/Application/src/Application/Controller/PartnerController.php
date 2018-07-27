@@ -133,7 +133,6 @@ class PartnerController extends AbstractActionController {
         return $response;
     }
 
-
     private function testTelepassPayment() {
         $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', null, 200);
         //var_dump(count($tripPayments));
@@ -164,6 +163,8 @@ class PartnerController extends AbstractActionController {
         $partner = $this->partnerService->findEnabledBycode($partnerCode);
 
         if(!is_null($partner)){
+            //$this->partnerService->tryChargeAccountTest();
+            //$this->partnerService->notifyCustomerStatusTest();
             $this->partnerService->importInvoice($dryRun, $partner, $date, $fleetId);
         }
 
