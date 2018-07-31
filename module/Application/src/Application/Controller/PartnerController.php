@@ -115,11 +115,12 @@ class PartnerController extends AbstractActionController {
 
                     if(!is_null($partner)) {
                         $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
-                    }
-
-                    if (!is_null($partnerResponse)) {
-                        $response->setStatusCode($statusCode);
-                        $response->setContent(json_encode($partnerResponse));
+                        if (!is_null($partnerResponse)) {
+                            $response->setStatusCode($statusCode);
+                            $response->setContent(json_encode($partnerResponse));
+                        }
+                    } else {
+                        $response->setStatusCode(403);  // 403 Forbidden
                     }
                 } else {
                     $response->setStatusCode(400);  // 400 Bad Request
