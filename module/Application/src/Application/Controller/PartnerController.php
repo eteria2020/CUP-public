@@ -88,7 +88,7 @@ class PartnerController extends AbstractActionController {
      * @return Request
      */
     public function signupAction() {
-        $statusCode = 404;
+        $statusCode = 404;  //404 Not Found
         $partner = null;
         $partnerResponse = null;
 
@@ -106,30 +106,29 @@ class PartnerController extends AbstractActionController {
                 $content = file_get_contents('php://input');
                 $contentArray = json_decode($content, true);
 
-                //var_dump($this->getRequest()->getServer('HTTP_USER_AGENT'));
+                if(!is_null($contentArray)) {
+                    //$this->userEventsService->saveNewEvent($webUser,  "customer-partner", $contentArray);     //TODO: to implement
+                    //$contentObject = json_decode($content);
+                    //$debug=$contentArray['partnerName'];
+                    $partnerCode = $this->partnerService->getPartnerCode($contentArray, 'partnerName');
+                    $partner = $this->partnerService->findEnabledBycode($partnerCode);
 
-                //$this->userEventsService->saveNewEvent($webUser,  "customer-partner", $contentArray);     //TODO: to implement
-                //$contentObject = json_decode($content);
-                //$debug=$contentArray['partnerName'];
-                $partnerCode = $this->partnerService->getPartnerCode($contentArray, 'partnerName');
-                $partner = $this->partnerService->findEnabledBycode($partnerCode);
+                    if(!is_null($partner)) {
+                        $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
+                    }
 
-                if(!is_null($partner)) {
-                    $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
+                    if (!is_null($partnerResponse)) {
+                        $response->setStatusCode($statusCode);
+                        $response->setContent(json_encode($partnerResponse));
+                    }
+                } else {
+                    $response->setStatusCode(400);  // 400 Bad Request
                 }
-                //if ($authorization == 'telepassAPIKey') {
-//                    if ($partnerName == 'telepass') {
-//                        $statusCode = $this->telepassSignupMain($contentArray, $partnerResponse);
-//                    }
-                //}
-            }
-
-            if (!is_null($partnerResponse)) {
-                $response->setStatusCode($statusCode);
-                $response->setContent(json_encode($partnerResponse));
+            } else {
+                $response->setStatusCode(405);  // 405 Method Not Allowed
             }
         } catch (\Exception $ex) {
-            $response->setStatusCode(500);
+            $response->setStatusCode(500);  //500 Internal Server Error
         }
 
         return $response;
