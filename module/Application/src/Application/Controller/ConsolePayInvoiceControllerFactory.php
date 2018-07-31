@@ -20,6 +20,7 @@ class ConsolePayInvoiceControllerFactory implements FactoryInterface
         $entityManager = $sharedServiceManager->get('doctrine.entitymanager.orm_default');
         $paymentScriptRunService = $sharedServiceManager->get('SharengoCore\Service\PaymentScriptRunsService');
         $extraScriptRunService = $sharedServiceManager->get('SharengoCore\Service\ExtraScriptRunsService');
+        $preauthorizationsService = $sharedServiceManager->get('SharengoCore\Service\PreauthorizationsService');
 
         return new ConsolePayInvoiceController(
             $tripPaymentsService,
@@ -30,7 +31,8 @@ class ConsolePayInvoiceControllerFactory implements FactoryInterface
             $processExtraService,
             $entityManager,
             $paymentScriptRunService,
-            $extraScriptRunService
+            $extraScriptRunService,
+            $preauthorizationsService
         );
     }
 }

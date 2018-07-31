@@ -2018,6 +2018,17 @@ return [
                         ]
                     ]
                 ],
+                'refund-preaut' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'refund preaut [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]', //<customer> <amount>
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'refund-preaut'
+                        ]
+                    ]
+                ],
                 'retry-wrong-payments' => [
                     'type' => 'simple',
                     'options' => [
