@@ -111,7 +111,7 @@ class PartnerController extends AbstractActionController {
                     //$contentObject = json_decode($content);
                     //$debug=$contentArray['partnerName'];
                     $partnerCode = $this->partnerService->getPartnerCode($contentArray, 'partnerName');
-                    $partner = $this->partnerService->findEnabledBycode($partnerCode);
+                    $partner = $this->partnerService->findEnabledByCode($partnerCode);
 
                     if(!is_null($partner)) {
                         $statusCode = $this->partnerService->signup($partner, $contentArray, $partnerResponse);
@@ -162,7 +162,7 @@ class PartnerController extends AbstractActionController {
             $date = date_create_from_format('Y-m-d', $date);
         }
 
-        $partner = $this->partnerService->findEnabledBycode($partnerCode);
+        $partner = $this->partnerService->findEnabledByCode($partnerCode);
 
         if(!is_null($partner)){
             //$this->partnerService->tryChargeAccountTest();
