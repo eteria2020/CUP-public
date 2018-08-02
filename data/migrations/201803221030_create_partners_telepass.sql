@@ -11,7 +11,7 @@ CREATE TABLE partners (
 
 INSERT INTO partners (name, code, params, enabled) VALUES ('Free2move', 'FREE2MOVE', '{"info" :{ "utm_source" : "FREE2MOVE"} }', true);
 INSERT INTO partners (name, code, params, enabled) VALUES ('Telepass', 'telepass', '{"payments" :{ "uri" : "https://api-dev.urbi.co", "authorization" : "sharengo_test_key"} }', true);
-INSERT INTO partners (name, code, params, enabled) VALUES ('Nugo', 'nugo', '{"signup": {"validIp" : ""}, "payments" : { "uri" : "https://www.cert.nugo.com/nugo/api/external/sharengo/charge-account", "authorization" : "sharengo_test_key"}, "notifyCustomerStatus" :{ "uri" : "https://www.cert.nugo.com/nugo/api/external/sharengo/charge-account"}, "importInvoice" :{ "uri" : "https://www.cert.nugo.com/nugo/api/external/sharengo/billing"}}', true);
+INSERT INTO partners (name, code, params, enabled) VALUES ('Nugo', 'nugo', '{"signup": {"validIp" : "160.78.28.192;62.86.26.39;62.86.26.40;78.159.192.50"}, "payments" : { "uri" : "https://www.cert.nugo.com/nugo/api/external/sharengo/charge-account", "authorization" : "sharengo_test_key"}, "notifyCustomerStatus" :{ "uri" : "https://www.cert.nugo.com/nugo/api/external/sharengo/charge-account"}, "importInvoice" :{ "uri" : "https://www.cert.nugo.com/nugo/api/external/sharengo/billing"}}', true);
 
 /* Tab. partners_customers */
 CREATE TABLE partners_customers (
