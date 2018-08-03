@@ -676,11 +676,14 @@ class UserController extends AbstractActionController {
     private function signupSmsCustomerNote($email, $mobile, $message) {
 
         try {
-            $customer = $this->customersService->findByEmail($email)[0];
-            $webuser = $this->usersService->findUserById(12);
+            $customers = $this->customersService->findByEmail($email);
+            if(count($customers)>0) {
+                $customer = $customers[0];
+                $webuser = $this->usersService->findUserById(12);
 
-            if(!is_null($customer) && !is_null($webuser)) {
-                $this->customerNoteService->addNote($customer, $webuser, "SmsHosting;" . $mobile . ";" . $message);
+                if(!is_null($customer) && !is_null($webuser)) {
+                    $this->customerNoteService->addNote($customer, $webuser, "SmsHosting;" . $mobile . ";" . $message);
+                }
             }
         } catch (Exception $ex) {
 
