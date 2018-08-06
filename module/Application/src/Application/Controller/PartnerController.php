@@ -4,11 +4,16 @@ namespace Application\Controller;
 
 // External Modules
 use Zend\Mvc\Controller\AbstractActionController;
+use SharengoCore\Service\SimpleLoggerService;
 use SharengoCore\Service\PartnerService;
-use SharengoCore\Service\Partner\TelepassPayService;
-use SharengoCore\Service\TripPaymentsService;
 
 class PartnerController extends AbstractActionController {
+
+    /**
+     *
+     * @var type 
+     */
+    private $loggerService;
 
     /**
      *
@@ -16,17 +21,17 @@ class PartnerController extends AbstractActionController {
      */
     private $partnerService;
 
-    private $telepassPayService;
-    private $tripPaymentsService;
-
+    /**
+     * 
+     * @param \Application\Controller\Logger $logger
+     * @param PartnerService $partnerService
+     */
     public function __construct(
-        PartnerService $partnerService, 
-        TelepassPayService $telepassPayService,
-        TripPaymentsService $tripPaymentsService
+        SimpleLoggerService $loggerService,
+        PartnerService $partnerService
     ) {
+        $this->loggerService = $loggerService;
         $this->partnerService = $partnerService;
-        $this->telepassPayService = $telepassPayService;
-        $this->tripPaymentsService = $tripPaymentsService;
     }
 
     /**
@@ -96,9 +101,6 @@ class PartnerController extends AbstractActionController {
         $response->setStatusCode($statusCode);
 
         try {
-//            $this->testTelepassPayment();
-//            $this->testNugoNotifyCustomerStatus();
-//            return $response;
 
             if ($this->getRequest()->isPost()) {
                 //$authorization = $this->getRequest()->getHeader('Authorization', '');
@@ -135,24 +137,36 @@ class PartnerController extends AbstractActionController {
         return $response;
     }
 
-    private function testTelepassPayment() {
-        $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', null, 200);
-        //var_dump(count($tripPayments));
-        //$response = $this->telepassPayService->sendTripPaymentRequest($tripPayments[0]);
-        $customer = $tripPayments[0]->getCustomer();
-        //var_dump($customer->getId());
-        $response = $this->telepassPayService->sendPaymentRequest($customer, 456);
-        var_dump($response);
+    /**
+     * Notify the customer status of customer belogn to a partner
+     * 
+     * Function call from console
+     */
+    public function notifyCustomerStatusAction() {
+        $this->loggerService->setOutputEnvironment(SimpleLoggerService::OUTPUT_ON);
+        $this->loggerService->setOutputType(SimpleLoggerService::TYPE_CONSOLE);
+
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;notifyCustomerStatusAction;start\n");
+
+        $partnerCode = $this->request->getParam('partner');
+        $partner = $this->partnerService->findEnabledByCode($partnerCode);
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;notifyCustomerStatusAction;partner;".$partner->getCode()."\n");
+
+        $this->partnerService->notifyCustomerStatus($partner);
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;notifyCustomerStatusAction;stop\n");
+
     }
 
-    private function testNugoNotifyCustomerStatus() {
-
-        $customer = $customeRepository->findOneBy(array('id'=>'22577'));
-
-        $response = $this->partnerService->notifyCustomerStatus($customer);
-    }
-
+    /**
+     * Import the invoice data form a partner api.
+     * 
+     * Function call from console
+     */
     public function importInvoiceAction() {
+        $this->loggerService->setOutputEnvironment(SimpleLoggerService::OUTPUT_ON);
+        $this->loggerService->setOutputType(SimpleLoggerService::TYPE_CONSOLE);
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;importInvoiceAction;start\n");
+
         $dryRun = $this->request->getParam('dry-run') || $this->request->getParam('d');
         $partnerCode = $this->request->getParam('partner');
         $date = $this->request->getParam('date');
@@ -170,6 +184,7 @@ class PartnerController extends AbstractActionController {
             $this->partnerService->importInvoice($dryRun, $partner, $date, $fleetId);
         }
 
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;importInvoiceAction;end\n");
     }
 
 }
