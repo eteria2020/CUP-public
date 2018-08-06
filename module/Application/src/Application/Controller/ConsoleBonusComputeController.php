@@ -1188,7 +1188,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $car->getPlate()));
 
                     if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['end_lat']) {
-                        if($dist_lon > 0 && $dist_lat > 0){
+                        if($dist_lon > 0 && $dist_lat > 0) {
                             $x = (int) floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $dist_lon);
                             $y = (int) floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $dist_lat);
                         } else {
