@@ -1,0 +1,3 @@
+UPDATE partners 
+SET params='{"signup": {"validIp" : "160.78.28.88;160.78.28.192;62.86.26.39;62.86.26.40;78.159.192.50"}, "payments" : { "uri" : "https://www.nugo.com/nugo/api/external/sharengo/charge-account", "authorization" : "sharengo_test_key"}, "notifyCustomerStatus" :{ "uri" : "https://www.nugo.com/nugo/api/external/sharengo/customer-status"}, "importInvoice" :{ "uri" : "https://www.nugo.com/nugo/api/external/sharengo/billing"}}'
+WHERE id=3;

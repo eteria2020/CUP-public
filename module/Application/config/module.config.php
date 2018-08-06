@@ -2425,6 +2425,17 @@ return [
                         ]
                     ]
                 ],
+                'partner-notify-customer' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'partner notify customer [--partner=]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Partner',
+                            'action' => 'notify-customer-status'
+                        ]
+                    ]
+                ],
             ],
         ],
     ],
