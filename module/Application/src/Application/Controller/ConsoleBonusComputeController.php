@@ -1180,7 +1180,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $cars = $this->carsService->getPublicCarsForAddFreeX($fleet->getId());
                 
                 $dist_lon = ($this->positionConfig[$fleet->getName()]['end_lon'] - $this->positionConfig[$fleet->getName()]['start_lon']) / $this->positionConfig[$fleet->getName()]['l'];
-                $dist_lat = ($this->positionConfig[$fleet->getName()]['end_lat'] - $this->positionConfig[$fleet->getName()]['start_lat']) / count($matrix);
+                $dist_lat = count($matrix) == 0 ? 0 : ($this->positionConfig[$fleet->getName()]['end_lat'] - $this->positionConfig[$fleet->getName()]['start_lat']) / count($matrix);
                 
                 foreach ($cars as $car) {
                     
