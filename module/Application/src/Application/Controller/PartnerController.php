@@ -108,7 +108,6 @@ class PartnerController extends AbstractActionController {
                 $content = file_get_contents('php://input');
                 $this->logger("Request", $content);
                 $contentArray = json_decode($content, true);
-                
 
                 if(!is_null($contentArray)) {
                     //$this->userEventsService->saveNewEvent($webUser,  "customer-partner", $contentArray);     //TODO: to implement
