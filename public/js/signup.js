@@ -64,7 +64,10 @@ $(function () {
             var prefix = $('#dialCode').val();
             var mobile = $('#mobile').val();
             mobile = mobile.replace("+" + prefix, "");
-            mobile = mobile.replace("00" + prefix, "");
+            //mobile = mobile.replace("00" + prefix, "");
+            if(mobile.substring(0, prefix.toString().length+2) == '00'+prefix){
+                mobile = mobile.substring(prefix.toString().length+2, mobile.length);
+            }
             mobile = mobile.replace(/\D/g, '');
             $('#mobile').val(mobile);
             $.ajax({
