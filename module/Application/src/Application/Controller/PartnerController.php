@@ -106,6 +106,7 @@ class PartnerController extends AbstractActionController {
                 //$authorization = $this->getRequest()->getHeader('Authorization', '');
  
                 $content = file_get_contents('php://input');
+                $this->logger("Request", $content);
                 $contentArray = json_decode($content, true);
 
                 if(!is_null($contentArray)) {
@@ -134,6 +135,7 @@ class PartnerController extends AbstractActionController {
             $response->setStatusCode(500);  //500 Internal Server Error
         }
 
+        $this->logger("Response", $response->getStatusCode()." ".$response->getBody());
         return $response;
     }
 
@@ -187,4 +189,19 @@ class PartnerController extends AbstractActionController {
         $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;importInvoiceAction;end\n");
     }
 
+    /**
+     * 
+     * @param string $info
+     * @param string $message
+     */
+    private function logger($info, $message) {
+        try {
+            $writer = new \Zend\Log\Writer\Stream("/tmp/partner_signup.log");
+            $logger = new \Zend\Log\Logger();
+            $logger->addWriter($writer);
+            $logger->info($info . "\n" . $message);
+        } catch (Exception $ex) {
+
+        }
+    }
 }
