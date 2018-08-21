@@ -121,11 +121,11 @@
                             <?php } ?>
 
                         <?php } else {  // getFirstPaymentCompleted() false?>
-                        <p>il tuo profilo &egrave; disabilitato perch&egrave; non hai ancora provveduto a completare il pagamento dell&#39;iscrizione. Per farlo ti basteranno un paio di minuti e una carta di credito (anche prepagata).</p>
+                        <p>benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;min invece di 0,28&euro;min) e provi subito la tua Sharengo.</p>
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-center">
-                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
+                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pacchetto Benvenuto'); ?> <i class="fa fa-plus-circle"></i></a>
                         </div>
                         <!-- confirm button -->
                         <?php echo $this->partial('partials/credit-card-refuse'); ?>
