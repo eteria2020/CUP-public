@@ -88,7 +88,7 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         // The customer did not pay the first payment
         if (!$customer->getFirstPaymentCompleted()) {
-            $this->flashMessenger()->addErrorMessage('Occorre effettuare il pagamento per l\'iscrizione al servizio prima di poter acquistare un pacchetto');
+            $this->flashMessenger()->addErrorMessage('Occorre effettuare l\'acquisto del Pacchetto Benvenuto prima di poter acquistare un pacchetto');
 
         } else {
             $success = $this->buyCustomerBonusPackage($customer, $package);
