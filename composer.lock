@@ -2424,7 +2424,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "ca4279d03ddde6512cfd99de8dd5361abfa2bcb4"
+                "reference": "4edefe47c9565cc085c85580162a0f52498c461d"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2445,7 +2445,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2018-08-21 12:10:26"
+            "time": "2018-08-23 10:19:46"
         },
         {
             "name": "natxet/CssMin",
@@ -2943,7 +2943,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
-                "reference": "f3c8e804e70b9bdddadcd93aa3553fea4b556a24"
+                "reference": "46fbcfcab8086288056db9a0f9a73b215dbfe6b2"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2957,7 +2957,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2018-08-03 06:53:04"
+            "time": "2018-08-23 10:19:48"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
