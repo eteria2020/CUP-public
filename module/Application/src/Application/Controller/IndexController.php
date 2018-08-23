@@ -13,6 +13,7 @@ namespace Application\Controller;
 use Application\Service\RegistrationService;
 use SharengoCore\Exception\FleetNotFoundException;
 use SharengoCore\Service\CarsService;
+use SharengoCore\Service\ExtraPaymentsService;
 use SharengoCore\Service\FleetService;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Service\ZonesService;
@@ -94,7 +95,27 @@ class IndexController extends AbstractActionController
      */
     private $tripsService;
 
+    /**
+     * @var ExtraPaymentsService
+     */
+    private $extraPaymentsService;
 
+    /**
+     * IndexController constructor.
+     * @param $mobileUrl
+     * @param ZonesService $zoneService
+     * @param CarsService $carsService
+     * @param FleetService $fleetService
+     * @param PoisService $poisService
+     * @param CustomersService $customersService
+     * @param CartasiContractsService $cartasiContractsService
+     * @param RegistrationService $registrationService
+     * @param TripPaymentsService $tripPaymentsService
+     * @param PaymentScriptRunsService $paymentScriptRunsService
+     * @param PaymentsService $paymentsService
+     * @param TripsService $tripsService
+     * @param ExtraPaymentsService $extraPaymentsService
+     */
 
     public function __construct(
         $mobileUrl,
@@ -108,7 +129,8 @@ class IndexController extends AbstractActionController
         TripPaymentsService $tripPaymentsService,
         PaymentScriptRunsService $paymentScriptRunsService,
         PaymentsService $paymentsService,
-        TripsService $tripsService
+        TripsService $tripsService,
+        ExtraPaymentsService $extraPaymentsService
     ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
@@ -122,6 +144,7 @@ class IndexController extends AbstractActionController
         $this->paymentScriptRunsService = $paymentScriptRunsService;
         $this->paymentsService = $paymentsService;
         $this->tripsService = $tripsService;
+        $this->extraPaymentsService = $extraPaymentsService;
     }
 
     public function indexAction()
@@ -384,12 +407,22 @@ class IndexController extends AbstractActionController
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
         $scriptIsRunning = $this->paymentScriptRunsService->isRunning();
 
+        $extraPayments = $this->extraPaymentsService->getExtraPaymentsWrongAndPayable($customer);
+        $totalExtraCost = 0;
+        if(count($extraPayments)>0){
+            foreach($extraPayments as $extraPayment){
+                $totalExtraCost += $extraPayment->getAmount();
+            }
+        }
+
         return new ViewModel([
             'customer' => $customer,
             'contract' => $contract,
             'tripPayment' => $tripPayment,
             'tripsToBePayedAndWrong' => $tripsToBePayedAndWrong,
             'totalCost' => $totalCost,
+            'totalExtraCost' => $totalExtraCost,
+            'extraPayments' => $extraPayments,
             'scriptIsRunning' => $scriptIsRunning
         ]);
 
@@ -412,16 +445,7 @@ class IndexController extends AbstractActionController
             $trips = null;
             $totalCost = $this->customerService->getTripsToBePayedAndWrong($customer, $trips);
             if ($totalCost > 0) {
-                /*if ($this->cartasiContractsService->hasCartasiContract($customer)) {
-                    $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
-                    if ($response->getCompletedCorrectly()) {
-                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
-                    } else {
-                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
-                    }
-                } else {*/
-                    return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['userId' => $customer->getId()]]);
-               // }
+                return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['userId' => $customer->getId()]]);
             } else {
                 return $this->redirect()->toUrl($this->url()->fromRoute('outstandingPayments', ['userId' => $userId]));
             }

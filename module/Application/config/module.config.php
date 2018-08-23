@@ -1502,6 +1502,15 @@ return [
                             ]
                         ]
                     ],
+                    'debt-collection-extra-payment' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{debt-collection-extra-payment}',
+                            'defaults' => [
+                                'action' => 'debt-collection-extra-payment'
+                            ]
+                        ]
+                    ],
                     'disable-contract' => [
                         'type' => 'Segment',
                         'options' => [
