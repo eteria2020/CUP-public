@@ -5,6 +5,7 @@ namespace Application\Controller;
 //use SharengoCore\Entity\CustomersBonus;
 //use SharengoCore\Entity\PromoCodes;
 use SharengoCore\Entity\CustomerDeactivation;
+use SharengoCore\Service\ExtraPaymentsService;
 use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
 use Zend\Authentication\AuthenticationService;
@@ -134,6 +135,11 @@ class UserAreaController extends AbstractActionController {
     private $customerDeactivationService;
 
     /**
+     * @var ExtraPaymentsService
+     */
+    private $extraPaymentsService;
+
+    /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
      * @param AuthenticationService $userService
@@ -149,11 +155,29 @@ class UserAreaController extends AbstractActionController {
      * @param string $bannerJsonpUrl
      * @param DisableContractService $disableContractService
      * @param PaymentScriptRunsService $paymentScriptRunService
-     * @param PaymentService $paymentsService
+     * @param PaymentsService $paymentsService
      * @param CustomerDeactivationService $customerDeactivationService
+     * @param ExtraPaymentsService $extraPaymentsService
      */
     public function __construct(
-    CustomersService $customerService, TripsService $tripsService, AuthenticationService $userService, InvoicesService $invoicesService, Form $profileForm, Form $passwordForm, Form $mobileForm, Form $driverLicenseForm, HydratorInterface $hydrator, CartasiPaymentsService $cartasiPaymentsService, TripPaymentsService $tripPaymentsService, CartasiContractsService $cartasiContractsService, $bannerJsonpUrl, DisableContractService $disableContractService, PaymentScriptRunsService $paymentScriptRunService, PaymentsService $paymentsService, CustomerDeactivationService $customerDeactivationService
+        CustomersService $customerService,
+        TripsService $tripsService,
+        AuthenticationService $userService,
+        InvoicesService $invoicesService,
+        Form $profileForm,
+        Form $passwordForm,
+        Form $mobileForm,
+        Form $driverLicenseForm,
+        HydratorInterface $hydrator,
+        CartasiPaymentsService $cartasiPaymentsService,
+        TripPaymentsService $tripPaymentsService,
+        CartasiContractsService $cartasiContractsService,
+        $bannerJsonpUrl,
+        DisableContractService $disableContractService,
+        PaymentScriptRunsService $paymentScriptRunService,
+        PaymentsService $paymentsService,
+        CustomerDeactivationService $customerDeactivationService,
+        ExtraPaymentsService $extraPaymentsService
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -173,6 +197,7 @@ class UserAreaController extends AbstractActionController {
         $this->paymentScriptRunsService = $paymentScriptRunService;
         $this->paymentsService = $paymentsService;
         $this->customerDeactivationService = $customerDeactivationService;
+        $this->extraPaymentsService = $extraPaymentsService;
     }
 
     /**
@@ -481,12 +506,22 @@ class UserAreaController extends AbstractActionController {
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
         $scriptIsRunning = $this->paymentScriptRunsService->isRunning();
 
+        $extraPayments = $this->extraPaymentsService->getExtraPaymentsWrongAndPayable($customer);
+        $totalExtraCost = 0;
+        if(count($extraPayments)>0){
+            foreach($extraPayments as $extraPayment){
+                $totalExtraCost += $extraPayment->getAmount();
+            }
+        }
+
         return new ViewModel([
             'customer' => $customer,
             'contract' => $contract,
             'tripPayment' => $tripPayment,
             'tripsToBePayedAndWrong' => $tripsToBePayedAndWrong,
             'totalCost' => $totalCost,
+            'totalExtraCost' => $totalExtraCost,
+            'extraPayments' => $extraPayments,
             'scriptIsRunning' => $scriptIsRunning
         ]);
     }
@@ -515,6 +550,46 @@ class UserAreaController extends AbstractActionController {
                     }
                 } else {
                     return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
+                }
+            } else {
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente' . $userAreaMobile));
+            }
+        } else {
+            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+        }
+
+        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
+    }
+
+    public function debtCollectionExtraPaymentAction() {
+        //if there is mobile param the layout changes
+        $mobile = $this->params()->fromRoute('mobile');
+        $userAreaMobile = '';
+        if ($mobile) {
+            $this->layout('layout/map');
+            $userAreaMobile = '/' . $mobile;
+        }
+        $scriptIsRunning = $this->paymentScriptRunsService->isRunning();
+
+        if (!$scriptIsRunning) {
+            $totalExtraCost = 0;
+            $customer = $this->userService->getIdentity();
+            $extraPayments = $this->extraPaymentsService->getExtraPaymentsWrongAndPayable($customer);
+            if(count($extraPayments)>0){
+                foreach($extraPayments as $extraPayment){
+                    $totalExtraCost += $extraPayment->getAmount();
+                }
+            }
+            if ($totalExtraCost > 0) {
+                if ($this->cartasiContractsService->hasCartasiContract($customer)) {
+                    $response = $this->paymentsService->tryCustomerExtraPaymentMulti($customer, $extraPayments);
+                    if ($response->getCompletedCorrectly()) {
+                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
+                    } else {
+                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
+                    }
+                } else {
+                    return $this->redirect()->toRoute('cartasi/primo-pagamento-penale-multi', [], ['query' => ['customer' => $customer->getId()]]);
                 }
             } else {
                 return $this->redirect()->toUrl($this->url()->fromRoute('area-utente' . $userAreaMobile));
@@ -583,11 +658,13 @@ class UserAreaController extends AbstractActionController {
         $returnRedirect = true;
 
         $deactivations = $this->customerDeactivationService->getAllActive($customer);
+
         if(count($deactivations) > 0){
             foreach($deactivations as $deactivation){
                 switch ($deactivation->getReason()) {
                     case CustomerDeactivation::FIRST_PAYMENT_NOT_COMPLETED:
                     case CustomerDeactivation::FAILED_PAYMENT:
+                    case CustomerDeactivation::FAILED_EXTRA_PAYMENT:
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::EXPIRED_CREDIT_CARD:

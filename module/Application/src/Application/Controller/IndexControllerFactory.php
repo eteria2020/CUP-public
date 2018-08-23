@@ -22,6 +22,7 @@ class IndexControllerfactory implements FactoryInterface
         $paymentsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PaymentsService');
         $paymentScriptRunService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PaymentScriptRunsService');
         $tripsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
+        $extraPaymentsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ExtraPaymentsService');
 
         return new IndexController(
             $mobileUrl,
@@ -35,7 +36,8 @@ class IndexControllerfactory implements FactoryInterface
             $tripPaymentsService,
             $paymentScriptRunService,
             $paymentsService,
-            $tripsService
+            $tripsService,
+            $extraPaymentsService
         );
     }
 }
