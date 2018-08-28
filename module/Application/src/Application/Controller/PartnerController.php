@@ -199,7 +199,7 @@ class PartnerController extends AbstractActionController {
             $writer = new \Zend\Log\Writer\Stream("/tmp/partner_signup.log");
             $logger = new \Zend\Log\Logger();
             $logger->addWriter($writer);
-            $logger->info($info . "\n" . $message);
+            $logger->info($this->partnerService->getRemoteAddress() ." " . $info . "\n" . $message);
         } catch (Exception $ex) {
 
         }
