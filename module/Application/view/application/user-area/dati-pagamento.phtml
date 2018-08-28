@@ -32,11 +32,11 @@
                         <?php if($this->customer->getFirstPaymentCompleted()): ?>
                             
                                 <p>
-                                    <?= $this->translate('Il pagamento della quota di iscrizione &egrave; andato a buon fine, grazie'); ?>.
+                                    <?= $this->translate('I dati di pagamento sono stati correttamente inseriti.'); ?>.
                                 </p>
                         <?php else: ?>
-                                <p><?= $this->translate('La quota di iscrizione non risulta ancora pagata'); ?>, <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
-                                <p><font color="red"><?= $this->translate('Attenzione!') ?></font> <?= $this->translate(' Per completare il pagamento dell’iscrizione e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?></p><br>
+                                <p><?= $this->translate('Il Pacchetto Benvenuto non risulta ancora pagato'); ?>, <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
+                                <p><font color="red"><?= $this->translate('Attenzione!') ?></font> <?= $this->translate(' Per completare il pagamento e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?></p><br>
                                 <p><?= $this->translate('Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine l&#39;attivazione al gestore della tua carta, prima di proseguire '); ?>(<b><a href="payment-securecode-cartasi">maggiori info</a></b>)</p>
                         <?php endif; ?>
                         </div>

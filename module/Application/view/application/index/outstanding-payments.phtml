@@ -6,6 +6,8 @@
     $tripsToBePayedAndWrong = $this->tripsToBePayedAndWrong;
     $scriptIsRunning = $this->scriptIsRunning;
     $totalCost = $this->totalCost;
+    $totalExtraCost = $this->totalExtraCost;
+    $extraPayments = $this->extraPayments;
 
     // parse data
     $name = ucwords(strtolower($customer->getName() . ' ' . $customer->getSurname()));
@@ -41,6 +43,7 @@
                         <?php if ($customer->getFirstPaymentCompleted()) {
                             if ($totalCost===0) {?>
                                 <p style="text-align: justify">complimenti, tutte le tue corse risultano regolarmente pagate.</p>
+                                <hr>
                             <?php } else { ?>
 
                                 <p style="text-align: justify">hai esaurito i tuoi minuti bonus e hai effettuato corse a debito.</p>
@@ -113,16 +116,78 @@
                                 <!-- confirm button -->
                                 <?php }?>
 
-                                <p style="text-align: justify">Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il login sull&#39;App).</p>
+                            <?php }
 
-                            <?php } ?>
+                            if($totalExtraCost > 0){ ?>
+                            <p style="text-align: justify">Sono presenti penali da pagare.</p>
+                            <p style="text-align: justify">Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione "Dati di Pagamento" dell'area riservata.</p><br>
+                            <p style="text-align: justify">Di seguito i dettagli:</p>
+                            <!-- map popup -->
+                            <div id="map-popup" class="map-popup"></div>
+                            <!-- map popup -->
 
+                            <!-- Trip table -->
+                            <div class="block-data-table clearboth clearfix margin-top-custom">
+
+                                <!-- Trip table headers -->
+                                <div class="block-data-table-row clearfix">
+                                    <div class="block-data-table-th cw-1-4 text-center">ID</div>
+                                    <div class="block-data-table-th cw-1-4 text-center">Data generazione</div>
+                                    <div class="block-data-table-th cw-1-4 text-center">Descrizione</div>
+                                    <div class="block-data-table-th cw-1-4 text-center">Importo</div>
+                                </div>
+                                <!-- Trip table headers -->
+
+                                <!-- Trip table body -->
+                                <div class="block-data-table-row-group clearfix">
+                                    <?php
+                                    foreach ($extraPayments as $extraPayment){
+                                        echo('<div class="block-data-table-row clearfix even">');
+                                        echo sprintf('<div class="block-data-table-td cw-1-4 text-center">%s</div>', $extraPayment->getId());
+                                        echo sprintf('<div class="block-data-table-td cw-1-4 text-center">%s</div>', $extraPayment->getGeneratedTs()->format('d/m/Y'));
+                                        $as = '';
+                                        foreach ($extraPayment->getReasons() as $reason){
+                                            $as .= $reason[0][0] . ' || ';
+                                        }
+                                        echo sprintf('<div class="block-data-table-td cw-1-4 text-center">%s</div>', rtrim($as,' || '));
+                                        echo sprintf('<div class="block-data-table-td cw-1-4 text-right">&euro; %d</div>', $extraPayment->getAmount()/100);
+                                        echo('</div>');
+                                    }
+                                    ?>
+                                </div>
+                                <!-- Trip table body -->
+                                <div class="block-data-table-row-group clearfix border-top">
+                                    <div class="block-data-table-row clearfix odd">
+                                        <div class="block-data-table-td cw-1-4"></div>
+                                        <div class="block-data-table-td cw-1-4"></div>
+                                        <div class="block-data-table-td cw-1-4 text-center">TOTALE</div>
+                                        <div class="block-data-table-td cw-1-4 text-right">&euro; <?=$totalExtraCost/100; ?></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <?php if($scriptIsRunning) { ?>
+                                <div style="margin-top: 20px;margin-bottom: 20px">
+                                    <span class="block-sub-title">
+                                        <b style="color:red">Attenzione: </b> Pagamento momentaneamente sospeso, riprova più tardi.
+                                    </span>
+                                </div>
+                            <?php } else { ?>
+                                <!-- Confirm button -->
+                                <div class="block-wrapper-button content-align-center margin-top-custom">
+                                    <a href="<?= $this->url('cartasi/primo-pagamento-penale-multi', [], ['query' => ['userId' => $this->customer->getId()]]) ?>"><button><?= $this->translate("Pagamento penali"); ?></button></a>
+                                </div><br>
+                                <!-- confirm button -->
+                            <?php }?>
+
+                        <?php } ?>
+                            <p style="text-align: justify">Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il login sull&#39;App).</p>
                         <?php } else {  // getFirstPaymentCompleted() false?>
-                        <p>il tuo profilo &egrave; disabilitato perch&egrave; non hai ancora provveduto a completare il pagamento dell&#39;iscrizione. Per farlo ti basteranno un paio di minuti e una carta di credito, ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione "Dati di Pagamento" dell'area utente.</p>
+                            <p>benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;min invece di 0,28&euro;min) e provi subito la tua Sharengo.</p>
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-center">
-                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pagamento iscrizione'); ?> <i class="fa fa-plus-circle"></i></a>
+                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pacchetto Benvenuto'); ?> <i class="fa fa-plus-circle"></i></a>
                         </div>
                         <!-- confirm button -->
                         <?php echo $this->partial('partials/credit-card-refuse'); ?>
