@@ -1,4 +1,4 @@
-CREATE TABLE maintenance_locations (
+CREATE TABLE maintenance_locations ( 
     id integer NOT NULL,
     location text NOT NULL,
 	fleet_id integer NOT NULL,
