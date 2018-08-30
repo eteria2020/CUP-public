@@ -58,7 +58,6 @@ INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'
 INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Roma - Carrozzeria Assistenza car service, Via prenestina nuova km 0.200', 3, TRUE);
 INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Roma - Carrozzeria Ventura & Bianchini, SEDE VIA OSTIENSE, 999 00144 - Via Guglielmo Massaia, 17 - Ostiense, 999', 3, TRUE);
 
-
 INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Modena - GL Car via Felice Cavallotti n 29 Formigine', 4, TRUE);
 INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Modena - Carrozzeria Special via Felice Cavallotti Formigine', 4, TRUE);
 INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Modena - Carrozzeria Doretto via Viazza II Tronco Ubersetto di Fiorano', 4, TRUE);
