@@ -522,18 +522,20 @@ class UserAreaController extends AbstractActionController {
             'totalCost' => $totalCost,
             'totalExtraCost' => $totalExtraCost,
             'extraPayments' => $extraPayments,
-            'scriptIsRunning' => $scriptIsRunning
+            'scriptIsRunning' => $scriptIsRunning,
+            'mobile' => $mobile
         ]);
     }
 
     public function debtCollectionPaymentAction() {
         //if there is mobile param the layout changes
-        $mobile = $this->params()->fromRoute('mobile');
+        $mobile = $this->params()->fromQuery('mobile');
         $userAreaMobile = '';
-        if ($mobile) {
+        if ($mobile == "mobile") {
             $this->layout('layout/map');
             $userAreaMobile = '/' . $mobile;
         }
+
         $scriptIsRunning = $this->paymentScriptRunsService->isRunning();
 
         if (!$scriptIsRunning) {
@@ -563,9 +565,9 @@ class UserAreaController extends AbstractActionController {
 
     public function debtCollectionExtraPaymentAction() {
         //if there is mobile param the layout changes
-        $mobile = $this->params()->fromRoute('mobile');
+        $mobile = $this->params()->fromQuery('mobile');
         $userAreaMobile = '';
-        if ($mobile) {
+        if ($mobile == "mobile") {
             $this->layout('layout/map');
             $userAreaMobile = '/' . $mobile;
         }
