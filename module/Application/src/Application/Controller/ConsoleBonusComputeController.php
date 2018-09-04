@@ -855,7 +855,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $tripMinutes = 5;
             $fleets = array(1,4);   // only Milan and Modena
         } else if ($bonusType=='POIS-FI-30') {
-            $bonus_to_assign = 30;
+            $bonus_to_assign = 5;
             $duration =30;
             $description = 'Parcheggio centro Firenze - ';
             $batteryMinLevel = null;
