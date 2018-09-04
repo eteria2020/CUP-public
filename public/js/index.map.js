@@ -415,7 +415,7 @@ $(function () {
                         bonus_message = "<br>I primi " + b_car[ib].value + " minuti di guida sono gratuiti";
                     } else if ((b_car[ib].type === "unplug") && (b_car[ib].status === true)) {
                         bonus_type = b_car[ib].type;
-                        bonus_message = "<br>I primi " + b_car[ib].value + " minuti di guida sono gratuiti, se scolleghi il cavo di ricarica";
+                        bonus_message = "<br>Con questa auto " + b_car[ib].value + " minuti di guida gratis! Ricordati di staccare la spina!";
                     }
                 }
 
