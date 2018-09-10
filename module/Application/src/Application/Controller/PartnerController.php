@@ -23,7 +23,7 @@ class PartnerController extends AbstractActionController {
 
     /**
      * 
-     * @param \Application\Controller\Logger $logger
+     * @param SimpleLoggerService $loggerService
      * @param PartnerService $partnerService
      */
     public function __construct(
@@ -176,18 +176,38 @@ class PartnerController extends AbstractActionController {
 
         if(!is_null($date)) {
             $date = date_create_from_format('Y-m-d', $date);
+        } else {
+            $date = date_create('yesterday');
         }
 
         $partner = $this->partnerService->findEnabledByCode($partnerCode);
 
         if(!is_null($partner)){
-            //$this->partnerService->tryChargeAccountTest();
-            //$this->partnerService->notifyCustomerStatusTest();
             $this->partnerService->importInvoice($dryRun, $partner, $date, $fleetId);
         }
 
         $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;importInvoiceAction;end\n");
     }
+
+     public function exportRegistriesAction() {
+        $this->loggerService->setOutputEnvironment(SimpleLoggerService::OUTPUT_ON);
+        $this->loggerService->setOutputType(SimpleLoggerService::TYPE_CONSOLE);
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;exportRegistriesAction;start\n");
+
+        $dryRun = $this->request->getParam('dry-run') || $this->request->getParam('d');
+        $noFtp  = $this->request->getParam('no-ftp')  || $this->request->getParam('f');
+
+        $partnerCode = $this->request->getParam('partner');
+        $invoiceDate = $this->request->getParam('date');
+        $fleetId = $this->request->getParam('fleet');
+
+        $partner = $this->partnerService->findEnabledByCode($partnerCode);
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;exportRegistriesAction;partner;".$partner->getCode()."\n");
+
+        $this->partnerService->exportRegistries($dryRun, $noFtp, $partner, $invoiceDate, $fleetId);
+
+        $this->loggerService->log(date_create()->format('y-m-d H:i:s').";INF;exportRegistriesAction;end\n");
+     }
 
     /**
      * 

@@ -2434,6 +2434,17 @@ return [
                         ]
                     ]
                 ],
+                'partner-export-registries' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'partner export registries [--dry-run|-d] [--partner=] [--date=] [--fleet=]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Partner',
+                            'action' => 'export-registries'
+                        ]
+                    ]
+                ],
                 'partner-notify-customer' => [
                     'type' => 'simple',
                     'options' => [
