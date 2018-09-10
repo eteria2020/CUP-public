@@ -213,7 +213,7 @@ class ExportRegistriesController extends AbstractActionController
         }
         if ($this->all) {
             $this->logger->log("all...");
-            $invoices = $this->invoicesService->getInvoicesByFleetJoinCustomers($filterFleet);
+            $invoices = $this->invoicesService->getInvoicesByFleetJoinCustomers($filterFleet, null);
         } else {
             $date = date_create($this->request->getParam('date') ?: 'yesterday');
             // validate date
