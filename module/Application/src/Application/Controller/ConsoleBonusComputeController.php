@@ -1236,7 +1236,6 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     }
                     $this->customerService->clearEntityManagerBonusCarFreeX(true);
                 }//end foreach cars
-                
                 $this->customerService->clearEntityManagerBonusCarFreeX(false);
             }
         }//end foreach fleets
