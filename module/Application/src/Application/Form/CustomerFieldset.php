@@ -447,7 +447,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 ],
                 'validators' => [
                     [
-                        'name' => 'Application\Form\Validator\TaxCode',
+                        'name' => 'Application\Form\Validator\TaxCodeSignup',
                         'break_chain_on_failure' => true
                     ],
                     [
