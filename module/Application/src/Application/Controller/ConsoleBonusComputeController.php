@@ -1179,8 +1179,8 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
                 $cars = $this->carsService->getPublicCarsForAddFreeX($fleet->getId());
                 
-                $dist_lon = $this->positionConfig[$fleet->getName()]['dist_lon'];
-                $dist_lat = $this->positionConfig[$fleet->getName()]['dist_lat'];
+                $dist_lon = $this->positionConfig['dist_lon'];
+                $dist_lat = $this->positionConfig['dist_lat'];
                 
                 foreach ($cars as $car) {
                     
@@ -1236,6 +1236,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                     }
                     $this->customerService->clearEntityManagerBonusCarFreeX(true);
                 }//end foreach cars
+                
                 $this->customerService->clearEntityManagerBonusCarFreeX(false);
             }
         }//end foreach fleets
