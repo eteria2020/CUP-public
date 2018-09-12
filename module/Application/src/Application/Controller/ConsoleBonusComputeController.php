@@ -1159,7 +1159,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $hour = strpos(date('H'), '0') === 0 ? ltrim(date('H'), '0') : date('H');
             $format = "%s;INF;assignBonusCarFreeAction;Call to operators...\n";
             $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $fleet->getName()));
-            $permanance_areas = file_get_contents($this->positionConfig['url_operator_dev'].'?city='.strtolower($fleet->getCode()).'&hour='.$hour);
+            $permanance_areas = file_get_contents($this->positionConfig['url_operator_prod'].'?city='.strtolower($fleet->getCode()).'&hour='.$hour);
             
             $result = json_decode($permanance_areas);
             $result = get_object_vars($result);
@@ -1179,23 +1179,21 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
                 $cars = $this->carsService->getPublicCarsForAddFreeX($fleet->getId());
                 
-                $dist_lon = ($this->positionConfig[$fleet->getName()]['end_lon'] - $this->positionConfig[$fleet->getName()]['start_lon']) / $this->positionConfig[$fleet->getName()]['l'];
-                $dist_lat = (count($matrix) == 0) ? 0 : (($this->positionConfig[$fleet->getName()]['end_lat'] - $this->positionConfig[$fleet->getName()]['start_lat']) / count($matrix));
+                $dist_lon = $this->positionConfig['dist_lon'];
+                $dist_lat = $this->positionConfig['dist_lat'];
                 
                 foreach ($cars as $car) {
                     
                     $format = "%s;INF;assignBonusCarFreeAction;Car to process: %s\n";
                     $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s'), $car->getPlate()));
-
-                    if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() - $this->positionConfig[$fleet->getName()]['end_lat']) {
-                        if($dist_lon > 0 && $dist_lat > 0) {
-                            $x = (int) floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $dist_lon);
-                            $y = (int) floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $dist_lat);
-                        } else {
-                            $x = -1;
-                            $y = -1;
-                        }
-
+                    
+                    $x = -1;
+                    $y = -1;
+                            
+                    if ($car->getLongitude() > $this->positionConfig[$fleet->getName()]['start_lon'] && $car->getLongitude() < $this->positionConfig[$fleet->getName()]['end_lon'] && $car->getLatitude() > $this->positionConfig[$fleet->getName()]['start_lat'] && $car->getLatitude() < $this->positionConfig[$fleet->getName()]['end_lat']) {
+                        $x = (int) floor(($car->getLongitude() - $this->positionConfig[$fleet->getName()]['start_lon']) / $dist_lon);
+                        $y = (int) floor(($car->getLatitude() - $this->positionConfig[$fleet->getName()]['start_lat']) / $dist_lat);
+                        
                         if ($x >= 0 && $x < $this->positionConfig[$fleet->getName()]['l'] && $y >= 0 && $y < count($matrix)){
                             $permanance_car = $matrix[$y][$x];
                             $freeX = null;

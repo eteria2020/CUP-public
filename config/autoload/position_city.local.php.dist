@@ -30,10 +30,12 @@ return [
             'end_lat'  => 44.675948,
             'l' => 20,
         ],
-        'limit_free5' => 43200,//12h
-        'limit_free10' => 86400,//24h
-        'limit_free15' => 172800,//48h
+        'limit_free5' => 720,//12h in minuti
+        'limit_free10' => 1440,//24h in minuti
+        'limit_free15' => 2880,//48h in minuti
         'url_operator_prod' => 'http://operators.sharengo.it/get_permanency.php',
         'url_operator_dev' => 'http://operators.sharengo.it/dev/get_permanency.php',
+        'dist_lon' => 0.0062401176,
+        'dist_lat' => 0.0044804375,
     ]
 ];
