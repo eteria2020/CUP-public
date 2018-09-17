@@ -1,0 +1,1 @@
+ALTER TABLE "public"."safo_penalty" ADD COLUMN "update_ts" timestamp with time zone DEFAULT null;
