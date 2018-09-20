@@ -69,6 +69,9 @@
                     </div>
                 </div>
                 <!-- block-row-field -->
+            <?php if ($this->redirect): ?>
+                <input type="hidden" name="redirect" value="<?php echo $this->redirect ?>">
+            <?php endif ?>
 
             <?php echo $this->form()->closeTag() ?>
         </div>

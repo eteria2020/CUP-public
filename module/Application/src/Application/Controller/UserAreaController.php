@@ -204,7 +204,9 @@ class UserAreaController extends AbstractActionController {
      * 
      * @return ViewModel
      */
-    public function indexAction() {
+    public function indexAction()
+    {
+        $this->redirectFromLogin();
         //if there is mobile param the layout changes
         $mobile = substr($this->getRequest()->getUriString(), -6);
         $userAreaMobile = '';
@@ -706,6 +708,15 @@ class UserAreaController extends AbstractActionController {
             $signupSession = new Container('newSignup');
             $signupSession->offsetSet("customer", $customer);
             return true;
+        }
+    }
+
+    private function redirectFromLogin(){
+        $loginRedirect = new Container('redirect');
+
+        if (!is_null($loginRedirect->offsetGet('route')) && $loginRedirect->offsetGet('route') == "area-utente/servizi-aggiuntivi"){
+            $loginRedirect->offsetSet('route', '');
+            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/additional-services'));
         }
     }
 

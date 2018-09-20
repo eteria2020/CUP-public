@@ -7,6 +7,7 @@ use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 use ZfcUser\Authentication\Adapter\AdapterChainEvent as AuthEvent;
 use ZfcUser\Authentication\Adapter\AbstractAdapter;
+use Zend\Session\Container;
 
 class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
 {
@@ -42,6 +43,10 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
         }
 
         // Success!
+        if(!is_null($e->getRequest()->getPost()->get('redirect'))){
+            $container = new Container('redirect');
+            $container->offsetSet('route', $e->getRequest()->getPost()->get('redirect'));
+        }
         $e->setIdentity($userObject->getId());
         $this->setSatisfied(true);
         $storage = $this->getStorage()->read();
