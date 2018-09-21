@@ -292,7 +292,7 @@ class ConsoleController extends AbstractActionController {
                 $isAlarm = $car->getNogps() == true;
             }
 
-            $strLog = sprintf("%s;INF;checkAlarmsAction;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;status=%s\n",
+            $strLog = sprintf("%s;INF;checkAlarmsAction;plate=%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;unplug=%s;status=%s\n",
                 date('ymd-His'),
                 $car->getPlate(),
                 $car->getBattery(),
@@ -302,6 +302,7 @@ class ConsoleController extends AbstractActionController {
                 (($car->getCharging()) ? 'YES' : 'NO'),
                 (($this->carsService->isCarOutOfBounds($car)) ? 'YES':'NO'),
                 (($isAlarm) ? 'YES' : 'NO'),
+                (($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()) ? 'YES' : 'NO'),
                 $status
                 );
 
