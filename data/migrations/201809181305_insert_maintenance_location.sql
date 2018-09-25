@@ -1,0 +1,1 @@
+INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Nessuna sede', 1, FALSE);
