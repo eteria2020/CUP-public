@@ -1,0 +1,1 @@
+update maintenance_motivations set enabled = FALSE WHERE id in (1,13); 
