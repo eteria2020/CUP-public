@@ -1,4 +1,4 @@
-update maintenance_motivations set enabled = FALSE WHERE id in (3,18); 
+update maintenance_motivations set enabled = FALSE WHERE id in (3); 
 
 update maintenance_motivations set description = 'Auto da carro per officina' WHERE id in (2); 
 
