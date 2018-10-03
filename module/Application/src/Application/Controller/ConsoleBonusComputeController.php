@@ -829,7 +829,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             ));
 
         $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS');
-        $this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS-FI-30');
+        //$this->zoneBonusPark($date_ts, $radius, $carplate, $debug, 'POIS-FI-30');
 
         $this->logger->log(date_create()->format('Y-m-d H:i:s') . ";INF;bonusPoisAction;end\n");
     }
