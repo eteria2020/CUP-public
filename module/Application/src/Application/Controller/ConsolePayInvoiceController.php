@@ -277,7 +277,12 @@ class ConsolePayInvoiceController extends AbstractActionController
 
         if ($start == '' && $end == ''){
             $now = date_create();
-            if ($now >= date_create('17:59:00') && $now <= date_create('19:10:00')){
+            if ($now >= date_create('00:00:00') && $now <= date_create('01:00:00')) { // trips old from 2 to 60 days
+                $start = date_create('-60 days');
+                $start = $start->format('Y-m-d H:i:s');
+                $end =  date_create('-2 days');
+                $end = $end->format('Y-m-d H:i:s');
+            } else if ($now >= date_create('17:59:00') && $now <= date_create('19:10:00')){
                 $start = date_create('-60 days');
                 $start = $start->format('Y-m-d H:i:s');
                 $end = $now->format('Y-m-d H:i:s');
