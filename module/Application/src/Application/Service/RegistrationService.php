@@ -687,9 +687,13 @@ final class RegistrationService
             $data['gender'] = $gender;
 
             if ($chk->getCountryBirth()[0] != 'Z') { //born in italy
-                $municipality = $this->municipalitiesService->getMunicipalityByCadastralCode($chk->getCountryBirth())[0];
-                $data['birthProvince'] = $municipality->getProvince();
-                $data['birthTown'] = $municipality->getName();
+                $dbMunicapility = $this->municipalitiesService->getMunicipalityByCadastralCode($chk->getCountryBirth());
+                if(is_null($dbMunicapility)){
+                    error_log('countryBirth missing: '.$chk->getCountryBirth());
+                }
+                $municipality = is_null($dbMunicapility) ? null : $dbMunicapility[0];
+                $data['birthProvince'] = is_null($municipality) ? 'MI' : $municipality->getProvince();
+                $data['birthTown'] = is_null($municipality) ? 'MILANO' : $municipality->getName();
                 $data['birthCountry'] = 'it';
             } else {
                 //foreign born
