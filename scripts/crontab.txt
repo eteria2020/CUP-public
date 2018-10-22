@@ -35,7 +35,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 15 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 15 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/extra.sh
 15 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_late_payers.sh
-30 00 * * 0-4,6 root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry_time.sh
+30 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry_time.sh
 
 00 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/add_point_day.sh
 10 01 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/discounts.sh
