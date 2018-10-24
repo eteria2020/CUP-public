@@ -85,9 +85,9 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
             </div>
             <!-- block-row-field -->
-            <div class="block-row-field clearfix" id="coherenceTaxCode">
+            <div class="block-row-field clearfix">
                  <? //if($this->formElementErrors($this->form->get('user1')->get('name')) != ""){ ?>
-                <div class="block-field bw-f w-2-4">
+                <div class="block-field bw-f w-2-4" id="coherenceTaxCodeName">
                     <p> <label><?= $this->translate('Nome codice fiscale'); ?></label>
                         <?php
                         $name = $this->form->get('user1')->get('name');
@@ -98,7 +98,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                 </div>
                  <? //}
                  //if ($this->formElementErrors($this->form->get('user1')->get('surname')) != "") {?>
-                <div class="block-field bw-f w-2-4">
+                <div class="block-field bw-f w-2-4" id="coherenceTaxCodeSurname">
                     <p> <label><?= $this->translate('Cognome codice fiscale'); ?></label>
                         <?php
                         $surname = $this->form->get('user1')->get('surname');
@@ -654,10 +654,17 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
         });
 
         <? // in case driver license' name and surname are different from tax code
-        if($this->formElementErrors($this->form->get('user1')->get('name')) != "" || $this->formElementErrors($this->form->get('user1')->get('surname')) != ""){?>
-            $('#coherenceTaxCode').show();
+        if($this->formElementErrors($this->form->get('user1')->get('name')) != ""){?>
+            $('#coherenceTaxCodeName').show();
         <?} else { ?>
-            $('#coherenceTaxCode').hide();
+            $('#coherenceTaxCodeName').hide();
+        <?} ?>
+
+        <? // in case driver license' name and surname are different from tax code
+        if($this->formElementErrors($this->form->get('user1')->get('surname')) != ""){?>
+        $('#coherenceTaxCodeSurname').show();
+        <?} else { ?>
+        $('#coherenceTaxCodeSurname').hide();
         <?} ?>
 
         $('#driverLicenseName').blur(function(){
