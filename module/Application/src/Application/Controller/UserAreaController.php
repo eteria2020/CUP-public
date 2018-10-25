@@ -229,6 +229,12 @@ class UserAreaController extends AbstractActionController {
         $editForm = true;
 
         if ($this->getRequest()->isPost()) {
+
+            if($this->editLimiter()){
+                $this->flashMessenger()->addInfoMessage("Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti.");
+                return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
+            }
+
             $postData = $this->getRequest()->getPost()->toArray();
 
             if (isset($postData['customer'])) {
@@ -296,6 +302,7 @@ class UserAreaController extends AbstractActionController {
             'mobileForm' => $this->mobileForm,
             'showError' => $this->showError,
             'typeForm' => $this->typeForm,
+            'editLimiter' => $this->editLimiter(),
         ]);
     }
 
@@ -717,6 +724,36 @@ class UserAreaController extends AbstractActionController {
         if (!is_null($loginRedirect->offsetGet('route')) && $loginRedirect->offsetGet('route') == "area-utente/servizi-aggiuntivi"){
             $loginRedirect->offsetSet('route', '');
             return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/additional-services'));
+        }
+    }
+
+    /**
+     * Limit the profile change to 10 minutes
+     * @return bool
+     */
+    private function editLimiter(){
+        if(!is_null($this->customer)) {
+            $deactivation = $this->customerDeactivationService->findByIdOrderByInsertedTs($this->customer);
+            if (is_null($deactivation)) {
+                return false;
+            } else {
+                $check = new \DateTime();
+                $interval = $check->diff($deactivation->getInsertedTs(), false);
+                $checkMinutes = ($interval->days * 24 * 60) + ($interval->h * 60) + $interval->i;
+                if (!is_null($this->customer->getInsertedTs())) {
+                    $registrationInterval = $this->customer->getInsertedTs()->diff($deactivation->getInsertedTs(), false);
+                    $isRegistrationDeactivation = ((($registrationInterval->days * 24 * 60) + ($registrationInterval->h * 60) + $registrationInterval->i) <= 10);
+                } else {
+                    $isRegistrationDeactivation = false;
+                }
+                if($checkMinutes < 10 && !$isRegistrationDeactivation){ //10 minutes
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            return false;
         }
     }
 
