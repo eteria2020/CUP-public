@@ -443,6 +443,17 @@ return [
                     ],
                 ]
             ],
+            'google-maps-call' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/google-maps-call',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'google-maps-call'
+                    ]
+                ]
+            ],
             'signup-verify-code' => [
                 'type' => 'Segment',
                 'options' => [

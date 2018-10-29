@@ -36,6 +36,7 @@ class UserControllerfactory implements FactoryInterface
         $fleetService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\FleetService');
         $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $foreignDriversLicenseService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ForeignDriversLicenseService');
+        $googleAnalyticsConfig = $serviceLocator->getServiceLocator()->get('Config');
 
         return new UserController(
             $form1,
@@ -58,7 +59,8 @@ class UserControllerfactory implements FactoryInterface
             $promoCodeService,
             $promoCodesOnceService,
             $promoCodesMemberGetMemberService,
-            $foreignDriversLicenseService
+            $foreignDriversLicenseService,
+            $googleAnalyticsConfig['googleAnalytics']
         );
     }
 }
