@@ -151,7 +151,7 @@ class UserController extends AbstractActionController {
     /**
      * @var array
      */
-    private $googleAnalyticsConfig;
+    private $googleMapsConfig;
 
     /**
      * @param Form $form1
@@ -191,7 +191,7 @@ class UserController extends AbstractActionController {
         PromoCodesOnceService $promoCodesOnceService,
         PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
         ForeignDriversLicenseService $foreignDriversLicenseService,
-        array $googleAnalyticsConfig
+        array $googleMapsConfig
         ) {
 
         $this->form1 = $form1;
@@ -215,7 +215,7 @@ class UserController extends AbstractActionController {
         $this->promoCodesOnceService = $promoCodesOnceService;
         $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
-        $this->googleAnalyticsConfig = $googleAnalyticsConfig;
+        $this->googleMapsConfig = $googleMapsConfig;
     }
 
     public function loginAction() {
@@ -1227,7 +1227,7 @@ class UserController extends AbstractActionController {
             $lat . ',' . $lon .
             '&zoom=16&sensor=false&size=800x600&markers=color:green%7C' .
             $lat . ',' . $lon .
-            '&key=' . $this->googleAnalyticsConfig['key'];
+            '&key=' . $this->googleMapsConfig['key'];
         
         return new JsonModel([
             'src' => $src

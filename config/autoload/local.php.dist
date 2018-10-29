@@ -20,6 +20,9 @@ return [
         'registrationBcc' => ''
     ],
     'googleAnalytics' => [
+        'key' => ''
+    ],
+    'googleMaps' => [
         'key' => 'AIzaSyAjv0Ry_0P18id6pWKwNn0IptB8NvZGfxY'
     ],
     'alertSettings' => [
