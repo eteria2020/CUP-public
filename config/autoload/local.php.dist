@@ -20,7 +20,7 @@ return [
         'registrationBcc' => ''
     ],
     'googleAnalytics' => [
-        'key' => ''
+        'key' => 'AIzaSyAjv0Ry_0P18id6pWKwNn0IptB8NvZGfxY'
     ],
     'alertSettings' => [
         'from' => '',

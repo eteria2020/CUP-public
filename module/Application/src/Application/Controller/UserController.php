@@ -31,6 +31,7 @@ use SharengoCore\Service\TripsService;
 use SharengoCore\Form\DTO\UploadedFile;
 use Zend\Log\Logger;
 use SharengoCore\Service\EmailService as EmailService;
+use Zend\View\Model\JsonModel;
 
 class UserController extends AbstractActionController {
 
@@ -146,6 +147,11 @@ class UserController extends AbstractActionController {
      * @var ForeignDriversLicenseService
      */
     private $foreignDriversLicenseService;
+    
+    /**
+     * @var array
+     */
+    private $googleAnalyticsConfig;
 
     /**
      * @param Form $form1
@@ -184,7 +190,9 @@ class UserController extends AbstractActionController {
         PromoCodesService $promoCodeService,
         PromoCodesOnceService $promoCodesOnceService,
         PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
-        ForeignDriversLicenseService $foreignDriversLicenseService) {
+        ForeignDriversLicenseService $foreignDriversLicenseService,
+        array $googleAnalyticsConfig
+        ) {
 
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -207,6 +215,7 @@ class UserController extends AbstractActionController {
         $this->promoCodesOnceService = $promoCodesOnceService;
         $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
+        $this->googleAnalyticsConfig = $googleAnalyticsConfig;
     }
 
     public function loginAction() {
@@ -1208,4 +1217,21 @@ class UserController extends AbstractActionController {
         return $this->redirect()->toRoute('area-utente');
     }
 
+    public function googleMapsCallAction(){
+        $a='';
+        
+        $lon = $this->params()->fromPost('lon');
+        $lat = $this->params()->fromPost('lat');
+        
+        $src = 'https://www.google.it/maps/api/staticmap?center=' .
+            $lat . ',' . $lon .
+            '&zoom=16&sensor=false&size=800x600&markers=color:green%7C' .
+            $lat . ',' . $lon .
+            '&key=' . $this->googleAnalyticsConfig['key'];
+        
+        return new JsonModel([
+            'src' => $src
+        ]);
+        
+    }
 }
