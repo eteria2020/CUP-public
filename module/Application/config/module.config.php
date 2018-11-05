@@ -2093,6 +2093,17 @@ return [
                         ]
                     ]
                 ],
+                'payment-rates' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'payment rates [--no-cartasi|-c] [--no-db|-d]',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'ConsolePayInvoice',
+                            'action' => 'payment-rates'
+                        ]
+                    ]
+                ],
                 'account-compute' => [
                     'type' => 'simple',
                     'options' => [
