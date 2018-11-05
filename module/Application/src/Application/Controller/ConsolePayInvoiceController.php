@@ -11,6 +11,8 @@ use SharengoCore\Service\ProcessPaymentsService;
 use SharengoCore\Service\ProcessExtraService;
 use SharengoCore\Service\PaymentScriptRunsService;
 use SharengoCore\Service\ExtraScriptRunsService;
+use SharengoCore\Service\ExtraPaymentRatesService;
+use Cartasi\Service\CartasiCustomerPayments;
 use Cartasi\Exception\WrongPaymentException;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -92,6 +94,16 @@ class ConsolePayInvoiceController extends AbstractActionController
      * @var PreauthorizationsService
      */
     private $preauthorizationsService;
+    
+    /**
+     * @var ExtraPaymentRatesService
+     */
+    private $extraPaymentRatesService;
+    
+    /**
+     * @var CartasiCustomerPayments
+     */
+    private $cartasiCustomerPayments;
 
     /**
      * @param TripPaymentsService $tripPaymentsService
@@ -104,6 +116,8 @@ class ConsolePayInvoiceController extends AbstractActionController
      * @param PaymentScriptRunsService $paymentScriptRunsService
      * @param ExtraScriptRunsService $extraScriptRunsService
      * @param PreauthorizationsService $preauthorizationsService
+     * @param ExtraPaymentRatesService $extraPaymentRatesService
+     * @param CartasiCustomerPayments $cartasiCustomerPayments
      */
     public function __construct(
         TripPaymentsService $tripPaymentsService,
@@ -115,7 +129,9 @@ class ConsolePayInvoiceController extends AbstractActionController
         EntityManager $entityManager,
         PaymentScriptRunsService $paymentScriptRunsService,
         ExtraScriptRunsService $extraScriptRunsService,
-        PreauthorizationsService $preauthorizationsService
+        PreauthorizationsService $preauthorizationsService,
+        ExtraPaymentRatesService $extraPaymentRatesService,
+        CartasiCustomerPayments $cartasiCustomerPayments
     ) {
         $this->tripPaymentsService = $tripPaymentsService;
         $this->extraPaymentsService = $extraPaymentsService;
@@ -129,6 +145,8 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->paymentScriptRunsService = $paymentScriptRunsService;
         $this->extraScriptRunsService = $extraScriptRunsService;
         $this->preauthorizationsService = $preauthorizationsService;
+        $this->extraPaymentRatesService = $extraPaymentRatesService;
+        $this->cartasiCustomerPayments = $cartasiCustomerPayments;
     }
 
     public function payInvoiceAction()
@@ -570,4 +588,40 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
+    public function paymentRatesAction(){
+        $request = $this->getRequest();
+        $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
+        $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;paymentRatesAction;start\n");
+        //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;".$this->avoidCartasi."\n");
+        //$this->logger->log(date_create()->format('y-m-d H:i:s').";INF;".$this->avoidPersistance."\n");
+        $date = new \DateTime('+1 day');
+        $date = $date->format('Y-m-d 00:00:00');
+        
+        $this->logger->log(date_create()->format('H:i:s').";INF;paymentRatesAction;Get Rates to be Charged;\n");
+        $rates = $this->extraPaymentRatesService->getAllRateToBeCharged($date);
+        
+        foreach ($rates as $rate){
+            $this->logger->log(date_create()->format('H:i:s').";INF;paymentRatesAction;Process Extra_payment_rates id:". $rate->getId()."\n");
+            if(!$this->avoidCartasi){
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;PROCESSO PER CARTASI\n");
+                $response = $this->cartasiCustomerPayments->sendPaymentRequest($rate->getCustomer(), $rate->getAmount());
+            }
+            
+            if(!$this->avoidPersistance){
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;PROCESSO PER LESCRITTURE A DB\n");
+                $extraPayment = $this->extraPaymentsService->registerExtraPaymentForRate(
+                        $rate->getCustomer(), $rate->getExtraPaymentFather()->getFleet(), $response->getTransaction(), $rate->getAmount(), $rate->getExtraPaymentFather()->getPaymentType(), $rate->getExtraPaymentFather()->getReasons(), true
+                );
+                $rate = $this->extraPaymentRatesService->setPaymentRate($rate, $extraPayment);
+                if (!$response->getCompletedCorrectly()) {
+                    $extraPaymentTry = $this->extraPaymentsService->processWrongPayment($extraPayment, $response, null);
+                }else{
+                    $extraPaymentTry = $this->extraPaymentsService->processPayedCorrectly($extraPayment, $response, null);
+                }
+            }
+        }
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;paymentRatesAction;end\n");
+    }
+    
 }
