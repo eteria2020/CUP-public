@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'aci' => [
+        'username' => 'sociocollaudo',
+        'password' => 'sociocollaudo',
+        'verify_aci_card_url' => 'http://77.73.57.11/Ricerca_Socio_WS/services/RicercaSocioWSBean/wsdl/RicercaSocioWSBean.wsdl',
+    ]
+];

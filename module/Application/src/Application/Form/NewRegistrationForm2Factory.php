@@ -23,8 +23,9 @@ class NewRegistrationForm2Factory implements FactoryInterface
         $customersService = $serviceLocator->get('SharengoCore\Service\CustomersService');
         $promoCodeService = $serviceLocator->get('SharengoCore\Service\PromoCodesService');
         $promoCodeOnceService = $serviceLocator->get('SharengoCore\Service\PromoCodesOnceService');
+        $promoCodeACIService = $serviceLocator->get('SharengoCore\Service\PromoCodesACIService');
         $promoCodesMemberGetMemberService = $serviceLocator->get('SharengoCore\Service\PromoCodesMemberGetMemberService');
-        $promoCodeFieldset = new PromoCodeFieldset($translator, $promoCodeService, $promoCodeOnceService, null, $promoCodesMemberGetMemberService);
+        $promoCodeFieldset = new PromoCodeFieldset($translator, $promoCodeService, $promoCodeOnceService, null, $promoCodesMemberGetMemberService, $promoCodeACIService);
         $newUserFieldset2 = new NewUserFieldset2( $translator, $hydrator, $customersService);
 
         return new NewRegistrationForm2($translator, $promoCodeFieldset, $newUserFieldset2, $entityManager);
