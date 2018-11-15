@@ -609,7 +609,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             }
             
             if(!$this->avoidPersistance){
-                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;PROCESSO PER LESCRITTURE A DB\n");
+                $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;PROCESSO PER LE SCRITTURE A DB\n");
                 $extraPayment = $this->extraPaymentsService->registerExtraPaymentForRate(
                         $rate->getCustomer(), $rate->getExtraPaymentFather()->getFleet(), $response->getTransaction(), $rate->getAmount(), $rate->getExtraPaymentFather()->getPaymentType(), $rate->getExtraPaymentFather()->getReasons(), true
                 );
