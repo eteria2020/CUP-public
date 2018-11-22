@@ -1002,13 +1002,13 @@ class UserController extends AbstractActionController {
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
         /* redirect if session is empty */
-        if(empty($customerSession)){
+/*        if(empty($customerSession)){
             return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         }
 
         if($this->registrationService->isRegistrationCompleted($customerSession)){
             return $this->redirect()->toRoute('area-utente', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
-        }
+        }*/
 
         $registeredData = $this->newForm2->getRegisteredData();
         $registeredDataPromoCode = $this->newForm2->getRegisteredDataPromoCode();
