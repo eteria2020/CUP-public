@@ -2084,7 +2084,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2370,7 +2370,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/omnipay-cartasi.git",
-                "reference": "a4fd262b9b4af5fef489961e4de946d877c7289d"
+                "reference": "3d7ff66436dfc0c181080d88dd5c9c83c1e60fc7"
             },
             "require": {
                 "omnipay/common": "~2.0"
@@ -2416,7 +2416,7 @@
                 "cartasi",
                 "omnipay"
             ],
-            "time": "2018-06-26 08:10:20"
+            "time": "2018-11-20 16:13:41"
         },
         {
             "name": "mvlabs/sharengo-coremodule",
@@ -2424,7 +2424,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "e4c9b98240009bb2b2401238138317033ac9fe5e"
+                "reference": "e2988c77292a1ad237aa0bb4054519314506b6c7"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2445,7 +2445,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2018-10-25 12:39:12"
+            "time": "2018-11-09 13:26:30"
         },
         {
             "name": "natxet/CssMin",
