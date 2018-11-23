@@ -3,6 +3,7 @@
 namespace Application\Form;
 
 use SharengoCore\Service\CarrefourService;
+use SharengoCore\Service\PromoCodesACIService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Service\PromoCodesMemberGetMemberService;
@@ -34,23 +35,31 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
     private $promoCodesMemberGetMemberService;
 
     /**
+     * @var PromoCodesACIService
+     */
+    private $promoCodeACIService;
+
+    /**
      * @param Translator $translator
      * @param PromoCodesService $promoCodesService
      * @param PromoCodesOnceService $promoCodesOnceService
      * @param CarrefourService|null $carrefourService
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
+     * @param PromoCodesACIService $promoCodeACIService
      */
     public function __construct(
         Translator $translator,
         PromoCodesService $promoCodesService,
         PromoCodesOnceService $promoCodesOnceService,
         CarrefourService $carrefourService = null,
-        PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
+        PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
+        PromoCodesACIService $promoCodeACIService
     ) {
         $this->promoCodesService = $promoCodesService;
         $this->promoCodesOnceService = $promoCodesOnceService;
         $this->carrefourService = $carrefourService;
         $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
+        $this->promoCodeACIService = $promoCodeACIService;
 
         parent::__construct('promocode', [
             'use_as_base_fieldset' => false
@@ -87,6 +96,7 @@ class PromoCodeFieldset extends Fieldset implements InputFilterProviderInterface
                             'promoCodesOnceService' => $this->promoCodesOnceService,
                             'carrefourService' => $this->carrefourService,
                             'promoCodesMemberGetMemberService' => $this->promoCodesMemberGetMemberService,
+                            'promoCodesACIService' => $this->promoCodeACIService,
                         ]
                     ]
                 ]
