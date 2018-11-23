@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 // External Modules
 use SharengoCore\Service\ForeignDriversLicenseService;
+use SharengoCore\Service\PromoCodesACIService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Form\Form;
@@ -154,6 +155,11 @@ class UserController extends AbstractActionController {
     private $googleMapsConfig;
 
     /**
+     * @var PromoCodesACIService
+     */
+    private $promoCodeACIService;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
@@ -168,6 +174,7 @@ class UserController extends AbstractActionController {
      * @param PromoCodesOnceService $promoCodesOnceService
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param ForeignDriversLicenseService $foreignDriversLicenseService
+     * @param PromoCodesACIService $promoCodeACIService
      */
     public function __construct(
         Form $form1,
@@ -191,7 +198,8 @@ class UserController extends AbstractActionController {
         PromoCodesOnceService $promoCodesOnceService,
         PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
         ForeignDriversLicenseService $foreignDriversLicenseService,
-        array $googleMapsConfig
+        array $googleMapsConfig,
+        PromoCodesACIService $promoCodeACIService
         ) {
 
         $this->form1 = $form1;
@@ -216,6 +224,7 @@ class UserController extends AbstractActionController {
         $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
         $this->googleMapsConfig = $googleMapsConfig;
+        $this->promoCodeACIService = $promoCodeACIService;
     }
 
     public function loginAction() {
@@ -829,6 +838,11 @@ class UserController extends AbstractActionController {
                     $pcMgm = $this->promoCodesMemberGetMemberService->getPromoCodeNameWidthoutCustomerId($pc, true);
                     $promoCode = $this->promoCodeService->getPromoCode($pcMgm);
                     $promoCodeInfo = $promoCode->getPromoCodesInfo();
+                } else {
+                    if ($this->promoCodeACIService->isValid($pc)){
+                        $promoCode = $this->promoCodeACIService->getByPromoCode();
+                        $promoCodeInfo = $promoCode->getPromocodesinfo();
+                    }
                 }
             }
         }

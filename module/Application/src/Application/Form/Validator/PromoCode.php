@@ -44,6 +44,11 @@ class PromoCode extends AbstractValidator
     private $promoCodesMemberGetMemberService;
 
     /**
+     * PromoCodesACIService
+     */
+    private $promoCodesACIService;
+
+    /**
      * @var string[]
      */
     protected $messageTemplates = [
@@ -61,6 +66,7 @@ class PromoCode extends AbstractValidator
         $this->promoCodesOnceService = $options['promoCodesOnceService'];
         $this->carrefourService = $options['carrefourService'];
         $this->promoCodesMemberGetMemberService = $options['promoCodesMemberGetMemberService'];
+        $this->promoCodesACIService = $options['promoCodesACIService'];
     }
 
     /**
@@ -89,9 +95,11 @@ class PromoCode extends AbstractValidator
                         $this->error(self::WRONG_CODE);
                     }
                 }else {
-                    if($this->promoCodesMemberGetMemberService->isValid($value)) {
-                        $result =TRUE;
-                    } else {
+                    if ($this->promoCodesMemberGetMemberService->isValid($value)) {
+                        $result = TRUE;
+                    } else if ($this->promoCodesACIService->isValid($value)){
+                        $result = TRUE;
+                    }else {
                         $this->error(self::WRONG_CODE);
                     }
                 }

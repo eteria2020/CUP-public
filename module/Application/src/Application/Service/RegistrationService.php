@@ -14,6 +14,7 @@ use SharengoCore\Service\CountriesService;
 use SharengoCore\Service\CustomerDeactivationService;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\MunicipalitiesService;
+use SharengoCore\Service\PromoCodesACIService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Service\PromoCodesMemberGetMemberService;
@@ -131,6 +132,11 @@ final class RegistrationService
     private $promoCodesMemberGetMemberService;
 
     /**
+     * @var PromoCodesACIService
+     */
+    private $promoCodesACIService;
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
@@ -147,6 +153,7 @@ final class RegistrationService
      * @param array $subscriptionBonus
      * @param EventManager $events
      * @param MunicipalitiesService $municipalitiesService
+     * @param PromoCodesACIService $promoCodesACIService
      */
     public function __construct(
         Form $form1,
@@ -167,7 +174,8 @@ final class RegistrationService
         CustomerDeactivationService $deactivationService,
         EventManager $events,
         MunicipalitiesService $municipalitiesService,
-        CountriesService $countriesService
+        CountriesService $countriesService,
+        PromoCodesACIService $promoCodesACIService
 
     ) {
         $this->form1 = $form1;
@@ -190,6 +198,7 @@ final class RegistrationService
         $this->events = $events;
         $this->municipalitiesService = $municipalitiesService;
         $this->countriesService = $countriesService;
+        $this->promoCodesACIService = $promoCodesACIService;
     }
 
     /**
@@ -875,6 +884,8 @@ final class RegistrationService
                 }
             } elseif ($this->promoCodesMemberGetMemberService->isValid($promoCodeName)) {  // it's a MemberGetMember promocode
                 $result = $this->assignPromocodeMemberGetMember($promoCodeName, $customer);
+            } elseif ($this->promoCodesACIService->isValid($promoCodeName)){
+                $result = $this->promoCodesACIService->assingCustomerBonusForNewCustomer($customer, $promoCodeName);
             }
         }
 
