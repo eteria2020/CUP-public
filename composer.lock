@@ -194,6 +194,7 @@
                 "redis",
                 "resque"
             ],
+            "abandoned": "resque/php-resque",
             "time": "2016-11-03 21:56:00"
         },
         {
@@ -2084,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2424,7 +2425,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "aee6ac69fe176cd8d87cda0108fde6c5fc5e55dc"
+                "reference": "46acbed6d2820e88da828a4533b80e1f1a017127"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2445,7 +2446,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2018-11-23 11:23:05"
+            "time": "2018-12-05 15:16:45"
         },
         {
             "name": "natxet/CssMin",
