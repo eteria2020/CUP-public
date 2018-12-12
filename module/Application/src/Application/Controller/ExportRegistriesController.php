@@ -147,7 +147,16 @@ class ExportRegistriesController extends AbstractActionController
         $this->noFtp = $request->getParam('no-ftp') || $request->getParam('f');
         $this->testName = $request->getParam('test-name') || $request->getParam('t') ? 'test-' : '';
         $path = $this->exportConfig['path'];
-        $this->logger->log("\nStarted\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+
+        $this->logger->log(sprintf("%s;INF;exportRegistriesAction;start;%s;%s;%s;%s;%s;%s;%s\n",
+            date_create()->format('ymd His'),
+            $this->dryRun,
+            $this->noCustomers,
+            $this->noInvoices,
+            $this->all,
+            $this->noFtp,
+            $this->testName,
+            $path));
 
         // Retrieve invoices
         $invoicesByDate = $this->retrieveData();
@@ -157,7 +166,10 @@ class ExportRegistriesController extends AbstractActionController
 
         foreach ($invoicesByDate as $invoices) {
             $date = $invoices[0]->getDateTimeDate();
-            $this->logger->log("\nParsing invoices for date: " . $date->format('Y-m-d') . "\n");
+            $this->logger->log(sprintf("%s;INF;exportRegistriesAction;date;%s\n",
+                date_create()->format('ymd His'),
+                $date->format('Y-m-d')));
+
             $invoicesEntries = [];
             $customersEntries = [];
 
@@ -165,14 +177,22 @@ class ExportRegistriesController extends AbstractActionController
             foreach ($invoices as $invoice) {
                 $fleetName = $invoice->getFleet()->getName();
                 if (!$this->noInvoices) {
-                    $this->logger->log("Exporting invoice: " . $invoice->getId() . "\n");
+
+                    $this->logger->log(sprintf("%s;INF;exportRegistriesAction;invoice;%d\n",
+                        date_create()->format('ymd His'),
+                        $invoice->getId()));
+
                     if (!array_key_exists($fleetName, $invoicesEntries)) {
                         $invoicesEntries[$fleetName] = '';
                     }
                     $invoicesEntries[$fleetName] .= $this->invoicesService->getExportDataForInvoice($invoice) . "\r\n";
                 }
+
                 if (!$this->noCustomers) {
-                    $this->logger->log("Exporting customer: " . $invoice->getCustomer()->getId() . "\n");
+                    $this->logger->log(sprintf("%s;INF;exportRegistriesAction;customer;%d\n",
+                        date_create()->format('ymd His'),
+                        $invoice->getCustomer()->getId()));
+
                     if (!array_key_exists($fleetName, $customersEntries)) {
                         $customersEntries[$fleetName] = '';
                     }
@@ -191,7 +211,7 @@ class ExportRegistriesController extends AbstractActionController
             ftp_close($this->ftpConn);
         }
 
-        $this->logger->log("Done\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+        $this->logger->log(sprintf("%s;INF;exportRegistriesAction;end\n", date_create()->format('ymd His')));
     }
 
     /**
@@ -200,31 +220,44 @@ class ExportRegistriesController extends AbstractActionController
      */
     private function retrieveData()
     {
-        $this->logger->log("Retrieving invoices...");
+
         $invoices = null;
         $filterFleet = $this->request->getParam('fleet');
         if ($filterFleet !== null) {
             try {
                 $filterFleet = $this->fleetService->getFleetByCode($filterFleet);
             } catch(FleetNotFoundException $e) {
-                $this->logger->log("\nUse a valid fleet code!\n");
+                $this->logger->log(sprintf("%s;ERR;retrieveData;Use a valid fleet code!\n",
+                    date_create()->format('ymd His')));
+
                 exit;
             }
         }
         if ($this->all) {
-            $this->logger->log("all...");
+            $this->logger->log(sprintf("%s;INF;retrieveData;all\n",
+                date_create()->format('ymd His')));
+
             $invoices = $this->invoicesService->getInvoicesByFleetJoinCustomers($filterFleet, null);
         } else {
             $date = date_create($this->request->getParam('date') ?: 'yesterday');
             // validate date
             if ($date === false) {
-                $this->logger->log("\nPlease use a valid date format (eg. YYYY-MM-DD)\n");
+                $this->logger->log(sprintf("%s;ERR;retrieveData;Please use a valid date format (eg. YYYY-MM-DD)\n",
+                    date_create()->format('ymd His')));
+
                 exit;
             }
-            $this->logger->log("for " . $date->format('Y-m-d') . '...');
+            $this->logger->log(sprintf("%s;INF;retrieveData;date;%s\n",
+                date_create()->format('ymd His'),
+                $date->format('Y-m-d')));
+
             $invoices = $this->invoicesService->getInvoicesByDateAndFleetJoinCustomers($date, $filterFleet);
         }
-        $this->logger->log(" Retrieved ".count($invoices)." invoices!\n");
+
+        $this->logger->log(sprintf("%s;INF;retrieveData;count;%d\n",
+            date_create()->format('ymd His'),
+            count($invoices)));
+
         return $this->invoicesService->groupByInvoiceDate($invoices);
     }
 
@@ -237,10 +270,15 @@ class ExportRegistriesController extends AbstractActionController
     private function exportData(\DateTime $date, $entries, $type, $path)
     {
         if (!$this->dryRun && !$this->noInvoices && !empty($entries)) {
-            $this->logger->log("Writing " . $type . " to file for the day\n");
 
             foreach ($entries as $fleetName => $entry) {
                 $fileName = $this->testName . "export" . $type . '_' . $date->format('Y-m-d') . ".txt";
+
+                $this->logger->log(sprintf("%s;INF;exportData;%s;%s\n",
+                    date_create()->format('ymd His'),
+                    $type,
+                    $path . $fleetName . '/' . $fileName));
+
                 $this->ensurePathExistsLocally($path . $fleetName);
                 $file = fopen($path . $fleetName . '/' . $fileName, 'w');
                 fwrite($file, $entry);
@@ -259,8 +297,13 @@ class ExportRegistriesController extends AbstractActionController
     {
         if (!file_exists($path)) {
             $this->logger->log("Generating local directory " . $path . " ... ");
+            $this->logger->log(sprintf("%s;INF;ensurePathExistsLocally;path;%s\n",
+                date_create()->format('ymd His'),
+                $path));
+
             if (mkdir($path)) {
-                $this->logger->log("Done!\n");
+                $this->logger->log(sprintf("%s;INF;ensurePathExistsLocally;path;DONE\n",
+                    date_create()->format('ymd His')));
             } else {
                 $this->emailService->sendEmail(
                     $this->alertConfig['to'],
@@ -268,7 +311,8 @@ class ExportRegistriesController extends AbstractActionController
                     "Error while creating local directory at path " . $path .
                     " Export was aborted"
                 );
-                $this->logger->log("Failed!\n");
+                $this->logger->log(sprintf("%s;ERR;ensurePathExistsLocally;path;FAIL\n",
+                    date_create()->format('ymd His')));
                 exit;
             }
         }
@@ -283,7 +327,10 @@ class ExportRegistriesController extends AbstractActionController
     {
         if (!$this->noFtp) {
             if (ftp_put($this->ftpConn, $to, $from, FTP_ASCII)) {
-                $this->logger->log("File uploaded successfully\n");
+                $this->logger->log(sprintf("%s;INF;exportToFtp;upload succes;%s;%s\n",
+                    date_create()->format('ymd His'),
+                    $from,
+                    $to));
             } else {
                 $this->emailService->sendEmail(
                     $this->alertConfig['to'],
@@ -291,7 +338,11 @@ class ExportRegistriesController extends AbstractActionController
                     "The ftp connection was established but there was an error "
                     . "uploading file " . $from . " to " . $to
                 );
-                $this->logger->log("Error uploading file\n");
+
+                $this->logger->log(sprintf("%s;ERR;exportToFtp;upload FAIL;%s;%s\n",
+                    date_create()->format('ymd His'),
+                    $from,
+                    $to));
             }
         }
     }
