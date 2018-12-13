@@ -586,7 +586,30 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
     </div>
     <!-- main -->
-
+    <!-- overlay foreign driver license -->
+    <div id="sng-overlay" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+        <div class="table">
+            <div class="cell">
+                <div class="box" id="popup" style="background:#289941 !important; max-width: 800px; border-radius: 50px; padding-top: 30px">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none; text-align: left !important;">
+                            <br>
+                                <p style="color:#fff;text-align: left; font-weight: 500;">
+                                    <b>Prima di procedere verifica:</b><br><br>
+                                    <b>Hai una patente europea senza scadenza?</b><br>
+                                    Se la tua patente europea non ha una scadenza compila l'autocertificazione che ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni devi convertila in quella italiana.
+                                    <br><br>
+                                    <b>Hai una patente estera non europea?</b><br>
+                                    Per registrarti devi disporre di una patente internaziole o di una traduzione giurata del documento. E se sei residente in Italia da pi&ugrave; di un anno &egrave; necessario convertirla in quella italiana.
+                                </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
     <!-- module-modal -->
     <div class="module-modal" style="height: 3000px; display: none;">
         <!-- modal-overlay -->
@@ -619,6 +642,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     <!-- module-modal -->
 
     <?
+    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
     $this->inlineScript()->appendScript(
         '$(document).ready(function() {
             $( "#driverLicenseReleaseDate" ).datepicker({
@@ -641,16 +665,20 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     );
     ?>
     <script>
-        if($('#driverLicenseForeign').is(":checked"))
+        if($('#driverLicenseForeign').is(":checked")) {
+            openChangeCard();
             $('#driverLicenseUpload').show();
-        else
+        } else {
             $('#driverLicenseUpload').hide();
+        }
 
         $('#driverLicenseForeign').change(function(){
-            if($('#driverLicenseForeign').is(":checked"))
+            if($('#driverLicenseForeign').is(":checked")) {
+                openChangeCard();
                 $('#driverLicenseUpload').show();
-            else
+            } else {
                 $('#driverLicenseUpload').hide();
+            }
         });
 
         <? // in case driver license' name and surname are different from tax code
@@ -692,6 +720,28 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
         var removeLoader = function() {
             $("#outer > div.load-overlay").remove();
         };
+
+        function openChangeCard() {
+            overlay = $('#sng-overlay');
+            overlay.css("visibility", "visible");
+            button = $('#button-alert');
+            button.css("visibility", "visible");
+        }
+        function closeChangeCard() {
+            overlay = $('#sng-overlay');
+            button.css("visibility", "hidden");
+            overlay.fadeOut(400, function () {
+                overlay.css("visibility", "hidden");
+                overlay.css("display","initial");
+            });
+        }
+
+        $(document).mouseup(function (e) {
+            var popup = $("#popup");
+            if (popup.has( e.target ).length == 0 && popup.css('visibility') === 'visible') {
+                closeChangeCard();
+            }
+        });
     </script>
     <script type="text/javascript">
         // Criteo section
