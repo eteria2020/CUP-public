@@ -665,6 +665,12 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     );
     ?>
     <script>
+        if($('#driverLicenseForeign').is(":checked")) {
+            $('#driverLicenseUpload').show();
+        } else {
+            $('#driverLicenseUpload').hide();
+        }
+
         $('#driverLicenseForeign').change(function(){
             if($('#driverLicenseForeign').is(":checked")) {
                 openChangeCard();
