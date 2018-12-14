@@ -11,6 +11,17 @@ $this->inlineScript()
 $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'CompleteRegistration\');</script>');
 $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/wYOdCOz65lwQ7aXWxgM\'});</script>');
 ?>
+<style>
+    .sub{
+        font-size: 18px;
+    }
+    @media only screen and (max-width: 767px){
+        .sub {
+            font-size: 13px;
+
+        }
+    }
+</style>
 <div class="module-section-bookmark yellow content-align-center">
     <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
     <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
@@ -590,18 +601,32 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     <div id="sng-overlay" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
         <div class="table">
             <div class="cell">
-                <div class="box" id="popup" style="background:#289941 !important; max-width: 800px; border-radius: 50px; padding-top: 30px">
+                <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
                     <div id="sng-overlay-content1">
                         <div class="content-more" style="background-image: none; text-align: left !important;">
                             <br>
+                            <div id="italian">
+                                <p align="right"><a id="en" style="color:#fff"><b>EN</b></a></p>
                                 <p style="color:#fff;text-align: left; font-weight: 500;">
-                                    <b>Prima di procedere verifica:</b><br><br>
+                                    <b class="sub">Prima di procedere verifica:</b><br><br>
                                     <b>Hai una patente europea senza scadenza?</b><br>
                                     Se la tua patente europea non ha una scadenza compila l'autocertificazione che ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni devi convertila in quella italiana.
                                     <br><br>
                                     <b>Hai una patente estera non europea?</b><br>
-                                    Per registrarti devi disporre di una patente internaziole o di una traduzione giurata del documento. E se sei residente in Italia da pi&ugrave; di un anno &egrave; necessario convertirla in quella italiana.
+                                    Per registrarti devi disporre di una patente internazionale o di una traduzione giurata del documento e compilare il modulo di autocertificazione che ti invieremo via mail. Se sei residente in Italia da più di un anno è necessario convertirla in quella italiana.
                                 </p>
+                            </div>
+                            <div id="english">
+                                <p align="right"><a id="it" style="color:#fff"><b>IT </b></a></p>
+                                <p style="color:#fff;text-align: left; font-weight: 500;">
+                                    <b class="sub">Check below before proceeding:</b><br><br>
+                                    <b>Do you have a European license with no expiry date?</b><br>
+                                    If your European driver’s license does not have an expiry date, fill in the self-certification form we'll send you by mail. In case you’re resident in Italy for more than 2 years you must convert it into an Italian one.
+                                    <br><br>
+                                    <b>Do you have a non-European foreign license?</b><br>
+                                    To register you must have an international driver’s license or a sworn translation of the document. Fill in the self-certification form we'll send you by mail as well. If you’re resident in Italy for more than 1 year, you must convert it into an Italian one.
+                                </p>
+                            </div>
                             <br>
                         </div>
                     </div>
@@ -741,6 +766,15 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                 closeChangeCard();
             }
         });
+        $("#english").hide();
+        $("#en").click(function () {
+            $("#italian").hide();
+            $("#english").show();
+        })
+        $("#it").click(function () {
+            $("#english").hide();
+            $("#italian").show();
+        })
     </script>
     <script type="text/javascript">
         // Criteo section
