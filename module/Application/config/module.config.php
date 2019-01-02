@@ -727,7 +727,7 @@ return [
                     ],
                 ],
             ],*/
-            'assocral' => [
+            /*'assocral' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{assocral}',
@@ -737,7 +737,7 @@ return [
                         'action' => 'assocral',
                     ],
                 ],
-            ],
+            ],*/
             'b2bpromo' => [
                 'type' => 'Segment',
                 'options' => [
@@ -793,7 +793,7 @@ return [
                     ],
                 ],
             ],
-            'confesercenti' => [
+            /*'confesercenti' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{confesercenti}',
@@ -804,7 +804,7 @@ return [
                     ],
                 ],
             ],
-            /*'controradioclub' => [
+            'controradioclub' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{controradioclub}',
@@ -957,7 +957,7 @@ return [
                         'action' => 'gym17',
                     ],
                 ],
-            ],*/
+            ],
             'intern' => [
                 'type' => 'Segment',
                 'options' => [
@@ -968,7 +968,7 @@ return [
                         'action' => 'intern',
                     ],
                 ],
-            ],
+            ],*/
             'kpmg' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1123,7 +1123,7 @@ return [
                     ],
                 ],
             ],
-            'pwc' => [
+            /*'pwc' => [
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{pwc}',
@@ -1133,7 +1133,7 @@ return [
                         'action' => 'pwc',
                     ],
                 ],
-            ],
+            ],*/
             'saba' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1189,7 +1189,7 @@ return [
                         'action' => 'svolta',
                     ],
                 ]
-            ],*/
+            ],
             'teatro-elfo' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1200,7 +1200,7 @@ return [
                         'action' => 'teatro-elfo',
                     ],
                 ]
-            ],
+            ],*/
             'tevere' => [
                 'type' => 'Segment',
                 'options' => [
