@@ -7,6 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use SharengoCore\Service\EmailService;
 use SharengoCore\Service\FleetService;
+use SharengoCore\Entity\Configurations;
 
 class UserControllerfactory implements FactoryInterface
 {
@@ -31,13 +32,15 @@ class UserControllerfactory implements FactoryInterface
         $hydrator = new DoctrineHydrator($entityManager);
         //$sharedLocator = $serviceLocator->getServiceLocator();
         $config = $serviceLocator->getServiceLocator()->get('Config');
-        //$smsConfig = $config['sms'];
         $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
         $fleetService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\FleetService');
         $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $foreignDriversLicenseService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ForeignDriversLicenseService');
-        $googleMapsConfig = $serviceLocator->getServiceLocator()->get('Config');
         $promoCodeACIService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesACIService');
+
+        $configurationService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ConfigurationsService');
+        $smsConfigurations = $configurationService->getConfigurationsKeyValueBySlug(Configurations::SMS);
+
 
         return new UserController(
             $form1,
@@ -61,8 +64,10 @@ class UserControllerfactory implements FactoryInterface
             $promoCodesOnceService,
             $promoCodesMemberGetMemberService,
             $foreignDriversLicenseService,
-            $googleMapsConfig['googleMaps'],
-            $promoCodeACIService
+            $config['googleMaps'],
+            $promoCodeACIService,
+            $smsConfigurations,
+            $config['smsGatewayMe']
         );
     }
 }
