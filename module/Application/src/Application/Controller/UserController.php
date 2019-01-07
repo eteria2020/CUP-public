@@ -703,7 +703,7 @@ class UserController extends AbstractActionController {
     private function manageSmsGateway($dialCode, $mobile, $code){
         $id = $this->sendSmsGateway($dialCode, $mobile, $code);
         if(!is_null($id)){
-            sleep(2);
+            sleep($this->smsGatewayMe["wait"]);
             $messageStatus = $this->getSMSGatewayStatus($id);
             if (!is_null($messageStatus) && ($messageStatus == 'queued' || $messageStatus == 'sent')){
                 return "OK";
