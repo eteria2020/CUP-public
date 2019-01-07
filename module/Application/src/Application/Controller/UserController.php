@@ -33,6 +33,10 @@ use SharengoCore\Form\DTO\UploadedFile;
 use Zend\Log\Logger;
 use SharengoCore\Service\EmailService as EmailService;
 use Zend\View\Model\JsonModel;
+use SMSGatewayMe\Client\ApiClient;
+use SMSGatewayMe\Client\Configuration;
+use SMSGatewayMe\Client\Api\MessageApi;
+use SMSGatewayMe\Client\Model\SendMessageRequest;
 
 class UserController extends AbstractActionController {
 
@@ -160,6 +164,17 @@ class UserController extends AbstractActionController {
     private $promoCodeACIService;
 
     /**
+     * @var array
+     */
+    private $smsDbConfigurations;
+
+    /**
+     * @var array
+     */
+    private $smsGatewayMe;
+
+
+    /**
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
@@ -175,6 +190,8 @@ class UserController extends AbstractActionController {
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param ForeignDriversLicenseService $foreignDriversLicenseService
      * @param PromoCodesACIService $promoCodeACIService
+     * @param array
+     * @param array
      */
     public function __construct(
         Form $form1,
@@ -199,9 +216,10 @@ class UserController extends AbstractActionController {
         PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
         ForeignDriversLicenseService $foreignDriversLicenseService,
         array $googleMapsConfig,
-        PromoCodesACIService $promoCodeACIService
+        PromoCodesACIService $promoCodeACIService,
+        array $smsDbConfigurations,
+        array $smsGatewayMe
         ) {
-
         $this->form1 = $form1;
         $this->form2 = $form2;
         $this->newForm = $newForm;
@@ -225,6 +243,8 @@ class UserController extends AbstractActionController {
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
         $this->googleMapsConfig = $googleMapsConfig;
         $this->promoCodeACIService = $promoCodeACIService;
+        $this->smsDbConfigurations = $smsDbConfigurations;
+        $this->smsGatewayMe = $smsGatewayMe;
     }
 
     public function loginAction() {
@@ -525,9 +545,16 @@ class UserController extends AbstractActionController {
      * @param int $dialCode - dialcode to phone number
      * @param int $mobile - phone nuember
      * @param int $code - random generate code
-     * @return type
+     * @return string
      */
     private function manageSendSms($dialCode, $mobile, $code) {
+        if($this->smsDbConfigurations["smsgatewayme"] == "true") { //db table configurations
+            $smsGateway = $this->manageSmsGateway($dialCode, $mobile, $code);
+
+            if (!is_null($smsGateway)) {
+                return $smsGateway;
+            }
+        }
 
         $attachman = [];
 
@@ -664,6 +691,83 @@ class UserController extends AbstractActionController {
         curl_close($ch);
         return $response_message;
     }
+
+    /**
+     *
+     * @param $dialCode
+     * @param $mobile
+     * @param $code
+     *
+     * @return string|null
+     */
+    private function manageSmsGateway($dialCode, $mobile, $code){
+        $id = $this->sendSmsGateway($dialCode, $mobile, $code);
+        if(!is_null($id)){
+            sleep(2);
+            $messageStatus = $this->getSMSGatewayStatus($id);
+            if (!is_null($messageStatus) && ($messageStatus == 'queued' || $messageStatus == 'sent')){
+                return "OK";
+            }
+        }
+        return null;
+    }
+
+    private function sendSmsGateway($dialCode, $mobile, $code){
+        $config = Configuration::getDefaultConfiguration();
+        $config->setApiKey('Authorization', $this->smsGatewayMe["token"]);
+        $apiClient = new ApiClient($config);
+        $messageClient = new MessageApi($apiClient);
+        $dialCode = "+" . $dialCode;
+
+        // Sending a SMS Message
+        $sendMessageRequest = new SendMessageRequest([
+            'phoneNumber' => $dialCode . $mobile,
+            'message' => "Sharengo - " . $this->smsConfig['text'] . $code,
+            'deviceId' => $this->smsGatewayMe["deviceId"]
+        ]);
+
+        try {
+            $sendMessages = $messageClient->sendMessages([
+                $sendMessageRequest,
+            ]);
+        } catch (\SMSGatewayMe\Client\ApiException $e){
+            return null;
+        }
+
+        if(isset($sendMessages[0]) && $sendMessages[0] instanceof \SMSGatewayMe\Client\Model\Message){
+            return $sendMessages[0]->getId();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param $messageId
+     * @return string|null
+     */
+
+    private function getSMSGatewayStatus($messageId){
+
+        $config = Configuration::getDefaultConfiguration();
+        $config->setApiKey('Authorization', $this->smsGatewayMe["token"]);
+        $apiClient = new ApiClient($config);
+        $messageClient = new MessageApi($apiClient);
+
+        //Get SMS Message Information
+        try {
+            $message = $messageClient->getMessage($messageId);
+        } catch(\SMSGatewayMe\Client\ApiException $e){
+            return null;
+        }
+
+        if ($message instanceof \SMSGatewayMe\Client\Model\Message){
+            return $message->getStatus();
+        } else {
+            return null;
+        }
+    }
+
+
 
     /**
      * codeGenerator -> generate random code to sms validation in registration form

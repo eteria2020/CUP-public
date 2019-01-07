@@ -41,7 +41,8 @@
         "cup-web/public-business-module": "dev-master",
         "rwoverdijk/assetmanager": "1.4.*",
         "mvlabs/mvlabs-payments": "dev-master",
-        "mvlabs/omnipay-cartasi": "dev-master"
+        "mvlabs/omnipay-cartasi": "dev-master",
+        "smsgatewayme/client": "^0.0.1"
     },
     "repositories": [
         {
@@ -86,6 +87,10 @@
         },
         {
             "url": "https://github.com/marcosh/php-resque-scheduler.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/smsgatewayme/client-php.git",
             "type": "git"
         }
     ],
