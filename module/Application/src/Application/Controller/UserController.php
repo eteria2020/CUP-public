@@ -548,7 +548,7 @@ class UserController extends AbstractActionController {
      * @return string
      */
     private function manageSendSms($dialCode, $mobile, $code) {
-        if($this->smsDbConfigurations == "smsgatewayme") { //db table configurations
+        if($this->smsDbConfigurations["smsgatewayme"] == "true") { //db table configurations
             $smsGateway = $this->manageSmsGateway($dialCode, $mobile, $code);
 
             if (!is_null($smsGateway)) {
@@ -705,7 +705,7 @@ class UserController extends AbstractActionController {
         if(!is_null($id)){
             sleep(2);
             $messageStatus = $this->getSMSGatewayStatus($id);
-            if (!is_null($messageStatus) || $messageStatus == 'queued' || $messageStatus == 'sent'){
+            if (!is_null($messageStatus) && ($messageStatus == 'queued' || $messageStatus == 'sent')){
                 return "OK";
             }
         }
@@ -722,7 +722,7 @@ class UserController extends AbstractActionController {
         // Sending a SMS Message
         $sendMessageRequest = new SendMessageRequest([
             'phoneNumber' => $dialCode . $mobile,
-            'message' => $this->smsConfig['text'] . $code,
+            'message' => "Sharengo - " . $this->smsConfig['text'] . $code,
             'deviceId' => $this->smsGatewayMe["deviceId"]
         ]);
 

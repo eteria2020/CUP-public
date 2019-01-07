@@ -1,0 +1,1 @@
+INSERT INTO "public"."configurations" ("id","slug","config_key","config_value","config_spec") VALUES (nextval('configurations_id_seq'::regclass),'sms','smsgatewayme','true',NULL);
