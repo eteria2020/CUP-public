@@ -45,4 +45,7 @@ return [
     'discounterSite' => [
         'url' => 'http://discount.sharengo.it',
     ],
+    'serverInstance' => [
+        'id' => ''
+    ],
 ];

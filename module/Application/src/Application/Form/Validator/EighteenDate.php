@@ -14,6 +14,9 @@ class EighteenDate extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::EIGHTEEN] = $translator->translate("E' necessario essere maggiorenni");
+
         $this->setValue($value);
 
         $date = date_create($value);

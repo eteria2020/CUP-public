@@ -31,7 +31,7 @@
                         // check if there are any invoices
                         if (!empty($availableDates)) {
                     ?>
-                    <h6>Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. Ogni fattura raccoglie tutti i viaggi completati il mese precedente alla data del documento.</h6>
+                    <h6><?= $this->translate("Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. Ogni fattura raccoglie tutti i viaggi completati il mese precedente alla data del documento.") ?></h6>
                     <!-- Filter -->
                     <div class="invoices-filter">
 
@@ -66,13 +66,13 @@
 
                         <!-- Invoices table headers -->
                         <div class="block-data-table-row clearfix">
-                            <div class="block-data-table-th cw-1-7">N&deg; Fattura</div>
-                            <div class="block-data-table-th cw-1-7">Data</div>
-                            <div class="block-data-table-th cw-1-7">Tipo</div>
-                            <div class="block-data-table-th cw-1-7">Netto (&euro;)</div>
-                            <div class="block-data-table-th cw-1-7">IVA (&euro;)</div>
-                            <div class="block-data-table-th cw-1-7">Totale (&euro;)</div>
-                            <div class="block-data-table-th cw-1-7">Download</div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("N&deg; Fattura") ?></div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("Data") ?></div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("Tipo") ?></div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("Netto (&euro;)") ?></div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("IVA (&euro;)") ?></div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("Totale (&euro;)") ?></div>
+                            <div class="block-data-table-th cw-1-7"><?= $this->translate("Download") ?></div>
                         </div>
                         <!-- invoices table headers -->
 
@@ -90,7 +90,7 @@
                         } else {
                     ?>
 
-                    <h2>Nessuna fattura emessa finora</h2>
+                    <h2><?= $this->translate("Nessuna fattura emessa finora") ?></h2>
 
                     <?php
                         // close no invoices if

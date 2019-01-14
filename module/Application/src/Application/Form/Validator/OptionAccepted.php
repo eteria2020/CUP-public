@@ -14,6 +14,9 @@ class OptionAccepted extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::INVALID] = $translator->translate("E' necessario accettare le condizioni");
+
         $this->setValue($value);
 
         // we suppose that the correct option to check has id 0

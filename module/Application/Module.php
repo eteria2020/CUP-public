@@ -13,6 +13,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use BjyAuthorize\View\RedirectionStrategy;
 use Zend\EventManager\EventInterface;
+use Zend\Validator\AbstractValidator;
 
 use Application\Exception\ProfilingPlatformException;
 
@@ -123,6 +124,39 @@ class Module
 
         $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
         $viewModel->loggedUser = $userService->getIdentity();
+
+        $config = $serviceManager->get('Config');
+        $viewModel->serverInstanceId = "";
+        if(isset($config['serverInstance']['id'])) {
+            $viewModel->serverInstanceId = trim($config['serverInstance']['id']);
+        }
+
+        $translator     = $serviceManager->get('translator');
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/it/Zend_Validate.php',
+            'default',
+            'it_IT'
+        );
+
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/en/Zend_Validate.php',
+            'default',
+            'en_US'
+        );
+
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/sk/Zend_Validate.php',
+            'default',
+            'sk_SK'
+        );
+
+        AbstractValidator::setDefaultTranslator($translator);
+
+        $changeLanguageDetector = $serviceManager->get('ChangeLanguageDetector.listener');
+        $eventManager->attachAggregate($changeLanguageDetector);
     }
 
     public function getConfig()
@@ -153,5 +187,15 @@ class Module
 
         $serviceManager = $e->getApplication()->getServiceManager();
         $paymentservice->sendCompletionEmail($params['customer']);
+    }
+
+    // View Helper Configuration
+    public function getViewHelperConfig()
+    {
+        return [
+            'factories' => [
+                'languageMenuHelper' => 'Application\\View\\Helper\\LanguageMenuHelperFactory'
+            ],
+        ];
     }
 }

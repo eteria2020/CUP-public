@@ -2,7 +2,7 @@
 $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
     ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-    ->appendFile($this->basePath('js/signup.js?v=4.1'));
+    ->appendFile($this->basePath('js/signup.js?v=4.2'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
@@ -26,15 +26,15 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
     <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
         <p>
-            <b>21 minuti a soli 5&euro;</b><br>
-            e guidi subito la tua Sharengo!
+            <b><?= $this->translate('21 minuti a soli 5&euro;') ?></b><br>
+            <?= $this->translate('e guidi subito la tua Sharengo!') ?>
         </p>
     </div>
 </div>
 
 <div class="module-main-subtitle content-align-center">
-    <p>Benvenuto <?= $this->email ?><br>
-        Pochi istanti per completare il tuo profilo</p>
+    <p><?= $this->translate('Benvenuto') ?> <?= $this->email ?><br>
+        <?= $this->translate('Pochi istanti per completare il tuo profilo') ?></p>
 </div>
 
 <!-- main -->
@@ -395,7 +395,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                         <label>&nbsp</label>
                         <div style="display: block;" id="buttonCode">
                             <input type="text" id="email" hidden="true" value="<?= $this->customerEmail ?>" >
-                            <button type="button" id="buttonSendCode">INVIA CODICE</button>
+                            <button type="button" id="buttonSendCode"><?= $this->translate("INVIA CODICE") ?></button>
                         </div>
                     </div>
                 </div>
@@ -417,7 +417,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     <div>
                         <p>
                             <label class="small-form">
-                                INSERISCI QUI IL CODICE DI VERIFICA INVIATO VIA SMS, SE NON RICEVI IL MESSAGGIO, CONTATTA IL SERVIZIO CLIENTI
+                                <?= $this->translate("INSERISCI QUI IL CODICE DI VERIFICA INVIATO VIA SMS, SE NON RICEVI IL MESSAGGIO, CONTATTA IL SERVIZIO CLIENTI") ?>
                             </label>
                         </p>
                     </div>
@@ -446,7 +446,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                         echo $this->formElementErrors($vat, ['class' => 'errors']);
                         ?>
                     </p>
-                    <label class="small-form">SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI</label>
+                    <label class="small-form"><?= $this->translate("SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI") ?></label>
                 </div>
             </div>
             <div class="block-row-field clearfix">
@@ -483,7 +483,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
             <div id="driverLicenseUpload">
                 <div class="block-field auto-margin">
                     <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"); ?><br><?= $this->translate("CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"); ?></div>
-                    <div style="font-weight: bold; text-align: center">(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)</div>
+                    <div style="font-weight: bold; text-align: center"><?= $this->translate("(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)") ?></div>
                     <div class="message font">
                         <?= $this->translate("Il sottoscritto") . ' ' .
                         '<span id="fName"></span> <span id="fSurname"></span>' . ' '
@@ -555,7 +555,8 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
             <!-- block-row-field -->
             <div class="block-form w-4-4 auto-margin clearfix">
-                <p class="codicePromo">INSERISCI QUI SE HAI UN CODICE PROMO O UNA TESSERA ACI</p>
+                <p class="codicePromo"><?= $this->translate("INSERISCI QUI SE HAI UN CODICE PROMO O UNA TESSERA ACI") ?></p>
+
                 <!-- block-row-field -->
                 <div class="block-row-field  content-align-center  clearfix">
                     <div class='block-field  auto-margin w-2-4 '>
@@ -571,7 +572,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
                         </div>
                         <div class="block-field bw-f last  w-1-3">
-                            <button  type="button" id="buttonVerifyPromo">Applica</button>
+                            <button  type="button" id="buttonVerifyPromo"><?= $this->translate("Applica") ?></button>
                         </div>
                         <div id="promodiv" class=""></div>
                         <div id="errorepromo">
@@ -581,7 +582,8 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     </div>
 
                 </div>
-                <p style="font-size: 14px ; text-align: center; padding: 0px 0 10px 0">Attivazione include il controllo della Patente<br>con il Ministero dei Trasporti.</p>
+                <p style="font-size: 14px ; text-align: center; padding: 0px 0 10px 0">
+                    <?= $this->translate("Attivazione include il controllo della Patente<br>con il Ministero dei Trasporti.") ?></p>
                 <div class="block-wrapper-button content-align-center">
 
                     <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate('Continua'); ?>">

@@ -468,7 +468,9 @@ class IndexController extends AbstractActionController
             return $this->getResponse();
         }
 
-        if(end(explode('/',$link)) != "area-utente"){
+        $explodeLink = explode('/',$link);
+
+        if(end($explodeLink) != "area-utente"){
             return $this->getResponse();
         }
 

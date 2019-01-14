@@ -18,6 +18,11 @@ class VatNumber extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::SPACE] = $translator->translate("La partita IVA non può contenere spazi");
+        $messageTemplates[ self::NUMERIC] = $translator->translate("La partita IVA deve essere numerica, al più preceduta dal prefisso IT");
+        $messageTemplates[ self::LENGTH] = $translator->translate("La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT");
+
         $this->setValue($value);
 
         if (strpos($value, ' ') !== false) {

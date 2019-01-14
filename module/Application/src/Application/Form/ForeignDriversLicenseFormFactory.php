@@ -16,7 +16,8 @@ class ForeignDriversLicenseFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
+        $translationService = $serviceLocator->getServiceLocator()->get('Translator');
 
-        return new ForeignDriversLicenseForm($entityManager);
+        return new ForeignDriversLicenseForm($entityManager, $translationService);
     }
 }

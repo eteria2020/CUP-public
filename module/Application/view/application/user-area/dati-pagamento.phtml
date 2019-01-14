@@ -53,7 +53,9 @@
             <div class="module-column-app-content clearfix">
                 <!-- module-manage-card -->
                 <div class="module-manage-card padding-top">
-                    <p>Hai esaurito i tuoi minuti bonus e hai effettuato una o più corse "a debito". Puoi effettuare manualmente il primo pagamento cliccando sul seguente link.</p>
+                    <p>
+                        <?= $this->translate("Hai esaurito i tuoi minuti bonus e hai effettuato una o più corse 'a debito'. Puoi effettuare manualmente il primo pagamento cliccando sul seguente link.") ?>
+                    </p>
                     <!-- Activation button -->
                     <div class="block-wrapper-button content-align-center margin-top-custom">
                         <a href="<?= $this->url('area-utente/activate-payments') ?>"><button><?= $this->translate("Maggiori informazioni"); ?></button></a>
@@ -151,15 +153,17 @@
                     <div class="box" style="background:#fff;">
                         <div id="sng-overlay-content1">
                             <div class="content-more" style="background-image: none;">
-                                <h3 style="background: #43a34c;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ATTENZIONE</h3>
+                                <h3 style="background: #43a34c;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->translate("ATTENZIONE") ?></h3>
                                 <br>
                                 <ul>
-                                    <p style="color:black;text-align: center; font-weight: 500;">Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che verr&agrave; immediatamente rimborsata al termine della procedura.</p>
+                                    <p style="color:black;text-align: center; font-weight: 500;">
+                                        <?= $this->translate("Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che verr&agrave; immediatamente rimborsata al termine della procedura.") ?>
+                                    </p>
                                 </ul>
                                 <br>
                                 <div id="button-alert" class="block-wrapper-button content-align-center">
-                                    <a href="<?= $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) ?>"><button type="button" id="js-edit-form">PROCEDI</button></a>
-                                    <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()">CHIUDI</button></a>
+                                    <a href="<?= $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) ?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
+                                    <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("CHIUDI") ?></button></a>
                                 </div>
                             </div>
                         </div>

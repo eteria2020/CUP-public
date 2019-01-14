@@ -26,7 +26,8 @@ $config = [
         'ScnSocialAuthDoctrineORM',
 
         // Our modules
-        'Multilanguage',
+        //'Multilanguage',
+        'MvLabsMultilanguage',
         'SharengoCore',
         'BusinessCore',
         'Cartasi',

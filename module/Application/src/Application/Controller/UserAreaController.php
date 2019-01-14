@@ -4,6 +4,7 @@ namespace Application\Controller;
 
 //use SharengoCore\Entity\CustomersBonus;
 //use SharengoCore\Entity\PromoCodes;
+use Zend\Mvc\I18n\Translator;
 use SharengoCore\Entity\CustomerDeactivation;
 use SharengoCore\Service\ExtraPaymentsService;
 use SharengoCore\Service\TripsService;
@@ -54,6 +55,10 @@ class UserAreaController extends AbstractActionController {
      */
     private $invoicesService;
 
+    /**
+     * @var
+     */
+    private $translator;
     /**
      * @var Customers
      */
@@ -142,6 +147,7 @@ class UserAreaController extends AbstractActionController {
     /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
+     * @param Translator $translator
      * @param AuthenticationService $userService
      * @param InvoicesService $invoicesService
      * @param Form $profileForm
@@ -162,6 +168,7 @@ class UserAreaController extends AbstractActionController {
     public function __construct(
         CustomersService $customerService,
         TripsService $tripsService,
+        Translator $translator,
         AuthenticationService $userService,
         InvoicesService $invoicesService,
         Form $profileForm,
@@ -181,6 +188,7 @@ class UserAreaController extends AbstractActionController {
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
+        $this->translator = $translator;
         $this->userService = $userService;
         $this->invoicesService = $invoicesService;
         $this->customer = $userService->getIdentity();
@@ -231,7 +239,7 @@ class UserAreaController extends AbstractActionController {
         if ($this->getRequest()->isPost()) {
 
             if($this->editLimiter()){
-                $this->flashMessenger()->addInfoMessage("Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti.");
+                $this->flashMessenger()->addInfoMessage($this->translator->translate("Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."));
                 return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
             }
 
@@ -439,9 +447,9 @@ class UserAreaController extends AbstractActionController {
 
                     $this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
 
-                    $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
+                    $this->flashMessenger()->addSuccessMessage($this->translator->translate("Operazione completata con successo!"));
                 } catch (\Exception $e) {
-                    $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo. Ci scusiamo per l\'inconveniente');
+                    $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"));
                 }
 
                 return $this->redirect()->toRoute('area-utente/patente', ['mobile' => $mobile]);
@@ -555,9 +563,9 @@ class UserAreaController extends AbstractActionController {
                 if ($this->cartasiContractsService->hasCartasiContract($customer)) {
                     $response = $this->paymentsService->tryTripPaymentMulti($customer, $trips);
                     if ($response->getCompletedCorrectly()) {
-                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
+                        $this->flashMessenger()->addSuccessMessage($this->translator->translate("Pagamento completato con successo"));
                     } else {
-                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate("Pagamento fallito"));
                     }
                 } else {
                     return $this->redirect()->toRoute('cartasi/primo-pagamento-corsa-multi', [], ['query' => ['customer' => $customer->getId()]]);
@@ -566,7 +574,7 @@ class UserAreaController extends AbstractActionController {
                 return $this->redirect()->toUrl($this->url()->fromRoute('area-utente' . $userAreaMobile));
             }
         } else {
-            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+            $this->flashMessenger()->addErrorMessage($this->translator->translate("Pagamento momentaneamente sospeso, riprova più tardi."));
         }
 
         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
@@ -595,9 +603,9 @@ class UserAreaController extends AbstractActionController {
                 if ($this->cartasiContractsService->hasCartasiContract($customer)) {
                     $response = $this->paymentsService->tryCustomerExtraPaymentMulti($customer, $extraPayments);
                     if ($response->getCompletedCorrectly()) {
-                        $this->flashMessenger()->addSuccessMessage('Pagamento completato con successo');
+                        $this->flashMessenger()->addSuccessMessage($this->translator->translate("Pagamento completato con successo"));
                     } else {
-                        $this->flashMessenger()->addErrorMessage('Pagamento fallito');
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate("Pagamento fallito"));
                     }
                 } else {
                     return $this->redirect()->toRoute('cartasi/primo-pagamento-penale-multi', [], ['query' => ['customer' => $customer->getId()]]);
@@ -606,7 +614,7 @@ class UserAreaController extends AbstractActionController {
                 return $this->redirect()->toUrl($this->url()->fromRoute('area-utente' . $userAreaMobile));
             }
         } else {
-            $this->flashMessenger()->addErrorMessage('Pagamento momentaneamente sospeso, riprova più tardi.');
+            $this->flashMessenger()->addErrorMessage($this->translator->translate("Pagamento momentaneamente sospeso, riprova più tardi."));
         }
 
         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
@@ -635,15 +643,15 @@ class UserAreaController extends AbstractActionController {
                 try {
                     $this->disableContractService->disableContract($contract);
 
-                    $this->flashMessenger()->addSuccessMessage('Contratto disabilitato correttamente!');
+                    $this->flashMessenger()->addSuccessMessage($this->translator->translate("Contratto disabilitato correttamente!"));
                 } catch (\Exception $e) {
-                    $this->flashMessenger()->addErrorMessage('Errore durante la disabilitazione del contratto');
+                    $this->flashMessenger()->addErrorMessage($this->translator->translate("Errore durante la disabilitazione del contratto"));
                 }
             } else {
-                $this->flashMessenger()->addErrorMessage('Errore durante la disabilitazione del contratto');
+                $this->flashMessenger()->addErrorMessage($this->translator->translate("Errore durante la disabilitazione del contratto"));
             }
         } else {
-            $this->flashMessenger()->addErrorMessage('Errore durante la disabilitazione del contratto');
+            $this->flashMessenger()->addErrorMessage($this->translator->translate("Errore durante la disabilitazione del contratto"));
         }
 
         return $this->redirect()->toRoute('area-utente/dati-pagamento');
@@ -679,16 +687,16 @@ class UserAreaController extends AbstractActionController {
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::EXPIRED_CREDIT_CARD:
-                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati.');
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate("Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."));
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
-                        $this->flashMessenger()->addErrorMessage('Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell\'area "Patente".');
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate("Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."));
                         $returnRedirect = false;
                         //return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::EXPIRED_DRIVERS_LICENSE:
-                        $this->flashMessenger()->addErrorMessage('Sei disabilitato per patente scaduta, inserisci i nuovi dati.');
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate("Sei disabilitato per patente scaduta, inserisci i nuovi dati."));
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;
                     /*case 'DISABLED_BY_WEBUSER':

@@ -1627,6 +1627,7 @@ return [
             'Application\Listener\DriversLicenseEditingListener' => 'Application\Listener\DriversLicenseEditingListenerFactory',
             'Application\Listener\ProviderAuthenticatedCustomerRegistered' => 'Application\Listener\ProviderAuthenticatedCustomerRegisteredFactory',
             'Application\Listener\SuccessfulPaymentListener' => 'Application\Listener\SuccessfulPaymentListenerFactory',
+            'ChangeLanguageDetector.listener' => 'Application\Listener\ChangeLanguageDetectorFactory',
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
@@ -2534,5 +2535,53 @@ return [
                 'icon' => 'fa fa-file-o',
             ],
         ],
+    ],
+    'controller_plugins' => [
+        'factories' => [
+            'TranslatorPlugin' => 'Application\Controller\Plugin\TranslatorPluginFactory'
+        ]
+    ],
+    'translator' => [
+        'locale' => 'it_IT',
+        'translation_file_patterns' => [
+            [
+                'type' => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern' => '%s.mo'
+            ],
+            [
+                'type' => 'phparray',
+                'base_dir' => __DIR__. '/../language/validator',
+                'pattern' => '%s.php'
+            ]
+        ]
+    ],
+    'translation_config' => [
+        'languages' => [
+            'it' => [
+                "locale" => "it_IT",
+                "lang" => "it",
+                "lang_3chars" => "ita",
+                "label" => "Italiano"
+            ],
+            'en' => [
+                "locale" => "en_US",
+                "lang" => "en",
+                "lang_3chars" => "eng",
+                "label" => "English"
+            ],
+            'sk' => [
+                "locale" => "sk_SK",
+                "lang" => "sk",
+                "lang_3chars" => "slk",
+                "label" => "Slovak"
+            ]
+        ],
+        "language_folder" => __DIR__ . "/../language"
+    ],
+    'language_detector_listeners' => [
+        'factories' => [
+            'LanguageFromSessionDetectorListener' => 'Application\Listener\LanguageFromSessionDetectorListenerFactory'
+        ]
     ],
 ];

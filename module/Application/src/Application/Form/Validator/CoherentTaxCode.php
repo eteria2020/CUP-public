@@ -15,6 +15,9 @@ class CoherentTaxCode extends AbstractValidator
 
     public function isValid($value, $context = null)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::INCOHERENT_TAX_CODE] = $translator->translate("Il codice fiscale non è coerente con gli altri dati indicati");
+
         $this->setValue($value);
 
         $genderAdapter = [

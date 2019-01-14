@@ -20,6 +20,9 @@ class CurrentUserPassword extends AbstractValidator
     public function __construct($options)
     {
         parent::__construct();
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::WRONG] = $translator->translate("La password inserita non è quella corretta");
+
         $this->userService = $options['userService'];
     }
 

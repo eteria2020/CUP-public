@@ -1,5 +1,13 @@
 /* global window document intercomAppId intercomCustomerEmail intercomCustomerId $*/
 
+if (typeof(intercomAppId) === 'undefined') {
+    intercomAppId = '';
+}
+
+if (typeof(intercomCustomerEmail) === 'undefined') {
+    intercomCustomerEmail = '';
+}
+
 var intercomSettings = {app_id: intercomAppId};
 
 $(function () {

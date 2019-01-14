@@ -22,6 +22,9 @@ class DuplicateDriversLicense extends AbstractValidator
     public function __construct($options)
     {
         parent::__construct();
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::DUPLICATE] = $translator->translate("Esiste già un utente con la stessa patente");
+
         $this->customerService = $options['customerService'];
         if (isset($options['avoid'])) {
             $this->driverLicenseToAvoid = $options['avoid'];

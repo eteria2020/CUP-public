@@ -15,7 +15,7 @@ use Zend\Stdlib\DateTime;
 use SharengoCore\Service\FleetService;
 // Internal Modules
 use Application\Service\RegistrationService;
-use Multilanguage\Service\LanguageService;
+use MvLabsMultilanguage\Service\LanguageService;
 use Application\Service\ProfilingPlaformService;
 use Application\Exception\ProfilingPlatformException;
 use Application\Form\RegistrationForm;
@@ -822,7 +822,8 @@ class UserController extends AbstractActionController {
         if (empty($data)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('signup', ['mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData($data);
 
@@ -834,7 +835,8 @@ class UserController extends AbstractActionController {
             $this->registrationService->removeSessionData();
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('signup-2', ['mobile' => $mobile]);
         }
 
         if (!is_null($data['email'])){
@@ -844,7 +846,8 @@ class UserController extends AbstractActionController {
 
         $this->getEventManager()->trigger('registrationCompleted', $this, $data);
 
-        return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        //return $this->redirect()->toRoute('signup-3', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile]);
     }
 
     private function signupForm($form, $mobile) {
@@ -1030,7 +1033,8 @@ class UserController extends AbstractActionController {
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
         if(!is_null($customerSession) && !$this->registrationService->isRegistrationCompleted($customerSession)){
-            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup-2', ['mobile' => $mobile]);
         }
         //if there are data in session, we use them to populate the form
         $registeredData = $this->newForm->getRegisteredData();
@@ -1075,7 +1079,8 @@ class UserController extends AbstractActionController {
         if (empty($data)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup', ['mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData1($data);
 
@@ -1087,13 +1092,15 @@ class UserController extends AbstractActionController {
 
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup', ['mobile' => $mobile]);
         }
 
         $this->getEventManager()->trigger('firstFormCompleted', $this, $data);
         $signupSession = new Container('newSignup');
         $signupSession->offsetSet("customer", $customer);
-        return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+        return $this->redirect()->toRoute('new-signup-2', ['mobile' => $mobile]);
     }
 
     public function newSignup2Action(){
@@ -1107,11 +1114,13 @@ class UserController extends AbstractActionController {
 
         /* redirect if session is empty */
         if(empty($customerSession)){
-            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup', ['mobile' => $mobile]);
         }
 
         if($this->registrationService->isRegistrationCompleted($customerSession)){
-            return $this->redirect()->toRoute('area-utente', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('area-utente', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
         }
 
         $registeredData = $this->newForm2->getRegisteredData();
@@ -1213,7 +1222,8 @@ class UserController extends AbstractActionController {
         if (empty($data) || !($customer instanceof Customers)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup-2', ['mobile' => $mobile]);
         }
         $data = $this->registrationService->formatData2($data, $civico, $customer);
 
@@ -1231,7 +1241,8 @@ class UserController extends AbstractActionController {
 
         } catch (\Exception $e) {
             $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup-2', ['mobile' => $mobile]);
         }
         $this->getEventManager()->trigger('secondFormCompleted', $this, $data); //driver license validation
         $signupSession = new Container('newSignup');
@@ -1256,13 +1267,15 @@ class UserController extends AbstractActionController {
 
         /* redirect if session is empty */
         if(empty($customerSession)){
-            return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('new-signup', ['mobile' => $mobile]);
         }
 
         if ($customerSession instanceof Customers){
             $promocodeMemberGetMember = $this->customersService->getPromocodeMemberGetMember($customerSession);
             if($customerSession->getId() != $this->params()->fromQuery('c')){
-                return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+                //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+                return $this->redirect()->toRoute('new-signup', ['mobile' => $mobile]);
             }
         }
 
@@ -1319,7 +1332,8 @@ class UserController extends AbstractActionController {
         if (empty($data)) {
             $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
             $this->flashMessenger()->addErrorMessage($message);
-            return $this->redirect()->toRoute('optional', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('optional', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('optional', ['mobile' => $mobile]);
         }
         //$data = $this->registrationService->formatOptionalData($data, $customer);
 
@@ -1329,7 +1343,8 @@ class UserController extends AbstractActionController {
 
         } catch (\Exception $e) {
             //$this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
-            return $this->redirect()->toRoute('optional', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            //return $this->redirect()->toRoute('optional', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('optional', ['mobile' => $mobile]);
         }
 
         return $this->redirect()->toRoute('area-utente');

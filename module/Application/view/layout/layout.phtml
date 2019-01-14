@@ -209,6 +209,8 @@
             </style>
         <?php endif; ?>
         <?php
+            $cookieMessage = $this->translate('I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, accetti l\'utilizzo dei cookie da parte nostra. Per maggiori dettagli si prega di cliccare');
+
             $this->inlineScript()
                 ->appendFile($this->basePath('js/respond.min.js'))
                 ->appendFile($this->basePath('js/bootstrap.min.js'))
@@ -234,7 +236,7 @@
                             explicitConsent: false,
                             position : "bottom",
                             duration: 999999,
-                            message: "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, accetti l\'utilizzo dei cookie da parte nostra. Per maggiori dettagli si prega di cliccare ",
+                            message: "'.$cookieMessage.'",
                             scriptWrapper: cookieScripts,
                             backgroundColor: "#000000",
                             linkColor: "#ffffff"

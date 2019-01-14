@@ -13,7 +13,7 @@ class DuplicateEmail extends AbstractValidator
      * @var SharengoCore\Service\CustomersService
      */
     private $customersService;
-
+    private $translator;
     /**
      * @var array
      */
@@ -26,6 +26,9 @@ class DuplicateEmail extends AbstractValidator
     public function __construct($options)
     {
         parent::__construct();
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::DUPLICATE] = $translator->translate("Esiste già un utente con lo stesso indirizzo email");
+
         $this->customersService = $options['customerService'];
         if (isset($options['avoid'])) {
             $this->emailsToAvoid = $options['avoid'];

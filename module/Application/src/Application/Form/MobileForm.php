@@ -18,14 +18,20 @@ class MobileForm extends Form implements InputFilterProviderInterface
      */
     private $userService;
 
+    /**
+     * @var Translator
+     */
+    private $translator;
+
     public function __construct(
         Translator $translator,
         AuthenticationService $userService,
         HydratorInterface $hydrator,
         EntityManager $entityManager
     ) {
+        $this->translator = $translator;
         $this->userService = $userService;
-        $this->entityManager = $entityManager;
+        //$this->entityManager = $entityManager;
 
         $this->setHydrator($hydrator);
         $this->setObject(new Customers());
@@ -47,10 +53,10 @@ class MobileForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'mobile',
                 'maxlength' => 13,
-                'placeholder' => $translator->translate('Cellulare'),
+                'placeholder' => 'Cellulare',
             ],
             'options' => [
-                'label' => $translator->translate('Cellulare'),
+                'label' => $this->translator->translate('Cellulare'),
             ]
         ]);
         
@@ -60,10 +66,10 @@ class MobileForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'smsCode',
                 'maxlength' => 4,
-                'placeholder' => $translator->translate('xxxx'),
+                'placeholder' => 'xxxx',
             ],
             'options' => [
-                'label' => $translator->translate('Codice Sms'),
+                'label' => $this->translator->translate('Codice Sms'),
             ]
         ]);
         
@@ -90,7 +96,7 @@ class MobileForm extends Form implements InputFilterProviderInterface
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                                \Zend\Validator\Callback::INVALID_VALUE => $this->translator->translate('Il numero di telefono inserito non corrisponde a quello del codice di verifica')
                             ],
                             'callback' => function($value, $context = array()) {
                                 $smsVerification = new Container('smsVerification');
@@ -126,7 +132,7 @@ class MobileForm extends Form implements InputFilterProviderInterface
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                                \Zend\Validator\Callback::INVALID_VALUE => $this->translator->translate('Il codice inserito non corrisponde a quello inviato')
                             ],
                             'callback' => function($value, $context = array()) {
 
@@ -150,7 +156,8 @@ class MobileForm extends Form implements InputFilterProviderInterface
     /**
      * persists the mobile in the database and returns the saved data
      *
-     * @return Customers
+     * @return array|object
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function saveData()
     {

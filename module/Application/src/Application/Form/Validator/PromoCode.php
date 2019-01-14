@@ -62,6 +62,11 @@ class PromoCode extends AbstractValidator
     public function __construct($options)
     {
         parent::__construct();
+
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::WRONG_CODE] = $translator->translate("Il codice promo inserito non è valido");
+        $messageTemplates[ self::USED_CODE] = $translator->translate("Il codice promo è già stato utilizzato");
+
         $this->promoCodesService = $options['promoCodesService'];
         $this->promoCodesOnceService = $options['promoCodesOnceService'];
         $this->carrefourService = $options['carrefourService'];

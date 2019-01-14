@@ -17,6 +17,10 @@ class TaxCodeSignup extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::NOTVALID] = $translator->translate("Codice fiscale non valido");
+        $messageTemplates[ self::EIGHTEEN] = $translator->translate("Età non consentita per la guida");
+
         $this->setValue($value);
 
         $isValid = true;
