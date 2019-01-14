@@ -254,13 +254,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => $translator->translate('Lingua preferita'),
                 'value_options' => [
                     "it" => $translator->translate("Italiano"),
-                    "de" => $translator->translate("tedesco"),
-                    "fr" => $translator->translate("francese"),
-                    "es" => $translator->translate("spagnolo"),
                     "en" => $translator->translate("inglese"),
-                    "ch" => $translator->translate("cinese"),
-                    "ru" => $translator->translate("russo"),
-                    "pt" => $translator->translate("portoghese")
+                    "sk" => $translator->translate("slovacco")
                 ]
             ]
         ]);

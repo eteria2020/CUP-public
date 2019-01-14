@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c3554a3124bada3cc8b331e145823e5c",
-    "content-hash": "a1674a470ac0505bf5feda5d16738d35",
+    "hash": "e932c12340c6726319063134501e55ea",
+    "content-hash": "5cd0ba8017f16be5919202b2585bb52c",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -512,7 +512,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/public-business-module.git",
-                "reference": "a384394e3a5081ebf2a89fdd037a25e9b8d5e780"
+                "reference": "cac74eb41a25a1ef4ef7baf7bd25d12fd4f14b86"
             },
             "require": {
                 "php": ">=5.4",
@@ -529,7 +529,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2018-10-29 10:24:46"
+            "time": "2019-01-14 08:04:17"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2085,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2447,6 +2447,43 @@
             },
             "description": "Core ZF2 module for Sharengo apps",
             "time": "2019-01-07 08:25:56"
+        },
+        {
+            "name": "mvlabs/zf2-multilanguage",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@git.sharengo.it/cup-it/zf2-multilanguage.git",
+                "reference": "54efb90fbfad687696766f0a12a676e0a72b6657"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MvLabsMultilanguage\\": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Perone",
+                    "email": "m.perone@mvlabs.it"
+                }
+            ],
+            "description": "MVLabs multilanguage module for ZF2",
+            "keywords": [
+                "internationalization",
+                "multilanguage",
+                "zf2"
+            ],
+            "time": "2016-03-08 15:35:31"
         },
         {
             "name": "natxet/CssMin",
@@ -6421,7 +6458,8 @@
         "cup-web/core-business": 20,
         "cup-web/public-business-module": 20,
         "mvlabs/mvlabs-payments": 20,
-        "mvlabs/omnipay-cartasi": 20
+        "mvlabs/omnipay-cartasi": 20,
+        "mvlabs/zf2-multilanguage": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

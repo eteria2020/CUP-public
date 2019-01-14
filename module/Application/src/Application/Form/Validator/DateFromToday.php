@@ -14,6 +14,9 @@ class DateFromToday extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::FROMTODAY] = $translator->translate("La patente non può essere scaduta");
+
         $this->setValue($value);
 
         $date = date_create($value);

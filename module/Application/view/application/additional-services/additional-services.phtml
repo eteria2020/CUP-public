@@ -75,11 +75,12 @@ $end = date_create('2018-03-09 04:55:00');
                                 </div>
                                 <div class="bw-f w-1-2 clearfix">
                                     <div class="content-align-center">
-                                        <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?> <?= $package->getCode()=="CODE13" ? 'style="color:red"' :''?>><?= strtoupper($this->translate($package->getName())) ?></p>
+                                        <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?>
+                                            <?= $package->getCode()=="CODE13" ? 'style="color:red"' :''?>><?= strtoupper($this->translate($package->getName())) ?></p>
                                         <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
                                         <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
                                         <?php if($package->getType()==="Pacchetto"){ ?>
-                                            <p class="block-sub-title"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : $this->translate('a ').sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+                                            <p class="block-sub-title"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ?  $this->translate("GRATUITO") : $this->translate('a ').sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
 
                                             <p class="block-sub-title">
                                             <?php

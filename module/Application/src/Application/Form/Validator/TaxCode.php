@@ -14,6 +14,9 @@ class TaxCode extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::INVALID] = $translator->translate("Il codice fiscale non è corretto");
+
         $value = strtoupper($value);
         $this->setValue($value);
 

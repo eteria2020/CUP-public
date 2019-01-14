@@ -8,10 +8,10 @@ use Zend\Validator\Identical;
 use Zend\Mvc\I18n\Translator;
 use Zend\Session\Container;
 use SharengoCore\Entity\Customers;
-use Zend\InputFilter\InputFilter;
+//use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\Validator\File\MimeType;
-use Zend\Stdlib\Hydrator\HydratorInterface;
+//use Zend\Stdlib\Hydrator\HydratorInterface;
 
 class NewRegistrationForm2 extends Form
 {
@@ -21,10 +21,20 @@ class NewRegistrationForm2 extends Form
 
     const PROMO_CODE = 'promoCode';
 
+    /**
+     * @var Translator $translator
+     */
+    private $translator;
+
+    /**
+     * @var $container
+     */
     private $container;
 
+    /**
+     * @var EntityManager
+     */
     private $entityManager;
-
 
 
     public function __construct(
@@ -35,7 +45,9 @@ class NewRegistrationForm2 extends Form
     ) {
         parent::__construct('registration-form-2');
 
+        $this->translator = $translator;
         $this->entityManager = $entityManager;
+
 
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
@@ -192,9 +204,9 @@ class NewRegistrationForm2 extends Form
                     'options' => [
                         'mimeType' => 'image,application/pdf',
                         'messages' => [
-                            MimeType::FALSE_TYPE => 'Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf',
-                            MimeType::NOT_DETECTED => 'Non è stato possibile verificare il formato del file',
-                            MimeType::NOT_READABLE => 'Il file caricato non è leggibile o non esiste'
+                            MimeType::FALSE_TYPE => $this->translator->translate('Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf'),
+                            MimeType::NOT_DETECTED => $this->translator->translate('Non è stato possibile verificare il formato del file'),
+                            MimeType::NOT_READABLE => $this->translator->translate('Il file caricato non è leggibile o non esiste')
                         ]
                     ]
                 ]
@@ -211,7 +223,7 @@ class NewRegistrationForm2 extends Form
                         'options' => [
                             'token' => $this->get('user1')->get('driverLicenseForeign')->getValue(),
                             'messages' => [
-                                Identical::NOT_SAME => 'E\' necessario confermare e sottoscrivere la dichiarazione',
+                                Identical::NOT_SAME => $this->translator->translate("E\' necessario confermare e sottoscrivere la dichiarazione"),
                             ],
                         ],
                     ],

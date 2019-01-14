@@ -16,6 +16,10 @@ class BirthProvince extends AbstractValidator
 
     public function isValid($value, $context = null)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::BIRTH_ABROAD] = $translator->translate("E' necessario avere Estero come Provincia di nascita");
+        $messageTemplates[ self::BIRTH_ITALY] = $translator->translate("E' necessario avere una Provincia di nascita italiana");
+
         $this->setValue($value);
 
         //country Estera e Provincia di nascita non estero

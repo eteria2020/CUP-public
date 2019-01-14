@@ -20,6 +20,12 @@ class Password extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::LENGTH] = $translator->translate("Deve essere lunga almeno 8 caratteri");
+        $messageTemplates[ self::UPPER] = $translator->translate("Deve contenere almeno una maiuscola");
+        $messageTemplates[ self::LOWER] = $translator->translate("Deve contenere almeno una minuscola");
+        $messageTemplates[ self::DIGIT] = $translator->translate("Deve contenere almeno un numero");
+
         $this->setValue($value);
 
         $isValid = true;

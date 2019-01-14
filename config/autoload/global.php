@@ -33,6 +33,10 @@ return [
         'name' => 'fatture',
         'password' => 'f477ur3!'
     ],
+    'languageSession' => [
+        'session' => 'user',
+        'offset' => 'lang'
+    ],
     'subscription-bonus' => [
         'total' => 21,
         'description' => 'Pacchetto di Benvenuto 21 minuti',

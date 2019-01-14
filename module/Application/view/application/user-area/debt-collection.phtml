@@ -42,13 +42,13 @@
                     <p>Ciao <?= $name ?>,</p><br>
                         <?php if ($customer->getFirstPaymentCompleted()) {
                             if ($totalCost===0) {?>
-                                <p style="text-align: justify">complimenti, tutte le tue corse risultano regolarmente pagate.</p>
+                                <p style="text-align: justify"><?= $this->translate("complimenti, tutte le tue corse risultano regolarmente pagate.") ?></p>
                                 <hr>
                             <?php } else { ?>
 
-                                <p style="text-align: justify">hai esaurito i tuoi minuti bonus e hai effettuato corse a debito.</p>
-                                <p style="text-align: justify">Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione "Dati di Pagamento" dell'area riservata.</p><br>
-                                <p style="text-align: justify">Di seguito i dettagli:</p>
+                                <p style="text-align: justify"><?= $this->translate("hai esaurito i tuoi minuti bonus e hai effettuato corse a debito.") ?></p>
+                                <p style="text-align: justify"><?= $this->translate("Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione 'Dati di Pagamento' dell'area riservata.") ?></p><br>
+                                <p style="text-align: justify"><?= $this->translate("Di seguito i dettagli:") ?></p>
                                 <!-- map popup -->
                                 <div id="map-popup" class="map-popup"></div>
                                 <!-- map popup -->
@@ -58,12 +58,12 @@
 
                                     <!-- Trip table headers -->
                                     <div class="block-data-table-row clearfix">
-                                        <div class="block-data-table-th cw-1-6 text-center">ID</div>
-                                        <div class="block-data-table-th cw-1-6 text-center">Inizio</div>
-                                        <div class="block-data-table-th cw-1-6 text-center">Fine</div>
-                                        <div class="block-data-table-th cw-1-6 text-center">Durata (min.)</div>
-                                        <div class="block-data-table-th cw-1-6 text-center">Sosta (min.)</div>
-                                        <div class="block-data-table-th cw-1-6 text-center">Importo</div>
+                                        <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("ID") ?></div>
+                                        <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Inizio") ?></div>
+                                        <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Fine") ?></div>
+                                        <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Durata (min.)") ?></div>
+                                        <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Sosta (min.)") ?></div>
+                                        <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Importo") ?></div>
                                     </div>
                                     <!-- Trip table headers -->
 
@@ -95,7 +95,7 @@
                                             <div class="block-data-table-td cw-1-6"></div>
                                             <div class="block-data-table-td cw-1-6"></div>
                                             <div class="block-data-table-td cw-1-6"></div>
-                                            <div class="block-data-table-td cw-1-6 text-center">TOTALE</div>
+                                            <div class="block-data-table-td cw-1-6 text-center"><?= $this->translate("TOTALE") ?></div>
                                             <div class="block-data-table-td cw-1-6 text-right">&euro; <?=$totalCost/100; ?></div>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@
                                 <?php if($scriptIsRunning) { ?>
                                 <div style="margin-top: 20px;margin-bottom: 20px">
                                     <span class="block-sub-title">
-                                        <b style="color:red">Attenzione: </b> Pagamento momentaneamente sospeso, riprova più tardi.
+                                        <b style="color:red"><?= $this->translate("Attenzione:") ?> </b> <?= $this->translate("Pagamento momentaneamente sospeso, riprova più tardi.") ?>
                                     </span>
                                 </div>
                                 <?php } else { ?>
@@ -120,9 +120,9 @@
                                 <?php }?>
                             <?php }
                                   if($totalExtraCost > 0){ ?>
-                                      <p style="text-align: justify">Sono presenti penali da pagare.</p>
-                                      <p style="text-align: justify">Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione "Dati di Pagamento" dell'area riservata.</p><br>
-                                      <p style="text-align: justify">Di seguito i dettagli:</p>
+                                      <p style="text-align: justify"><?= $this->translate("Sono presenti penali da pagare.") ?></p>
+                                      <p style="text-align: justify"><?= $this->translate("Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria carta di credito nella sezione 'Dati di Pagamento' dell'area riservata.") ?></p><br>
+                                      <p style="text-align: justify"><?= $this->translate("Di seguito i dettagli:") ?></p>
                                       <!-- map popup -->
                                       <div id="map-popup" class="map-popup"></div>
                                       <!-- map popup -->
@@ -132,10 +132,10 @@
 
                                           <!-- Trip table headers -->
                                           <div class="block-data-table-row clearfix">
-                                              <div class="block-data-table-th cw-1-4 text-center">ID</div>
-                                              <div class="block-data-table-th cw-1-4 text-center">Data generazione</div>
-                                              <div class="block-data-table-th cw-1-4 text-center">Descrizione</div>
-                                              <div class="block-data-table-th cw-1-4 text-center">Importo</div>
+                                              <div class="block-data-table-th cw-1-4 text-center"><?= $this->translate("ID") ?></div>
+                                              <div class="block-data-table-th cw-1-4 text-center"><?= $this->translate("Data generazione") ?></div>
+                                              <div class="block-data-table-th cw-1-4 text-center"><?= $this->translate("Descrizione") ?></div>
+                                              <div class="block-data-table-th cw-1-4 text-center"><?= $this->translate("Importo") ?></div>
                                           </div>
                                           <!-- Trip table headers -->
 
@@ -161,7 +161,7 @@
                                               <div class="block-data-table-row clearfix odd">
                                                   <div class="block-data-table-td cw-1-4"></div>
                                                   <div class="block-data-table-td cw-1-4"></div>
-                                                  <div class="block-data-table-td cw-1-4 text-center">TOTALE</div>
+                                                  <div class="block-data-table-td cw-1-4 text-center"><?= $this->translate("TOTALE") ?></div>
                                                   <div class="block-data-table-td cw-1-4 text-right">&euro; <?=$totalExtraCost/100; ?></div>
                                               </div>
                                           </div>
@@ -170,7 +170,7 @@
                                       <?php if($scriptIsRunning) { ?>
                                           <div style="margin-top: 20px;margin-bottom: 20px">
                                     <span class="block-sub-title">
-                                        <b style="color:red">Attenzione: </b> Pagamento momentaneamente sospeso, riprova più tardi.
+                                        <b style="color:red"><?= $this->translate("Attenzione:") ?> </b> <?= $this->translate("Pagamento momentaneamente sospeso, riprova più tardi.") ?>
                                     </span>
                                           </div>
                                       <?php } else { ?>
@@ -187,10 +187,14 @@
 
                             <?php } ?>
 
-                            <p style="text-align: justify">Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il log-in sull&#39;App).</p><br>
+                            <p style="text-align: justify">
+                                <?= $this->translate("Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una carta di credito valida associata al tuo profilo utente, l&#39;account sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;area riservata ma non fare il log-in sull&#39;App).") ?>
+                            </p><br>
 
                         <?php } else {  // getFirstPaymentCompleted() false?>
-                        <p>benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;min invece di 0,28&euro;min) e provi subito la tua Sharengo.</p>
+                        <p>
+                            <?= $this->translate("benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;min invece di 0,28&euro;min) e provi subito la tua Sharengo.") ?>
+                        </p>
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-center">

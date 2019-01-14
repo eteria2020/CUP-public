@@ -20,13 +20,21 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface {
 
     /**
+     * @var Translator $translator
+     */
+    private $translator;
+
+    /**
      * @var CustomersService
      */
     private $customersService;
 
-
     public function __construct(
-    Translator $translator, HydratorInterface $hydrator, CustomersService $customersService) {
+        Translator $translator,
+        HydratorInterface $hydrator,
+        CustomersService $customersService) {
+
+        $this->translator = $translator;
         $this->customersService = $customersService;
 
         parent::__construct('user1', [
@@ -42,11 +50,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'driverLicenseName',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Nome sulla patente'),
+                'placeholder' => $this->translator->translate('Nome sulla patente'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Nome')
+                'label' => $this->translator->translate('Nome')
             ]
         ]);
 
@@ -57,11 +65,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'driverLicenseSurname',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Cognome sulla patente'),
+                'placeholder' => $this->translator->translate('Cognome sulla patente'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Cognome')
+                'label' => $this->translator->translate('Cognome')
             ]
         ]);
 
@@ -71,11 +79,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'name',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Nome'),
+                'placeholder' => $this->translator->translate('Nome'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Nome')
+                'label' => $this->translator->translate('Nome')
             ]
         ]);
 
@@ -85,11 +93,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'surname',
                 'maxlength' => 32,
-                'placeholder' => $translator->translate('Cognome'),
+                'placeholder' => $this->translator->translate('Cognome'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Cognome')
+                'label' => $this->translator->translate('Cognome')
             ]
         ]);
 
@@ -99,11 +107,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'address',
                 'maxlength' => 64,
-                'placeholder' => $translator->translate('Indirizzo'),
+                'placeholder' => $this->translator->translate('Indirizzo'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Indirizzo'),
+                'label' => $this->translator->translate('Indirizzo'),
             ]
         ]);
 
@@ -113,11 +121,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'civico',
                 'maxlength' => 14,
-                'placeholder' => $translator->translate('Numero civico'),
+                'placeholder' => $this->translator->translate('Numero civico'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Numero civico'),
+                'label' => $this->translator->translate('Numero civico'),
             ]
         ]);
 
@@ -128,11 +136,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'zipCode',
                 'maxlength' => 12,
-                'placeholder' => $translator->translate('CAP'),
+                'placeholder' => $this->translator->translate('CAP'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('CAP'),
+                'label' => $this->translator->translate('CAP'),
             ]
         ]);
 
@@ -142,11 +150,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'town',
                 'maxlength' => 64,
-                'placeholder' => $translator->translate('Città'),
+                'placeholder' => $this->translator->translate('Città'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Città'),
+                'label' => $this->translator->translate('Città'),
             ]
         ]);
 
@@ -177,11 +185,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'taxCode',
                 'maxlength' => 16,
-                'placeholder' => 'ABCDEF12G34H567I',
+                'placeholder' => $this->translator->translate('ABCDEF12G34H567I'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Codice fiscale'),
+                'label' => $this->translator->translate('Codice fiscale'),
             ]
         ]);
 
@@ -191,10 +199,10 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'mobile',
                 'maxlength' => 13,
-                'placeholder' => $translator->translate('Cellulare'),
+                'placeholder' => $this->translator->translate('Cellulare'),
             ],
             'options' => [
-                'label' => $translator->translate('Cellulare'),
+                'label' => $this->translator->translate('Cellulare'),
             ]
         ]);
 
@@ -204,10 +212,10 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'smsCode',
                 'maxlength' => 4,
-                'placeholder' => $translator->translate('xxxx'),
+                'placeholder' => $this->translator->translate('xxxx'),
             ],
             'options' => [
-                'label' => $translator->translate('Codice Sms'),
+                'label' => $this->translator->translate('Codice Sms'),
             ]
         ]);
 
@@ -217,10 +225,10 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'driverLicense',
                 'class' => 'required',
-                'placeholder' => $translator->translate('XX123412341223'),
+                'placeholder' => $this->translator->translate('XX123412341223'),
             ],
             'options' => [
-                'label' => $translator->translate('Patente')
+                'label' => $this->translator->translate('Patente')
             ]
         ]);
 
@@ -231,11 +239,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                 'id' => 'driverLicenseExpire',
                 'class' => 'required datepicker-date',
                 'min' => date_create()->format('d-m-Y'),
-                'placeholder' => $translator->translate('dd-mm-aaaa'),
+                'placeholder' => $this->translator->translate('dd-mm-aaaa'),
                 'type' => 'text'
             ],
             'options' => [
-                'label' => $translator->translate('Data di scadenza'),
+                'label' => $this->translator->translate('Data di scadenza'),
                 'format' => 'd-m-Y'
             ]
         ]);
@@ -246,7 +254,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'attributes' => [
                 'id' => 'vat',
                 'maxlength' => 13,
-                'placeholder' => 'Partita IVA'
+                'placeholder' => $this->translator->translate('Partita IVA')
             ],
             'options' => [
                 'label' => $translator->translate('Partita IVA'),
@@ -316,7 +324,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                     [
                         'name' => 'not_empty',
                         'options' => [
-                            'messages' => [NotEmpty::IS_EMPTY => 'Il nome sulla patente non coincide col codice fiscale. Verifica di averlo inserito correttamente, se effettivamente diverso inserisci qui quello corretto']
+                            'messages' => [NotEmpty::IS_EMPTY => $this->translator->translate('Il nome sulla patente non coincide col codice fiscale. Verifica di averlo inserito correttamente, se effettivamente diverso inserisci qui quello corretto')]
                         ],
                         'break_chain_on_failure' => true
                     ],
@@ -331,7 +339,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                Callback::INVALID_VALUE => 'Il nome non coincide con quello presente sul codice fiscale'
+                                Callback::INVALID_VALUE => $this->translator->translate('Il nome non coincide con quello presente sul codice fiscale')
                             ],
                             'callback' => function($value, $context = array()) {
                                 return ($this->isNameRequired() && $this->nameCode($this->get('name')->getValue()) == strtoupper(substr($this->get('taxCode')->getValue(), 3, 3)));
@@ -351,7 +359,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                     [
                         'name' => 'not_empty',
                         'options' => [
-                            'messages' => [NotEmpty::IS_EMPTY => 'Il cognome sulla patente non coincide con quello del codice fiscale, inserisci qui quello corretto']
+                            'messages' => [NotEmpty::IS_EMPTY => $this->translator->translate('Il cognome sulla patente non coincide con quello del codice fiscale, inserisci qui quello corretto')]
                         ],
                         'break_chain_on_failure' => true,
                     ],
@@ -366,7 +374,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                Callback::INVALID_VALUE => 'Il cognome non coincide con quello presente sul codice fiscale'
+                                Callback::INVALID_VALUE => $this->translator->translate('Il cognome non coincide con quello presente sul codice fiscale')
                             ],
                             'callback' => function($value, $context = array()) {
                                 return ($this->isSurnameRequired() && $this->surnameCode($this->get('surname')->getValue()) == strtoupper(substr($this->get('taxCode')->getValue(), 0, 3)));
@@ -446,7 +454,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                                Callback::INVALID_VALUE => $this->translator->translate('Il numero di telefono inserito non corrisponde a quello del codice di verifica')
                             ],
                             'callback' => function($value, $context = array()) {
                                 $smsVerification = new Container('smsVerification');
@@ -476,7 +484,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                                Callback::INVALID_VALUE => $this->translator->translate('Il codice inserito non corrisponde a quello inviato')
                             ],
                             'callback' => function($value, $context = array()) {
 

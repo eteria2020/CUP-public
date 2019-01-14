@@ -1,0 +1,6 @@
+<select onchange="location = this.value;">
+    <?php
+    foreach ($this->languageMenuHelper()->getLanguages() as $lang) {
+        echo '<option value="'.$lang['url'].'">'.$lang['label'].'</option>';
+    } ?>
+</select>

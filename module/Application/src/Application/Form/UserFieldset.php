@@ -13,11 +13,15 @@ use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Validator\Identical;
 use Zend\Session\Container;
-use Zend\Validator\Callback;
-use Zend\ServiceManager\ServiceLocatorInterface;
+//use Zend\Validator\Callback;
+//use Zend\ServiceManager\ServiceLocatorInterface;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface {
 
+    /**
+     * @var Translator $translator
+     */
+    private $translator;
     /**
      * @var CustomersService
      */
@@ -28,9 +32,24 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
      */
     private $fleetService;
 
+    /**
+     * UserFieldset constructor.
+     * @param Translator $translator
+     * @param HydratorInterface $hydrator
+     * @param CountriesService $countriesService
+     * @param CustomersService $customersService
+     * @param ProvincesService $provincesService
+     * @param FleetService $fleetService
+     */
     public function __construct(
-    Translator $translator, HydratorInterface $hydrator, CountriesService $countriesService, CustomersService $customersService, ProvincesService $provincesService, FleetService $fleetService
+        Translator $translator,
+        HydratorInterface $hydrator,
+        CountriesService $countriesService,
+        CustomersService $customersService,
+        ProvincesService $provincesService,
+        FleetService $fleetService
     ) {
+        $this->translator = $translator;
         $this->customersService = $customersService;
         $this->fleetService = $fleetService;
 
@@ -46,7 +65,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Email',
             'attributes' => [
                 'id' => 'email',
-                'placeholder' => 'Digita la tua email',
+                'placeholder' => $translator->translate('Digita la tua email'),
                 'class' => 'required'
             ],
             'options' => [
@@ -59,7 +78,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Email',
             'attributes' => [
                 'id' => 'email2',
-                'placeholder' => 'Inserisci di nuovo la email',
+                'placeholder' => $translator->translate('Inserisci di nuovo la email'),
                 'class' => 'required'
             ],
             'options' => [
@@ -72,7 +91,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Password',
             'attributes' => [
                 'id' => 'password',
-                'placeholder' => 'Imposta la tua password',
+                'placeholder' => $translator->translate('Imposta la tua password'),
                 'class' => 'required'
             ],
             'options' => [
@@ -85,7 +104,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Password',
             'attributes' => [
                 'id' => 'password2',
-                'placeholder' => 'Inserisci di nuovo la password',
+                'placeholder' => $translator->translate('Inserisci di nuovo la password'),
                 'class' => 'required'
             ]
         ]);
@@ -171,7 +190,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'options' => [
                 'label' => $translator->translate('Professione'),
                 'value_options' => [
-                    " " => $translator->translate(" "),
+                    " " => " ",
                     "Imprenditore" => $translator->translate("Imprenditore"),
                     "Dipendente di azienda privata" => $translator->translate("Dipendente di azienda privata"),
                     "Dipendente di azienda partecipata" => $translator->translate("Dipendente di azienda partecipata"),
@@ -214,7 +233,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'options' => [
                 'label' => $translator->translate('Come hai conosciuto Sharengo?'),
                 'value_options' => [
-                    " " => $translator->translate(" "),
+                    " " => " ",
                     "Sito Sharengo" => $translator->translate("Sito Sharengo"),
                     "Motore di ricerca" => $translator->translate("Motore di ricerca"),
                     "Pubblicità online" => $translator->translate("Pubblicità online"),
@@ -322,13 +341,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'label' => $translator->translate('Lingua preferita'),
                 'value_options' => [
                     "it" => $translator->translate("Italiano"),
-                    "de" => $translator->translate("tedesco"),
-                    "fr" => $translator->translate("francese"),
-                    "es" => $translator->translate("spagnolo"),
                     "en" => $translator->translate("inglese"),
-                    "ch" => $translator->translate("cinese"),
-                    "ru" => $translator->translate("russo"),
-                    "pt" => $translator->translate("portoghese")
+                    "sk" => $translator->translate("slovacco")
                 ]
             ]
         ]);
@@ -352,7 +366,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'attributes' => [
                 'id' => 'taxCode',
                 'maxlength' => 16,
-                'placeholder' => 'XXXXXXXXXXXXXXXX',
+                'placeholder' => $translator->translate('XXXXXXXXXXXXXXXX'),
                 'class' => 'required'
             ],
             'options' => [
@@ -366,7 +380,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'attributes' => [
                 'id' => 'vat',
                 'maxlength' => 13,
-                'placeholder' => 'ITNNNNNNNNNNN'
+                'placeholder' => $translator->translate('ITNNNNNNNNNNN')
             ],
             'options' => [
                 'label' => $translator->translate('Partita IVA (opzionale)'),
@@ -613,7 +627,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'name' => 'Regex',
                         'options' => [
                             'pattern' => '/[A-Z]{2}/',
-                            'message' => 'Il dato è richiesto e non può essere vuoto'
+                            'message' => $this->translator->translate('Il dato è richiesto e non può essere vuoto')
                         ]
                     ],
                     [
@@ -700,7 +714,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                \Zend\Validator\Callback::INVALID_VALUE => 'Il numero di telefono inserito non corrisponde a quello del codice di verifica'
+                                \Zend\Validator\Callback::INVALID_VALUE => $this->translator->translate('Il numero di telefono inserito non corrisponde a quello del codice di verifica')
                             ],
                             'callback' => function($value, $context = array()) {
                                 $smsVerification = new Container('smsVerification');
@@ -730,7 +744,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'name' => 'Callback',
                         'options' => [
                             'messages' => [
-                                \Zend\Validator\Callback::INVALID_VALUE => 'Il codice inserito non corrisponde a quello inviato'
+                                \Zend\Validator\Callback::INVALID_VALUE => $this->translator->translate('Il codice inserito non corrisponde a quello inviato')
                             ],
                             'callback' => function($value, $context = array()) {
 
@@ -766,7 +780,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
+                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non puù essere vuoto"),
                             ]
                         ],
                     ],
@@ -780,7 +794,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
+                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non puù essere vuoto"),
                             ]
                         ],
                     ],
@@ -794,7 +808,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => "Value is required and can't be empty",
+                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non puù essere vuoto"),
                             ]
                         ],
                     ],

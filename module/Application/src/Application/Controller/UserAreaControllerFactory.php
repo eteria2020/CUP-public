@@ -13,6 +13,7 @@ class UserAreaControllerFactory implements FactoryInterface {
 
         $I_customerService = $sharedLocator->get('SharengoCore\Service\CustomersService');
         $I_tripService = $sharedLocator->get('SharengoCore\Service\TripsService');
+        $translator = $serviceLocator->getServiceLocator()->get('Translator');
         $userService = $sharedLocator->get('zfcuser_auth_service');
         $invoicesService = $sharedLocator->get('SharengoCore\Service\Invoices');
         $profileForm = $sharedLocator->get('ProfileForm');
@@ -33,6 +34,7 @@ class UserAreaControllerFactory implements FactoryInterface {
         return new UserAreaController(
             $I_customerService,
             $I_tripService,
+            $translator,
             $userService,
             $invoicesService,
             $profileForm,

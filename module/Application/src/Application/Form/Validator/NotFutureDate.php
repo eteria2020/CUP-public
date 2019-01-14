@@ -14,6 +14,9 @@ class NotFutureDate extends AbstractValidator
 
     public function isValid($value)
     {
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::NOT_FUTURE] = $translator->translate("La data della patente non può essere futura alla data odierna");
+
         $this->setValue($value);
 
         $date = date_create($value);

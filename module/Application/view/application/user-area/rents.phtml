@@ -40,7 +40,7 @@
                     <div class="invoices-filter">
 
                         <!-- Header -->
-                        <p class="invoices-filter-title">Periodo</p>
+                        <p class="invoices-filter-title"><?= $this->translate("Periodo") ?></p>
 
                         <!-- Select box -->
                         <select id="rents-filter-select" class="invoices-filter-select">
@@ -65,7 +65,9 @@
                     <!-- filter -->
 
                     <div class="rents-message" style="width: 100%">
-                        <p style="text-align: justify">Con un semplice mouse-over per ogni singola corsa puoi vedere le coordinate della partenza e dell&#39;arrivo, il consumo di minuti bonus e le gratuit&agrave; qualora ti siano state riconosciute. In fondo alla tabella trovi il totale degli addebiti del mese applicando la tua tariffa personale.</p>
+                        <p style="text-align: justify">
+                            <?= $this->translate("Con un semplice mouse-over per ogni singola corsa puoi vedere le coordinate della partenza e dell'arrivo, il consumo di minuti bonus e le gratuità qualora ti siano state riconosciute. In fondo alla tabella trovi il totale degli addebiti del mese applicando la tua tariffa personale.") ?>
+                        </p>
                     </div>
 
                     <!-- Invoices table -->
@@ -73,12 +75,12 @@
 
                         <!-- Invoices table headers -->
                         <div class="block-data-table-row clearfix">
-                            <div class="block-data-table-th cw-1-6 text-center">Inizio</div>
-                            <div class="block-data-table-th cw-1-6 text-center">Fine</div>
-                            <div class="block-data-table-th cw-1-6 text-center">Durata (min.)</div>
-                            <div class="block-data-table-th cw-1-6 text-center">Sosta (min.)</div>
-                            <div class="block-data-table-th cw-1-6 text-center">Totale</div>
-                            <div class="block-data-table-th cw-1-6 text-center">Da saldare</div>
+                            <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Inizio") ?></div>
+                            <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Fine") ?></div>
+                            <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Durata (min.)") ?></div>
+                            <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Sosta (min.)") ?></div>
+                            <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Totale") ?></div>
+                            <div class="block-data-table-th cw-1-6 text-center"><?= $this->translate("Da saldare") ?></div>
                         </div>
                         <!-- invoices table headers -->
 
@@ -88,7 +90,10 @@
                     <!-- invoices table -->
 
                     <div style="margin-top: 10px">
-                        <p style="color: red; text-align: justify"><strong>Attenzione</strong>: l&#39;addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da saldare non effettuate nella giornata di oggi vuol dire che ci sono stati problemi di addebito sulla tua carta di credito e che il tuo account &egrave; temporaneamente sospeso. Contatta il Customer Service di SHARE&#39;NGO per la riattivazione.</p>
+                        <p style="color: red; text-align: justify">
+                            <strong><?= $this->translate("Attenzione") ?></strong>
+                            <?= $this->translate(": l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da saldare non effettuate nella giornata di oggi vuol dire che ci sono stati problemi di addebito sulla tua carta di credito e che il tuo account è temporaneamente sospeso. Contatta il Customer Service di SHARENGO per la riattivazione.") ?>
+                        </p>
                     </div>
 
                     <?php
@@ -96,7 +101,7 @@
                         } else {
                     ?>
 
-                    <h2>Nessuna corsa effettuata finora</h2>
+                    <h2><?= $this->translate("Nessuna corsa effettuata finora") ?></h2>
 
                     <?php
                         // close no invoices if

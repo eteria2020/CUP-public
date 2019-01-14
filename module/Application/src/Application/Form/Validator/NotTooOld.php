@@ -31,6 +31,10 @@ class NotTooOld extends AbstractValidator
             self::TOO_OLD => "Date inferiori al " . $this->minYear . " non sono accettate"
         ];
         parent::__construct($options);
+
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::TOO_OLD] = $translator->translate("Date inferiori al ") . $this->minYear . $translator->translate(" non sono accettate");
+
     }
 
     /**

@@ -2,7 +2,7 @@
 $this->headScript()
         ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
         ->appendFile($this->basePath('js/ui.datepicker-it.js'))
-        ->appendFile($this->basePath('js/signup.js?v=1.3'))
+        ->appendFile($this->basePath('js/signup.js?v=1.4'))
         ->appendFile($this->basePath('js/points.js'))
         ->appendFile($this->basePath('js/banner.js'))
         ->appendFile($this->basePath('js/phone.js'));
@@ -718,7 +718,7 @@ $this->headLink()
                                     <div class="block-field bw-f last">
                                         <label>&nbsp</label>
                                         <div  style="display: block;" id="buttonCode" >
-                                            <button type="button" id="buttonSendCode">INVIA CODICE</button>
+                                            <button type="button" id="buttonSendCode"><?= $this->translate("INVIA CODICE") ?></button>
                                         </div>
                                     </div>
 
@@ -737,7 +737,7 @@ $this->headLink()
                                     </div>
                                     <br>
                                     <p>
-                                        Inserisci qui il codice di verifica inviato via sms<br/>
+                                        <?= $this->translate("Inserisci qui il codice di verifica inviato via sms") ?><br/>
                                     </p>
                                 </div>
                             </div>
@@ -1008,7 +1008,7 @@ JS;
                 $('#co2').html("<i class='fa fa-spinner fa-pulse fa-2x fa-fw'>");
             },
             success: function (data) {
-                $('#co2').html("<p> Hai risparmiato " + data.toString() + " KG di CO<small><sub>2</sub></small></p><p>Grazie!</p>");
+                $('#co2').html("<p> <?= $this->translate("Hai risparmiato") ?> " + data.toString() + " <?= $this->translate("KG di CO") ?><small><sub>2</sub></small></p><p><?= $this->translate("Grazie!") ?></p>");
             },
             error: function () {
                 $('#co2').html("<p>" + data.toString() + "</p>");

@@ -14,11 +14,13 @@ class CustomerBonusPackagesControllerFactory implements FactoryInterface
         $customersBonusPackagesService = $sharedLocator->get('SharengoCore\Service\BonusPackagesService');
         $buyCustomerBonusPackage = $sharedLocator->get('SharengoCore\Service\BuyCustomerBonusPackage');
         $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
+        $translationService = $serviceLocator->getServiceLocator()->get('Translator');
 
         return new CustomerBonusPackagesController(
             $customersBonusPackagesService,
             $buyCustomerBonusPackage,
-            $cartasiContractsService
+            $cartasiContractsService,
+            $translationService
         );
     }
 }

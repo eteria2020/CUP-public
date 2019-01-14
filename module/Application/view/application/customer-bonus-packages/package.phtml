@@ -14,41 +14,41 @@ $end = date_create('2018-03-09 04:55:00');
             <!-- Top-right button to close popup -->
             <a id="close-btn" class="sng-close-btn"><i class="fa fa-close"></i></a>
 
-            <h1 class="sng-headers sng-w-1-1 sng-padding-top">Riepilogo</h1>
+            <h1 class="sng-headers sng-w-1-1 sng-padding-top"><?= $this->translate("Riepilogo") ?></h1>
             <div class="sng-separator-line"></div>
 
             <div class="sng-summary">
-                <h2 class="sng-headers">Descrizione:</h2>
+                <h2 class="sng-headers"><?= $this->translate("Descrizione:") ?></h2>
                 <p id="description" class="sng-text"><?= $this->package->getDescription() ?></p>
 
                 <table class="sng-table">
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2>Minuti:</h2>
+                            <h2><?= $this->translate("Minuti") ?>:</h2>
                             <p id="minutes" class="sng-text"><?= $this->package->getMinutes() ?></p>
                         </td>
                         <td class="sng-w-1-2">
-                            <h2>Prezzo:</h2>
+                            <h2><?= $this->translate("Prezzo") ?>:</h2>
                             <?php if($this->package->getType() === "Pacchetto"){ ?>
-                                <p id="cost" class="sng-text"><?= ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : "&euro; ".number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
+                                <p id="cost" class="sng-text"><?= ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? $this->translate("GRATUITO") : "&euro; ".number_format($this->package->getCost() / 100, 2, ',', '.') ?></p>
                             <?php }else{ ?>
-                                <p id="cost" class="sng-text">€ 0</p>
+                                <p id="cost" class="sng-text">&euro; 0</p>
                             <?php } ?>
                         </td>
                     </tr>
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2>Valido dal:</h2>
+                            <h2><?= $this->translate("Valido dal:") ?></h2>
                             <p id="valid-from" class="sng-text"><?= $validFrom ?></p>
                         </td>
                         <td class="sng-w-1-2">
-                            <h2>Valido al:</h2>
+                            <h2><?= $this->translate("Valido al:") ?></h2>
                             <p id="valid-to" class="sng-text"><?= $validTo ?></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2>Disponibile fino al:</h2>
+                            <h2><?= $this->translate("Disponibile fino al:") ?></h2>
                             <p id="available-until" class="sng-text"><?= $this->package->getBuyableUntil()->format('d-m-Y') ?></p>
                         </td>
                     </tr>
@@ -60,17 +60,17 @@ $end = date_create('2018-03-09 04:55:00');
                 <?php if($this->package->getType() === "Pacchetto"){ ?>
                     <?php if ($this->hasContract || ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end))): ?>
                         <?php if ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) {?>
-                            <p class="sng-text"> Vuoi confermare questo pacchetto?</p>
+                            <p class="sng-text"><?= $this->translate("Vuoi confermare questo pacchetto?") ?></p>
                             <?php } else { ?>
-                            <p class="sng-text">Confermare l'acquisto utilizzando Cartasi?</p>
+                            <p class="sng-text"><?= $this->translate("Confermare l'acquisto utilizzando carta di credito?") ?></p>
                             <?php } ?>
-                        <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
+                        <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>"><?= $this->translate("Conferma") ?></button>
                     <?php else: ?>
-                        <p class="sng-text">Confermare l'acquisto registrando una carta di credito con Cartasi</p>
-                        <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>">Conferma</a>
+                        <p class="sng-text"><?= $this->translate("Confermare l'acquisto registrando una carta di credito") ?></p>
+                        <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>"><?= $this->translate("Conferma") ?></a>
                     <?php endif; ?>
                 <?php }else{ ?>
-                    <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>">Conferma</button>
+                    <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>"><?= $this->translate("Conferma") ?></button>
                 <?php } ?>
             </div>
 

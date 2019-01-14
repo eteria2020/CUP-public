@@ -22,6 +22,9 @@ class ValidFleet extends AbstractValidator
     public function __construct($options)
     {
         parent::__construct();
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::UNVALID_FLEET] = $translator->translate("Selezionare la città preferita");
+
         $this->fleetService = $options['fleetService'];
     }
 

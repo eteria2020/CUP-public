@@ -28,6 +28,9 @@ class DuplicateTaxCode extends AbstractValidator
     public function __construct($options)
     {
         parent::__construct();
+        $translator = new \Zend\I18n\Translator\Translator();
+        $messageTemplates[ self::DUPLICATE] = $translator->translate("Esiste già un utente con lo stesso codice fiscale");
+
         $this->customersService = $options['customerService'];
         if (isset($options['avoid'])) {
             $this->taxCodesToAvoid = $options['avoid'];

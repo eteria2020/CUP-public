@@ -39,7 +39,7 @@ class OptionalFieldset extends Fieldset implements InputFilterProviderInterface 
             'options' => [
                 'label' => $translator->translate('Professione'),
                 'value_options' => [
-                    " " => $translator->translate(" "),
+                    " " => " ",
                     "Imprenditore" => $translator->translate("Imprenditore"),
                     "Dipendente di azienda privata" => $translator->translate("Dipendente di azienda privata"),
                     "Dipendente di azienda partecipata" => $translator->translate("Dipendente di azienda partecipata"),
@@ -82,7 +82,7 @@ class OptionalFieldset extends Fieldset implements InputFilterProviderInterface 
             'options' => [
                 'label' => $translator->translate('Come hai conosciuto Sharengo?'),
                 'value_options' => [
-                    " " => $translator->translate(" "),
+                    " " => " ",
                     "Sito Sharengo" => $translator->translate("Sito Sharengo"),
                     "Motore di ricerca" => $translator->translate("Motore di ricerca"),
                     "Pubblicità online" => $translator->translate("Pubblicità online"),
