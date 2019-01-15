@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-01-10 17:28+0100\n"
-"PO-Revision-Date: 2019-01-11 15:31+0100\n"
+"POT-Creation-Date: 2019-01-15 16:33+0100\n"
+"PO-Revision-Date: 2019-01-15 16:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -176,7 +176,7 @@ msgstr ""
 #: module/Application/view/application/user-area/index.phtml:66
 #: module/Application/view/application/user-area/index.phtml:238
 msgid "Titolo"
-msgstr "Gender"
+msgstr "Salutation"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:73
 msgid "Sig."
@@ -197,9 +197,9 @@ msgstr "Mrs"
 #: module/Application/view/application/additional-services/gift-packages.phtml:93
 #: module/Application/view/application/user-area/index.phtml:74
 #: module/Application/view/application/user-area/index.phtml:246
-#: module/Application/view/application/user/signup.phtml:226
+#: module/Application/view/application/user/signup.phtml:223
 msgid "Nome"
-msgstr "First name"
+msgstr "First Name"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:99
 #: module/Application/src/Application/Form/CustomerFieldset.php:103
@@ -210,9 +210,9 @@ msgstr "First name"
 #: module/Application/src/Application/Form/UserFieldset.php:151
 #: module/Application/view/application/user-area/index.phtml:80
 #: module/Application/view/application/user-area/index.phtml:257
-#: module/Application/view/application/user/signup.phtml:237
+#: module/Application/view/application/user/signup.phtml:233
 msgid "Cognome"
-msgstr "Surname"
+msgstr "Last Name"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:117
 #: module/Application/src/Application/Form/NewUserFieldset.php:62
@@ -235,17 +235,17 @@ msgstr "Repeat email"
 #: module/Application/src/Application/Form/UserFieldset.php:166
 #: module/Application/view/application/user-area/index.phtml:95
 #: module/Application/view/application/user-area/index.phtml:274
-#: module/Application/view/application/user/signup.phtml:256
+#: module/Application/view/application/user/signup.phtml:251
 msgid "Data di nascita"
-msgstr "Date of birth"
+msgstr "Birth Date"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:157
 #: module/Application/src/Application/Form/UserFieldset.php:179
 #: module/Application/view/application/user-area/index.phtml:101
 #: module/Application/view/application/user-area/index.phtml:285
-#: module/Application/view/application/user/signup.phtml:267
+#: module/Application/view/application/user/signup.phtml:261
 msgid "Stato di nascita"
-msgstr "State of birth"
+msgstr "Birth State"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:167
 msgid "EE = estero"
@@ -265,9 +265,9 @@ msgstr "Birth place"
 #: module/Application/src/Application/Form/UserFieldset.php:275
 #: module/Application/view/application/user-area/index.phtml:120
 #: module/Application/view/application/user-area/index.phtml:312
-#: module/Application/view/application/user/signup.phtml:296
+#: module/Application/view/application/user/signup.phtml:288
 msgid "Comune di nascita"
-msgstr "Birthplace"
+msgstr "Birth Place"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:198
 #: module/Application/src/Application/Form/CustomerFieldset.php:202
@@ -440,9 +440,9 @@ msgstr "The uploaded file is not readable or does not exist"
 #: module/Application/view/application/user-area/index.phtml:461
 #: module/Application/view/application/user-area/index.phtml:708
 #: module/Application/view/application/user/new-signup2.phtml:385
-#: module/Application/view/application/user/signup.phtml:633
+#: module/Application/view/application/user/signup.phtml:617
 msgid "Cellulare"
-msgstr "Mobile phone"
+msgstr "Mobile"
 
 #: module/Application/src/Application/Form/MobileForm.php:72
 #: module/Application/src/Application/Form/NewUserFieldset2.php:218
@@ -463,12 +463,22 @@ msgstr "The phone number entered does not match the verification code number"
 msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "The code entered does not match the one sent"
 
+#: module/Application/src/Application/Form/NewUserFieldset.php:58
+#: module/Application/src/Application/Form/UserFieldset.php:68
+msgid "Digita la tua email"
+msgstr "Insert your email"
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:71
+#: module/Application/src/Application/Form/UserFieldset.php:94
+msgid "Imposta la tua password"
+msgstr "Set your password"
+
 #: module/Application/src/Application/Form/NewUserFieldset.php:75
 #: module/Application/src/Application/Form/UserFieldset.php:98
 #: module/Application/view/application/user-area/index.phtml:762
 #: module/Application/view/application/user-area/index.phtml:798
 #: module/Application/view/application/user/new-signup.phtml:69
-#: module/Application/view/application/user/signup.phtml:182
+#: module/Application/view/application/user/signup.phtml:181
 #: module/Application/view/zfc-user/user/login.phtml:51
 msgid "Password"
 msgstr "Password"
@@ -767,7 +777,7 @@ msgid "Nuova password"
 msgstr "New password"
 
 #: module/Application/src/Application/Form/PasswordForm.php:81
-#: module/Application/view/application/user/signup.phtml:192
+#: module/Application/view/application/user/signup.phtml:191
 msgid "Ripeti password"
 msgstr "Repeat the password"
 
@@ -775,19 +785,9 @@ msgstr "Repeat the password"
 msgid "Promo code"
 msgstr "Promo code"
 
-#: module/Application/src/Application/Form/UserFieldset.php:68
-msgid "Digita la tua email"
-msgstr "Insert your email"
-
 #: module/Application/src/Application/Form/UserFieldset.php:81
-#, fuzzy
-#| msgid "Inserisci la tua email"
 msgid "Inserisci di nuovo la email"
-msgstr "insert your email"
-
-#: module/Application/src/Application/Form/UserFieldset.php:94
-msgid "Imposta la tua password"
-msgstr "Set your password"
+msgstr "Enter the email again"
 
 #: module/Application/src/Application/Form/UserFieldset.php:107
 #, fuzzy
@@ -874,8 +874,6 @@ msgstr ""
 "surveys."
 
 #: module/Application/src/Application/Form/UserFieldset.php:630
-#, fuzzy
-#| msgid "Il dato è richiesto per procedere"
 msgid "Il dato è richiesto e non può essere vuoto"
 msgstr "The data is required to proceed"
 
@@ -883,7 +881,7 @@ msgstr "The data is required to proceed"
 #: module/Application/src/Application/Form/UserFieldset.php:797
 #: module/Application/src/Application/Form/UserFieldset.php:811
 msgid "Il campo richiesto non puù essere vuoto"
-msgstr ""
+msgstr "The requested field can not be empty"
 
 #: module/Application/src/Application/Form/Validator/BirthProvince.php:20
 msgid "E' necessario avere Estero come Provincia di nascita"
@@ -891,7 +889,7 @@ msgstr "It is necessary to have Estero as a Province of birth"
 
 #: module/Application/src/Application/Form/Validator/BirthProvince.php:21
 msgid "E' necessario avere una Provincia di nascita italiana"
-msgstr "t is necessary to have an Italian Province of birth"
+msgstr "It is necessary to have an Italian Province of birth"
 
 #: module/Application/src/Application/Form/Validator/CoherentTaxCode.php:19
 msgid "Il codice fiscale non è coerente con gli altri dati indicati"
@@ -938,10 +936,8 @@ msgid " non sono accettate"
 msgstr "they are not accepted"
 
 #: module/Application/src/Application/Form/Validator/OptionAccepted.php:18
-#, fuzzy
-#| msgid "E' necessario avere Estero come Provincia di nascita"
 msgid "E' necessario accettare le condizioni"
-msgstr "It is necessary to have Estero as a Province of birth"
+msgstr "It is necessary to accept the conditions"
 
 #: module/Application/src/Application/Form/Validator/Password.php:24
 msgid "Deve essere lunga almeno 8 caratteri"
@@ -960,8 +956,6 @@ msgid "Deve contenere almeno un numero"
 msgstr "It must contain at least one number"
 
 #: module/Application/src/Application/Form/Validator/PromoCode.php:67
-#, fuzzy
-#| msgid "Il codice inserito non è valido"
 msgid "Il codice promo inserito non è valido"
 msgstr "The code entered is not valid"
 
@@ -970,32 +964,24 @@ msgid "Il codice promo è già stato utilizzato"
 msgstr "The promo code has already been used"
 
 #: module/Application/src/Application/Form/Validator/TaxCode.php:18
-#, fuzzy
-#| msgid "Il formato della data non è corretto"
 msgid "Il codice fiscale non è corretto"
-msgstr "The date format is not correct"
+msgstr "The tax code is not correct"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
-#, fuzzy
-#| msgid "Codice fiscale"
 msgid "Codice fiscale non valido"
-msgstr "Fiscal Code"
+msgstr "Fiscal Code not valid"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
 msgid "Età non consentita per la guida"
 msgstr "Age not allowed for driving"
 
 #: module/Application/src/Application/Form/Validator/ValidFleet.php:26
-#, fuzzy
-#| msgid "Scegli la lingua preferita"
 msgid "Selezionare la città preferita"
-msgstr "Choose your preferred language"
+msgstr "Choose your preferred city"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:22
-#, fuzzy
-#| msgid "La patente non può essere scaduta"
 msgid "La partita IVA non può contenere spazi"
-msgstr "The license can not be expired"
+msgstr "The VAT number can not contain spaces"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:23
 msgid "La partita IVA deve essere numerica, al più preceduta dal prefisso IT"
@@ -1231,11 +1217,11 @@ msgstr "Valid from:"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:45
 msgid "Valido al:"
-msgstr "Valid al"
+msgstr "Valid to:"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:51
 msgid "Disponibile fino al:"
-msgstr "Available up"
+msgstr "Available until:"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:63
 msgid "Vuoi confermare questo pacchetto?"
@@ -2251,40 +2237,40 @@ msgstr "5. License Number <br> 4. Release Date <br> 4c. Authorities  of release"
 
 #: module/Application/view/application/user-area/index.phtml:43
 msgid "I tuoi dati personali"
-msgstr "Your personal data"
+msgstr "My personal data"
 
 #: module/Application/view/application/user-area/index.phtml:107
 #: module/Application/view/application/user-area/index.phtml:296
-#: module/Application/view/application/user/signup.phtml:278
+#: module/Application/view/application/user/signup.phtml:271
 msgid "Provincia di nascita"
-msgstr "County of birth"
+msgstr "Province"
 
 #: module/Application/view/application/user-area/index.phtml:128
 #: module/Application/view/application/user-area/index.phtml:335
 #: module/Application/view/application/user/new-signup2.phtml:127
-#: module/Application/view/application/user/signup.phtml:321
+#: module/Application/view/application/user/signup.phtml:312
 msgid "Indirizzo di residenza"
-msgstr "Address of residence"
+msgstr "Home Address"
 
 #: module/Application/view/application/user-area/index.phtml:134
 #: module/Application/view/application/user-area/index.phtml:346
 #: module/Application/view/application/user/new-signup2.phtml:146
-#: module/Application/view/application/user/signup.phtml:332
+#: module/Application/view/application/user/signup.phtml:322
 msgid "Cap"
-msgstr "Postal Code"
+msgstr "ZIP Code"
 
 #: module/Application/view/application/user-area/index.phtml:148
 #: module/Application/view/application/user-area/index.phtml:364
-#: module/Application/view/application/user/signup.phtml:351
+#: module/Application/view/application/user/signup.phtml:340
 msgid "Citt&agrave;"
-msgstr "Town"
+msgstr "City"
 
 #: module/Application/view/application/user-area/index.phtml:166
 #: module/Application/view/application/user-area/index.phtml:391
 #: module/Application/view/application/user/new-signup2.phtml:431
-#: module/Application/view/application/user/signup.phtml:379
+#: module/Application/view/application/user/signup.phtml:366
 msgid "Codice Fiscale"
-msgstr "Fiscal Code"
+msgstr "Tax Code"
 
 #: module/Application/view/application/user-area/index.phtml:172
 #: module/Application/view/application/user-area/index.phtml:402
@@ -2294,13 +2280,13 @@ msgstr "VAT number (Optional)"
 #: module/Application/view/application/user-area/index.phtml:183
 #: module/Application/view/application/user-area/index.phtml:418
 msgid "Lingua"
-msgstr "Tongue"
+msgstr "Language"
 
 #: module/Application/view/application/user-area/index.phtml:188
 #: module/Application/view/application/user-area/index.phtml:429
 #: module/Application/view/application/user/new-signup.phtml:80
 msgid "Citt&agrave; preferita"
-msgstr "Favorite city"
+msgstr "Preferred City"
 
 #: module/Application/view/application/user-area/index.phtml:195
 msgid "Modifica profilo"
@@ -2308,7 +2294,7 @@ msgstr "Edit profile"
 
 #: module/Application/view/application/user-area/index.phtml:450
 msgid "Il tuo numero di telefono"
-msgstr "Your phone number"
+msgstr "My phone number"
 
 #: module/Application/view/application/user-area/index.phtml:470
 msgid "Modifica Numero"
@@ -2316,13 +2302,13 @@ msgstr "Change Number"
 
 #: module/Application/view/application/user-area/index.phtml:485
 #: module/Application/view/application/user/new-signup2.phtml:162
-#: module/Application/view/application/user/signup.phtml:407
+#: module/Application/view/application/user/signup.phtml:392
 msgid "Prefisso"
 msgstr "Prefix"
 
 #: module/Application/view/application/user-area/index.phtml:721
 #: module/Application/view/application/user/new-signup2.phtml:398
-#: module/Application/view/application/user/signup.phtml:646
+#: module/Application/view/application/user/signup.phtml:629
 #: module/Application/view/partials/translations.phtml:3
 #: module/Application/view/partials/translations.phtml:25
 msgid "INVIA CODICE"
@@ -2330,18 +2316,18 @@ msgstr "SEND CODE"
 
 #: module/Application/view/application/user-area/index.phtml:730
 #: module/Application/view/application/user/new-signup2.phtml:409
-#: module/Application/view/application/user/signup.phtml:658
+#: module/Application/view/application/user/signup.phtml:641
 msgid "Codice di Verifica"
 msgstr "Verification code"
 
 #: module/Application/view/application/user-area/index.phtml:740
-#: module/Application/view/application/user/signup.phtml:669
+#: module/Application/view/application/user/signup.phtml:651
 msgid "Inserisci qui il codice di verifica inviato via sms"
 msgstr "Enter the verification code sent via SMS here"
 
 #: module/Application/view/application/user-area/index.phtml:753
 msgid "I tuoi dati per l'accesso"
-msgstr "Your data for access"
+msgstr "My data access"
 
 #: module/Application/view/application/user-area/index.phtml:770
 msgid "Modifica Password"
@@ -2358,35 +2344,35 @@ msgstr "Repeat the password"
 
 #: module/Application/view/application/user-area/index.phtml:840
 msgid "I tuoi minuti Bonus"
-msgstr "Your bonus minutes"
+msgstr "Free bonus minutes"
 
 #: module/Application/view/application/user-area/index.phtml:850
 msgid "Accreditati"
-msgstr "Accredited"
+msgstr "Credited"
 
 #: module/Application/view/application/user-area/index.phtml:854
 msgid "Utilizzati"
-msgstr "used"
+msgstr "Used"
 
 #: module/Application/view/application/user-area/index.phtml:858
 msgid "Rimanenti"
-msgstr "remaining"
+msgstr "Remained"
 
 #: module/Application/view/application/user-area/index.phtml:867
 msgid "Punti OSSIGENO"
-msgstr "OXYGEN points"
+msgstr "Oxigen Points"
 
 #: module/Application/view/application/user-area/index.phtml:877
 msgid "Accreditati questo mese"
-msgstr "Accredited this month"
+msgstr "Monthly credit"
 
 #: module/Application/view/application/user-area/index.phtml:881
 msgid "Utilizzabili"
-msgstr "usable"
+msgstr "Available"
 
 #: module/Application/view/application/user-area/index.phtml:889
 msgid "Contributo ambientale"
-msgstr "Environmental contribution"
+msgstr "My environmental contribution"
 
 #: module/Application/view/application/user-area/index.phtml:904
 msgid "Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso."
@@ -2396,7 +2382,7 @@ msgstr ""
 
 #: module/Application/view/application/user-area/index.phtml:1011
 msgid "Hai risparmiato"
-msgstr "You saved"
+msgstr "saving"
 
 #: module/Application/view/application/user-area/index.phtml:1011
 msgid "KG di CO"
@@ -3238,63 +3224,15 @@ msgstr "Enter the data you will use to access the service"
 msgid "Ripeti l'email"
 msgstr "Repeat the email"
 
-#: module/Application/view/application/user/signup.phtml:166
-msgid "(Repeat email)"
-msgstr "(Repeat email)"
-
-#: module/Application/view/application/user/signup.phtml:193
-msgid "(Repeat password)"
-msgstr "(Repeat password)"
-
-#: module/Application/view/application/user/signup.phtml:206
+#: module/Application/view/application/user/signup.phtml:204
 msgid "Inserisci i tuoi dati personali"
 msgstr "Enter your personal information"
 
-#: module/Application/view/application/user/signup.phtml:213
+#: module/Application/view/application/user/signup.phtml:211
 msgid "Genere"
 msgstr "Gender"
 
-#: module/Application/view/application/user/signup.phtml:214
-msgid "(Gender)"
-msgstr "(Gender)"
-
-#: module/Application/view/application/user/signup.phtml:227
-msgid "(Name on Driver’s license)"
-msgstr "(Name on Driver's license)"
-
-#: module/Application/view/application/user/signup.phtml:238
-msgid "(Surname on Driver’s license)"
-msgstr "(Surname on Driver's license)"
-
-#: module/Application/view/application/user/signup.phtml:257
-msgid "(Date of birth)"
-msgstr "(Data Di nascita)"
-
-#: module/Application/view/application/user/signup.phtml:268
-msgid "(State of birth)"
-msgstr "(State of birth)"
-
-#: module/Application/view/application/user/signup.phtml:279
-msgid "(Province of birth)"
-msgstr "(Province of birth)"
-
-#: module/Application/view/application/user/signup.phtml:297
-msgid "(City of birth)"
-msgstr "(City of birth)"
-
-#: module/Application/view/application/user/signup.phtml:322
-msgid "(Residence address)"
-msgstr "(Residence address)"
-
-#: module/Application/view/application/user/signup.phtml:333
-msgid "(Zip code)"
-msgstr "(Zip code)"
-
-#: module/Application/view/application/user/signup.phtml:352
-msgid "(Country)"
-msgstr "(Country)"
-
-#: module/Application/view/application/user/signup.phtml:362
+#: module/Application/view/application/user/signup.phtml:350
 msgid ""
 "Informazioni aggiuntive - Inserisci qui il tuo indirizzo di domicilio se "
 "diverso da residenza"
@@ -3302,75 +3240,39 @@ msgstr ""
 "Additional Information - Enter your home address here if different from "
 "residence"
 
-#: module/Application/view/application/user/signup.phtml:363
-msgid "(Additional information - Insert here your domicile address)"
-msgstr "(Additional information - Insert here your domicile address)"
-
-#: module/Application/view/application/user/signup.phtml:380
-msgid "(Tax code)"
-msgstr "(Tax code)"
-
-#: module/Application/view/application/user/signup.phtml:391
+#: module/Application/view/application/user/signup.phtml:377
 msgid "Partita IVA (solo per ditte individuali e professionisti)"
 msgstr "VAT number (only for individual and professional companies)"
 
-#: module/Application/view/application/user/signup.phtml:392
-msgid "(Italian VAT NUMBER only)"
-msgstr "(Italian VAT NUMBER only)"
-
-#: module/Application/view/application/user/signup.phtml:408
-msgid "(Prefix)"
-msgstr "(Prefix)"
-
-#: module/Application/view/application/user/signup.phtml:634
-msgid "(Mobile phone)"
-msgstr "(Mobile phone)"
-
-#: module/Application/view/application/user/signup.phtml:659
-msgid "(Verification code)"
-msgstr "(Verification code)"
-
-#: module/Application/view/application/user/signup.phtml:671
-msgid "(Enter here the verification code received by sms)"
-msgstr ""
-
-#: module/Application/view/application/user/signup.phtml:681
+#: module/Application/view/application/user/signup.phtml:660
 msgid "Professione (Opzionale)"
 msgstr "Profession (Optional)"
 
-#: module/Application/view/application/user/signup.phtml:682
-msgid "(Job [optional])"
-msgstr "(Job [optional])"
-
-#: module/Application/view/application/user/signup.phtml:692
+#: module/Application/view/application/user/signup.phtml:670
 msgid "Come hai conosciuto Sharengo? (Opzionale)"
 msgstr "How did you meet Sharengo? (Optional)"
 
-#: module/Application/view/application/user/signup.phtml:693
-msgid "(How do you know Sharengo? [optional])"
-msgstr "(How do you know Sharengo? [Optional])"
-
-#: module/Application/view/application/user/signup.phtml:709
+#: module/Application/view/application/user/signup.phtml:686
 msgid "Scegli la lingua preferita"
 msgstr "Choose your preferred language"
 
-#: module/Application/view/application/user/signup.phtml:729
+#: module/Application/view/application/user/signup.phtml:706
 #: module/Application/view/partials/translations.phtml:6
 msgid ""
 "Termini e Condizioni Generali di Contratto, Regolamento Tariffario e Privacy"
 msgstr "General Terms and Conditions of Contract, Tariff Regulations and Privacy"
 
-#: module/Application/view/application/user/signup.phtml:739
+#: module/Application/view/application/user/signup.phtml:716
 #: module/Application/view/partials/translations.phtml:7
 msgid "Termini e Condizioni Generali di Contratto"
 msgstr "General Terms and Conditions of Contract"
 
-#: module/Application/view/application/user/signup.phtml:742
+#: module/Application/view/application/user/signup.phtml:719
 #: module/Application/view/partials/translations.phtml:11
 msgid "Regolamento Tariffario"
 msgstr "Tariff Regulation"
 
-#: module/Application/view/application/user/signup.phtml:760
+#: module/Application/view/application/user/signup.phtml:737
 #: module/Application/view/partials/translations.phtml:12
 msgid "Informativa Privacy"
 msgstr "Privacy disclaimer"
@@ -3502,6 +3404,7 @@ msgstr ""
 "back. You can proceed immediately "
 
 #: module/Application/view/application/user/signupinsert.phtml:55
+#: module/Application/view/partials/translations.phtml:32
 msgid "qui"
 msgstr "here"
 
@@ -3788,7 +3691,7 @@ msgid "Come si usa un'equomobile"
 msgstr "How to use an aircraft"
 
 #: module/Application/view/layout/layout.phtml:212
-#: module/Application/view/layout/layout2.phtml:117
+#: module/Application/view/layout/layout2.phtml:122
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
 "accetti l'utilizzo dei cookie da parte nostra. Per maggiori dettagli si prega "
@@ -4109,6 +4012,954 @@ msgstr "Your phone number"
 msgid "Il codice inserito non &egrave; valido"
 msgstr "The code entered is not valid"
 
+#: module/Application/view/partials/translations.phtml:34
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: module/Application/view/partials/translations.phtml:35
+msgid "Albania"
+msgstr "Albania"
+
+#: module/Application/view/partials/translations.phtml:36
+msgid "Algeria"
+msgstr "Algeria"
+
+#: module/Application/view/partials/translations.phtml:37
+msgid "Andorra"
+msgstr "Andorra"
+
+#: module/Application/view/partials/translations.phtml:38
+msgid "Angola"
+msgstr "Angola"
+
+#: module/Application/view/partials/translations.phtml:39
+msgid "Anguilla"
+msgstr "Eel"
+
+#: module/Application/view/partials/translations.phtml:40
+msgid "Antartide"
+msgstr "Antarctica"
+
+#: module/Application/view/partials/translations.phtml:41
+msgid "Antigua e Barbuda"
+msgstr "Antigua and Barbuda"
+
+#: module/Application/view/partials/translations.phtml:42
+msgid "Antille Olandesi"
+msgstr "Netherlands Antilles"
+
+#: module/Application/view/partials/translations.phtml:43
+msgid "Arabia Saudita"
+msgstr "Saudi Arabia"
+
+#: module/Application/view/partials/translations.phtml:44
+msgid "Argentina"
+msgstr "Argentine"
+
+#: module/Application/view/partials/translations.phtml:45
+msgid "Armenia"
+msgstr "Armenia"
+
+#: module/Application/view/partials/translations.phtml:46
+msgid "Aruba"
+msgstr "Aruba"
+
+#: module/Application/view/partials/translations.phtml:47
+msgid "Australia"
+msgstr "Australia"
+
+#: module/Application/view/partials/translations.phtml:48
+msgid "Austria"
+msgstr "Austria"
+
+#: module/Application/view/partials/translations.phtml:49
+msgid "Azerbaigian"
+msgstr "Azerbaijan"
+
+#: module/Application/view/partials/translations.phtml:50
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: module/Application/view/partials/translations.phtml:51
+msgid "Bahrein"
+msgstr "Bahrain"
+
+#: module/Application/view/partials/translations.phtml:52
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+#: module/Application/view/partials/translations.phtml:53
+msgid "Barbados"
+msgstr "Barbados"
+
+#: module/Application/view/partials/translations.phtml:54
+msgid "Belgio"
+msgstr "Belgium"
+
+#: module/Application/view/partials/translations.phtml:55
+msgid "Belize"
+msgstr "Belize"
+
+#: module/Application/view/partials/translations.phtml:56
+msgid "Benin"
+msgstr "Benin"
+
+#: module/Application/view/partials/translations.phtml:57
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: module/Application/view/partials/translations.phtml:58
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: module/Application/view/partials/translations.phtml:59
+msgid "Bielorussia"
+msgstr "Belarus"
+
+#: module/Application/view/partials/translations.phtml:60
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: module/Application/view/partials/translations.phtml:61
+msgid "Bosnia Erzegovina"
+msgstr "Bosnia Herzegovina"
+
+#: module/Application/view/partials/translations.phtml:62
+msgid "Botswana"
+msgstr "Botswana"
+
+#: module/Application/view/partials/translations.phtml:63
+msgid "Brasile"
+msgstr "Brazil"
+
+#: module/Application/view/partials/translations.phtml:64
+msgid "Brunei"
+msgstr "Brunei"
+
+#: module/Application/view/partials/translations.phtml:65
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+#: module/Application/view/partials/translations.phtml:66
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: module/Application/view/partials/translations.phtml:67
+msgid "Burundi"
+msgstr "Burundi"
+
+#: module/Application/view/partials/translations.phtml:68
+msgid "Cambogia"
+msgstr "Cambodia"
+
+#: module/Application/view/partials/translations.phtml:69
+msgid "Camerun"
+msgstr "Cameroon"
+
+#: module/Application/view/partials/translations.phtml:70
+msgid "Canada"
+msgstr "Canada"
+
+#: module/Application/view/partials/translations.phtml:71
+msgid "Capo Verde"
+msgstr "Cape Verde"
+
+#: module/Application/view/partials/translations.phtml:72
+msgid "Ciad"
+msgstr "Chad"
+
+#: module/Application/view/partials/translations.phtml:73
+msgid "Cile"
+msgstr "Chile"
+
+#: module/Application/view/partials/translations.phtml:74
+msgid "Cina"
+msgstr "China"
+
+#: module/Application/view/partials/translations.phtml:75
+msgid "Cipro"
+msgstr "Cyprus"
+
+#: module/Application/view/partials/translations.phtml:76
+msgid "Città del vaticano"
+msgstr "Vatican City"
+
+#: module/Application/view/partials/translations.phtml:77
+msgid "Colombia"
+msgstr "Colombia"
+
+#: module/Application/view/partials/translations.phtml:78
+msgid "Comore"
+msgstr "Comore"
+
+#: module/Application/view/partials/translations.phtml:79
+msgid "Congo"
+msgstr "Congo"
+
+#: module/Application/view/partials/translations.phtml:80
+msgid "Corea del Nord"
+msgstr "North Korea"
+
+#: module/Application/view/partials/translations.phtml:81
+msgid "Corea del Sud"
+msgstr "South Korea"
+
+#: module/Application/view/partials/translations.phtml:82
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: module/Application/view/partials/translations.phtml:83
+msgid "Croazia"
+msgstr "Croatia"
+
+#: module/Application/view/partials/translations.phtml:84
+msgid "Cuba"
+msgstr "Cuba"
+
+#: module/Application/view/partials/translations.phtml:85
+msgid "Danimarca"
+msgstr "Denmark"
+
+#: module/Application/view/partials/translations.phtml:86
+msgid "Dominica"
+msgstr "Dominica"
+
+#: module/Application/view/partials/translations.phtml:87
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: module/Application/view/partials/translations.phtml:88
+msgid "Egitto"
+msgstr "Egypt"
+
+#: module/Application/view/partials/translations.phtml:89
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: module/Application/view/partials/translations.phtml:90
+msgid "Emirati Arabi Uniti"
+msgstr "United Arab Emirates"
+
+#: module/Application/view/partials/translations.phtml:91
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: module/Application/view/partials/translations.phtml:92
+msgid "Estonia"
+msgstr "Estonia"
+
+#: module/Application/view/partials/translations.phtml:93
+msgid "Etiopia"
+msgstr "Ethiopia"
+
+#: module/Application/view/partials/translations.phtml:94
+msgid "Filippine"
+msgstr "Philippines"
+
+#: module/Application/view/partials/translations.phtml:95
+msgid "Finlandia"
+msgstr "Finland"
+
+#: module/Application/view/partials/translations.phtml:96
+msgid "Francia"
+msgstr "France"
+
+#: module/Application/view/partials/translations.phtml:97
+msgid "Gabon"
+msgstr "Gabon"
+
+#: module/Application/view/partials/translations.phtml:98
+msgid "Gambia"
+msgstr "Gambia"
+
+#: module/Application/view/partials/translations.phtml:99
+msgid "Georgia"
+msgstr "Georgia"
+
+#: module/Application/view/partials/translations.phtml:100
+msgid "Germania"
+msgstr "Germany"
+
+#: module/Application/view/partials/translations.phtml:101
+msgid "Ghana"
+msgstr "Ghana"
+
+#: module/Application/view/partials/translations.phtml:102
+msgid "Giamaica"
+msgstr "Jamaica"
+
+#: module/Application/view/partials/translations.phtml:103
+msgid "Giappone"
+msgstr "Japan"
+
+#: module/Application/view/partials/translations.phtml:104
+msgid "Gibilterra"
+msgstr "Gibraltar"
+
+#: module/Application/view/partials/translations.phtml:105
+msgid "Gibuti"
+msgstr "Djibouti"
+
+#: module/Application/view/partials/translations.phtml:106
+msgid "Giordania"
+msgstr "Jordan"
+
+#: module/Application/view/partials/translations.phtml:107
+msgid "Grecia"
+msgstr "Greece"
+
+#: module/Application/view/partials/translations.phtml:108
+msgid "Grenada"
+msgstr "Grenada"
+
+#: module/Application/view/partials/translations.phtml:109
+msgid "Groenlandia"
+msgstr "Greenland"
+
+#: module/Application/view/partials/translations.phtml:110
+msgid "Guadalupa"
+msgstr "Guadeloupe"
+
+#: module/Application/view/partials/translations.phtml:111
+msgid "Guam"
+msgstr "Guam"
+
+#: module/Application/view/partials/translations.phtml:112
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: module/Application/view/partials/translations.phtml:113
+msgid "Guiana Francese"
+msgstr "French Guiana"
+
+#: module/Application/view/partials/translations.phtml:114
+msgid "Guinea"
+msgstr "Guinea"
+
+#: module/Application/view/partials/translations.phtml:115
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: module/Application/view/partials/translations.phtml:116
+msgid "Guinea Equatoriale"
+msgstr "Equatorial Guinea"
+
+#: module/Application/view/partials/translations.phtml:117
+msgid "Guyana"
+msgstr "Guyana"
+
+#: module/Application/view/partials/translations.phtml:118
+msgid "Haiti"
+msgstr "Haiti"
+
+#: module/Application/view/partials/translations.phtml:119
+msgid "Honduras"
+msgstr "Honduras"
+
+#: module/Application/view/partials/translations.phtml:120
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: module/Application/view/partials/translations.phtml:121
+msgid "India"
+msgstr "India"
+
+#: module/Application/view/partials/translations.phtml:122
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#: module/Application/view/partials/translations.phtml:123
+msgid "Iran"
+msgstr "Iran"
+
+#: module/Application/view/partials/translations.phtml:124
+msgid "Iraq"
+msgstr "Iraq"
+
+#: module/Application/view/partials/translations.phtml:125
+msgid "Irlanda"
+msgstr "Ireland"
+
+#: module/Application/view/partials/translations.phtml:126
+msgid "Islanda"
+msgstr "Iceland"
+
+#: module/Application/view/partials/translations.phtml:127
+msgid "Isola Bouvet"
+msgstr "Bouvet Island"
+
+#: module/Application/view/partials/translations.phtml:128
+msgid "Isola di Natale"
+msgstr "Christmas Island"
+
+#: module/Application/view/partials/translations.phtml:129
+msgid "Isola Norfolk"
+msgstr "Norfolk Island"
+
+#: module/Application/view/partials/translations.phtml:130
+msgid "Isola Pitcairn"
+msgstr "Pitcairn Island"
+
+#: module/Application/view/partials/translations.phtml:131
+msgid "Isole Åland"
+msgstr "Åland Islands"
+
+#: module/Application/view/partials/translations.phtml:132
+msgid "Isole Cayman"
+msgstr "Cayman Islands"
+
+#: module/Application/view/partials/translations.phtml:133
+msgid "Isole Cocos (Keeling)"
+msgstr "Cocos Islands (Keeling)"
+
+#: module/Application/view/partials/translations.phtml:134
+msgid "Isole Cook"
+msgstr "Cook Islands"
+
+#: module/Application/view/partials/translations.phtml:135
+msgid "Isole Falkland"
+msgstr "Falkland Islands"
+
+#: module/Application/view/partials/translations.phtml:136
+msgid "Isole Faroe"
+msgstr "Faroe Islands"
+
+#: module/Application/view/partials/translations.phtml:137
+msgid "Isole Figi"
+msgstr "Fiji Islands"
+
+#: module/Application/view/partials/translations.phtml:138
+msgid "Isole Heard e McDonald"
+msgstr "Heard and McDonald Islands"
+
+#: module/Application/view/partials/translations.phtml:139
+msgid "Isole Marianne Settentrionali"
+msgstr "Northern Mariana Islands"
+
+#: module/Application/view/partials/translations.phtml:140
+msgid "Isole Marshall"
+msgstr "Marshall Islands"
+
+#: module/Application/view/partials/translations.phtml:141
+msgid "Isole minori degli Stati Uniti"
+msgstr "United States Minor Islands"
+
+#: module/Application/view/partials/translations.phtml:142
+msgid "Isole Solomon"
+msgstr "Solomon Islands"
+
+#: module/Application/view/partials/translations.phtml:143
+msgid "Isole Spratly"
+msgstr "Spratly Islands"
+
+#: module/Application/view/partials/translations.phtml:144
+msgid "Isole Svalbard e Jan Mayen"
+msgstr "Svalbard and Jan Mayen islands"
+
+#: module/Application/view/partials/translations.phtml:145
+msgid "Isole Tokelau"
+msgstr "Tokelau Islands"
+
+#: module/Application/view/partials/translations.phtml:146
+msgid "Isole Turks e Caicos"
+msgstr "Turks and Caicos Islands"
+
+#: module/Application/view/partials/translations.phtml:147
+msgid "Isole Vergini Britanniche"
+msgstr "British Virgin Islands"
+
+#: module/Application/view/partials/translations.phtml:148
+msgid "Isole Vergini Statunitensi"
+msgstr "US Virgin Islands"
+
+#: module/Application/view/partials/translations.phtml:149
+msgid "Isole Wallis e Futuna"
+msgstr "Wallis and Futuna Islands"
+
+#: module/Application/view/partials/translations.phtml:150
+msgid "Israele"
+msgstr "Israel"
+
+#: module/Application/view/partials/translations.phtml:151
+msgid "Italia"
+msgstr "Italy"
+
+#: module/Application/view/partials/translations.phtml:152
+msgid "Kazakistan"
+msgstr "Kazakhstan"
+
+#: module/Application/view/partials/translations.phtml:153
+msgid "Kenya"
+msgstr "Kenya"
+
+#: module/Application/view/partials/translations.phtml:154
+msgid "Kirghizistan"
+msgstr "Kyrgyzstan"
+
+#: module/Application/view/partials/translations.phtml:155
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: module/Application/view/partials/translations.phtml:156
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: module/Application/view/partials/translations.phtml:157
+msgid "Laos"
+msgstr "Laos"
+
+#: module/Application/view/partials/translations.phtml:158
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: module/Application/view/partials/translations.phtml:159
+msgid "Lettonia"
+msgstr "Latvia"
+
+#: module/Application/view/partials/translations.phtml:160
+msgid "Libano"
+msgstr "Lebanon"
+
+#: module/Application/view/partials/translations.phtml:161
+msgid "Liberia"
+msgstr "Liberia"
+
+#: module/Application/view/partials/translations.phtml:162
+msgid "Libia"
+msgstr "Libya"
+
+#: module/Application/view/partials/translations.phtml:163
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: module/Application/view/partials/translations.phtml:164
+msgid "Lituania"
+msgstr "Lithuania"
+
+#: module/Application/view/partials/translations.phtml:165
+msgid "Lussemburgo"
+msgstr "Luxembourg"
+
+#: module/Application/view/partials/translations.phtml:166
+msgid "Macau"
+msgstr "Macau"
+
+#: module/Application/view/partials/translations.phtml:167
+msgid "Macedonia"
+msgstr "Macedonia"
+
+#: module/Application/view/partials/translations.phtml:168
+msgid "Madagascar"
+msgstr "Madagascar"
+
+#: module/Application/view/partials/translations.phtml:169
+msgid "Malawi"
+msgstr "Malawi"
+
+#: module/Application/view/partials/translations.phtml:170
+msgid "Maldive"
+msgstr "Maldives"
+
+#: module/Application/view/partials/translations.phtml:171
+msgid "Malesia"
+msgstr "Malaysia"
+
+#: module/Application/view/partials/translations.phtml:172
+msgid "Mali"
+msgstr "Mali"
+
+#: module/Application/view/partials/translations.phtml:173
+msgid "Malta"
+msgstr "Malta"
+
+#: module/Application/view/partials/translations.phtml:174
+msgid "Marocco"
+msgstr "Morocco"
+
+#: module/Application/view/partials/translations.phtml:175
+msgid "Martinica"
+msgstr "Martinique"
+
+#: module/Application/view/partials/translations.phtml:176
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: module/Application/view/partials/translations.phtml:177
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: module/Application/view/partials/translations.phtml:178
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: module/Application/view/partials/translations.phtml:179
+msgid "Messico"
+msgstr "Mexico"
+
+#: module/Application/view/partials/translations.phtml:180
+msgid "Micronesia, Stati Federati della"
+msgstr "Micronesia, Federated States of"
+
+#: module/Application/view/partials/translations.phtml:181
+msgid "Moldova"
+msgstr "Moldova"
+
+#: module/Application/view/partials/translations.phtml:182
+msgid "Monaco"
+msgstr "Monk"
+
+#: module/Application/view/partials/translations.phtml:183
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: module/Application/view/partials/translations.phtml:184
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: module/Application/view/partials/translations.phtml:185
+msgid "Mozambico"
+msgstr "Mozambique"
+
+#: module/Application/view/partials/translations.phtml:186
+msgid "Myanmar (Birmania)"
+msgstr "Myanmar (Burma)"
+
+#: module/Application/view/partials/translations.phtml:187
+msgid "Namibia"
+msgstr "Namibia"
+
+#: module/Application/view/partials/translations.phtml:188
+msgid "Nauru"
+msgstr "Nauru"
+
+#: module/Application/view/partials/translations.phtml:189
+msgid "Nepal"
+msgstr "Nepal"
+
+#: module/Application/view/partials/translations.phtml:190
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: module/Application/view/partials/translations.phtml:191
+msgid "Niger"
+msgstr "Niger"
+
+#: module/Application/view/partials/translations.phtml:192
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: module/Application/view/partials/translations.phtml:193
+msgid "Niue"
+msgstr "Niue"
+
+#: module/Application/view/partials/translations.phtml:194
+msgid "Norvegia"
+msgstr "Norway"
+
+#: module/Application/view/partials/translations.phtml:195
+msgid "Nuova Caledonia"
+msgstr "New Caledonia"
+
+#: module/Application/view/partials/translations.phtml:196
+msgid "Nuova Zelanda"
+msgstr "New Zeland"
+
+#: module/Application/view/partials/translations.phtml:197
+msgid "Oman"
+msgstr "Oman"
+
+#: module/Application/view/partials/translations.phtml:198
+msgid "Paesi Bassi"
+msgstr "Netherlands"
+
+#: module/Application/view/partials/translations.phtml:199
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: module/Application/view/partials/translations.phtml:200
+msgid "Palau"
+msgstr "Palau"
+
+#: module/Application/view/partials/translations.phtml:201
+msgid "Panama"
+msgstr "Panama"
+
+#: module/Application/view/partials/translations.phtml:202
+msgid "Papua Nuova Guinea"
+msgstr "Papua New Guinea"
+
+#: module/Application/view/partials/translations.phtml:203
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: module/Application/view/partials/translations.phtml:204
+msgid "Peru"
+msgstr "Peru"
+
+#: module/Application/view/partials/translations.phtml:205
+msgid "Polinesia Francese"
+msgstr "French Polynesia"
+
+#: module/Application/view/partials/translations.phtml:206
+msgid "Polonia"
+msgstr "Poland"
+
+#: module/Application/view/partials/translations.phtml:207
+msgid "Portogallo"
+msgstr "Portugal"
+
+#: module/Application/view/partials/translations.phtml:208
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: module/Application/view/partials/translations.phtml:209
+msgid "Qatar"
+msgstr "Qatar"
+
+#: module/Application/view/partials/translations.phtml:210
+msgid "Regno Unito"
+msgstr "United Kingdom"
+
+#: module/Application/view/partials/translations.phtml:211
+msgid "Repubblica Ceca"
+msgstr "Czech Republic"
+
+#: module/Application/view/partials/translations.phtml:212
+msgid "Repubblica Centrafricana"
+msgstr "Central African Republic"
+
+#: module/Application/view/partials/translations.phtml:213
+msgid "Repubblica Democratica del Congo"
+msgstr "Democratic Republic of Congo"
+
+#: module/Application/view/partials/translations.phtml:214
+msgid "Repubblica Dominicana"
+msgstr "Dominican Republic"
+
+#: module/Application/view/partials/translations.phtml:215
+msgid "Reunion"
+msgstr "Reunion"
+
+#: module/Application/view/partials/translations.phtml:216
+msgid "Romania"
+msgstr "Romania"
+
+#: module/Application/view/partials/translations.phtml:217
+msgid "Ruanda"
+msgstr "Rwanda"
+
+#: module/Application/view/partials/translations.phtml:218
+msgid "Russia"
+msgstr "Russia"
+
+#: module/Application/view/partials/translations.phtml:219
+msgid "Sahara Occidentale"
+msgstr "Western Sahara"
+
+#: module/Application/view/partials/translations.phtml:220
+msgid "Samoa"
+msgstr "Samoa"
+
+#: module/Application/view/partials/translations.phtml:221
+msgid "Samoa Americane"
+msgstr "American Samoa"
+
+#: module/Application/view/partials/translations.phtml:222
+msgid "San Marino"
+msgstr "San Marino"
+
+#: module/Application/view/partials/translations.phtml:223
+msgid "Sao Tome e Principe"
+msgstr "Sao Tome and Principe"
+
+#: module/Application/view/partials/translations.phtml:224
+msgid "Senegal"
+msgstr "Senegal"
+
+#: module/Application/view/partials/translations.phtml:225
+msgid "Serbia e Montenegro"
+msgstr "Serbia and Montenegro"
+
+#: module/Application/view/partials/translations.phtml:226
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: module/Application/view/partials/translations.phtml:227
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: module/Application/view/partials/translations.phtml:228
+msgid "Singapore"
+msgstr "Singapore"
+
+#: module/Application/view/partials/translations.phtml:229
+msgid "Siria"
+msgstr "Syria"
+
+#: module/Application/view/partials/translations.phtml:230
+msgid "Slovacchia"
+msgstr "Slovakia"
+
+#: module/Application/view/partials/translations.phtml:231
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: module/Application/view/partials/translations.phtml:232
+msgid "Somalia"
+msgstr "Somalia"
+
+#: module/Application/view/partials/translations.phtml:233
+msgid "Spagna"
+msgstr "Spain"
+
+#: module/Application/view/partials/translations.phtml:234
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: module/Application/view/partials/translations.phtml:235
+msgid "Stati Uniti"
+msgstr "United States"
+
+#: module/Application/view/partials/translations.phtml:236
+msgid "St. Kitts e Nevis"
+msgstr "St. Kitts and Nevis"
+
+#: module/Application/view/partials/translations.phtml:237
+msgid "St. Lucia"
+msgstr "St. Lucia"
+
+#: module/Application/view/partials/translations.phtml:238
+msgid "St. Pierre e Miquelon"
+msgstr "St. Pierre and Miquelon"
+
+#: module/Application/view/partials/translations.phtml:239
+msgid "St. Vincent e Grenadine"
+msgstr "St. Vincent and the Grenadines"
+
+#: module/Application/view/partials/translations.phtml:240
+msgid "Sud Africa"
+msgstr "South Africa"
+
+#: module/Application/view/partials/translations.phtml:241
+msgid "Suriname"
+msgstr "Suriname"
+
+#: module/Application/view/partials/translations.phtml:242
+msgid "Svezia"
+msgstr "Sweden"
+
+#: module/Application/view/partials/translations.phtml:243
+msgid "Svizzera"
+msgstr "Switzerland"
+
+#: module/Application/view/partials/translations.phtml:244
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#: module/Application/view/partials/translations.phtml:245
+msgid "Tagikistan"
+msgstr "Tajikistan"
+
+#: module/Application/view/partials/translations.phtml:246
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: module/Application/view/partials/translations.phtml:247
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: module/Application/view/partials/translations.phtml:248
+msgid "Territori Australi Francesi"
+msgstr "French Southern Territories"
+
+#: module/Application/view/partials/translations.phtml:249
+msgid "Thailandia"
+msgstr "Thailand"
+
+#: module/Application/view/partials/translations.phtml:250
+msgid "Timor Est"
+msgstr "East Timor"
+
+#: module/Application/view/partials/translations.phtml:251
+msgid "Togo"
+msgstr "Togo"
+
+#: module/Application/view/partials/translations.phtml:252
+msgid "Tonga"
+msgstr "Tonga"
+
+#: module/Application/view/partials/translations.phtml:253
+msgid "Trinidad e Tobago"
+msgstr "Trinidad and Tobago"
+
+#: module/Application/view/partials/translations.phtml:254
+msgid "Tunisia"
+msgstr "Tunisia"
+
+#: module/Application/view/partials/translations.phtml:255
+msgid "Turchia"
+msgstr "Turkey"
+
+#: module/Application/view/partials/translations.phtml:256
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: module/Application/view/partials/translations.phtml:257
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: module/Application/view/partials/translations.phtml:258
+msgid "Ucraina"
+msgstr "Ukraine"
+
+#: module/Application/view/partials/translations.phtml:259
+msgid "Uganda"
+msgstr "Uganda"
+
+#: module/Application/view/partials/translations.phtml:260
+msgid "Ungheria"
+msgstr "Hungary"
+
+#: module/Application/view/partials/translations.phtml:261
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: module/Application/view/partials/translations.phtml:262
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: module/Application/view/partials/translations.phtml:263
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: module/Application/view/partials/translations.phtml:264
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: module/Application/view/partials/translations.phtml:265
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: module/Application/view/partials/translations.phtml:266
+msgid "Yemen"
+msgstr "Yemen"
+
+#: module/Application/view/partials/translations.phtml:267
+msgid "Zambia"
+msgstr "Zambia"
+
+#: module/Application/view/partials/translations.phtml:268
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: module/Application/view/partials/translations.phtml:269
+msgid "Zona neutra Iraq-Arabia Saudita"
+msgstr "Neutral zone Iraq-Saudi Arabia"
+
+#: module/Application/view/partials/translations.phtml:270
+msgid "Zona neutra ONU"
+msgstr "UN neutral zone"
+
 #: module/Application/view/partials/welcome-user-area.phtml:3
 msgid "Ciao"
 msgstr "Hello"
@@ -4202,67 +5053,3 @@ msgstr ""
 "made today, it means that there have been problems debiting your credit card "
 "and that your account is; temporarily suspended. Contact the Customer Service "
 "of Sharengo for reactivation."
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid ""
-#~ "© Share'ngo è un servizio di C.S. Group S.p.A. · Servizio clienti "
-#~ "<strong>02 87317140</strong>"
-#~ msgstr ""
-#~ "© Share'ngo is a service of CS Group SpA · Customer service <strong> 02 "
-#~ "87317140 </ strong>"
-
-#~ msgid ""
-#~ "Sede Legale: Via dei Pelaghi 162 - 57124 Livorno (LI) · Codice Fiscale e "
-#~ "Partita IVA n. 01769950492 · Numero REA LI - 156608 <br> Sede operativa: "
-#~ "Via Noto 10 – 20122 Milano (MI)"
-#~ msgstr ""
-#~ "Registered Office: Via dei Pelaghi 162 - 57124 Livorno (LI) · Fiscal Code "
-#~ "and VAT no. 01769950492 · REA LI number - 156608 <br> Operating office: Via "
-#~ "Noto 10 - 20122 Milano (MI)"
-
-#~ msgid "BUONO 1.400 PUNTI"
-#~ msgstr "VOUCHER 1,400 POINTS"
-
-#~ msgid "tedesco"
-#~ msgstr "German"
-
-#~ msgid "francese"
-#~ msgstr "French"
-
-#~ msgid "spagnolo"
-#~ msgstr "Spanish"
-
-#~ msgid "cinese"
-#~ msgstr "Chinese"
-
-#~ msgid "russo"
-#~ msgstr "Russian"
-
-#~ msgid "portoghese"
-#~ msgstr "Portuguese"
-
-#, fuzzy
-#~| msgid "Minuti"
-#~ msgid "Minuti:"
-#~ msgstr "Minutes"
-
-#, fuzzy
-#~| msgid "Prezzo"
-#~ msgid "Prezzo:"
-#~ msgstr "Price"
-
-#, fuzzy
-#~| msgid ""
-#~| "Ho letto, compreso e accettato l’Informativa Privacy per i Clienti "
-#~| "SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le "
-#~| "modalità indicate "
-#~ msgid ""
-#~ "Ho letto, compreso e accettato l’Informativa Privacy per i Clienti "
-#~ "SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le "
-#~ "modalità indicate."
-#~ msgstr ""
-#~ "I have read, understood and accepted the Privacy Statement for SHARE'NGO® "
-#~ "Customers and consent to the processing of my personal data in the manner "
-#~ "indicated "
