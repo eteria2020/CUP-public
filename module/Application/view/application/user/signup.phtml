@@ -162,8 +162,7 @@ $this->headLink()
                 </div>
 
                 <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Ripeti l\'email'); ?></label>
-                        <small><?= $this->translate('(Repeat email)'); ?></small>
+                    <p> <label><?= $this->translate("Ripeti l'email"); ?></label>
                         <?php
                         $email2 = $this->form->get('user')->get('email2');
                         echo $this->formElement($email2);
@@ -190,7 +189,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Ripeti password'); ?></label>
-                        <small><?= $this->translate('(Repeat password)'); ?></small >
                         <?php
                         $password2 = $this->form->get('user')->get('password2');
                         echo $this->formElement($password2);
@@ -211,7 +209,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Genere'); ?></label>
-                        <small><?= $this->translate('(Gender)'); ?></small>
                         <?php
                         $gender = $this->form->get('user')->get('gender');
                         echo $this->formElement($gender);
@@ -224,7 +221,6 @@ $this->headLink()
 
                     <div class="block-field bw-f w-2-4">
                         <p> <label><?= $this->translate('Nome'); ?></label>
-                            <small><?= $this->translate('(Name on Driver’s license)'); ?></small>
                             <?php
                             $name = $this->form->get('user')->get('name');
                             echo $this->formElement($name);
@@ -235,7 +231,6 @@ $this->headLink()
 
                     <div class="block-field bw-f w-2-4">
                         <p> <label><?= $this->translate('Cognome'); ?></label>
-                            <small><?= $this->translate('(Surname on Driver’s license)'); ?></small>
                             <?php
                             $surname = $this->form->get('user')->get('surname');
                             echo $this->formElement($surname);
@@ -254,7 +249,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3">
                     <p> <label><?= $this->translate('Data di nascita'); ?></label>
-                        <small><?= $this->translate('(Date of birth)'); ?></small>
                         <?php
                         $birthDate = $this->form->get('user')->get('birthDate');
                         echo $this->formElement($birthDate);
@@ -265,7 +259,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3">
                     <p> <label><?= $this->translate('Stato di nascita'); ?></label>
-                        <small><?= $this->translate('(State of birth)'); ?></small>
                         <?php
                         $birthCountry = $this->form->get('user')->get('birthCountry');
                         echo $this->formElement($birthCountry);
@@ -276,7 +269,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-3 last">
                     <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
-                        <small><?= $this->translate('(Province of birth)'); ?></small>
                         <?php
                         $birthProvince = $this->form->get('user')->get('birthProvince');
                         echo $this->formElement($birthProvince);
@@ -294,7 +286,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Comune di nascita'); ?></label>
-                        <small><?= $this->translate('(City of birth)'); ?></small>
                         <?php
                         $birthTown = $this->form->get('user')->get('birthTown');
                         $select = '<select name="' . $birthTown->getName() . '" ';
@@ -319,7 +310,6 @@ $this->headLink()
 
                     <div class="block-field bw-f w-3-4">
                         <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
-                            <small><?= $this->translate('(Residence address)'); ?></small>
                             <?php
                             $address = $this->form->get('user')->get('address');
                             echo $this->formElement($address);
@@ -330,7 +320,6 @@ $this->headLink()
 
                     <div class="block-field bw-f last w-1-4">
                         <p> <label><?= $this->translate('Cap'); ?></label><br/>
-                            <small><?= $this->translate('(Zip code)'); ?></small>
                             <?php
                             $zipCode = $this->form->get('user')->get('zipCode');
                             echo $this->formElement($zipCode);
@@ -349,7 +338,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-1-4">
                     <p> <label><?= $this->translate('Citt&agrave;'); ?></label>
-                        <small><?= $this->translate('(Country)'); ?></small>
                         <?php
                         $town = $this->form->get('user')->get('town');
                         echo $this->formElement($town);
@@ -360,7 +348,6 @@ $this->headLink()
 
                 <div class="block-field last bw-f w-3-4">
                     <p> <label><?= $this->translate('Informazioni aggiuntive - Inserisci qui il tuo indirizzo di domicilio se diverso da residenza'); ?></label>
-                        <small><?= $this->translate('(Additional information - Insert here your domicile address)'); ?></small>
                         <?php
                         $addressInfo = $this->form->get('user')->get('addressInfo');
                         echo $this->formElement($addressInfo);
@@ -377,7 +364,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Codice Fiscale'); ?></label>
-                        <small><?= $this->translate('(Tax code)'); ?></small>
                         <?php
                         $taxCode = $this->form->get('user')->get('taxCode');
                         echo $this->formElement($taxCode);
@@ -389,7 +375,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Partita IVA (solo per ditte individuali e professionisti)'); ?></label>
-                        <small><?= $this->translate('(Italian VAT NUMBER only)'); ?></small>
                         <?php
                         $vat = $this->form->get('user')->get('vat');
                         echo $this->formElement($vat);
@@ -405,7 +390,6 @@ $this->headLink()
             <div class="block-row-field clearfix">
                 <div class="block-field bw-f w-1-4">
                     <label><?= $this->translate('Prefisso'); ?></label>
-                    <small><?= $this->translate('(Prefix)'); ?></small>
                     <select id="dialCode">
                         <option data-countryCode="IT" value="39" selected>Italia (+39)</option>
                         <option disabled="disabled">----------</option>
@@ -631,7 +615,6 @@ $this->headLink()
                     <div class="block-field bw-f w-2-4 ">
 
                         <p> <label><?= $this->translate('Cellulare'); ?></label>
-                            <small><?= $this->translate('(Mobile phone)'); ?></small>
                             <?php
                             $mobile = $this->form->get('user')->get('mobile');
                             echo $this->formElement($mobile);
@@ -656,7 +639,6 @@ $this->headLink()
                 <div id="confirmSmsCode" style="display: none;">
                     <div class="block-field bw-f w-1-4"  id="textCode">
                         <p> <label><?= $this->translate('Codice di Verifica'); ?></label>
-                            <small><?= $this->translate('(Verification code)'); ?></small>
                             <?php
                             $smsCode = $this->form->get('user')->get('smsCode');
                             echo $this->formElement($smsCode);
@@ -667,9 +649,6 @@ $this->headLink()
                     <br>
                     <p>
                         <?= $this->translate("Inserisci qui il codice di verifica inviato via sms" ) ?><br/>
-                        <small>
-                            <?= $this->translate("(Enter here the verification code received by sms)") ?>
-                        </small>
                     </p>
                 </div>
             </div>
@@ -679,7 +658,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Professione (Opzionale)'); ?></label>
-                        <small><?= $this->translate('(Job [optional])'); ?></small>
                         <?php
                         $jobType = $this->form->get('user')->get('jobType');
                         echo $this->formElement($jobType);
@@ -690,7 +668,6 @@ $this->headLink()
 
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Come hai conosciuto Sharengo? (Opzionale)'); ?></label>
-                        <small><?= $this->translate('(How do you know Sharengo? [optional])'); ?></small>
                         <?php
                         $howToKnow = $this->form->get('user')->get('howToKnow');
                         echo $this->formElement($howToKnow);
