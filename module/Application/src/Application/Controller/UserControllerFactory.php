@@ -67,7 +67,8 @@ class UserControllerfactory implements FactoryInterface
             $config['googleMaps'],
             $promoCodeACIService,
             $smsConfigurations,
-            $config['smsGatewayMe']
+            $config['smsGatewayMe'],
+            $config['semysms']
         );
     }
 }

@@ -16,5 +16,10 @@ return [
         'token' => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU0NTkxNzczNywiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjY1OTk2LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.aEdlXGcideFh6GKRPHClHKDnbqzIhJ5F_x7UpwXWHU4",
         'deviceId' => 107331,
         'wait' => 10 //seconds
+    ],
+    'semysms' => [
+        'token' => "766a60722395df62cbde54da6081c4f5",
+        'deviceId' => 103625,
+        'wait' => 10 //seconds
     ]
 ];

@@ -173,6 +173,10 @@ class UserController extends AbstractActionController {
      */
     private $smsGatewayMe;
 
+    /**
+     * @var array
+     */
+    private $semysms;
 
     /**
      * @param Form $form1
@@ -190,6 +194,7 @@ class UserController extends AbstractActionController {
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param ForeignDriversLicenseService $foreignDriversLicenseService
      * @param PromoCodesACIService $promoCodeACIService
+     * @param array
      * @param array
      * @param array
      */
@@ -218,7 +223,8 @@ class UserController extends AbstractActionController {
         array $googleMapsConfig,
         PromoCodesACIService $promoCodeACIService,
         array $smsDbConfigurations,
-        array $smsGatewayMe
+        array $smsGatewayMe,
+        array $semysms
         ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
@@ -245,6 +251,7 @@ class UserController extends AbstractActionController {
         $this->promoCodeACIService = $promoCodeACIService;
         $this->smsDbConfigurations = $smsDbConfigurations;
         $this->smsGatewayMe = $smsGatewayMe;
+        $this->semysms = $semysms;
     }
 
     public function loginAction() {
@@ -549,10 +556,15 @@ class UserController extends AbstractActionController {
      */
     private function manageSendSms($dialCode, $mobile, $code) {
         if($this->smsDbConfigurations["smsgatewayme"] == "true") { //db table configurations
-            $smsGateway = $this->manageSmsGateway($dialCode, $mobile, $code);
+            $smsGateway = $this->manageSmsGateway($dialCode, $mobile, $code, "smsgatewayme");
 
             if (!is_null($smsGateway)) {
                 return $smsGateway;
+            }
+        } else if ($this->smsDbConfigurations["semysms"] == "true"){
+            $semysms = $this->manageSmsGateway($dialCode, $mobile, $code, "semysms");
+            if (!is_null($semysms)) {
+                return $semysms;
             }
         }
 
@@ -700,14 +712,28 @@ class UserController extends AbstractActionController {
      *
      * @return string|null
      */
-    private function manageSmsGateway($dialCode, $mobile, $code){
-        $id = $this->sendSmsGateway($dialCode, $mobile, $code);
-        if(!is_null($id)){
-            sleep($this->smsGatewayMe["wait"]);
-            $messageStatus = $this->getSMSGatewayStatus($id);
-            if (!is_null($messageStatus) && ($messageStatus == 'queued' || $messageStatus == 'sent')){
-                return "OK";
+    private function manageSmsGateway($dialCode, $mobile, $code, $type){
+        if($type == "smsgatewayme") {
+            $id = $this->sendSmsGateway($dialCode, $mobile, $code);
+            if (!is_null($id)) {
+                sleep($this->smsGatewayMe["wait"]);
+                $messageStatus = $this->getSMSGatewayStatus($id);
+                if (!is_null($messageStatus) && ($messageStatus == 'queued' || $messageStatus == 'sent')) {
+                    return "OK";
+                }
             }
+            return null;
+        }
+        if($type == "semysms") {
+            $id = $this->sendSemySMS($dialCode, $mobile, $code);
+            if (!is_null($id)) {
+                sleep($this->semysms["wait"]);
+                $messageStatus = $this->getSemySMSStatus($id);
+                if (!is_null($messageStatus) && ($messageStatus["is_send_to_phone"] == true || $messageStatus["is_send"] == true) && ($messageStatus["is_error"] == 0 || $messageStatus["is_error_send"] == 0 )) {
+                    return "OK";
+                }
+            }
+            return null;
         }
         return null;
     }
@@ -767,6 +793,86 @@ class UserController extends AbstractActionController {
         }
     }
 
+    private function sendSemySMS($dial, $phone, $msg){
+
+        $url = "https://semysms.net/api/3/sms.php"; //Url address for sending SMS
+        $phone = "+" . $dial . $phone;
+        $device = $this->semysms["deviceId"];  //  Device code
+        $token = $this->semysms["token"];  //  Your token (secret)
+
+        $data = array(
+            "phone" => $phone,
+            "msg" => "Sharengo - " . $this->smsConfig['text'] . $msg,
+            "device" => $device,
+            "token" => $token
+        );
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        try {
+            $output = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+
+            if($err){
+                return null;
+            }
+
+            $json = json_decode($output, true);
+            if(isset($json["id"])){
+                return $json["id"];
+            } else {
+                return null;
+            }
+
+        } catch (\Exception $e){
+            return null;
+        }
+    }
+
+    private function getSemySMSStatus($id){
+
+        $url = "https://semysms.net/api/3/outbox_sms.php?token=".$this->semysms["token"]."&device=".$this->semysms["deviceId"]."&start_id=".$id."&end_id=".$id;
+
+        echo $url;
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache"
+            ),
+        ));
+        try {
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+                return null;
+            } else {
+                $array = json_decode($response, true);
+
+                if (isset($array["data"][0]["is_send_to_phone"]) && isset($array["data"][0]["is_send"])){
+                    return $array["data"][0];
+                }
+            }
+        } catch (\Exception $e){
+            return null;
+        }
+    }
 
 
     /**
