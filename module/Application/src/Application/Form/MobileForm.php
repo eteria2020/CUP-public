@@ -23,6 +23,11 @@ class MobileForm extends Form implements InputFilterProviderInterface
      */
     private $translator;
 
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
     public function __construct(
         Translator $translator,
         AuthenticationService $userService,
@@ -31,7 +36,7 @@ class MobileForm extends Form implements InputFilterProviderInterface
     ) {
         $this->translator = $translator;
         $this->userService = $userService;
-        //$this->entityManager = $entityManager;
+        $this->entityManager = $entityManager;
 
         $this->setHydrator($hydrator);
         $this->setObject(new Customers());
