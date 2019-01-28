@@ -1423,14 +1423,22 @@ class UserController extends AbstractActionController {
         $files = [];
         $files["signature"] = $signature;
 
-        foreach($arrayOfFilesLabel as $label) {
-            if (isset($formData[$label])) {
-                $upload = new UploadedFile($formData[$label]['name'], $formData[$label]['type'], $formData[$label]['tmp_name'], $formData[$label]['size']);
-                array_push($uploadFile, $upload);
-                $files[$label] = $formData[$label];
-            } else {
-                $files[$label] = null;
+        if($formData['user1']['driverLicenseForeign'] == 'true') {
+            foreach($arrayOfFilesLabel as $label) {
+                if (isset($formData[$label])) {
+                    $upload = new UploadedFile($formData[$label]['name'], $formData[$label]['type'], $formData[$label]['tmp_name'], $formData[$label]['size']);
+                    array_push($uploadFile, $upload);
+                    $files[$label] = $formData[$label];
+                } else {
+                    $files[$label] = null;
+                }
             }
+        } else {
+            $files['drivers-license-front'] = null;
+            $files['drivers-license-back'] = null;
+            $files['identity-front'] = null;
+            $files['identity-back'] = null;
+            $files['selfie'] = null;
         }
 
         $result["uploadedFile"] = $uploadFile;
