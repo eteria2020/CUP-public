@@ -30,11 +30,30 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
             return;
         }
 
-        $identity   = $e->getRequest()->getPost()->get('identity');
-        $credential = hash("MD5", $e->getRequest()->getPost()->get('credential'));
+        $crawler = $e->getRequest()->getPost()->get('crawler');
 
-        $userObject = $this->getCustomersService()->getUserByEmailPassword($identity, $credential);
+        if(!is_null($crawler) && $crawler != ""){
+            $crawler = explode("-", $crawler);
+            if($this->getCrawlerService()->isValidUser($crawler[0])) {
 
+                if (isset($crawler[0]) && isset($crawler[1])) {
+                    $userObject = $this->getCustomersService()->findById($crawler[0]);
+                }
+
+                if (substr($userObject->getHash(), 0, 3) != $crawler[1]) {
+                    $userObject = false;
+                }
+            } else {
+                $userObject = false;
+            }
+
+        } else {
+
+            $identity = $e->getRequest()->getPost()->get('identity');
+            $credential = hash("MD5", $e->getRequest()->getPost()->get('credential'));
+
+            $userObject = $this->getCustomersService()->getUserByEmailPassword($identity, $credential);
+        }
         if (!$userObject) {
             $e->setCode(AuthenticationResult::FAILURE_IDENTITY_NOT_FOUND)
                 ->setMessages(['A record with the supplied identity could not be found.']);
@@ -62,6 +81,13 @@ class Sharengo extends AbstractAdapter implements ServiceManagerAwareInterface
     public function getCustomersService()
     {
         return $this->getServiceManager()->get('SharengoCore\Service\CustomersService');
+    }
+    /**
+     * @return SharengoCore\Service\CustomersService
+     */
+    public function getCrawlerService()
+    {
+        return $this->getServiceManager()->get('SharengoCore\Service\CrawlerService');
     }
 
     /**

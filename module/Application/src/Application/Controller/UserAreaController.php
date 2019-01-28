@@ -216,10 +216,10 @@ class UserAreaController extends AbstractActionController {
     {
         $this->redirectFromLogin();
         //if there is mobile param the layout changes
-        $mobile = substr($this->getRequest()->getUriString(), -6);
+        $mobile = $this->getRequest()->getUriString();
         $userAreaMobile = '';
         $mobileParam = NULL;
-        if ($mobile == 'mobile') {
+        if (strpos($mobile, 'mobile') !== false) {
             $this->layout('layout/map');
             $mobileParam = 'mobile';
             $userAreaMobile = '/' . $mobileParam;
