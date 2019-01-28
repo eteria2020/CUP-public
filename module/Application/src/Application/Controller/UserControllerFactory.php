@@ -17,6 +17,7 @@ class UserControllerfactory implements FactoryInterface
         $form2 = $serviceLocator->getServiceLocator()->get('RegistrationForm2');
         $newForm = $serviceLocator->getServiceLocator()->get('NewRegistrationForm');
         $newForm2 = $serviceLocator->getServiceLocator()->get('NewRegistrationForm2');
+        $formSK2 = $serviceLocator->getServiceLocator()->get('SignupSK2Form');
         $optionalForm = $serviceLocator->getServiceLocator()->get('OptionalRegistrationForm');
         $registrationService = $serviceLocator->getServiceLocator()->get('RegistrationService');
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
@@ -30,16 +31,13 @@ class UserControllerfactory implements FactoryInterface
         $translationService = $serviceLocator->getServiceLocator()->get('Translator');
         $entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
-        //$sharedLocator = $serviceLocator->getServiceLocator();
         $config = $serviceLocator->getServiceLocator()->get('Config');
+        $configurationService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ConfigurationsService');
         $emailService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\EmailService');
         $fleetService = $serviceLocator->getServiceLocator()->get('\SharengoCore\Service\FleetService');
         $tripService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\TripsService');
         $foreignDriversLicenseService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ForeignDriversLicenseService');
         $promoCodeACIService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PromoCodesACIService');
-
-        $configurationService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\ConfigurationsService');
-        $smsConfigurations = $configurationService->getConfigurationsKeyValueBySlug(Configurations::SMS);
 
 
         return new UserController(
@@ -47,6 +45,7 @@ class UserControllerfactory implements FactoryInterface
             $form2,
             $newForm,
             $newForm2,
+            $formSK2,
             $optionalForm,
             $registrationService,
             $customerService,
@@ -56,7 +55,8 @@ class UserControllerfactory implements FactoryInterface
             $profilingPlatformService,
             $translationService,
             $hydrator,
-            $config['sms'],
+            $config,
+            $configurationService,
             $emailService,
             $fleetService,
             $tripService,
@@ -64,10 +64,7 @@ class UserControllerfactory implements FactoryInterface
             $promoCodesOnceService,
             $promoCodesMemberGetMemberService,
             $foreignDriversLicenseService,
-            $config['googleMaps'],
-            $promoCodeACIService,
-            $smsConfigurations,
-            $config['smsGatewayMe']
+            $promoCodeACIService
         );
     }
 }

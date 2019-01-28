@@ -12,8 +12,7 @@ class NewRegistrationForm2Factory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     *
-     * @return \Application\Form\RegistrationForm2
+     * @return NewRegistrationForm2|mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
