@@ -204,6 +204,20 @@ return [
                     ],
                 ]
             ],
+            'crawler' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{k}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'crawler',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                    ],
+                ]
+            ],
             'banner' => [
                 'type' => 'Segment',
                 'options' => [

@@ -25,6 +25,7 @@ use SharengoCore\Service\PaymentScriptRunsService;
 use SharengoCore\Entity\Customers;
 use Cartasi\Service\CartasiContractsService;
 use Cartasi\Entity\Contracts;
+use SharengoCore\Service\CrawlerService;
 
 // Externals
 use Zend\Http\Response;
@@ -373,9 +374,6 @@ class IndexController extends AbstractActionController
         if(!$customer instanceof Customers) {
             return $this->notFoundAction();
         }
-        if (!$customer->getEnabled()){
-            return $this->notFoundAction();
-        }
 
         $contract = $this->cartasiContractsService->getCartasiContract($customer);
 
@@ -495,5 +493,52 @@ class IndexController extends AbstractActionController
         return $this->getResponse();
     }
 
+    function crawlerAction(){
 
+        $userId = $this->params()->fromRoute('userId');
+        $userId = explode("-", $userId);
+        $clawlerService = new CrawlerService();
+        $redirect = false;
+        $call = false;
+        $customer = null;
+        //if we also have hash we redirect to the crawler login page
+        if(isset($userId[1])){
+            //REGISTRATION_NOT_COMPLETED
+            //INVALID_DRIVERS_LICENSE
+            //EXPIRED_DRIVERS_LICENSE
+            $redirect = true;
+        } else if(isset($userId[0]) && is_numeric($userId[0])){
+            $response = $clawlerService->getCustomerInformation($userId[0]);
+
+            if(is_array($response) && isset($response["data"][0]["status"])){
+                switch($response["data"][0]["status"]){
+                    case "DISABLED_BY_WEBUSER":
+                        $customer = $this->customerService->findById($userId[0]);
+                        $call = true;
+                        break;
+                    case "MISSING_CREDIT_CARD":
+                    case "EXPIRED_CREDIT_CARD":
+                        return $this->redirect()->toUrl($this->url()->fromRoute('expiredCreditCard', ['userId' => $userId[0]]));
+                        break;
+                    case "FIRST_PAYMENT_NOT_COMPLETED":
+                        return $this->redirect()->toUrl($this->url()->fromRoute('registrationCompleted', ['userId' => $userId[0]]));
+                        break;
+                    case "FAILED_PAYMENT":
+                    case "FAILED_EXTRA_PAYMENT":
+                        return $this->redirect()->toUrl($this->url()->fromRoute('outstandingPayments', ['userId' => $userId[0]]));
+                        break;
+                }
+            }else{
+                return $this->notFoundAction();
+            }
+
+        }
+
+        return new ViewModel([
+            "redirect" => $redirect,
+            "customer" => $customer,
+            "call" => $call,
+            "token" => $userId,
+        ]);
+    }
 }
