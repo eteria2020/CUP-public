@@ -1,0 +1,711 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-it.js'))
+    ->appendFile($this->basePath('js/signupSK.js?v=4.2'));
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
+//$this->inlineScript()
+//    ->appendFile($this->basePath('js/driver-license-popup.js'));
+$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'CompleteRegistration\');</script>');
+$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/wYOdCOz65lwQ7aXWxgM\'});</script>');
+
+?>
+
+<script>
+    var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>"
+</script>
+
+<style>
+    .sub{
+        font-size: 18px;
+    }
+    @media only screen and (max-width: 767px){
+        .sub {
+            font-size: 13px;
+
+        }
+    }
+</style>
+<div class="module-section-bookmark yellow content-align-center">
+    <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
+    <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
+        <p>
+            <b><?= $this->translate('21 minuti a soli 5&euro;') ?></b><br>
+            <?= $this->translate('e guidi subito la tua Sharengo!') ?>
+        </p>
+    </div>
+</div>
+
+<div class="module-main-subtitle content-align-center">
+    <p><?= $this->translate('Benvenuto') ?> <?= $this->email ?><br>
+        <?= $this->translate('Pochi istanti per completare il tuo profilo') ?></p>
+</div>
+
+<!-- main -->
+<div id="main">
+
+    <!-- module-wizard -->
+    <div class="module-wizard clearfix">
+        <ul>
+            <li class="active">1</i></li>
+            <li>2</li>
+            <li class="last"><i class="icon-auto"></i></li>
+        </ul>
+    </div>
+    <!-- module-wizard -->
+
+    <!-- content -->
+    <div class="content">
+
+        <!-- block-form -->
+        <div class="block-form w-3-4 auto-margin clearfix">
+
+            <?php
+            $this->form->prepare();
+            echo $this->form()->openTag($this->form);
+            ?>
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-4">
+                    <p>
+                        <label><?= $this->translate('Titolo'); ?></label>
+                        <select name="user1[gender]" id="gender" class="required">
+                            <option value="male" selected><?= $this->translate('Sig.'); ?></option>
+                            <option value="female"><?= $this->translate('Sig.ra'); ?></option>
+                        </select>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Nome'); ?></label>
+                        <?php
+                        $name = $this->form->get('user1')->get('name');
+                        echo $this->formElement($name);
+                        echo $this->formElementErrors($name, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Cognome'); ?></label>
+                        <?php
+                        $surname = $this->form->get('user1')->get('surname');
+                        echo $this->formElement($surname);
+                        echo $this->formElementErrors($surname, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Citt&agrave; residenza'); ?></label>
+                        <?php
+                        $town = $this->form->get('user1')->get('town');
+                        echo $this->formElement($town);
+                        echo $this->formElementErrors($town, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
+                        <?php
+                        $address = $this->form->get('user1')->get('address');
+                        echo $this->formElement($address);
+                        echo $this->formElementErrors($address, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('N. civico'); ?></label>
+                        <?php
+                        $address = $this->form->get('user1')->get('civico');
+                        echo $this->formElement($address);
+                        echo $this->formElementErrors($address, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Cap'); ?></label><br/>
+                        <?php
+                        $zipCode = $this->form->get('user1')->get('zipCode');
+                        echo $this->formElement($zipCode);
+                        echo $this->formElementErrors($zipCode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Data di nascita'); ?></label>
+                        <?php
+                        $birthDate = $this->form->get('user1')->get('birthDate');
+                        echo $this->formElement($birthDate);
+                        echo $this->formElementErrors($birthDate, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Stato di nascita'); ?></label>
+                        <?php
+                        $birthCountry = $this->form->get('user1')->get('birthCountry');
+                        echo $this->formElement($birthCountry);
+                        echo $this->formElementErrors($birthCountry, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
+                        <?php
+                        $birthProvince = $this->form->get('user1')->get('birthProvince');
+                        echo $this->formElement($birthProvince);
+                        echo $this->formElementErrors($birthProvince, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Comune di nascita'); ?></label>
+                        <?php
+                        $birthTown = $this->form->get('user1')->get('birthTown');
+                        $select = '<select name="' . $birthTown->getName() . '" ';
+                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                            $select .= $attribute . '="' . $value . '" ';
+                        }
+                        $select .= '><option></option></select>';
+                        echo $select;
+                        $birthTown2 = $this->form->get('user1')->get('birthTown');
+                        $input = '<input name="' . $birthTown2->getName() . '" ';
+                        foreach ($birthTown2->getAttributes() as $attribute => $value) {
+                            $input .= $attribute . '="'.$value .'" ';
+                        }
+                        $input .= ' style="display: none;" value="' . $birthTown2->getValue() . '" disabled></ipnut>';
+                        echo $input;
+                        echo $this->formElementErrors($birthTown, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-4-4 last ">
+                    <div class="block-field bw-f w-2-4">
+                        <label><?= $this->translate('Prefisso'); ?></label>
+                        <select name="user1[dialCode]" id="dialCode">
+                            <option data-countryCode="SK" value="421" selected><?= $this->translate('Slovacchia')?> (+421)</option>
+                            <option disabled="disabled">----------</option>
+                            <option data-countryCode="AT" value="43"><?= $this->translate('Austria')?> (+43)</option>
+                            <option data-countryCode="BE" value="32"><?= $this->translate('Belgium')?> (+32)</option>
+                            <option data-countryCode="BG" value="359"><?= $this->translate('Bulgaria')?> (+359)</option>
+                            <option data-countryCode="HR" value="385"><?= $this->translate('Croatia')?> (+385)</option>
+                            <option data-countryCode="CY" value="90"><?= $this->translate('Cyprus - North')?> (+90)</option>
+                            <option data-countryCode="CY" value="357"><?= $this->translate('Cyprus - South')?> (+357)</option>
+                            <option data-countryCode="CZ" value="420"><?= $this->translate('Czech Republic')?> (+420)</option>
+                            <option data-countryCode="DK" value="45"><?= $this->translate('Denmark')?> (+45)</option>
+                            <option data-countryCode="EE" value="372"><?= $this->translate('Estonia')?> (+372)</option>
+                            <option data-countryCode="FI" value="358"><?= $this->translate('Finland')?> (+358)</option>
+                            <option data-countryCode="FR" value="33"><?= $this->translate('France')?> (+33)</option>
+                            <option data-countryCode="DE" value="49"><?= $this->translate('Germany')?> (+49)</option>
+                            <option data-countryCode="GR" value="30"><?= $this->translate('Greece')?> (+30)</option>
+                            <option data-countryCode="HU" value="36"><?= $this->translate('Hungary')?> (+36)</option>
+                            <option data-countryCode="IE" value="353"><?= $this->translate('Ireland')?> (+353)</option>
+                            <option data-countryCode="IT" value="39"><?= $this->translate('Italia')?> (+39)</option>
+                            <option data-countryCode="LV" value="371"><?= $this->translate('Latvia')?> (+371)</option>
+                            <option data-countryCode="LI" value="417"><?= $this->translate('Liechtenstein')?> (+417)</option>
+                            <option data-countryCode="LT" value="370"><?= $this->translate('Lithuania')?> (+370)</option>
+                            <option data-countryCode="LU" value="352"><?= $this->translate('Luxembourg')?> (+352)</option>
+                            <option data-countryCode="MT" value="356"><?= $this->translate('Malta')?> (+356)</option>
+                            <option data-countryCode="MC" value="377"><?= $this->translate('Monaco')?> (+377)</option>
+                            <option data-countryCode="NL" value="31"><?= $this->translate('Netherlands')?> (+31)</option>
+                            <option data-countryCode="PL" value="48"><?= $this->translate('Poland')?> (+48)</option>
+                            <option data-countryCode="PT" value="351"><?= $this->translate('Portugal')?> (+351)</option>
+                            <option data-countryCode="RO" value="40"><?= $this->translate('Romania')?> (+40)</option>
+                            <option data-countryCode="RU" value="7"><?= $this->translate('Russia')?> (+7)</option>
+                            <option data-countryCode="SM" value="378"><?= $this->translate('San Marino')?> (+378)</option>
+
+                            <option data-countryCode="SI" value="386"><?= $this->translate('Slovenia')?> (+386)</option>
+                            <option data-countryCode="ES" value="34"><?= $this->translate('Spain')?> (+34)</option>
+                            <option data-countryCode="SE" value="46"><?= $this->translate('Sweden')?> (+46)</option>
+                            <option data-countryCode="CH" value="41"><?= $this->translate('Switzerland')?> (+41)</option>
+                            <option data-countryCode="GB" value="44"><?= $this->translate('UK')?> (+44)</option>
+                            <option data-countryCode="VA" value="379"><?= $this->translate('Vatican City')?> (+379)</option>
+                            <option disabled="disabled">Other Countries</option>
+                            <option data-countryCode="DZ" value="213"><?= $this->translate('Algeria')?> (+213)</option>
+                            <option data-countryCode="AD" value="376"><?= $this->translate('Andorra')?> (+376)</option>
+                            <option data-countryCode="AO" value="244"><?= $this->translate('Angola')?> (+244)</option>
+                            <option data-countryCode="AI" value="1264"><?= $this->translate('Anguilla')?> (+1264)</option>
+                            <option data-countryCode="AG" value="1268"><?= $this->translate('Antigua &amp; Barbuda')?> (+1268)</option>
+                            <option data-countryCode="AR" value="54"><?= $this->translate('Argentina')?> (+54)</option>
+                            <option data-countryCode="AM" value="374"><?= $this->translate('Armenia')?> (+374)</option>
+                            <option data-countryCode="AW" value="297"><?= $this->translate('Aruba')?> (+297)</option>
+                            <option data-countryCode="AU" value="61"><?= $this->translate('Australia')?> (+61)</option>
+                            <option data-countryCode="AZ" value="994"><?= $this->translate('Azerbaijan')?> (+994)</option>
+                            <option data-countryCode="BS" value="1242"><?= $this->translate('Bahamas')?> (+1242)</option>
+                            <option data-countryCode="BH" value="973"><?= $this->translate('Bahrain')?> (+973)</option>
+                            <option data-countryCode="BD" value="880"><?= $this->translate('Bangladesh')?> (+880)</option>
+                            <option data-countryCode="BB" value="1246"><?= $this->translate('Barbados')?> (+1246)</option>
+                            <option data-countryCode="BY" value="375"><?= $this->translate('Belarus')?> (+375)</option>
+                            <option data-countryCode="BZ" value="501"><?= $this->translate('Belize')?> (+501)</option>
+                            <option data-countryCode="BJ" value="229"><?= $this->translate('Benin')?> (+229)</option>
+                            <option data-countryCode="BM" value="1441"><?= $this->translate('Bermuda')?> (+1441)</option>
+                            <option data-countryCode="BT" value="975"><?= $this->translate('Bhutan')?> (+975)</option>
+                            <option data-countryCode="BO" value="591"><?= $this->translate('Bolivia')?> (+591)</option>
+                            <option data-countryCode="BA" value="387"><?= $this->translate('Bosnia Herzegovina')?> (+387)</option>
+                            <option data-countryCode="BW" value="267"><?= $this->translate('Botswana')?> (+267)</option>
+                            <option data-countryCode="BR" value="55"><?= $this->translate('Brazil')?> (+55)</option>
+                            <option data-countryCode="BN" value="673"><?= $this->translate('Brunei')?> (+673)</option>
+                            <option data-countryCode="BF" value="226"><?= $this->translate('Burkina Faso')?> (+226)</option>
+                            <option data-countryCode="BI" value="257"><?= $this->translate('Burundi')?> (+257)</option>
+                            <option data-countryCode="KH" value="855"><?= $this->translate('Cambodia')?> (+855)</option>
+                            <option data-countryCode="CM" value="237"><?= $this->translate('Cameroon')?> (+237)</option>
+                            <option data-countryCode="CA" value="1"><?= $this->translate('Canada')?> (+1)</option>
+                            <option data-countryCode="CV" value="238"><?= $this->translate('Cape Verde Islands')?> (+238)</option>
+                            <option data-countryCode="KY" value="1345"><?= $this->translate('Cayman Islands')?> (+1345)</option>
+                            <option data-countryCode="CF" value="236"><?= $this->translate('Central African Republic')?> (+236)</option>
+                            <option data-countryCode="CL" value="56"><?= $this->translate('Chile')?> (+56)</option>
+                            <option data-countryCode="CN" value="86"><?= $this->translate('China')?> (+86)</option>
+                            <option data-countryCode="CO" value="57"><?= $this->translate('Colombia')?> (+57)</option>
+                            <option data-countryCode="KM" value="269"><?= $this->translate('Comoros')?> (+269)</option>
+                            <option data-countryCode="CG" value="242"><?= $this->translate('Congo')?> (+242)</option>
+                            <option data-countryCode="CK" value="682"><?= $this->translate('Cook Islands')?> (+682)</option>
+                            <option data-countryCode="CR" value="506"><?= $this->translate('Costa Rica')?> (+506)</option>
+                            <!-- <option data-countryCode="CU" value="53"><?= $this->translate('Cuba')?> (+53)</option> -->
+                            <option data-countryCode="DJ" value="253"><?= $this->translate('Djibouti')?> (+253)</option>
+                            <option data-countryCode="DM" value="1809"><?= $this->translate('Dominica')?> (+1809)</option>
+                            <option data-countryCode="DO" value="1809"><?= $this->translate('Dominican Republic')?> (+1809)</option>
+                            <option data-countryCode="EC" value="593"><?= $this->translate('Ecuador')?> (+593)</option>
+                            <option data-countryCode="EG" value="20"><?= $this->translate('Egypt')?> (+20)</option>
+                            <option data-countryCode="SV" value="503"><?= $this->translate('El Salvador')?> (+503)</option>
+                            <option data-countryCode="GQ" value="240"><?= $this->translate('Equatorial Guinea')?> (+240)</option>
+                            <option data-countryCode="ER" value="291"><?= $this->translate('Eritrea')?> (+291)</option>
+                            <option data-countryCode="ET" value="251"><?= $this->translate('Ethiopia')?> (+251)</option>
+                            <option data-countryCode="FK" value="500"><?= $this->translate('Falkland Islands')?> (+500)</option>
+                            <option data-countryCode="FO" value="298"><?= $this->translate('Faroe Islands')?> (+298)</option>
+                            <option data-countryCode="FJ" value="679"><?= $this->translate('Fiji')?> (+679)</option>
+                            <option data-countryCode="GF" value="594"><?= $this->translate('French Guiana')?> (+594)</option>
+                            <option data-countryCode="PF" value="689"><?= $this->translate('French Polynesia')?> (+689)</option>
+                            <option data-countryCode="GA" value="241"><?= $this->translate('Gabon')?> (+241)</option>
+                            <option data-countryCode="GM" value="220"><?= $this->translate('Gambia')?> (+220)</option>
+                            <option data-countryCode="GE" value="7880"><?= $this->translate('Georgia')?> (+7880)</option>
+                            <option data-countryCode="GH" value="233"><?= $this->translate('Ghana')?> (+233)</option>
+                            <option data-countryCode="GI" value="350"><?= $this->translate('Gibraltar')?> (+350)</option>
+                            <option data-countryCode="GL" value="299"><?= $this->translate('Greenland')?> (+299)</option>
+                            <option data-countryCode="GD" value="1473"><?= $this->translate('Grenada')?> (+1473)</option>
+                            <option data-countryCode="GP" value="590"><?= $this->translate('Guadeloupe')?> (+590)</option>
+                            <option data-countryCode="GU" value="671"><?= $this->translate('Guam')?> (+671)</option>
+                            <option data-countryCode="GT" value="502"><?= $this->translate('Guatemala')?> (+502)</option>
+                            <option data-countryCode="GN" value="224"><?= $this->translate('Guinea')?> (+224)</option>
+                            <option data-countryCode="GW" value="245"><?= $this->translate('Guinea - Bissau')?> (+245)</option>
+                            <option data-countryCode="GY" value="592"><?= $this->translate('Guyana')?> (+592)</option>
+                            <option data-countryCode="HT" value="509"><?= $this->translate('Haiti')?> (+509)</option>
+                            <option data-countryCode="HN" value="504"><?= $this->translate('Honduras')?> (+504)</option>
+                            <option data-countryCode="HK" value="852"><?= $this->translate('Hong Kong')?> (+852)</option>
+                            <option data-countryCode="IS" value="354"><?= $this->translate('Iceland')?> (+354)</option>
+                            <option data-countryCode="IN" value="91"><?= $this->translate('India')?> (+91)</option>
+                            <option data-countryCode="ID" value="62"><?= $this->translate('Indonesia')?> (+62)</option>
+                            <option data-countryCode="IQ" value="964"><?= $this->translate('Iraq')?> (+964)</option>
+                            <!-- <option data-countryCode="IR" value="98"><?= $this->translate('Iran')?> (+98)</option> -->
+                            <option data-countryCode="IL" value="972"><?= $this->translate('Israel')?> (+972)</option>
+                            <option data-countryCode="JM" value="1876"><?= $this->translate('Jamaica')?> (+1876)</option>
+                            <option data-countryCode="JP" value="81"><?= $this->translate('Japan')?> (+81)</option>
+                            <option data-countryCode="JO" value="962"><?= $this->translate('Jordan')?> (+962)</option>
+                            <option data-countryCode="KZ" value="7"><?= $this->translate('Kazakhstan')?> (+7)</option>
+                            <option data-countryCode="KE" value="254"><?= $this->translate('Kenya')?> (+254)</option>
+                            <option data-countryCode="KI" value="686"><?= $this->translate('Kiribati')?> (+686)</option>
+                            <!-- <option data-countryCode="KP" value="850"><?= $this->translate('Korea - North')?> (+850)</option> -->
+                            <option data-countryCode="KR" value="82"><?= $this->translate('Korea - South')?> (+82)</option>
+                            <option data-countryCode="KW" value="965"><?= $this->translate('Kuwait')?> (+965)</option>
+                            <option data-countryCode="KG" value="996"><?= $this->translate('Kyrgyzstan')?> (+996)</option>
+                            <option data-countryCode="LA" value="856"><?= $this->translate('Laos')?> (+856)</option>
+                            <option data-countryCode="LB" value="961"><?= $this->translate('Lebanon')?> (+961)</option>
+                            <option data-countryCode="LS" value="266"><?= $this->translate('Lesotho')?> (+266)</option>
+                            <option data-countryCode="LR" value="231"><?= $this->translate('Liberia')?> (+231)</option>
+                            <option data-countryCode="LY" value="218"><?= $this->translate('Libya')?> (+218)</option>
+                            <option data-countryCode="MO" value="853"><?= $this->translate('Macao')?> (+853)</option>
+                            <option data-countryCode="MK" value="389"><?= $this->translate('Macedonia')?> (+389)</option>
+                            <option data-countryCode="MG" value="261"><?= $this->translate('Madagascar')?> (+261)</option>
+                            <option data-countryCode="MW" value="265"><?= $this->translate('Malawi')?> (+265)</option>
+                            <option data-countryCode="MY" value="60"><?= $this->translate('Malaysia')?> (+60)</option>
+                            <option data-countryCode="MV" value="960"><?= $this->translate('Maldives')?> (+960)</option>
+                            <option data-countryCode="ML" value="223"><?= $this->translate('Mali')?> (+223)</option>
+                            <option data-countryCode="MH" value="692"><?= $this->translate('Marshall Islands')?> (+692)</option>
+                            <option data-countryCode="MQ" value="596"><?= $this->translate('Martinique')?> (+596)</option>
+                            <option data-countryCode="MR" value="222"><?= $this->translate('Mauritania')?> (+222)</option>
+                            <option data-countryCode="YT" value="269"><?= $this->translate('Mayotte')?> (+269)</option>
+                            <option data-countryCode="MX" value="52"><?= $this->translate('Mexico')?> (+52)</option>
+                            <option data-countryCode="FM" value="691"><?= $this->translate('Micronesia')?> (+691)</option>
+                            <option data-countryCode="MD" value="373"><?= $this->translate('Moldova')?> (+373)</option>
+                            <option data-countryCode="MN" value="976"><?= $this->translate('Mongolia')?> (+976)</option>
+                            <option data-countryCode="MS" value="1664"><?= $this->translate('Montserrat')?> (+1664)</option>
+                            <option data-countryCode="MA" value="212"><?= $this->translate('Morocco')?> (+212)</option>
+                            <option data-countryCode="MZ" value="258"><?= $this->translate('Mozambique')?> (+258)</option>
+                            <option data-countryCode="MN" value="95"><?= $this->translate('Myanmar')?> (+95)</option>
+                            <option data-countryCode="NA" value="264"><?= $this->translate('Namibia')?> (+264)</option>
+                            <option data-countryCode="NR" value="674"><?= $this->translate('Nauru')?> (+674)</option>
+                            <option data-countryCode="NP" value="977"><?= $this->translate('Nepal')?> (+977)</option>
+                            <option data-countryCode="NC" value="687"><?= $this->translate('New Caledonia')?> (+687)</option>
+                            <option data-countryCode="NZ" value="64"><?= $this->translate('New Zealand')?> (+64)</option>
+                            <option data-countryCode="NI" value="505"><?= $this->translate('Nicaragua')?> (+505)</option>
+                            <option data-countryCode="NE" value="227"><?= $this->translate('Niger')?> (+227)</option>
+                            <option data-countryCode="NG" value="234"><?= $this->translate('Nigeria')?> (+234)</option>
+                            <option data-countryCode="NU" value="683"><?= $this->translate('Niue')?> (+683)</option>
+                            <option data-countryCode="NF" value="672"><?= $this->translate('Norfolk Islands')?> (+672)</option>
+                            <option data-countryCode="NP" value="670"><?= $this->translate('Northern Marianas')?> (+670)</option>
+                            <option data-countryCode="NO" value="47"><?= $this->translate('Norway')?> (+47)</option>
+                            <option data-countryCode="OM" value="968"><?= $this->translate('Oman')?> (+968)</option>
+                            <option data-countryCode="PK" value="92"><?= $this->translate('Pakistan')?> (+92)</option>
+                            <option data-countryCode="PW" value="680"><?= $this->translate('Palau')?> (+680)</option>
+                            <option data-countryCode="PA" value="507"><?= $this->translate('Panama')?> (+507)</option>
+                            <option data-countryCode="PG" value="675"><?= $this->translate('Papua New Guinea')?> (+675)</option>
+                            <option data-countryCode="PY" value="595"><?= $this->translate('Paraguay')?> (+595)</option>
+                            <option data-countryCode="PE" value="51"><?= $this->translate('Peru')?> (+51)</option>
+                            <option data-countryCode="PH" value="63"><?= $this->translate('Philippines')?> (+63)</option>
+                            <option data-countryCode="PR" value="1787"><?= $this->translate('Puerto Rico')?> (+1787)</option>
+                            <option data-countryCode="QA" value="974"><?= $this->translate('Qatar')?> (+974)</option>
+                            <option data-countryCode="RE" value="262"><?= $this->translate('Reunion')?> (+262)</option>
+                            <option data-countryCode="RW" value="250"><?= $this->translate('Rwanda')?> (+250)</option>
+                            <option data-countryCode="ST" value="239"><?= $this->translate('Sao Tome &amp; Principe')?> (+239)</option>
+                            <option data-countryCode="SA" value="966"><?= $this->translate('Saudi Arabia')?> (+966)</option>
+                            <option data-countryCode="SN" value="221"><?= $this->translate('Senegal')?> (+221)</option>
+                            <option data-countryCode="CS" value="381"><?= $this->translate('Serbia')?> (+381)</option>
+                            <option data-countryCode="SC" value="248"><?= $this->translate('Seychelles')?> (+248)</option>
+                            <option data-countryCode="SL" value="232"><?= $this->translate('Sierra Leone')?> (+232)</option>
+                            <option data-countryCode="SG" value="65"><?= $this->translate('Singapore')?> (+65)</option>
+                            <option data-countryCode="SB" value="677"><?= $this->translate('Solomon Islands')?> (+677)</option>
+                            <option data-countryCode="SO" value="252"><?= $this->translate('Somalia')?> (+252)</option>
+                            <option data-countryCode="ZA" value="27"><?= $this->translate('South Africa')?> (+27)</option>
+                            <option data-countryCode="LK" value="94"><?= $this->translate('Sri Lanka')?> (+94)</option>
+                            <option data-countryCode="SH" value="290"><?= $this->translate('St. Helena')?> (+290)</option>
+                            <option data-countryCode="KN" value="1869"><?= $this->translate('St. Kitts')?> (+1869)</option>
+                            <option data-countryCode="SC" value="1758"><?= $this->translate('St. Lucia')?> (+1758)</option>
+                            <option data-countryCode="SR" value="597"><?= $this->translate('Suriname')?> (+597)</option>
+                            <option data-countryCode="SD" value="249"><?= $this->translate('Sudan')?> (+249)</option>
+                            <option data-countryCode="SZ" value="268"><?= $this->translate('Swaziland')?> (+268)</option>
+                            <!-- <option data-countryCode="SY" value="963"><?= $this->translate('Syria')?> (+963)</option> -->
+                            <option data-countryCode="TW" value="886"><?= $this->translate('Taiwan')?> (+886)</option>
+                            <option data-countryCode="TJ" value="992"><?= $this->translate('Tajikistan')?> (+992)</option>
+                            <option data-countryCode="TH" value="66"><?= $this->translate('Thailand')?> (+66)</option>
+                            <option data-countryCode="TG" value="228"><?= $this->translate('Togo')?> (+228)</option>
+                            <option data-countryCode="TO" value="676"><?= $this->translate('Tonga')?> (+676)</option>
+                            <option data-countryCode="TT" value="1868"><?= $this->translate('Trinidad &amp; Tobago')?> (+1868)</option>
+                            <option data-countryCode="TN" value="216"><?= $this->translate('Tunisia')?> (+216)</option>
+                            <option data-countryCode="TR" value="90"><?= $this->translate('Turkey')?> (+90)</option>
+                            <option data-countryCode="TM" value="993"><?= $this->translate('Turkmenistan')?> (+993)</option>
+                            <option data-countryCode="TC" value="1649"><?= $this->translate('Turks &amp; Caicos Islands')?> (+1649)</option>
+                            <option data-countryCode="TV" value="688"><?= $this->translate('Tuvalu')?> (+688)</option>
+                            <option data-countryCode="UG" value="256"><?= $this->translate('Uganda')?> (+256)</option>
+                            <option data-countryCode="UA" value="380"><?= $this->translate('Ukraine')?> (+380)</option>
+                            <option data-countryCode="AE" value="971"><?= $this->translate('United Arab Emirates')?> (+971)</option>
+                            <option data-countryCode="UY" value="598"><?= $this->translate('Uruguay')?> (+598)</option>
+                            <option data-countryCode="US" value="1"><?= $this->translate('USA')?> (+1)</option>
+                            <option data-countryCode="UZ" value="998"><?= $this->translate('Uzbekistan')?> (+998)</option>
+                            <option data-countryCode="VU" value="678"><?= $this->translate('Vanuatu')?> (+678)</option>
+                            <option data-countryCode="VE" value="58"><?= $this->translate('Venezuela')?> (+58)</option>
+                            <option data-countryCode="VN" value="84"><?= $this->translate('Vietnam')?> (+84)</option>
+                            <option data-countryCode="VG" value="1"><?= $this->translate('Virgin Islands - British')?> (+1)</option>
+                            <option data-countryCode="VI" value="1"><?= $this->translate('Virgin Islands - US')?> (+1)</option>
+                            <option data-countryCode="WF" value="681"><?= $this->translate('Wallis &amp; Futuna')?> (+681)</option>
+                            <option data-countryCode="YE" value="969"><?= $this->translate('Yemen')?> (North)(+969)</option>
+                            <option data-countryCode="YE" value="967"><?= $this->translate('Yemen')?> (South)(+967)</option>
+                            <option data-countryCode="ZM" value="260"><?= $this->translate('Zambia')?> (+260)</option>
+                            <option data-countryCode="ZW" value="263"><?= $this->translate('Zimbabwe')?> (+263)</option>
+
+                        </select>
+                    </div>
+                    <div class="block-field bw-f w-2-4 ">
+                        <p> <label><?= $this->translate('Cellulare'); ?></label>
+                            <?php
+                            $mobile = $this->form->get('user1')->get('mobile');
+                            echo $this->formElement($mobile);
+                            echo $this->formElementErrors($mobile, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Numero Identificativo'); ?></label>
+                        <?php
+                        $taxCode = $this->form->get('user1')->get('taxCode');
+                        echo $this->formElement($taxCode);
+                        echo $this->formElementErrors($taxCode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Numero patente'); ?></label>
+                        <a href=""><i class="fa fa-info-circle"></i></a>
+                        <?php
+                        $driverLicense = $this->form->get('user1')->get('driverLicense');
+                        echo $this->formElement($driverLicense);
+                        echo $this->formElementErrors($driverLicense, ['class' => 'errors']);
+                        ?>
+                    </p>
+                    <label class="small-form"><?= $this->translate('Assicurati che sia dell’ultima patente rilasciata.'); ?></label>
+                </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Data di scadenza patente'); ?></label>
+                        <?php
+                        $driverLicenseExpire = $this->form->get('user1')->get('driverLicenseExpire');
+                        echo $this->formElement($driverLicenseExpire);
+                        echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div id="driverLicenseUpload">
+                <div class="block-field auto-margin">
+                    <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"); ?><br><?= $this->translate("CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"); ?></div>
+                    <div style="font-weight: bold; text-align: center"><?= $this->translate("(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)") ?></div>
+                    <div class="message font">
+                        <?= $this->translate("Il sottoscritto") . ' ' .
+                        '<span id="fName"></span> <span id="fSurname"></span>' . ' '
+                        ?>,
+                        <?= $this->translate("consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di dichiarazioni mendaci, sanzioni penali previste dal Codice penale e dalle leggi speciali in materia ed espressamente richiamate dall'art. 76 del D.P.R. N. 445 DEL 28/12/2000, sotto la sua responsabilit&agrave"); ?>
+                        <br>
+
+                        <div style="font-weight: bold; text-align: center"><?= $this->translate("DICHIARA"); ?></div>
+                        <br>
+                        <?= $this->translate("di essere titolare di patente di guida in corso di validit&agrave "); ?> <?= "<span id='fDriverLicense'></span>"?>.
+                        <?= $this->translate("E altresì dichiara che suddetto documento di guida è valido, in relazione alle norme internazionali di circolazione (legate alla residenza del cittadino straniero su territorio italiano e alla durata della stessa), ai fini della guida sul territorio italiano.");?>
+                    </div>
+                    <br>
+                    <div>
+                        <?php
+                        $signature = $this->form->get('signature');
+                        echo $this->formElement($signature);
+                        ?>
+
+                        <label style="margin-right: 5px;"><?= $this->translate("Letto, confermato e sottoscritto"); ?></label>
+                        <?php echo $this->formElementErrors($signature, ['class' => 'errors']); ?>
+
+                    </div>
+                    <br>
+                    <div>
+                        Košice, <?= date("d.m.Y")?>
+                    </div>
+                    <br>
+                    <div style="font-size: 70%">
+                        <?= $this->translate("Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente dichiarazione sono relativi ad  informazioni strettamente necessarie al conseguimento di finalit&agrave previste dalle vigenti normative e sono trattati e custoditi esclusivamente dall'ufficio responsabile del procedimento."); ?>
+                    </div>
+                    <div style="font-size: 80%; font-weight: bold; text-decoration: underline;">
+                        <?= $this->translate("Esente da Autentica"); ?>
+                    </div>
+                    <br>
+                </div>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro"); ?></label><br><br>
+
+                <div style="visibility: hidden">
+                    <?php
+                    $driverLicenseForeign = $this->form->get('user1')->get('driverLicenseForeign');
+                    echo $this->formElement($driverLicenseForeign);
+                    //echo $this->formElementErrors(driverLicenseForeign, ['class' => 'errors']);
+                    ?>
+                </div>
+
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('fronte patente di guida'); ?></label>
+                            <?php $driverLicenseForeignUpload = $this->form->get('drivers-license-front'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('retro patente di guida'); ?></label>
+                            <?php $driverLicenseForeignBack = $this->form->get('drivers-license-back'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignBack);
+                            echo $this->formElementErrors($driverLicenseForeignBack, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('fronte carta di identità'); ?></label>
+                            <?php $identityFront = $this->form->get('identity-front'); ?>
+                            <?php echo $this->formFile($identityFront);
+                            echo $this->formElementErrors($identityFront, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('retro carta di identità'); ?></label>
+                            <?php $identityBack = $this->form->get('identity-back'); ?>
+                            <?php echo $this->formFile($identityBack);
+                            echo $this->formElementErrors($identityBack, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('foto dell\'utente (selfie)'); ?></label>
+                            <?php $selfie = $this->form->get('selfie'); ?>
+                            <?php echo $this->formFile($selfie);
+                            echo $this->formElementErrors($selfie, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="block-form w-4-4 auto-margin clearfix">
+                <div class="block-wrapper-button content-align-center">
+                    <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate('Continua'); ?>">
+                </div>
+            </div>
+            <!-- block-form -->
+
+        </div>
+        <!-- content -->
+
+    </div>
+    <!-- main -->
+    <!-- overlay -->
+    <!-- module-modal -->
+    <div class="module-modal" style="height: 3000px; display: none;">
+        <!-- modal-overlay -->
+        <div class="modal-overlay">
+            <!-- module-pop-up -->
+            <div class="module-pop-up" style="margin:350px auto;">
+
+                <a class="btn-close"><i class="fa fa-close"></i></a>
+
+                <!-- module-pop-up-content -->
+                <div class="module-pop-up-content">
+
+                    <!-- block-pop-up-generic-content -->
+                    <div class="block-pop-up-generic-content">
+                        <img src="<?= $this->basePath('images/patente-fac-simile.jpg'); ?>" alt="">
+                        <p>
+                            <?= $this->translate('5. Numero Patente'); ?>
+                        </p>
+                    </div>
+                    <!-- block-pop-up-generic-content -->
+
+                </div>
+                <!-- module-pop-up-content -->
+
+            </div>
+            <!-- module-pop-up -->
+        </div>
+        <!-- modal-overlay -->
+    </div>
+    <!-- module-modal -->
+
+    <?
+    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+    $this->inlineScript()->appendScript(
+        '$(document).ready(function() {
+            $( "#birthDate" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                maxDate: new Date(new Date().getFullYear(), 11, 31)
+            });
+
+            $( "#driverLicenseExpire" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "+0:+100",
+                minDate: new Date(new Date().getFullYear(), 0, 1)
+            });
+        });'
+    );
+    ?>
+    <script>
+
+        $('#driverLicenseUpload').show();
+        $('#driverLicenseForeign').prop("checked", true);
+
+        // $('#name').blur(function(){
+        //     $('#fName').text($('#name').val());
+        // });
+        //
+        // $('#surname').blur(function(){
+        //     $('#fSurname').text($('#surname').val());
+        // });
+        //
+        // $('#driverLicense').blur(function(){
+        //     $('#fDriverLicense').text('n. ' + $('#driverLicense').val());
+        // });
+
+        $(function() {
+            $('#registration-form-2').on('submit', function(e) {
+                $("#nextBtn").attr("disabled", true);
+                addLoader();
+            });
+        });
+
+        var addLoader = function() {
+            $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        };
+        var removeLoader = function() {
+            $("#outer > div.load-overlay").remove();
+        };
+
+        $(document).mouseup(function (e) {
+            var popup = $("#popup");
+            if (popup.has( e.target ).length == 0 && popup.css('visibility') === 'visible') {
+                closeChangeCard();
+            }
+        });
+
+    </script>
+    <script type="text/javascript">
+        // Criteo section
+        var email = "<?= $this->customerEmail;?>";
+        var fleet = parseInt(<?= $this->customerFleetId;?>);
+        var basket = [ { id: fleet, price: 1, quantity: 1 } ];
+        criteoTrackTransaction(email, basket);
+    </script>
+    <script async src="//onetag-sys.com/sync/a,63/2"></script>
+    <?php
+    if($this->customerFleetId == 1){
+        echo '
+        <!-- Adform Tracking Code BEGIN -->
+        <script type="text/javascript">
+            window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+            window._adftrack.push({
+                pm: 1171594,
+                divider: encodeURIComponent(\'|\'),
+                pagename: encodeURIComponent(\'RD-PIXEL_SharenGo_MILANO_TYP\'),
+                order : { 
+                     orderid: \'<insert order id value here>\'
+                }
+            });
+            (function () { var s = document.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'https://track.adform.net/serving/scripts/trackpoint/async/\'; var x = document.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); })();
+    
+        </script>
+        <noscript>
+            <p style="margin:0;padding:0;border:0;">
+                <img src="https://track.adform.net/Serving/TrackPoint/?pm=1171594&ADFPageName=RD-PIXEL_SharenGo_MILANO_TYP&ADFdivider=|" width="1" height="1" alt="" />
+            </p>
+        </noscript>
+        <!-- Adform Tracking Code END -->
+        <script src="https://secure.adnxs.com/px?id=993709&t=1" type="text/javascript"></script>';
+    }else if($this->customerFleetId == 3){
+        echo '<script src="https://secure.adnxs.com/px?id=993711&t=1" type="text/javascript"></script>';
+    }
+    ?>

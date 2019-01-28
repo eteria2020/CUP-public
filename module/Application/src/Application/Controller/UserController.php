@@ -3,40 +3,54 @@
 namespace Application\Controller;
 
 // External Modules
-use SharengoCore\Service\ForeignDriversLicenseService;
-use SharengoCore\Service\PromoCodesACIService;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+
+use Application\Form\SignupSK2Form;
 use Zend\Form\Form;
-use Zend\Session\Container;
+use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\I18n\Translator;
+use Zend\Session\Container;
 use Zend\Stdlib\Hydrator\HydratorInterface;
-use Zend\Stdlib\DateTime;
-use SharengoCore\Service\FleetService;
-// Internal Modules
-use Application\Service\RegistrationService;
+use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
+
+//use Zend\Stdlib\DateTime;
+
 use MvLabsMultilanguage\Service\LanguageService;
-use Application\Service\ProfilingPlaformService;
-use Application\Exception\ProfilingPlatformException;
-use Application\Form\RegistrationForm;
+
+use SharengoCode\Entity\Cards;
+use SharengoCore\Entity\Configurations;
+use SharengoCore\Entity\Customers;
+use SharengoCore\Entity\Fleet;
+use SharengoCore\Form\DTO\UploadedFile;
+use SharengoCore\Service\ConfigurationsService;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\CustomerNoteService;
-use SharengoCore\Service\UsersService;
+use SharengoCore\Service\EmailService as EmailService;
+use SharengoCore\Service\ForeignDriversLicenseService;
+use SharengoCore\Service\FleetService;
+use SharengoCore\Service\PromoCodesACIService;
 use SharengoCore\Service\PromoCodesService;
 use SharengoCore\Service\PromoCodesMemberGetMemberService;
 use SharengoCore\Service\PromoCodesOnceService;
-use SharengoCore\Entity\Customers;
-use SharengoCore\Entity\Fleet;
-use SharengoCode\Entity\Cards;
 use SharengoCore\Service\TripsService;
-use SharengoCore\Form\DTO\UploadedFile;
-use Zend\Log\Logger;
-use SharengoCore\Service\EmailService as EmailService;
-use Zend\View\Model\JsonModel;
+use SharengoCore\Service\UsersService;
+
+//use Zend\Log\Logger;
 use SMSGatewayMe\Client\ApiClient;
 use SMSGatewayMe\Client\Configuration;
 use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\Model\SendMessageRequest;
+
+// Internal Modules
+use Application\Exception\ProfilingPlatformException;
+use Application\Form\NewRegistrationForm;
+use Application\Form\NewRegistrationForm2;
+use Application\Form\OptionalRegistrationForm;
+use Application\Form\RegistrationForm;
+use Application\Form\RegistrationForm2;
+
+use Application\Service\RegistrationService;
+use Application\Service\ProfilingPlaformService;
 
 class UserController extends AbstractActionController {
 
@@ -44,27 +58,32 @@ class UserController extends AbstractActionController {
     private $smsVerification;
 
     /**
-     * @var \Zend\Form\Form
+     * @var \Application\Form\RegistrationForm
      */
     private $form1;
 
     /**
-     * @var \Zend\Form\Form
+     * @var \Application\Form\RegistrationForm2
      */
     private $form2;
 
     /**
-     * @var \Zend\Form\Form
+     * @var \Application\Form\NewRegistrationForm
      */
     private $newForm;
 
     /**
-     * @var \Zend\Form\Form
+     * @var \Application\Form\NewRegistrationForm2
      */
     private $newForm2;
 
     /**
-     * @var \Zend\Form\Form
+     * @var \Application\Form\SignupSK2Form
+     */
+    private $formSK2;
+
+    /**
+     * @var \Application\Form\OptionalRegistrationForm
      */
     private $optionalForm;
 
@@ -131,6 +150,15 @@ class UserController extends AbstractActionController {
     /**
      * @var array
      */
+    private $config;
+
+    /**
+     * @var ConfigurationsService
+     */
+    private $configurationsService;
+    /**
+     * @var array
+     */
     private $smsConfig;
 
     /**
@@ -173,32 +201,45 @@ class UserController extends AbstractActionController {
      */
     private $smsGatewayMe;
 
+    /**
+     * @var $serverInstance
+     */
+    private $serverInstance = "";
 
     /**
-     * @param Form $form1
-     * @param Form $form2
-     * @param Form $newForm
+     * UserController constructor.
+     * @param RegistrationForm $form1
+     * @param RegistrationForm2 $form2
+     * @param NewRegistrationForm $newForm
+     * @param NewRegistrationForm2 $newForm2
+     * @param SignupSK2Form $formSK2
+     * @param OptionalRegistrationForm $optionalForm
      * @param RegistrationService $registrationService
      * @param CustomersService $customersService
+     * @param CustomerNoteService $customerNoteService
+     * @param UsersService $usersService
      * @param LanguageService $languageService
      * @param ProfilingPlaformService $profilingPlatformService
      * @param Translator $translator
      * @param HydratorInterface $hydrator
+     * @param array $config
+     * @param ConfigurationsService $configurationsService
+     * @param EmailService $emailService
+     * @param FleetService $fleetService
      * @param TripsService $tripsService
      * @param PromoCodesService $promoCodeService
      * @param PromoCodesOnceService $promoCodesOnceService
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param ForeignDriversLicenseService $foreignDriversLicenseService
      * @param PromoCodesACIService $promoCodeACIService
-     * @param array
-     * @param array
      */
     public function __construct(
-        Form $form1,
-        Form $form2,
-        Form $newForm,
-        Form $newForm2,
-        Form $optionalForm,
+        RegistrationForm $form1,
+        RegistrationForm2 $form2,
+        NewRegistrationForm $newForm,
+        NewRegistrationForm2 $newForm2,
+        SignupSK2Form $formSK2,
+        OptionalRegistrationForm $optionalForm,
         RegistrationService $registrationService,
         CustomersService $customersService,
         CustomerNoteService $customerNoteService,
@@ -207,7 +248,8 @@ class UserController extends AbstractActionController {
         ProfilingPlaformService $profilingPlatformService,
         Translator $translator,
         HydratorInterface $hydrator,
-        array $smsConfig,
+        array $config,
+        ConfigurationsService $configurationsService,
         EmailService $emailService,
         FleetService $fleetService,
         TripsService $tripsService,
@@ -215,15 +257,13 @@ class UserController extends AbstractActionController {
         PromoCodesOnceService $promoCodesOnceService,
         PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService,
         ForeignDriversLicenseService $foreignDriversLicenseService,
-        array $googleMapsConfig,
-        PromoCodesACIService $promoCodeACIService,
-        array $smsDbConfigurations,
-        array $smsGatewayMe
-        ) {
+        PromoCodesACIService $promoCodeACIService
+    ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
         $this->newForm = $newForm;
         $this->newForm2 = $newForm2;
+        $this->formSK2 = $formSK2;
         $this->optionalForm = $optionalForm;
         $this->registrationService = $registrationService;
         $this->customersService = $customersService;
@@ -233,7 +273,8 @@ class UserController extends AbstractActionController {
         $this->profilingPlatformService = $profilingPlatformService;
         $this->translator = $translator;
         $this->hydrator = $hydrator;
-        $this->smsConfig = $smsConfig;
+        $this->config = $config;
+        $this->configurationsService = $configurationsService;
         $this->emailService = $emailService;
         $this->fleetService = $fleetService;
         $this->tripsService = $tripsService;
@@ -241,10 +282,16 @@ class UserController extends AbstractActionController {
         $this->promoCodesOnceService = $promoCodesOnceService;
         $this->promoCodesMemberGetMemberService = $promoCodesMemberGetMemberService;
         $this->foreignDriversLicenseService = $foreignDriversLicenseService;
-        $this->googleMapsConfig = $googleMapsConfig;
         $this->promoCodeACIService = $promoCodeACIService;
-        $this->smsDbConfigurations = $smsDbConfigurations;
-        $this->smsGatewayMe = $smsGatewayMe;
+
+        $this->smsConfig = $this->config['sms'];
+        $this->smsDbConfigurations = $this->configurationsService->getConfigurationsKeyValueBySlug(Configurations::SMS);
+        $this->googleMapsConfig = $this->config['googleMaps'];
+        $this->smsGatewayMe = $this->config['smsGatewayMe'];
+
+        if(isset($this->config['serverInstance'])) {
+            $this->serverInstance = $this->config['serverInstance'];
+        }
     }
 
     public function loginAction() {
@@ -1024,11 +1071,101 @@ class UserController extends AbstractActionController {
         }
     }
 
+    public function signupSK1Action() {
+        //if there are mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+
+        $customerSession = $this->registrationService->getSignupCustomerSession();
+        //error_log(var_dump($customerSession));
+        if(!is_null($customerSession) && !$this->registrationService->isRegistrationCompleted($customerSession)){
+            //return $this->redirect()->toRoute('signupSK2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile]);
+        }
+        //if there are data in session, we use them to populate the form
+        $registeredData = $this->newForm->getRegisteredData();
+
+        if (!empty($registeredData)) {
+            $this->newForm->setData([
+                'user' => $registeredData->toArray($this->hydrator)
+            ]);
+        }
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            $this->newForm->setData($formData);
+            if ($this->newForm->isValid()) {
+                return $this->signupSK1Conclude($this->newForm, $mobile);
+            } else {
+                return $this->newForm($this->newForm, $mobile);
+            }
+        } else {
+            return $this->newForm($this->newForm, $mobile);
+        }
+    }
+
+    public function signupSK2Action(){
+
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        $customerSession = $this->registrationService->getSignupCustomerSession();
+
+        /* redirect if session is empty */
+        if(empty($customerSession)){
+            return $this->redirect()->toRoute('signupSK1', ['mobile' => $mobile]);
+        }
+
+        if($this->registrationService->isRegistrationCompleted($customerSession)){
+            return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
+        }
+
+        $registeredData = $this->formSK2->getRegisteredData();
+
+        if (!empty($registeredData)) {
+            $this->formSK2->setData([
+                'user1' => $registeredData->toArray($this->hydrator)
+            ]);
+        }
+
+        if ($this->getRequest()->isPost()) {
+
+            $formData = array_merge_recursive(
+                $this->getRequest()->getPost()->toArray(),
+                $this->getRequest()->getFiles()->toArray()
+            );
+
+            $this->formSK2->setData($formData);
+            if ($this->formSK2->isValid()) {
+                return $this->signupSK2Conclude($formData, $customerSession, $this->handleForeignUploadFiles($formData), $mobile);
+            } else {
+                $email = '';
+                if ($customerSession instanceof Customers){
+                    $email = $customerSession->getEmail();
+                }
+                return $this->formSK2($this->formSK2, $email, $mobile);
+            }
+        } else {
+            $email = '';
+            if ($customerSession instanceof Customers){
+                $email = $customerSession->getEmail();
+            }
+            return $this->formSK2($this->formSK2, $email, $mobile);
+        }
+    }
+
     /* === NEW SIGNUP  === */
 
     public function newSignupAction() {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
+
+        if(isset($this->serverInstance["id"])) {
+            if($this->serverInstance["id"]=="sk_SK") {
+                return $this->redirect()->toRoute('signupSK1', ['mobile' => $mobile],['query' => ['lang' => 'sk_SK']]);
+            }
+        }
 
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
@@ -1057,6 +1194,7 @@ class UserController extends AbstractActionController {
             return $this->newForm($this->newForm, $mobile);
         }
     }
+
 
     private function newForm($newForm, $mobile) {
         if ($mobile) {
@@ -1102,6 +1240,42 @@ class UserController extends AbstractActionController {
         //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
         return $this->redirect()->toRoute('new-signup-2', ['mobile' => $mobile]);
     }
+
+    private function signupSK1Conclude($form, $mobile) {
+        $form->registerData();
+
+        $data = $this->registrationService->newRetrieveValidData();
+
+        // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
+        if (empty($data)) {
+            $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
+            $this->flashMessenger()->addErrorMessage($message);
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('signupSK1', ['mobile' => $mobile]);
+        }
+        $data = $this->registrationService->formatData1($data);
+
+        try {
+            $this->registrationService->notifySharengoByMail($data);
+            $customer = $this->registrationService->saveData1($data);
+            // $this->registrationService->sendEmail($data['email'], '', '', $data['hash'], $data['language']);
+            $this->registrationService->removeSessionData1();
+
+        } catch (\Exception $e) {
+            $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
+            //return $this->redirect()->toRoute('new-signup', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('signupSK1', ['mobile' => $mobile]);
+        }
+
+        $this->getEventManager()->trigger('firstFormCompleted', $this, $data);
+        $signupSession = new Container('newSignup');
+        $signupSession->offsetSet("customer", $customer);
+
+        return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile]);
+    }
+
+
+
 
     public function newSignup2Action(){
 
@@ -1191,26 +1365,78 @@ class UserController extends AbstractActionController {
         ]);
     }
 
+    private function formSK2($newForm2, $email, $mobile) {
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+
+        $customer = null;
+        $customerEmail = $email;
+
+        if($email != ''){
+            $customer = $this->customersService->findOneByEmail($email);
+            $email = explode('@', $email)[0] . '@';
+        }
+
+        $customerFleet = null;
+        if(!is_null($customer) && !is_null($customer->getFleet())){
+            $customerFleet = $customer->getFleet()->getId();
+        }
+
+        return new ViewModel([
+            'form' => $newForm2,
+            'email' => $email,
+            'customerEmail' => $customerEmail,
+            'mobile' => $mobile,
+            'customerFleetId' => $customerFleet,
+        ]);
+    }
+
+//    private function handleForeignUploadFiles($formData){
+//        $uploadFile = [];
+//        $signature = $formData['signature'];
+//        if($formData['user1']['driverLicenseForeign'] == 'true') {
+//            $driverLicenseFront = $formData['drivers-license-front'];
+//            $driverLicenseFrontFile = new UploadedFile($formData['drivers-license-front']['name'], $formData['drivers-license-front']['type'], $formData['drivers-license-front']['tmp_name'], $formData['drivers-license-front']['size']);
+//            $driverLicenseBack = $formData['drivers-license-back'];
+//            $driverLicenseBackFile = new UploadedFile($formData['drivers-license-back']['name'], $formData['drivers-license-back']['type'], $formData['drivers-license-back']['tmp_name'], $formData['drivers-license-back']['size']);
+//            $identityFront = $formData['identity-front'];
+//            $identityFrontFile = new UploadedFile($formData['identity-front']['name'], $formData['identity-front']['type'], $formData['identity-front']['tmp_name'], $formData['identity-front']['size']);
+//            $identityBack = $formData['identity-back'];
+//            $identityBackFile = new UploadedFile($formData['identity-back']['name'], $formData['identity-back']['type'], $formData['identity-back']['tmp_name'], $formData['identity-back']['size']);
+//            $uploadFile = [$driverLicenseFrontFile, $driverLicenseBackFile, $identityFrontFile, $identityBackFile];
+//        } else {
+//            $driverLicenseFront = null;
+//            $driverLicenseBack = null;
+//            $identityFront = null;
+//            $identityBack = null;
+//        }
+//        return ["uploadedFile" => $uploadFile, "files" => ['signature' => $signature, 'drivers-license-front' => $driverLicenseFront, 'drivers-license-back' => $driverLicenseBack, 'identity-front' => $identityFront, 'identity-back' => $identityBack]];
+//    }
+
     private function handleForeignUploadFiles($formData){
         $uploadFile = [];
+        $result = [];
         $signature = $formData['signature'];
-        if($formData['user1']['driverLicenseForeign'] == 'true') {
-            $driverLicenseFront = $formData['drivers-license-front'];
-            $driverLicenseFrontFile = new UploadedFile($formData['drivers-license-front']['name'], $formData['drivers-license-front']['type'], $formData['drivers-license-front']['tmp_name'], $formData['drivers-license-front']['size']);
-            $driverLicenseBack = $formData['drivers-license-back'];
-            $driverLicenseBackFile = new UploadedFile($formData['drivers-license-back']['name'], $formData['drivers-license-back']['type'], $formData['drivers-license-back']['tmp_name'], $formData['drivers-license-back']['size']);
-            $identityFront = $formData['identity-front'];
-            $identityFrontFile = new UploadedFile($formData['identity-front']['name'], $formData['identity-front']['type'], $formData['identity-front']['tmp_name'], $formData['identity-front']['size']);
-            $identityBack = $formData['identity-back'];
-            $identityBackFile = new UploadedFile($formData['identity-back']['name'], $formData['identity-back']['type'], $formData['identity-back']['tmp_name'], $formData['identity-back']['size']);
-            $uploadFile = [$driverLicenseFrontFile, $driverLicenseBackFile, $identityFrontFile, $identityBackFile];
-        } else {
-            $driverLicenseFront = null;
-            $driverLicenseBack = null;
-            $identityFront = null;
-            $identityBack = null;
+        $arrayOfFilesLabel = ['drivers-license-front', 'drivers-license-back', 'identity-front', 'identity-back', 'selfie'];
+
+        $files = [];
+        $files["signature"] = $signature;
+
+        foreach($arrayOfFilesLabel as $label) {
+            if (isset($formData[$label])) {
+                $upload = new UploadedFile($formData[$label]['name'], $formData[$label]['type'], $formData[$label]['tmp_name'], $formData[$label]['size']);
+                array_push($uploadFile, $upload);
+                $files[$label] = $formData[$label];
+            } else {
+                $files[$label] = null;
+            }
         }
-        return ["uploadedFile" => $uploadFile, "files" => ['signature' => $signature, 'drivers-license-front' => $driverLicenseFront, 'drivers-license-back' => $driverLicenseBack, 'identity-front' => $identityFront, 'identity-back' => $identityBack]];
+
+        $result["uploadedFile"] = $uploadFile;
+        $result["files"] = $files;
+
+        return $result;
     }
 
     private function newConclude2($form, $promocode, $civico, $customer, $files, $mobile) {
@@ -1250,6 +1476,96 @@ class UserController extends AbstractActionController {
 
         return $this->redirect()->toRoute('cartasi/primo-pagamento',[], ['query' => ['customer' => $customer->getId(), 'signup' => true]] );
     }
+
+    private function signupSK2Conclude($formData, Customers $customer, $files, $mobile) {
+
+        $data = [];
+        var_dump($customer->getId());
+
+        foreach ($formData['user1'] as $key => $value) {
+            if (!is_null($value)) {
+                $data[$key] = $formData['user1'][$key];
+            }
+        }
+
+        // if $data is empty it means that the session expired, so we redirect the user to the beginning of the registration
+        if (empty($data) || !($customer instanceof Customers)) {
+            $message = $this->translator->translate('La sessione è scaduta. E\' necessario ripetere la procedura di registrazione');
+            $this->flashMessenger()->addErrorMessage($message);
+            return $this->redirect()->toRoute('signupSK1', ['mobile' => $mobile]);
+        }
+
+        try {
+            $customer = $this->customersService->findById($customer->getId());
+
+            //var_dump($data);
+            $customer->setGender($data['gender']);
+            $customer->setName($data['name']);
+            $customer->setSurname($data['surname']);
+            $customer->setTown($data['town']);
+            $customer->setLanguage('sk');
+
+//            $customer->setCountry($data['country']);
+//            $customer->setProvince($data['province']);
+
+            $customer->setAddress($data['address'].' '. $data['civico']);
+            $customer->setZipCode($data['zipCode']);
+
+            $customer->setBirthDate(date_create_from_format("d-m-Y H:i:s", $data['birthDate']." 00:00:00"));
+            $customer->setBirthCountry($data['birthCountry']);
+            $customer->setBirthProvince($data['birthProvince']);
+            $customer->setBirthTown($data['birthTown']);
+
+            $customer->setMobile('+'.$data['dialCode'].$data['mobile']);
+
+            $customer->setTaxCode($data['taxCode']);
+
+            $customer->setDriverLicenseName($data['name']);
+            $customer->setDriverLicenseSurname($data['surname']);
+            $customer->setDriverLicense($data['driverLicense']);
+            $customer->setDriverLicenseExpire(date_create_from_format("d-m-Y H:i:s",$data['driverLicenseExpire']." 00:00:00"));
+            $customer->setDriverLicenseForeign(true);
+            $customer->setDriverLicenseCountry("sk");
+            $customer->setDriverLicenseAuthority('MC');
+
+            $customer->setGeneralCondition1(true);
+            $customer->setGeneralCondition2(true);
+            $customer->setRegulationCondition1(true);
+            $customer->setRegulationCondition2(true);
+            $customer->setPrivacyCondition(true);
+            $customer->setPrivacyInformation(true);
+            $customer->setNewsletter(true);
+            $customer->setRegistrationCompleted(true);
+
+//            $data = $this->registrationService->sanitizeDialMobile($data);
+            $customer = $this->registrationService->updateDataSK2($customer, $data);
+//            $this->registrationService->removeSessionData2();
+
+            if (!empty($files["uploadedFile"])){
+                $this->foreignDriversLicenseService->saveUploadedFiles(
+                    $files["uploadedFile"],
+                    $customer
+                );
+            }
+            $this->formSK2->clearRegisteredData();
+
+        } catch (\Exception $e) {
+            $this->registrationService->notifySharengoErrorByEmail($e->getMessage() . ' ' . json_encode($e->getTrace()));
+            //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
+            return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile]);
+        }
+
+        //$this->getEventManager()->trigger('secondFormCompleted', $this, $data); //driver license validation
+        $signupSession = new Container('newSignup');
+        $signupSession->offsetSet("customer", $customer);
+
+        return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
+
+    }
+
+
+
+
 
     public function optionalAction(){
         $promocodeMemberGetMember = '';

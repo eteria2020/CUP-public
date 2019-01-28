@@ -137,10 +137,12 @@ final class RegistrationService
     private $promoCodesACIService;
 
     /**
+     * RegistrationService constructor.
      * @param Form $form1
      * @param Form $form2
      * @param Form $newForm
      * @param Form $newForm2
+     * @param Form $optionalForm
      * @param EntityManager $entityManager
      * @param AbstractHydrator $hydrator
      * @param array $emailSettings
@@ -151,8 +153,10 @@ final class RegistrationService
      * @param PromoCodesOnceService $promoCodesOnceService
      * @param PromoCodesMemberGetMemberService $promoCodesMemberGetMemberService
      * @param array $subscriptionBonus
+     * @param CustomerDeactivationService $deactivationService
      * @param EventManager $events
      * @param MunicipalitiesService $municipalitiesService
+     * @param CountriesService $countriesService
      * @param PromoCodesACIService $promoCodesACIService
      */
     public function __construct(
@@ -732,6 +736,35 @@ final class RegistrationService
             $this->entityManager->persist($customer);
 
             $this->assingPromocode($data['promoCode'], $customer);
+
+            $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
+
+            $this->entityManager->flush();
+            $this->entityManager->getConnection()->commit();
+
+            /* remove REGISTRATION NOT COMPLETED in customer_deactivations */
+
+            $deactivation = $this->deactivationService->getAllActive(
+                $customer,
+                CustomerDeactivation::REGISTRATION_NOT_COMPLETED
+            );
+
+            $this->deactivationService->reactivateForRegistrationCompleted($deactivation);
+
+            return $customer;
+        } catch (\Exception $e) {
+            $this->entityManager->getConnection()->rollback();
+            throw $e;
+        }
+    }
+
+    public function updateDataSK2(Customers $customer)
+    {
+        $this->entityManager->getConnection()->beginTransaction();
+
+        try {
+
+            $this->entityManager->persist($customer);
 
             $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
