@@ -992,12 +992,12 @@ class UserController extends AbstractActionController {
                     $pcMgm = $this->promoCodesMemberGetMemberService->getPromoCodeNameWidthoutCustomerId($pc, true);
                     $promoCode = $this->promoCodeService->getPromoCode($pcMgm);
                     $promoCodeInfo = $promoCode->getPromoCodesInfo();
-                } else {
+                } /*else {
                     if ($this->promoCodeACIService->isValid($pc)){
                         $promoCode = $this->promoCodeACIService->getByPromoCode();
                         $promoCodeInfo = $promoCode->getPromocodesinfo();
                     }
-                }
+                }*/
             }
         }
 

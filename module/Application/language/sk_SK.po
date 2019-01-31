@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-01-25 15:22+0100\n"
-"PO-Revision-Date: 2019-01-25 15:50+0100\n"
+"POT-Creation-Date: 2019-01-31 10:12+0100\n"
+"PO-Revision-Date: 2019-01-31 10:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -18,46 +18,46 @@ msgstr ""
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
 
-#: module/Application/config/module.config.php:2517
+#: module/Application/config/module.config.php:2531
 #: module/Application/view/application/user-area/index.phtml:27
 msgid "Profilo"
 msgstr "Profil"
 
-#: module/Application/config/module.config.php:2522
+#: module/Application/config/module.config.php:2536
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:231
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:286
 msgid "Patente"
 msgstr "Vodičský preukaz"
 
-#: module/Application/config/module.config.php:2527
+#: module/Application/config/module.config.php:2541
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2532
+#: module/Application/config/module.config.php:2546
 #: module/Application/view/application/user-area/rates.phtml:22
 msgid "Tariffe"
 msgstr "Sadzby"
 
-#: module/Application/config/module.config.php:2537
+#: module/Application/config/module.config.php:2551
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
-#: module/Application/config/module.config.php:2547
+#: module/Application/config/module.config.php:2561
 msgid "Bonus minuti"
 msgstr "Bonusové minúty"
 
-#: module/Application/config/module.config.php:2552
+#: module/Application/config/module.config.php:2566
 msgid "Corse completate"
 msgstr "Dokončené jazdy"
 
-#: module/Application/config/module.config.php:2557
+#: module/Application/config/module.config.php:2571
 msgid "Dati di pagamento"
 msgstr "Údaje platby"
 
-#: module/Application/config/module.config.php:2562
+#: module/Application/config/module.config.php:2576
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Faktúry"
@@ -168,9 +168,9 @@ msgstr "Nesprávne telefónne číslo"
 #: module/Application/src/Application/Controller/UserController.php:870
 #: module/Application/src/Application/Controller/UserController.php:1218
 #: module/Application/src/Application/Controller/UserController.php:1251
-#: module/Application/src/Application/Controller/UserController.php:1449
-#: module/Application/src/Application/Controller/UserController.php:1493
-#: module/Application/src/Application/Controller/UserController.php:1649
+#: module/Application/src/Application/Controller/UserController.php:1457
+#: module/Application/src/Application/Controller/UserController.php:1501
+#: module/Application/src/Application/Controller/UserController.php:1657
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -180,20 +180,20 @@ msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
 #: module/Application/src/Application/Form/UserFieldset.php:119
 #: module/Application/view/application/user-area/index.phtml:66
 #: module/Application/view/application/user-area/index.phtml:238
-#: module/Application/view/application/user/signup-sk2.phtml:75
+#: module/Application/view/application/user/signup-sk2.phtml:74
 msgid "Titolo"
 msgstr "Titul"
 
 # in slovacco non finisce con . perche non e una abbreviazione
 #: module/Application/src/Application/Form/CustomerFieldset.php:73
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:82
-#: module/Application/view/application/user/signup-sk2.phtml:77
+#: module/Application/view/application/user/signup-sk2.phtml:76
 msgid "Sig."
 msgstr "Pán"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:74
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:83
-#: module/Application/view/application/user/signup-sk2.phtml:78
+#: module/Application/view/application/user/signup-sk2.phtml:77
 msgid "Sig.ra"
 msgstr "Pani"
 
@@ -210,7 +210,7 @@ msgstr "Pani"
 #: module/Application/view/application/additional-services/gift-packages.phtml:93
 #: module/Application/view/application/user-area/index.phtml:74
 #: module/Application/view/application/user-area/index.phtml:246
-#: module/Application/view/application/user/signup-sk2.phtml:84
+#: module/Application/view/application/user/signup-sk2.phtml:83
 #: module/Application/view/application/user/signup.phtml:223
 msgid "Nome"
 msgstr "Meno"
@@ -226,7 +226,7 @@ msgstr "Meno"
 #: module/Application/src/Application/Form/UserFieldset.php:151
 #: module/Application/view/application/user-area/index.phtml:80
 #: module/Application/view/application/user-area/index.phtml:257
-#: module/Application/view/application/user/signup-sk2.phtml:94
+#: module/Application/view/application/user/signup-sk2.phtml:93
 #: module/Application/view/application/user/signup.phtml:233
 msgid "Cognome"
 msgstr "Priezvisko"
@@ -254,7 +254,7 @@ msgstr "Zopakuj Email"
 #: module/Application/src/Application/Form/UserFieldset.php:166
 #: module/Application/view/application/user-area/index.phtml:95
 #: module/Application/view/application/user-area/index.phtml:274
-#: module/Application/view/application/user/signup-sk2.phtml:145
+#: module/Application/view/application/user/signup-sk2.phtml:144
 #: module/Application/view/application/user/signup.phtml:251
 msgid "Data di nascita"
 msgstr "Dátum narodenia"
@@ -264,7 +264,7 @@ msgstr "Dátum narodenia"
 #: module/Application/src/Application/Form/UserFieldset.php:179
 #: module/Application/view/application/user-area/index.phtml:101
 #: module/Application/view/application/user-area/index.phtml:285
-#: module/Application/view/application/user/signup-sk2.phtml:155
+#: module/Application/view/application/user/signup-sk2.phtml:154
 #: module/Application/view/application/user/signup.phtml:261
 msgid "Stato di nascita"
 msgstr "Krajina narodenia"
@@ -291,7 +291,7 @@ msgstr "Miesto narodenia"
 #: module/Application/src/Application/Form/UserFieldset.php:275
 #: module/Application/view/application/user-area/index.phtml:120
 #: module/Application/view/application/user-area/index.phtml:312
-#: module/Application/view/application/user/signup-sk2.phtml:175
+#: module/Application/view/application/user/signup-sk2.phtml:174
 #: module/Application/view/application/user/signup.phtml:288
 msgid "Comune di nascita"
 msgstr "Obec narodenia"
@@ -476,7 +476,7 @@ msgstr "Nahraný súbor nie je čitateľný alebo neexistuje"
 #: module/Application/view/application/user-area/index.phtml:461
 #: module/Application/view/application/user-area/index.phtml:708
 #: module/Application/view/application/user/new-signup2.phtml:385
-#: module/Application/view/application/user/signup-sk2.phtml:425
+#: module/Application/view/application/user/signup-sk2.phtml:424
 #: module/Application/view/application/user/signup.phtml:617
 msgid "Cellulare"
 msgstr "Mobil"
@@ -833,7 +833,7 @@ msgid "1234567890"
 msgstr ""
 
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:258
-#: module/Application/view/application/user/signup-sk2.phtml:439
+#: module/Application/view/application/user/signup-sk2.phtml:438
 msgid "Numero Identificativo"
 msgstr "Rodné číslo"
 
@@ -1750,6 +1750,30 @@ msgid ""
 "contribuito al loro sviluppo."
 msgstr ""
 
+#: module/Application/view/application/index/crawler.phtml:77
+#, fuzzy
+#| msgid "Dati pagamento"
+msgid "Caricamento"
+msgstr "Údaje platby"
+
+#: module/Application/view/application/index/crawler.phtml:77
+#, fuzzy
+#| msgid "Contattare l'assistenza per maggiori informazioni"
+msgid "Contattare l'assistenza"
+msgstr "Pre viac informácií kontaktujte podporu"
+
+#: module/Application/view/application/index/crawler.phtml:85
+#, fuzzy
+#| msgid "Ciao"
+msgid "Ciao "
+msgstr "Ahoj"
+
+#: module/Application/view/application/index/crawler.phtml:86
+msgid ""
+"Il tuo profilo risulta disattivato, si prega di contattare il Servizio "
+"Clienti per essere riabilitato."
+msgstr ""
+
 #: module/Application/view/application/index/index.phtml:54
 msgid "PER SAPERNE DI PIU' (FAQ)"
 msgstr "ĎALŠIE INFORMÁCIE (FAQ)"
@@ -2230,7 +2254,7 @@ msgstr "Údaje tvojho vodičského preukazu"
 #: module/Application/view/application/user-area/driving-licence.phtml:47
 #: module/Application/view/application/user-area/driving-licence.phtml:162
 #: module/Application/view/application/user/new-signup2.phtml:454
-#: module/Application/view/application/user/signup-sk2.phtml:451
+#: module/Application/view/application/user/signup-sk2.phtml:450
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
 msgstr "Číslo vodičského preukazu"
@@ -2322,7 +2346,7 @@ msgstr "Tvoje osobné údaje"
 
 #: module/Application/view/application/user-area/index.phtml:107
 #: module/Application/view/application/user-area/index.phtml:296
-#: module/Application/view/application/user/signup-sk2.phtml:165
+#: module/Application/view/application/user/signup-sk2.phtml:164
 #: module/Application/view/application/user/signup.phtml:271
 msgid "Provincia di nascita"
 msgstr "Okres narodenia"
@@ -2330,7 +2354,7 @@ msgstr "Okres narodenia"
 #: module/Application/view/application/user-area/index.phtml:128
 #: module/Application/view/application/user-area/index.phtml:335
 #: module/Application/view/application/user/new-signup2.phtml:127
-#: module/Application/view/application/user/signup-sk2.phtml:115
+#: module/Application/view/application/user/signup-sk2.phtml:114
 #: module/Application/view/application/user/signup.phtml:312
 msgid "Indirizzo di residenza"
 msgstr "Adresa trvalého pobytu"
@@ -2338,7 +2362,7 @@ msgstr "Adresa trvalého pobytu"
 #: module/Application/view/application/user-area/index.phtml:134
 #: module/Application/view/application/user-area/index.phtml:346
 #: module/Application/view/application/user/new-signup2.phtml:146
-#: module/Application/view/application/user/signup-sk2.phtml:133
+#: module/Application/view/application/user/signup-sk2.phtml:132
 #: module/Application/view/application/user/signup.phtml:322
 msgid "Cap"
 msgstr "PSČ"
@@ -2387,7 +2411,7 @@ msgstr "Upraviť telefónne číslo"
 
 #: module/Application/view/application/user-area/index.phtml:485
 #: module/Application/view/application/user/new-signup2.phtml:162
-#: module/Application/view/application/user/signup-sk2.phtml:202
+#: module/Application/view/application/user/signup-sk2.phtml:201
 #: module/Application/view/application/user/signup.phtml:392
 msgid "Prefisso"
 msgstr "Predvoľba"
@@ -3037,7 +3061,7 @@ msgid "Cognome Patente"
 msgstr "Priezvisko na vodičskom preukaze"
 
 #: module/Application/view/application/user/new-signup2.phtml:88
-#: module/Application/view/application/user/signup-sk2.phtml:103
+#: module/Application/view/application/user/signup-sk2.phtml:102
 msgid "Citt&agrave; residenza"
 msgstr "Mesto pobytu"
 
@@ -3054,7 +3078,7 @@ msgid "Cognome codice fiscale"
 msgstr "Priezvisko rodné číslo"
 
 #: module/Application/view/application/user/new-signup2.phtml:136
-#: module/Application/view/application/user/signup-sk2.phtml:124
+#: module/Application/view/application/user/signup-sk2.phtml:123
 msgid "N. civico"
 msgstr "Popisné číslo"
 
@@ -3071,12 +3095,12 @@ msgid "SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI"
 msgstr "LEN PRE FIRMY A ŽIVNOSTNÍKOV"
 
 #: module/Application/view/application/user/new-signup2.phtml:462
-#: module/Application/view/application/user/signup-sk2.phtml:459
+#: module/Application/view/application/user/signup-sk2.phtml:458
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Uisti sa že je z posledného vydaného vodičského preukazu."
 
 #: module/Application/view/application/user/new-signup2.phtml:466
-#: module/Application/view/application/user/signup-sk2.phtml:463
+#: module/Application/view/application/user/signup-sk2.phtml:462
 msgid "Data di scadenza patente"
 msgstr "Platnosť vodičského preukazu"
 
@@ -3086,31 +3110,31 @@ msgstr "mám zahraničný vodičský preukaz"
 
 # Non capisco.
 #: module/Application/view/application/user/new-signup2.phtml:485
-#: module/Application/view/application/user/signup-sk2.phtml:475
+#: module/Application/view/application/user/signup-sk2.phtml:474
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
 msgstr "VYHLÁSENIE NÁHRADU AKTU NOTORIETÀ \""
 
 # Non capisco bene.
 #: module/Application/view/application/user/new-signup2.phtml:485
-#: module/Application/view/application/user/signup-sk2.phtml:475
+#: module/Application/view/application/user/signup-sk2.phtml:474
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
 msgstr "CERTIFIKÁT DISPONOVANIA VODIČSKÝM PREUKAZOM"
 
 #: module/Application/view/application/user/new-signup2.phtml:486
-#: module/Application/view/application/user/signup-sk2.phtml:476
+#: module/Application/view/application/user/signup-sk2.phtml:475
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 
 #: module/Application/view/application/user/new-signup2.phtml:488
-#: module/Application/view/application/user/signup-sk2.phtml:478
+#: module/Application/view/application/user/signup-sk2.phtml:477
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
 msgid "Il sottoscritto"
 msgstr "Dolu podpísaný"
 
 #: module/Application/view/application/user/new-signup2.phtml:491
-#: module/Application/view/application/user/signup-sk2.phtml:481
+#: module/Application/view/application/user/signup-sk2.phtml:480
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:27
 msgid ""
 "consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di "
@@ -3124,18 +3148,18 @@ msgstr ""
 "svoju zodpovednosť"
 
 #: module/Application/view/application/user/new-signup2.phtml:494
-#: module/Application/view/application/user/signup-sk2.phtml:484
+#: module/Application/view/application/user/signup-sk2.phtml:483
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
 msgid "DICHIARA"
 msgstr "PREHLASUJE"
 
 #: module/Application/view/application/user/new-signup2.phtml:496
-#: module/Application/view/application/user/signup-sk2.phtml:486
+#: module/Application/view/application/user/signup-sk2.phtml:485
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
 msgstr "že je držiteľom vodičského preukazu v priebehu jeho platnosti "
 
 #: module/Application/view/application/user/new-signup2.phtml:497
-#: module/Application/view/application/user/signup-sk2.phtml:487
+#: module/Application/view/application/user/signup-sk2.phtml:486
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione "
@@ -3148,13 +3172,13 @@ msgstr ""
 "slovenskom území a s trvaním jeho pobytu) na účel jazdy na slovenskom území."
 
 #: module/Application/view/application/user/new-signup2.phtml:504
-#: module/Application/view/application/user/signup-sk2.phtml:496
+#: module/Application/view/application/user/signup-sk2.phtml:495
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
 msgstr "Prečítal, potvrdil a podpísal"
 
 #: module/Application/view/application/user/new-signup2.phtml:513
-#: module/Application/view/application/user/signup-sk2.phtml:506
+#: module/Application/view/application/user/signup-sk2.phtml:505
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
 "Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto "
@@ -3171,13 +3195,13 @@ msgstr ""
 "výlučne kanceláriou zodpovednou za konanie."
 
 #: module/Application/view/application/user/new-signup2.phtml:516
-#: module/Application/view/application/user/signup-sk2.phtml:509
+#: module/Application/view/application/user/signup-sk2.phtml:508
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
 #: module/Application/view/application/user/new-signup2.phtml:520
-#: module/Application/view/application/user/signup-sk2.phtml:513
+#: module/Application/view/application/user/signup-sk2.phtml:512
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida e della carta di identità, entrambe fronte e retro"
@@ -3186,27 +3210,27 @@ msgstr ""
 "obidve z oboch strán"
 
 #: module/Application/view/application/user/new-signup2.phtml:523
-#: module/Application/view/application/user/signup-sk2.phtml:525
+#: module/Application/view/application/user/signup-sk2.phtml:524
 msgid "fronte patente di guida"
 msgstr "predná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:530
-#: module/Application/view/application/user/signup-sk2.phtml:532
+#: module/Application/view/application/user/signup-sk2.phtml:531
 msgid "retro patente di guida"
 msgstr "zadná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:539
-#: module/Application/view/application/user/signup-sk2.phtml:541
+#: module/Application/view/application/user/signup-sk2.phtml:540
 msgid "fronte carta di identità"
 msgstr "predná strana občianskeho preukazu(iného ID)"
 
 #: module/Application/view/application/user/new-signup2.phtml:546
-#: module/Application/view/application/user/signup-sk2.phtml:548
+#: module/Application/view/application/user/signup-sk2.phtml:547
 msgid "retro carta di identità"
 msgstr "zadná strana občianskeho preukazu(iného ID)"
 
 #: module/Application/view/application/user/new-signup2.phtml:558
-msgid "INSERISCI QUI SE HAI UN CODICE PROMO O UNA TESSERA ACI"
+msgid "INSERISCI QUI SE HAI UN CODICE PROMO"
 msgstr "AK MÁŠ ZĽAVOVÝ KÓD, VLOŽ HO SEM"
 
 #: module/Application/view/application/user/new-signup2.phtml:575
@@ -3221,12 +3245,12 @@ msgid ""
 msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnútra."
 
 #: module/Application/view/application/user/new-signup2.phtml:589
-#: module/Application/view/application/user/signup-sk2.phtml:574
+#: module/Application/view/application/user/signup-sk2.phtml:573
 msgid "Continua"
 msgstr "Pokračovať"
 
 #: module/Application/view/application/user/new-signup2.phtml:656
-#: module/Application/view/application/user/signup-sk2.phtml:601
+#: module/Application/view/application/user/signup-sk2.phtml:600
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
 
@@ -3276,986 +3300,986 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Choď do vyhradenej zóny"
 
-#: module/Application/view/application/user/signup-sk2.phtml:204
+#: module/Application/view/application/user/signup-sk2.phtml:203
 #: module/Application/view/partials/translations.phtml:230
 msgid "Slovacchia"
 msgstr "Slovensko"
 
-#: module/Application/view/application/user/signup-sk2.phtml:206
+#: module/Application/view/application/user/signup-sk2.phtml:205
 #: module/Application/view/partials/translations.phtml:48
 msgid "Austria"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:207
+#: module/Application/view/application/user/signup-sk2.phtml:206
 msgid "Belgium"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:208
+#: module/Application/view/application/user/signup-sk2.phtml:207
 #: module/Application/view/partials/translations.phtml:65
 msgid "Bulgaria"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:209
+#: module/Application/view/application/user/signup-sk2.phtml:208
 msgid "Croatia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:210
+#: module/Application/view/application/user/signup-sk2.phtml:209
 msgid "Cyprus - North"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:211
+#: module/Application/view/application/user/signup-sk2.phtml:210
 msgid "Cyprus - South"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:212
+#: module/Application/view/application/user/signup-sk2.phtml:211
 msgid "Czech Republic"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:213
+#: module/Application/view/application/user/signup-sk2.phtml:212
 msgid "Denmark"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:214
+#: module/Application/view/application/user/signup-sk2.phtml:213
 #: module/Application/view/partials/translations.phtml:92
 msgid "Estonia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:215
+#: module/Application/view/application/user/signup-sk2.phtml:214
 msgid "Finland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:216
+#: module/Application/view/application/user/signup-sk2.phtml:215
 msgid "France"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:217
+#: module/Application/view/application/user/signup-sk2.phtml:216
 msgid "Germany"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:218
+#: module/Application/view/application/user/signup-sk2.phtml:217
 msgid "Greece"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:219
+#: module/Application/view/application/user/signup-sk2.phtml:218
 msgid "Hungary"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:220
+#: module/Application/view/application/user/signup-sk2.phtml:219
 msgid "Ireland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:221
+#: module/Application/view/application/user/signup-sk2.phtml:220
 #: module/Application/view/partials/translations.phtml:151
 msgid "Italia"
 msgstr "Taliančina"
 
-#: module/Application/view/application/user/signup-sk2.phtml:222
+#: module/Application/view/application/user/signup-sk2.phtml:221
 msgid "Latvia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:223
+#: module/Application/view/application/user/signup-sk2.phtml:222
 #: module/Application/view/partials/translations.phtml:163
 msgid "Liechtenstein"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:224
+#: module/Application/view/application/user/signup-sk2.phtml:223
 msgid "Lithuania"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:225
+#: module/Application/view/application/user/signup-sk2.phtml:224
 msgid "Luxembourg"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:226
+#: module/Application/view/application/user/signup-sk2.phtml:225
 #: module/Application/view/partials/translations.phtml:173
 msgid "Malta"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:227
+#: module/Application/view/application/user/signup-sk2.phtml:226
 #: module/Application/view/partials/translations.phtml:182
 msgid "Monaco"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:228
+#: module/Application/view/application/user/signup-sk2.phtml:227
 msgid "Netherlands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:229
+#: module/Application/view/application/user/signup-sk2.phtml:228
 msgid "Poland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:230
+#: module/Application/view/application/user/signup-sk2.phtml:229
 msgid "Portugal"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:231
+#: module/Application/view/application/user/signup-sk2.phtml:230
 #: module/Application/view/partials/translations.phtml:216
 msgid "Romania"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:232
+#: module/Application/view/application/user/signup-sk2.phtml:231
 #: module/Application/view/partials/translations.phtml:218
 msgid "Russia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:233
+#: module/Application/view/application/user/signup-sk2.phtml:232
 #: module/Application/view/partials/translations.phtml:222
 msgid "San Marino"
 msgstr "Napr. Martin"
 
-#: module/Application/view/application/user/signup-sk2.phtml:235
+#: module/Application/view/application/user/signup-sk2.phtml:234
 #: module/Application/view/partials/translations.phtml:231
 msgid "Slovenia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:236
+#: module/Application/view/application/user/signup-sk2.phtml:235
 msgid "Spain"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:237
+#: module/Application/view/application/user/signup-sk2.phtml:236
 msgid "Sweden"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:238
+#: module/Application/view/application/user/signup-sk2.phtml:237
 msgid "Switzerland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:239
+#: module/Application/view/application/user/signup-sk2.phtml:238
 msgid "UK"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:240
+#: module/Application/view/application/user/signup-sk2.phtml:239
 msgid "Vatican City"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:242
+#: module/Application/view/application/user/signup-sk2.phtml:241
 #: module/Application/view/partials/translations.phtml:36
 msgid "Algeria"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:243
+#: module/Application/view/application/user/signup-sk2.phtml:242
 #: module/Application/view/partials/translations.phtml:37
 msgid "Andorra"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:244
+#: module/Application/view/application/user/signup-sk2.phtml:243
 #: module/Application/view/partials/translations.phtml:38
 msgid "Angola"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:245
+#: module/Application/view/application/user/signup-sk2.phtml:244
 #: module/Application/view/partials/translations.phtml:39
 msgid "Anguilla"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:246
+#: module/Application/view/application/user/signup-sk2.phtml:245
 msgid "Antigua &amp; Barbuda"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:247
+#: module/Application/view/application/user/signup-sk2.phtml:246
 #: module/Application/view/partials/translations.phtml:44
 msgid "Argentina"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:248
+#: module/Application/view/application/user/signup-sk2.phtml:247
 #: module/Application/view/partials/translations.phtml:45
 msgid "Armenia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:249
+#: module/Application/view/application/user/signup-sk2.phtml:248
 #: module/Application/view/partials/translations.phtml:46
 msgid "Aruba"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:250
+#: module/Application/view/application/user/signup-sk2.phtml:249
 #: module/Application/view/partials/translations.phtml:47
 msgid "Australia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:251
+#: module/Application/view/application/user/signup-sk2.phtml:250
 #, fuzzy
 #| msgid "Azerbaigian"
 msgid "Azerbaijan"
 msgstr "Remeselník"
 
-#: module/Application/view/application/user/signup-sk2.phtml:252
+#: module/Application/view/application/user/signup-sk2.phtml:251
 #: module/Application/view/partials/translations.phtml:50
 msgid "Bahamas"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:253
+#: module/Application/view/application/user/signup-sk2.phtml:252
 msgid "Bahrain"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:254
+#: module/Application/view/application/user/signup-sk2.phtml:253
 #: module/Application/view/partials/translations.phtml:52
 msgid "Bangladesh"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:255
+#: module/Application/view/application/user/signup-sk2.phtml:254
 #: module/Application/view/partials/translations.phtml:53
 msgid "Barbados"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:256
+#: module/Application/view/application/user/signup-sk2.phtml:255
 msgid "Belarus"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:257
+#: module/Application/view/application/user/signup-sk2.phtml:256
 #: module/Application/view/partials/translations.phtml:55
 msgid "Belize"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:258
+#: module/Application/view/application/user/signup-sk2.phtml:257
 #: module/Application/view/partials/translations.phtml:56
 msgid "Benin"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:259
+#: module/Application/view/application/user/signup-sk2.phtml:258
 #: module/Application/view/partials/translations.phtml:57
 msgid "Bermuda"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:260
+#: module/Application/view/application/user/signup-sk2.phtml:259
 #: module/Application/view/partials/translations.phtml:58
 msgid "Bhutan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:261
+#: module/Application/view/application/user/signup-sk2.phtml:260
 #: module/Application/view/partials/translations.phtml:60
 msgid "Bolivia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:262
+#: module/Application/view/application/user/signup-sk2.phtml:261
 msgid "Bosnia Herzegovina"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:263
+#: module/Application/view/application/user/signup-sk2.phtml:262
 #: module/Application/view/partials/translations.phtml:62
 msgid "Botswana"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:264
+#: module/Application/view/application/user/signup-sk2.phtml:263
 #, fuzzy
 #| msgid "Grazie!"
 msgid "Brazil"
 msgstr "Ďakujeme!"
 
-#: module/Application/view/application/user/signup-sk2.phtml:265
+#: module/Application/view/application/user/signup-sk2.phtml:264
 #: module/Application/view/partials/translations.phtml:64
 msgid "Brunei"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:266
+#: module/Application/view/application/user/signup-sk2.phtml:265
 #: module/Application/view/partials/translations.phtml:66
 msgid "Burkina Faso"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:267
+#: module/Application/view/application/user/signup-sk2.phtml:266
 #: module/Application/view/partials/translations.phtml:67
 msgid "Burundi"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:268
+#: module/Application/view/application/user/signup-sk2.phtml:267
 #, fuzzy
 #| msgid "Cambogia"
 msgid "Cambodia"
 msgstr "Zmeniť kartu"
 
-#: module/Application/view/application/user/signup-sk2.phtml:269
+#: module/Application/view/application/user/signup-sk2.phtml:268
 msgid "Cameroon"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:270
+#: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/translations.phtml:70
 msgid "Canada"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:271
+#: module/Application/view/application/user/signup-sk2.phtml:270
 msgid "Cape Verde Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:272
+#: module/Application/view/application/user/signup-sk2.phtml:271
 msgid "Cayman Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:273
+#: module/Application/view/application/user/signup-sk2.phtml:272
 msgid "Central African Republic"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:274
+#: module/Application/view/application/user/signup-sk2.phtml:273
 msgid "Chile"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:275
+#: module/Application/view/application/user/signup-sk2.phtml:274
 msgid "China"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:276
+#: module/Application/view/application/user/signup-sk2.phtml:275
 #: module/Application/view/partials/translations.phtml:77
 msgid "Colombia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:277
+#: module/Application/view/application/user/signup-sk2.phtml:276
 msgid "Comoros"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:278
+#: module/Application/view/application/user/signup-sk2.phtml:277
 #: module/Application/view/partials/translations.phtml:79
 msgid "Congo"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:279
+#: module/Application/view/application/user/signup-sk2.phtml:278
 msgid "Cook Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:280
+#: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/translations.phtml:82
 msgid "Costa Rica"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:281
+#: module/Application/view/application/user/signup-sk2.phtml:280
 #: module/Application/view/partials/translations.phtml:84
 msgid "Cuba"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:282
+#: module/Application/view/application/user/signup-sk2.phtml:281
 msgid "Djibouti"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:283
+#: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/translations.phtml:86
 msgid "Dominica"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:284
+#: module/Application/view/application/user/signup-sk2.phtml:283
 msgid "Dominican Republic"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:285
+#: module/Application/view/application/user/signup-sk2.phtml:284
 #: module/Application/view/partials/translations.phtml:87
 msgid "Ecuador"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:286
+#: module/Application/view/application/user/signup-sk2.phtml:285
 msgid "Egypt"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:287
+#: module/Application/view/application/user/signup-sk2.phtml:286
 #: module/Application/view/partials/translations.phtml:89
 msgid "El Salvador"
 msgstr "Uložiť"
 
-#: module/Application/view/application/user/signup-sk2.phtml:288
+#: module/Application/view/application/user/signup-sk2.phtml:287
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:289
+#: module/Application/view/application/user/signup-sk2.phtml:288
 #: module/Application/view/partials/translations.phtml:91
 msgid "Eritrea"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:290
+#: module/Application/view/application/user/signup-sk2.phtml:289
 msgid "Ethiopia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:291
+#: module/Application/view/application/user/signup-sk2.phtml:290
 msgid "Falkland Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:292
+#: module/Application/view/application/user/signup-sk2.phtml:291
 msgid "Faroe Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:293
+#: module/Application/view/application/user/signup-sk2.phtml:292
 msgid "Fiji"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:294
+#: module/Application/view/application/user/signup-sk2.phtml:293
 msgid "French Guiana"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:295
+#: module/Application/view/application/user/signup-sk2.phtml:294
 msgid "French Polynesia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:296
+#: module/Application/view/application/user/signup-sk2.phtml:295
 #: module/Application/view/partials/translations.phtml:97
 msgid "Gabon"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:297
+#: module/Application/view/application/user/signup-sk2.phtml:296
 #: module/Application/view/partials/translations.phtml:98
 msgid "Gambia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:298
+#: module/Application/view/application/user/signup-sk2.phtml:297
 #: module/Application/view/partials/translations.phtml:99
 msgid "Georgia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:299
+#: module/Application/view/application/user/signup-sk2.phtml:298
 #: module/Application/view/partials/translations.phtml:101
 msgid "Ghana"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:300
+#: module/Application/view/application/user/signup-sk2.phtml:299
 msgid "Gibraltar"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:301
+#: module/Application/view/application/user/signup-sk2.phtml:300
 msgid "Greenland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:302
+#: module/Application/view/application/user/signup-sk2.phtml:301
 #: module/Application/view/partials/translations.phtml:108
 msgid "Grenada"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:303
+#: module/Application/view/application/user/signup-sk2.phtml:302
 msgid "Guadeloupe"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:304
+#: module/Application/view/application/user/signup-sk2.phtml:303
 #: module/Application/view/partials/translations.phtml:111
 msgid "Guam"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:305
+#: module/Application/view/application/user/signup-sk2.phtml:304
 #: module/Application/view/partials/translations.phtml:112
 msgid "Guatemala"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:306
+#: module/Application/view/application/user/signup-sk2.phtml:305
 #: module/Application/view/partials/translations.phtml:114
 msgid "Guinea"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:307
+#: module/Application/view/application/user/signup-sk2.phtml:306
 msgid "Guinea - Bissau"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:308
+#: module/Application/view/application/user/signup-sk2.phtml:307
 #: module/Application/view/partials/translations.phtml:117
 msgid "Guyana"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:309
+#: module/Application/view/application/user/signup-sk2.phtml:308
 #: module/Application/view/partials/translations.phtml:118
 msgid "Haiti"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:310
+#: module/Application/view/application/user/signup-sk2.phtml:309
 #: module/Application/view/partials/translations.phtml:119
 msgid "Honduras"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:311
+#: module/Application/view/application/user/signup-sk2.phtml:310
 #: module/Application/view/partials/translations.phtml:120
 msgid "Hong Kong"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:312
+#: module/Application/view/application/user/signup-sk2.phtml:311
 msgid "Iceland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:313
+#: module/Application/view/application/user/signup-sk2.phtml:312
 #: module/Application/view/partials/translations.phtml:121
 msgid "India"
 msgstr "Naspäť"
 
-#: module/Application/view/application/user/signup-sk2.phtml:314
+#: module/Application/view/application/user/signup-sk2.phtml:313
 #: module/Application/view/partials/translations.phtml:122
 msgid "Indonesia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:315
+#: module/Application/view/application/user/signup-sk2.phtml:314
 #: module/Application/view/partials/translations.phtml:124
 msgid "Iraq"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:316
+#: module/Application/view/application/user/signup-sk2.phtml:315
 #: module/Application/view/partials/translations.phtml:123
 msgid "Iran"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:317
+#: module/Application/view/application/user/signup-sk2.phtml:316
 msgid "Israel"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:318
+#: module/Application/view/application/user/signup-sk2.phtml:317
 msgid "Jamaica"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:319
+#: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "Japan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:320
+#: module/Application/view/application/user/signup-sk2.phtml:319
 #, fuzzy
 #| msgid "Giordania"
 msgid "Jordan"
 msgstr "Novinár"
 
-#: module/Application/view/application/user/signup-sk2.phtml:321
+#: module/Application/view/application/user/signup-sk2.phtml:320
 #, fuzzy
 #| msgid "Kazakistan"
 msgid "Kazakhstan"
 msgstr "Farmaceut"
 
-#: module/Application/view/application/user/signup-sk2.phtml:322
+#: module/Application/view/application/user/signup-sk2.phtml:321
 #: module/Application/view/partials/translations.phtml:153
 msgid "Kenya"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:323
+#: module/Application/view/application/user/signup-sk2.phtml:322
 #: module/Application/view/partials/translations.phtml:155
 msgid "Kiribati"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:324
+#: module/Application/view/application/user/signup-sk2.phtml:323
 msgid "Korea - North"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:325
+#: module/Application/view/application/user/signup-sk2.phtml:324
 msgid "Korea - South"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:326
+#: module/Application/view/application/user/signup-sk2.phtml:325
 #: module/Application/view/partials/translations.phtml:156
 msgid "Kuwait"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:327
+#: module/Application/view/application/user/signup-sk2.phtml:326
 #, fuzzy
 #| msgid "Kazakistan"
 msgid "Kyrgyzstan"
 msgstr "Farmaceut"
 
-#: module/Application/view/application/user/signup-sk2.phtml:328
+#: module/Application/view/application/user/signup-sk2.phtml:327
 #: module/Application/view/partials/translations.phtml:157
 msgid "Laos"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:329
+#: module/Application/view/application/user/signup-sk2.phtml:328
 msgid "Lebanon"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:330
+#: module/Application/view/application/user/signup-sk2.phtml:329
 #: module/Application/view/partials/translations.phtml:158
 msgid "Lesotho"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:331
+#: module/Application/view/application/user/signup-sk2.phtml:330
 #: module/Application/view/partials/translations.phtml:161
 msgid "Liberia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:332
+#: module/Application/view/application/user/signup-sk2.phtml:331
 msgid "Libya"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:333
+#: module/Application/view/application/user/signup-sk2.phtml:332
 msgid "Macao"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:334
+#: module/Application/view/application/user/signup-sk2.phtml:333
 #: module/Application/view/partials/translations.phtml:167
 msgid "Macedonia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:335
+#: module/Application/view/application/user/signup-sk2.phtml:334
 #: module/Application/view/partials/translations.phtml:168
 msgid "Madagascar"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:336
+#: module/Application/view/application/user/signup-sk2.phtml:335
 #: module/Application/view/partials/translations.phtml:169
 msgid "Malawi"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:337
+#: module/Application/view/application/user/signup-sk2.phtml:336
 msgid "Malaysia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:338
+#: module/Application/view/application/user/signup-sk2.phtml:337
 msgid "Maldives"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:339
+#: module/Application/view/application/user/signup-sk2.phtml:338
 #: module/Application/view/partials/translations.phtml:172
 msgid "Mali"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:340
+#: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "Marshall Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:341
+#: module/Application/view/application/user/signup-sk2.phtml:340
 msgid "Martinique"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:342
+#: module/Application/view/application/user/signup-sk2.phtml:341
 #: module/Application/view/partials/translations.phtml:176
 msgid "Mauritania"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:343
+#: module/Application/view/application/user/signup-sk2.phtml:342
 #: module/Application/view/partials/translations.phtml:178
 msgid "Mayotte"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:344
+#: module/Application/view/application/user/signup-sk2.phtml:343
 msgid "Mexico"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:345
+#: module/Application/view/application/user/signup-sk2.phtml:344
 msgid "Micronesia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:346
+#: module/Application/view/application/user/signup-sk2.phtml:345
 #: module/Application/view/partials/translations.phtml:181
 msgid "Moldova"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:347
+#: module/Application/view/application/user/signup-sk2.phtml:346
 #: module/Application/view/partials/translations.phtml:183
 msgid "Mongolia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:348
+#: module/Application/view/application/user/signup-sk2.phtml:347
 #: module/Application/view/partials/translations.phtml:184
 msgid "Montserrat"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:349
+#: module/Application/view/application/user/signup-sk2.phtml:348
 msgid "Morocco"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:350
+#: module/Application/view/application/user/signup-sk2.phtml:349
 msgid "Mozambique"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:351
+#: module/Application/view/application/user/signup-sk2.phtml:350
 msgid "Myanmar"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:352
+#: module/Application/view/application/user/signup-sk2.phtml:351
 #: module/Application/view/partials/translations.phtml:187
 msgid "Namibia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:353
+#: module/Application/view/application/user/signup-sk2.phtml:352
 #: module/Application/view/partials/translations.phtml:188
 msgid "Nauru"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:354
+#: module/Application/view/application/user/signup-sk2.phtml:353
 #: module/Application/view/partials/translations.phtml:189
 msgid "Nepal"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:355
+#: module/Application/view/application/user/signup-sk2.phtml:354
 msgid "New Caledonia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:356
+#: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "New Zealand"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:357
+#: module/Application/view/application/user/signup-sk2.phtml:356
 #: module/Application/view/partials/translations.phtml:190
 msgid "Nicaragua"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:358
+#: module/Application/view/application/user/signup-sk2.phtml:357
 #: module/Application/view/partials/translations.phtml:191
 msgid "Niger"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:359
+#: module/Application/view/application/user/signup-sk2.phtml:358
 #: module/Application/view/partials/translations.phtml:192
 msgid "Nigeria"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:360
+#: module/Application/view/application/user/signup-sk2.phtml:359
 #: module/Application/view/partials/translations.phtml:193
 msgid "Niue"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:361
+#: module/Application/view/application/user/signup-sk2.phtml:360
 msgid "Norfolk Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:362
+#: module/Application/view/application/user/signup-sk2.phtml:361
 msgid "Northern Marianas"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:363
+#: module/Application/view/application/user/signup-sk2.phtml:362
 msgid "Norway"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:364
+#: module/Application/view/application/user/signup-sk2.phtml:363
 #: module/Application/view/partials/translations.phtml:197
 msgid "Oman"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:365
+#: module/Application/view/application/user/signup-sk2.phtml:364
 #: module/Application/view/partials/translations.phtml:199
 msgid "Pakistan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:366
+#: module/Application/view/application/user/signup-sk2.phtml:365
 #: module/Application/view/partials/translations.phtml:200
 msgid "Palau"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:367
+#: module/Application/view/application/user/signup-sk2.phtml:366
 #: module/Application/view/partials/translations.phtml:201
 msgid "Panama"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:368
+#: module/Application/view/application/user/signup-sk2.phtml:367
 msgid "Papua New Guinea"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:369
+#: module/Application/view/application/user/signup-sk2.phtml:368
 #: module/Application/view/partials/translations.phtml:203
 msgid "Paraguay"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:370
+#: module/Application/view/application/user/signup-sk2.phtml:369
 #: module/Application/view/partials/translations.phtml:204
 msgid "Peru"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:371
+#: module/Application/view/application/user/signup-sk2.phtml:370
 msgid "Philippines"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:372
+#: module/Application/view/application/user/signup-sk2.phtml:371
 #: module/Application/view/partials/translations.phtml:208
 msgid "Puerto Rico"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:373
+#: module/Application/view/application/user/signup-sk2.phtml:372
 #: module/Application/view/partials/translations.phtml:209
 msgid "Qatar"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:374
+#: module/Application/view/application/user/signup-sk2.phtml:373
 #: module/Application/view/partials/translations.phtml:215
 msgid "Reunion"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:375
+#: module/Application/view/application/user/signup-sk2.phtml:374
 msgid "Rwanda"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:376
+#: module/Application/view/application/user/signup-sk2.phtml:375
 msgid "Sao Tome &amp; Principe"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:377
+#: module/Application/view/application/user/signup-sk2.phtml:376
 msgid "Saudi Arabia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:378
+#: module/Application/view/application/user/signup-sk2.phtml:377
 #: module/Application/view/partials/translations.phtml:224
 msgid "Senegal"
 msgstr "Sídlo"
 
-#: module/Application/view/application/user/signup-sk2.phtml:379
+#: module/Application/view/application/user/signup-sk2.phtml:378
 msgid "Serbia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:380
+#: module/Application/view/application/user/signup-sk2.phtml:379
 #: module/Application/view/partials/translations.phtml:226
 msgid "Seychelles"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:381
+#: module/Application/view/application/user/signup-sk2.phtml:380
 #: module/Application/view/partials/translations.phtml:227
 msgid "Sierra Leone"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:382
+#: module/Application/view/application/user/signup-sk2.phtml:381
 #: module/Application/view/partials/translations.phtml:228
 msgid "Singapore"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:383
+#: module/Application/view/application/user/signup-sk2.phtml:382
 msgid "Solomon Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:384
+#: module/Application/view/application/user/signup-sk2.phtml:383
 #: module/Application/view/partials/translations.phtml:232
 msgid "Somalia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:385
+#: module/Application/view/application/user/signup-sk2.phtml:384
 msgid "South Africa"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:386
+#: module/Application/view/application/user/signup-sk2.phtml:385
 #: module/Application/view/partials/translations.phtml:234
 msgid "Sri Lanka"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:387
+#: module/Application/view/application/user/signup-sk2.phtml:386
 msgid "St. Helena"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:388
+#: module/Application/view/application/user/signup-sk2.phtml:387
 msgid "St. Kitts"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:389
+#: module/Application/view/application/user/signup-sk2.phtml:388
 #: module/Application/view/partials/translations.phtml:237
 msgid "St. Lucia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:390
+#: module/Application/view/application/user/signup-sk2.phtml:389
 #: module/Application/view/partials/translations.phtml:241
 msgid "Suriname"
 msgstr "Užívateľské meno"
 
-#: module/Application/view/application/user/signup-sk2.phtml:391
+#: module/Application/view/application/user/signup-sk2.phtml:390
 msgid "Sudan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:392
+#: module/Application/view/application/user/signup-sk2.phtml:391
 #: module/Application/view/partials/translations.phtml:244
 msgid "Swaziland"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:393
+#: module/Application/view/application/user/signup-sk2.phtml:392
 msgid "Syria"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:394
+#: module/Application/view/application/user/signup-sk2.phtml:393
 #: module/Application/view/partials/translations.phtml:246
 msgid "Taiwan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:395
+#: module/Application/view/application/user/signup-sk2.phtml:394
 #, fuzzy
 #| msgid "Kazakistan"
 msgid "Tajikistan"
 msgstr "Farmaceut"
 
-#: module/Application/view/application/user/signup-sk2.phtml:396
+#: module/Application/view/application/user/signup-sk2.phtml:395
 msgid "Thailand"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:397
+#: module/Application/view/application/user/signup-sk2.phtml:396
 #: module/Application/view/partials/translations.phtml:251
 msgid "Togo"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:398
+#: module/Application/view/application/user/signup-sk2.phtml:397
 #: module/Application/view/partials/translations.phtml:252
 msgid "Tonga"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:399
+#: module/Application/view/application/user/signup-sk2.phtml:398
 msgid "Trinidad &amp; Tobago"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:400
+#: module/Application/view/application/user/signup-sk2.phtml:399
 #: module/Application/view/partials/translations.phtml:254
 msgid "Tunisia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:401
+#: module/Application/view/application/user/signup-sk2.phtml:400
 msgid "Turkey"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:402
+#: module/Application/view/application/user/signup-sk2.phtml:401
 #: module/Application/view/partials/translations.phtml:256
 msgid "Turkmenistan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:403
+#: module/Application/view/application/user/signup-sk2.phtml:402
 msgid "Turks &amp; Caicos Islands"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:404
+#: module/Application/view/application/user/signup-sk2.phtml:403
 #: module/Application/view/partials/translations.phtml:257
 msgid "Tuvalu"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:405
+#: module/Application/view/application/user/signup-sk2.phtml:404
 #: module/Application/view/partials/translations.phtml:259
 msgid "Uganda"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:406
+#: module/Application/view/application/user/signup-sk2.phtml:405
 msgid "Ukraine"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:407
+#: module/Application/view/application/user/signup-sk2.phtml:406
 msgid "United Arab Emirates"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:408
+#: module/Application/view/application/user/signup-sk2.phtml:407
 #: module/Application/view/partials/translations.phtml:261
 msgid "Uruguay"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:409
+#: module/Application/view/application/user/signup-sk2.phtml:408
 msgid "USA"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:410
+#: module/Application/view/application/user/signup-sk2.phtml:409
 #: module/Application/view/partials/translations.phtml:262
 msgid "Uzbekistan"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:411
+#: module/Application/view/application/user/signup-sk2.phtml:410
 #: module/Application/view/partials/translations.phtml:263
 msgid "Vanuatu"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:412
+#: module/Application/view/application/user/signup-sk2.phtml:411
 #: module/Application/view/partials/translations.phtml:264
 msgid "Venezuela"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:413
+#: module/Application/view/application/user/signup-sk2.phtml:412
 #: module/Application/view/partials/translations.phtml:265
 msgid "Vietnam"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:414
+#: module/Application/view/application/user/signup-sk2.phtml:413
 msgid "Virgin Islands - British"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:415
+#: module/Application/view/application/user/signup-sk2.phtml:414
 msgid "Virgin Islands - US"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:416
+#: module/Application/view/application/user/signup-sk2.phtml:415
 msgid "Wallis &amp; Futuna"
 msgstr ""
 
+#: module/Application/view/application/user/signup-sk2.phtml:416
 #: module/Application/view/application/user/signup-sk2.phtml:417
-#: module/Application/view/application/user/signup-sk2.phtml:418
 #: module/Application/view/partials/translations.phtml:266
 msgid "Yemen"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:419
+#: module/Application/view/application/user/signup-sk2.phtml:418
 #: module/Application/view/partials/translations.phtml:267
 msgid "Zambia"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:420
+#: module/Application/view/application/user/signup-sk2.phtml:419
 #: module/Application/view/partials/translations.phtml:268
 msgid "Zimbabwe"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:558
+#: module/Application/view/application/user/signup-sk2.phtml:557
 msgid "foto dell'utente (selfie)"
 msgstr ""
 
