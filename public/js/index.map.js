@@ -286,28 +286,10 @@ $(function () {
     //var mapCenterLatitude = $('div.block-languages.block-menu ul li a.js-show-element').data('latitude');
     //var mapCenterLongitude = $('div.block-languages.block-menu ul li a.js-show-element').data('longitude');
     var fleetId = citta;
-    switch (citta) {
-        case 1:
-            var mapCenterLatitude = $('#Milano').data('latitude');
-            var mapCenterLongitude = $('#Milano').data('longitude');
-            $('#Milano').html(name);
-            break;
-        case 2:
-            var mapCenterLatitude = $('#Firenze').data('latitude');
-            var mapCenterLongitude = $('#Firenze').data('longitude');
-            $('#Firenze').html(name);
-            break;
-        case 3:
-            var mapCenterLatitude = $('#Roma').data('latitude');
-            var mapCenterLongitude = $('#Roma').data('longitude');
-            $('#Roma').html(name);
-            break;
-        case 4:
-            var mapCenterLatitude = $('#Modena').data('latitude');
-            var mapCenterLongitude = $('#Modena').data('longitude');
-            $('#Modena').html(name);
-            break;
-    }
+    var selectedCity = $('[data-id="'+citta+'"]');
+    var mapCenterLatitude = selectedCity.data('latitude');
+    var	mapCenterLongitude = selectedCity.data('longitude');
+    selectedCity.html(name);
 
     var view = new ol.View({
         // the view"s initial state

@@ -130,7 +130,7 @@ return [
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
-                        'action' => 'map2',
+                        'action' => 'map',
                     ],
                 ]
             ],
