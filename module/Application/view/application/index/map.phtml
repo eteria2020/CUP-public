@@ -56,27 +56,8 @@ echo $this->partial('partials/car-popup.phtml');
     var poisMarkerPath = "<?= $this->basePath('images/marker-pois.png'); ?>";
     var reservationsUrl = "<?= $this->url('core/reservations'); ?>";
     var zonesUrl = "<?= $this->url('zoneosm'); ?>";
-    var citta = <? if (isset($_GET['citta'])) {
-            switch ($_GET['citta']){
-    case 1:
-            echo 1;
-    break;
-    case 2:
-            echo 2;
-    break;
-    case 3:
-            echo 3;
-    break;
-    case 4:
-            echo 4;
-    break;
-    default:
-            echo 1;
-    }
-    } else {
-            echo 1;
-    }
-    ?>;
+    var citta = <?= (isset($_GET['citta']) && is_numeric($_GET['citta'])) ? $_GET['citta'] : 1; ?>;
+
 </script>
 <?php
 $this->inlineScript()->appendFile($this->basePath('/assets-modules/js/vendor.index.js'));

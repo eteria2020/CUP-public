@@ -107,34 +107,10 @@ $(function () {
         var geocoder = new google.maps.Geocoder();
         // define the initial position
 		//alert(citta);
-			switch (citta) {
-				case 1:
-				var latitude = $('#Milano').data('latitude');
-				var	longitude = $('#Milano').data('longitude');
-				/*	name = $('#Milano').data('name'),
-					id = $('#Milano').data('id'),
-					latLng;*/
-					$('#Milano').html(name);
-				break;
-				case 2:
-				var latitude = $('#Firenze').data('latitude');
-				var	longitude = $('#Firenze').data('longitude');
-				/*	name = $('#Firenze').data('name'),
-					id = $('#Firenze').data('id'),
-					latLng;*/
-					$('#Firenze').html(name);
-				break;
-				case 3:
-				var latitude = $('#Roma').data('latitude');
-				var	longitude = $('#Roma').data('longitude');
-					$('#Roma').html(name);
-				break;
-                                case 4:
-				var latitude = $('#Modena').data('latitude');
-				var	longitude = $('#Modena').data('longitude');
-					$('#Modena').html(name);
-				break;
-			}
+        var selectedCity = $('[data-id="'+citta+'"]');
+        var latitude = selectedCity.data('latitude');
+        var	longitude = selectedCity.data('longitude');
+
         //var latitude = $('div.block-languages.block-menu ul li a.js-show-element').data('latitude');
         //var longitude = $('div.block-languages.block-menu ul li a.js-show-element').data('longitude');
         var myLatlng = new google.maps.LatLng(latitude, longitude);
