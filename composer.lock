@@ -483,7 +483,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core-business.git",
-                "reference": "61114b9f8b21ea39bfb23c844ab3aa2eeb6a79a9"
+                "reference": "9a72635a94839f38232cfe0c7fbd947f183fad69"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.9.*",
@@ -504,7 +504,7 @@
                 }
             },
             "description": "Business Core module",
-            "time": "2018-08-07 12:48:23"
+            "time": "2019-02-04 14:06:35"
         },
         {
             "name": "cup-web/public-business-module",
@@ -2425,7 +2425,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "11dd768926ab485bbc23c55d54fe922896a0cff7"
+                "reference": "e46d2bdbed4b0a1b6f8db05084fc0fd528d616ac"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2446,7 +2446,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-01-28 13:27:00"
+            "time": "2019-02-04 13:20:06"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
