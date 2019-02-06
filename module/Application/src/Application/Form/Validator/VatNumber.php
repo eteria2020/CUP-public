@@ -9,11 +9,13 @@ class VatNumber extends AbstractValidator
     const SPACE = 'noSppaces';
     const NUMERIC = 'numeric';
     const LENGTH = 'length';
+    const CHECKSUM = 'checksum';
 
     protected $messageTemplates = [
         self::SPACE => "La partita IVA non può contenere spazi",
         self::NUMERIC => "La partita IVA deve essere numerica, al più preceduta dal prefisso IT",
-        self::LENGTH => "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
+        self::LENGTH => "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT",
+        self::CHECKSUM => "La partita IVA non è valida, il codice di controllo non corrisponde"
     ];
 
     public function isValid($value)
@@ -22,6 +24,7 @@ class VatNumber extends AbstractValidator
         $messageTemplates[ self::SPACE] = $translator->translate("La partita IVA non può contenere spazi");
         $messageTemplates[ self::NUMERIC] = $translator->translate("La partita IVA deve essere numerica, al più preceduta dal prefisso IT");
         $messageTemplates[ self::LENGTH] = $translator->translate("La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT");
+        $messageTemplates[ self::CHECKSUM] = $translator->translate("La partita IVA non è valida, il codice di controllo non corrisponde");
 
         $this->setValue($value);
 
@@ -45,6 +48,22 @@ class VatNumber extends AbstractValidator
             return false;
         }
 
+        // Verify checksum
+        $s = 0;
+        for( $i = 0; $i <= 9; $i += 2 ) {
+            $s += ord($value[$i]) - ord('0');
+        }
+
+        for( $i = 1; $i <= 9; $i += 2 ){
+            $c = 2*( ord($value[$i]) - ord('0') );
+            if( $c > 9 )  $c = $c - 9;
+            $s += $c;
+        }
+
+        if( ( 10 - $s%10 )%10 != ord($value[10]) - ord('0') ){
+            $this->error(self::CHECKSUM);
+            return false;
+        }
         return true;
     }
 }

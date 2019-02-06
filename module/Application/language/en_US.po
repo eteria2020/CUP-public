@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-01-31 09:52+0100\n"
-"PO-Revision-Date: 2019-01-31 10:11+0100\n"
+"POT-Creation-Date: 2019-02-05 16:47+0100\n"
+"PO-Revision-Date: 2019-02-05 16:48+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -98,48 +98,53 @@ msgstr "Package not buyable"
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:450
+#: module/Application/src/Application/Controller/UserAreaController.php:259
+msgid ""
+"Con la partita iva deve essere inserito il cod. destinatario oppure la PEC"
+msgstr "With the VAT number must be inserted the cod. recipient or PEC"
+
+#: module/Application/src/Application/Controller/UserAreaController.php:454
 msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:452
+#: module/Application/src/Application/Controller/UserAreaController.php:456
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "An application error has occurred. We apologize for the inconvenience"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:566
-#: module/Application/src/Application/Controller/UserAreaController.php:606
+#: module/Application/src/Application/Controller/UserAreaController.php:570
+#: module/Application/src/Application/Controller/UserAreaController.php:610
 msgid "Pagamento completato con successo"
 msgstr "Payment completed successfully"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:568
-#: module/Application/src/Application/Controller/UserAreaController.php:608
+#: module/Application/src/Application/Controller/UserAreaController.php:572
+#: module/Application/src/Application/Controller/UserAreaController.php:612
 msgid "Pagamento fallito"
 msgstr "Payment failed"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:577
-#: module/Application/src/Application/Controller/UserAreaController.php:617
+#: module/Application/src/Application/Controller/UserAreaController.php:581
+#: module/Application/src/Application/Controller/UserAreaController.php:621
 #: module/Application/view/application/user-area/debt-collection.phtml:107
 #: module/Application/view/application/user-area/debt-collection.phtml:173
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Payment temporarily suspended, please try again later."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:646
+#: module/Application/src/Application/Controller/UserAreaController.php:650
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract disabled properly!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:648
-#: module/Application/src/Application/Controller/UserAreaController.php:651
-#: module/Application/src/Application/Controller/UserAreaController.php:654
+#: module/Application/src/Application/Controller/UserAreaController.php:652
+#: module/Application/src/Application/Controller/UserAreaController.php:655
+#: module/Application/src/Application/Controller/UserAreaController.php:658
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Error while disabling the contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:690
+#: module/Application/src/Application/Controller/UserAreaController.php:694
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "You are disabled because the inserted card has expired, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:694
+#: module/Application/src/Application/Controller/UserAreaController.php:698
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -147,7 +152,7 @@ msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:699
+#: module/Application/src/Application/Controller/UserAreaController.php:703
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
@@ -166,9 +171,9 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:870
 #: module/Application/src/Application/Controller/UserController.php:1218
 #: module/Application/src/Application/Controller/UserController.php:1251
-#: module/Application/src/Application/Controller/UserController.php:1457
-#: module/Application/src/Application/Controller/UserController.php:1501
-#: module/Application/src/Application/Controller/UserController.php:1657
+#: module/Application/src/Application/Controller/UserController.php:1463
+#: module/Application/src/Application/Controller/UserController.php:1507
+#: module/Application/src/Application/Controller/UserController.php:1663
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -178,7 +183,7 @@ msgstr ""
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:80
 #: module/Application/src/Application/Form/UserFieldset.php:119
 #: module/Application/view/application/user-area/index.phtml:66
-#: module/Application/view/application/user-area/index.phtml:238
+#: module/Application/view/application/user-area/index.phtml:251
 #: module/Application/view/application/user/signup-sk2.phtml:74
 msgid "Titolo"
 msgstr "Title"
@@ -207,7 +212,7 @@ msgstr "Mrs"
 #: module/Application/view/application/additional-services/additional-services.phtml:139
 #: module/Application/view/application/additional-services/gift-packages.phtml:93
 #: module/Application/view/application/user-area/index.phtml:74
-#: module/Application/view/application/user-area/index.phtml:246
+#: module/Application/view/application/user-area/index.phtml:259
 #: module/Application/view/application/user/signup-sk2.phtml:83
 #: module/Application/view/application/user/signup.phtml:223
 msgid "Nome"
@@ -223,7 +228,7 @@ msgstr "First Name"
 #: module/Application/src/Application/Form/UserFieldset.php:147
 #: module/Application/src/Application/Form/UserFieldset.php:151
 #: module/Application/view/application/user-area/index.phtml:80
-#: module/Application/view/application/user-area/index.phtml:257
+#: module/Application/view/application/user-area/index.phtml:270
 #: module/Application/view/application/user/signup-sk2.phtml:93
 #: module/Application/view/application/user/signup.phtml:233
 msgid "Cognome"
@@ -234,7 +239,7 @@ msgstr "Last Name"
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:85
 #: module/Application/view/application/user-area/index.phtml:52
-#: module/Application/view/application/user-area/index.phtml:211
+#: module/Application/view/application/user-area/index.phtml:224
 #: module/Application/view/application/user/new-signup.phtml:59
 #: module/Application/view/application/user/signup-sk1.phtml:59
 #: module/Application/view/application/user/signup.phtml:155
@@ -243,7 +248,7 @@ msgid "Email"
 msgstr "E-mail"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:131
-#: module/Application/view/application/user-area/index.phtml:222
+#: module/Application/view/application/user-area/index.phtml:235
 msgid "Ripeti Email"
 msgstr "Repeat email"
 
@@ -251,7 +256,7 @@ msgstr "Repeat email"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:183
 #: module/Application/src/Application/Form/UserFieldset.php:166
 #: module/Application/view/application/user-area/index.phtml:95
-#: module/Application/view/application/user-area/index.phtml:274
+#: module/Application/view/application/user-area/index.phtml:287
 #: module/Application/view/application/user/signup-sk2.phtml:144
 #: module/Application/view/application/user/signup.phtml:251
 msgid "Data di nascita"
@@ -261,7 +266,7 @@ msgstr "Birth Date"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:195
 #: module/Application/src/Application/Form/UserFieldset.php:179
 #: module/Application/view/application/user-area/index.phtml:101
-#: module/Application/view/application/user-area/index.phtml:285
+#: module/Application/view/application/user-area/index.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:154
 #: module/Application/view/application/user/signup.phtml:261
 msgid "Stato di nascita"
@@ -288,7 +293,7 @@ msgstr "Birth place"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:242
 #: module/Application/src/Application/Form/UserFieldset.php:275
 #: module/Application/view/application/user-area/index.phtml:120
-#: module/Application/view/application/user-area/index.phtml:312
+#: module/Application/view/application/user-area/index.phtml:325
 #: module/Application/view/application/user/signup-sk2.phtml:174
 #: module/Application/view/application/user/signup.phtml:288
 msgid "Comune di nascita"
@@ -306,7 +311,7 @@ msgstr "Street Address"
 #: module/Application/src/Application/Form/UserFieldset.php:299
 #: module/Application/src/Application/Form/UserFieldset.php:302
 #: module/Application/view/application/user-area/index.phtml:154
-#: module/Application/view/application/user-area/index.phtml:375
+#: module/Application/view/application/user-area/index.phtml:388
 msgid "Informazioni aggiuntive"
 msgstr "Additional information"
 
@@ -354,7 +359,7 @@ msgstr "English"
 #: module/Application/src/Application/Form/UserFieldset.php:345
 #: module/Application/src/Application/View/Helper/LongLanguage.php:32
 msgid "slovacco"
-msgstr ""
+msgstr "Slovak"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:273
 #: module/Application/src/Application/Form/NewUserFieldset2.php:192
@@ -372,6 +377,22 @@ msgstr "VAT number (optional)"
 #: module/Application/view/layout/layout.phtml:171
 msgid "Telefono"
 msgstr "Phone"
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:326
+#: module/Application/view/application/user-area/index.phtml:186
+#: module/Application/view/application/user-area/index.phtml:440
+msgid "PEC"
+msgstr "Certified mail"
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:336
+msgid "NNNNNNN"
+msgstr ""
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:339
+#: module/Application/view/application/user-area/index.phtml:181
+#: module/Application/view/application/user-area/index.phtml:430
+msgid "Cod. destinatario"
+msgstr "Recipient code"
 
 #: module/Application/src/Application/Form/CustomerPointFieldset.php:114
 msgid "La data di fine validità deve essere posteriore alla data di inizio"
@@ -471,8 +492,8 @@ msgstr "The uploaded file is not readable or does not exist"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:272
 #: module/Application/src/Application/Form/UserFieldset.php:396
 #: module/Application/src/Application/Form/UserFieldset.php:399
-#: module/Application/view/application/user-area/index.phtml:461
-#: module/Application/view/application/user-area/index.phtml:708
+#: module/Application/view/application/user-area/index.phtml:499
+#: module/Application/view/application/user-area/index.phtml:746
 #: module/Application/view/application/user/new-signup2.phtml:385
 #: module/Application/view/application/user/signup-sk2.phtml:424
 #: module/Application/view/application/user/signup.phtml:617
@@ -510,8 +531,8 @@ msgstr "Set your password"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:75
 #: module/Application/src/Application/Form/UserFieldset.php:98
-#: module/Application/view/application/user-area/index.phtml:762
-#: module/Application/view/application/user-area/index.phtml:798
+#: module/Application/view/application/user-area/index.phtml:800
+#: module/Application/view/application/user-area/index.phtml:836
 #: module/Application/view/application/user/new-signup.phtml:69
 #: module/Application/view/application/user/signup-sk1.phtml:69
 #: module/Application/view/application/user/signup.phtml:181
@@ -839,8 +860,6 @@ msgid "Inserisci di nuovo la email"
 msgstr "Enter the email again"
 
 #: module/Application/src/Application/Form/UserFieldset.php:107
-#, fuzzy
-#| msgid "Inserisci i tuoi dati personali"
 msgid "Inserisci di nuovo la password"
 msgstr "Enter your personal information"
 
@@ -973,8 +992,6 @@ msgid "E' necessario essere maggiorenni"
 msgstr "It is necessary to be of age"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:18
-#, fuzzy
-#| msgid "Il codice fiscale non è corretto"
 msgid "Il numero identificativo non è corretto"
 msgstr "The tax code is not correct"
 
@@ -1018,6 +1035,14 @@ msgstr "The code entered is not valid"
 msgid "Il codice promo è già stato utilizzato"
 msgstr "The promo code has already been used"
 
+#: module/Application/src/Application/Form/Validator/RecipientCode.php:21
+msgid "Il codice destinatario deve essere una cifra di 7 caratteri numerici"
+msgstr "The recipient code must be a digit of 7 numeric characters"
+
+#: module/Application/src/Application/Form/Validator/RecipientCode.php:22
+msgid "Il codice destinatario, deve avere solo caratteri numerici"
+msgstr "The recipient code must have only numeric characters"
+
 #: module/Application/src/Application/Form/Validator/TaxCode.php:18
 msgid "Il codice fiscale non è corretto"
 msgstr "The tax code is not correct"
@@ -1034,17 +1059,21 @@ msgstr "Age not allowed for driving"
 msgid "Selezionare la città preferita"
 msgstr "Choose your preferred city"
 
-#: module/Application/src/Application/Form/Validator/VatNumber.php:22
+#: module/Application/src/Application/Form/Validator/VatNumber.php:24
 msgid "La partita IVA non può contenere spazi"
 msgstr "The VAT number can not contain spaces"
 
-#: module/Application/src/Application/Form/Validator/VatNumber.php:23
+#: module/Application/src/Application/Form/Validator/VatNumber.php:25
 msgid "La partita IVA deve essere numerica, al più preceduta dal prefisso IT"
 msgstr "The VAT number must be numeric, the most preceded by the IT code"
 
-#: module/Application/src/Application/Form/Validator/VatNumber.php:24
+#: module/Application/src/Application/Form/Validator/VatNumber.php:26
 msgid "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
 msgstr "The VAT number must be 11 digits, the most preceded by the IT code"
+
+#: module/Application/src/Application/Form/Validator/VatNumber.php:27
+msgid "La partita IVA non è valida, il codice di controllo non corrisponde"
+msgstr "The VAT number is invalid, the control code does not match"
 
 #: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
@@ -1736,14 +1765,10 @@ msgstr ""
 "development have been absorbed."
 
 #: module/Application/view/application/index/crawler.phtml:77
-#, fuzzy
-#| msgid "Dati pagamento"
 msgid "Caricamento"
 msgstr "Payment data"
 
 #: module/Application/view/application/index/crawler.phtml:77
-#, fuzzy
-#| msgid "Contattare l'assistenza per maggiori informazioni"
 msgid "Contattare l'assistenza"
 msgstr "Contact support for more information"
 
@@ -1756,6 +1781,8 @@ msgid ""
 "Il tuo profilo risulta disattivato, si prega di contattare il Servizio Clienti "
 "per essere riabilitato."
 msgstr ""
+"Your profile is deactivated, please contact Customer Service to be "
+"rehabilitated."
 
 #: module/Application/view/application/index/index.phtml:54
 msgid "PER SAPERNE DI PIU' (FAQ)"
@@ -2269,9 +2296,9 @@ msgid "Modifica"
 msgstr "Edit"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:290
-#: module/Application/view/application/user-area/index.phtml:442
-#: module/Application/view/application/user-area/index.phtml:746
-#: module/Application/view/application/user-area/index.phtml:820
+#: module/Application/view/application/user-area/index.phtml:480
+#: module/Application/view/application/user-area/index.phtml:784
+#: module/Application/view/application/user-area/index.phtml:858
 #: module/Application/view/partials/car-popup.phtml:96
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:70
 #: module/Application/view/partials/translations.phtml:16
@@ -2279,9 +2306,9 @@ msgid "Annulla"
 msgstr "Cancel"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:291
-#: module/Application/view/application/user-area/index.phtml:443
-#: module/Application/view/application/user-area/index.phtml:747
-#: module/Application/view/application/user-area/index.phtml:821
+#: module/Application/view/application/user-area/index.phtml:481
+#: module/Application/view/application/user-area/index.phtml:785
+#: module/Application/view/application/user-area/index.phtml:859
 msgid "Salva modifiche"
 msgstr "Save Changes"
 
@@ -2320,14 +2347,14 @@ msgid "I tuoi dati personali"
 msgstr "My personal data"
 
 #: module/Application/view/application/user-area/index.phtml:107
-#: module/Application/view/application/user-area/index.phtml:296
+#: module/Application/view/application/user-area/index.phtml:309
 #: module/Application/view/application/user/signup-sk2.phtml:164
 #: module/Application/view/application/user/signup.phtml:271
 msgid "Provincia di nascita"
 msgstr "Province"
 
 #: module/Application/view/application/user-area/index.phtml:128
-#: module/Application/view/application/user-area/index.phtml:335
+#: module/Application/view/application/user-area/index.phtml:348
 #: module/Application/view/application/user/new-signup2.phtml:127
 #: module/Application/view/application/user/signup-sk2.phtml:114
 #: module/Application/view/application/user/signup.phtml:312
@@ -2335,7 +2362,7 @@ msgid "Indirizzo di residenza"
 msgstr "Home Address"
 
 #: module/Application/view/application/user-area/index.phtml:134
-#: module/Application/view/application/user-area/index.phtml:346
+#: module/Application/view/application/user-area/index.phtml:359
 #: module/Application/view/application/user/new-signup2.phtml:146
 #: module/Application/view/application/user/signup-sk2.phtml:132
 #: module/Application/view/application/user/signup.phtml:322
@@ -2343,55 +2370,55 @@ msgid "Cap"
 msgstr "ZIP Code"
 
 #: module/Application/view/application/user-area/index.phtml:148
-#: module/Application/view/application/user-area/index.phtml:364
+#: module/Application/view/application/user-area/index.phtml:377
 #: module/Application/view/application/user/signup.phtml:340
 msgid "Citt&agrave;"
 msgstr "City"
 
 #: module/Application/view/application/user-area/index.phtml:166
-#: module/Application/view/application/user-area/index.phtml:391
+#: module/Application/view/application/user-area/index.phtml:404
 #: module/Application/view/application/user/new-signup2.phtml:431
 #: module/Application/view/application/user/signup.phtml:366
 msgid "Codice Fiscale"
 msgstr "Tax Code"
 
-#: module/Application/view/application/user-area/index.phtml:172
-#: module/Application/view/application/user-area/index.phtml:402
+#: module/Application/view/application/user-area/index.phtml:176
+#: module/Application/view/application/user-area/index.phtml:420
 msgid "Partita IVA (Opzionale)"
 msgstr "VAT number (Optional)"
 
-#: module/Application/view/application/user-area/index.phtml:183
-#: module/Application/view/application/user-area/index.phtml:418
+#: module/Application/view/application/user-area/index.phtml:196
+#: module/Application/view/application/user-area/index.phtml:456
 msgid "Lingua"
 msgstr "Language"
 
-#: module/Application/view/application/user-area/index.phtml:188
-#: module/Application/view/application/user-area/index.phtml:429
+#: module/Application/view/application/user-area/index.phtml:201
+#: module/Application/view/application/user-area/index.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:80
 #: module/Application/view/application/user/signup-sk1.phtml:80
 msgid "Citt&agrave; preferita"
 msgstr "Preferred City"
 
-#: module/Application/view/application/user-area/index.phtml:195
+#: module/Application/view/application/user-area/index.phtml:208
 msgid "Modifica profilo"
 msgstr "Edit profile"
 
-#: module/Application/view/application/user-area/index.phtml:450
+#: module/Application/view/application/user-area/index.phtml:488
 msgid "Il tuo numero di telefono"
 msgstr "My phone number"
 
-#: module/Application/view/application/user-area/index.phtml:470
+#: module/Application/view/application/user-area/index.phtml:508
 msgid "Modifica Numero"
 msgstr "Change Number"
 
-#: module/Application/view/application/user-area/index.phtml:485
+#: module/Application/view/application/user-area/index.phtml:523
 #: module/Application/view/application/user/new-signup2.phtml:162
 #: module/Application/view/application/user/signup-sk2.phtml:201
 #: module/Application/view/application/user/signup.phtml:392
 msgid "Prefisso"
 msgstr "Prefix"
 
-#: module/Application/view/application/user-area/index.phtml:721
+#: module/Application/view/application/user-area/index.phtml:759
 #: module/Application/view/application/user/new-signup2.phtml:398
 #: module/Application/view/application/user/signup.phtml:629
 #: module/Application/view/partials/translations.phtml:3
@@ -2399,81 +2426,81 @@ msgstr "Prefix"
 msgid "INVIA CODICE"
 msgstr "SEND CODE"
 
-#: module/Application/view/application/user-area/index.phtml:730
+#: module/Application/view/application/user-area/index.phtml:768
 #: module/Application/view/application/user/new-signup2.phtml:409
 #: module/Application/view/application/user/signup.phtml:641
 msgid "Codice di Verifica"
 msgstr "Verification code"
 
-#: module/Application/view/application/user-area/index.phtml:740
+#: module/Application/view/application/user-area/index.phtml:778
 #: module/Application/view/application/user/signup.phtml:651
 msgid "Inserisci qui il codice di verifica inviato via sms"
 msgstr "Enter the verification code sent via SMS here"
 
-#: module/Application/view/application/user-area/index.phtml:753
+#: module/Application/view/application/user-area/index.phtml:791
 msgid "I tuoi dati per l'accesso"
 msgstr "My data access"
 
-#: module/Application/view/application/user-area/index.phtml:770
+#: module/Application/view/application/user-area/index.phtml:808
 msgid "Modifica Password"
 msgstr "Change Password"
 
-#: module/Application/view/application/user-area/index.phtml:786
+#: module/Application/view/application/user-area/index.phtml:824
 msgid "Vecchia Password"
 msgstr "Old password"
 
-#: module/Application/view/application/user-area/index.phtml:808
+#: module/Application/view/application/user-area/index.phtml:846
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:48
 msgid "Ripeti Password"
 msgstr "Repeat the password"
 
-#: module/Application/view/application/user-area/index.phtml:840
+#: module/Application/view/application/user-area/index.phtml:878
 msgid "I tuoi minuti Bonus"
 msgstr "Free bonus minutes"
 
-#: module/Application/view/application/user-area/index.phtml:850
+#: module/Application/view/application/user-area/index.phtml:888
 msgid "Accreditati"
 msgstr "Credited"
 
-#: module/Application/view/application/user-area/index.phtml:854
+#: module/Application/view/application/user-area/index.phtml:892
 msgid "Utilizzati"
 msgstr "Used"
 
-#: module/Application/view/application/user-area/index.phtml:858
+#: module/Application/view/application/user-area/index.phtml:896
 msgid "Rimanenti"
 msgstr "Left"
 
-#: module/Application/view/application/user-area/index.phtml:867
+#: module/Application/view/application/user-area/index.phtml:905
 msgid "Punti OSSIGENO"
 msgstr "Oxigen Points"
 
-#: module/Application/view/application/user-area/index.phtml:877
+#: module/Application/view/application/user-area/index.phtml:915
 msgid "Accreditati questo mese"
 msgstr "Points gained this month"
 
-#: module/Application/view/application/user-area/index.phtml:881
+#: module/Application/view/application/user-area/index.phtml:919
 msgid "Utilizzabili"
 msgstr "Available"
 
-#: module/Application/view/application/user-area/index.phtml:889
+#: module/Application/view/application/user-area/index.phtml:927
 msgid "Contributo ambientale"
 msgstr "My environmental contribution"
 
-#: module/Application/view/application/user-area/index.phtml:904
+#: module/Application/view/application/user-area/index.phtml:942
 msgid "Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso."
 msgstr ""
 "I have not yet paid my subscription to the service and I would like to do it "
 "now."
 
-#: module/Application/view/application/user-area/index.phtml:1011
+#: module/Application/view/application/user-area/index.phtml:1050
 msgid "Hai risparmiato"
 msgstr "saving"
 
-#: module/Application/view/application/user-area/index.phtml:1011
+#: module/Application/view/application/user-area/index.phtml:1050
 msgid "KG di CO"
 msgstr "KG of CO"
 
-#: module/Application/view/application/user-area/index.phtml:1011
+#: module/Application/view/application/user-area/index.phtml:1050
 msgid "Grazie!"
 msgstr " "
 
@@ -3295,8 +3322,6 @@ msgid "Austria"
 msgstr "Austria"
 
 #: module/Application/view/application/user/signup-sk2.phtml:206
-#, fuzzy
-#| msgid "Belgio"
 msgid "Belgium"
 msgstr "Belgium"
 
@@ -3306,8 +3331,6 @@ msgid "Bulgaria"
 msgstr "Bulgaria"
 
 #: module/Application/view/application/user/signup-sk2.phtml:208
-#, fuzzy
-#| msgid "Croazia"
 msgid "Croatia"
 msgstr "Croatia"
 
@@ -3333,20 +3356,14 @@ msgid "Estonia"
 msgstr "Estonia"
 
 #: module/Application/view/application/user/signup-sk2.phtml:214
-#, fuzzy
-#| msgid "Finlandia"
 msgid "Finland"
 msgstr "Finland"
 
 #: module/Application/view/application/user/signup-sk2.phtml:215
-#, fuzzy
-#| msgid "Francia"
 msgid "France"
 msgstr "France"
 
 #: module/Application/view/application/user/signup-sk2.phtml:216
-#, fuzzy
-#| msgid "Germania"
 msgid "Germany"
 msgstr "Germany"
 
@@ -3359,8 +3376,6 @@ msgid "Hungary"
 msgstr ""
 
 #: module/Application/view/application/user/signup-sk2.phtml:219
-#, fuzzy
-#| msgid "Irlanda"
 msgid "Ireland"
 msgstr "Ireland"
 
@@ -4535,6 +4550,8 @@ msgid ""
 "Scarica il documento di autocertificazione e compilalo dopo aver completato "
 "l’iscrizione."
 msgstr ""
+"Download the self-certification document and complete it after completing the "
+"registration."
 
 #: module/Application/view/application/user/signup2.phtml:144
 msgid ""

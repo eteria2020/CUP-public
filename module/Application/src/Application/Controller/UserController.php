@@ -1284,6 +1284,12 @@ class UserController extends AbstractActionController {
             $this->layout('layout/map');
         }
 
+        if(isset($this->serverInstance["id"])) {
+            if($this->serverInstance["id"]=="sk_SK") {
+                return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile],['query' => ['lang' => 'sk_SK']]);
+            }
+        }
+
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
         /* redirect if session is empty */

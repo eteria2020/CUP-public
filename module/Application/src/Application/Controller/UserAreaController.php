@@ -251,9 +251,13 @@ class UserAreaController extends AbstractActionController {
                 //prevent gender editing
                 $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
 
-                // ensure vat is not NULL, but a string
-                if (is_null($postData['customer']['vat'])) {
-                    $postData['customer']['vat'] = '';
+
+
+                if($this->formatTaxData($postData)) {
+
+                } else {
+                    $this->flashMessenger()->addErrorMessage($this->translator->translate("Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"));
+                    return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
                 }
 
                 $customerOldTaxCode = $customer->getTaxCode();
@@ -765,4 +769,43 @@ class UserAreaController extends AbstractActionController {
         }
     }
 
+    /**
+     * @param $postData
+     * @return bool
+     */
+    private function formatTaxData(&$postData) {
+        $result = false;
+
+        // ensure vat is not NULL, but a string
+        if (is_null($postData['customer']['vat'])) {
+            $postData['customer']['vat'] = '';
+            $postData['customer']['recipientCode'] = null;
+            $postData['customer']['cem'] = null;
+
+        } else if ($postData['customer']['vat']=="") {
+            $postData['customer']['recipientCode'] = null;
+            $postData['customer']['cem'] = null;
+        }
+
+        if($postData['customer']['recipientCode']=="") {
+            $postData['customer']['recipientCode'] = null;
+        } else {
+            $postData['customer']['cem'] = null;
+        }
+
+        if($postData['customer']['cem']=="") {
+            $postData['customer']['cem'] = null;
+        } else {
+            $postData['customer']['recipientCode'] = null;
+        }
+
+        if($postData['customer']['vat'] == '' ||
+            ($postData['customer']['vat'] != '' && !is_null($postData['customer']['recipientCode'])) ||
+            ($postData['customer']['vat'] != '' && !is_null($postData['customer']['cem']))
+        ) {
+            $result = true;
+        }
+
+        return $result;
+    }
 }
