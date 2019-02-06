@@ -12,15 +12,16 @@ class RecipientCode extends AbstractValidator
 
     protected $messageTemplates = [
         self::LENGTH => "Il codice destinatario deve essere una cifra di 7 caratteri numerici",
-        self::NUMERIC => "Il codice destinatario, deve avere solo caratteri numerici"
+        self::NUMERIC => "Il codice destinatario deve avere solo caratteri alfanumerici"
     ];
 
     public function isValid($value)
     {
         $translator = new \Zend\I18n\Translator\Translator();
         $messageTemplates[ self::LENGTH] = $translator->translate("Il codice destinatario deve essere una cifra di 7 caratteri numerici");
-        $messageTemplates[ self::NUMERIC] = $translator->translate("Il codice destinatario, deve avere solo caratteri numerici");
-        
+        $messageTemplates[ self::NUMERIC] = $translator->translate("Il codice destinatario deve avere solo caratteri alfanumerici");
+
+        $value = strtoupper($value);
         $this->setValue($value);
 
         if(!($value === self::RECIPEINT_CODE_FOREIGN)) {
@@ -29,7 +30,7 @@ class RecipientCode extends AbstractValidator
                 return false;
             }
 
-            if (!preg_match("/^[0-9]+$/", $value)) {
+            if (!preg_match("/^[A-Z0-9]+$/", $value)) {
                 $this->error(self::NUMERIC);
                 return false;
             }            

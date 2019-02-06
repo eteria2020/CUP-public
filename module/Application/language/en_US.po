@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-05 16:47+0100\n"
-"PO-Revision-Date: 2019-02-05 16:48+0100\n"
+"POT-Creation-Date: 2019-02-06 12:50+0100\n"
+"PO-Revision-Date: 2019-02-06 12:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -99,8 +99,11 @@ msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
 #: module/Application/src/Application/Controller/UserAreaController.php:259
+#, fuzzy
+#| msgid ""
+#| "Con la partita iva deve essere inserito il cod. destinatario oppure la PEC"
 msgid ""
-"Con la partita iva deve essere inserito il cod. destinatario oppure la PEC"
+"Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"
 msgstr "With the VAT number must be inserted the cod. recipient or PEC"
 
 #: module/Application/src/Application/Controller/UserAreaController.php:454
@@ -385,7 +388,7 @@ msgid "PEC"
 msgstr "Certified mail"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:336
-msgid "NNNNNNN"
+msgid "ABCDEFG"
 msgstr ""
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:339
@@ -1040,7 +1043,7 @@ msgid "Il codice destinatario deve essere una cifra di 7 caratteri numerici"
 msgstr "The recipient code must be a digit of 7 numeric characters"
 
 #: module/Application/src/Application/Form/Validator/RecipientCode.php:22
-msgid "Il codice destinatario, deve avere solo caratteri numerici"
+msgid "Il codice destinatario deve avere solo caratteri alfanumerici"
 msgstr "The recipient code must have only numeric characters"
 
 #: module/Application/src/Application/Form/Validator/TaxCode.php:18

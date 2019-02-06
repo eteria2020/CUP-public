@@ -333,7 +333,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'recipientCode',
                 'maxlength' => 7,
-                'placeholder' => $translator->translate('NNNNNNN'),
+                'placeholder' => $translator->translate('ABCDEFG'),
             ],
             'options' => [
                 'label' => $translator->translate('Cod. destinatario'),

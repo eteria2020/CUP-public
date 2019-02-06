@@ -778,30 +778,32 @@ class UserAreaController extends AbstractActionController {
 
         // ensure vat is not NULL, but a string
         if (is_null($postData['customer']['vat'])) {
-            $postData['customer']['vat'] = '';
+            $postData['customer']['vat'] = "";
             $postData['customer']['recipientCode'] = null;
             $postData['customer']['cem'] = null;
 
         } else if ($postData['customer']['vat']=="") {
             $postData['customer']['recipientCode'] = null;
             $postData['customer']['cem'] = null;
+        } else {
+            $postData['customer']['vat'] =strtoupper($postData['customer']['vat']);
         }
 
         if($postData['customer']['recipientCode']=="") {
             $postData['customer']['recipientCode'] = null;
         } else {
-            $postData['customer']['cem'] = null;
+            $postData['customer']['recipientCode'] = strtoupper($postData['customer']['recipientCode']);
         }
 
         if($postData['customer']['cem']=="") {
             $postData['customer']['cem'] = null;
         } else {
-            $postData['customer']['recipientCode'] = null;
+            $postData['customer']['cem'] = strtolower($postData['customer']['cem']);
         }
 
-        if($postData['customer']['vat'] == '' ||
-            ($postData['customer']['vat'] != '' && !is_null($postData['customer']['recipientCode'])) ||
-            ($postData['customer']['vat'] != '' && !is_null($postData['customer']['cem']))
+        if($postData['customer']['vat'] == "" ||
+            ($postData['customer']['vat'] != "" && !is_null($postData['customer']['recipientCode'])) ||
+            ($postData['customer']['vat'] != "" && !is_null($postData['customer']['cem']))
         ) {
             $result = true;
         }
