@@ -312,6 +312,33 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 )
             ]
         ]);
+
+        $this->add([
+            'name' => 'cem',
+            'type' => 'Zend\Form\Element\Email',
+            'attributes' => [
+                'id' => 'cem',
+                'maxlength' => 64,
+                'placeholder' => 'name@name.ext'
+
+            ],
+            'options' => [
+                'label' => $translator->translate('PEC')
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'recipientCode',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'recipientCode',
+                'maxlength' => 7,
+                'placeholder' => $translator->translate('NNNNNNN'),
+            ],
+            'options' => [
+                'label' => $translator->translate('Cod. destinatario'),
+            ]
+        ]);
     }
 
     public function getInputFilterSpecification()
@@ -497,6 +524,33 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'fleetService' => $this->fleetService
                         ]
+                    ]
+                ]
+            ],
+            'cem' => [
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringToLower'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'EmailAddress',
+                        'break_chain_on_failure' => true
+                    ],
+                ]
+            ],
+            'recipientCode' => [
+                'required' => false,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\RecipientCode'
                     ]
                 ]
             ],
