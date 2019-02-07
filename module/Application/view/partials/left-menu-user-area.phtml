@@ -5,7 +5,7 @@
             <!--the definition of the left menu is in the config/module.config.php at the key "navigation"-->
             <?php
             $menu = '';
-            $mobile = substr($this->serverUrl(true), -6) == 'mobile' ? '/mobile' : '';
+            $mobile = (strpos($this->serverUrl(true), 'mobile') !== false) ? '/mobile' : '';
             foreach ($this->container as $page) {
                 $menu .= '<li>';
                 $menu .= sprintf('<a href="%s" class="%s">', $page->getHref().$mobile, $page->isActive() ? 'active' : '');
