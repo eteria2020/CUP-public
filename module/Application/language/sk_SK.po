@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-06 12:50+0100\n"
-"PO-Revision-Date: 2019-02-06 12:50+0100\n"
+"POT-Creation-Date: 2019-02-07 11:03+0100\n"
+"PO-Revision-Date: 2019-02-07 11:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -97,56 +97,48 @@ msgstr "Uvítací balíček"
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Ak chceš znova zmeniť svoje údaje, budeš musieť počkať 10 minút."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:259
-#, fuzzy
-#| msgid ""
-#| "Con la partita iva deve essere inserito il cod. destinatario oppure la PEC"
-msgid ""
-"Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"
-msgstr "S číslom DPH sa musí vložiť treska. príjemca alebo PEC"
-
-#: module/Application/src/Application/Controller/UserAreaController.php:454
+#: module/Application/src/Application/Controller/UserAreaController.php:450
 msgid "Operazione completata con successo!"
 msgstr "Operácia bola dokončená úspešne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:456
+#: module/Application/src/Application/Controller/UserAreaController.php:452
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:570
-#: module/Application/src/Application/Controller/UserAreaController.php:610
+#: module/Application/src/Application/Controller/UserAreaController.php:566
+#: module/Application/src/Application/Controller/UserAreaController.php:606
 msgid "Pagamento completato con successo"
 msgstr "Platba bola úspešne dokončená"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:572
-#: module/Application/src/Application/Controller/UserAreaController.php:612
+#: module/Application/src/Application/Controller/UserAreaController.php:568
+#: module/Application/src/Application/Controller/UserAreaController.php:608
 msgid "Pagamento fallito"
 msgstr "Platba zlyhala"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:581
-#: module/Application/src/Application/Controller/UserAreaController.php:621
+#: module/Application/src/Application/Controller/UserAreaController.php:577
+#: module/Application/src/Application/Controller/UserAreaController.php:617
 #: module/Application/view/application/user-area/debt-collection.phtml:107
 #: module/Application/view/application/user-area/debt-collection.phtml:173
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Platba bola dočasne pozastavená. Skús to znova neskôr."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:650
+#: module/Application/src/Application/Controller/UserAreaController.php:646
 msgid "Contratto disabilitato correttamente!"
 msgstr "Zmluva bola zablokovaná správne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:652
-#: module/Application/src/Application/Controller/UserAreaController.php:655
-#: module/Application/src/Application/Controller/UserAreaController.php:658
+#: module/Application/src/Application/Controller/UserAreaController.php:648
+#: module/Application/src/Application/Controller/UserAreaController.php:651
+#: module/Application/src/Application/Controller/UserAreaController.php:654
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Chyba pri zablkovaní zmluvy"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:694
+#: module/Application/src/Application/Controller/UserAreaController.php:690
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný, pretože vypršala platnosť vloženej karty, zadaj nové údaje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:698
+#: module/Application/src/Application/Controller/UserAreaController.php:694
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -155,11 +147,18 @@ msgstr ""
 "uprav údaje zadané v nižšie uvedenom formulári a / alebo v časti \"Vodičský "
 "preukaz\"."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:703
+#: module/Application/src/Application/Controller/UserAreaController.php:699
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný z dôvodu vypršania platnosti vodičského preukazu, zadaj nové "
 "údaje."
+
+#: module/Application/src/Application/Controller/UserAreaController.php:798
+#: module/Application/src/Application/Form/Validator/VatNumber.php:27
+#, fuzzy
+#| msgid "La patente non può essere scaduta"
+msgid "La partita IVA non è valida"
+msgstr "Platnosť licencie nemôže uplynúť"
 
 #: module/Application/src/Application/Controller/UserController.php:656
 #: module/Application/src/Application/Controller/UserController.php:675
@@ -1106,10 +1105,6 @@ msgstr "Číslo DPH musí byť číselné, najpredávanejšie je kód IT"
 msgid ""
 "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
 msgstr "Číslo DPH musí mať 11 číslic, z ktorých najdôležitejšie je kód IT"
-
-#: module/Application/src/Application/Form/Validator/VatNumber.php:27
-msgid "La partita IVA non è valida, il codice di controllo non corrisponde"
-msgstr ""
 
 #: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
@@ -5759,6 +5754,14 @@ msgstr ""
 "ktoré majú byť uhradenée a neboli uhradené dnes, znamená to že došlo k "
 "problémom na tvojej kreditnej karte a že tvoj účet je dočasne pozastavený. "
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
+
+#, fuzzy
+#~| msgid ""
+#~| "Con la partita iva deve essere inserito il cod. destinatario oppure la "
+#~| "PEC"
+#~ msgid ""
+#~ "Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"
+#~ msgstr "S číslom DPH sa musí vložiť treska. príjemca alebo PEC"
 
 #~ msgid "(Repeat email)"
 #~ msgstr "(Repeat email)"

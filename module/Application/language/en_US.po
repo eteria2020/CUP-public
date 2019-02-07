@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-06 12:50+0100\n"
-"PO-Revision-Date: 2019-02-06 12:50+0100\n"
+"POT-Creation-Date: 2019-02-07 11:01+0100\n"
+"PO-Revision-Date: 2019-02-07 11:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -98,56 +98,48 @@ msgstr "Package not buyable"
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:259
-#, fuzzy
-#| msgid ""
-#| "Con la partita iva deve essere inserito il cod. destinatario oppure la PEC"
-msgid ""
-"Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"
-msgstr "With the VAT number must be inserted the cod. recipient or PEC"
-
-#: module/Application/src/Application/Controller/UserAreaController.php:454
+#: module/Application/src/Application/Controller/UserAreaController.php:450
 msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:456
+#: module/Application/src/Application/Controller/UserAreaController.php:452
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "An application error has occurred. We apologize for the inconvenience"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:570
-#: module/Application/src/Application/Controller/UserAreaController.php:610
+#: module/Application/src/Application/Controller/UserAreaController.php:566
+#: module/Application/src/Application/Controller/UserAreaController.php:606
 msgid "Pagamento completato con successo"
 msgstr "Payment completed successfully"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:572
-#: module/Application/src/Application/Controller/UserAreaController.php:612
+#: module/Application/src/Application/Controller/UserAreaController.php:568
+#: module/Application/src/Application/Controller/UserAreaController.php:608
 msgid "Pagamento fallito"
 msgstr "Payment failed"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:581
-#: module/Application/src/Application/Controller/UserAreaController.php:621
+#: module/Application/src/Application/Controller/UserAreaController.php:577
+#: module/Application/src/Application/Controller/UserAreaController.php:617
 #: module/Application/view/application/user-area/debt-collection.phtml:107
 #: module/Application/view/application/user-area/debt-collection.phtml:173
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Payment temporarily suspended, please try again later."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:650
+#: module/Application/src/Application/Controller/UserAreaController.php:646
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract disabled properly!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:652
-#: module/Application/src/Application/Controller/UserAreaController.php:655
-#: module/Application/src/Application/Controller/UserAreaController.php:658
+#: module/Application/src/Application/Controller/UserAreaController.php:648
+#: module/Application/src/Application/Controller/UserAreaController.php:651
+#: module/Application/src/Application/Controller/UserAreaController.php:654
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Error while disabling the contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:694
+#: module/Application/src/Application/Controller/UserAreaController.php:690
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "You are disabled because the inserted card has expired, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:698
+#: module/Application/src/Application/Controller/UserAreaController.php:694
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -155,9 +147,14 @@ msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:703
+#: module/Application/src/Application/Controller/UserAreaController.php:699
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
+
+#: module/Application/src/Application/Controller/UserAreaController.php:798
+#: module/Application/src/Application/Form/Validator/VatNumber.php:27
+msgid "La partita IVA non è valida"
+msgstr "The VAT number is invalid"
 
 #: module/Application/src/Application/Controller/UserController.php:656
 #: module/Application/src/Application/Controller/UserController.php:675
@@ -1073,10 +1070,6 @@ msgstr "The VAT number must be numeric, the most preceded by the IT code"
 #: module/Application/src/Application/Form/Validator/VatNumber.php:26
 msgid "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
 msgstr "The VAT number must be 11 digits, the most preceded by the IT code"
-
-#: module/Application/src/Application/Form/Validator/VatNumber.php:27
-msgid "La partita IVA non è valida, il codice di controllo non corrisponde"
-msgstr "The VAT number is invalid, the control code does not match"
 
 #: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
@@ -5829,3 +5822,13 @@ msgstr ""
 "made today, it means that there have been problems debiting your credit card "
 "and that your account is; temporarily suspended. Contact the Customer Service "
 "of Sharengo for reactivation."
+
+#, fuzzy
+#~| msgid ""
+#~| "Con la partita iva deve essere inserito il cod. destinatario oppure la PEC"
+#~ msgid ""
+#~ "Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"
+#~ msgstr "With the VAT number must be inserted the cod. recipient or PEC"
+
+#~ msgid "La partita IVA non è valida, il codice di controllo non corrisponde"
+#~ msgstr "The VAT number is invalid, the control code does not match"

@@ -245,20 +245,17 @@ class UserAreaController extends AbstractActionController {
 
             $postData = $this->getRequest()->getPost()->toArray();
 
+            $errorMessageTaxData = $this->formatAndCheckTaxData($postData);
+            if(!is_null($errorMessageTaxData)) {
+                $this->flashMessenger()->addErrorMessage($errorMessageTaxData);
+                return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
+            }
+
             if (isset($postData['customer'])) {
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();
 
                 //prevent gender editing
                 $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
-
-
-
-                if($this->formatTaxData($postData)) {
-
-                } else {
-                    $this->flashMessenger()->addErrorMessage($this->translator->translate("Con la partita IVA deve essere inserito il cod. destinatario oppure la PEC"));
-                    return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
-                }
 
                 $customerOldTaxCode = $customer->getTaxCode();
                 $editForm = $this->processForm($this->profileForm, $postData);
@@ -284,8 +281,7 @@ class UserAreaController extends AbstractActionController {
                 $postData['id'] = $this->userService->getIdentity()->getId();
                 $editForm = $this->processForm($this->passwordForm, $postData);
                 $this->typeForm = 'edit-pwd';
-            } else
-            if (isset($postData['mobile'])) {
+            } else if (isset($postData['mobile'])) {
                 $postData['id'] = $this->userService->getIdentity()->getId();
 
                 if ($customer->getMobile() == $postData['mobile'] && $postData['smsCode'] == "") {
@@ -770,21 +766,17 @@ class UserAreaController extends AbstractActionController {
     }
 
     /**
+     * Forma and check vat, recipeint code and cem, match the requirements
+     *
      * @param $postData
-     * @return bool
+     * @return string|null
      */
-    private function formatTaxData(&$postData) {
-        $result = false;
+    private function formatAndCheckTaxData(&$postData) {
+        $result = null;
 
         // ensure vat is not NULL, but a string
         if (is_null($postData['customer']['vat'])) {
             $postData['customer']['vat'] = "";
-            $postData['customer']['recipientCode'] = null;
-            $postData['customer']['cem'] = null;
-
-        } else if ($postData['customer']['vat']=="") {
-            $postData['customer']['recipientCode'] = null;
-            $postData['customer']['cem'] = null;
         } else {
             $postData['customer']['vat'] =strtoupper($postData['customer']['vat']);
         }
@@ -801,11 +793,9 @@ class UserAreaController extends AbstractActionController {
             $postData['customer']['cem'] = strtolower($postData['customer']['cem']);
         }
 
-        if($postData['customer']['vat'] == "" ||
-            ($postData['customer']['vat'] != "" && !is_null($postData['customer']['recipientCode'])) ||
-            ($postData['customer']['vat'] != "" && !is_null($postData['customer']['cem']))
-        ) {
-            $result = true;
+        if ($postData['customer']['vat'] == "" &&
+            ( !is_null($postData['customer']['recipientCode']) ||  !is_null($postData['customer']['cem'])) ) {
+            $result = $this->translator->translate("La partita IVA non è valida");
         }
 
         return $result;
