@@ -1,44 +1,19 @@
 <?php
-
-$this->placeholder('google-track-adwords')->set('<!-- Google Code for Preventivo Conversion Page -->
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 953520877;
-var google_conversion_language = "en";
-var google_conversion_format = "3";
-var google_conversion_color = "ffffff";
-var google_conversion_label = "wYOdCOz65lwQ7aXWxgM";
-var google_remarketing_only = false;
-/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/953520877/?label=wYOdCOz65lwQ7aXWxgM&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>
-');
-
-$this->placeholder('facebook-pixel')->set('
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version=\'2.0\';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,\'script\',\'https://connect.facebook.net/en_US/fbevents.js\');
-
-fbq(\'init\', \'423565347840059\');
-fbq(\'track\', "PageView");
-fbq(\'track\', \'CompleteRegistration\');</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
-/></noscript>
-');
-
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-sk.js'))
+    ->appendFile($this->basePath('js/signupSK.js?v=4.2'));
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 ?>
+<style>
+    .module-section-bookmark.yellow {
+        padding-bottom: 20px;
+    }
+</style>
 <!-- module-section-bookmark -->
-<div class="module-section-bookmark content-align-center">
+<div class="module-section-bookmark yellow content-align-center">
 <h1 class="module-main-title"><?= $this->translate('Registrati'); ?></h1>
 </div>
 <!-- module-section-bookmark -->
@@ -46,15 +21,15 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
 <!-- main -->
 <div id="main">
 
- <!-- module-wizard -->
- <div class="module-wizard clearfix">
-    <ul>
-        <li class="active"><i class="fa fa-user"></i></li>
-        <li class="active"><i class="fa fa-tachometer"></i></li>
-        <li class="active"><i class="fa fa-flag-checkered"></i></li>
-    </ul>
-</div>
-<!-- module-wizard -->
+    <!-- module-wizard -->
+    <div class="module-wizard clearfix">
+        <ul>
+            <li class="active">1</i></li>
+            <li class="active">2</li>
+            <li class=""><i class="icon-auto"></i></li>
+        </ul>
+    </div>
+    <!-- module-wizard -->
 
 <!-- content -->
 <div class="content">
@@ -70,24 +45,10 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
     <div class="block-alert margin-bottom right">
         <h2 class="block-title"><i class="fa fa-check-circle"></i><?= $this->translate('Attivazione account'); ?></h2>
         <p>
-            <?= $this->translate('Controlla nella tua casella di posta e clicca sul link suggerito dalla mail inviata per ATTIVARE l\'account.'); ?><br/>
+            <?= $this->translate('Ora puoi accedere con i dati inseriti in fase di registrazione all\'app e alla tua area utente.'); ?><br/>
         </p>
     </div>
     <!-- block-alert -->
-
-    <!-- English block-alert -->
-    <div class="block-alert margin-bottom right">
-        <h2 class="block-title"><i class="fa fa-check-circle"></i><?= $this->translate('Account creation completed'); ?></h2>
-        <p>
-            <?= $this->translate('Check your email and click on the suggested link to complete account activation'); ?><br/>
-        </p>
-    </div>
-    <!-- English block-alert -->
-
-    <div class="content-align-center margin-bottom" style="color:#000000">
-        <b style="color:#07BA50">ATTENZIONE:</b> potrai effettuare l’accesso all’<b style="color:#07BA50">APP</b> solo se tua patente è stata verificata con successo
-        e se avrai effettuato il pagamento dell’iscrizione (in Area Riservata sul nostro sito).
-    </div>
 
 </div>
 <!-- block-form -->
@@ -97,39 +58,3 @@ src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"
 
 </div>
 <!-- main -->
-    <script type="text/javascript">
-        // Criteo section
-        var email = "<?= $this->customerEmail;?>";
-        var fleet = parseInt(<?= $this->customerFleetId;?>);
-        var basket = [ { id: fleet, price: 1, quantity: 1 } ];
-        criteoTrackTransaction(email, basket);
-    </script>
-    <script async src="//onetag-sys.com/sync/a,63/2"></script>
-<?php
-if($this->customerFleetId == 1){
-    echo '
-    <!-- Adform Tracking Code BEGIN -->
-    <script type="text/javascript">
-        window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
-        window._adftrack.push({
-            pm: 1171594,
-            divider: encodeURIComponent(\'|\'),
-            pagename: encodeURIComponent(\'RD-PIXEL_SharenGo_MILANO_TYP\'),
-            order : { 
-                 orderid: \'<insert order id value here>\'
-            }
-        });
-        (function () { var s = document.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'https://track.adform.net/serving/scripts/trackpoint/async/\'; var x = document.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); })();
-
-    </script>
-    <noscript>
-        <p style="margin:0;padding:0;border:0;">
-            <img src="https://track.adform.net/Serving/TrackPoint/?pm=1171594&ADFPageName=RD-PIXEL_SharenGo_MILANO_TYP&ADFdivider=|" width="1" height="1" alt="" />
-        </p>
-    </noscript>
-    <!-- Adform Tracking Code END -->
-    <script src="https://secure.adnxs.com/px?id=993709&t=1" type="text/javascript"></script>';
-}else if($this->customerFleetId == 3){
-    echo '<script src="https://secure.adnxs.com/px?id=993711&t=1" type="text/javascript"></script>';
-}
-?>

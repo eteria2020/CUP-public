@@ -461,7 +461,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
             'driverLicenseExpire' => [
-                'required' => true,
+                'required' => false,
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\DateFormat'

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-07 11:03+0100\n"
-"PO-Revision-Date: 2019-02-07 11:03+0100\n"
+"POT-Creation-Date: 2019-02-11 12:44+0100\n"
+"PO-Revision-Date: 2019-02-11 12:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -176,8 +176,8 @@ msgstr "Nesprávne telefónne číslo"
 #: module/Application/src/Application/Controller/UserController.php:1218
 #: module/Application/src/Application/Controller/UserController.php:1251
 #: module/Application/src/Application/Controller/UserController.php:1463
-#: module/Application/src/Application/Controller/UserController.php:1507
-#: module/Application/src/Application/Controller/UserController.php:1663
+#: module/Application/src/Application/Controller/UserController.php:1506
+#: module/Application/src/Application/Controller/UserController.php:1664
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -245,7 +245,7 @@ msgstr "Priezvisko"
 #: module/Application/view/application/user-area/index.phtml:52
 #: module/Application/view/application/user-area/index.phtml:224
 #: module/Application/view/application/user/new-signup.phtml:59
-#: module/Application/view/application/user/signup-sk1.phtml:59
+#: module/Application/view/application/user/signup-sk1.phtml:58
 #: module/Application/view/application/user/signup.phtml:155
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:35
 msgid "Email"
@@ -532,14 +532,14 @@ msgstr "Zadaj svoj e-mail"
 #: module/Application/src/Application/Form/NewUserFieldset.php:71
 #: module/Application/src/Application/Form/UserFieldset.php:94
 msgid "Imposta la tua password"
-msgstr "Obnov svoje heslo"
+msgstr "Zadaj svoje heslo"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:75
 #: module/Application/src/Application/Form/UserFieldset.php:98
 #: module/Application/view/application/user-area/index.phtml:800
 #: module/Application/view/application/user-area/index.phtml:836
 #: module/Application/view/application/user/new-signup.phtml:69
-#: module/Application/view/application/user/signup-sk1.phtml:69
+#: module/Application/view/application/user/signup-sk1.phtml:68
 #: module/Application/view/application/user/signup.phtml:181
 #: module/Application/view/zfc-user/user/login.phtml:51
 msgid "Password"
@@ -1951,7 +1951,7 @@ msgstr "Uvítací balíček"
 #: module/Application/view/application/payment/pay-success.phtml:3
 #: module/Application/view/application/user/signup-score-completion.phtml:3
 #: module/Application/view/application/user/signup2.phtml:13
-#: module/Application/view/application/user/signup3.phtml:42
+#: module/Application/view/application/user/signup3.phtml:17
 #: module/Application/view/application/user/signupinsert.phtml:22
 #: module/Application/view/layout/layout.phtml:142
 msgid "Registrati"
@@ -2148,7 +2148,7 @@ msgstr "Ešte si do svojho profilu nezadal platobnú/kreditnú kartu."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:156
 #: module/Application/view/application/user/new-signup.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk1.phtml:146
 msgid "ATTENZIONE"
 msgstr "UPOZORNENIE"
 
@@ -2422,7 +2422,7 @@ msgstr "Jazyk"
 #: module/Application/view/application/user-area/index.phtml:201
 #: module/Application/view/application/user-area/index.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:80
-#: module/Application/view/application/user/signup-sk1.phtml:80
+#: module/Application/view/application/user/signup-sk1.phtml:79
 msgid "Citt&agrave; preferita"
 msgstr "Preferované mesto"
 
@@ -2999,58 +2999,58 @@ msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
 msgstr "Car sharing elektrických áut<br>neznečisťuje a oplatí sa ti!"
 
 #: module/Application/view/application/user/new-signup.phtml:18
-#: module/Application/view/application/user/signup-sk1.phtml:18
 msgid "Area C/ZTL/Tridente Roma + park gratis"
 msgstr "Zóna C/ZTL/Tridente Roma + park gratis"
 
 #: module/Application/view/application/user/new-signup.phtml:19
-#: module/Application/view/application/user/signup-sk1.phtml:19
+#: module/Application/view/application/user/signup-sk1.phtml:18
 msgid "Auto disponibili vicino a te giorno e notte"
 msgstr "Autá k dispozícci blízko teba vo dne i v noci"
 
 #: module/Application/view/application/user/new-signup.phtml:20
-#: module/Application/view/application/user/signup-sk1.phtml:20
+#: module/Application/view/application/user/signup-sk1.phtml:19
 msgid "Pacchetti fino a 22 centesimi al minuto"
-msgstr "Balíčky až do 22 centov za minútu"
+msgstr "Balíčky od 10 centov za minútu"
 
 #: module/Application/view/application/user/new-signup.phtml:26
-#: module/Application/view/application/user/signup-sk1.phtml:26
+#: module/Application/view/application/user/signup-sk1.phtml:25
 msgid "Iscriverti non ti costa nulla!"
 msgstr "Registrácia ťa nestojí nič!"
 
 #: module/Application/view/application/user/new-signup.phtml:76
-#: module/Application/view/application/user/signup-sk1.phtml:76
+#: module/Application/view/application/user/signup-sk1.phtml:75
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 znakov, jedno veľké písmeno a jedno číslo"
 
 #: module/Application/view/application/user/new-signup.phtml:108
-#: module/Application/view/application/user/signup-sk1.phtml:108
+#: module/Application/view/application/user/signup-sk1.phtml:107
 msgid "CREA IL TUO ACCOUNT"
 msgstr "VYTVOR SI SVOJ ÚČET"
 
 #: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-sk1.phtml:109
+#: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "Cliccando sul tasto Iscriviti accetti"
 msgstr "Kliknutím na tlačidlo Prihlásiť sa, prijímaš"
 
 #: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-sk1.phtml:109
+#: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "l'Informativa sulla Privacy"
 msgstr "oznámenie o ochrane osobných údajov"
 
 #: module/Application/view/application/user/new-signup.phtml:110
-#: module/Application/view/application/user/signup-sk1.phtml:110
+#: module/Application/view/application/user/signup-sk1.phtml:109
 msgid "Condizioni Contrattuali"
 msgstr "Zmluvné podmienky"
 
 #: module/Application/view/application/user/new-signup.phtml:143
-#: module/Application/view/application/user/signup-sk1.phtml:143
+#: module/Application/view/application/user/new-signup2.phtml:611
+#: module/Application/view/application/user/signup-sk1.phtml:142
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Zavrieť"
 
 #: module/Application/view/application/user/new-signup.phtml:150
-#: module/Application/view/application/user/signup-sk1.phtml:150
+#: module/Application/view/application/user/signup-sk1.phtml:149
 msgid ""
 "Domenica 11 Febbraio dalle ore 7:30 alle ore 13:30 una manutenzione "
 "programmata del sistema di verifica delle patenti potrebbe causare qualche "
@@ -3064,7 +3064,7 @@ msgstr ""
 #: module/Application/view/application/user/new-signup2.phtml:29
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "21 minuti a soli 5&euro;"
-msgstr "21 minút len ​​za 5&euro;"
+msgstr "40 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/new-signup2.phtml:30
 #: module/Application/view/application/user/signup-sk2.phtml:36
@@ -3278,7 +3278,36 @@ msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnút
 msgid "Continua"
 msgstr "Pokračovať"
 
-#: module/Application/view/application/user/new-signup2.phtml:656
+#: module/Application/view/application/user/new-signup2.phtml:613
+msgid "Prima di procedere verifica:"
+msgstr ""
+
+#: module/Application/view/application/user/new-signup2.phtml:614
+msgid "Hai una patente europea senza scadenza?"
+msgstr ""
+
+#: module/Application/view/application/user/new-signup2.phtml:615
+msgid ""
+"Se la tua patente europea non ha una scadenza compila l'autocertificazione "
+"che ti invieremo via email. E nel caso tu sia residente in Italia da più di "
+"2 anni devi convertirla in quella italiana."
+msgstr ""
+
+#: module/Application/view/application/user/new-signup2.phtml:617
+#, fuzzy
+#| msgid "ho una patente estera"
+msgid "Hai una patente estera non europea?"
+msgstr "mám zahraničný vodičský preukaz"
+
+#: module/Application/view/application/user/new-signup2.phtml:618
+msgid ""
+"Per registrarti devi disporre di una patente internazionale o di una "
+"traduzione giurata del documento e compilare il modulo di autocertificazione "
+"che ti invieremo via mail. Se sei residente in Italia da più di un anno è "
+"necessario convertirla in quella italiana."
+msgstr ""
+
+#: module/Application/view/application/user/new-signup2.phtml:645
 #: module/Application/view/application/user/signup-sk2.phtml:600
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
@@ -4308,7 +4337,11 @@ msgstr ""
 
 #: module/Application/view/application/user/signup-sk2.phtml:557
 msgid "foto dell'utente (selfie)"
-msgstr ""
+msgstr "Fotka Používateľa (selfie)"
+
+#: module/Application/view/application/user/signup-sk2.phtml:696
+msgid "I file inseriti superano la dimensione massima caricabile."
+msgstr "vybrané súbory sú príliš veľké"
 
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""
@@ -4515,33 +4548,22 @@ msgstr "Naspäť (Back)"
 msgid "Avanti (Next)"
 msgstr "Ďalej (Next)"
 
-#: module/Application/view/application/user/signup3.phtml:66
+#: module/Application/view/application/user/signup3.phtml:41
 msgid "Registrazione completata con successo!"
 msgstr "Registrácia bola úspešne dokončená!"
 
-#: module/Application/view/application/user/signup3.phtml:71
+#: module/Application/view/application/user/signup3.phtml:46
 msgid "Attivazione account"
 msgstr "Aktivácia účtu"
 
-#: module/Application/view/application/user/signup3.phtml:73
+#: module/Application/view/application/user/signup3.phtml:48
+#, fuzzy
 msgid ""
-"Controlla nella tua casella di posta e clicca sul link suggerito dalla mail "
-"inviata per ATTIVARE l'account."
+"Ora puoi accedere con i dati inseriti in fase di registrazione all'app e "
+"alla tua area utente."
 msgstr ""
-"Skontroluj svoju doručenú poštu a klikni na odporúčaný odkaz z e-mailu "
-"odoslaného na AKTIVOVANIE účtu."
-
-#: module/Application/view/application/user/signup3.phtml:80
-msgid "Account creation completed"
-msgstr "Account creation completed"
-
-#: module/Application/view/application/user/signup3.phtml:82
-msgid ""
-"Check your email and click on the suggested link to complete account "
-"activation"
-msgstr ""
-"Check your email and click on the suggested link to complete account "
-"activation"
+"Teraz sa môžete prihlásiť vo svojej používateľskej oblasti a aplikácii s "
+"povereniami, ktoré ste vytvorili vo fáze registrácie."
 
 #: module/Application/view/application/user/signupinsert.phtml:51
 msgid "Completa l'attivazione del servizio"
@@ -4675,7 +4697,7 @@ msgstr "Login"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:28
 msgid "Recupera la password"
-msgstr "Obnov svoje heslo"
+msgstr "Zadaj svoje heslo"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:38
 msgid "Inserisci la tua email"
@@ -5754,6 +5776,23 @@ msgstr ""
 "ktoré majú byť uhradenée a neboli uhradené dnes, znamená to že došlo k "
 "problémom na tvojej kreditnej karte a že tvoj účet je dočasne pozastavený. "
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
+
+#~ msgid ""
+#~ "Controlla nella tua casella di posta e clicca sul link suggerito dalla "
+#~ "mail inviata per ATTIVARE l'account."
+#~ msgstr ""
+#~ "Skontroluj svoju doručenú poštu a klikni na odporúčaný odkaz z e-mailu "
+#~ "odoslaného na AKTIVOVANIE účtu."
+
+#~ msgid "Account creation completed"
+#~ msgstr "Account creation completed"
+
+#~ msgid ""
+#~ "Check your email and click on the suggested link to complete account "
+#~ "activation"
+#~ msgstr ""
+#~ "Check your email and click on the suggested link to complete account "
+#~ "activation"
 
 #, fuzzy
 #~| msgid ""

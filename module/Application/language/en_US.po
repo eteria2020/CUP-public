@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-07 11:01+0100\n"
-"PO-Revision-Date: 2019-02-07 11:03+0100\n"
+"POT-Creation-Date: 2019-02-11 12:41+0100\n"
+"PO-Revision-Date: 2019-02-11 12:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -172,8 +172,8 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:1218
 #: module/Application/src/Application/Controller/UserController.php:1251
 #: module/Application/src/Application/Controller/UserController.php:1463
-#: module/Application/src/Application/Controller/UserController.php:1507
-#: module/Application/src/Application/Controller/UserController.php:1663
+#: module/Application/src/Application/Controller/UserController.php:1506
+#: module/Application/src/Application/Controller/UserController.php:1664
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -241,7 +241,7 @@ msgstr "Last Name"
 #: module/Application/view/application/user-area/index.phtml:52
 #: module/Application/view/application/user-area/index.phtml:224
 #: module/Application/view/application/user/new-signup.phtml:59
-#: module/Application/view/application/user/signup-sk1.phtml:59
+#: module/Application/view/application/user/signup-sk1.phtml:58
 #: module/Application/view/application/user/signup.phtml:155
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:35
 msgid "Email"
@@ -534,7 +534,7 @@ msgstr "Set your password"
 #: module/Application/view/application/user-area/index.phtml:800
 #: module/Application/view/application/user-area/index.phtml:836
 #: module/Application/view/application/user/new-signup.phtml:69
-#: module/Application/view/application/user/signup-sk1.phtml:69
+#: module/Application/view/application/user/signup-sk1.phtml:68
 #: module/Application/view/application/user/signup.phtml:181
 #: module/Application/view/zfc-user/user/login.phtml:51
 msgid "Password"
@@ -1925,7 +1925,7 @@ msgstr "Welcome package"
 #: module/Application/view/application/payment/pay-success.phtml:3
 #: module/Application/view/application/user/signup-score-completion.phtml:3
 #: module/Application/view/application/user/signup2.phtml:13
-#: module/Application/view/application/user/signup3.phtml:42
+#: module/Application/view/application/user/signup3.phtml:17
 #: module/Application/view/application/user/signupinsert.phtml:22
 #: module/Application/view/layout/layout.phtml:142
 msgid "Registrati"
@@ -2119,7 +2119,7 @@ msgstr "You have not yet entered a credit card or prepaid card on your profile."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:156
 #: module/Application/view/application/user/new-signup.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk1.phtml:146
 msgid "ATTENZIONE"
 msgstr "CAUTION"
 
@@ -2391,7 +2391,7 @@ msgstr "Language"
 #: module/Application/view/application/user-area/index.phtml:201
 #: module/Application/view/application/user-area/index.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:80
-#: module/Application/view/application/user/signup-sk1.phtml:80
+#: module/Application/view/application/user/signup-sk1.phtml:79
 msgid "Citt&agrave; preferita"
 msgstr "Preferred City"
 
@@ -2978,58 +2978,58 @@ msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
 msgstr "Electric car sharing <br> does not pollute and suit you!"
 
 #: module/Application/view/application/user/new-signup.phtml:18
-#: module/Application/view/application/user/signup-sk1.phtml:18
 msgid "Area C/ZTL/Tridente Roma + park gratis"
 msgstr "Area C / ZTL / Tridente Roma + park free"
 
 #: module/Application/view/application/user/new-signup.phtml:19
-#: module/Application/view/application/user/signup-sk1.phtml:19
+#: module/Application/view/application/user/signup-sk1.phtml:18
 msgid "Auto disponibili vicino a te giorno e notte"
 msgstr "Cars available near you day and night"
 
 #: module/Application/view/application/user/new-signup.phtml:20
-#: module/Application/view/application/user/signup-sk1.phtml:20
+#: module/Application/view/application/user/signup-sk1.phtml:19
 msgid "Pacchetti fino a 22 centesimi al minuto"
 msgstr "Packages up to 22 cents a minute"
 
 #: module/Application/view/application/user/new-signup.phtml:26
-#: module/Application/view/application/user/signup-sk1.phtml:26
+#: module/Application/view/application/user/signup-sk1.phtml:25
 msgid "Iscriverti non ti costa nulla!"
 msgstr "Subscribing does not cost you anything!"
 
 #: module/Application/view/application/user/new-signup.phtml:76
-#: module/Application/view/application/user/signup-sk1.phtml:76
+#: module/Application/view/application/user/signup-sk1.phtml:75
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 characters, a capital letter and a number"
 
 #: module/Application/view/application/user/new-signup.phtml:108
-#: module/Application/view/application/user/signup-sk1.phtml:108
+#: module/Application/view/application/user/signup-sk1.phtml:107
 msgid "CREA IL TUO ACCOUNT"
 msgstr "CREATE YOUR ACCOUNT"
 
 #: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-sk1.phtml:109
+#: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "Cliccando sul tasto Iscriviti accetti"
 msgstr "By clicking on the Subscribe button you accept"
 
 #: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-sk1.phtml:109
+#: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "l'Informativa sulla Privacy"
 msgstr "Privacy Policy"
 
 #: module/Application/view/application/user/new-signup.phtml:110
-#: module/Application/view/application/user/signup-sk1.phtml:110
+#: module/Application/view/application/user/signup-sk1.phtml:109
 msgid "Condizioni Contrattuali"
 msgstr "Contractual conditions"
 
 #: module/Application/view/application/user/new-signup.phtml:143
-#: module/Application/view/application/user/signup-sk1.phtml:143
+#: module/Application/view/application/user/new-signup2.phtml:611
+#: module/Application/view/application/user/signup-sk1.phtml:142
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Close"
 
 #: module/Application/view/application/user/new-signup.phtml:150
-#: module/Application/view/application/user/signup-sk1.phtml:150
+#: module/Application/view/application/user/signup-sk1.phtml:149
 msgid ""
 "Domenica 11 Febbraio dalle ore 7:30 alle ore 13:30 una manutenzione "
 "programmata del sistema di verifica delle patenti potrebbe causare qualche "
@@ -3256,7 +3256,41 @@ msgstr ""
 msgid "Continua"
 msgstr "Keep it going"
 
-#: module/Application/view/application/user/new-signup2.phtml:656
+#: module/Application/view/application/user/new-signup2.phtml:613
+msgid "Prima di procedere verifica:"
+msgstr "Check below before proceeding:"
+
+#: module/Application/view/application/user/new-signup2.phtml:614
+msgid "Hai una patente europea senza scadenza?"
+msgstr "Do you have a European license with no expiry date?"
+
+#: module/Application/view/application/user/new-signup2.phtml:615
+msgid ""
+"Se la tua patente europea non ha una scadenza compila l'autocertificazione che "
+"ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni "
+"devi convertirla in quella italiana."
+msgstr ""
+"If your European driver’s license does not have an expiry date, fill in the "
+"self-certification form we'll send you by mail. In case you’re resident in "
+"Italy for more than 2 years you must convert it into an Italian one. "
+
+#: module/Application/view/application/user/new-signup2.phtml:617
+msgid "Hai una patente estera non europea?"
+msgstr "Do you have a non-European foreign license?"
+
+#: module/Application/view/application/user/new-signup2.phtml:618
+msgid ""
+"Per registrarti devi disporre di una patente internazionale o di una "
+"traduzione giurata del documento e compilare il modulo di autocertificazione "
+"che ti invieremo via mail. Se sei residente in Italia da più di un anno è "
+"necessario convertirla in quella italiana."
+msgstr ""
+"To register you must have an international driver’s license or a sworn "
+"translation of the document. Fill in the self-certification form we'll send "
+"you by mail as well. If you’re resident in Italy for more than 1 year, you "
+"must convert it into an Italian one."
+
+#: module/Application/view/application/user/new-signup2.phtml:645
 #: module/Application/view/application/user/signup-sk2.phtml:600
 msgid "5. Numero Patente"
 msgstr "5. Driver's license number"
@@ -4376,6 +4410,10 @@ msgstr "Zimbabwe"
 msgid "foto dell'utente (selfie)"
 msgstr ""
 
+#: module/Application/view/application/user/signup-sk2.phtml:696
+msgid "I file inseriti superano la dimensione massima caricabile."
+msgstr "The selected files are too big."
+
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""
 "L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni "
@@ -4506,7 +4544,7 @@ msgstr "Make sure to enter the one of the last driving license issued."
 
 #: module/Application/view/application/user/signup2.phtml:63
 msgid "Rilascio da autorit&agrave;"
-msgstr "Release from authorities "
+msgstr "Release from authorities"
 
 #: module/Application/view/application/user/signup2.phtml:64
 msgid "(Issuing authority)"
@@ -4580,31 +4618,21 @@ msgstr "Back (Back)"
 msgid "Avanti (Next)"
 msgstr "Forward (Next)"
 
-#: module/Application/view/application/user/signup3.phtml:66
+#: module/Application/view/application/user/signup3.phtml:41
 msgid "Registrazione completata con successo!"
 msgstr "Registration completed successfully!"
 
-#: module/Application/view/application/user/signup3.phtml:71
+#: module/Application/view/application/user/signup3.phtml:46
 msgid "Attivazione account"
 msgstr "Account activation"
 
-#: module/Application/view/application/user/signup3.phtml:73
+#: module/Application/view/application/user/signup3.phtml:48
 msgid ""
-"Controlla nella tua casella di posta e clicca sul link suggerito dalla mail "
-"inviata per ATTIVARE l'account."
+"Ora puoi accedere con i dati inseriti in fase di registrazione all'app e alla "
+"tua area utente."
 msgstr ""
-"Check in your inbox and click on the suggested link from the email sent to "
-"ACTIVATE the account."
-
-#: module/Application/view/application/user/signup3.phtml:80
-msgid "Account creation completed"
-msgstr "Account creation completed"
-
-#: module/Application/view/application/user/signup3.phtml:82
-msgid ""
-"Check your email and click on the suggested link to complete account activation"
-msgstr ""
-"Check your email and click on the suggested link to complete account activation"
+"You can now login in your user area and app with the credentials you created "
+"in the registration phase."
 
 #: module/Application/view/application/user/signupinsert.phtml:51
 msgid "Completa l'attivazione del servizio"
@@ -5764,7 +5792,7 @@ msgstr "Association status: "
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:25
 msgid "Nome: "
-msgstr "First name:"
+msgstr "First name: "
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:28
 msgid "Email: "
@@ -5822,6 +5850,23 @@ msgstr ""
 "made today, it means that there have been problems debiting your credit card "
 "and that your account is; temporarily suspended. Contact the Customer Service "
 "of Sharengo for reactivation."
+
+#~ msgid ""
+#~ "Controlla nella tua casella di posta e clicca sul link suggerito dalla mail "
+#~ "inviata per ATTIVARE l'account."
+#~ msgstr ""
+#~ "Check in your inbox and click on the suggested link from the email sent to "
+#~ "ACTIVATE the account."
+
+#~ msgid "Account creation completed"
+#~ msgstr "Account creation completed"
+
+#~ msgid ""
+#~ "Check your email and click on the suggested link to complete account "
+#~ "activation"
+#~ msgstr ""
+#~ "Check your email and click on the suggested link to complete account "
+#~ "activation"
 
 #, fuzzy
 #~| msgid ""
