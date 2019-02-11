@@ -910,8 +910,8 @@ class UserController extends AbstractActionController {
     }
 
     public function signup3Action() {
-        $hash = $this->params()->fromQuery('user');
-        $customer = $this->customersService->getUserFromHash($hash);
+/*        $hash = $this->params()->fromQuery('user');
+        $customer = $this->customersService->getUserFromHash($hash);*/
 
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
@@ -919,8 +919,8 @@ class UserController extends AbstractActionController {
             $this->layout('layout/map');
         }
         return new ViewModel([
-            'customerFleetId' => $customer->getFleet()->getId(),
-            'customerEmail' => $customer->getEmail()
+/*            'customerFleetId' => $customer->getFleet()->getId(),
+            'customerEmail' => $customer->getEmail()*/
         ]);
     }
 
@@ -1494,7 +1494,6 @@ class UserController extends AbstractActionController {
     private function signupSK2Conclude($formData, Customers $customer, $files, $mobile) {
 
         $data = [];
-        var_dump($customer->getId());
 
         foreach ($formData['user1'] as $key => $value) {
             if (!is_null($value)) {
@@ -1537,6 +1536,7 @@ class UserController extends AbstractActionController {
             $customer->setDriverLicenseName($data['name']);
             $customer->setDriverLicenseSurname($data['surname']);
             $customer->setDriverLicense($data['driverLicense']);
+            $data['driverLicenseExpire'] = (!isset($data['driverLicenseExpire']) || (isset($data['driverLicenseExpire']) && ($data['driverLicenseExpire'] == "" || is_null($data['driverLicenseExpire'])))) ? date('d-m-Y', strtotime('+5 years')) : $data['driverLicenseExpire'];
             $customer->setDriverLicenseExpire(date_create_from_format("d-m-Y H:i:s",$data['driverLicenseExpire']." 00:00:00"));
             $customer->setDriverLicenseForeign(true);
             $customer->setDriverLicenseCountry("sk");
@@ -1572,8 +1572,9 @@ class UserController extends AbstractActionController {
         //$this->getEventManager()->trigger('secondFormCompleted', $this, $data); //driver license validation
         $signupSession = new Container('newSignup');
         $signupSession->offsetSet("customer", $customer);
-
-        return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
+        $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
+        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'sk_SK']]);
+        //return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
 
     }
 

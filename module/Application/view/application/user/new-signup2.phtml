@@ -608,25 +608,14 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                         <div class="content-more" style="background-image: none; text-align: left !important;">
                             <br>
                             <div id="italian">
-                                <p align="right"><a id="en" style="color:#fff"><b>EN</b></a></p>
+                                <p align="right"><a onclick="closeChangeCard()" style="color:#fff"><b>[X] <?= $this->translate("Chiudi");?></b></a></p>
                                 <p style="color:#fff;text-align: left; font-weight: 500;">
-                                    <b class="sub">Prima di procedere verifica:</b><br><br>
-                                    <b>Hai una patente europea senza scadenza?</b><br>
-                                    Se la tua patente europea non ha una scadenza compila l'autocertificazione che ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni devi convertirla in quella italiana.
+                                    <b class="sub"><?= $this->translate("Prima di procedere verifica:");?></b><br><br>
+                                    <b><?= $this->translate("Hai una patente europea senza scadenza?");?></b><br>
+                                    <?= $this->translate("Se la tua patente europea non ha una scadenza compila l'autocertificazione che ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni devi convertirla in quella italiana.");?>
                                     <br><br>
-                                    <b>Hai una patente estera non europea?</b><br>
-                                    Per registrarti devi disporre di una patente internazionale o di una traduzione giurata del documento e compilare il modulo di autocertificazione che ti invieremo via mail. Se sei residente in Italia da più di un anno è necessario convertirla in quella italiana.
-                                </p>
-                            </div>
-                            <div id="english">
-                                <p align="right"><a id="it" style="color:#fff"><b>IT </b></a></p>
-                                <p style="color:#fff;text-align: left; font-weight: 500;">
-                                    <b class="sub">Check below before proceeding:</b><br><br>
-                                    <b>Do you have a European license with no expiry date?</b><br>
-                                    If your European driver’s license does not have an expiry date, fill in the self-certification form we'll send you by mail. In case you’re resident in Italy for more than 2 years you must convert it into an Italian one.
-                                    <br><br>
-                                    <b>Do you have a non-European foreign license?</b><br>
-                                    To register you must have an international driver’s license or a sworn translation of the document. Fill in the self-certification form we'll send you by mail as well. If you’re resident in Italy for more than 1 year, you must convert it into an Italian one.
+                                    <b><?= $this->translate("Hai una patente estera non europea?"); ?></b><br>
+                                    <?= $this->translate("Per registrarti devi disporre di una patente internazionale o di una traduzione giurata del documento e compilare il modulo di autocertificazione che ti invieremo via mail. Se sei residente in Italia da più di un anno è necessario convertirla in quella italiana."); ?>
                                 </p>
                             </div>
                             <br>
@@ -692,6 +681,61 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     );
     ?>
     <script>
+        <? function parse_size($size) {
+            $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+            $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+            if ($unit) {
+                // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+                return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+            }
+            else {
+                return round($size);
+            }
+        } ?>
+        //File Upload Validation
+        var maxUpload = <?= parse_size(ini_get('post_max_size')) ?> ;
+
+        var driversLicenseFront = document.getElementById("drivers-license-front");
+        var driversLicenseBack = document.getElementById("drivers-license-back");
+        var identityFront = document.getElementById("identity-front");
+        var identityBack = document.getElementById("identity-back");
+
+        var driversLicenseFrontSize = 0;
+        var driversLicenseBackSize = 0;
+        var identityFrontSize = 0;
+        var identityBackSize = 0;
+
+        driversLicenseFront.onchange = function() {
+            driversLicenseFrontSize = driversLicenseFront.files[0].size;
+            checkUploadSize(this);
+        };
+
+        driversLicenseBack.onchange = function() {
+            driversLicenseBackSize = driversLicenseBack.files[0].size;
+            checkUploadSize(this);
+        };
+
+        identityFront.onchange = function() {
+            identityFrontSize = identityFront.files[0].size;
+            checkUploadSize(this);
+        };
+
+        identityBack.onchange = function() {
+            identityBackSize = identityBack.files[0].size;
+            checkUploadSize(this);
+        };
+
+        totalSize = function() {
+            return (driversLicenseFrontSize + driversLicenseBackSize + identityFrontSize + identityBackSize);
+        };
+
+        checkUploadSize = function (inputFile) {
+            if(totalSize() > maxUpload){
+                alert("<?= $this->translate("I file inseriti superano la dimensione massima caricabile."); ?>");
+                inputFile.value = "";
+            }
+        };
+
         if($('#driverLicenseForeign').is(":checked")) {
             $('#driverLicenseUpload').show();
         } else {
@@ -768,15 +812,6 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                 closeChangeCard();
             }
         });
-        $("#english").hide();
-        $("#en").click(function () {
-            $("#italian").hide();
-            $("#english").show();
-        })
-        $("#it").click(function () {
-            $("#english").hide();
-            $("#italian").show();
-        })
     </script>
     <script type="text/javascript">
         // Criteo section

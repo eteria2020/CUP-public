@@ -1,7 +1,7 @@
 <?php
 $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
-    ->appendFile($this->basePath('js/ui.datepicker-it.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-sk.js'))
     ->appendFile($this->basePath('js/signupSK.js?v=4.2'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
@@ -635,21 +635,72 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     );
     ?>
     <script>
+        <? function parse_size($size) {
+            $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+            $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+            if ($unit) {
+                // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+                return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+            }
+            else {
+                return round($size);
+            }
+        } ?>
+        //File Upload Validation
+        var maxUpload = <?= parse_size(ini_get('post_max_size')) ?> ;
+
+        var driversLicenseFront = document.getElementById("drivers-license-front");
+        var driversLicenseBack = document.getElementById("drivers-license-back");
+        var identityFront = document.getElementById("identity-front");
+        var identityBack = document.getElementById("identity-back");
+        var selfie = document.getElementById("selfie");
+
+        var driversLicenseFrontSize = 0;
+        var driversLicenseBackSize = 0;
+        var identityFrontSize = 0;
+        var identityBackSize = 0;
+        var selfieSize = 0;
+
+
+        driversLicenseFront.onchange = function() {
+            driversLicenseFrontSize = driversLicenseFront.files[0].size;
+            checkUploadSize(this);
+        };
+
+        driversLicenseBack.onchange = function() {
+            driversLicenseBackSize = driversLicenseBack.files[0].size;
+            checkUploadSize(this);
+        };
+
+        identityFront.onchange = function() {
+            identityFrontSize = identityFront.files[0].size;
+            checkUploadSize(this);
+        };
+
+        identityBack.onchange = function() {
+            identityBackSize = identityBack.files[0].size;
+            checkUploadSize(this);
+        };
+
+        selfie.onchange = function() {
+            selfieSize = selfie.files[0].size;
+            checkUploadSize(this);
+        };
+
+        totalSize = function() {
+            return (driversLicenseFrontSize + driversLicenseBackSize + identityFrontSize + identityBackSize + selfieSize);
+        };
+
+        checkUploadSize = function (inputFile) {
+            if(totalSize() > maxUpload){
+                alert("<?= $this->translate("I file inseriti superano la dimensione massima caricabile."); ?>");
+                inputFile.value = "";
+            }
+        };
 
         $('#driverLicenseUpload').show();
         $('#driverLicenseForeign').prop("checked", true);
 
-        // $('#name').blur(function(){
-        //     $('#fName').text($('#name').val());
-        // });
-        //
-        // $('#surname').blur(function(){
-        //     $('#fSurname').text($('#surname').val());
-        // });
-        //
-        // $('#driverLicense').blur(function(){
-        //     $('#fDriverLicense').text('n. ' + $('#driverLicense').val());
-        // });
 
         $(function() {
             $('#registration-form-2').on('submit', function(e) {
@@ -673,39 +724,3 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
         });
 
     </script>
-    <script type="text/javascript">
-        // Criteo section
-        var email = "<?= $this->customerEmail;?>";
-        var fleet = parseInt(<?= $this->customerFleetId;?>);
-        var basket = [ { id: fleet, price: 1, quantity: 1 } ];
-        criteoTrackTransaction(email, basket);
-    </script>
-    <script async src="//onetag-sys.com/sync/a,63/2"></script>
-    <?php
-    if($this->customerFleetId == 1){
-        echo '
-        <!-- Adform Tracking Code BEGIN -->
-        <script type="text/javascript">
-            window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
-            window._adftrack.push({
-                pm: 1171594,
-                divider: encodeURIComponent(\'|\'),
-                pagename: encodeURIComponent(\'RD-PIXEL_SharenGo_MILANO_TYP\'),
-                order : { 
-                     orderid: \'<insert order id value here>\'
-                }
-            });
-            (function () { var s = document.createElement(\'script\'); s.type = \'text/javascript\'; s.async = true; s.src = \'https://track.adform.net/serving/scripts/trackpoint/async/\'; var x = document.getElementsByTagName(\'script\')[0]; x.parentNode.insertBefore(s, x); })();
-    
-        </script>
-        <noscript>
-            <p style="margin:0;padding:0;border:0;">
-                <img src="https://track.adform.net/Serving/TrackPoint/?pm=1171594&ADFPageName=RD-PIXEL_SharenGo_MILANO_TYP&ADFdivider=|" width="1" height="1" alt="" />
-            </p>
-        </noscript>
-        <!-- Adform Tracking Code END -->
-        <script src="https://secure.adnxs.com/px?id=993709&t=1" type="text/javascript"></script>';
-    }else if($this->customerFleetId == 3){
-        echo '<script src="https://secure.adnxs.com/px?id=993711&t=1" type="text/javascript"></script>';
-    }
-    ?>

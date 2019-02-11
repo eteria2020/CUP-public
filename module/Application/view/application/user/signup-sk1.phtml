@@ -15,7 +15,6 @@ $this->headLink()
         <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico<br>non inquina e ti conviene!"); ?></h1>
             <div style="display: inline-block;">
             <ul style="text-align: left; margin-top: 10px">
-                <li><?= $this->translate("Area C/ZTL/Tridente Roma + park gratis") ?></li>
                 <li><?= $this->translate("Auto disponibili vicino a te giorno e notte") ?></li>
                 <li><?= $this->translate("Pacchetti fino a 22 centesimi al minuto") ?></li>
             </ul>
@@ -164,6 +163,7 @@ $this->inlineScript()->appendScript(
     '$(document).ready(function() {
 $( ".datepicker-date" ).datepicker({
 dateFormat: "dd-mm-yy",
+regional: "sk",
 changeMonth: true,
 changeYear: true,
 yearRange: "-100:+0",
