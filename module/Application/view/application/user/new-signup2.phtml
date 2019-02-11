@@ -600,7 +600,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     </div>
     <!-- main -->
     <!-- overlay foreign driver license -->
-    <div id="sng-overlay" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+    <div id="sng-overlay" class="driver-foreign" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
         <div class="table">
             <div class="cell">
                 <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
@@ -626,6 +626,28 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
         </div>
     </div>
     <!-- overlay -->
+
+    <!-- overlay upload limit size -->
+    <div id="sng-overlay" class="overlay-upload" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+        <div class="table">
+            <div class="cell">
+                <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none; text-align: left !important;">
+                            <br>
+                                <p align="right"><a onclick="closeUploadAlert()" style="color:#fff"><b>[X] <?= $this->translate("Chiudi");?></b></a></p>
+                                <p style="color:#fff;text-align: left; font-weight: 500;">
+                                    <?= $this->translate("I file inseriti superano la dimensione massima caricabile.")." (max. ".ini_get('post_max_size'). "B)"; ?>
+                                </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+
     <!-- module-modal -->
     <div class="module-modal" style="height: 3000px; display: none;">
         <!-- modal-overlay -->
@@ -731,10 +753,23 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
         checkUploadSize = function (inputFile) {
             if(totalSize() > maxUpload){
-                alert("<?= $this->translate("I file inseriti superano la dimensione massima caricabile."); ?>");
+                openUploadAlert();
                 inputFile.value = "";
             }
         };
+
+        function closeUploadAlert(){
+            overlay = $('.overlay-upload');
+            overlay.fadeOut(400, function () {
+                overlay.css("visibility", "hidden");
+                overlay.css("display","initial");
+            });
+        }
+
+        function openUploadAlert(){
+            overlay = $('.overlay-upload');
+            overlay.css("visibility", "visible");
+        }
 
         if($('#driverLicenseForeign').is(":checked")) {
             $('#driverLicenseUpload').show();
@@ -792,14 +827,11 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
         };
 
         function openChangeCard() {
-            overlay = $('#sng-overlay');
+            overlay = $('.driver-foreign');
             overlay.css("visibility", "visible");
-            button = $('#button-alert');
-            button.css("visibility", "visible");
         }
         function closeChangeCard() {
-            overlay = $('#sng-overlay');
-            button.css("visibility", "hidden");
+            overlay = $('.driver-foreign');
             overlay.fadeOut(400, function () {
                 overlay.css("visibility", "hidden");
                 overlay.css("display","initial");
