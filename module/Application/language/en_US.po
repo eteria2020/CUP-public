@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-11 12:41+0100\n"
-"PO-Revision-Date: 2019-02-11 12:44+0100\n"
+"POT-Creation-Date: 2019-02-11 15:36+0100\n"
+"PO-Revision-Date: 2019-02-11 15:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -316,8 +316,10 @@ msgid "Informazioni aggiuntive"
 msgstr "Additional information"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:225
+msgid "NNNNN"
+msgstr ""
+
 #: module/Application/src/Application/Form/CustomerFieldset.php:229
-#: module/Application/src/Application/Form/NewUserFieldset2.php:139
 #: module/Application/src/Application/Form/NewUserFieldset2.php:143
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:165
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:169
@@ -507,14 +509,14 @@ msgid "Codice Sms"
 msgstr "Sms code"
 
 #: module/Application/src/Application/Form/MobileForm.php:104
-#: module/Application/src/Application/Form/NewUserFieldset2.php:457
+#: module/Application/src/Application/Form/NewUserFieldset2.php:462
 #: module/Application/src/Application/Form/UserFieldset.php:717
 msgid ""
 "Il numero di telefono inserito non corrisponde a quello del codice di verifica"
 msgstr "The phone number entered does not match the verification code number"
 
 #: module/Application/src/Application/Form/MobileForm.php:140
-#: module/Application/src/Application/Form/NewUserFieldset2.php:487
+#: module/Application/src/Application/Form/NewUserFieldset2.php:492
 #: module/Application/src/Application/Form/UserFieldset.php:747
 msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "The code entered does not match the one sent"
@@ -593,6 +595,10 @@ msgstr "Address"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:154
 msgid "Numero civico"
 msgstr "House number"
+
+#: module/Application/src/Application/Form/NewUserFieldset2.php:139
+msgid "12345"
+msgstr ""
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:188
 msgid "ABCDEF12G34H567I"
@@ -1070,6 +1076,10 @@ msgstr "The VAT number must be numeric, the most preceded by the IT code"
 #: module/Application/src/Application/Form/Validator/VatNumber.php:26
 msgid "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
 msgstr "The VAT number must be 11 digits, the most preceded by the IT code"
+
+#: module/Application/src/Application/Form/Validator/ZipCode.php:18
+msgid "Codice Avviamento Postale non corretto"
+msgstr "ZIP code incorrect"
 
 #: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
@@ -3295,6 +3305,11 @@ msgstr ""
 msgid "5. Numero Patente"
 msgstr "5. Driver's license number"
 
+#: module/Application/view/application/user/new-signup2.phtml:734
+#: module/Application/view/application/user/signup-sk2.phtml:696
+msgid "I file inseriti superano la dimensione massima caricabile."
+msgstr "The selected files are too big."
+
 #: module/Application/view/application/user/optional.phtml:14
 msgid "Ora sei dei nostri!"
 msgstr "Now you're ours!"
@@ -4409,10 +4424,6 @@ msgstr "Zimbabwe"
 #: module/Application/view/application/user/signup-sk2.phtml:557
 msgid "foto dell'utente (selfie)"
 msgstr ""
-
-#: module/Application/view/application/user/signup-sk2.phtml:696
-msgid "I file inseriti superano la dimensione massima caricabile."
-msgstr "The selected files are too big."
 
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""

@@ -106,7 +106,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'address',
-                'maxlength' => 64,
+                'maxlength' => 60,
                 'placeholder' => $this->translator->translate('Indirizzo'),
                 'class' => 'required'
             ],
@@ -135,8 +135,8 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'zipCode',
-                'maxlength' => 12,
-                'placeholder' => $this->translator->translate('CAP'),
+                'maxlength' => 5,
+                'placeholder' => $this->translator->translate('12345'),
                 'class' => 'required'
             ],
             'options' => [
@@ -149,7 +149,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'town',
-                'maxlength' => 64,
+                'maxlength' => 60,
                 'placeholder' => $this->translator->translate('Città'),
                 'class' => 'required'
             ],
@@ -404,6 +404,11 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                 'filters' => [
                     [
                         'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\ZipCode'
                     ]
                 ]
             ],

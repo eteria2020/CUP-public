@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-11 12:44+0100\n"
-"PO-Revision-Date: 2019-02-11 12:46+0100\n"
+"POT-Creation-Date: 2019-02-11 15:38+0100\n"
+"PO-Revision-Date: 2019-02-11 15:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -320,8 +320,10 @@ msgid "Informazioni aggiuntive"
 msgstr "Doplňujúce informácie"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:225
+msgid "NNNNN"
+msgstr ""
+
 #: module/Application/src/Application/Form/CustomerFieldset.php:229
-#: module/Application/src/Application/Form/NewUserFieldset2.php:139
 #: module/Application/src/Application/Form/NewUserFieldset2.php:143
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:165
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:169
@@ -511,7 +513,7 @@ msgid "Codice Sms"
 msgstr "Sms kód"
 
 #: module/Application/src/Application/Form/MobileForm.php:104
-#: module/Application/src/Application/Form/NewUserFieldset2.php:457
+#: module/Application/src/Application/Form/NewUserFieldset2.php:462
 #: module/Application/src/Application/Form/UserFieldset.php:717
 msgid ""
 "Il numero di telefono inserito non corrisponde a quello del codice di "
@@ -519,7 +521,7 @@ msgid ""
 msgstr "Zadané telefónne číslo sa nezhoduje s číslom overovacieho kódu"
 
 #: module/Application/src/Application/Form/MobileForm.php:140
-#: module/Application/src/Application/Form/NewUserFieldset2.php:487
+#: module/Application/src/Application/Form/NewUserFieldset2.php:492
 #: module/Application/src/Application/Form/UserFieldset.php:747
 msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "Zadaný kód sa nezhoduje s odoslaným kódom"
@@ -598,6 +600,10 @@ msgstr "Adresa"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:154
 msgid "Numero civico"
 msgstr "Popisné číslo"
+
+#: module/Application/src/Application/Form/NewUserFieldset2.php:139
+msgid "12345"
+msgstr ""
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:188
 msgid "ABCDEF12G34H567I"
@@ -1105,6 +1111,10 @@ msgstr "Číslo DPH musí byť číselné, najpredávanejšie je kód IT"
 msgid ""
 "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
 msgstr "Číslo DPH musí mať 11 číslic, z ktorých najdôležitejšie je kód IT"
+
+#: module/Application/src/Application/Form/Validator/ZipCode.php:18
+msgid "Codice Avviamento Postale non corretto"
+msgstr "Poštové smerovacie číslo"
 
 #: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
@@ -3312,6 +3322,11 @@ msgstr ""
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
 
+#: module/Application/view/application/user/new-signup2.phtml:734
+#: module/Application/view/application/user/signup-sk2.phtml:696
+msgid "I file inseriti superano la dimensione massima caricabile."
+msgstr "vybrané súbory sú príliš veľké"
+
 #: module/Application/view/application/user/optional.phtml:14
 msgid "Ora sei dei nostri!"
 msgstr "Teraz si náš!"
@@ -4338,10 +4353,6 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:557
 msgid "foto dell'utente (selfie)"
 msgstr "Fotka Používateľa (selfie)"
-
-#: module/Application/view/application/user/signup-sk2.phtml:696
-msgid "I file inseriti superano la dimensione massima caricabile."
-msgstr "vybrané súbory sú príliš veľké"
 
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""
