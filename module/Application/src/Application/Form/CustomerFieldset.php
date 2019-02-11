@@ -194,7 +194,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'address',
-                'maxlength' => 64,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Via e numero civico'),
                 'class' => 'required'
             ],
@@ -208,7 +208,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'addressInfo',
-                'maxlength' => 64,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Informazioni aggiuntive'),
             ],
             'options' => [
@@ -221,8 +221,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'zipCode',
-                'maxlength' => 12,
-                'placeholder' => $translator->translate('CAP'),
+                'maxlength' => 5,
+                'placeholder' => $translator->translate('12345'),
                 'class' => 'required'
             ],
             'options' => [
@@ -235,7 +235,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'town',
-                'maxlength' => 64,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Città'),
                 'class' => 'required'
             ],
@@ -449,6 +449,11 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'filters' => [
                     [
                         'name' => 'StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Application\Form\Validator\ZipCode'
                     ]
                 ]
             ],
