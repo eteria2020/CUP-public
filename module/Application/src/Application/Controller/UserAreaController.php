@@ -794,9 +794,14 @@ class UserAreaController extends AbstractActionController {
             $postData['customer']['cem'] = strtolower($postData['customer']['cem']);
         }
 
-        if ($postData['customer']['vat'] == "" &&
-            ( !is_null($postData['customer']['recipientCode']) ||  !is_null($postData['customer']['cem'])) ) {
-            $result = $this->translator->translate("La partita IVA non è valida");
+        if ($postData['customer']['vat'] == ""){
+             if ( !is_null($postData['customer']['recipientCode']) ||  !is_null($postData['customer']['cem'])) {
+                $result = $this->translator->translate("La partita IVA non è valida");
+            }
+        } else {
+            if ( is_null($postData['customer']['recipientCode']) &&  is_null($postData['customer']['cem'])) {
+                $result = $this->translator->translate("Codice destinatario o PEC obbligatori");
+            }
         }
 
         return $result;
