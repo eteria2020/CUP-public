@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-11 15:36+0100\n"
-"PO-Revision-Date: 2019-02-11 15:37+0100\n"
+"POT-Creation-Date: 2019-02-12 10:25+0100\n"
+"PO-Revision-Date: 2019-02-12 10:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -316,7 +316,8 @@ msgid "Informazioni aggiuntive"
 msgstr "Additional information"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:225
-msgid "NNNNN"
+#: module/Application/src/Application/Form/NewUserFieldset2.php:139
+msgid "12345"
 msgstr ""
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:229
@@ -595,10 +596,6 @@ msgstr "Address"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:154
 msgid "Numero civico"
 msgstr "House number"
-
-#: module/Application/src/Application/Form/NewUserFieldset2.php:139
-msgid "12345"
-msgstr ""
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:188
 msgid "ABCDEF12G34H567I"
@@ -3033,7 +3030,9 @@ msgstr "Contractual conditions"
 
 #: module/Application/view/application/user/new-signup.phtml:143
 #: module/Application/view/application/user/new-signup2.phtml:611
+#: module/Application/view/application/user/new-signup2.phtml:638
 #: module/Application/view/application/user/signup-sk1.phtml:142
+#: module/Application/view/application/user/signup-sk2.phtml:593
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Close"
@@ -3300,15 +3299,15 @@ msgstr ""
 "you by mail as well. If you’re resident in Italy for more than 1 year, you "
 "must convert it into an Italian one."
 
-#: module/Application/view/application/user/new-signup2.phtml:645
-#: module/Application/view/application/user/signup-sk2.phtml:600
-msgid "5. Numero Patente"
-msgstr "5. Driver's license number"
-
-#: module/Application/view/application/user/new-signup2.phtml:734
-#: module/Application/view/application/user/signup-sk2.phtml:696
+#: module/Application/view/application/user/new-signup2.phtml:640
+#: module/Application/view/application/user/signup-sk2.phtml:595
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "The selected files are too big."
+
+#: module/Application/view/application/user/new-signup2.phtml:667
+#: module/Application/view/application/user/signup-sk2.phtml:622
+msgid "5. Numero Patente"
+msgstr "5. Driver's license number"
 
 #: module/Application/view/application/user/optional.phtml:14
 msgid "Ora sei dei nostri!"
@@ -5088,11 +5087,15 @@ msgid "Contratto di servizio e tariffe"
 msgstr "Service contract and rates"
 
 #: module/Application/view/partials/footer/main_foot.phtml:38
+msgid "Modello di recesso"
+msgstr "Model of withdrawal"
+
+#: module/Application/view/partials/footer/main_foot.phtml:39
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:38
 msgid "FAQ"
 msgstr "FAQ"
 
-#: module/Application/view/partials/footer/main_foot.phtml:45
+#: module/Application/view/partials/footer/main_foot.phtml:46
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:45
 msgid "Scarica l’App"
 msgstr "Download"
