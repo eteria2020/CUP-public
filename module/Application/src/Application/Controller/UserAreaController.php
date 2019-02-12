@@ -245,13 +245,14 @@ class UserAreaController extends AbstractActionController {
 
             $postData = $this->getRequest()->getPost()->toArray();
 
-            $errorMessageTaxData = $this->formatAndCheckTaxData($postData);
-            if(!is_null($errorMessageTaxData)) {
-                $this->flashMessenger()->addErrorMessage($errorMessageTaxData);
-                return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
-            }
-
             if (isset($postData['customer'])) {
+
+                $errorMessageTaxData = $this->formatAndCheckTaxData($postData);
+                if(!is_null($errorMessageTaxData)) {
+                    $this->flashMessenger()->addErrorMessage($errorMessageTaxData);
+                    return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
+                }
+
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();
 
                 //prevent gender editing
