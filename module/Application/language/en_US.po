@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-12 10:25+0100\n"
-"PO-Revision-Date: 2019-02-12 10:25+0100\n"
+"POT-Creation-Date: 2019-02-12 11:37+0100\n"
+"PO-Revision-Date: 2019-02-12 11:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -98,48 +98,48 @@ msgstr "Package not buyable"
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:450
+#: module/Application/src/Application/Controller/UserAreaController.php:451
 msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:452
+#: module/Application/src/Application/Controller/UserAreaController.php:453
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "An application error has occurred. We apologize for the inconvenience"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:566
-#: module/Application/src/Application/Controller/UserAreaController.php:606
+#: module/Application/src/Application/Controller/UserAreaController.php:567
+#: module/Application/src/Application/Controller/UserAreaController.php:607
 msgid "Pagamento completato con successo"
 msgstr "Payment completed successfully"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:568
-#: module/Application/src/Application/Controller/UserAreaController.php:608
+#: module/Application/src/Application/Controller/UserAreaController.php:569
+#: module/Application/src/Application/Controller/UserAreaController.php:609
 msgid "Pagamento fallito"
 msgstr "Payment failed"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:577
-#: module/Application/src/Application/Controller/UserAreaController.php:617
+#: module/Application/src/Application/Controller/UserAreaController.php:578
+#: module/Application/src/Application/Controller/UserAreaController.php:618
 #: module/Application/view/application/user-area/debt-collection.phtml:107
 #: module/Application/view/application/user-area/debt-collection.phtml:173
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Payment temporarily suspended, please try again later."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:646
+#: module/Application/src/Application/Controller/UserAreaController.php:647
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract disabled properly!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:648
-#: module/Application/src/Application/Controller/UserAreaController.php:651
-#: module/Application/src/Application/Controller/UserAreaController.php:654
+#: module/Application/src/Application/Controller/UserAreaController.php:649
+#: module/Application/src/Application/Controller/UserAreaController.php:652
+#: module/Application/src/Application/Controller/UserAreaController.php:655
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Error while disabling the contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:690
+#: module/Application/src/Application/Controller/UserAreaController.php:691
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "You are disabled because the inserted card has expired, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:694
+#: module/Application/src/Application/Controller/UserAreaController.php:695
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -147,14 +147,18 @@ msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:699
+#: module/Application/src/Application/Controller/UserAreaController.php:700
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:798
+#: module/Application/src/Application/Controller/UserAreaController.php:799
 #: module/Application/src/Application/Form/Validator/VatNumber.php:27
 msgid "La partita IVA non è valida"
 msgstr "The VAT number is invalid"
+
+#: module/Application/src/Application/Controller/UserAreaController.php:803
+msgid "Codice destinatario o PEC obbligatori"
+msgstr "Recipient code or certified email mandatory"
 
 #: module/Application/src/Application/Controller/UserController.php:656
 #: module/Application/src/Application/Controller/UserController.php:675
