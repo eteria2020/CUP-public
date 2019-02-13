@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-12 11:39+0100\n"
-"PO-Revision-Date: 2019-02-12 11:41+0100\n"
+"POT-Creation-Date: 2019-02-13 10:53+0100\n"
+"PO-Revision-Date: 2019-02-13 11:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -1510,6 +1510,7 @@ msgid "Una volta scaricata la nostra App per"
 msgstr "Keď si stiahneš našu aplikáciu pre"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
+#: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "e"
 msgstr "a"
 
@@ -3041,15 +3042,14 @@ msgstr "VYTVOR SI SVOJ ÚČET"
 #: module/Application/view/application/user/new-signup.phtml:109
 #: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "Cliccando sul tasto Iscriviti accetti"
-msgstr "Kliknutím na tlačidlo Prihlásiť sa, prijímaš"
+msgstr "Kliknutím na tlačidlo „Vytvor si svoj účet“ prijímaš"
 
 #: module/Application/view/application/user/new-signup.phtml:109
 #: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "l'Informativa sulla Privacy"
-msgstr "oznámenie o ochrane osobných údajov"
+msgstr "Zásady ochrany osobných údajov"
 
 #: module/Application/view/application/user/new-signup.phtml:110
-#: module/Application/view/application/user/signup-sk1.phtml:109
 msgid "Condizioni Contrattuali"
 msgstr "Zmluvné podmienky"
 
@@ -3057,7 +3057,7 @@ msgstr "Zmluvné podmienky"
 #: module/Application/view/application/user/new-signup2.phtml:611
 #: module/Application/view/application/user/new-signup2.phtml:638
 #: module/Application/view/application/user/signup-sk1.phtml:142
-#: module/Application/view/application/user/signup-sk2.phtml:593
+#: module/Application/view/application/user/signup-sk2.phtml:582
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Zavrieť"
@@ -3152,31 +3152,26 @@ msgstr "mám zahraničný vodičský preukaz"
 
 # Non capisco.
 #: module/Application/view/application/user/new-signup2.phtml:485
-#: module/Application/view/application/user/signup-sk2.phtml:474
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
 msgstr "VYHLÁSENIE NÁHRADU AKTU NOTORIETÀ \""
 
 # Non capisco bene.
 #: module/Application/view/application/user/new-signup2.phtml:485
-#: module/Application/view/application/user/signup-sk2.phtml:474
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
 msgstr "CERTIFIKÁT DISPONOVANIA VODIČSKÝM PREUKAZOM"
 
 #: module/Application/view/application/user/new-signup2.phtml:486
-#: module/Application/view/application/user/signup-sk2.phtml:475
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 
 #: module/Application/view/application/user/new-signup2.phtml:488
-#: module/Application/view/application/user/signup-sk2.phtml:477
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
 msgid "Il sottoscritto"
 msgstr "Dolu podpísaný"
 
 #: module/Application/view/application/user/new-signup2.phtml:491
-#: module/Application/view/application/user/signup-sk2.phtml:480
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:27
 msgid ""
 "consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di "
@@ -3190,18 +3185,15 @@ msgstr ""
 "svoju zodpovednosť"
 
 #: module/Application/view/application/user/new-signup2.phtml:494
-#: module/Application/view/application/user/signup-sk2.phtml:483
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
 msgid "DICHIARA"
 msgstr "PREHLASUJE"
 
 #: module/Application/view/application/user/new-signup2.phtml:496
-#: module/Application/view/application/user/signup-sk2.phtml:485
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
 msgstr "že je držiteľom vodičského preukazu v priebehu jeho platnosti "
 
 #: module/Application/view/application/user/new-signup2.phtml:497
-#: module/Application/view/application/user/signup-sk2.phtml:486
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione "
@@ -3214,13 +3206,13 @@ msgstr ""
 "slovenskom území a s trvaním jeho pobytu) na účel jazdy na slovenskom území."
 
 #: module/Application/view/application/user/new-signup2.phtml:504
-#: module/Application/view/application/user/signup-sk2.phtml:495
+#: module/Application/view/application/user/signup-sk2.phtml:484
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
 msgstr "Prečítal, potvrdil a podpísal"
 
 #: module/Application/view/application/user/new-signup2.phtml:513
-#: module/Application/view/application/user/signup-sk2.phtml:505
+#: module/Application/view/application/user/signup-sk2.phtml:494
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
 "Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto "
@@ -3237,13 +3229,13 @@ msgstr ""
 "výlučne kanceláriou zodpovednou za konanie."
 
 #: module/Application/view/application/user/new-signup2.phtml:516
-#: module/Application/view/application/user/signup-sk2.phtml:508
+#: module/Application/view/application/user/signup-sk2.phtml:497
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
 #: module/Application/view/application/user/new-signup2.phtml:520
-#: module/Application/view/application/user/signup-sk2.phtml:512
+#: module/Application/view/application/user/signup-sk2.phtml:501
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida e della carta di identità, entrambe fronte e retro"
@@ -3252,22 +3244,22 @@ msgstr ""
 "obidve z oboch strán"
 
 #: module/Application/view/application/user/new-signup2.phtml:523
-#: module/Application/view/application/user/signup-sk2.phtml:524
+#: module/Application/view/application/user/signup-sk2.phtml:513
 msgid "fronte patente di guida"
 msgstr "predná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:530
-#: module/Application/view/application/user/signup-sk2.phtml:531
+#: module/Application/view/application/user/signup-sk2.phtml:520
 msgid "retro patente di guida"
 msgstr "zadná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:539
-#: module/Application/view/application/user/signup-sk2.phtml:540
+#: module/Application/view/application/user/signup-sk2.phtml:529
 msgid "fronte carta di identità"
 msgstr "predná strana občianskeho preukazu(iného ID)"
 
 #: module/Application/view/application/user/new-signup2.phtml:546
-#: module/Application/view/application/user/signup-sk2.phtml:547
+#: module/Application/view/application/user/signup-sk2.phtml:536
 msgid "retro carta di identità"
 msgstr "zadná strana občianskeho preukazu(iného ID)"
 
@@ -3287,7 +3279,7 @@ msgid ""
 msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnútra."
 
 #: module/Application/view/application/user/new-signup2.phtml:589
-#: module/Application/view/application/user/signup-sk2.phtml:573
+#: module/Application/view/application/user/signup-sk2.phtml:562
 msgid "Continua"
 msgstr "Pokračovať"
 
@@ -3319,12 +3311,12 @@ msgid ""
 msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:640
-#: module/Application/view/application/user/signup-sk2.phtml:595
+#: module/Application/view/application/user/signup-sk2.phtml:584
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "vybrané súbory sú príliš veľké"
 
 #: module/Application/view/application/user/new-signup2.phtml:667
-#: module/Application/view/application/user/signup-sk2.phtml:622
+#: module/Application/view/application/user/signup-sk2.phtml:611
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
 
@@ -3373,6 +3365,22 @@ msgstr ""
 #: module/Application/view/application/user/optional.phtml:92
 msgid "Vai in area riservata"
 msgstr "Choď do vyhradenej zóny"
+
+#: module/Application/view/application/user/signup-sk1.phtml:109
+msgid "le Condizioni Contrattuali di Sharengo"
+msgstr "Všeobecné zmluvné podmienky Sharengo"
+
+#: module/Application/view/application/user/signup-sk1.phtml:122
+msgid ""
+"Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
+"Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che "
+"accetta e approva letteralmente le Condizioni generali e condizioni e assume "
+"consapevole della loro accettazione per concludere il contratto."
+msgstr ""
+"Klient po prečítaní Všeobecných zmluvných podmienok podľa § 43c zákona č. "
+"40/1964 Zb. Občianskeho zákonníka vyhlasuje, že doslovne prijíma a schvaľuje "
+"tieto všeobecné zmluvné podmienky a berie na vedomie, že ich akceptáciou "
+"dochádza k uzavretiu zmluvy."
 
 #: module/Application/view/application/user/signup-sk2.phtml:203
 #: module/Application/view/partials/translations.phtml:230
@@ -4351,7 +4359,30 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: module/Application/view/application/user/signup-sk2.phtml:557
+#: module/Application/view/application/user/signup-sk2.phtml:475
+msgid ""
+"Cliente, consapevole della legge penale e conseguenze civili false "
+"dichiarazioni dichiarano che possiede una patente di guida valida, che lo "
+"autorizza a guidare fino all'autoveicolo al posto della Repubblica Slovacca. "
+"Sotto la sezione 13 e 14 della legge n. 18/2018 Z.z. sulla protezione dati "
+"personali e aggiungerne alcuni leggi, dichiaro che sto dando all'operatore "
+"esplicito e incondizionato acconsento al trattamento dei miei dati personali "
+"dati nella misura necessaria a Servizi Sharengo che sono di cui al Contratto "
+"generale condizioni e ai fini del funzionamento questo servizio durante il "
+"periodo di utilizzo di questo servizio servizio, fino al ritiro di tale "
+"consenso."
+msgstr ""
+"Klient,vedomý si trestnoprávnych a občianskoprávnych následkov nepravdivých "
+"vyhlásení týmto vyhlasuje, že je držiteľom platného vodičského preukazu, "
+"ktorý ho oprávňuje viesť motorové vozidlo na území Slovenskej republiky. "
+"Podľa § 13 a 14 Zákona č. 18/2018 Z.z. o ochrane osobných údajov "
+"a o doplnení niektorých zákonov, týmto yhlasujem, že dávam prevádzkovateľovi "
+"výslovný a bezvýhradný súhlas na spracovanie mojich osobných údajov "
+"v rozsahu potrebnom na prevádzkovanie služby Sharengo, ktoré sú uvedené vo "
+"Všeobecných zmluvných podmienkach a na účel prevádzkovania tejto služby "
+"počas doby využívania tejto služby, až do odvolania tohto súhlasu."
+
+#: module/Application/view/application/user/signup-sk2.phtml:546
 msgid "foto dell'utente (selfie)"
 msgstr "Fotka Používateľa (selfie)"
 

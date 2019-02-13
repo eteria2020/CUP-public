@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-12 11:37+0100\n"
-"PO-Revision-Date: 2019-02-12 11:39+0100\n"
+"POT-Creation-Date: 2019-02-13 11:10+0100\n"
+"PO-Revision-Date: 2019-02-13 11:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1468,8 +1468,9 @@ msgid "Una volta scaricata la nostra App per"
 msgstr "Once you have downloaded our App for"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
+#: module/Application/view/application/user/signup-sk1.phtml:108
 msgid "e"
-msgstr "is"
+msgstr "and"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
 msgid "- o fatto il login su"
@@ -3028,7 +3029,6 @@ msgid "l'Informativa sulla Privacy"
 msgstr "Privacy Policy"
 
 #: module/Application/view/application/user/new-signup.phtml:110
-#: module/Application/view/application/user/signup-sk1.phtml:109
 msgid "Condizioni Contrattuali"
 msgstr "Contractual conditions"
 
@@ -3036,7 +3036,7 @@ msgstr "Contractual conditions"
 #: module/Application/view/application/user/new-signup2.phtml:611
 #: module/Application/view/application/user/new-signup2.phtml:638
 #: module/Application/view/application/user/signup-sk1.phtml:142
-#: module/Application/view/application/user/signup-sk2.phtml:593
+#: module/Application/view/application/user/signup-sk2.phtml:582
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Close"
@@ -3127,32 +3127,27 @@ msgid "ho una patente estera"
 msgstr "I have a foreign license"
 
 #: module/Application/view/application/user/new-signup2.phtml:485
-#: module/Application/view/application/user/signup-sk2.phtml:474
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
 msgstr "DECLARATION SUBSTITUTING THE ACT OF NOTORIETA '"
 
 #: module/Application/view/application/user/new-signup2.phtml:485
-#: module/Application/view/application/user/signup-sk2.phtml:474
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
 msgstr "AVAILABILITY CERTIFICATION DRIVING LICENSE"
 
 #: module/Application/view/application/user/new-signup2.phtml:486
-#: module/Application/view/application/user/signup-sk2.phtml:475
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr ""
 "(Article 21 paragraph 1 - 38 paragraph 2 and 3 of the D.P.R. N. 445 of "
 "28.12.2000)"
 
 #: module/Application/view/application/user/new-signup2.phtml:488
-#: module/Application/view/application/user/signup-sk2.phtml:477
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
 msgid "Il sottoscritto"
 msgstr "The undersigned"
 
 #: module/Application/view/application/user/new-signup2.phtml:491
-#: module/Application/view/application/user/signup-sk2.phtml:480
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:27
 msgid ""
 "consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di "
@@ -3166,18 +3161,15 @@ msgstr ""
 "28/12/2000, under his responsibility & agrave"
 
 #: module/Application/view/application/user/new-signup2.phtml:494
-#: module/Application/view/application/user/signup-sk2.phtml:483
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
 msgid "DICHIARA"
 msgstr "DECLARES"
 
 #: module/Application/view/application/user/new-signup2.phtml:496
-#: module/Application/view/application/user/signup-sk2.phtml:485
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
 msgstr "to be the holder of a driving license in the course of validity "
 
 #: module/Application/view/application/user/new-signup2.phtml:497
-#: module/Application/view/application/user/signup-sk2.phtml:486
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione alle "
@@ -3191,13 +3183,13 @@ msgstr ""
 "the purpose of driving on the Italian territory."
 
 #: module/Application/view/application/user/new-signup2.phtml:504
-#: module/Application/view/application/user/signup-sk2.phtml:495
+#: module/Application/view/application/user/signup-sk2.phtml:484
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
 msgstr "Read, confirmed and signed"
 
 #: module/Application/view/application/user/new-signup2.phtml:513
-#: module/Application/view/application/user/signup-sk2.phtml:505
+#: module/Application/view/application/user/signup-sk2.phtml:494
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
 "Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto "
@@ -3213,13 +3205,13 @@ msgstr ""
 "and kept exclusively by the office responsible for method."
 
 #: module/Application/view/application/user/new-signup2.phtml:516
-#: module/Application/view/application/user/signup-sk2.phtml:508
+#: module/Application/view/application/user/signup-sk2.phtml:497
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
 #: module/Application/view/application/user/new-signup2.phtml:520
-#: module/Application/view/application/user/signup-sk2.phtml:512
+#: module/Application/view/application/user/signup-sk2.phtml:501
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida e della carta di identità, entrambe fronte e retro"
@@ -3228,22 +3220,22 @@ msgstr ""
 "license and of the identity card, both front and back"
 
 #: module/Application/view/application/user/new-signup2.phtml:523
-#: module/Application/view/application/user/signup-sk2.phtml:524
+#: module/Application/view/application/user/signup-sk2.phtml:513
 msgid "fronte patente di guida"
 msgstr "front driving license"
 
 #: module/Application/view/application/user/new-signup2.phtml:530
-#: module/Application/view/application/user/signup-sk2.phtml:531
+#: module/Application/view/application/user/signup-sk2.phtml:520
 msgid "retro patente di guida"
 msgstr "retro driving license"
 
 #: module/Application/view/application/user/new-signup2.phtml:539
-#: module/Application/view/application/user/signup-sk2.phtml:540
+#: module/Application/view/application/user/signup-sk2.phtml:529
 msgid "fronte carta di identità"
 msgstr "front of identity card"
 
 #: module/Application/view/application/user/new-signup2.phtml:546
-#: module/Application/view/application/user/signup-sk2.phtml:547
+#: module/Application/view/application/user/signup-sk2.phtml:536
 msgid "retro carta di identità"
 msgstr "retro identity card"
 
@@ -3265,7 +3257,7 @@ msgstr ""
 "of Transport."
 
 #: module/Application/view/application/user/new-signup2.phtml:589
-#: module/Application/view/application/user/signup-sk2.phtml:573
+#: module/Application/view/application/user/signup-sk2.phtml:562
 msgid "Continua"
 msgstr "Keep it going"
 
@@ -3304,12 +3296,12 @@ msgstr ""
 "must convert it into an Italian one."
 
 #: module/Application/view/application/user/new-signup2.phtml:640
-#: module/Application/view/application/user/signup-sk2.phtml:595
+#: module/Application/view/application/user/signup-sk2.phtml:584
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "The selected files are too big."
 
 #: module/Application/view/application/user/new-signup2.phtml:667
-#: module/Application/view/application/user/signup-sk2.phtml:622
+#: module/Application/view/application/user/signup-sk2.phtml:611
 msgid "5. Numero Patente"
 msgstr "5. Driver's license number"
 
@@ -3358,6 +3350,22 @@ msgstr ""
 #: module/Application/view/application/user/optional.phtml:92
 msgid "Vai in area riservata"
 msgstr "Go to the restricted area"
+
+#: module/Application/view/application/user/signup-sk1.phtml:109
+msgid "le Condizioni Contrattuali di Sharengo"
+msgstr "Sharengo Contractual conditions"
+
+#: module/Application/view/application/user/signup-sk1.phtml:122
+msgid ""
+"Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
+"Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che accetta "
+"e approva letteralmente le Condizioni generali e condizioni e assume "
+"consapevole della loro accettazione per concludere il contratto."
+msgstr ""
+"Client after reading General Contracts conditions under Section 43c of Act no. "
+"40/1964 Coll. The Civil Code declares that accepts and approves them literally "
+"General Terms and Conditions and takes on aware of their acceptance to "
+"conclude the contract."
 
 #: module/Application/view/application/user/signup-sk2.phtml:203
 #: module/Application/view/partials/translations.phtml:230
@@ -4424,7 +4432,30 @@ msgstr "Zambia"
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: module/Application/view/application/user/signup-sk2.phtml:557
+#: module/Application/view/application/user/signup-sk2.phtml:475
+msgid ""
+"Cliente, consapevole della legge penale e conseguenze civili false "
+"dichiarazioni dichiarano che possiede una patente di guida valida, che lo "
+"autorizza a guidare fino all'autoveicolo al posto della Repubblica Slovacca. "
+"Sotto la sezione 13 e 14 della legge n. 18/2018 Z.z. sulla protezione dati "
+"personali e aggiungerne alcuni leggi, dichiaro che sto dando all'operatore "
+"esplicito e incondizionato acconsento al trattamento dei miei dati personali "
+"dati nella misura necessaria a Servizi Sharengo che sono di cui al Contratto "
+"generale condizioni e ai fini del funzionamento questo servizio durante il "
+"periodo di utilizzo di questo servizio servizio, fino al ritiro di tale "
+"consenso."
+msgstr ""
+"Client, aware of criminal law and civil consequences false declarations hereby "
+"declare that holds a valid driving license,which entitles him to drive a motor "
+"vehicle on place of Slovak Republic. Under Section 13 and 14 of Act no. "
+"18/2018 Z.z. on protection personal data and adding some laws, I hereby "
+"declare that I am giving to the operator explicit and unconditional consent to "
+"the processing of my personal data to the extent necessary to Sharengo "
+"services that are referred to in the General Contractual conditions and for "
+"the purpose of operation this service during the period of use of this service "
+"service, until the withdrawal of that consent."
+
+#: module/Application/view/application/user/signup-sk2.phtml:546
 msgid "foto dell'utente (selfie)"
 msgstr ""
 
