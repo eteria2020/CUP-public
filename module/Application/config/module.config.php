@@ -2522,6 +2522,17 @@ return [
                         ]
                     ]
                 ],
+                'partner-try-charge-account-test' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'partner try charge account test',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Partner',
+                            'action' => 'try-charge-account-test'
+                        ]
+                    ]
+                ],
             ],
         ],
     ],

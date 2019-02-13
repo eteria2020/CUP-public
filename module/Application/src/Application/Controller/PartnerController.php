@@ -224,4 +224,11 @@ class PartnerController extends AbstractActionController {
 
         }
     }
+
+    public function tryChargeAccountTestAction() {
+
+        $culrResponse = null;
+        $jsonResponse = null;
+        $this->partnerService->tryChargeAccountTest($culrResponse, $jsonResponse);
+    }
 }
