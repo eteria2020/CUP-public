@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-13 11:10+0100\n"
-"PO-Revision-Date: 2019-02-13 11:16+0100\n"
+"POT-Creation-Date: 2019-02-15 15:55+0100\n"
+"PO-Revision-Date: 2019-02-15 15:55+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -18,46 +18,46 @@ msgstr ""
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
 
-#: module/Application/config/module.config.php:2531
+#: module/Application/config/module.config.php:2542
 #: module/Application/view/application/user-area/index.phtml:27
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2536
+#: module/Application/config/module.config.php:2547
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:231
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:286
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2541
+#: module/Application/config/module.config.php:2552
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2546
+#: module/Application/config/module.config.php:2557
 #: module/Application/view/application/user-area/rates.phtml:22
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2551
+#: module/Application/config/module.config.php:2562
 msgid "Promo e pacchetti"
 msgstr "Promos and packages"
 
-#: module/Application/config/module.config.php:2561
+#: module/Application/config/module.config.php:2572
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2566
+#: module/Application/config/module.config.php:2577
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2571
+#: module/Application/config/module.config.php:2582
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2576
+#: module/Application/config/module.config.php:2587
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -94,52 +94,52 @@ msgstr "Insufficient oxygen points"
 msgid "Pacchetto non acquistabile"
 msgstr "Package not buyable"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:242
+#: module/Application/src/Application/Controller/UserAreaController.php:260
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:451
+#: module/Application/src/Application/Controller/UserAreaController.php:472
 msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:453
+#: module/Application/src/Application/Controller/UserAreaController.php:474
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "An application error has occurred. We apologize for the inconvenience"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:567
-#: module/Application/src/Application/Controller/UserAreaController.php:607
+#: module/Application/src/Application/Controller/UserAreaController.php:590
+#: module/Application/src/Application/Controller/UserAreaController.php:630
 msgid "Pagamento completato con successo"
 msgstr "Payment completed successfully"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:569
-#: module/Application/src/Application/Controller/UserAreaController.php:609
+#: module/Application/src/Application/Controller/UserAreaController.php:592
+#: module/Application/src/Application/Controller/UserAreaController.php:632
 msgid "Pagamento fallito"
 msgstr "Payment failed"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:578
-#: module/Application/src/Application/Controller/UserAreaController.php:618
-#: module/Application/view/application/user-area/debt-collection.phtml:107
-#: module/Application/view/application/user-area/debt-collection.phtml:173
+#: module/Application/src/Application/Controller/UserAreaController.php:601
+#: module/Application/src/Application/Controller/UserAreaController.php:641
+#: module/Application/view/application/user-area/debt-collection.phtml:108
+#: module/Application/view/application/user-area/debt-collection.phtml:174
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Payment temporarily suspended, please try again later."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:647
+#: module/Application/src/Application/Controller/UserAreaController.php:670
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract disabled properly!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:649
-#: module/Application/src/Application/Controller/UserAreaController.php:652
-#: module/Application/src/Application/Controller/UserAreaController.php:655
+#: module/Application/src/Application/Controller/UserAreaController.php:672
+#: module/Application/src/Application/Controller/UserAreaController.php:675
+#: module/Application/src/Application/Controller/UserAreaController.php:678
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Error while disabling the contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:691
+#: module/Application/src/Application/Controller/UserAreaController.php:714
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "You are disabled because the inserted card has expired, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:695
+#: module/Application/src/Application/Controller/UserAreaController.php:718
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -147,16 +147,16 @@ msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:700
+#: module/Application/src/Application/Controller/UserAreaController.php:723
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:799
+#: module/Application/src/Application/Controller/UserAreaController.php:822
 #: module/Application/src/Application/Form/Validator/VatNumber.php:27
 msgid "La partita IVA non è valida"
 msgstr "The VAT number is invalid"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:803
+#: module/Application/src/Application/Controller/UserAreaController.php:826
 msgid "Codice destinatario o PEC obbligatori"
 msgstr "Recipient code or certified email mandatory"
 
@@ -1234,15 +1234,19 @@ msgstr "Buy / Convert"
 msgid "per %d gg"
 msgstr "for %d dd"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:217
+#: module/Application/view/application/additional-services/additional-services.phtml:210
+msgid "Scegli uno dei pacchetti!"
+msgstr "Promos and packages"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:224
 msgid "Codice Promo"
 msgstr "Promo Code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:223
+#: module/Application/view/application/additional-services/additional-services.phtml:230
 msgid "Inserisci il codice promo"
 msgstr "Enter the promo code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:235
+#: module/Application/view/application/additional-services/additional-services.phtml:242
 msgid "Valida"
 msgstr "Valid"
 
@@ -1915,19 +1919,19 @@ msgid "Pagamento insoluti"
 msgstr "Unpaid payment"
 
 #: module/Application/view/application/index/outstanding-payments.phtml:114
-#: module/Application/view/application/user-area/debt-collection.phtml:114
-#: module/Application/view/application/user-area/debt-collection.phtml:116
+#: module/Application/view/application/user-area/debt-collection.phtml:115
+#: module/Application/view/application/user-area/debt-collection.phtml:117
 msgid "Pagamento corse"
 msgstr "Payment of travel"
 
 #: module/Application/view/application/index/outstanding-payments.phtml:178
-#: module/Application/view/application/user-area/debt-collection.phtml:180
-#: module/Application/view/application/user-area/debt-collection.phtml:182
+#: module/Application/view/application/user-area/debt-collection.phtml:181
+#: module/Application/view/application/user-area/debt-collection.phtml:183
 msgid "Pagamento penali"
 msgstr "Pay a penalty"
 
 #: module/Application/view/application/index/outstanding-payments.phtml:190
-#: module/Application/view/application/user-area/debt-collection.phtml:201
+#: module/Application/view/application/user-area/debt-collection.phtml:202
 #: module/Application/view/application/user/new-signup2.phtml:26
 #: module/Application/view/application/user/signup-sk2.phtml:32
 msgid "Pacchetto Benvenuto"
@@ -1996,7 +2000,7 @@ msgid "Valido al"
 msgstr "Valid al"
 
 #: module/Application/view/application/user-area/bonus.phtml:66
-#: module/Application/view/application/user-area/debt-collection.phtml:137
+#: module/Application/view/application/user-area/debt-collection.phtml:138
 msgid "Descrizione"
 msgstr "Description"
 
@@ -2151,20 +2155,20 @@ msgstr "PROCEED"
 msgid "CHIUDI"
 msgstr "CLOSE"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:31
+#: module/Application/view/application/user-area/debt-collection.phtml:32
 msgid "Pagamenti in sospeso"
 msgstr "Pending payments"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:45
+#: module/Application/view/application/user-area/debt-collection.phtml:46
 msgid "complimenti, tutte le tue corse risultano regolarmente pagate."
 msgstr "congratulations, all your travels are regularly paid."
 
-#: module/Application/view/application/user-area/debt-collection.phtml:49
+#: module/Application/view/application/user-area/debt-collection.phtml:50
 msgid "hai esaurito i tuoi minuti bonus e hai effettuato corse a debito."
 msgstr "you've run out of your bonus minutes and you've made debit runs."
 
-#: module/Application/view/application/user-area/debt-collection.phtml:50
-#: module/Application/view/application/user-area/debt-collection.phtml:124
+#: module/Application/view/application/user-area/debt-collection.phtml:51
+#: module/Application/view/application/user-area/debt-collection.phtml:125
 msgid ""
 "Ti invitiamo ad effettuare il pagamento con un carta di credito valida (anche "
 "pre-pagata), ricordiamo che &egrave; possibile cambiare la propria carta di "
@@ -2174,64 +2178,64 @@ msgstr ""
 "remember that it is; You can change your credit card in the 'Payment "
 "Information' section of the reserved area."
 
-#: module/Application/view/application/user-area/debt-collection.phtml:51
-#: module/Application/view/application/user-area/debt-collection.phtml:125
+#: module/Application/view/application/user-area/debt-collection.phtml:52
+#: module/Application/view/application/user-area/debt-collection.phtml:126
 msgid "Di seguito i dettagli:"
 msgstr "Details below:"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:61
-#: module/Application/view/application/user-area/debt-collection.phtml:135
+#: module/Application/view/application/user-area/debt-collection.phtml:62
+#: module/Application/view/application/user-area/debt-collection.phtml:136
 msgid "ID"
 msgstr "ID"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:62
+#: module/Application/view/application/user-area/debt-collection.phtml:63
 #: module/Application/view/application/user-area/rents.phtml:78
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Inizio"
 msgstr "Start"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:63
+#: module/Application/view/application/user-area/debt-collection.phtml:64
 #: module/Application/view/application/user-area/rents.phtml:79
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Fine"
 msgstr "End"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:64
+#: module/Application/view/application/user-area/debt-collection.phtml:65
 #: module/Application/view/application/user-area/rents.phtml:80
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Durata (min.)"
 msgstr "Duration (min.)"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:65
+#: module/Application/view/application/user-area/debt-collection.phtml:66
 #: module/Application/view/application/user-area/rents.phtml:81
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Sosta (min.)"
 msgstr "Stop (min.)"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:66
-#: module/Application/view/application/user-area/debt-collection.phtml:138
+#: module/Application/view/application/user-area/debt-collection.phtml:67
+#: module/Application/view/application/user-area/debt-collection.phtml:139
 msgid "Importo"
 msgstr "Amount"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:98
-#: module/Application/view/application/user-area/debt-collection.phtml:164
+#: module/Application/view/application/user-area/debt-collection.phtml:99
+#: module/Application/view/application/user-area/debt-collection.phtml:165
 msgid "TOTALE"
 msgstr "TOTAL"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:107
-#: module/Application/view/application/user-area/debt-collection.phtml:173
+#: module/Application/view/application/user-area/debt-collection.phtml:108
+#: module/Application/view/application/user-area/debt-collection.phtml:174
 msgid "Attenzione:"
 msgstr "Caution:"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:123
+#: module/Application/view/application/user-area/debt-collection.phtml:124
 msgid "Sono presenti penali da pagare."
 msgstr "There are penalties to pay."
 
-#: module/Application/view/application/user-area/debt-collection.phtml:136
+#: module/Application/view/application/user-area/debt-collection.phtml:137
 msgid "Data generazione"
 msgstr "Generation date"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:191
+#: module/Application/view/application/user-area/debt-collection.phtml:192
 msgid ""
 "Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una "
 "carta di credito valida associata al tuo profilo utente, l&#39;account "
@@ -2243,7 +2247,7 @@ msgstr ""
 "until payment is received (you can access the reserved area but do not log-in "
 "on the App)."
 
-#: module/Application/view/application/user-area/debt-collection.phtml:196
+#: module/Application/view/application/user-area/debt-collection.phtml:197
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, "
 "con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai "

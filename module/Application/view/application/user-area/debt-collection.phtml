@@ -8,6 +8,7 @@
     $scriptIsRunning = $this->scriptIsRunning;
     $totalCost = $this->totalCost;
     $totalExtraCost = $this->totalExtraCost;
+    $serverInstance = $this->serverInstance;
 
     // parse data
     $name = ucwords(strtolower($customer->getName() . ' ' . $customer->getSurname()));
@@ -198,7 +199,7 @@
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-center">
-                            <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" class="btn-link x-large ct2"><?= $this->translate('Pacchetto Benvenuto'); ?> <i class="fa fa-plus-circle"></i></a>
+                            <a href="<?= (!is_null($serverInstance) && $serverInstance == "sk_SK") ? "https://baliky.sharengo.sk/kontrola-objednavky/?add-to-cart=13" : $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]); ?>" class="btn-link x-large ct2"><?= $this->translate('Pacchetto Benvenuto'); ?> <i class="fa fa-plus-circle"></i></a>
                         </div>
                         <!-- confirm button -->
                         <?php echo $this->partial('partials/credit-card-refuse'); ?>

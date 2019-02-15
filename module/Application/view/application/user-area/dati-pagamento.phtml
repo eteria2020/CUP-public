@@ -35,7 +35,7 @@
                                     <?= $this->translate('I dati di pagamento sono stati correttamente inseriti.'); ?>.
                                 </p>
                         <?php else: ?>
-                                <p><?= $this->translate('Il Pacchetto Benvenuto non risulta ancora pagato'); ?>, <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
+                                <p><?= $this->translate('Il Pacchetto Benvenuto non risulta ancora pagato'); ?>, <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? "https://baliky.sharengo.sk/kontrola-objednavky/?add-to-cart=13" : $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
                                 <p><font color="red"><?= $this->translate('Attenzione!') ?></font> <?= $this->translate(' Per completare il pagamento e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?></p><br>
                                 <p><?= $this->translate('Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine l&#39;attivazione al gestore della tua carta, prima di proseguire '); ?>(<b><a href="payment-securecode-cartasi">maggiori info</a></b>)</p>
                         <?php endif; ?>
