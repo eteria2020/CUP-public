@@ -145,6 +145,17 @@ class UserAreaController extends AbstractActionController {
     private $extraPaymentsService;
 
     /**
+     * @var $config
+     */
+    private $config;
+
+    /**
+     * @var $serverInstance
+     */
+    private $serverInstance = "";
+
+
+    /**
      * @param CustomersService $customerService
      * @param TripsService $tripsService
      * @param Translator $translator
@@ -164,6 +175,7 @@ class UserAreaController extends AbstractActionController {
      * @param PaymentsService $paymentsService
      * @param CustomerDeactivationService $customerDeactivationService
      * @param ExtraPaymentsService $extraPaymentsService
+     * @param array $config
      */
     public function __construct(
         CustomersService $customerService,
@@ -184,7 +196,8 @@ class UserAreaController extends AbstractActionController {
         PaymentScriptRunsService $paymentScriptRunService,
         PaymentsService $paymentsService,
         CustomerDeactivationService $customerDeactivationService,
-        ExtraPaymentsService $extraPaymentsService
+        ExtraPaymentsService $extraPaymentsService,
+        array $config
     ) {
         $this->customerService = $customerService;
         $this->tripsService = $tripsService;
@@ -206,6 +219,11 @@ class UserAreaController extends AbstractActionController {
         $this->paymentsService = $paymentsService;
         $this->customerDeactivationService = $customerDeactivationService;
         $this->extraPaymentsService = $extraPaymentsService;
+        $this->config = $config;
+
+        if(isset($this->config['serverInstance'])) {
+            $this->serverInstance = $this->config['serverInstance'];
+        }
     }
 
     /**
@@ -390,11 +408,14 @@ class UserAreaController extends AbstractActionController {
         $contract = $this->cartasiContractsService->getCartasiContract($customer);
         $tripPayment = $this->tripPaymentsService->getFirstTripPaymentNotPayedByCustomer($customer);
 
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
         return new ViewModel([
             'customer' => $customer,
             'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment,
             'contract' => $contract,
-            'activateLink' => $activateLink
+            'activateLink' => $activateLink,
+            'serverInstance' => $serverInstance,
         ]);
     }
 
@@ -531,6 +552,7 @@ class UserAreaController extends AbstractActionController {
                 $totalExtraCost += $extraPayment->getAmount();
             }
         }
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
 
         return new ViewModel([
             'customer' => $customer,
@@ -541,7 +563,8 @@ class UserAreaController extends AbstractActionController {
             'totalExtraCost' => $totalExtraCost,
             'extraPayments' => $extraPayments,
             'scriptIsRunning' => $scriptIsRunning,
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'serverInstance' => $serverInstance,
         ]);
     }
 

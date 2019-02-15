@@ -69,6 +69,16 @@ class AdditionalServicesController extends AbstractActionController {
     private $tripsService;
 
     /**
+     * @var array
+     */
+    private $config;
+
+    /**
+     * @var $serverInstance
+     */
+    private $serverInstance = "";
+
+    /**
      * @param CustomersService $customerService
      * @param CarrefourService $carrefourService
      * @param Form $promoCodeForm
@@ -77,6 +87,7 @@ class AdditionalServicesController extends AbstractActionController {
      * @param AuthenticationService $authService
      * @param BonusService $bonusService
      * @param TripsService $tripsService
+     * @param array $config
      */
     public function __construct(
         CustomersService $customersService,
@@ -87,7 +98,8 @@ class AdditionalServicesController extends AbstractActionController {
         CustomersBonusPackagesService $customersBonusPackagesService,
         AuthenticationService $authService,
         BonusService $bonusService,
-        TripsService $tripsService
+        TripsService $tripsService,
+        array $config
     ) {
         $this->customersService = $customersService;
         $this->carrefourService = $carrefourService;
@@ -98,6 +110,11 @@ class AdditionalServicesController extends AbstractActionController {
         $this->authService = $authService;
         $this->bonusService = $bonusService;
         $this->tripsService = $tripsService;
+        $this->config = $config;
+
+        if(isset($this->config['serverInstance'])) {
+            $this->serverInstance = $this->config['serverInstance'];
+        }
     }
 
     public function additionalServicesAction() {
@@ -173,6 +190,8 @@ class AdditionalServicesController extends AbstractActionController {
             $showWelcomePackage = true;
         }
 
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
         return new ViewModel([
             'promoCodeForm' => $form,
             'bonusPackages' => $bonusPackages,
@@ -180,6 +199,7 @@ class AdditionalServicesController extends AbstractActionController {
             'verifyWomenVoucher' => $verifyWomenVoucher,
             'mobile' => $mobile,
             'showWelcomePackage' => $showWelcomePackage,
+            'serverInstance' => $serverInstance,
         ]);
     }
 

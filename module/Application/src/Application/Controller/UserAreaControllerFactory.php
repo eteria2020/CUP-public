@@ -25,6 +25,7 @@ class UserAreaControllerFactory implements FactoryInterface {
         $tripPaymentsService = $sharedLocator->get('SharengoCore\Service\TripPaymentsService');
         $cartasiContractsService = $sharedLocator->get('Cartasi\Service\CartasiContracts');
         $bannerJsonpUrl = $sharedLocator->get('Configuration')['banner-jsonp'];
+        $config = $sharedLocator->get('Config');
         $disableContractService = $sharedLocator->get('SharengoCore\Service\DisableContractService');
         $paymentScriptRunService = $sharedLocator->get('SharengoCore\Service\PaymentScriptRunsService');
         $paymentService = $sharedLocator->get('SharengoCore\Service\PaymentsService');
@@ -50,7 +51,8 @@ class UserAreaControllerFactory implements FactoryInterface {
             $paymentScriptRunService,
             $paymentService,
             $customerDeactivationService,
-            $extraPaymentsService
+            $extraPaymentsService,
+            $config
         );
     }
 
