@@ -1,3 +1,7 @@
+ALTER TABLE "public"."customers" ADD COLUMN "silver_list" boolean NOT NULL DEFAULT false;
+
+INSERT INTO "public"."configurations" ("id","slug","config_key","config_value","config_spec") VALUES (nextval('configurations_id_seq'::regclass),'psqlfunc','silver_list','1500',NULL);
+
 CREATE FUNCTION "public"."addBonusSilverList" () RETURNS void AS 'DECLARE
         silver_customers RECORD;
 
@@ -11,13 +15,9 @@ CREATE FUNCTION "public"."addBonusSilverList" () RETURNS void AS 'DECLARE
 
             EXIT WHEN NOT FOUND;
 
-            INSERT INTO customers_bonus VALUES (nextval(''customersbonus_id_seq''),silver_customers.id,null,''t'',now(),now(),1000,1000,''promo'',null,(select date_trunc(''month'', current_date)),null,(SELECT (date_trunc(''MONTH'', now()) + INTERVAL ''1 MONTH - 1 day'')::DATE),''Bonus Silver List'',null,null,null,null,null);
+            INSERT INTO customers_bonus VALUES (nextval('customersbonus_id_seq'),silver_customers.id,null,'t',now(),now(),(SELECT CAST(config_value as INTEGER) FROM configurations WHERE config_key = 'silver_list'),(SELECT CAST(config_value as INTEGER)FROM configurations WHERE config_key = 'silver_list'),'promo',null,(select date_trunc('month', current_date)),null,(SELECT ((date_trunc('MONTH', now()) + INTERVAL '1 MONTH - 1 day')::DATE) || ' 23:59:59')::timestamp,'Bonus Silver List',null,null,null,null,null);
 		END LOOP;
 
 	CLOSE all_silver_customers ;
 
 	END;' LANGUAGE "plpgsql"
-
-
-
-ALTER TABLE "public"."customers" ADD COLUMN "silver_list" boolean NOT NULL DEFAULT false;
