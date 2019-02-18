@@ -60,5 +60,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 09 * * 0     root            service apache2 restart
 
 # every month
+10 00  1 * *    root            psql --port 5433 --dbname sharengo < /srv/apps/sharengo-publicsite/scripts/cron/silver_list.sql
 10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
 00 06  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/invoice_trips.sh
