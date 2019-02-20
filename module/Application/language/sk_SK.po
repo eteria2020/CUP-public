@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-15 15:53+0100\n"
-"PO-Revision-Date: 2019-02-15 15:53+0100\n"
+"POT-Creation-Date: 2019-02-19 17:23+0100\n"
+"PO-Revision-Date: 2019-02-19 17:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -179,9 +179,9 @@ msgstr "Nesprávne telefónne číslo"
 #: module/Application/src/Application/Controller/UserController.php:870
 #: module/Application/src/Application/Controller/UserController.php:1218
 #: module/Application/src/Application/Controller/UserController.php:1251
-#: module/Application/src/Application/Controller/UserController.php:1463
-#: module/Application/src/Application/Controller/UserController.php:1506
-#: module/Application/src/Application/Controller/UserController.php:1664
+#: module/Application/src/Application/Controller/UserController.php:1464
+#: module/Application/src/Application/Controller/UserController.php:1507
+#: module/Application/src/Application/Controller/UserController.php:1665
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -1001,10 +1001,12 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
+#: module/Application/view/application/user/new-signup.phtml:266
 msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
 #: module/Application/src/Application/Form/Validator/DuplicateTaxCode.php:32
+#: module/Application/view/application/user/new-signup2.phtml:828
 #, fuzzy
 #| msgid "Esiste già un utente con lo stesso indirizzo email"
 msgid "Esiste già un utente con lo stesso codice fiscale"
@@ -3058,8 +3060,10 @@ msgid "Condizioni Contrattuali"
 msgstr "Zmluvné podmienky"
 
 #: module/Application/view/application/user/new-signup.phtml:143
+#: module/Application/view/application/user/new-signup.phtml:168
 #: module/Application/view/application/user/new-signup2.phtml:611
 #: module/Application/view/application/user/new-signup2.phtml:638
+#: module/Application/view/application/user/new-signup2.phtml:659
 #: module/Application/view/application/user/signup-sk1.phtml:142
 #: module/Application/view/application/user/signup-sk2.phtml:582
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3077,6 +3081,18 @@ msgstr ""
 "V nedeľu 11. februára od 7:30 do 13:30 plánovaná údržba systému overovania "
 "vodičských preukazov môže spôsobiť určité spomalenie kontrolných postupov. "
 "Vodičské preukazy budú potvrdené v pndelok  ráno."
+
+#: module/Application/view/application/user/new-signup.phtml:169
+#: module/Application/view/application/user/new-signup2.phtml:660
+msgid "Sei già iscritto!"
+msgstr "Ste už zaregistrovaní!"
+
+#: module/Application/view/application/user/new-signup.phtml:173
+#: module/Application/view/application/user/new-signup2.phtml:664
+msgid ""
+"Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
+msgstr ""
+"Ak chcete dokončiť vloženie vašich dát kliknite na prihlásenie a prihláste sa"
 
 #: module/Application/view/application/user/new-signup2.phtml:29
 #: module/Application/view/application/user/signup-sk2.phtml:35
@@ -3319,7 +3335,7 @@ msgstr ""
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "vybrané súbory sú príliš veľké"
 
-#: module/Application/view/application/user/new-signup2.phtml:667
+#: module/Application/view/application/user/new-signup2.phtml:691
 #: module/Application/view/application/user/signup-sk2.phtml:611
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"

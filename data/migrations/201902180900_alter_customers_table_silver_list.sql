@@ -2,7 +2,7 @@ ALTER TABLE "public"."customers" ADD COLUMN "silver_list" boolean NOT NULL DEFAU
 
 INSERT INTO "public"."configurations" ("id","slug","config_key","config_value","config_spec") VALUES (nextval('configurations_id_seq'::regclass),'psqlfunc','silver_list','1500',NULL);
 
-CREATE FUNCTION "public"."addBonusSilverList" () RETURNS void AS 'DECLARE
+CREATE FUNCTION "public"."addBonusSilverList" () RETURNS void AS $BODY$ DECLARE
         silver_customers RECORD;
 
  all_silver_customers CURSOR
@@ -20,4 +20,5 @@ CREATE FUNCTION "public"."addBonusSilverList" () RETURNS void AS 'DECLARE
 
 	CLOSE all_silver_customers ;
 
-	END;' LANGUAGE "plpgsql"
+	END;$BODY$ LANGUAGE "plpgsql"
+
