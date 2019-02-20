@@ -156,6 +156,31 @@ $this->headLink()
         </div>
     </div>
     <!-- overlay -->
+
+    <!-- overlay already signup -->
+    <div id="sng-overlay" class="overlay-signup" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+        <div class="table">
+            <div class="cell">
+                <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none; text-align: left !important;">
+                            <br>
+                            <p align="right"><a onclick="closeSignup()" style="color:#fff"><b>[X] <?= $this->translate("Chiudi");?></b></a></p>
+                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><?= $this->translate("Sei già iscritto!");?></h2>
+                            <hr style="height:2px;border:none;color:#fff;background-color:#fff;">
+                            <p style="color:#fff;text-align: center; font-weight: 800; font-family: 'Open Sans', sans-serif">
+                                <br>
+                                <?= $this->translate("Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"); ?>
+                            </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+
 </div>
 <!-- main -->
 
@@ -237,6 +262,12 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
         $('select#fleet>option:eq('+i+')').attr('selected', true);
     };
 
+    <? // in case taxCode is already present
+    if($this->formElementErrors($this->form->get('user')->get('email')) == "<ul><li>".$this->translate("Esiste già un utente con lo stesso indirizzo email")."</li></ul>"){?>
+    overlay = $('.overlay-signup');
+    overlay.css("visibility", "visible");
+    <?} ?>
+
     var tryAPIGeolocation = function() {
         jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
             apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
@@ -259,5 +290,13 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     var removeLoader = function() {
         $("#outer > div.load-overlay").remove();
     };
+
+    function closeSignup() {
+        overlay = $('.overlay-signup');
+        overlay.fadeOut(400, function () {
+            overlay.css("visibility", "hidden");
+            overlay.css("display","initial");
+        });
+    }
 
 </script>
