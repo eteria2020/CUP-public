@@ -1,1 +1,0 @@
-ALTER TABLE cards ADD assignable boolean DEFAULT true;

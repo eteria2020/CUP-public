@@ -1,1 +1,0 @@
-INSERT INTO authority (code, name) VALUES ('UCO', 'Ufficio Centrale Operativo'), ('PRE', 'Prefettura');

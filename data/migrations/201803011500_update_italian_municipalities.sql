@@ -1,1 +1,0 @@
-update italian_municipalities set name = 'REGGIO NELL''EMILIA' where id = 7598

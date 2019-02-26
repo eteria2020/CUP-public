@@ -1,1 +1,0 @@
-Update messages_outbox set acknowledged = '2018-01-01',  webuser_id = 1

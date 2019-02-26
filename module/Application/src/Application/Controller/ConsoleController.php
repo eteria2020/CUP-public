@@ -761,4 +761,29 @@ class ConsoleController extends AbstractActionController {
 
         return $result;
     }
+
+    /**
+     * Parse the comuni.json file that come from https://github.com/matteocontrini/comuni-json
+     *
+     * To update, run the follow command:
+     *
+     * php composer.phar update matteocontrini/comuni-json
+     * php public/index.php municipality update
+     *
+     */
+    public function municipalityUpdateAction() {
+
+        $municipalityJsonFile = file_get_contents("vendor/matteocontrini/comuni-json/comuni.json");
+        $municipalityArray = json_decode($municipalityJsonFile);
+        $this->logger->log(sprintf("%s;INF;municipalityUpdateAction;start;%d\n", date_create()->format('y-m-d H:i:s'), count($municipalityArray)));
+
+        foreach($municipalityArray as $municipality){
+            $sql = sprintf("UPDATE italian_municipalities SET zip_codes='%s' WHERE cadastral_code='%s'", json_encode($municipality->cap), $municipality->codiceCatastale);
+            $stmt = $this->entityManager->getConnection()->prepare($sql);
+            $stmt->execute();
+            //var_dump($sql);
+        }
+
+        $this->logger->log(sprintf("%s;INF;municipalityUpdateAction;end\n", date_create()->format('y-m-d H:i:s')));
+    }
 }

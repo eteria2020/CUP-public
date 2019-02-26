@@ -1,3 +1,0 @@
-INSERT INTO free_fares (conditions) VALUES
-('{"customer":{"gender":"female"},"time":{"from":"00:00","to":"06:00"}}'),
-('{"customer":{"birth_date":"today()"}}')

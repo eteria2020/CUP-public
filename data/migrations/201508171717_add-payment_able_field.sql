@@ -1,1 +1,0 @@
-ALTER TABLE customers ADD payment_able BOOLEAN DEFAULT 'true' NOT NULL;

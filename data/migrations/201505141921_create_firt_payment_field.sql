@@ -1,1 +1,0 @@
-ALTER TABLE customers ADD first_payment_completed BOOLEAN DEFAULT 'false' NOT NULL;

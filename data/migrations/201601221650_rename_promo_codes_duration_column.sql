@@ -1,1 +1,0 @@
-ALTER TABLE promo_codes_info RENAME COLUMN duration_days TO bonus_duration_days;

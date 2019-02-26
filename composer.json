@@ -43,7 +43,8 @@
         "mvlabs/mvlabs-payments": "dev-master",
         "mvlabs/omnipay-cartasi": "dev-master",
         "mvlabs/zf2-multilanguage": "dev-master",
-        "smsgatewayme/client": "^0.0.1"
+        "smsgatewayme/client": "^0.0.1",
+        "matteocontrini/comuni-json": "dev-master"
     },
     "repositories": [
         {
@@ -97,6 +98,18 @@
         {
             "url": "https://github.com/smsgatewayme/client-php.git",
             "type": "git"
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "matteocontrini/comuni-json",
+                "version":"master",
+                "source": {
+                    "url": "https://github.com/matteocontrini/comuni-json.git",
+                    "type": "git",
+                    "reference":"master"
+                }
+            }
         }
     ],
     "require-dev": {

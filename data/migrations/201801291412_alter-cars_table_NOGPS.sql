@@ -1,1 +1,0 @@
-ALTER TABLE "public"."cars" ADD COLUMN "nogps" boolean DEFAULT false;

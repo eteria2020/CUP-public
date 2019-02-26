@@ -1,1 +1,0 @@
-ALTER TABLE promo_codes_info ADD no_standard_bonus BOOLEAN DEFAULT FALSE;

@@ -1,1 +1,0 @@
-ALTER TYPE trip_payment_status ADD VALUE 'to_be_refund';

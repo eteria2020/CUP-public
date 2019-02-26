@@ -1,1 +1,0 @@
-update maintenance_locations set enabled = FALSE WHERE id in (31,32,33,34);
