@@ -82,6 +82,10 @@ class ChangeLanguageDetector implements ListenerAggregateInterface
             // pages built with javascript
             $lang = substr($locale, 0, 2);
 
+            if(!isset($this->languages[$lang]['lang'])) {   // bug fix, if mobile require a language not supported
+                $lang = "en";
+            }
+
             setcookie('lang', $this->languages[$lang]['lang'], null, '/');
         }
     }
