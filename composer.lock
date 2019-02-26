@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e932c12340c6726319063134501e55ea",
-    "content-hash": "5cd0ba8017f16be5919202b2585bb52c",
+    "hash": "206ee118248205a44d4318f3cec277d0",
+    "content-hash": "5b16808c5d9b13e90571e01fcc588a9c",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2180,6 +2180,17 @@
             "time": "2014-12-12 05:04:05"
         },
         {
+            "name": "matteocontrini/comuni-json",
+            "version": "master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matteocontrini/comuni-json.git",
+                "reference": "master"
+            },
+            "type": "library",
+            "time": "2019-02-21 16:42:38"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.8.22",
             "source": {
@@ -2425,7 +2436,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "72ae185c77c2efddd33a1b337fba5e53feac1861"
+                "reference": "4d5fc313391f486551fc60ceaa0dbcb492af91bf"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2433,6 +2444,7 @@
                 "mvlabs/mvlabs-snappy": "0.2.*",
                 "php": ">=5.4.0",
                 "rwoverdijk/assetmanager": "1.4.*",
+                "usu/codice-fiscale": "^1.0",
                 "zendframework/zendframework": "2.4.*"
             },
             "require-dev": {
@@ -2446,7 +2458,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-02-18 11:50:19"
+            "time": "2019-02-26 10:41:13"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -6460,7 +6472,8 @@
         "cup-web/public-business-module": 20,
         "mvlabs/mvlabs-payments": 20,
         "mvlabs/omnipay-cartasi": 20,
-        "mvlabs/zf2-multilanguage": 20
+        "mvlabs/zf2-multilanguage": 20,
+        "matteocontrini/comuni-json": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -1,1 +1,0 @@
-CREATE SEQUENCE customerspoints_id_seq INCREMENT BY 1 MINVALUE 1 START 1;

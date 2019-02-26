@@ -1,1 +1,0 @@
-ALTER TABLE zone_bonus ADD COLUMN cost int;

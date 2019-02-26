@@ -1,2 +1,0 @@
-ALTER TABLE user_events ALTER COLUMN topic TYPE TEXT;
-ALTER TABLE user_events ALTER COLUMN webuser_id DROP NOT NULL;

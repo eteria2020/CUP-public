@@ -2247,6 +2247,17 @@ return [
                         ]
                     ]
                 ],
+                'municipality-update' => [
+                    'type' => 'simple',
+                    'options' => [
+                        'route' => 'municipality update',
+                        'defaults' => [
+                            '__NAMESPACE__' => 'Application\Controller',
+                            'controller' => 'Console',
+                            'action' => 'municipality-update'
+                        ]
+                    ]
+                ],
                 'bonus-nivea' => [
                     'type' => 'simple',
                     'options' => [

@@ -1,1 +1,0 @@
-INSERT INTO maintenance_locations VALUES (NEXTVAL('maintenance_locations_id_seq'),  'Milano - Fram, Via Balduccio da Pisa, 7', 1, TRUE);

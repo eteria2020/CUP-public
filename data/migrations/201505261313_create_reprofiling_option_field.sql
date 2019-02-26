@@ -1,1 +1,0 @@
-ALTER TABLE customers ADD reprofiling_option INT DEFAULT 0 NOT NULL;

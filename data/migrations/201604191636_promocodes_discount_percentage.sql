@@ -1,1 +1,0 @@
-ALTER TABLE promo_codes_info ADD discount_percentage INT DEFAULT NULL;

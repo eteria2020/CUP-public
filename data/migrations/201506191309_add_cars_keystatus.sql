@@ -1,1 +1,0 @@
-ALTER TABLE cars ADD key_status TEXT DEFAULT NULL;

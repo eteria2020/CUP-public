@@ -1,1 +1,0 @@
-ALTER TYPE disabled_reason ADD VALUE 'EXPIRED_CREDIT_CARD';
