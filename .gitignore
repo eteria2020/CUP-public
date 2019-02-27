@@ -31,3 +31,6 @@ data/dumps/*
 public/cache
 /bower_components
 bin/
+
+//public
+public/.htaccess
