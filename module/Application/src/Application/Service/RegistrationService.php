@@ -731,6 +731,7 @@ final class RegistrationService
 
             $customer = $this->hydrator->hydrate($data, $customer);
             $customer->setNewsletter(true);
+            $customer->setPrivacyInformation(true);
             $customer->setRegistrationCompleted(true);
 
             $this->entityManager->persist($customer);
