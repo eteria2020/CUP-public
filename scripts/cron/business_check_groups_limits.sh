@@ -2,5 +2,5 @@
 #
 
 ts=$(date +'%D %T')
-echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/business_check_groups_limits.log
-php /srv/apps/sharengo-publicsite/public/index.php business check groups limits >> /srv/apps/sharengo-publicsite/data/log/business_check_groups_limits.log
+echo "$ts ------------------" >> /var/log/sharengo-publicsite/data/log/business_check_groups_limits.log
+php /srv/apps/sharengo-publicsite/public/index.php business check groups limits >> /var/log/sharengo-publicsite/data/log/business_check_groups_limits.log

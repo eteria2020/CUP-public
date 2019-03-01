@@ -2,7 +2,7 @@
 
 #####################################################################################################################################################
 #BONUS NIVEA
-#php /srv/apps/sharengo-publicsite/public/index.php bonus nivea  >> /srv/apps/sharengo-publicsite/data/log/bonus_nivea.log
+#php /srv/apps/sharengo-publicsite/public/index.php bonus nivea  >> /var/log/sharengo-publicsite/data/log/bonus_nivea.log
 #####################################################################################################################################################
 
 
@@ -15,7 +15,7 @@ ts=$(date +%Y-%m-%d) #time_stamp
 #ts2=2017-02-24
 radius=100 #0.001242 #raggio dal pois
 carplate=all
-php /srv/apps/sharengo-publicsite/public/index.php bonus park '' $radius $carplate >> /srv/apps/sharengo-publicsite/data/log/bonus_park.log
+php /srv/apps/sharengo-publicsite/public/index.php bonus park '' $radius $carplate >> /var/log/sharengo-publicsite/data/log/bonus_park.log
 #####################################################################################################################################################
 
 
@@ -23,13 +23,13 @@ php /srv/apps/sharengo-publicsite/public/index.php bonus park '' $radius $carpla
 #####################################################################################################################################################
 #ASSIGN BIRTHDAY BONUSES
 ts=$(date +'%D %T')
-echo "$ts ------------------" >> /srv/apps/sharengo-publicsite/data/log/assign-birthday-bonuses.log
-php /srv/apps/sharengo-publicsite/public/index.php assign birthday bonuses >> /srv/apps/sharengo-publicsite/data/log/assign-birthday-bonuses.log
+echo "$ts ------------------" >> /var/log/sharengo-publicsite/data/log/assign-birthday-bonuses.log
+php /srv/apps/sharengo-publicsite/public/index.php assign birthday bonuses >> /var/log/sharengo-publicsite/data/log/assign-birthday-bonuses.log
 #####################################################################################################################################################
 
 
 
 #####################################################################################################################################################
 #BONUS ALGEBRIS
-#php /srv/apps/sharengo-publicsite/public/index.php bonus algebris  >> /srv/apps/sharengo-publicsite/data/log/bonus_algebris.log
+#php /srv/apps/sharengo-publicsite/public/index.php bonus algebris  >> /var/log/sharengo-publicsite/data/log/bonus_algebris.log
 #####################################################################################################################################################

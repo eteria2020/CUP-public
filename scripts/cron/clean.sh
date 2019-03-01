@@ -21,5 +21,5 @@ echo "rm -rf "$mongo_log_path"mongodb.log."$timestamp"T*"
 sudo rm -rf "$mongo_log_path"mongodb.log."$timestamp"T*
 
 echo "Clear queue of Driver License Validation log"
-sudo rm    /srv/apps/sharengo-publicsite/data/log/queue-system-dlv.log
-sudo touch /srv/apps/sharengo-publicsite/data/log/queue-system-dlv.log
+sudo rm    /var/log/sharengo-publicsite/data/log/queue-system-dlv.log
+sudo touch /var/log/sharengo-publicsite/data/log/queue-system-dlv.log
