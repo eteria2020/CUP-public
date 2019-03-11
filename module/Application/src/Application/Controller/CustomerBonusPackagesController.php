@@ -44,21 +44,39 @@ class CustomerBonusPackagesController extends AbstractActionController
     private $translator;
 
     /**
+     * @var array $config
+     */
+    private $config;
+
+    /**
+     * @var $serverInstance
+     */
+    private $serverInstance = "";
+
+
+    /**
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
      * @param CartasiContractsService $cartasiContractsService
      * @param Zend\Mvc\I18n\Translator $translator
+     * @param array $config
      */
     public function __construct(
         CustomersBonusPackagesService $customersBonusPackagesService,
         BuyCustomerBonusPackage $buyCustomerBonusPackage,
         CartasiContractsService $cartasiContractsService,
-        Translator $translator
+        Translator $translator,
+        array $config
     ) {
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->buyCustomerBonusPackage = $buyCustomerBonusPackage;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->translator = $translator;
+        $this->config = $config;
+
+        if(isset($this->config['serverInstance'])) {
+            $this->serverInstance = $this->config['serverInstance'];
+        }
     }
 
     public function packageAction()
@@ -68,9 +86,12 @@ class CustomerBonusPackagesController extends AbstractActionController
         $customer = $this->identity();
         $contract = $this->cartasiContractsService->getCartasiContract($customer);
 
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
         $viewModel = new ViewModel([
             'package' => $package,
-            'hasContract' => $contract instanceof Contracts
+            'hasContract' => $contract instanceof Contracts,
+            'serverInstance' => $serverInstance,
         ]);
 
         return $viewModel->setTerminal(true);
