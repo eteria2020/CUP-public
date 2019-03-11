@@ -1569,11 +1569,11 @@ class UserController extends AbstractActionController {
             //return $this->redirect()->toRoute('new-signup-2', ['lang' => $this->languageService->getLanguage(), 'mobile' => $mobile]);
             return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile]);
         }
-
-        //$this->getEventManager()->trigger('secondFormCompleted', $this, $data); //driver license validation
+        $data["email"] = $customer->getEmail();
+        $this->getEventManager()->trigger('secondFormCompleted', $this, $data); //driver license validation
         $signupSession = new Container('newSignup');
         $signupSession->offsetSet("customer", $customer);
-        $this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
+        //$this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
         return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'sk_SK']]);
         //return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
 
