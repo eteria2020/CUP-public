@@ -938,7 +938,7 @@ $this->headLink()
 
                             <?php if (!$this->customer->getFirstPaymentCompleted()): ?>
                                 <br />
-                                <a href="<?= $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>" style="color: #ff0000;">
+                                <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? $this->url('gpwebpay/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) : $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]])?>" style="color: #ff0000;">
                                     <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
                                 </a>
                             <?php endif; ?>

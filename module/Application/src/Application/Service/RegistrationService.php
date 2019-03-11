@@ -552,6 +552,16 @@ final class RegistrationService
             $customer->setPin(json_encode($pins));
             //$customer->setRegistrationCompleted(true);
 
+            // add 100 min bonus
+            $total = $this->subscriptionBonus['total'];
+            $bonus100mins = CustomersBonus::createBonus(
+                $customer,
+                $total, //$this->subscriptionBonus['total'],
+                $this->subscriptionBonus['description'],
+                $this->subscriptionBonus['valid-to']
+            );
+            $this->entityManager->persist($bonus100mins);
+
             $this->entityManager->persist($customer);
 
             $this->deactivationService->deactivateAtRegistration($customer);

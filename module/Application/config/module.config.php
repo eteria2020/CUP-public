@@ -1763,6 +1763,7 @@ return [
                 ['controller' => 'Application\Controller\User', 'roles' => []],
                 ['controller' => 'Application\Controller\UserArea', 'roles' => ['user']],
                 ['controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []],
+                ['controller' => 'GPWebpay\Controller\GPWebpayPayments', 'roles' => []],
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],
