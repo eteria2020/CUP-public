@@ -35,7 +35,7 @@
                                     <?= $this->translate('I dati di pagamento sono stati correttamente inseriti.'); ?>.
                                 </p>
                         <?php else: ?>
-                                <p><?= $this->translate('Il Pacchetto Benvenuto non risulta ancora pagato'); ?>, <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? "https://baliky.sharengo.sk/kontrola-objednavky/?add-to-cart=13" : $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
+                                <p><?= $this->translate('Il Pacchetto Benvenuto non risulta ancora pagato'); ?>, <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? $this->url('gpwebpay/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) : $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) ?>"><button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a> <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.</p><br>
                                 <p><font color="red"><?= $this->translate('Attenzione!') ?></font> <?= $this->translate(' Per completare il pagamento e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?></p><br>
                                 <p><?= $this->translate('Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine l&#39;attivazione al gestore della tua carta, prima di proseguire '); ?>(<b><a href="payment-securecode-cartasi">maggiori info</a></b>)</p>
                         <?php endif; ?>
@@ -162,7 +162,7 @@
                                 </ul>
                                 <br>
                                 <div id="button-alert" class="block-wrapper-button content-align-center">
-                                    <a href="<?= $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) ?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
+                                    <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? $this->url('gpwebpay/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) : $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) ?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
                                     <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("CHIUDI") ?></button></a>
                                 </div>
                             </div>

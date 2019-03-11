@@ -44,6 +44,11 @@ class SuccessfulPaymentListener implements SharedListenerAggregateInterface
             'successfulPayment',
             [$this, 'successfulPayment']
         );
+        $this->listeners[] = $events->attach(
+            'GPWebpay\Controller\GPWebpayPaymentsController',
+            'successfulPayment',
+            [$this, 'successfulPayment']
+        );
     }
 
     public function detachShared(SharedEventManagerInterface $events)

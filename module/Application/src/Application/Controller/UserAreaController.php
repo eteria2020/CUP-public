@@ -320,6 +320,7 @@ class UserAreaController extends AbstractActionController {
                 return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
             }
         }
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
 
         return new ViewModel([
             'bannerJsonpUrl' => $this->bannerJsonpUrl,
@@ -330,6 +331,7 @@ class UserAreaController extends AbstractActionController {
             'showError' => $this->showError,
             'typeForm' => $this->typeForm,
             'editLimiter' => $this->editLimiter(),
+            'serverInstance' => $serverInstance,
         ]);
     }
 
