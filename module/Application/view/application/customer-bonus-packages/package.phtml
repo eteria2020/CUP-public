@@ -66,9 +66,13 @@ $end = date_create('2018-03-09 04:55:00');
                             <?php } ?>
                         <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>"><?= $this->translate("Conferma") ?></button>
                     <?php else: ?>
+                        <?php if(!is_null($this->serverInstance) && $this->serverInstance == "sk_SK"){ ?>
+                        <p class="sng-text" style="color: red"> <?= $this->translate('Occorre effettuare l\'acquisto del Pacchetto Benvenuto prima di poter acquistare un pacchetto');?></p>
+                        <?} else { ?>
                         <p class="sng-text"><?= $this->translate("Confermare l'acquisto registrando una carta di credito") ?></p>
-                        <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId()]) ?>"><?= $this->translate("Conferma") ?></a>
-                    <?php endif; ?>
+
+                        <a id="confirm-btn" class="big green" href="<?= $this->url('cartasi/primo-pagamento-pacchetto', ['package' => $this->package->getId().$this->serverInstance]) ?>"><?= $this->translate("Conferma") ?></a>
+                    <?php } endif; ?>
                 <?php }else{ ?>
                     <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>"><?= $this->translate("Conferma") ?></button>
                 <?php } ?>

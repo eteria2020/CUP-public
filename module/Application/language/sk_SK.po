@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-02-19 17:23+0100\n"
-"PO-Revision-Date: 2019-02-19 17:24+0100\n"
+"PO-Revision-Date: 2019-03-11 13:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -224,7 +224,7 @@ msgstr "Pani"
 #: module/Application/view/application/user/signup-sk2.phtml:83
 #: module/Application/view/application/user/signup.phtml:223
 msgid "Nome"
-msgstr "Meno"
+msgstr "Názov"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:99
 #: module/Application/src/Application/Form/CustomerFieldset.php:103
@@ -1238,7 +1238,6 @@ msgstr "deň"
 #: module/Application/view/application/additional-services/additional-services.phtml:140
 #: module/Application/view/application/additional-services/gift-packages.phtml:94
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
-#, fuzzy
 msgid "Minuti"
 msgstr "Minúty"
 
@@ -1257,16 +1256,16 @@ msgstr "Platné od"
 #: module/Application/view/application/additional-services/additional-services.phtml:143
 #: module/Application/view/application/additional-services/gift-packages.phtml:97
 msgid "Valido fino"
-msgstr "Platné do"
+msgstr "Trvanie"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:144
 #: module/Application/view/application/additional-services/gift-packages.phtml:98
 msgid "Disponibile fino"
-msgstr "K dispozícii do"
+msgstr "Platné do"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:145
 msgid "Acquista/Converti"
-msgstr "Kúpiť / Zmeniť"
+msgstr "Kúpiť"
 
 # Non capisco. Cosa significa?
 #: module/Application/view/application/additional-services/additional-services.phtml:160
@@ -1274,7 +1273,7 @@ msgstr "Kúpiť / Zmeniť"
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #, php-format
 msgid "per %d gg"
-msgstr "per %d dd"
+msgstr "%d dní"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:210
 msgid "Scegli uno dei pacchetti!"
@@ -1290,7 +1289,7 @@ msgstr "Vlož zľavový kód"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:242
 msgid "Valida"
-msgstr "Platná"
+msgstr "POUŽIŤ"
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:19
 msgid "gift card"
