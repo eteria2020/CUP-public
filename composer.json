@@ -44,7 +44,8 @@
         "mvlabs/omnipay-cartasi": "dev-master",
         "mvlabs/zf2-multilanguage": "dev-master",
         "smsgatewayme/client": "^0.0.1",
-        "matteocontrini/comuni-json": "dev-master"
+        "matteocontrini/comuni-json": "dev-master",
+        "sharengo-web/gpwebpay": "dev-master"
     },
     "repositories": [
         {
@@ -98,6 +99,10 @@
         {
             "url": "https://github.com/smsgatewayme/client-php.git",
             "type": "git"
+        },
+        {
+          "url": "ssh://git@git.sharengo.it/cup-it/gpwebpay.git",
+          "type": "git"
         },
         {
             "type":"package",

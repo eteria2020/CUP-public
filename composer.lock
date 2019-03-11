@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "206ee118248205a44d4318f3cec277d0",
-    "content-hash": "5b16808c5d9b13e90571e01fcc588a9c",
+    "hash": "99b21a6fdaaf120861eb3411e48f7bc1",
+    "content-hash": "1a9a71676357a28f1c5689b324a9e1ed",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2085,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2436,7 +2436,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "a8d0aa8dd6e387778cea8f63bde5a8233cbd8968"
+                "reference": "a1e958f3dbb082cae0df81c6b2bb9cea1a93b2a5"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2458,7 +2458,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-02-27 14:18:17"
+            "time": "2019-03-11 09:01:08"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -3047,6 +3047,29 @@
                 "zf2"
             ],
             "time": "2016-05-16 07:48:51"
+        },
+        {
+            "name": "sharengo-web/gpwebpay",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@git.sharengo.it/cup-it/gpwebpay.git",
+                "reference": "d9d66defa83aaa010dc74ed044b59180c4907958"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "sharengo-web/cartasi": "dev-master",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GPWebpay": "src/"
+                }
+            },
+            "description": "GPWebpay module for Sharengo",
+            "time": "2019-03-08 16:23:29"
         },
         {
             "name": "smsgatewayme/client",
@@ -6473,7 +6496,8 @@
         "mvlabs/mvlabs-payments": 20,
         "mvlabs/omnipay-cartasi": 20,
         "mvlabs/zf2-multilanguage": 20,
-        "matteocontrini/comuni-json": 20
+        "matteocontrini/comuni-json": 20,
+        "sharengo-web/gpwebpay": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
