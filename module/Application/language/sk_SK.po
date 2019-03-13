@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-02-19 17:23+0100\n"
-"PO-Revision-Date: 2019-03-12 15:59+0100\n"
+"PO-Revision-Date: 2019-03-13 15:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -2542,7 +2542,7 @@ msgstr "Ušetril si"
 
 #: module/Application/view/application/user-area/index.phtml:1050
 msgid "KG di CO"
-msgstr "Kg CO2"
+msgstr "Kg CO"
 
 #: module/Application/view/application/user-area/index.phtml:1050
 msgid "Grazie!"
@@ -4916,7 +4916,7 @@ msgstr "Zákaznícka služba"
 #: module/Application/view/partials/footer/main_foot.phtml:36
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:36
 msgid "Privacy"
-msgstr "Privacy"
+msgstr "Súkromie"
 
 #: module/Application/view/layout/layout.phtml:192
 msgid "Regolamento e tariffe"
@@ -5045,7 +5045,7 @@ msgstr "Mastercard"
 #: module/Application/view/partials/footer/main_foot.phtml:6
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:6
 msgid "Seguici su"
-msgstr "Sleduj nás na"
+msgstr "Sleduj nás"
 
 #: module/Application/view/partials/footer/main_foot.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:25
@@ -5065,7 +5065,7 @@ msgstr "Podpora"
 #: module/Application/view/partials/footer/main_foot.phtml:37
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:37
 msgid "Contratto di servizio e tariffe"
-msgstr "Zmluva o službách a sadzbách"
+msgstr "Všeobecné obchodné podmienky"
 
 #: module/Application/view/partials/footer/main_foot.phtml:38
 msgid "Modello di recesso"
@@ -5079,7 +5079,7 @@ msgstr "FAQ"
 #: module/Application/view/partials/footer/main_foot.phtml:46
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:45
 msgid "Scarica l’App"
-msgstr "Stiahni si aplikáciu"
+msgstr "STIAHNI SI APPKU"
 
 #: module/Application/view/partials/foreign-drivers-license-completion.phtml:11
 msgid "Validazione patente"
