@@ -19,6 +19,7 @@
 
             <div class="module-column-app-content clearfix">
                 <div class="module-bonus-resmume padding-top">
+                    <?php if(is_null($this->serverInstance) || $this->serverInstance != "sk_SK"){ ?>
                     <div class="block-form bw-f w-4-4 clearfix">
                         <div class="block-form-section content-align-center margin-bottom">
                             <h2><i class="fa fa-slideshare"></i> <?= $this->translate('Invita un amico!'); ?></h2>
@@ -35,6 +36,7 @@
                                 </tr>
                             </table>
                     </div>
+                    <?php } ?>
                     <div class="block-form bw-f w-4-4 clearfix">
                         <div class="block-form-section content-align-center margin-bottom">
                             <h2><i class="fa fa-trophy"></i> <?= $this->translate('Bonus'); ?></h2>

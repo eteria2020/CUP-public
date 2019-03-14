@@ -503,7 +503,8 @@ class UserAreaController extends AbstractActionController {
         return new ViewModel([
             'customer' => $this->customer,
             'listBonus' => $this->customerService->getAllBonus($this->customer),
-            'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer)
+            'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer),
+            'serverInstance' => (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null,
         ]);
     }
 
