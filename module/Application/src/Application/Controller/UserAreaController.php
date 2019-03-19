@@ -265,12 +265,6 @@ class UserAreaController extends AbstractActionController {
 
             if (isset($postData['customer'])) {
 
-                $errorMessageTaxData = $this->formatAndCheckTaxData($postData);
-                if(!is_null($errorMessageTaxData)) {
-                    $this->flashMessenger()->addErrorMessage($errorMessageTaxData);
-                    return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
-                }
-
                 $postData['customer']['id'] = $this->userService->getIdentity()->getId();
 
                 //prevent gender editing
@@ -792,44 +786,4 @@ class UserAreaController extends AbstractActionController {
         }
     }
 
-    /**
-     * Forma and check vat, recipeint code and cem, match the requirements
-     *
-     * @param $postData
-     * @return string|null
-     */
-    private function formatAndCheckTaxData(&$postData) {
-        $result = null;
-
-        // ensure vat is not NULL, but a string
-        if (is_null($postData['customer']['vat'])) {
-            $postData['customer']['vat'] = "";
-        } else {
-            $postData['customer']['vat'] =strtoupper($postData['customer']['vat']);
-        }
-
-        if($postData['customer']['recipientCode']=="") {
-            $postData['customer']['recipientCode'] = null;
-        } else {
-            $postData['customer']['recipientCode'] = strtoupper($postData['customer']['recipientCode']);
-        }
-
-        if($postData['customer']['cem']=="") {
-            $postData['customer']['cem'] = null;
-        } else {
-            $postData['customer']['cem'] = strtolower($postData['customer']['cem']);
-        }
-
-        if ($postData['customer']['vat'] == ""){
-             if ( !is_null($postData['customer']['recipientCode']) ||  !is_null($postData['customer']['cem'])) {
-                $result = $this->translator->translate("La partita IVA non è valida");
-            }
-        } else {
-            if ( is_null($postData['customer']['recipientCode']) &&  is_null($postData['customer']['cem'])) {
-                $result = $this->translator->translate("Codice destinatario o PEC obbligatori");
-            }
-        }
-
-        return $result;
-    }
 }
