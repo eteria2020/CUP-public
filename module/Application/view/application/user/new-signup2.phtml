@@ -438,16 +438,6 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     </p>
                 </div>
 
-                <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Partita IVA'); ?></label>
-                        <?php
-                        $vat = $this->form->get('user1')->get('vat');
-                        echo $this->formElement($vat);
-                        echo $this->formElementErrors($vat, ['class' => 'errors']);
-                        ?>
-                    </p>
-                    <label class="small-form"><?= $this->translate("SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI") ?></label>
-                </div>
             </div>
             <div class="block-row-field clearfix">
                 <div class="block-field bw-f w-1-3">
