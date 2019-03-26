@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-03-19 15:26+0100\n"
-"PO-Revision-Date: 2019-03-19 15:28+0100\n"
+"POT-Creation-Date: 2019-03-26 11:34+0100\n"
+"PO-Revision-Date: 2019-03-26 11:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -94,52 +94,52 @@ msgstr "Nedostatok kyslíkových bodov"
 msgid "Pacchetto non acquistabile"
 msgstr "Uvítací balíček"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:260
+#: module/Application/src/Application/Controller/UserAreaController.php:263
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Ak chceš znova zmeniť svoje údaje, budeš musieť počkať 10 minút."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:468
+#: module/Application/src/Application/Controller/UserAreaController.php:470
 msgid "Operazione completata con successo!"
 msgstr "Operácia bola dokončená úspešne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:470
+#: module/Application/src/Application/Controller/UserAreaController.php:472
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:587
-#: module/Application/src/Application/Controller/UserAreaController.php:627
+#: module/Application/src/Application/Controller/UserAreaController.php:589
+#: module/Application/src/Application/Controller/UserAreaController.php:629
 msgid "Pagamento completato con successo"
 msgstr "Platba bola úspešne dokončená"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:589
-#: module/Application/src/Application/Controller/UserAreaController.php:629
+#: module/Application/src/Application/Controller/UserAreaController.php:591
+#: module/Application/src/Application/Controller/UserAreaController.php:631
 msgid "Pagamento fallito"
 msgstr "Platba zlyhala"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:598
-#: module/Application/src/Application/Controller/UserAreaController.php:638
+#: module/Application/src/Application/Controller/UserAreaController.php:600
+#: module/Application/src/Application/Controller/UserAreaController.php:640
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Platba bola dočasne pozastavená. Skús to znova neskôr."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:667
+#: module/Application/src/Application/Controller/UserAreaController.php:669
 msgid "Contratto disabilitato correttamente!"
 msgstr "Zmluva bola zablokovaná správne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:669
-#: module/Application/src/Application/Controller/UserAreaController.php:672
-#: module/Application/src/Application/Controller/UserAreaController.php:675
+#: module/Application/src/Application/Controller/UserAreaController.php:671
+#: module/Application/src/Application/Controller/UserAreaController.php:674
+#: module/Application/src/Application/Controller/UserAreaController.php:677
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Chyba pri zablkovaní zmluvy"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:711
+#: module/Application/src/Application/Controller/UserAreaController.php:713
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný, pretože vypršala platnosť vloženej karty, zadaj nové údaje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:715
+#: module/Application/src/Application/Controller/UserAreaController.php:717
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -148,7 +148,7 @@ msgstr ""
 "uprav údaje zadané v nižšie uvedenom formulári a / alebo v časti \"Vodičský "
 "preukaz\"."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:720
+#: module/Application/src/Application/Controller/UserAreaController.php:722
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný z dôvodu vypršania platnosti vodičského preukazu, zadaj nové "
@@ -505,7 +505,7 @@ msgstr "Sms kód"
 
 #: module/Application/src/Application/Form/MobileForm.php:104
 #: module/Application/src/Application/Form/NewUserFieldset2.php:462
-#: module/Application/src/Application/Form/UserFieldset.php:717
+#: module/Application/src/Application/Form/UserFieldset.php:720
 msgid ""
 "Il numero di telefono inserito non corrisponde a quello del codice di "
 "verifica"
@@ -513,7 +513,7 @@ msgstr "Zadané telefónne číslo sa nezhoduje s číslom overovacieho kódu"
 
 #: module/Application/src/Application/Form/MobileForm.php:140
 #: module/Application/src/Application/Form/NewUserFieldset2.php:492
-#: module/Application/src/Application/Form/UserFieldset.php:747
+#: module/Application/src/Application/Form/UserFieldset.php:750
 msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "Zadaný kód sa nezhoduje s odoslaným kódom"
 
@@ -603,7 +603,6 @@ msgstr "xxxx"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:257
 #: module/Application/src/Application/Form/NewUserFieldset2.php:260
-#: module/Application/view/application/user/new-signup2.phtml:442
 msgid "Partita IVA"
 msgstr "DIČ"
 
@@ -854,14 +853,10 @@ msgid "Numero Identificativo"
 msgstr "Rodné číslo"
 
 #: module/Application/src/Application/Form/UserFieldset.php:81
-#, fuzzy
-#| msgid "Inserisci la tua email"
 msgid "Inserisci di nuovo la email"
 msgstr "Zadaj svoj e-mail"
 
 #: module/Application/src/Application/Form/UserFieldset.php:107
-#, fuzzy
-#| msgid "Inserisci i tuoi dati personali"
 msgid "Inserisci di nuovo la password"
 msgstr "Zadaj svoje osobné údaje"
 
@@ -945,14 +940,12 @@ msgstr ""
 "dotazníkoch a prieskumoch trhu."
 
 #: module/Application/src/Application/Form/UserFieldset.php:630
-#, fuzzy
-#| msgid "Il dato è richiesto per procedere"
 msgid "Il dato è richiesto e non può essere vuoto"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
-#: module/Application/src/Application/Form/UserFieldset.php:783
-#: module/Application/src/Application/Form/UserFieldset.php:797
-#: module/Application/src/Application/Form/UserFieldset.php:811
+#: module/Application/src/Application/Form/UserFieldset.php:786
+#: module/Application/src/Application/Form/UserFieldset.php:800
+#: module/Application/src/Application/Form/UserFieldset.php:814
 msgid "Il campo richiesto non puù essere vuoto"
 msgstr ""
 
@@ -964,7 +957,7 @@ msgstr "Je potrebné mať Estero ako provinciu narodenia"
 msgid "E' necessario avere una Provincia di nascita italiana"
 msgstr "Je potrebné mať taliansku provinciu narodenia"
 
-#: module/Application/src/Application/Form/Validator/CoherentTaxCode.php:19
+#: module/Application/src/Application/Form/Validator/CoherentTaxCode.php:31
 msgid "Il codice fiscale non è coerente con gli altri dati indicati"
 msgstr "Daňový kód nie je v súlade s ostatnými údajmi"
 
@@ -981,8 +974,6 @@ msgid "La patente non può essere scaduta"
 msgstr "Platnosť licencie nemôže uplynúť"
 
 #: module/Application/src/Application/Form/Validator/DuplicateDriversLicense.php:26
-#, fuzzy
-#| msgid "Esiste già un utente con lo stesso indirizzo email"
 msgid "Esiste già un utente con la stessa patente"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
@@ -992,9 +983,7 @@ msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
 #: module/Application/src/Application/Form/Validator/DuplicateTaxCode.php:32
-#: module/Application/view/application/user/new-signup2.phtml:828
-#, fuzzy
-#| msgid "Esiste già un utente con lo stesso indirizzo email"
+#: module/Application/view/application/user/new-signup2.phtml:818
 msgid "Esiste già un utente con lo stesso codice fiscale"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
@@ -1003,8 +992,6 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Je potrebné mať vek"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:18
-#, fuzzy
-#| msgid "Il formato della data non è corretto"
 msgid "Il numero identificativo non è corretto"
 msgstr "Formát dátumu nie je správny"
 
@@ -1015,8 +1002,6 @@ msgid "La data della patente non può essere futura alla data odierna"
 msgstr "Platnosť licencie nemôže uplynúť"
 
 #: module/Application/src/Application/Form/Validator/NotTooOld.php:36
-#, fuzzy
-#| msgid "Data conferma: "
 msgid "Date inferiori al "
 msgstr "Dátum potvrdenia: "
 
@@ -1025,8 +1010,6 @@ msgid " non sono accettate"
 msgstr "nie sú akceptované"
 
 #: module/Application/src/Application/Form/Validator/OptionAccepted.php:18
-#, fuzzy
-#| msgid "E' necessario avere Estero come Provincia di nascita"
 msgid "E' necessario accettare le condizioni"
 msgstr "Je potrebné mať Estero ako provinciu narodenia"
 
@@ -1047,8 +1030,6 @@ msgid "Deve contenere almeno un numero"
 msgstr "Musí obsahovať aspoň jedno číslo"
 
 #: module/Application/src/Application/Form/Validator/PromoCode.php:67
-#, fuzzy
-#| msgid "Il codice inserito non è valido"
 msgid "Il codice promo inserito non è valido"
 msgstr "Zadaný kód nie je platný"
 
@@ -1065,14 +1046,10 @@ msgid "Il codice destinatario deve avere solo caratteri alfanumerici"
 msgstr ""
 
 #: module/Application/src/Application/Form/Validator/TaxCode.php:18
-#, fuzzy
-#| msgid "Il formato della data non è corretto"
 msgid "Il codice fiscale non è corretto"
 msgstr "Formát dátumu nie je správny"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
-#, fuzzy
-#| msgid "Codice fiscale"
 msgid "Codice fiscale non valido"
 msgstr "Rodné číslo"
 
@@ -1787,14 +1764,10 @@ msgid ""
 msgstr ""
 
 #: module/Application/view/application/index/crawler.phtml:77
-#, fuzzy
-#| msgid "Dati pagamento"
 msgid "Caricamento"
 msgstr "Údaje platby"
 
 #: module/Application/view/application/index/crawler.phtml:77
-#, fuzzy
-#| msgid "Contattare l'assistenza per maggiori informazioni"
 msgid "Contattare l'assistenza"
 msgstr "Pre viac informácií kontaktujte podporu"
 
@@ -2287,7 +2260,7 @@ msgstr "Údaje tvojho vodičského preukazu"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:47
 #: module/Application/view/application/user-area/driving-licence.phtml:162
-#: module/Application/view/application/user/new-signup2.phtml:454
+#: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/signup-sk2.phtml:450
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -3059,9 +3032,9 @@ msgstr "Zmluvné podmienky"
 
 #: module/Application/view/application/user/new-signup.phtml:143
 #: module/Application/view/application/user/new-signup.phtml:168
-#: module/Application/view/application/user/new-signup2.phtml:611
-#: module/Application/view/application/user/new-signup2.phtml:638
-#: module/Application/view/application/user/new-signup2.phtml:659
+#: module/Application/view/application/user/new-signup2.phtml:601
+#: module/Application/view/application/user/new-signup2.phtml:628
+#: module/Application/view/application/user/new-signup2.phtml:649
 #: module/Application/view/application/user/signup-sk1.phtml:142
 #: module/Application/view/application/user/signup-sk2.phtml:582
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3081,12 +3054,12 @@ msgstr ""
 "Vodičské preukazy budú potvrdené v pndelok  ráno."
 
 #: module/Application/view/application/user/new-signup.phtml:169
-#: module/Application/view/application/user/new-signup2.phtml:660
+#: module/Application/view/application/user/new-signup2.phtml:650
 msgid "Sei già iscritto!"
 msgstr "Ste už zaregistrovaní!"
 
 #: module/Application/view/application/user/new-signup.phtml:173
-#: module/Application/view/application/user/new-signup2.phtml:664
+#: module/Application/view/application/user/new-signup2.phtml:654
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr ""
@@ -3150,46 +3123,42 @@ msgstr ""
 "TU ZADAJ OVEROVACÍ KÓD ODOSLANÚ PROSTREDNÍCTVOM SMS, AK SI NEDOSTAL SMS, "
 "KONTAKTUJ ZÁKAZNÍCKU SLUŽBU"
 
-#: module/Application/view/application/user/new-signup2.phtml:449
-msgid "SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI"
-msgstr "LEN PRE FIRMY A ŽIVNOSTNÍKOV"
-
-#: module/Application/view/application/user/new-signup2.phtml:462
+#: module/Application/view/application/user/new-signup2.phtml:452
 #: module/Application/view/application/user/signup-sk2.phtml:458
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Uisti sa že je z posledného vydaného vodičského preukazu."
 
-#: module/Application/view/application/user/new-signup2.phtml:466
+#: module/Application/view/application/user/new-signup2.phtml:456
 #: module/Application/view/application/user/signup-sk2.phtml:462
 msgid "Data di scadenza patente"
 msgstr "Platnosť vodičského preukazu"
 
-#: module/Application/view/application/user/new-signup2.phtml:476
+#: module/Application/view/application/user/new-signup2.phtml:466
 msgid "ho una patente estera"
 msgstr "mám zahraničný vodičský preukaz"
 
 # Non capisco.
-#: module/Application/view/application/user/new-signup2.phtml:485
+#: module/Application/view/application/user/new-signup2.phtml:475
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
 msgstr "VYHLÁSENIE NÁHRADU AKTU NOTORIETÀ \""
 
 # Non capisco bene.
-#: module/Application/view/application/user/new-signup2.phtml:485
+#: module/Application/view/application/user/new-signup2.phtml:475
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
 msgstr "CERTIFIKÁT DISPONOVANIA VODIČSKÝM PREUKAZOM"
 
-#: module/Application/view/application/user/new-signup2.phtml:486
+#: module/Application/view/application/user/new-signup2.phtml:476
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 
-#: module/Application/view/application/user/new-signup2.phtml:488
+#: module/Application/view/application/user/new-signup2.phtml:478
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
 msgid "Il sottoscritto"
 msgstr "Dolu podpísaný"
 
-#: module/Application/view/application/user/new-signup2.phtml:491
+#: module/Application/view/application/user/new-signup2.phtml:481
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:27
 msgid ""
 "consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di "
@@ -3202,16 +3171,16 @@ msgstr ""
 "v tejto oblasti a výslovne uvedených v čl. 76 z D.P.R. 445 z 28.12.2000, na "
 "svoju zodpovednosť"
 
-#: module/Application/view/application/user/new-signup2.phtml:494
+#: module/Application/view/application/user/new-signup2.phtml:484
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
 msgid "DICHIARA"
 msgstr "PREHLASUJE"
 
-#: module/Application/view/application/user/new-signup2.phtml:496
+#: module/Application/view/application/user/new-signup2.phtml:486
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
 msgstr "že je držiteľom vodičského preukazu v priebehu jeho platnosti "
 
-#: module/Application/view/application/user/new-signup2.phtml:497
+#: module/Application/view/application/user/new-signup2.phtml:487
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione "
@@ -3223,13 +3192,13 @@ msgstr ""
 "medzinárodným dopravným predpisom (súvisiacim s pobytom cudzinca na "
 "slovenskom území a s trvaním jeho pobytu) na účel jazdy na slovenskom území."
 
-#: module/Application/view/application/user/new-signup2.phtml:504
+#: module/Application/view/application/user/new-signup2.phtml:494
 #: module/Application/view/application/user/signup-sk2.phtml:484
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
 msgstr "Prečítal, potvrdil a podpísal"
 
-#: module/Application/view/application/user/new-signup2.phtml:513
+#: module/Application/view/application/user/new-signup2.phtml:503
 #: module/Application/view/application/user/signup-sk2.phtml:494
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3246,13 +3215,13 @@ msgstr ""
 "účelov predpokladaných súčasnými predpismi a spracovávaných a uchovávaných "
 "výlučne kanceláriou zodpovednou za konanie."
 
-#: module/Application/view/application/user/new-signup2.phtml:516
+#: module/Application/view/application/user/new-signup2.phtml:506
 #: module/Application/view/application/user/signup-sk2.phtml:497
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
-#: module/Application/view/application/user/new-signup2.phtml:520
+#: module/Application/view/application/user/new-signup2.phtml:510
 #: module/Application/view/application/user/signup-sk2.phtml:501
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3261,66 +3230,66 @@ msgstr ""
 "Je potrebné pripojiť fotokópiu vodičského preukazu a preukazu totožnosti, "
 "obidve z oboch strán"
 
-#: module/Application/view/application/user/new-signup2.phtml:523
+#: module/Application/view/application/user/new-signup2.phtml:513
 #: module/Application/view/application/user/signup-sk2.phtml:513
 msgid "fronte patente di guida"
 msgstr "predná strana vodičského preukazu"
 
-#: module/Application/view/application/user/new-signup2.phtml:530
+#: module/Application/view/application/user/new-signup2.phtml:520
 #: module/Application/view/application/user/signup-sk2.phtml:520
 msgid "retro patente di guida"
 msgstr "zadná strana vodičského preukazu"
 
-#: module/Application/view/application/user/new-signup2.phtml:539
+#: module/Application/view/application/user/new-signup2.phtml:529
 #: module/Application/view/application/user/signup-sk2.phtml:529
 msgid "fronte carta di identità"
 msgstr "predná strana občianskeho preukazu(iného ID)"
 
-#: module/Application/view/application/user/new-signup2.phtml:546
+#: module/Application/view/application/user/new-signup2.phtml:536
 #: module/Application/view/application/user/signup-sk2.phtml:536
 msgid "retro carta di identità"
 msgstr "zadná strana občianskeho preukazu(iného ID)"
 
-#: module/Application/view/application/user/new-signup2.phtml:558
+#: module/Application/view/application/user/new-signup2.phtml:548
 msgid "INSERISCI QUI SE HAI UN CODICE PROMO"
 msgstr "AK MÁŠ ZĽAVOVÝ KÓD, VLOŽ HO SEM"
 
-#: module/Application/view/application/user/new-signup2.phtml:575
+#: module/Application/view/application/user/new-signup2.phtml:565
 #: module/Application/view/partials/translations.phtml:30
 msgid "Applica"
 msgstr "Použiť"
 
-#: module/Application/view/application/user/new-signup2.phtml:586
+#: module/Application/view/application/user/new-signup2.phtml:576
 msgid ""
 "Attivazione include il controllo della Patente<br>con il Ministero dei "
 "Trasporti."
 msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnútra."
 
-#: module/Application/view/application/user/new-signup2.phtml:589
+#: module/Application/view/application/user/new-signup2.phtml:579
 #: module/Application/view/application/user/signup-sk2.phtml:562
 msgid "Continua"
 msgstr "Pokračovať"
 
-#: module/Application/view/application/user/new-signup2.phtml:613
+#: module/Application/view/application/user/new-signup2.phtml:603
 msgid "Prima di procedere verifica:"
 msgstr ""
 
-#: module/Application/view/application/user/new-signup2.phtml:614
+#: module/Application/view/application/user/new-signup2.phtml:604
 msgid "Hai una patente europea senza scadenza?"
 msgstr ""
 
-#: module/Application/view/application/user/new-signup2.phtml:615
+#: module/Application/view/application/user/new-signup2.phtml:605
 msgid ""
 "Se la tua patente europea non ha una scadenza compila l'autocertificazione "
 "che ti invieremo via email. E nel caso tu sia residente in Italia da più di "
 "2 anni devi convertirla in quella italiana."
 msgstr ""
 
-#: module/Application/view/application/user/new-signup2.phtml:617
+#: module/Application/view/application/user/new-signup2.phtml:607
 msgid "Hai una patente estera non europea?"
 msgstr "mám zahraničný vodičský preukaz"
 
-#: module/Application/view/application/user/new-signup2.phtml:618
+#: module/Application/view/application/user/new-signup2.phtml:608
 msgid ""
 "Per registrarti devi disporre di una patente internazionale o di una "
 "traduzione giurata del documento e compilare il modulo di autocertificazione "
@@ -3328,12 +3297,12 @@ msgid ""
 "necessario convertirla in quella italiana."
 msgstr ""
 
-#: module/Application/view/application/user/new-signup2.phtml:640
+#: module/Application/view/application/user/new-signup2.phtml:630
 #: module/Application/view/application/user/signup-sk2.phtml:584
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "vybrané súbory sú príliš veľké"
 
-#: module/Application/view/application/user/new-signup2.phtml:691
+#: module/Application/view/application/user/new-signup2.phtml:681
 #: module/Application/view/application/user/signup-sk2.phtml:611
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
@@ -5838,6 +5807,9 @@ msgstr ""
 "ktoré majú byť uhradenée a neboli uhradené dnes, znamená to že došlo k "
 "problémom na tvojej kreditnej karte a že tvoj účet je dočasne pozastavený. "
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
+
+#~ msgid "SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI"
+#~ msgstr "LEN PRE FIRMY A ŽIVNOSTNÍKOV"
 
 #~ msgid "Scegli uno dei pacchetti!"
 #~ msgstr "Vyberte si jeden z balíkov"

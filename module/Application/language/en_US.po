@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-03-19 15:28+0100\n"
-"PO-Revision-Date: 2019-03-19 15:30+0100\n"
+"POT-Creation-Date: 2019-03-26 11:34+0100\n"
+"PO-Revision-Date: 2019-03-26 11:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -95,52 +95,52 @@ msgstr "Insufficient oxygen points"
 msgid "Pacchetto non acquistabile"
 msgstr "Package not buyable"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:260
+#: module/Application/src/Application/Controller/UserAreaController.php:263
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:468
+#: module/Application/src/Application/Controller/UserAreaController.php:470
 msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:470
+#: module/Application/src/Application/Controller/UserAreaController.php:472
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "An application error has occurred. We apologize for the inconvenience"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:587
-#: module/Application/src/Application/Controller/UserAreaController.php:627
+#: module/Application/src/Application/Controller/UserAreaController.php:589
+#: module/Application/src/Application/Controller/UserAreaController.php:629
 msgid "Pagamento completato con successo"
 msgstr "Payment completed successfully"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:589
-#: module/Application/src/Application/Controller/UserAreaController.php:629
+#: module/Application/src/Application/Controller/UserAreaController.php:591
+#: module/Application/src/Application/Controller/UserAreaController.php:631
 msgid "Pagamento fallito"
 msgstr "Payment failed"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:598
-#: module/Application/src/Application/Controller/UserAreaController.php:638
+#: module/Application/src/Application/Controller/UserAreaController.php:600
+#: module/Application/src/Application/Controller/UserAreaController.php:640
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Payment temporarily suspended, please try again later."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:667
+#: module/Application/src/Application/Controller/UserAreaController.php:669
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract disabled properly!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:669
-#: module/Application/src/Application/Controller/UserAreaController.php:672
-#: module/Application/src/Application/Controller/UserAreaController.php:675
+#: module/Application/src/Application/Controller/UserAreaController.php:671
+#: module/Application/src/Application/Controller/UserAreaController.php:674
+#: module/Application/src/Application/Controller/UserAreaController.php:677
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Error while disabling the contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:711
+#: module/Application/src/Application/Controller/UserAreaController.php:713
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "You are disabled because the inserted card has expired, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:715
+#: module/Application/src/Application/Controller/UserAreaController.php:717
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -148,7 +148,7 @@ msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:720
+#: module/Application/src/Application/Controller/UserAreaController.php:722
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
@@ -503,14 +503,14 @@ msgstr "Sms code"
 
 #: module/Application/src/Application/Form/MobileForm.php:104
 #: module/Application/src/Application/Form/NewUserFieldset2.php:462
-#: module/Application/src/Application/Form/UserFieldset.php:717
+#: module/Application/src/Application/Form/UserFieldset.php:720
 msgid ""
 "Il numero di telefono inserito non corrisponde a quello del codice di verifica"
 msgstr "The phone number entered does not match the verification code number"
 
 #: module/Application/src/Application/Form/MobileForm.php:140
 #: module/Application/src/Application/Form/NewUserFieldset2.php:492
-#: module/Application/src/Application/Form/UserFieldset.php:747
+#: module/Application/src/Application/Form/UserFieldset.php:750
 msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "The code entered does not match the one sent"
 
@@ -600,7 +600,6 @@ msgstr "xxxx"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:257
 #: module/Application/src/Application/Form/NewUserFieldset2.php:260
-#: module/Application/view/application/user/new-signup2.phtml:442
 msgid "Partita IVA"
 msgstr "VAT number"
 
@@ -940,9 +939,9 @@ msgstr ""
 msgid "Il dato è richiesto e non può essere vuoto"
 msgstr "The data is required to proceed"
 
-#: module/Application/src/Application/Form/UserFieldset.php:783
-#: module/Application/src/Application/Form/UserFieldset.php:797
-#: module/Application/src/Application/Form/UserFieldset.php:811
+#: module/Application/src/Application/Form/UserFieldset.php:786
+#: module/Application/src/Application/Form/UserFieldset.php:800
+#: module/Application/src/Application/Form/UserFieldset.php:814
 msgid "Il campo richiesto non puù essere vuoto"
 msgstr "The requested field can not be empty"
 
@@ -954,7 +953,7 @@ msgstr "It is necessary to have Estero as a Province of birth"
 msgid "E' necessario avere una Provincia di nascita italiana"
 msgstr "It is necessary to have an Italian Province of birth"
 
-#: module/Application/src/Application/Form/Validator/CoherentTaxCode.php:19
+#: module/Application/src/Application/Form/Validator/CoherentTaxCode.php:31
 msgid "Il codice fiscale non è coerente con gli altri dati indicati"
 msgstr "The tax code is not consistent with the other data indicated"
 
@@ -980,7 +979,7 @@ msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "A user already exists with the same email address"
 
 #: module/Application/src/Application/Form/Validator/DuplicateTaxCode.php:32
-#: module/Application/view/application/user/new-signup2.phtml:828
+#: module/Application/view/application/user/new-signup2.phtml:818
 msgid "Esiste già un utente con lo stesso codice fiscale"
 msgstr "A user already exists with the same email address"
 
@@ -2259,7 +2258,7 @@ msgstr "The data of your license"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:47
 #: module/Application/view/application/user-area/driving-licence.phtml:162
-#: module/Application/view/application/user/new-signup2.phtml:454
+#: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/signup-sk2.phtml:450
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -3039,9 +3038,9 @@ msgstr "Contractual conditions"
 
 #: module/Application/view/application/user/new-signup.phtml:143
 #: module/Application/view/application/user/new-signup.phtml:168
-#: module/Application/view/application/user/new-signup2.phtml:611
-#: module/Application/view/application/user/new-signup2.phtml:638
-#: module/Application/view/application/user/new-signup2.phtml:659
+#: module/Application/view/application/user/new-signup2.phtml:601
+#: module/Application/view/application/user/new-signup2.phtml:628
+#: module/Application/view/application/user/new-signup2.phtml:649
 #: module/Application/view/application/user/signup-sk1.phtml:142
 #: module/Application/view/application/user/signup-sk2.phtml:582
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3062,12 +3061,12 @@ msgstr ""
 "morning."
 
 #: module/Application/view/application/user/new-signup.phtml:169
-#: module/Application/view/application/user/new-signup2.phtml:660
+#: module/Application/view/application/user/new-signup2.phtml:650
 msgid "Sei già iscritto!"
 msgstr "You are already registered!"
 
 #: module/Application/view/application/user/new-signup.phtml:173
-#: module/Application/view/application/user/new-signup2.phtml:664
+#: module/Application/view/application/user/new-signup2.phtml:654
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr "To complete the insertion of your data click on LOGIN"
@@ -3126,46 +3125,42 @@ msgstr ""
 "ENTER THE VERIFICATION CODE SENT BY SMS, IF YOU DO NOT RECEIVE THE MESSAGE, "
 "CONTACT THE CUSTOMER SERVICE"
 
-#: module/Application/view/application/user/new-signup2.phtml:449
-msgid "SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI"
-msgstr "ONLY FOR INDIVIDUAL AND PROFESSIONAL COMPANIES"
-
-#: module/Application/view/application/user/new-signup2.phtml:462
+#: module/Application/view/application/user/new-signup2.phtml:452
 #: module/Application/view/application/user/signup-sk2.phtml:458
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Make sure it is of the last driver's license issued."
 
-#: module/Application/view/application/user/new-signup2.phtml:466
+#: module/Application/view/application/user/new-signup2.phtml:456
 #: module/Application/view/application/user/signup-sk2.phtml:462
 msgid "Data di scadenza patente"
 msgstr "Driver's license expiration date"
 
-#: module/Application/view/application/user/new-signup2.phtml:476
+#: module/Application/view/application/user/new-signup2.phtml:466
 msgid "ho una patente estera"
 msgstr "I have a foreign license"
 
-#: module/Application/view/application/user/new-signup2.phtml:485
+#: module/Application/view/application/user/new-signup2.phtml:475
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
 msgstr "DECLARATION SUBSTITUTING THE ACT OF NOTORIETA '"
 
-#: module/Application/view/application/user/new-signup2.phtml:485
+#: module/Application/view/application/user/new-signup2.phtml:475
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
 msgstr "AVAILABILITY CERTIFICATION DRIVING LICENSE"
 
-#: module/Application/view/application/user/new-signup2.phtml:486
+#: module/Application/view/application/user/new-signup2.phtml:476
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr ""
 "(Article 21 paragraph 1 - 38 paragraph 2 and 3 of the D.P.R. N. 445 of "
 "28.12.2000)"
 
-#: module/Application/view/application/user/new-signup2.phtml:488
+#: module/Application/view/application/user/new-signup2.phtml:478
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
 msgid "Il sottoscritto"
 msgstr "The undersigned"
 
-#: module/Application/view/application/user/new-signup2.phtml:491
+#: module/Application/view/application/user/new-signup2.phtml:481
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:27
 msgid ""
 "consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di "
@@ -3178,16 +3173,16 @@ msgstr ""
 "matter and expressly referred to in art. 76 of Presidential Decree 445 of "
 "28/12/2000, under his responsibility & agrave"
 
-#: module/Application/view/application/user/new-signup2.phtml:494
+#: module/Application/view/application/user/new-signup2.phtml:484
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
 msgid "DICHIARA"
 msgstr "DECLARES"
 
-#: module/Application/view/application/user/new-signup2.phtml:496
+#: module/Application/view/application/user/new-signup2.phtml:486
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
 msgstr "to be the holder of a driving license in the course of validity "
 
-#: module/Application/view/application/user/new-signup2.phtml:497
+#: module/Application/view/application/user/new-signup2.phtml:487
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione alle "
@@ -3200,13 +3195,13 @@ msgstr ""
 "the foreign citizen on Italian territory and to the duration of the same), for "
 "the purpose of driving on the Italian territory."
 
-#: module/Application/view/application/user/new-signup2.phtml:504
+#: module/Application/view/application/user/new-signup2.phtml:494
 #: module/Application/view/application/user/signup-sk2.phtml:484
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
 msgstr "Read, confirmed and signed"
 
-#: module/Application/view/application/user/new-signup2.phtml:513
+#: module/Application/view/application/user/new-signup2.phtml:503
 #: module/Application/view/application/user/signup-sk2.phtml:494
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3222,13 +3217,13 @@ msgstr ""
 "finalities and conditions established by current regulations and are processed "
 "and kept exclusively by the office responsible for method."
 
-#: module/Application/view/application/user/new-signup2.phtml:516
+#: module/Application/view/application/user/new-signup2.phtml:506
 #: module/Application/view/application/user/signup-sk2.phtml:497
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
-#: module/Application/view/application/user/new-signup2.phtml:520
+#: module/Application/view/application/user/new-signup2.phtml:510
 #: module/Application/view/application/user/signup-sk2.phtml:501
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3237,36 +3232,36 @@ msgstr ""
 "You must attach a photocopy copy, even if not authenticated, of the driving "
 "license and of the identity card, both front and back"
 
-#: module/Application/view/application/user/new-signup2.phtml:523
+#: module/Application/view/application/user/new-signup2.phtml:513
 #: module/Application/view/application/user/signup-sk2.phtml:513
 msgid "fronte patente di guida"
 msgstr "front driving license"
 
-#: module/Application/view/application/user/new-signup2.phtml:530
+#: module/Application/view/application/user/new-signup2.phtml:520
 #: module/Application/view/application/user/signup-sk2.phtml:520
 msgid "retro patente di guida"
 msgstr "retro driving license"
 
-#: module/Application/view/application/user/new-signup2.phtml:539
+#: module/Application/view/application/user/new-signup2.phtml:529
 #: module/Application/view/application/user/signup-sk2.phtml:529
 msgid "fronte carta di identità"
 msgstr "front of identity card"
 
-#: module/Application/view/application/user/new-signup2.phtml:546
+#: module/Application/view/application/user/new-signup2.phtml:536
 #: module/Application/view/application/user/signup-sk2.phtml:536
 msgid "retro carta di identità"
 msgstr "retro identity card"
 
-#: module/Application/view/application/user/new-signup2.phtml:558
+#: module/Application/view/application/user/new-signup2.phtml:548
 msgid "INSERISCI QUI SE HAI UN CODICE PROMO"
 msgstr "INSERT HERE IF YOU HAVE A PROMO CODE"
 
-#: module/Application/view/application/user/new-signup2.phtml:575
+#: module/Application/view/application/user/new-signup2.phtml:565
 #: module/Application/view/partials/translations.phtml:30
 msgid "Applica"
 msgstr "Apply"
 
-#: module/Application/view/application/user/new-signup2.phtml:586
+#: module/Application/view/application/user/new-signup2.phtml:576
 msgid ""
 "Attivazione include il controllo della Patente<br>con il Ministero dei "
 "Trasporti."
@@ -3274,20 +3269,20 @@ msgstr ""
 "Activation includes the control of the driving license <br> with the Ministry "
 "of Transport."
 
-#: module/Application/view/application/user/new-signup2.phtml:589
+#: module/Application/view/application/user/new-signup2.phtml:579
 #: module/Application/view/application/user/signup-sk2.phtml:562
 msgid "Continua"
 msgstr "Keep it going"
 
-#: module/Application/view/application/user/new-signup2.phtml:613
+#: module/Application/view/application/user/new-signup2.phtml:603
 msgid "Prima di procedere verifica:"
 msgstr "Check below before proceeding:"
 
-#: module/Application/view/application/user/new-signup2.phtml:614
+#: module/Application/view/application/user/new-signup2.phtml:604
 msgid "Hai una patente europea senza scadenza?"
 msgstr "Do you have a European license with no expiry date?"
 
-#: module/Application/view/application/user/new-signup2.phtml:615
+#: module/Application/view/application/user/new-signup2.phtml:605
 msgid ""
 "Se la tua patente europea non ha una scadenza compila l'autocertificazione che "
 "ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni "
@@ -3297,11 +3292,11 @@ msgstr ""
 "self-certification form we'll send you by mail. In case you’re resident in "
 "Italy for more than 2 years you must convert it into an Italian one. "
 
-#: module/Application/view/application/user/new-signup2.phtml:617
+#: module/Application/view/application/user/new-signup2.phtml:607
 msgid "Hai una patente estera non europea?"
 msgstr "Do you have a non-European foreign license?"
 
-#: module/Application/view/application/user/new-signup2.phtml:618
+#: module/Application/view/application/user/new-signup2.phtml:608
 msgid ""
 "Per registrarti devi disporre di una patente internazionale o di una "
 "traduzione giurata del documento e compilare il modulo di autocertificazione "
@@ -3313,12 +3308,12 @@ msgstr ""
 "you by mail as well. If you’re resident in Italy for more than 1 year, you "
 "must convert it into an Italian one."
 
-#: module/Application/view/application/user/new-signup2.phtml:640
+#: module/Application/view/application/user/new-signup2.phtml:630
 #: module/Application/view/application/user/signup-sk2.phtml:584
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "The selected files are too big."
 
-#: module/Application/view/application/user/new-signup2.phtml:691
+#: module/Application/view/application/user/new-signup2.phtml:681
 #: module/Application/view/application/user/signup-sk2.phtml:611
 msgid "5. Numero Patente"
 msgstr "5. Driver's license number"
@@ -5914,6 +5909,9 @@ msgstr ""
 "made today, it means that there have been problems debiting your credit card "
 "and that your account is; temporarily suspended. Contact the Customer Service "
 "of Sharengo for reactivation."
+
+#~ msgid "SOLO PER DITTE INDIVIDUALI E PROFESSIONISTI"
+#~ msgstr "ONLY FOR INDIVIDUAL AND PROFESSIONAL COMPANIES"
 
 #~ msgid "Codice destinatario o PEC obbligatori"
 #~ msgstr "Recipient code or certified email mandatory"
