@@ -21,7 +21,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # every minute
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/reservations.sh
-*/9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
+#*/9 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 */3 * * * *     root            node /srv/services/api/tools/testApi.js >> /var/log/services/testApi.log
 
@@ -48,9 +48,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 07 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_retry.sh
 #30 07 * * 0     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
 
-00 10 * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/registration_invoices.sh
-00 11 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/export_registries.sh
-15 11 * * *     root            /usr/bin/pm2 restart webservices
+00 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/registration_invoices.sh
+30 10 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/export_registries.sh
+35 10 * * *     root            /usr/bin/pm2 restart webservices
 
 30 21 * * *     root            /usr/bin/pm2 restart webservices
 58 23 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/bonus_compute.sh
@@ -60,6 +60,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 00 09 * * 0     root            service apache2 restart
 
 # every month
-10 00  1 * *    sharengo        /srv/apps/sharengo-publicsite/scripts/cron/silver_list.sh
+01 00  1 * *    sharengo        /srv/apps/sharengo-publicsite/scripts/cron/silver_list.sh
 10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
 00 06  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/invoice_trips.sh
+
+#once
+40 10 31 3 *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
