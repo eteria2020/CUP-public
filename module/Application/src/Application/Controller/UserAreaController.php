@@ -270,11 +270,10 @@ class UserAreaController extends AbstractActionController {
                 //prevent gender editing
                 $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
 
-                $customerOldTaxCode = $customer->getTaxCode();
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
 
-                if ($postData['customer']['taxCode'] != $customerOldTaxCode) {
+                if ($this->triggerTaxCodeEdited($postData, $customer)) {
                     // if we change the tax code we need to revalidate the driver's license
                     $params = [
                         'email' => $postData['customer']['email'],
@@ -315,6 +314,10 @@ class UserAreaController extends AbstractActionController {
             }
         }
         $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
+
+        $this->errorMessagesTaxCode($mobile);
+
 
         return new ViewModel([
             'bannerJsonpUrl' => $this->bannerJsonpUrl,
@@ -735,6 +738,45 @@ class UserAreaController extends AbstractActionController {
 
     }
 
+    /**
+     * Check the tax code and show the error messages if something doesn't match.
+     *
+     * @param $mobile
+     * @return |null
+     */
+    private function errorMessagesTaxCode($mobile)
+    {
+        $result = null;
+
+        $customer = $this->userService->getIdentity();
+
+        $mobileParam = NULL;
+        if ($mobile == 'mobile') {
+            $this->layout('layout/map');
+            $mobileParam = 'mobile';
+        }
+
+        $errorArray =$this->customerService->checkCustomerTaxCode($customer->getTaxCode(),
+            $customer->getGender(),
+            $customer->getName(),
+            $customer->getSurname(),
+            $customer->getBirthTown(),
+            $customer->getBirthProvince(),
+            $customer->getBirthCountry(),
+            $customer->getBirthDate());
+
+        if(count($errorArray)>0) {
+            foreach ($errorArray as $error) {
+                $this->flashMessenger()->addErrorMessage($this->translator->translate($error));
+            }
+
+            //$result = $this->redirect()->toUrl($this->url()->fromRoute('area-utente', ['mobile' => $mobileParam]));
+
+        }
+
+        return $result;
+    }
+
     private function redirectRegistrationNotCompleted($customer)
     {
         $registrationNotCompleted = $this->customerDeactivationService->getAllActive($customer, CustomerDeactivation::REGISTRATION_NOT_COMPLETED);
@@ -784,6 +826,52 @@ class UserAreaController extends AbstractActionController {
         } else {
             return false;
         }
+    }
+
+    /**
+     * Check if it's necessary trigger the driver license check.
+     *
+     * @param $postData
+     * @param Customers $customer
+     * @return bool
+     */
+    private function triggerTaxCodeEdited($postData, Customers $customer) {
+        $result = false;
+        $arrayField = array();
+
+        if($postData['customer']['taxCode']!=$customer->getTaxCode()) {
+            array_push($arrayField, "taxcode");
+        }
+
+        if($postData['customer']['name']!=$customer->getName()) {
+            array_push($arrayField, "name");
+        }
+
+        if($postData['customer']['surname']!=$customer->getSurname()) {
+            array_push($arrayField, "surname");
+        }
+
+        if($postData['customer']['birthCountry']!=$customer->getBirthCountry()) {
+            array_push($arrayField, "birthCountry");
+        }
+
+        if($postData['customer']['birthProvince']!=$customer->getBirthProvince()) {
+            array_push($arrayField, "birthProvince");
+        }
+
+        if($postData['customer']['birthTown']!=$customer->getBirthTown()) {
+            array_push($arrayField, "birthTown");
+        }
+
+        if($postData['customer']['birthDate']!=$customer->getBirthDate()->format('Y-m-d')) {
+            array_push($arrayField, "birthDate");
+        }
+
+        if(count($arrayField)>0) {
+            $result = true;
+        }
+
+        return $result;
     }
 
 }
