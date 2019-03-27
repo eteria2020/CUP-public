@@ -2085,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2993,7 +2993,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
-                "reference": "19bc075f3feacb17131a68aadd05e2e45d7f7a1a"
+                "reference": "4d2038f95b4763f0e816e90bc5c02fddb0e8e3fd"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3007,7 +3007,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2019-03-11 16:13:14"
+            "time": "2019-03-27 10:37:19"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
