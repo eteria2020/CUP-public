@@ -273,21 +273,23 @@ class UserAreaController extends AbstractActionController {
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
 
-                if ($this->triggerTaxCodeEdited($postData, $customer)) {
-                    // if we change the tax code we need to revalidate the driver's license
-                    $params = [
-                        'email' => $postData['customer']['email'],
-                        'driverLicense' => $customer->getDriverLicense(),
-                        'taxCode' => $postData['customer']['taxCode'],
-                        'driverLicenseName' => $customer->getDriverLicenseName(),
-                        'driverLicenseSurname' => $customer->getDriverLicenseSurname(),
-                        'birthDate' => ['date' => date_create($postData['customer']['birthDate'])->format('Y-m-d')],
-                        'birthCountry' => $postData['customer']['birthCountry'],
-                        'birthProvince' => $postData['customer']['birthProvince'],
-                        'birthTown' => $postData['customer']['birthTown']
-                    ];
+                if($editForm) {
+                    if ($this->triggerTaxCodeEdited($postData, $customer)) {
+                        // if we change the tax code we need to revalidate the driver's license
+                        $params = [
+                            'email' => $postData['customer']['email'],
+                            'driverLicense' => $customer->getDriverLicense(),
+                            'taxCode' => $postData['customer']['taxCode'],
+                            'driverLicenseName' => $customer->getDriverLicenseName(),
+                            'driverLicenseSurname' => $customer->getDriverLicenseSurname(),
+                            'birthDate' => ['date' => date_create($postData['customer']['birthDate'])->format('Y-m-d')],
+                            'birthCountry' => $postData['customer']['birthCountry'],
+                            'birthProvince' => $postData['customer']['birthProvince'],
+                            'birthTown' => $postData['customer']['birthTown']
+                        ];
 
-                    $this->getEventManager()->trigger('taxCodeEdited', $this, $params);
+                        $this->getEventManager()->trigger('taxCodeEdited', $this, $params);
+                    }
                 }
             } else if (isset($postData['password'])) {
                 $postData['id'] = $this->userService->getIdentity()->getId();
