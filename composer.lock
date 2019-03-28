@@ -2085,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KNPLabs Team",
+                    "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -3054,7 +3054,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/gpwebpay.git",
-                "reference": "d9d66defa83aaa010dc74ed044b59180c4907958"
+                "reference": "eda680356a87f998384c1c873b08df551ac73886"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3069,7 +3069,7 @@
                 }
             },
             "description": "GPWebpay module for Sharengo",
-            "time": "2019-03-08 16:23:29"
+            "time": "2019-03-28 13:29:25"
         },
         {
             "name": "smsgatewayme/client",
