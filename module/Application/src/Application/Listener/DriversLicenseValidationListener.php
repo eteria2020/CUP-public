@@ -92,6 +92,8 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         if (!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)) {
             $data['birthCountryMCTC'] = $this->countriesService->getMctcCode($data['birthCountry']);
             $data['birthProvince'] = $this->driversLicenseValidationService->changeProvinceForValidationDriverLicense($data);
+            $data['birthTown'] = $this->driversLicenseValidationService->changeTownForValidationDriverLicense($data);
+
             $this->enqueueValidationService->validateDriversLicense($data);
         }
     }
