@@ -21,7 +21,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # every minute
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/reservations.sh
-#*/9 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
+*/9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 */3 * * * *     root            node /srv/services/api/tools/testApi.js >> /var/log/services/testApi.log
 
@@ -64,5 +64,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 10 00  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/credit_card_expiry.sh
 00 06  1 * *    root            /srv/apps/sharengo-publicsite/scripts/cron/invoice_trips.sh
 
-#once
-40 10 31 3 *     root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
+# once
+#40 10 31 3 *    root            /srv/apps/sharengo-publicsite/scripts/cron/pay_invoice.sh
