@@ -1375,6 +1375,18 @@ return [
                             'mobile' => 'mobile'
                         ],
                     ],
+                    'profile' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{profile}[/:mobile]',
+                            'defaults' => [
+                                'action' => 'profile'
+                            ]
+                        ],
+                        'constraints' => [
+                            'mobile' => 'mobile'
+                        ],
+                    ],
                     'utente' => [
                         'type' => 'Segment',
                         'options' => [
@@ -1425,6 +1437,18 @@ return [
                             ],
                             'constraints' => [
                                   'mobile' => 'mobile'
+                            ]
+                        ]
+                    ],
+                    'driverlicense' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{driverlicense}[/:mobile]',
+                            'defaults' => [
+                                'action' => 'drivingLicenceInternational'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
                             ]
                         ]
                     ],
@@ -1655,6 +1679,7 @@ return [
             'ProfilingPlatformService' => 'Application\Service\ProfilingPlatformServiceFactory',
             'PaymentService' => 'Application\Service\PaymentServiceFactory',
             'ProfileForm' => 'Application\Form\ProfileFormFactory',
+            'ForeignProfileForm' => 'Application\Form\ForeignProfileFormFactory',
             'PasswordForm' => 'Application\Form\PasswordFormFactory',
             'MobileForm' => 'Application\Form\MobileFormFactory',
             'DriverLicenseForm' => 'Application\Form\DriverLicenseFormFactory',
@@ -2641,7 +2666,13 @@ return [
                 "lang" => "sk",
                 "lang_3chars" => "slk",
                 "label" => "Slovak"
-            ]
+            ],
+            /*'nl' => [
+                "locale" => "nl_NL",
+                "lang" => "nl",
+                "lang_3chars" => "nld",
+                "label" => "Dutch"
+            ]*/
         ],
         "language_folder" => __DIR__ . "/../language"
     ],

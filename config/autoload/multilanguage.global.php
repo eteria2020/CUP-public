@@ -12,6 +12,7 @@ return [
             'it_IT',
             'en_US',
             'sk-SK',
+            'nl_NL',
         ],
         // listeners used to determine the appropriate language range for the
         // application.
