@@ -77,6 +77,11 @@ class UserAreaController extends AbstractActionController {
     /**
      * @var \Zend\Form\Form
      */
+    private $foreignProfileForm;
+
+    /**
+     * @var \Zend\Form\Form
+     */
     private $passwordForm;
 
     /**
@@ -162,6 +167,7 @@ class UserAreaController extends AbstractActionController {
      * @param AuthenticationService $userService
      * @param InvoicesService $invoicesService
      * @param Form $profileForm
+     * @param Form $foreignProfileForm
      * @param Form $passwordForm
      * @param Form $mobileForm
      * @param Form $driverLicenseForm
@@ -184,6 +190,7 @@ class UserAreaController extends AbstractActionController {
         AuthenticationService $userService,
         InvoicesService $invoicesService,
         Form $profileForm,
+        Form $foreignProfileForm,
         Form $passwordForm,
         Form $mobileForm,
         Form $driverLicenseForm,
@@ -206,6 +213,7 @@ class UserAreaController extends AbstractActionController {
         $this->invoicesService = $invoicesService;
         $this->customer = $userService->getIdentity();
         $this->profileForm = $profileForm;
+        $this->foreignProfileForm = $foreignProfileForm;
         $this->passwordForm = $passwordForm;
         $this->mobileForm = $mobileForm;
         $this->driverLicenseForm = $driverLicenseForm;
@@ -248,6 +256,12 @@ class UserAreaController extends AbstractActionController {
         $redirect = $this->redirectDeactivation($customer, $mobile);
         if ($redirect != null) {
             return $redirect;
+        }
+
+        if(isset($this->serverInstance["id"])) {
+            if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobileParam]));
+            }
         }
 
         // if not, continue with index action
@@ -332,6 +346,63 @@ class UserAreaController extends AbstractActionController {
             'editLimiter' => $this->editLimiter(),
             'serverInstance' => $serverInstance,
         ]);
+    }
+
+    public function profileAction(){
+
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+        // if not, continue with index action
+        $this->setFormsData($this->customer);
+        $editForm = true;
+
+        if ($this->getRequest()->isPost()) {
+
+            if($this->editLimiter()){
+                $this->flashMessenger()->addInfoMessage($this->translator->translate("Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."));
+                return $this->redirect()->toRoute('area-utente/profile', ['mobile' => $mobile]);
+            }
+
+            $postData = $this->getRequest()->getPost()->toArray();
+
+            if (isset($postData['customer'])) {
+
+                $postData['customer']['id'] = $this->userService->getIdentity()->getId();
+
+                //prevent gender editing
+                $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
+
+
+                $editForm = $this->processForm($this->foreignProfileForm, $postData);
+                $this->typeForm = 'edit-profile';
+
+            } else if (isset($postData['password'])) {
+                $postData['id'] = $this->userService->getIdentity()->getId();
+                $editForm = $this->processForm($this->passwordForm, $postData);
+                $this->typeForm = 'edit-pwd';
+            }
+
+            if ($editForm) {
+                return $this->redirect()->toRoute('area-utente/profile', ['mobile' => $mobile]);
+            }
+        }
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
+
+        return new ViewModel([
+            'bannerJsonpUrl' => $this->bannerJsonpUrl,
+            'customer' => $this->customer,
+            'profileForm' => $this->foreignProfileForm,
+            'passwordForm' => $this->passwordForm,
+            'mobileForm' => $this->mobileForm,
+            'showError' => $this->showError,
+            'typeForm' => $this->typeForm,
+            'editLimiter' => $this->editLimiter(),
+            'serverInstance' => $serverInstance,
+        ]);
+
     }
 
     private function processForm($form, $data) {
@@ -438,6 +509,12 @@ class UserAreaController extends AbstractActionController {
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
         }
 
+        if(isset($this->serverInstance["id"])) {
+            if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/driverlicense', ['mobile' => $mobile]));
+            }
+        }
+
         /** @var DriverLicenseForm $form */
         $form = $this->driverLicenseForm;
         $customerData = $this->hydrator->extract($this->customer);
@@ -490,6 +567,67 @@ class UserAreaController extends AbstractActionController {
             'showError' => $this->showError,
             'driversLicenseUpload' => $driversLicenseUpload,
             'promocodeMemberGetMember' => $this->customerService->getPromocodeMemberGetMember($this->customer)
+        ]);
+    }
+
+    public function drivingLicenceInternationalAction() {
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+        $customer = $this->userService->getIdentity();
+
+        /** @var DriverLicenseForm $form */
+        $form = $this->driverLicenseForm;
+        $customerData = $this->hydrator->extract($this->customer);
+        $form->setData(['driver' => $customerData]);
+        if ($this->getRequest()->isPost()) {
+            $postData = $this->getRequest()->getPost()->toArray();
+            $postData['driver']['id'] = $customer->getId();
+            if (!isset($postData['driver']['driverLicenseCategories'])) {
+                $driver = $postData['driver'];
+                $driver['driverLicenseCategories'] = [];
+                $postData['driver'] = $driver;
+            }
+            $form->setData($postData);
+
+            if ($form->isValid()) {
+                try {
+                    $this->customerService->saveDriverLicense($form->getData());
+
+                    $params = [
+                        'email' => $customer->getEmail(),
+                        'driverLicense' => $customer->getDriverLicense(),
+                        'taxCode' => $customer->getTaxCode(),
+                        'driverLicenseName' => $customer->getDriverLicenseName(),
+                        'driverLicenseSurname' => $customer->getDriverLicenseSurname(),
+                        'birthDate' => ['date' => $customer->getBirthDate()->format('Y-m-d')],
+                        'birthCountry' => $customer->getBirthCountry(),
+                        'birthProvince' => $customer->getBirthProvince(),
+                        'birthTown' => $customer->getBirthTown()
+                    ];
+
+                    //$this->getEventManager()->trigger('driversLicenseEdited', $this, $params);
+
+                    $this->flashMessenger()->addSuccessMessage($this->translator->translate("Operazione completata con successo!"));
+                } catch (\Exception $e) {
+                    $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"));
+                }
+
+                return $this->redirect()->toRoute('area-utente/driverlicense', ['mobile' => $mobile]);
+            } else {
+                $this->showError = true;
+            }
+        }
+
+        $driversLicenseUpload = $this->customerService->customerNeedsToAcceptDriversLicenseForm($this->customer) &&
+            !$this->customerService->customerHasAcceptedDriversLicenseForm($this->customer);
+
+        return new ViewModel([
+            'customer' => $this->customer,
+            'driverLicenseForm' => $form,
+            'showError' => $this->showError,
+            'driversLicenseUpload' => $driversLicenseUpload,
         ]);
     }
 
