@@ -745,6 +745,13 @@ class ConsoleController extends AbstractActionController {
             foreach($this->batterySpecific as $condition){
                 if(isset($condition["fleet_id"]) && isset($condition["battery"])) {
                     if ($car->getFleet()->getId() == $condition["fleet_id"]) {
+                        //check for plate
+                        if(isset($condition["plate"]) && isset($condition["battery_plate"])) {
+                            $pos = strpos($car->getPlate(),$condition['plate']);
+                            if($pos!==false && $pos ===0){
+                                return $car->getBattery() < $condition["battery_plate"];
+                            }
+                        }
                          if ($car->getBattery() < $condition["battery"]) {
                              return TRUE;
                          } else {
