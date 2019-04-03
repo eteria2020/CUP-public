@@ -1005,7 +1005,7 @@ class UserAreaController extends AbstractActionController {
             array_push($arrayField, "birthTown");
         }
 
-        if($postData['customer']['birthDate']!=$customer->getBirthDate()->format('Y-m-d')) {
+        if($postData['customer']['birthDate']!=$customer->getBirthDate()->format('d-m-Y')) {
             array_push($arrayField, "birthDate");
         }
 
