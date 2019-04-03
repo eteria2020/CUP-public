@@ -20,7 +20,8 @@ class MobileFormFactory implements FactoryInterface
         $userService = $serviceLocator->get('zfcuser_auth_service');
         $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $hydrator = new DoctrineHydrator($entityManager);
+        $countriesService = $serviceLocator->get('SharengoCore\Service\CountriesService');
 
-        return new MobileForm($translator, $userService, $hydrator, $entityManager);
+        return new MobileForm($translator, $userService, $hydrator, $entityManager, $countriesService);
     }
 }

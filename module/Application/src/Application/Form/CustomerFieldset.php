@@ -190,16 +190,59 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
+            'name' => 'country',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'country',
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Stato di residenza'),
+                'value_options' => $mondoService->getAllCountries()
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'province',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'province',
+                'placeholder' => $translator->translate('EE = estero'),
+                'class' => 'required',
+                'maxlength' => 2
+            ],
+            'options' => [
+                'label' => $translator->translate('Provincia di residenza (EE = estero)'),
+                'value_options' => $provincesService->getAllProvinces(),
+                'use_hidden_element' => true
+            ]
+        ]);
+
+        $this->add([
             'name' => 'address',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'address',
                 'maxlength' => 60,
-                'placeholder' => $translator->translate('Via e numero civico'),
+                'placeholder' => $translator->translate('Via'),
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Via e numero civico'),
+                'label' => $translator->translate('Via'),
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'addressNumber',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'addressNumber',
+                'maxlength' => 64,
+                'placeholder' => $translator->translate('Numero civico'),
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Numero civico'),
             ]
         ]);
 
@@ -436,7 +479,26 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ]
             ],
+            'country' => [
+                'required' => true
+            ],
+            'province' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
+            ],
             'address' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
+            ],
+            'addressNumber' => [
                 'required' => true,
                 'filters' => [
                     [
