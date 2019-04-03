@@ -73,6 +73,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             ]
         ]);
 
+        // obsolete remove email2
         $this->add([
             'name' => 'email2',
             'type' => 'Zend\Form\Element\Email',

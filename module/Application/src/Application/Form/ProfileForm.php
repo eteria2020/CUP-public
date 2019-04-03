@@ -13,14 +13,14 @@ class ProfileForm extends Form
      */
     private $entityManager;
 
-    public function __construct($userFieldset, EntityManager $entityManager)
+    public function __construct($customerFieldset, EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
 
         parent::__construct('profile-form');
         $this->setAttribute('method', 'post');
 
-        $this->add($userFieldset);
+        $this->add($customerFieldset);
 
         $this->add([
             'name'       => 'submit',

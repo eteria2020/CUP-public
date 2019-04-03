@@ -2,7 +2,6 @@
 
 namespace Application\Form;
 
-use SharengoCore\Entity\Customers;
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Authentication\AuthenticationService;
@@ -10,6 +9,9 @@ use Zend\Mvc\I18n\Translator;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Doctrine\ORM\EntityManager;
 use Zend\Session\Container;
+
+use SharengoCore\Entity\Customers;
+use SharengoCore\Service\CountriesService;
 
 class MobileForm extends Form implements InputFilterProviderInterface
 {
@@ -28,15 +30,22 @@ class MobileForm extends Form implements InputFilterProviderInterface
      */
     private $entityManager;
 
+    /**
+     * @var CountriesService
+     */
+    private $countriesService;
+
     public function __construct(
         Translator $translator,
         AuthenticationService $userService,
         HydratorInterface $hydrator,
-        EntityManager $entityManager
+        EntityManager $entityManager,
+        CountriesService $countriesService
     ) {
         $this->translator = $translator;
         $this->userService = $userService;
         $this->entityManager = $entityManager;
+        $this->countriesService = $countriesService;
 
         $this->setHydrator($hydrator);
         $this->setObject(new Customers());
@@ -49,6 +58,18 @@ class MobileForm extends Form implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Hidden',
             'attributes' => [
                 'id' => 'id'
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'dialCode',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'dialCode'
+            ],
+            'options' => [
+                'label' => $translator->translate('Prefisso internazionale'),
+                'value_options' => $countriesService->getAllPhoneCodeByCountry()
             ]
         ]);
 
@@ -117,6 +138,9 @@ class MobileForm extends Form implements InputFilterProviderInterface
                         ]
                     ]
                 ]
+            ],
+            'dialCode' => [
+                'required' => true
             ],
             'smsCode' => [
                 'required' => true,

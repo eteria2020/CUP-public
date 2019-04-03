@@ -1,4 +1,4 @@
-/* global $ municipalitiesUrl birthTownValue */
+/* global $ municipalitiesUrl birthTownValue townValue */
 
 
 $(function () {
@@ -175,9 +175,173 @@ $(function () {
             $("#birthTown").append($("<option>"));
         }
     });
+
+    $("#country").change(function (event, params) {
+
+        var province = $("#province"),
+            provinceHidden = $("[type=hidden][name='user[province]'], [type=hidden][name='customer[province]']"),
+            townSelect = $("select#town"),
+            townString = $("input#town"),
+            zipCodeSelect = $("select#zipCode"),
+            zipCodeString = $("input#zipCode");
+
+        if ($(this).val() !== "it") {
+            province.val("EE");
+            province.prop("disabled", true);
+            provinceHidden.val("EE");
+
+            townSelect.hide();
+            townString.show();
+            townString.prop("disabled", false);
+
+            zipCodeSelect.hide();
+            zipCodeString.show();
+            zipCodeString.prop("disabled", false);
+
+            if (typeof params !== "undefined" && params.hasOwnProperty("townValue")) {
+                townString.attr("value", params.townValue.toUpperCase());
+            } else {
+                townString.attr("value", "");
+            }
+        } else {
+            if (province.val() === "EE") {
+                province.val(0);
+            }
+
+            province.prop("disabled", false);
+            provinceHidden.val("");
+
+            townSelect.show();
+            townString.hide();
+            townString.prop("disabled", true);
+
+            zipCodeSelect.show();
+            zipCodeString.hide();
+            zipCodeString.prop("disabled", true);
+        }
+
+        province.change();
+
+    });
+
+    if (typeof townValue != "undefined") {
+        $("#country").trigger("change", {
+            townValue: townValue
+        });
+    }
+
+    $("#province").change(function (event, params) {
+
+        var province = $(this).val(),
+            promise;
+
+        // clear present options
+        $("#town option").remove();
+
+        if (province !== 0 && province !== "0") {
+            promise = $.get(municipalitiesUrl + "/" + province, function (data) {
+                if (province === $("#province").val()) {
+                    $.each(data, function (i, item) {
+                        $("#town").append($("<option>", {
+                            value: item.name,
+                            text: item.name
+                        }));
+                    });
+
+                    $("select#town").trigger("change");
+                    return false;
+                }
+            });
+
+            if (typeof params !== "undefined" && params.hasOwnProperty("townValue")) {
+                promise.done(function () {
+                    $("select#town").val(params.townValue.toUpperCase());
+                });
+            }
+
+        } else {
+            $("#town").append($("<option>"));
+        }
+    });
+
+    $("#town").change(function (event, params) {
+
+        if(typeof municipalitiesUrl === 'undefined') {  // fix problem inside signup
+            return false;
+        }
+
+        var town = $(this).val(),
+            promise;
+
+        if(town == null) {
+            town = townValue;
+        }
+
+        var province = $("select#province").val();
+
+        // clear present options
+        $("select#zipCode option").remove();
+
+        if (province !== 0 && province !== "0") {
+            promise = $.get(municipalitiesUrl + "/" + province, function (data) {
+                if (province === $("#province").val()) {
+                    $.each(data, function (i, item) {
+                        if(town === item.name) {
+                            if(item.zip_codes !== null) {
+                                $.each(item.zip_codes, function (i, item) {
+                                    $("#zipCode").append($("<option>", {
+                                        value: item,
+                                        text: item
+                                    }));
+                                });
+                            } else {
+                                $("#zipCode").append($("<option>", {
+                                    value: "00000",
+                                    text: "00000"
+                                }));
+                            }
+
+                            return false;
+                        }
+                    });
+                }
+            });
+
+            if (typeof params !== "undefined" && params.hasOwnProperty("zipCodeValue")) {
+                promise.done(function () {
+                    $("select#zipCode").val(params.zipCodeValue);
+                });
+            }
+        } else {
+            $("#zipCode").append($("<option>"));
+        }
+
+
+    });
+
     if (typeof birthTownValue != "undefined") {
         $("#birthProvince").trigger("change", {
             birthTownValue: birthTownValue
+        });
+    }
+
+    // if (typeof townValue != "undefined") {
+    //     $("#country").trigger("change", {
+    //         townValue: townValue
+    //     });
+    // }
+
+
+    if (typeof townValue != "undefined") {
+        $("#province").trigger("change", {
+            townValue: townValue
+        });
+    }
+
+    if (typeof zipCodeValue != "undefined") {
+        $("#town").trigger("change", {
+            townValue: townValue,
+            zipCodeValue: zipCodeValue
         });
     }
 

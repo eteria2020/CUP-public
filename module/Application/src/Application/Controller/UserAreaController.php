@@ -283,6 +283,8 @@ class UserAreaController extends AbstractActionController {
 
                 //prevent gender editing
                 $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
+                $postData['customer']['email2'] =  $postData['customer']['email'];      // obsolete remove email2
+                $postData['customer']['address'] = trim($postData['customer']['address'])." ".trim($postData['customer']['addressNumber']);
 
                 $editForm = $this->processForm($this->profileForm, $postData);
                 $this->typeForm = 'edit-profile';
