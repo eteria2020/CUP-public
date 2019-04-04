@@ -92,8 +92,19 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'driverLicenseName',
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Es. Mario'),
                 'class' => 'required'
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'min' => 2,
+                        'max' => 60
+                    ]
+                ]
             ],
             'options' => [
                 'label' => $translator->translate('Nome sulla patente')
@@ -105,8 +116,19 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'driverLicenseSurname',
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Es. Rossi'),
                 'class' => 'required'
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'min' => 2,
+                        'max' => 60
+                    ]
+                ]
             ],
             'options' => [
                 'label' => $translator->translate('Cognome sulla patente')
@@ -255,7 +277,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 2,
-                            'max' => 32
+                            'max' => 60
                         ]
                     ]
                 ]
@@ -272,7 +294,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 2,
-                            'max' => 32
+                            'max' => 60
                         ]
                     ]
                 ]
