@@ -2667,12 +2667,12 @@ return [
                 "lang_3chars" => "slk",
                 "label" => "Slovak"
             ],
-            /*'nl' => [
+            'nl' => [
                 "locale" => "nl_NL",
                 "lang" => "nl",
                 "lang_3chars" => "nld",
                 "label" => "Dutch"
-            ]*/
+            ]
         ],
         "language_folder" => __DIR__ . "/../language"
     ],
