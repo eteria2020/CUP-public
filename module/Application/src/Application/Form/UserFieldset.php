@@ -130,7 +130,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'name',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Nome'),
                 'class' => 'required'
             ],
@@ -144,7 +145,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'surname',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Cognome'),
                 'class' => 'required'
             ],

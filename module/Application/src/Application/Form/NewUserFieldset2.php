@@ -49,7 +49,8 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'driverLicenseName',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $this->translator->translate('Nome sulla patente'),
                 'class' => 'required'
             ],
@@ -64,7 +65,8 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'driverLicenseSurname',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $this->translator->translate('Cognome sulla patente'),
                 'class' => 'required'
             ],
@@ -78,7 +80,8 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'name',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $this->translator->translate('Nome'),
                 'class' => 'required'
             ],
@@ -92,7 +95,8 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'surname',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $this->translator->translate('Cognome'),
                 'class' => 'required'
             ],
@@ -291,7 +295,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 2,
-                            'max' => 32
+                            'max' => 60
                         ]
                     ]
                 ]
@@ -308,7 +312,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 2,
-                            'max' => 32
+                            'max' => 60
                         ]
                     ]
                 ]
@@ -332,7 +336,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 2,
-                            'max' => 32
+                            'max' => 60
                         ]
                     ],
                     [
@@ -367,7 +371,7 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 2,
-                            'max' => 32
+                            'max' => 60
                         ]
                     ],
                     [

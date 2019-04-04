@@ -81,7 +81,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'name',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Nome'),
                 'class' => 'required'
             ],
@@ -95,7 +96,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'surname',
-                'maxlength' => 32,
+                'minlength' => 2,
+                'maxlength' => 60,
                 'placeholder' => $translator->translate('Cognome'),
                 'class' => 'required'
             ],
@@ -393,6 +395,15 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringTrim'
                     ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 2,
+                            'max' => 60
+                        ]
+                    ]
                 ]
             ],
             'surname' => [
@@ -401,7 +412,16 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'StringTrim'
                     ]
-                ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 2,
+                            'max' => 60
+                        ]
+                    ]
+                ],
             ],
             'email' => [
                 'required' => true,
