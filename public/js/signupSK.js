@@ -72,9 +72,9 @@ $(function () {
             $("#birthTown").append($("<option>"));
         }
     });
-    if (typeof birthTownValue != "undefined") {
+    if (typeof $("#birthProvince").val() != "undefined") {
         $("#birthProvince").trigger("change", {
-            birthTownValue: birthTownValue
+            birthTownValue: $("#birthProvince")
         });
     }
 
