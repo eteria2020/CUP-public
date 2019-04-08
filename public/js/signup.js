@@ -118,14 +118,16 @@ $(function () {
             birthProvince.val("EE");
             birthProvince.prop("disabled", true);
             birthProvinceHidden.val("EE");
+
             birthTownSelect.hide();
             birthTownString.show();
-            birthTownString.prop("disabled", false);
+            birthTownString.prop("disabled", true);
+            birthTownString.val("EE");
 
             if (typeof params !== "undefined" && params.hasOwnProperty("birthTownValue")) {
                 birthTownString.attr("value", params.birthTownValue.toUpperCase());
             } else {
-                birthTownString.attr("value", "");
+                birthTownString.attr("value", "EE");
             }
         } else {
             if (birthProvince.val() === "EE") {
