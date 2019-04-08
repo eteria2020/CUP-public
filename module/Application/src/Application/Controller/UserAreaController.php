@@ -997,12 +997,14 @@ class UserAreaController extends AbstractActionController {
             array_push($arrayField, "birthCountry");
         }
 
-        if($postData['customer']['birthProvince']!=$customer->getBirthProvince()) {
-            array_push($arrayField, "birthProvince");
-        }
+        if ($customer->getBirthCountry()=='it') {
+            if($postData['customer']['birthProvince']!=$customer->getBirthProvince()) {
+                array_push($arrayField, "birthProvince");
+            }
 
-        if($postData['customer']['birthTown']!=$customer->getBirthTown()) {
-            array_push($arrayField, "birthTown");
+            if($postData['customer']['birthTown']!=$customer->getBirthTown()) {
+                array_push($arrayField, "birthTown");
+            }
         }
 
         if($postData['customer']['birthDate']!=$customer->getBirthDate()->format('d-m-Y')) {
