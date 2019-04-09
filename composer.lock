@@ -2085,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -2436,7 +2436,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "febed6ab61b1fff679c39241c5f08237445a6aad"
+                "reference": "d8f681d0132218790aecb0596ae4814d844758f3"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2458,7 +2458,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-04-09 08:46:23"
+            "time": "2019-04-09 09:33:47"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
