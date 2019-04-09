@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Entity\CustomersBonusPackages;
 use SharengoCore\Entity\Customers;
@@ -22,6 +23,11 @@ use Zend\Mvc\I18n\Translator;
 class CustomerBonusPackagesController extends AbstractActionController
 {
     use CallableParameter;
+
+    /**
+     * @var CustomersService
+     */
+    private $customerService;
 
     /**
      * @var CustomersBonusPackagesService
@@ -53,8 +59,8 @@ class CustomerBonusPackagesController extends AbstractActionController
      */
     private $serverInstance = "";
 
-
     /**
+     * @param CustomersService $customersService
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
      * @param CartasiContractsService $cartasiContractsService
@@ -168,5 +174,4 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         return $result;
     }
-
 }

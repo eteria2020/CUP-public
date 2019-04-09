@@ -26,6 +26,9 @@ use SharengoCore\Entity\Customers;
 use Cartasi\Service\CartasiContractsService;
 use Cartasi\Entity\Contracts;
 use SharengoCore\Service\CrawlerService;
+use SharengoCore\Service\BonusService;
+use SharengoCore\Service\CustomersBonusPackagesService;
+use SharengoCore\Service\BuyCustomerBonusPackage;
 
 // Externals
 use Zend\Http\Response;
@@ -102,6 +105,21 @@ class IndexController extends AbstractActionController
     private $extraPaymentsService;
 
     /**
+     * @var BonusService
+     */
+    private $bonusService;
+
+    /**
+     * @var BonusPackagesService
+     */
+    private $customersBonusPackagesService;
+
+    /**
+     * @var BuyCustomerBonusPackage
+     */
+    private $buyCustomerBonusPackage;
+
+    /**
      * IndexController constructor.
      * @param $mobileUrl
      * @param ZonesService $zoneService
@@ -116,6 +134,9 @@ class IndexController extends AbstractActionController
      * @param PaymentsService $paymentsService
      * @param TripsService $tripsService
      * @param ExtraPaymentsService $extraPaymentsService
+     * @param BonusService $bonusService
+     * @param CustomersBonusPackagesService $customersBonusPackagesService
+     * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
      */
 
     public function __construct(
@@ -131,7 +152,10 @@ class IndexController extends AbstractActionController
         PaymentScriptRunsService $paymentScriptRunsService,
         PaymentsService $paymentsService,
         TripsService $tripsService,
-        ExtraPaymentsService $extraPaymentsService
+        ExtraPaymentsService $extraPaymentsService,
+        BonusService $bonusService,
+        CustomersBonusPackagesService $customersBonusPackagesService,
+        BuyCustomerBonusPackage $buyCustomerBonusPackage
     ) {
         $this->mobileUrl = $mobileUrl;
         $this->zoneService = $zoneService;
@@ -146,6 +170,9 @@ class IndexController extends AbstractActionController
         $this->paymentsService = $paymentsService;
         $this->tripsService = $tripsService;
         $this->extraPaymentsService = $extraPaymentsService;
+        $this->bonusService = $bonusService;
+        $this->customersBonusPackagesService = $customersBonusPackagesService;
+        $this->buyCustomerBonusPackage = $buyCustomerBonusPackage;
     }
 
     public function indexAction()
@@ -257,7 +284,6 @@ class IndexController extends AbstractActionController
             $this->poisService->getPublicPoisByFleet($fleet)
         );
     }
-
 
     public function carsharingAction()
     {
@@ -386,6 +412,118 @@ class IndexController extends AbstractActionController
         $url = "https://www.sharengo.it/cartasi/cambio-carta?customer=".$customer->getId()."&contract=$contract";
         $this->redirect()->toUrl($url);
 
+    }
+
+    public function freeBonusAction(){
+        $min = $this->params()->fromRoute('min');
+        $crawler = $this->params()->fromRoute('userId');
+        if(is_null($crawler) && $crawler == "") {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        $crawler = explode("-", $crawler);
+        $userId = $crawler[0];
+        $hash = $crawler[1];
+
+        $clawlerService = new CrawlerService();
+        $response = $clawlerService->isValidUser($userId);
+        if($response == false) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        $customer = $this->customerService->findById($userId);
+        if(!$customer instanceof Customers) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        if (substr($customer->getHash(), 0, 3) != $hash) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+        if (is_null($contract)) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg02']));
+        }
+
+        $response = $clawlerService->getCustomerInformation($userId);
+        if(is_array($response) && isset($response["data"][0]["status"])){
+            if ($response["data"][0]["status"] <> "NOT_RUNNING_6M"){
+                return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg04']));
+            }
+        }else{
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg03']));
+        }
+
+        $verifyNotRunningBonus = count($this->bonusService->verifyNotRunningBonus($customer));
+        if($verifyNotRunningBonus > 0) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg05']));
+        }
+
+        $validFrom = new \DateTime();
+        $validTo = new \DateTime();
+        $valTo = $validTo->modify('+90 day')->format("Y-m-d");
+        $valFrom = $validFrom->format("Y-m-d");
+
+        $bonus = $this->bonusService->createBonusForCustomerFromData($customer, $min, 'notRunning', 'Bonus RIPARTI con noi', $valTo, $valFrom);
+        if (is_null($bonus)) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg03']));
+        }
+
+        return $this->redirect()->toUrl($this->url()->fromRoute('freebonusok'));
+    }
+
+    public function buyPackageWithoutLoginAction(){
+        $packageId = $this->params()->fromRoute('package');
+        $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
+
+        $crawler = $this->params()->fromRoute('userId');
+        if(is_null($crawler) && $crawler == "") {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        $crawler = explode("-", $crawler);
+        $userId = $crawler[0];
+        $hash = $crawler[1];
+
+        $clawlerService = new CrawlerService();
+        $response = $clawlerService->isValidUser($userId);
+        if($response == false) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        $customer = $this->customerService->findById($userId);
+        if(!$customer instanceof Customers) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        if (substr($customer->getHash(), 0, 3) != $hash) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg01']));
+        }
+
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+        if (is_null($contract)) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg02']));
+        }
+
+        $response = $clawlerService->getCustomerInformation($userId);
+        if(is_array($response) && isset($response["data"][0]["status"])){
+            if ($response["data"][0]["status"] <> "FIVE_TRIPS_3M" and $packageId == 33){
+                return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg06']));
+            }elseif($response["data"][0]["status"] <> "TEN_TRIPS_3M" and $packageId == 34){
+                return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg06']));
+            }elseif($response["data"][0]["status"] <> "TWENTY_TRIPS_3M" and $packageId == 35) {
+                return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg06']));
+            }
+        }else{
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg06']));
+        }
+
+        $success = $this->buyCustomerBonusPackage->__invoke($customer, $package);
+        if (is_null($success)) {
+            return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg07']));
+        }
+
+        return $this->redirect()->toUrl($this->url()->fromRoute('freebonusok'));
     }
 
     public function outstandingPaymentsAction(){
@@ -531,7 +669,6 @@ class IndexController extends AbstractActionController
             }else{
                 return $this->notFoundAction();
             }
-
         }
 
         return new ViewModel([
