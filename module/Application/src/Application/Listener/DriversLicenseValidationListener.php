@@ -90,11 +90,10 @@ final class DriversLicenseValidationListener implements SharedListenerAggregateI
         // we do not request the validation of the drivers license to the
         // motorizzazione civile is the customer has a foreign drivers license
         if (!$this->customersService->customerNeedsToAcceptDriversLicenseForm($customer)) {
-            $data['birthCountryMCTC'] = $this->countriesService->getMctcCode($data['birthCountry']);
-            $data['birthProvince'] = $this->driversLicenseValidationService->changeProvinceForValidationDriverLicense($data);
-            $data['birthTown'] = $this->driversLicenseValidationService->changeTownForValidationDriverLicense($data);
 
+            $data = $this->driversLicenseValidationService->fixDataForValidationDriverLicense($data);
             $this->enqueueValidationService->validateDriversLicense($data);
+
         }
     }
 
