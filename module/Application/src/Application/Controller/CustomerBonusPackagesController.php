@@ -53,7 +53,6 @@ class CustomerBonusPackagesController extends AbstractActionController
      */
     private $serverInstance = "";
 
-
     /**
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
@@ -168,5 +167,4 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         return $result;
     }
-
 }
