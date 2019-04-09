@@ -204,6 +204,36 @@ return [
                     ],
                 ]
             ],
+            'notrunnig' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{notrunnig}/[:userId]/[:min]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'freeBonus',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                        'min' => '[0-9&]+',
+                    ],
+                ]
+            ],
+            'buyPackage' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{pack}/[:userId]/[:package]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'buyPackageWithoutLogin',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                        'package' => '[0-9&]+',
+                    ],
+                ]
+            ],
             'crawler' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1110,6 +1140,102 @@ return [
                     ],
                 ]
             ],
+            'nrm' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{nrm}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'notrunningmin',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                    ],
+                ],
+            ],
+            'brp' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{brp}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'bestriderpack',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                    ],
+                ],
+            ],
+            'frp' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{frp}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'fastridepack',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                    ],
+                ],
+            ],
+            'sp' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{sp}/[:userId]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'smartpack',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                    ],
+                ],
+            ],
+            'acceptpack' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{acceptpack}/[:userId]/[:package]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'acceptpack',
+                    ],
+                    'constraints' => [
+                        'userId' => '[a-zA-Z0-9-]*',
+                        'package' => '[a-zA-Z0-9-]*',
+                    ],
+                ],
+            ],
+            'freebonusok' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{freebonusok}',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'freebonusok',
+                    ],
+                ]
+            ],
+            'freebonusko' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{freebonusko}/[:msg]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'LandingPage',
+                        'action' => 'freebonusko',
+                    ],
+                    'constraints' => [
+                        'msg' => '[a-zA-Z0-9-]*',
+                    ],
+                ]
+            ],
             'ording' => [
                 'type' => 'Segment',
                 'options' => [
@@ -1735,9 +1861,9 @@ return [
             'Application\Controller\ImportDriversLicenseValidations' => 'Application\Controller\ImportDriversLicenseValidationsControllerFactory',
             'Application\Controller\BirthdayBonus' => 'Application\Controller\BirthdayBonusControllerFactory',
             'Application\Controller\Partner' => 'Application\Controller\PartnerControllerFactory',
+            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageFactory',
         ],
         'invokables' => [
-            'Application\Controller\LandingPage' => 'Application\Controller\LandingPageController',
             'Application\Controller\CustomerController' => 'Application\Controller\CustomerController',
         ]
     ],
