@@ -464,7 +464,7 @@ class IndexController extends AbstractActionController
         $valTo = $validTo->modify('+90 day')->format("Y-m-d");
         $valFrom = $validFrom->format("Y-m-d");
 
-        $bonus = $this->bonusService->createBonusForCustomerFromData($customer, $min, 'notRunning', 'Bonus RIPARTI con noi', $valTo, $valFrom);
+        $bonus = $this->bonusService->createBonusForCustomerFromData($customer, $min, 'promo', 'Bonus RIPARTI con noi', $valTo, $valFrom);
         if (is_null($bonus)) {
             return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg03']));
         }
@@ -523,6 +523,7 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toUrl($this->url()->fromRoute('freebonusko', ['msg' => 'msg07']));
         }
 
+        $res = $clawlerService->setLoggerEndTs($userId, $response["data"][0]["status"]);
         return $this->redirect()->toUrl($this->url()->fromRoute('freebonusok'));
     }
 
