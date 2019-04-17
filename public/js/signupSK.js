@@ -11,7 +11,7 @@ $(function () {
                 birthTownSelect = $("select#birthTown"),
                 birthTownString = $("input#birthTown");
 
-        if ($(this).val() !== "sk") {
+        if ($(this).val() !== server_instance) {
             birthProvince.val("EE");
             birthProvince.prop("disabled", true);
             birthProvinceHidden.val("EE");

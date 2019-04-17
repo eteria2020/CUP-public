@@ -1,3 +1,6 @@
+<script>
+    var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
+</script>
 <?php
 $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
@@ -200,7 +203,11 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     <div class="block-field bw-f w-2-4">
                         <label><?= $this->translate('Prefisso'); ?></label>
                         <select name="user1[dialCode]" id="dialCode">
-                            <option data-countryCode="SK" value="421" selected><?= $this->translate('Slovacchia')?> (+421)</option>
+                            <?php if($this->serverInstance["id"] == "sk_SK") { ?>
+                            <option data-countryCode="SK" value="421" selected><?= $this->translate('Slovacchia') . "ciaods"?> (+421)</option>
+                            <?php } else if ($this->serverInstance["id"] == "nl_NL"){ ?>
+                            <option data-countryCode="NL" value="31" selected><?= $this->translate('Netherlands')?> (+31)</option>
+                            <?php } ?>
                             <option disabled="disabled">----------</option>
                             <option data-countryCode="AT" value="43"><?= $this->translate('Austria')?> (+43)</option>
                             <option data-countryCode="BE" value="32"><?= $this->translate('Belgium')?> (+32)</option>
@@ -224,7 +231,11 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                             <option data-countryCode="LU" value="352"><?= $this->translate('Luxembourg')?> (+352)</option>
                             <option data-countryCode="MT" value="356"><?= $this->translate('Malta')?> (+356)</option>
                             <option data-countryCode="MC" value="377"><?= $this->translate('Monaco')?> (+377)</option>
-                            <option data-countryCode="NL" value="31"><?= $this->translate('Netherlands')?> (+31)</option>
+                            <?php if($this->serverInstance["id"] == "nl_NL") { ?>
+                                <option data-countryCode="SK" value="421"><?= $this->translate('Slovacchia')?> (+421)</option>
+                            <?php } else if ($this->serverInstance["id"] == "sk_SK"){ ?>
+                                <option data-countryCode="NL" value="31"><?= $this->translate('Netherlands')?> (+31)</option>
+                            <?php } ?>
                             <option data-countryCode="PL" value="48"><?= $this->translate('Poland')?> (+48)</option>
                             <option data-countryCode="PT" value="351"><?= $this->translate('Portugal')?> (+351)</option>
                             <option data-countryCode="RO" value="40"><?= $this->translate('Romania')?> (+40)</option>
