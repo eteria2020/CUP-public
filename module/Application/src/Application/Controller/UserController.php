@@ -1580,9 +1580,15 @@ class UserController extends AbstractActionController {
         $signupSession = new Container('newSignup');
         $signupSession->offsetSet("customer", $customer);
         //$this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
-        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'sk_SK']]);
-        //return $this->redirect()->toRoute('area-utente', ['mobile' => $mobile]);
 
+        if(isset($this->serverInstance["id"])) {
+            if($this->serverInstance["id"]=="sk_SK") {
+                return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'sk_SK']]);
+            } else if ($this->serverInstance["id"] == "nl_NL"){
+                return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
+            }
+        }
+        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile]);
     }
 
 
