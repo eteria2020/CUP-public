@@ -1,0 +1,1 @@
+ALTER TABLE "public"."cars_configurations" ADD COLUMN "car_plate_pattern" text DEFAULT null;
