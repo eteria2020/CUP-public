@@ -38,17 +38,25 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
      */
     private $provincesService;
 
+    /**
+     * @var ProvincesService
+     */
+    private $serverInstance;
+
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
         CustomersService $customersService,
         CountriesService $countriesService,
-        ProvincesService $provincesService) {
+        ProvincesService $provincesService,
+        $serverInstance
+        ) {
 
         $this->translator = $translator;
         $this->customersService = $customersService;
         $this->countriesService = $countriesService;
         $this->provincesService = $provincesService;
+        $this->serverInstance = $serverInstance;
 
         parent::__construct('user1', [
             'use_as_base_fieldset' => true
@@ -193,7 +201,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Stato di nascita'),
-                'value_options' => $this->countriesService->getAllCountries('Slovacchia')
+                'value_options' => $this->countriesService->getAllCountries( $this->getSelectedCountry())
             ]
         ]);
 
@@ -478,6 +486,18 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
         ];
+    }
+
+    private function getSelectedCountry(){
+        $selectedCountry = "Italia";
+        if(!is_null($this->serverInstance)){
+            if ($this->serverInstance == "sk_SK"){
+                $selectedCountry = "Slovacchia";
+            } else if ($this->serverInstance == "nl_NL") {
+                $selectedCountry = "Nederland";
+            }
+        }
+        return $selectedCountry;
     }
 
 

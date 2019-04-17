@@ -93,7 +93,7 @@ class UserController extends AbstractActionController {
     private $registrationService;
 
     /**
-     * @var SharengoCore\Service\PromoCodesMemberGetMemberService
+     * @var \SharengoCore\Service\PromoCodesMemberGetMemberService
      */
     private $promoCodesMemberGetMemberService;
 
@@ -1290,6 +1290,8 @@ class UserController extends AbstractActionController {
         if(isset($this->serverInstance["id"])) {
             if($this->serverInstance["id"]=="sk_SK") {
                 return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile],['query' => ['lang' => 'sk_SK']]);
+            } else if ($this->serverInstance["id"] == "nl_NL"){
+                return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
             }
         }
 
@@ -1398,6 +1400,7 @@ class UserController extends AbstractActionController {
             'customerEmail' => $customerEmail,
             'mobile' => $mobile,
             'customerFleetId' => $customerFleet,
+            'serverInstance' => $this->serverInstance,
         ]);
     }
 
