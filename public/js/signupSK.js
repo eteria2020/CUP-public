@@ -5,12 +5,13 @@ $(function () {
     "use strict";
 
     $("#birthCountry").change(function (event, params) {
-
         var birthProvince = $("#birthProvince"),
                 birthProvinceHidden = $("[type=hidden][name='user[birthProvince]'], [type=hidden][name='customer[birthProvince]']"),
                 birthTownSelect = $("select#birthTown"),
                 birthTownString = $("input#birthTown");
-
+        if(typeof server_instance === "undefined"){
+            var server_instance = "sk";
+        }
         if ($(this).val() !== server_instance) {
             birthProvince.val("EE");
             birthProvince.prop("disabled", true);
