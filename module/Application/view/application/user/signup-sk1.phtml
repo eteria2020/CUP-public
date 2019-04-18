@@ -6,6 +6,20 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/overlay.css'))
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
+
+$privacyLink = $this->basePath('pdf/sk/SUKROMIE.pdf'); //default slovakia link
+$contractLink = $this->basePath('pdf/sk/VOP-Sharengo.pdf'); //default slovakia contract
+
+if(!is_null($this->serverInstance)){
+    if($this->serverInstance == "sk_SK") {
+        $privacyLink = $this->basePath('pdf/sk/SUKROMIE.pdf');
+        $contractLink = $this->basePath('pdf/sk/VOP-Sharengo.pdf');
+    } else if ($this->serverInstance == "nl_NL") {
+        $privacyLink = 'https://site.sharengo.nl/privacy/';
+        $contractLink = $this->basePath('pdf/nl/ReglementSharengo.pdf');
+    }
+}
+
 ?>
 
 <!-- main -->
@@ -105,8 +119,8 @@ $this->headLink()
             <!-- block-row-field -->
             <div class="block-wrapper-button content-align-center">
                 <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate("CREA IL TUO ACCOUNT") ?>">
-                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;"><?= $this->translate("Cliccando sul tasto Iscriviti accetti") ?> <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/sk/SUKROMIE.pdf'); ?>"><?= $this->translate("l'Informativa sulla Privacy") ?></a> <?= $this->translate("e"); ?> <br>
-                    <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/sk/VOP-Sharengo.pdf'); ?>"><?= $this->translate("le Condizioni Contrattuali di Sharengo") ?></a>. </p>
+                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;"><?= $this->translate("Cliccando sul tasto Iscriviti accetti") ?> <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $privacyLink ?>"><?= $this->translate("l'Informativa sulla Privacy") ?></a> <?= $this->translate("e"); ?> <br>
+                    <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $contractLink; ?>"><?= $this->translate("le Condizioni Contrattuali di Sharengo") ?></a>. </p>
             </div>
             <br>
             <!-- block-row-field -->
