@@ -1207,7 +1207,8 @@ class UserController extends AbstractActionController {
         return new ViewModel([
             'form' => $newForm,
             'mobile' => $mobile,
-            'fleets' => $this->fleetService->getAllFleetsNoDummy()
+            'fleets' => $this->fleetService->getAllFleetsNoDummy(),
+            'serverInstance' => isset($this->serverInstance["id"]) ? $this->serverInstance["id"] : null
         ]);
     }
 
