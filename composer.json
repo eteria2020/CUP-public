@@ -45,7 +45,8 @@
         "mvlabs/zf2-multilanguage": "dev-master",
         "smsgatewayme/client": "^0.0.1",
         "matteocontrini/comuni-json": "dev-master",
-        "sharengo-web/gpwebpay": "dev-master"
+        "sharengo-web/gpwebpay": "dev-master",
+        "mattketmo/email-checker": "^1.5"
     },
     "repositories": [
         {

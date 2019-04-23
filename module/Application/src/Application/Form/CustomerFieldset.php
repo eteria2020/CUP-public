@@ -443,6 +443,9 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                                 $this->userService->getIdentity()->getEmail()
                             ]
                         ]
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\DisposableEmail'
                     ]
                 ]
             ],
@@ -463,6 +466,9 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'token' => 'email'
                         ]
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\DisposableEmail'
                     ]
                 ]
             ],
