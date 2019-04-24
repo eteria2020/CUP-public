@@ -283,6 +283,14 @@ class UserAreaController extends AbstractActionController {
 
                 //prevent gender editing
                 $postData['customer']['gender'] = $this->userService->getIdentity()->getGender();
+                $postData['customer']['name'] = $this->userService->getIdentity()->getName();
+                $postData['customer']['surname'] = $this->userService->getIdentity()->getSurname();
+                $postData['customer']['birthCountry'] = $this->userService->getIdentity()->getBirthCountry();
+                $postData['customer']['birthProvince'] = $this->userService->getIdentity()->getBirthProvince();
+                $postData['customer']['birthTown'] = $this->userService->getIdentity()->getBirthTown();
+                $postData['customer']['birthDate'] = $this->userService->getIdentity()->getBirthDate()->format('d-m-Y');
+                $postData['customer']['taxCode'] = $this->userService->getIdentity()->getTaxCode();
+
                 $postData['customer']['email2'] =  $postData['customer']['email'];      // obsolete remove email2
                 $postData['customer']['address'] = trim($postData['customer']['address'])." ".trim($postData['customer']['addressNumber']);
 

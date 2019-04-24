@@ -240,31 +240,20 @@ $this->headLink()
                             <!-- block-row-field -->
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-1-4">
-                                    <label><?= $this->translate("Titolo"); ?></label>
+                                    <label><?= $this->translate("Titolo"); ?> <i class="fa fa-lock"></i></label>
                                         <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
                                 </div>
 
                                 <div class="block-field bw-f w-3-4 last">
 
                                     <div class="block-field bw-f w-2-4">
-                                        <label><?= $this->translate("Nome"); ?></label>
-                                            <?php
-                                            $name = $this->profileForm->get('customer')->get('name');
-                                            $name->setValue($this->customer->getName());
-                                            echo $this->formElement($name->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($name, ['class' => 'error-sign-up']);
-                                            ?>
+                                        <label><?= $this->translate("Nome"); ?> <i class="fa fa-lock"></i></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getName() ?>" >
                                     </div>
 
                                     <div class="block-field bw-f w-2-4">
-                                        <label><?= $this->translate("Cognome"); ?></label>
-                                        <?php
-                                        $surname = $this->profileForm->get('customer')->get('surname');
-                                        $surname->setValue($this->customer->getSurname());
-                                        echo $this->formElement($surname->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($surname, ['class' => 'error-sign-up']);
-                                        ?>
-                                    </div>
+                                        <label><?= $this->translate("Cognome"); ?> <i class="fa fa-lock"></i></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getSurname() ?>" >                                    </div>
                                 </div>
                             </div>
                             <!-- block-row-field -->
@@ -280,44 +269,18 @@ $this->headLink()
                             <!-- block-row-field -->
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-1-4">
-                                    <label><?= $this->translate("Stato di nascita"); ?></label>
-                                        <?php
-                                        $birthCountry = $this->profileForm->get('customer')->get('birthCountry');
-                                        $birthCountry->setValue($this->customer->getBirthCountry());
-                                        echo $this->formElement($birthCountry->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($birthCountry, ['class' => 'error-sign-up']);
-                                        ?>
+                                    <label><?= $this->translate("Stato di nascita"); ?> <i class="fa fa-lock"></i></label>
+                                    <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthCountry(); ?>" >
                                 </div>
                                 <div class="block-field bw-f w-3-4 last">
                                     <div class="block-field bw-f w-2-4">
-                                        <label><?= $this->translate("Provincia di nascita"); ?></label>
-                                            <?php
-                                            $birthProvince = $this->profileForm->get('customer')->get('birthProvince');
-                                            $birthProvince->setValue($this->customer->getBirthProvince());
-                                            echo $this->formElement($birthProvince->setAttribute('class', 'required'));
-                                            echo $this->formElementErrors($birthProvince, ['class' => 'error-sign-up']);
-                                            ?>
-
+                                        <label><?= $this->translate("Provincia di nascita"); ?> <i class="fa fa-lock"></i></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthProvince(); ?>" >
                                     </div>
 
                                     <div class="block-field bw-f w-2-4 last">
-                                        <label><?= $this->translate("Comune di nascita"); ?></label>
-                                            <?php
-                                            $birthTown = $this->profileForm->get('customer')->get('birthTown');
-                                            $select = '<select name="' . $birthTown->getName() . '" ';
-                                            foreach ($birthTown->getAttributes() as $attribute => $value) {
-                                                $select .= $attribute . '="' . $value . '" ';
-                                            }
-                                            $select .= '><option></option></select>';
-                                            echo $select;
-                                            $input = '<input name="' . $birthTown->getName() . '" ';
-                                            foreach ($birthTown->getAttributes() as $attribute => $value) {
-                                                $input .= $attribute . '="' . $value . '" ';
-                                            }
-                                            $input .= ' style="display: none;" value="' . $birthTown->getValue() . '" disabled></ipnut>';
-                                            echo $input;
-                                            echo $this->formElementErrors($birthTown, ['class' => 'errors']);
-                                            ?>
+                                        <label><?= $this->translate("Comune di nascita"); ?> <i class="fa fa-lock"></i></label>
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthTown(); ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -326,13 +289,8 @@ $this->headLink()
                             <!-- block-row-field -->
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-1-4">
-                                    <label><?= $this->translate("Data di nascita"); ?></label>
-                                        <?php
-                                        $birthDate = $this->profileForm->get('customer')->get('birthDate');
-                                        $birthDate->setValue($this->customer->getBirthDate()->format('d-m-Y'));
-                                        echo $this->formElement($birthDate->setAttribute('class', 'required datepicker-date'));
-                                        echo $this->formElementErrors($birthDate, ['class' => 'error-sign-up']);
-                                        ?>
+                                    <label><?= $this->translate("Data di nascita"); ?> <i class="fa fa-lock"></i></label>
+                                    <input type="text" name="" class="required disabled" value="<?= $this->customer->getBirthDate()->format('d-m-Y'); ?>" >
                                 </div>
                             </div>
                             <!-- block-row-field -->
@@ -462,13 +420,8 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-2-4">
-                                    <label><?= $this->translate("Codice Fiscale"); ?></label>
-                                        <?php
-                                        $taxCode = $this->profileForm->get('customer')->get('taxCode');
-                                        $taxCode->setValue($this->customer->getTaxCode());
-                                        echo $this->formElement($taxCode->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($taxCode, ['class' => 'error-sign-up']);
-                                        ?>
+                                    <label><?= $this->translate("Codice Fiscale"); ?> <i class="fa fa-lock"></i></label>
+                                    <input type="text" name="" class="required disabled" value="<?= $this->customer->getTaxCode(); ?>" >
                                 </div>
 
                             </div>
@@ -846,7 +799,6 @@ JS;
     });
 
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
-            birthTownValue = "<?= $birthTown->getValue() ?>",
             townValue =  "<?=  $this->customer->getTown() ?>",
             zipCodeValue =  "<?=  $this->customer->getZipCode() ?>",
             userId = <?= (string) $this->customer->getId() ?>,
