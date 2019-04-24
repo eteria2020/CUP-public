@@ -2498,11 +2498,12 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "3cc1de3cf6504eb8cd4d9d3c7aa81876632a7da0"
+                "reference": "6ed9c5528864a7586010a9cac25d43cc125d73dc"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
                 "h4cc/wkhtmltopdf-amd64": "0.12.0",
+                "mattketmo/email-checker": "^1.5",
                 "mvlabs/mvlabs-snappy": "0.2.*",
                 "php": ">=5.4.0",
                 "rwoverdijk/assetmanager": "1.4.*",
@@ -2520,7 +2521,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-04-17 07:30:57"
+            "time": "2019-04-23 14:50:01"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
