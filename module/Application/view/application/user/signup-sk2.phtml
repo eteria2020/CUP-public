@@ -446,7 +446,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
             <div class="block-row-field clearfix">
 
                 <div class="block-field bw-f w-2-4">
-                    <p> <label><?= $this->translate('Numero Identificativo'); ?></label>
+                    <p> <label><?= ($this->serverInstance["id"] == "nl_NL") ? 'BSN' : $this->translate('Numero Identificativo'); ?></label>
                         <?php
                         $taxCode = $this->form->get('user1')->get('taxCode');
                         echo $this->formElement($taxCode);
