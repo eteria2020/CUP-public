@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-04-23 12:06+0200\n"
-"PO-Revision-Date: 2019-04-23 12:06+0200\n"
+"POT-Creation-Date: 2019-04-23 17:41+0200\n"
+"PO-Revision-Date: 2019-04-23 17:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: module/Application/src/Application\n"
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
+"X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 
 #: module/Application/config/module.config.php:2705
 #: module/Application/view/application/user-area/index.phtml:28
@@ -672,8 +673,8 @@ msgstr ""
 "(poistenie), 16 (dátum začiatku, trvanie, obnovenie, pozastavenie, zrušenie, "
 "ukončenie zmluvy), 17 (sťažnosti), 18 (sankcie), 20 (jurisdikcia)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:165
-#: module/Application/src/Application/Form/NewUserFieldset.php:189
+#: module/Application/src/Application/Form/NewUserFieldset.php:168
+#: module/Application/src/Application/Form/NewUserFieldset.php:192
 msgid "Il dato è richiesto per procedere"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
@@ -1058,10 +1059,6 @@ msgstr "Formát dátumu nie je správny"
 msgid "La patente non può essere scaduta"
 msgstr "Platnosť licencie nemôže uplynúť"
 
-#: module/Application/src/Application/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "E-mailová adresa nebola prijatá"
-
 #: module/Application/src/Application/Form/Validator/DuplicateDriversLicense.php:26
 msgid "Esiste già un utente con la stessa patente"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
@@ -1137,10 +1134,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Formát dátumu nie je správny"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Rodné číslo"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Vek nie je povolený na jazdu"
 
@@ -1172,6 +1171,7 @@ msgid "La partita IVA non è valida"
 msgstr "Platnosť licencie nemôže uplynúť"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:18
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Poštové smerovacie číslo"
 
@@ -1220,6 +1220,121 @@ msgstr "Už si priradený k tejto spoločnosti"
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
 msgstr "Už si priradený k inej spoločnosti"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr "E-mailová adresa nebola prijatá"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr ""
+
+# in slovacco non finisce con . perche non e una abbreviazione
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#, fuzzy
+#| msgid "Sig."
+msgid "Si"
+msgstr "Pán"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#, fuzzy
+#| msgid "Nome"
+msgid "No"
+msgstr "Názov"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+#, fuzzy
+#| msgid "Username"
+msgid "Esterna"
+msgstr "Užívateľské meno"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+#, fuzzy
+#| msgid ""
+#| "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+#, fuzzy
+#| msgid "Corse completate"
+msgid "Completata"
+msgstr "Dokončené jazdy"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+#, fuzzy
+#| msgid "Attivazione completata"
+msgid "Non Completata"
+msgstr "Aktivácia kompletná"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice promo non valido."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#, fuzzy
+#| msgid "Sei già associato a questa azienda"
+msgid "Codice promo già associato a questo account."
+msgstr "Už si priradený k tejto spoločnosti"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#, fuzzy
+#| msgid "Codice fiscale"
+msgid "Codice fiscale, genere "
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
+#, fuzzy
+#| msgid "Codice Fiscale e Partita IVA"
+msgid "Codice fiscale, data di nascita "
+msgstr "Daňový kód a DIČ"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice fiscale, sintassi incongruente."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice fiscale, sintassi errata."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
+msgstr ""
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
