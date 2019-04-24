@@ -258,7 +258,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'taxCode',
-                'maxlength' => 10,
+                'maxlength' => $this->taxCodeLength(),
                 'placeholder' => $this->translator->translate('1234567890'),
                 'class' => 'required'
             ],
@@ -417,6 +417,9 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\IdNumber',
+                        'options' => [
+                            'length' => $this->taxCodeLength(),
+                        ],
                         'break_chain_on_failure' => true
                     ],
                     [
@@ -500,5 +503,13 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
         return $selectedCountry;
     }
 
+    private function taxCodeLength(){
+        $length = 10;
+        if (!is_null($this->serverInstance) && $this->serverInstance == "nl_NL"){
+            $length = 9;
+        }
+
+        return $length;
+    }
 
 }

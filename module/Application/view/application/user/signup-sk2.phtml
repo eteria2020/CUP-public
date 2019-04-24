@@ -498,7 +498,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     </div>
                     <br>
                     <div>
-                        Košice, <?= date("d.m.Y")?>
+                        <?= ($this->serverInstance["id"] == "nl_NL") ? "Rotterdam" : "Košice"; ?>, <?= date("d.m.Y")?>
                     </div>
                     <br>
                     <div style="font-size: 70%">
@@ -535,6 +535,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                         </p>
                     </div>
                 </div>
+                <?php if ($this->serverInstance["id"] != "nl_NL"){ ?>
                 <div class="block-row-field clearfix">
                     <div class="block-field bw-f w-2-4">
                         <p> <label style="margin-right: 5px;"><?= $this->translate('fronte carta di identità'); ?></label>
@@ -564,6 +565,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
 
                     </div>
                 </div>
+                <?php } ?>
 
 
             </div>

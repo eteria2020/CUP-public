@@ -12,6 +12,14 @@ class IdNumber extends AbstractValidator
         self::INVALID => "Il numero identificativo non è corretto"
     ];
 
+    private $length;
+
+    public function __construct($options)
+    {
+        parent::__construct();
+        $this->length = $options["length"];
+    }
+
     public function isValid($value)
     {
         $translator = new \Zend\I18n\Translator\Translator();
@@ -20,7 +28,7 @@ class IdNumber extends AbstractValidator
         $value = strtoupper($value);
         $this->setValue($value);
 
-        if (!preg_match("/^([0-9]{10})$/i", $value)) {
+        if (!preg_match("/^([0-9]{".$this->length."})$/i", $value)) {
             $this->error(self::INVALID);
             return false;
         }

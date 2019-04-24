@@ -36,16 +36,31 @@ class SignupSK2Form extends Form
      */
     private $entityManager;
 
+    /**
+     * @var string|null
+     */
+    private $serverInstance;
+
+    /**
+     * SignupSK2Form constructor.
+     * @param Translator $translator
+     * @param SignupSK2Fieldset $signupSK2Fieldset
+     * @param EntityManager $entityManager
+     * @param string|null $serverInstance
+     */
+
 
     public function __construct(
         Translator $translator,
         SignupSK2Fieldset $signupSK2Fieldset,
-        EntityManager $entityManager
+        EntityManager $entityManager,
+        $serverInstance
     ) {
         parent::__construct('registration-form-2');
 
         $this->translator = $translator;
         $this->entityManager = $entityManager;
+        $this->serverInstance = $serverInstance;
 
 
         $this->setAttribute('class', 'form-signup');
@@ -99,7 +114,7 @@ class SignupSK2Form extends Form
         ]);
 
         $this->add([
-            'required' => true,
+            'required' => $this->isRequired(),
             'name' => 'identity-front',
             'type' => 'Zend\Form\Element\File',
             'attributes' => [
@@ -109,7 +124,7 @@ class SignupSK2Form extends Form
         ]);
 
         $this->add([
-            'required' => true,
+            'required' => $this->isRequired(),
             'name' => 'identity-back',
             'type' => 'Zend\Form\Element\File',
             'attributes' => [
@@ -119,7 +134,7 @@ class SignupSK2Form extends Form
         ]);
 
         $this->add([
-            'required' => true,
+            'required' => $this->isRequired(),
             'name' => 'selfie',
             'type' => 'Zend\Form\Element\File',
             'attributes' => [
@@ -211,7 +226,7 @@ class SignupSK2Form extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'signature',
-                'required' => true,
+                'required' => $this->isRequired(),
                 'validators' => $fieldValidator
             ])
         );
@@ -234,7 +249,7 @@ class SignupSK2Form extends Form
         $inputFilter->add(
             $inputFactory->createInput([
             'name' => 'identity-front',
-            'required' => true,
+            'required' => $this->isRequired(),
             'validators' => $fieldValidator
             ])
         );
@@ -242,7 +257,7 @@ class SignupSK2Form extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'identity-back',
-                'required' => true,
+                'required' => $this->isRequired(),
                 'validators' => $fieldValidator
             ])
         );
@@ -250,12 +265,20 @@ class SignupSK2Form extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'selfie',
-                'required' => true,
+                'required' => $this->isRequired(),
                 'validators' => $fieldValidator
             ])
         );
         //$this->setInputFilter($inputFilter);
         return $inputFilter;
+    }
+
+    private function isRequired(){
+        if(!is_null($this->serverInstance) && $this->serverInstance == "nl_NL"){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }

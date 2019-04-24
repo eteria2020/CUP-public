@@ -27,6 +27,6 @@ class SignupSK2FormFactory implements FactoryInterface
 
         $signupSK2Fieldset = new SignupSK2Fieldset( $translator, $hydrator, $customersService, $countriesService, $provincesService, $serverInstance);
 
-        return new SignupSK2Form($translator, $signupSK2Fieldset, $entityManager);
+        return new SignupSK2Form($translator, $signupSK2Fieldset, $entityManager, $serverInstance);
     }
 }
