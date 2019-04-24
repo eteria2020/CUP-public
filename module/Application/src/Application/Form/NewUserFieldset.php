@@ -140,7 +140,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                         ]
                     ],
                     [
-                        'name' => 'Application\Form\Validator\DisposableEmail'
+                        'name' => 'SharengoCore\Form\Validator\DisposableEmail'
                     ]
                 ]
             ],

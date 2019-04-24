@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-04-23 12:05+0200\n"
-"PO-Revision-Date: 2019-04-23 12:06+0200\n"
+"POT-Creation-Date: 2019-04-23 17:39+0200\n"
+"PO-Revision-Date: 2019-04-23 17:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: module/Application/src/Application\n"
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
+"X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 
 #: module/Application/config/module.config.php:2705
 #: module/Application/view/application/user-area/index.phtml:28
@@ -646,8 +647,8 @@ msgid ""
 "(reclami), 18 (penali), 20 (foro competente)."
 msgstr ""
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:165
-#: module/Application/src/Application/Form/NewUserFieldset.php:189
+#: module/Application/src/Application/Form/NewUserFieldset.php:168
+#: module/Application/src/Application/Form/NewUserFieldset.php:192
 msgid "Il dato è richiesto per procedere"
 msgstr ""
 
@@ -1003,10 +1004,6 @@ msgstr ""
 msgid "La patente non può essere scaduta"
 msgstr ""
 
-#: module/Application/src/Application/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "E-mailadres niet geaccepteerd"
-
 #: module/Application/src/Application/Form/Validator/DuplicateDriversLicense.php:26
 msgid "Esiste già un utente con la stessa patente"
 msgstr ""
@@ -1082,10 +1079,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr ""
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr ""
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr ""
 
@@ -1111,6 +1110,7 @@ msgid "La partita IVA non è valida"
 msgstr ""
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:18
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr ""
 
@@ -1156,6 +1156,97 @@ msgstr ""
 
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr "E-mailadres niet geaccepteerd"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "Si"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "No"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+#, fuzzy
+#| msgid "Username"
+msgid "Esterna"
+msgstr "GEBRUIKERSNAAM"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+msgid "Completata"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+msgid "Non Completata"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
+msgid "Codice promo non valido."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+msgid "Codice promo già associato a questo account."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+msgid "Codice fiscale, genere "
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
+msgid "Codice fiscale, data di nascita "
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
+msgid "Codice fiscale, sintassi incongruente."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
+msgid "Codice fiscale, sintassi errata."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
 msgstr ""
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28

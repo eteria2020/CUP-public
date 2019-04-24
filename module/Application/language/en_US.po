@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-04-23 12:02+0200\n"
-"PO-Revision-Date: 2019-04-23 12:05+0200\n"
+"POT-Creation-Date: 2019-04-23 17:38+0200\n"
+"PO-Revision-Date: 2019-04-23 17:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: module/Application/src/Application\n"
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
+"X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 
 #: module/Application/config/module.config.php:2705
 #: module/Application/view/application/user-area/index.phtml:28
@@ -668,8 +669,8 @@ msgstr ""
 "duration, renewal) , suspension, withdrawal, termination of the contract), 17 "
 "(complaints), 18 (penalties), 20 (jurisdiction)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:165
-#: module/Application/src/Application/Form/NewUserFieldset.php:189
+#: module/Application/src/Application/Form/NewUserFieldset.php:168
+#: module/Application/src/Application/Form/NewUserFieldset.php:192
 msgid "Il dato è richiesto per procedere"
 msgstr "The data is required to proceed"
 
@@ -1053,10 +1054,6 @@ msgstr "The date format is not correct"
 msgid "La patente non può essere scaduta"
 msgstr "The license can not be expired"
 
-#: module/Application/src/Application/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "Email address not accepted"
-
 #: module/Application/src/Application/Form/Validator/DuplicateDriversLicense.php:26
 msgid "Esiste già un utente con la stessa patente"
 msgstr "A user already exists with the same email address"
@@ -1132,10 +1129,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr "The tax code is not correct"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Fiscal Code not valid"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Age not allowed for driving"
 
@@ -1160,6 +1159,7 @@ msgid "La partita IVA non è valida"
 msgstr "The VAT number is invalid"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:18
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "ZIP code incorrect"
 
@@ -1208,6 +1208,119 @@ msgstr "You are already associated with this company"
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
 msgstr "You are already associated with another company"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr "Email address not accepted"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#, fuzzy
+#| msgid "Sig."
+msgid "Si"
+msgstr "Mr"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#, fuzzy
+#| msgid "Nome"
+msgid "No"
+msgstr "First Name"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+#, fuzzy
+#| msgid "Username"
+msgid "Esterna"
+msgstr "Username"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+#, fuzzy
+#| msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr "An application error has occurred. We apologize for the inconvenience"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+#, fuzzy
+#| msgid "Corse completate"
+msgid "Completata"
+msgstr "Completed trips"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+#, fuzzy
+#| msgid "Attivazione completata"
+msgid "Non Completata"
+msgstr "Activation completed"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice promo non valido."
+msgstr "Fiscal Code not valid"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#, fuzzy
+#| msgid "Sei già associato a questa azienda"
+msgid "Codice promo già associato a questo account."
+msgstr "You are already associated with this company"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#, fuzzy
+#| msgid "Codice fiscale"
+msgid "Codice fiscale, genere "
+msgstr "Fiscal Code"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
+#, fuzzy
+#| msgid "Codice Fiscale e Partita IVA"
+msgid "Codice fiscale, data di nascita "
+msgstr "Fiscal Code and VAT Number"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice fiscale, sintassi incongruente."
+msgstr "Fiscal Code not valid"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice fiscale, sintassi errata."
+msgstr "Fiscal Code not valid"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
+msgstr ""
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
