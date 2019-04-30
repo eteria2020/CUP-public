@@ -9,13 +9,12 @@ $(function () {
                 birthProvinceHidden = $("[type=hidden][name='user[birthProvince]'], [type=hidden][name='customer[birthProvince]']"),
                 birthTownSelect = $("select#birthTown"),
                 birthTownString = $("input#birthTown");
-        if(typeof server_instance === "undefined"){
-            var server_instance = "sk";
-        }
+
         if ($(this).val() !== server_instance) {
             birthProvince.val("EE");
-            birthProvince.prop("disabled", true);
             birthProvinceHidden.val("EE");
+            birthProvince.find('option').prop("disabled", true);
+            birthProvince.find('option[value="EE"]').prop("disabled", false);
             birthTownSelect.hide();
             birthTownString.show();
             birthTownString.prop("disabled", false);
@@ -31,6 +30,8 @@ $(function () {
             }
 
             birthProvince.prop("disabled", false);
+            birthProvince.find('option').prop("disabled", false);
+            birthProvince.find('option[value="EE"]').prop("disabled", true);
             birthProvinceHidden.val("");
             birthTownSelect.show();
             birthTownString.hide();
@@ -43,6 +44,8 @@ $(function () {
         $("#birthCountry").trigger("change", {
             birthTownValue: birthTownValue
         });
+    } else{
+        $("#birthCountry").trigger("change");
     }
 
     $("#birthProvince").change(function (event, params) {
