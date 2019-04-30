@@ -226,7 +226,7 @@ class SignupSK2Form extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'signature',
-                'required' => $this->isRequired(),
+                'required' => true,
                 'validators' => $fieldValidator
             ])
         );

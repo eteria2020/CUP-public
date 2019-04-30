@@ -1,6 +1,3 @@
-<script>
-    var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
-</script>
 <?php
 $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
@@ -11,12 +8,11 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 //$this->inlineScript()
 //    ->appendFile($this->basePath('js/driver-license-popup.js'));
-$this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'CompleteRegistration\');</script>');
-$this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversion\', {\'send_to\': \'AW-953520877/wYOdCOz65lwQ7aXWxgM\'});</script>');
 
 ?>
 
 <script>
+    var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>"
 </script>
 
@@ -509,7 +505,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                     </div>
                     <br>
                 </div>
-                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro"); ?></label><br>
+                <label><?= ($this->serverInstance["id"] == "nl_NL") ? $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida fronte e retro") : $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro"); ?></label><br>
 
                 <div style="visibility: hidden">
                     <?php
@@ -696,6 +692,8 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
             checkUploadSize(this);
         };
 
+        <?php if ($this->serverInstance["id"] != "nl_NL"){ ?>
+
         identityFront.onchange = function() {
             identityFrontSize = identityFront.files[0].size;
             checkUploadSize(this);
@@ -710,6 +708,8 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
             selfieSize = selfie.files[0].size;
             checkUploadSize(this);
         };
+
+        <?php } ?>
 
         totalSize = function() {
             return (driversLicenseFrontSize + driversLicenseBackSize + identityFrontSize + identityBackSize + selfieSize);
