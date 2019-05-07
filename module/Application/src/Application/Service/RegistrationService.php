@@ -676,7 +676,8 @@ final class RegistrationService
         $data['name'] = ($data['name'] == null || $data['name'] == '') ? $data['driverLicenseName'] : $data['name'];;
         $data['address'] = $data['address'].' '.$civico;
         $data['taxCode'] = strtoupper($data['taxCode']);
-        $data['driverLicenseCountry'] = $data['driverLicenseForeign'] == 'true' ? null : 'it';
+        //$data['driverLicenseCountry'] = $data['driverLicenseForeign'] == 'true' ? null : 'it';
+        $data['driverLicenseForeign'] = $data['driverLicenseCountry']=='it'?'false':'true';
         $chk = new Checker();
         if ($chk->isFormallyCorrect($data['taxCode'])){
             $birthYear = $chk->getYearBirth();

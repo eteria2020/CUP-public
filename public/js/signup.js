@@ -181,7 +181,7 @@ $(function () {
     $("#country").change(function (event, params) {
 
         var province = $("#province"),
-            provinceHidden = $("[type=hidden][name='user[province]'], [type=hidden][name='customer[province]']"),
+            provinceHidden = $("[type=hidden][name='user1[province]'], [type=hidden][name='customer[province]']"),
             townSelect = $("select#town"),
             townString = $("input#town"),
             zipCodeSelect = $("select#zipCode"),

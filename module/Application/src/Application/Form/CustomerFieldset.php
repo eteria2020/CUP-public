@@ -541,7 +541,10 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 ],
                 'validators' => [
                     [
-                        'name' => 'Application\Form\Validator\ZipCode'
+                        'name' => 'Application\Form\Validator\ZipCode',
+                        'options' => [
+                            'country' =>  new Container('country')
+                        ]
                     ]
                 ]
             ],

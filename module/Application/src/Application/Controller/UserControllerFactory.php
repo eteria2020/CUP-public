@@ -15,6 +15,7 @@ class UserControllerfactory implements FactoryInterface
     {
         $form1 = $serviceLocator->getServiceLocator()->get('RegistrationForm');
         $form2 = $serviceLocator->getServiceLocator()->get('RegistrationForm2');
+        $mobileForm = $serviceLocator->getServiceLocator()->get('MobileForm');
         $newForm = $serviceLocator->getServiceLocator()->get('NewRegistrationForm');
         $newForm2 = $serviceLocator->getServiceLocator()->get('NewRegistrationForm2');
         $formSK2 = $serviceLocator->getServiceLocator()->get('SignupSK2Form');
@@ -43,6 +44,7 @@ class UserControllerfactory implements FactoryInterface
         return new UserController(
             $form1,
             $form2,
+            $mobileForm,
             $newForm,
             $newForm2,
             $formSK2,

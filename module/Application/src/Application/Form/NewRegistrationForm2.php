@@ -13,6 +13,9 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\Validator\File\MimeType;
 //use Zend\Stdlib\Hydrator\HydratorInterface;
 
+use SharengoCore\Service\CountriesService;
+use SharengoCore\Service\ProvincesService;
+
 class NewRegistrationForm2 extends Form
 {
     const SESSION_KEY = 'formValidation';
@@ -27,6 +30,16 @@ class NewRegistrationForm2 extends Form
     private $translator;
 
     /**
+     * @var CountriesService
+     */
+    private $countriesService;
+
+    /**
+     * @var ProvincesService
+     */
+    private $provincesService;
+
+    /**
      * @var $container
      */
     private $container;
@@ -39,6 +52,8 @@ class NewRegistrationForm2 extends Form
 
     public function __construct(
         Translator $translator,
+        CountriesService $countriesService,
+        ProvincesService $provincesService,
         PromoCodeFieldset $promoCodeFieldset,
         NewUserFieldset2 $newUserFieldset2,
         EntityManager $entityManager
@@ -47,7 +62,8 @@ class NewRegistrationForm2 extends Form
 
         $this->translator = $translator;
         $this->entityManager = $entityManager;
-
+        $this->countriesService = $countriesService;
+        $this->provincesService = $provincesService;
 
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
@@ -186,6 +202,8 @@ class NewRegistrationForm2 extends Form
 
         $inputFactory = new InputFactory();
 
+        $isDriverLicenseForeign = $this->get('user1')->get('driverLicenseCountry')->getValue() == 'it' ? false : true;
+
         $fieldValidator = [
             [
                 'name' => 'Callback',
@@ -197,7 +215,7 @@ class NewRegistrationForm2 extends Form
             ]
         ];
 
-        if($this->get('user1')->get('driverLicenseForeign')->getValue() == 'true'){
+        if($isDriverLicenseForeign){
             $fieldValidator = [
                 [
                     'name' => 'File/MimeType',
@@ -216,14 +234,14 @@ class NewRegistrationForm2 extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'signature',
-                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'required' => $isDriverLicenseForeign,
                 'validators' => [
                     [
                         'name' => 'Identical',
                         'options' => [
-                            'token' => $this->get('user1')->get('driverLicenseForeign')->getValue(),
+                            'token' => $isDriverLicenseForeign ? 'true':'false',
                             'messages' => [
-                                Identical::NOT_SAME => $this->translator->translate("E\' necessario confermare e sottoscrivere la dichiarazione"),
+                                Identical::NOT_SAME => $this->translator->translate("E' necessario confermare e sottoscrivere la dichiarazione"),
                             ],
                         ],
                     ],
@@ -233,14 +251,14 @@ class NewRegistrationForm2 extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'drivers-license-front',
-                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'required' => $isDriverLicenseForeign,
                 'validators' => $fieldValidator
             ])
         );
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'drivers-license-back',
-                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'required' => $isDriverLicenseForeign,
                 'validators' => $fieldValidator
             ])
         );
@@ -248,7 +266,7 @@ class NewRegistrationForm2 extends Form
         $inputFilter->add(
             $inputFactory->createInput([
             'name' => 'identity-front',
-            'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+            'required' => $isDriverLicenseForeign,
             'validators' => $fieldValidator
             ])
         );
@@ -256,7 +274,7 @@ class NewRegistrationForm2 extends Form
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'identity-back',
-                'required' => $this->get('user1')->get('driverLicenseForeign')->getValue() == 'true',
+                'required' => $isDriverLicenseForeign,
                 'validators' => $fieldValidator
             ])
         );
