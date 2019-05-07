@@ -5,7 +5,8 @@ namespace Application\Form;
 use SharengoCore\Entity\Customers;
 
 use SharengoCore\Service\CustomersService;
-
+use SharengoCore\Service\CountriesService;
+use SharengoCore\Service\ProvincesService;
 
 use Zend\Form\Fieldset;
 use Zend\Mvc\I18n\Translator;
@@ -29,13 +30,35 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
      */
     private $customersService;
 
+    /**
+     * @var CountriesService
+     */
+    private $countriesService;
+
+    /**
+     * @var ProvincesService
+     */
+    private $provincesService;
+
+    /**
+     * NewUserFieldset2 constructor.
+     * @param Translator $translator
+     * @param HydratorInterface $hydrator
+     * @param CustomersService $customersService
+     * @param CountriesService $countriesService
+     * @param ProvincesService $provincesService
+     */
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
-        CustomersService $customersService) {
+        CustomersService $customersService,
+        CountriesService $countriesService,
+        ProvincesService $provincesService) {
 
         $this->translator = $translator;
         $this->customersService = $customersService;
+        $this->countriesService = $countriesService;
+        $this->provincesService = $provincesService;
 
         parent::__construct('user1', [
             'use_as_base_fieldset' => true
@@ -102,6 +125,35 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             ],
             'options' => [
                 'label' => $this->translator->translate('Cognome')
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'country',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'country',
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Stato di residenza'),
+                'value_options' => $this->countriesService->getAllCountries()
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'province',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'province',
+                'placeholder' => $translator->translate('EE = estero'),
+                'class' => 'required',
+                'maxlength' => 2
+            ],
+            'options' => [
+                'label' => $translator->translate('Provincia di residenza (EE = estero)'),
+                'value_options' => $this->provincesService->getAllProvinces(),
+                'use_hidden_element' => true
             ]
         ]);
 
@@ -253,6 +305,19 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
         ]);
 
         $this->add([
+            'name' => 'driverLicenseCountry',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'driverLicenseCountry',
+                'class' => 'required'
+            ],
+            'options' => [
+                'label' => $translator->translate('Rilasciata da (nazione)'),
+                'value_options' => $this->countriesService->getAllCountries(),
+            ]
+        ]);
+
+        $this->add([
             'name' => 'vat',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
@@ -262,19 +327,6 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
             ],
             'options' => [
                 'label' => $translator->translate('Partita IVA'),
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'driverLicenseForeign',
-            'type' => 'Zend\Form\Element\Checkbox',
-            'attributes' => [
-                'id' => 'driverLicenseForeign'
-            ],
-            'options' => [
-                'use_hidden_element' => true,
-                'checked_value' => 'true',
-                'unchecked_value' => 'false'
             ]
         ]);
 
@@ -387,6 +439,17 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                     ]
                 ]
             ],
+            'country' => [
+                'required' => true
+            ],
+            'province' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
+            ],
             'address' => [
                 'required' => true,
                 'filters' => [
@@ -412,7 +475,16 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                 ],
                 'validators' => [
                     [
-                        'name' => 'Application\Form\Validator\ZipCode'
+                        'name' => 'not_empty',
+                        'options' => [
+                            'message' =>  $this->translator->translate('Il Codice Avviamento Postale (CAP) non può essere vuoto')
+                        ],
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\ZipCode',
+                        'options' => [
+                            'country' =>  new Container('country')
+                        ]
                     ]
                 ]
             ],
@@ -422,6 +494,14 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                     [
                         'name' => 'StringTrim'
                     ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'not_empty',
+                        'options' => [
+                            'message' =>  $this->translator->translate('Il dato è richiesto e non può essere vuoto')
+                        ],
+                    ],
                 ]
             ],
             'taxCode' => [
@@ -545,6 +625,9 @@ class NewUserFieldset2 extends Fieldset implements InputFilterProviderInterface 
                         'name' => 'Application\Form\Validator\DateFromToday'
                     ]
                 ]
+            ],
+            'driverLicenseCountry' => [
+                'required' => true,
             ],
             'vat' => [
                 'required' => false,

@@ -45,6 +45,7 @@ use SMSGatewayMe\Client\Model\SendMessageRequest;
 use Application\Exception\ProfilingPlatformException;
 use Application\Form\NewRegistrationForm;
 use Application\Form\NewRegistrationForm2;
+use Application\Form\MobileForm;
 use Application\Form\OptionalRegistrationForm;
 use Application\Form\RegistrationForm;
 use Application\Form\RegistrationForm2;
@@ -66,6 +67,11 @@ class UserController extends AbstractActionController {
      * @var \Application\Form\RegistrationForm2
      */
     private $form2;
+
+    /**
+     * @var \Application\Form\MobileForm
+     */
+    private $mobileForm;
 
     /**
      * @var \Application\Form\NewRegistrationForm
@@ -210,6 +216,7 @@ class UserController extends AbstractActionController {
      * UserController constructor.
      * @param RegistrationForm $form1
      * @param RegistrationForm2 $form2
+     * @param MobileForm $mobileForm
      * @param NewRegistrationForm $newForm
      * @param NewRegistrationForm2 $newForm2
      * @param SignupSK2Form $formSK2
@@ -236,6 +243,7 @@ class UserController extends AbstractActionController {
     public function __construct(
         RegistrationForm $form1,
         RegistrationForm2 $form2,
+        MobileForm $mobileForm,
         NewRegistrationForm $newForm,
         NewRegistrationForm2 $newForm2,
         SignupSK2Form $formSK2,
@@ -261,6 +269,7 @@ class UserController extends AbstractActionController {
     ) {
         $this->form1 = $form1;
         $this->form2 = $form2;
+        $this->mobileForm = $mobileForm;
         $this->newForm = $newForm;
         $this->newForm2 = $newForm2;
         $this->formSK2 = $formSK2;
@@ -1332,9 +1341,13 @@ class UserController extends AbstractActionController {
             );
 
             $this->newForm2->setData($formData);
+
+            $formData['user1']['driverLicenseForeign'] =  $formData['user1']['driverLicenseCountry'] == 'it' ? 'false' : 'true';
+
             if ($this->newForm2->isValid()) {
                 return $this->newConclude2($this->newForm2, $formData['promocode'], $formData['user1']['civico'], $customerSession, $this->handleForeignUploadFiles($formData), $mobile);
             } else {
+                //var_dump($this->newForm2->getMessages());
                 $email = '';
                 if ($customerSession instanceof Customers){
                     $email = $customerSession->getEmail();
@@ -1370,6 +1383,7 @@ class UserController extends AbstractActionController {
 
         return new ViewModel([
             'form' => $newForm2,
+            'mobileForm' => $this->mobileForm,
             'email' => $email,
             'customerEmail' => $customerEmail,
             'mobile' => $mobile,
