@@ -309,7 +309,9 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
                         echo $this->formElement($signature);
                         ?>
                         <label style="margin-right: 5px;"><?= $this->translate("Letto, confermato e sottoscritto"); ?></label>
-                        <? echo $this->formElementErrors($signature, ['class' => 'errors']); ?>
+                        <?php
+                        echo $this->formElementErrors($signature, ['class' => 'errors']);
+                        ?>
                     </div>
                     <br>
                     <div>
@@ -507,7 +509,7 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     </div>
     <!-- module-modal -->
 
-    <?
+    <?php
     $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
     $this->inlineScript()->appendScript(
         '$(document).ready(function() {
@@ -531,7 +533,8 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     );
     ?>
     <script>
-        <? function parse_size($size) {
+        <?php
+        function parse_size($size) {
             $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
             $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
             if ($unit) {
@@ -617,25 +620,25 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
             }
         }
 
-        <? // in case driver license' name and surname are different from tax code
+        <?php // in case driver license' name and surname are different from tax code
         if($this->formElementErrors($this->form->get('user1')->get('name')) != ""){?>
             $('#coherenceTaxCodeName').show();
-        <?} else { ?>
+        <?php } else { ?>
             $('#coherenceTaxCodeName').hide();
-        <?} ?>
+        <?php } ?>
 
-        <? // in case driver license' name and surname are different from tax code
+        <?php // in case driver license' name and surname are different from tax code
         if($this->formElementErrors($this->form->get('user1')->get('surname')) != ""){?>
         $('#coherenceTaxCodeSurname').show();
-        <?} else { ?>
+        <?php } else { ?>
         $('#coherenceTaxCodeSurname').hide();
-        <?} ?>
+        <?php } ?>
 
-        <? // in case taxCode is already present
+        <?php // in case taxCode is already present
         if($this->formElementErrors($this->form->get('user1')->get('taxCode')) == "<ul><li>".$this->translate("Esiste già un utente con lo stesso codice fiscale")."</li></ul>"){?>
             overlay = $('.overlay-signup');
             overlay.css("visibility", "visible");
-        <?} ?>
+        <?php } ?>
 
         $('#driverLicenseName').blur(function(){
             $('#fName').text($('#driverLicenseName').val());
