@@ -184,7 +184,7 @@ $this->headLink()
 </div>
 <!-- main -->
 
-<?
+<?php
 $this->inlineScript()->appendScript(
     '$(document).ready(function() {
 $( ".datepicker-date" ).datepicker({
@@ -204,7 +204,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
         overlay = $('#sng-overlay');
 
-        var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
+        var now = new Date(<?php echo date("Y, n - 1, d, H, i, s"); ?> );
         var dateStart = new Date(2018, 1, 11, 7, 0, 0, 0);
         var dateEnd = new Date(2018, 1, 11, 14, 0, 0, 0);
 
@@ -251,7 +251,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     var apiGeolocationSuccess = function(position) {
         var arr = [];
-        <?
+        <?php
             $arr = "";
             foreach($this->fleets as $f){
                 echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
@@ -262,11 +262,11 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
         $('select#fleet>option:eq('+i+')').attr('selected', true);
     };
 
-    <? // in case taxCode is already present
+    <?php // in case taxCode is already present
     if($this->formElementErrors($this->form->get('user')->get('email')) == "<ul><li>".$this->translate("Esiste già un utente con lo stesso indirizzo email")."</li></ul>"){?>
     overlay = $('.overlay-signup');
     overlay.css("visibility", "visible");
-    <?} ?>
+    <?php } ?>
 
     var tryAPIGeolocation = function() {
         jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
