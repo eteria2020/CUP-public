@@ -1,5 +1,5 @@
 <script>
-    var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
+    var server_instance = "<?= !is_null($this->serverInstance) ? substr($this->serverInstance,0,2) : 'it' ?>";
 </script>
 <?php
 $this->headScript()
