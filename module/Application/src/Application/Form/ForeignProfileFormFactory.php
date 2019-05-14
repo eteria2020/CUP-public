@@ -23,6 +23,9 @@ class ForeignProfileFormFactory implements FactoryInterface
         $provincesService = $serviceLocator->get('SharengoCore\Service\ProvincesService');
         $userService = $serviceLocator->get('zfcuser_auth_service');
         $fleetService = $serviceLocator->get('SharengoCore\Service\FleetService');
+        $config = $serviceLocator->get('Config');
+        $serverInstance = isset($config["serverInstance"]["id"]) ? $config["serverInstance"]["id"] : null;
+
         $customerFieldset = new ForeignCustomerFieldset(
             $translator,
             $hydrator,
@@ -30,7 +33,8 @@ class ForeignProfileFormFactory implements FactoryInterface
             $customersService,
             $userService,
             $provincesService,
-            $fleetService
+            $fleetService,
+            $serverInstance
         );
 
         return new ForeignProfileForm($customerFieldset, $entityManager);

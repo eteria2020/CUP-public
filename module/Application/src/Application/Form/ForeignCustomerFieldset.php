@@ -32,6 +32,11 @@ class ForeignCustomerFieldset extends Fieldset implements InputFilterProviderInt
      */
     private $fleetService;
 
+    /**
+     * @var ServerInstance
+     */
+    private $serverInstance;
+
     public function __construct(
         Translator $translator,
         HydratorInterface $hydrator,
@@ -39,12 +44,14 @@ class ForeignCustomerFieldset extends Fieldset implements InputFilterProviderInt
         CustomersService $customersService,
         AuthenticationService $userService,
         ProvincesService $provincesService,
-        FleetService $fleetService
+        FleetService $fleetService,
+        $serverInstance
     ) {
         $this->customersService = $customersService;
         $this->userService = $userService;
         $this->provincesService = $provincesService;
         $this->fleetService = $fleetService;
+        $this->serverInstance = $serverInstance;
 
         parent::__construct('customer', [
             'use_as_base_fieldset' => true
@@ -402,7 +409,10 @@ class ForeignCustomerFieldset extends Fieldset implements InputFilterProviderInt
                 ],
                 'validators' => [
                     [
-                        'name' => 'Application\Form\Validator\ZipCode'
+                        'name' => 'Application\Form\Validator\ZipCode',
+                        'options' => [
+                            'country' =>  new Container('country')
+                        ]
                     ]
                 ]
             ],
@@ -424,6 +434,9 @@ class ForeignCustomerFieldset extends Fieldset implements InputFilterProviderInt
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\IdNumber',
+                        'options' => [
+                            'length' => $this->taxCodeLength(),
+                        ],
                         'break_chain_on_failure' => true
                     ],
                     [
@@ -447,5 +460,19 @@ class ForeignCustomerFieldset extends Fieldset implements InputFilterProviderInt
                 ]
             ],
         ];
+    }
+
+    /**
+     * Return the max length of IdNumber
+     *
+     * @return int
+     */
+    private function taxCodeLength(){
+        $length = 10;
+        if (!is_null($this->serverInstance) && $this->serverInstance == "nl_NL"){
+            $length = 9;
+        }
+
+        return $length;
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Application\Controller;
 
-//use SharengoCore\Entity\CustomersBonus;
-//use SharengoCore\Entity\PromoCodes;
 use Zend\Mvc\I18n\Translator;
 use SharengoCore\Entity\CustomerDeactivation;
 use SharengoCore\Service\ExtraPaymentsService;
@@ -15,8 +13,6 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
-//use Zend\EventManager\EventManager;
-//use Zend\Stdlib\Parameters;
 use Zend\Session\Container;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
@@ -33,7 +29,6 @@ use SharengoCore\Service\CustomerDeactivationService;
 
 class UserAreaController extends AbstractActionController {
 
-    const SUCCESS_MESSAGE = 'Operazione eseguita con successo!';
 
     /**
      * @var CustomersService
@@ -418,7 +413,7 @@ class UserAreaController extends AbstractActionController {
             //update the data in the view
             $this->customer = $customer;
 
-            $this->flashMessenger()->addSuccessMessage(self::SUCCESS_MESSAGE);
+            $this->flashMessenger()->addSuccessMessage($this->translator->translate('Operazione completata con successo!'));
 
             return true;
         }
