@@ -11,5 +11,5 @@ WHERE queued < (now() - interval'$time');
 DELETE FROM reservations_archive
 WHERE ts < (now() - interval'$time');
 DELETE FROM customer_locations
-WHERE timestamp < (now() - interval '1 month');
+WHERE timestamp < (now() - interval '10 month');
 THE_END
