@@ -35,6 +35,7 @@
         "beberlei/DoctrineExtensions": "^1.0",
         "doctrine/doctrine-mongo-odm-module": "0.9.1",
         "mrclay/minify": "^2.3",
+        "natxet/CssMin": "^3.0",
         "natxet/cssmin": "^3.0",
         "cup-web/core-business": "dev-master",
         "cup-web/public-business-module": "dev-master",
