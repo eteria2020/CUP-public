@@ -2,6 +2,21 @@
     $this->headScript()
         ->appendFile($this->basePath('js/jquery.redirect.js'))
         ->appendFile($this->basePath('js/reprofiling-rates.js'));
+
+    $discount = (100 - $this->customer->getDiscountRate()) / 100;
+
+    $motionCostPerMinuteDiscount = number_format($this->faresArray['MotionCostPerMinute'] / 100 * $discount, 2, ',', '.');
+    $motionCostPerMinute = number_format($this->faresArray['MotionCostPerMinute'] / 100, 2, ',', '.');
+
+    if(isset($this->faresArray['MotionCostHourly'])) {
+        $motionCostHourlyDiscount = number_format($this->faresArray['MotionCostHourly'] / 100 * $discount, 2, ',', '.');
+        $motionCostHourly = number_format($this->faresArray['MotionCostHourly'] / 100, 2, ',', '.');
+    }
+
+    if(isset($this->faresArray['MotionCostDaily'])) {
+        $motionCostDailyDiscount = number_format($this->faresArray['MotionCostDaily'] / 100 * $discount, 2, ',', '.');
+        $motionCostDaily = number_format($this->faresArray['MotionCostDaily'] / 100, 2, ',', '.');
+    }
 ?>
 
 <!-- main -->
@@ -48,14 +63,26 @@
                                 <tbody>
                                     <tr>
                                         <td><?= $this->translate('Tariffa base della corsa') ?></td>
-                                        <td style="text-align: right">&euro; <?= number_format($this->translate('0.28') * (100 - $this->customer->getDiscountRate()) / 100, 2, ',', '.') ?></td>
-                                        <td style="text-align: right">&euro; <?= $this->translate('0,28') ?></td>
+                                        <td style="text-align: right">&euro; <?= $motionCostPerMinuteDiscount ?></td>
+                                        <td style="text-align: right">&euro; <?= $motionCostPerMinute ?></td>
                                     </tr>
+
+                                    <?php if(isset($this->faresArray['MotionCostHourly'])) {?>
+                                    <tr>
+                                        <td><?= $this->translate('Tariffa oraria') ?></td>
+                                        <td style="text-align: right">&euro;  <?= $motionCostHourlyDiscount ?></td>
+                                        <td style="text-align: right">&euro;  <?= $motionCostHourly ?></td>
+                                    </tr>
+                                    <?php }?>
+
+                                    <?php if(isset($this->faresArray['MotionCostDaily'])) {?>
                                     <tr>
                                         <td><?= $this->translate('Tariffa giornaliera') ?></td>
-                                        <td style="text-align: right">&euro;  <?= $this->translate('50,00') ?></td>
-                                        <td style="text-align: right">&euro;  <?= $this->translate('50,00') ?></td>
+                                        <td style="text-align: right">&euro;  <?= $motionCostDailyDiscount ?></td>
+                                        <td style="text-align: right">&euro;  <?= $motionCostDaily ?></td>
                                     </tr>
+                                    <?php }?>
+
                                     <tr>
                                         <td><?= $this->translate('Tariffa di prenotazione') ?></td>
                                         <td style="text-align: right">&euro; 0,00</td>

@@ -17,15 +17,14 @@ use Zend\Session\Container;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Entity\Customers;
 use SharengoCore\Service\InvoicesService;
-//use SharengoCore\Entity\Invoices;
 use SharengoCore\Service\TripPaymentsService;
-//use SharengoCore\Exception\BonusAssignmentException;
 use SharengoCore\Service\DisableContractService;
 use Cartasi\Service\CartasiPaymentsService;
 use Cartasi\Service\CartasiContractsService;
 use SharengoCore\Service\PaymentScriptRunsService;
 use SharengoCore\Service\PaymentsService;
 use SharengoCore\Service\CustomerDeactivationService;
+use SharengoCore\Service\FaresService;
 
 class UserAreaController extends AbstractActionController {
 
@@ -154,8 +153,13 @@ class UserAreaController extends AbstractActionController {
      */
     private $serverInstance = "";
 
+    /**
+     * @var FaresService
+     */
+    private $faresService;
 
     /**
+     * UserAreaController constructor.
      * @param CustomersService $customerService
      * @param TripsService $tripsService
      * @param Translator $translator
@@ -170,12 +174,13 @@ class UserAreaController extends AbstractActionController {
      * @param CartasiPaymentsService $cartasiPaymentsService
      * @param TripPaymentsService $tripPaymentsService
      * @param CartasiContractsService $cartasiContractsService
-     * @param string $bannerJsonpUrl
+     * @param $bannerJsonpUrl
      * @param DisableContractService $disableContractService
      * @param PaymentScriptRunsService $paymentScriptRunService
      * @param PaymentsService $paymentsService
      * @param CustomerDeactivationService $customerDeactivationService
      * @param ExtraPaymentsService $extraPaymentsService
+     * @param FaresService $faresService
      * @param array $config
      */
     public function __construct(
@@ -199,6 +204,7 @@ class UserAreaController extends AbstractActionController {
         PaymentsService $paymentsService,
         CustomerDeactivationService $customerDeactivationService,
         ExtraPaymentsService $extraPaymentsService,
+        FaresService $faresService,
         array $config
     ) {
         $this->customerService = $customerService;
@@ -222,6 +228,7 @@ class UserAreaController extends AbstractActionController {
         $this->paymentsService = $paymentsService;
         $this->customerDeactivationService = $customerDeactivationService;
         $this->extraPaymentsService = $extraPaymentsService;
+        $this->faresService = $faresService;
         $this->config = $config;
 
         if(isset($this->config['serverInstance'])) {
@@ -430,6 +437,7 @@ class UserAreaController extends AbstractActionController {
 
     public function ratesAction() {
         //if there is mobile param the layout changes
+
         $mobile = $this->params()->fromRoute('mobile');
         if ($mobile) {
             $this->layout('layout/map');
@@ -441,7 +449,8 @@ class UserAreaController extends AbstractActionController {
         }
 
         return new ViewModel([
-            'customer' => $this->customer
+            'customer' => $this->customer,
+            'faresArray' => $this->getFaresArray()
         ]);
     }
 
@@ -1013,4 +1022,21 @@ class UserAreaController extends AbstractActionController {
         return $result;
     }
 
+    private function getFaresArray() {
+        $result = [];
+
+        $fares = $this->faresService->getFare();
+        $result["MotionCostPerMinute"] = $fares->getMotionCostPerMinute();
+        $result["ParkCostPerMinute"] = $fares->getParkCostPerMinute();
+
+        if(isset($fares->getCostSteps()['60'])) {
+            $result["MotionCostHourly"] = $fares->getCostSteps()['60'];
+        }
+
+        if(isset($fares->getCostSteps()['1440'])) {
+            $result["MotionCostDaily"] = $fares->getCostSteps()['1440'];
+        }
+
+        return $result;
+    }
 }
