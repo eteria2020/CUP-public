@@ -32,6 +32,7 @@ class UserAreaControllerFactory implements FactoryInterface {
         $paymentService = $sharedLocator->get('SharengoCore\Service\PaymentsService');
         $customerDeactivationService = $sharedLocator->get('SharengoCore\Service\CustomerDeactivationService');
         $extraPaymentsService = $sharedLocator->get('SharengoCore\Service\ExtraPaymentsService');
+        $faresService = $sharedLocator->get('SharengoCore\Service\FaresService');
 
         return new UserAreaController(
             $I_customerService,
@@ -54,6 +55,7 @@ class UserAreaControllerFactory implements FactoryInterface {
             $paymentService,
             $customerDeactivationService,
             $extraPaymentsService,
+            $faresService,
             $config
         );
     }

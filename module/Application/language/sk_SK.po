@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-14 13:01+0200\n"
-"PO-Revision-Date: 2019-05-14 15:44+0200\n"
+"POT-Creation-Date: 2019-05-15 15:42+0200\n"
+"PO-Revision-Date: 2019-05-15 15:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -39,7 +39,7 @@ msgid "PIN"
 msgstr "PIN"
 
 #: module/Application/config/module.config.php:2720
-#: module/Application/view/application/user-area/rates.phtml:22
+#: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Sadzby"
 
@@ -96,56 +96,56 @@ msgstr "Nedostatok kyslíkových bodov"
 msgid "Pacchetto non acquistabile"
 msgstr "Uvítací balíček"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:269
-#: module/Application/src/Application/Controller/UserAreaController.php:361
+#: module/Application/src/Application/Controller/UserAreaController.php:276
+#: module/Application/src/Application/Controller/UserAreaController.php:368
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Ak chceš znova zmeniť svoje údaje, budeš musieť počkať 10 minút."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:416
-#: module/Application/src/Application/Controller/UserAreaController.php:547
-#: module/Application/src/Application/Controller/UserAreaController.php:609
+#: module/Application/src/Application/Controller/UserAreaController.php:423
+#: module/Application/src/Application/Controller/UserAreaController.php:556
+#: module/Application/src/Application/Controller/UserAreaController.php:618
 msgid "Operazione completata con successo!"
 msgstr "Operácia bola dokončená úspešne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:549
-#: module/Application/src/Application/Controller/UserAreaController.php:611
+#: module/Application/src/Application/Controller/UserAreaController.php:558
+#: module/Application/src/Application/Controller/UserAreaController.php:620
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:727
-#: module/Application/src/Application/Controller/UserAreaController.php:767
+#: module/Application/src/Application/Controller/UserAreaController.php:736
+#: module/Application/src/Application/Controller/UserAreaController.php:776
 msgid "Pagamento completato con successo"
 msgstr "Platba bola úspešne dokončená"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:729
-#: module/Application/src/Application/Controller/UserAreaController.php:769
+#: module/Application/src/Application/Controller/UserAreaController.php:738
+#: module/Application/src/Application/Controller/UserAreaController.php:778
 msgid "Pagamento fallito"
 msgstr "Platba zlyhala"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:738
-#: module/Application/src/Application/Controller/UserAreaController.php:778
+#: module/Application/src/Application/Controller/UserAreaController.php:747
+#: module/Application/src/Application/Controller/UserAreaController.php:787
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Platba bola dočasne pozastavená. Skús to znova neskôr."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:807
+#: module/Application/src/Application/Controller/UserAreaController.php:816
 msgid "Contratto disabilitato correttamente!"
 msgstr "Zmluva bola zablokovaná správne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:809
-#: module/Application/src/Application/Controller/UserAreaController.php:812
-#: module/Application/src/Application/Controller/UserAreaController.php:815
+#: module/Application/src/Application/Controller/UserAreaController.php:818
+#: module/Application/src/Application/Controller/UserAreaController.php:821
+#: module/Application/src/Application/Controller/UserAreaController.php:824
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Chyba pri zablkovaní zmluvy"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:851
+#: module/Application/src/Application/Controller/UserAreaController.php:860
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný, pretože vypršala platnosť vloženej karty, zadaj nové údaje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:855
+#: module/Application/src/Application/Controller/UserAreaController.php:864
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -153,7 +153,7 @@ msgstr ""
 "Tvoj účet je zablokovaný. Počkaj kým Tvoj profil verifikujeme. O aktivácii "
 "účtu dostaneš potvrdzovací e-mail."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:860
+#: module/Application/src/Application/Controller/UserAreaController.php:869
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný z dôvodu vypršania platnosti vodičského preukazu, zadaj nové "
@@ -3142,15 +3142,15 @@ msgstr ""
 msgid "Indirizzo di residenza"
 msgstr "Adresa trvalého pobytu"
 
-#: module/Application/view/application/user-area/rates.phtml:35
+#: module/Application/view/application/user-area/rates.phtml:50
 msgid "Il tuo piano tariffario personale"
 msgstr "Tvoj osobný plán sadzieb"
 
-#: module/Application/view/application/user-area/rates.phtml:44
+#: module/Application/view/application/user-area/rates.phtml:59
 msgid "Le tue tariffe"
 msgstr "Tvoje sadzby"
 
-#: module/Application/view/application/user-area/rates.phtml:45
+#: module/Application/view/application/user-area/rates.phtml:60
 msgid "Invece di"
 msgstr "Namiesto"
 
@@ -3158,35 +3158,27 @@ msgstr "Namiesto"
 # Invece di tariffa base della corsa?
 # In questo caso la traduzione giusta sarebbe
 # základnej sazdby jazdy
-#: module/Application/view/application/user-area/rates.phtml:50
+#: module/Application/view/application/user-area/rates.phtml:65
 msgid "Tariffa base della corsa"
 msgstr "Základná sadzba jazdy"
 
-#: module/Application/view/application/user-area/rates.phtml:51
-msgid "0.28"
-msgstr "0.16"
+#: module/Application/view/application/user-area/rates.phtml:72
+msgid "Tariffa oraria"
+msgstr "Denná sadzba"
 
-#: module/Application/view/application/user-area/rates.phtml:52
-msgid "0,28"
-msgstr "0,16"
-
-#: module/Application/view/application/user-area/rates.phtml:55
+#: module/Application/view/application/user-area/rates.phtml:80
 msgid "Tariffa giornaliera"
 msgstr "Denná sadzba"
 
-#: module/Application/view/application/user-area/rates.phtml:56
-msgid "50,00"
-msgstr "30,00"
-
-#: module/Application/view/application/user-area/rates.phtml:60
+#: module/Application/view/application/user-area/rates.phtml:87
 msgid "Tariffa di prenotazione"
 msgstr "Sazdba za rezerváciu"
 
-#: module/Application/view/application/user-area/rates.phtml:69
+#: module/Application/view/application/user-area/rates.phtml:96
 msgid "Il giorno del tuo compleanno ricevi 30 minuti bonus (per una settimana)"
 msgstr "V deň tvojich narodenín dostaneš 30 bonusových minút (na týždeň)"
 
-#: module/Application/view/application/user-area/rates.phtml:71
+#: module/Application/view/application/user-area/rates.phtml:98
 msgid ""
 "Di notte, dall’1 alle 5, le donne possono acquistare un Women Night Voucher "
 "(30 minuti a 3 &euro;), per tornare a casa in piena sicurezza pagando 0,10 "
@@ -6163,6 +6155,15 @@ msgstr ""
 "ktoré majú byť uhradenée a neboli uhradené dnes, znamená to že došlo k "
 "problémom na tvojej kreditnej karte a že tvoj účet je dočasne pozastavený. "
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
+
+#~ msgid "0.28"
+#~ msgstr "0.16"
+
+#~ msgid "0,28"
+#~ msgstr "0,16"
+
+#~ msgid "50,00"
+#~ msgstr "30,00"
 
 #~ msgid "ho una patente estera"
 #~ msgstr "mám zahraničný vodičský preukaz"

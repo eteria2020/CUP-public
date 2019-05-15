@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-14 12:59+0200\n"
-"PO-Revision-Date: 2019-05-14 12:59+0200\n"
+"POT-Creation-Date: 2019-05-15 15:39+0200\n"
+"PO-Revision-Date: 2019-05-15 15:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -39,7 +39,7 @@ msgid "PIN"
 msgstr "PIN"
 
 #: module/Application/config/module.config.php:2720
-#: module/Application/view/application/user-area/rates.phtml:22
+#: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
@@ -97,56 +97,56 @@ msgstr "Insufficient oxygen points"
 msgid "Pacchetto non acquistabile"
 msgstr "Package not buyable"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:269
-#: module/Application/src/Application/Controller/UserAreaController.php:361
+#: module/Application/src/Application/Controller/UserAreaController.php:276
+#: module/Application/src/Application/Controller/UserAreaController.php:368
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "To change your details again you will have to wait 10 minutes."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:416
-#: module/Application/src/Application/Controller/UserAreaController.php:547
-#: module/Application/src/Application/Controller/UserAreaController.php:609
+#: module/Application/src/Application/Controller/UserAreaController.php:423
+#: module/Application/src/Application/Controller/UserAreaController.php:556
+#: module/Application/src/Application/Controller/UserAreaController.php:618
 msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:549
-#: module/Application/src/Application/Controller/UserAreaController.php:611
+#: module/Application/src/Application/Controller/UserAreaController.php:558
+#: module/Application/src/Application/Controller/UserAreaController.php:620
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "An application error has occurred. We apologize for the inconvenience"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:727
-#: module/Application/src/Application/Controller/UserAreaController.php:767
+#: module/Application/src/Application/Controller/UserAreaController.php:736
+#: module/Application/src/Application/Controller/UserAreaController.php:776
 msgid "Pagamento completato con successo"
 msgstr "Payment completed successfully"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:729
-#: module/Application/src/Application/Controller/UserAreaController.php:769
+#: module/Application/src/Application/Controller/UserAreaController.php:738
+#: module/Application/src/Application/Controller/UserAreaController.php:778
 msgid "Pagamento fallito"
 msgstr "Payment failed"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:738
-#: module/Application/src/Application/Controller/UserAreaController.php:778
+#: module/Application/src/Application/Controller/UserAreaController.php:747
+#: module/Application/src/Application/Controller/UserAreaController.php:787
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Payment temporarily suspended, please try again later."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:807
+#: module/Application/src/Application/Controller/UserAreaController.php:816
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract disabled properly!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:809
-#: module/Application/src/Application/Controller/UserAreaController.php:812
-#: module/Application/src/Application/Controller/UserAreaController.php:815
+#: module/Application/src/Application/Controller/UserAreaController.php:818
+#: module/Application/src/Application/Controller/UserAreaController.php:821
+#: module/Application/src/Application/Controller/UserAreaController.php:824
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Error while disabling the contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:851
+#: module/Application/src/Application/Controller/UserAreaController.php:860
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "You are disabled because the inserted card has expired, enter the new data."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:855
+#: module/Application/src/Application/Controller/UserAreaController.php:864
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -154,7 +154,7 @@ msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:860
+#: module/Application/src/Application/Controller/UserAreaController.php:869
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
@@ -3147,35 +3147,39 @@ msgstr ""
 msgid "Indirizzo di residenza"
 msgstr "Home Address"
 
-#: module/Application/view/application/user-area/rates.phtml:35
+#: module/Application/view/application/user-area/rates.phtml:50
 msgid "Il tuo piano tariffario personale"
 msgstr "Your personal rate plan"
 
-#: module/Application/view/application/user-area/rates.phtml:44
+#: module/Application/view/application/user-area/rates.phtml:59
 msgid "Le tue tariffe"
 msgstr "Your rates"
 
-#: module/Application/view/application/user-area/rates.phtml:45
+#: module/Application/view/application/user-area/rates.phtml:60
 msgid "Invece di"
 msgstr "Instead of"
 
-#: module/Application/view/application/user-area/rates.phtml:50
+#: module/Application/view/application/user-area/rates.phtml:65
 msgid "Tariffa base della corsa"
 msgstr "Basic fare of the race"
 
-#: module/Application/view/application/user-area/rates.phtml:55
+#: module/Application/view/application/user-area/rates.phtml:72
+msgid "Tariffa oraria"
+msgstr "Daily fare"
+
+#: module/Application/view/application/user-area/rates.phtml:80
 msgid "Tariffa giornaliera"
 msgstr "Daily fare"
 
-#: module/Application/view/application/user-area/rates.phtml:60
+#: module/Application/view/application/user-area/rates.phtml:87
 msgid "Tariffa di prenotazione"
 msgstr "Reservation rate"
 
-#: module/Application/view/application/user-area/rates.phtml:69
+#: module/Application/view/application/user-area/rates.phtml:96
 msgid "Il giorno del tuo compleanno ricevi 30 minuti bonus (per una settimana)"
 msgstr "On your birthday you will receive 30 bonus minutes (for a week)"
 
-#: module/Application/view/application/user-area/rates.phtml:71
+#: module/Application/view/application/user-area/rates.phtml:98
 msgid ""
 "Di notte, dall’1 alle 5, le donne possono acquistare un Women Night Voucher "
 "(30 minuti a 3 &euro;), per tornare a casa in piena sicurezza pagando 0,10 "
