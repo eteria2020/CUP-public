@@ -86,7 +86,7 @@ $end = date_create('2018-03-09 04:55:00');
                                             <?php
                                             if($package->getMinutes()>0 && !($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end))) {
                                                 $cost = ($package->getCost()/100) / $package->getMinutes();
-                                                $cost_round = sprintf("%.3f", $cost);
+                                                $cost_round = sprintf("%.2f", $cost);
                                                 if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
                                                     $cost_round = substr($cost_round,0,strlen($cost_round)-1);
                                                 }
