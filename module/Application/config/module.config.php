@@ -461,6 +461,35 @@ return [
                     ],
                 ]
             ],
+
+            'signupNL1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signupNL1}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signupNL1',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            'signupNL2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signupNL2}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signupNL2',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
             //Lorenzo: not in use anymore
             /*'signup1' => [
                 'type' => 'Segment',
@@ -1822,6 +1851,7 @@ return [
             'Application\Listener\SuccessfulPaymentListener' => 'Application\Listener\SuccessfulPaymentListenerFactory',
             'ChangeLanguageDetector.listener' => 'Application\Listener\ChangeLanguageDetectorFactory',
             'SignupSK2Form' => 'Application\Form\SignupSK2FormFactory',
+            'SignupNL2Form' => 'Application\Form\SignupNL2FormFactory',
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
