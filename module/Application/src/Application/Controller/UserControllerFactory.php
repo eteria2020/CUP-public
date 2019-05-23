@@ -19,6 +19,7 @@ class UserControllerfactory implements FactoryInterface
         $newForm = $serviceLocator->getServiceLocator()->get('NewRegistrationForm');
         $newForm2 = $serviceLocator->getServiceLocator()->get('NewRegistrationForm2');
         $formSK2 = $serviceLocator->getServiceLocator()->get('SignupSK2Form');
+        $formNL2 = $serviceLocator->getServiceLocator()->get('SignupNL2Form');
         $optionalForm = $serviceLocator->getServiceLocator()->get('OptionalRegistrationForm');
         $registrationService = $serviceLocator->getServiceLocator()->get('RegistrationService');
         $customerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\CustomersService');
@@ -48,6 +49,7 @@ class UserControllerfactory implements FactoryInterface
             $newForm,
             $newForm2,
             $formSK2,
+            $formNL2,
             $optionalForm,
             $registrationService,
             $customerService,

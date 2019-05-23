@@ -44,7 +44,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate('Numero patente'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                                    <p> <label><?= $this->translate('Numero patente'); ?></label>
                                         <input type="text" class="required disabled" name="" value="<?= $this->customer->getDriverLicense(); ?>" >
                                     </p>
                                 </div>
@@ -137,7 +137,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate('Numero patente'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                                    <p> <label><?= $this->translate('Numero patente'); ?></label>
                                         <?php
                                         $driverLicense = $form->get('driver')->get('driverLicense');
                                         echo $this->formElement($driverLicense);
@@ -147,7 +147,7 @@ $this->headLink()
                                 </div>
 
                                 <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate('Rilasciata da autorit&agrave;'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                                    <p> <label><?= $this->translate('Rilasciata da autorit&agrave;'); ?></label>
                                         <?php
                                         $driverLicenseAuthority = $form->get('driver')->get('driverLicenseAuthority');
                                         echo $this->formElement($driverLicenseAuthority->setAttribute('class', 'required'));
@@ -163,7 +163,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-2-4">
-                                    <p> <label><?= $this->translate('Conseguita il'); ?></label> <a href=""><i class="fa fa-info-circle"></i></a>
+                                    <p> <label><?= $this->translate('Conseguita il'); ?></label>
                                         <?php
                                         $driverLicenseReleaseDate = $form->get('driver')->get('driverLicenseReleaseDate');
                                         echo $this->formElement($driverLicenseReleaseDate);

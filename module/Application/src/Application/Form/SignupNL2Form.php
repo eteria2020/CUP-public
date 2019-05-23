@@ -8,12 +8,12 @@ use Zend\Validator\Identical;
 use Zend\Mvc\I18n\Translator;
 use Zend\Session\Container;
 use SharengoCore\Entity\Customers;
-//use Zend\InputFilter\InputFilter;
+
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\Validator\File\MimeType;
-//use Zend\Stdlib\Hydrator\HydratorInterface;
 
-class SignupSK2Form extends Form
+
+class SignupNL2Form extends Form
 {
     const SESSION_KEY = 'formValidation';
 
@@ -44,15 +44,13 @@ class SignupSK2Form extends Form
     /**
      * SignupSK2Form constructor.
      * @param Translator $translator
-     * @param SignupSK2Fieldset $signupNL2Fieldset
+     * @param SignupNL2Fieldset $signupNL2Fieldset
      * @param EntityManager $entityManager
      * @param string|null $serverInstance
      */
-
-
     public function __construct(
         Translator $translator,
-        SignupSK2Fieldset $signupNL2Fieldset,
+        SignupNL2Fieldset $signupNL2Fieldset,
         EntityManager $entityManager,
         $serverInstance
     ) {

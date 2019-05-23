@@ -233,6 +233,10 @@ class UserAreaController extends AbstractActionController {
 
         if(isset($this->config['serverInstance'])) {
             $this->serverInstance = $this->config['serverInstance'];
+        } else {
+            $this->serverInstance["id"] ="";
+            $this->serverInstance["customerServiceEmail"] ="servizioclienti@sharengo.eu";
+            $this->serverInstance["howItWorkLink"] ="http://site.sharengo.it/come-funziona/";
         }
     }
 
@@ -260,10 +264,9 @@ class UserAreaController extends AbstractActionController {
             return $redirect;
         }
 
-        if(isset($this->serverInstance["id"])) {
-            if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
-                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobileParam]));
-            }
+
+        if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobileParam]));
         }
 
         // if not, continue with index action
@@ -515,10 +518,8 @@ class UserAreaController extends AbstractActionController {
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
         }
 
-        if(isset($this->serverInstance["id"])) {
-            if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
-                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/driverlicense', ['mobile' => $mobile]));
-            }
+        if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/driverlicense', ['mobile' => $mobile]));
         }
 
         /** @var DriverLicenseForm $form */
@@ -698,9 +699,9 @@ class UserAreaController extends AbstractActionController {
                 $totalExtraCost += $extraPayment->getAmount();
             }
         }
-        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : "";
 
-        return new ViewModel([
+        $view = new ViewModel([
             'customer' => $customer,
             'contract' => $contract,
             'tripPayment' => $tripPayment,
@@ -712,6 +713,9 @@ class UserAreaController extends AbstractActionController {
             'mobile' => $mobile,
             'serverInstance' => $serverInstance,
         ]);
+
+        $view->setTemplate("application/user-area/".$serverInstance."/debt-collection.phtml");
+        return $view;
     }
 
     public function debtCollectionPaymentAction() {

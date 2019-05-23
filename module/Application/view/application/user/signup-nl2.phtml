@@ -1,0 +1,533 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-sk.js'))
+    ->appendFile($this->basePath('js/signupSK.js?v=4.4'));
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
+//$this->inlineScript()
+//    ->appendFile($this->basePath('js/driver-license-popup.js'));
+
+?>
+
+<script>
+    var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
+    var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>"
+</script>
+
+<style>
+    .sub{
+        font-size: 18px;
+    }
+    @media only screen and (max-width: 767px){
+        .sub {
+            font-size: 13px;
+
+        }
+    }
+</style>
+<div class="module-section-bookmark yellow content-align-center">
+    <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
+    <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
+        <p>
+            <b><?= $this->translate('21 minuti a soli 5&euro;') ?></b><br>
+            <?= $this->translate('e guidi subito la tua Sharengo!') ?>
+        </p>
+    </div>
+</div>
+
+<div class="module-main-subtitle content-align-center">
+    <p><?= $this->translate('Benvenuto') ?> <?= $this->email ?><br>
+        <?= $this->translate('Pochi istanti per completare il tuo profilo') ?></p>
+</div>
+
+<!-- main -->
+<div id="main">
+
+    <!-- module-wizard -->
+    <div class="module-wizard clearfix">
+        <ul>
+            <li class="active">1</i></li>
+            <li>2</li>
+            <li class="last"><i class="icon-auto"></i></li>
+        </ul>
+    </div>
+    <!-- module-wizard -->
+
+    <!-- content -->
+    <div class="content">
+
+        <!-- block-form -->
+        <div class="block-form w-3-4 auto-margin clearfix">
+
+            <?php
+            $this->form->prepare();
+            echo $this->form()->openTag($this->form);
+            ?>
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-4">
+                    <p>
+                        <label><?= $this->translate('Titolo'); ?></label>
+                        <select name="user1[gender]" id="gender" class="required">
+                            <option value="male" selected><?= $this->translate('Sig.'); ?></option>
+                            <option value="female"><?= $this->translate('Sig.ra'); ?></option>
+                        </select>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Nome'); ?></label>
+                        <?php
+                        $name = $this->form->get('user1')->get('name');
+                        echo $this->formElement($name);
+                        echo $this->formElementErrors($name, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Cognome'); ?></label>
+                        <?php
+                        $surname = $this->form->get('user1')->get('surname');
+                        echo $this->formElement($surname);
+                        echo $this->formElementErrors($surname, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Citt&agrave; residenza'); ?></label>
+                        <?php
+                        $town = $this->form->get('user1')->get('town');
+                        echo $this->formElement($town);
+                        echo $this->formElementErrors($town, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Indirizzo di residenza'); ?></label>
+                        <?php
+                        $address = $this->form->get('user1')->get('address');
+                        echo $this->formElement($address);
+                        echo $this->formElementErrors($address, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('N. civico'); ?></label>
+                        <?php
+                        $address = $this->form->get('user1')->get('civico');
+                        echo $this->formElement($address);
+                        echo $this->formElementErrors($address, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+                <div class="block-field bw-f w-1-3">
+                    <p> <label><?= $this->translate('Cap'); ?></label><br/>
+                        <?php
+                        $zipCode = $this->form->get('user1')->get('zipCode');
+                        echo $this->formElement($zipCode);
+                        echo $this->formElementErrors($zipCode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Data di nascita'); ?></label>
+                        <?php
+                        $birthDate = $this->form->get('user1')->get('birthDate');
+                        echo $this->formElement($birthDate);
+                        echo $this->formElementErrors($birthDate, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Stato di nascita'); ?></label>
+                        <?php
+                        $birthCountry = $this->form->get('user1')->get('birthCountry');
+                        echo $this->formElement($birthCountry);
+                        echo $this->formElementErrors($birthCountry, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Provincia di nascita'); ?></label>
+                        <?php
+                        $birthProvince = $this->form->get('user1')->get('birthProvince');
+                        echo $this->formElement($birthProvince);
+                        echo $this->formElementErrors($birthProvince, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+                <div class="block-field bw-f w-1-4">
+                    <p> <label><?= $this->translate('Comune di nascita'); ?></label>
+                        <?php
+                        $birthTown = $this->form->get('user1')->get('birthTown');
+                        $select = '<select name="' . $birthTown->getName() . '" ';
+                        foreach ($birthTown->getAttributes() as $attribute => $value) {
+                            $select .= $attribute . '="' . $value . '" ';
+                        }
+                        $select .= '><option></option></select>';
+                        echo $select;
+                        $birthTown2 = $this->form->get('user1')->get('birthTown');
+                        $input = '<input name="' . $birthTown2->getName() . '" ';
+                        foreach ($birthTown2->getAttributes() as $attribute => $value) {
+                            $input .= $attribute . '="'.$value .'" ';
+                        }
+                        $input .= ' style="display: none;" value="' . $birthTown2->getValue() . '" disabled></ipnut>';
+                        echo $input;
+                        echo $this->formElementErrors($birthTown, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-4-4 last ">
+                    <div class="block-field bw-f w-2-4">
+                        <label><?= $this->translate('Prefisso'); ?></label>
+                        <?php
+                        $dialCode = $this->form->get('user1')->get('dialCode');
+                        echo $this->formElement($dialCode->setAttribute('class', 'required'));
+                        echo $this->formElementErrors($dialCode, ['class' => 'error-sign-up']);
+                        ?>
+                    </div>
+                    <div class="block-field bw-f w-2-4 ">
+                        <p> <label><?= $this->translate('Cellulare'); ?></label>
+                            <?php
+                            $mobile = $this->form->get('user1')->get('mobile');
+                            echo $this->formElement($mobile);
+                            echo $this->formElementErrors($mobile, ['class' => 'errors']);
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('BSN') ?></label>
+                        <?php
+                        $taxCode = $this->form->get('user1')->get('taxCode');
+                        echo $this->formElement($taxCode);
+                        echo $this->formElementErrors($taxCode, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="block-row-field clearfix">
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Numero patente'); ?></label>
+                        <a href=""><i class="fa fa-info-circle"></i></a>
+                        <?php
+                        $driverLicense = $this->form->get('user1')->get('driverLicense');
+                        echo $this->formElement($driverLicense);
+                        echo $this->formElementErrors($driverLicense, ['class' => 'errors']);
+                        ?>
+                    </p>
+                    <label class="small-form"><?= $this->translate('Assicurati che sia dell’ultima patente rilasciata.'); ?></label>
+                </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?= $this->translate('Data di scadenza patente'); ?></label>
+                        <?php
+                        $driverLicenseExpire = $this->form->get('user1')->get('driverLicenseExpire');
+                        echo $this->formElement($driverLicenseExpire);
+                        echo $this->formElementErrors($driverLicenseExpire, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div id="driverLicenseUpload">
+                <div class="block-field auto-margin">
+                    <div class="message font" style="text-align: justify;">
+                        <?= $this->translate("Cliente, consapevole della legge penale e conseguenze civili false dichiarazioni dichiarano che possiede una patente di guida valida, che lo autorizza a guidare fino all'autoveicolo al posto della Repubblica Slovacca. Sotto la sezione 13 e 14 della legge n. 18/2018 Z.z. sulla protezione dati personali e aggiungerne alcuni leggi, dichiaro che sto dando all'operatore esplicito e incondizionato acconsento al trattamento dei miei dati personali dati nella misura necessaria a Servizi Sharengo che sono di cui al Contratto generale condizioni e ai fini del funzionamento questo servizio durante il periodo di utilizzo di questo servizio servizio, fino al ritiro di tale consenso.") ?>
+                    </div>
+                    <br>
+                    <div>
+                        <?php
+                        $signature = $this->form->get('signature');
+                        echo $this->formElement($signature);
+                        ?>
+
+                        <label style="margin-right: 5px;"><?= $this->translate("Letto, confermato e sottoscritto"); ?></label>
+                        <?php echo $this->formElementErrors($signature, ['class' => 'errors']); ?>
+
+                    </div>
+                    <br>
+                    <div>
+                        Rotterdam, <?= date("d.m.Y")?>
+                    </div>
+                    <br>
+                    <div style="font-size: 70%;text-align: justify">
+                        <?= $this->translate("Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente dichiarazione sono relativi ad  informazioni strettamente necessarie al conseguimento di finalit&agrave previste dalle vigenti normative e sono trattati e custoditi esclusivamente dall'ufficio responsabile del procedimento."); ?>
+                    </div>
+                    <div style="font-size: 80%; font-weight: bold; text-decoration: underline;">
+                        <?= $this->translate("Esente da Autentica"); ?>
+                    </div>
+                    <br>
+                </div>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida fronte e retro") ?></label><br>
+
+                <div style="visibility: hidden">
+                    <?php
+                    $driverLicenseForeign = $this->form->get('user1')->get('driverLicenseForeign');
+                    echo $this->formElement($driverLicenseForeign);
+                    //echo $this->formElementErrors(driverLicenseForeign, ['class' => 'errors']);
+                    ?>
+                </div>
+
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('fronte patente di guida'); ?></label>
+                            <?php $driverLicenseForeignUpload = $this->form->get('drivers-license-front'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('retro patente di guida'); ?></label>
+                            <?php $driverLicenseForeignBack = $this->form->get('drivers-license-back'); ?>
+                            <?php echo $this->formFile($driverLicenseForeignBack);
+                            echo $this->formElementErrors($driverLicenseForeignBack, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('fronte carta di identità'); ?></label>
+                            <?php $identityFront = $this->form->get('identity-front'); ?>
+                            <?php echo $this->formFile($identityFront);
+                            echo $this->formElementErrors($identityFront, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('retro carta di identità'); ?></label>
+                            <?php $identityBack = $this->form->get('identity-back'); ?>
+                            <?php echo $this->formFile($identityBack);
+                            echo $this->formElementErrors($identityBack, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block-row-field clearfix">
+                    <div class="block-field bw-f w-2-4">
+                        <p> <label style="margin-right: 5px;"><?= $this->translate('foto dell\'utente (selfie)'); ?></label>
+                            <?php $selfie = $this->form->get('selfie'); ?>
+                            <?php echo $this->formFile($selfie);
+                            echo $this->formElementErrors($selfie, ['class' => 'errors']); ?>
+                        </p>
+                    </div>
+                    <div class="block-field bw-f w-2-4">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-form w-4-4 auto-margin clearfix">
+                <div class="block-wrapper-button content-align-center">
+                    <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate('Continua'); ?>">
+                </div>
+            </div>
+            <!-- block-form -->
+
+        </div>
+        <!-- content -->
+
+    </div>
+    <!-- main -->
+    <!-- overlay -->
+
+    <!-- overlay upload limit size -->
+    <div id="sng-overlay" class="overlay-upload" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+        <div class="table">
+            <div class="cell">
+                <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none; text-align: left !important;">
+                            <br>
+                            <p align="right"><a onclick="closeUploadAlert()" style="color:#fff"><b>[X] <?= $this->translate("Chiudi");?></b></a></p>
+                            <p style="color:#fff;text-align: left; font-weight: 500;">
+                                <?= $this->translate("I file inseriti superano la dimensione massima caricabile.")." (max. ".ini_get('post_max_size'). "B)"; ?>
+                            </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+
+    <!-- module-modal -->
+    <div class="module-modal" style="height: 3000px; display: none;">
+        <!-- modal-overlay -->
+        <div class="modal-overlay">
+            <!-- module-pop-up -->
+            <div class="module-pop-up" style="margin:350px auto;">
+
+                <a class="btn-close"><i class="fa fa-close"></i></a>
+
+                <!-- module-pop-up-content -->
+                <div class="module-pop-up-content">
+
+                    <!-- block-pop-up-generic-content -->
+                    <div class="block-pop-up-generic-content">
+                        <img src="<?= $this->basePath('images/patente-fac-simile.jpg'); ?>" alt="">
+                        <p>
+                            <?= $this->translate('5. Numero Patente'); ?>
+                        </p>
+                    </div>
+                    <!-- block-pop-up-generic-content -->
+
+                </div>
+                <!-- module-pop-up-content -->
+
+            </div>
+            <!-- module-pop-up -->
+        </div>
+        <!-- modal-overlay -->
+    </div>
+    <!-- module-modal -->
+
+    <?
+    $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+    $this->inlineScript()->appendScript(
+        '$(document).ready(function() {
+            $( "#birthDate" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                maxDate: new Date(new Date().getFullYear(), 11, 31)
+            });
+
+            $( "#driverLicenseExpire" ).datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "+0:+100",
+                minDate: new Date(new Date().getFullYear(), 0, 1)
+            });
+        });'
+    );
+    ?>
+    <script>
+        <? function parse_size($size) {
+            $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+            $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+            if ($unit) {
+                // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+                return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+            }
+            else {
+                return round($size);
+            }
+        } ?>
+        //File Upload Validation
+        var maxUpload = <?= parse_size(ini_get('post_max_size')) ?> ;
+
+        var driversLicenseFront = document.getElementById("drivers-license-front");
+        var driversLicenseBack = document.getElementById("drivers-license-back");
+        var identityFront = document.getElementById("identity-front");
+        var identityBack = document.getElementById("identity-back");
+        var selfie = document.getElementById("selfie");
+
+        var driversLicenseFrontSize = 0;
+        var driversLicenseBackSize = 0;
+        var identityFrontSize = 0;
+        var identityBackSize = 0;
+        var selfieSize = 0;
+
+
+        driversLicenseFront.onchange = function() {
+            driversLicenseFrontSize = driversLicenseFront.files[0].size;
+            checkUploadSize(this);
+        };
+
+        driversLicenseBack.onchange = function() {
+            driversLicenseBackSize = driversLicenseBack.files[0].size;
+            checkUploadSize(this);
+        };
+
+        identityFront.onchange = function() {
+            identityFrontSize = identityFront.files[0].size;
+            checkUploadSize(this);
+        };
+
+        identityBack.onchange = function() {
+            identityBackSize = identityBack.files[0].size;
+            checkUploadSize(this);
+        };
+
+        selfie.onchange = function() {
+            selfieSize = selfie.files[0].size;
+            checkUploadSize(this);
+        };
+
+        totalSize = function() {
+            return (driversLicenseFrontSize + driversLicenseBackSize + identityFrontSize + identityBackSize + selfieSize);
+        };
+
+        checkUploadSize = function (inputFile) {
+            if(totalSize() > maxUpload){
+                openUploadAlert();
+                inputFile.value = "";
+            }
+        };
+
+        function closeUploadAlert(){
+            overlay = $('.overlay-upload');
+            overlay.fadeOut(400, function () {
+                overlay.css("visibility", "hidden");
+                overlay.css("display","initial");
+            });
+        }
+
+        function openUploadAlert(){
+            overlay = $('.overlay-upload');
+            overlay.css("visibility", "visible");
+        }
+
+        $('#driverLicenseUpload').show();
+        $('#driverLicenseForeign').prop("checked", true);
+
+
+        $(function() {
+            $('#registration-form-2').on('submit', function(e) {
+                $("#nextBtn").attr("disabled", true);
+                addLoader();
+            });
+        });
+
+        var addLoader = function() {
+            $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        };
+        var removeLoader = function() {
+            $("#outer > div.load-overlay").remove();
+        };
+
+        $(document).mouseup(function (e) {
+            var popup = $("#popup");
+            if (popup.has( e.target ).length == 0 && popup.css('visibility') === 'visible') {
+                closeChangeCard();
+            }
+        });
+
+    </script>
