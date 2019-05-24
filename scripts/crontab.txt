@@ -19,11 +19,12 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 50 02 11 * *    root            /etc/init.d/ntp restart
 
 # every minute
-*/1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
+*/3 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/alarms.sh
 */1 * * * *     www-data        /srv/apps/sharengo-publicsite/scripts/cron/reservations.sh
 */9 * * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/account_compute.sh
 */19 * * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/business_check_groups_limits.sh
 */3 * * * *     root            node /srv/services/api/tools/testApi.js >> /var/log/services/testApi.log
+*/3 * * * *     root            node /srv/services/penalty-api/tools/testApi.js >> /var/log/services/testPenaltyApi.log
 
 # every 1 hour
 05 */1 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_old_trip_maintainers.sh
