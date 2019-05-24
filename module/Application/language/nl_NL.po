@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-05-23 15:40+0200\n"
-"PO-Revision-Date: 2019-05-23 17:37+0200\n"
+"PO-Revision-Date: 2019-05-24 12:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1157,7 +1157,7 @@ msgstr ""
 
 #: module/Application/src/Application/Form/Validator/ValidFleet.php:26
 msgid "Selezionare la città preferita"
-msgstr ""
+msgstr "Selecteer de gewenste stad"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:24
 msgid "La partita IVA non può contenere spazi"
@@ -3199,7 +3199,7 @@ msgstr ""
 #: module/Application/view/application/user/new-signup.phtml:169
 #: module/Application/view/application/user/new-signup2.phtml:466
 msgid "Sei già iscritto!"
-msgstr ""
+msgstr "U bent al geregistreerd!"
 
 #: module/Application/view/application/user/new-signup.phtml:173
 #: module/Application/view/application/user/new-signup2.phtml:470

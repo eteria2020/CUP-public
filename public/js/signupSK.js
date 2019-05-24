@@ -78,7 +78,7 @@ $(function () {
     });
     if (typeof $("#birthProvince").val() != "undefined") {
         $("#birthProvince").trigger("change", {
-            birthTownValue: $("#birthProvince")
+            birthTownValue: birthTownValue
         });
     }
 
