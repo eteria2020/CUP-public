@@ -729,7 +729,7 @@ JS;
     });
 
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
-            birthTownValue = "<?= $birthTown->getValue() ?>",
+            birthTownValue = "<?= $this->customer->getBirthTown() ?>",
             userId = <?= (string) $this->customer->getId() ?>,
             bannerJsonpUrl = "<?= $this->bannerJsonpUrl['url'] ?>",
             pageLink = "<?= $this->serverUrl(true) ?>";
