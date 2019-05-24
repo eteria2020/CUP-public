@@ -40,7 +40,7 @@
                     <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
                     <!-- Description -->
                     <div>
-                    <p>Ciao <?= $name ?>,</p><br>
+                    <p><?= $this->translate("Ciao")?> <?= $name ?>,</p><br>
                         <?php if ($customer->getFirstPaymentCompleted()) {
                             if ($totalCost===0) {?>
                                 <p style="text-align: justify"><?= $this->translate("complimenti, tutte le tue corse risultano regolarmente pagate.") ?></p>
@@ -194,7 +194,7 @@
 
                         <?php } else {  // getFirstPaymentCompleted() false?>
                         <p>
-                            <?= $this->translate("benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;min invece di 0,28&euro;min) e provi subito la tua Sharengo.") ?>
+                            <?= $this->translate("benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con 5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;min invece di 0,21&euro;min) e provi subito la tua Sharengo.") ?>
                         </p>
                         <br>
                         <!-- Confirm button -->

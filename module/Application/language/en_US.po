@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-23 15:42+0200\n"
-"PO-Revision-Date: 2019-05-23 15:52+0200\n"
+"POT-Creation-Date: 2019-05-24 17:00+0200\n"
+"PO-Revision-Date: 2019-05-24 17:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -2422,6 +2422,13 @@ msgstr "CLOSE"
 msgid "Pagamenti in sospeso"
 msgstr "Pending payments"
 
+#: module/Application/view/application/user-area/debt-collection.phtml:43
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:43
+#: module/Application/view/partials/welcome-user-area.phtml:3
+msgid "Ciao"
+msgstr "Hello"
+
 #: module/Application/view/application/user-area/debt-collection.phtml:46
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:46
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:46
@@ -3235,11 +3242,12 @@ msgstr "to submit your request"
 #: module/Application/view/application/user-area/pin.phtml:55
 #: module/Application/view/application/user-area/pin.phtml:58
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "REQUEST OF CARD SHARE ' NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:62
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
 "anche ritirarla c/o i nostri uffici"
@@ -6310,10 +6318,6 @@ msgstr "Neutral zone Iraq-Saudi Arabia"
 #: module/Application/view/partials/translations.phtml:270
 msgid "Zona neutra ONU"
 msgstr "UN neutral zone"
-
-#: module/Application/view/partials/welcome-user-area.phtml:3
-msgid "Ciao"
-msgstr "Hello"
 
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"
