@@ -40,7 +40,7 @@
                     <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
                     <!-- Description -->
                     <div>
-                    <p>Ciao <?= $name ?>,</p><br>
+                    <p><?= $this->translate("Ciao")?> <?= $name ?>,</p><br>
                         <?php if ($customer->getFirstPaymentCompleted()) {
                             if ($totalCost===0) {?>
                                 <p style="text-align: justify"><?= $this->translate("complimenti, tutte le tue corse risultano regolarmente pagate.") ?></p>
