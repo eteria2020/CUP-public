@@ -201,7 +201,7 @@ $this->headLink()
                         <select name="user1[dialCode]" id="dialCode">
                             <?php if($this->serverInstance["id"] == "sk_SK") { ?>
                             <option data-countryCode="SK" value="421" selected><?= $this->translate('Slovacchia') . "ciaods"?> (+421)</option>
-                            <?php } else if ($this->serverInstance["id"] == "nl_NL"){ ?>
+                            <?php } elseif ($this->serverInstance["id"] == "nl_NL"){ ?>
                             <option data-countryCode="NL" value="31" selected><?= $this->translate('Netherlands')?> (+31)</option>
                             <?php } ?>
                             <option disabled="disabled">----------</option>
@@ -229,7 +229,7 @@ $this->headLink()
                             <option data-countryCode="MC" value="377"><?= $this->translate('Monaco')?> (+377)</option>
                             <?php if($this->serverInstance["id"] == "nl_NL") { ?>
                                 <option data-countryCode="SK" value="421"><?= $this->translate('Slovacchia')?> (+421)</option>
-                            <?php } else if ($this->serverInstance["id"] == "sk_SK"){ ?>
+                            <?php } elseif ($this->serverInstance["id"] == "sk_SK"){ ?>
                                 <option data-countryCode="NL" value="31"><?= $this->translate('Netherlands')?> (+31)</option>
                             <?php } ?>
                             <option data-countryCode="PL" value="48"><?= $this->translate('Poland')?> (+48)</option>

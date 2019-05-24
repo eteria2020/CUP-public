@@ -102,7 +102,7 @@ class PromoCode extends AbstractValidator
                 }else {
                     if ($this->promoCodesMemberGetMemberService->isValid($value)) {
                         $result = TRUE;
-                    } else if ($this->promoCodesACIService->isValid($value)){
+                    } elseif ($this->promoCodesACIService->isValid($value)){
                         $result = TRUE;
                     }else {
                         $this->error(self::WRONG_CODE);

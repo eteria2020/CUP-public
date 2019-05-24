@@ -14,7 +14,7 @@ if(!is_null($this->serverInstance)){
     if($this->serverInstance == "sk_SK") {
         $privacyLink = $this->basePath('pdf/sk/SUKROMIE.pdf');
         $contractLink = $this->basePath('pdf/sk/VOP-Sharengo.pdf');
-    } else if ($this->serverInstance == "nl_NL") {
+    } elseif ($this->serverInstance == "nl_NL") {
         $privacyLink = 'https://site.sharengo.nl/privacy/';
         $contractLink = $this->basePath('pdf/nl/ReglementSharengo.pdf');
     }

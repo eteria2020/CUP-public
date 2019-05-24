@@ -210,7 +210,7 @@ class DisableCustomerController extends AbstractActionController
 
         if($mailCategory==4) {
             $this->customerDeactivationService->deactivateForDriversLicense($customer);
-        } else if($mailCategory==10){
+        } elseif($mailCategory==10){
             $this->customerDeactivationService->deactivateForExpiredDriversLicense($customer);
         }
 
