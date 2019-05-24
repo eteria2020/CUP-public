@@ -496,7 +496,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
         if(!is_null($this->serverInstance)){
             if ($this->serverInstance == "sk_SK"){
                 $selectedCountry = "Slovacchia";
-            } else if ($this->serverInstance == "nl_NL") {
+            } elseif ($this->serverInstance == "nl_NL") {
                 $selectedCountry = "Nederland";
             }
         }

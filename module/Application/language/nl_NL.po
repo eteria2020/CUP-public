@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-23 11:40+0200\n"
-"PO-Revision-Date: 2019-05-23 14:54+0200\n"
+"POT-Creation-Date: 2019-05-23 15:40+0200\n"
+"PO-Revision-Date: 2019-05-23 17:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -97,34 +97,34 @@ msgstr ""
 msgid "Pacchetto non acquistabile"
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:277
-#: module/Application/src/Application/Controller/UserAreaController.php:369
+#: module/Application/src/Application/Controller/UserAreaController.php:279
+#: module/Application/src/Application/Controller/UserAreaController.php:371
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:424
-#: module/Application/src/Application/Controller/UserAreaController.php:555
-#: module/Application/src/Application/Controller/UserAreaController.php:617
+#: module/Application/src/Application/Controller/UserAreaController.php:426
+#: module/Application/src/Application/Controller/UserAreaController.php:557
+#: module/Application/src/Application/Controller/UserAreaController.php:619
 msgid "Operazione completata con successo!"
 msgstr "Bewerking met succes voltooid!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:557
-#: module/Application/src/Application/Controller/UserAreaController.php:619
+#: module/Application/src/Application/Controller/UserAreaController.php:559
+#: module/Application/src/Application/Controller/UserAreaController.php:621
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
-msgstr ""
-
-#: module/Application/src/Application/Controller/UserAreaController.php:738
-#: module/Application/src/Application/Controller/UserAreaController.php:778
-msgid "Pagamento completato con successo"
 msgstr ""
 
 #: module/Application/src/Application/Controller/UserAreaController.php:740
 #: module/Application/src/Application/Controller/UserAreaController.php:780
+msgid "Pagamento completato con successo"
+msgstr ""
+
+#: module/Application/src/Application/Controller/UserAreaController.php:742
+#: module/Application/src/Application/Controller/UserAreaController.php:782
 msgid "Pagamento fallito"
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:749
-#: module/Application/src/Application/Controller/UserAreaController.php:789
+#: module/Application/src/Application/Controller/UserAreaController.php:751
+#: module/Application/src/Application/Controller/UserAreaController.php:791
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
@@ -134,28 +134,28 @@ msgstr ""
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:818
+#: module/Application/src/Application/Controller/UserAreaController.php:820
 msgid "Contratto disabilitato correttamente!"
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:820
-#: module/Application/src/Application/Controller/UserAreaController.php:823
-#: module/Application/src/Application/Controller/UserAreaController.php:826
+#: module/Application/src/Application/Controller/UserAreaController.php:822
+#: module/Application/src/Application/Controller/UserAreaController.php:825
+#: module/Application/src/Application/Controller/UserAreaController.php:828
 msgid "Errore durante la disabilitazione del contratto"
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:862
+#: module/Application/src/Application/Controller/UserAreaController.php:864
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:866
+#: module/Application/src/Application/Controller/UserAreaController.php:868
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
 msgstr ""
 
-#: module/Application/src/Application/Controller/UserAreaController.php:871
+#: module/Application/src/Application/Controller/UserAreaController.php:873
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 
@@ -2941,10 +2941,6 @@ msgstr "DIT IS DE PEN DIE JE NODIG HEBT OM EEN SHARE'NGO TE GEBRUIKEN"
 msgid "ATTENZIONE: MEMORIZZALO IN LUOGO SICURO E NON DARLO AD ALTRI"
 msgstr "OPGELET: BEWAAR HET OP EEN VEILIGE PLAATS EN GEEF HET NIET AAN ANDEREN"
 
-#: module/Application/view/application/user-area/pin.phtml:43
-msgid "http://site.sharengo.it/come-funziona/"
-msgstr "https://site.sharengo.nl/hoe-werkt-het/"
-
 #: module/Application/view/application/user-area/pin.phtml:45
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:45
 msgid "Guarda come si usa"
@@ -2961,29 +2957,21 @@ msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "KLIK OP HET BEELD VAN DE KAART"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#, fuzzy
-#| msgid "per inoltrare la tua richiesta"
-msgid "per inoltrare la tua richiesta."
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+msgid "per inoltrare la tua richiesta"
 msgstr "om uw verzoek door te sturen"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-msgid "servizioclienti@sharengo.eu"
-msgstr "klantenservice@sharengo.nl"
-
-#: module/Application/view/application/user-area/pin.phtml:55
+#: module/Application/view/application/user-area/pin.phtml:58
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "SHARE&#39;N GO CARD VERZOEK"
 
-#: module/Application/view/application/user-area/pin.phtml:60
-#, fuzzy
-#| msgid ""
-#| "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
-#| "puoi anche ritirarla c/o i nostri uffici"
+#: module/Application/view/application/user-area/pin.phtml:63
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:62
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
-"anche ritirarla c/o i nostri uffici."
+"anche ritirarla c/o i nostri uffici"
 msgstr ""
 "Hij komt binnen een week gratis bij u thuis of u kunt hem ook ophalen bij "
 "ons op kantoor"
@@ -5903,18 +5891,6 @@ msgstr ""
 msgid "Associa"
 msgstr ""
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
-msgid "per inoltrare la tua richiesta"
-msgstr "om uw verzoek door te sturen"
-
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
-msgid ""
-"Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
-"anche ritirarla c/o i nostri uffici"
-msgstr ""
-"Hij komt binnen een week gratis bij u thuis of u kunt hem ook ophalen bij "
-"ons op kantoor"
-
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
 msgid ""
 "Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo di "
@@ -5939,3 +5915,25 @@ msgid ""
 "temporaneamente sospeso. Contatta il Customer Service di SHARE'NGO per la "
 "riattivazione."
 msgstr ""
+
+#~ msgid "http://site.sharengo.it/come-funziona/"
+#~ msgstr "https://site.sharengo.nl/hoe-werkt-het/"
+
+#, fuzzy
+#~| msgid "per inoltrare la tua richiesta"
+#~ msgid "per inoltrare la tua richiesta."
+#~ msgstr "om uw verzoek door te sturen"
+
+#~ msgid "servizioclienti@sharengo.eu"
+#~ msgstr "klantenservice@sharengo.nl"
+
+#, fuzzy
+#~| msgid ""
+#~| "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
+#~| "puoi anche ritirarla c/o i nostri uffici"
+#~ msgid ""
+#~ "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
+#~ "puoi anche ritirarla c/o i nostri uffici."
+#~ msgstr ""
+#~ "Hij komt binnen een week gratis bij u thuis of u kunt hem ook ophalen bij "
+#~ "ons op kantoor"

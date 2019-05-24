@@ -312,11 +312,11 @@ class UserAreaController extends AbstractActionController {
                         $this->getEventManager()->trigger('taxCodeEdited', $this, $params);
                     }
                 }
-            } else if (isset($postData['password'])) {
+            } elseif (isset($postData['password'])) {
                 $postData['id'] = $this->userService->getIdentity()->getId();
                 $editForm = $this->processForm($this->passwordForm, $postData);
                 $this->typeForm = 'edit-pwd';
-            } else if (isset($postData['mobile'])) {
+            } elseif (isset($postData['mobile'])) {
                 $postData['id'] = $this->userService->getIdentity()->getId();
 
                 if ($customer->getMobile() == $postData['mobile'] && $postData['smsCode'] == "") {
@@ -385,7 +385,7 @@ class UserAreaController extends AbstractActionController {
                 $editForm = $this->processForm($this->foreignProfileForm, $postData);
                 $this->typeForm = 'edit-profile';
 
-            } else if (isset($postData['password'])) {
+            } elseif (isset($postData['password'])) {
                 $postData['id'] = $this->userService->getIdentity()->getId();
                 $editForm = $this->processForm($this->passwordForm, $postData);
                 $this->typeForm = 'edit-pwd';

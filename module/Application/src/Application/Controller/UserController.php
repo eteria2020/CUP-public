@@ -728,7 +728,7 @@ class UserController extends AbstractActionController {
 
                             break;
                     }
-                } else if ($errorCode == 500) {
+                } elseif ($errorCode == 500) {
                     //errore generico
                     //write log
                     //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
@@ -736,7 +736,7 @@ class UserController extends AbstractActionController {
                     $this->emailService->sendEmail(
                             "ufficiotecnico@sharengo.eu", "Errore generico SMS Hosting", "Si è verificato un del servizio SMS Hostin, verificare i log /tmp/logErrorSms.txt e ", $attachman
                     );
-                } else if ($errorCode == 401) {
+                } elseif ($errorCode == 401) {
                     //credenziali sbagliate
                     //write log
                     //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
@@ -744,7 +744,7 @@ class UserController extends AbstractActionController {
                     $this->emailService->sendEmail(
                             "ufficiotecnico@sharengo.eu", "Credenziali SMS Hosting MODIFICATE", "Sono  state modificate le credenziali del servizio di SMS Hosting, login fallito", $attachman
                     );
-                } else if ($errorCode == 405) {
+                } elseif ($errorCode == 405) {
                     //metodo http non consentito
                     //write log
                     //$loggerError->info('Error: ' . $sms_msg->errorCode . ';' . $sms_msg->errorMsg . ';DialCode: ' . $dialCode . ';Mobile: ' . $mobile . ';Sms text: ' . $fields['text']);
@@ -1512,8 +1512,8 @@ class UserController extends AbstractActionController {
         if(isset($this->serverInstance["id"])) {
             if($this->serverInstance["id"]=="sk_SK") {
                 return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile],['query' => ['lang' => 'sk_SK']]);
-            } else if ($this->serverInstance["id"] == "nl_NL"){
-                return $this->redirect()->toRoute('signupSK2', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
+            } elseif ($this->serverInstance["id"] == "nl_NL"){
+                return $this->redirect()->toRoute('signupNL2', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
             }
         }
 
