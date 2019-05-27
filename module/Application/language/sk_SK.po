@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-24 17:05+0200\n"
-"PO-Revision-Date: 2019-05-24 17:08+0200\n"
+"POT-Creation-Date: 2019-05-27 09:50+0200\n"
+"PO-Revision-Date: 2019-05-27 10:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -2018,7 +2018,7 @@ msgstr "Pre viac informácií kontaktujte podporu"
 
 #: module/Application/view/application/index/crawler.phtml:85
 msgid "Ciao "
-msgstr "Ahoj"
+msgstr "Ahoj "
 
 #: module/Application/view/application/index/crawler.phtml:86
 msgid ""
@@ -2557,10 +2557,10 @@ msgid ""
 "5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;"
 "min invece di 0,28&euro;min) e provi subito la tua Sharengo."
 msgstr ""
-"vitaj v Sharengo! Ak si chceš aktivovať svoj účet, je potrebné, aby si si "
-"zakúpil s platobnou kartou uvítací balíček: za 5 € máš prvých 40 minút jazdy "
-"so zľavnenou sadzbou (0,12 €, min namiesto 0,16 € / min) a vyskúšaj hneď "
-"svoje Sharengo."
+"Vitajte na stránkach Sharengo! Ak chcete aktivovať svoj účet, je potrebné, "
+"aby ste si predplatenou kreditnou kartou zakúpili uvítací balíček: s 5 a "
+"&euro; máte prvých 21 minút chodu so zľavnenou sadzbou (0,24 a &euro; min "
+"namiesto 0,28 &euro; min) a ihneď vyskúšajte svoje Sharengo."
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:24
 #: module/Application/view/application/user-area/driving-licence.phtml:24
@@ -2967,10 +2967,10 @@ msgid ""
 "10&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,33&euro;"
 "min) e provi subito la tua Sharengo."
 msgstr ""
-"vitaj v Sharengo! Ak si chceš aktivovať svoj účet, je potrebné, aby si si "
-"zakúpil s platobnou kartou uvítací balíček: za 5 € máš prvých 40 minút jazdy "
-"so zľavnenou sadzbou (0,12 €, min namiesto 0,16 € / min) a vyskúšaj hneď "
-"svoje Sharengo."
+"Vitajte na stránkach Sharengo! Ak chcete aktivovať svoj účet, je potrebné, "
+"aby ste si predplatený kreditnou kartou zakúpili uvítací balíček: s 10 "
+"&euro; máte prvých 30 minút prevádzky so zľavnenou sadzbou (0,33 &euro; a "
+"min.) a vyskúšajte svoje Sharengo okamžite."
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:14
 msgid "PACKAGE MY SHARE'N GO"
