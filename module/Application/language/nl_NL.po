@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-24 17:01+0200\n"
-"PO-Revision-Date: 2019-05-24 17:01+0200\n"
+"POT-Creation-Date: 2019-05-27 09:49+0200\n"
+"PO-Revision-Date: 2019-05-27 09:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -961,12 +961,12 @@ msgstr ""
 
 #: module/Application/src/Application/Form/PasswordForm.php:67
 msgid "Nuova password"
-msgstr ""
+msgstr "Nieuw wachtwoord"
 
 #: module/Application/src/Application/Form/PasswordForm.php:81
 #: module/Application/view/application/user/signup.phtml:191
 msgid "Ripeti password"
-msgstr ""
+msgstr "Herhaal wachtwoord"
 
 #: module/Application/src/Application/Form/PromoCodeFieldset.php:74
 msgid "Promo code"
@@ -1259,8 +1259,6 @@ msgid "Interna"
 msgstr ""
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-#, fuzzy
-#| msgid "Username"
 msgid "Esterna"
 msgstr "GEBRUIKERSNAAM"
 
@@ -2213,7 +2211,7 @@ msgstr ""
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:165
 msgid "PROCEDI"
-msgstr ""
+msgstr "DOORGAAN"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:166
 msgid "CHIUDI"
@@ -2360,13 +2358,16 @@ msgstr ""
 "toegang krijgen tot het gereserveerde gedeelte maar niet inloggen op de app)."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:197
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
 "5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;"
 "min invece di 0,28&euro;min) e provi subito la tua Sharengo."
 msgstr ""
+"welkom bij Sharengo! Om uw account te activeren, is het noodzakelijk dat u "
+"met een prepaid-creditcard het welkomstpakket koopt: met 5 &euro; je hebt de "
+"eerste 21 minuten met een kortingstarief (0,24 &euro; min in plaats van 0,28 "
+"&euro; min) en je Sharengo meteen proberen."
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:24
 #: module/Application/view/application/user-area/driving-licence.phtml:24
@@ -3078,6 +3079,18 @@ msgstr ""
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
 msgid "Nessuna corsa effettuata finora"
 msgstr "Geen run tot nu toe gedaan"
+
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
+msgid ""
+"benvenuto in Sharengo! Per attivare il tuo account è necessario che "
+"acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
+"5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;"
+"min invece di 0,21&euro;min) e provi subito la tua Sharengo."
+msgstr ""
+"welkom bij Sharengo! Om uw account te activeren, is het noodzakelijk dat u "
+"met een prepaid-creditcard het welkomstpakket koopt: met 5 &euro; je hebt de "
+"eerste 30 minuten om tegen een gereduceerd tarief (0.17 &euro; min in plaats "
+"van 0.21 &euro; min) te spelen en je Sharengo meteen uit te proberen."
 
 #: module/Application/view/application/user-area/trips.phtml:16
 msgid "NOLEGGI"
@@ -4788,6 +4801,12 @@ msgid ""
 "Clicchi il link seguente per poterla reimpostare.\n"
 "\n"
 msgstr ""
+"Geachte klant,\n"
+"\n"
+"we hebben uw wachtwoordherstelverzoek ontvangen.\n"
+"\n"
+"Klik op de volgende link om deze te kunnen resetten.\n"
+"\n"
 
 #: module/Application/view/emails/forgot-password.phtml:22
 msgid ""
@@ -4844,44 +4863,48 @@ msgstr ""
 #: module/Application/view/layout/layout.phtml:141
 #: module/Application/view/zfc-user/user/login.phtml:3
 msgid "Login"
-msgstr ""
+msgstr "Log in"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:28
 msgid "Recupera la password"
-msgstr ""
+msgstr "Herstel het wachtwoord"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:38
 msgid "Inserisci la tua email"
-msgstr ""
+msgstr "Voer uw e-mailadres in"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:50
 msgid ""
 "Inserisci il tuo indirizzo email e invia la richiesta per reimpostare la "
 "password."
 msgstr ""
+"Voer uw e-mailadres in en verzend het verzoek om het wachtwoord opnieuw in "
+"te stellen."
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:51
 msgid ""
 "DOPO AVER INVIATO LA RICHIESTA CONTROLLA LA TUA EMAIL E SEGUI IL LINK PER "
 "CAMBIARE LA PASSWORD"
 msgstr ""
+"NA HET VERSTUREN VAN HET VERZOEK CONTROLEER JE E-MAIL EN VOLG DE LINK OM HET "
+"PASWOORD TE VERANDEREN"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
 msgid "Recupero Password"
-msgstr ""
+msgstr "Wachtwoordherstel"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:13
 msgid "La tua password è stata cambiata."
-msgstr ""
+msgstr "Uw wachtwoord is gewijzigd"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:14
 msgid "Adesso puoi loggarti usando la tua nuova password."
-msgstr ""
+msgstr "Nu kunt u inloggen met uw nieuwe wachtwoord."
 
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:26
 #, php-format
 msgid "Cambia Password per %s"
-msgstr ""
+msgstr "Verander wachtwoord voor %s"
 
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:33
 msgid "Nuova Password"
@@ -4889,7 +4912,7 @@ msgstr ""
 
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:61
 msgid "Salva"
-msgstr ""
+msgstr "Save"
 
 #: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
 msgid "Recupero password"
@@ -4898,7 +4921,7 @@ msgstr ""
 #: module/Application/view/goalio-forgot-password/forgot/sent.phtml:19
 #, php-format
 msgid "Controlla l'email che ti abbiamo spedito al tuo indirizzo %s."
-msgstr ""
+msgstr "Controleer de e-mail die we u hebben gestuurd naar uw adres %s"
 
 #: module/Application/view/layout/layout.phtml:10
 #: module/Application/view/layout/layout.phtml:105
