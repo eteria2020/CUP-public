@@ -300,7 +300,7 @@ class ConsolePayInvoiceController extends AbstractActionController
                 $start = $start->format('Y-m-d H:i:s');
                 $end =  date_create('-2 days');
                 $end = $end->format('Y-m-d H:i:s');
-            } else if ($now >= date_create('17:59:00') && $now <= date_create('19:10:00')){
+            } elseif ($now >= date_create('17:59:00') && $now <= date_create('19:10:00')){
                 $start = date_create('-60 days');
                 $start = $start->format('Y-m-d H:i:s');
                 $end = $now->format('Y-m-d H:i:s');
