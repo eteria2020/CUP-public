@@ -143,7 +143,7 @@ class AdditionalServicesController extends AbstractActionController {
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
                     }
-                } else if ($this->promoCodeOnceService->isValid($code)) {
+                } elseif ($this->promoCodeOnceService->isValid($code)) {
                     try {
                         $this->promoCodeOnceService->usePromoCode($customer, $code);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');
@@ -226,7 +226,7 @@ class AdditionalServicesController extends AbstractActionController {
                     } catch (\Exception $e) {
                         $this->flashMessenger()->addErrorMessage('Si è verificato un errore applicativo STD.');
                     }
-                } else if ($this->promoCodeOnceService->isValid($code)) {
+                } elseif ($this->promoCodeOnceService->isValid($code)) {
                     try {
                         $this->promoCodeOnceService->usePromoCode($customer, $code);
                         $this->flashMessenger()->addSuccessMessage('Operazione completata con successo!');

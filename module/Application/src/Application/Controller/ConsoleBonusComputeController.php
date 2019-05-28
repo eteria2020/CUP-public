@@ -277,7 +277,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
                 }
             }
             // Search stop end
-            else if ($event->getEventId() == 3 && $event->getIntval() == 4) { // getLabel()
+            elseif ($event->getEventId() == 3 && $event->getIntval() == 4) { // getLabel()
                 if ($is_bonus_parking) {
                     $is_bonus_parking = false;
                     $te = $event->getEventTime();
@@ -854,7 +854,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
             $emailCategory = 16;
             $tripMinutes = 5;
             $fleets = array(1,4);   // only Milan and Modena
-        } else if ($bonusType=='POIS-FI-30') {
+        } elseif ($bonusType=='POIS-FI-30') {
             $bonus_to_assign = 5;
             $duration =30;
             $description = 'Parcheggio centro Firenze - ';

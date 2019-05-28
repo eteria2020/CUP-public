@@ -405,7 +405,7 @@ class IndexController extends AbstractActionController
 
         if (is_null($contract)) {
             $contract = 'no_contract';
-        } else if($contract instanceof  Contracts){
+        } elseif($contract instanceof  Contracts){
             $contract = $contract->getId();
         }
 
@@ -646,7 +646,7 @@ class IndexController extends AbstractActionController
             //INVALID_DRIVERS_LICENSE
             //EXPIRED_DRIVERS_LICENSE
             $redirect = true;
-        } else if(isset($userId[0]) && is_numeric($userId[0])){
+        } elseif(isset($userId[0]) && is_numeric($userId[0])){
             $response = $clawlerService->getCustomerInformation($userId[0]);
 
             if(is_array($response) && isset($response["data"][0]["status"])){

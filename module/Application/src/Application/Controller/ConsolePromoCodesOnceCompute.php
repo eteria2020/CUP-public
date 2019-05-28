@@ -71,13 +71,13 @@ class ConsolePromoCodesOnceCompute extends AbstractActionController {
             $qty = intval($request->getParam('param2'));
             $this->insertNewPromocode($pciId, $qty);
 
-        } else if($actionType==="use"){
+        } elseif($actionType==="use"){
             //php ../public/public/index.php  promocodesonce use email  promocode
 
             $email = $request->getParam('param1');
             $promocode = $request->getParam('param2');
             $this->usePromocode($email, $promocode);
-        }else if($actionType==="check"){
+        }elseif($actionType==="check"){
             //php ../public/public/index.php  promocodesonce check  promocode no-used
             $promocode = $request->getParam('param1');
             if($this->checkPromocode($promocode)){

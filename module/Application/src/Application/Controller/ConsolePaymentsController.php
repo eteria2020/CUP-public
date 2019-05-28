@@ -171,7 +171,7 @@ class ConsolePaymentsController extends AbstractActionController
         if (is_null($transaction)) {
             echo "no transaction ('.$transactionId.') found\n";
             exit();
-        }else if (is_null($customer)){
+        }elseif (is_null($customer)){
             echo "no customer ('.$customerId.') found\n";
             exit();
         } else {
