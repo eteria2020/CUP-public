@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-28 09:33+0200\n"
-"PO-Revision-Date: 2019-05-28 09:34+0200\n"
+"POT-Creation-Date: 2019-05-29 14:38+0200\n"
+"PO-Revision-Date: 2019-05-29 14:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5184,7 +5184,7 @@ msgstr "Servicecontract en tarieven"
 #: module/Application/view/partials/footer/main_foot.phtml:38
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
 msgid "Modello di recesso"
-msgstr ""
+msgstr "Opzeggingsformulier"
 
 #: module/Application/view/partials/footer/main_foot.phtml:39
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:38
