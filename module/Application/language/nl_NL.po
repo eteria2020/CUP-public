@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-06-03 17:59+0200\n"
-"PO-Revision-Date: 2019-06-03 18:01+0200\n"
+"POT-Creation-Date: 2019-06-06 12:17+0200\n"
+"PO-Revision-Date: 2019-06-06 12:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -46,7 +46,7 @@ msgstr "Tarieven"
 
 #: module/Application/config/module.config.php:2755
 msgid "Promo e pacchetti"
-msgstr "Promoties en pakketten"
+msgstr "Aanbiedingen  en pakketten"
 
 #: module/Application/config/module.config.php:2765
 msgid "Bonus minuti"
@@ -339,7 +339,7 @@ msgstr "EE = buitenlands"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:218
 #: module/Application/src/Application/Form/UserFieldset.php:262
 msgid "Provincia di nascita (EE = estero)"
-msgstr "Geboorteprovincie (Buitenlands)"
+msgstr "Geboorteprovincie (EE = Buitenlands)"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:186
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:191
@@ -367,24 +367,18 @@ msgstr "Gemeente"
 #: module/Application/src/Application/Form/CustomerFieldset.php:202
 #: module/Application/src/Application/Form/NewUserFieldset2.php:139
 #: module/Application/view/application/user/new-signup2.phtml:112
-#, fuzzy
-#| msgid "Dati di residenza"
 msgid "Stato di residenza"
 msgstr "Adresgegevens"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:217
 #: module/Application/src/Application/Form/NewUserFieldset2.php:154
-#, fuzzy
-#| msgid "Provincia di nascita (EE = estero)"
 msgid "Provincia di residenza (EE = estero)"
-msgstr "Geboorteprovincie (Buitenlands)"
+msgstr "Provincie (EE = Buitenlands)"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:229
 #: module/Application/src/Application/Form/CustomerFieldset.php:233
-#, fuzzy
-#| msgid "via"
 msgid "Via"
-msgstr "straat"
+msgstr "Straat"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:243
 #: module/Application/src/Application/Form/CustomerFieldset.php:247
@@ -524,7 +518,7 @@ msgstr "dd-mm-jjjj"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:85
 msgid "Rilasciato il"
-msgstr "Afgegeven d.d."
+msgstr "Afgegeven op"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:97
 msgid "Es. Mario"
@@ -584,7 +578,7 @@ msgstr "Straat en huisnummer"
 
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:266
 msgid "olandese"
-msgstr ""
+msgstr "Nederlands"
 
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:277
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:262
@@ -609,7 +603,7 @@ msgid ""
 "immagini e pdf"
 msgstr ""
 "Het geüploade bestand heeft een ongeldig formaat; alleen beeldformaten en "
-"pdf worden geaccepteerd"
+"pdf's worden geaccepteerd"
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:98
 #: module/Application/src/Application/Form/NewRegistrationForm2.php:226
@@ -623,10 +617,8 @@ msgstr "Het geüploade bestand is onleesbaar of bestaat niet"
 
 #: module/Application/src/Application/Form/MobileForm.php:71
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:255
-#, fuzzy
-#| msgid "Professione (Opzionale)"
 msgid "Prefisso internazionale"
-msgstr "Beroep (optioneel)"
+msgstr "Landnummer"
 
 #: module/Application/src/Application/Form/MobileForm.php:85
 #: module/Application/src/Application/Form/NewUserFieldset2.php:258
@@ -669,8 +661,6 @@ msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "De ingevoerde code komt niet overeen met de verzonden code"
 
 #: module/Application/src/Application/Form/NewRegistrationForm2.php:244
-#, fuzzy
-#| msgid "E\\' necessario confermare e sottoscrivere la dichiarazione"
 msgid "E' necessario confermare e sottoscrivere la dichiarazione"
 msgstr "Je moet de verklaring bevestigen en ondertekenen"
 
@@ -791,10 +781,8 @@ msgid "Il cognome non coincide con quello presente sul codice fiscale"
 msgstr "De achternaam komt niet overeen met het BSN"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:480
-#, fuzzy
-#| msgid "Codice Avviamento Postale non corretto"
 msgid "Il Codice Avviamento Postale (CAP) non può essere vuoto"
-msgstr "Postcode is onjuist"
+msgstr "Postcode mag niet leeg zijn"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:502
 #: module/Application/src/Application/Form/UserFieldset.php:636
@@ -993,8 +981,8 @@ msgid ""
 "collegamento presente nelle e-mail e nelle Newsletter di Sharengo."
 msgstr ""
 "Ik wil graag nieuws en informatie over mijn stad ontvangen van Sharengo. Ik "
-"kan mijn nieuwsbriefabonnement op elk moment opzeggen via een link in de "
-"Sharengo-e-mails en nieuwsbrieven."
+"kan mijn nieuwsbriefabonnement op elk moment opzeggen via een link in de e-"
+"mails en nieuwsbrieven van Sharengo."
 
 #: module/Application/src/Application/Form/PasswordForm.php:53
 msgid "Vecchia password"
@@ -1298,7 +1286,7 @@ msgstr "Je bent al gerelateerd aan een ander bedrijf"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
 msgid "Indirizzo email non accettato"
-msgstr ""
+msgstr "E-mail adres niet geaccepteerd"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
 #, php-format
@@ -1311,10 +1299,8 @@ msgstr "RFID: %s-code: %s"
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-#, fuzzy
-#| msgid "Sig."
 msgid "Si"
-msgstr "Dhr."
+msgstr "Ja"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
@@ -1322,83 +1308,74 @@ msgstr "Dhr."
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-#, fuzzy
-#| msgid "Nome"
 msgid "No"
-msgstr "Naam"
+msgstr "Nee"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
 msgid "Interna"
-msgstr ""
+msgstr "Intern"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-#, fuzzy
-#| msgid "Username"
 msgid "Esterna"
-msgstr "Gebruikersnaam"
+msgstr "Extern"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
 msgid "Mappa"
-msgstr ""
+msgstr "Plattegrond"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
 msgid "(Black Box)"
-msgstr ""
+msgstr "(Black Box)"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
-#, fuzzy
-#| msgid ""
-#| "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgid "Si è verificato un errore durante il salvataggio della configurazione"
-msgstr "Er is een toepassingsfout opgetreden. Onze excuses voor het ongemak"
+msgstr "Er is een fout opgetreden tijdens het opslaan van de configuratie"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
 msgid "Completata"
-msgstr "Voltooide ritten"
+msgstr "Voltooid"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
-#, fuzzy
-#| msgid "Attivazione completata"
 msgid "Non Completata"
-msgstr "Activering voltooid"
+msgstr "Niet voltooid"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
 msgid "Codice promo non valido."
-msgstr "Ongeldig BSN"
+msgstr "Ongeldige promotiecode."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
 msgid "Codice promo già associato a questo account."
-msgstr "Je bent al gerelateerd aan dit bedrijf"
+msgstr "Promotiecode is al gerelateerd aan dit account."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
 msgid "Codice fiscale, genere "
-msgstr "Burgerservicenummer"
+msgstr "BSN, geslacht "
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
 msgid "Codice fiscale, data di nascita "
-msgstr "BSN en BTW-nummer"
+msgstr "BSN, geboortedatum "
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
 msgid "Codice fiscale, luogo di nascita incongruente."
-msgstr ""
+msgstr "BSN, geboorteplaats tegenstrijdig."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
 msgid "Codice fiscale, sintassi incongruente."
-msgstr "Ongeldig BSN"
+msgstr "BSN, syntax tegenstrijdig."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
 msgid "Codice fiscale, sintassi errata."
-msgstr "Ongeldig BSN"
+msgstr "BSN, syntax onjuist."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
 msgid "PRENOTAZIONE DI SISTEMA"
-msgstr ""
+msgstr "RESERVERINSSYSTEEM"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
-msgstr "Promoties en pakketten"
+msgstr "aanbiedingen en pakketten"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:44
 msgid "Acquista Pacchetti"
@@ -1578,7 +1555,7 @@ msgstr "Overzicht"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
 msgid "Descrizione:"
-msgstr "Beschrijving:"
+msgstr "Omschrijving:"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:41
 msgid "Valido dal:"
@@ -1632,7 +1609,7 @@ msgid ""
 "i primi 30 minuti di guida gratuita e la Share’ngo Card (per aprire l’auto "
 "anche senza smartphone)."
 msgstr ""
-"Houd je rijbewijs, BSN en creditcard bij de hand. De inschrijving bij "
+". Houd je rijbewijs, BSN en creditcard bij de hand. De inschrijving bij "
 "Sharengo kost 10 euro en is inclusief 30 gratis rijminuten en de Sharengo-"
 "card (om de auto ook zonder smartphone te kunnen openen)."
 
@@ -1799,6 +1776,7 @@ msgstr ""
 "je precies weten hoe het werkt: lees de"
 
 #: module/Application/view/application/index/comefunziona.phtml:43
+#, fuzzy
 msgid "dedicate"
 msgstr "???"
 
@@ -1816,11 +1794,11 @@ msgid ""
 "uscire dall’auto. La chiave non è estraibile e resta inserita nel cruscotto. "
 "Non devi preoccuparti neanche della ricarica: ci pensiamo noi!"
 msgstr ""
-"Een rit eindigt door te klikken op de “P” in het informatiedisplay en een "
-"van de twee opties te kiezen: “Huur beëindigen” of “Tussenstop maken”. In "
-"beide gevallen sluiten de deuren vanzelf in 40 seconden, en het enige wat je "
-"moet doen voordat je de auto verlaat, is de sleutel omdraaien om het contact "
-"uit te zetten, de lichten uitdoen, de ramen dichtdoen en de handrem "
+"Een rit eindigt door te klikken op de “P” in het informatiedisplay en door "
+"één van de twee opties te kiezen: “Huur beëindigen” of “Tussenstop maken”. "
+"In beide gevallen sluiten de deuren vanzelf in 40 seconden, en het enige wat "
+"je moet doen voordat je de auto verlaat, is de sleutel omdraaien om het "
+"contact uit te zetten, de lichten uitdoen, de ramen dichtdoen en de handrem "
 "aantrekken. De sleutel kan niet worden verwijderd en blijft in het dashboard "
 "zitten. Je hoeft je ook geen zorgen te maken over het opladen, dat doen wij!"
 
@@ -2271,7 +2249,7 @@ msgstr "Geldig tot"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:138
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:138
 msgid "Descrizione"
-msgstr "Beschrijving"
+msgstr "Omschrijving"
 
 #: module/Application/view/application/user-area/bonus.phtml:71
 msgid "Minuti restanti"
@@ -2576,6 +2554,7 @@ msgstr ""
 "persoonlijke pagina, maar je kunt niet inloggen op de App)."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:197
+#, fuzzy
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
@@ -2736,10 +2715,8 @@ msgstr "Adresgegevens"
 
 #: module/Application/view/application/user-area/index.phtml:131
 #: module/Application/view/application/user-area/index.phtml:361
-#, fuzzy
-#| msgid "Francia"
 msgid "Provincia"
-msgstr "Frankrijk"
+msgstr "Provincie"
 
 #: module/Application/view/application/user-area/index.phtml:135
 #: module/Application/view/application/user-area/index.phtml:370
@@ -2752,8 +2729,6 @@ msgstr "Plaats"
 
 #: module/Application/view/application/user-area/index.phtml:149
 #: module/Application/view/application/user-area/index.phtml:407
-#, fuzzy
-#| msgid "N. civico"
 msgid "Civico"
 msgstr "Huisnr."
 
@@ -2770,8 +2745,6 @@ msgstr "Postcode"
 
 #: module/Application/view/application/user-area/index.phtml:163
 #: module/Application/view/application/user-area/index.phtml:442
-#, fuzzy
-#| msgid "Informazioni aggiuntive"
 msgid "Info aggiuntive"
 msgstr "Overige informatie"
 
@@ -2898,7 +2871,6 @@ msgstr "Resterend"
 
 #: module/Application/view/application/user-area/index.phtml:720
 #: module/Application/view/application/user-area/profile.phtml:603
-#, fuzzy
 msgid "Punti OSSIGENO"
 msgstr "ZUURSTOF-punten"
 
@@ -3001,9 +2973,8 @@ msgid ""
 "min) e provi subito la tua Sharengo."
 msgstr ""
 "welkom bij Sharengo! Om je account te activeren, dien je met een creditcard "
-"het welkomstpakket te kopen: met 5 euro heb je de eerste 21 minuten tegen "
-"een gereduceerd tarief (€ 0,24/min in plaats van € 0,28/min) en kun je "
-"meteen Share’ngo uitproberen."
+"het welkomstpakket te kopen: voor 10 euro heb je de eerste 30 minuten tegen "
+"een gereduceerd tarief (€ 0,33/min) en kun je meteen Share’ngo uitproberen."
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:14
 msgid "PACKAGE MY SHARE'N GO"
@@ -3177,7 +3148,7 @@ msgid ""
 "filiale di riferimento per richiederne l&#39;attivazione. Per maggiori info "
 "leggi le <a href=\"https://www.mastercard.it/it-it/faq.html\">FAQ</a>."
 msgstr ""
-"neem gewoon contact op met de klantenservice van je bank of neem contact op "
+" neem gewoon contact op met de klantenservice van je bank of neem contact op "
 "met het bijkantoor om activering aan te vragen. Lees voor meer informatie de "
 "<a href=”https://www.mastercard.nl/nl-nl/frequently-asked-questions.html"
 "\">Veel gestelde vragen</a>."
@@ -3270,10 +3241,8 @@ msgid "Tariffa base della corsa"
 msgstr "Basistarief van de rit"
 
 #: module/Application/view/application/user-area/rates.phtml:72
-#, fuzzy
-#| msgid "Tariffa giornaliera"
 msgid "Tariffa oraria"
-msgstr "Dagtarief"
+msgstr "Uurtarief"
 
 #: module/Application/view/application/user-area/rates.phtml:80
 msgid "Tariffa giornaliera"
@@ -3353,6 +3322,7 @@ msgid "Nessuna corsa effettuata finora"
 msgstr "Tot nu toe geen ritten gemaakt"
 
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
+#, fuzzy
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
@@ -3542,10 +3512,8 @@ msgid "Cognome codice fiscale"
 msgstr "Achternaam BSN"
 
 #: module/Application/view/application/user/new-signup2.phtml:122
-#, fuzzy
-#| msgid "Provincia di nascita"
 msgid "Provincia di residenza"
-msgstr "Geboorteprovincie"
+msgstr "Woonprovincie"
 
 #: module/Application/view/application/user/new-signup2.phtml:162
 #: module/Application/view/application/user/signup-nl2.phtml:123
@@ -3568,8 +3536,6 @@ msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Controleer of je rijbewijs niet verlopen is."
 
 #: module/Application/view/application/user/new-signup2.phtml:268
-#, fuzzy
-#| msgid "Data di scadenza patente"
 msgid "Scadenza patente"
 msgstr "Vervaldatum rijbewijs"
 
@@ -3625,10 +3591,10 @@ msgid ""
 "cittadino straniero su territorio italiano e alla durata della stessa), ai "
 "fini della guida sul territorio italiano."
 msgstr ""
-"Hij/zij verklaart tevens dat de bovenstaand document geldig is met "
-"betrekking tot internationale verkeersregels (in verband met het verblijf "
-"van buitenlandse burgers op Nederlands grondgebied en de duur ervan), met "
-"het oog op het rijden op Nederlands grondgebied."
+"Hij/zij verklaart tevens dat bovenstaand document geldig is met betrekking "
+"tot internationale verkeersregels (in verband met het verblijf van "
+"buitenlandse burgers op Nederlands grondgebied en de duur ervan), met het "
+"oog op het rijden op Nederlands grondgebied."
 
 #: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:269
@@ -3789,7 +3755,7 @@ msgstr "Neem contact op met de assistentie voor meer informatie"
 msgid "Sarà possibile riprovare il pagamento in Area Riservata"
 msgstr ""
 "Het is mogelijk om de betaling opnieuw uit te voeren in je persoonlijke "
-"omgeving."
+"omgeving"
 
 #: module/Application/view/application/user/optional.phtml:62
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:45
@@ -3812,10 +3778,8 @@ msgstr "Ga naar je persoonlijke omgeving"
 
 #: module/Application/view/application/user/signup-nl1.phtml:25
 #: module/Application/view/application/user/signup-sk1.phtml:33
-#, fuzzy
-#| msgid "Pacchetti fino a 22 centesimi al minuto"
 msgid "Pacchetti fino a 16 centesimi al minuto"
-msgstr "Pakketten tot 22 cent per minuut"
+msgstr "Pakketten tot 16 cent per minuut"
 
 #: module/Application/view/application/user/signup-nl1.phtml:115
 #: module/Application/view/application/user/signup-sk1.phtml:123
@@ -3824,13 +3788,16 @@ msgstr "de Algemene Voorwaarden van Sharengo"
 
 #: module/Application/view/application/user/signup-nl1.phtml:128
 #: module/Application/view/application/user/signup-sk1.phtml:136
-#, fuzzy
 msgid ""
 "Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
 "Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che "
 "accetta e approva letteralmente le Condizioni generali e condizioni e assume "
 "consapevole della loro accettazione per concludere il contratto."
-msgstr "??? "
+msgstr ""
+"De Klant verklaart, na kennis te hebben genomen van de Algemene "
+"Contractvoorwaarden op grond van het Burgerlijk Wetboek, dat hij/zij de "
+"Algemene Voorwaarden aanvaardt en deze volledig goedkeurt, en zich bewust is "
+"van de instemming betreft het sluiten van het contract."
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
 #: module/Application/view/application/user/signup-sk2.phtml:102
@@ -3839,7 +3806,7 @@ msgstr "Plaats; woonplaats"
 
 #: module/Application/view/application/user/signup-nl2.phtml:223
 msgid "BSN"
-msgstr ""
+msgstr "BSN"
 
 #: module/Application/view/application/user/signup-nl2.phtml:247
 #: module/Application/view/application/user/signup-sk2.phtml:470
@@ -3848,7 +3815,6 @@ msgstr "Vervaldatum rijbewijs"
 
 #: module/Application/view/application/user/signup-nl2.phtml:260
 #: module/Application/view/application/user/signup-sk2.phtml:483
-#, fuzzy
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
 "dichiarazioni dichiarano che possiede una patente di guida valida, che lo "
@@ -3860,14 +3826,19 @@ msgid ""
 "generale condizioni e ai fini del funzionamento questo servizio durante il "
 "periodo di utilizzo di questo servizio servizio, fino al ritiro di tale "
 "consenso."
-msgstr "???"
+msgstr ""
+"De Klant, bewust van het strafrecht en de civielrechtelijke gevolgen van "
+"valse verklaringen, verklaart in bezit te zijn van een geldig rijbewijs, wat "
+"hem/haar bevoegd maakt om het voertuig te besturen. Op grond van de wet "
+"betreffende de bescherming van persoonsgegevens verklaar ik dat ik de "
+"exploitant uitdrukkelijk en onvoorwaardelijk toestemming geef voor de "
+"verwerking van mijn persoonsgegevens, die noodzakelijk zijn voor de diensten "
+"van Sharengo, waarnaar verwezen wordt in de Algemene Contractvoorwaarden, en "
+"voor het doel van de uitvoering van diensten tijdens de periode van gebruik "
+"van deze diensten, tot aan het intrekken van deze toestemming."
 
 #: module/Application/view/application/user/signup-nl2.phtml:286
 #: module/Application/view/application/user/signup-sk2.phtml:509
-#, fuzzy
-#| msgid ""
-#| "Occorre allegare copia fotostatica, anche non autenticata, della patente "
-#| "di guida e della carta di identità, entrambe fronte e retro"
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida fronte e retro"
@@ -3893,8 +3864,9 @@ msgstr "Slowakije"
 
 #: module/Application/view/application/user/signup-sk2.phtml:206
 #: module/Application/view/application/user/signup-sk2.phtml:234
+#, fuzzy
 msgid "Netherlands"
-msgstr ""
+msgstr "Nederland"
 
 #: module/Application/view/application/user/signup-sk2.phtml:209
 #: module/Application/view/partials/translations.phtml:48
@@ -4871,7 +4843,7 @@ msgid ""
 "standard, salvo promozioni)."
 msgstr ""
 "Het registreren bij Sharengo kost 10 euro, inclusief 30 bonusminuten "
-"(standaardvoorwaarden, behalve promoties)."
+"(standaardvoorwaarden, behalve aanbiedingen)."
 
 #: module/Application/view/application/user/signup.phtml:46
 #, fuzzy
@@ -5056,6 +5028,7 @@ msgstr ""
 
 #: module/Application/view/application/user/signup2.phtml:145
 #: module/Application/view/application/user/signup2.phtml:146
+#, fuzzy
 msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
 msgstr "???"
 
@@ -5108,7 +5081,7 @@ msgid ""
 msgstr ""
 "Om de geldigheid van je buitenlands rijbewijs te controleren, moet je een "
 "kopie van je rijbewijs en identiteitsbewijs uploaden, van zowel de voor- als "
-"de achterkant."
+"de achterkant "
 
 #: module/Application/view/application/user/signupinsert.phtml:55
 #: module/Application/view/partials/translations.phtml:32
@@ -5138,7 +5111,7 @@ msgstr ""
 #: module/Application/view/application/user/signupinsert.phtml:63
 msgid "Per completare l'attivazione del servizio, esegui il pagamento di "
 msgstr ""
-"Om de activering van de dienst te voltooien moet je een betaling doen van"
+"Om de activering van de dienst te voltooien moet je een betaling doen van "
 
 #: module/Application/view/application/user/signupinsert.phtml:65
 msgid ""
@@ -5454,9 +5427,9 @@ msgid ""
 "oppure la tessera. Ti consigliamo di non utilizzare l\\'auto se l"
 "\\'autonomia è al di sotto del 20&#37; di carica"
 msgstr ""
-"Vergeet niet dat u uw smartphone met u om de auto te openen, of de kaart. "
-"Wij raden u aan de auto niet te gebruiken als de autonomie lager is dan 20 & "
-"#37;"
+"Vergeet niet je smartphone of je pasje bij de hand te hebben om de auto te "
+"openen. We raden je aan om de auto niet te gebruiken als het bereik minder "
+"dan 20% is"
 
 #: module/Application/view/partials/car-popup.phtml:129
 msgid "Ricorda che:"
@@ -5607,7 +5580,7 @@ msgstr "prov."
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:19
 msgid "il"
-msgstr "d.d."
+msgstr "op"
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:21
 msgid "e residente in"
@@ -5619,7 +5592,7 @@ msgstr "straat"
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:32
 msgid "di essere titolare di patente di guida in corso di validit&agrave n."
-msgstr "de houder te zijn van het geldige rijbewijs"
+msgstr "houder te zijn van het geldige rijbewijs nr."
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:32
 msgid "rilasciata da"
@@ -5645,8 +5618,6 @@ msgid "Avanti"
 msgstr "Verder"
 
 #: module/Application/view/partials/header/main_head.phtml:21
-#, fuzzy
-#| msgid "Pacchetti &amp; promozioni"
 msgid "Pacchetti &amp; promo"
 msgstr "Pakketten & aanbiedingen"
 
@@ -6286,7 +6257,7 @@ msgstr "Je bent verbonden met het volgende bedrijf:"
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:22
 msgid "Stato associazione: "
-msgstr "Status verbondenheid:"
+msgstr "Status verbondenheid: "
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:25
 msgid "Nome: "

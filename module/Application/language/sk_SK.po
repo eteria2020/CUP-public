@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-29 14:50+0200\n"
-"PO-Revision-Date: 2019-05-29 14:56+0200\n"
+"POT-Creation-Date: 2019-06-06 12:18+0200\n"
+"PO-Revision-Date: 2019-06-06 12:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -71,7 +71,7 @@ msgid "Impossibile completare l'acquisto del pacchetto richiesto"
 msgstr "Nákup požadovaného balíka nemožno dokončiť"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:127
-#: module/Application/view/application/customer-bonus-packages/package.phtml:70
+#: module/Application/view/application/customer-bonus-packages/package.phtml:64
 msgid ""
 "Occorre effettuare l'acquisto del Pacchetto Benvenuto prima di poter "
 "acquistare un pacchetto"
@@ -234,7 +234,7 @@ msgstr "Pani"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:106
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:139
+#: module/Application/view/application/additional-services/additional-services.phtml:144
 #: module/Application/view/application/additional-services/gift-packages.phtml:93
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
@@ -1390,7 +1390,7 @@ msgstr ""
 
 #: module/Application/view/application/additional-services/additional-services.phtml:81
 #: module/Application/view/application/additional-services/additional-services.phtml:96
-#: module/Application/view/application/additional-services/additional-services.phtml:113
+#: module/Application/view/application/additional-services/additional-services.phtml:118
 #: module/Application/view/application/additional-services/gift-packages.phtml:72
 #: module/Application/view/application/additional-services/gift-packages.phtml:75
 msgid "min"
@@ -1407,71 +1407,73 @@ msgid "a "
 msgstr "na "
 
 #: module/Application/view/application/additional-services/additional-services.phtml:101
-#: module/Application/view/application/additional-services/additional-services.phtml:116
+#: module/Application/view/application/additional-services/additional-services.phtml:121
 msgid "Validità"
 msgstr "Platnosť"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:105
+#: module/Application/view/application/additional-services/additional-services.phtml:106
 msgid "mesi"
 msgstr "mesiace"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:105
+#: module/Application/view/application/additional-services/additional-services.phtml:106
 msgid "mese"
 msgstr "mesiac"
 
+#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:125
+msgid "giorni"
+msgstr "dní"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:125
+msgid "giorno"
+msgstr "deň"
+
 # Dipende dal contesto. Quale parola dovrebbe essere la successiva?
-#: module/Application/view/application/additional-services/additional-services.phtml:109
+#: module/Application/view/application/additional-services/additional-services.phtml:114
 #: module/Application/view/application/additional-services/gift-packages.phtml:72
 msgid "a"
 msgstr "na"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:120
-msgid "giorni"
-msgstr "dní"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:120
-msgid "giorno"
-msgstr "deň"
-
 # Dipende dal contesto. Validita a 30 Minuti....oppure Minuti: 30
-#: module/Application/view/application/additional-services/additional-services.phtml:140
+#: module/Application/view/application/additional-services/additional-services.phtml:145
 #: module/Application/view/application/additional-services/gift-packages.phtml:94
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minúty"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:141
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/additional-services/gift-packages.phtml:95
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Cena"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:142
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/additional-services/gift-packages.phtml:96
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Platné od"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:143
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 #: module/Application/view/application/additional-services/gift-packages.phtml:97
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Trvanie"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:144
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 #: module/Application/view/application/additional-services/gift-packages.phtml:98
 msgid "Disponibile fino"
 msgstr "Platné do"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:145
+#: module/Application/view/application/additional-services/additional-services.phtml:150
 msgid "Acquista/Converti"
 msgstr "Kúpiť"
 
 # Non capisco. Cosa significa?
-#: module/Application/view/application/additional-services/additional-services.phtml:160
+#: module/Application/view/application/additional-services/additional-services.phtml:165
 #: module/Application/view/application/additional-services/gift-packages.phtml:115
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
@@ -1479,15 +1481,15 @@ msgstr "Kúpiť"
 msgid "per %d gg"
 msgstr "%d dní"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:217
+#: module/Application/view/application/additional-services/additional-services.phtml:222
 msgid "Codice Promo"
 msgstr "Zľavový kód"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:223
+#: module/Application/view/application/additional-services/additional-services.phtml:228
 msgid "Inserisci il codice promo"
 msgstr "Vlož zľavový kód"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:235
+#: module/Application/view/application/additional-services/additional-services.phtml:240
 msgid "Valida"
 msgstr "POUŽIŤ"
 
@@ -1556,26 +1558,22 @@ msgstr "Platný od:"
 msgid "Valido al:"
 msgstr "Platný do:"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:51
-msgid "Disponibile fino al:"
-msgstr "K dispozícii do:"
-
-#: module/Application/view/application/customer-bonus-packages/package.phtml:63
+#: module/Application/view/application/customer-bonus-packages/package.phtml:57
 msgid "Vuoi confermare questo pacchetto?"
 msgstr "Chceš potvrdiť tento balíček?"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:65
+#: module/Application/view/application/customer-bonus-packages/package.phtml:59
 msgid "Confermare l'acquisto utilizzando carta di credito?"
 msgstr "Potvrdiť platbu použitím platobnej karty?"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:67
-#: module/Application/view/application/customer-bonus-packages/package.phtml:74
-#: module/Application/view/application/customer-bonus-packages/package.phtml:77
+#: module/Application/view/application/customer-bonus-packages/package.phtml:61
+#: module/Application/view/application/customer-bonus-packages/package.phtml:68
+#: module/Application/view/application/customer-bonus-packages/package.phtml:71
 #: module/Application/view/partials/car-popup.phtml:136
 msgid "Conferma"
 msgstr "Potvrdiť"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:72
+#: module/Application/view/application/customer-bonus-packages/package.phtml:66
 msgid "Confermare l'acquisto registrando una carta di credito"
 msgstr "Potvrdiť nákup registráciou platobnej karty"
 
@@ -6286,6 +6284,9 @@ msgstr ""
 "ktoré majú byť uhradenée a neboli uhradené dnes, znamená to že došlo k "
 "problémom na tvojej kreditnej karte a že tvoj účet je dočasne pozastavený. "
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
+
+#~ msgid "Disponibile fino al:"
+#~ msgstr "K dispozícii do:"
 
 #~ msgid "0.28"
 #~ msgstr "0.16"
