@@ -2289,7 +2289,7 @@ return [
                 'retry-wrong-payments-time' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'retry wrong payments time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'route' => 'retry wrong payments time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d] [--no-lock|-l]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',
@@ -2311,7 +2311,7 @@ return [
                 'retry-wrong-extra-time' => [
                     'type' => 'simple',
                     'options' => [
-                        'route' => 'retry wrong extra time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d]',
+                        'route' => 'retry wrong extra time <startTimestamp> <endTimestamp> [--no-emails|-e] [--no-cartasi|-c] [--no-db|-d] [--no-lock|-l]',
                         'defaults' => [
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller' => 'ConsolePayInvoice',

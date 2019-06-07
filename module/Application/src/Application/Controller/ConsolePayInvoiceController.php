@@ -244,7 +244,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $timestampEndParam = '-60 days';
         }
         $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, $timestampEndParam);  //TODO only dev put -2 days
-        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
 
         $this->processPaymentsService->processPayments(
             $tripPaymentsWrong,
@@ -278,7 +278,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->logger->log("Done generating invoices\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
-    /*
+    /**
      * Re try to pay trips marked as "wrong payments" in a defined period of time
      */
     public function retryWrongPaymentsTimeAction()
@@ -292,6 +292,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidEmails = true;  // force avoid send email during re try wong paiment
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+        $noLock = $request->getParam('no-lock') || $request->getParam('l');
 
         if ($start == '' && $end == ''){
             $now = date_create();
@@ -305,30 +306,53 @@ class ConsolePayInvoiceController extends AbstractActionController
                 $start = $start->format('Y-m-d H:i:s');
                 $end = $now->format('Y-m-d H:i:s');
             } else {
-                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters\n");
+                $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: missing time parameters start and end\n");
                 exit();
             }
         }
 
+        $this->logger->log(sprintf("%s;INF;retryWrongPaymentsTimeAction;start;%s;%s;%s;%s;%s;%s\n",
+            date_create()->format('y-m-d H:i:s'),
+            $start,
+            $end,
+            $this->avoidEmails,
+            $this->avoidCartasi,
+            $this->avoidPersistance,
+            $noLock
+            ));
+
         if (!$this->paymentScriptRunsService->isRunning()) {
-            $scriptId = $this->paymentScriptRunsService->scriptStarted();
 
-            $this->reProcessWrongTimePayments($start, $end);
+            if(!$noLock) {
+                $scriptId = $this->paymentScriptRunsService->scriptStarted();
+                $this->reProcessWrongTimePayments($start, $end);
+                $this->paymentScriptRunsService->scriptEnded($scriptId);
+            } else {
+                $this->reProcessWrongTimePayments($start, $end);
+            }
 
-            $this->paymentScriptRunsService->scriptEnded($scriptId);
             $this->entityManager->clear();
 
         } else {
             $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongPaymentsTimeAction;Error Retry: Pay invoice is running\n");
         }
+
+        $this->logger->log(sprintf("%s;INF;retryWrongPaymentsTimeAction;end\n",
+            date_create()->format('y-m-d H:i:s')
+        ));
     }
 
+    /**
+     * Re-process wrong trip payments from $start to $end date
+     * @param $start
+     * @param $end
+     */
     private function reProcessWrongTimePayments($start, $end)
     {
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPaymentsTime;start\n");
         $verify = $this->tripPaymentsService->getWrongTripPaymentsDetails($start, $end)[0];
         $count = $verify["count"];
-        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . $count . "\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPaymentsTime;count all (tripPaymentsWrong);" . $count . "\n");
         $limit = 100;
         $lastId = null;
         while ($count > 0){
@@ -340,7 +364,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $lastId = $verify["last"];
             $count = $verify["count"];
 
-            $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPaymentsTime;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
             $this->processPaymentsService->processPayments(
                 $tripPaymentsWrong,
                 $this->avoidEmails,
@@ -358,7 +382,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $this->entityManager->clear();
 
         }
-        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongPayments;end\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPayments;end\n");
     }
     
     /*
@@ -432,6 +456,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidEmails = true;  // force avoid send email during re try wong paiment
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
+        $noLock = $request->getParam('no-lock') || $request->getParam('l');
 
         if ($start == '' && $end == '') {
             $now = date_create();
@@ -440,17 +465,35 @@ class ConsolePayInvoiceController extends AbstractActionController
             $end = $now->format('Y-m-d H:i:s');
         }
 
+        $this->logger->log(sprintf("%s;INF;retryWrongExtraTimeAction;start;%s;%s;%s;%s;%s;%s\n",
+            date_create()->format('y-m-d H:i:s'),
+            $start,
+            $end,
+            $this->avoidEmails,
+            $this->avoidCartasi,
+            $this->avoidPersistance,
+            $noLock
+        ));
+
         if (!$this->extraScriptRunsService->isRunning()) {
-            $scriptId = $this->extraScriptRunsService->scriptStarted();
 
-            $this->reProcessWrongTimeExtra($start, $end);
+            if(!$noLock) {
+                $scriptId = $this->extraScriptRunsService->scriptStarted();
+                $this->reProcessWrongTimeExtra($start, $end);
+                $this->extraScriptRunsService->scriptEnded($scriptId);
+            } else {
+                $this->reProcessWrongTimeExtra($start, $end);
+            }
 
-            $this->extraScriptRunsService->scriptEnded($scriptId);
             $this->entityManager->clear();
 
         } else {
             $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;retryWrongExtraTimeAction;Error Retry: Pay invoice is running\n");
         }
+
+        $this->logger->log(sprintf("%s;INF;retryWrongExtraTimeAction;end\n",
+            date_create()->format('y-m-d H:i:s')
+        ));
     }
     
      private function reProcessWrongTimeExtra($start, $end)
@@ -458,7 +501,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongTimeExtra;start\n");
         $verify = $this->extraPaymentsService->getWrongExtraPaymentsDetails($start, $end)[0];
         $count = $verify["count"];
-        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongTimeExtra;count(extraPaymentsWrong);" . $count . "\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongTimeExtra;count all (extraPaymentsWrong);" . $count . "\n");
         $limit = 100;
         $lastId = null;
         while ($count > 0){
@@ -470,7 +513,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $lastId = $verify["last"];
             $count = $verify["count"];
 
-            $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongTimeExtra;count(extraPaymentsWrong);" . count($extraPaymentsWrong) . "\n");
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongTimeExtra;count(extraPaymentsWrong);" . count($extraPaymentsWrong) . "\n");
             $this->processExtraService->processPayments(
                 $extraPaymentsWrong,
                 $this->avoidEmails,
@@ -488,7 +531,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $this->entityManager->clear();
 
         }
-        $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongTimeExtra;end\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongTimeExtra;end\n");
     }
     
     public function payInvoiceExtraAction()
