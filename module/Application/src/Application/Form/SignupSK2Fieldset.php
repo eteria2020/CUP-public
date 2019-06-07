@@ -2,18 +2,20 @@
 
 namespace Application\Form;
 
+use Zend\Form\Fieldset;
+use Zend\Mvc\I18n\Translator;
+use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Stdlib\Hydrator\HydratorInterface;
+
 use SharengoCore\Entity\Customers;
 use SharengoCore\Service\CustomersService;
 use SharengoCore\Service\ProvincesService;
 use SharengoCore\Service\CountriesService;
 
-use Zend\Form\Fieldset;
-use Zend\Mvc\I18n\Translator;
-use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Stdlib\Hydrator\HydratorInterface;
-use Zend\Session\Container;
-use Zend\Validator\NotEmpty;
-use Zend\Validator\Callback;
+
+//use Zend\Session\Container;
+//use Zend\Validator\NotEmpty;
+//use Zend\Validator\Callback;
 
 
 class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface {
@@ -184,11 +186,13 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'birthDate',
                 'class' => 'required datepicker-date',
-                'max' => date_create()->format('Y-m-d'),
+                //'max' => date_create()->format('d-m-Y'),
+                'placeholder' => $translator->translate('dd-mm-aaaa'),
                 'type' => 'text'
             ],
             'options' => [
-                'label' => $translator->translate('Data di nascita')
+                'label' => $translator->translate('Data di nascita'),
+                'format' => 'd-m-Y'
             ]
         ]);
 
@@ -201,7 +205,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
             ],
             'options' => [
                 'label' => $translator->translate('Stato di nascita'),
-                'value_options' => $this->countriesService->getAllCountries( $this->getSelectedCountry())
+                'value_options' => $this->countriesService->getAllCountries( "Slovacchia")
             ]
         ]);
 
@@ -235,8 +239,6 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
 //            ]
 //        ]);
 
-
-
         $this->add([
             'name' => 'birthTown',
             'type' => 'Zend\Form\Element\Text',
@@ -247,23 +249,33 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Comune di nascita'),
+                'label' => $translator->translate('Comune di nascita')
             ]
         ]);
-
-
 
         $this->add([
             'name' => 'taxCode',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'taxCode',
-                'maxlength' => $this->taxCodeLength(),
+                'maxlength' => 10,
                 'placeholder' => $this->translator->translate('1234567890'),
                 'class' => 'required'
             ],
             'options' => [
                 'label' => $this->translator->translate('Numero Identificativo'),
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'dialCode',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => [
+                'id' => 'dialCode'
+            ],
+            'options' => [
+                'label' => $translator->translate('Prefisso internazionale'),
+                'value_options' => $countriesService->getAllPhoneCodeByCountry('Slovacchia')
             ]
         ]);
 
@@ -310,6 +322,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 'format' => 'd-m-Y'
             ]
         ]);
+
 
     }
 
@@ -392,10 +405,22 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'Date',
                         'options' => [
                             'format' => 'd-m-Y'
-                        ]
+                        ],
+                        'break_chain_on_failure' => true
                     ],
                     [
-                        'name' => 'Application\Form\Validator\EighteenDate'
+                        'name' => 'Application\Form\Validator\EighteenDate',
+                    ],
+                    [
+                        'name' => 'Application\Form\Validator\NotTooOld'
+                    ]
+                ]
+            ],
+            'birthTown' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
                     ]
                 ]
             ],
@@ -418,7 +443,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'Application\Form\Validator\IdNumber',
                         'options' => [
-                            'length' => $this->taxCodeLength(),
+                            'length' => 10,
                         ],
                         'break_chain_on_failure' => true
                     ],
@@ -472,7 +497,7 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
             'driverLicenseExpire' => [
-                'required' => false,
+                'required' => true,
                 'validators' => [
                     [
                         'name' => 'Application\Form\Validator\DateFormat'
@@ -489,27 +514,6 @@ class SignupSK2Fieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
         ];
-    }
-
-    private function getSelectedCountry(){
-        $selectedCountry = "Italia";
-        if(!is_null($this->serverInstance)){
-            if ($this->serverInstance == "sk_SK"){
-                $selectedCountry = "Slovacchia";
-            } elseif ($this->serverInstance == "nl_NL") {
-                $selectedCountry = "Nederland";
-            }
-        }
-        return $selectedCountry;
-    }
-
-    private function taxCodeLength(){
-        $length = 10;
-        if (!is_null($this->serverInstance) && $this->serverInstance == "nl_NL"){
-            $length = 9;
-        }
-
-        return $length;
     }
 
 }

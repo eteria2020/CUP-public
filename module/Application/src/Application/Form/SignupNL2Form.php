@@ -44,13 +44,13 @@ class SignupNL2Form extends Form
     /**
      * SignupSK2Form constructor.
      * @param Translator $translator
-     * @param SignupNL2Fieldset $signupNL2Fieldset
+     * @param SignupNL2Fieldset $signupSK2Fieldset
      * @param EntityManager $entityManager
      * @param string|null $serverInstance
      */
     public function __construct(
         Translator $translator,
-        SignupNL2Fieldset $signupNL2Fieldset,
+        SignupNL2Fieldset $signupSK2Fieldset,
         EntityManager $entityManager,
         $serverInstance
     ) {
@@ -64,7 +64,7 @@ class SignupNL2Form extends Form
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
 
-        $this->add($signupNL2Fieldset);
+        $this->add($signupSK2Fieldset);
 
         $this->addElements();
         //$this->addInputFilter();

@@ -3,15 +3,16 @@
 namespace Application\Form;
 
 use Doctrine\ORM\EntityManager;
+
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 use Zend\Validator\Identical;
 use Zend\Mvc\I18n\Translator;
 use Zend\Session\Container;
-use SharengoCore\Entity\Customers;
-//use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\Validator\File\MimeType;
-//use Zend\Stdlib\Hydrator\HydratorInterface;
+
+use SharengoCore\Entity\Customers;
 
 class SignupSK2Form extends Form
 {
@@ -44,7 +45,7 @@ class SignupSK2Form extends Form
     /**
      * SignupSK2Form constructor.
      * @param Translator $translator
-     * @param SignupSK2Fieldset $signupNL2Fieldset
+     * @param SignupSK2Fieldset $signupSK2Fieldset
      * @param EntityManager $entityManager
      * @param string|null $serverInstance
      */
@@ -52,7 +53,7 @@ class SignupSK2Form extends Form
 
     public function __construct(
         Translator $translator,
-        SignupSK2Fieldset $signupNL2Fieldset,
+        SignupSK2Fieldset $signupSK2Fieldset,
         EntityManager $entityManager,
         $serverInstance
     ) {
@@ -66,10 +67,10 @@ class SignupSK2Form extends Form
         $this->setAttribute('class', 'form-signup');
         $this->setAttribute('method', 'post');
 
-        $this->add($signupNL2Fieldset);
+        $this->add($signupSK2Fieldset);
 
         $this->addElements();
-        //$this->addInputFilter();
+        $this->addInputFilter();
 
         $this->add([
             'name' => 'submit',
@@ -79,70 +80,7 @@ class SignupSK2Form extends Form
             ]
         ]);
     }
-    private function addElements()
-    {
-        $this->add([
-            'name' => 'signature',
-            'type' => 'Zend\Form\Element\Checkbox',
-            'attributes' => [
-                'id' => 'signature'
-            ],
-            'options' => [
-                'label' => 'A checkbox',
-                'use_hidden_element' => false
-            ]
-        ]);
 
-        $this->add([
-            'required' => true,
-            'name' => 'drivers-license-front',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => [
-                'id' => 'drivers-license-front',
-                'multiple' => false
-            ]
-        ]);
-
-        $this->add([
-            'required' => true,
-            'name' => 'drivers-license-back',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => [
-                'id' => 'drivers-license-back',
-                'multiple' => false
-            ]
-        ]);
-
-        $this->add([
-            'required' => $this->isRequired(),
-            'name' => 'identity-front',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => [
-                'id' => 'identity-front',
-                'multiple' => false
-            ]
-        ]);
-
-        $this->add([
-            'required' => $this->isRequired(),
-            'name' => 'identity-back',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => [
-                'id' => 'identity-back',
-                'multiple' => false
-            ]
-        ]);
-
-        $this->add([
-            'required' => $this->isRequired(),
-            'name' => 'selfie',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => [
-                'id' => 'selfie',
-                'multiple' => false
-            ]
-        ]);
-    }
 
     private function getContainer()
     {
@@ -204,81 +142,188 @@ class SignupSK2Form extends Form
     public function getInputFilter()
     {
         $inputFilter = parent::getInputFilter();
-//        $inputFilter->remove('signature');
-//        $inputFilter->remove('drivers-license-front');
-//        $inputFilter->remove('drivers-license-back');
-//        $inputFilter->remove('identity-front');
-//        $inputFilter->remove('identity-back');
 
-        $inputFactory = new InputFactory();
+        return $inputFilter;
+    }
 
-        $fieldValidator = [
-            [
-                'name' => 'Callback',
-                'options' => [
-                    'callback' => function($value, $context = array()) {
-                        return true;
-                    }
-                ]
+    private function addElements()
+    {
+        $this->add([
+            'name' => 'signature',
+            'type' => 'Zend\Form\Element\Checkbox',
+            'attributes' => [
+                'id' => 'signature'
+            ],
+            'options' => [
+                'use_hidden_element' => true,
+                'checked_value' => 'true',
+                'unchecked_value' => 'false'
             ]
-        ];
+        ]);
+
+        $this->add([
+            'name' => 'drivers-license-front',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'drivers-license-front',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'drivers-license-back',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'drivers-license-back',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'identity-front',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'identity-front',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'identity-back',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'identity-back',
+                'multiple' => false
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'selfie',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => [
+                'id' => 'selfie',
+                'multiple' => false
+            ]
+        ]);
+    }
+
+    private function addInputFilter()
+    {
+        $inputFilter = new InputFilter();
+        $inputFactory = new InputFactory();
 
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'signature',
-                'required' => true,
-                'validators' => $fieldValidator
+                'validators' => [
+                    [
+                        'name' => 'Identical',
+                        'options' => [
+                            'token' => 'true',
+                            'messages' => [
+                                Identical::NOT_SAME => $this->translator->translate("E\' necessario confermare e sottoscrivere la dichiarazione"),
+                            ],
+                        ],
+                    ],
+                ]
             ])
         );
 
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'drivers-license-front',
-                'required' => true,
-                'validators' => $fieldValidator
-            ])
-        );
-        $inputFilter->add(
-            $inputFactory->createInput([
-                'name' => 'drivers-license-back',
-                'required' => true,
-                'validators' => $fieldValidator
+                'validators' => [
+                    [
+                        'name' => 'File/MimeType',
+                        'options' => [
+                            'mimeType' => 'image,application/pdf',
+                            'messages' => [
+                                MimeType::FALSE_TYPE => $this->translator->translate("Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf"),
+                                MimeType::NOT_DETECTED => $this->translator->translate("Non è stato possibile verificare il formato del file"),
+                                MimeType::NOT_READABLE => $this->translator->translate("Il file caricato non è leggibile o non esiste")
+                            ]
+                        ]
+                    ]
+                ]
             ])
         );
 
         $inputFilter->add(
             $inputFactory->createInput([
-            'name' => 'identity-front',
-            'required' => $this->isRequired(),
-            'validators' => $fieldValidator
+                'name' => 'drivers-license-back',
+                'validators' => [
+                    [
+                        'name' => 'File/MimeType',
+                        'options' => [
+                            'mimeType' => 'image,application/pdf',
+                            'messages' => [
+                                MimeType::FALSE_TYPE => $this->translator->translate("Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf"),
+                                MimeType::NOT_DETECTED => $this->translator->translate("Non è stato possibile verificare il formato del file"),
+                                MimeType::NOT_READABLE => $this->translator->translate("Il file caricato non è leggibile o non esiste")
+                            ]
+                        ]
+                    ]
+                ]
+            ])
+        );
+
+        $inputFilter->add(
+            $inputFactory->createInput([
+                'name' => 'identity-front',
+                'validators' => [
+                    [
+                        'name' => 'File/MimeType',
+                        'options' => [
+                            'mimeType' => 'image,application/pdf',
+                            'messages' => [
+                                MimeType::FALSE_TYPE => $this->translator->translate("Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf"),
+                                MimeType::NOT_DETECTED => $this->translator->translate("Non è stato possibile verificare il formato del file"),
+                                MimeType::NOT_READABLE => $this->translator->translate("Il file caricato non è leggibile o non esiste")
+                            ]
+                        ]
+                    ]
+                ]
             ])
         );
 
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'identity-back',
-                'required' => $this->isRequired(),
-                'validators' => $fieldValidator
+                'validators' => [
+                    [
+                        'name' => 'File/MimeType',
+                        'options' => [
+                            'mimeType' => 'image,application/pdf',
+                            'messages' => [
+                                MimeType::FALSE_TYPE => $this->translator->translate("Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf"),
+                                MimeType::NOT_DETECTED => $this->translator->translate("Non è stato possibile verificare il formato del file"),
+                                MimeType::NOT_READABLE => $this->translator->translate("Il file caricato non è leggibile o non esiste")
+                            ]
+                        ]
+                    ]
+                ]
             ])
         );
 
         $inputFilter->add(
             $inputFactory->createInput([
                 'name' => 'selfie',
-                'required' => $this->isRequired(),
-                'validators' => $fieldValidator
+                'validators' => [
+                    [
+                        'name' => 'File/MimeType',
+                        'options' => [
+                            'mimeType' => 'image,application/pdf',
+                            'messages' => [
+                                MimeType::FALSE_TYPE => $this->translator->translate("Il file caricato ha un formato non valido; sono accettati solo formati di immagini e pdf"),
+                                MimeType::NOT_DETECTED => $this->translator->translate("Non è stato possibile verificare il formato del file"),
+                                MimeType::NOT_READABLE => $this->translator->translate("Il file caricato non è leggibile o non esiste")
+                            ]
+                        ]
+                    ]
+                ]
             ])
         );
-        //$this->setInputFilter($inputFilter);
-        return $inputFilter;
-    }
 
-    private function isRequired(){
-        if(!is_null($this->serverInstance) && $this->serverInstance == "nl_NL"){
-            return false;
-        } else {
-            return true;
-        }
+        $this->setInputFilter($inputFilter);
     }
-
 }

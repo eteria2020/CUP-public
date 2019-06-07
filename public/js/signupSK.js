@@ -69,7 +69,9 @@ $(function () {
 
             if (typeof params !== "undefined" && params.hasOwnProperty("birthTownValue")) {
                 promise.done(function () {
-                    $("select#birthTown").val(params.birthTownValue);
+
+                        $("select#birthTown").val($("input#birthTown").val());
+
                 });
             }
         } else {
