@@ -14,7 +14,7 @@ $this->headLink()
 <script>
     var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>";
-    var birthTownValue = "";
+    var birthTownValue = "<?= $this->form->get('user1')->get('birthTown')->getValue();?>";
 </script>
 
 <style>
@@ -199,234 +199,12 @@ $this->headLink()
                 <div class="block-field bw-f w-4-4 last ">
                     <div class="block-field bw-f w-2-4">
                         <label><?= $this->translate('Prefisso'); ?></label>
-                        <select name="user1[dialCode]" id="dialCode">
-                            <?php if($this->serverInstance["id"] == "sk_SK") { ?>
-                            <option data-countryCode="SK" value="421" selected><?= $this->translate('Slovacchia') . "ciaods"?> (+421)</option>
-                            <?php } elseif ($this->serverInstance["id"] == "nl_NL"){ ?>
-                            <option data-countryCode="NL" value="31" selected><?= $this->translate('Netherlands')?> (+31)</option>
-                            <?php } ?>
-                            <option disabled="disabled">----------</option>
-                            <option data-countryCode="AT" value="43"><?= $this->translate('Austria')?> (+43)</option>
-                            <option data-countryCode="BE" value="32"><?= $this->translate('Belgium')?> (+32)</option>
-                            <option data-countryCode="BG" value="359"><?= $this->translate('Bulgaria')?> (+359)</option>
-                            <option data-countryCode="HR" value="385"><?= $this->translate('Croatia')?> (+385)</option>
-                            <option data-countryCode="CY" value="90"><?= $this->translate('Cyprus - North')?> (+90)</option>
-                            <option data-countryCode="CY" value="357"><?= $this->translate('Cyprus - South')?> (+357)</option>
-                            <option data-countryCode="CZ" value="420"><?= $this->translate('Czech Republic')?> (+420)</option>
-                            <option data-countryCode="DK" value="45"><?= $this->translate('Denmark')?> (+45)</option>
-                            <option data-countryCode="EE" value="372"><?= $this->translate('Estonia')?> (+372)</option>
-                            <option data-countryCode="FI" value="358"><?= $this->translate('Finland')?> (+358)</option>
-                            <option data-countryCode="FR" value="33"><?= $this->translate('France')?> (+33)</option>
-                            <option data-countryCode="DE" value="49"><?= $this->translate('Germany')?> (+49)</option>
-                            <option data-countryCode="GR" value="30"><?= $this->translate('Greece')?> (+30)</option>
-                            <option data-countryCode="HU" value="36"><?= $this->translate('Hungary')?> (+36)</option>
-                            <option data-countryCode="IE" value="353"><?= $this->translate('Ireland')?> (+353)</option>
-                            <option data-countryCode="IT" value="39"><?= $this->translate('Italia')?> (+39)</option>
-                            <option data-countryCode="LV" value="371"><?= $this->translate('Latvia')?> (+371)</option>
-                            <option data-countryCode="LI" value="417"><?= $this->translate('Liechtenstein')?> (+417)</option>
-                            <option data-countryCode="LT" value="370"><?= $this->translate('Lithuania')?> (+370)</option>
-                            <option data-countryCode="LU" value="352"><?= $this->translate('Luxembourg')?> (+352)</option>
-                            <option data-countryCode="MT" value="356"><?= $this->translate('Malta')?> (+356)</option>
-                            <option data-countryCode="MC" value="377"><?= $this->translate('Monaco')?> (+377)</option>
-                            <?php if($this->serverInstance["id"] == "nl_NL") { ?>
-                                <option data-countryCode="SK" value="421"><?= $this->translate('Slovacchia')?> (+421)</option>
-                            <?php } elseif ($this->serverInstance["id"] == "sk_SK"){ ?>
-                                <option data-countryCode="NL" value="31"><?= $this->translate('Netherlands')?> (+31)</option>
-                            <?php } ?>
-                            <option data-countryCode="PL" value="48"><?= $this->translate('Poland')?> (+48)</option>
-                            <option data-countryCode="PT" value="351"><?= $this->translate('Portugal')?> (+351)</option>
-                            <option data-countryCode="RO" value="40"><?= $this->translate('Romania')?> (+40)</option>
-                            <option data-countryCode="RU" value="7"><?= $this->translate('Russia')?> (+7)</option>
-                            <option data-countryCode="SM" value="378"><?= $this->translate('San Marino')?> (+378)</option>
+                        <?php
+                        $dialCode = $this->form->get('user1')->get('dialCode');
+                        echo $this->formElement($dialCode->setAttribute('class', 'required'));
+                        echo $this->formElementErrors($dialCode, ['class' => 'error-sign-up']);
+                        ?>
 
-                            <option data-countryCode="SI" value="386"><?= $this->translate('Slovenia')?> (+386)</option>
-                            <option data-countryCode="ES" value="34"><?= $this->translate('Spain')?> (+34)</option>
-                            <option data-countryCode="SE" value="46"><?= $this->translate('Sweden')?> (+46)</option>
-                            <option data-countryCode="CH" value="41"><?= $this->translate('Switzerland')?> (+41)</option>
-                            <option data-countryCode="GB" value="44"><?= $this->translate('UK')?> (+44)</option>
-                            <option data-countryCode="VA" value="379"><?= $this->translate('Vatican City')?> (+379)</option>
-                            <option disabled="disabled">Other Countries</option>
-                            <option data-countryCode="DZ" value="213"><?= $this->translate('Algeria')?> (+213)</option>
-                            <option data-countryCode="AD" value="376"><?= $this->translate('Andorra')?> (+376)</option>
-                            <option data-countryCode="AO" value="244"><?= $this->translate('Angola')?> (+244)</option>
-                            <option data-countryCode="AI" value="1264"><?= $this->translate('Anguilla')?> (+1264)</option>
-                            <option data-countryCode="AG" value="1268"><?= $this->translate('Antigua &amp; Barbuda')?> (+1268)</option>
-                            <option data-countryCode="AR" value="54"><?= $this->translate('Argentina')?> (+54)</option>
-                            <option data-countryCode="AM" value="374"><?= $this->translate('Armenia')?> (+374)</option>
-                            <option data-countryCode="AW" value="297"><?= $this->translate('Aruba')?> (+297)</option>
-                            <option data-countryCode="AU" value="61"><?= $this->translate('Australia')?> (+61)</option>
-                            <option data-countryCode="AZ" value="994"><?= $this->translate('Azerbaijan')?> (+994)</option>
-                            <option data-countryCode="BS" value="1242"><?= $this->translate('Bahamas')?> (+1242)</option>
-                            <option data-countryCode="BH" value="973"><?= $this->translate('Bahrain')?> (+973)</option>
-                            <option data-countryCode="BD" value="880"><?= $this->translate('Bangladesh')?> (+880)</option>
-                            <option data-countryCode="BB" value="1246"><?= $this->translate('Barbados')?> (+1246)</option>
-                            <option data-countryCode="BY" value="375"><?= $this->translate('Belarus')?> (+375)</option>
-                            <option data-countryCode="BZ" value="501"><?= $this->translate('Belize')?> (+501)</option>
-                            <option data-countryCode="BJ" value="229"><?= $this->translate('Benin')?> (+229)</option>
-                            <option data-countryCode="BM" value="1441"><?= $this->translate('Bermuda')?> (+1441)</option>
-                            <option data-countryCode="BT" value="975"><?= $this->translate('Bhutan')?> (+975)</option>
-                            <option data-countryCode="BO" value="591"><?= $this->translate('Bolivia')?> (+591)</option>
-                            <option data-countryCode="BA" value="387"><?= $this->translate('Bosnia Herzegovina')?> (+387)</option>
-                            <option data-countryCode="BW" value="267"><?= $this->translate('Botswana')?> (+267)</option>
-                            <option data-countryCode="BR" value="55"><?= $this->translate('Brazil')?> (+55)</option>
-                            <option data-countryCode="BN" value="673"><?= $this->translate('Brunei')?> (+673)</option>
-                            <option data-countryCode="BF" value="226"><?= $this->translate('Burkina Faso')?> (+226)</option>
-                            <option data-countryCode="BI" value="257"><?= $this->translate('Burundi')?> (+257)</option>
-                            <option data-countryCode="KH" value="855"><?= $this->translate('Cambodia')?> (+855)</option>
-                            <option data-countryCode="CM" value="237"><?= $this->translate('Cameroon')?> (+237)</option>
-                            <option data-countryCode="CA" value="1"><?= $this->translate('Canada')?> (+1)</option>
-                            <option data-countryCode="CV" value="238"><?= $this->translate('Cape Verde Islands')?> (+238)</option>
-                            <option data-countryCode="KY" value="1345"><?= $this->translate('Cayman Islands')?> (+1345)</option>
-                            <option data-countryCode="CF" value="236"><?= $this->translate('Central African Republic')?> (+236)</option>
-                            <option data-countryCode="CL" value="56"><?= $this->translate('Chile')?> (+56)</option>
-                            <option data-countryCode="CN" value="86"><?= $this->translate('China')?> (+86)</option>
-                            <option data-countryCode="CO" value="57"><?= $this->translate('Colombia')?> (+57)</option>
-                            <option data-countryCode="KM" value="269"><?= $this->translate('Comoros')?> (+269)</option>
-                            <option data-countryCode="CG" value="242"><?= $this->translate('Congo')?> (+242)</option>
-                            <option data-countryCode="CK" value="682"><?= $this->translate('Cook Islands')?> (+682)</option>
-                            <option data-countryCode="CR" value="506"><?= $this->translate('Costa Rica')?> (+506)</option>
-                            <!-- <option data-countryCode="CU" value="53"><?= $this->translate('Cuba')?> (+53)</option> -->
-                            <option data-countryCode="DJ" value="253"><?= $this->translate('Djibouti')?> (+253)</option>
-                            <option data-countryCode="DM" value="1809"><?= $this->translate('Dominica')?> (+1809)</option>
-                            <option data-countryCode="DO" value="1809"><?= $this->translate('Dominican Republic')?> (+1809)</option>
-                            <option data-countryCode="EC" value="593"><?= $this->translate('Ecuador')?> (+593)</option>
-                            <option data-countryCode="EG" value="20"><?= $this->translate('Egypt')?> (+20)</option>
-                            <option data-countryCode="SV" value="503"><?= $this->translate('El Salvador')?> (+503)</option>
-                            <option data-countryCode="GQ" value="240"><?= $this->translate('Equatorial Guinea')?> (+240)</option>
-                            <option data-countryCode="ER" value="291"><?= $this->translate('Eritrea')?> (+291)</option>
-                            <option data-countryCode="ET" value="251"><?= $this->translate('Ethiopia')?> (+251)</option>
-                            <option data-countryCode="FK" value="500"><?= $this->translate('Falkland Islands')?> (+500)</option>
-                            <option data-countryCode="FO" value="298"><?= $this->translate('Faroe Islands')?> (+298)</option>
-                            <option data-countryCode="FJ" value="679"><?= $this->translate('Fiji')?> (+679)</option>
-                            <option data-countryCode="GF" value="594"><?= $this->translate('French Guiana')?> (+594)</option>
-                            <option data-countryCode="PF" value="689"><?= $this->translate('French Polynesia')?> (+689)</option>
-                            <option data-countryCode="GA" value="241"><?= $this->translate('Gabon')?> (+241)</option>
-                            <option data-countryCode="GM" value="220"><?= $this->translate('Gambia')?> (+220)</option>
-                            <option data-countryCode="GE" value="7880"><?= $this->translate('Georgia')?> (+7880)</option>
-                            <option data-countryCode="GH" value="233"><?= $this->translate('Ghana')?> (+233)</option>
-                            <option data-countryCode="GI" value="350"><?= $this->translate('Gibraltar')?> (+350)</option>
-                            <option data-countryCode="GL" value="299"><?= $this->translate('Greenland')?> (+299)</option>
-                            <option data-countryCode="GD" value="1473"><?= $this->translate('Grenada')?> (+1473)</option>
-                            <option data-countryCode="GP" value="590"><?= $this->translate('Guadeloupe')?> (+590)</option>
-                            <option data-countryCode="GU" value="671"><?= $this->translate('Guam')?> (+671)</option>
-                            <option data-countryCode="GT" value="502"><?= $this->translate('Guatemala')?> (+502)</option>
-                            <option data-countryCode="GN" value="224"><?= $this->translate('Guinea')?> (+224)</option>
-                            <option data-countryCode="GW" value="245"><?= $this->translate('Guinea - Bissau')?> (+245)</option>
-                            <option data-countryCode="GY" value="592"><?= $this->translate('Guyana')?> (+592)</option>
-                            <option data-countryCode="HT" value="509"><?= $this->translate('Haiti')?> (+509)</option>
-                            <option data-countryCode="HN" value="504"><?= $this->translate('Honduras')?> (+504)</option>
-                            <option data-countryCode="HK" value="852"><?= $this->translate('Hong Kong')?> (+852)</option>
-                            <option data-countryCode="IS" value="354"><?= $this->translate('Iceland')?> (+354)</option>
-                            <option data-countryCode="IN" value="91"><?= $this->translate('India')?> (+91)</option>
-                            <option data-countryCode="ID" value="62"><?= $this->translate('Indonesia')?> (+62)</option>
-                            <option data-countryCode="IQ" value="964"><?= $this->translate('Iraq')?> (+964)</option>
-                            <!-- <option data-countryCode="IR" value="98"><?= $this->translate('Iran')?> (+98)</option> -->
-                            <option data-countryCode="IL" value="972"><?= $this->translate('Israel')?> (+972)</option>
-                            <option data-countryCode="JM" value="1876"><?= $this->translate('Jamaica')?> (+1876)</option>
-                            <option data-countryCode="JP" value="81"><?= $this->translate('Japan')?> (+81)</option>
-                            <option data-countryCode="JO" value="962"><?= $this->translate('Jordan')?> (+962)</option>
-                            <option data-countryCode="KZ" value="7"><?= $this->translate('Kazakhstan')?> (+7)</option>
-                            <option data-countryCode="KE" value="254"><?= $this->translate('Kenya')?> (+254)</option>
-                            <option data-countryCode="KI" value="686"><?= $this->translate('Kiribati')?> (+686)</option>
-                            <!-- <option data-countryCode="KP" value="850"><?= $this->translate('Korea - North')?> (+850)</option> -->
-                            <option data-countryCode="KR" value="82"><?= $this->translate('Korea - South')?> (+82)</option>
-                            <option data-countryCode="KW" value="965"><?= $this->translate('Kuwait')?> (+965)</option>
-                            <option data-countryCode="KG" value="996"><?= $this->translate('Kyrgyzstan')?> (+996)</option>
-                            <option data-countryCode="LA" value="856"><?= $this->translate('Laos')?> (+856)</option>
-                            <option data-countryCode="LB" value="961"><?= $this->translate('Lebanon')?> (+961)</option>
-                            <option data-countryCode="LS" value="266"><?= $this->translate('Lesotho')?> (+266)</option>
-                            <option data-countryCode="LR" value="231"><?= $this->translate('Liberia')?> (+231)</option>
-                            <option data-countryCode="LY" value="218"><?= $this->translate('Libya')?> (+218)</option>
-                            <option data-countryCode="MO" value="853"><?= $this->translate('Macao')?> (+853)</option>
-                            <option data-countryCode="MK" value="389"><?= $this->translate('Macedonia')?> (+389)</option>
-                            <option data-countryCode="MG" value="261"><?= $this->translate('Madagascar')?> (+261)</option>
-                            <option data-countryCode="MW" value="265"><?= $this->translate('Malawi')?> (+265)</option>
-                            <option data-countryCode="MY" value="60"><?= $this->translate('Malaysia')?> (+60)</option>
-                            <option data-countryCode="MV" value="960"><?= $this->translate('Maldives')?> (+960)</option>
-                            <option data-countryCode="ML" value="223"><?= $this->translate('Mali')?> (+223)</option>
-                            <option data-countryCode="MH" value="692"><?= $this->translate('Marshall Islands')?> (+692)</option>
-                            <option data-countryCode="MQ" value="596"><?= $this->translate('Martinique')?> (+596)</option>
-                            <option data-countryCode="MR" value="222"><?= $this->translate('Mauritania')?> (+222)</option>
-                            <option data-countryCode="YT" value="269"><?= $this->translate('Mayotte')?> (+269)</option>
-                            <option data-countryCode="MX" value="52"><?= $this->translate('Mexico')?> (+52)</option>
-                            <option data-countryCode="FM" value="691"><?= $this->translate('Micronesia')?> (+691)</option>
-                            <option data-countryCode="MD" value="373"><?= $this->translate('Moldova')?> (+373)</option>
-                            <option data-countryCode="MN" value="976"><?= $this->translate('Mongolia')?> (+976)</option>
-                            <option data-countryCode="MS" value="1664"><?= $this->translate('Montserrat')?> (+1664)</option>
-                            <option data-countryCode="MA" value="212"><?= $this->translate('Morocco')?> (+212)</option>
-                            <option data-countryCode="MZ" value="258"><?= $this->translate('Mozambique')?> (+258)</option>
-                            <option data-countryCode="MN" value="95"><?= $this->translate('Myanmar')?> (+95)</option>
-                            <option data-countryCode="NA" value="264"><?= $this->translate('Namibia')?> (+264)</option>
-                            <option data-countryCode="NR" value="674"><?= $this->translate('Nauru')?> (+674)</option>
-                            <option data-countryCode="NP" value="977"><?= $this->translate('Nepal')?> (+977)</option>
-                            <option data-countryCode="NC" value="687"><?= $this->translate('New Caledonia')?> (+687)</option>
-                            <option data-countryCode="NZ" value="64"><?= $this->translate('New Zealand')?> (+64)</option>
-                            <option data-countryCode="NI" value="505"><?= $this->translate('Nicaragua')?> (+505)</option>
-                            <option data-countryCode="NE" value="227"><?= $this->translate('Niger')?> (+227)</option>
-                            <option data-countryCode="NG" value="234"><?= $this->translate('Nigeria')?> (+234)</option>
-                            <option data-countryCode="NU" value="683"><?= $this->translate('Niue')?> (+683)</option>
-                            <option data-countryCode="NF" value="672"><?= $this->translate('Norfolk Islands')?> (+672)</option>
-                            <option data-countryCode="NP" value="670"><?= $this->translate('Northern Marianas')?> (+670)</option>
-                            <option data-countryCode="NO" value="47"><?= $this->translate('Norway')?> (+47)</option>
-                            <option data-countryCode="OM" value="968"><?= $this->translate('Oman')?> (+968)</option>
-                            <option data-countryCode="PK" value="92"><?= $this->translate('Pakistan')?> (+92)</option>
-                            <option data-countryCode="PW" value="680"><?= $this->translate('Palau')?> (+680)</option>
-                            <option data-countryCode="PA" value="507"><?= $this->translate('Panama')?> (+507)</option>
-                            <option data-countryCode="PG" value="675"><?= $this->translate('Papua New Guinea')?> (+675)</option>
-                            <option data-countryCode="PY" value="595"><?= $this->translate('Paraguay')?> (+595)</option>
-                            <option data-countryCode="PE" value="51"><?= $this->translate('Peru')?> (+51)</option>
-                            <option data-countryCode="PH" value="63"><?= $this->translate('Philippines')?> (+63)</option>
-                            <option data-countryCode="PR" value="1787"><?= $this->translate('Puerto Rico')?> (+1787)</option>
-                            <option data-countryCode="QA" value="974"><?= $this->translate('Qatar')?> (+974)</option>
-                            <option data-countryCode="RE" value="262"><?= $this->translate('Reunion')?> (+262)</option>
-                            <option data-countryCode="RW" value="250"><?= $this->translate('Rwanda')?> (+250)</option>
-                            <option data-countryCode="ST" value="239"><?= $this->translate('Sao Tome &amp; Principe')?> (+239)</option>
-                            <option data-countryCode="SA" value="966"><?= $this->translate('Saudi Arabia')?> (+966)</option>
-                            <option data-countryCode="SN" value="221"><?= $this->translate('Senegal')?> (+221)</option>
-                            <option data-countryCode="CS" value="381"><?= $this->translate('Serbia')?> (+381)</option>
-                            <option data-countryCode="SC" value="248"><?= $this->translate('Seychelles')?> (+248)</option>
-                            <option data-countryCode="SL" value="232"><?= $this->translate('Sierra Leone')?> (+232)</option>
-                            <option data-countryCode="SG" value="65"><?= $this->translate('Singapore')?> (+65)</option>
-                            <option data-countryCode="SB" value="677"><?= $this->translate('Solomon Islands')?> (+677)</option>
-                            <option data-countryCode="SO" value="252"><?= $this->translate('Somalia')?> (+252)</option>
-                            <option data-countryCode="ZA" value="27"><?= $this->translate('South Africa')?> (+27)</option>
-                            <option data-countryCode="LK" value="94"><?= $this->translate('Sri Lanka')?> (+94)</option>
-                            <option data-countryCode="SH" value="290"><?= $this->translate('St. Helena')?> (+290)</option>
-                            <option data-countryCode="KN" value="1869"><?= $this->translate('St. Kitts')?> (+1869)</option>
-                            <option data-countryCode="SC" value="1758"><?= $this->translate('St. Lucia')?> (+1758)</option>
-                            <option data-countryCode="SR" value="597"><?= $this->translate('Suriname')?> (+597)</option>
-                            <option data-countryCode="SD" value="249"><?= $this->translate('Sudan')?> (+249)</option>
-                            <option data-countryCode="SZ" value="268"><?= $this->translate('Swaziland')?> (+268)</option>
-                            <!-- <option data-countryCode="SY" value="963"><?= $this->translate('Syria')?> (+963)</option> -->
-                            <option data-countryCode="TW" value="886"><?= $this->translate('Taiwan')?> (+886)</option>
-                            <option data-countryCode="TJ" value="992"><?= $this->translate('Tajikistan')?> (+992)</option>
-                            <option data-countryCode="TH" value="66"><?= $this->translate('Thailand')?> (+66)</option>
-                            <option data-countryCode="TG" value="228"><?= $this->translate('Togo')?> (+228)</option>
-                            <option data-countryCode="TO" value="676"><?= $this->translate('Tonga')?> (+676)</option>
-                            <option data-countryCode="TT" value="1868"><?= $this->translate('Trinidad &amp; Tobago')?> (+1868)</option>
-                            <option data-countryCode="TN" value="216"><?= $this->translate('Tunisia')?> (+216)</option>
-                            <option data-countryCode="TR" value="90"><?= $this->translate('Turkey')?> (+90)</option>
-                            <option data-countryCode="TM" value="993"><?= $this->translate('Turkmenistan')?> (+993)</option>
-                            <option data-countryCode="TC" value="1649"><?= $this->translate('Turks &amp; Caicos Islands')?> (+1649)</option>
-                            <option data-countryCode="TV" value="688"><?= $this->translate('Tuvalu')?> (+688)</option>
-                            <option data-countryCode="UG" value="256"><?= $this->translate('Uganda')?> (+256)</option>
-                            <option data-countryCode="UA" value="380"><?= $this->translate('Ukraine')?> (+380)</option>
-                            <option data-countryCode="AE" value="971"><?= $this->translate('United Arab Emirates')?> (+971)</option>
-                            <option data-countryCode="UY" value="598"><?= $this->translate('Uruguay')?> (+598)</option>
-                            <option data-countryCode="US" value="1"><?= $this->translate('USA')?> (+1)</option>
-                            <option data-countryCode="UZ" value="998"><?= $this->translate('Uzbekistan')?> (+998)</option>
-                            <option data-countryCode="VU" value="678"><?= $this->translate('Vanuatu')?> (+678)</option>
-                            <option data-countryCode="VE" value="58"><?= $this->translate('Venezuela')?> (+58)</option>
-                            <option data-countryCode="VN" value="84"><?= $this->translate('Vietnam')?> (+84)</option>
-                            <option data-countryCode="VG" value="1"><?= $this->translate('Virgin Islands - British')?> (+1)</option>
-                            <option data-countryCode="VI" value="1"><?= $this->translate('Virgin Islands - US')?> (+1)</option>
-                            <option data-countryCode="WF" value="681"><?= $this->translate('Wallis &amp; Futuna')?> (+681)</option>
-                            <option data-countryCode="YE" value="969"><?= $this->translate('Yemen')?> (North)(+969)</option>
-                            <option data-countryCode="YE" value="967"><?= $this->translate('Yemen')?> (South)(+967)</option>
-                            <option data-countryCode="ZM" value="260"><?= $this->translate('Zambia')?> (+260)</option>
-                            <option data-countryCode="ZW" value="263"><?= $this->translate('Zimbabwe')?> (+263)</option>
-
-                        </select>
                     </div>
                     <div class="block-field bw-f w-2-4 ">
                         <p> <label><?= $this->translate('Cellulare'); ?></label>
@@ -443,7 +221,7 @@ $this->headLink()
             <div class="block-row-field clearfix">
 
                 <div class="block-field bw-f w-2-4">
-                    <p> <label><?= ($this->serverInstance["id"] == "nl_NL") ? 'BSN' : $this->translate('Numero Identificativo'); ?></label>
+                    <p> <label><?=  $this->translate('Numero Identificativo'); ?></label>
                         <?php
                         $taxCode = $this->form->get('user1')->get('taxCode');
                         echo $this->formElement($taxCode);
@@ -456,7 +234,6 @@ $this->headLink()
             <div class="block-row-field clearfix">
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Numero patente'); ?></label>
-                        <a href=""><i class="fa fa-info-circle"></i></a>
                         <?php
                         $driverLicense = $this->form->get('user1')->get('driverLicense');
                         echo $this->formElement($driverLicense);
@@ -495,7 +272,7 @@ $this->headLink()
                     </div>
                     <br>
                     <div>
-                        <?= ($this->serverInstance["id"] == "nl_NL") ? "Rotterdam" : "Košice"; ?>, <?= date("d.m.Y")?>
+                        Košice, <?= date("d.m.Y")?>
                     </div>
                     <br>
                     <div style="font-size: 70%">
@@ -506,7 +283,7 @@ $this->headLink()
                     </div>
                     <br>
                 </div>
-                <label><?= ($this->serverInstance["id"] == "nl_NL") ? $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida fronte e retro") : $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro"); ?></label><br>
+                <label><?= $this->translate("Occorre allegare copia fotostatica, anche non autenticata, della patente di guida e della carta di identità, entrambe fronte e retro"); ?></label><br>
 
                 <div style="visibility: hidden">
                     <?php
@@ -519,33 +296,40 @@ $this->headLink()
                 <div class="block-row-field clearfix">
                     <div class="block-field bw-f w-2-4">
                         <p> <label style="margin-right: 5px;"><?= $this->translate('fronte patente di guida'); ?></label>
-                            <?php $driverLicenseForeignUpload = $this->form->get('drivers-license-front'); ?>
-                            <?php echo $this->formFile($driverLicenseForeignUpload);
-                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']); ?>
+                            <?php
+                            $driverLicenseForeignUpload = $this->form->get('drivers-license-front');
+                            echo $this->formFile($driverLicenseForeignUpload);
+                            echo $this->formElementErrors($driverLicenseForeignUpload, ['class' => 'errors']);
+                            ?>
                         </p>
                     </div>
                     <div class="block-field bw-f w-2-4">
                         <p> <label style="margin-right: 5px;"><?= $this->translate('retro patente di guida'); ?></label>
-                            <?php $driverLicenseForeignBack = $this->form->get('drivers-license-back'); ?>
-                            <?php echo $this->formFile($driverLicenseForeignBack);
-                            echo $this->formElementErrors($driverLicenseForeignBack, ['class' => 'errors']); ?>
+                            <?php
+                            $driverLicenseForeignBack = $this->form->get('drivers-license-back');
+                            echo $this->formFile($driverLicenseForeignBack);
+                            echo $this->formElementErrors($driverLicenseForeignBack, ['class' => 'errors']);
+                            ?>
                         </p>
                     </div>
                 </div>
-                <?php if ($this->serverInstance["id"] != "nl_NL"){ ?>
                 <div class="block-row-field clearfix">
                     <div class="block-field bw-f w-2-4">
                         <p> <label style="margin-right: 5px;"><?= $this->translate('fronte carta di identità'); ?></label>
-                            <?php $identityFront = $this->form->get('identity-front'); ?>
-                            <?php echo $this->formFile($identityFront);
-                            echo $this->formElementErrors($identityFront, ['class' => 'errors']); ?>
+                            <?php
+                            $identityFront = $this->form->get('identity-front');
+                            echo $this->formFile($identityFront);
+                            echo $this->formElementErrors($identityFront, ['class' => 'errors']);
+                            ?>
                         </p>
                     </div>
                     <div class="block-field bw-f w-2-4">
                         <p> <label style="margin-right: 5px;"><?= $this->translate('retro carta di identità'); ?></label>
-                            <?php $identityBack = $this->form->get('identity-back'); ?>
-                            <?php echo $this->formFile($identityBack);
-                            echo $this->formElementErrors($identityBack, ['class' => 'errors']); ?>
+                            <?php
+                            $identityBack = $this->form->get('identity-back');
+                            echo $this->formFile($identityBack);
+                            echo $this->formElementErrors($identityBack, ['class' => 'errors']);
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -553,18 +337,17 @@ $this->headLink()
                 <div class="block-row-field clearfix">
                     <div class="block-field bw-f w-2-4">
                         <p> <label style="margin-right: 5px;"><?= $this->translate('foto dell\'utente (selfie)'); ?></label>
-                            <?php $selfie = $this->form->get('selfie'); ?>
-                            <?php echo $this->formFile($selfie);
-                            echo $this->formElementErrors($selfie, ['class' => 'errors']); ?>
+                            <?php
+                            $selfie = $this->form->get('selfie');
+                            echo $this->formFile($selfie);
+                            echo $this->formElementErrors($selfie, ['class' => 'errors']);
+                            ?>
                         </p>
                     </div>
                     <div class="block-field bw-f w-2-4">
 
                     </div>
                 </div>
-                <?php } ?>
-
-
             </div>
 
             <div class="block-form w-4-4 auto-margin clearfix">
@@ -650,7 +433,7 @@ $this->headLink()
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "+0:+100",
-                minDate: new Date(new Date().getFullYear(), 0, 1)
+                minDate: 0
             });
         });'
     );
@@ -693,8 +476,6 @@ $this->headLink()
             checkUploadSize(this);
         };
 
-        <?php if ($this->serverInstance["id"] != "nl_NL"){ ?>
-
         identityFront.onchange = function() {
             identityFrontSize = identityFront.files[0].size;
             checkUploadSize(this);
@@ -709,8 +490,6 @@ $this->headLink()
             selfieSize = selfie.files[0].size;
             checkUploadSize(this);
         };
-
-        <?php } ?>
 
         totalSize = function() {
             return (driversLicenseFrontSize + driversLicenseBackSize + identityFrontSize + identityBackSize + selfieSize);

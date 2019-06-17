@@ -14,7 +14,7 @@ $this->headLink()
 <script>
     var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>";
-    var birthTownValue = "";
+    var birthTownValue = "<?= $this->form->get('user1')->get('birthTown')->getValue();?>";
 </script>
 
 <style>
@@ -32,7 +32,7 @@ $this->headLink()
     <h1 class="module-main-title"><?= $this->translate('Pacchetto Benvenuto'); ?></h1>
     <div class="module-main-title-2" style="display: inline-block; padding-top: 15px">
         <p>
-            <b><?= $this->translate('21 minuti a soli 5&euro;') ?></b><br>
+            <b><?= $this->translate('30 minuti a soli 10&euro;') ?></b><br>
             <?= $this->translate('e guidi subito la tua Sharengo!') ?>
         </p>
     </div>
@@ -233,7 +233,6 @@ $this->headLink()
             <div class="block-row-field clearfix">
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?= $this->translate('Numero patente'); ?></label>
-                        <a href=""><i class="fa fa-info-circle"></i></a>
                         <?php
                         $driverLicense = $this->form->get('user1')->get('driverLicense');
                         echo $this->formElement($driverLicense);

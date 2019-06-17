@@ -153,6 +153,13 @@ class Module
             'sk_SK'
         );
 
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/nl/Zend_Validate.php',
+            'default',
+            'nl_NL'
+        );
+
         AbstractValidator::setDefaultTranslator($translator);
 
         $changeLanguageDetector = $serviceManager->get('ChangeLanguageDetector.listener');

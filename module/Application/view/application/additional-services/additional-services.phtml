@@ -102,7 +102,12 @@ $end = date_create('2018-03-09 04:55:00');
                                                 <?php
                                                     // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
                                                     $months = floor($package->getDuration() / 30);
-                                                    echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                    if ($months>0) {
+                                                        echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                                    } else {
+                                                        echo ' '.$package->getDuration().' '.($package->getDuration() > 1 ? $this->translate('giorni') : $this->translate('giorno'));
+                                                    }
+
                                                 ?>
                                             </p>
                                         <?php }else{?>

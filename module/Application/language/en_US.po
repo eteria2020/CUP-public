@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-28 09:33+0200\n"
-"PO-Revision-Date: 2019-05-28 09:33+0200\n"
+"POT-Creation-Date: 2019-06-06 12:18+0200\n"
+"PO-Revision-Date: 2019-06-06 12:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -71,7 +71,7 @@ msgid "Impossibile completare l'acquisto del pacchetto richiesto"
 msgstr "The purchase of the requested package can not be completed"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:127
-#: module/Application/view/application/customer-bonus-packages/package.phtml:70
+#: module/Application/view/application/customer-bonus-packages/package.phtml:64
 msgid ""
 "Occorre effettuare l'acquisto del Pacchetto Benvenuto prima di poter "
 "acquistare un pacchetto"
@@ -233,7 +233,7 @@ msgstr "Mrs"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:106
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:139
+#: module/Application/view/application/additional-services/additional-services.phtml:144
 #: module/Application/view/application/additional-services/gift-packages.phtml:93
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
@@ -1396,7 +1396,7 @@ msgstr ""
 
 #: module/Application/view/application/additional-services/additional-services.phtml:81
 #: module/Application/view/application/additional-services/additional-services.phtml:96
-#: module/Application/view/application/additional-services/additional-services.phtml:113
+#: module/Application/view/application/additional-services/additional-services.phtml:118
 #: module/Application/view/application/additional-services/gift-packages.phtml:72
 #: module/Application/view/application/additional-services/gift-packages.phtml:75
 msgid "min"
@@ -1412,68 +1412,70 @@ msgid "a "
 msgstr "to "
 
 #: module/Application/view/application/additional-services/additional-services.phtml:101
-#: module/Application/view/application/additional-services/additional-services.phtml:116
+#: module/Application/view/application/additional-services/additional-services.phtml:121
 msgid "Validità"
 msgstr "Validity"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:105
+#: module/Application/view/application/additional-services/additional-services.phtml:106
 msgid "mesi"
 msgstr "months"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:105
+#: module/Application/view/application/additional-services/additional-services.phtml:106
 msgid "mese"
 msgstr "month"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:109
+#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:125
+msgid "giorni"
+msgstr "days"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:125
+msgid "giorno"
+msgstr "day"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:114
 #: module/Application/view/application/additional-services/gift-packages.phtml:72
 msgid "a"
 msgstr "to"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:120
-msgid "giorni"
-msgstr "days"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:120
-msgid "giorno"
-msgstr "day"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:140
+#: module/Application/view/application/additional-services/additional-services.phtml:145
 #: module/Application/view/application/additional-services/gift-packages.phtml:94
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minutes"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:141
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/additional-services/gift-packages.phtml:95
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Price"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:142
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/additional-services/gift-packages.phtml:96
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Valid from"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:143
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 #: module/Application/view/application/additional-services/gift-packages.phtml:97
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Valid until"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:144
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 #: module/Application/view/application/additional-services/gift-packages.phtml:98
 msgid "Disponibile fino"
 msgstr "Available up"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:145
+#: module/Application/view/application/additional-services/additional-services.phtml:150
 msgid "Acquista/Converti"
 msgstr "Buy / Convert"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:160
+#: module/Application/view/application/additional-services/additional-services.phtml:165
 #: module/Application/view/application/additional-services/gift-packages.phtml:115
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
@@ -1481,15 +1483,15 @@ msgstr "Buy / Convert"
 msgid "per %d gg"
 msgstr "for %d dd"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:217
+#: module/Application/view/application/additional-services/additional-services.phtml:222
 msgid "Codice Promo"
 msgstr "Promo Code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:223
+#: module/Application/view/application/additional-services/additional-services.phtml:228
 msgid "Inserisci il codice promo"
 msgstr "Enter the promo code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:235
+#: module/Application/view/application/additional-services/additional-services.phtml:240
 msgid "Valida"
 msgstr "Valid"
 
@@ -1557,26 +1559,22 @@ msgstr "Valid from:"
 msgid "Valido al:"
 msgstr "Valid to:"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:51
-msgid "Disponibile fino al:"
-msgstr "Available until:"
-
-#: module/Application/view/application/customer-bonus-packages/package.phtml:63
+#: module/Application/view/application/customer-bonus-packages/package.phtml:57
 msgid "Vuoi confermare questo pacchetto?"
 msgstr "Do you want to confirm this package?"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:65
+#: module/Application/view/application/customer-bonus-packages/package.phtml:59
 msgid "Confermare l'acquisto utilizzando carta di credito?"
 msgstr "Confirm the purchase using a credit card?"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:67
-#: module/Application/view/application/customer-bonus-packages/package.phtml:74
-#: module/Application/view/application/customer-bonus-packages/package.phtml:77
+#: module/Application/view/application/customer-bonus-packages/package.phtml:61
+#: module/Application/view/application/customer-bonus-packages/package.phtml:68
+#: module/Application/view/application/customer-bonus-packages/package.phtml:71
 #: module/Application/view/partials/car-popup.phtml:136
 msgid "Conferma"
 msgstr "Confirmation"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:72
+#: module/Application/view/application/customer-bonus-packages/package.phtml:66
 msgid "Confermare l'acquisto registrando una carta di credito"
 msgstr "Confirm the purchase by registering a credit card"
 
@@ -6422,6 +6420,9 @@ msgstr ""
 "made today, it means that there have been problems debiting your credit card "
 "and that your account is; temporarily suspended. Contact the Customer Service "
 "of Sharengo for reactivation."
+
+#~ msgid "Disponibile fino al:"
+#~ msgstr "Available until:"
 
 #~ msgid "Operazione eseguita con successo!"
 #~ msgstr "Operation completed successfully!"

@@ -2498,7 +2498,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "80951065df4044f1a0ce94911870964687c29cb1"
+                "reference": "8bffc88027ab5c505fa02f5cbf9a5de3c00960a7"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2521,7 +2521,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-05-28 13:14:43"
+            "time": "2019-06-07 13:24:00"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -3117,7 +3117,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/gpwebpay.git",
-                "reference": "eda680356a87f998384c1c873b08df551ac73886"
+                "reference": "5864d05c864154e0ea4707c2cf867e51b6fc39bd"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3132,7 +3132,7 @@
                 }
             },
             "description": "GPWebpay module for Sharengo",
-            "time": "2019-03-28 13:29:25"
+            "time": "2019-06-05 06:52:47"
         },
         {
             "name": "smsgatewayme/client",
