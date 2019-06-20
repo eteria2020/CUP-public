@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-06-06 17:12+0200\n"
-"PO-Revision-Date: 2019-06-06 17:19+0200\n"
+"POT-Creation-Date: 2019-06-20 07:58+0200\n"
+"PO-Revision-Date: 2019-06-20 07:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -3468,9 +3468,9 @@ msgstr "Zmluvné podmienky"
 #: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/new-signup2.phtml:465
 #: module/Application/view/application/user/signup-nl1.phtml:148
-#: module/Application/view/application/user/signup-nl2.phtml:366
+#: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-sk1.phtml:156
-#: module/Application/view/application/user/signup-sk2.phtml:376
+#: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Zavrieť"
@@ -3501,7 +3501,6 @@ msgstr ""
 "Ak chcete dokončiť vloženie vašich dát kliknite na prihlásenie a prihláste sa"
 
 #: module/Application/view/application/user/new-signup2.phtml:29
-#: module/Application/view/application/user/signup-nl2.phtml:35
 msgid "21 minuti a soli 5&euro;"
 msgstr "40 minút len ​​za 5&euro;"
 
@@ -3562,8 +3561,8 @@ msgstr ""
 "KONTAKTUJ ZÁKAZNÍCKU SLUŽBU"
 
 #: module/Application/view/application/user/new-signup2.phtml:264
-#: module/Application/view/application/user/signup-nl2.phtml:243
-#: module/Application/view/application/user/signup-sk2.phtml:244
+#: module/Application/view/application/user/signup-nl2.phtml:242
+#: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Uisti sa že je z posledného vydaného vodičského preukazu."
 
@@ -3627,15 +3626,15 @@ msgstr ""
 "slovenskom území a s trvaním jeho pobytu) na účel jazdy na slovenskom území."
 
 #: module/Application/view/application/user/new-signup2.phtml:311
-#: module/Application/view/application/user/signup-nl2.phtml:269
-#: module/Application/view/application/user/signup-sk2.phtml:270
+#: module/Application/view/application/user/signup-nl2.phtml:268
+#: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
 msgstr "Prečítal, potvrdil a podpísal"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
-#: module/Application/view/application/user/signup-nl2.phtml:279
-#: module/Application/view/application/user/signup-sk2.phtml:280
+#: module/Application/view/application/user/signup-nl2.phtml:278
+#: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
 "Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto "
@@ -3652,14 +3651,14 @@ msgstr ""
 "výlučne kanceláriou zodpovednou za konanie."
 
 #: module/Application/view/application/user/new-signup2.phtml:325
-#: module/Application/view/application/user/signup-nl2.phtml:282
-#: module/Application/view/application/user/signup-sk2.phtml:283
+#: module/Application/view/application/user/signup-nl2.phtml:281
+#: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
 #: module/Application/view/application/user/new-signup2.phtml:329
-#: module/Application/view/application/user/signup-sk2.phtml:287
+#: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida e della carta di identità, entrambe fronte e retro"
@@ -3668,26 +3667,26 @@ msgstr ""
 "obidve z oboch strán"
 
 #: module/Application/view/application/user/new-signup2.phtml:332
-#: module/Application/view/application/user/signup-nl2.phtml:298
-#: module/Application/view/application/user/signup-sk2.phtml:299
+#: module/Application/view/application/user/signup-nl2.phtml:297
+#: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "predná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:339
-#: module/Application/view/application/user/signup-nl2.phtml:305
-#: module/Application/view/application/user/signup-sk2.phtml:308
+#: module/Application/view/application/user/signup-nl2.phtml:304
+#: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "zadná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
-#: module/Application/view/application/user/signup-nl2.phtml:315
-#: module/Application/view/application/user/signup-sk2.phtml:319
+#: module/Application/view/application/user/signup-nl2.phtml:314
+#: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "predná strana občianskeho preukazu(iného ID)"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
-#: module/Application/view/application/user/signup-nl2.phtml:322
-#: module/Application/view/application/user/signup-sk2.phtml:328
+#: module/Application/view/application/user/signup-nl2.phtml:321
+#: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "zadná strana občianskeho preukazu(iného ID)"
 
@@ -3707,8 +3706,8 @@ msgid ""
 msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnútra."
 
 #: module/Application/view/application/user/new-signup2.phtml:395
-#: module/Application/view/application/user/signup-nl2.phtml:346
-#: module/Application/view/application/user/signup-sk2.phtml:356
+#: module/Application/view/application/user/signup-nl2.phtml:345
+#: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Pokračovať"
 
@@ -3740,14 +3739,14 @@ msgid ""
 msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:446
-#: module/Application/view/application/user/signup-nl2.phtml:368
-#: module/Application/view/application/user/signup-sk2.phtml:378
+#: module/Application/view/application/user/signup-nl2.phtml:367
+#: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "vybrané súbory sú príliš veľké"
 
 #: module/Application/view/application/user/new-signup2.phtml:497
-#: module/Application/view/application/user/signup-nl2.phtml:395
-#: module/Application/view/application/user/signup-sk2.phtml:405
+#: module/Application/view/application/user/signup-nl2.phtml:394
+#: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
 
@@ -3780,7 +3779,7 @@ msgid "Sarà possibile riprovare il pagamento in Area Riservata"
 msgstr "Bude možné opätovne skúsiť platbu vo vyhradenej zóne"
 
 #: module/Application/view/application/user/optional.phtml:62
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:45
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:47
 msgid "Scarica l'App Sharengo"
 msgstr "Stiahni si aplikáciu Sharengo"
 
@@ -3821,6 +3820,12 @@ msgstr ""
 "tieto všeobecné zmluvné podmienky a berie na vedomie, že ich akceptáciou "
 "dochádza k uzavretiu zmluvy."
 
+#: module/Application/view/application/user/signup-nl2.phtml:35
+#, fuzzy
+#| msgid "30 minuti a soli 5&euro;"
+msgid "30 minuti a soli 10&euro;"
+msgstr "30 minút len ​​za 5&euro;"
+
 #: module/Application/view/application/user/signup-nl2.phtml:102
 #: module/Application/view/application/user/signup-sk2.phtml:102
 msgid "Citt&agrave; residenza"
@@ -3830,13 +3835,13 @@ msgstr "Mesto trvalého pobytu"
 msgid "BSN"
 msgstr ""
 
-#: module/Application/view/application/user/signup-nl2.phtml:247
-#: module/Application/view/application/user/signup-sk2.phtml:248
+#: module/Application/view/application/user/signup-nl2.phtml:246
+#: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
 msgstr "Platnosť vodičského preukazu"
 
-#: module/Application/view/application/user/signup-nl2.phtml:260
-#: module/Application/view/application/user/signup-sk2.phtml:261
+#: module/Application/view/application/user/signup-nl2.phtml:259
+#: module/Application/view/application/user/signup-sk2.phtml:260
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
 "dichiarazioni dichiarano che possiede una patente di guida valida, che lo "
@@ -3859,7 +3864,7 @@ msgstr ""
 "Všeobecných zmluvných podmienkach a na účel prevádzkovania tejto služby "
 "počas doby využívania tejto služby, až do odvolania tohto súhlasu."
 
-#: module/Application/view/application/user/signup-nl2.phtml:286
+#: module/Application/view/application/user/signup-nl2.phtml:285
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida fronte e retro"
@@ -3867,8 +3872,8 @@ msgstr ""
 "Je potrebné pripojiť fotokópiu vodičského preukazu a preukazu totožnosti, "
 "obidve z oboch strán"
 
-#: module/Application/view/application/user/signup-nl2.phtml:332
-#: module/Application/view/application/user/signup-sk2.phtml:340
+#: module/Application/view/application/user/signup-nl2.phtml:331
+#: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "Fotka Používateľa (selfie)"
 
@@ -4324,7 +4329,7 @@ msgstr "Prenájom"
 #: module/Application/view/layout/layout.phtml:126
 #: module/Application/view/layout/layout.phtml:193
 #: module/Application/view/partials/footer/main_foot.phtml:24
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:23
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:24
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:24
 msgid "Contatti"
@@ -4387,7 +4392,7 @@ msgstr "Zákaznícka služba"
 
 #: module/Application/view/layout/layout.phtml:191
 #: module/Application/view/partials/footer/main_foot.phtml:36
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:35
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:34
 msgid "Privacy"
 msgstr "Súkromie"
@@ -4522,34 +4527,34 @@ msgid "Seguici su"
 msgstr "Sleduj nás"
 
 #: module/Application/view/partials/footer/main_foot.phtml:25
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:24
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:26
 msgid "Lavora con noi"
 msgstr "Pracuj s nami"
 
 #: module/Application/view/partials/footer/main_foot.phtml:26
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:27
 msgid "Press"
 msgstr "Tlač"
 
 #: module/Application/view/partials/footer/main_foot.phtml:33
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:32
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:34
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:31
 msgid "Supporto"
 msgstr "Podpora"
 
 #: module/Application/view/partials/footer/main_foot.phtml:37
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:36
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:38
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:35
 msgid "Contratto di servizio e tariffe"
 msgstr "Všeobecné obchodné podmienky"
 
 #: module/Application/view/partials/footer/main_foot.phtml:38
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:39
 msgid "Modello di recesso"
 msgstr "Model odstúpenia od zmluvy"
 
 #: module/Application/view/partials/footer/main_foot.phtml:39
-#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:38
+#: module/Application/view/partials/footer/main_foot_nl_NL.phtml:40
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:36
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 msgid "FAQ"
@@ -4736,35 +4741,35 @@ msgstr "Zadaný kód nie je platný"
 
 #: module/Application/view/partials/translations.phtml:34
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afganistan"
 
 #: module/Application/view/partials/translations.phtml:35
 msgid "Albania"
-msgstr ""
+msgstr "Albánsko"
 
 #: module/Application/view/partials/translations.phtml:36
 msgid "Algeria"
-msgstr ""
+msgstr "Alžírsko"
 
 #: module/Application/view/partials/translations.phtml:37
 msgid "Andorra"
-msgstr ""
+msgstr "Andora"
 
 #: module/Application/view/partials/translations.phtml:38
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #: module/Application/view/partials/translations.phtml:39
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguilla"
 
 #: module/Application/view/partials/translations.phtml:40
 msgid "Antartide"
-msgstr ""
+msgstr "Antarktída"
 
 #: module/Application/view/partials/translations.phtml:41
 msgid "Antigua e Barbuda"
-msgstr ""
+msgstr "Antigua a Barbuda"
 
 #: module/Application/view/partials/translations.phtml:42
 msgid "Antille Olandesi"
@@ -4772,751 +4777,751 @@ msgstr "Holandské Antily"
 
 #: module/Application/view/partials/translations.phtml:43
 msgid "Arabia Saudita"
-msgstr "Zmeniť kartu"
+msgstr "Saudská Arábia"
 
 #: module/Application/view/partials/translations.phtml:44
 msgid "Argentina"
-msgstr ""
+msgstr "Argentína"
 
 #: module/Application/view/partials/translations.phtml:45
 msgid "Armenia"
-msgstr ""
+msgstr "Arménsko"
 
 #: module/Application/view/partials/translations.phtml:46
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 #: module/Application/view/partials/translations.phtml:47
 msgid "Australia"
-msgstr ""
+msgstr "Austrália"
 
 #: module/Application/view/partials/translations.phtml:48
 msgid "Austria"
-msgstr ""
+msgstr "Rakúsko"
 
 #: module/Application/view/partials/translations.phtml:49
 msgid "Azerbaigian"
-msgstr "Remeselník"
+msgstr "Azerbajdžan"
 
 #: module/Application/view/partials/translations.phtml:50
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamy"
 
 #: module/Application/view/partials/translations.phtml:51
 msgid "Bahrein"
-msgstr ""
+msgstr "Bahrain"
 
 #: module/Application/view/partials/translations.phtml:52
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangládeš"
 
 #: module/Application/view/partials/translations.phtml:53
 msgid "Barbados"
-msgstr ""
+msgstr "Barbados"
 
 #: module/Application/view/partials/translations.phtml:54
 msgid "Belgio"
-msgstr ""
+msgstr "Belgicko"
 
 #: module/Application/view/partials/translations.phtml:55
 msgid "Belize"
-msgstr ""
+msgstr "Belize"
 
 #: module/Application/view/partials/translations.phtml:56
 msgid "Benin"
-msgstr ""
+msgstr "Benin"
 
 #: module/Application/view/partials/translations.phtml:57
 msgid "Bermuda"
-msgstr ""
+msgstr "Bermudy"
 
 #: module/Application/view/partials/translations.phtml:58
 msgid "Bhutan"
-msgstr ""
+msgstr "Bután"
 
 #: module/Application/view/partials/translations.phtml:59
 msgid "Bielorussia"
-msgstr ""
+msgstr "Bielorusko"
 
 #: module/Application/view/partials/translations.phtml:60
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolívia"
 
 #: module/Application/view/partials/translations.phtml:61
 msgid "Bosnia Erzegovina"
-msgstr ""
+msgstr "Bosna a Hercegovina"
 
 #: module/Application/view/partials/translations.phtml:62
 msgid "Botswana"
-msgstr ""
+msgstr "Botsvana"
 
 #: module/Application/view/partials/translations.phtml:63
 msgid "Brasile"
-msgstr ""
+msgstr "Brazília"
 
 #: module/Application/view/partials/translations.phtml:64
 msgid "Brunei"
-msgstr ""
+msgstr "Brunej-Darussalam"
 
 #: module/Application/view/partials/translations.phtml:65
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulharsko"
 
 #: module/Application/view/partials/translations.phtml:66
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #: module/Application/view/partials/translations.phtml:67
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 #: module/Application/view/partials/translations.phtml:68
 msgid "Cambogia"
-msgstr "Zmeniť kartu"
+msgstr "Kambodža"
 
 #: module/Application/view/partials/translations.phtml:69
 msgid "Camerun"
-msgstr ""
+msgstr "Kamerun"
 
 #: module/Application/view/partials/translations.phtml:70
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 #: module/Application/view/partials/translations.phtml:71
 msgid "Capo Verde"
-msgstr ""
+msgstr "Capo Verde"
 
 #: module/Application/view/partials/translations.phtml:72
 msgid "Ciad"
-msgstr ""
+msgstr "Čad"
 
 #: module/Application/view/partials/translations.phtml:73
 msgid "Cile"
-msgstr ""
+msgstr "Čile"
 
 #: module/Application/view/partials/translations.phtml:74
 msgid "Cina"
-msgstr ""
+msgstr "Čína"
 
 #: module/Application/view/partials/translations.phtml:75
 msgid "Cipro"
-msgstr ""
+msgstr "Cyprus"
 
 #: module/Application/view/partials/translations.phtml:76
 msgid "Città del vaticano"
-msgstr ""
+msgstr "Vatikán"
 
 #: module/Application/view/partials/translations.phtml:77
 msgid "Colombia"
-msgstr ""
+msgstr "Kolumbia"
 
 #: module/Application/view/partials/translations.phtml:78
 msgid "Comore"
-msgstr ""
+msgstr "Komory"
 
 #: module/Application/view/partials/translations.phtml:79
 msgid "Congo"
-msgstr ""
+msgstr "Kongo"
 
 #: module/Application/view/partials/translations.phtml:80
 msgid "Corea del Nord"
-msgstr ""
+msgstr "Severná Kórea"
 
 #: module/Application/view/partials/translations.phtml:81
 msgid "Corea del Sud"
-msgstr ""
+msgstr "Južná Kórea"
 
 #: module/Application/view/partials/translations.phtml:82
 msgid "Costa Rica"
-msgstr ""
+msgstr "Kostarika"
 
 #: module/Application/view/partials/translations.phtml:83
 msgid "Croazia"
-msgstr ""
+msgstr "Chorvátsko"
 
 #: module/Application/view/partials/translations.phtml:84
 msgid "Cuba"
-msgstr ""
+msgstr "Kuba"
 
 #: module/Application/view/partials/translations.phtml:85
 msgid "Danimarca"
-msgstr ""
+msgstr "Dánsko"
 
 #: module/Application/view/partials/translations.phtml:86
 msgid "Dominica"
-msgstr ""
+msgstr "Dominika"
 
 #: module/Application/view/partials/translations.phtml:87
 msgid "Ecuador"
-msgstr ""
+msgstr "Ekvádor"
 
 #: module/Application/view/partials/translations.phtml:88
 msgid "Egitto"
-msgstr ""
+msgstr "Egypt"
 
 #: module/Application/view/partials/translations.phtml:89
 msgid "El Salvador"
-msgstr "Uložiť"
+msgstr "El Salvádor"
 
 #: module/Application/view/partials/translations.phtml:90
 msgid "Emirati Arabi Uniti"
-msgstr ""
+msgstr "Spojené arabské emiráty"
 
 #: module/Application/view/partials/translations.phtml:91
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #: module/Application/view/partials/translations.phtml:92
 msgid "Estonia"
-msgstr ""
+msgstr "Estónsko"
 
 #: module/Application/view/partials/translations.phtml:93
 msgid "Etiopia"
-msgstr ""
+msgstr "Etiópia"
 
 #: module/Application/view/partials/translations.phtml:94
 msgid "Filippine"
-msgstr ""
+msgstr "Filipíny"
 
 #: module/Application/view/partials/translations.phtml:95
 msgid "Finlandia"
-msgstr ""
+msgstr "Fínsko"
 
 #: module/Application/view/partials/translations.phtml:96
 msgid "Francia"
-msgstr ""
+msgstr "Francúzsko"
 
 #: module/Application/view/partials/translations.phtml:97
 msgid "Gabon"
-msgstr ""
+msgstr "Gabon"
 
 #: module/Application/view/partials/translations.phtml:98
 msgid "Gambia"
-msgstr ""
+msgstr "Gambia"
 
 #: module/Application/view/partials/translations.phtml:99
 msgid "Georgia"
-msgstr ""
+msgstr "Georgia"
 
 #: module/Application/view/partials/translations.phtml:100
 msgid "Germania"
-msgstr ""
+msgstr "Nemecko"
 
 #: module/Application/view/partials/translations.phtml:101
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #: module/Application/view/partials/translations.phtml:102
 msgid "Giamaica"
-msgstr ""
+msgstr "Jamajka"
 
 #: module/Application/view/partials/translations.phtml:103
 msgid "Giappone"
-msgstr ""
+msgstr "Japonsko"
 
 #: module/Application/view/partials/translations.phtml:104
 msgid "Gibilterra"
-msgstr ""
+msgstr "Gibraltár"
 
 #: module/Application/view/partials/translations.phtml:105
 msgid "Gibuti"
-msgstr ""
+msgstr "Džibuti"
 
 #: module/Application/view/partials/translations.phtml:106
 msgid "Giordania"
-msgstr "Novinár"
+msgstr "Jordánsko"
 
 #: module/Application/view/partials/translations.phtml:107
 msgid "Grecia"
-msgstr ""
+msgstr "Grécko"
 
 #: module/Application/view/partials/translations.phtml:108
 msgid "Grenada"
-msgstr ""
+msgstr "Grenada"
 
 #: module/Application/view/partials/translations.phtml:109
 msgid "Groenlandia"
-msgstr ""
+msgstr "Grónsko"
 
 #: module/Application/view/partials/translations.phtml:110
 msgid "Guadalupa"
-msgstr ""
+msgstr "Guadalupa"
 
 #: module/Application/view/partials/translations.phtml:111
 msgid "Guam"
-msgstr ""
+msgstr "Guam"
 
 #: module/Application/view/partials/translations.phtml:112
 msgid "Guatemala"
-msgstr ""
+msgstr "Guatemala"
 
 #: module/Application/view/partials/translations.phtml:113
 msgid "Guiana Francese"
-msgstr ""
+msgstr "Francúzska Guiana"
 
 #: module/Application/view/partials/translations.phtml:114
 msgid "Guinea"
-msgstr ""
+msgstr "Guinea"
 
 #: module/Application/view/partials/translations.phtml:115
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Guinea-Bissau"
 
 #: module/Application/view/partials/translations.phtml:116
 msgid "Guinea Equatoriale"
-msgstr ""
+msgstr "Rovníková Guinea"
 
 #: module/Application/view/partials/translations.phtml:117
 msgid "Guyana"
-msgstr ""
+msgstr "Guyana"
 
 #: module/Application/view/partials/translations.phtml:118
 msgid "Haiti"
-msgstr ""
+msgstr "Haiti"
 
 #: module/Application/view/partials/translations.phtml:119
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 #: module/Application/view/partials/translations.phtml:120
 msgid "Hong Kong"
-msgstr ""
+msgstr "Hong Kong"
 
 #: module/Application/view/partials/translations.phtml:121
 msgid "India"
-msgstr "Naspäť"
+msgstr "India"
 
 #: module/Application/view/partials/translations.phtml:122
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonézia"
 
 #: module/Application/view/partials/translations.phtml:123
 msgid "Iran"
-msgstr ""
+msgstr "Irán"
 
 #: module/Application/view/partials/translations.phtml:124
 msgid "Iraq"
-msgstr ""
+msgstr "Irak"
 
 #: module/Application/view/partials/translations.phtml:125
 msgid "Irlanda"
-msgstr ""
+msgstr "Írsko"
 
 #: module/Application/view/partials/translations.phtml:126
 msgid "Islanda"
-msgstr ""
+msgstr "Isand"
 
 #: module/Application/view/partials/translations.phtml:127
 msgid "Isola Bouvet"
-msgstr ""
+msgstr "Bouvetov ostrov"
 
 #: module/Application/view/partials/translations.phtml:128
 msgid "Isola di Natale"
-msgstr ""
+msgstr "Vianočný ostrov"
 
 #: module/Application/view/partials/translations.phtml:129
 msgid "Isola Norfolk"
-msgstr ""
+msgstr "Norfolk Island"
 
 #: module/Application/view/partials/translations.phtml:130
 msgid "Isola Pitcairn"
-msgstr ""
+msgstr "Pitcairnove ostrovy"
 
 #: module/Application/view/partials/translations.phtml:131
 msgid "Isole Åland"
-msgstr ""
+msgstr "Ålandy"
 
 #: module/Application/view/partials/translations.phtml:132
 msgid "Isole Cayman"
-msgstr ""
+msgstr "Kajmanské ostrovy"
 
 #: module/Application/view/partials/translations.phtml:133
 msgid "Isole Cocos (Keeling)"
-msgstr ""
+msgstr "Kokosové ostrovy"
 
 #: module/Application/view/partials/translations.phtml:134
 msgid "Isole Cook"
-msgstr ""
+msgstr "Cookove ostrovy"
 
 #: module/Application/view/partials/translations.phtml:135
 msgid "Isole Falkland"
-msgstr ""
+msgstr "Falklandy (Malvíny)"
 
 #: module/Application/view/partials/translations.phtml:136
 msgid "Isole Faroe"
-msgstr ""
+msgstr "Faerské ostrovy"
 
 #: module/Application/view/partials/translations.phtml:137
 msgid "Isole Figi"
-msgstr ""
+msgstr "Fidži"
 
 #: module/Application/view/partials/translations.phtml:138
 msgid "Isole Heard e McDonald"
-msgstr ""
+msgstr "Heardove a McDonaldove ostrovy"
 
 #: module/Application/view/partials/translations.phtml:139
 msgid "Isole Marianne Settentrionali"
-msgstr ""
+msgstr "Severné Mariany"
 
 #: module/Application/view/partials/translations.phtml:140
 msgid "Isole Marshall"
-msgstr ""
+msgstr "Marshallove ostrovy"
 
 #: module/Application/view/partials/translations.phtml:141
 msgid "Isole minori degli Stati Uniti"
-msgstr ""
+msgstr "Menšie odľahlé ostrovy USA"
 
 #: module/Application/view/partials/translations.phtml:142
 msgid "Isole Solomon"
-msgstr ""
+msgstr "Šalamúnove ostrovy"
 
 #: module/Application/view/partials/translations.phtml:143
 msgid "Isole Spratly"
-msgstr ""
+msgstr "Spratly Islands"
 
 #: module/Application/view/partials/translations.phtml:144
 msgid "Isole Svalbard e Jan Mayen"
-msgstr ""
+msgstr "Špicbergy"
 
 #: module/Application/view/partials/translations.phtml:145
 msgid "Isole Tokelau"
-msgstr ""
+msgstr "Fakaofo"
 
 #: module/Application/view/partials/translations.phtml:146
 msgid "Isole Turks e Caicos"
-msgstr ""
+msgstr "ostrovy Turks a Caicos"
 
 #: module/Application/view/partials/translations.phtml:147
 msgid "Isole Vergini Britanniche"
-msgstr ""
+msgstr "Britské Panenské ostrovy"
 
 #: module/Application/view/partials/translations.phtml:148
 msgid "Isole Vergini Statunitensi"
-msgstr ""
+msgstr "Panenske Ostrovy"
 
 #: module/Application/view/partials/translations.phtml:149
 msgid "Isole Wallis e Futuna"
-msgstr ""
+msgstr "Wallis e Futuna"
 
 #: module/Application/view/partials/translations.phtml:150
 msgid "Israele"
-msgstr ""
+msgstr "Izrael"
 
 #: module/Application/view/partials/translations.phtml:151
 msgid "Italia"
-msgstr "Taliančina"
+msgstr "Taliansko"
 
 #: module/Application/view/partials/translations.phtml:152
 msgid "Kazakistan"
-msgstr "Farmaceut"
+msgstr "Kazachstan"
 
 #: module/Application/view/partials/translations.phtml:153
 msgid "Kenya"
-msgstr ""
+msgstr "Keňa"
 
 #: module/Application/view/partials/translations.phtml:154
 msgid "Kirghizistan"
-msgstr ""
+msgstr "Kyrgyzstan"
 
 #: module/Application/view/partials/translations.phtml:155
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 #: module/Application/view/partials/translations.phtml:156
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuvajt"
 
 #: module/Application/view/partials/translations.phtml:157
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #: module/Application/view/partials/translations.phtml:158
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 #: module/Application/view/partials/translations.phtml:159
 msgid "Lettonia"
-msgstr "Bez DPH"
+msgstr "Lotyšsko"
 
 #: module/Application/view/partials/translations.phtml:160
 msgid "Libano"
-msgstr ""
+msgstr "Libanon"
 
 #: module/Application/view/partials/translations.phtml:161
 msgid "Liberia"
-msgstr ""
+msgstr "Libéria"
 
 #: module/Application/view/partials/translations.phtml:162
 msgid "Libia"
-msgstr ""
+msgstr "Líbia"
 
 #: module/Application/view/partials/translations.phtml:163
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Lichtenštajnsko"
 
 #: module/Application/view/partials/translations.phtml:164
 msgid "Lituania"
-msgstr ""
+msgstr "Litva"
 
 #: module/Application/view/partials/translations.phtml:165
 msgid "Lussemburgo"
-msgstr ""
+msgstr "Luxembursko"
 
 #: module/Application/view/partials/translations.phtml:166
 msgid "Macau"
-msgstr ""
+msgstr "Makao"
 
 #: module/Application/view/partials/translations.phtml:167
 msgid "Macedonia"
-msgstr ""
+msgstr "Macedónsko"
 
 #: module/Application/view/partials/translations.phtml:168
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagaskar"
 
 #: module/Application/view/partials/translations.phtml:169
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #: module/Application/view/partials/translations.phtml:170
 msgid "Maldive"
-msgstr ""
+msgstr "Maledivy"
 
 #: module/Application/view/partials/translations.phtml:171
 msgid "Malesia"
-msgstr ""
+msgstr "Malajzia"
 
 #: module/Application/view/partials/translations.phtml:172
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #: module/Application/view/partials/translations.phtml:173
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #: module/Application/view/partials/translations.phtml:174
 msgid "Marocco"
-msgstr ""
+msgstr "Maroko"
 
 #: module/Application/view/partials/translations.phtml:175
 msgid "Martinica"
-msgstr ""
+msgstr "Martinik"
 
 #: module/Application/view/partials/translations.phtml:176
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritánia"
 
 #: module/Application/view/partials/translations.phtml:177
 msgid "Mauritius"
-msgstr ""
+msgstr "Maurícius"
 
 #: module/Application/view/partials/translations.phtml:178
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 #: module/Application/view/partials/translations.phtml:179
 msgid "Messico"
-msgstr ""
+msgstr "Mexiko"
 
 #: module/Application/view/partials/translations.phtml:180
 msgid "Micronesia, Stati Federati della"
-msgstr ""
+msgstr "Mikronézia"
 
 #: module/Application/view/partials/translations.phtml:181
 msgid "Moldova"
-msgstr ""
+msgstr "Moldavsko"
 
 #: module/Application/view/partials/translations.phtml:182
 msgid "Monaco"
-msgstr ""
+msgstr "Monako"
 
 #: module/Application/view/partials/translations.phtml:183
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolsko"
 
 #: module/Application/view/partials/translations.phtml:184
 msgid "Montserrat"
-msgstr ""
+msgstr "Kláštor Montserrat"
 
 #: module/Application/view/partials/translations.phtml:185
 msgid "Mozambico"
-msgstr ""
+msgstr "Mozambik"
 
 #: module/Application/view/partials/translations.phtml:186
 msgid "Myanmar (Birmania)"
-msgstr ""
+msgstr "Myanmar (Barma)"
 
 #: module/Application/view/partials/translations.phtml:187
 msgid "Namibia"
-msgstr ""
+msgstr "Namíbia"
 
 #: module/Application/view/partials/translations.phtml:188
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 #: module/Application/view/partials/translations.phtml:189
 msgid "Nepal"
-msgstr ""
+msgstr "Nepál"
 
 #: module/Application/view/partials/translations.phtml:190
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nikaragua"
 
 #: module/Application/view/partials/translations.phtml:191
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #: module/Application/view/partials/translations.phtml:192
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigéria"
 
 #: module/Application/view/partials/translations.phtml:193
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #: module/Application/view/partials/translations.phtml:194
 msgid "Norvegia"
-msgstr ""
+msgstr "Nórsko"
 
 #: module/Application/view/partials/translations.phtml:195
 msgid "Nuova Caledonia"
-msgstr ""
+msgstr "Nová Kaledónia"
 
 #: module/Application/view/partials/translations.phtml:196
 msgid "Nuova Zelanda"
-msgstr ""
+msgstr "Nový Zéland"
 
 #: module/Application/view/partials/translations.phtml:197
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #: module/Application/view/partials/translations.phtml:198
 msgid "Paesi Bassi"
-msgstr ""
+msgstr "Holandsko"
 
 #: module/Application/view/partials/translations.phtml:199
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistan"
 
 #: module/Application/view/partials/translations.phtml:200
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 #: module/Application/view/partials/translations.phtml:201
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #: module/Application/view/partials/translations.phtml:202
 msgid "Papua Nuova Guinea"
-msgstr ""
+msgstr "Papua Nová Guinea"
 
 #: module/Application/view/partials/translations.phtml:203
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguaj"
 
 #: module/Application/view/partials/translations.phtml:204
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: module/Application/view/partials/translations.phtml:205
 msgid "Polinesia Francese"
-msgstr ""
+msgstr "Francúzska Polynézia"
 
 #: module/Application/view/partials/translations.phtml:206
 msgid "Polonia"
-msgstr ""
+msgstr "Poľsko"
 
 #: module/Application/view/partials/translations.phtml:207
 msgid "Portogallo"
-msgstr ""
+msgstr "Portugalsko"
 
 #: module/Application/view/partials/translations.phtml:208
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 #: module/Application/view/partials/translations.phtml:209
 msgid "Qatar"
-msgstr ""
+msgstr "Katar"
 
 #: module/Application/view/partials/translations.phtml:210
 msgid "Regno Unito"
-msgstr ""
+msgstr "Spojené kráľovstvo"
 
 #: module/Application/view/partials/translations.phtml:211
 msgid "Repubblica Ceca"
-msgstr ""
+msgstr "Česko"
 
 #: module/Application/view/partials/translations.phtml:212
 msgid "Repubblica Centrafricana"
-msgstr ""
+msgstr "Stredoafrická republika"
 
 #: module/Application/view/partials/translations.phtml:213
 msgid "Repubblica Democratica del Congo"
-msgstr ""
+msgstr "Konžská demokratická republika"
 
 #: module/Application/view/partials/translations.phtml:214
 msgid "Repubblica Dominicana"
-msgstr ""
+msgstr "Dominikánska republika"
 
 #: module/Application/view/partials/translations.phtml:215
 msgid "Reunion"
-msgstr ""
+msgstr "Reunion"
 
 #: module/Application/view/partials/translations.phtml:216
 msgid "Romania"
-msgstr ""
+msgstr "Rumunsko"
 
 #: module/Application/view/partials/translations.phtml:217
 msgid "Ruanda"
-msgstr ""
+msgstr "Rwanda"
 
 #: module/Application/view/partials/translations.phtml:218
 msgid "Russia"
-msgstr ""
+msgstr "Rusko"
 
 #: module/Application/view/partials/translations.phtml:219
 msgid "Sahara Occidentale"
-msgstr ""
+msgstr "Západná Sahara"
 
 #: module/Application/view/partials/translations.phtml:220
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #: module/Application/view/partials/translations.phtml:221
 msgid "Samoa Americane"
-msgstr ""
+msgstr "Americká Samoa"
 
 #: module/Application/view/partials/translations.phtml:222
 msgid "San Marino"
-msgstr "Napr. Martin"
+msgstr "San Marino"
 
 #: module/Application/view/partials/translations.phtml:223
 msgid "Sao Tome e Principe"
-msgstr ""
+msgstr "Svätý Tomáš a Princov ostrov"
 
 #: module/Application/view/partials/translations.phtml:224
 msgid "Senegal"
-msgstr "Sídlo"
+msgstr "Senegal"
 
 #: module/Application/view/partials/translations.phtml:225
 msgid "Serbia e Montenegro"
-msgstr ""
+msgstr "Srbsko a Čierna Hora"
 
 #: module/Application/view/partials/translations.phtml:226
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychely"
 
 #: module/Application/view/partials/translations.phtml:227
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #: module/Application/view/partials/translations.phtml:228
 msgid "Singapore"
-msgstr ""
+msgstr "Singapur"
 
 #: module/Application/view/partials/translations.phtml:229
 msgid "Siria"
-msgstr ""
+msgstr "Síria"
 
 #: module/Application/view/partials/translations.phtml:230
 msgid "Slovacchia"
@@ -5524,163 +5529,163 @@ msgstr "Slovensko"
 
 #: module/Application/view/partials/translations.phtml:231
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovínsko"
 
 #: module/Application/view/partials/translations.phtml:232
 msgid "Somalia"
-msgstr ""
+msgstr "Somálsko"
 
 #: module/Application/view/partials/translations.phtml:233
 msgid "Spagna"
-msgstr ""
+msgstr "Španielsko"
 
 #: module/Application/view/partials/translations.phtml:234
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Srí Lanka"
 
 #: module/Application/view/partials/translations.phtml:235
 msgid "Stati Uniti"
-msgstr "Krajina narodenia"
+msgstr "Spojené štáty americké"
 
 #: module/Application/view/partials/translations.phtml:236
 msgid "St. Kitts e Nevis"
-msgstr ""
+msgstr "Svätý Krištof a Nevis"
 
 #: module/Application/view/partials/translations.phtml:237
 msgid "St. Lucia"
-msgstr ""
+msgstr "Svätá Lucia"
 
 #: module/Application/view/partials/translations.phtml:238
 msgid "St. Pierre e Miquelon"
-msgstr ""
+msgstr "Saint Pierre a Miquelon"
 
 #: module/Application/view/partials/translations.phtml:239
 msgid "St. Vincent e Grenadine"
-msgstr ""
+msgstr "Grenadines"
 
 #: module/Application/view/partials/translations.phtml:240
 msgid "Sud Africa"
-msgstr ""
+msgstr "Južná Afrika"
 
 #: module/Application/view/partials/translations.phtml:241
 msgid "Suriname"
-msgstr "Užívateľské meno"
+msgstr "Surinam"
 
 #: module/Application/view/partials/translations.phtml:242
 msgid "Svezia"
-msgstr ""
+msgstr "Švédsko"
 
 #: module/Application/view/partials/translations.phtml:243
 msgid "Svizzera"
-msgstr ""
+msgstr "Švajčiarsko"
 
 #: module/Application/view/partials/translations.phtml:244
 msgid "Swaziland"
-msgstr ""
+msgstr "Svazijsko"
 
 #: module/Application/view/partials/translations.phtml:245
 msgid "Tagikistan"
-msgstr ""
+msgstr "Tadžikistan"
 
 #: module/Application/view/partials/translations.phtml:246
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #: module/Application/view/partials/translations.phtml:247
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzánia"
 
 #: module/Application/view/partials/translations.phtml:248
 msgid "Territori Australi Francesi"
-msgstr ""
+msgstr "Francúzska južná a antarktická oblasť"
 
 #: module/Application/view/partials/translations.phtml:249
 msgid "Thailandia"
-msgstr ""
+msgstr "Thajsko"
 
 #: module/Application/view/partials/translations.phtml:250
 msgid "Timor Est"
-msgstr ""
+msgstr "Východný Timor"
 
 #: module/Application/view/partials/translations.phtml:251
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #: module/Application/view/partials/translations.phtml:252
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 #: module/Application/view/partials/translations.phtml:253
 msgid "Trinidad e Tobago"
-msgstr ""
+msgstr "Trinidad a Tobago"
 
 #: module/Application/view/partials/translations.phtml:254
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisko"
 
 #: module/Application/view/partials/translations.phtml:255
 msgid "Turchia"
-msgstr ""
+msgstr "Turecko"
 
 #: module/Application/view/partials/translations.phtml:256
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmenistan"
 
 #: module/Application/view/partials/translations.phtml:257
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 #: module/Application/view/partials/translations.phtml:258
 msgid "Ucraina"
-msgstr ""
+msgstr "Ukrajina"
 
 #: module/Application/view/partials/translations.phtml:259
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #: module/Application/view/partials/translations.phtml:260
 msgid "Ungheria"
-msgstr ""
+msgstr "Maďarsko"
 
 #: module/Application/view/partials/translations.phtml:261
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #: module/Application/view/partials/translations.phtml:262
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #: module/Application/view/partials/translations.phtml:263
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #: module/Application/view/partials/translations.phtml:264
 msgid "Venezuela"
-msgstr ""
+msgstr "Uzbekistan"
 
 #: module/Application/view/partials/translations.phtml:265
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #: module/Application/view/partials/translations.phtml:266
 msgid "Yemen"
-msgstr ""
+msgstr "Jemen"
 
 #: module/Application/view/partials/translations.phtml:267
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #: module/Application/view/partials/translations.phtml:268
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: module/Application/view/partials/translations.phtml:269
 msgid "Zona neutra Iraq-Arabia Saudita"
-msgstr ""
+msgstr "Neutrálna zóna medzi Irakom a Saudskou Arábiou"
 
 #: module/Application/view/partials/translations.phtml:270
 msgid "Zona neutra ONU"
-msgstr ""
+msgstr "Nutrálne územie OSN"
 
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"
