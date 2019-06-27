@@ -2,10 +2,11 @@
 
 namespace Application\Controller;
 
-// External Modules
 use Zend\Mvc\Controller\AbstractActionController;
+
 use SharengoCore\Service\SimpleLoggerService;
 use SharengoCore\Service\PartnerService;
+use SharengoCore\Service\SmsService;
 
 class PartnerController extends AbstractActionController {
 
@@ -22,16 +23,24 @@ class PartnerController extends AbstractActionController {
     private $partnerService;
 
     /**
-     * 
+     * @var SmsService smsService
+     */
+    private $smsService;
+
+    /**
+     * PartnerController constructor.
      * @param SimpleLoggerService $loggerService
      * @param PartnerService $partnerService
+     * @param SmsService $smsService
      */
     public function __construct(
         SimpleLoggerService $loggerService,
-        PartnerService $partnerService
+        PartnerService $partnerService,
+        SmsService $smsService
     ) {
         $this->loggerService = $loggerService;
         $this->partnerService = $partnerService;
+        $this->smsService =$smsService;
     }
 
     /**
@@ -106,7 +115,7 @@ class PartnerController extends AbstractActionController {
                 //$authorization = $this->getRequest()->getHeader('Authorization', '');
  
                 $content = file_get_contents('php://input');
-                $this->logger("Request", $content);
+                $this->logger("signupAction;request", $content);
                 $contentArray = json_decode($content, true);
 
                 if(!is_null($contentArray)) {
@@ -135,7 +144,7 @@ class PartnerController extends AbstractActionController {
             $response->setStatusCode(500);  //500 Internal Server Error
         }
 
-        $this->logger("Response", $response->getStatusCode()." ".$response->getBody());
+        $this->logger("signupAction:response", $response->getStatusCode().";".$response->getBody());
         return $response;
     }
 
@@ -210,16 +219,17 @@ class PartnerController extends AbstractActionController {
      }
 
     /**
-     * 
+     * Write a message with the address (ip) of remote request
+     *
      * @param string $info
      * @param string $message
      */
     private function logger($info, $message) {
         try {
-            $writer = new \Zend\Log\Writer\Stream("/tmp/partner_signup.log");
+            $writer = new \Zend\Log\Writer\Stream("/tmp/partner.log");
             $logger = new \Zend\Log\Logger();
             $logger->addWriter($writer);
-            $logger->info($this->partnerService->getRemoteAddress() ." " . $info . "\n" . $message);
+            $logger->info(";" . $this->partnerService->getRemoteAddress() .";" . $info . "\n" . $message);
         } catch (Exception $ex) {
 
         }
@@ -231,4 +241,40 @@ class PartnerController extends AbstractActionController {
         $jsonResponse = null;
         $this->partnerService->tryChargeAccountTest($culrResponse, $jsonResponse);
     }
+
+    /**
+     * Trasform a request of SOS from Node Js CarWebServices (restFunctions.js), into a  group of SMS send to the
+     * logistic operators
+     *
+     * @return \Zend\Stdlib\ResponseInterface|null
+     */
+    public function sosSmsAction() {
+
+        $statusCode = 200;
+        $response = null;
+        $response = $this->getResponse();
+        $params = $this->params()->fromQuery();
+        $smsResponse = array();
+
+        $this->logger("sosSmsAction;request", json_encode($params));
+
+        if(PartnerService::isRemoteAddressValid($this->smsService->getValidIpFromConfigDb())) {
+            if(isset($params['trip_id'])) {
+                $this->smsService->sendSosViaSms($params['trip_id'], $smsResponse);
+            }
+        } else {
+            $smsResponse['result'] = false;
+            $smsResponse['error'] = "forbidden for " . PartnerService::getRemoteAddress();
+            $statusCode = 403;
+        }
+
+        $this->logger("sosSmsAction;response", json_encode($smsResponse));
+        $response->setContent(PartnerService::removeUtf8Bom(json_encode($smsResponse)));
+        $response->setStatusCode($statusCode);
+        return $response;
+    }
+
+
+
+
 }

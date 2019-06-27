@@ -544,6 +544,17 @@ return [
                     ],
                 ]
             ],
+            'partner-sos-sms' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/partner-sos-sms',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Partner',
+                        'action' => 'sos-sms'
+                    ]
+                ]
+            ],
             'google-maps-call' => [
                 'type' => 'Segment',
                 'options' => [

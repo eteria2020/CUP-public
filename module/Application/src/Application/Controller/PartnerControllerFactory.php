@@ -12,10 +12,12 @@ class PartnerControllerFactory implements FactoryInterface
         //$entityManager = $serviceLocator->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $loggerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\SimpleLoggerService');
         $partnerService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\PartnerService');
+        $smsService = $serviceLocator->getServiceLocator()->get('SharengoCore\Service\SmsService');
 
         return new PartnerController(
             $loggerService,
-            $partnerService
+            $partnerService,
+            $smsService
         );
     }
 }

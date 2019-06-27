@@ -1,0 +1,2 @@
+INSERT INTO configurations (id, slug, config_key, config_value, config_spec)
+VALUES(nextval('configurations_id_seq'), 'sos', 'sos_via_sms', 'true', '{"validIp":"", "phoneBook":[{"fleetId":1,"phoneNumber":["+393313257265"]},{"fleetId":2,"phoneNumber":["+393456770617"]},{"fleetId":3,"phoneNumber":["+393711895458"]}]}');
