@@ -1103,17 +1103,6 @@ return [
                     ],
                 ],
             ],
-            'legambiente' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{legambiente}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'LandingPage',
-                        'action' => 'legambiente',
-                    ],
-                ],
-            ],
             'linear' => [
                 'type' => 'Segment',
                 'options' => [
