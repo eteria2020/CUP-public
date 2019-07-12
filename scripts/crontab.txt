@@ -28,13 +28,13 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # every 1 hour
 05 */1 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/close_old_trip_maintainers.sh
-08 * * * *      root            /srv/apps/sharengo-publicsite/scripts/cron/assign_bonus_car_free.sh
+#08 * * * *      root            /srv/apps/sharengo-publicsite/scripts/cron/assign_bonus_car_free.sh
 #NUGO
-30 */8 * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/partner_notify_nugo.sh
+#30 */8 * * *   root            /srv/apps/sharengo-publicsite/scripts/cron/partner_notify_nugo.sh
 
 # every day
-05 00 * * *     root            /usr/bin/pm2 restart pushService
-10 00 * * *     root            /usr/bin/pm2 restart CarWebServices
+05 00 * * *     root            /usr/bin/pm2 stop pushService && /usr/bin/pm2 start pushService
+10 00 * * *     root            /usr/bin/pm2 stop CarWebServices && /usr/bin/pm2 start CarWebServices
 15 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/backup.sh
 15 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/extra.sh
 15 00 * * *     root            /srv/apps/sharengo-publicsite/scripts/cron/disable_late_payers.sh
