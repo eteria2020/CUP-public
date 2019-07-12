@@ -1143,8 +1143,11 @@ class ConsoleBonusComputeController extends AbstractActionController {
         $nTripBeforeAprilMonth = $this->customerService->checkIfCustomerRunBeforeDate($customer, $date_zero);
         return $nTripBeforeAprilMonth[0][1] == 0 ? true : false;
     }
-    
-    public function assignBonusCarFreeAction() {
+
+    /**
+     * Action not in use (deprecated)
+     */
+/*    public function assignBonusCarFreeAction() {
         $this->prepareLogger();
         $format = "%s;INF;assignBonusCarFreeAction;strat\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
@@ -1255,7 +1258,7 @@ class ConsoleBonusComputeController extends AbstractActionController {
         
         $format = "%s;INF;assignBonusCarFreeAction;end\n";
         $this->logger->log(sprintf($format, date_create()->format('y-m-d H:i:s')));
-    }
+    }*/
     
     private function createMatrix($permanance_areas, $side) {
         $matrix = array();
