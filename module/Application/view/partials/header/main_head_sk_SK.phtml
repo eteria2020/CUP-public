@@ -1,4 +1,6 @@
-
+<?php
+$currentLanguageCode = substr($this->languageMenuHelper()->getCurrentLanguage()["code"], 0,2);
+?>
 <!-- Header -->
 <header class="main_head">
 
@@ -17,11 +19,11 @@
 
         <nav class="menu_main">
             <ul class="menu">
-                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://site.sharengo.sk/ako-funguje-sharengo/"><?= $this->translate('Come funziona Sharengo')?></a></li>
-                <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://site.sharengo.sk/akcie-a-baliky/"><?= $this->translate('Pacchetti &amp; promozioni')?></a></li>
-                <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="https://site.sharengo.sk/o-nas/"><?= $this->translate('Chi è SharenGo')?></a></li>
-                <li id="menu-item-749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749"><a href="https://site.sharengo.sk/faq/"><?= $this->translate('FAQ')?></a></li>
-                <li id="menu-item-1012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1012"><a href="https://site.sharengo.sk/kontakty/"><?= $this->translate('Contatti')?></a></li>
+                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://site.sharengo.sk/<?= $currentLanguageCode ?>/ako-funguje-sharengo/"><?= $this->translate('Come funziona Sharengo')?></a></li>
+                <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://site.sharengo.sk/<?= $currentLanguageCode ?>/akcie-a-baliky/"><?= $this->translate('Pacchetti &amp; promozioni')?></a></li>
+                <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="https://site.sharengo.sk/<?= $currentLanguageCode ?>/o-nas/"><?= $this->translate('Chi è SharenGo')?></a></li>
+                <li id="menu-item-749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749"><a href="https://site.sharengo.sk/<?= $currentLanguageCode ?>/faq/"><?= $this->translate('FAQ')?></a></li>
+                <li id="menu-item-1012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1012"><a href="https://site.sharengo.sk/<?= $currentLanguageCode ?>/kontakty/"><?= $this->translate('Contatti')?></a></li>
                 <?php if($this->loggedUser): ?>
                 <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('logout'); ?>"><?= $this->translate('Logout')?></a></li>
                 <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('login'); ?>"><?= $this->translate('Area riservata')?></a></li>

@@ -4,8 +4,8 @@ namespace Application\View\Helper;
 
 class LanguageMenu
 {
+    private $currentLanguage;
     private $languages;
-
     private $currentLanguageLabel;
 
     /**
@@ -13,10 +13,19 @@ class LanguageMenu
      * @param $currentLanguageLabel
      * @param array $menuLanguages
      */
-    public function __construct($currentLanguageLabel, array $menuLanguages)
+    public function __construct($currentLanguage, $currentLanguageLabel, array $menuLanguages)
     {
+        $this->currentLanguage = $currentLanguage;
         $this->currentLanguageLabel = $currentLanguageLabel;
         $this->languages = $menuLanguages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentLanguage()
+    {
+        return $this->currentLanguage;
     }
 
     /**

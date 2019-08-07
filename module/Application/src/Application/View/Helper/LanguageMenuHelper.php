@@ -31,6 +31,12 @@ class LanguageMenuHelper extends AbstractHelper
 
             if ($locale == $currentLocale) {
                 $currentLabel = $label;
+                $currentLanguage = [
+                    'code' => $locale,
+                    'label' => $label,
+                    'url' => $url
+                ];
+
             } else {
                 $menuLanguages[] = [
                     'code' => $locale,
@@ -40,6 +46,6 @@ class LanguageMenuHelper extends AbstractHelper
             }
         }
 
-        return new LanguageMenu($currentLabel, $menuLanguages);
+        return new LanguageMenu($currentLanguage, $currentLabel, $menuLanguages);
     }
 }
