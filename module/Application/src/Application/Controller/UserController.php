@@ -1181,7 +1181,7 @@ class UserController extends AbstractActionController {
 
         $customerSession = $this->registrationService->getSignupCustomerSession();
         //error_log(var_dump($customerSession));
-        if(!is_null($customerSession) && !$this->registrationService->isRegistrationCompleted($customerSession)){
+        if($customerSession instanceOf Customers && !$this->registrationService->isRegistrationCompleted($customerSession)){
             return $this->redirect()->toRoute('signupNL2', ['mobile' => $mobile]);
         }
         //if there are data in session, we use them to populate the form
@@ -1249,7 +1249,7 @@ class UserController extends AbstractActionController {
         $customerSession = $this->registrationService->getSignupCustomerSession();
 
         /* redirect if session is empty */
-        if(empty($customerSession)){
+        if(!($customerSession instanceOf Customers)){
             return $this->redirect()->toRoute('signupNL1', ['mobile' => $mobile]);
         }
 
@@ -1370,7 +1370,8 @@ class UserController extends AbstractActionController {
         $signupSession->offsetSet("customer", $customer);
         //$this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
-        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
+        //return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
+        return $this->redirect()->toRoute('mollie/first-payment',[], ['query' => ['customer' => $customer->getId(), 'signup' => true]] );
 
     }
 

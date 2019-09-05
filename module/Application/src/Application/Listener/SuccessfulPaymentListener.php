@@ -49,6 +49,11 @@ class SuccessfulPaymentListener implements SharedListenerAggregateInterface
             'successfulPayment',
             [$this, 'successfulPayment']
         );
+        $this->listeners[] = $events->attach(
+            'Mollie\Controller\MolliePaymentsController',
+            'successfulPayment',
+            [$this, 'successfulPayment']
+        );
     }
 
     public function detachShared(SharedEventManagerInterface $events)

@@ -291,7 +291,7 @@ class SignupNL2Fieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'id' => 'driverLicenseExpire',
                 'class' => 'required datepicker-date',
-                'min' => date_create()->format('d-m-Y'),
+                //'min' => date_create()->format('d-m-Y'),
                 'placeholder' => $this->translator->translate('dd-mm-aaaa'),
                 'type' => 'text'
             ],

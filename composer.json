@@ -46,6 +46,7 @@
         "smsgatewayme/client": "^0.0.1",
         "matteocontrini/comuni-json": "dev-master",
         "sharengo-web/gpwebpay": "dev-master",
+        "sharengo-web/mollie": "dev-master",
         "mattketmo/email-checker": "^1.5"
     },
     "repositories": [
@@ -104,6 +105,10 @@
         {
           "url": "ssh://git@git.sharengo.it/cup-it/gpwebpay.git",
           "type": "git"
+        },
+        {
+            "url": "ssh://git@git.sharengo.it/cup-it/mollie.git",
+            "type": "git"
         },
         {
             "type":"package",
