@@ -394,10 +394,10 @@ $(function () {
                 for (var ib = 0; ib < b_car.length; ib++) {
                     if ((b_car[ib].type === "nouse") && (b_car[ib].status === true)) {
                         bonus_type = b_car[ib].type;
-                        bonus_message = "<br>I primi " + b_car[ib].value + " minuti di guida sono gratuiti";
+                        bonus_message = "<br>" + translate("nouse_label_map").replace("SHARENGO_NOUSE_MINUTES",  b_car[ib].value);
                     } else if ((b_car[ib].type === "unplug") && (b_car[ib].status === true)) {
                         bonus_type = b_car[ib].type;
-                        bonus_message = "<br>Con questa auto " + b_car[ib].value + " minuti di guida gratis! Ricordati di staccare la spina!";
+                        bonus_message =  "<br>" + translate("unplug_label_map").replace("SHARENGO_UNPLUG_MINUTES",  b_car[ib].value);
                     }
                 }
 

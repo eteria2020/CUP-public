@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-06-10 16:24+0200\n"
-"PO-Revision-Date: 2019-06-10 16:36+0200\n"
+"POT-Creation-Date: 2019-09-05 10:30+0200\n"
+"PO-Revision-Date: 2019-09-05 10:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1604,7 +1604,7 @@ msgstr "Bevestig de aankoop door een creditcard te registreren"
 
 #: module/Application/view/application/index/comefunziona.phtml:10
 #: module/Application/view/layout/layout.phtml:123
-#: module/Application/view/partials/header/main_head.phtml:20
+#: module/Application/view/partials/header/main_head.phtml:22
 msgid "Come funziona"
 msgstr "Hoe werkt het"
 
@@ -4341,14 +4341,14 @@ msgstr "Huur"
 #: module/Application/view/partials/footer/main_foot.phtml:24
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:24
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:24
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:26
 msgid "Contatti"
 msgstr "Contact"
 
 #: module/Application/view/layout/layout.phtml:138
-#: module/Application/view/partials/header/main_head.phtml:28
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:27
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:27
+#: module/Application/view/partials/header/main_head.phtml:30
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:29
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:29
 msgid "Area riservata"
 msgstr "Persoonlijke omgeving"
 
@@ -4578,7 +4578,7 @@ msgstr "Opzeggingsformulier"
 #: module/Application/view/partials/footer/main_foot.phtml:39
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:40
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:36
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:23
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:25
 msgid "FAQ"
 msgstr "Instructiehandleiding"
 
@@ -4649,55 +4649,55 @@ msgstr ""
 msgid "Avanti"
 msgstr "Verder"
 
-#: module/Application/view/partials/header/main_head.phtml:21
+#: module/Application/view/partials/header/main_head.phtml:23
 msgid "Pacchetti &amp; promo"
 msgstr "Pakketten & aanbiedingen"
 
-#: module/Application/view/partials/header/main_head.phtml:22
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:22
+#: module/Application/view/partials/header/main_head.phtml:24
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:24
 msgid "La città cambia"
 msgstr "De stad verandert"
 
-#: module/Application/view/partials/header/main_head.phtml:23
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:23
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:22
+#: module/Application/view/partials/header/main_head.phtml:25
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:25
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:24
 msgid "Chi è SharenGo"
 msgstr "Wie is Sharengo"
 
-#: module/Application/view/partials/header/main_head.phtml:24
+#: module/Application/view/partials/header/main_head.phtml:26
 msgid "Vantaggi per te"
 msgstr "Voordelen voor jou"
 
-#: module/Application/view/partials/header/main_head.phtml:25
+#: module/Application/view/partials/header/main_head.phtml:27
 msgid "Aziende"
 msgstr "Bedrijven"
 
-#: module/Application/view/partials/header/main_head.phtml:27
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:26
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:26
+#: module/Application/view/partials/header/main_head.phtml:29
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:28
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:28
 msgid "Logout"
 msgstr "Uitloggen"
 
-#: module/Application/view/partials/header/main_head.phtml:30
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:29
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:29
+#: module/Application/view/partials/header/main_head.phtml:32
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:31
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:31
 #: module/Application/view/zfc-user/user/login.phtml:68
 msgid "Accedi"
 msgstr "Inloggen"
 
-#: module/Application/view/partials/header/main_head.phtml:31
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:30
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:30
+#: module/Application/view/partials/header/main_head.phtml:33
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:32
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:32
 msgid "Iscriviti"
 msgstr "Registreren"
 
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:20
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:20
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:22
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:22
 msgid "Come funziona Sharengo"
 msgstr "Hoe werkt Sharengo"
 
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:21
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:21
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:23
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 msgid "Pacchetti &amp; promozioni"
 msgstr "Pakketten & aanbiedingen"
 
@@ -5709,6 +5709,18 @@ msgstr "Neutrale zone tussen Irak en Saoedi-Arabië"
 #: module/Application/view/partials/translations.phtml:270
 msgid "Zona neutra ONU"
 msgstr "UN neutrale zone"
+
+#: module/Application/view/partials/translations.phtml:272
+msgid "I primi SHARENGO_NOUSE_MINUTES minuti di guida sono gratuiti"
+msgstr "De eerste SHARENGO_NOUSE_MINUTES minuten zijn gratis"
+
+#: module/Application/view/partials/translations.phtml:273
+msgid ""
+"Con questa auto SHARENGO_UNPLUG_MINUTES minuti di guida gratis! Ricordati di "
+"staccare la spina!"
+msgstr ""
+"Met deze auto SHARENGO_UNPLUG_MINUTES gratis minuten rijden! Vergeet niet de "
+"stekker uit het stopcontact te trekken!"
 
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"
