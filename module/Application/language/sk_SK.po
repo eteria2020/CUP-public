@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-09-05 10:33+0200\n"
-"PO-Revision-Date: 2019-09-05 10:34+0200\n"
+"PO-Revision-Date: 2019-09-05 12:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -18,14 +18,15 @@ msgstr ""
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
 "X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
+"X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
 
-#: module/Application/config/module.config.php:2735
+#: module/Application/config/module.config.php:2736
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profil"
 
-#: module/Application/config/module.config.php:2740
+#: module/Application/config/module.config.php:2741
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -33,34 +34,34 @@ msgstr "Profil"
 msgid "Patente"
 msgstr "Vodičský preukaz"
 
-#: module/Application/config/module.config.php:2745
+#: module/Application/config/module.config.php:2746
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2750
+#: module/Application/config/module.config.php:2751
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Sadzby"
 
-#: module/Application/config/module.config.php:2755
+#: module/Application/config/module.config.php:2756
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
-#: module/Application/config/module.config.php:2765
+#: module/Application/config/module.config.php:2766
 msgid "Bonus minuti"
 msgstr "Bonusové minúty"
 
-#: module/Application/config/module.config.php:2770
+#: module/Application/config/module.config.php:2771
 msgid "Corse completate"
 msgstr "Dokončené jazdy"
 
-#: module/Application/config/module.config.php:2775
+#: module/Application/config/module.config.php:2776
 msgid "Dati di pagamento"
 msgstr "Údaje platby"
 
-#: module/Application/config/module.config.php:2780
+#: module/Application/config/module.config.php:2781
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Faktúry"
@@ -179,11 +180,11 @@ msgstr "Nesprávne telefónne číslo"
 #: module/Application/src/Application/Controller/UserController.php:890
 #: module/Application/src/Application/Controller/UserController.php:1217
 #: module/Application/src/Application/Controller/UserController.php:1307
-#: module/Application/src/Application/Controller/UserController.php:1443
-#: module/Application/src/Application/Controller/UserController.php:1476
-#: module/Application/src/Application/Controller/UserController.php:1725
-#: module/Application/src/Application/Controller/UserController.php:1768
-#: module/Application/src/Application/Controller/UserController.php:1925
+#: module/Application/src/Application/Controller/UserController.php:1444
+#: module/Application/src/Application/Controller/UserController.php:1477
+#: module/Application/src/Application/Controller/UserController.php:1726
+#: module/Application/src/Application/Controller/UserController.php:1769
+#: module/Application/src/Application/Controller/UserController.php:1926
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -1383,6 +1384,12 @@ msgstr "Rodné číslo"
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr ""
 
+#: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
+#, fuzzy
+#| msgid "Associazione con azienda"
+msgid "Transazione non valida"
+msgstr "Združenie so spoločnosťou"
+
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
 msgstr "akcie a balíčky"
@@ -2212,10 +2219,14 @@ msgstr ""
 
 #: module/Application/view/application/payment/pay-success.phtml:27
 #: module/Application/view/application/user/signup-score-completion.phtml:27
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:26
 msgid "Attivazione completata"
 msgstr "Aktivácia kompletná"
 
 #: module/Application/view/application/payment/pay-success.phtml:28
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:12
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:27
 msgid "Ti confermiamo la ricezione del pagamento"
 msgstr "Potvrdzujeme prijatie platby"
 
@@ -2405,11 +2416,11 @@ msgstr ""
 "Zmena karty vyžaduje poplatok 1Euro ktorý bude ihneď vrátený po ukončení "
 "procesu."
 
-#: module/Application/view/application/user-area/dati-pagamento.phtml:165
+#: module/Application/view/application/user-area/dati-pagamento.phtml:176
 msgid "PROCEDI"
 msgstr "POKRAČOVAŤ"
 
-#: module/Application/view/application/user-area/dati-pagamento.phtml:166
+#: module/Application/view/application/user-area/dati-pagamento.phtml:177
 msgid "CHIUDI"
 msgstr "ZAVRIEŤ"
 
@@ -3759,18 +3770,28 @@ msgid "Pagamento avvenuto!"
 msgstr "Platba bola vykonaná!"
 
 #: module/Application/view/application/user/optional.phtml:26
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:28
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
 msgid "Si è verificato un problema"
 msgstr "Vyskytol sa problém"
 
 #: module/Application/view/application/user/optional.phtml:27
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
 msgid "Il pagamento non è andato a buon fine."
 msgstr "Platba nebola úspešná."
 
 #: module/Application/view/application/user/optional.phtml:28
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
 msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "Chybové hlásenie, ktoré sme dostali, je: \""
 
 #: module/Application/view/application/user/optional.phtml:29
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
 msgid "Contattare l'assistenza per maggiori informazioni"
 msgstr "Pre viac informácií kontaktujte podporu"
 
@@ -5789,6 +5810,33 @@ msgstr ""
 "problémom na tvojej kreditnej karte a že tvoj účet je dočasne pozastavený. "
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
 
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
+msgid "Verifica cambio di carta in corso."
+msgstr ""
+
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:13
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:13
+msgid "(attendere prego)"
+msgstr ""
+
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:25
+#, fuzzy
+#| msgid "Corse completate"
+msgid "Cambio carta completato"
+msgstr "Dokončené jazdy"
+
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
+#, fuzzy
+#| msgid "Ti confermiamo la ricezione del pagamento"
+msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
+msgstr "Potvrdzujeme prijatie platby"
+
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
+#, fuzzy
+#| msgid "(Verification code)"
+msgid "Verifica transazione in corso."
+msgstr "(Verification code)"
+
 #, fuzzy
 #~| msgid "Azerbaigian"
 #~ msgid "Azerbaijan"
@@ -5923,9 +5971,6 @@ msgstr ""
 
 #~ msgid "(Mobile phone)"
 #~ msgstr "(Mobile phone)"
-
-#~ msgid "(Verification code)"
-#~ msgstr "(Verification code)"
 
 #~ msgid "(Enter here the verification code received by sms)"
 #~ msgstr "(Enter here the verification code received by sms)"

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "03be311dc35ccc586eb9bd262907c470",
-    "content-hash": "49bf3e4c910fda26ecf2aead3fae6866",
+    "hash": "331ad4e9b2fbc74e27632c6857bf0906",
+    "content-hash": "93bcfebcd21c46d53d4ddb036759c7f4",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2498,7 +2498,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "add1b9341c92eb0261711750e48a0581489d82dd"
+                "reference": "e41ac8b670c01d9e96a038ff272b335d7e01e485"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2522,7 +2522,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-07-12 13:13:18"
+            "time": "2019-09-05 12:16:52"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -3057,7 +3057,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
-                "reference": "4d2038f95b4763f0e816e90bc5c02fddb0e8e3fd"
+                "reference": "5519c82cf40c6a5666cdca9fa42db9f193d60d30"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3071,7 +3071,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2019-03-27 10:37:19"
+            "time": "2019-09-05 12:15:46"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
@@ -3134,6 +3134,29 @@
             },
             "description": "GPWebpay module for Sharengo",
             "time": "2019-06-05 06:52:47"
+        },
+        {
+            "name": "sharengo-web/mollie",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@git.sharengo.it/cup-it/mollie.git",
+                "reference": "0708c20fb9ae7c9351825e8a2ad1557413664f85"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "sharengo-web/cartasi": "dev-master",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mollie": "src/"
+                }
+            },
+            "description": "Mollie module for Sharengo",
+            "time": "2019-09-05 12:11:52"
         },
         {
             "name": "smsgatewayme/client",
@@ -6561,7 +6584,8 @@
         "mvlabs/omnipay-cartasi": 20,
         "mvlabs/zf2-multilanguage": 20,
         "matteocontrini/comuni-json": 20,
-        "sharengo-web/gpwebpay": 20
+        "sharengo-web/gpwebpay": 20,
+        "sharengo-web/mollie": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -34,7 +34,8 @@ $config = [
         'MvLabsDriversLicenseValidation',
         'Application',
         'CUPPublicBusinessModule',
-        'GPWebpay'
+        'GPWebpay',
+        'Mollie'
     ],
 
     // These are various options for the listeners attached to the ModuleManager

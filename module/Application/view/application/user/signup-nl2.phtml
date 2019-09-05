@@ -410,12 +410,15 @@ $this->headLink()
     $this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
     $this->inlineScript()->appendScript(
         '$(document).ready(function() {
+            date18yearsBefore = new Date();
+            date18yearsBefore.setMonth( date18yearsBefore.getMonth()-(12*18));
+            
             $( "#birthDate" ).datepicker({
                 dateFormat: "dd-mm-yy",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "-100:+0",
-                maxDate: new Date(new Date().getFullYear(), 11, 31)
+                maxDate: date18yearsBefore
             });
 
             $( "#driverLicenseExpire" ).datepicker({
@@ -423,7 +426,7 @@ $this->headLink()
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "+0:+100",
-                minDate: new Date(new Date().getFullYear(), 0, 1)
+                minDate: 0
             });
         });'
     );

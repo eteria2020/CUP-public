@@ -4,5 +4,7 @@ Disallow: /cartasi/pagamento-ricorrente
 Disallow: /cartasi/primo-pagamento
 Disallow: /gpwebpay
 Disallow: /gpwebpay/first-payment
+Disallow: /mollie
+Disallow: /mollie/first-payment
 Disallow: /pdf/
 Disallow: /zone

@@ -162,7 +162,18 @@
                                 </ul>
                                 <br>
                                 <div id="button-alert" class="block-wrapper-button content-align-center">
-                                    <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? $this->url('gpwebpay/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) : $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]) ?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
+                                    <?php
+                                        $urlChangeCard = $this->url('cartasi/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
+
+                                        if(!is_null($this->serverInstance)) {
+                                            if($this->serverInstance == "sk_SK") {
+                                                $urlChangeCard = $this->url('gpwebpay/cambio-carta', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
+                                            }elseif($this->serverInstance == "nl_NL") {
+                                                $urlChangeCard = $this->url('mollie/change-card', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
+                                            }
+                                        }
+                                    ?>
+                                    <a href="<?= $urlChangeCard;?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
                                     <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("CHIUDI") ?></button></a>
                                 </div>
                             </div>
