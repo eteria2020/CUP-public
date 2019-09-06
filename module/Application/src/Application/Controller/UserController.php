@@ -1095,6 +1095,10 @@ class UserController extends AbstractActionController {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
 
+        if($this->serverInstance["id"]!="sk_SK") {
+            return $this->redirect()->toRoute('signup', ['mobile' => $mobile],['query' => ['lang' => 'sk_SK']]);
+        }
+
         $customerSession = $this->registrationService->getSignupCustomerSession();
         //error_log(var_dump($customerSession));
         if(!is_null($customerSession) && !$this->registrationService->isRegistrationCompleted($customerSession)){
@@ -1178,6 +1182,10 @@ class UserController extends AbstractActionController {
     public function signupNL1Action() {
         //if there are mobile param change layout
         $mobile = $this->params()->fromRoute('mobile');
+
+        if($this->serverInstance["id"]!="nl_NL") {
+            return $this->redirect()->toRoute('signup', ['mobile' => $mobile],['query' => ['lang' => 'nl_NL']]);
+        }
 
         $customerSession = $this->registrationService->getSignupCustomerSession();
         //error_log(var_dump($customerSession));
