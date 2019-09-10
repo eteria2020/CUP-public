@@ -789,7 +789,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non puù essere vuoto"),
+                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non può essere vuoto"),
                             ]
                         ],
                     ],
@@ -803,7 +803,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non puù essere vuoto"),
+                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non può essere vuoto"),
                             ]
                         ],
                     ],
@@ -817,7 +817,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                         'options' => [
                             'token' => 'on',
                             'messages' => [
-                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non puù essere vuoto"),
+                                Identical::NOT_SAME => $this->translator->translate("Il campo richiesto non può essere vuoto"),
                             ]
                         ],
                     ],
