@@ -269,7 +269,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     <?php } ?>
 
     var tryAPIGeolocation = function() {
-        jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC8FZ21zdDF6HLNc0hYJthJvqqcoM4aCiI", function(success) {
+        jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=<?= $this->googleMapsConfig['key'] ?>", function(success) {
             apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
         })
             .fail(function(err) {
