@@ -29,7 +29,8 @@ class LongLanguage extends AbstractHelper
         $longLanguages = [
             "it" => $this->translator->translate("Italiano"),
             "en" => $this->translator->translate("inglese"),
-            "sk" => $this->translator->translate("slovacco")
+            "sk" => $this->translator->translate("slovacco"),
+            "nl" => $this->translator->translate("olandese")
         ];
 
         return isset($longLanguages[$lang]) ? $longLanguages[$lang] : 'Italiano';

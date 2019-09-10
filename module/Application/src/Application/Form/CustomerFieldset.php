@@ -300,7 +300,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'value_options' => [
                     "it" => $translator->translate("Italiano"),
                     "en" => $translator->translate("inglese"),
-                    "sk" => $translator->translate("slovacco")
+                    "sk" => $translator->translate("slovacco"),
+                    "nl" => $translator->translate("olandese")
                 ]
             ]
         ]);
@@ -549,6 +550,14 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 ]
             ],
             'town' => [
+                'required' => true,
+                'filters' => [
+                    [
+                        'name' => 'StringTrim'
+                    ]
+                ]
+            ],
+            'language' => [
                 'required' => true,
                 'filters' => [
                     [
