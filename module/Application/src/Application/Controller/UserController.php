@@ -1125,6 +1125,7 @@ class UserController extends AbstractActionController {
         } else {
             return $this->newForm($this->newForm, $mobile);
         }
+
     }
 
     public function signupSK2Action(){
@@ -1438,7 +1439,8 @@ class UserController extends AbstractActionController {
             'form' => $newForm,
             'mobile' => $mobile,
             'fleets' => $this->fleetService->getAllFleetsNoDummy(),
-            'serverInstance' => isset($this->serverInstance["id"]) ? $this->serverInstance["id"] : null
+            'serverInstance' => isset($this->serverInstance["id"]) ? $this->serverInstance["id"] : null,
+            'googleMapsConfig' => $this->googleMapsConfig
         ]);
     }
 
