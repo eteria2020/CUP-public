@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-09-05 10:30+0200\n"
-"PO-Revision-Date: 2019-09-05 12:28+0200\n"
+"POT-Creation-Date: 2019-09-10 11:25+0200\n"
+"PO-Revision-Date: 2019-09-10 11:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -181,13 +181,13 @@ msgid "Numero di telefono non corretto"
 msgstr "Telefoonnummer onjuist"
 
 #: module/Application/src/Application/Controller/UserController.php:890
-#: module/Application/src/Application/Controller/UserController.php:1217
-#: module/Application/src/Application/Controller/UserController.php:1307
-#: module/Application/src/Application/Controller/UserController.php:1444
-#: module/Application/src/Application/Controller/UserController.php:1477
-#: module/Application/src/Application/Controller/UserController.php:1726
-#: module/Application/src/Application/Controller/UserController.php:1769
-#: module/Application/src/Application/Controller/UserController.php:1926
+#: module/Application/src/Application/Controller/UserController.php:1225
+#: module/Application/src/Application/Controller/UserController.php:1315
+#: module/Application/src/Application/Controller/UserController.php:1452
+#: module/Application/src/Application/Controller/UserController.php:1485
+#: module/Application/src/Application/Controller/UserController.php:1734
+#: module/Application/src/Application/Controller/UserController.php:1777
+#: module/Application/src/Application/Controller/UserController.php:1934
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "De sessie is verlopen. Je moet de registratieprocedure herhalen"
@@ -465,32 +465,38 @@ msgstr "Engels"
 msgid "slovacco"
 msgstr "Slowaaks"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:318
+#: module/Application/src/Application/Form/CustomerFieldset.php:304
+#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:266
+#: module/Application/src/Application/View/Helper/LongLanguage.php:33
+msgid "olandese"
+msgstr "Olandese"
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:319
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
 #: module/Application/src/Application/Form/UserFieldset.php:376
 msgid "Codice fiscale"
 msgstr "Burgerservicenummer"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:331
+#: module/Application/src/Application/Form/CustomerFieldset.php:332
 #: module/Application/src/Application/Form/UserFieldset.php:389
 msgid "Partita IVA (opzionale)"
 msgstr "BTW-nummer (optioneel)"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:341
-#: module/Application/src/Application/Form/CustomerFieldset.php:344
+#: module/Application/src/Application/Form/CustomerFieldset.php:342
+#: module/Application/src/Application/Form/CustomerFieldset.php:345
 #: module/Application/view/layout/layout.phtml:171
 msgid "Telefono"
 msgstr "Telefoon"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:371
+#: module/Application/src/Application/Form/CustomerFieldset.php:372
 msgid "PEC"
 msgstr "Gecertif. E-mail"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:381
+#: module/Application/src/Application/Form/CustomerFieldset.php:382
 msgid "ABCDEFG"
 msgstr "ABCDEFG"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:384
+#: module/Application/src/Application/Form/CustomerFieldset.php:385
 msgid "Cod. destinatario"
 msgstr "Code ontvanger"
 
@@ -578,10 +584,6 @@ msgstr "Categorie rijbewijs"
 #: module/Application/src/Application/Form/UserFieldset.php:292
 msgid "Via e numero civico"
 msgstr "Straat en huisnummer"
-
-#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:266
-msgid "olandese"
-msgstr "Nederlands"
 
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:277
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:262
@@ -1042,14 +1044,12 @@ msgid "Femmina"
 msgstr "Vrouw"
 
 #: module/Application/src/Application/Form/UserFieldset.php:372
-#, fuzzy
 msgid "XXXXXXXXXXXXXXXX"
-msgstr "XXX XXX XXX XXX XXXX = 16 ?"
+msgstr ""
 
 #: module/Application/src/Application/Form/UserFieldset.php:386
-#, fuzzy
 msgid "ITNNNNNNNNNNN"
-msgstr "IT NNN NNN NNN NN = 13 ?"
+msgstr ""
 
 #: module/Application/src/Application/Form/UserFieldset.php:423
 msgid ""
@@ -1117,7 +1117,7 @@ msgstr ""
 #: module/Application/src/Application/Form/UserFieldset.php:792
 #: module/Application/src/Application/Form/UserFieldset.php:806
 #: module/Application/src/Application/Form/UserFieldset.php:820
-msgid "Il campo richiesto non puù essere vuoto"
+msgid "Il campo richiesto non può essere vuoto"
 msgstr "Het betreffende veld mag niet leeg zijn"
 
 #: module/Application/src/Application/Form/Validator/BirthProvince.php:20
@@ -1800,9 +1800,8 @@ msgstr ""
 "je precies weten hoe het werkt: lees de"
 
 #: module/Application/view/application/index/comefunziona.phtml:43
-#, fuzzy
 msgid "dedicate"
-msgstr "???"
+msgstr "toegewijd"
 
 #: module/Application/view/application/index/comefunziona.phtml:45
 msgid "Fine noleggio o sosta"
@@ -3028,26 +3027,22 @@ msgid ""
 msgstr "??? "
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:45
-#, fuzzy
 msgid "Non chiuderete mai la vostra corsa (terrete l&#39;auto in parcheggio)"
-msgstr "??? "
+msgstr "Je zult je run nooit afsluiten (je houdt de auto op de parkeerplaats)"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:46
-#, fuzzy
 msgid ""
 "L&#39;auto andr&agrave; e uscir&agrave; dalla ricarica senza alcun "
 "intervento particolare"
-msgstr "??? "
+msgstr "De auto zal zonder enige tussenkomst uit het opladen komen"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:47
-#, fuzzy
 msgid "La manutenzione ordinaria e straordinaria sar&agrave; a nostro carico"
-msgstr "??? "
+msgstr "Gewoon en buitengewoon onderhoud komt voor onze rekening"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:48
-#, fuzzy
 msgid "Avrete un&#39;auto sostitutiva se e quando servir&agrave;"
-msgstr "??? "
+msgstr "U hebt een vervangwagen als en wanneer u deze nodig hebt"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:49
 #, fuzzy
@@ -3117,9 +3112,8 @@ msgid ""
 msgstr "???"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:50
-#, fuzzy
 msgid "POSTEPAY:"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:50
 #, fuzzy
@@ -3131,9 +3125,8 @@ msgid ""
 msgstr "???"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:51
-#, fuzzy
 msgid "POSTEPAY EVOLUTION:"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:51
 #, fuzzy
@@ -3145,9 +3138,8 @@ msgid ""
 msgstr "???"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:52
-#, fuzzy
 msgid "CARTASI:"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:52
 #, fuzzy
@@ -3759,14 +3751,14 @@ msgid "Pagamento avvenuto!"
 msgstr "Betaling voltooid!"
 
 #: module/Application/view/application/user/optional.phtml:26
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:28
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
 msgid "Si è verificato un problema"
 msgstr "Er heeft zich een probleem voorgedaan"
 
 #: module/Application/view/application/user/optional.phtml:27
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
 msgid "Il pagamento non è andato a buon fine."
@@ -3778,7 +3770,7 @@ msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "De foutmelding die we hebben ontvangen is: \""
 
 #: module/Application/view/application/user/optional.phtml:29
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:31
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
 msgid "Contattare l'assistenza per maggiori informazioni"
@@ -3806,6 +3798,8 @@ msgstr ""
 "minuten gratis als beloning."
 
 #: module/Application/view/application/user/optional.phtml:92
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Ga naar je persoonlijke omgeving"
 
@@ -3911,16 +3905,16 @@ msgid ""
 msgstr "???"
 
 #: module/Application/view/application/user/signup.phtml:51
-#, fuzzy
 msgid "per aiuto."
-msgstr "???"
+msgstr "voor hulp."
 
 #: module/Application/view/application/user/signup.phtml:55
-#, fuzzy
 msgid ""
 "The registration fee is 10€ with 30 minutes bonus (standard condition "
 "without promotions)."
-msgstr "???"
+msgstr ""
+"Het inschrijfgeld is € 10 met 30 minuten bonus (standaard staat zonder "
+"promoties)."
 
 #: module/Application/view/application/user/signup.phtml:59
 #, fuzzy
@@ -3935,9 +3929,8 @@ msgid ""
 msgstr "???"
 
 #: module/Application/view/application/user/signup.phtml:65
-#, fuzzy
 msgid "for help."
-msgstr "???"
+msgstr "voor hulp."
 
 #: module/Application/view/application/user/signup.phtml:95
 #: module/Application/view/partials/translations.phtml:4
@@ -4081,9 +4074,8 @@ msgstr ""
 
 #: module/Application/view/application/user/signup2.phtml:145
 #: module/Application/view/application/user/signup2.phtml:146
-#, fuzzy
 msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/application/user/signup2.phtml:146
 msgid "Inglese"
@@ -4513,39 +4505,32 @@ msgid "Non utilizzare bancomat o le seguenti carte di credito:"
 msgstr "Gebruik geen bankpasje of de volgende creditcards:"
 
 #: module/Application/view/partials/credit-card-refuse.phtml:13
-#, fuzzy
 msgid "Visa - Reward Debit"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:21
-#, fuzzy
 msgid "Maestro - Debit"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:29
-#, fuzzy
 msgid "Genius - Unicredit"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:37
-#, fuzzy
 msgid "Platinum - Debit"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:48
-#, fuzzy
 msgid "Visa Corporate"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:56
-#, fuzzy
 msgid "Visa - Fleet"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:64
-#, fuzzy
 msgid "Visa - Sondrio"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:72
 #, fuzzy
@@ -4553,14 +4538,12 @@ msgid "Enjoy - UBI Banca"
 msgstr "???"
 
 #: module/Application/view/partials/credit-card-refuse.phtml:83
-#, fuzzy
 msgid "OKEI - Intesa S. Paolo"
-msgstr "???"
+msgstr ""
 
 #: module/Application/view/partials/credit-card-refuse.phtml:91
-#, fuzzy
 msgid "Mastercard - Prepagata"
-msgstr "???"
+msgstr "MasterCard - vooruitbetaald"
 
 #: module/Application/view/partials/footer/main_foot.phtml:6
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:6
@@ -5842,11 +5825,11 @@ msgstr "Controleert hij verandering van papier bezig."
 msgid "(attendere prego)"
 msgstr "(Bijwonen ik bid)"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:25
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
 msgid "Cambio carta completato"
 msgstr "Voltooide ritten"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
 msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
 msgstr "We bevestigen de ontvangst van de betaling"
 

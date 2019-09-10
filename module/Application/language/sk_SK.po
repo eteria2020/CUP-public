@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-09-05 10:33+0200\n"
-"PO-Revision-Date: 2019-09-05 12:33+0200\n"
+"POT-Creation-Date: 2019-09-10 11:16+0200\n"
+"PO-Revision-Date: 2019-09-10 11:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -178,13 +178,13 @@ msgid "Numero di telefono non corretto"
 msgstr "Nesprávne telefónne číslo"
 
 #: module/Application/src/Application/Controller/UserController.php:890
-#: module/Application/src/Application/Controller/UserController.php:1217
-#: module/Application/src/Application/Controller/UserController.php:1307
-#: module/Application/src/Application/Controller/UserController.php:1444
-#: module/Application/src/Application/Controller/UserController.php:1477
-#: module/Application/src/Application/Controller/UserController.php:1726
-#: module/Application/src/Application/Controller/UserController.php:1769
-#: module/Application/src/Application/Controller/UserController.php:1926
+#: module/Application/src/Application/Controller/UserController.php:1225
+#: module/Application/src/Application/Controller/UserController.php:1315
+#: module/Application/src/Application/Controller/UserController.php:1452
+#: module/Application/src/Application/Controller/UserController.php:1485
+#: module/Application/src/Application/Controller/UserController.php:1734
+#: module/Application/src/Application/Controller/UserController.php:1777
+#: module/Application/src/Application/Controller/UserController.php:1934
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -463,34 +463,40 @@ msgstr "angličtina"
 msgid "slovacco"
 msgstr "slovenčina"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:318
+#: module/Application/src/Application/Form/CustomerFieldset.php:304
+#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:266
+#: module/Application/src/Application/View/Helper/LongLanguage.php:33
+msgid "olandese"
+msgstr "holandský"
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:319
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
 #: module/Application/src/Application/Form/UserFieldset.php:376
 msgid "Codice fiscale"
 msgstr "Rodné číslo"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:331
+#: module/Application/src/Application/Form/CustomerFieldset.php:332
 #: module/Application/src/Application/Form/UserFieldset.php:389
 msgid "Partita IVA (opzionale)"
 msgstr "DIČ (voliteľné)"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:341
-#: module/Application/src/Application/Form/CustomerFieldset.php:344
+#: module/Application/src/Application/Form/CustomerFieldset.php:342
+#: module/Application/src/Application/Form/CustomerFieldset.php:345
 #: module/Application/view/layout/layout.phtml:171
 msgid "Telefono"
 msgstr "Telefón"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:371
+#: module/Application/src/Application/Form/CustomerFieldset.php:372
 msgid "PEC"
 msgstr "Certifikovaný e-mail"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:381
+#: module/Application/src/Application/Form/CustomerFieldset.php:382
 msgid "ABCDEFG"
 msgstr ""
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:384
+#: module/Application/src/Application/Form/CustomerFieldset.php:385
 msgid "Cod. destinatario"
-msgstr ""
+msgstr "Kód príjemcu"
 
 #: module/Application/src/Application/Form/CustomerPointFieldset.php:114
 msgid "La data di fine validità deve essere posteriore alla data di inizio"
@@ -577,10 +583,6 @@ msgstr "Kategória/e"
 #: module/Application/src/Application/Form/UserFieldset.php:292
 msgid "Via e numero civico"
 msgstr "Ulica a popisné číslo"
-
-#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:266
-msgid "olandese"
-msgstr ""
 
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:277
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:262
@@ -1109,8 +1111,8 @@ msgstr ""
 #: module/Application/src/Application/Form/UserFieldset.php:792
 #: module/Application/src/Application/Form/UserFieldset.php:806
 #: module/Application/src/Application/Form/UserFieldset.php:820
-msgid "Il campo richiesto non puù essere vuoto"
-msgstr ""
+msgid "Il campo richiesto non può essere vuoto"
+msgstr "Údaje sa vyžadujú na pokračovanie"
 
 #: module/Application/src/Application/Form/Validator/BirthProvince.php:20
 msgid "E' necessario avere Estero come Provincia di nascita"
@@ -1200,11 +1202,11 @@ msgstr "Tento reklamný kód už bol použitý"
 
 #: module/Application/src/Application/Form/Validator/RecipientCode.php:21
 msgid "Il codice destinatario deve essere una cifra di 7 caratteri numerici"
-msgstr ""
+msgstr "Kód príjemcu musí byť číslica 7 číselných znakov"
 
 #: module/Application/src/Application/Form/Validator/RecipientCode.php:22
 msgid "Il codice destinatario deve avere solo caratteri alfanumerici"
-msgstr ""
+msgstr "Kód príjemcu musí obsahovať iba alfanumerické znaky"
 
 #: module/Application/src/Application/Form/Validator/TaxCode.php:18
 msgid "Il codice fiscale non è corretto"
@@ -1322,17 +1324,15 @@ msgstr "Názov"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
 msgid "Interna"
-msgstr ""
+msgstr "Interný"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-#, fuzzy
-#| msgid "Username"
 msgid "Esterna"
 msgstr "Užívateľské meno"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
 msgid "Mappa"
-msgstr ""
+msgstr "Mapa"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
 msgid "(Black Box)"
@@ -1385,8 +1385,6 @@ msgid "PRENOTAZIONE DI SISTEMA"
 msgstr ""
 
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
-#, fuzzy
-#| msgid "Associazione con azienda"
 msgid "Transazione non valida"
 msgstr "Združenie so spoločnosťou"
 
@@ -1792,7 +1790,7 @@ msgstr ""
 # Manca il contesto.
 #: module/Application/view/application/index/comefunziona.phtml:43
 msgid "dedicate"
-msgstr ""
+msgstr "jednoúčelový"
 
 #: module/Application/view/application/index/comefunziona.phtml:45
 msgid "Fine noleggio o sosta"
@@ -2038,6 +2036,8 @@ msgid ""
 "Il tuo profilo risulta disattivato, si prega di contattare il Servizio "
 "Clienti per essere riabilitato."
 msgstr ""
+"Váš profil je deaktivovaný, kontaktujte prosím zákaznícky servis a "
+"požiadajte ho o rehabilitáciu."
 
 #: module/Application/view/application/index/index.phtml:54
 msgid "PER SAPERNE DI PIU' (FAQ)"
@@ -3151,6 +3151,10 @@ msgid ""
 "telefono (da associare alla carta). A quel numero di telefono verrà inviato "
 "l&#39;SMS con il codice di sicurezza da inserire per completare il pagamento."
 msgstr ""
+"zabezpečený kód je možné aktivovať aj v okamihu uskutočnenia platby. Stačí "
+"zadať daňový kód a telefónne číslo (priraďovať ku karte). Na toto telefónne "
+"číslo sa odošle SMS s bezpečnostným kódom, ktorý sa má zadať na dokončenie "
+"platby."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:52
 msgid "CARTASI:"
@@ -3724,11 +3728,11 @@ msgstr "Pokračovať"
 
 #: module/Application/view/application/user/new-signup2.phtml:419
 msgid "Prima di procedere verifica:"
-msgstr ""
+msgstr "Pred začatím kontroly:"
 
 #: module/Application/view/application/user/new-signup2.phtml:420
 msgid "Hai una patente europea senza scadenza?"
-msgstr ""
+msgstr "Máte európsku licenciu bez termínu?"
 
 #: module/Application/view/application/user/new-signup2.phtml:421
 msgid ""
@@ -3736,6 +3740,9 @@ msgid ""
 "che ti invieremo via email. E nel caso tu sia residente in Italia da più di "
 "2 anni devi convertirla in quella italiana."
 msgstr ""
+"Ak váš európsky vodičský preukaz nemá konečný termín, vyplňte auto-"
+"osvedčenie, pošleme vám e-mailom. A v prípade, že máte pobyt v Taliansku "
+"dlhšie ako 2 roky, musíte ho previesť na taliansky."
 
 #: module/Application/view/application/user/new-signup2.phtml:423
 msgid "Hai una patente estera non europea?"
@@ -3748,6 +3755,10 @@ msgid ""
 "che ti invieremo via mail. Se sei residente in Italia da più di un anno è "
 "necessario convertirla in quella italiana."
 msgstr ""
+"Aby ste sa mohli zaregistrovať, musíte mať medzinárodný vodičský preukaz "
+"alebo úradný preklad dokumentu a vyplniť formulár o vlastnej certifikácii, "
+"ktorý vám pošleme e-mailom. Ak ste v Taliansku bývali dlhšie ako rok, musíte "
+"ho zmeniť na taliansky."
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
@@ -3770,14 +3781,14 @@ msgid "Pagamento avvenuto!"
 msgstr "Platba bola vykonaná!"
 
 #: module/Application/view/application/user/optional.phtml:26
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:28
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
 msgid "Si è verificato un problema"
 msgstr "Vyskytol sa problém"
 
 #: module/Application/view/application/user/optional.phtml:27
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
 msgid "Il pagamento non è andato a buon fine."
@@ -3789,7 +3800,7 @@ msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "Chybové hlásenie, ktoré sme dostali, je: \""
 
 #: module/Application/view/application/user/optional.phtml:29
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:31
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
 msgid "Contattare l'assistenza per maggiori informazioni"
@@ -3815,6 +3826,8 @@ msgstr ""
 "odmenu."
 
 #: module/Application/view/application/user/optional.phtml:92
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Choď do vyhradenej zóny"
 
@@ -3842,8 +3855,6 @@ msgstr ""
 "dochádza k uzavretiu zmluvy."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-#, fuzzy
-#| msgid "30 minuti a soli 5&euro;"
 msgid "30 minuti a soli 10&euro;"
 msgstr "30 minút len ​​za 5&euro;"
 
@@ -5812,28 +5823,22 @@ msgstr ""
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
 msgid "Verifica cambio di carta in corso."
-msgstr ""
+msgstr "Skontrolujte prebiehajúcu výmenu papiera."
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:13
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:13
 msgid "(attendere prego)"
-msgstr ""
+msgstr "(počkajte)"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:25
-#, fuzzy
-#| msgid "Corse completate"
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
 msgid "Cambio carta completato"
 msgstr "Dokončené jazdy"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
-#, fuzzy
-#| msgid "Ti confermiamo la ricezione del pagamento"
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
 msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
 msgstr "Potvrdzujeme prijatie platby"
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
-#, fuzzy
-#| msgid "(Verification code)"
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
 
