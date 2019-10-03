@@ -323,21 +323,6 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function notelegaliAction()
-    {
-        return new ViewModel();
-    }
-
-    public function privacyAction()
-    {
-        return new ViewModel();
-    }
-
-    public function callcenterAction()
-    {
-        return new ViewModel();
-    }
-
     public function eqSharingAction()
     {
         return (new viewModel())->setTerminal(true);

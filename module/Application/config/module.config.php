@@ -707,39 +707,6 @@ return [
                     ],
                 ]
             ],
-            'notelegali' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{notelegali}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action' => 'notelegali',
-                    ],
-                ]
-            ],
-            'privacy' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{privacy}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action' => 'privacy',
-                    ],
-                ]
-            ],
-            'callcenter' => [
-                'type' => 'Segment',
-                'options' => [
-                    'route' => '/{callcenter}',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller' => 'Index',
-                        'action' => 'callcenter',
-                    ],
-                ]
-            ],
             'acea' => [
                 'type' => 'Segment',
                 'options' => [
