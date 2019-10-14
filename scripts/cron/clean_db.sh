@@ -12,4 +12,6 @@ DELETE FROM reservations_archive
 WHERE ts < (now() - interval'$time');
 DELETE FROM customer_locations
 WHERE timestamp < (now() - interval '10 month');
+DELETE FROM messages_outbox
+WHERE submitted < (now() - interval'$time');
 THE_END
