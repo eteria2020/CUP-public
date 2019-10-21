@@ -7,13 +7,13 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
 
-$privacyLink = $this->basePath('pdf/sk/SUKROMIE.pdf'); //default slovakia link
-$contractLink = $this->basePath('pdf/sk/VOP-Sharengo.pdf'); //default slovakia contract
+$privacyLink = $this->basePath('pdf/sk/privacy.pdf'); //default slovakia link
+$contractLink = $this->basePath('pdf/sk/contract.pdf'); //default slovakia contract
 
 if(!is_null($this->serverInstance)){
     if($this->serverInstance == "sk_SK") {
-        $privacyLink = $this->basePath('pdf/sk/SUKROMIE.pdf');
-        $contractLink = $this->basePath('pdf/sk/VOP-Sharengo.pdf');
+        $privacyLink = $this->basePath('pdf/sk/privacy.pdf');
+        $contractLink = $this->basePath('pdf/sk/contract.pdf');
     } elseif ($this->serverInstance == "nl_NL") {
         $privacyLink = 'https://site.sharengo.nl/privacy/';
         $contractLink = $this->basePath('pdf/nl/ReglementSharengo.pdf');
