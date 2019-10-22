@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-10-22 12:38+0200\n"
-"PO-Revision-Date: 2019-10-22 12:39+0200\n"
+"POT-Creation-Date: 2019-10-22 16:25+0200\n"
+"PO-Revision-Date: 2019-10-22 16:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -101,34 +101,34 @@ msgstr "Premalo kisikovih točk"
 msgid "Pacchetto non acquistabile"
 msgstr "Paket ni na voljo za nakup"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:280
-#: module/Application/src/Application/Controller/UserAreaController.php:372
+#: module/Application/src/Application/Controller/UserAreaController.php:277
+#: module/Application/src/Application/Controller/UserAreaController.php:369
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Za ponovno spremembo podatkov boste morali počakati 10 minut."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:427
-#: module/Application/src/Application/Controller/UserAreaController.php:559
-#: module/Application/src/Application/Controller/UserAreaController.php:621
+#: module/Application/src/Application/Controller/UserAreaController.php:424
+#: module/Application/src/Application/Controller/UserAreaController.php:556
+#: module/Application/src/Application/Controller/UserAreaController.php:618
 msgid "Operazione completata con successo!"
 msgstr "Operacija je uspešno zaključena!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:561
-#: module/Application/src/Application/Controller/UserAreaController.php:623
+#: module/Application/src/Application/Controller/UserAreaController.php:558
+#: module/Application/src/Application/Controller/UserAreaController.php:620
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Prišlo je do napake v aplikaciji. Opravičujemo se za nevšečnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:742
-#: module/Application/src/Application/Controller/UserAreaController.php:782
+#: module/Application/src/Application/Controller/UserAreaController.php:739
+#: module/Application/src/Application/Controller/UserAreaController.php:779
 msgid "Pagamento completato con successo"
 msgstr "Plačilo je uspešno izvedeno"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:744
-#: module/Application/src/Application/Controller/UserAreaController.php:784
+#: module/Application/src/Application/Controller/UserAreaController.php:741
+#: module/Application/src/Application/Controller/UserAreaController.php:781
 msgid "Pagamento fallito"
 msgstr "Plačilo ni uspelo"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:753
-#: module/Application/src/Application/Controller/UserAreaController.php:793
+#: module/Application/src/Application/Controller/UserAreaController.php:750
+#: module/Application/src/Application/Controller/UserAreaController.php:790
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
@@ -140,23 +140,23 @@ msgstr "Plačilo ni uspelo"
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Začasno zaustavljeno plačilo. Poskusite znova pozneje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:822
+#: module/Application/src/Application/Controller/UserAreaController.php:819
 msgid "Contratto disabilitato correttamente!"
 msgstr "Pogodba je pravilno onemogočena!"
 
+#: module/Application/src/Application/Controller/UserAreaController.php:821
 #: module/Application/src/Application/Controller/UserAreaController.php:824
 #: module/Application/src/Application/Controller/UserAreaController.php:827
-#: module/Application/src/Application/Controller/UserAreaController.php:830
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Napaka pri onemogočanju pogodbe"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:866
+#: module/Application/src/Application/Controller/UserAreaController.php:863
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Onemogočeni ste, ker je vstavljena kartica potekla, vstavite nove podatke."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:870
+#: module/Application/src/Application/Controller/UserAreaController.php:867
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -164,7 +164,7 @@ msgstr ""
 "Onemogočeni ste, ker ste vnesli neveljavno licenco, preverite in spremenite "
 "vnesene podatke v spodnjem obrazcu in / ali v območju „Licenca“."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:875
+#: module/Application/src/Application/Controller/UserAreaController.php:872
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "Zaradi potečene licence ste onemogočeni, vstavite nove podatke."
 
@@ -4386,7 +4386,7 @@ msgstr "Izjema ni na voljo"
 #: module/Application/view/layout/layout.phtml:141
 #: module/Application/view/zfc-user/user/login.phtml:3
 msgid "Login"
-msgstr "Prijava"
+msgstr "Log in"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:28
 msgid "Recupera la password"
@@ -4842,7 +4842,7 @@ msgstr "Prijava"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:32
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:32
 msgid "Iscriviti"
-msgstr "Prijava"
+msgstr "Registracija"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:22
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:22

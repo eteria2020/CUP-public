@@ -512,7 +512,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/public-business-module.git",
-                "reference": "a89067ddd0510f58839d67af0217212036fc29e2"
+                "reference": "8a6876f058d46b1810f0c00b85cf9cba130a32b8"
             },
             "require": {
                 "php": ">=5.4",
@@ -529,7 +529,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2019-10-22 12:49:17"
+            "time": "2019-10-22 14:06:41"
         },
         {
             "name": "dmregister/zf2-resque",
