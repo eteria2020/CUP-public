@@ -345,7 +345,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'value_options' => [
                     "it" => $translator->translate("Italiano"),
                     "en" => $translator->translate("inglese"),
-                    "sk" => $translator->translate("slovacco")
+                    "sk" => $translator->translate("slovacco"),
+                    "sl" => $translator->translate("sloveno")
                 ]
             ]
         ]);

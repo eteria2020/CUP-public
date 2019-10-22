@@ -634,15 +634,24 @@ $this->headLink()
                                     </div>
                                 </div>
 
-                            <?php if (!$this->customer->getFirstPaymentCompleted()): ?>
-                                <br />
-                                <a href="<?= (!is_null($this->serverInstance) && $this->serverInstance == "sk_SK") ? $this->url('gpwebpay/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]) : $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]])?>" style="color: #ff0000;">
-                                    <?= $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'); ?>
-                                </a>
-                            <?php endif; ?>
+                            <?php
+                                if (!$this->customer->getFirstPaymentCompleted()) {
 
+                                    $url = $this->url('cartasi/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]);
 
-
+                                    if(!is_null($this->serverInstance)) {
+                                        if($this->serverInstance == "sk_SK") {
+                                            $url = $this->url('gpwebpay/primo-pagamento', [], ['query' => ['customer' => $this->customer->getId()]]);
+                                        }elseif($this->serverInstance == "nl_NL" || $this->serverInstance == "sl_SI"){
+                                            $url = $this->url('mollie/first-payment', [], ['query' => ['customer' => $this->customer->getId()]]);
+                                        }
+                                    }
+                                    echo "<br />";
+                                    echo sprintf('<a href="%s" style="color: #ff0000;">%s</a>',
+                                        $url,
+                                        $this->translate('Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso.'));
+                                }
+                            ?>
                         </div>
                         <!-- block-form -->
 

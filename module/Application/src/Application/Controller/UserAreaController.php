@@ -231,12 +231,9 @@ class UserAreaController extends AbstractActionController {
         $this->faresService = $faresService;
         $this->config = $config;
 
+        $this->serverInstance["id"] ="";
         if(isset($this->config['serverInstance'])) {
             $this->serverInstance = $this->config['serverInstance'];
-        } else {
-            $this->serverInstance["id"] ="";
-            $this->serverInstance["customerServiceEmail"] ="servizioclienti@sharengo.eu";
-            $this->serverInstance["howItWorkLink"] ="http://site.sharengo.it/come-funziona/";
         }
     }
 
@@ -265,7 +262,8 @@ class UserAreaController extends AbstractActionController {
         }
 
 
-        if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+        //if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+        if (!is_null($this->serverInstance)) {
             return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobileParam]));
         }
 
@@ -518,7 +516,8 @@ class UserAreaController extends AbstractActionController {
             return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
         }
 
-        if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+//        if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
+        if (!is_null($this->serverInstance)) {
             return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/driverlicense', ['mobile' => $mobile]));
         }
 

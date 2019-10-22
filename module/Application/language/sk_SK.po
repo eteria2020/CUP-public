@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-09-10 11:16+0200\n"
-"PO-Revision-Date: 2019-09-10 11:19+0200\n"
+"POT-Creation-Date: 2019-10-22 12:36+0200\n"
+"PO-Revision-Date: 2019-10-22 12:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
 "X-Poedit-KeywordsList: translate\n"
@@ -20,48 +20,49 @@ msgstr ""
 "X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 "X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
 
-#: module/Application/config/module.config.php:2736
+#: module/Application/config/module.config.php:2731
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profil"
 
-#: module/Application/config/module.config.php:2741
+#: module/Application/config/module.config.php:2736
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:306
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:306
 msgid "Patente"
 msgstr "Vodičský preukaz"
 
-#: module/Application/config/module.config.php:2746
+#: module/Application/config/module.config.php:2741
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2751
+#: module/Application/config/module.config.php:2746
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Sadzby"
 
-#: module/Application/config/module.config.php:2756
+#: module/Application/config/module.config.php:2751
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
-#: module/Application/config/module.config.php:2766
+#: module/Application/config/module.config.php:2761
 msgid "Bonus minuti"
 msgstr "Bonusové minúty"
 
-#: module/Application/config/module.config.php:2771
+#: module/Application/config/module.config.php:2766
 msgid "Corse completate"
 msgstr "Dokončené jazdy"
 
-#: module/Application/config/module.config.php:2776
+#: module/Application/config/module.config.php:2771
 msgid "Dati di pagamento"
 msgstr "Údaje platby"
 
-#: module/Application/config/module.config.php:2781
+#: module/Application/config/module.config.php:2776
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Faktúry"
@@ -98,60 +99,62 @@ msgstr "Nedostatok kyslíkových bodov"
 msgid "Pacchetto non acquistabile"
 msgstr "Uvítací balíček"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:279
-#: module/Application/src/Application/Controller/UserAreaController.php:371
+#: module/Application/src/Application/Controller/UserAreaController.php:280
+#: module/Application/src/Application/Controller/UserAreaController.php:372
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Ak chceš znova zmeniť svoje údaje, budeš musieť počkať 10 minút."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:426
-#: module/Application/src/Application/Controller/UserAreaController.php:557
-#: module/Application/src/Application/Controller/UserAreaController.php:619
+#: module/Application/src/Application/Controller/UserAreaController.php:427
+#: module/Application/src/Application/Controller/UserAreaController.php:559
+#: module/Application/src/Application/Controller/UserAreaController.php:621
 msgid "Operazione completata con successo!"
 msgstr "Operácia bola dokončená úspešne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:559
-#: module/Application/src/Application/Controller/UserAreaController.php:621
+#: module/Application/src/Application/Controller/UserAreaController.php:561
+#: module/Application/src/Application/Controller/UserAreaController.php:623
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:740
-#: module/Application/src/Application/Controller/UserAreaController.php:780
+#: module/Application/src/Application/Controller/UserAreaController.php:742
+#: module/Application/src/Application/Controller/UserAreaController.php:782
 msgid "Pagamento completato con successo"
 msgstr "Platba bola úspešne dokončená"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:742
-#: module/Application/src/Application/Controller/UserAreaController.php:782
+#: module/Application/src/Application/Controller/UserAreaController.php:744
+#: module/Application/src/Application/Controller/UserAreaController.php:784
 msgid "Pagamento fallito"
 msgstr "Platba zlyhala"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:751
-#: module/Application/src/Application/Controller/UserAreaController.php:791
+#: module/Application/src/Application/Controller/UserAreaController.php:753
+#: module/Application/src/Application/Controller/UserAreaController.php:793
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:174
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:108
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:174
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Platba bola dočasne pozastavená. Skús to znova neskôr."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:820
+#: module/Application/src/Application/Controller/UserAreaController.php:822
 msgid "Contratto disabilitato correttamente!"
 msgstr "Zmluva bola zablokovaná správne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:822
-#: module/Application/src/Application/Controller/UserAreaController.php:825
-#: module/Application/src/Application/Controller/UserAreaController.php:828
+#: module/Application/src/Application/Controller/UserAreaController.php:824
+#: module/Application/src/Application/Controller/UserAreaController.php:827
+#: module/Application/src/Application/Controller/UserAreaController.php:830
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Chyba pri zablkovaní zmluvy"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:864
+#: module/Application/src/Application/Controller/UserAreaController.php:866
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný, pretože vypršala platnosť vloženej karty, zadaj nové údaje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:868
+#: module/Application/src/Application/Controller/UserAreaController.php:870
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -159,32 +162,34 @@ msgstr ""
 "Tvoj účet je zablokovaný. Počkaj kým Tvoj profil verifikujeme. O aktivácii "
 "účtu dostaneš potvrdzovací e-mail."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:873
+#: module/Application/src/Application/Controller/UserAreaController.php:875
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný z dôvodu vypršania platnosti vodičského preukazu, zadaj nové "
 "údaje."
 
-#: module/Application/src/Application/Controller/UserController.php:676
-#: module/Application/src/Application/Controller/UserController.php:695
-#: module/Application/src/Application/Controller/UserController.php:707
-#: module/Application/src/Application/Controller/UserController.php:715
-#: module/Application/src/Application/Controller/UserController.php:727
+#: module/Application/src/Application/Controller/UserController.php:686
+#: module/Application/src/Application/Controller/UserController.php:705
+#: module/Application/src/Application/Controller/UserController.php:717
+#: module/Application/src/Application/Controller/UserController.php:725
+#: module/Application/src/Application/Controller/UserController.php:737
 msgid "Errore invio sms"
 msgstr "Chyba v odosielaní sms"
 
-#: module/Application/src/Application/Controller/UserController.php:687
+#: module/Application/src/Application/Controller/UserController.php:697
 msgid "Numero di telefono non corretto"
 msgstr "Nesprávne telefónne číslo"
 
-#: module/Application/src/Application/Controller/UserController.php:890
-#: module/Application/src/Application/Controller/UserController.php:1225
-#: module/Application/src/Application/Controller/UserController.php:1315
-#: module/Application/src/Application/Controller/UserController.php:1452
-#: module/Application/src/Application/Controller/UserController.php:1485
-#: module/Application/src/Application/Controller/UserController.php:1734
-#: module/Application/src/Application/Controller/UserController.php:1777
-#: module/Application/src/Application/Controller/UserController.php:1934
+#: module/Application/src/Application/Controller/UserController.php:900
+#: module/Application/src/Application/Controller/UserController.php:1236
+#: module/Application/src/Application/Controller/UserController.php:1325
+#: module/Application/src/Application/Controller/UserController.php:1442
+#: module/Application/src/Application/Controller/UserController.php:1532
+#: module/Application/src/Application/Controller/UserController.php:1671
+#: module/Application/src/Application/Controller/UserController.php:1704
+#: module/Application/src/Application/Controller/UserController.php:1980
+#: module/Application/src/Application/Controller/UserController.php:2023
+#: module/Application/src/Application/Controller/UserController.php:2176
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -192,6 +197,7 @@ msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
 #: module/Application/src/Application/Form/CustomerFieldset.php:71
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:78
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:84
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:90
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:90
 #: module/Application/src/Application/Form/UserFieldset.php:120
 #: module/Application/view/application/user-area/index.phtml:62
@@ -199,6 +205,7 @@ msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
 #: module/Application/view/application/user-area/profile.phtml:65
 #: module/Application/view/application/user-area/profile.phtml:256
 #: module/Application/view/application/user/signup-nl2.phtml:74
+#: module/Application/view/application/user/signup-si2.phtml:74
 #: module/Application/view/application/user/signup-sk2.phtml:74
 msgid "Titolo"
 msgstr "Titul"
@@ -207,8 +214,10 @@ msgstr "Titul"
 #: module/Application/src/Application/Form/CustomerFieldset.php:73
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:80
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:86
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:92
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:92
 #: module/Application/view/application/user/signup-nl2.phtml:76
+#: module/Application/view/application/user/signup-si2.phtml:76
 #: module/Application/view/application/user/signup-sk2.phtml:76
 msgid "Sig."
 msgstr "Pán"
@@ -216,8 +225,10 @@ msgstr "Pán"
 #: module/Application/src/Application/Form/CustomerFieldset.php:74
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:81
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:87
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:93
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:93
 #: module/Application/view/application/user/signup-nl2.phtml:77
+#: module/Application/view/application/user/signup-si2.phtml:77
 #: module/Application/view/application/user/signup-sk2.phtml:77
 msgid "Sig.ra"
 msgstr "Pani"
@@ -231,6 +242,8 @@ msgstr "Pani"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:112
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:98
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:102
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:104
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:108
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:104
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:108
 #: module/Application/src/Application/Form/UserFieldset.php:135
@@ -243,6 +256,7 @@ msgstr "Pani"
 #: module/Application/view/application/user-area/profile.phtml:71
 #: module/Application/view/application/user-area/profile.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:83
+#: module/Application/view/application/user/signup-si2.phtml:83
 #: module/Application/view/application/user/signup-sk2.phtml:83
 #: module/Application/view/application/user/signup.phtml:223
 msgid "Nome"
@@ -257,6 +271,8 @@ msgstr "Meno"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:127
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:112
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:116
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:118
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:122
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:118
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:122
 #: module/Application/src/Application/Form/UserFieldset.php:150
@@ -266,6 +282,7 @@ msgstr "Meno"
 #: module/Application/view/application/user-area/profile.phtml:76
 #: module/Application/view/application/user-area/profile.phtml:275
 #: module/Application/view/application/user/signup-nl2.phtml:93
+#: module/Application/view/application/user/signup-si2.phtml:93
 #: module/Application/view/application/user/signup-sk2.phtml:93
 #: module/Application/view/application/user/signup.phtml:233
 msgid "Cognome"
@@ -282,6 +299,7 @@ msgstr "Priezvisko"
 #: module/Application/view/application/user-area/profile.phtml:229
 #: module/Application/view/application/user/new-signup.phtml:59
 #: module/Application/view/application/user/signup-nl1.phtml:64
+#: module/Application/view/application/user/signup-si1.phtml:62
 #: module/Application/view/application/user/signup-sk1.phtml:72
 #: module/Application/view/application/user/signup.phtml:155
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:35
@@ -297,6 +315,7 @@ msgstr "Zopakuj Email"
 #: module/Application/src/Application/Form/CustomerFieldset.php:147
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:152
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:187
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:194
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:194
 #: module/Application/src/Application/Form/UserFieldset.php:169
 #: module/Application/view/application/user-area/index.phtml:109
@@ -304,6 +323,7 @@ msgstr "Zopakuj Email"
 #: module/Application/view/application/user-area/profile.phtml:120
 #: module/Application/view/application/user-area/profile.phtml:347
 #: module/Application/view/application/user/signup-nl2.phtml:144
+#: module/Application/view/application/user/signup-si2.phtml:144
 #: module/Application/view/application/user/signup-sk2.phtml:144
 #: module/Application/view/application/user/signup.phtml:251
 msgid "Data di nascita"
@@ -312,6 +332,7 @@ msgstr "Dátum narodenia"
 #: module/Application/src/Application/Form/CustomerFieldset.php:159
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:164
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:199
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:207
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:207
 #: module/Application/src/Application/Form/UserFieldset.php:182
 #: module/Application/view/application/user-area/index.phtml:90
@@ -319,6 +340,7 @@ msgstr "Dátum narodenia"
 #: module/Application/view/application/user-area/profile.phtml:96
 #: module/Application/view/application/user-area/profile.phtml:299
 #: module/Application/view/application/user/signup-nl2.phtml:154
+#: module/Application/view/application/user/signup-si2.phtml:154
 #: module/Application/view/application/user/signup-sk2.phtml:154
 #: module/Application/view/application/user/signup.phtml:261
 msgid "Stato di nascita"
@@ -329,6 +351,7 @@ msgstr "Krajina narodenia"
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:174
 #: module/Application/src/Application/Form/NewUserFieldset2.php:149
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:209
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:217
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:217
 msgid "EE = estero"
 msgstr "Zahraničie"
@@ -336,6 +359,7 @@ msgstr "Zahraničie"
 #: module/Application/src/Application/Form/CustomerFieldset.php:174
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:179
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:214
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:222
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:222
 #: module/Application/src/Application/Form/UserFieldset.php:262
 msgid "Provincia di nascita (EE = estero)"
@@ -344,6 +368,7 @@ msgstr "Okres narodenia (zahraničie)"
 #: module/Application/src/Application/Form/CustomerFieldset.php:186
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:191
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:226
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:248
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:248
 #: module/Application/src/Application/Form/UserFieldset.php:274
 msgid "Luogo di nascita"
@@ -352,6 +377,7 @@ msgstr "Miesto narodenia"
 #: module/Application/src/Application/Form/CustomerFieldset.php:190
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:195
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:230
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:252
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:252
 #: module/Application/src/Application/Form/UserFieldset.php:278
 #: module/Application/view/application/user-area/index.phtml:99
@@ -359,6 +385,7 @@ msgstr "Miesto narodenia"
 #: module/Application/view/application/user-area/profile.phtml:108
 #: module/Application/view/application/user-area/profile.phtml:321
 #: module/Application/view/application/user/signup-nl2.phtml:174
+#: module/Application/view/application/user/signup-si2.phtml:174
 #: module/Application/view/application/user/signup-sk2.phtml:174
 #: module/Application/view/application/user/signup.phtml:288
 msgid "Comune di nascita"
@@ -386,6 +413,8 @@ msgstr "Ulica"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:184
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:154
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:158
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:160
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:164
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:160
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:164
 msgid "Numero civico"
@@ -413,6 +442,8 @@ msgstr ""
 #: module/Application/src/Application/Form/NewUserFieldset2.php:199
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:169
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:173
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:175
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:179
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:175
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:179
 #: module/Application/src/Application/Form/UserFieldset.php:315
@@ -428,6 +459,8 @@ msgstr "PSČ"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:213
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:126
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:130
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:132
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:136
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:132
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:136
 #: module/Application/src/Application/Form/UserFieldset.php:329
@@ -469,32 +502,41 @@ msgstr "slovenčina"
 msgid "olandese"
 msgstr "holandský"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:319
+#: module/Application/src/Application/Form/CustomerFieldset.php:305
+#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:267
+#: module/Application/src/Application/Form/UserFieldset.php:349
+#: module/Application/src/Application/View/Helper/LongLanguage.php:34
+#, fuzzy
+#| msgid "Slovenia"
+msgid "sloveno"
+msgstr "Slovínsko"
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:320
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
-#: module/Application/src/Application/Form/UserFieldset.php:376
+#: module/Application/src/Application/Form/UserFieldset.php:377
 msgid "Codice fiscale"
 msgstr "Rodné číslo"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:332
-#: module/Application/src/Application/Form/UserFieldset.php:389
+#: module/Application/src/Application/Form/CustomerFieldset.php:333
+#: module/Application/src/Application/Form/UserFieldset.php:390
 msgid "Partita IVA (opzionale)"
 msgstr "DIČ (voliteľné)"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:342
-#: module/Application/src/Application/Form/CustomerFieldset.php:345
+#: module/Application/src/Application/Form/CustomerFieldset.php:343
+#: module/Application/src/Application/Form/CustomerFieldset.php:346
 #: module/Application/view/layout/layout.phtml:171
 msgid "Telefono"
 msgstr "Telefón"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:372
+#: module/Application/src/Application/Form/CustomerFieldset.php:373
 msgid "PEC"
 msgstr "Certifikovaný e-mail"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:382
+#: module/Application/src/Application/Form/CustomerFieldset.php:383
 msgid "ABCDEFG"
 msgstr ""
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:385
+#: module/Application/src/Application/Form/CustomerFieldset.php:386
 msgid "Cod. destinatario"
 msgstr "Kód príjemcu"
 
@@ -506,6 +548,7 @@ msgstr "Dátum ukončenia platnosti musí byť neskorší ako dátum začatia"
 #: module/Application/src/Application/Form/DriverFieldset.php:52
 #: module/Application/src/Application/Form/NewUserFieldset2.php:284
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:281
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:303
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:303
 msgid "XX123412341223"
 msgstr "XX123412341223"
@@ -518,6 +561,8 @@ msgstr "Vydané (orgán)"
 #: module/Application/src/Application/Form/DriverFieldset.php:158
 #: module/Application/src/Application/Form/NewUserFieldset2.php:298
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:295
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:190
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:317
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:190
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:317
 #: module/Application/src/Application/Form/UserFieldset.php:165
@@ -564,6 +609,7 @@ msgstr "Vydané (krajina)"
 #: module/Application/src/Application/Form/DriverFieldset.php:162
 #: module/Application/src/Application/Form/NewUserFieldset2.php:302
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:299
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:321
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:321
 #: module/Application/view/application/user-area/driving-licence-international.phtml:61
 #: module/Application/view/application/user-area/driving-licence-international.phtml:176
@@ -584,25 +630,33 @@ msgstr "Kategória/e"
 msgid "Via e numero civico"
 msgstr "Ulica a popisné číslo"
 
-#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:277
+#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:278
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:262
 msgid "1234567890"
 msgstr ""
 
-#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:281
+#: module/Application/src/Application/Form/ForeignCustomerFieldset.php:282
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:244
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:266
+#: module/Application/view/application/user/signup-si2.phtml:224
 #: module/Application/view/application/user/signup-sk2.phtml:224
 msgid "Numero Identificativo"
 msgstr "Rodné číslo"
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:81
+#: module/Application/src/Application/Form/SignupSI2Form.php:222
 #: module/Application/src/Application/Form/SignupSK2Form.php:224
 msgid "E\\' necessario confermare e sottoscrivere la dichiarazione"
 msgstr "Je potrebné mať Estero ako provinciu narodenia"
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:97
 #: module/Application/src/Application/Form/NewRegistrationForm2.php:225
+#: module/Application/src/Application/Form/SignupSI2Form.php:239
+#: module/Application/src/Application/Form/SignupSI2Form.php:258
+#: module/Application/src/Application/Form/SignupSI2Form.php:277
+#: module/Application/src/Application/Form/SignupSI2Form.php:296
+#: module/Application/src/Application/Form/SignupSI2Form.php:315
 #: module/Application/src/Application/Form/SignupSK2Form.php:241
 #: module/Application/src/Application/Form/SignupSK2Form.php:260
 #: module/Application/src/Application/Form/SignupSK2Form.php:279
@@ -616,6 +670,11 @@ msgstr ""
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:98
 #: module/Application/src/Application/Form/NewRegistrationForm2.php:226
+#: module/Application/src/Application/Form/SignupSI2Form.php:240
+#: module/Application/src/Application/Form/SignupSI2Form.php:259
+#: module/Application/src/Application/Form/SignupSI2Form.php:278
+#: module/Application/src/Application/Form/SignupSI2Form.php:297
+#: module/Application/src/Application/Form/SignupSI2Form.php:316
 #: module/Application/src/Application/Form/SignupSK2Form.php:242
 #: module/Application/src/Application/Form/SignupSK2Form.php:261
 #: module/Application/src/Application/Form/SignupSK2Form.php:280
@@ -626,6 +685,11 @@ msgstr "Formát súboru nebolo možné overiť"
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:99
 #: module/Application/src/Application/Form/NewRegistrationForm2.php:227
+#: module/Application/src/Application/Form/SignupSI2Form.php:241
+#: module/Application/src/Application/Form/SignupSI2Form.php:260
+#: module/Application/src/Application/Form/SignupSI2Form.php:279
+#: module/Application/src/Application/Form/SignupSI2Form.php:298
+#: module/Application/src/Application/Form/SignupSI2Form.php:317
 #: module/Application/src/Application/Form/SignupSK2Form.php:243
 #: module/Application/src/Application/Form/SignupSK2Form.php:262
 #: module/Application/src/Application/Form/SignupSK2Form.php:281
@@ -636,6 +700,7 @@ msgstr "Nahraný súbor nie je čitateľný alebo neexistuje"
 
 #: module/Application/src/Application/Form/MobileForm.php:71
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:255
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:277
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:277
 msgid "Prefisso internazionale"
 msgstr "Povolanie (voliteľné)"
@@ -645,14 +710,17 @@ msgstr "Povolanie (voliteľné)"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:261
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:270
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:288
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:292
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:288
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:292
-#: module/Application/src/Application/Form/UserFieldset.php:399
-#: module/Application/src/Application/Form/UserFieldset.php:402
+#: module/Application/src/Application/Form/UserFieldset.php:400
+#: module/Application/src/Application/Form/UserFieldset.php:403
 #: module/Application/view/application/user-area/index.phtml:530
 #: module/Application/view/application/user-area/index.phtml:562
 #: module/Application/view/application/user/new-signup2.phtml:204
 #: module/Application/view/application/user/signup-nl2.phtml:209
+#: module/Application/view/application/user/signup-si2.phtml:210
 #: module/Application/view/application/user/signup-sk2.phtml:210
 #: module/Application/view/application/user/signup.phtml:617
 msgid "Cellulare"
@@ -660,13 +728,13 @@ msgstr "Mobil"
 
 #: module/Application/src/Application/Form/MobileForm.php:98
 #: module/Application/src/Application/Form/NewUserFieldset2.php:274
-#: module/Application/src/Application/Form/UserFieldset.php:415
+#: module/Application/src/Application/Form/UserFieldset.php:416
 msgid "Codice Sms"
 msgstr "Sms kód"
 
 #: module/Application/src/Application/Form/MobileForm.php:125
 #: module/Application/src/Application/Form/NewUserFieldset2.php:546
-#: module/Application/src/Application/Form/UserFieldset.php:726
+#: module/Application/src/Application/Form/UserFieldset.php:727
 msgid ""
 "Il numero di telefono inserito non corrisponde a quello del codice di "
 "verifica"
@@ -674,7 +742,7 @@ msgstr "Zadané telefónne číslo sa nezhoduje s číslom overovacieho kódu"
 
 #: module/Application/src/Application/Form/MobileForm.php:164
 #: module/Application/src/Application/Form/NewUserFieldset2.php:576
-#: module/Application/src/Application/Form/UserFieldset.php:756
+#: module/Application/src/Application/Form/UserFieldset.php:757
 msgid "Il codice inserito non corrisponde a quello inviato"
 msgstr "Zadaný kód sa nezhoduje s odoslaným kódom"
 
@@ -700,6 +768,7 @@ msgstr "Zadaj svoje heslo"
 #: module/Application/view/application/user-area/profile.phtml:534
 #: module/Application/view/application/user/new-signup.phtml:69
 #: module/Application/view/application/user/signup-nl1.phtml:74
+#: module/Application/view/application/user/signup-si1.phtml:72
 #: module/Application/view/application/user/signup-sk1.phtml:82
 #: module/Application/view/application/user/signup.phtml:181
 #: module/Application/view/zfc-user/user/login.phtml:51
@@ -750,6 +819,8 @@ msgstr "Údaje sa vyžadujú na pokračovanie"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:170
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:140
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:144
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:146
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:150
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:146
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:150
 #: module/Application/view/application/user-area/index.phtml:145
@@ -762,7 +833,7 @@ msgid "ABCDEF12G34H567I"
 msgstr ""
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:271
-#: module/Application/src/Application/Form/UserFieldset.php:412
+#: module/Application/src/Application/Form/UserFieldset.php:413
 msgid "xxxx"
 msgstr "xxxx"
 
@@ -801,7 +872,7 @@ msgid "Il Codice Avviamento Postale (CAP) non può essere vuoto"
 msgstr "Poštové smerovacie číslo"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:502
-#: module/Application/src/Application/Form/UserFieldset.php:636
+#: module/Application/src/Application/Form/UserFieldset.php:637
 msgid "Il dato è richiesto e non può essere vuoto"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
@@ -1021,6 +1092,10 @@ msgstr "Zľavový kód"
 msgid "123456789"
 msgstr ""
 
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
+msgid "12345678"
+msgstr ""
+
 #: module/Application/src/Application/Form/UserFieldset.php:82
 msgid "Inserisci di nuovo la email"
 msgstr "Zadaj svoj e-mail"
@@ -1037,15 +1112,15 @@ msgstr "Muž"
 msgid "Femmina"
 msgstr "Žena"
 
-#: module/Application/src/Application/Form/UserFieldset.php:372
+#: module/Application/src/Application/Form/UserFieldset.php:373
 msgid "XXXXXXXXXXXXXXXX"
 msgstr ""
 
-#: module/Application/src/Application/Form/UserFieldset.php:386
+#: module/Application/src/Application/Form/UserFieldset.php:387
 msgid "ITNNNNNNNNNNN"
 msgstr ""
 
-#: module/Application/src/Application/Form/UserFieldset.php:423
+#: module/Application/src/Application/Form/UserFieldset.php:424
 msgid ""
 "Ho letto, compreso e accettato i Termini e Condizioni Generali di Contratto "
 "e il Regolamento Tariffario del servizio di car sharing SHARE’NGO®, fornito "
@@ -1057,7 +1132,7 @@ msgstr ""
 "Skupina S.p.A. a jej dcérske spoločnosti: C.S. Florence S.r.l., C.S. Milan S."
 "r.l. a C.S. Rím S.r.l."
 
-#: module/Application/src/Application/Form/UserFieldset.php:437
+#: module/Application/src/Application/Form/UserFieldset.php:438
 #: module/Application/view/partials/translations.phtml:9
 msgid ""
 "Dichiaro ai sensi e per gli effetti di cui agli artt. 1341 e 1342 c.c., "
@@ -1084,7 +1159,7 @@ msgstr ""
 "16 (dátum začiatku, trvanie, obnovenie, pozastavenie, zrušenie, ukončenie "
 "zmluvy), 17 (sťažnosti), 18 (sankcie), 20 (jurisdikcia)."
 
-#: module/Application/src/Application/Form/UserFieldset.php:451
+#: module/Application/src/Application/Form/UserFieldset.php:452
 msgid ""
 "Ho letto, compreso e accettato l’Informativa Privacy per i Clienti "
 "SHARE’NGO® ed acconsento al trattamento dei miei dati personali secondo le "
@@ -1094,7 +1169,7 @@ msgstr ""
 "zákazníkov SHARE'NGO® a súhlasím so spracovaním mojich osobných údajov podľa "
 "uvedených metód "
 
-#: module/Application/src/Application/Form/UserFieldset.php:465
+#: module/Application/src/Application/Form/UserFieldset.php:466
 msgid ""
 "Al fine di migliorare il servizio ed essere aggiornato sulle offerte di "
 "SHARE’NGO® e dei partner di SHARE’NGO® riservate in via preferenziale e/o "
@@ -1108,9 +1183,9 @@ msgstr ""
 "prostredníctvom e-mailu, SMS alebo pošty vrátane pozvánok na účasť na "
 "dotazníkoch a prieskumoch trhu."
 
-#: module/Application/src/Application/Form/UserFieldset.php:792
-#: module/Application/src/Application/Form/UserFieldset.php:806
-#: module/Application/src/Application/Form/UserFieldset.php:820
+#: module/Application/src/Application/Form/UserFieldset.php:793
+#: module/Application/src/Application/Form/UserFieldset.php:807
+#: module/Application/src/Application/Form/UserFieldset.php:821
 msgid "Il campo richiesto non può essere vuoto"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
@@ -1738,6 +1813,7 @@ msgstr "Keď si stiahneš našu aplikáciu pre"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
 #: module/Application/view/application/user/signup-nl1.phtml:114
+#: module/Application/view/application/user/signup-si1.phtml:112
 #: module/Application/view/application/user/signup-sk1.phtml:122
 msgid "e"
 msgstr "a"
@@ -2171,6 +2247,8 @@ msgstr "Neuhradená platba"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:117
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:115
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:117
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:115
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:117
 msgid "Pagamento corse"
 msgstr "Platba jázd"
 
@@ -2181,6 +2259,8 @@ msgstr "Platba jázd"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:183
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:181
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:183
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:181
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:183
 msgid "Pagamento penali"
 msgstr "Platba pokút"
 
@@ -2188,8 +2268,10 @@ msgstr "Platba pokút"
 #: module/Application/view/application/user-area/debt-collection.phtml:202
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:202
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:202
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:202
 #: module/Application/view/application/user/new-signup2.phtml:26
 #: module/Application/view/application/user/signup-nl2.phtml:32
+#: module/Application/view/application/user/signup-si2.phtml:32
 #: module/Application/view/application/user/signup-sk2.phtml:32
 msgid "Pacchetto Benvenuto"
 msgstr "Uvítací balíček"
@@ -2265,6 +2347,7 @@ msgstr "Platný na"
 #: module/Application/view/application/user-area/debt-collection.phtml:138
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:138
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:138
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:138
 msgid "Descrizione"
 msgstr "Popis"
 
@@ -2404,6 +2487,7 @@ msgstr "Ešte si do svojho profilu nezadal platobnú/kreditnú kartu."
 #: module/Application/view/application/user-area/dati-pagamento.phtml:156
 #: module/Application/view/application/user/new-signup.phtml:147
 #: module/Application/view/application/user/signup-nl1.phtml:152
+#: module/Application/view/application/user/signup-si1.phtml:151
 #: module/Application/view/application/user/signup-sk1.phtml:160
 msgid "ATTENZIONE"
 msgstr "UPOZORNENIE"
@@ -2427,12 +2511,14 @@ msgstr "ZAVRIEŤ"
 #: module/Application/view/application/user-area/debt-collection.phtml:32
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:32
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:32
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:32
 msgid "Pagamenti in sospeso"
 msgstr "Pozastavené platby"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:43
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:43
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:43
 #: module/Application/view/partials/welcome-user-area.phtml:3
 msgid "Ciao"
 msgstr "Ahoj"
@@ -2440,12 +2526,14 @@ msgstr "Ahoj"
 #: module/Application/view/application/user-area/debt-collection.phtml:46
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:46
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:46
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:46
 msgid "complimenti, tutte le tue corse risultano regolarmente pagate."
 msgstr "gratulujeme, všetky tvoje jazdy sú úplne uhradené."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:50
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:50
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:50
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:50
 msgid "hai esaurito i tuoi minuti bonus e hai effettuato corse a debito."
 msgstr "vyčerpal si bonusové minúty a vykonal si debetné jazdy."
 
@@ -2455,6 +2543,8 @@ msgstr "vyčerpal si bonusové minúty a vykonal si debetné jazdy."
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:125
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:51
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:125
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:51
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:125
 msgid ""
 "Ti invitiamo ad effettuare il pagamento con un carta di credito valida "
 "(anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria "
@@ -2470,6 +2560,8 @@ msgstr ""
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:126
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:52
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:126
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:52
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:126
 msgid "Di seguito i dettagli:"
 msgstr "Podrobnosti nižšie:"
 
@@ -2479,6 +2571,8 @@ msgstr "Podrobnosti nižšie:"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:136
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:62
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:136
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:62
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:136
 msgid "ID"
 msgstr "ID"
 
@@ -2486,6 +2580,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:63
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Inizio"
 msgstr "Začiatok"
@@ -2494,6 +2589,7 @@ msgstr "Začiatok"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:64
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Fine"
 msgstr "Koniec"
@@ -2502,6 +2598,7 @@ msgstr "Koniec"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:65
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Durata (min.)"
 msgstr "Trvanie (min.)"
@@ -2510,6 +2607,7 @@ msgstr "Trvanie (min.)"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:66
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Sosta (min.)"
 msgstr "Zastávka (min.)"
@@ -2520,6 +2618,8 @@ msgstr "Zastávka (min.)"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:139
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:67
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:139
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:67
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:139
 msgid "Importo"
 msgstr "Čiastka"
 
@@ -2529,6 +2629,8 @@ msgstr "Čiastka"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:165
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:99
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:165
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:99
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:165
 msgid "TOTALE"
 msgstr "CELKOM"
 
@@ -2538,24 +2640,29 @@ msgstr "CELKOM"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:174
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:108
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:174
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
 msgid "Attenzione:"
 msgstr "Upozornenie:"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:124
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:124
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:124
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:124
 msgid "Sono presenti penali da pagare."
 msgstr "Existujú sankcie, ktoré treba zaplatiť."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:137
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:137
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:137
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:137
 msgid "Data generazione"
 msgstr "Dátum generácie"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:192
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:192
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:192
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:192
 msgid ""
 "Nel caso in cui il tuo debito non venisse saldato, e non avessimo quindi una "
 "carta di credito valida associata al tuo profilo utente, l&#39;account "
@@ -2595,6 +2702,7 @@ msgstr "Údaje tvojho vodičského preukazu"
 #: module/Application/view/application/user-area/driving-licence.phtml:162
 #: module/Application/view/application/user/new-signup2.phtml:257
 #: module/Application/view/application/user/signup-nl2.phtml:235
+#: module/Application/view/application/user/signup-si2.phtml:236
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -2714,6 +2822,7 @@ msgstr "Dátum narodenia"
 #: module/Application/view/application/user-area/profile.phtml:102
 #: module/Application/view/application/user-area/profile.phtml:310
 #: module/Application/view/application/user/signup-nl2.phtml:164
+#: module/Application/view/application/user/signup-si2.phtml:164
 #: module/Application/view/application/user/signup-sk2.phtml:164
 #: module/Application/view/application/user/signup.phtml:271
 msgid "Provincia di nascita"
@@ -2751,6 +2860,7 @@ msgstr "Popisné číslo"
 #: module/Application/view/application/user-area/profile.phtml:392
 #: module/Application/view/application/user/new-signup2.phtml:171
 #: module/Application/view/application/user/signup-nl2.phtml:132
+#: module/Application/view/application/user/signup-si2.phtml:132
 #: module/Application/view/application/user/signup-sk2.phtml:132
 #: module/Application/view/application/user/signup.phtml:322
 msgid "Cap"
@@ -2797,6 +2907,7 @@ msgstr "Jazyk"
 #: module/Application/view/application/user-area/profile.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:80
 #: module/Application/view/application/user/signup-nl1.phtml:85
+#: module/Application/view/application/user/signup-si1.phtml:83
 #: module/Application/view/application/user/signup-sk1.phtml:93
 msgid "Citt&agrave; preferita"
 msgstr "Preferované mesto"
@@ -2817,6 +2928,7 @@ msgstr "Upraviť telefónne číslo"
 #: module/Application/view/application/user-area/index.phtml:553
 #: module/Application/view/application/user/new-signup2.phtml:196
 #: module/Application/view/application/user/signup-nl2.phtml:201
+#: module/Application/view/application/user/signup-si2.phtml:201
 #: module/Application/view/application/user/signup-sk2.phtml:201
 #: module/Application/view/application/user/signup.phtml:392
 msgid "Prefisso"
@@ -2903,24 +3015,24 @@ msgid "Contributo ambientale"
 msgstr "Príspevok do životného prostredia"
 
 #: module/Application/view/application/user-area/index.phtml:757
-#: module/Application/view/application/user-area/profile.phtml:640
+#: module/Application/view/application/user-area/profile.phtml:652
 msgid ""
 "Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso."
 msgstr ""
 "Ešte som nezaplatil svoju registráciu do služby a teraz by som to rád urobil."
 
 #: module/Application/view/application/user-area/index.phtml:867
-#: module/Application/view/application/user-area/profile.phtml:748
+#: module/Application/view/application/user-area/profile.phtml:757
 msgid "Hai risparmiato"
 msgstr "Ušetril si"
 
 #: module/Application/view/application/user-area/index.phtml:867
-#: module/Application/view/application/user-area/profile.phtml:748
+#: module/Application/view/application/user-area/profile.phtml:757
 msgid "KG di CO"
 msgstr "Kg CO"
 
 #: module/Application/view/application/user-area/index.phtml:867
-#: module/Application/view/application/user-area/profile.phtml:748
+#: module/Application/view/application/user-area/profile.phtml:757
 msgid "Grazie!"
 msgstr "Ďakujeme!"
 
@@ -3239,25 +3351,24 @@ msgid "per inoltrare la tua richiesta"
 msgstr "na odoslanie tvojej žiadosti"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: module/Application/view/application/user-area/pin.phtml:58
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "ŽIADOSŤ O KARTU SHARE'NGO"
 
-#: module/Application/view/application/user-area/pin.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
+#: module/Application/view/application/user-area/pin.phtml:60
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
 msgid ""
-"Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
-"anche ritirarla c/o i nostri uffici"
+"Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
+"ritirarla presso i nostri uffici"
 msgstr ""
-"Dorazí ti domov na základe žiadosi do týždňa alebo si ju môžeš osobne "
-"vyzdvihnúť v našich kanceláriách"
+"Dorazí k vám domov zadarmo, alebo si ho môžete vyzdvihnúť aj v našich "
+"kanceláriách"
 
 #: module/Application/view/application/user-area/profile.phtml:145
 #: module/Application/view/application/user-area/profile.phtml:381
 #: module/Application/view/application/user/new-signup2.phtml:154
 #: module/Application/view/application/user/signup-nl2.phtml:114
+#: module/Application/view/application/user/signup-si2.phtml:114
 #: module/Application/view/application/user/signup-sk2.phtml:114
 #: module/Application/view/application/user/signup.phtml:312
 msgid "Indirizzo di residenza"
@@ -3364,6 +3475,7 @@ msgid "Nessuna corsa effettuata finora"
 msgstr "Zatiaľ neboli vykonané žiadne jazdy"
 
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:197
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
@@ -3425,6 +3537,7 @@ msgstr "Ešte si nevykonal žiaden prenájom"
 
 #: module/Application/view/application/user/new-signup.phtml:15
 #: module/Application/view/application/user/signup-nl1.phtml:21
+#: module/Application/view/application/user/signup-si1.phtml:19
 #: module/Application/view/application/user/signup-sk1.phtml:29
 msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
 msgstr "Car sharing elektrických áut<br>neznečisťuje a oplatí sa ti!"
@@ -3435,6 +3548,7 @@ msgstr "Zóna C/ZTL/Tridente Roma + park gratis"
 
 #: module/Application/view/application/user/new-signup.phtml:19
 #: module/Application/view/application/user/signup-nl1.phtml:24
+#: module/Application/view/application/user/signup-si1.phtml:22
 #: module/Application/view/application/user/signup-sk1.phtml:32
 msgid "Auto disponibili vicino a te giorno e notte"
 msgstr "Autá k dispozícii blízko teba vo dne i v noci"
@@ -3445,30 +3559,35 @@ msgstr "Balíčky od 22 centov za minútu"
 
 #: module/Application/view/application/user/new-signup.phtml:26
 #: module/Application/view/application/user/signup-nl1.phtml:31
+#: module/Application/view/application/user/signup-si1.phtml:29
 #: module/Application/view/application/user/signup-sk1.phtml:39
 msgid "Iscriverti non ti costa nulla!"
 msgstr "Registrácia ťa nestojí nič!"
 
 #: module/Application/view/application/user/new-signup.phtml:76
 #: module/Application/view/application/user/signup-nl1.phtml:81
+#: module/Application/view/application/user/signup-si1.phtml:79
 #: module/Application/view/application/user/signup-sk1.phtml:89
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 znakov, jedno veľké písmeno a jedno číslo"
 
 #: module/Application/view/application/user/new-signup.phtml:108
 #: module/Application/view/application/user/signup-nl1.phtml:113
+#: module/Application/view/application/user/signup-si1.phtml:111
 #: module/Application/view/application/user/signup-sk1.phtml:121
 msgid "CREA IL TUO ACCOUNT"
 msgstr "VYTVOR SI SVOJ ÚČET"
 
 #: module/Application/view/application/user/new-signup.phtml:109
 #: module/Application/view/application/user/signup-nl1.phtml:114
+#: module/Application/view/application/user/signup-si1.phtml:112
 #: module/Application/view/application/user/signup-sk1.phtml:122
 msgid "Cliccando sul tasto Iscriviti accetti"
 msgstr "Kliknutím na tlačidlo „Vytvor si svoj účet“ prijímaš"
 
 #: module/Application/view/application/user/new-signup.phtml:109
 #: module/Application/view/application/user/signup-nl1.phtml:114
+#: module/Application/view/application/user/signup-si1.phtml:112
 #: module/Application/view/application/user/signup-sk1.phtml:122
 msgid "l'Informativa sulla Privacy"
 msgstr "Zásady ochrany osobných údajov"
@@ -3484,6 +3603,8 @@ msgstr "Zmluvné podmienky"
 #: module/Application/view/application/user/new-signup2.phtml:465
 #: module/Application/view/application/user/signup-nl1.phtml:148
 #: module/Application/view/application/user/signup-nl2.phtml:365
+#: module/Application/view/application/user/signup-si1.phtml:147
+#: module/Application/view/application/user/signup-si2.phtml:375
 #: module/Application/view/application/user/signup-sk1.phtml:156
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3492,6 +3613,7 @@ msgstr "Zavrieť"
 
 #: module/Application/view/application/user/new-signup.phtml:150
 #: module/Application/view/application/user/signup-nl1.phtml:155
+#: module/Application/view/application/user/signup-si1.phtml:154
 #: module/Application/view/application/user/signup-sk1.phtml:163
 msgid ""
 "Domenica 11 Febbraio dalle ore 7:30 alle ore 13:30 una manutenzione "
@@ -3521,18 +3643,21 @@ msgstr "40 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/new-signup2.phtml:30
 #: module/Application/view/application/user/signup-nl2.phtml:36
+#: module/Application/view/application/user/signup-si2.phtml:36
 #: module/Application/view/application/user/signup-sk2.phtml:36
 msgid "e guidi subito la tua Sharengo!"
 msgstr "a riadte svoje Sharengo hneď!"
 
 #: module/Application/view/application/user/new-signup2.phtml:36
 #: module/Application/view/application/user/signup-nl2.phtml:42
+#: module/Application/view/application/user/signup-si2.phtml:42
 #: module/Application/view/application/user/signup-sk2.phtml:42
 msgid "Benvenuto"
 msgstr "Vitajte"
 
 #: module/Application/view/application/user/new-signup2.phtml:37
 #: module/Application/view/application/user/signup-nl2.phtml:43
+#: module/Application/view/application/user/signup-si2.phtml:43
 #: module/Application/view/application/user/signup-sk2.phtml:43
 msgid "Pochi istanti per completare il tuo profilo"
 msgstr "O chvíľu dokončite svoj profil"
@@ -3563,6 +3688,7 @@ msgstr "Okres narodenia"
 
 #: module/Application/view/application/user/new-signup2.phtml:162
 #: module/Application/view/application/user/signup-nl2.phtml:123
+#: module/Application/view/application/user/signup-si2.phtml:123
 #: module/Application/view/application/user/signup-sk2.phtml:123
 msgid "N. civico"
 msgstr "Popisné číslo"
@@ -3577,6 +3703,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:242
+#: module/Application/view/application/user/signup-si2.phtml:243
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Uisti sa že je z posledného vydaného vodičského preukazu."
@@ -3642,6 +3769,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:268
+#: module/Application/view/application/user/signup-si2.phtml:269
 #: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
@@ -3649,6 +3777,7 @@ msgstr "Prečítal, potvrdil a podpísal"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
+#: module/Application/view/application/user/signup-si2.phtml:279
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3667,12 +3796,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
+#: module/Application/view/application/user/signup-si2.phtml:282
 #: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
 #: module/Application/view/application/user/new-signup2.phtml:329
+#: module/Application/view/application/user/signup-si2.phtml:286
 #: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3683,24 +3814,28 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
+#: module/Application/view/application/user/signup-si2.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "predná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
+#: module/Application/view/application/user/signup-si2.phtml:307
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "zadná strana vodičského preukazu"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
+#: module/Application/view/application/user/signup-si2.phtml:318
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "predná strana občianskeho preukazu(iného ID)"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
+#: module/Application/view/application/user/signup-si2.phtml:327
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "zadná strana občianskeho preukazu(iného ID)"
@@ -3722,6 +3857,7 @@ msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnút
 
 #: module/Application/view/application/user/new-signup2.phtml:395
 #: module/Application/view/application/user/signup-nl2.phtml:345
+#: module/Application/view/application/user/signup-si2.phtml:355
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Pokračovať"
@@ -3762,12 +3898,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
+#: module/Application/view/application/user/signup-si2.phtml:377
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "vybrané súbory sú príliš veľké"
 
 #: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
+#: module/Application/view/application/user/signup-si2.phtml:404
 #: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
 msgstr "5. Číslo vodičského preukazu"
@@ -3832,16 +3970,19 @@ msgid "Vai in area riservata"
 msgstr "Choď do vyhradenej zóny"
 
 #: module/Application/view/application/user/signup-nl1.phtml:25
+#: module/Application/view/application/user/signup-si1.phtml:23
 #: module/Application/view/application/user/signup-sk1.phtml:33
 msgid "Pacchetti fino a 16 centesimi al minuto"
 msgstr "Balíčky od 16 centov za minútu"
 
 #: module/Application/view/application/user/signup-nl1.phtml:115
+#: module/Application/view/application/user/signup-si1.phtml:113
 #: module/Application/view/application/user/signup-sk1.phtml:123
 msgid "le Condizioni Contrattuali di Sharengo"
 msgstr "Všeobecné zmluvné podmienky Sharengo"
 
 #: module/Application/view/application/user/signup-nl1.phtml:128
+#: module/Application/view/application/user/signup-si1.phtml:126
 #: module/Application/view/application/user/signup-sk1.phtml:136
 msgid ""
 "Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
@@ -3859,6 +4000,7 @@ msgid "30 minuti a soli 10&euro;"
 msgstr "30 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
+#: module/Application/view/application/user/signup-si2.phtml:102
 #: module/Application/view/application/user/signup-sk2.phtml:102
 msgid "Citt&agrave; residenza"
 msgstr "Mesto trvalého pobytu"
@@ -3868,11 +4010,13 @@ msgid "BSN"
 msgstr ""
 
 #: module/Application/view/application/user/signup-nl2.phtml:246
+#: module/Application/view/application/user/signup-si2.phtml:247
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
 msgstr "Platnosť vodičského preukazu"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
+#: module/Application/view/application/user/signup-si2.phtml:260
 #: module/Application/view/application/user/signup-sk2.phtml:260
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
@@ -3905,10 +4049,12 @@ msgstr ""
 "obidve z oboch strán"
 
 #: module/Application/view/application/user/signup-nl2.phtml:331
+#: module/Application/view/application/user/signup-si2.phtml:339
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "Fotka Používateľa (selfie)"
 
+#: module/Application/view/application/user/signup-si2.phtml:35
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minút len ​​za 5&euro;"
@@ -4363,7 +4509,9 @@ msgstr "Prenájom"
 #: module/Application/view/partials/footer/main_foot.phtml:24
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:24
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:24
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:26
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:26
 msgid "Contatti"
 msgstr "Kontakty"
 
@@ -4371,6 +4519,7 @@ msgstr "Kontakty"
 #: module/Application/view/partials/header/main_head.phtml:30
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:29
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:29
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:29
 msgid "Area riservata"
 msgstr "Vyhradená oblasť"
 
@@ -4426,6 +4575,7 @@ msgstr "Zákaznícka služba"
 #: module/Application/view/partials/footer/main_foot.phtml:36
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:34
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:34
 msgid "Privacy"
 msgstr "Súkromie"
 
@@ -4555,6 +4705,7 @@ msgstr "Mastercard"
 #: module/Application/view/partials/footer/main_foot.phtml:6
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:6
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:6
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:6
 msgid "Seguici su"
 msgstr "Sleduj nás"
 
@@ -4571,29 +4722,35 @@ msgstr "Tlač"
 #: module/Application/view/partials/footer/main_foot.phtml:33
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:34
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:31
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:31
 msgid "Supporto"
 msgstr "Podpora"
 
 #: module/Application/view/partials/footer/main_foot.phtml:37
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:38
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:35
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:35
 msgid "Contratto di servizio e tariffe"
 msgstr "Všeobecné obchodné podmienky"
 
 #: module/Application/view/partials/footer/main_foot.phtml:38
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:39
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:36
 msgid "Modello di recesso"
 msgstr "Model odstúpenia od zmluvy"
 
 #: module/Application/view/partials/footer/main_foot.phtml:39
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:40
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:36
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:37
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:25
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:25
 msgid "FAQ"
 msgstr "FAQ"
 
 #: module/Application/view/partials/footer/main_foot.phtml:46
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:43
+#: module/Application/view/partials/footer/main_foot_sl_SI.phtml:44
 msgid "Scarica l’App"
 msgstr "STIAHNI SI APPKU"
 
@@ -4674,6 +4831,7 @@ msgstr "Mesto sa mení"
 #: module/Application/view/partials/header/main_head.phtml:25
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:25
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:24
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:24
 msgid "Chi è SharenGo"
 msgstr "O NÁS"
 
@@ -4688,12 +4846,14 @@ msgstr "Spoločnosti"
 #: module/Application/view/partials/header/main_head.phtml:29
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:28
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:28
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:28
 msgid "Logout"
 msgstr "Odhlásiť"
 
 #: module/Application/view/partials/header/main_head.phtml:32
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:31
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:31
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:31
 #: module/Application/view/zfc-user/user/login.phtml:68
 msgid "Accedi"
 msgstr "PRIHLÁSIŤ"
@@ -4701,16 +4861,19 @@ msgstr "PRIHLÁSIŤ"
 #: module/Application/view/partials/header/main_head.phtml:33
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:32
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:32
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:32
 msgid "Iscriviti"
 msgstr "Zaregistrovať"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:22
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:22
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:22
 msgid "Come funziona Sharengo"
 msgstr "Ako funguje sharengo"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:23
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:23
 msgid "Pacchetti &amp; promozioni"
 msgstr "AKCIE A BALIKY"
 
