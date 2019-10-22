@@ -301,7 +301,8 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     "it" => $translator->translate("Italiano"),
                     "en" => $translator->translate("inglese"),
                     "sk" => $translator->translate("slovacco"),
-                    "nl" => $translator->translate("olandese")
+                    "nl" => $translator->translate("olandese"),
+                    "sl" => $translator->translate("sloveno")
                 ]
             ]
         ]);

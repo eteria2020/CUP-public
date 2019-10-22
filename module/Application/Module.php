@@ -160,6 +160,13 @@ class Module
             'nl_NL'
         );
 
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/sl/Zend_Validate.php',
+            'default',
+            'sl_SI'
+        );
+
         AbstractValidator::setDefaultTranslator($translator);
 
         $changeLanguageDetector = $serviceManager->get('ChangeLanguageDetector.listener');

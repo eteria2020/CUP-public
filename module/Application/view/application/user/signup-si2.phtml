@@ -1,7 +1,7 @@
 <?php
 $this->headScript()
     ->appendFile($this->basePath('js/jquery-ui-1.8.22.custom.min.js'))
-    ->appendFile($this->basePath('js/ui.datepicker-sk.js'))
+    ->appendFile($this->basePath('js/ui.datepicker-si.js'))
     ->appendFile($this->basePath('js/profile.js?v=1.9'));
 $this->headLink()
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
@@ -12,7 +12,7 @@ $this->headLink()
 ?>
 
 <script>
-    var server_instance = "<?= substr($this->serverInstance["id"],0,2) ?>";
+    var server_instance = "<?= strtolower(substr($this->serverInstance["id"],3,2)) ?>";
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>";
     var birthTownValue = "<?= $this->form->get('user1')->get('birthTown')->getValue();?>";
 </script>
@@ -272,7 +272,7 @@ $this->headLink()
                     </div>
                     <br>
                     <div>
-                        Košice, <?= date("d.m.Y")?>
+                        Ljubljana, <?= date("d.m.Y")?>
                     </div>
                     <br>
                     <div style="font-size: 70%">
@@ -422,7 +422,7 @@ $this->headLink()
         '$(document).ready(function() {
             date18yearsBefore = new Date();
             date18yearsBefore.setMonth( date18yearsBefore.getMonth()-(12*18));
-            
+                    
             $( "#birthDate" ).datepicker({
                 dateFormat: "dd-mm-yy",
                 changeMonth: true,

@@ -461,7 +461,6 @@ return [
                     ],
                 ]
             ],
-
             'signupNL1' => [
                 'type' => 'Segment',
                 'options' => [
@@ -484,6 +483,34 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'User',
                         'action' => 'signupNL2',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            'signupSI1' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signupSI1}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signupSI1',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            'signupSI2' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{signupSI2}[/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'User',
+                        'action' => 'signupSI2',
                     ],
                     'constraints' => [
                         'mobile' => 'mobile'
@@ -1464,7 +1491,7 @@ return [
                     ],
                 ]
             ],
-            'area-utente' => [
+            'area-utente' => [      //override public-business-module
                 'type' => 'Segment',
                 'options' => [
                     'route' => '/{area-utente}',
@@ -1520,7 +1547,7 @@ return [
                             ]
                         ]
                     ],
-                    'pin' => [
+                    'pin' => [          //override public-business-module
                         'type' => 'Segment',
                         'options' => [
                             'route' => '/{pin}',
@@ -1662,7 +1689,7 @@ return [
                             ]
                         ]
                     ],
-                    'rents' => [
+                    'rents' => [        //override public-business-module
                         'type' => 'Segment',
                         'options' => [
                             'route' => '/{corse}',
@@ -1817,8 +1844,9 @@ return [
             'Application\Listener\ProviderAuthenticatedCustomerRegistered' => 'Application\Listener\ProviderAuthenticatedCustomerRegisteredFactory',
             'Application\Listener\SuccessfulPaymentListener' => 'Application\Listener\SuccessfulPaymentListenerFactory',
             'ChangeLanguageDetector.listener' => 'Application\Listener\ChangeLanguageDetectorFactory',
-            'SignupSK2Form' => 'Application\Form\SignupSK2FormFactory',
             'SignupNL2Form' => 'Application\Form\SignupNL2FormFactory',
+            'SignupSI2Form' => 'Application\Form\SignupSI2FormFactory',
+            'SignupSK2Form' => 'Application\Form\SignupSK2FormFactory',
         ],
         'invokables' => [
             'Application\Authentication\Adapter\Sharengo' => 'Application\Authentication\Adapter\Sharengo',
@@ -2796,6 +2824,12 @@ return [
                 "lang" => "nl",
                 "lang_3chars" => "nld",
                 "label" => "Dutch"
+            ],
+            'sl' => [
+                "locale" => "sl_SI",
+                "lang" => "sl",
+                "lang_3chars" => "slv",
+                "label" => "Slovenian"
             ]
         ],
         "language_folder" => __DIR__ . "/../language"
