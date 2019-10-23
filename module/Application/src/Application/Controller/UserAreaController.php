@@ -263,7 +263,7 @@ class UserAreaController extends AbstractActionController {
 
 
         //if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
-        if (!is_null($this->serverInstance)) {
+        if ($this->serverInstance["id"]!="") {
             return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobileParam]));
         }
 
