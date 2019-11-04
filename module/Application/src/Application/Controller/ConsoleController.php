@@ -237,7 +237,7 @@ class ConsoleController extends AbstractActionController {
         $this->verbose = $request->getParam('verbose') || $request->getParam('v');
         $carsToOperative = [];
         $carsToMaintenance = [];
-        $batterySafetyTime = 1;
+//        $batterySafetyTime = 1;
 
         $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;start;\n");
 
@@ -362,8 +362,9 @@ class ConsoleController extends AbstractActionController {
     }
 
     /**
-     * @param integer
-     * @param Cars
+     * @param $alarmCode
+     * @param $car
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     private function sendAlarmCommand($alarmCode, $car) {
         $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;code=%s\n",
@@ -392,6 +393,7 @@ class ConsoleController extends AbstractActionController {
                 //$this->writeToConsole("set reservation.active to false\n");
 
                 $this->entityManager->persist($reservation);
+                $this->entityManager->flush();
                 //$this->writeToConsole("Entity manager: reservation persisted\n");
             }
             // car should have maintainers reservation
@@ -413,6 +415,7 @@ class ConsoleController extends AbstractActionController {
                 //$this->writeToConsole("reservation created\n");
 
                 $this->entityManager->persist($reservation);
+                $this->entityManager->flush();
                 //$this->writeToConsole("Entity manager: reservation persisted\n");
                 $strLog = sprintf("%s;INF;sendAlarmCommand;plate=%s;reservation created\n",
                     date('ymd-His'),

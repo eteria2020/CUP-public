@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-10-22 16:25+0200\n"
-"PO-Revision-Date: 2019-10-22 16:31+0200\n"
+"POT-Creation-Date: 2019-10-31 14:22+0100\n"
+"PO-Revision-Date: 2019-10-31 14:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -15,6 +15,7 @@ msgstr ""
 "%100<=4 ? 2 : 3);\n"
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,247,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: module/Application/view\n"
 "X-Poedit-SearchPath-1: module/Application/src/Application\n"
 "X-Poedit-SearchPath-2: module/Application/config\n"
@@ -35,7 +36,7 @@ msgstr "profil"
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:306
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:306
 msgid "Patente"
-msgstr "licenca"
+msgstr "vozniško dovoljenje"
 
 #: module/Application/config/module.config.php:2741
 #: module/Application/view/application/user-area/pin.phtml:16
@@ -54,11 +55,12 @@ msgstr "Promo in paketi"
 
 #: module/Application/config/module.config.php:2761
 msgid "Bonus minuti"
-msgstr "Minutni bonus"
+msgstr "Bonus minute"
 
 #: module/Application/config/module.config.php:2766
+#, fuzzy
 msgid "Corse completate"
-msgstr "Končane dirke"
+msgstr "Zaključena vožnja"
 
 #: module/Application/config/module.config.php:2771
 msgid "Dati di pagamento"
@@ -94,8 +96,9 @@ msgid "Pacchetto non valido"
 msgstr "Neveljaven paket"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:169
+#, fuzzy
 msgid "Punti ossigeno insufficienti"
-msgstr "Premalo kisikovih točk"
+msgstr "Premalo točk"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:172
 msgid "Pacchetto non acquistabile"
@@ -142,13 +145,13 @@ msgstr "Začasno zaustavljeno plačilo. Poskusite znova pozneje."
 
 #: module/Application/src/Application/Controller/UserAreaController.php:819
 msgid "Contratto disabilitato correttamente!"
-msgstr "Pogodba je pravilno onemogočena!"
+msgstr "Pogodba je pravilno preklicana!"
 
 #: module/Application/src/Application/Controller/UserAreaController.php:821
 #: module/Application/src/Application/Controller/UserAreaController.php:824
 #: module/Application/src/Application/Controller/UserAreaController.php:827
 msgid "Errore durante la disabilitazione del contratto"
-msgstr "Napaka pri onemogočanju pogodbe"
+msgstr "Napaka pri preklicu pogodbe"
 
 #: module/Application/src/Application/Controller/UserAreaController.php:863
 msgid ""
@@ -166,7 +169,9 @@ msgstr ""
 
 #: module/Application/src/Application/Controller/UserAreaController.php:872
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
-msgstr "Zaradi potečene licence ste onemogočeni, vstavite nove podatke."
+msgstr ""
+"Zaradi pretečenega vozniškega dovoljenja ste onemogočeni, vstavite nove "
+"podatke."
 
 #: module/Application/src/Application/Controller/UserController.php:686
 #: module/Application/src/Application/Controller/UserController.php:705
@@ -388,7 +393,7 @@ msgstr "Kraj rojstva"
 #: module/Application/view/application/user/signup-sk2.phtml:174
 #: module/Application/view/application/user/signup.phtml:288
 msgid "Comune di nascita"
-msgstr "Običajno rojstvo"
+msgstr "Občina rojstva"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:202
 #: module/Application/src/Application/Form/NewUserFieldset2.php:139
@@ -399,12 +404,12 @@ msgstr "Država stalnega prebivališča"
 #: module/Application/src/Application/Form/CustomerFieldset.php:217
 #: module/Application/src/Application/Form/NewUserFieldset2.php:154
 msgid "Provincia di residenza (EE = estero)"
-msgstr "Provinca stalnega prebivališča (EE = tuja)"
+msgstr "Občina stalnega prebivališča (EE = tuja)"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:229
 #: module/Application/src/Application/Form/CustomerFieldset.php:233
 msgid "Via"
-msgstr "Via"
+msgstr "ulica"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:243
 #: module/Application/src/Application/Form/CustomerFieldset.php:247
@@ -417,7 +422,7 @@ msgstr "Via"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:160
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:164
 msgid "Numero civico"
-msgstr "Številka ulice"
+msgstr "Hišna številka"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:257
 #: module/Application/src/Application/Form/CustomerFieldset.php:260
@@ -448,7 +453,7 @@ msgstr "12345"
 #: module/Application/src/Application/Form/UserFieldset.php:315
 #: module/Application/src/Application/Form/UserFieldset.php:319
 msgid "CAP"
-msgstr "Poštna številka"
+msgstr "CAP"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:284
 #: module/Application/src/Application/Form/CustomerFieldset.php:288
@@ -471,7 +476,7 @@ msgstr "mesto"
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:261
 #: module/Application/src/Application/Form/UserFieldset.php:344
 msgid "Lingua preferita"
-msgstr "Prednostni jezik"
+msgstr "Privzet jezik"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:301
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:263
@@ -479,7 +484,7 @@ msgstr "Prednostni jezik"
 #: module/Application/src/Application/View/Helper/LongLanguage.php:30
 #: module/Application/view/application/user/signup2.phtml:145
 msgid "Italiano"
-msgstr "Italijanski"
+msgstr "italijanski"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:302
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:264
@@ -512,12 +517,12 @@ msgstr "Slovenija"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
 #: module/Application/src/Application/Form/UserFieldset.php:377
 msgid "Codice fiscale"
-msgstr "Davčna koda"
+msgstr "Davčna številka"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:333
 #: module/Application/src/Application/Form/UserFieldset.php:390
 msgid "Partita IVA (opzionale)"
-msgstr "Številka DDV (neobvezno)"
+msgstr "Dačna številka (neobvezno)"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:343
 #: module/Application/src/Application/Form/CustomerFieldset.php:346
@@ -535,11 +540,11 @@ msgstr ""
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:386
 msgid "Cod. destinatario"
-msgstr "Koda prejemnika"
+msgstr "Številka prejemnika"
 
 #: module/Application/src/Application/Form/CustomerPointFieldset.php:114
 msgid "La data di fine validità deve essere posteriore alla data di inizio"
-msgstr "Končni datum veljavnosti mora biti po datumu začetka"
+msgstr "Datum izteka veljavnosti ne sme biti pred datumom začetka"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:52
 #: module/Application/src/Application/Form/NewUserFieldset2.php:284
@@ -551,7 +556,7 @@ msgstr "XX123412341223"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:68
 msgid "Rilasciato da (autorità)"
-msgstr "Izdalo (organ)"
+msgstr "Izdal (organ)"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:81
 #: module/Application/src/Application/Form/DriverFieldset.php:158
@@ -571,7 +576,7 @@ msgstr "Objavljeno dne"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:97
 msgid "Es. Mario"
-msgstr "Na primer Mario"
+msgstr "Na primer Janez"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:110
 #: module/Application/src/Application/Form/NewUserFieldset2.php:77
@@ -585,7 +590,7 @@ msgstr "Ime na dovoljenju"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:121
 msgid "Es. Rossi"
-msgstr "Ex Rossi"
+msgstr "Na primer Novak"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:134
 #: module/Application/src/Application/Form/NewUserFieldset2.php:93
@@ -613,11 +618,11 @@ msgstr "Izdala (država)"
 #: module/Application/view/application/user-area/driving-licence.phtml:198
 #: module/Application/view/application/user/signup2.phtml:93
 msgid "Data di scadenza"
-msgstr "Datum uporabnosti"
+msgstr "Datum poteka veljavnosti"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:174
 msgid "Categoria/e patente"
-msgstr "Kategorija dovoljenj"
+msgstr "Dovoljenje kategorije"
 
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:205
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:209
@@ -662,8 +667,8 @@ msgid ""
 "Il file caricato ha un formato non valido; sono accettati solo formati di "
 "immagini e pdf"
 msgstr ""
-"Naložena datoteka ima neveljavno obliko; sprejemajo se samo slikovni in pdf "
-"formati"
+"Naložena datoteka je v neveljavni obliki; sprejemajo se samo slikovne in ."
+"pdf datoteke"
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:98
 #: module/Application/src/Application/Form/NewRegistrationForm2.php:226
@@ -778,10 +783,11 @@ msgid ""
 "sia cartacee che digitali relative al servizio, ai prodotti e alle "
 "promozioni Sharengo."
 msgstr ""
-"Strinjam se z obdelavo mojih osebnih podatkov tako za papirno kot digitalno "
+"Strinjam se z obdelavo svojih osebnih podatkov tako za papirno kot digitalno "
 "komunikacijo v zvezi s storitvijo Sharengo, izdelki in promocijami."
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:115
+#, fuzzy
 msgid ""
 "Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
 "che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del "
@@ -845,32 +851,33 @@ msgid ""
 "inserito correttamente, se effettivamente diverso inserisci qui quello "
 "corretto"
 msgstr ""
-"Ime na dovoljenju ne sovpada z davčno oznako. Preverite, ali ste ga pravilno "
-"vnesli, če je dejansko drugače, vnesite tukaj pravilnega"
+"Ime na dovoljenju ne sovpada z davčno številko. Preverite, ali ste ga "
+"pravilno vnesli, če je dejansko drugačno, tukaj vnesite pravilnega"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:398
 msgid "Il nome non coincide con quello presente sul codice fiscale"
-msgstr "Ime ne sovpada z imenom na davčni številki"
+msgstr "Ime se ne ujema z imenom povezanim z davčno številko"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:418
 msgid ""
 "Il cognome sulla patente non coincide con quello del codice fiscale, "
 "inserisci qui quello corretto"
 msgstr ""
-"Priimek na licenci ne sovpada z davčnim zakonikom, tukaj vnesite pravilen"
+"Priimek na dovoljenju se ne ujema s tistim, ki pripada davčni številki, "
+"tukaj vnesite popravek"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:433
 msgid "Il cognome non coincide con quello presente sul codice fiscale"
-msgstr "Priimek ne sovpada s tistim iz davčne številke"
+msgstr "Priimek ne sovpada s tistim povezanim z davčno številko"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:480
 msgid "Il Codice Avviamento Postale (CAP) non può essere vuoto"
-msgstr "Poštna številka (SKP) ne more biti prazna"
+msgstr "Poštna številka (PŠ) ne more biti prazna"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:502
 #: module/Application/src/Application/Form/UserFieldset.php:637
 msgid "Il dato è richiesto e non può essere vuoto"
-msgstr "Podatki so potrebni in ne smejo biti prazni"
+msgstr "Podatki so obvezni in ne smejo biti prazni"
 
 #: module/Application/src/Application/Form/OptionalFieldset.php:40
 #: module/Application/src/Application/Form/UserFieldset.php:194
@@ -890,7 +897,7 @@ msgstr "Zaposleni v zasebnem podjetju"
 #: module/Application/src/Application/Form/OptionalFieldset.php:45
 #: module/Application/src/Application/Form/UserFieldset.php:199
 msgid "Dipendente di azienda partecipata"
-msgstr "Zaposleni v odvisni družbi"
+msgstr "Zaposleni v povezani družbi"
 
 #: module/Application/src/Application/Form/OptionalFieldset.php:46
 #: module/Application/src/Application/Form/UserFieldset.php:200
@@ -935,7 +942,7 @@ msgstr "Univerzitetni profesor"
 #: module/Application/src/Application/Form/OptionalFieldset.php:54
 #: module/Application/src/Application/Form/UserFieldset.php:208
 msgid "Altra libera professione"
-msgstr "Drugi prosti poklic"
+msgstr "Drugi samostojni poklic"
 
 #: module/Application/src/Application/Form/OptionalFieldset.php:55
 #: module/Application/src/Application/Form/UserFieldset.php:209
@@ -1025,7 +1032,7 @@ msgstr "Ni zaseden"
 #: module/Application/src/Application/Form/OptionalFieldset.php:83
 #: module/Application/src/Application/Form/UserFieldset.php:237
 msgid "Come hai conosciuto Sharengo?"
-msgstr "Kako ste spoznali Sharengo?"
+msgstr "Kako ste izvedeli za Sharengo?"
 
 #: module/Application/src/Application/Form/OptionalFieldset.php:86
 #: module/Application/src/Application/Form/UserFieldset.php:240
@@ -1045,7 +1052,7 @@ msgstr "Spletno oglaševanje"
 #: module/Application/src/Application/Form/OptionalFieldset.php:89
 #: module/Application/src/Application/Form/UserFieldset.php:243
 msgid "Macchine Sharengo"
-msgstr "Stroji Sharengo"
+msgstr "Avtomobili Sharengo"
 
 #: module/Application/src/Application/Form/OptionalFieldset.php:90
 #: module/Application/src/Application/Form/UserFieldset.php:244
@@ -1063,9 +1070,9 @@ msgid ""
 "Posso annullare la mia iscrizione alla Newsletter in ogni momento tramite "
 "collegamento presente nelle e-mail e nelle Newsletter di Sharengo."
 msgstr ""
-"Rad bi prejel novice in informacije od Sharenga o svojem mestu. Svojo "
-"naročnino na newsletter lahko kadar koli prekličem prek povezave v e-poštnih "
-"sporočilih in e-poštnih sporočilih Sharengo."
+"Rad bi prejemal novice in informacije o Sharengo v svojem mestu. Svojo "
+"naročnino na novice lahko kadar koli prekličem prek povezave v e-poštnih "
+"sporočilih Sharengo."
 
 #: module/Application/src/Application/Form/PasswordForm.php:53
 msgid "Vecchia password"
@@ -1089,12 +1096,14 @@ msgid "123456789"
 msgstr "123456789"
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
+#, fuzzy
+#| msgid "123456789"
 msgid "12345678"
-msgstr "12345678"
+msgstr "123456789"
 
 #: module/Application/src/Application/Form/UserFieldset.php:82
 msgid "Inserisci di nuovo la email"
-msgstr "Znova vnesite e-pošto"
+msgstr "Znova vnesite e-poštni naslov"
 
 #: module/Application/src/Application/Form/UserFieldset.php:108
 msgid "Inserisci di nuovo la password"
@@ -1117,18 +1126,21 @@ msgid "ITNNNNNNNNNNN"
 msgstr "ITNNNNNNNNNNN"
 
 #: module/Application/src/Application/Form/UserFieldset.php:424
+#, fuzzy
 msgid ""
 "Ho letto, compreso e accettato i Termini e Condizioni Generali di Contratto "
 "e il Regolamento Tariffario del servizio di car sharing SHARE’NGO®, fornito "
 "da C.S. Group S.p.A. e dalle sue controllate: C.S. Firenze S.r.l., C.S. "
 "Milano S.r.l. e C.S. Roma S.r.l."
 msgstr ""
-"Prebral sem, razumel in sprejel Splošne pogoje in pravila tarife za storitev "
-"delitve avtomobilov SHARE'NGO®, ki jih zagotavlja CS Group SpA in njene "
-"podružnice: CS Firenze Srl, CS Milano Srl in CS Roma Srl."
+"Prebral sem, razumel in sprejel Splošne pogoje in pravila ter tarife ki "
+"zadevajo storitev delitve avtomobilov SHARE'N GO; storitev, ki jo "
+"zagotavljajo CS Group SpA in njegove podružnice: CS Firenze Srl, CS Milano "
+"Srl in CS Roma Srl"
 
 #: module/Application/src/Application/Form/UserFieldset.php:438
 #: module/Application/view/partials/translations.phtml:9
+#, fuzzy
 msgid ""
 "Dichiaro ai sensi e per gli effetti di cui agli artt. 1341 e 1342 c.c., "
 "avendo letto i presenti Termini e Condizioni Generali di Contratto di "
@@ -1161,7 +1173,7 @@ msgid ""
 "modalità indicate "
 msgstr ""
 "Prebral sem, razumel in sprejel Izjavo o zasebnosti za stranke SHARE'NGO® in "
-"soglašam z obdelavo mojih osebnih podatkov na način, ki je naveden "
+"soglašam z obdelavo svojih osebnih podatkov na način, ki je naveden "
 
 #: module/Application/src/Application/Form/UserFieldset.php:466
 msgid ""
@@ -1171,9 +1183,9 @@ msgid ""
 "di SHARE’NGO® via email, SMS o posta, inclusi gli inviti a partecipare a "
 "indagini di mercato e sondaggi."
 msgstr ""
-"Da bi izboljšali storitev in bili posodobljeni pri ponudbah partnerjev "
-"SHARE'NGO® in SHARE'NGO®, rezerviranih prednostno in / ali izključno za "
-"stranke SHARE'NGO®, dajem soglasje za prejem komunikacij od SHARE'NGO ® po e-"
+"Za izboljšanje storitev in obveščenost o ponudbah SHARE'NGO® in partnerjev "
+"podjetja SHARE'NGO®, ki so prednostno in / ali izključno namenjene strankam "
+"SHARE'NGO®, dajem soglasje za prejem sporočil podjetja SHARE'NGO ® po e-"
 "pošti, SMS-ju ali pošti, vključno s povabili za sodelovanje v tržnih "
 "raziskavah in anketah."
 
@@ -1189,11 +1201,11 @@ msgstr "Potrebno je imeti Estero kot provinco rojstva"
 
 #: module/Application/src/Application/Form/Validator/BirthProvince.php:21
 msgid "E' necessario avere una Provincia di nascita italiana"
-msgstr "Potrebno je imeti italijansko provinco rojstva"
+msgstr "Potrebno je imeti slovensko provinco rojstva"
 
 #: module/Application/src/Application/Form/Validator/CoherentTaxCode.php:31
 msgid "Il codice fiscale non è coerente con gli altri dati indicati"
-msgstr "Davčna koda ni v skladu z drugimi navedenimi podatki"
+msgstr "Davčna številka ni v skladu z drugimi navedenimi podatki"
 
 #: module/Application/src/Application/Form/Validator/CurrentUserPassword.php:24
 msgid "La password inserita non è quella corretta"
@@ -1205,21 +1217,21 @@ msgstr "Oblika datuma ni pravilna"
 
 #: module/Application/src/Application/Form/Validator/DateFromToday.php:18
 msgid "La patente non può essere scaduta"
-msgstr "Licence ni mogoče izteči"
+msgstr "Dovoljenje ne sme biti pretečeno"
 
 #: module/Application/src/Application/Form/Validator/DuplicateDriversLicense.php:26
 msgid "Esiste già un utente con la stessa patente"
-msgstr "Uporabnik že obstaja z isto licenco"
+msgstr "Uporabnik s tem dovoljenjem že obstaja "
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
 #: module/Application/view/application/user/new-signup.phtml:266
 msgid "Esiste già un utente con lo stesso indirizzo email"
-msgstr "Uporabnik že obstaja z istim e-poštnim naslovom"
+msgstr "Uporabnik s tem e-poštnim naslovom že obstaja"
 
 #: module/Application/src/Application/Form/Validator/DuplicateTaxCode.php:32
 #: module/Application/view/application/user/new-signup2.phtml:638
 msgid "Esiste già un utente con lo stesso codice fiscale"
-msgstr "Uporabnik že obstaja z isto fiskalno kodo"
+msgstr "Uporabnik s to davčno številko že obstaja"
 
 #: module/Application/src/Application/Form/Validator/EighteenDate.php:18
 msgid "E' necessario essere maggiorenni"
@@ -1231,23 +1243,23 @@ msgstr "Identifikacijska številka ni pravilna"
 
 #: module/Application/src/Application/Form/Validator/NotFutureDate.php:18
 msgid "La data della patente non può essere futura alla data odierna"
-msgstr "Datum licence ne sme biti prihodnji od današnjega"
+msgstr "Datum dovoljenja ne more biti novejši od današnjega"
 
 #: module/Application/src/Application/Form/Validator/NotTooOld.php:36
 msgid "Date inferiori al "
-msgstr "Termini nižji od "
+msgstr "Datumi starejši od"
 
 #: module/Application/src/Application/Form/Validator/NotTooOld.php:36
 msgid " non sono accettate"
-msgstr " niso sprejeti"
+msgstr " niso sprejemljivi"
 
 #: module/Application/src/Application/Form/Validator/OptionAccepted.php:18
 msgid "E' necessario accettare le condizioni"
-msgstr "Pogoje je treba sprejeti"
+msgstr "Pogoje je potrebno sprejeti"
 
 #: module/Application/src/Application/Form/Validator/Password.php:24
 msgid "Deve essere lunga almeno 8 caratteri"
-msgstr "Dolga mora biti najmanj 8 znakov"
+msgstr "Dolžina mora biti najmanj 8 znakov"
 
 #: module/Application/src/Application/Form/Validator/Password.php:25
 msgid "Deve contenere almeno una maiuscola"
@@ -1255,7 +1267,7 @@ msgstr "Vsebovati mora vsaj eno veliko začetnico"
 
 #: module/Application/src/Application/Form/Validator/Password.php:26
 msgid "Deve contenere almeno una minuscola"
-msgstr "Vsebovati mora vsaj eno drobno črko"
+msgstr "Vsebovati mora vsaj eno malo črko"
 
 #: module/Application/src/Application/Form/Validator/Password.php:27
 msgid "Deve contenere almeno un numero"
@@ -1267,29 +1279,29 @@ msgstr "Vnesena promocijska koda ni veljavna"
 
 #: module/Application/src/Application/Form/Validator/PromoCode.php:68
 msgid "Il codice promo è già stato utilizzato"
-msgstr "Promotivna koda je že bila uporabljena"
+msgstr "Promocijska koda je bila že uporabljena"
 
 #: module/Application/src/Application/Form/Validator/RecipientCode.php:21
 msgid "Il codice destinatario deve essere una cifra di 7 caratteri numerici"
-msgstr "Koda prejemnika mora biti številka 7 numeričnih znakov"
+msgstr "Koda prejemnika mora biti 7 mestna številka"
 
 #: module/Application/src/Application/Form/Validator/RecipientCode.php:22
 msgid "Il codice destinatario deve avere solo caratteri alfanumerici"
-msgstr "Koda prejemnika mora imeti samo alfanumerične znake"
+msgstr "Koda prejemnika lahko vsebuje samo alfanumerične znake"
 
 #: module/Application/src/Application/Form/Validator/TaxCode.php:18
 msgid "Il codice fiscale non è corretto"
-msgstr "Davčna koda je napačna"
+msgstr "Davčna številka je napačna"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
-msgstr "Neveljavna davčna koda"
+msgstr "Neveljavna davčna številka"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
-msgstr "Starost ni dovoljena za vožnjo"
+msgstr "Starost ni primerna za vožnjo"
 
 #: module/Application/src/Application/Form/Validator/ValidFleet.php:26
 msgid "Selezionare la città preferita"
@@ -1301,12 +1313,12 @@ msgstr "Številka DDV ne sme vsebovati presledkov"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:25
 msgid "La partita IVA deve essere numerica, al più preceduta dal prefisso IT"
-msgstr "Številka DDV mora biti številčna, pred njo pa predpona IT"
+msgstr "Številka DDV mora biti številčna, pred njo pa predpona SI"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:26
 msgid ""
 "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
-msgstr "Številka DDV mora biti 11 števk, pred njo pa predpona IT"
+msgstr "Številka DDV mora vsebovati 11 števk, pred njo pa stoji predpona SI"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:27
 msgid "La partita IVA non è valida"
@@ -1323,15 +1335,15 @@ msgstr "POSEBNA PRIJAVA"
 
 #: module/Application/src/Application/Service/RegistrationService.php:455
 msgid "UTENTE GIA' REGISTRATO"
-msgstr "UPORABNIK VEDNO REGISTRIRAN"
+msgstr "UPORABNIK JE ŽE REGISTRIRAN"
 
 #: module/Application/src/Application/Service/RegistrationService.php:466
 msgid "UTENTE REGISTRATO CON SUCCESSO"
-msgstr "REGISTROVANI UPORABNIK Z USPEHOM"
+msgstr "UPORABNIK USPEŠNO REGISTRIRAN"
 
 #: module/Application/src/Application/Service/RegistrationService.php:469
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
-msgstr "SI & Egrave; PREVERJAL PROBLEM MED PRIJAVO"
+msgstr "MED REGISTRACIJO JE PRIŠLO DO NAPAKE"
 
 #: vendor/cup-web/public-business-module/config/module.config.php:249
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:8
@@ -1361,7 +1373,7 @@ msgstr "S tem podjetjem ste že povezani"
 
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
-msgstr "Z drugim podjetjem ste že povezani"
+msgstr "Ste že povezani z drugim podjetjem"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
 msgid "Indirizzo email non accettato"
@@ -1425,12 +1437,12 @@ msgstr "Neveljavna promocijska koda."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
 msgid "Codice promo già associato a questo account."
-msgstr "Promotivna koda je že povezana s tem računom."
+msgstr "Promocijska koda je že povezana s tem računom."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
 msgid "Codice fiscale, genere "
-msgstr "Davčna koda, spol "
+msgstr "Davčna številka, spol "
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
 msgid "Codice fiscale, data di nascita "
@@ -1438,19 +1450,19 @@ msgstr "Davčna številka, datum rojstva "
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
 msgid "Codice fiscale, luogo di nascita incongruente."
-msgstr "Davčna koda, nepristranski kraj rojstva."
+msgstr "Davčna številka in kraj rojstva se ne ujemata."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
 msgid "Codice fiscale, sintassi incongruente."
-msgstr "Davčna koda, neskladna skladnja."
+msgstr "Davčna številka, neskladna oblika."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
 msgid "Codice fiscale, sintassi errata."
-msgstr "Davčna koda, napačna skladnja."
+msgstr "Davčna številka, napačen način zapisa."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
 msgid "PRENOTAZIONE DI SISTEMA"
-msgstr "KNJIGA SISTEMA"
+msgstr "NAČIN REZERVACIJE"
 
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
@@ -1469,14 +1481,15 @@ msgid ""
 "Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle "
 "nostre tariffe scontate."
 msgstr ""
-"Kupite minutni paket plus primerno za vas in izkoristite naše diskontne cene."
+"Zakupite paket minut ki je za vas najprimernejši in izkoristite naše znižane "
+"cene."
 
 #: module/Application/view/application/additional-services/additional-services.phtml:54
 msgid ""
 "Prima di scegliere il tuo preferito assicurati di aver completato la tua "
 "registrazione con l'acquisto del Pacchetto Benvenuto."
 msgstr ""
-"Pred izbiro svojega najljubšega se prepričajte, da ste zaključili "
+"Pred izbiro zase najustreznejšega paketa se prepričajte, da ste zaključili "
 "registracijo z nakupom paketa dobrodošlice."
 
 #: module/Application/view/application/additional-services/additional-services.phtml:81
@@ -1549,16 +1562,16 @@ msgstr "Velja od"
 #: module/Application/view/application/additional-services/gift-packages.phtml:97
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
-msgstr "Velja"
+msgstr "Velja do"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:149
 #: module/Application/view/application/additional-services/gift-packages.phtml:98
 msgid "Disponibile fino"
-msgstr "Na voljo gor"
+msgstr "Na voljo od"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:150
 msgid "Acquista/Converti"
-msgstr "Nakup / Pretvarjanje"
+msgstr "Nakup / Pretvorba"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:165
 #: module/Application/view/application/additional-services/gift-packages.phtml:115
@@ -1570,7 +1583,7 @@ msgstr "za %d dni"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:222
 msgid "Codice Promo"
-msgstr "Promo koda"
+msgstr "Promocijska koda"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:228
 msgid "Inserisci il codice promo"
@@ -1590,7 +1603,7 @@ msgstr "Kupite darilno kartico"
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:44
 msgid "REGALA LA MOBILIT&Agrave; SOSTENIBILE CON GIFT CARD"
-msgstr "DAJTE MOBILIT & Agrave; TRAJNOSTNO Z DARILNO KARTICO"
+msgstr "Z DARILNO KARTICO PODARITE TRAJNOSTNO MOBILNOST"
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:48
 msgid ""
@@ -1598,28 +1611,29 @@ msgid ""
 "mobilit&agrave; elettrica e condivisa, regalando una Gift Card ad un amico, "
 "un parente o un collega."
 msgstr ""
-"Se lepo zabavate z Share & ngo? Delite užitek od mobilnosti električna in "
-"skupna, darilno kartico podarite prijatelju, sorodniku ali sodelavcu."
+"Uživate v storitvi Share'ngo? Užitek do skupne električne mobilnosti lahko "
+"delite s prijateljem, sorodnikom ali sodelavcem tako, da jim podarite "
+"Darilno kartico."
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:49
 msgid ""
 "La Gift Card comprende l&#39;iscrizione a Share&#39;ngo con il pacchetto "
 "minuti bonus che scegli tu."
 msgstr ""
-"Darilna kartica vključuje naročnino na skupno rabo s paketom bonus minut, ki "
-"ga izberete."
+"Darilna kartica vključuje naročnino na storitev Share'ngo in paket bonus "
+"minut, ki ga izberete vi."
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:51
 msgid "Riceverai la Gift Card via email il giorno dopo l&#39;acquisto."
-msgstr "Darilno kartico boste prejeli po e-pošti naslednji dan po nakupu."
+msgstr "Darilno kartico boste dan po nakupu prejeli v e-poštni nabiralnik."
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:54
 msgid ""
 "(chi riceve la Gift Card potr&agrave; attivare il suo account con soli 50 "
 "cent)"
 msgstr ""
-"(tisti, ki prejmejo Darilno kartico, bodo lahko svoj račun aktivirali z le "
-"50 centov)"
+"(tisti, ki prejmejo Darilno kartico, bodo lahko svoj račun aktivirali že s "
+"50 centi)"
 
 #: module/Application/view/application/additional-services/gift-packages.phtml:72
 msgid "Iscrizione +"
@@ -1680,7 +1694,7 @@ msgid ""
 "direttamente dalla pagina "
 msgstr ""
 "Če ste starejši od 18 let, se lahko na Share'ngo prijavite v nekaj minutah "
-"neposredno s strani "
+"neposredno na strani "
 
 #: module/Application/view/application/index/comefunziona.phtml:14
 msgid ""
@@ -1689,14 +1703,14 @@ msgid ""
 "i primi 30 minuti di guida gratuita e la Share’ngo Card (per aprire l’auto "
 "anche senza smartphone)."
 msgstr ""
-". Hranite pri roki vozniško dovoljenje, davčno kodo in kreditno kartico, "
-"tudi predplačniško. Članstvo v Share'ngo stane 10 evrov in vključuje prvih "
-"30 minut brezplačne vožnje in kartico Share'ngo (za odpiranje avtomobila "
-"brez pametnega telefona)."
+". Potrebujete vozniško dovoljenje, davčno številko in kreditno kartico, "
+"lahko tudi predplačniško. Članstvo v Share'ngo stane 10 evrov in vključuje "
+"prvih 30 minut brezplačne vožnje in kartico Share'ngo (za odklepanje "
+"avtomobila brez pametnega telefona)."
 
 #: module/Application/view/application/index/comefunziona.phtml:16
 msgid "Quanto costa? Poco, meno della tua auto privata"
-msgstr "Koliko stane? Nič manj kot vaš osebni avto"
+msgstr "Koliko stane? Ne veliko, manj kot vaš zasebni avto."
 
 #: module/Application/view/application/index/comefunziona.phtml:17
 msgid ""
@@ -1712,7 +1726,7 @@ msgstr ""
 
 #: module/Application/view/application/index/comefunziona.phtml:20
 msgid "PUOI AVERE UNA TARIFFA PERSONALIZZATA."
-msgstr "LAHKO IMATE PRILAGOJENO CENO."
+msgstr "CENA SE PRILAGAJA VAM."
 
 #: module/Application/view/application/index/comefunziona.phtml:21
 msgid ""
@@ -1724,12 +1738,12 @@ msgid ""
 "cliccare sul banner che ti offre lo sconto e rispondere ad alcune domande "
 "per bloccare lo"
 msgstr ""
-"Če med registracijo niste uporabili promocijske kode, lahko dobite popust in "
-"načrt osebnih cen, ker prepoznamo vaše potrebe po mobilnosti in nagrajujemo "
-"vaše sodelovanje v ekonomiji delitve. Ko ste registrirani v storitvi, "
-"preprosto dostopajte do svojega osebnega profila (na spletnem mestu ali v "
-"naši aplikaciji), pojdite na razdelek »Cene«, kliknite pasico, ki vam ponuja "
-"popust in odgovorite na nekaj vprašanj, da blokirate"
+"Če med registracijo niste uporabili promocijske kode, ste upravičeni do "
+"popusta in vam prilagojene tarife, ker prepoznavamo vaše potrebe po "
+"mobilnosti in nagrajujemo vaše sodelovanje v delitveni ekonomiji. Po "
+"opravljeni registraciji preprosto dostopajte do svojega osebnega profila (na "
+"spletnem mestu ali v naši aplikaciji), pojdite na razdelek »Cene«, kliknite "
+"pasico, ki vam ponuja popust in odgovorite na nekaj vprašanj, da blokirate"
 
 #: module/Application/view/application/index/comefunziona.phtml:22
 msgid "sconto che ti spetta"
@@ -1744,8 +1758,7 @@ msgid ""
 "PUOI ACQUISTARE I PACCHETTI MINUTI. Sono disponibili nei tagli da "
 "100/200/500 e 1000 minuti"
 msgstr ""
-"LAHKO KUPITE MINUTNE PAKETE. Na voljo so v poimenovanjih 100/200/500 in 1000 "
-"minut"
+"LAHKO KUPITE PAKETE MINUT. Na voljo so paketi 100/200/500 in 1000 minut"
 
 #: module/Application/view/application/index/comefunziona.phtml:27
 msgid ""
@@ -1753,8 +1766,8 @@ msgid ""
 "minuto o 6 €/ora, il costo più basso al mondo per un servizio di car sharing "
 "a flusso libero."
 msgstr ""
-"in vam omogočajo, da močno znižate stroške najema, do 0,10 € na minuto ali 6 "
-"€ / uro, najnižjo ceno na svetu za storitev brezplačnega prenosa avtomobilov."
+"in vam omogočajo, da znižate stroške najema kar do 0,10 € na minuto ali 6 "
+"€ / uro, najnižjo ceno na svetu za storitev proste izposoje avtomobilov."
 
 #: module/Application/view/application/index/comefunziona.phtml:29
 msgid "E la convenienza di Share’ngo non finisce qui!"
@@ -1766,18 +1779,18 @@ msgid ""
 "degli altri car sharing)"
 msgstr ""
 "kilometraža na posamezno potovanje je neomejena (brez doplačil, za razliko "
-"od drugih skupnih vozil)"
+"od drugih ponudnikov vozil za souporabo)"
 
 #: module/Application/view/application/index/comefunziona.phtml:33
 msgid "per le donne le corse notturne sono gratuite dall’1 alle 6!"
-msgstr "za ženske so nočne vožnje brezplačne od 1 do 6!"
+msgstr "za ženske so nočne vožnje od 1. do 6. ure zjutraj brezplačne!"
 
 #: module/Application/view/application/index/comefunziona.phtml:35
 msgid ""
 "il giorno del tuo compleanno ricevi 30 minuti bonus, da utilizzare nello "
 "stesso giorno"
 msgstr ""
-"ob rojstnem dnevu dobite 30 minut bonusa, ki ga boste uporabili še isti dan"
+"ob rojstnem dnevu dobite 30 minut bonusa, ki ga lahko koristite na ta dan"
 
 #: module/Application/view/application/index/comefunziona.phtml:37
 msgid ""
@@ -1786,17 +1799,17 @@ msgid ""
 "Profilo Personale troverai sempre tutte le corse che hai effettuato, il loro "
 "costo e potrai scaricare le tue fatture."
 msgstr ""
-"Registracija, tekme in paketi za Share'ngo se plačujejo s kreditno kartico, "
-"tudi predplačniško ali znova. Na strani z osebnim profilom boste vedno našli "
-"vsa opravljena potovanja, njihovo ceno in naložite račune."
+"Registracija, vožnje in paketi za Share'ngo se plačujejo s kreditno kartico, "
+"tudi predplačniško. Na strani z osebnim profilom boste vedno našli vsa "
+"opravljena potovanja, njihovo ceno in izdane račune."
 
 #: module/Application/view/application/index/comefunziona.phtml:39
 msgid "Trovare e prenotare un’auto quando e dove ti serve"
-msgstr "Poiščite in rezervirajte avto, kdaj in kje ga potrebujete"
+msgstr "Poiščite in rezervirajte avto, kadar in kjer ga potrebujete"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
 msgid "Una volta scaricata la nostra App per"
-msgstr "Ko smo enkrat prenesli našo aplikacijo za"
+msgstr "Ko je enkrat prenešena, naša aplikacija za"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
 #: module/Application/view/application/user/signup-nl1.phtml:114
@@ -1816,14 +1829,14 @@ msgid ""
 "trovato l’auto più vicina, clicca su “Prenotala ora”. La prenotazione è "
 "gratuita e dura 30 minuti."
 msgstr ""
-"- avtomobil Share'ngo je zelo enostavno rezervirati. Pojdite na zemljevid "
-"svojega mesta in si oglejte vse avtomobile, ki so na voljo, z njihovo "
-"avtonomijo. Ko najdete najbližji avto, kliknite na \"Rezerviraj zdaj\". "
-"Rezervacija je brezplačna in traja 30 minut."
+"- avtomobil Share'ngo je zelo enostavno rezervirati. Odprite zemljevid "
+"svojega mesta in si oglejte vse avtomobile ki so na voljo ter preverite "
+"njihovo avtonomijo. Ko najdete najbližji ustrezen avto, kliknite na "
+"\"Rezerviraj zdaj\". Rezervacija je brezplačna in traja 30 minut."
 
 #: module/Application/view/application/index/comefunziona.phtml:42
 msgid "Un'auto semplice e molto divertente da guidare"
-msgstr "Preprost avto in veliko zabave za vožnjo"
+msgstr "Avto je preprost in zabaven za vožnjo"
 
 #: module/Application/view/application/index/comefunziona.phtml:43
 msgid ""
@@ -1841,15 +1854,15 @@ msgid ""
 msgstr ""
 "Vožnja električnega avtomobila Share'ngo je zelo enostavna in zabavna. V "
 "bližini rezerviranega avtomobila odprite vrata s klikom na pametni telefon "
-"(odprite jih lahko tudi tako, da svojo kartico Share'ngo pošljete bralcu). V "
-"računalnik vpišite svoj PIN (ki ga najdete na svoji strani osebnega profila "
-"na spletnem mestu ali v aplikaciji) in vklopite ključ: vaš stroj bo "
-"\"PRIPRAVLJEN\", torej pripravljen za premikanje. Voziti je zelo preprost "
-"avtomobil, s samodejnim menjalnikom in zmogljivostmi, ki vas bodo "
-"presenetili: do 120 km avtonomije, 80 km / uro, sijajen izklop električnega "
-"avtomobila in udobje na krovu mestnega avtomobila s senzorji parkirišče, led "
-"luči, električna stekla, radio in navigator. Želite podrobno videti, kako "
-"deluje: preberite si"
+"(odprete jih lahko tudi tako, da svojo kartico Share'ngo približate bralniku "
+"na vetrobranskem steklu). V računalnik vpišite svoj PIN (ki ga najdete na "
+"strani svojega osebnega profila na spletnem mestu ali v aplikaciji) in "
+"obrnite ključ: prižgala se bo lučka \"READY\" in vaš avtomobil bo "
+"pripravljen za premikanje. Avtomobil ima samodejni menjalnik in je preprost "
+"za vožnjo, njegove zmogljivosti pa vas bodo presenetile: do 120 km "
+"avtonomije, 80 km / uro, udobje mestnega avtomobila ki ga zagotavljajo "
+"parkirni senzorji, led luči, električna pomična stekla, radio in vgrajena "
+"navigacija. Če želite podrobno izvedeti, kako deluje: si preberite "
 
 #: module/Application/view/application/index/comefunziona.phtml:43
 msgid "dedicate"
@@ -1860,6 +1873,7 @@ msgid "Fine noleggio o sosta"
 msgstr "Konec najema ali postanek"
 
 #: module/Application/view/application/index/comefunziona.phtml:46
+#, fuzzy
 msgid ""
 "Una corsa si termina cliccando sulla “P” nel display di bordo e scegliendo "
 "una delle due opzioni: “Termina il noleggio” oppure “Metti in sosta”. In "
@@ -1869,19 +1883,20 @@ msgid ""
 "uscire dall’auto. La chiave non è estraibile e resta inserita nel cruscotto. "
 "Non devi preoccuparti neanche della ricarica: ci pensiamo noi!"
 msgstr ""
-"Dirka se konča s klikom na \"P\" na zaslonu na vozilu in izberemo eno od "
-"dveh možnosti: \"Končaj izposojo\" ali \"Daj pavzo\". V obeh primerih se "
-"bodo vrata zaprla samostojno v 40 sekundah, ne da bi vam bilo treba skrbeti "
-"kaj drugega kot vklop ključa, da izklopite vžig, izklopite luči, dvignete "
-"okna in potegnete ročno zavoro pred izstopom iz avtomobila . Ključ ni "
-"odstranljiv in ostane vstavljen v armaturno ploščo. Za polnjenje vam sploh "
-"ni treba skrbeti: to bomo storili!"
+"Vožnjo končate tako, da na zaslonu vozila pritisnete \"P\" in izberete eno "
+"od dveh možnosti: \"Končaj izposojo\" ali \"Daj pavzo\". V obeh primerih se "
+"bodo vrata v 40 sekundah zaprla samostojno, ne da bi vam bilo treba pred "
+"izstopom iz avtomobila skrbeti za kaj drugega kot za obrat ključa, da "
+"izklopite vžig, izklop luči, do vrha dvignjena okna in poteg ročne zavore. "
+"Ključ ni odstranljiv in ostane vstavljen v armaturno ploščo. Ne obremenjujte "
+"se s polnjenjem: to bomo storili!"
 
 #: module/Application/view/application/index/comefunziona.phtml:48
 msgid "Dove puoi andare"
 msgstr "Kam lahko greš"
 
 #: module/Application/view/application/index/comefunziona.phtml:49
+#, fuzzy
 msgid ""
 "Share’ngo è operativa nelle città di Milano, Roma e Firenze. Per ogni città "
 "è definita un’area di copertura del servizio (area operativa): nei limiti di "
@@ -1912,6 +1927,7 @@ msgid "Le coperture assicurative"
 msgstr "Zavarovalno kritje"
 
 #: module/Application/view/application/index/comefunziona.phtml:52
+#, fuzzy
 msgid ""
 "Sui nostri veicoli è garantita una copertura RC fino a 10.000.000 €. Le "
 "macchine sono coperte anche da polizza Kasko e assicurazione Furto e "
@@ -1919,16 +1935,17 @@ msgid ""
 "franchigia di 500 €). Il conducente è assicurato per infortuni (PAI) per un "
 "massimale di 50.000 €."
 msgstr ""
-"Na naših vozilih je zajamčena pokritost RC do 10.000.000 €. Stroji so zajeti "
-"tudi s kasko polico, zavarovanjem tatvine in požara, vandalizmom in "
+"Na naših vozilih je zajamčena pokritost RC do 10.000.000 €. Avtomobili so "
+"zajeti tudi s kasko polico, zavarovanjem tatvine in požara, vandalizmom in "
 "vremenskimi dogodki (v obeh primerih je mogoče odšteti 500 €). Voznik je za "
 "nesreče (PAI) zavarovan za največ 50.000 EUR."
 
 #: module/Application/view/application/index/comefunziona.phtml:54
 msgid "Bambini a bordo"
-msgstr "Otroci na krovu"
+msgstr "Otroci v vozilu"
 
 #: module/Application/view/application/index/comefunziona.phtml:55
+#, fuzzy
 msgid ""
 "Le nostre auto sono dotate di cinture di sicurezza omologate e quindi non si "
 "applica l’articolo 172 del codice della strada che vieta il trasporto di "
@@ -1937,11 +1954,11 @@ msgid ""
 "limitazioni per portare i minori sul sedile del passeggero, purché il "
 "seggiolino di sicurezza sia rivolto all’indietro."
 msgstr ""
-"Naši avtomobili so opremljeni s odobrenimi varnostnimi pasovi, zato ne velja "
-"člen 172 kode avtoceste, ki prepoveduje triletne prevoze mladoletnih vozil "
-"na motornih vozilih brez njih (očitno je potreben odobren sedež). Ker "
-"varnostne blazine ni, ni omejitev pri pripenjanju mladoletnikov na "
-"sovoznikov sedež, če je varnostni sedež obrnjen nazaj."
+"Naši avtomobili so opremljeni z odobrenimi varnostnimi pasovi, zato ne velja "
+"člen 172 kode avtoceste, ki prepoveduje prevoze mladoletnih na motornih "
+"vozilih brez njih (očitno je potreben odobren sedež). Ker varnostne blazine "
+"ni, ni omejitev pri pripenjanju mladoletnikov na sovoznikov sedež, če je "
+"varnostni sedež obrnjen nazaj."
 
 #: module/Application/view/application/index/comefunziona.phtml:57
 msgid "Pagamenti e fatturazione del servizio"
@@ -1955,11 +1972,11 @@ msgid ""
 "Personale, dove potrai controllare le tue tariffe, quanti minuti gratuiti o "
 "pre-acquistati hai consumato e quanti te ne sono rimasti."
 msgstr ""
-"Dirke na Share'ngo se plačujejo s kreditno kartico, tudi predplačniško. Če "
-"še niste kupili minut izposoje paketov, vam bo vsako potovanje ustrezalo "
-"plačilu in naložljivemu računu v osebnem profilu, kjer lahko preverite svoje "
-"cene, koliko brezplačnih ali predkupnih minut ste porabili in koliko vam je "
-"ostalo."
+"Vožnje na Share'ngo se plačujejo s kreditno kartico, tudi predplačniško. Če "
+"še niste zakupili paketa minut, vam bo vsako potovanje sproti zaračunano. V "
+"osebnem profilu najdete vse račune, ki so prenosljivi ter lahko preverite "
+"svoje cene, koliko brezplačnih ali zakupljenih minut ste porabili in koliko "
+"vam jih je še ostalo."
 
 #: module/Application/view/application/index/comefunziona.phtml:60
 msgid "Contratto e regolamento"
@@ -1983,7 +2000,7 @@ msgid ""
 "ISCRIVITI OGGI A SHARE’NGO E SCOPRI IL PIACERE DELLA MOBILITÀ ELETTRICA IN "
 "CITTÀ!"
 msgstr ""
-"PRIDRUŽITE SE DANES S SHARE'NGO IN RAZKRITE PROSTO ELEKTRIČNE MOBILNOSTI V "
+"PRIDRUŽITE SE SHARE'NGO ŠE DANES IN ODKRIJTE UŽITEK ELEKTRIČNE MOBILNOSTI V "
 "MESTU!"
 
 #: module/Application/view/application/index/contatti.phtml:10
@@ -2003,8 +2020,8 @@ msgid ""
 "necessari) alla ricostruzione della vicenda."
 msgstr ""
 "V primeru nesreče (ali incidenta) z drugimi osebami se takoj obrnite na "
-"organe pregona in nato na našo službo za pomoč. Prav tako boste morali vse "
-"uporabne podatke (in potrebne) predložiti rekonstrukcija zgodbe."
+"organe pregona in nato na našo službo za pomoč. Prav tako boste morali za "
+"namen rekonstrukcije dogodkov predložiti vse uporabne in potrebne podatke."
 
 #: module/Application/view/application/index/contatti.phtml:16
 msgid "Assistenza Tecnica da veicolo"
@@ -2019,10 +2036,10 @@ msgid ""
 "sul quale essere richiamati (se non ne &egrave stato inserito uno durante la "
 "registrazione o se differisce da quest’ultimo)."
 msgstr ""
-"V primeru težav s Share'nGo medijem & egrave; V naš center za pomoč lahko "
-"pošljete prošnjo s pritiskom na gumb SOS na tablici v vozilu ali pa boste "
-"morali vnesti mobilno številko, ki jo je treba poklicati (če med "
-"registracijo ni bil vpisan nihče ali če se razlikuje od te) zadnji)."
+"V primeru težav s storitvijo Share'nGo lahko v naš center za pomoč pošljete "
+"prošnjo s pritiskom na gumb SOS na zaslonu v vozilu. Morali boste vnesti "
+"mobilno številko, na katero vas lahko pokličemo (če ta med registracijo ni "
+"bila vpisana oziroma če se od te razlikuje)."
 
 #: module/Application/view/application/index/contatti.phtml:20
 msgid "Per INFO"
@@ -2033,7 +2050,7 @@ msgid ""
 "Se vuoi ricevere informazioni sul servizio Share'nGo, puoi contattarci al "
 "numero "
 msgstr ""
-"Če želite prejeti podatke o storitvi Share'nGo, nas lahko pokličete na "
+"Če potrebujete informacije o storitvi Share'nGo, nas lahko pokličete na "
 "številko "
 
 #: module/Application/view/application/index/contatti.phtml:21
@@ -2099,7 +2116,7 @@ msgstr ""
 
 #: module/Application/view/application/index/index.phtml:54
 msgid "PER SAPERNE DI PIU' (FAQ)"
-msgstr "UČITE VEČ (FAQ)"
+msgstr "VEČ INFORMACIJ (FAQ)"
 
 #: module/Application/view/application/index/index.phtml:62
 #: module/Application/view/application/index/index.phtml:144
@@ -2107,6 +2124,7 @@ msgid "Registrati subito"
 msgstr "Registrirajte se zdaj"
 
 #: module/Application/view/application/index/index.phtml:79
+#, fuzzy
 msgid "SHARE’NGO PARTE DA MILANO"
 msgstr "DELI SE NAPREJ OD MILANA"
 
@@ -2114,10 +2132,10 @@ msgstr "DELI SE NAPREJ OD MILANA"
 msgid ""
 "Il car sharing elettrico a flusso libero è un nuovo primato europeo per la "
 "città"
-msgstr ""
-"Delitev električnih avtomobilov s prostim tokom je nov evropski rekord mesta"
+msgstr "Delitev električnih avtomobilov je nov trend v evropskih mestih"
 
 #: module/Application/view/application/index/index.phtml:83
+#, fuzzy
 msgid ""
 "Martedì 19 maggio al Politecnico di Milano è stato presentato il nuovo car "
 "sharing elettrico di Milano SHARE‘NGO: le auto potranno circolare "
@@ -2158,11 +2176,12 @@ msgstr "2 sedeža in 300-litrski prtljažnik."
 
 #: module/Application/view/application/index/index.phtml:120
 msgid "120 km di autonomia e velocità di 80 km/h"
-msgstr "120 km avtonomije in hitrosti 80 km / h"
+msgstr "120 km avtonomije in hitrosti do 80 km / h"
 
 #: module/Application/view/application/index/index.phtml:124
+#, fuzzy
 msgid "Raggio di sterzo di 4 mt (con servosterzo)"
-msgstr "Polmer krmilja 4 mt (s servo krmiljenjem)"
+msgstr "Polmer krmila 4 mt (s servo krmiljenjem)"
 
 #: module/Application/view/application/index/index.phtml:128
 msgid "Trazione anteriore"
@@ -2174,7 +2193,7 @@ msgstr "Neodvisno sprednje vzmetenje"
 
 #: module/Application/view/application/index/index.phtml:136
 msgid "FOOTPRINT di soli 4,5 MQ"
-msgstr "FOOTPRINT samo 4,5 SQM"
+msgstr "OGLJIČNI ODTIS samo 4,5 MQ"
 
 #: module/Application/view/application/index/index.phtml:164
 #: module/Application/view/application/index/map.phtml:40
@@ -2203,7 +2222,7 @@ msgstr "Registrirajte se in rezervirajte"
 #: module/Application/view/application/index/index.phtml:168
 #: module/Application/view/application/index/map.phtml:44
 msgid "Cerca indirizzo"
-msgstr "Iskalni naslov"
+msgstr "Iskani naslov"
 
 #: module/Application/view/application/index/map2.phtml:34
 msgid "CERCA INDIRIZZO"
@@ -2215,7 +2234,7 @@ msgstr "Zmanjšaj zemljevid"
 
 #: module/Application/view/application/index/map2.phtml:50
 msgid "Estendi la mappa"
-msgstr "Razširite zemljevid"
+msgstr "Razširi zemljevid"
 
 #: module/Application/view/application/index/outstanding-payments.phtml:30
 msgid "Pagamento insoluti"
@@ -2277,7 +2296,7 @@ msgid ""
 "cliccare nuovamente sul link ricevuto via email oppure contattare "
 "l'assistenza tecnica"
 msgstr ""
-"Med plačilnim postopkom je prišlo do napake. Kliknite znova na povezavo, ki "
+"Med plačilnim postopkom je prišlo do napake. Znova kliknite na povezavo, ki "
 "ste jo prejeli po e-pošti ali se obrnite na tehnično podporo"
 
 #: module/Application/view/application/payment/pay-success.phtml:27
@@ -2302,14 +2321,15 @@ msgid "Invita un amico!"
 msgstr "Povabi prijatelja!"
 
 #: module/Application/view/application/user-area/bonus.phtml:28
+#, fuzzy
 msgid ""
 "Invia il codice che vedi sotto ad un amico, ad un parente, ad un collega, "
 "appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, "
 "entrambi riceverete 30 minuti gratis come premio."
 msgstr ""
-"Kodo, ki jo vidite spodaj, pošljite prijatelju, sorodniku ali sodelavcu "
-"takoj, ko jo ima eden ko boste kupili svoj paket dobrodošlice, boste kot "
-"nagrado prejeli 30 brezplačnih minut."
+"Kodo, ki jo vidite spodaj, pošljite prijatelju, sorodniku ali sodelavcu. "
+"Takoj, ko bo kupil svoj paket dobrodošlice, boste kot nagrado prejeli 30 "
+"brezplačnih minut."
 
 #: module/Application/view/application/user-area/bonus.phtml:42
 msgid "Bonus"
@@ -2317,7 +2337,7 @@ msgstr "bonus"
 
 #: module/Application/view/application/user-area/bonus.phtml:55
 msgid "Totale minuti attualmente utilizzabili"
-msgstr "Trenutno skupno uporabnih minut"
+msgstr "Skupno število minut, ki so trenutno na voljo"
 
 #: module/Application/view/application/user-area/bonus.phtml:65
 msgid "Valido al"
@@ -2337,15 +2357,15 @@ msgstr "Preostale minute"
 
 #: module/Application/view/application/user-area/bonus.phtml:74
 msgid "Minuti utilizzati"
-msgstr "Uporabljene minute"
+msgstr "Porabljene minute"
 
 #: module/Application/view/application/user-area/bonus.phtml:77
 msgid "Accredito minuti"
-msgstr "Zapisniki o akreditaciji"
+msgstr "Zakupljene minute"
 
 #: module/Application/view/application/user-area/bonus.phtml:107
 msgid "Non hai ancora bonus associati al tuo account"
-msgstr "Še vedno nimate nobenih bonusov, povezanih z vašim računom"
+msgstr "Še vedno nimate bonusov, povezanih z vašim računom"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:16
 msgid "Dati pagamento"
@@ -2357,7 +2377,7 @@ msgstr "Status plačila"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:35
 msgid "I dati di pagamento sono stati correttamente inseriti."
-msgstr "Podatki o plačilu so pravilno vneseni."
+msgstr "Podatki o plačilu so pravilno vnešeni."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:38
 msgid "Il Pacchetto Benvenuto non risulta ancora pagato"
@@ -2382,16 +2402,16 @@ msgid ""
 "per i pagamenti online)."
 msgstr ""
 " Če želite dokončati plačilo in registrirati svojo kreditno kartico (ali "
-"predplačniško kartico), boste morda zahtevali varno kodo (varnostno kodo za "
-"spletna plačila)."
+"predplačniško kartico), boste morda povprašani za Varno kodo (varnostna koda "
+"za spletna plačila)."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:40
 msgid ""
 "Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine "
 "l&#39;attivazione al gestore della tua carta, prima di proseguire "
 msgstr ""
-"Če nimate varne kode ali je niste nikoli uporabljali, prosite upravitelja "
-"kartice, da jo aktivira, preden nadaljujete "
+"Če nimate Varne kode ali je niste nikoli uporabljali, za aktivacijo prosite "
+"upravitelja kartice  "
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:57
 msgid ""
@@ -2442,9 +2462,11 @@ msgstr "Spremeni kartico"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:118
 msgid "La tua carta di credito (o prepagata) risulta scaduta o non presente:"
-msgstr "Vaša kreditna kartica (ali predplačniška kartica) je potekla ali ni:"
+msgstr ""
+"Vaša kreditna kartica (ali predplačniška kartica) je potekla ali ni vnešena:"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:120
+#, fuzzy
 msgid ""
 "Clicca su <button class=\"medium red\" onclick=\"openChangeCard()\">CAMBIA "
 "CARTA</button> per inserirne una nuova."
@@ -2457,8 +2479,8 @@ msgid ""
 "Attenzione: se non provvederai ad inserire una nuova carta di credito (o "
 "prepagata) il tuo profilo rimarrà disabilitato."
 msgstr ""
-"Pozor: če ne vstavite nove kreditne kartice (ali predplačniške kartice), bo "
-"vaš profil onemogočen."
+"Pozor: če ne zagotovite nove kreditne kartice (ali predplačniške kartice), "
+"bo vaš profil ostal onemogočen."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:125
 msgid ""
@@ -2478,12 +2500,12 @@ msgid ""
 "Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
 "verr&agrave; immediatamente rimborsata al termine della procedura."
 msgstr ""
-"Sprememba kartice vključuje plačilo zneska 1 & EUR; ki bo prišel & agrave; "
-"takoj ob koncu postopka."
+"Zamenjava kartice vključuje plačilo zneska 1 &euro; ki vam bo vrnjen takoj "
+"ob koncu postopka."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:176
 msgid "PROCEDI"
-msgstr "PROCEED"
+msgstr "NADALJUJTE"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:177
 msgid "CHIUDI"
@@ -2494,7 +2516,7 @@ msgstr "ZAPRTO"
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:32
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:32
 msgid "Pagamenti in sospeso"
-msgstr "Nerešena plačila"
+msgstr "Plačila na čakanju"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:43
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
@@ -2509,14 +2531,14 @@ msgstr "Pozdravljeni"
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:46
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:46
 msgid "complimenti, tutte le tue corse risultano regolarmente pagate."
-msgstr "čestitke, vsi vaši teki so redno plačani."
+msgstr "čestitke, vse vaše vožnje so redno plačane."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:50
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:50
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:50
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:50
 msgid "hai esaurito i tuoi minuti bonus e hai effettuato corse a debito."
-msgstr "ste izčrpali svoje bonus minute in ste izvedli bremenitve."
+msgstr "izčrpali ste svoje bonus minute zato se bo izvedla bremenitev računa."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:51
 #: module/Application/view/application/user-area/debt-collection.phtml:125
@@ -2531,9 +2553,9 @@ msgid ""
 "(anche pre-pagata), ricordiamo che &egrave; possibile cambiare la propria "
 "carta di credito nella sezione 'Dati di Pagamento' dell'area riservata."
 msgstr ""
-"Vabimo vas, da plačujete z veljavno kreditno kartico (tudi predplačniško), "
-"vas spomnimo, da & egrave; Svojo kreditno kartico lahko spremenite v "
-"razdelku »Podatki o plačilu« na območju z omejitvami."
+"Vabimo vas, da plačujete z veljavno kreditno kartico (tudi predplačniško). "
+"Naj vas spomnimo, da lahko svojo kreditno kartico spremenite v razdelku "
+"»Podatki o plačilu« v uporabniškem profilu."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:52
 #: module/Application/view/application/user-area/debt-collection.phtml:126
@@ -2631,14 +2653,14 @@ msgstr "Opozorilo:"
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:124
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:124
 msgid "Sono presenti penali da pagare."
-msgstr "Plačati je treba kazni."
+msgstr "Potrebno je plačati kazni."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:137
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:137
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:137
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:137
 msgid "Data generazione"
-msgstr "Datum generacije"
+msgstr "Datum ustvarjenja"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:192
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:192
@@ -2650,10 +2672,10 @@ msgid ""
 "sar&agrave; sospeso fino all&#39;avvenuto pagamento (potrai accedere all&#39;"
 "area riservata ma non fare il log-in sull&#39;App)."
 msgstr ""
-"V primeru, da vaš dolg ni plačan in zato nimamo veljavne kreditne kartice, "
-"povezane z vašim uporabniškim profilom, bo račun obdelan. začasno "
-"zaustavljeno, dokler ne izvedete plačila (dostopili boste lahko do "
-"rezerviranega območja, vendar se ne prijavite v aplikacijo)."
+"V primeru, da vaš dolg ni plačan in torej nimamo veljavne kreditne kartice, "
+"povezane z vašim uporabniškim profilom, bo račun začasno onemogočen, dokler "
+"ne izvedete plačila (dostopali boste lahko do osebnega profila, vendar se ne "
+"boste mogli prijaviti v aplikacijo)."
 
 #: module/Application/view/application/user-area/debt-collection.phtml:197
 msgid ""
@@ -2663,9 +2685,9 @@ msgid ""
 "min invece di 0,28&euro;min) e provi subito la tua Sharengo."
 msgstr ""
 "dobrodošli v Sharengo! Če želite aktivirati svoj račun, morate s "
-"predplačniško kreditno kartico kupiti paket dobrodošlice: s 5 in evri; imate "
-"prvih 21 minut teka po znižani stopnji (0,24 & euro; min namesto 0,28 & "
-"euro; min) in takoj poskusite s Sharengo."
+"predplačniško kreditno kartico kupiti paket dobrodošlice: plačate 5 evrov in "
+"imate prvih 21 minut vožnje po znižani ceni (0,24 & euro; min namesto 0,28 & "
+"euro; min) ter lahko takoj preizkusite Sharengo."
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:24
 #: module/Application/view/application/user-area/driving-licence.phtml:24
@@ -2687,7 +2709,7 @@ msgstr "Podatki o vaših vozniških dovoljenjih"
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
-msgstr "Številka licence"
+msgstr "Registrska številka"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:116
 #: module/Application/view/application/user-area/driving-licence-international.phtml:228
@@ -2702,21 +2724,21 @@ msgstr "Objavljeno (država)"
 #: module/Application/view/application/user-area/driving-licence.phtml:53
 #: module/Application/view/application/user-area/driving-licence.phtml:172
 msgid "Rilasciata da autorit&agrave;"
-msgstr "Izdalo jih organ"
+msgstr "Izdal jih je uradni organ"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:166
 #: module/Application/view/application/user-area/driving-licence.phtml:68
 #: module/Application/view/application/user-area/driving-licence.phtml:188
 #: module/Application/view/application/user/signup2.phtml:81
 msgid "Conseguita il"
-msgstr "Doseženo naprej"
+msgstr "Doseženo ob"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:218
 #: module/Application/view/application/user-area/driving-licence.phtml:104
 #: module/Application/view/application/user-area/driving-licence.phtml:240
 #: module/Application/view/application/user/signup2.phtml:136
 msgid "Patente estera?"
-msgstr "Tuja licenca?"
+msgstr "Tuja vozniškega dovoljenja?"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:241
 #: module/Application/view/application/user-area/driving-licence.phtml:290
@@ -2739,7 +2761,7 @@ msgstr "Preklic"
 #: module/Application/view/application/user-area/profile.phtml:481
 #: module/Application/view/application/user-area/profile.phtml:557
 msgid "Salva modifiche"
-msgstr "Spremembe shranite"
+msgstr "Shranite spremembe"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:257
 #: module/Application/view/application/user-area/driving-licence.phtml:306
@@ -2756,11 +2778,11 @@ msgid ""
 "validit&agrave; della tua patente non sar&agrave; verificata, non potrai "
 "utilizzare il servizio di SHARE&#39;NGO."
 msgstr ""
-"Za preverjanje veljavnosti vaše tuje licence & egrave; Naložiti morate "
-"kopijo vozniškega dovoljenja (spredaj in zadaj) ter kopijo osebne izkaznice "
-"& agrave; (spredaj in zadaj). Lahko nadaljujete takoj s klikom na spodnji "
-"gumb. Finch & egrave; veljavnost & agrave; vaše licence ne bo odvzeta; "
-"preverjeno, ne boste mogli uporabljati storitve SHARE & NVO."
+"Za preverjanje veljavnosti vašega dovoljenja iz tujine morate naložiti "
+"fotokopijo vozniškega dovoljenja (spredaj in zadaj) ter kopijo osebne "
+"izkaznice (spredaj in zadaj). Nadaljujete s klikom na spodnji gumb. Dokler "
+"veljavnost vašega vozniškega dovoljenja ne bo potrjena, ne boste mogli "
+"uporabljati storitve SHAREnGo."
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:265
 #: module/Application/view/application/user-area/driving-licence.phtml:314
@@ -2774,12 +2796,12 @@ msgstr "nadaljujte"
 msgid ""
 "5. Numero Patente<br>4. Data di rilascio<br>4c. Autorit&agrave; di "
 "rilascio<br>"
-msgstr "5. Številka licence 4. Datum izdaje 4c. Organi in agrave; izpust <br>"
+msgstr "5. Registrska številka 4. Datum izdaje 4c. Izdajatelj"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:126
 #: module/Application/view/application/user-area/driving-licence.phtml:263
 msgid "Categoria patente"
-msgstr "Kategorija vozniških dovoljenj"
+msgstr "Kategorija vozniškega dovoljenja"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:150
 msgid "Modifica"
@@ -2818,7 +2840,7 @@ msgstr "Podatki o prebivališču"
 #: module/Application/view/application/user-area/index.phtml:131
 #: module/Application/view/application/user-area/index.phtml:361
 msgid "Provincia"
-msgstr "Province"
+msgstr "Občina"
 
 #: module/Application/view/application/user-area/index.phtml:135
 #: module/Application/view/application/user-area/index.phtml:370
@@ -2827,7 +2849,7 @@ msgstr "Province"
 #: module/Application/view/application/user/new-signup2.phtml:130
 #: module/Application/view/application/user/signup.phtml:340
 msgid "Citt&agrave;"
-msgstr "Mesto in agrave;"
+msgstr "Mesto"
 
 #: module/Application/view/application/user-area/index.phtml:149
 #: module/Application/view/application/user-area/index.phtml:407
@@ -2844,7 +2866,7 @@ msgstr "Civic"
 #: module/Application/view/application/user/signup-sk2.phtml:132
 #: module/Application/view/application/user/signup.phtml:322
 msgid "Cap"
-msgstr "Poštna številka"
+msgstr "Cap"
 
 #: module/Application/view/application/user-area/index.phtml:163
 #: module/Application/view/application/user-area/index.phtml:442
@@ -3059,14 +3081,13 @@ msgstr "Do zdaj ni bilo izdanih računov"
 
 #: module/Application/view/application/user-area/maintenance-page.phtml:37
 msgid "Sistema in manutenzione"
-msgstr "Sistem v vzdrževanju"
+msgstr "Sistem na vzdrževanju"
 
 #: module/Application/view/application/user-area/maintenance-page.phtml:47
 msgid ""
 "CI SCUSIAMO PER IL TEMPORANEO DISSERVIZIO, LA PAGINA TORNER&Agrave; PRESTO "
 "ONLINE."
-msgstr ""
-"PROSIMO ZA ZAČASNO ODSTRANJEVANJE, STRAN TORNERJA & Agrave; Kmalu na spletu."
+msgstr "OPRAVIČUJEMO SE ZA NEVŠEČNOSTI, STRAN BO V KRATKEM SPET DOSTOPNA."
 
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:197
 msgid ""
@@ -3076,12 +3097,13 @@ msgid ""
 "min) e provi subito la tua Sharengo."
 msgstr ""
 "dobrodošli v Sharengo! Za aktiviranje računa je potrebno, da s predplačniško "
-"kreditno kartico kupite paket dobrodošlice: z 10 €; imate prvih 30 minut "
-"teka po znižani stopnji (0,33 evra; min) in takoj preizkusite svoj Sharengo."
+"kreditno kartico kupite paket dobrodošlice: za 10 €; imate prvih 30 minut "
+"izposoje po znižani stopnji (0,33 evra; min) in lahko že takoj preizkusite "
+"svoj Sharengo."
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:14
 msgid "PACKAGE MY SHARE'N GO"
-msgstr "PAKET MOJ DELI GO"
+msgstr "PAKET MOJ SHARE'N GO"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:20
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:72
@@ -3103,42 +3125,42 @@ msgid ""
 "(e gli abbonamenti mensili sono molto favorevoli). <br><br>In termini "
 "pratici:&nbsp;"
 msgstr ""
-"MySHARE & # 39; NVO & egrave; MESEČNA PRIJAVA z veljavnostjo & agrave; v 30 "
-"dneh kupite, ko želite, tako kot druge pakete, v rezerviranem območju za 360 "
-"€; (300 & EUR; + DDV). & Nbsp; Ob nakupu ste takoj & nbsp; akreditirani "
-"45.000 minut (vse mesečne minute od 30 dni) in prejeti e-pošto z navodili za "
-"ureditev dostave vašega vozila isti ali naslednji dan. <strong> Od tega dne "
-"bo avtomobil & agrave; izključno za vas </strong> z edinim bremenom "
-"upravljanja nadomestnega doma doma ali s standardom ENEL ali A2A (in mesečne "
-"vozovnice so zelo ugodne). <br> <br> Praktično: & nbsp;"
+"MySHARE'NGO & egrave; MESEČNA NAJEM z veljavnostjo & agrave; 30 dni kupite, "
+"kadar želite, tako kot druge pakete, v uporabniškem profilu za 360 €; (300 & "
+"EUR; + DDV). & Nbsp; Ob nakupu vam takoj & nbsp; akreditiramo 45.000 minut "
+"(vse mesečne minute v 30 dneh) in pošljemo e-pošto z navodili za ureditev "
+"dostave vašega vozila isti ali naslednji dan. <strong> Od tega dne bo "
+"avtomobil & agrave; izključno v vaši uporabi </strong> za polnjenje v tem "
+"času pa lahko poskrbite doma ali na javnih polnilnicah. <br> <br> Praktično: "
+"& nbsp;"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:45
 msgid "Non chiuderete mai la vostra corsa (terrete l&#39;auto in parcheggio)"
-msgstr "Nikoli ne boste zaprli vožnje (avto boste imeli na parkirišču)"
+msgstr "Ne boste zaključili izposoje (avto boste imeli na parkirišču)"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:46
 msgid ""
 "L&#39;auto andr&agrave; e uscir&agrave; dalla ricarica senza alcun "
 "intervento particolare"
 msgstr ""
-"Auto andr & agrave; in pridi & agrave; od polnjenja brez posebnega "
-"posredovanja"
+"Avtomobil & agrave; & agrave; bo končal polnjenje brez potrebe posredovanja"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:47
 msgid "La manutenzione ordinaria e straordinaria sar&agrave; a nostro carico"
-msgstr "Izvajalo se bo redno in izredno vzdrževanje na naše stroške"
+msgstr "Stroške za redno in izredno vzdrževanje pokrijemo mi"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:48
 msgid "Avrete un&#39;auto sostitutiva se e quando servir&agrave;"
-msgstr "Če boste in kdaj morali, boste imeli nadomestni avtomobil"
+msgstr ""
+"V primeru da ga boste potrebovali, vam bo na voljo nadomestni avtomobil;"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:49
 msgid ""
 "L&#39;abbonamento si rinnover&agrave; automaticamente ogni mese, salvo "
 "disdetta da parte vostra entro 7 gg dalla chiusura del mese"
 msgstr ""
-"Naročnina se sam obnavlja; samodejno vsak mesec, razen če ga prekličete v "
-"roku 7 dni od konca meseca"
+"Naročnina se vsak mesec samodejno obnavlja, razen če jo prekličete v roku 7 "
+"dni pred koncem meseca"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:51
 msgid ""
@@ -3147,10 +3169,10 @@ msgid ""
 "chilometraggio o di Area Operativa o di minuti&nbsp; corsi e che entrate e "
 "parcheggiate liberamente in centro.&nbsp;"
 msgstr ""
-"In stroški na minuto? Izračunajte ga za kilometre in čas, ko boste "
-"uporabljali svoj Share & N; Pojdi, & nbsp; ne pozabite, da NISE OMEJITVE na "
-"prevoženih kilometrih ali območju delovanja ali minutah & nbsp; tečajev in "
-"da prosto vstopite in parkirate v centru. & nbsp;"
+"In strošek na minuto? Izračunajte ga za kilometrino in čas, ko boste "
+"uporabljali svoj Share'ngo ter ne pozabite, da NI OMEJITEV na prevožene "
+"kilometre, območje delovanja ali minute vožnje ter da lahko prosto parkirate "
+"v centru. & nbsp;"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:56
 msgid ""
@@ -3158,8 +3180,8 @@ msgid ""
 "progetto sperimentale MySHARE&#39;NGO e quindi - se vi interessa - "
 "scriveteci presto a "
 msgstr ""
-"Pozor: imamo na voljo začetka 25 avtomobilov za eksperimentalni projekt "
-"nevladne organizacije MySHARE in zato - če vas zanima - nam pišite kmalu na "
+"Pozor: na voljo imamo 25 avtomobilov za zagon preizkusnega projekta "
+"MySHARE'NGO - če vas zanima - nam pišite na "
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:64
 msgid ""
@@ -3167,13 +3189,13 @@ msgid ""
 "Club con numero di telefono riservato, uno speciale contratto di noleggio e "
 "l&#39;attenzione che meritano i nostri migliori clienti.&nbsp; "
 msgstr ""
-"Uporabniki nevladnih organizacij MySHARE se bodo samodejno vpisali v "
-"prednostni klub z zaupno telefonsko številko, posebno pogodbo o najemu in "
-"pozornostjo, ki si jo zaslužijo naše najboljše stranke. & Nbsp; "
+"Uporabniki MySHARE'NGO bodo samodejno vpisani v Poseben klub z zaupno "
+"telefonsko številko, posebno pogodbo o najemu in pozornostjo, ki si jo "
+"zaslužijo naše najboljše stranke. & Nbsp; "
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:15
 msgid "SECURE CODE"
-msgstr "VARNOSTNI KODEK"
+msgstr "VARNOSTNA KODA"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:44
 msgid ""
@@ -3185,13 +3207,13 @@ msgid ""
 "fondamentale perch&eacute; permette di prevenire eventuali utilizzi illeciti "
 "della carta e di evitare addebiti indesiderati."
 msgstr ""
-"<b> VARNO KODO </b> (imenovano tudi 3D Secure, preverjeno z Visa, SecureCode "
-"MasterCard ali enkratnim geslom - OTP) & egrave; varnostno kodo za plačila "
-"prek spleta, ki jo številna spletna mesta potrebujejo za večjo varnost "
-"transakcij na spletu. Ne glede na to, ali kupujete prek spleta ali ne, "
-"uporabljate in se zanašate na varno kodo & egrave; temeljno, ker & eacute; "
-"omogoča preprečevanje kakršne koli nezakonite uporabe kartice in "
-"preprečevanje neželenih stroškov."
+"<b> VARNOSTNA KODA </b> (imenovana tudi 3D Secure, preverjena z Viso, "
+"SecureCode MasterCard ali enkratnim geslom - OTP) & egrave; varnostna koda "
+"za plačila prek spleta, ki jo številna spletna mesta uporabljajo za večjo "
+"varnost transakcij na spletu. Ne glede na to, ali kupujete prek spleta ali "
+"ne, uporabljate in se zanašate na varnostno kodo & egrave; , ker & eacute; "
+"omogoča preprečevanje kakršne koli nezakonite uporabe kartice in preprečuje "
+"neželene stroške."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:46
 msgid ""
@@ -3204,23 +3226,23 @@ msgid ""
 "ne genera una diversa ad ogni pagamento (password monouso)."
 msgstr ""
 "Zaščitna koda zahteva overitev plačila s strani imetnika kreditne kartice "
-"(ali predplačila), ki mora vnesti geslo. Geslo se zahteva med vsakim nakupom "
-"pri trgovcu, ki se drži storitve. To geslo je lahko bodite osebni in "
-"standardni ali poslani s sporočilom SMS za vsako transakcijo ali ustvarjeni "
-"z elektronskim ključem, ki ga je zagotovila vaša banka in ustvari drugačno "
-"za vsako plačilo (enkratno geslo)."
+"(ali predplačila), ki mora vnesti geslo. Geslo se zahteva pri vsakem nakupu "
+"storitve. To geslo je lahko bodisi osebno in standardno ali poslano z SMS-om "
+"ob vsaki transakciji ali ustvarjeno z elektronskim ključem, ki ga je "
+"zagotovila vaša banka in se generira za vsako plačilo posebej (enkratno "
+"geslo)."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:48
 msgid ""
 "Per attivare il Secure Code (se non hai già la chiavetta elettronica) "
 "bastano pochi semplici passi."
 msgstr ""
-"Če želite aktivirati varno kodo (če še nimate elektronskega ključa), je "
+"Za aktivacijo varnostne kode (če še nimate elektronskega ključa), je "
 "potrebno le nekaj preprostih korakov."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:50
 msgid "POSTEPAY:"
-msgstr "POSTEPAY:"
+msgstr "PLAČILO NA POŠTI:"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:50
 msgid ""
@@ -3229,13 +3251,13 @@ msgid ""
 "effettuato un pagamento la posta invier&agrave; un SMS gratuito al numero "
 "fornito che rappresenta la password da inserire)."
 msgstr ""
-" samo pojdite na pisarne pošte ali Postamat, navedite številko kartice in "
-"svojo telefonsko številko (vsakič, ko se izvede plačilo, bo pošta brezplačno "
-"poslana na številko, ki predstavlja geslo, ki ga morate vnesti)."
+" samo pojdite na pošto, navedite številko kartice in svojo telefonsko "
+"številko (vsakič, ko se izvede plačilo, boste po SMS-ju prejeli geslo, ki ga "
+"morate vnesti)."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:51
 msgid "POSTEPAY EVOLUTION:"
-msgstr "POSTEPNA EVOLUCIJA:"
+msgstr "PLAČILO NA POŠTI EVOLUCIJA:"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:51
 msgid ""
@@ -3245,15 +3267,15 @@ msgid ""
 "l&#39;SMS con il codice di sicurezza da inserire per completare il pagamento."
 msgstr ""
 " Zaščitno kodo je mogoče aktivirati tudi v trenutku, ko je izvedeno plačilo. "
-"Samo vnesite davčno kodo in telefonsko številko (za povezavo s kartico). "
-"Telefonska številka bo poslana z zaščitno kodo, ki jo želite vnesti za "
-"dokončanje plačila."
+"Samo vnesite davčno in telefonsko številko (za povezavo s kartico). Na "
+"telefonsko številko bo poslano geslo, ki ga vnesete za dokončanje plačila."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:52
 msgid "CARTASI:"
 msgstr "CartaSI:"
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:52
+#, fuzzy
 msgid ""
 " per attivare il Secure Code occorre registrarsi nell’area “3D Secure” del "
 "portale Titolari sul sito di <a href=\"https://titolari.cartasi.it/portal/"
@@ -3268,11 +3290,11 @@ msgstr ""
 " Če želite aktivirati zaščitno kodo, se je potrebno registrirati v območju "
 "»3D Secure« Portala na spletnem mestu <a href = \"https: //titolari.cartasi."
 "it/portal/registrazione/registrazione_step1.xhtml? face-redirect = true \"> "
-"Cartas & igrave; </a>. Postopek aktivacije je enostavno in hitro: ko vnesete "
+"Cartas & igrave; </a>. Postopek aktivacije je enostaven in hiter: ko vnesete "
 "podatke, morate le določiti identifikacijsko besedno zvezo in vnesti "
-"številko mobilne telefona, na katero boste pozvani; poslal SMS, ki vsebuje "
-"edinstveno varnostno kodo (6 števk), ki jo je treba vnesti ob plačilu, da jo "
-"potrdi. Za več informacij preberite <a href=\"https://www.cartasi.it/"
+"številko mobilnega telefona, na katero boste pozvani; poslan bo SMS, ki "
+"vsebuje edinstveno varnostno kodo (6 števk), ki jo je treba vnesti ob "
+"plačilu. Za več informacij preberite <a href=\"https://www.cartasi.it/"
 "gtwpages/common/index.jsp?id=obbBpvVgJm\"> pogosta vprašanja </a>."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:53
@@ -3285,10 +3307,9 @@ msgid ""
 "filiale di riferimento per richiederne l&#39;attivazione. Per maggiori info "
 "leggi le <a href=\"https://www.mastercard.it/it-it/faq.html\">FAQ</a>."
 msgstr ""
-" samo se obrnite na službo za stranke v svoji banki ali se obrnite na "
-"lokalno poslovalnico, da zahtevate aktiviranje. Če želite več informacij, "
-"preberite <a href=\"https://www.mastercard.it/it-it/faq.html\"> pogosta "
-"vprašanja </a>."
+"da zahtevate aktiviranje se obrnite na službo za stranke v svoji banki ali "
+"na lokalno poslovalnico. Če želite več informacij, preberite <a href="
+"\"https://www.mastercard.it/it-it/faq.html\"> pogosta vprašanja </a>."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:54
 msgid "VISA:"
@@ -3303,22 +3324,23 @@ msgid ""
 "href=\"https://www.visaitalia.com/pagare-con-visa/pagamenti-online/\">FAQ</"
 "a>."
 msgstr ""
-" lahko se napiše; pridružite se storitvi prek banke ali organizacije, ki "
-"izda kartico Visa, pri čemer izberete geslo in osebno sporočilo. Potem ko bo "
-"članstvo Nakupovanje lahko opravite v kateri koli spletni trgovini, ki "
-"ponuja Verified by Visa. Za več informacij preberite <a href=\"https://www."
-"visaitalia.com/pagare-con-visa/pagamenti-online/\"> pogosta vprašanja </a>."
+"storitvi se lahko pridružite prek banke ali organizacije, ki je pooblaščena "
+"za izdajo kartice Visa, pri čemer izberete geslo in osebno sporočilo. Ko "
+"boste enkrat včlanjeni lahko nakupujete v katerikoli spletni trgovini, ki "
+"ima oznako Verified by Visa. Za več informacij preberite <a href=\"https://"
+"www.visaitalia.com/pagare-con-visa/pagamenti-online/\"> pogosta vprašanja </"
+"a>."
 
 #: module/Application/view/application/user-area/pin.phtml:27
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:27
 msgid ""
 "QUESTO &Egrave; IL PIN CHE TI SERVIR&Agrave; PER UTILIZZARE UNA SHARE&#39;NGO"
-msgstr "TO in Egrave; PIN, ki ste ga vložili & Agrave; ZA UPORABO DELA NVO"
+msgstr "TO JE PIN, KI GA BOSTE POTREBOVALI ZA UPORABO STORITVE SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:37
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:37
 msgid "ATTENZIONE: MEMORIZZALO IN LUOGO SICURO E NON DARLO AD ALTRI"
-msgstr "POZOR: SKLADIŠČITE ga na varnem mestu in ga ne dajejte drugim"
+msgstr "POZOR: SKLADIŠČITE ga na varnem mestu in ga ne delite z drugimi"
 
 #: module/Application/view/application/user-area/pin.phtml:45
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:45
@@ -3328,7 +3350,7 @@ msgstr "Poglejte, kako se uporablja"
 #: module/Application/view/application/user-area/pin.phtml:51
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
-msgstr "Ali želite tudi, da se z vašim računom poveže vrata z odprto kartico?"
+msgstr "Ali želite z vašim računom povezati tudi kartico za odpiranje vrat?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
@@ -3343,16 +3365,20 @@ msgstr "za posredovanje vaše zahteve"
 #: module/Application/view/application/user-area/pin.phtml:55
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
-msgstr "ZAHTEVEK ZA DELE KARTICE NVO"
+msgstr "ZAHTEVEK ZA KARTICO SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
+#, fuzzy
+#| msgid ""
+#| "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
+#| "puoi anche ritirarla c/o i nostri uffici"
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
 msgstr ""
-"Na vaš dom bo prispela brezplačno, lahko pa ga prevzamete tudi v naših "
-"poslovalnicah"
+"Na zahtevo bo v roku enega tedna brezplačno prispela na vaš dom, lahko pa jo "
+"prevzamete tudi v naših poslovalnicah"
 
 #: module/Application/view/application/user-area/profile.phtml:145
 #: module/Application/view/application/user-area/profile.phtml:381
@@ -3366,7 +3392,7 @@ msgstr "Naslov prebivališča"
 
 #: module/Application/view/application/user-area/rates.phtml:50
 msgid "Il tuo piano tariffario personale"
-msgstr "Vaš osebni tarifni načrt"
+msgstr "Vaš osebni tarifni paket"
 
 #: module/Application/view/application/user-area/rates.phtml:59
 msgid "Le tue tariffe"
@@ -3402,13 +3428,13 @@ msgid ""
 "(30 minuti a 3 &euro;), per tornare a casa in piena sicurezza pagando 0,10 "
 "&euro;/min."
 msgstr ""
-"Ponoči, od 1 do 5, lahko ženske kupijo ženski vaučer za ženske (30 minut za "
-"3 €), da se varno vrnejo domov in plača 0,10 €;"
+"Ponoči, od 1. do 5. ure, lahko ženske kupijo vaučer za ženske (30 minut za 3 "
+"€), da se varno vrnejo domov in plačajo le 0,10 €;"
 
 #: module/Application/view/application/user-area/rents.phtml:21
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:21
 msgid "Le mie corse"
-msgstr "Moji teki"
+msgstr "Moje vožnje"
 
 #: module/Application/view/application/user-area/rents.phtml:43
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:44
@@ -3422,10 +3448,10 @@ msgid ""
 "qualora ti siano state riconosciute. In fondo alla tabella trovi il totale "
 "degli addebiti del mese applicando la tua tariffa personale."
 msgstr ""
-"S preprostim pritiskom miške na vsako potovanje si lahko ogledate koordinate "
-"odhoda in prihoda, porabo bonus minut in brezplačnih vozovnic, če ste bili "
-"prepoznani. Na dnu tabele najdete skupne stroške za mesec, ki uporablja vašo "
-"osebno ceno."
+"S preletom miške si lahko za vsako potovanje ogledate koordinate odhoda in "
+"prihoda, porabo bonus minut in brezplačnih vozovnic, če ste jih imeli. Na "
+"dnu tabele najdete skupne stroške za ta mesec, ki so izračunani na podlagi "
+"vaše osebne tarife."
 
 #: module/Application/view/application/user-area/rents.phtml:82
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
@@ -3435,7 +3461,7 @@ msgstr "skupaj"
 #: module/Application/view/application/user-area/rents.phtml:83
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Da saldare"
-msgstr "Za varjenje"
+msgstr "Za plačilo"
 
 #: module/Application/view/application/user-area/rents.phtml:94
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
@@ -3443,6 +3469,7 @@ msgid "Attenzione"
 msgstr "Opozorilo"
 
 #: module/Application/view/application/user-area/rents.phtml:95
+#, fuzzy
 msgid ""
 ": l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse "
 "da saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
@@ -3450,15 +3477,15 @@ msgid ""
 "temporaneamente sospeso. Contatta il Customer Service di SHARENGO per la "
 "riattivazione."
 msgstr ""
-": dirke se običajno zaračunajo naslednji dan. Če je danes treba opraviti "
-"vožnje, ki niso narejene, obstajajo težave z bremenitvijo vaše kreditne "
-"kartice in vaš račun je začasno zaustavljen. Za ponovno aktivacijo se "
-"obrnite na službo za stranke SHARENGO."
+": vožnje se običajno zaračunajo naslednji dan. Če danes ne morete opraviti "
+"vožnje, obstajajo težave z bremenitvijo vaše kreditne kartice in vaš račun "
+"je začasno zaustavljen. Za ponovno aktivacijo se obrnite na službo za "
+"stranke SHARE'NGO."
 
 #: module/Application/view/application/user-area/rents.phtml:104
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
 msgid "Nessuna corsa effettuata finora"
-msgstr "Zaenkrat še ni bilo opravljenega teka"
+msgstr "Zaenkrat še niste opravili nobene vožnje"
 
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:197
@@ -3468,14 +3495,14 @@ msgid ""
 "5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;"
 "min invece di 0,21&euro;min) e provi subito la tua Sharengo."
 msgstr ""
-"dobrodošli v Sharengo! Če želite aktivirati svoj račun, morate s "
-"predplačniško kreditno kartico kupiti paket dobrodošlice: s 5 in evri; imate "
-"prvih 30 minut teka po znižani stopnji (0,17 & euro; min. namesto 0,21 & "
-"min; min) in takoj poskusite s Sharengo."
+"dobrodošli v Share'ngo! Če želite aktivirati svoj račun, morate s kreditno "
+"ali predplačniško kartico kupiti paket dobrodošlice: s 5 evri imate prvih 30 "
+"minut izposoje po znižani ceni (0,17 & euro; min. namesto 0,21 & min; min) "
+"Share'ngo storitev pa lahko preizkusite takoj."
 
 #: module/Application/view/application/user-area/trips.phtml:16
 msgid "NOLEGGI"
-msgstr "RENTALS"
+msgstr "NAJEM"
 
 #: module/Application/view/application/user-area/trips.phtml:53
 msgid "Ora"
@@ -3483,7 +3510,7 @@ msgstr "zdaj"
 
 #: module/Application/view/application/user-area/trips.phtml:56
 msgid "Partenza"
-msgstr "Check out"
+msgstr "Odhod"
 
 #: module/Application/view/application/user-area/trips.phtml:59
 msgid "Netto"
@@ -3499,7 +3526,7 @@ msgstr "tot"
 
 #: module/Application/view/application/user-area/trips.phtml:103
 msgid "Durata noleggio"
-msgstr "Trajanje izposoje"
+msgstr "Trajanje najema"
 
 #: module/Application/view/application/user-area/trips.phtml:109
 msgid "Fine noleggo"
@@ -3519,16 +3546,17 @@ msgstr "destinacija"
 
 #: module/Application/view/application/user-area/trips.phtml:145
 msgid "Non hai ancora effettuato alcun noleggio"
-msgstr "Še niste oddali nobenih izposoj"
+msgstr "Niste še opravili še nobene izposoje"
 
 #: module/Application/view/application/user/new-signup.phtml:15
 #: module/Application/view/application/user/signup-nl1.phtml:21
 #: module/Application/view/application/user/signup-si1.phtml:19
 #: module/Application/view/application/user/signup-sk1.phtml:29
 msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
-msgstr "Skupna raba električnih avtomobilov ne onesnažuje in plačuje!"
+msgstr "Skupna raba električnih avtomobilov je praktična in ne onesnažuje!"
 
 #: module/Application/view/application/user/new-signup.phtml:18
+#, fuzzy
 msgid "Area C/ZTL/Tridente Roma + park gratis"
 msgstr "Območje C / LTZ / Trident Rim + park brezplačno"
 
@@ -3569,7 +3597,7 @@ msgstr "Ustvari svoj račun"
 #: module/Application/view/application/user/signup-si1.phtml:112
 #: module/Application/view/application/user/signup-sk1.phtml:122
 msgid "Cliccando sul tasto Iscriviti accetti"
-msgstr "S klikom na gumb Naroči se sprejmete"
+msgstr "S klikom na gumb Naroči se sprejemate"
 
 #: module/Application/view/application/user/new-signup.phtml:109
 #: module/Application/view/application/user/signup-nl1.phtml:114
@@ -3601,6 +3629,7 @@ msgstr "Zapri"
 #: module/Application/view/application/user/signup-nl1.phtml:155
 #: module/Application/view/application/user/signup-si1.phtml:154
 #: module/Application/view/application/user/signup-sk1.phtml:163
+#, fuzzy
 msgid ""
 "Domenica 11 Febbraio dalle ore 7:30 alle ore 13:30 una manutenzione "
 "programmata del sistema di verifica delle patenti potrebbe causare qualche "
@@ -3620,7 +3649,7 @@ msgstr "Ste že registrirani!"
 #: module/Application/view/application/user/new-signup2.phtml:470
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
-msgstr "Za dokončanje vnosa vaših podatkov kliknite PRIJAVI in PRIJAVI"
+msgstr "Za dokončanje vnosa vaših podatkov kliknite VSTOPI in se vpišite"
 
 #: module/Application/view/application/user/new-signup2.phtml:29
 msgid "21 minuti a soli 5&euro;"
@@ -3645,32 +3674,33 @@ msgstr "Dobrodošli"
 #: module/Application/view/application/user/signup-si2.phtml:43
 #: module/Application/view/application/user/signup-sk2.phtml:43
 msgid "Pochi istanti per completare il tuo profilo"
-msgstr "Nekaj trenutkov za dokončanje profila"
+msgstr "Samo nekaj trenutkov za dokončanje profila"
 
 #: module/Application/view/application/user/new-signup2.phtml:69
 msgid "Nome Patente"
-msgstr "Ime vozniškega dovoljenja"
+msgstr "Ime na vozniškem dovoljenju"
 
 #: module/Application/view/application/user/new-signup2.phtml:78
 msgid "Cognome Patente"
-msgstr "Ime licence"
+msgstr "Priimek na vozniškem dovoljenju"
 
 #: module/Application/view/application/user/new-signup2.phtml:92
 msgid "Nome codice fiscale"
-msgstr "Davčno kodno ime"
+msgstr "Ime povezano z davčno številko"
 
 #: module/Application/view/application/user/new-signup2.phtml:100
 msgid "Cognome codice fiscale"
-msgstr "Davčna koda za priimek"
+msgstr "Priimek povezano z davčno številko"
 
 #: module/Application/view/application/user/new-signup2.phtml:122
 msgid "Provincia di residenza"
-msgstr "Provinca prebivališča"
+msgstr "Kraj bivanja"
 
 #: module/Application/view/application/user/new-signup2.phtml:162
 #: module/Application/view/application/user/signup-nl2.phtml:123
 #: module/Application/view/application/user/signup-si2.phtml:123
 #: module/Application/view/application/user/signup-sk2.phtml:123
+#, fuzzy
 msgid "N. civico"
 msgstr "Državljanska številka"
 
@@ -3679,35 +3709,34 @@ msgid ""
 "INSERISCI QUI IL CODICE DI VERIFICA INVIATO VIA SMS, SE NON RICEVI IL "
 "MESSAGGIO, CONTATTA IL SERVIZIO CLIENTI"
 msgstr ""
-"VSTOPITE TUKAJ KODE ZA PREVERJANJE, POŠLJENO S SMS-om, ČE NE SPREJETE "
-"SPOROČILA, POVZETITE STORITEV KUPCA"
+"TUKAJ VNESETE KODO, KI STE JO PREJELI Z SMS-om, ČE SPOROČILA S KODO NISTE "
+"PREJELI, KONTAKTIRAJTE SLUŽBO ZA POMOČ UPORABNIKOM"
 
 #: module/Application/view/application/user/new-signup2.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:242
 #: module/Application/view/application/user/signup-si2.phtml:243
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
-msgstr "Prepričajte se, da je izdana zadnja licenca."
+msgstr "Prepričajte se, da je vozniško dovoljenje veljavno."
 
 #: module/Application/view/application/user/new-signup2.phtml:268
 msgid "Scadenza patente"
-msgstr "Datum poteka veljavnosti licence"
+msgstr "Datum poteka veljavnosti vozniškega dovoljenja"
 
 #: module/Application/view/application/user/new-signup2.phtml:292
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
-msgstr "IZJAVA O SPREMEMBI NOTARNEGA ZAKONA"
+msgstr "IZJAVA O SPREMEMBI NOTARSKEGA ZAKONA"
 
 #: module/Application/view/application/user/new-signup2.phtml:292
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
-msgstr "POTRDILO DOVOLJENJA LICENCE O DOSTOPNOSTI"
+msgstr "POTRDILO VELJAVNOSTI VOZNIŠKEGA DOVOLJENJA"
 
 #: module/Application/view/application/user/new-signup2.phtml:293
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr ""
-"(Člena 21, odstavek 1 - 38, odstavek 2 in 3 predsedniške uredbe 445 z dne "
-"28. 12. 2000)"
+"(Člen 21, odstavek 1 - 38, odstavek 2 in 3 uredbe 445 z dne 28. 12. 2000)"
 
 #: module/Application/view/application/user/new-signup2.phtml:295
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
@@ -3722,10 +3751,10 @@ msgid ""
 "leggi speciali in materia ed espressamente richiamate dall'art. 76 del D.P."
 "R. N. 445 DEL 28/12/2000, sotto la sua responsabilit&agrave"
 msgstr ""
-"zavedajo se kazenskih sankcij, s katerimi se lahko sooči v primeru "
-"neresničnih deklaracij, kazenskih sankcij, ki jih predvideva kazenski "
-"zakonik in posebni zakoni na to temo in so izrecno navedeni v čl. 76 DPRN "
-"445 z dne 12. 12. 2000, na njegovo odgovornost"
+"zavedajo se kazenskih sankcij, ki jih lahko doletijo v primeru neresničnih "
+"izjav ter kazenskih sankcij, ki jih predvideva kazenski zakonik in posebni "
+"zakoni na to temo in so izrecno navedeni v čl. 76 DPRN 445 z dne 12. 12. "
+"2000, na lastno odgovornost"
 
 #: module/Application/view/application/user/new-signup2.phtml:301
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
@@ -3734,10 +3763,11 @@ msgstr "RAZGLAŠA"
 
 #: module/Application/view/application/user/new-signup2.phtml:303
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
-msgstr "imeti veljavno vozniško dovoljenje "
+msgstr "posedovati veljavno vozniško dovoljenje "
 
 #: module/Application/view/application/user/new-signup2.phtml:304
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
+#, fuzzy
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione "
 "alle norme internazionali di circolazione (legate alla residenza del "
@@ -3761,6 +3791,7 @@ msgstr "Prebrati, potrditi in podpisati"
 #: module/Application/view/application/user/signup-si2.phtml:279
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
+#, fuzzy
 msgid ""
 "Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto "
 "Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente "
@@ -3790,40 +3821,40 @@ msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida e della carta di identità, entrambe fronte e retro"
 msgstr ""
-"Potrebno je priložiti fotostatično kopijo vozniškega dovoljenja in osebne "
-"izkaznice, tudi če ni overjena, spredaj in zadaj."
+"Potrebno je priložiti fotokopijo vozniškega dovoljenja in osebne izkaznice, "
+"tudi če ni overjena, spredaj in zadaj."
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
 #: module/Application/view/application/user/signup-si2.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
-msgstr "spredaj vozniško dovoljenje"
+msgstr "sprednjo stran vozniškega dovoljenja"
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
 #: module/Application/view/application/user/signup-si2.phtml:307
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
-msgstr "retro vozniško dovoljenje"
+msgstr "zadnjo stran vozniškega dovoljenja"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
 #: module/Application/view/application/user/signup-si2.phtml:318
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
-msgstr "sprednja osebna izkaznica"
+msgstr "sprednjo stran osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
 #: module/Application/view/application/user/signup-si2.phtml:327
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
-msgstr "retro osebna izkaznica"
+msgstr "zadnjo stran osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:367
 msgid "INSERISCI QUI SE HAI UN CODICE PROMO"
-msgstr "VNETE TUKAJ, ČE IMATE PROMO KODO"
+msgstr "ČE IMATE PROMO KODO JO VNESITE TUKAJ"
 
 #: module/Application/view/application/user/new-signup2.phtml:381
 #: module/Application/view/partials/translations.phtml:30
@@ -3835,7 +3866,8 @@ msgid ""
 "Attivazione include il controllo della Patente<br>con il Ministero dei "
 "Trasporti."
 msgstr ""
-"Aktivacija vključuje nadzor vozniškega dovoljenja pri Ministrstvu za promet."
+"Aktivacija vključuje preverbo vozniškega dovoljenja pri Ministrstvu za "
+"promet."
 
 #: module/Application/view/application/user/new-signup2.phtml:395
 #: module/Application/view/application/user/signup-nl2.phtml:345
@@ -3850,7 +3882,7 @@ msgstr "Pred nadaljevanjem preverjanja:"
 
 #: module/Application/view/application/user/new-signup2.phtml:420
 msgid "Hai una patente europea senza scadenza?"
-msgstr "Imate evropsko licenco brez roka?"
+msgstr "Imate evropsko dovoljenje, ki ne poteče?"
 
 #: module/Application/view/application/user/new-signup2.phtml:421
 msgid ""
@@ -3858,13 +3890,12 @@ msgid ""
 "che ti invieremo via email. E nel caso tu sia residente in Italia da più di "
 "2 anni devi convertirla in quella italiana."
 msgstr ""
-"Če v vašem evropskem vozniškem dovoljenju ni roka, izpolnite samopotrditev, "
-"vam jo pošljemo po e-pošti. Če prebivate v Italiji več kot 2 leti, jo morate "
-"spremeniti v italijansko."
+"Če v vašem evropskem vozniškem dovoljenju ni naveden datum poteka, izpolnite "
+"samoprijavo, ki vam jo pošljemo po e-pošti."
 
 #: module/Application/view/application/user/new-signup2.phtml:423
 msgid "Hai una patente estera non europea?"
-msgstr "Imate neevropsko licenco v tujini?"
+msgstr "Imate mednarodno, neevropsko vozniško dovoljenje?"
 
 #: module/Application/view/application/user/new-signup2.phtml:424
 msgid ""
@@ -3873,28 +3904,29 @@ msgid ""
 "che ti invieremo via mail. Se sei residente in Italia da più di un anno è "
 "necessario convertirla in quella italiana."
 msgstr ""
-"Za registracijo morate imeti mednarodno vozniško dovoljenje ali zaprisežen "
-"prevod dokumenta in izpolniti obrazec za samoprijave, ki vam ga bomo poslali "
-"po e-pošti. Če prebivate v Italiji več kot eno leto, ga morate spremeniti v "
-"italijanskega."
+"Za registracijo morate imeti mednarodno vozniško dovoljenje ali uraden "
+"prevod dokumenta in izpolnjen obrazec za samoprijavo, ki vam ga bomo poslali "
+"po e-pošti. Če prebivate v Sloveniji več kot eno leto, ga morate spremeniti "
+"v slovenskega."
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
 #: module/Application/view/application/user/signup-si2.phtml:377
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
-msgstr "Vstavljene datoteke presegajo največjo velikost nalaganja."
+msgstr ""
+"Izbrane datoteke presegajo največjo možno velikost naloženih dokumentov."
 
 #: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
 #: module/Application/view/application/user/signup-si2.phtml:404
 #: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
-msgstr "5. Številka licence"
+msgstr "5. Številka vozniškega dovoljenja"
 
 #: module/Application/view/application/user/optional.phtml:14
 msgid "Ora sei dei nostri!"
-msgstr "Zdaj ste eden naših!"
+msgstr "Zdaj ste eden izmed nas!"
 
 #: module/Application/view/application/user/optional.phtml:22
 msgid "Pagamento avvenuto!"
@@ -3928,7 +3960,7 @@ msgstr "Za več informacij se obrnite na podporo"
 
 #: module/Application/view/application/user/optional.phtml:30
 msgid "Sarà possibile riprovare il pagamento in Area Riservata"
-msgstr "Plačilo bo mogoče znova poskusiti na območju Rezervirano"
+msgstr "S plačilom bo mogoče znova poskusiti v uporabniškem profilu"
 
 #: module/Application/view/application/user/optional.phtml:62
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:47
@@ -3941,15 +3973,15 @@ msgid ""
 "appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, "
 "entrambi riceverete 30 minuti gratis come premio."
 msgstr ""
-"Kodo, ki jo vidite spodaj, pošljite prijatelju, sorodniku ali sodelavcu "
-"takoj, ko jo ima eden ko boste kupili svoj paket dobrodošlice, boste kot "
-"nagrado prejeli 30 brezplačnih minut."
+"Kodo, ki jo vidite spodaj, pošljite prijatelju, sorodniku ali sodelavcu. "
+"Takoj, ko bo nakupil svoj paket dobrodošlice, bosta oba nagrajena s 30 "
+"brezplačnimi minutami."
 
 #: module/Application/view/application/user/optional.phtml:92
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
-msgstr "Pojdite na rezervirano območje"
+msgstr "Pojdite na uporabniški profil"
 
 #: module/Application/view/application/user/signup-nl1.phtml:25
 #: module/Application/view/application/user/signup-si1.phtml:23
@@ -3972,9 +4004,9 @@ msgid ""
 "accetta e approva letteralmente le Condizioni generali e condizioni e assume "
 "consapevole della loro accettazione per concludere il contratto."
 msgstr ""
-"Stranka je potem, ko je prebrala Splošne pogoje v skladu s členom 43c zakona "
-"št. 40/1964 Coll. Civilni zakonik izjavlja, da sprejema in dobesedno "
-"potrjuje splošne pogoje in se zaveda, da sprejema pogodbo."
+"Stranka po tem, ko je prebrala Splošne pogoje v skladu s členom 43c zakona "
+"št. 40/1964 Coll. Civilni zakonik izjavlja, da sprejema in potrjuje splošne "
+"pogoje in se zaveda, da sprejema pogodbo."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
 msgid "30 minuti a soli 10&euro;"
@@ -3994,7 +4026,7 @@ msgstr "BSN"
 #: module/Application/view/application/user/signup-si2.phtml:247
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
-msgstr "Datum poteka veljavnosti licence"
+msgstr "Datum poteka veljavnosti vozniškega dovoljenja"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
 #: module/Application/view/application/user/signup-si2.phtml:260
@@ -4011,28 +4043,28 @@ msgid ""
 "periodo di utilizzo di questo servizio servizio, fino al ritiro di tale "
 "consenso."
 msgstr ""
-"Stranka, ki se zaveda kazenskega zakona in civilnih posledic, z lažnimi "
-"izjavami izjavlja, da ima veljavno vozniško dovoljenje, ki mu dovoljuje "
-"vožnjo do vozila namesto na Slovaškem. V skladu s členoma 13 in 14 zakona "
-"št. 18/2018 ZZ o varstvu osebnih podatkov in dodajam nekaj zakonov "
-"izjavljam, da izrecno in brezpogojno dajem operaterju soglasje za obdelavo "
-"mojih osebnih podatkov, kolikor je potrebno storitvam Sharengo, ki so "
-"navedene v splošnih pogodbenih pogojih in za namene delovanja storitev v "
-"obdobju uporabe te storitve do umika take privolitve."
+"Stranka izjavlja da se zaveda kazenskega zakonika in pravnih posledic, ki jo "
+"lahko doletijo v primeru, da lažno izjavlja, da ima veljavno vozniško "
+"dovoljenje, ki mu dovoljuje vožnjo vozila na Slovenskem. V skladu s členoma "
+"13 in 14 zakona št. 18/2018 ZZ o varstvu osebnih podatkov izjavljam, da "
+"izrecno in brezpogojno dajem operaterju soglasje za obdelavo mojih osebnih "
+"podatkov, kolikor je potrebno za izvajanje storitev Sharengo, ki so navedene "
+"v splošnih pogodbenih pogojih in za namene delovanja storitev v obdobju "
+"uporabe te storitve do umika take privolitve."
 
 #: module/Application/view/application/user/signup-nl2.phtml:285
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida fronte e retro"
 msgstr ""
-"Priložiti je treba fotostatično kopijo sprednjega in zadnjega vozniškega "
-"dovoljenja, tudi če ni overjena"
+"Priložiti je treba fotokopijo sprednje in zadnje strani vozniškega "
+"dovoljenja, tudi če ni overjeno"
 
 #: module/Application/view/application/user/signup-nl2.phtml:331
 #: module/Application/view/application/user/signup-si2.phtml:339
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
-msgstr "uporabniška fotografija (selfie)"
+msgstr "fotografija uporabnika (sebek)"
 
 #: module/Application/view/application/user/signup-si2.phtml:35
 #: module/Application/view/application/user/signup-sk2.phtml:35
@@ -4044,18 +4076,18 @@ msgid ""
 "L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni "
 "standard, salvo promozioni)."
 msgstr ""
-"Prijava za storitev stane 10 evrov s 30-minutnim bonusom (standardni pogoji, "
-"razen promocij)."
+"Prijava na storitev stane 10 evrov z vključenim 30-minutnim bonusom "
+"(standardni pogoji, razen promocij)."
 
 #: module/Application/view/application/user/signup.phtml:46
 msgid "Costo iscrizione 1 euro con 15 minuti bonus. Premi chat "
-msgstr "Prijavnina 1 evro z 15 minutami bonusa. Pritisnite klepet "
+msgstr "Prijavnina 1 evro s 15 minutami bonusa. Pritisnite klepet "
 
 #: module/Application/view/application/user/signup.phtml:48
 msgid ""
 "Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni. Premi chat "
 msgstr ""
-"Prijavnina 5 evrov z 15 minutami bonusa, razen promocij. Pritisnite klepet "
+"Prijavnina 5 evrov s 15 minutami bonusa, razen promocij. Pritisnite klepet "
 
 #: module/Application/view/application/user/signup.phtml:51
 msgid "per aiuto."
@@ -4066,7 +4098,7 @@ msgid ""
 "The registration fee is 10€ with 30 minutes bonus (standard condition "
 "without promotions)."
 msgstr ""
-"Kotizacija znaša 10 € s 30 minutami bonusa (standardni pogoj brez promocij)."
+"Kotizacija znaša 10 € s 30 minutami bonusa (standardni pogoji brez promocij)."
 
 #: module/Application/view/application/user/signup.phtml:59
 msgid "Registration fee is 1€ with 15 bonus minutes. Push chat "
@@ -4077,7 +4109,8 @@ msgid ""
 "Registration fee 5 euro with 15 bonus minutes, except for promotion. Push "
 "chat "
 msgstr ""
-"Prijavnina 5 EUR z 15 bonus minutami, razen za napredovanje. Pritisni klepet "
+"Prijavnina 5 EUR s 15 bonus minutami, razen če gre za promocije. Pritisni "
+"klepet "
 
 #: module/Application/view/application/user/signup.phtml:65
 msgid "for help."
@@ -4098,7 +4131,7 @@ msgstr "Vnesite podatke, ki jih boste uporabili za dostop do storitve"
 
 #: module/Application/view/application/user/signup.phtml:165
 msgid "Ripeti l'email"
-msgstr "Ponovite e-pošto"
+msgstr "Ponovno vnesite e-poštni naslov"
 
 #: module/Application/view/application/user/signup.phtml:204
 msgid "Inserisci i tuoi dati personali"
@@ -4118,7 +4151,7 @@ msgstr ""
 
 #: module/Application/view/application/user/signup.phtml:377
 msgid "Partita IVA (solo per ditte individuali e professionisti)"
-msgstr "Številka DDV (samo za posamezna in poklicna podjetja)"
+msgstr "Številka DDV (samo za pravne osebe in podjetja)"
 
 #: module/Application/view/application/user/signup.phtml:660
 msgid "Professione (Opzionale)"
@@ -4126,7 +4159,7 @@ msgstr "Poklic (neobvezno)"
 
 #: module/Application/view/application/user/signup.phtml:670
 msgid "Come hai conosciuto Sharengo? (Opzionale)"
-msgstr "Kako ste spoznali Sharengo? (Po želji)"
+msgstr "Kako ste izvedeli za Sharengo? (Po želji)"
 
 #: module/Application/view/application/user/signup.phtml:686
 msgid "Scegli la lingua preferita"
@@ -4136,7 +4169,7 @@ msgstr "Izberite želeni jezik"
 #: module/Application/view/partials/translations.phtml:6
 msgid ""
 "Termini e Condizioni Generali di Contratto, Regolamento Tariffario e Privacy"
-msgstr "Splošni pogoji pogodbe, tarifni predpisi in zasebnost"
+msgstr "Splošni pogoji pogodbe, ceniki in zasebnost"
 
 #: module/Application/view/application/user/signup.phtml:716
 #: module/Application/view/partials/translations.phtml:7
@@ -4151,7 +4184,7 @@ msgstr "Uredba o cenah"
 #: module/Application/view/application/user/signup.phtml:737
 #: module/Application/view/partials/translations.phtml:12
 msgid "Informativa Privacy"
-msgstr "Podatki o zasebnosti"
+msgstr "Informacije o zasebnosti"
 
 #: module/Application/view/application/user/signup2.phtml:37
 msgid "Inserisci i dati della tua patente di guida"
@@ -4163,15 +4196,15 @@ msgstr "(Številka vozniškega dovoljenja)"
 
 #: module/Application/view/application/user/signup2.phtml:58
 msgid "Assicurati di inserire quello dell’ultima patente rilasciata."
-msgstr "Prepričajte se, da ste vpisali eno od zadnjih izdanih licenc."
+msgstr "Prepričajte se, da ste vnesli aktualno vozniško dovoljenje."
 
 #: module/Application/view/application/user/signup2.phtml:63
 msgid "Rilascio da autorit&agrave;"
-msgstr "Izpustitev organov"
+msgstr "Uradno izdan"
 
 #: module/Application/view/application/user/signup2.phtml:64
 msgid "(Issuing authority)"
-msgstr "(Organ izdaje)"
+msgstr "(Dokument izdaja)"
 
 #: module/Application/view/application/user/signup2.phtml:82
 msgid "(Issue date)"
@@ -4179,11 +4212,11 @@ msgstr "(Datum izdaje)"
 
 #: module/Application/view/application/user/signup2.phtml:94
 msgid "(Expiry date)"
-msgstr "(Datum izteka)"
+msgstr "(Datum preteka)"
 
 #: module/Application/view/application/user/signup2.phtml:111
 msgid "(Driver's license name)"
-msgstr "(Ime vozniškega dovoljenja)"
+msgstr "(Ime na vozniškem dovoljenju)"
 
 #: module/Application/view/application/user/signup2.phtml:118
 #: module/Application/view/application/user/signup2.phtml:130
@@ -4191,24 +4224,23 @@ msgid ""
 "Da inserire esattamente come compare sulla tua patente, anche nel caso di "
 "doppio o triplo nome."
 msgstr ""
-"Da se vstavi točno tako, kot je navedeno v vozniškem dovoljenju, tudi v "
+"Da se vpiše točno tako, kot je navedeno v vozniškem dovoljenju, tudi v "
 "primeru dvojnega ali trojnega imena."
 
 #: module/Application/view/application/user/signup2.phtml:123
 msgid "(Driver's license surname)"
-msgstr "(Priimek vozniškega dovoljenja)"
+msgstr "(Priimek na vozniškem dovoljenju)"
 
 #: module/Application/view/application/user/signup2.phtml:137
 msgid "(Foreign driver license?)"
-msgstr "(Tujo vozniško dovoljenje?)"
+msgstr "(Tuje vozniško dovoljenje?)"
 
 #: module/Application/view/application/user/signup2.phtml:143
 msgid ""
 "Scarica il documento di autocertificazione e compilalo dopo aver completato "
 "l’iscrizione."
 msgstr ""
-"Prenesite dokument o samo certificiranju in ga po končani registraciji "
-"izpolnite."
+"Prenesite dokument o samo-prijavi in ga po končani registraciji izpolnite."
 
 #: module/Application/view/application/user/signup2.phtml:144
 msgid ""
@@ -4233,7 +4265,7 @@ msgstr "(Država izdajateljica)"
 
 #: module/Application/view/application/user/signup2.phtml:165
 msgid "Categoria patente - Driver license category"
-msgstr "Kategorija vozniških dovoljenj - kategorija vozniških dovoljenj"
+msgstr "Kategorija vozniškega dovoljenja - kategorija vozniškega dovoljenja"
 
 #: module/Application/view/application/user/signup2.phtml:192
 msgid "Indietro (Back)"
@@ -4256,7 +4288,7 @@ msgid ""
 "Ora puoi accedere con i dati inseriti in fase di registrazione all'app e "
 "alla tua area utente."
 msgstr ""
-"Zdaj lahko dostopate do aplikacije in vašega uporabniškega območja s "
+"Zdaj lahko dostopate do aplikacije in vašega uporabniškega profila s "
 "podatki, vnesenimi med registracijo."
 
 #: module/Application/view/application/user/signupinsert.phtml:51
@@ -4270,8 +4302,8 @@ msgid ""
 "e retro. Puoi procedere subito "
 msgstr ""
 "Če želite preveriti veljavnost vašega tujega vozniškega dovoljenja, morate "
-"naložiti kopijo vozniškega dovoljenja in osebne izkaznice, spredaj in zadaj. "
-"Lahko nadaljujete takoj "
+"naložiti kopijo vozniškega dovoljenja in osebne izkaznice, sprednjo in "
+"zadnjo stran. Lahko nadaljujete takoj "
 
 #: module/Application/view/application/user/signupinsert.phtml:55
 #: module/Application/view/partials/translations.phtml:32
@@ -4284,9 +4316,9 @@ msgid ""
 "validità della tua patente non sarà verificata, non potrai utilizzare il "
 "servizio di SHARE’NGO."
 msgstr ""
-"ali to storite pozneje z vašega rezerviranega območja. Dokler ne bo "
-"preverjena veljavnost vaše licence, storitve SHARE'NGO ne boste mogli "
-"uporabljati."
+"ali to storite pozneje z vašega uporabniškega profila. Dokler ne bo "
+"preverjena veljavnost vašega vozniškega dovoljenja, storitve SHARE'NGO ne "
+"boste mogli uporabljati."
 
 #: module/Application/view/application/user/signupinsert.phtml:59
 msgid ""
@@ -4294,13 +4326,13 @@ msgid ""
 "positivo,<br>se così non fosse accedi all'area riservata e verifica i tuoi "
 "dati prima di effettuare il pagamento."
 msgstr ""
-"Preverite v svojih poštnih sporočilih, če je preverjanje licence prineslo "
-"pozitiven rezultat, <br> če ni bilo tako, obiščite rezervirano območje in "
-"preverite svoje podatke pred plačilom."
+"Preverite v svojih poštnih sporočilih, če je bilo preverjanje vozniškega "
+"dovoljenja uspešno, <br> če temu ni bilo tako, obiščite uporabniški profil "
+"in pred plačilom preverite svoje podatke."
 
 #: module/Application/view/application/user/signupinsert.phtml:63
 msgid "Per completare l'attivazione del servizio, esegui il pagamento di "
-msgstr "Če želite dokončati aktiviranje storitve, izvedite plačilo v "
+msgstr "Če želite dokončati aktivacijo storitve, izvedite plačilo v "
 
 #: module/Application/view/application/user/signupinsert.phtml:65
 msgid ""
@@ -4321,10 +4353,11 @@ msgid ""
 "\n"
 msgstr ""
 "Draga stranka,,\n"
-"prejeli smo vašo zahtevo za obnovitev gesla n Kliknite spodnjo povezavo, da "
-"jo lahko ponastavimo.,\n"
+"prejeli smo vašo zahtevo za obnovitev gesla n Za ponastavitev kliknite na "
+"spodnjo povezavo.,\n"
 
 #: module/Application/view/emails/forgot-password.phtml:22
+#, fuzzy
 msgid ""
 "\n"
 "Cordiali Saluti,\n"
@@ -4337,14 +4370,14 @@ msgstr ""
 "\n"
 "Lep pozdrav,\n"
 "\n"
-"Služba za stranke avtomobila Sharengo\n"
+"Služba za stranke Sharengo\n"
 "\n"
 "E-pošta: servizioclienti@sharengo.it\n"
-"Informacije in pogodbe: www.sharengo.it"
+"Informacije in pogodbe: www.sharengo.si"
 
 #: module/Application/view/error/404.phtml:10
 msgid "Pagina non trovata"
-msgstr "Stran ni najdena"
+msgstr "Strani ni bilo mogoče najti"
 
 #: module/Application/view/error/404.phtml:12
 msgid "La pagina richiesta non è stata trovata."
@@ -4379,14 +4412,14 @@ msgstr "Prejšnje izjeme"
 
 #: module/Application/view/error/index.phtml:58
 msgid "No Exception available"
-msgstr "Izjema ni na voljo"
+msgstr "Izjeme niso na voljo"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:6
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:3
 #: module/Application/view/layout/layout.phtml:141
 #: module/Application/view/zfc-user/user/login.phtml:3
 msgid "Login"
-msgstr "Log in"
+msgstr "Prijava"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:28
 msgid "Recupera la password"
@@ -4408,8 +4441,8 @@ msgid ""
 "DOPO AVER INVIATO LA RICHIESTA CONTROLLA LA TUA EMAIL E SEGUI IL LINK PER "
 "CAMBIARE LA PASSWORD"
 msgstr ""
-"NAKON POŠLJANJA ZAHTEVA PREVERITE E-POŠTO IN NADALJITE POVEZAVO, DA "
-"SPREMENITE POTNIK"
+"PO POSLANI ZAHTEVI ZA PONASTAVITEV PREVERITE E-POŠTO IN SLEDITE VSEBOVANI "
+"POVEZAVI, DA SPREMENITE GESLO"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
 msgid "Recupero Password"
@@ -4458,10 +4491,9 @@ msgid ""
 "www.google.com/chromeframe/?redirect=true\">attiva Google Chrome Frame</a> "
 "per far diventare pi&ugrave; potente il tuo browser."
 msgstr ""
-"Uporabljate brskalnik <strong> nepodprto </strong>. <a href=\"http://"
-"browsehappy.com/\"> posodobite brskalnik </a> ali <a href = \"http://www."
-"google.com/chromeframe/?redirect=true \"Aktivirajte Google Chrome Frame </"
-"a>, da bo lepši; zmogljiv vaš brskalnik."
+"Uporabljani brskalnik <strong> ni podprt </strong>. <a href=\"http://"
+"browsehappy.com/\"> Posodobite brskalnik </a> ali <a href = \"http://www."
+"google.com/chromeframe/?redirect=true \"Uporabite Google Chrome Frame </a>."
 
 #: module/Application/view/layout/layout.phtml:118
 msgid "Navigazione principale"
@@ -4473,7 +4505,7 @@ msgstr "Izmenjava avtomobilov"
 
 #: module/Application/view/layout/layout.phtml:121
 msgid "Chi &egrave; Share'n GO?"
-msgstr "Kdo je Share'n GO?"
+msgstr "Kdo smo Share'n GO?"
 
 #: module/Application/view/layout/layout.phtml:124
 #: module/Application/view/layout/layout.phtml:194
@@ -4493,7 +4525,7 @@ msgstr "Najem"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:26
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:26
 msgid "Contatti"
-msgstr "Kontakti"
+msgstr "Kontakt"
 
 #: module/Application/view/layout/layout.phtml:138
 #: module/Application/view/partials/header/main_head.phtml:30
@@ -4501,7 +4533,7 @@ msgstr "Kontakti"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:29
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:29
 msgid "Area riservata"
-msgstr "Rezervirano območje"
+msgstr "Uporabniški profil"
 
 #: module/Application/view/layout/layout.phtml:139
 msgid "Log out"
@@ -4509,7 +4541,7 @@ msgstr "Odjava"
 
 #: module/Application/view/layout/layout.phtml:165
 msgid "Share 'N Go"
-msgstr "Pošlji N N Go"
+msgstr "Share'NGo"
 
 #: module/Application/view/layout/layout.phtml:166
 msgid "è un servizio di C.S. Group S.p.A."
@@ -4525,7 +4557,7 @@ msgstr "Via dei Pelaghi 162, 57124 - Livorno (LI)"
 
 #: module/Application/view/layout/layout.phtml:169
 msgid "Codice Fiscale e Partita IVA"
-msgstr "Davčna koda in številka DDV"
+msgstr "Davčna številka in številka DDV"
 
 #: module/Application/view/layout/layout.phtml:170
 msgid "Numero REA"
@@ -4561,7 +4593,7 @@ msgstr "Zasebnost"
 
 #: module/Application/view/layout/layout.phtml:192
 msgid "Regolamento e tariffe"
-msgstr "Uredba in stopnje"
+msgstr "Pravilnik in cenik"
 
 #: module/Application/view/layout/layout.phtml:195
 msgid "Come si usa un'equomobile"
@@ -4585,15 +4617,15 @@ msgstr "Share'ngo"
 
 #: module/Application/view/partials/car-popup.phtml:34
 msgid "Auto scelta"
-msgstr "Izbran sam"
+msgstr "Samoizbran"
 
 #: module/Application/view/partials/car-popup.phtml:47
 msgid "Stato interni"
-msgstr "Notranji status"
+msgstr "Stanje notranjosti"
 
 #: module/Application/view/partials/car-popup.phtml:57
 msgid "Stato esterni"
-msgstr "Zunanji status"
+msgstr "Stanje zunanjosti"
 
 #: module/Application/view/partials/car-popup.phtml:73
 msgid "Dove si trova"
@@ -4610,9 +4642,9 @@ msgid ""
 "oppure la tessera. Ti consigliamo di non utilizzare l\\'auto se l"
 "\\'autonomia è al di sotto del 20&#37; di carica"
 msgstr ""
-"Ne pozabite, da boste morali imeti s seboj pametni telefon, da odprete avto "
-"ali kartico. Svetujemo vam, da avtomobila ne uporabljate, če je avtonomija "
-"pod 20 & # 37; zaračuna"
+"Ne pozabite, da boste za uporabo avtomobila potrebovali mobilni telefon ali "
+"kartico Share'ngo. Svetujemo vam, da avtomobila ne uporabljate, če je "
+"avtonomija pod 20 & # 37; zaračuna"
 
 #: module/Application/view/partials/car-popup.phtml:129
 msgid "Ricorda che:"
@@ -4648,15 +4680,15 @@ msgstr "Visa - Nagrada za dobroimetje"
 
 #: module/Application/view/partials/credit-card-refuse.phtml:21
 msgid "Maestro - Debit"
-msgstr "Maestro - obremenitev"
+msgstr "Maestro - debetna"
 
 #: module/Application/view/partials/credit-card-refuse.phtml:29
 msgid "Genius - Unicredit"
-msgstr "Genij - Unicredit"
+msgstr "Genius - Unicredit"
 
 #: module/Application/view/partials/credit-card-refuse.phtml:37
 msgid "Platinum - Debit"
-msgstr "Platinasti - debetni"
+msgstr "Platinum - debetna"
 
 #: module/Application/view/partials/credit-card-refuse.phtml:48
 msgid "Visa Corporate"
@@ -4697,7 +4729,7 @@ msgstr "Sodelujte z nami"
 #: module/Application/view/partials/footer/main_foot.phtml:26
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:27
 msgid "Press"
-msgstr "Press"
+msgstr "Mediji"
 
 #: module/Application/view/partials/footer/main_foot.phtml:33
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:34
@@ -4711,13 +4743,14 @@ msgstr "podpora"
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:35
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:35
 msgid "Contratto di servizio e tariffe"
-msgstr "Pogodba o storitvah in cene"
+msgstr "Pogodba o storitvah in cenik"
 
 #: module/Application/view/partials/footer/main_foot.phtml:38
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:39
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:36
+#, fuzzy
 msgid "Modello di recesso"
-msgstr "Model umika"
+msgstr "Predloga za odstop od pogodbe"
 
 #: module/Application/view/partials/footer/main_foot.phtml:39
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:40
@@ -4736,7 +4769,7 @@ msgstr "Prenesite aplikacijo"
 
 #: module/Application/view/partials/foreign-drivers-license-completion.phtml:11
 msgid "Validazione patente"
-msgstr "Potrditev licence"
+msgstr "Potrditev vozniškega dovoljenja"
 
 #: module/Application/view/partials/foreign-drivers-license-completion.phtml:15
 msgid "Procedura completata"
@@ -4748,8 +4781,8 @@ msgid ""
 "validità della tua patente, potrai iniziare ad utilizzare i servizi di "
 "SHAREN`GO."
 msgstr ""
-"Vozniško dovoljenje se preverja. Ko preverimo veljavnost vaše licence, lahko "
-"začnete uporabljati storitve SHAREN`GO."
+"Vozniško dovoljenje se preverja. Ko preverimo veljavnost vašega vozniškega "
+"dovoljenja, lahko začnete uporabljati storitve SHAREN`GO."
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:15
 msgid "nato a"
@@ -4773,7 +4806,7 @@ msgstr "preko"
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:32
 msgid "di essere titolare di patente di guida in corso di validit&agrave n."
-msgstr "imeti vozniško dovoljenje med veljavnostjo n."
+msgstr "imeti veljavno vozniško dovoljenje n."
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:32
 msgid "rilasciata da"
@@ -4789,9 +4822,9 @@ msgid ""
 "guida e della carta di identità, entrambe fronte e retro (è possibile "
 "caricare più di un file effettuando una selezione multipla)"
 msgstr ""
-"Potrebno je priložiti fotostatično kopijo vozniškega dovoljenja in osebne "
-"izkaznice, tudi če ni overjena, spredaj in zadaj (možno je naložiti več "
-"datotek z več izbirami)"
+"Potrebno je priložiti fotokopijo vozniškega dovoljenja in osebne izkaznice, "
+"tudi če ni overjena, spredaj in zadaj (možno je naložiti več datotek z več "
+"izbirami)"
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:71
 #: module/Application/view/partials/translations.phtml:17
@@ -4805,7 +4838,7 @@ msgstr "Paketi & amp; promo"
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
 msgid "La città cambia"
-msgstr "Mesto se spreminja"
+msgstr "Sprememba mesta"
 
 #: module/Application/view/partials/header/main_head.phtml:25
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:25
@@ -4842,7 +4875,7 @@ msgstr "Prijava"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:32
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:32
 msgid "Iscriviti"
-msgstr "Registracija"
+msgstr "Prijava"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:22
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:22
@@ -4857,15 +4890,17 @@ msgid "Pacchetti &amp; promozioni"
 msgstr "Paketi & amp; promocije"
 
 #: module/Application/view/partials/translations.phtml:8
+#, fuzzy
 msgid ""
 "Ho letto, compreso e accettato i Termini e Condizioni Generali di Contratto "
 "e il Regolamento Tariffario del servizio di car sharing SHARE'N GO&reg;, "
 "fornito da C.S. Group S.p.A. e dalle sue controllate: C.S. Firenze S.r.l., C."
 "S. Milano S.r.l. e C.S. Roma S.r.l."
 msgstr ""
-"Prebral sem, razumel in sprejel Splošne pogoje in pravila tarife za storitev "
-"delitve avtomobilov SHARE'N GO & reg; storitev, ki jo zagotavljajo CS Group "
-"SpA in njegove podružnice: CS Firenze Srl, CS Milano Srl in CS Roma Srl"
+"Prebral sem, razumel in sprejel Splošne pogoje in pravila ter tarife ki "
+"zadevajo storitev delitve avtomobilov SHARE'N GO; storitev, ki jo "
+"zagotavljajo CS Group SpA in njegove podružnice: CS Firenze Srl, CS Milano "
+"Srl in CS Roma Srl"
 
 #: module/Application/view/partials/translations.phtml:13
 msgid "Informativa sulla privacy"
@@ -4879,9 +4914,9 @@ msgid ""
 "ricevere comunicazioni di SHARE’NGO® via email, SMS o posta, inclusi gli "
 "inviti a partecipare a indagini di mercato e sondaggi."
 msgstr ""
-"Da bi izboljšali storitev in bili posodobljeni glede ponudb SHARE & NVO & "
-"reg; in partnerji podjetja SHARE'NGO & reg; prednostno in / ali izključno "
-"rezerviran za stranke SHARE'NGO®, dajem soglasje za prejem komunikacij od "
+"Da bi izboljšali storitev in bili obveščeni o ponudbah SHARE'NGO & reg; in "
+"partnerjev podjetja SHARE'NGO & reg; ki so prednostno in / ali izključno "
+"rezervirane za stranke SHARE'NGO®, dajem soglasje za prejem sporočil od "
 "SHARE'NGO® po e-pošti, SMS-u ali pošti, vključno s povabili za sodelovanje v "
 "tržnih raziskavah in raziskavah."
 
@@ -4927,15 +4962,15 @@ msgstr "Albanija"
 
 #: module/Application/view/partials/translations.phtml:36
 msgid "Algeria"
-msgstr "alžirija"
+msgstr "Alžirija"
 
 #: module/Application/view/partials/translations.phtml:37
 msgid "Andorra"
-msgstr "andora"
+msgstr "Andora"
 
 #: module/Application/view/partials/translations.phtml:38
 msgid "Angola"
-msgstr "angola"
+msgstr "Angola"
 
 #: module/Application/view/partials/translations.phtml:39
 msgid "Anguilla"
@@ -4959,7 +4994,7 @@ msgstr "Savdska Arabija"
 
 #: module/Application/view/partials/translations.phtml:44
 msgid "Argentina"
-msgstr "argentinski"
+msgstr "Argentina"
 
 #: module/Application/view/partials/translations.phtml:45
 msgid "Armenia"
@@ -5007,11 +5042,11 @@ msgstr "Belize"
 
 #: module/Application/view/partials/translations.phtml:56
 msgid "Benin"
-msgstr "benin"
+msgstr "Benin"
 
 #: module/Application/view/partials/translations.phtml:57
 msgid "Bermuda"
-msgstr "bermuda"
+msgstr "Bermuda"
 
 #: module/Application/view/partials/translations.phtml:58
 msgid "Bhutan"
@@ -5031,7 +5066,7 @@ msgstr "Bosna in Hercegovina"
 
 #: module/Application/view/partials/translations.phtml:62
 msgid "Botswana"
-msgstr "botswana"
+msgstr "Botsvana"
 
 #: module/Application/view/partials/translations.phtml:63
 msgid "Brasile"
@@ -5131,7 +5166,7 @@ msgstr "Dominika"
 
 #: module/Application/view/partials/translations.phtml:87
 msgid "Ecuador"
-msgstr "ekvador"
+msgstr "Ekvador"
 
 #: module/Application/view/partials/translations.phtml:88
 msgid "Egitto"
@@ -5195,7 +5230,7 @@ msgstr "Jamajka"
 
 #: module/Application/view/partials/translations.phtml:103
 msgid "Giappone"
-msgstr "japan"
+msgstr "Japonska"
 
 #: module/Application/view/partials/translations.phtml:104
 msgid "Gibilterra"
@@ -5471,7 +5506,7 @@ msgstr "Malezija"
 
 #: module/Application/view/partials/translations.phtml:172
 msgid "Mali"
-msgstr "mali"
+msgstr "Mali"
 
 #: module/Application/view/partials/translations.phtml:173
 msgid "Malta"
@@ -5511,7 +5546,7 @@ msgstr "Moldavija"
 
 #: module/Application/view/partials/translations.phtml:182
 msgid "Monaco"
-msgstr "monaco"
+msgstr "Monako"
 
 #: module/Application/view/partials/translations.phtml:183
 msgid "Mongolia"
@@ -5595,11 +5630,11 @@ msgstr "Papua Nova Gvineja"
 
 #: module/Application/view/partials/translations.phtml:203
 msgid "Paraguay"
-msgstr "paragvaj"
+msgstr "Paragvaj"
 
 #: module/Application/view/partials/translations.phtml:204
 msgid "Peru"
-msgstr "peru"
+msgstr "Peru"
 
 #: module/Application/view/partials/translations.phtml:205
 msgid "Polinesia Francese"
@@ -5663,7 +5698,7 @@ msgstr "Zahodna Sahara"
 
 #: module/Application/view/partials/translations.phtml:220
 msgid "Samoa"
-msgstr "samoa"
+msgstr "Samoa"
 
 #: module/Application/view/partials/translations.phtml:221
 msgid "Samoa Americane"
@@ -5787,7 +5822,7 @@ msgstr "Vzhodni Timor"
 
 #: module/Application/view/partials/translations.phtml:251
 msgid "Togo"
-msgstr "togo"
+msgstr "Togo"
 
 #: module/Application/view/partials/translations.phtml:252
 msgid "Tonga"
@@ -5815,7 +5850,7 @@ msgstr "Tuvalu"
 
 #: module/Application/view/partials/translations.phtml:258
 msgid "Ucraina"
-msgstr "ukrajina"
+msgstr "Ukrajina"
 
 #: module/Application/view/partials/translations.phtml:259
 msgid "Uganda"
@@ -5847,7 +5882,7 @@ msgstr "Vietnam"
 
 #: module/Application/view/partials/translations.phtml:266
 msgid "Yemen"
-msgstr "jemen"
+msgstr "Jemen"
 
 #: module/Application/view/partials/translations.phtml:267
 msgid "Zambia"
@@ -5896,7 +5931,7 @@ msgstr "Ste pozabili geslo?"
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:17
 msgid "Associazione con azienda"
-msgstr "Združenje s podjetjem"
+msgstr "Povezava s podjetjem"
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:19
 msgid "Sei associato alla seguente azienda:"
@@ -5904,7 +5939,7 @@ msgstr "Povezani ste z naslednjim podjetjem:"
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:22
 msgid "Stato associazione: "
-msgstr "Status združenja: "
+msgstr "Stanje povezanosti: "
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:25
 msgid "Nome: "
@@ -5942,9 +5977,9 @@ msgid ""
 "degli addebiti del mese applicando la tua tariffa personale."
 msgstr ""
 "S preprostim pritiskom miške na vsako potovanje lahko vidite začetne in "
-"končne naslove, porabo bonus minut in brezplačnih vozovnic; če ste bili "
-"prepoznani. Na dnu tabele najdete skupne stroške za mesec, ki uporablja vašo "
-"osebno ceno."
+"končne naslove, porabo bonus minut in brezplačnih vozovnic; . Na dnu tabele "
+"najdete skupne stroške za mesec, ki so izračunani glede na vam prilagojeno "
+"ceno."
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
 msgid "Targa"
@@ -5962,14 +5997,15 @@ msgid ""
 "temporaneamente sospeso. Contatta il Customer Service di SHARE'NGO per la "
 "riattivazione."
 msgstr ""
-"dirke se običajno zaračunajo naslednji dan. Če je danes treba opraviti "
-"vožnje, ki niso narejene, obstajajo težave z bremenitvijo vaše kreditne "
-"kartice in vaš račun je začasno zaustavljen. Za ponovno aktivacijo se "
-"obrnite na službo za stranke SHARE'NGO."
+"vožnje se običajno zaračunajo naslednji dan. Če danes ne morete opraviti "
+"vožnje, obstajajo težave z bremenitvijo vaše kreditne kartice in vaš račun "
+"je začasno zaustavljen. Za ponovno aktivacijo se obrnite na službo za "
+"stranke SHARE'NGO."
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
+#, fuzzy
 msgid "Verifica cambio di carta in corso."
-msgstr "Preverite spremembe papirja v teku."
+msgstr "Poteka preverjanje izmenjane papirologije."
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:13
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:13
