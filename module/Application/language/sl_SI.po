@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-10-31 14:22+0100\n"
-"PO-Revision-Date: 2019-10-31 14:22+0100\n"
+"POT-Creation-Date: 2019-11-07 15:11+0100\n"
+"PO-Revision-Date: 2019-11-07 15:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -2909,7 +2909,6 @@ msgstr "jezik"
 #: module/Application/view/application/user-area/profile.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:80
 #: module/Application/view/application/user/signup-nl1.phtml:85
-#: module/Application/view/application/user/signup-si1.phtml:83
 #: module/Application/view/application/user/signup-sk1.phtml:93
 msgid "Citt&agrave; preferita"
 msgstr "Mesto in agrave; najljubši"
@@ -3550,7 +3549,6 @@ msgstr "Niste še opravili še nobene izposoje"
 
 #: module/Application/view/application/user/new-signup.phtml:15
 #: module/Application/view/application/user/signup-nl1.phtml:21
-#: module/Application/view/application/user/signup-si1.phtml:19
 #: module/Application/view/application/user/signup-sk1.phtml:29
 msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
 msgstr "Skupna raba električnih avtomobilov je praktična in ne onesnažuje!"
@@ -3573,7 +3571,6 @@ msgstr "Paketi do 22 centov na minuto"
 
 #: module/Application/view/application/user/new-signup.phtml:26
 #: module/Application/view/application/user/signup-nl1.phtml:31
-#: module/Application/view/application/user/signup-si1.phtml:29
 #: module/Application/view/application/user/signup-sk1.phtml:39
 msgid "Iscriverti non ti costa nulla!"
 msgstr "Registracija vas ne stane nič!"
@@ -3984,7 +3981,6 @@ msgid "Vai in area riservata"
 msgstr "Pojdite na uporabniški profil"
 
 #: module/Application/view/application/user/signup-nl1.phtml:25
-#: module/Application/view/application/user/signup-si1.phtml:23
 #: module/Application/view/application/user/signup-sk1.phtml:33
 msgid "Pacchetti fino a 16 centesimi al minuto"
 msgstr "Paketi do 16 centov na minuto"
@@ -3993,7 +3989,7 @@ msgstr "Paketi do 16 centov na minuto"
 #: module/Application/view/application/user/signup-si1.phtml:113
 #: module/Application/view/application/user/signup-sk1.phtml:123
 msgid "le Condizioni Contrattuali di Sharengo"
-msgstr "Pogoji in določila Sharengo"
+msgstr "splošnih pogojev Sharengo"
 
 #: module/Application/view/application/user/signup-nl1.phtml:128
 #: module/Application/view/application/user/signup-si1.phtml:126
@@ -4065,6 +4061,23 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "fotografija uporabnika (sebek)"
+
+#: module/Application/view/application/user/signup-si1.phtml:19
+msgid ""
+"Condivisione di auto elettriche rispettose dell'ambiente e convenienti per te"
+msgstr "Električni car sharing ki ne onesnažuje okolja in je narejen za vas"
+
+#: module/Application/view/application/user/signup-si1.phtml:23
+msgid "I pacchetti partono da 0,10 € al minuto"
+msgstr "Paketi že od 0,10 € na minuto"
+
+#: module/Application/view/application/user/signup-si1.phtml:29
+msgid "Registrazione gratuita!"
+msgstr "Brezplačna registracija!"
+
+#: module/Application/view/application/user/signup-si1.phtml:83
+msgid "Luogo preferito"
+msgstr "Priljubljeno mesto"
 
 #: module/Application/view/application/user/signup-si2.phtml:35
 #: module/Application/view/application/user/signup-sk2.phtml:35
@@ -4508,7 +4521,7 @@ msgid "Chi &egrave; Share'n GO?"
 msgstr "Kdo smo Share'n GO?"
 
 #: module/Application/view/layout/layout.phtml:124
-#: module/Application/view/layout/layout.phtml:194
+#: module/Application/view/layout/layout.phtml:192
 msgid "Faq"
 msgstr "faq"
 
@@ -4517,13 +4530,12 @@ msgid "Noleggio"
 msgstr "Najem"
 
 #: module/Application/view/layout/layout.phtml:126
-#: module/Application/view/layout/layout.phtml:193
+#: module/Application/view/layout/layout.phtml:191
 #: module/Application/view/partials/footer/main_foot.phtml:24
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:24
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:24
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:26
-#: module/Application/view/partials/header/main_head_sl_SI.phtml:26
 msgid "Contatti"
 msgstr "Kontakt"
 
@@ -4571,19 +4583,11 @@ msgstr "Faks"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: module/Application/view/layout/layout.phtml:175
-msgid "Sede operativa"
-msgstr "Operativni štab"
-
-#: module/Application/view/layout/layout.phtml:176
-msgid "Via San Martino, 7 – 20122 Milano (MI)"
-msgstr "Via San Martino, 7 - 20122 Milano (MI)"
-
-#: module/Application/view/layout/layout.phtml:183
+#: module/Application/view/layout/layout.phtml:181
 msgid "Servizio clienti"
 msgstr "Služba za stranke"
 
-#: module/Application/view/layout/layout.phtml:191
+#: module/Application/view/layout/layout.phtml:189
 #: module/Application/view/partials/footer/main_foot.phtml:36
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:34
@@ -4591,15 +4595,15 @@ msgstr "Služba za stranke"
 msgid "Privacy"
 msgstr "Zasebnost"
 
-#: module/Application/view/layout/layout.phtml:192
+#: module/Application/view/layout/layout.phtml:190
 msgid "Regolamento e tariffe"
 msgstr "Pravilnik in cenik"
 
-#: module/Application/view/layout/layout.phtml:195
+#: module/Application/view/layout/layout.phtml:193
 msgid "Come si usa un'equomobile"
 msgstr "Kako uporabljati avto"
 
-#: module/Application/view/layout/layout.phtml:212
+#: module/Application/view/layout/layout.phtml:210
 #: module/Application/view/layout/layout2.phtml:122
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
@@ -4833,7 +4837,7 @@ msgstr "Naslednja"
 
 #: module/Application/view/partials/header/main_head.phtml:23
 msgid "Pacchetti &amp; promo"
-msgstr "Paketi & amp; promo"
+msgstr "Paketi &amp; promo"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
@@ -4887,7 +4891,7 @@ msgstr "Kako deluje Sharengo?"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
 msgid "Pacchetti &amp; promozioni"
-msgstr "Paketi & amp; promocije"
+msgstr "Paketi &amp; promocije"
 
 #: module/Application/view/partials/translations.phtml:8
 #, fuzzy
@@ -6023,6 +6027,12 @@ msgstr "Potrjujemo prejem vaših novih podatkov."
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Preverite transakcijo, ki poteka."
+
+#~ msgid "Sede operativa"
+#~ msgstr "Operativni štab"
+
+#~ msgid "Via San Martino, 7 – 20122 Milano (MI)"
+#~ msgstr "Via San Martino, 7 - 20122 Milano (MI)"
 
 #~ msgid "Belgium"
 #~ msgstr "Belgium"

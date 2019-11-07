@@ -1,10 +1,6 @@
 "use strict";
 var account_id = 39972;
 
-//var testCryp =  CryptoJS.MD5('enrico.taddei@gmail.com').toString();
-//var testHash = md5('enrico.taddei@gmail.com');
-//home('enrico.taddei@gmail.com');
-
 // Listing page tag
 function criteoViewHome(email)
 {
