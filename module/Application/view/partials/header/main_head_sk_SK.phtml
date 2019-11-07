@@ -36,8 +36,9 @@ $currentLanguageCode = substr($this->languageMenuHelper()->getCurrentLanguage()[
                     <?php
                     echo '<option selected>'.$this->languageMenuHelper()->getCurrentLanguageLabel().'</option>';
                     foreach ($this->languageMenuHelper()->getLanguages() as $lang) {
-                        //echo var_dump($lang);
-                        echo '<option value="'.$lang['url'].'">'.$lang['label'].'</option>';
+                        if($lang['code']=='en_US' || $lang['code']=='sk_SK') {
+                            echo '<option value="'.$lang['url'].'">'.$lang['label'].'</option>';
+                        }
                     } ?>
                 </select>
             </ul>

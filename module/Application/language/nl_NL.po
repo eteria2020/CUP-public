@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-10-22 12:33+0200\n"
-"PO-Revision-Date: 2019-10-22 12:34+0200\n"
+"POT-Creation-Date: 2019-11-07 15:10+0100\n"
+"PO-Revision-Date: 2019-11-07 15:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -101,34 +101,34 @@ msgstr "Onvoldoende zuurstofpunten"
 msgid "Pacchetto non acquistabile"
 msgstr "Pakket niet verkrijgbaar"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:280
-#: module/Application/src/Application/Controller/UserAreaController.php:372
+#: module/Application/src/Application/Controller/UserAreaController.php:277
+#: module/Application/src/Application/Controller/UserAreaController.php:369
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Om je gegevens opnieuw te wijzigen moet je 10 minuten wachten."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:427
-#: module/Application/src/Application/Controller/UserAreaController.php:559
-#: module/Application/src/Application/Controller/UserAreaController.php:621
+#: module/Application/src/Application/Controller/UserAreaController.php:424
+#: module/Application/src/Application/Controller/UserAreaController.php:556
+#: module/Application/src/Application/Controller/UserAreaController.php:618
 msgid "Operazione completata con successo!"
 msgstr "Handeling succesvol afgerond!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:561
-#: module/Application/src/Application/Controller/UserAreaController.php:623
+#: module/Application/src/Application/Controller/UserAreaController.php:558
+#: module/Application/src/Application/Controller/UserAreaController.php:620
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Er is een toepassingsfout opgetreden. Onze excuses voor het ongemak"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:742
-#: module/Application/src/Application/Controller/UserAreaController.php:782
+#: module/Application/src/Application/Controller/UserAreaController.php:739
+#: module/Application/src/Application/Controller/UserAreaController.php:779
 msgid "Pagamento completato con successo"
 msgstr "Betaling succesvol afgerond"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:744
-#: module/Application/src/Application/Controller/UserAreaController.php:784
+#: module/Application/src/Application/Controller/UserAreaController.php:741
+#: module/Application/src/Application/Controller/UserAreaController.php:781
 msgid "Pagamento fallito"
 msgstr "Betaling mislukt"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:753
-#: module/Application/src/Application/Controller/UserAreaController.php:793
+#: module/Application/src/Application/Controller/UserAreaController.php:750
+#: module/Application/src/Application/Controller/UserAreaController.php:790
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
@@ -140,23 +140,23 @@ msgstr "Betaling mislukt"
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Betaling tijdelijk opgeschort. Probeer het later opnieuw."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:822
+#: module/Application/src/Application/Controller/UserAreaController.php:819
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract correct gedeactiveerd!"
 
+#: module/Application/src/Application/Controller/UserAreaController.php:821
 #: module/Application/src/Application/Controller/UserAreaController.php:824
 #: module/Application/src/Application/Controller/UserAreaController.php:827
-#: module/Application/src/Application/Controller/UserAreaController.php:830
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Fout bij het deactiveren van het contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:866
+#: module/Application/src/Application/Controller/UserAreaController.php:863
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Je bent gedeactiveerd omdat je card is verlopen; voer de nieuwe gegevens in."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:870
+#: module/Application/src/Application/Controller/UserAreaController.php:867
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -165,7 +165,7 @@ msgstr ""
 "controleer en wijzig de ingevoerde gegevens in onderstaand formulier en/of "
 "in het gedeelte 'Rijbewijs'."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:875
+#: module/Application/src/Application/Controller/UserAreaController.php:872
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Je bent gedeactiveerd omdat je rijbewijs is verlopen; voer de nieuwe "
@@ -2922,7 +2922,6 @@ msgstr "Taal"
 #: module/Application/view/application/user-area/profile.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:80
 #: module/Application/view/application/user/signup-nl1.phtml:85
-#: module/Application/view/application/user/signup-si1.phtml:83
 #: module/Application/view/application/user/signup-sk1.phtml:93
 msgid "Citt&agrave; preferita"
 msgstr "Kies een plaats"
@@ -3513,7 +3512,6 @@ msgstr "Je hebt nog geen enkele keer gehuurd"
 
 #: module/Application/view/application/user/new-signup.phtml:15
 #: module/Application/view/application/user/signup-nl1.phtml:21
-#: module/Application/view/application/user/signup-si1.phtml:19
 #: module/Application/view/application/user/signup-sk1.phtml:29
 msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
 msgstr "Elektrische carsharing<br>vervuilt niet en is goed voor jou!"
@@ -3536,7 +3534,6 @@ msgstr "Pakketten tot 22 cent per minuut"
 
 #: module/Application/view/application/user/new-signup.phtml:26
 #: module/Application/view/application/user/signup-nl1.phtml:31
-#: module/Application/view/application/user/signup-si1.phtml:29
 #: module/Application/view/application/user/signup-sk1.phtml:39
 msgid "Iscriverti non ti costa nulla!"
 msgstr "Registreren gaat heel eenvoudig!"
@@ -3943,7 +3940,6 @@ msgid "Vai in area riservata"
 msgstr "Ga naar je persoonlijke omgeving"
 
 #: module/Application/view/application/user/signup-nl1.phtml:25
-#: module/Application/view/application/user/signup-si1.phtml:23
 #: module/Application/view/application/user/signup-sk1.phtml:33
 msgid "Pacchetti fino a 16 centesimi al minuto"
 msgstr "Pakketten tot 16 cent per minuut"
@@ -4026,6 +4022,23 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "foto van de gebruiker (selfie)"
+
+#: module/Application/view/application/user/signup-si1.phtml:19
+msgid ""
+"Condivisione di auto elettriche rispettose dell'ambiente e convenienti per te"
+msgstr "Milieuvriendelijke en betaalbare elektrische auto's voor u delen"
+
+#: module/Application/view/application/user/signup-si1.phtml:23
+msgid "I pacchetti partono da 0,10 € al minuto"
+msgstr "Pakketten tot 10 cent per minuut"
+
+#: module/Application/view/application/user/signup-si1.phtml:29
+msgid "Registrazione gratuita!"
+msgstr "Gratis registratie!"
+
+#: module/Application/view/application/user/signup-si1.phtml:83
+msgid "Luogo preferito"
+msgstr "Favoriete plek"
 
 #: module/Application/view/application/user/signup-si2.phtml:35
 #: module/Application/view/application/user/signup-sk2.phtml:35
@@ -4487,7 +4500,7 @@ msgid "Chi &egrave; Share'n GO?"
 msgstr "Wie is Sharengo?"
 
 #: module/Application/view/layout/layout.phtml:124
-#: module/Application/view/layout/layout.phtml:194
+#: module/Application/view/layout/layout.phtml:192
 msgid "Faq"
 msgstr "Instructiehandleiding"
 
@@ -4496,13 +4509,12 @@ msgid "Noleggio"
 msgstr "Huur"
 
 #: module/Application/view/layout/layout.phtml:126
-#: module/Application/view/layout/layout.phtml:193
+#: module/Application/view/layout/layout.phtml:191
 #: module/Application/view/partials/footer/main_foot.phtml:24
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:24
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:24
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:26
-#: module/Application/view/partials/header/main_head_sl_SI.phtml:26
 msgid "Contatti"
 msgstr "Contact"
 
@@ -4551,19 +4563,11 @@ msgstr "Fax"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: module/Application/view/layout/layout.phtml:175
-msgid "Sede operativa"
-msgstr "Operationeel kantoor"
-
-#: module/Application/view/layout/layout.phtml:176
-msgid "Via San Martino, 7 – 20122 Milano (MI)"
-msgstr "Newtonweg 2 - 2952 BH  Alblasserdam"
-
-#: module/Application/view/layout/layout.phtml:183
+#: module/Application/view/layout/layout.phtml:181
 msgid "Servizio clienti"
 msgstr "Klantenservice"
 
-#: module/Application/view/layout/layout.phtml:191
+#: module/Application/view/layout/layout.phtml:189
 #: module/Application/view/partials/footer/main_foot.phtml:36
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:34
@@ -4571,15 +4575,15 @@ msgstr "Klantenservice"
 msgid "Privacy"
 msgstr "Privacy"
 
-#: module/Application/view/layout/layout.phtml:192
+#: module/Application/view/layout/layout.phtml:190
 msgid "Regolamento e tariffe"
 msgstr "Reglement en tarieven"
 
-#: module/Application/view/layout/layout.phtml:195
+#: module/Application/view/layout/layout.phtml:193
 msgid "Come si usa un'equomobile"
 msgstr "Hoe gebruik je een ecomobiel"
 
-#: module/Application/view/layout/layout.phtml:212
+#: module/Application/view/layout/layout.phtml:210
 #: module/Application/view/layout/layout2.phtml:122
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
@@ -6000,6 +6004,12 @@ msgstr "We bevestigen de ontvangst van de betaling"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
+
+#~ msgid "Sede operativa"
+#~ msgstr "Operationeel kantoor"
+
+#~ msgid "Via San Martino, 7 – 20122 Milano (MI)"
+#~ msgstr "Newtonweg 2 - 2952 BH  Alblasserdam"
 
 #~ msgid ""
 #~ "Ti arriver&agrave; su richiesta gratuitamente a casa oppure puoi anche "

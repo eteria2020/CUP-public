@@ -19,11 +19,11 @@ $currentLanguageCode = substr($this->languageMenuHelper()->getCurrentLanguage()[
 
         <nav class="menu_main">
             <ul class="menu">
-                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/ako-funguje-sharengo/"><?= $this->translate('Come funziona Sharengo')?></a></li>
-                <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/akcie-a-baliky/"><?= $this->translate('Pacchetti &amp; promozioni')?></a></li>
-                <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/o-nas/"><?= $this->translate('Chi è SharenGo')?></a></li>
-                <li id="menu-item-749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/faq/"><?= $this->translate('FAQ')?></a></li>
-                <li id="menu-item-1012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1012"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/kontakty/"><?= $this->translate('Contatti')?></a></li>
+                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/kako-delujie-sharengo/"><?= $this->translate('Come funziona Sharengo')?></a></li>
+                <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/paketi-promocije/"><?= $this->translate('Pacchetti &amp; promozioni')?></a></li>
+                <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/kdo-je-sharengo/"><?= $this->translate('Chi è SharenGo')?></a></li>
+                <li id="menu-item-749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749"><a href="https://site.sharengo.si/<?= $currentLanguageCode ?>/pogosta-vprasanja/"><?= $this->translate('FAQ')?></a></li>
+
                 <?php if($this->loggedUser): ?>
                 <li id="menu-item-30" class="login menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="<?= $this->url('logout'); ?>"><?= $this->translate('Logout')?></a></li>
                 <li id="menu-item-29" class="bottone register menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="<?= $this->url('login'); ?>"><?= $this->translate('Area riservata')?></a></li>
@@ -37,7 +37,9 @@ $currentLanguageCode = substr($this->languageMenuHelper()->getCurrentLanguage()[
                     echo '<option selected>'.$this->languageMenuHelper()->getCurrentLanguageLabel().'</option>';
                     foreach ($this->languageMenuHelper()->getLanguages() as $lang) {
                         //echo var_dump($lang);
-                        echo '<option value="'.$lang['url'].'">'.$lang['label'].'</option>';
+                        if($lang['code']=='en_US' || $lang['code']=='sl_SI') {
+                            echo '<option value="'.$lang['url'].'">'.$lang['label'].'</option>';
+                        }
                     } ?>
                 </select>
             </ul>

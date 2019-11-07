@@ -16,17 +16,17 @@ $contractLink = $this->basePath('pdf/si/contract.pdf');
 <div id="main">
     <!-- module-section-bookmark -->
     <div class="module-section-bookmark yellow content-align-center">
-        <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico<br>non inquina e ti conviene!"); ?></h1>
+        <h1 class="module-main-title"><?= $this->translate("Condivisione di auto elettriche rispettose dell'ambiente e convenienti per te"); ?></h1>
             <div style="display: inline-block;">
             <ul style="text-align: left; margin-top: 10px">
                 <li><?= $this->translate("Auto disponibili vicino a te giorno e notte") ?></li>
-                <li><?= $this->translate("Pacchetti fino a 16 centesimi al minuto") ?></li>
+                <li><?= $this->translate("I pacchetti partono da 0,10 € al minuto") ?></li>
             </ul>
         </div>
     </div>
 
     <div class="module-main-subtitle content-align-center">
-        <p><?= $this->translate("Iscriverti non ti costa nulla!") ?></p>
+        <p><?= $this->translate("Registrazione gratuita!") ?></p>
     </div>
 
     <!-- module-section-bookmark -->
@@ -80,7 +80,7 @@ $contractLink = $this->basePath('pdf/si/contract.pdf');
                 </div>
 
                 <div class="block-field bw-f w-1-3">
-                    <p> <label><?= $this->translate("Citt&agrave; preferita"); ?></label>
+                    <p> <label><?= $this->translate("Luogo preferito"); ?></label>
                         <?php
                         $fleet = $this->form->get('user')->get('fleet');
                         echo $this->formElement($fleet);
