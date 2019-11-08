@@ -1393,7 +1393,7 @@ class UserController extends AbstractActionController {
         $signupSession->offsetSet("customer", $customer);
         //$this->events->trigger('registeredCustomerPersisted', $this, ['customer' => $customer]);
 
-        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'sl_SK']]);
+        return $this->redirect()->toRoute('signup-3', ['mobile' => $mobile], ['query' => ['lang' => 'sl_SI']]);
     }
 
     public function signupNL1Action() {
