@@ -441,10 +441,7 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
                 ],
                 'validators' => [
                     [
-                        'name' => 'Application\Form\Validator\IdNumber',
-                        'options' => [
-                            'length' => 13,
-                        ],
+                        'name' => 'SharengoCore\Form\Validator\TaxCodeSi',
                         'break_chain_on_failure' => true
                     ],
                     [

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-11-08 10:16+0100\n"
-"PO-Revision-Date: 2019-11-08 10:17+0100\n"
+"PO-Revision-Date: 2019-11-08 15:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -393,7 +393,7 @@ msgstr "Kraj rojstva"
 #: module/Application/view/application/user/signup-sk2.phtml:174
 #: module/Application/view/application/user/signup.phtml:288
 msgid "Comune di nascita"
-msgstr "Občina rojstva"
+msgstr "Kraj rojstva"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:202
 #: module/Application/src/Application/Form/NewUserFieldset2.php:139
@@ -453,7 +453,7 @@ msgstr "12345"
 #: module/Application/src/Application/Form/UserFieldset.php:315
 #: module/Application/src/Application/Form/UserFieldset.php:319
 msgid "CAP"
-msgstr "CAP"
+msgstr "Poštna številka"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:284
 #: module/Application/src/Application/Form/CustomerFieldset.php:288
@@ -2866,7 +2866,7 @@ msgstr "Civic"
 #: module/Application/view/application/user/signup-sk2.phtml:132
 #: module/Application/view/application/user/signup.phtml:322
 msgid "Cap"
-msgstr " Kraj rojstva"
+msgstr "Poštna številka"
 
 #: module/Application/view/application/user-area/index.phtml:163
 #: module/Application/view/application/user-area/index.phtml:442
@@ -3787,7 +3787,6 @@ msgstr "Se strinjam"
 #: module/Application/view/application/user/signup-si2.phtml:279
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
-#, fuzzy
 msgid ""
 "Ai sensi dell'art. .16 del D.P.R. 445/2000 e nel rispetto del Decreto "
 "Legislativo sulla Privacy 196/2003 i dati personali riportati sulla presente "
@@ -4008,7 +4007,7 @@ msgstr "30 minut za samo 10 €;"
 #: module/Application/view/application/user/signup-si2.phtml:102
 #: module/Application/view/application/user/signup-sk2.phtml:102
 msgid "Citt&agrave; residenza"
-msgstr "Mesto in agrave; prebivališče"
+msgstr "Mesto prebivališča"
 
 #: module/Application/view/application/user/signup-nl2.phtml:223
 msgid "BSN"
@@ -4370,7 +4369,6 @@ msgstr ""
 "spodnjo povezavo.,\n"
 
 #: module/Application/view/emails/forgot-password.phtml:22
-#, fuzzy
 msgid ""
 "\n"
 "Cordiali Saluti,\n"
@@ -4752,7 +4750,6 @@ msgstr "Pogodba o storitvah in cenik"
 #: module/Application/view/partials/footer/main_foot.phtml:38
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:39
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:36
-#, fuzzy
 msgid "Modello di recesso"
 msgstr "Predloga za odstop od pogodbe"
 
@@ -6006,7 +6003,6 @@ msgstr ""
 "stranke SHARE'NGO."
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
-#, fuzzy
 msgid "Verifica cambio di carta in corso."
 msgstr "Poteka preverjanje izmenjane papirologije."
 
