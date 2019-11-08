@@ -258,8 +258,8 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
                 'id' => 'taxCode',
-                'maxlength' => 8,
-                'placeholder' => $this->translator->translate('12345678'),
+                'maxlength' => 13,
+                'placeholder' => $this->translator->translate('1234567890123'),
                 'class' => 'required'
             ],
             'options' => [
@@ -443,7 +443,7 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
                     [
                         'name' => 'Application\Form\Validator\IdNumber',
                         'options' => [
-                            'length' => 8,
+                            'length' => 13,
                         ],
                         'break_chain_on_failure' => true
                     ],

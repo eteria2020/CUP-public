@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-07 15:09+0100\n"
-"PO-Revision-Date: 2019-11-07 15:10+0100\n"
+"POT-Creation-Date: 2019-11-08 10:18+0100\n"
+"PO-Revision-Date: 2019-11-08 10:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1090,7 +1090,7 @@ msgid "123456789"
 msgstr ""
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
-msgid "12345678"
+msgid "1234567890123"
 msgstr ""
 
 #: module/Application/src/Application/Form/UserFieldset.php:82
@@ -3862,7 +3862,6 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:395
 #: module/Application/view/application/user/signup-nl2.phtml:345
-#: module/Application/view/application/user/signup-si2.phtml:355
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Keep it going"
@@ -4079,6 +4078,10 @@ msgstr "Favourite place"
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minutes only 5&euro;"
+
+#: module/Application/view/application/user/signup-si2.phtml:355
+msgid "Continua la registrazione"
+msgstr "Continue registration"
 
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""

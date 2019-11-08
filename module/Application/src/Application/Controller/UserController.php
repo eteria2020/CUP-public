@@ -1740,7 +1740,7 @@ class UserController extends AbstractActionController {
             } elseif ($this->serverInstance["id"] == "nl_NL"){
                 return $this->redirect()->toRoute('signupNL2', ['mobile' => $mobile], ['query' => ['lang' => 'nl_NL']]);
             } elseif ($this->serverInstance["id"] == "sl_SI"){
-                return $this->redirect()->toRoute('signupSI2', ['mobile' => $mobile], ['query' => ['lang' => 'sl_SL']]);
+                return $this->redirect()->toRoute('signupSI2', ['mobile' => $mobile], ['query' => ['lang' => 'sl_SI']]);
             }
         }
 
