@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-07 15:11+0100\n"
-"PO-Revision-Date: 2019-11-07 15:11+0100\n"
+"POT-Creation-Date: 2019-11-08 10:16+0100\n"
+"PO-Revision-Date: 2019-11-08 10:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -213,7 +213,7 @@ msgstr "Seja je potekla. Ponoviti je treba postopek registracije"
 #: module/Application/view/application/user/signup-si2.phtml:74
 #: module/Application/view/application/user/signup-sk2.phtml:74
 msgid "Titolo"
-msgstr "Naslov"
+msgstr "Naziv"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:73
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:80
@@ -643,7 +643,7 @@ msgstr "1234567890"
 #: module/Application/view/application/user/signup-si2.phtml:224
 #: module/Application/view/application/user/signup-sk2.phtml:224
 msgid "Numero Identificativo"
-msgstr "Identifikacijska številka"
+msgstr "Emšo"
 
 #: module/Application/src/Application/Form/ForeignDriversLicenseForm.php:81
 #: module/Application/src/Application/Form/SignupSI2Form.php:222
@@ -1097,9 +1097,9 @@ msgstr "123456789"
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
 #, fuzzy
-#| msgid "123456789"
-msgid "12345678"
-msgstr "123456789"
+#| msgid "1234567890"
+msgid "1234567890123"
+msgstr "1234567890"
 
 #: module/Application/src/Application/Form/UserFieldset.php:82
 msgid "Inserisci di nuovo la email"
@@ -2709,7 +2709,7 @@ msgstr "Podatki o vaših vozniških dovoljenjih"
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
-msgstr "Registrska številka"
+msgstr "Številka vozniškega dovoljenja"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:116
 #: module/Application/view/application/user-area/driving-licence-international.phtml:228
@@ -2796,7 +2796,7 @@ msgstr "nadaljujte"
 msgid ""
 "5. Numero Patente<br>4. Data di rilascio<br>4c. Autorit&agrave; di "
 "rilascio<br>"
-msgstr "5. Registrska številka 4. Datum izdaje 4c. Izdajatelj"
+msgstr "5. Številka vozniškega dovoljenja 4. Datum izdaje 4c. Izdajatelj"
 
 #: module/Application/view/application/user-area/driving-licence.phtml:126
 #: module/Application/view/application/user-area/driving-licence.phtml:263
@@ -2866,7 +2866,7 @@ msgstr "Civic"
 #: module/Application/view/application/user/signup-sk2.phtml:132
 #: module/Application/view/application/user/signup.phtml:322
 msgid "Cap"
-msgstr "Cap"
+msgstr " Kraj rojstva"
 
 #: module/Application/view/application/user-area/index.phtml:163
 #: module/Application/view/application/user-area/index.phtml:442
@@ -2933,7 +2933,7 @@ msgstr "Spremeni številko"
 #: module/Application/view/application/user/signup-sk2.phtml:201
 #: module/Application/view/application/user/signup.phtml:392
 msgid "Prefisso"
-msgstr "predpona"
+msgstr "Klicna številka"
 
 #: module/Application/view/application/user-area/index.phtml:575
 #: module/Application/view/application/user/new-signup2.phtml:215
@@ -3387,7 +3387,7 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:114
 #: module/Application/view/application/user/signup.phtml:312
 msgid "Indirizzo di residenza"
-msgstr "Naslov prebivališča"
+msgstr "Naslov"
 
 #: module/Application/view/application/user-area/rates.phtml:50
 msgid "Il tuo piano tariffario personale"
@@ -3657,7 +3657,7 @@ msgstr "21 minut za samo 5 €;"
 #: module/Application/view/application/user/signup-si2.phtml:36
 #: module/Application/view/application/user/signup-sk2.phtml:36
 msgid "e guidi subito la tua Sharengo!"
-msgstr "in zapeljite svoj Sharengo zdaj!"
+msgstr "In že lahko uporabljate Sharengo!"
 
 #: module/Application/view/application/user/new-signup2.phtml:36
 #: module/Application/view/application/user/signup-nl2.phtml:42
@@ -3671,7 +3671,7 @@ msgstr "Dobrodošli"
 #: module/Application/view/application/user/signup-si2.phtml:43
 #: module/Application/view/application/user/signup-sk2.phtml:43
 msgid "Pochi istanti per completare il tuo profilo"
-msgstr "Samo nekaj trenutkov za dokončanje profila"
+msgstr "Le še nekaj trenutkov vas loci do registracije"
 
 #: module/Application/view/application/user/new-signup2.phtml:69
 msgid "Nome Patente"
@@ -3697,9 +3697,8 @@ msgstr "Kraj bivanja"
 #: module/Application/view/application/user/signup-nl2.phtml:123
 #: module/Application/view/application/user/signup-si2.phtml:123
 #: module/Application/view/application/user/signup-sk2.phtml:123
-#, fuzzy
 msgid "N. civico"
-msgstr "Državljanska številka"
+msgstr "Hišna številka"
 
 #: module/Application/view/application/user/new-signup2.phtml:235
 msgid ""
@@ -3714,7 +3713,7 @@ msgstr ""
 #: module/Application/view/application/user/signup-si2.phtml:243
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
-msgstr "Prepričajte se, da je vozniško dovoljenje veljavno."
+msgstr "Prepričajte se da je to zadnje izdano vozniško dovoljenje."
 
 #: module/Application/view/application/user/new-signup2.phtml:268
 msgid "Scadenza patente"
@@ -3781,7 +3780,7 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
-msgstr "Prebrati, potrditi in podpisati"
+msgstr "Se strinjam"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
@@ -3817,37 +3816,35 @@ msgstr "Izvzet iz avtentikacije"
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
 "guida e della carta di identità, entrambe fronte e retro"
-msgstr ""
-"Potrebno je priložiti fotokopijo vozniškega dovoljenja in osebne izkaznice, "
-"tudi če ni overjena, spredaj in zadaj."
+msgstr "Potrebo je naložiti slike vozniškega dovoljenja in osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
 #: module/Application/view/application/user/signup-si2.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
-msgstr "sprednjo stran vozniškega dovoljenja"
+msgstr "sprednja stran vozniškega dovoljenja "
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
 #: module/Application/view/application/user/signup-si2.phtml:307
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
-msgstr "zadnjo stran vozniškega dovoljenja"
+msgstr "zadnja stran vozniškega dovoljenja"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
 #: module/Application/view/application/user/signup-si2.phtml:318
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
-msgstr "sprednjo stran osebne izkaznice"
+msgstr "sprednja stran osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
 #: module/Application/view/application/user/signup-si2.phtml:327
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
-msgstr "zadnjo stran osebne izkaznice"
+msgstr "zadnja stran osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:367
 msgid "INSERISCI QUI SE HAI UN CODICE PROMO"
@@ -3868,7 +3865,6 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:395
 #: module/Application/view/application/user/signup-nl2.phtml:345
-#: module/Application/view/application/user/signup-si2.phtml:355
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Nadaljevanje"
@@ -4022,7 +4018,7 @@ msgstr "BSN"
 #: module/Application/view/application/user/signup-si2.phtml:247
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
-msgstr "Datum poteka veljavnosti vozniškega dovoljenja"
+msgstr "Velja do:"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
 #: module/Application/view/application/user/signup-si2.phtml:260
@@ -4060,7 +4056,7 @@ msgstr ""
 #: module/Application/view/application/user/signup-si2.phtml:339
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
-msgstr "fotografija uporabnika (sebek)"
+msgstr "slika uporabnika z vozniškim dovoljenjem (selfie)"
 
 #: module/Application/view/application/user/signup-si1.phtml:19
 msgid ""
@@ -4083,6 +4079,10 @@ msgstr "Priljubljeno mesto"
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minut za samo 5 €;"
+
+#: module/Application/view/application/user/signup-si2.phtml:355
+msgid "Continua la registrazione"
+msgstr "Nadaljuj z registracijo"
 
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""
@@ -4826,9 +4826,8 @@ msgid ""
 "guida e della carta di identità, entrambe fronte e retro (è possibile "
 "caricare più di un file effettuando una selezione multipla)"
 msgstr ""
-"Potrebno je priložiti fotokopijo vozniškega dovoljenja in osebne izkaznice, "
-"tudi če ni overjena, spredaj in zadaj (možno je naložiti več datotek z več "
-"izbirami)"
+"Potrebo je naložiti slike vozniškega dovoljenja in osebne izkaznice (možno "
+"je naložiti več datotek z več izbirami)"
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:71
 #: module/Application/view/partials/translations.phtml:17
@@ -4879,7 +4878,7 @@ msgstr "Prijava"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:32
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:32
 msgid "Iscriviti"
-msgstr "Prijava"
+msgstr "Registracija"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:22
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:22
@@ -6027,6 +6026,11 @@ msgstr "Potrjujemo prejem vaših novih podatkov."
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Preverite transakcijo, ki poteka."
+
+#, fuzzy
+#~| msgid "123456789"
+#~ msgid "12345678"
+#~ msgstr "123456789"
 
 #~ msgid "Sede operativa"
 #~ msgstr "Operativni štab"
