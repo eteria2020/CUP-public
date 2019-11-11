@@ -704,7 +704,7 @@ $(function () {
 
     // Reverse Geocode
     var getAddress = function name(latitude, longitude, callback) {
-        $.get('http://nominatim.openstreetmap.org/reverse?format=json&lat=' +
+        $.get('https://nominatim.openstreetmap.org/reverse?format=json&lat=' +
                 latitude + '&lon=' + longitude + '&addressdetails=1' + '&accept-language=it',
                 callback
                 );
