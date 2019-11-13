@@ -219,7 +219,6 @@ $this->headLink()
             </div>
 
             <div class="block-row-field clearfix">
-
                 <div class="block-field bw-f w-2-4">
                     <p> <label><?=  $this->translate('Numero Identificativo'); ?></label>
                         <?php
@@ -229,6 +228,19 @@ $this->headLink()
                         ?>
                     </p>
                 </div>
+
+                <div class="block-field bw-f w-2-4">
+                    <p> <label><?=  $this->translate('Partita IVA'); ?></label>
+                        <?php
+                        $vat = $this->form->get('user1')->get('vat');
+                        echo $this->formElement($vat);
+                        echo $this->formElementErrors($vat, ['class' => 'errors']);
+                        ?>
+                    </p>
+                </div>
+
+
+
             </div>
 
             <div class="block-row-field clearfix">

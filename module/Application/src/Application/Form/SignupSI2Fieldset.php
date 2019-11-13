@@ -268,6 +268,19 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
+            'name' => 'vat',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => [
+                'id' => 'vat',
+                'maxlength' => 8,
+                'placeholder' => $this->translator->translate('12345678'),
+            ],
+            'options' => [
+                'label' => $this->translator->translate('Partita IVA'),
+            ]
+        ]);
+
+        $this->add([
             'name' => 'dialCode',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => [

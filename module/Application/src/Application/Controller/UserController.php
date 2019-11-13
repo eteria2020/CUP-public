@@ -1351,6 +1351,7 @@ class UserController extends AbstractActionController {
             $customer->setMobile('+'.$data['dialCode'].$data['mobile']);
 
             $customer->setTaxCode($data['taxCode']);
+            $customer->setVat($data['vat']);
 
             $customer->setDriverLicenseName($data['name']);
             $customer->setDriverLicenseSurname($data['surname']);
