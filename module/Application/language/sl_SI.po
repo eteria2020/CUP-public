@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-08 10:16+0100\n"
-"PO-Revision-Date: 2019-11-11 16:17+0100\n"
+"POT-Creation-Date: 2019-11-12 17:47+0100\n"
+"PO-Revision-Date: 2019-11-12 17:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -33,7 +33,7 @@ msgstr "profil"
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:306
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:319
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:306
 msgid "Patente"
 msgstr "vozniško dovoljenje"
@@ -188,13 +188,13 @@ msgstr "Napačna telefonska številka"
 #: module/Application/src/Application/Controller/UserController.php:900
 #: module/Application/src/Application/Controller/UserController.php:1236
 #: module/Application/src/Application/Controller/UserController.php:1325
-#: module/Application/src/Application/Controller/UserController.php:1442
-#: module/Application/src/Application/Controller/UserController.php:1532
-#: module/Application/src/Application/Controller/UserController.php:1671
-#: module/Application/src/Application/Controller/UserController.php:1704
-#: module/Application/src/Application/Controller/UserController.php:1980
-#: module/Application/src/Application/Controller/UserController.php:2023
-#: module/Application/src/Application/Controller/UserController.php:2176
+#: module/Application/src/Application/Controller/UserController.php:1443
+#: module/Application/src/Application/Controller/UserController.php:1533
+#: module/Application/src/Application/Controller/UserController.php:1672
+#: module/Application/src/Application/Controller/UserController.php:1705
+#: module/Application/src/Application/Controller/UserController.php:1981
+#: module/Application/src/Application/Controller/UserController.php:2024
+#: module/Application/src/Application/Controller/UserController.php:2177
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Seja je potekla. Ponoviti je treba postopek registracije"
@@ -549,7 +549,7 @@ msgstr "Datum izteka veljavnosti ne sme biti pred datumom začetka"
 #: module/Application/src/Application/Form/DriverFieldset.php:52
 #: module/Application/src/Application/Form/NewUserFieldset2.php:284
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:281
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:303
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:316
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:303
 msgid "XX123412341223"
 msgstr "XX123412341223"
@@ -563,7 +563,7 @@ msgstr "Izdal (organ)"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:298
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:295
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:190
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:317
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:330
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:190
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:317
 #: module/Application/src/Application/Form/UserFieldset.php:165
@@ -610,7 +610,7 @@ msgstr "Izdala (država)"
 #: module/Application/src/Application/Form/DriverFieldset.php:162
 #: module/Application/src/Application/Form/NewUserFieldset2.php:302
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:299
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:321
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:334
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:321
 #: module/Application/view/application/user-area/driving-licence-international.phtml:61
 #: module/Application/view/application/user-area/driving-licence-international.phtml:176
@@ -640,7 +640,7 @@ msgstr "1234567890"
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:244
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:266
-#: module/Application/view/application/user/signup-si2.phtml:224
+#: module/Application/view/application/user/signup-si2.phtml:223
 #: module/Application/view/application/user/signup-sk2.phtml:224
 msgid "Numero Identificativo"
 msgstr "Emšo"
@@ -702,7 +702,7 @@ msgstr "Naložena datoteka ni berljiva ali ne obstaja"
 
 #: module/Application/src/Application/Form/MobileForm.php:71
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:255
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:277
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:290
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:277
 msgid "Prefisso internazionale"
 msgstr "Mednarodna predpona"
@@ -712,8 +712,8 @@ msgstr "Mednarodna predpona"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:261
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:270
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:288
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:292
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:301
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:305
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:288
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:292
 #: module/Application/src/Application/Form/UserFieldset.php:400
@@ -842,8 +842,10 @@ msgstr "xxxx"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:326
 #: module/Application/src/Application/Form/NewUserFieldset2.php:329
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:279
+#: module/Application/view/application/user/signup-si2.phtml:233
 msgid "Partita IVA"
-msgstr "Številka DDV"
+msgstr "Davčna številka"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:383
 msgid ""
@@ -1101,6 +1103,12 @@ msgstr "123456789"
 msgid "1234567890123"
 msgstr "1234567890"
 
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:276
+#, fuzzy
+#| msgid "123456789"
+msgid "12345678"
+msgstr "123456789"
+
 #: module/Application/src/Application/Form/UserFieldset.php:82
 msgid "Inserisci di nuovo la email"
 msgstr "Znova vnesite e-poštni naslov"
@@ -1238,6 +1246,7 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Morate biti polnoletni"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Identifikacijska številka ni pravilna"
 
@@ -1309,20 +1318,20 @@ msgstr "Izberite želeno mesto"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:24
 msgid "La partita IVA non può contenere spazi"
-msgstr "Številka DDV ne sme vsebovati presledkov"
+msgstr "Davčna številka ne sme vsebovati presledkov"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:25
 msgid "La partita IVA deve essere numerica, al più preceduta dal prefisso IT"
-msgstr "Številka DDV mora biti številčna, pred njo pa predpona SI"
+msgstr "Davčna številka mora biti številčna, pred njo pa predpona SI"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:26
 msgid ""
 "La partita IVA deve essere di 11 cifre, al più preceduta dal prefisso IT"
-msgstr "Številka DDV mora vsebovati 11 števk, pred njo pa stoji predpona SI"
+msgstr "Davčna številka mora vsebovati 11 števk, pred njo pa stoji predpona SI"
 
 #: module/Application/src/Application/Form/Validator/VatNumber.php:27
 msgid "La partita IVA non è valida"
-msgstr "Številka DDV ni veljavna"
+msgstr "Davčna številka ni veljavna"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
@@ -1422,41 +1431,41 @@ msgstr "(Črna škatla)"
 msgid "Si è verificato un errore durante il salvataggio della configurazione"
 msgstr "Med shranjevanjem konfiguracije je prišlo do napake"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
 msgid "Completata"
 msgstr "končan"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
 msgid "Non Completata"
 msgstr "Ni dokončano"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
 msgid "Codice promo non valido."
 msgstr "Neveljavna promocijska koda."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
 msgid "Codice promo già associato a questo account."
 msgstr "Promocijska koda je že povezana s tem računom."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
 msgid "Codice fiscale, genere "
 msgstr "Davčna številka, spol "
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
 msgid "Codice fiscale, data di nascita "
 msgstr "Davčna številka, datum rojstva "
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
 msgid "Codice fiscale, luogo di nascita incongruente."
 msgstr "Davčna številka in kraj rojstva se ne ujemata."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
 msgid "Codice fiscale, sintassi incongruente."
 msgstr "Davčna številka, neskladna oblika."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
 msgid "Codice fiscale, sintassi errata."
 msgstr "Davčna številka, napačen način zapisa."
 
@@ -2705,7 +2714,7 @@ msgstr "Podatki o vaših vozniških dovoljenjih"
 #: module/Application/view/application/user-area/driving-licence.phtml:162
 #: module/Application/view/application/user/new-signup2.phtml:257
 #: module/Application/view/application/user/signup-nl2.phtml:235
-#: module/Application/view/application/user/signup-si2.phtml:236
+#: module/Application/view/application/user/signup-si2.phtml:248
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -3615,7 +3624,7 @@ msgstr "Pogodbeni pogoji"
 #: module/Application/view/application/user/signup-nl1.phtml:148
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si2.phtml:375
+#: module/Application/view/application/user/signup-si2.phtml:387
 #: module/Application/view/application/user/signup-sk1.phtml:156
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3710,7 +3719,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:242
-#: module/Application/view/application/user/signup-si2.phtml:243
+#: module/Application/view/application/user/signup-si2.phtml:255
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Prepričajte se da je to zadnje izdano vozniško dovoljenje."
@@ -3776,7 +3785,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:268
-#: module/Application/view/application/user/signup-si2.phtml:269
+#: module/Application/view/application/user/signup-si2.phtml:281
 #: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
@@ -3784,7 +3793,7 @@ msgstr "Se strinjam"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
-#: module/Application/view/application/user/signup-si2.phtml:279
+#: module/Application/view/application/user/signup-si2.phtml:291
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3803,14 +3812,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
-#: module/Application/view/application/user/signup-si2.phtml:282
+#: module/Application/view/application/user/signup-si2.phtml:294
 #: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Izvzet iz avtentikacije"
 
 #: module/Application/view/application/user/new-signup2.phtml:329
-#: module/Application/view/application/user/signup-si2.phtml:286
+#: module/Application/view/application/user/signup-si2.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3819,28 +3828,28 @@ msgstr "Potrebo je naložiti slike vozniškega dovoljenja in osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
-#: module/Application/view/application/user/signup-si2.phtml:298
+#: module/Application/view/application/user/signup-si2.phtml:310
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "sprednja stran vozniškega dovoljenja "
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
-#: module/Application/view/application/user/signup-si2.phtml:307
+#: module/Application/view/application/user/signup-si2.phtml:319
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "zadnja stran vozniškega dovoljenja"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
-#: module/Application/view/application/user/signup-si2.phtml:318
+#: module/Application/view/application/user/signup-si2.phtml:330
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "sprednja stran osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
-#: module/Application/view/application/user/signup-si2.phtml:327
+#: module/Application/view/application/user/signup-si2.phtml:339
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "zadnja stran osebne izkaznice"
@@ -3903,7 +3912,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
-#: module/Application/view/application/user/signup-si2.phtml:377
+#: module/Application/view/application/user/signup-si2.phtml:389
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr ""
@@ -3911,7 +3920,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
-#: module/Application/view/application/user/signup-si2.phtml:404
+#: module/Application/view/application/user/signup-si2.phtml:416
 #: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
 msgstr "5. Številka vozniškega dovoljenja"
@@ -4014,13 +4023,13 @@ msgid "BSN"
 msgstr "BSN"
 
 #: module/Application/view/application/user/signup-nl2.phtml:246
-#: module/Application/view/application/user/signup-si2.phtml:247
+#: module/Application/view/application/user/signup-si2.phtml:259
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
 msgstr "Velja do:"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
-#: module/Application/view/application/user/signup-si2.phtml:260
+#: module/Application/view/application/user/signup-si2.phtml:272
 #: module/Application/view/application/user/signup-sk2.phtml:260
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
@@ -4052,7 +4061,7 @@ msgstr ""
 "dovoljenja, tudi če ni overjeno"
 
 #: module/Application/view/application/user/signup-nl2.phtml:331
-#: module/Application/view/application/user/signup-si2.phtml:339
+#: module/Application/view/application/user/signup-si2.phtml:351
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "slika uporabnika z vozniškim dovoljenjem (selfie)"
@@ -4079,7 +4088,7 @@ msgstr "Priljubljeno mesto"
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minut za samo 5 €;"
 
-#: module/Application/view/application/user/signup-si2.phtml:355
+#: module/Application/view/application/user/signup-si2.phtml:367
 msgid "Continua la registrazione"
 msgstr "Nadaljuj z registracijo"
 
@@ -4163,7 +4172,7 @@ msgstr ""
 
 #: module/Application/view/application/user/signup.phtml:377
 msgid "Partita IVA (solo per ditte individuali e professionisti)"
-msgstr "Številka DDV (samo za pravne osebe in podjetja)"
+msgstr "Davčna številka (samo za pravne osebe in podjetja)"
 
 #: module/Application/view/application/user/signup.phtml:660
 msgid "Professione (Opzionale)"
@@ -4383,7 +4392,7 @@ msgstr ""
 "\n"
 "Služba za stranke Sharengo\n"
 "\n"
-"E-pošta: servizioclienti@sharengo.it\n"
+"E-pošta: support@sharengo.si\n"
 "Informacije in pogodbe: www.sharengo.si"
 
 #: module/Application/view/error/404.phtml:10
@@ -4567,7 +4576,7 @@ msgstr "Via dei Pelaghi 162, 57124 - Livorno (LI)"
 
 #: module/Application/view/layout/layout.phtml:169
 msgid "Codice Fiscale e Partita IVA"
-msgstr "Davčna številka in številka DDV"
+msgstr "Davčna številka in davčna številka"
 
 #: module/Application/view/layout/layout.phtml:170
 msgid "Numero REA"
@@ -4619,24 +4628,24 @@ msgstr "Share'ngo"
 
 #: module/Application/view/partials/car-popup.phtml:34
 msgid "Auto scelta"
-msgstr "Samoizbran"
+msgstr "Izbrano vozilo"
 
 #: module/Application/view/partials/car-popup.phtml:47
 msgid "Stato interni"
-msgstr "Stanje notranjosti"
+msgstr "Čistost vozila znotraj"
 
 #: module/Application/view/partials/car-popup.phtml:57
 msgid "Stato esterni"
-msgstr "Stanje zunanjosti"
+msgstr "Čistost vozila zunaj"
 
 #: module/Application/view/partials/car-popup.phtml:73
 msgid "Dove si trova"
-msgstr "Kjer je"
+msgstr "Lokacija"
 
 #: module/Application/view/partials/car-popup.phtml:81
 #: module/Application/view/partials/car-popup.phtml:132
 msgid "Autonomia"
-msgstr "avtonomija"
+msgstr "Domet vozila"
 
 #: module/Application/view/partials/car-popup.phtml:128
 msgid ""
@@ -6022,11 +6031,6 @@ msgstr "Potrjujemo prejem vaših novih podatkov."
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Preverite transakcijo, ki poteka."
-
-#, fuzzy
-#~| msgid "123456789"
-#~ msgid "12345678"
-#~ msgstr "123456789"
 
 #~ msgid "Sede operativa"
 #~ msgstr "Operativni štab"
