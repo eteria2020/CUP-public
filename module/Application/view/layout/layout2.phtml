@@ -103,12 +103,16 @@
         </div>
 <!-- outer -->
 <?php
-    $privacyLink = "http://site.sharengo.it/privacy/";
+    $privacyLink = "http://site.sharengo.it/privacy/"; // exception to the rule: take the page from the wordpress
 
     if ($this->serverInstanceId!=="") {
         echo $this->partial("partials/footer/main_foot_".$this->serverInstanceId.".phtml");
-        if($this->serverInstanceId=="sk_SK") {
-            $privacyLink = "https://site.sharengo.sk/privacy/";
+        if($this->serverInstanceId=="nl_NL") {
+            $privacyLink = "http://site.sharengo.nl/privacy/"; // exception to the rule: take the page from the wordpress
+        } else if($this->serverInstanceId=="sl_SI") {
+           $privacyLink = $this->basePath("pdf/si/privacy.pdf");
+        } else if($this->serverInstanceId=="sk_SK") {
+           $privacyLink = $this->basePath("pdf/sk/privacy.pdf");
         }
     } else {
         echo $this->partial("partials/footer/main_foot.phtml");
