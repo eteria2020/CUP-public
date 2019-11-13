@@ -7,13 +7,27 @@ use Zend\View\Helper\AbstractHelper;
 
 class LanguageMenuHelper extends AbstractHelper
 {
+    private $config;
+    private $serverInstance;
     private $languages;
     private $languageService;
 
-    public function __construct(array $languages, LanguageService $languageService)
+    /**
+     * LanguageMenuHelper constructor.
+     * @param array $config
+     * @param array $languages
+     * @param LanguageService $languageService
+     */
+    public function __construct(array $config, array $languages, LanguageService $languageService)
     {
+        $this->config = $config;
         $this->languages = $languages;
         $this->languageService = $languageService;
+
+        $this->serverInstance["id"] = "it_IT";
+        if(isset($this->config['serverInstance'])) {
+            $this->serverInstance = $this->config['serverInstance'];
+        }
     }
 
     /**
@@ -37,7 +51,7 @@ class LanguageMenuHelper extends AbstractHelper
                     'url' => $url
                 ];
 
-            } else {
+            } else if ($locale == 'en_US' || $locale ==  $this->serverInstance["id"] ) {
                 $menuLanguages[] = [
                     'code' => $locale,
                     'label' => $label,

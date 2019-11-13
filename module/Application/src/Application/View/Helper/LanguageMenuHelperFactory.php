@@ -18,9 +18,8 @@ class LanguageMenuHelperFactory implements FactoryInterface
 
         $config = $sm->get('config');
         $languages = $config['translation_config']['languages'];
-
         $languageService = $sm->get('LanguageService');
 
-        return new LanguageMenuHelper($languages, $languageService);
+        return new LanguageMenuHelper($config, $languages, $languageService);
     }
 }

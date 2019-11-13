@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-11-12 17:47+0100\n"
-"PO-Revision-Date: 2019-11-12 17:52+0100\n"
+"PO-Revision-Date: 2019-11-13 15:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -4329,7 +4329,7 @@ msgstr ""
 #: module/Application/view/application/user/signupinsert.phtml:55
 #: module/Application/view/partials/translations.phtml:32
 msgid "qui"
-msgstr "tukaj"
+msgstr "Strinjam se"
 
 #: module/Application/view/application/user/signupinsert.phtml:56
 msgid ""
@@ -4617,8 +4617,8 @@ msgid ""
 "accetti l'utilizzo dei cookie da parte nostra. Per maggiori dettagli si "
 "prega di cliccare"
 msgstr ""
-"Piškotki nam pomagajo pri zagotavljanju naših storitev. Z uporabo teh "
-"storitev se strinjate z našo uporabo piškotkov. Za več podrobnosti kliknite"
+"Piškotki pomagajo pri delovanju naše storitve. Z uporabo naših storitev se "
+"strinjate z uporabo piškotkov. "
 
 #: module/Application/view/layout/layout2.phtml:10
 #: module/Application/view/layout/map.phtml:10
@@ -4842,7 +4842,7 @@ msgstr "Naslednja"
 
 #: module/Application/view/partials/header/main_head.phtml:23
 msgid "Pacchetti &amp; promo"
-msgstr "Paketi &amp; promo"
+msgstr "Paketi in promo"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
@@ -4896,7 +4896,7 @@ msgstr "Kako deluje Sharengo?"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
 msgid "Pacchetti &amp; promozioni"
-msgstr "Paketi &amp; promocije"
+msgstr "Paketi in promocije"
 
 #: module/Application/view/partials/translations.phtml:8
 #, fuzzy
