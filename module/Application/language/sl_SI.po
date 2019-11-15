@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-11-12 17:47+0100\n"
-"PO-Revision-Date: 2019-11-13 15:35+0100\n"
+"PO-Revision-Date: 2019-11-15 12:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -224,7 +224,7 @@ msgstr "Naziv"
 #: module/Application/view/application/user/signup-si2.phtml:76
 #: module/Application/view/application/user/signup-sk2.phtml:76
 msgid "Sig."
-msgstr "G."
+msgstr "g."
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:74
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:81
@@ -235,7 +235,7 @@ msgstr "G."
 #: module/Application/view/application/user/signup-si2.phtml:77
 #: module/Application/view/application/user/signup-sk2.phtml:77
 msgid "Sig.ra"
-msgstr "gospa"
+msgstr "ga."
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:86
 #: module/Application/src/Application/Form/CustomerFieldset.php:90
@@ -568,7 +568,7 @@ msgstr "Izdal (organ)"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:317
 #: module/Application/src/Application/Form/UserFieldset.php:165
 msgid "dd-mm-aaaa"
-msgstr "dd mm llll"
+msgstr "dd-mm-llll"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:85
 msgid "Rilasciato il"
@@ -3804,11 +3804,14 @@ msgid ""
 "trattati e custoditi esclusivamente dall'ufficio responsabile del "
 "procedimento."
 msgstr ""
-"V skladu z umetnostjo. .16 predsedniške uredbe 445/2000 in v skladu z "
-"zakonodajno uredbo o zasebnosti 196/2003 so osebni podatki, navedeni v tej "
-"izjavi, povezani s podatki, ki so nujno potrebni za doseganje namenov, "
-"predvidenih v veljavnih predpisih, in jih obravnava in hrani izključno urad, "
-"pristojen za postopek."
+"V skladu z veljavno zakonodajo Republike Slovenije ( Zakon o varstvu osebnih "
+"podatkov, Zakon o elektronskih komunikacijah in Zakon o elektronskem "
+"poslovanju na trgu)  in področno evropsko zakonodajo ( Splošna uredba o "
+"varstvu podatkov)  izrecno in nepogojno  izjavljam, da upravljalcu mojih "
+"osebnih podatkov, torej družbi Sharengo d.o.o., dovoljujem zbiranje,"
+"obdelavo, varovanje in hrambo mojih osebnih podatkov za potrebe izvedbe "
+"storitev družbe Sharengo d.o.o., ki velja do mojega izrecnega pisnega "
+"preklica."
 
 #: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
@@ -4043,14 +4046,10 @@ msgid ""
 "periodo di utilizzo di questo servizio servizio, fino al ritiro di tale "
 "consenso."
 msgstr ""
-"Stranka izjavlja da se zaveda kazenskega zakonika in pravnih posledic, ki jo "
-"lahko doletijo v primeru, da lažno izjavlja, da ima veljavno vozniško "
-"dovoljenje, ki mu dovoljuje vožnjo vozila na Slovenskem. V skladu s členoma "
-"13 in 14 zakona št. 18/2018 ZZ o varstvu osebnih podatkov izjavljam, da "
-"izrecno in brezpogojno dajem operaterju soglasje za obdelavo mojih osebnih "
-"podatkov, kolikor je potrebno za izvajanje storitev Sharengo, ki so navedene "
-"v splošnih pogodbenih pogojih in za namene delovanja storitev v obdobju "
-"uporabe te storitve do umika take privolitve."
+"Stranka, pod kazenskopravno in civilno odgovornostjo za primer podajanja "
+"neresničnih podatkov, izjavlja, da ima veljavno ustrezno vozniško "
+"dovoljenje, na podlagi katerega lahko upravlja z vozilom družbe Sharengo na "
+"področju Republike Slovenije. "
 
 #: module/Application/view/application/user/signup-nl2.phtml:285
 msgid ""
