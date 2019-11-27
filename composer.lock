@@ -2498,7 +2498,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "5d0b298390e8b21ef4d540bda67c1cfc75d46e4c"
+                "reference": "37f47fd8463098520e1988edc018bd7c097c1de0"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2522,7 +2522,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-11-08 15:18:53"
+            "time": "2019-11-27 08:44:21"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -5812,12 +5812,12 @@
             "version": "v0.4.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/reactphp/react.git",
+                "url": "https://github.com/reactphp/reactphp.git",
                 "reference": "457b6b8a16a37c11278cac0870d6d2ff911c5765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/react/zipball/457b6b8a16a37c11278cac0870d6d2ff911c5765",
+                "url": "https://api.github.com/repos/reactphp/reactphp/zipball/457b6b8a16a37c11278cac0870d6d2ff911c5765",
                 "reference": "457b6b8a16a37c11278cac0870d6d2ff911c5765",
                 "shasum": ""
             },

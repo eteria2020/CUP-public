@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-11-12 17:47+0100\n"
-"PO-Revision-Date: 2019-11-19 10:41+0100\n"
+"PO-Revision-Date: 2019-11-27 10:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -3377,10 +3377,6 @@ msgstr "ZAHTEVEK ZA KARTICO SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
-#, fuzzy
-#| msgid ""
-#| "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
-#| "puoi anche ritirarla c/o i nostri uffici"
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3504,9 +3500,9 @@ msgid ""
 "min invece di 0,21&euro;min) e provi subito la tua Sharengo."
 msgstr ""
 "dobrodošli v Share'ngo! Če želite aktivirati svoj račun, morate s kreditno "
-"ali predplačniško kartico kupiti paket dobrodošlice: s 5 evri imate prvih 30 "
-"minut izposoje po znižani ceni (0,17 & euro; min. namesto 0,21 & min; min) "
-"Share'ngo storitev pa lahko preizkusite takoj."
+"ali predplačniško kartico kupiti paket dobrodošlice: s 5 &euro; evri imate "
+"prvih 30 minut izposoje po znižani ceni (0,17 &euro; min. namesto 0,21 "
+"&euro; min) Share'ngo storitev pa lahko preizkusite takoj."
 
 #: module/Application/view/application/user-area/trips.phtml:16
 msgid "NOLEGGI"
