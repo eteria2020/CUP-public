@@ -195,19 +195,23 @@ class IndexController extends AbstractActionController
     {   
         return new ViewModel();
     }
+
     /**
-     * @return \Zend\Http\Response (JSON Format)
+     * Return an JSON array with the poligons of all active and visible zones
+     *
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function getListZonesAction()
     {
-        $data = $this->zoneService->getListZones(false, true);
+        $zones = [];
+        $zonesVisibleActive = $this->zoneService->getListZones(false, true);
 
-        /** @var array $zone */
-        foreach ($data as $zone) {
-            $data[$zone['id']] = json_decode($zone['areaUse']);
+        foreach ($zonesVisibleActive as $zone) {
+            $zones[$zone['id']] = json_decode($zone['areaUse']);
         }
 
-        $this->getResponse()->setContent(json_encode($data));
+        $this->getResponse()->setContent(json_encode($zones));
+
         return $this->getResponse();
     }
 
