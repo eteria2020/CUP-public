@@ -489,13 +489,16 @@ class UserAreaController extends AbstractActionController {
 
         $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
 
-        return new ViewModel([
+        $view = new ViewModel([
             'customer' => $customer,
             'cartasiCompletedFirstPayment' => $cartasiCompletedFirstPayment,
             'contract' => $contract,
             'activateLink' => $activateLink,
             'serverInstance' => $serverInstance,
         ]);
+
+        $view->setTemplate("application/user-area/".$serverInstance."/dati-pagamento.phtml");
+        return $view;
     }
 
     public function tripsAction() {

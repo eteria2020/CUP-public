@@ -3141,7 +3141,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/mollie.git",
-                "reference": "85d30e7fb58045265be4beb1a02d338ad794e885"
+                "reference": "fde2a7054b0faecd585364f0fd8b47d94a8ea5c3"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3156,7 +3156,7 @@
                 }
             },
             "description": "Mollie module for Sharengo",
-            "time": "2019-10-15 08:21:10"
+            "time": "2019-12-02 08:32:15"
         },
         {
             "name": "smsgatewayme/client",
