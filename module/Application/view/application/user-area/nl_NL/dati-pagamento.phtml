@@ -1,0 +1,221 @@
+<!-- main -->
+<div id="main" class="detect-window-height">
+
+    <!-- module-wrapper-app -->
+    <div class="module-wrapper-app">
+
+        <!-- module-column-app sx -->
+        <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
+
+        <!-- module-column-app sx -->
+
+        <!-- module-column-app dx -->
+        <div class="module-column-app side-dx">
+
+            <div class="module-heading-app">
+                <h1 class="module-main-title"><?= $this->translate('Dati pagamento'); ?></h1>
+                <?php echo $this->partial('partials/welcome-user-area'); ?>
+            </div>
+
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-manage-card -->
+                <div class="module-manage-card padding-top">
+
+                    <!-- block-form -->
+                    <div class="block-form bw-f w-3-3 clearfix">
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-money"></i> <?= $this->translate('Stato pagamenti') ?></h2>
+                        </div>
+
+                        <div class="block-alert margin-bottom info">
+                            <?php if($this->customer->getFirstPaymentCompleted()): ?>
+                                <p>
+                                    <?= $this->translate('I dati di pagamento sono stati correttamente inseriti.'); ?>.
+                                </p>
+                            <?php else: ?>
+                                <p>
+                                    <?= $this->translate('Il Pacchetto Benvenuto non risulta ancora pagato'); ?>,
+                                    <a href="<?= $this->url('mollie/first-payment', [], ['query' => ['customer' => $this->customer->getId()]]) ?>">
+                                        <button class="medium red"><?= $this->translate("Clicca qui"); ?></button></a>
+                                    <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.
+                                </p><br>
+                                <p>
+                                    <font color="red"><?= $this->translate('Attenzione!') ?></font>
+                                    <?= $this->translate(' Per completare il pagamento e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?>
+                                </p><br>
+                                <p>
+                                    <?= $this->translate('Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine l&#39;attivazione al gestore della tua carta, prima di proseguire '); ?>(<b><a href="payment-securecode-cartasi">maggiori info</a></b>)
+                                </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <!-- block-form -->
+                </div>
+                <!-- module-manage-card -->
+            </div>
+            <!-- module-column-app-content -->
+            <?php
+            // if necessary create link to the activation page
+            if ($this->activateLink) {
+                ?>
+                <div class="module-column-app-content clearfix">
+                    <!-- module-manage-card -->
+                    <div class="module-manage-card padding-top">
+                        <p>
+                            <?= $this->translate("Hai esaurito i tuoi minuti bonus e hai effettuato una o più corse 'a debito'. Puoi effettuare manualmente il primo pagamento cliccando sul seguente link.") ?>
+                        </p>
+                        <!-- Activation button -->
+                        <div class="block-wrapper-button content-align-center margin-top-custom">
+                            <a href="<?= $this->url('area-utente/activate-payments') ?>"><button><?= $this->translate("Maggiori informazioni"); ?></button></a>
+                        </div>
+                        <!-- activation button -->
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+            <div class="module-column-app-content clearfix">
+
+                <!-- module-manage-card -->
+                <div class="module-manage-card padding-top">
+
+                    <!-- block-form -->
+                    <div class="block-form bw-f w-3-3 clearfix">
+
+                        <div class="block-form-section content-align-center margin-bottom">
+                            <h2><i class="fa fa-credit-card"></i> <?= $this->translate("Carta di credito"); ?></h2>
+                        </div>
+
+                        <div class="margin-bottom info">
+                            <?php if ($this->contract): ?>
+                                <table id ="contract" align="center" class="bw-f" style="width: 70%">
+                                    <tbody>
+                                    <tr>
+                                        <td><?= $this->translate("Data attivazione carta"); ?></td>
+                                        <td><?= $this->contract->getInsertedTs()->format('d/m/Y'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?= $this->translate("Numero carta"); ?></td>
+                                        <td><?= $this->contract->getPan(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?= $this->translate("Scadenza"); ?></td>
+                                        <td><?= implode('/', str_split($this->contract->getPanExpiry(), 4)); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?= $this->translate("Stato"); ?></td>
+                                        <td>
+                                            <?php if ($this->contract->getDisabledDate()): ?>
+                                                <?= $this->translate("Carta disabilitata "); ?> <?= $this->contract->getDisabledDate()->format('Y-m-d H:i:s'); ?>
+                                            <?php else: ?>
+                                                <?= $this->translate("Carta attiva "); ?>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button class="medium red" onclick="openChangeCard()"><?= $this->translate("Cambia carta"); ?></button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                                <?php if( $this->customer->getFirstPaymentCompleted()): ?>
+                                    <div class="col-lg-12 block-alert margin-bottom info">
+                                        <p> <?= $this->translate("La tua carta di credito (o prepagata) risulta scaduta o non presente:"); ?> </p>
+                                        <br>
+                                        <p> <?= $this->translate('Clicca su <button class="medium red" onclick="openChangeCard()">CAMBIA CARTA</button> per inserirne una nuova.'); ?></p>
+                                        <br>
+                                        <p> <?= $this->translate('Attenzione: se non provvederai ad inserire una nuova carta di credito (o prepagata) il tuo profilo rimarrà disabilitato.'); ?></p>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="col-lg-12"><?= $this->translate("Non hai ancora inserito una carta di credito o prepagata sul tuo profilo."); ?></div>
+
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+                    <!-- block-form -->
+                </div>
+                <!-- module-manage-card -->
+                <?php echo $this->partial('partials/credit-card-refuse'); ?>
+            </div>
+        </div>
+        <!-- module-column-app dx -->
+    </div>
+    <!-- module-wrapper-app -->
+    <?php //if ($this->contract):
+    if (is_null($this->contract)) {
+        //$contract = $this->contract->getId();
+        $contract = 'no_contract';
+    } else {
+        $contract = $this->contract->getId();
+    }
+    ?>
+    <!-- overlay change credit card -->
+    <div id="sng-overlay" style="visibility: hidden">
+        <div class="table">
+            <div class="cell">
+                <div class="box" style="background:#fff;">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none;">
+                            <h3 style="background: #43a34c;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->translate("ATTENZIONE") ?></h3>
+                            <br>
+                            <ul>
+                                <p style="color:black;text-align: center; font-weight: 500;">
+                                    <?= $this->translate("Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che verr&agrave; immediatamente rimborsata al termine della procedura.") ?>
+                                </p>
+                            </ul>
+                            <br>
+                            <div id="button-alert" class="block-wrapper-button content-align-center">
+                                <?php
+                                $urlChangeCard = $this->url('mollie/change-card', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
+                                ?>
+                                <a href="<?= $urlChangeCard;?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
+                                <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("CHIUDI") ?></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+    <?php //endif; ?>
+</div>
+<!-- main -->
+<?php $this->headStyle()->captureStart() ?>
+.errors {
+list-style-type: none;
+}
+.errors li {
+color: red;
+}
+
+<?php $this->headStyle()->captureEnd() ?>
+<!-- JavaScript -->
+<?php
+$this->inlineScript()->appendFile($this->basePath('js/magnific-popup.min.js'));
+$this->headLink()->appendStylesheet($this->basePath('css/magnific-popup.css'), 'screen');
+$this->headLink()->appendStylesheet($this->basePath('css/overlay.css'));
+?>
+<script type="text/javascript">
+    function openChangeCard() {
+        overlay = $('#sng-overlay');
+        overlay.css("visibility", "visible");
+        button = $('#button-alert');
+        button.css("visibility", "visible");
+    }
+    function closeChangeCard() {
+        //e.preventDefault();
+        button.css("visibility", "hidden");
+        //button.css("display","initial");
+        overlay.fadeOut(400, function () {
+            overlay.css("visibility", "hidden");
+            overlay.css("display","initial");
+        });
+    }
+</script>
