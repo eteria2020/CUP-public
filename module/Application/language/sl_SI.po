@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-12 17:47+0100\n"
-"PO-Revision-Date: 2019-11-27 10:04+0100\n"
+"POT-Creation-Date: 2019-11-28 12:48+0100\n"
+"PO-Revision-Date: 2019-11-28 12:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 "X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
 
-#: module/Application/config/module.config.php:2731
+#: module/Application/config/module.config.php:2730
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "profil"
 
-#: module/Application/config/module.config.php:2736
+#: module/Application/config/module.config.php:2735
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -38,35 +38,35 @@ msgstr "profil"
 msgid "Patente"
 msgstr "vozniško dovoljenje"
 
-#: module/Application/config/module.config.php:2741
+#: module/Application/config/module.config.php:2740
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2746
+#: module/Application/config/module.config.php:2745
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Cene"
 
-#: module/Application/config/module.config.php:2751
+#: module/Application/config/module.config.php:2750
 msgid "Promo e pacchetti"
 msgstr "Promo in paketi"
 
-#: module/Application/config/module.config.php:2761
+#: module/Application/config/module.config.php:2760
 msgid "Bonus minuti"
 msgstr "Bonus minute"
 
-#: module/Application/config/module.config.php:2766
+#: module/Application/config/module.config.php:2765
 #, fuzzy
 msgid "Corse completate"
 msgstr "Zaključena vožnja"
 
-#: module/Application/config/module.config.php:2771
+#: module/Application/config/module.config.php:2770
 msgid "Dati di pagamento"
 msgstr "Podatki o plačilu"
 
-#: module/Application/config/module.config.php:2776
+#: module/Application/config/module.config.php:2775
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "računi"
@@ -1246,7 +1246,6 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Morate biti polnoletni"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Identifikacijska številka ni pravilna"
 
@@ -1431,41 +1430,41 @@ msgstr "(Črna škatla)"
 msgid "Si è verificato un errore durante il salvataggio della configurazione"
 msgstr "Med shranjevanjem konfiguracije je prišlo do napake"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
 msgid "Completata"
 msgstr "končan"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
 msgid "Non Completata"
 msgstr "Ni dokončano"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
 msgid "Codice promo non valido."
 msgstr "Neveljavna promocijska koda."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
 msgid "Codice promo già associato a questo account."
 msgstr "Promocijska koda je že povezana s tem računom."
 
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
 msgid "Codice fiscale, genere "
 msgstr "Davčna številka, spol "
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
 msgid "Codice fiscale, data di nascita "
 msgstr "Davčna številka, datum rojstva "
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
 msgid "Codice fiscale, luogo di nascita incongruente."
 msgstr "Davčna številka in kraj rojstva se ne ujemata."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
 msgid "Codice fiscale, sintassi incongruente."
 msgstr "Davčna številka, neskladna oblika."
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
 msgid "Codice fiscale, sintassi errata."
 msgstr "Davčna številka, napačen način zapisa."
 
@@ -3371,12 +3370,12 @@ msgid "per inoltrare la tua richiesta"
 msgstr "za posredovanje vaše zahteve"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "ZAHTEVEK ZA KARTICO SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -4096,14 +4095,12 @@ msgstr ""
 "(standardni pogoji, razen promocij)."
 
 #: module/Application/view/application/user/signup.phtml:46
-msgid "Costo iscrizione 1 euro con 15 minuti bonus. Premi chat "
-msgstr "Prijavnina 1 evro s 15 minutami bonusa. Pritisnite klepet "
+msgid "Costo iscrizione 1 euro con 15 minuti bonus."
+msgstr "Prijavnina 1 evro s 15 minutami bonusa."
 
 #: module/Application/view/application/user/signup.phtml:48
-msgid ""
-"Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni. Premi chat "
-msgstr ""
-"Prijavnina 5 evrov s 15 minutami bonusa, razen promocij. Pritisnite klepet "
+msgid "Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni."
+msgstr "Prijavnina 5 evrov s 15 minutami bonusa, razen promocij."
 
 #: module/Application/view/application/user/signup.phtml:51
 msgid "per aiuto."
@@ -4117,16 +4114,12 @@ msgstr ""
 "Kotizacija znaša 10 € s 30 minutami bonusa (standardni pogoji brez promocij)."
 
 #: module/Application/view/application/user/signup.phtml:59
-msgid "Registration fee is 1€ with 15 bonus minutes. Push chat "
-msgstr "Kotizacija znaša 1 € s 15 bonus minutami. Pritisni klepet "
+msgid "Registration fee is 1€ with 15 bonus minutes."
+msgstr "Kotizacija znaša 1 € s 15 bonus minutami."
 
 #: module/Application/view/application/user/signup.phtml:61
-msgid ""
-"Registration fee 5 euro with 15 bonus minutes, except for promotion. Push "
-"chat "
-msgstr ""
-"Prijavnina 5 EUR s 15 bonus minutami, razen če gre za promocije. Pritisni "
-"klepet "
+msgid "Registration fee 5 euro with 15 bonus minutes, except for promotion."
+msgstr "Prijavnina 5 EUR s 15 bonus minutami, razen če gre za promocije."
 
 #: module/Application/view/application/user/signup.phtml:65
 msgid "for help."
@@ -4609,7 +4602,7 @@ msgid "Come si usa un'equomobile"
 msgstr "Kako uporabljati avto"
 
 #: module/Application/view/layout/layout.phtml:210
-#: module/Application/view/layout/layout2.phtml:122
+#: module/Application/view/layout/layout2.phtml:126
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
 "accetti l'utilizzo dei cookie da parte nostra. Per maggiori dettagli si "
@@ -5975,6 +5968,18 @@ msgstr "Vnesite kodo podjetja, ki vam je bila sporočena"
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:32
 msgid "Associa"
 msgstr "sodelavec"
+
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
+#, fuzzy
+#| msgid ""
+#| "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
+#| "ritirarla presso i nostri uffici"
+msgid ""
+"Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
+"anche ritirarla c/o i nostri uffici"
+msgstr ""
+"Na zahtevo bo v roku enega tedna brezplačno prispela na vaš dom, lahko pa jo "
+"prevzamete tudi v naših poslovalnicah"
 
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
 msgid ""

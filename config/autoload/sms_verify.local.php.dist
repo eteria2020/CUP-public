@@ -11,10 +11,5 @@ return [
         'text'      => 'Codice di Verifica ',
         'logError'   => '/tmp/logErrorSms.txt',
         'logSuccess' => '/tmp/logSuccesSms.txt'
-    ],
-    'smsGatewayMe' => [
-        'token' => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTU0NTkxNzczNywiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjY1OTk2LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.aEdlXGcideFh6GKRPHClHKDnbqzIhJ5F_x7UpwXWHU4",
-        'deviceId' => 107331,
-        'wait' => 10 //seconds
     ]
 ];

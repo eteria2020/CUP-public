@@ -11,18 +11,17 @@ $this->headLink()
 
 <!-- Facebook Pixel Code -->
 <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function()
-    {n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}
+    !function(f, b, e, v, n, t, s)
+    {if (f.fbq)return; n = f.fbq = function()
+    {n.callMethod? n.callMethod.apply(n, arguments):n.queue.push(arguments)}
     ;
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
+    if (!f._fbq)f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+    n.queue = []; t = b.createElement(e); t.async = !0;
+    t.src = v; s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s)}(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '423565347840059');
-    fbq('track', 'PageView');
-</script>
+    fbq('track', 'PageView');</script>
 <script async src="//onetag-sys.com/sync/a,61/2"></script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=423565347840059&ev=PageView&noscript=1"/></noscript>
 <!-- End Facebook Pixel Code -->
@@ -32,43 +31,38 @@ $this->headLink()
     <div class="content">
         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
         <?php if (!$this->hasDiscount): ?>
-                <div class="block-form w-3-4 auto-margin clearfix">
-                    <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
-                        <img src="<?= $this->basePath('images/banner_benvenuto.jpg') ?>"/>
-                        <label class="small-form content-align-center" style="line-height: 1;color:#000000">
-                            <!-- <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?> -->
+            <div class="block-form w-3-4 auto-margin clearfix">
+                <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
+                    <img src="<?= $this->basePath('images/banner_benvenuto.jpg') ?>"/>
+                    <label class="small-form content-align-center" style="line-height: 1;color:#000000">
+                        <!-- <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?> -->
                         <?php
                         /* 1 euro subscription CSD-1406 */
                         $now = new DateTime();
                         $startdate = new DateTime("2017-11-01 00:00:00");
                         $enddate = new DateTime("2017-12-31 23:59:59");
                         if ($startdate <= $now && $now <= $enddate) {
-                            echo $this->translate('Costo iscrizione 1 euro con 15 minuti bonus. Premi chat ');
+                            echo $this->translate('Costo iscrizione 1 euro con 15 minuti bonus.');
                         } else {
-                            echo $this->translate('Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni. Premi chat ');
-                        }?>
-                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
-                            <?php echo $this->translate('per aiuto.'); ?>
-                        </label>
-                        <br>
-                        <label class="small-form content-align-center" style="line-height: 1;color:#ccc3c3">
-                            <!-- <?= $this->translate('The registration fee is 10€ with 30 minutes bonus (standard condition without promotions).'); ?> -->
+                            echo $this->translate('Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni.');
+                        }
+                        ?>
+                    </label>
+                    <br>
+                    <label class="small-form content-align-center" style="line-height: 1;color:#ccc3c3">
+                        <!-- <?= $this->translate('The registration fee is 10€ with 30 minutes bonus (standard condition without promotions).'); ?> -->
                         <?php
                         /* 1 euro subscription CSD-1401 */
                         if ($startdate <= $now && $now <= $enddate) {
-                            echo $this->translate('Registration fee is 1€ with 15 bonus minutes. Push chat ');
+                            echo $this->translate('Registration fee is 1€ with 15 bonus minutes.');
                         } else {
-                            echo $this->translate('Registration fee 5 euro with 15 bonus minutes, except for promotion. Push chat ');
-                        }?>
-                            <img height="20" width="20" src="<?= $this->basePath('images/intercom_logo.png') ?>"/>
-                            <?php
-                            echo $this->translate('for help.');
-
+                            echo $this->translate('Registration fee 5 euro with 15 bonus minutes, except for promotion.');
+                        }
                         ?>
-                        </label>
-                    </div>
+                    </label>
                 </div>
-        <?php endif; ?>
+            </div>
+<?php endif; ?>
     </div>
 
     <!-- module-wizard -->
@@ -97,32 +91,32 @@ $this->headLink()
             <!-- block-row-field -->
             <div class="block-row-field  content-align-center  clearfix">
                 <div class='block-field  auto-margin w-2-3 '>
-                <div class="block-field bw-f  w-2-3">
-                    <p>
-                        <?php
-                        $promocode = $this->form->get('promocode')->get('promocode');
-                        echo $this->formElement($promocode); 
-                        ?>
-                    </p>
+                    <div class="block-field bw-f  w-2-3">
+                        <p>
+                            <?php
+                            $promocode = $this->form->get('promocode')->get('promocode');
+                            echo $this->formElement($promocode);
+                            ?>
+                        </p>
 
 
 
-                </div>
-                <div class="block-field bw-f last  w-1-3">
-                    <button  type="button" id="buttonVerifyPromo">Applica</button>
-                </div>
+                    </div>
+                    <div class="block-field bw-f last  w-1-3">
+                        <button  type="button" id="buttonVerifyPromo">Applica</button>
+                    </div>
                     <div id="promodiv" class=""></div>
                     <div id="errorepromo">
-                        <?php echo $this->formElementErrors($promocode, ['class' => 'errors']); ?>
+<?php echo $this->formElementErrors($promocode, ['class' => 'errors']); ?>
 
                     </div>
                 </div>
-               
+
             </div>
-            
-            
-            
-            
+
+
+
+
         </div>
 
         <div class="block-form w-3-4 auto-margin clearfix">
@@ -297,7 +291,7 @@ $this->headLink()
                         $birthTown2 = $this->form->get('user')->get('birthTown');
                         $input = '<input name="' . $birthTown2->getName() . '" ';
                         foreach ($birthTown2->getAttributes() as $attribute => $value) {
-                            $input .= $attribute . '="'.$value .'" ';
+                            $input .= $attribute . '="' . $value . '" ';
                         }
                         $input .= ' style="display: none;" value="' . $birthTown2->getValue() . '" disabled></ipnut>';
                         echo $input;
@@ -648,7 +642,7 @@ $this->headLink()
                     </div>
                     <br>
                     <p>
-                        <?= $this->translate("Inserisci qui il codice di verifica inviato via sms" ) ?><br/>
+<?= $this->translate("Inserisci qui il codice di verifica inviato via sms") ?><br/>
                     </p>
                 </div>
             </div>
@@ -716,41 +710,41 @@ $this->headLink()
                             <?= $this->translate('Termini e Condizioni Generali di Contratto'); ?>
                         </a>
                         <a href="<?= $this->basePath('pdf/Contratto_di_servizio_e_tariffe.pdf'); ?>" class="document-links" id="regulationConditionLink">
-                            <?= $this->translate('Regolamento Tariffario'); ?>
+                    <?= $this->translate('Regolamento Tariffario'); ?>
                         </a>
                     </p>
-                    <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
+                        <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
                     <label class='control checkbox small-form'>
-                        <?php echo $this->formElement($generalCondition1) ?>
+<?php echo $this->formElement($generalCondition1) ?>
                         <span class='control-indicator' id="generalCondition1Text"><?php echo ' ' . $generalCondition1->getLabel(); ?></span>
                     </label>
                     <br></br>
-                    <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
-                    <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
+                        <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
+                        <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
                     <label class='control checkbox small-form'>
-                        <?php echo $this->formElement($generalCondition2) ?>
+<?php echo $this->formElement($generalCondition2) ?>
                         <span class='control-indicator' id="generalCondition2Text"><?php echo ' ' . $generalCondition2->getLabel(); ?></span>
                     </label>
                     <br></br>
-                    <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
+                        <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
                     <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links" id="privacyConditionLink">
-                        <?= $this->translate('Informativa Privacy'); ?>
+                    <?= $this->translate('Informativa Privacy'); ?>
                     </a>
-                    <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
+                        <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
                     <label class='control checkbox small-form'>
-                        <?php echo $this->formElement($privacyCondition) ?>
+<?php echo $this->formElement($privacyCondition) ?>
                         <span class='control-indicator' id="privacyConditionText"><?php echo ' ' . $privacyCondition->getLabel(); ?></span>
                     </label>
                     <br></br>
-                    <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
-                    <?php $privacyInformation = $this->form->get('user')->get('privacyInformation'); ?>
+                        <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
+                        <?php $privacyInformation = $this->form->get('user')->get('privacyInformation'); ?>
                     <label class='control checkbox small-form'>
-                        <?php echo $this->formElement($privacyInformation) ?>
+<?php echo $this->formElement($privacyInformation) ?>
                         <span id="InfoPravacyText" class='control-indicator'></span>
                     </label>
                     <br></br>
-                    <?php echo $this->formElementErrors($privacyInformation, ['class' => 'errors']); ?>
-                    
+<?php echo $this->formElementErrors($privacyInformation, ['class' => 'errors']); ?>
+
                 </div>
             </div>
             <!-- block-row-field -->
@@ -809,75 +803,58 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 <script type="text/javascript">
     var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>",
             birthTownValue = "<?= $birthTown->getValue() ?>";
-
     $(document).ready(function () {
-            overlay = $('#sng-overlay');
-        <?php if (!$this->mobile){ echo 'tryAPIGeolocation();'; } ?>
+    overlay = $('#sng-overlay');
+<?php if (!$this->mobile) {
+    echo 'tryAPIGeolocation();';
+} ?>
 
-        var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
-        var dateStart = new Date(2018, 1, 11,  7, 0, 0, 0);
-        var dateEnd   = new Date(2018, 1, 11, 14, 0, 0, 0);
+    var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
+            var dateStart = new Date(2018, 1, 11,  7, 0, 0, 0);
+    var dateEnd   = new Date(2018, 1, 11, 14, 0, 0, 0);
 
-        //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
-        //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
+//        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
+//        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
 
-        if (now >= dateStart && now <= dateEnd) {
-             overlay.css("visibility", "visible");
-        }
+if (now >= dateStart && now <= dateEnd) {
+            overlay.css("visibility", "visible");
+}
 
-                $(".sng-overlay-close").click(function (e) {
-                    e.preventDefault();
-                    overlay.fadeOut(600, function () {
-                            overlay.remove();
-                    });
-                    });
-
-                        // Criteo section
-                        var email = $("#email").val();
-                        var list = [];
-                        $("#fleet option").each(function() {
-                            if (parseInt($(this).val()) !== 0) {
-                                    list.push(parseInt($(this).val()));
-                        };
-                        });
-
-                        criteoViewListing(email, list);
-
-                        $("#fleet").change(function () {
-                                    var email = $("#email").val();
-                                    var fleetId = parseInt($(this).find(":selected").val());
-
-                                    criteoViewBasketItem(email, fleetId);
+$(".sng-overlay-close").click(function (e) {
+            e.preventDefault();
+    overlay.fadeOut(600, function () {
+    overlay.remove();
+        });
+        });
+        
+        
+        function nearBy(fleetLat, fleetLon, userLat, userLon){
+            return Math.abs(fleetLat - userLat) + Math.abs(fleetLon - userLon);
+                    }
+                    
+                    var apiGeolocationSuccess = function(position) {
+            var arr = [];
+    <?
+    $arr = "";
+    foreach($this->fleets as $f){
+                    echo "arr[".$f - > getId()."] = nearBy(".$f - > getLatitude().",".$f - > getLongitude().",position.coords.latitude,position.coords.longitude);\n";
+            $arr. = "arr[".$f - > getId()."]"; $arr. = ",";
+                        }
+                        ?>
+    var i = arr.indexOf(Math.min(<?= $arr; ?>));
+    //if geolocation is near by Florence: redirect to new signup
+    if (i != 3){ //Milan, Florence and Modena
+                    window.location.replace("https://www.sharengo.it/new-signup");
+                            }
+                            };
+                            
+                            var tryAPIGeolocation = function() {
+                    jQuery.post("https://www.googleapis.com/geolocation/v1/geolocate?key=<?= $this->googleMapsConfig['key'] ?>", function(success) {
+                    apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+                        })
+                        .fail(function(err) {
+                            console.log(err);
                             });
-
-                            });
-    function nearBy(fleetLat, fleetLon, userLat, userLon){
-        return Math.abs(fleetLat-userLat)+Math.abs(fleetLon-userLon);
-    }
-
-    var apiGeolocationSuccess = function(position) {
-        var arr = [];
-        <?
-        $arr = "";
-        foreach($this->fleets as $f){
-            echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
-            $arr .= "arr[".$f->getId()."]";$arr .= ",";
-        }
-        ?>
-        var i = arr.indexOf(Math.min(<?= $arr; ?>));
-        //if geolocation is near by Florence: redirect to new signup
-        if (i != 3){ //Milan, Florence and Modena
-            window.location.replace("https://www.sharengo.it/new-signup");
-        }
-    };
-
-    var tryAPIGeolocation = function() {
-        jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=<?= $this->googleMapsConfig['key'] ?>", function(success) {
-            apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
-        })
-            .fail(function(err) {
-                console.log(err);
-            });
-    };
-
+                            };
+                            
 </script>

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "331ad4e9b2fbc74e27632c6857bf0906",
-    "content-hash": "93bcfebcd21c46d53d4ddb036759c7f4",
+    "hash": "d0715e6e1c5ad7f16f8e9ded85062133",
+    "content-hash": "7d85303dc86497ef63bb46a351abe6eb",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2498,7 +2498,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "37f47fd8463098520e1988edc018bd7c097c1de0"
+                "reference": "f7f2a27579a5693b3b9dbf60fcccedda7ed7bacd"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2512,8 +2512,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.7",
-                "smsgatewayme/client": "^0.0.1"
+                "phpunit/phpunit": "^4.7"
             },
             "type": "library",
             "autoload": {
@@ -2522,7 +2521,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-11-27 08:44:21"
+            "time": "2019-12-03 15:35:48"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -3157,49 +3156,6 @@
             },
             "description": "Mollie module for Sharengo",
             "time": "2019-12-02 08:32:15"
-        },
-        {
-            "name": "smsgatewayme/client",
-            "version": "v0.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/smsgatewayme/client-php.git",
-                "reference": "864f326ad6951599b487aab3cc350a966c5cbd86"
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "~0.6.1",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SMSGatewayMe\\Client\\": "lib/"
-                }
-            },
-            "license": [
-                "Apache v2"
-            ],
-            "authors": [
-                {
-                    "name": "SMS Gateway Me",
-                    "homepage": "https://smsgateway.me"
-                }
-            ],
-            "homepage": "https://smsgateway.me",
-            "keywords": [
-                "api",
-                "php",
-                "sdk",
-                "swagger"
-            ],
-            "time": "2018-05-16 00:07:48"
         },
         {
             "name": "socalnick/scn-social-auth",
@@ -6409,6 +6365,49 @@
                 "validator"
             ],
             "time": "2015-11-21 02:21:41"
+        },
+        {
+            "name": "smsgatewayme/client",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smsgatewayme/client-php.git",
+                "reference": "864f326ad6951599b487aab3cc350a966c5cbd86"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SMSGatewayMe\\Client\\": "lib/"
+                }
+            },
+            "license": [
+                "Apache v2"
+            ],
+            "authors": [
+                {
+                    "name": "SMS Gateway Me",
+                    "homepage": "https://smsgateway.me"
+                }
+            ],
+            "homepage": "https://smsgateway.me",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2018-05-16 00:07:48"
         },
         {
             "name": "symfony/debug",

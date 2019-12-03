@@ -1897,8 +1897,7 @@ return [
             'CurrentRoute' => 'Application\View\Helper\CurrentRouteFactory',
             'LongLanguage' => 'Application\View\Helper\LongLanguageFactory',
             'Config' => 'Application\View\Helper\ConfigFactory',
-            'availableFleets' => 'Application\View\Helper\AvailableFleetsFactory',
-            'intercomSettings' => 'Application\View\Helper\IntercomSettingsFactory'
+            'availableFleets' => 'Application\View\Helper\AvailableFleetsFactory'
         ],
         'invokables' => [
             'IsUserArea' => 'Application\View\Helper\IsUserArea',
