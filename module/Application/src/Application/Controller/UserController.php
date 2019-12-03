@@ -38,12 +38,6 @@ use SharengoCore\Service\PromoCodesOnceService;
 use SharengoCore\Service\TripsService;
 use SharengoCore\Service\UsersService;
 
-//use Zend\Log\Logger;
-use SMSGatewayMe\Client\ApiClient;
-use SMSGatewayMe\Client\Configuration;
-use SMSGatewayMe\Client\Api\MessageApi;
-use SMSGatewayMe\Client\Model\SendMessageRequest;
-
 // Internal Modules
 use Application\Exception\ProfilingPlatformException;
 use Application\Form\NewRegistrationForm;
@@ -216,11 +210,6 @@ class UserController extends AbstractActionController {
     private $smsDbConfigurations;
 
     /**
-     * @var array
-     */
-    private $smsGatewayMe;
-
-    /**
      * @var $serverInstance
      */
     private $serverInstance = "";
@@ -315,7 +304,6 @@ class UserController extends AbstractActionController {
         $this->smsConfig = $this->config['sms'];
         $this->smsDbConfigurations = $this->configurationsService->getConfigurationsKeyValueBySlug(Configurations::SMS);
         $this->googleMapsConfig = $this->config['googleMaps'];
-        $this->smsGatewayMe = $this->config['smsGatewayMe'];
 
         if(isset($this->config['serverInstance'])) {
             $this->serverInstance = $this->config['serverInstance'];
@@ -625,13 +613,6 @@ class UserController extends AbstractActionController {
      * @return string
      */
     private function manageSendSms($dialCode, $mobile, $code) {
-        if($this->smsDbConfigurations["smsgatewayme"] == "true") { //db table configurations
-            $smsGateway = $this->manageSmsGateway($dialCode, $mobile, $code);
-
-            if (!is_null($smsGateway)) {
-                return $smsGateway;
-            }
-        }
 
         $attachman = [];
 
@@ -768,83 +749,6 @@ class UserController extends AbstractActionController {
         curl_close($ch);
         return $response_message;
     }
-
-    /**
-     *
-     * @param $dialCode
-     * @param $mobile
-     * @param $code
-     *
-     * @return string|null
-     */
-    private function manageSmsGateway($dialCode, $mobile, $code){
-        $id = $this->sendSmsGateway($dialCode, $mobile, $code);
-        if(!is_null($id)){
-            sleep($this->smsGatewayMe["wait"]);
-            $messageStatus = $this->getSMSGatewayStatus($id);
-            if (!is_null($messageStatus) && ($messageStatus == 'queued' || $messageStatus == 'sent')){
-                return "OK";
-            }
-        }
-        return null;
-    }
-
-    private function sendSmsGateway($dialCode, $mobile, $code){
-        $config = Configuration::getDefaultConfiguration();
-        $config->setApiKey('Authorization', $this->smsGatewayMe["token"]);
-        $apiClient = new ApiClient($config);
-        $messageClient = new MessageApi($apiClient);
-        $dialCode = "+" . $dialCode;
-
-        // Sending a SMS Message
-        $sendMessageRequest = new SendMessageRequest([
-            'phoneNumber' => $dialCode . $mobile,
-            'message' => "Sharengo - " . $this->smsConfig['text'] . $code,
-            'deviceId' => $this->smsGatewayMe["deviceId"]
-        ]);
-
-        try {
-            $sendMessages = $messageClient->sendMessages([
-                $sendMessageRequest,
-            ]);
-        } catch (\SMSGatewayMe\Client\ApiException $e){
-            return null;
-        }
-
-        if(isset($sendMessages[0]) && $sendMessages[0] instanceof \SMSGatewayMe\Client\Model\Message){
-            return $sendMessages[0]->getId();
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * @param $messageId
-     * @return string|null
-     */
-
-    private function getSMSGatewayStatus($messageId){
-
-        $config = Configuration::getDefaultConfiguration();
-        $config->setApiKey('Authorization', $this->smsGatewayMe["token"]);
-        $apiClient = new ApiClient($config);
-        $messageClient = new MessageApi($apiClient);
-
-        //Get SMS Message Information
-        try {
-            $message = $messageClient->getMessage($messageId);
-        } catch(\SMSGatewayMe\Client\ApiException $e){
-            return null;
-        }
-
-        if ($message instanceof \SMSGatewayMe\Client\Model\Message){
-            return $message->getStatus();
-        } else {
-            return null;
-        }
-    }
-
-
 
     /**
      * codeGenerator -> generate random code to sms validation in registration form

@@ -696,12 +696,6 @@ $this->placeholder('google-analytics')->set('<script>gtag(\'event\', \'conversio
     <script type="text/javascript">
         var municipalitiesUrl = "<?= $this->url('core/municipalities') ?>"
         var townValue ="";
-
-        // Criteo section
-        var email = "<?= $this->customerEmail;?>";
-        var fleet = parseInt(<?= $this->customerFleetId;?>);
-        var basket = [ { id: fleet, price: 1, quantity: 1 } ];
-        criteoTrackTransaction(email, basket);
     </script>
     <script async src="//onetag-sys.com/sync/a,63/2"></script>
     <?php

@@ -38,20 +38,8 @@
             ->appendFile('//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js', 'text/javascript', ['conditional' => 'lt IE 9'])
             ->appendFile($this->basePath('js/jquery.backgroundSize.js'), 'text/javascript', ['conditional' => 'lte IE 8'])
             ->appendFile('//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js');
 
-            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js')
-            ->appendFile('//static.criteo.net/js/ld/ld.js',
-                'text/javascript',
-                array('async' => 'true'))
-            ->appendFile($this->basePath('js/criteo.js'), 'text/javascript');
-
-            $mobile = substr($this->serverUrl(true), -6) == 'mobile' ? true : false;
-            if ($mobile) {
-                $this->headScript()
-                    // Intercom section
-                    ->appendScript($this->intercomSettings())
-                    ->appendFile($this->basePath('js/intercom.js'), 'text/javascript');
-            }
             // Google Analytics section
             if ($this->config('googleAnalytics', 'key')) {
                 echo '<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63160906-2"></script>';

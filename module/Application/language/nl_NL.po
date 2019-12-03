@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-07 15:10+0100\n"
-"PO-Revision-Date: 2019-11-07 15:10+0100\n"
+"POT-Creation-Date: 2019-11-28 12:39+0100\n"
+"PO-Revision-Date: 2019-11-28 12:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -21,49 +21,49 @@ msgstr ""
 "X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 "X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
 
-#: module/Application/config/module.config.php:2731
+#: module/Application/config/module.config.php:2730
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profiel"
 
-#: module/Application/config/module.config.php:2736
+#: module/Application/config/module.config.php:2735
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:306
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:319
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:306
 msgid "Patente"
 msgstr "Rijbewijs"
 
-#: module/Application/config/module.config.php:2741
+#: module/Application/config/module.config.php:2740
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2746
+#: module/Application/config/module.config.php:2745
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Tarieven"
 
-#: module/Application/config/module.config.php:2751
+#: module/Application/config/module.config.php:2750
 msgid "Promo e pacchetti"
 msgstr "Aanbiedingen  en pakketten"
 
-#: module/Application/config/module.config.php:2761
+#: module/Application/config/module.config.php:2760
 msgid "Bonus minuti"
 msgstr "Bonusminuten"
 
-#: module/Application/config/module.config.php:2766
+#: module/Application/config/module.config.php:2765
 msgid "Corse completate"
 msgstr "Voltooide ritten"
 
-#: module/Application/config/module.config.php:2771
+#: module/Application/config/module.config.php:2770
 msgid "Dati di pagamento"
 msgstr "Betalingsgegevens"
 
-#: module/Application/config/module.config.php:2776
+#: module/Application/config/module.config.php:2775
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Facturen"
@@ -186,13 +186,13 @@ msgstr "Telefoonnummer onjuist"
 #: module/Application/src/Application/Controller/UserController.php:900
 #: module/Application/src/Application/Controller/UserController.php:1236
 #: module/Application/src/Application/Controller/UserController.php:1325
-#: module/Application/src/Application/Controller/UserController.php:1442
-#: module/Application/src/Application/Controller/UserController.php:1532
-#: module/Application/src/Application/Controller/UserController.php:1671
-#: module/Application/src/Application/Controller/UserController.php:1704
-#: module/Application/src/Application/Controller/UserController.php:1980
-#: module/Application/src/Application/Controller/UserController.php:2023
-#: module/Application/src/Application/Controller/UserController.php:2176
+#: module/Application/src/Application/Controller/UserController.php:1443
+#: module/Application/src/Application/Controller/UserController.php:1533
+#: module/Application/src/Application/Controller/UserController.php:1672
+#: module/Application/src/Application/Controller/UserController.php:1705
+#: module/Application/src/Application/Controller/UserController.php:1981
+#: module/Application/src/Application/Controller/UserController.php:2024
+#: module/Application/src/Application/Controller/UserController.php:2177
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "De sessie is verlopen. Je moet de registratieprocedure herhalen"
@@ -549,7 +549,7 @@ msgstr "De geldigheidsdatum moet na de startdatum liggen"
 #: module/Application/src/Application/Form/DriverFieldset.php:52
 #: module/Application/src/Application/Form/NewUserFieldset2.php:284
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:281
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:303
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:316
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:303
 msgid "XX123412341223"
 msgstr "XX123412341223"
@@ -563,7 +563,7 @@ msgstr "Afgeven door (instantie)"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:298
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:295
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:190
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:317
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:330
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:190
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:317
 #: module/Application/src/Application/Form/UserFieldset.php:165
@@ -610,7 +610,7 @@ msgstr "Afgegeven door (land)"
 #: module/Application/src/Application/Form/DriverFieldset.php:162
 #: module/Application/src/Application/Form/NewUserFieldset2.php:302
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:299
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:321
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:334
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:321
 #: module/Application/view/application/user-area/driving-licence-international.phtml:61
 #: module/Application/view/application/user-area/driving-licence-international.phtml:176
@@ -640,7 +640,7 @@ msgstr "1234567890"
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:244
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:266
-#: module/Application/view/application/user/signup-si2.phtml:224
+#: module/Application/view/application/user/signup-si2.phtml:223
 #: module/Application/view/application/user/signup-sk2.phtml:224
 msgid "Numero Identificativo"
 msgstr "Identificatienummer"
@@ -702,7 +702,7 @@ msgstr "Het geüploade bestand is onleesbaar of bestaat niet"
 
 #: module/Application/src/Application/Form/MobileForm.php:71
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:255
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:277
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:290
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:277
 msgid "Prefisso internazionale"
 msgstr "Landnummer"
@@ -712,8 +712,8 @@ msgstr "Landnummer"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:261
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:270
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:288
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:292
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:301
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:305
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:288
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:292
 #: module/Application/src/Application/Form/UserFieldset.php:400
@@ -845,6 +845,8 @@ msgstr "xxxx"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:326
 #: module/Application/src/Application/Form/NewUserFieldset2.php:329
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:279
+#: module/Application/view/application/user/signup-si2.phtml:233
 msgid "Partita IVA"
 msgstr "BTW-nummer"
 
@@ -1099,6 +1101,12 @@ msgid "123456789"
 msgstr "1234567890"
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
+#, fuzzy
+#| msgid "1234567890"
+msgid "1234567890123"
+msgstr "1234567890"
+
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:276
 #, fuzzy
 #| msgid "123456789"
 msgid "12345678"
@@ -2717,7 +2725,7 @@ msgstr "De gegevens van je rijbewijs"
 #: module/Application/view/application/user-area/driving-licence.phtml:162
 #: module/Application/view/application/user/new-signup2.phtml:257
 #: module/Application/view/application/user/signup-nl2.phtml:235
-#: module/Application/view/application/user/signup-si2.phtml:236
+#: module/Application/view/application/user/signup-si2.phtml:248
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -3330,12 +3338,12 @@ msgid "per inoltrare la tua richiesta"
 msgstr "om je verzoek in te dienen"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "AANVRAAG SHARENGO CARD"
 
 #: module/Application/view/application/user-area/pin.phtml:60
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3578,7 +3586,7 @@ msgstr "de Algemene Voorwaarden"
 #: module/Application/view/application/user/signup-nl1.phtml:148
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si2.phtml:375
+#: module/Application/view/application/user/signup-si2.phtml:387
 #: module/Application/view/application/user/signup-sk1.phtml:156
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3670,7 +3678,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:242
-#: module/Application/view/application/user/signup-si2.phtml:243
+#: module/Application/view/application/user/signup-si2.phtml:255
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Controleer of je rijbewijs niet verlopen is."
@@ -3738,7 +3746,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:268
-#: module/Application/view/application/user/signup-si2.phtml:269
+#: module/Application/view/application/user/signup-si2.phtml:281
 #: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
@@ -3746,7 +3754,7 @@ msgstr "Gelezen, bevestigd en ondertekend"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
-#: module/Application/view/application/user/signup-si2.phtml:279
+#: module/Application/view/application/user/signup-si2.phtml:291
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3763,14 +3771,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
-#: module/Application/view/application/user/signup-si2.phtml:282
+#: module/Application/view/application/user/signup-si2.phtml:294
 #: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Vrij van authenticiteit"
 
 #: module/Application/view/application/user/new-signup2.phtml:329
-#: module/Application/view/application/user/signup-si2.phtml:286
+#: module/Application/view/application/user/signup-si2.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3781,28 +3789,28 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
-#: module/Application/view/application/user/signup-si2.phtml:298
+#: module/Application/view/application/user/signup-si2.phtml:310
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "voorzijde rijbewijs"
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
-#: module/Application/view/application/user/signup-si2.phtml:307
+#: module/Application/view/application/user/signup-si2.phtml:319
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "achterzijde rijbewijs"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
-#: module/Application/view/application/user/signup-si2.phtml:318
+#: module/Application/view/application/user/signup-si2.phtml:330
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "voorzijde identiteitsbewijs"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
-#: module/Application/view/application/user/signup-si2.phtml:327
+#: module/Application/view/application/user/signup-si2.phtml:339
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "achterzijde identiteitsbewijs"
@@ -3824,7 +3832,6 @@ msgstr "Na activering wordt je rijbewijs nog gecontroleerd."
 
 #: module/Application/view/application/user/new-signup2.phtml:395
 #: module/Application/view/application/user/signup-nl2.phtml:345
-#: module/Application/view/application/user/signup-si2.phtml:355
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Ga verder"
@@ -3866,14 +3873,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
-#: module/Application/view/application/user/signup-si2.phtml:377
+#: module/Application/view/application/user/signup-si2.phtml:389
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "De toegevoegde bestanden overschrijden de maximaal laadbare grootte."
 
 #: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
-#: module/Application/view/application/user/signup-si2.phtml:404
+#: module/Application/view/application/user/signup-si2.phtml:416
 #: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
 msgstr "5. Nummer rijbewijs"
@@ -3979,13 +3986,13 @@ msgid "BSN"
 msgstr "BSN"
 
 #: module/Application/view/application/user/signup-nl2.phtml:246
-#: module/Application/view/application/user/signup-si2.phtml:247
+#: module/Application/view/application/user/signup-si2.phtml:259
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
 msgstr "Vervaldatum rijbewijs"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
-#: module/Application/view/application/user/signup-si2.phtml:260
+#: module/Application/view/application/user/signup-si2.phtml:272
 #: module/Application/view/application/user/signup-sk2.phtml:260
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
@@ -4018,7 +4025,7 @@ msgstr ""
 "zowel van de voor- als van de achterkant"
 
 #: module/Application/view/application/user/signup-nl2.phtml:331
-#: module/Application/view/application/user/signup-si2.phtml:339
+#: module/Application/view/application/user/signup-si2.phtml:351
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "foto van de gebruiker (selfie)"
@@ -4045,6 +4052,10 @@ msgstr "Favoriete plek"
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minuten voor slechts 10 euro"
 
+#: module/Application/view/application/user/signup-si2.phtml:367
+msgid "Continua la registrazione"
+msgstr "Doorgaan met registreren"
+
 #: module/Application/view/application/user/signup.phtml:39
 msgid ""
 "L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni "
@@ -4054,15 +4065,12 @@ msgstr ""
 "(standaardvoorwaarden, behalve aanbiedingen)."
 
 #: module/Application/view/application/user/signup.phtml:46
-#, fuzzy
-msgid "Costo iscrizione 1 euro con 15 minuti bonus. Premi chat "
-msgstr "???"
+msgid "Costo iscrizione 1 euro con 15 minuti bonus."
+msgstr "Inschrijfgeld 1 euro met 15 minuten bonus."
 
 #: module/Application/view/application/user/signup.phtml:48
-#, fuzzy
-msgid ""
-"Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni. Premi chat "
-msgstr "???"
+msgid "Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni."
+msgstr "Inschrijfgeld 5 euro met 15 minuten bonus, behalve promoties."
 
 #: module/Application/view/application/user/signup.phtml:51
 msgid "per aiuto."
@@ -4077,16 +4085,12 @@ msgstr ""
 "promoties)."
 
 #: module/Application/view/application/user/signup.phtml:59
-#, fuzzy
-msgid "Registration fee is 1€ with 15 bonus minutes. Push chat "
-msgstr "???"
+msgid "Registration fee is 1€ with 15 bonus minutes."
+msgstr "Registration fee is 1€ with 15 bonus minutes."
 
 #: module/Application/view/application/user/signup.phtml:61
-#, fuzzy
-msgid ""
-"Registration fee 5 euro with 15 bonus minutes, except for promotion. Push "
-"chat "
-msgstr "???"
+msgid "Registration fee 5 euro with 15 bonus minutes, except for promotion."
+msgstr "Registration fee 5 euro with 15 bonus minutes, except for promotion."
 
 #: module/Application/view/application/user/signup.phtml:65
 msgid "for help."
@@ -4584,7 +4588,7 @@ msgid "Come si usa un'equomobile"
 msgstr "Hoe gebruik je een ecomobiel"
 
 #: module/Application/view/layout/layout.phtml:210
-#: module/Application/view/layout/layout2.phtml:122
+#: module/Application/view/layout/layout2.phtml:126
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
 "accetti l'utilizzo dei cookie da parte nostra. Per maggiori dettagli si "
@@ -5950,6 +5954,18 @@ msgstr "Voer de toegestuurde bedrijfscode in"
 msgid "Associa"
 msgstr "Word lid"
 
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
+#, fuzzy
+#| msgid ""
+#| "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
+#| "puoi anche ritirarla c/o i nostri uffici"
+msgid ""
+"Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
+"anche ritirarla c/o i nostri uffici"
+msgstr ""
+"Op verzoek kun je de card gratis binnen een week thuis gestuurd krijgen, of "
+"kun je hem ophalen op ons kantoor"
+
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
 msgid ""
 "Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo di "
@@ -6076,17 +6092,6 @@ msgstr "Controleert hij transactie bezig."
 #~| msgid "Servizio clienti"
 #~ msgid "servizioclienti@sharengo.eu"
 #~ msgstr "Klantenservice"
-
-#, fuzzy
-#~| msgid ""
-#~| "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
-#~| "puoi anche ritirarla c/o i nostri uffici"
-#~ msgid ""
-#~ "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
-#~ "puoi anche ritirarla c/o i nostri uffici."
-#~ msgstr ""
-#~ "Op verzoek kun je de card gratis binnen een week thuis gestuurd krijgen, "
-#~ "of kun je hem ophalen op ons kantoor"
 
 #~ msgid "ho una patente estera"
 #~ msgstr "ik heb een buitenlands rijbewijs"

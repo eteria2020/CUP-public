@@ -43,16 +43,6 @@
             ->appendFile($this->basePath('js/jquery.cookiesdirective.js'));
 
         $this->headScript()->setAllowArbitraryAttributes(true);
-        $this->headScript()
-            // Intercom section
-            ->appendScript($this->intercomSettings())
-            ->appendFile($this->basePath('js/intercom.js'), 'text/javascript')
-
-            // Criteo section
-            ->appendFile('//static.criteo.net/js/ld/ld.js',
-                'text/javascript',
-                array('async' => 'true'))
-            ->appendFile($this->basePath('js/criteo.js'), 'text/javascript');
 
             // Google Analytics section
             if ($this->config('googleAnalytics', 'key')) {

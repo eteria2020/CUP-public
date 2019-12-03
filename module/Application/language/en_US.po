@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-08 10:18+0100\n"
-"PO-Revision-Date: 2019-11-08 10:18+0100\n"
+"POT-Creation-Date: 2019-11-28 12:37+0100\n"
+"PO-Revision-Date: 2019-11-28 12:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -21,49 +21,49 @@ msgstr ""
 "X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
 "X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
 
-#: module/Application/config/module.config.php:2731
+#: module/Application/config/module.config.php:2730
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2736
+#: module/Application/config/module.config.php:2735
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:306
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:319
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:306
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2741
+#: module/Application/config/module.config.php:2740
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2746
+#: module/Application/config/module.config.php:2745
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2751
+#: module/Application/config/module.config.php:2750
 msgid "Promo e pacchetti"
 msgstr "Promos and packages"
 
-#: module/Application/config/module.config.php:2761
+#: module/Application/config/module.config.php:2760
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2766
+#: module/Application/config/module.config.php:2765
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2771
+#: module/Application/config/module.config.php:2770
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2776
+#: module/Application/config/module.config.php:2775
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -183,13 +183,13 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:900
 #: module/Application/src/Application/Controller/UserController.php:1236
 #: module/Application/src/Application/Controller/UserController.php:1325
-#: module/Application/src/Application/Controller/UserController.php:1442
-#: module/Application/src/Application/Controller/UserController.php:1532
-#: module/Application/src/Application/Controller/UserController.php:1671
-#: module/Application/src/Application/Controller/UserController.php:1704
-#: module/Application/src/Application/Controller/UserController.php:1980
-#: module/Application/src/Application/Controller/UserController.php:2023
-#: module/Application/src/Application/Controller/UserController.php:2176
+#: module/Application/src/Application/Controller/UserController.php:1443
+#: module/Application/src/Application/Controller/UserController.php:1533
+#: module/Application/src/Application/Controller/UserController.php:1672
+#: module/Application/src/Application/Controller/UserController.php:1705
+#: module/Application/src/Application/Controller/UserController.php:1981
+#: module/Application/src/Application/Controller/UserController.php:2024
+#: module/Application/src/Application/Controller/UserController.php:2177
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -545,7 +545,7 @@ msgstr "The validity end date must be later than the start date"
 #: module/Application/src/Application/Form/DriverFieldset.php:52
 #: module/Application/src/Application/Form/NewUserFieldset2.php:284
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:281
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:303
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:316
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:303
 msgid "XX123412341223"
 msgstr "XX123412341223"
@@ -559,7 +559,7 @@ msgstr "Issued by (authority)"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:298
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:295
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:190
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:317
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:330
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:190
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:317
 #: module/Application/src/Application/Form/UserFieldset.php:165
@@ -606,7 +606,7 @@ msgstr "Issued by (nation)"
 #: module/Application/src/Application/Form/DriverFieldset.php:162
 #: module/Application/src/Application/Form/NewUserFieldset2.php:302
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:299
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:321
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:334
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:321
 #: module/Application/view/application/user-area/driving-licence-international.phtml:61
 #: module/Application/view/application/user-area/driving-licence-international.phtml:176
@@ -636,7 +636,7 @@ msgstr ""
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:244
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:266
-#: module/Application/view/application/user/signup-si2.phtml:224
+#: module/Application/view/application/user/signup-si2.phtml:223
 #: module/Application/view/application/user/signup-sk2.phtml:224
 msgid "Numero Identificativo"
 msgstr "Id number"
@@ -698,7 +698,7 @@ msgstr "The uploaded file is not readable or does not exist"
 
 #: module/Application/src/Application/Form/MobileForm.php:71
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:255
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:277
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:290
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:277
 msgid "Prefisso internazionale"
 msgstr "Country code"
@@ -708,8 +708,8 @@ msgstr "Country code"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:261
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:266
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:270
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:288
-#: module/Application/src/Application/Form/SignupSI2Fieldset.php:292
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:301
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:305
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:288
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:292
 #: module/Application/src/Application/Form/UserFieldset.php:400
@@ -836,6 +836,8 @@ msgstr "xxxx"
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:326
 #: module/Application/src/Application/Form/NewUserFieldset2.php:329
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:279
+#: module/Application/view/application/user/signup-si2.phtml:233
 msgid "Partita IVA"
 msgstr "VAT number"
 
@@ -1091,6 +1093,10 @@ msgstr ""
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
 msgid "1234567890123"
+msgstr ""
+
+#: module/Application/src/Application/Form/SignupSI2Fieldset.php:276
+msgid "12345678"
 msgstr ""
 
 #: module/Application/src/Application/Form/UserFieldset.php:82
@@ -2708,7 +2714,7 @@ msgstr "The data of your license"
 #: module/Application/view/application/user-area/driving-licence.phtml:162
 #: module/Application/view/application/user/new-signup2.phtml:257
 #: module/Application/view/application/user/signup-nl2.phtml:235
-#: module/Application/view/application/user/signup-si2.phtml:236
+#: module/Application/view/application/user/signup-si2.phtml:248
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -3364,12 +3370,12 @@ msgid "per inoltrare la tua richiesta"
 msgstr "to submit your request"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "REQUEST OF CARD SHARE ' NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3611,7 +3617,7 @@ msgstr "Contractual conditions"
 #: module/Application/view/application/user/signup-nl1.phtml:148
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si2.phtml:375
+#: module/Application/view/application/user/signup-si2.phtml:387
 #: module/Application/view/application/user/signup-sk1.phtml:156
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3706,7 +3712,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:242
-#: module/Application/view/application/user/signup-si2.phtml:243
+#: module/Application/view/application/user/signup-si2.phtml:255
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Make sure it is of the last driver's license issued."
@@ -3773,7 +3779,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:268
-#: module/Application/view/application/user/signup-si2.phtml:269
+#: module/Application/view/application/user/signup-si2.phtml:281
 #: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
@@ -3781,7 +3787,7 @@ msgstr "Read, confirmed and signed"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
-#: module/Application/view/application/user/signup-si2.phtml:279
+#: module/Application/view/application/user/signup-si2.phtml:291
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3799,14 +3805,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
-#: module/Application/view/application/user/signup-si2.phtml:282
+#: module/Application/view/application/user/signup-si2.phtml:294
 #: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
 #: module/Application/view/application/user/new-signup2.phtml:329
-#: module/Application/view/application/user/signup-si2.phtml:286
+#: module/Application/view/application/user/signup-si2.phtml:298
 #: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3817,28 +3823,28 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
-#: module/Application/view/application/user/signup-si2.phtml:298
+#: module/Application/view/application/user/signup-si2.phtml:310
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "front driving license"
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
-#: module/Application/view/application/user/signup-si2.phtml:307
+#: module/Application/view/application/user/signup-si2.phtml:319
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "retro driving license"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
-#: module/Application/view/application/user/signup-si2.phtml:318
+#: module/Application/view/application/user/signup-si2.phtml:330
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "front of identity card"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
-#: module/Application/view/application/user/signup-si2.phtml:327
+#: module/Application/view/application/user/signup-si2.phtml:339
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "retro identity card"
@@ -3902,14 +3908,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
-#: module/Application/view/application/user/signup-si2.phtml:377
+#: module/Application/view/application/user/signup-si2.phtml:389
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "The selected files are too big."
 
 #: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
-#: module/Application/view/application/user/signup-si2.phtml:404
+#: module/Application/view/application/user/signup-si2.phtml:416
 #: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
 msgstr "5. Driver's license number"
@@ -4013,13 +4019,13 @@ msgid "BSN"
 msgstr ""
 
 #: module/Application/view/application/user/signup-nl2.phtml:246
-#: module/Application/view/application/user/signup-si2.phtml:247
+#: module/Application/view/application/user/signup-si2.phtml:259
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
 msgstr "Driver's license expiration date"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
-#: module/Application/view/application/user/signup-si2.phtml:260
+#: module/Application/view/application/user/signup-si2.phtml:272
 #: module/Application/view/application/user/signup-sk2.phtml:260
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
@@ -4052,7 +4058,7 @@ msgstr ""
 "license front and back"
 
 #: module/Application/view/application/user/signup-nl2.phtml:331
-#: module/Application/view/application/user/signup-si2.phtml:339
+#: module/Application/view/application/user/signup-si2.phtml:351
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "user photo (selfie)"
@@ -4079,7 +4085,7 @@ msgstr "Favourite place"
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minutes only 5&euro;"
 
-#: module/Application/view/application/user/signup-si2.phtml:355
+#: module/Application/view/application/user/signup-si2.phtml:367
 msgid "Continua la registrazione"
 msgstr "Continue registration"
 
@@ -4092,15 +4098,12 @@ msgstr ""
 "conditions, except for promotions)."
 
 #: module/Application/view/application/user/signup.phtml:46
-msgid "Costo iscrizione 1 euro con 15 minuti bonus. Premi chat "
-msgstr "Registration fee 1 euro with 15 bonus minutes. Press chat "
+msgid "Costo iscrizione 1 euro con 15 minuti bonus."
+msgstr "Registration fee 1 euro with 15 bonus minutes."
 
 #: module/Application/view/application/user/signup.phtml:48
-msgid ""
-"Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni. Premi chat "
-msgstr ""
-"Registration fee 5 euros with 15 bonus minutes, except for promotions. Press "
-"chat "
+msgid "Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni."
+msgstr "Registration fee 5 euros with 15 bonus minutes, except for promotions."
 
 #: module/Application/view/application/user/signup.phtml:51
 msgid "per aiuto."
@@ -4115,15 +4118,12 @@ msgstr ""
 "promotions)."
 
 #: module/Application/view/application/user/signup.phtml:59
-msgid "Registration fee is 1€ with 15 bonus minutes. Push chat "
-msgstr "Registration fee is 1 € with 15 bonus minutes. Push chat "
+msgid "Registration fee is 1€ with 15 bonus minutes."
+msgstr "Registration fee is 1 € with 15 bonus minutes."
 
 #: module/Application/view/application/user/signup.phtml:61
-msgid ""
-"Registration fee 5 euro with 15 bonus minutes, except for promotion. Push chat "
-msgstr ""
-"Registration fee 5 euros with 15 bonus minutes, except for promotion. Push "
-"chat "
+msgid "Registration fee 5 euro with 15 bonus minutes, except for promotion."
+msgstr "Registration fee 5 euros with 15 bonus minutes, except for promotion."
 
 #: module/Application/view/application/user/signup.phtml:65
 msgid "for help."
@@ -4604,7 +4604,7 @@ msgid "Come si usa un'equomobile"
 msgstr "How to use an aircraft"
 
 #: module/Application/view/layout/layout.phtml:210
-#: module/Application/view/layout/layout2.phtml:122
+#: module/Application/view/layout/layout2.phtml:126
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
 "accetti l'utilizzo dei cookie da parte nostra. Per maggiori dettagli si prega "
@@ -5970,6 +5970,18 @@ msgstr "Enter the company code that was communicated to you"
 msgid "Associa"
 msgstr "Associate"
 
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
+#, fuzzy
+#| msgid ""
+#| "Ti arriver&agrave; su richiesta gratuitamente a casa oppure puoi anche "
+#| "ritirarla presso i nostri uffici"
+msgid ""
+"Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
+"anche ritirarla c/o i nostri uffici"
+msgstr ""
+"It will arrive at your home free of charge, or you can also pick it up at our "
+"offices"
+
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
 msgid ""
 "Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo di "
@@ -6029,13 +6041,6 @@ msgstr "Check transaction in progress."
 
 #~ msgid "Via San Martino, 7 – 20122 Milano (MI)"
 #~ msgstr "Via San Martino, 7 - 20122 Milan (MI)"
-
-#~ msgid ""
-#~ "Ti arriver&agrave; su richiesta gratuitamente a casa oppure puoi anche "
-#~ "ritirarla presso i nostri uffici"
-#~ msgstr ""
-#~ "It will arrive at your home free of charge, or you can also pick it up at "
-#~ "our offices"
 
 #~ msgid "Belgium"
 #~ msgstr "Belgium"
