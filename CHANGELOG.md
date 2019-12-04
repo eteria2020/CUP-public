@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- for Slovenian signup, the tax code for foreign customer skip the validator TaxCodeSi
+- Fix Signup (ticket 377)
+- Remove files about Intercom and criteo 
 
 ## [1.0.13] - 2019-12-03
 
