@@ -62,7 +62,7 @@ $this->headLink()
                     </label>
                 </div>
             </div>
-<?php endif; ?>
+        <?php endif; ?>
     </div>
 
     <!-- module-wizard -->
@@ -107,7 +107,7 @@ $this->headLink()
                     </div>
                     <div id="promodiv" class=""></div>
                     <div id="errorepromo">
-<?php echo $this->formElementErrors($promocode, ['class' => 'errors']); ?>
+                        <?php echo $this->formElementErrors($promocode, ['class' => 'errors']); ?>
 
                     </div>
                 </div>
@@ -642,7 +642,7 @@ $this->headLink()
                     </div>
                     <br>
                     <p>
-<?= $this->translate("Inserisci qui il codice di verifica inviato via sms") ?><br/>
+                        <?= $this->translate("Inserisci qui il codice di verifica inviato via sms") ?><br/>
                     </p>
                 </div>
             </div>
@@ -710,40 +710,40 @@ $this->headLink()
                             <?= $this->translate('Termini e Condizioni Generali di Contratto'); ?>
                         </a>
                         <a href="<?= $this->basePath('pdf/Contratto_di_servizio_e_tariffe.pdf'); ?>" class="document-links" id="regulationConditionLink">
-                    <?= $this->translate('Regolamento Tariffario'); ?>
+                            <?= $this->translate('Regolamento Tariffario'); ?>
                         </a>
                     </p>
-                        <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
+                    <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
                     <label class='control checkbox small-form'>
-<?php echo $this->formElement($generalCondition1) ?>
+                        <?php echo $this->formElement($generalCondition1) ?>
                         <span class='control-indicator' id="generalCondition1Text"><?php echo ' ' . $generalCondition1->getLabel(); ?></span>
                     </label>
                     <br></br>
-                        <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
-                        <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
+                    <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
+                    <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
                     <label class='control checkbox small-form'>
-<?php echo $this->formElement($generalCondition2) ?>
+                        <?php echo $this->formElement($generalCondition2) ?>
                         <span class='control-indicator' id="generalCondition2Text"><?php echo ' ' . $generalCondition2->getLabel(); ?></span>
                     </label>
                     <br></br>
-                        <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
+                    <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
                     <a href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>" class="document-links" id="privacyConditionLink">
-                    <?= $this->translate('Informativa Privacy'); ?>
+                        <?= $this->translate('Informativa Privacy'); ?>
                     </a>
-                        <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
+                    <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
                     <label class='control checkbox small-form'>
-<?php echo $this->formElement($privacyCondition) ?>
+                        <?php echo $this->formElement($privacyCondition) ?>
                         <span class='control-indicator' id="privacyConditionText"><?php echo ' ' . $privacyCondition->getLabel(); ?></span>
                     </label>
                     <br></br>
-                        <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
-                        <?php $privacyInformation = $this->form->get('user')->get('privacyInformation'); ?>
+                    <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
+                    <?php $privacyInformation = $this->form->get('user')->get('privacyInformation'); ?>
                     <label class='control checkbox small-form'>
-<?php echo $this->formElement($privacyInformation) ?>
+                        <?php echo $this->formElement($privacyInformation) ?>
                         <span id="InfoPravacyText" class='control-indicator'></span>
                     </label>
                     <br></br>
-<?php echo $this->formElementErrors($privacyInformation, ['class' => 'errors']); ?>
+                    <?php echo $this->formElementErrors($privacyInformation, ['class' => 'errors']); ?>
 
                 </div>
             </div>
@@ -805,14 +805,16 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
             birthTownValue = "<?= $birthTown->getValue() ?>";
     $(document).ready(function () {
     overlay = $('#sng-overlay');
-<?php if (!$this->mobile) {
+<?php
+if (!$this->mobile) {
     echo 'tryAPIGeolocation();';
-} ?>
+}
+?>
 
     var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
             var dateStart = new Date(2018, 1, 11,  7, 0, 0, 0);
     var dateEnd   = new Date(2018, 1, 11, 14, 0, 0, 0);
-
+    
 //        var dateStart = new Date(2016, 11, 2, 0, 0, 0, 0);
 //        var dateEnd = new Date(2016, 11, 4, 18, 0, 0, 0);
 
@@ -830,30 +832,31 @@ $(".sng-overlay-close").click(function (e) {
         
         function nearBy(fleetLat, fleetLon, userLat, userLon){
             return Math.abs(fleetLat - userLat) + Math.abs(fleetLon - userLon);
-                    }
-                    
-                    var apiGeolocationSuccess = function(position) {
+            }
+            
+            var apiGeolocationSuccess = function(position) {
             var arr = [];
-    <?
-    $arr = "";
-    foreach($this->fleets as $f){
-                    echo "arr[".$f - > getId()."] = nearBy(".$f - > getLatitude().",".$f - > getLongitude().",position.coords.latitude,position.coords.longitude);\n";
-            $arr. = "arr[".$f - > getId()."]"; $arr. = ",";
-                        }
-                        ?>
+<?
+$arr = "";
+foreach ($this->fleets as $f) {
+    echo "arr[" . $f->getId() . "] = nearBy(" . $f->getLatitude() . "," . $f->getLongitude() . ",position.coords.latitude,position.coords.longitude);\n";
+    $arr .= "arr[" . $f->getId() . "]";
+    $arr .= ",";
+}
+?>
     var i = arr.indexOf(Math.min(<?= $arr; ?>));
     //if geolocation is near by Florence: redirect to new signup
     if (i != 3){ //Milan, Florence and Modena
-                    window.location.replace("https://www.sharengo.it/new-signup");
-                            }
-                            };
-                            
-                            var tryAPIGeolocation = function() {
-                    jQuery.post("https://www.googleapis.com/geolocation/v1/geolocate?key=<?= $this->googleMapsConfig['key'] ?>", function(success) {
-                    apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+    window.location.replace("https://www.sharengo.it/new-signup");
+                    }
+                    };
+                    
+                    var tryAPIGeolocation = function() {
+            jQuery.post("https://www.googleapis.com/geolocation/v1/geolocate?key=<?= $this->googleMapsConfig['key'] ?>", function(success) {
+            apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
                         })
                         .fail(function(err) {
-                            console.log(err);
+                    console.log(err);
                             });
                             };
                             
