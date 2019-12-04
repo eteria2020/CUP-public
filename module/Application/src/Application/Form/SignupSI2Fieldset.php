@@ -341,6 +341,27 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
 
     public function getInputFilterSpecification() {
 
+//        $selectBirthCountry = parent::getElements()['birthCountry'];
+//
+//        $validatorTaxCode = [];
+//        array_push($validatorTaxCode,
+//            [
+//                'name' => 'Application\Form\Validator\DuplicateTaxCode',
+//                'options' => [
+//                    'customerService' => $this->customersService
+//                ],
+//                'break_chain_on_failure' => true
+//            ]);
+//
+//        if($selectBirthCountry->getValue()=='si') { // for slovenian people check format
+//            array_push($validatorTaxCode,
+//                [
+//                    'name' => 'SharengoCore\Form\Validator\TaxCodeSi',
+//                    'break_chain_on_failure' => true
+//                ]);
+//        }
+
+
         return [
             'name' => [
                 'required' => true,
@@ -452,19 +473,9 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'StringTrim'
                     ]
                 ],
-                'validators' => [
-                    [
-                        'name' => 'SharengoCore\Form\Validator\TaxCodeSi',
-                        'break_chain_on_failure' => true
-                    ],
-                    [
-                        'name' => 'Application\Form\Validator\DuplicateTaxCode',
-                        'options' => [
-                            'customerService' => $this->customersService
-                        ],
-                        'break_chain_on_failure' => true
-                    ],
-                ]
+                'validators' =>
+                    $this->getValidatorTaxCodeSi()
+
             ],
             'mobile' => [
                 'required' => true,
@@ -526,4 +537,34 @@ class SignupSI2Fieldset extends Fieldset implements InputFilterProviderInterface
         ];
     }
 
+    /**
+     * For slovenian people add a validator TaxCodeSi over tax code (personal id 13).
+     *
+     * @return array
+     */
+    private function getValidatorTaxCodeSi() {
+
+        $validatorTaxCode = [];
+        $selectBirthCountry = parent::getElements()['birthCountry'];
+
+        array_push($validatorTaxCode,
+            [
+                'name' => 'Application\Form\Validator\DuplicateTaxCode',
+                'options' => [
+                    'customerService' => $this->customersService
+                ],
+                'break_chain_on_failure' => true
+            ]);
+
+
+        if($selectBirthCountry->getValue()=='si') { // for slovenian people check format
+            array_push($validatorTaxCode,
+                [
+                    'name' => 'SharengoCore\Form\Validator\TaxCodeSi',
+                    'break_chain_on_failure' => true
+                ]);
+        }
+
+        return $validatorTaxCode;
+    }
 }
