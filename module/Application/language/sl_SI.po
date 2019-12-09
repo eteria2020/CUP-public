@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-28 12:48+0100\n"
-"PO-Revision-Date: 2019-12-09 10:30+0100\n"
+"POT-Creation-Date: 2019-12-09 15:06+0100\n"
+"PO-Revision-Date: 2019-12-09 15:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -16,12 +16,8 @@ msgstr ""
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,247,-1,-1,-1\n"
-"X-Poedit-SearchPath-0: module/Application/view\n"
-"X-Poedit-SearchPath-1: module/Application/src/Application\n"
-"X-Poedit-SearchPath-2: module/Application/config\n"
-"X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
-"X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
-"X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
+"X-Poedit-SearchPath-0: module/Application/src\n"
+"X-Poedit-SearchPath-1: .\n"
 
 #: module/Application/config/module.config.php:2730
 #: module/Application/view/application/user-area/index.phtml:28
@@ -40,7 +36,6 @@ msgstr "vozniško dovoljenje"
 
 #: module/Application/config/module.config.php:2740
 #: module/Application/view/application/user-area/pin.phtml:16
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
@@ -110,28 +105,28 @@ msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Za ponovno spremembo podatkov boste morali počakati 10 minut."
 
 #: module/Application/src/Application/Controller/UserAreaController.php:424
-#: module/Application/src/Application/Controller/UserAreaController.php:556
-#: module/Application/src/Application/Controller/UserAreaController.php:618
+#: module/Application/src/Application/Controller/UserAreaController.php:559
+#: module/Application/src/Application/Controller/UserAreaController.php:621
 msgid "Operazione completata con successo!"
 msgstr "Operacija je uspešno zaključena!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:558
-#: module/Application/src/Application/Controller/UserAreaController.php:620
+#: module/Application/src/Application/Controller/UserAreaController.php:561
+#: module/Application/src/Application/Controller/UserAreaController.php:623
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Prišlo je do napake v aplikaciji. Opravičujemo se za nevšečnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:739
-#: module/Application/src/Application/Controller/UserAreaController.php:779
+#: module/Application/src/Application/Controller/UserAreaController.php:742
+#: module/Application/src/Application/Controller/UserAreaController.php:782
 msgid "Pagamento completato con successo"
 msgstr "Plačilo je uspešno izvedeno"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:741
-#: module/Application/src/Application/Controller/UserAreaController.php:781
+#: module/Application/src/Application/Controller/UserAreaController.php:744
+#: module/Application/src/Application/Controller/UserAreaController.php:784
 msgid "Pagamento fallito"
 msgstr "Plačilo ni uspelo"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:750
-#: module/Application/src/Application/Controller/UserAreaController.php:790
+#: module/Application/src/Application/Controller/UserAreaController.php:753
+#: module/Application/src/Application/Controller/UserAreaController.php:793
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
@@ -143,23 +138,23 @@ msgstr "Plačilo ni uspelo"
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Začasno zaustavljeno plačilo. Poskusite znova pozneje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:819
+#: module/Application/src/Application/Controller/UserAreaController.php:822
 msgid "Contratto disabilitato correttamente!"
 msgstr "Pogodba je pravilno preklicana!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:821
 #: module/Application/src/Application/Controller/UserAreaController.php:824
 #: module/Application/src/Application/Controller/UserAreaController.php:827
+#: module/Application/src/Application/Controller/UserAreaController.php:830
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Napaka pri preklicu pogodbe"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:863
+#: module/Application/src/Application/Controller/UserAreaController.php:866
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Onemogočeni ste, ker je vstavljena kartica potekla, vstavite nove podatke."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:867
+#: module/Application/src/Application/Controller/UserAreaController.php:870
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -167,34 +162,34 @@ msgstr ""
 "Onemogočeni ste, ker ste vnesli neveljavno licenco, preverite in spremenite "
 "vnesene podatke v spodnjem obrazcu in / ali v območju „Licenca“."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:872
+#: module/Application/src/Application/Controller/UserAreaController.php:875
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Zaradi pretečenega vozniškega dovoljenja ste onemogočeni, vstavite nove "
 "podatke."
 
+#: module/Application/src/Application/Controller/UserController.php:667
 #: module/Application/src/Application/Controller/UserController.php:686
-#: module/Application/src/Application/Controller/UserController.php:705
-#: module/Application/src/Application/Controller/UserController.php:717
-#: module/Application/src/Application/Controller/UserController.php:725
-#: module/Application/src/Application/Controller/UserController.php:737
+#: module/Application/src/Application/Controller/UserController.php:698
+#: module/Application/src/Application/Controller/UserController.php:706
+#: module/Application/src/Application/Controller/UserController.php:718
 msgid "Errore invio sms"
 msgstr "Napaka pri pošiljanju sms-a"
 
-#: module/Application/src/Application/Controller/UserController.php:697
+#: module/Application/src/Application/Controller/UserController.php:678
 msgid "Numero di telefono non corretto"
 msgstr "Napačna telefonska številka"
 
-#: module/Application/src/Application/Controller/UserController.php:900
-#: module/Application/src/Application/Controller/UserController.php:1236
-#: module/Application/src/Application/Controller/UserController.php:1325
-#: module/Application/src/Application/Controller/UserController.php:1443
-#: module/Application/src/Application/Controller/UserController.php:1533
-#: module/Application/src/Application/Controller/UserController.php:1672
-#: module/Application/src/Application/Controller/UserController.php:1705
-#: module/Application/src/Application/Controller/UserController.php:1981
-#: module/Application/src/Application/Controller/UserController.php:2024
-#: module/Application/src/Application/Controller/UserController.php:2177
+#: module/Application/src/Application/Controller/UserController.php:804
+#: module/Application/src/Application/Controller/UserController.php:1140
+#: module/Application/src/Application/Controller/UserController.php:1230
+#: module/Application/src/Application/Controller/UserController.php:1348
+#: module/Application/src/Application/Controller/UserController.php:1438
+#: module/Application/src/Application/Controller/UserController.php:1577
+#: module/Application/src/Application/Controller/UserController.php:1610
+#: module/Application/src/Application/Controller/UserController.php:1886
+#: module/Application/src/Application/Controller/UserController.php:1929
+#: module/Application/src/Application/Controller/UserController.php:2082
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Seja je potekla. Ponoviti je treba postopek registracije"
@@ -262,7 +257,7 @@ msgstr "ga."
 #: module/Application/view/application/user/signup-nl2.phtml:83
 #: module/Application/view/application/user/signup-si2.phtml:83
 #: module/Application/view/application/user/signup-sk2.phtml:83
-#: module/Application/view/application/user/signup.phtml:223
+#: module/Application/view/application/user/signup.phtml:217
 msgid "Nome"
 msgstr "ime"
 
@@ -288,13 +283,13 @@ msgstr "ime"
 #: module/Application/view/application/user/signup-nl2.phtml:93
 #: module/Application/view/application/user/signup-si2.phtml:93
 #: module/Application/view/application/user/signup-sk2.phtml:93
-#: module/Application/view/application/user/signup.phtml:233
+#: module/Application/view/application/user/signup.phtml:227
 msgid "Cognome"
 msgstr "priimek"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:119
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:124
-#: module/Application/src/Application/Form/NewUserFieldset.php:62
+#: module/Application/src/Application/Form/NewUserFieldset.php:63
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:86
 #: module/Application/view/application/user-area/index.phtml:52
@@ -305,7 +300,7 @@ msgstr "priimek"
 #: module/Application/view/application/user/signup-nl1.phtml:64
 #: module/Application/view/application/user/signup-si1.phtml:62
 #: module/Application/view/application/user/signup-sk1.phtml:72
-#: module/Application/view/application/user/signup.phtml:155
+#: module/Application/view/application/user/signup.phtml:149
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:35
 msgid "Email"
 msgstr "E-pošta"
@@ -329,7 +324,7 @@ msgstr "Ponovite e-pošto"
 #: module/Application/view/application/user/signup-nl2.phtml:144
 #: module/Application/view/application/user/signup-si2.phtml:144
 #: module/Application/view/application/user/signup-sk2.phtml:144
-#: module/Application/view/application/user/signup.phtml:251
+#: module/Application/view/application/user/signup.phtml:245
 msgid "Data di nascita"
 msgstr "Datum rojstva"
 
@@ -346,7 +341,7 @@ msgstr "Datum rojstva"
 #: module/Application/view/application/user/signup-nl2.phtml:154
 #: module/Application/view/application/user/signup-si2.phtml:154
 #: module/Application/view/application/user/signup-sk2.phtml:154
-#: module/Application/view/application/user/signup.phtml:261
+#: module/Application/view/application/user/signup.phtml:255
 msgid "Stato di nascita"
 msgstr "Država rojstva"
 
@@ -391,7 +386,7 @@ msgstr "Kraj rojstva"
 #: module/Application/view/application/user/signup-nl2.phtml:174
 #: module/Application/view/application/user/signup-si2.phtml:174
 #: module/Application/view/application/user/signup-sk2.phtml:174
-#: module/Application/view/application/user/signup.phtml:288
+#: module/Application/view/application/user/signup.phtml:282
 msgid "Comune di nascita"
 msgstr "Kraj rojstva"
 
@@ -526,7 +521,7 @@ msgstr "Dačna številka (neobvezno)"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:343
 #: module/Application/src/Application/Form/CustomerFieldset.php:346
-#: module/Application/view/layout/layout.phtml:171
+#: module/Application/view/layout/layout.phtml:161
 msgid "Telefono"
 msgstr "telefon"
 
@@ -724,7 +719,7 @@ msgstr "Mednarodna predpona"
 #: module/Application/view/application/user/signup-nl2.phtml:209
 #: module/Application/view/application/user/signup-si2.phtml:210
 #: module/Application/view/application/user/signup-sk2.phtml:210
-#: module/Application/view/application/user/signup.phtml:617
+#: module/Application/view/application/user/signup.phtml:611
 msgid "Cellulare"
 msgstr "Mobilni telefon"
 
@@ -752,17 +747,17 @@ msgstr "Vnesena koda ne ustreza poslani"
 msgid "E' necessario confermare e sottoscrivere la dichiarazione"
 msgstr "Deklaracijo je potrebno potrditi in podpisati"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:58
+#: module/Application/src/Application/Form/NewUserFieldset.php:59
 #: module/Application/src/Application/Form/UserFieldset.php:68
 msgid "Digita la tua email"
 msgstr "Vnesite svoj e-poštni naslov"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:71
+#: module/Application/src/Application/Form/NewUserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:95
 msgid "Imposta la tua password"
 msgstr "Nastavite geslo"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:75
+#: module/Application/src/Application/Form/NewUserFieldset.php:76
 #: module/Application/src/Application/Form/UserFieldset.php:99
 #: module/Application/view/application/user-area/index.phtml:616
 #: module/Application/view/application/user-area/index.phtml:651
@@ -772,12 +767,12 @@ msgstr "Nastavite geslo"
 #: module/Application/view/application/user/signup-nl1.phtml:74
 #: module/Application/view/application/user/signup-si1.phtml:72
 #: module/Application/view/application/user/signup-sk1.phtml:82
-#: module/Application/view/application/user/signup.phtml:181
+#: module/Application/view/application/user/signup.phtml:175
 #: module/Application/view/zfc-user/user/login.phtml:51
 msgid "Password"
 msgstr "geslo"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:95
+#: module/Application/src/Application/Form/NewUserFieldset.php:96
 msgid ""
 "Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
 "sia cartacee che digitali relative al servizio, ai prodotti e alle "
@@ -786,7 +781,7 @@ msgstr ""
 "Strinjam se z obdelavo svojih osebnih podatkov tako za papirno kot digitalno "
 "komunikacijo v zvezi s storitvijo Sharengo, izdelki in promocijami."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:115
+#: module/Application/src/Application/Form/NewUserFieldset.php:116
 #, fuzzy
 msgid ""
 "Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
@@ -813,10 +808,19 @@ msgstr ""
 "(zavarovanje), 16 (datum začetka, trajanje, obnova) , prekinitev, odstop, "
 "odpoved pogodbe), 17 (pritožbe), 18 (kazni), 20 (pristojno sodišče)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:168
-#: module/Application/src/Application/Form/NewUserFieldset.php:192
+#: module/Application/src/Application/Form/NewUserFieldset.php:136
+#: module/Application/src/Application/Form/NewUserFieldset.php:169
+msgid "Il valore è richiesto e non può essere vuoto"
+msgstr "Polje ne sme biti prazno."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:144
+msgid "Il massimo valore inseribile è stato superato:"
+msgstr ""
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:186
+#: module/Application/src/Application/Form/NewUserFieldset.php:210
 msgid "Il dato è richiesto per procedere"
-msgstr "Podatki so potrebni za nadaljevanje"
+msgstr "Za nadaljevanje je potrebna potrditev."
 
 #: module/Application/src/Application/Form/NewUserFieldset2.php:166
 #: module/Application/src/Application/Form/NewUserFieldset2.php:170
@@ -843,7 +847,6 @@ msgstr "xxxx"
 #: module/Application/src/Application/Form/NewUserFieldset2.php:326
 #: module/Application/src/Application/Form/NewUserFieldset2.php:329
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:279
-#: module/Application/view/application/user/signup-si2.phtml:233
 msgid "Partita IVA"
 msgstr "Davčna številka"
 
@@ -1085,7 +1088,7 @@ msgid "Nuova password"
 msgstr "Novo geslo"
 
 #: module/Application/src/Application/Form/PasswordForm.php:81
-#: module/Application/view/application/user/signup.phtml:191
+#: module/Application/view/application/user/signup.phtml:185
 msgid "Ripeti password"
 msgstr "Ponovite geslo"
 
@@ -1232,7 +1235,7 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "Uporabnik s tem dovoljenjem že obstaja "
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:266
+#: module/Application/view/application/user/new-signup.phtml:246
 msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "Uporabnik s tem e-poštnim naslovom že obstaja"
 
@@ -1302,12 +1305,10 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Davčna številka je napačna"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Neveljavna davčna številka"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Starost ni primerna za vožnjo"
 
@@ -1333,7 +1334,6 @@ msgid "La partita IVA non è valida"
 msgstr "Davčna številka ni veljavna"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Nepravilna poštna številka"
 
@@ -1353,128 +1353,112 @@ msgstr "UPORABNIK USPEŠNO REGISTRIRAN"
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "MED REGISTRACIJO JE PRIŠLO DO NAPAKE"
 
-#: vendor/cup-web/public-business-module/config/module.config.php:249
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:8
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:9
-msgid "Azienda"
-msgstr "podjetje"
-
-#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:89
-msgid ""
-"Operazione avvenuta con successo! Appena verrai confermato riceverai una "
-"email con le istruzioni"
+#: public/js/index.map.js:397
+msgid "nouse_label_map"
 msgstr ""
-"Operacija je uspešno zaključena! Takoj ko boste potrjeni, boste prejeli e-"
-"pošto z navodili"
 
-#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:95
-msgid "Il codice inserito non è valido"
-msgstr "Vnesena koda ni veljavna"
+#: public/js/index.map.js:400
+msgid "unplug_label_map"
+msgstr ""
 
-#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:97
-msgid "Non puoi essere associato a questa azienda"
-msgstr "Ne morete biti povezani s tem podjetjem"
+#: public/js/jquery.cookiesdirective.js:199
+#: public/js/jquery.cookiesdirective.js:207
+msgid "cookies_directive_here"
+msgstr ""
 
-#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:99
-msgid "Sei già associato a questa azienda"
-msgstr "S tem podjetjem ste že povezani"
+#: public/js/moment.min.js:6
+msgid "\n"
+msgstr ""
 
-#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
-msgid "Sei già associato ad un'altra azienda"
-msgstr "Ste že povezani z drugim podjetjem"
+#: public/js/signup.js:48
+msgid "sms_send"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "E-poštni naslov ni sprejet"
+#: public/js/signup.js:56
+msgid "sms_wait"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
-#, php-format
-msgid "Rfid: %s - Codice: %s"
-msgstr "Rfid: %s - Koda: %s"
+#: public/js/signup.js:63
+msgid "sms_sended"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "Si"
-msgstr "to"
+#: public/js/signup.js:71
+msgid "sms_error_send"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "No"
-msgstr "Ne"
+#: public/js/signup.js:76
+msgid "sms_error_wrong_number"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Interna"
-msgstr "notranja"
+#: public/js/signup.js:81
+msgid "sms_error_alredy_present"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Esterna"
-msgstr "zunanji"
+#: public/js/signup.js:90
+msgid "sms_button"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
-msgid "Mappa"
-msgstr "map"
+#: public/js/signup.js:104
+msgid "sms_insert"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
-msgid "(Black Box)"
-msgstr "(Črna škatla)"
+#: public/js/signup.js:359
+msgid "send_code"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
-msgid "Si è verificato un errore durante il salvataggio della configurazione"
-msgstr "Med shranjevanjem konfiguracije je prišlo do napake"
+#: public/js/signup.js:360
+#, fuzzy
+#| msgid "Promo code"
+msgid "promo_code"
+msgstr "Promo koda"
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
-msgid "Completata"
-msgstr "končan"
+#: public/js/signup.js:361
+msgid "general_condition_title"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:348
-msgid "Non Completata"
-msgstr "Ni dokončano"
+#: public/js/signup.js:362
+msgid "general_condition_link"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:566
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:592
-msgid "Codice promo non valido."
-msgstr "Neveljavna promocijska koda."
+#: public/js/signup.js:363
+msgid "general_condition1"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
-msgid "Codice promo già associato a questo account."
-msgstr "Promocijska koda je že povezana s tem računom."
+#: public/js/signup.js:364
+msgid "general_condition2"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1100
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
-msgid "Codice fiscale, genere "
-msgstr "Davčna številka, spol "
+#: public/js/signup.js:365
+msgid "regulation_condition"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1111
-msgid "Codice fiscale, data di nascita "
-msgstr "Davčna številka, datum rojstva "
+#: public/js/signup.js:366
+msgid "privacy_condition_link"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1117
-msgid "Codice fiscale, luogo di nascita incongruente."
-msgstr "Davčna številka in kraj rojstva se ne ujemata."
+#: public/js/signup.js:367
+msgid "privacy_condition_title"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1125
-msgid "Codice fiscale, sintassi incongruente."
-msgstr "Davčna številka, neskladna oblika."
+#: public/js/signup.js:369
+msgid "cancel_button"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1130
-msgid "Codice fiscale, sintassi errata."
-msgstr "Davčna številka, napačen način zapisa."
+#: public/js/signup.js:371
+msgid "privacy_policy_title"
+msgstr ""
 
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
-msgid "PRENOTAZIONE DI SISTEMA"
-msgstr "NAČIN REZERVACIJE"
+#: public/js/signup.js:372
+msgid "privacy_policy_text"
+msgstr ""
 
-#: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
-msgid "Transazione non valida"
-msgstr "Neveljavna transakcija"
+#: public/js/signup.js:392 public/js/signup.js:399 public/js/signup.js:422
+msgid "verify_promocode_button"
+msgstr ""
+
+#: public/js/signup.js:426
+msgid "verify_promocode_invalid"
+msgstr ""
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
@@ -1687,7 +1671,7 @@ msgid "Confermare l'acquisto registrando una carta di credito"
 msgstr "Nakup potrdite z registracijo kreditne kartice"
 
 #: module/Application/view/application/index/comefunziona.phtml:10
-#: module/Application/view/layout/layout.phtml:123
+#: module/Application/view/layout/layout.phtml:113
 #: module/Application/view/partials/header/main_head.phtml:22
 msgid "Come funziona"
 msgstr "Kako deluje"
@@ -2290,7 +2274,7 @@ msgstr "Paket dobrodošlice"
 #: module/Application/view/application/user/signup2.phtml:13
 #: module/Application/view/application/user/signup3.phtml:17
 #: module/Application/view/application/user/signupinsert.phtml:22
-#: module/Application/view/layout/layout.phtml:142
+#: module/Application/view/layout/layout.phtml:132
 msgid "Registrati"
 msgstr "Registracija"
 
@@ -2309,14 +2293,10 @@ msgstr ""
 
 #: module/Application/view/application/payment/pay-success.phtml:27
 #: module/Application/view/application/user/signup-score-completion.phtml:27
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:11
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:26
 msgid "Attivazione completata"
 msgstr "Aktivacija je končana"
 
 #: module/Application/view/application/payment/pay-success.phtml:28
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:12
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:27
 msgid "Ti confermiamo la ricezione del pagamento"
 msgstr "Potrjujemo prejem plačila"
 
@@ -2376,34 +2356,58 @@ msgid "Non hai ancora bonus associati al tuo account"
 msgstr "Še vedno nimate bonusov, povezanih z vašim računom"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:16
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:16
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:16
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:16
 msgid "Dati pagamento"
 msgstr "Podatki o plačilu"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:28
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:28
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:28
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:28
 msgid "Stato pagamenti"
 msgstr "Status plačila"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:35
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:34
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:34
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:34
 msgid "I dati di pagamento sono stati correttamente inseriti."
 msgstr "Podatki o plačilu so pravilno vnešeni."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:38
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:38
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:38
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:38
 msgid "Il Pacchetto Benvenuto non risulta ancora pagato"
 msgstr "Paket dobrodošlice še ni plačan"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:38
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:40
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:40
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:40
 msgid "Clicca qui"
 msgstr "Kliknite tukaj"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:38
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:41
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:41
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:41
 msgid "per completare l&#39;attivazione del servizio"
 msgstr "dokončati aktivacijo storitve"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:39
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:44
 msgid "Attenzione!"
 msgstr "Opozorilo!"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:39
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:45
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:45
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:45
 msgid ""
 " Per completare il pagamento e registrare la tua carta di credito (o "
 "prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza "
@@ -2414,6 +2418,9 @@ msgstr ""
 "za spletna plačila)."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:40
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:48
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:48
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:48
 msgid ""
 "Se non avessi il Secure Code o non l&#39;avessi mai utilizzato, chiedine "
 "l&#39;attivazione al gestore della tua carta, prima di proseguire "
@@ -2422,6 +2429,9 @@ msgstr ""
 "upravitelja kartice  "
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:57
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:66
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:66
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:66
 msgid ""
 "Hai esaurito i tuoi minuti bonus e hai effettuato una o più corse 'a "
 "debito'. Puoi effettuare manualmente il primo pagamento cliccando sul "
@@ -2431,49 +2441,82 @@ msgstr ""
 "plačilo lahko ročno izvedete s klikom na naslednjo povezavo."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:61
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:70
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:70
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:70
 msgid "Maggiori informazioni"
 msgstr "Več informacij"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:78
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:87
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:87
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:87
 msgid "Carta di credito"
 msgstr "Kreditna kartica"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:86
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:95
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:95
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:95
 msgid "Data attivazione carta"
 msgstr "Datum aktivacije kartice"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:90
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:99
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:99
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:99
 msgid "Numero carta"
 msgstr "Številka kartice"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:94
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:103
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:103
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:103
 msgid "Scadenza"
 msgstr "rok"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:98
 #: module/Application/view/application/user-area/index.phtml:126
 #: module/Application/view/application/user-area/index.phtml:351
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:107
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:107
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:107
 msgid "Stato"
 msgstr "država"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:101
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:110
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:110
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:110
 msgid "Carta disabilitata "
 msgstr "Kartica je onemogočena "
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:103
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:112
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:112
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:112
 msgid "Carta attiva "
 msgstr "Aktivna kartica "
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:110
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:119
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:119
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:119
 msgid "Cambia carta"
 msgstr "Spremeni kartico"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:118
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:127
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:127
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:127
 msgid "La tua carta di credito (o prepagata) risulta scaduta o non presente:"
 msgstr ""
 "Vaša kreditna kartica (ali predplačniška kartica) je potekla ali ni vnešena:"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:120
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:129
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:129
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:129
 #, fuzzy
 msgid ""
 "Clicca su <button class=\"medium red\" onclick=\"openChangeCard()\">CAMBIA "
@@ -2483,6 +2526,9 @@ msgstr ""
 "SPREMENI PAPIR </button>, da vstavite novega."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:122
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:131
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:131
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:131
 msgid ""
 "Attenzione: se non provvederai ad inserire una nuova carta di credito (o "
 "prepagata) il tuo profilo rimarrà disabilitato."
@@ -2491,11 +2537,17 @@ msgstr ""
 "bo vaš profil ostal onemogočen."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:125
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:134
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:134
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:134
 msgid ""
 "Non hai ancora inserito una carta di credito o prepagata sul tuo profilo."
 msgstr "V svojem profilu še niste vnesli kreditne ali predplačniške kartice."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:156
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:165
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:165
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:165
 #: module/Application/view/application/user/new-signup.phtml:147
 #: module/Application/view/application/user/signup-nl1.phtml:152
 #: module/Application/view/application/user/signup-si1.phtml:151
@@ -2504,6 +2556,9 @@ msgid "ATTENZIONE"
 msgstr "POZOR"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:169
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:169
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:169
 msgid ""
 "Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
 "verr&agrave; immediatamente rimborsata al termine della procedura."
@@ -2512,10 +2567,16 @@ msgstr ""
 "ob koncu postopka."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:176
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:180
 msgid "PROCEDI"
 msgstr "NADALJUJTE"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:178
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:178
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:181
 msgid "CHIUDI"
 msgstr "ZAPRTO"
 
@@ -2592,7 +2653,6 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Inizio"
 msgstr "Domov"
 
@@ -2601,7 +2661,6 @@ msgstr "Domov"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Fine"
 msgstr "konec"
 
@@ -2610,7 +2669,6 @@ msgstr "konec"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Durata (min.)"
 msgstr "Trajanje (min.)"
 
@@ -2619,7 +2677,6 @@ msgstr "Trajanje (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Sosta (min.)"
 msgstr "Ustavite (min.)"
 
@@ -2713,7 +2770,7 @@ msgstr "Podatki o vaših vozniških dovoljenjih"
 #: module/Application/view/application/user-area/driving-licence.phtml:162
 #: module/Application/view/application/user/new-signup2.phtml:257
 #: module/Application/view/application/user/signup-nl2.phtml:235
-#: module/Application/view/application/user/signup-si2.phtml:248
+#: module/Application/view/application/user/signup-si2.phtml:240
 #: module/Application/view/application/user/signup-sk2.phtml:236
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
@@ -2834,7 +2891,7 @@ msgstr "Podatki o rojstvu"
 #: module/Application/view/application/user/signup-nl2.phtml:164
 #: module/Application/view/application/user/signup-si2.phtml:164
 #: module/Application/view/application/user/signup-sk2.phtml:164
-#: module/Application/view/application/user/signup.phtml:271
+#: module/Application/view/application/user/signup.phtml:265
 msgid "Provincia di nascita"
 msgstr "Pokrajina rojstva"
 
@@ -2855,7 +2912,7 @@ msgstr "Občina"
 #: module/Application/view/application/user-area/profile.phtml:139
 #: module/Application/view/application/user-area/profile.phtml:370
 #: module/Application/view/application/user/new-signup2.phtml:130
-#: module/Application/view/application/user/signup.phtml:340
+#: module/Application/view/application/user/signup.phtml:334
 msgid "Citt&agrave;"
 msgstr "Mesto"
 
@@ -2872,7 +2929,7 @@ msgstr "Civic"
 #: module/Application/view/application/user/signup-nl2.phtml:132
 #: module/Application/view/application/user/signup-si2.phtml:132
 #: module/Application/view/application/user/signup-sk2.phtml:132
-#: module/Application/view/application/user/signup.phtml:322
+#: module/Application/view/application/user/signup.phtml:316
 msgid "Cap"
 msgstr "Poštna številka"
 
@@ -2893,7 +2950,7 @@ msgstr "Davčni podatki"
 #: module/Application/view/application/user-area/profile.phtml:183
 #: module/Application/view/application/user-area/profile.phtml:431
 #: module/Application/view/application/user/new-signup2.phtml:246
-#: module/Application/view/application/user/signup.phtml:366
+#: module/Application/view/application/user/signup.phtml:360
 msgid "Codice Fiscale"
 msgstr "Davčni zakonik"
 
@@ -2939,13 +2996,13 @@ msgstr "Spremeni številko"
 #: module/Application/view/application/user/signup-nl2.phtml:201
 #: module/Application/view/application/user/signup-si2.phtml:201
 #: module/Application/view/application/user/signup-sk2.phtml:201
-#: module/Application/view/application/user/signup.phtml:392
+#: module/Application/view/application/user/signup.phtml:386
 msgid "Prefisso"
 msgstr "Klicna številka"
 
 #: module/Application/view/application/user-area/index.phtml:575
 #: module/Application/view/application/user/new-signup2.phtml:215
-#: module/Application/view/application/user/signup.phtml:629
+#: module/Application/view/application/user/signup.phtml:623
 #: module/Application/view/partials/translations.phtml:3
 #: module/Application/view/partials/translations.phtml:25
 msgid "INVIA CODICE"
@@ -2953,12 +3010,12 @@ msgstr "POŠALI KODO"
 
 #: module/Application/view/application/user-area/index.phtml:584
 #: module/Application/view/application/user/new-signup2.phtml:224
-#: module/Application/view/application/user/signup.phtml:641
+#: module/Application/view/application/user/signup.phtml:635
 msgid "Codice di Verifica"
 msgstr "Verifikacijska koda"
 
 #: module/Application/view/application/user-area/index.phtml:594
-#: module/Application/view/application/user/signup.phtml:651
+#: module/Application/view/application/user/signup.phtml:645
 msgid "Inserisci qui il codice di verifica inviato via sms"
 msgstr "Tu vnesite verifikacijsko kodo, poslano prek SMS-a"
 
@@ -3339,39 +3396,31 @@ msgstr ""
 "a>."
 
 #: module/Application/view/application/user-area/pin.phtml:27
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:27
 msgid ""
 "QUESTO &Egrave; IL PIN CHE TI SERVIR&Agrave; PER UTILIZZARE UNA SHARE&#39;NGO"
 msgstr "TO JE PIN, KI GA BOSTE POTREBOVALI ZA UPORABO STORITVE SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:37
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:37
 msgid "ATTENZIONE: MEMORIZZALO IN LUOGO SICURO E NON DARLO AD ALTRI"
 msgstr "POZOR: SKLADIŠČITE ga na varnem mestu in ga ne delite z drugimi"
 
 #: module/Application/view/application/user-area/pin.phtml:45
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:45
 msgid "Guarda come si usa"
 msgstr "Poglejte, kako se uporablja"
 
 #: module/Application/view/application/user-area/pin.phtml:51
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
 msgstr "Ali želite z vašim računom povezati tudi kartico za odpiranje vrat?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
 msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "KLIKNITE NA SLIKO KARTICE"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
 msgid "per inoltrare la tua richiesta"
 msgstr "za posredovanje vaše zahteve"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:58
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "ZAHTEVEK ZA KARTICO SHARE'NGO"
 
@@ -3389,7 +3438,7 @@ msgstr ""
 #: module/Application/view/application/user/signup-nl2.phtml:114
 #: module/Application/view/application/user/signup-si2.phtml:114
 #: module/Application/view/application/user/signup-sk2.phtml:114
-#: module/Application/view/application/user/signup.phtml:312
+#: module/Application/view/application/user/signup.phtml:306
 msgid "Indirizzo di residenza"
 msgstr "Naslov"
 
@@ -3435,12 +3484,10 @@ msgstr ""
 "€), da se varno vrnejo domov in plačajo le 0,10 €;"
 
 #: module/Application/view/application/user-area/rents.phtml:21
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:21
 msgid "Le mie corse"
 msgstr "Moje vožnje"
 
 #: module/Application/view/application/user-area/rents.phtml:43
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:44
 msgid "Periodo"
 msgstr "obdobje"
 
@@ -3457,17 +3504,14 @@ msgstr ""
 "vaše osebne tarife."
 
 #: module/Application/view/application/user-area/rents.phtml:82
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Totale"
 msgstr "skupaj"
 
 #: module/Application/view/application/user-area/rents.phtml:83
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Da saldare"
 msgstr "Za plačilo"
 
 #: module/Application/view/application/user-area/rents.phtml:94
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
 msgid "Attenzione"
 msgstr "Opozorilo"
 
@@ -3486,7 +3530,6 @@ msgstr ""
 "stranke SHARE'NGO."
 
 #: module/Application/view/application/user-area/rents.phtml:104
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
 msgid "Nessuna corsa effettuata finora"
 msgstr "Zaenkrat še niste opravili nobene vožnje"
 
@@ -3619,7 +3662,7 @@ msgstr "Pogodbeni pogoji"
 #: module/Application/view/application/user/signup-nl1.phtml:148
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si2.phtml:387
+#: module/Application/view/application/user/signup-si2.phtml:379
 #: module/Application/view/application/user/signup-sk1.phtml:156
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
@@ -3714,7 +3757,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:242
-#: module/Application/view/application/user/signup-si2.phtml:255
+#: module/Application/view/application/user/signup-si2.phtml:247
 #: module/Application/view/application/user/signup-sk2.phtml:243
 msgid "Assicurati che sia dell’ultima patente rilasciata."
 msgstr "Prepričajte se da je to zadnje izdano vozniško dovoljenje."
@@ -3780,7 +3823,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:268
-#: module/Application/view/application/user/signup-si2.phtml:281
+#: module/Application/view/application/user/signup-si2.phtml:273
 #: module/Application/view/application/user/signup-sk2.phtml:269
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:41
 msgid "Letto, confermato e sottoscritto"
@@ -3788,7 +3831,7 @@ msgstr "Se strinjam"
 
 #: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
-#: module/Application/view/application/user/signup-si2.phtml:291
+#: module/Application/view/application/user/signup-si2.phtml:283
 #: module/Application/view/application/user/signup-sk2.phtml:279
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:50
 msgid ""
@@ -3810,14 +3853,14 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
-#: module/Application/view/application/user/signup-si2.phtml:294
+#: module/Application/view/application/user/signup-si2.phtml:286
 #: module/Application/view/application/user/signup-sk2.phtml:282
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:53
 msgid "Esente da Autentica"
 msgstr "Izvzet iz avtentikacije"
 
 #: module/Application/view/application/user/new-signup2.phtml:329
-#: module/Application/view/application/user/signup-si2.phtml:298
+#: module/Application/view/application/user/signup-si2.phtml:290
 #: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
 "Occorre allegare copia fotostatica, anche non autenticata, della patente di "
@@ -3826,28 +3869,28 @@ msgstr "Potrebo je naložiti slike vozniškega dovoljenja in osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
-#: module/Application/view/application/user/signup-si2.phtml:310
+#: module/Application/view/application/user/signup-si2.phtml:302
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "sprednja stran vozniškega dovoljenja "
 
 #: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
-#: module/Application/view/application/user/signup-si2.phtml:319
+#: module/Application/view/application/user/signup-si2.phtml:311
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "zadnja stran vozniškega dovoljenja"
 
 #: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
-#: module/Application/view/application/user/signup-si2.phtml:330
+#: module/Application/view/application/user/signup-si2.phtml:322
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "sprednja stran osebne izkaznice"
 
 #: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
-#: module/Application/view/application/user/signup-si2.phtml:339
+#: module/Application/view/application/user/signup-si2.phtml:331
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "zadnja stran osebne izkaznice"
@@ -3910,7 +3953,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
-#: module/Application/view/application/user/signup-si2.phtml:389
+#: module/Application/view/application/user/signup-si2.phtml:381
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr ""
@@ -3918,7 +3961,7 @@ msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
-#: module/Application/view/application/user/signup-si2.phtml:416
+#: module/Application/view/application/user/signup-si2.phtml:408
 #: module/Application/view/application/user/signup-sk2.phtml:404
 msgid "5. Numero Patente"
 msgstr "5. Številka vozniškega dovoljenja"
@@ -3932,28 +3975,18 @@ msgid "Pagamento avvenuto!"
 msgstr "Plačilo je končano!"
 
 #: module/Application/view/application/user/optional.phtml:26
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
 msgid "Si è verificato un problema"
 msgstr "Prišlo je do težave"
 
 #: module/Application/view/application/user/optional.phtml:27
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
 msgid "Il pagamento non è andato a buon fine."
 msgstr "Plačilo ni bilo uspešno."
 
 #: module/Application/view/application/user/optional.phtml:28
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
 msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "Sporočilo o napaki, ki smo ga prejeli, je:"
 
 #: module/Application/view/application/user/optional.phtml:29
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:31
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
 msgid "Contattare l'assistenza per maggiori informazioni"
 msgstr "Za več informacij se obrnite na podporo"
 
@@ -3977,8 +4010,6 @@ msgstr ""
 "brezplačnimi minutami."
 
 #: module/Application/view/application/user/optional.phtml:92
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Pojdite na uporabniški profil"
 
@@ -4021,13 +4052,13 @@ msgid "BSN"
 msgstr "BSN"
 
 #: module/Application/view/application/user/signup-nl2.phtml:246
-#: module/Application/view/application/user/signup-si2.phtml:259
+#: module/Application/view/application/user/signup-si2.phtml:251
 #: module/Application/view/application/user/signup-sk2.phtml:247
 msgid "Data di scadenza patente"
 msgstr "Velja do:"
 
 #: module/Application/view/application/user/signup-nl2.phtml:259
-#: module/Application/view/application/user/signup-si2.phtml:272
+#: module/Application/view/application/user/signup-si2.phtml:264
 #: module/Application/view/application/user/signup-sk2.phtml:260
 msgid ""
 "Cliente, consapevole della legge penale e conseguenze civili false "
@@ -4055,7 +4086,7 @@ msgstr ""
 "dovoljenja, tudi če ni overjeno"
 
 #: module/Application/view/application/user/signup-nl2.phtml:331
-#: module/Application/view/application/user/signup-si2.phtml:351
+#: module/Application/view/application/user/signup-si2.phtml:343
 #: module/Application/view/application/user/signup-sk2.phtml:339
 msgid "foto dell'utente (selfie)"
 msgstr "slika uporabnika z vozniškim dovoljenjem (selfie)"
@@ -4082,11 +4113,11 @@ msgstr "Priljubljeno mesto"
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minut za samo 5 €;"
 
-#: module/Application/view/application/user/signup-si2.phtml:367
+#: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Nadaljuj z registracijo"
 
-#: module/Application/view/application/user/signup.phtml:39
+#: module/Application/view/application/user/signup.phtml:38
 msgid ""
 "L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni "
 "standard, salvo promozioni)."
@@ -4094,63 +4125,55 @@ msgstr ""
 "Prijava na storitev stane 10 evrov z vključenim 30-minutnim bonusom "
 "(standardni pogoji, razen promocij)."
 
-#: module/Application/view/application/user/signup.phtml:46
+#: module/Application/view/application/user/signup.phtml:45
 msgid "Costo iscrizione 1 euro con 15 minuti bonus."
 msgstr "Prijavnina 1 evro s 15 minutami bonusa."
 
-#: module/Application/view/application/user/signup.phtml:48
+#: module/Application/view/application/user/signup.phtml:47
 msgid "Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni."
 msgstr "Prijavnina 5 evrov s 15 minutami bonusa, razen promocij."
 
-#: module/Application/view/application/user/signup.phtml:51
-msgid "per aiuto."
-msgstr "za pomoč."
-
-#: module/Application/view/application/user/signup.phtml:55
+#: module/Application/view/application/user/signup.phtml:53
 msgid ""
 "The registration fee is 10€ with 30 minutes bonus (standard condition "
 "without promotions)."
 msgstr ""
 "Kotizacija znaša 10 € s 30 minutami bonusa (standardni pogoji brez promocij)."
 
-#: module/Application/view/application/user/signup.phtml:59
+#: module/Application/view/application/user/signup.phtml:57
 msgid "Registration fee is 1€ with 15 bonus minutes."
 msgstr "Kotizacija znaša 1 € s 15 bonus minutami."
 
-#: module/Application/view/application/user/signup.phtml:61
+#: module/Application/view/application/user/signup.phtml:59
 msgid "Registration fee 5 euro with 15 bonus minutes, except for promotion."
 msgstr "Prijavnina 5 EUR s 15 bonus minutami, razen če gre za promocije."
 
-#: module/Application/view/application/user/signup.phtml:65
-msgid "for help."
-msgstr "za pomoč."
-
-#: module/Application/view/application/user/signup.phtml:95
+#: module/Application/view/application/user/signup.phtml:89
 #: module/Application/view/partials/translations.phtml:4
 msgid "Codice promo"
 msgstr "Promo koda"
 
-#: module/Application/view/application/user/signup.phtml:130
+#: module/Application/view/application/user/signup.phtml:124
 msgid "Citt&agrave; preferita - Favourite city"
 msgstr "Mesto in agrave; najljubše - Najljubše mesto"
 
-#: module/Application/view/application/user/signup.phtml:148
+#: module/Application/view/application/user/signup.phtml:142
 msgid "Inserisci i dati che userai per accedere al servizio"
 msgstr "Vnesite podatke, ki jih boste uporabili za dostop do storitve"
 
-#: module/Application/view/application/user/signup.phtml:165
+#: module/Application/view/application/user/signup.phtml:159
 msgid "Ripeti l'email"
 msgstr "Ponovno vnesite e-poštni naslov"
 
-#: module/Application/view/application/user/signup.phtml:204
+#: module/Application/view/application/user/signup.phtml:198
 msgid "Inserisci i tuoi dati personali"
 msgstr "Vnesite svoje osebne podatke"
 
-#: module/Application/view/application/user/signup.phtml:211
+#: module/Application/view/application/user/signup.phtml:205
 msgid "Genere"
 msgstr "spol"
 
-#: module/Application/view/application/user/signup.phtml:350
+#: module/Application/view/application/user/signup.phtml:344
 msgid ""
 "Informazioni aggiuntive - Inserisci qui il tuo indirizzo di domicilio se "
 "diverso da residenza"
@@ -4158,39 +4181,39 @@ msgstr ""
 "Dodatne informacije - Tu vpišite svoj domači naslov, če se razlikuje od "
 "prebivališča"
 
-#: module/Application/view/application/user/signup.phtml:377
+#: module/Application/view/application/user/signup.phtml:371
 msgid "Partita IVA (solo per ditte individuali e professionisti)"
 msgstr "Davčna številka (samo za pravne osebe in podjetja)"
 
-#: module/Application/view/application/user/signup.phtml:660
+#: module/Application/view/application/user/signup.phtml:654
 msgid "Professione (Opzionale)"
 msgstr "Poklic (neobvezno)"
 
-#: module/Application/view/application/user/signup.phtml:670
+#: module/Application/view/application/user/signup.phtml:664
 msgid "Come hai conosciuto Sharengo? (Opzionale)"
 msgstr "Kako ste izvedeli za Sharengo? (Po želji)"
 
-#: module/Application/view/application/user/signup.phtml:686
+#: module/Application/view/application/user/signup.phtml:680
 msgid "Scegli la lingua preferita"
 msgstr "Izberite želeni jezik"
 
-#: module/Application/view/application/user/signup.phtml:706
+#: module/Application/view/application/user/signup.phtml:700
 #: module/Application/view/partials/translations.phtml:6
 msgid ""
 "Termini e Condizioni Generali di Contratto, Regolamento Tariffario e Privacy"
 msgstr "Splošni pogoji pogodbe, ceniki in zasebnost"
 
-#: module/Application/view/application/user/signup.phtml:716
+#: module/Application/view/application/user/signup.phtml:710
 #: module/Application/view/partials/translations.phtml:7
 msgid "Termini e Condizioni Generali di Contratto"
 msgstr "Splošni pogoji pogodbe"
 
-#: module/Application/view/application/user/signup.phtml:719
+#: module/Application/view/application/user/signup.phtml:713
 #: module/Application/view/partials/translations.phtml:11
 msgid "Regolamento Tariffario"
 msgstr "Uredba o cenah"
 
-#: module/Application/view/application/user/signup.phtml:737
+#: module/Application/view/application/user/signup.phtml:731
 #: module/Application/view/partials/translations.phtml:12
 msgid "Informativa Privacy"
 msgstr "Informacije o zasebnosti"
@@ -4427,7 +4450,7 @@ msgstr "Izjeme niso na voljo"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:6
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:3
-#: module/Application/view/layout/layout.phtml:141
+#: module/Application/view/layout/layout.phtml:131
 #: module/Application/view/zfc-user/user/login.phtml:3
 msgid "Login"
 msgstr "Prijava"
@@ -4490,12 +4513,12 @@ msgid "Controlla l'email che ti abbiamo spedito al tuo indirizzo %s."
 msgstr "Preverite e-poštno sporočilo, ki smo vam ga poslali na vaš naslov %s ."
 
 #: module/Application/view/layout/layout.phtml:10
-#: module/Application/view/layout/layout.phtml:105
+#: module/Application/view/layout/layout.phtml:95
 msgid "Share'NGo - the new mobility"
 msgstr "Share'NGo - nova mobilnost"
 
-#: module/Application/view/layout/layout.phtml:90
-#: module/Application/view/layout/map.phtml:121
+#: module/Application/view/layout/layout.phtml:80
+#: module/Application/view/layout/map.phtml:109
 msgid ""
 "Stai usando un browser <strong>non supportato</strong>. Per favore <a href="
 "\"http://browsehappy.com/\">aggiorna il tuo browser</a> o <a href=\"http://"
@@ -4506,29 +4529,29 @@ msgstr ""
 "browsehappy.com/\"> Posodobite brskalnik </a> ali <a href = \"http://www."
 "google.com/chromeframe/?redirect=true \"Uporabite Google Chrome Frame </a>."
 
-#: module/Application/view/layout/layout.phtml:118
+#: module/Application/view/layout/layout.phtml:108
 msgid "Navigazione principale"
 msgstr "Glavna navigacija"
 
-#: module/Application/view/layout/layout.phtml:120
+#: module/Application/view/layout/layout.phtml:110
 msgid "Car sharing"
 msgstr "Izmenjava avtomobilov"
 
-#: module/Application/view/layout/layout.phtml:121
+#: module/Application/view/layout/layout.phtml:111
 msgid "Chi &egrave; Share'n GO?"
 msgstr "Kdo smo Share'n GO?"
 
-#: module/Application/view/layout/layout.phtml:124
-#: module/Application/view/layout/layout.phtml:192
+#: module/Application/view/layout/layout.phtml:114
+#: module/Application/view/layout/layout.phtml:182
 msgid "Faq"
 msgstr "faq"
 
-#: module/Application/view/layout/layout.phtml:125
+#: module/Application/view/layout/layout.phtml:115
 msgid "Noleggio"
 msgstr "Najem"
 
-#: module/Application/view/layout/layout.phtml:126
-#: module/Application/view/layout/layout.phtml:191
+#: module/Application/view/layout/layout.phtml:116
+#: module/Application/view/layout/layout.phtml:181
 #: module/Application/view/partials/footer/main_foot.phtml:24
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:25
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:24
@@ -4537,7 +4560,7 @@ msgstr "Najem"
 msgid "Contatti"
 msgstr "Kontakti"
 
-#: module/Application/view/layout/layout.phtml:138
+#: module/Application/view/layout/layout.phtml:128
 #: module/Application/view/partials/header/main_head.phtml:30
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:29
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:29
@@ -4545,47 +4568,47 @@ msgstr "Kontakti"
 msgid "Area riservata"
 msgstr "Uporabniški profil"
 
-#: module/Application/view/layout/layout.phtml:139
+#: module/Application/view/layout/layout.phtml:129
 msgid "Log out"
 msgstr "Odjava"
 
-#: module/Application/view/layout/layout.phtml:165
+#: module/Application/view/layout/layout.phtml:155
 msgid "Share 'N Go"
 msgstr "Share'NGo"
 
-#: module/Application/view/layout/layout.phtml:166
+#: module/Application/view/layout/layout.phtml:156
 msgid "è un servizio di C.S. Group S.p.A."
 msgstr "je storitev CS Group SpA"
 
-#: module/Application/view/layout/layout.phtml:167
+#: module/Application/view/layout/layout.phtml:157
 msgid "Sede Legale"
 msgstr "S sedežem"
 
-#: module/Application/view/layout/layout.phtml:168
+#: module/Application/view/layout/layout.phtml:158
 msgid "Via dei Pelaghi 162, 57124 - Livorno (LI)"
 msgstr "Via dei Pelaghi 162, 57124 - Livorno (LI)"
 
-#: module/Application/view/layout/layout.phtml:169
+#: module/Application/view/layout/layout.phtml:159
 msgid "Codice Fiscale e Partita IVA"
 msgstr "Davčna številka in davčna številka"
 
-#: module/Application/view/layout/layout.phtml:170
+#: module/Application/view/layout/layout.phtml:160
 msgid "Numero REA"
 msgstr "REA številka"
 
-#: module/Application/view/layout/layout.phtml:172
+#: module/Application/view/layout/layout.phtml:162
 msgid "Fax"
 msgstr "Faks"
 
-#: module/Application/view/layout/layout.phtml:173
+#: module/Application/view/layout/layout.phtml:163
 msgid "E-mail"
 msgstr "E-mail"
 
-#: module/Application/view/layout/layout.phtml:181
+#: module/Application/view/layout/layout.phtml:171
 msgid "Servizio clienti"
 msgstr "Služba za stranke"
 
-#: module/Application/view/layout/layout.phtml:189
+#: module/Application/view/layout/layout.phtml:179
 #: module/Application/view/partials/footer/main_foot.phtml:36
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:37
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:34
@@ -4593,16 +4616,16 @@ msgstr "Služba za stranke"
 msgid "Privacy"
 msgstr "Zasebnost"
 
-#: module/Application/view/layout/layout.phtml:190
+#: module/Application/view/layout/layout.phtml:180
 msgid "Regolamento e tariffe"
 msgstr "Pravilnik in cenik"
 
-#: module/Application/view/layout/layout.phtml:193
+#: module/Application/view/layout/layout.phtml:183
 msgid "Come si usa un'equomobile"
 msgstr "Kako uporabljati avto"
 
-#: module/Application/view/layout/layout.phtml:210
-#: module/Application/view/layout/layout2.phtml:126
+#: module/Application/view/layout/layout.phtml:200
+#: module/Application/view/layout/layout2.phtml:116
 msgid ""
 "I cookie ci aiutano a fornire i nostri servizi. Utilizzando tali servizi, "
 "accetti l'utilizzo dei cookie da parte nostra. Per maggiori dettagli si "
@@ -5928,112 +5951,181 @@ msgstr "Vaš e-poštni naslov"
 msgid "Password dimenticata ?"
 msgstr "Ste pozabili geslo?"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:16
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:17
-msgid "Associazione con azienda"
-msgstr "Povezava s podjetjem"
+#~ msgid "Azienda"
+#~ msgstr "podjetje"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:19
-msgid "Sei associato alla seguente azienda:"
-msgstr "Povezani ste z naslednjim podjetjem:"
+#~ msgid ""
+#~ "Operazione avvenuta con successo! Appena verrai confermato riceverai una "
+#~ "email con le istruzioni"
+#~ msgstr ""
+#~ "Operacija je uspešno zaključena! Takoj ko boste potrjeni, boste prejeli e-"
+#~ "pošto z navodili"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:22
-msgid "Stato associazione: "
-msgstr "Stanje povezanosti: "
+#~ msgid "Il codice inserito non è valido"
+#~ msgstr "Vnesena koda ni veljavna"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:25
-msgid "Nome: "
-msgstr "ime: "
+#~ msgid "Non puoi essere associato a questa azienda"
+#~ msgstr "Ne morete biti povezani s tem podjetjem"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:28
-msgid "Email: "
-msgstr "E-pošta: "
+#~ msgid "Sei già associato a questa azienda"
+#~ msgstr "S tem podjetjem ste že povezani"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:31
-msgid "Telefono: "
-msgstr "Telefon: "
+#~ msgid "Sei già associato ad un'altra azienda"
+#~ msgstr "Ste že povezani z drugim podjetjem"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:34
-msgid "Data richiesta: "
-msgstr "Zahtevani datum: "
+#~ msgid "Indirizzo email non accettato"
+#~ msgstr "E-poštni naslov ni sprejet"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:37
-msgid "Data conferma: "
-msgstr "Datum potrditve: "
+#, php-format
+#~ msgid "Rfid: %s - Codice: %s"
+#~ msgstr "Rfid: %s - Koda: %s"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:22
-msgid "Inserisci il codice aziendale che ti è stato comunicato"
-msgstr "Vnesite kodo podjetja, ki vam je bila sporočena"
+#~ msgid "Si"
+#~ msgstr "to"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:32
-msgid "Associa"
-msgstr "sodelavec"
+#~ msgid "No"
+#~ msgstr "Ne"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
+#~ msgid "Interna"
+#~ msgstr "notranja"
+
+#~ msgid "Esterna"
+#~ msgstr "zunanji"
+
+#~ msgid "Mappa"
+#~ msgstr "map"
+
+#~ msgid "(Black Box)"
+#~ msgstr "(Črna škatla)"
+
+#~ msgid ""
+#~ "Si è verificato un errore durante il salvataggio della configurazione"
+#~ msgstr "Med shranjevanjem konfiguracije je prišlo do napake"
+
+#~ msgid "Completata"
+#~ msgstr "končan"
+
+#~ msgid "Non Completata"
+#~ msgstr "Ni dokončano"
+
+#~ msgid "Codice promo non valido."
+#~ msgstr "Neveljavna promocijska koda."
+
+#~ msgid "Codice promo già associato a questo account."
+#~ msgstr "Promocijska koda je že povezana s tem računom."
+
+#~ msgid "Codice fiscale, genere "
+#~ msgstr "Davčna številka, spol "
+
+#~ msgid "Codice fiscale, data di nascita "
+#~ msgstr "Davčna številka, datum rojstva "
+
+#~ msgid "Codice fiscale, luogo di nascita incongruente."
+#~ msgstr "Davčna številka in kraj rojstva se ne ujemata."
+
+#~ msgid "Codice fiscale, sintassi incongruente."
+#~ msgstr "Davčna številka, neskladna oblika."
+
+#~ msgid "Codice fiscale, sintassi errata."
+#~ msgstr "Davčna številka, napačen način zapisa."
+
+#~ msgid "PRENOTAZIONE DI SISTEMA"
+#~ msgstr "NAČIN REZERVACIJE"
+
+#~ msgid "Transazione non valida"
+#~ msgstr "Neveljavna transakcija"
+
+#~ msgid "per aiuto."
+#~ msgstr "za pomoč."
+
+#~ msgid "for help."
+#~ msgstr "za pomoč."
+
+#~ msgid "Associazione con azienda"
+#~ msgstr "Povezava s podjetjem"
+
+#~ msgid "Sei associato alla seguente azienda:"
+#~ msgstr "Povezani ste z naslednjim podjetjem:"
+
+#~ msgid "Stato associazione: "
+#~ msgstr "Stanje povezanosti: "
+
+#~ msgid "Nome: "
+#~ msgstr "ime: "
+
+#~ msgid "Email: "
+#~ msgstr "E-pošta: "
+
+#~ msgid "Telefono: "
+#~ msgstr "Telefon: "
+
+#~ msgid "Data richiesta: "
+#~ msgstr "Zahtevani datum: "
+
+#~ msgid "Data conferma: "
+#~ msgstr "Datum potrditve: "
+
+#~ msgid "Inserisci il codice aziendale che ti è stato comunicato"
+#~ msgstr "Vnesite kodo podjetja, ki vam je bila sporočena"
+
+#~ msgid "Associa"
+#~ msgstr "sodelavec"
+
 #, fuzzy
-#| msgid ""
-#| "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
-#| "ritirarla presso i nostri uffici"
-msgid ""
-"Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o puoi "
-"anche ritirarla c/o i nostri uffici"
-msgstr ""
-"Na zahtevo bo v roku enega tedna brezplačno prispela na vaš dom, lahko pa jo "
-"prevzamete tudi v naših poslovalnicah"
+#~| msgid ""
+#~| "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
+#~| "ritirarla presso i nostri uffici"
+#~ msgid ""
+#~ "Ti arriver&agrave; su richiesta gratuitamente a casa in una settimana o "
+#~ "puoi anche ritirarla c/o i nostri uffici"
+#~ msgstr ""
+#~ "Na zahtevo bo v roku enega tedna brezplačno prispela na vaš dom, lahko pa "
+#~ "jo prevzamete tudi v naših poslovalnicah"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
-msgid ""
-"Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo di "
-"partenza e d&#39;arrivo, il consumo di minuti bonus e le gratuit&agrave; "
-"qualora ti siano state riconosciute. In fondo alla tabella trovi il totale "
-"degli addebiti del mese applicando la tua tariffa personale."
-msgstr ""
-"S preprostim pritiskom miške na vsako potovanje lahko vidite začetne in "
-"končne naslove, porabo bonus minut in brezplačnih vozovnic; . Na dnu tabele "
-"najdete skupne stroške za mesec, ki so izračunani glede na vam prilagojeno "
-"ceno."
+#~ msgid ""
+#~ "Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo "
+#~ "di partenza e d&#39;arrivo, il consumo di minuti bonus e le "
+#~ "gratuit&agrave; qualora ti siano state riconosciute. In fondo alla "
+#~ "tabella trovi il totale degli addebiti del mese applicando la tua tariffa "
+#~ "personale."
+#~ msgstr ""
+#~ "S preprostim pritiskom miške na vsako potovanje lahko vidite začetne in "
+#~ "končne naslove, porabo bonus minut in brezplačnih vozovnic; . Na dnu "
+#~ "tabele najdete skupne stroške za mesec, ki so izračunani glede na vam "
+#~ "prilagojeno ceno."
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
-msgid "Targa"
-msgstr "Targa"
+#~ msgid "Targa"
+#~ msgstr "Targa"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:81
-msgid "Tipologia"
-msgstr "Vrsta"
+#~ msgid "Tipologia"
+#~ msgstr "Vrsta"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:97
-msgid ""
-"l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
-"saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
-"problemi di addebito sulla tua carta di credito e che il tuo account è "
-"temporaneamente sospeso. Contatta il Customer Service di SHARE'NGO per la "
-"riattivazione."
-msgstr ""
-"vožnje se običajno zaračunajo naslednji dan. Če danes ne morete opraviti "
-"vožnje, obstajajo težave z bremenitvijo vaše kreditne kartice in vaš račun "
-"je začasno zaustavljen. Za ponovno aktivacijo se obrnite na službo za "
-"stranke SHARE'NGO."
+#~ msgid ""
+#~ "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse "
+#~ "da saldare non effettuate nella giornata di oggi vuol dire che ci sono "
+#~ "stati problemi di addebito sulla tua carta di credito e che il tuo "
+#~ "account è temporaneamente sospeso. Contatta il Customer Service di "
+#~ "SHARE'NGO per la riattivazione."
+#~ msgstr ""
+#~ "vožnje se običajno zaračunajo naslednji dan. Če danes ne morete opraviti "
+#~ "vožnje, obstajajo težave z bremenitvijo vaše kreditne kartice in vaš "
+#~ "račun je začasno zaustavljen. Za ponovno aktivacijo se obrnite na službo "
+#~ "za stranke SHARE'NGO."
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
-msgid "Verifica cambio di carta in corso."
-msgstr "Poteka preverjanje izmenjane papirologije."
+#~ msgid "Verifica cambio di carta in corso."
+#~ msgstr "Poteka preverjanje izmenjane papirologije."
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:13
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:13
-msgid "(attendere prego)"
-msgstr "(prosim počakajte)"
+#~ msgid "(attendere prego)"
+#~ msgstr "(prosim počakajte)"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
-msgid "Cambio carta completato"
-msgstr "Sprememba kartice je končana"
+#~ msgid "Cambio carta completato"
+#~ msgstr "Sprememba kartice je končana"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
-msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
-msgstr "Potrjujemo prejem vaših novih podatkov."
+#~ msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
+#~ msgstr "Potrjujemo prejem vaših novih podatkov."
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
-msgid "Verifica transazione in corso."
-msgstr "Preverite transakcijo, ki poteka."
+#~ msgid "Verifica transazione in corso."
+#~ msgstr "Preverite transakcijo, ki poteka."
 
 #~ msgid "Sede operativa"
 #~ msgstr "Operativni štab"

@@ -15,6 +15,7 @@ use Zend\Validator\Identical;
 use Zend\Session\Container;
 use Zend\Validator\Callback;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Validator\NotEmpty;
 
 class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
 
@@ -130,6 +131,13 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'required' => true,
                 'validators' => [
                     [
+                        'name' => 'not_empty',
+                        'options' => [
+                            'messages' => [NotEmpty::IS_EMPTY => $this->translator->translate('Il valore è richiesto e non può essere vuoto')]
+                        ],
+                        'break_chain_on_failure' => true
+                    ],
+                    [
                         'name' => 'EmailAddress',
                         'break_chain_on_failure' => true
                     ],
@@ -152,6 +160,13 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                     ]
                 ],
                 'validators' => [
+                    [
+                        'name' => 'not_empty',
+                        'options' => [
+                            'messages' => [NotEmpty::IS_EMPTY => $this->translator->translate('Il valore è richiesto e non può essere vuoto')]
+                        ],
+                        'break_chain_on_failure' => true
+                    ],
                     [
                         'name' => 'Application\Form\Validator\Password',
                     ]
