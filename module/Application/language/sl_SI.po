@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-11-28 12:48+0100\n"
-"PO-Revision-Date: 2019-11-28 12:49+0100\n"
+"PO-Revision-Date: 2019-12-09 10:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -4535,7 +4535,7 @@ msgstr "Najem"
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:24
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:26
 msgid "Contatti"
-msgstr "Kontakt"
+msgstr "Kontakti"
 
 #: module/Application/view/layout/layout.phtml:138
 #: module/Application/view/partials/header/main_head.phtml:30
@@ -4745,7 +4745,7 @@ msgstr "podpora"
 #: module/Application/view/partials/footer/main_foot_sk_SK.phtml:35
 #: module/Application/view/partials/footer/main_foot_sl_SI.phtml:35
 msgid "Contratto di servizio e tariffe"
-msgstr "Pogodba o storitvah in cenik"
+msgstr "Pogodba o storitvah in cene"
 
 #: module/Application/view/partials/footer/main_foot.phtml:38
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:39
