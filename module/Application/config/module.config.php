@@ -1940,6 +1940,7 @@ return [
                 ['controller' => 'Cartasi\Controller\CartasiPayments', 'roles' => []],
                 ['controller' => 'GPWebpay\Controller\GPWebpayPayments', 'roles' => []],
                 ['controller' => 'Mollie\Controller\MolliePayments', 'roles' => []],
+                ['controller' => 'Bankart\Controller\BankartPayments', 'roles' => []],
                 ['controller' => 'Application\Controller\RemoveGoldListTrips', 'roles' => []],
                 ['controller' => 'Application\Controller\ComputeTripsCost', 'roles' => []],
                 ['controller' => 'Application\Controller\ConsolePayments', 'roles' => []],

@@ -1,0 +1,1 @@
+INSERT INTO partners (id,name,code,params, enabled) VALUES (nextval('partners_id_seq'), 'Bankart','bankart','', TRUE);

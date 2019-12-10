@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d0715e6e1c5ad7f16f8e9ded85062133",
-    "content-hash": "7d85303dc86497ef63bb46a351abe6eb",
+    "hash": "75d8a8dc99b6c6eea2e83d941cf5834d",
+    "content-hash": "ecaf3fed9440026451f6d8456fc7e6fa",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -2498,7 +2498,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "f7f2a27579a5693b3b9dbf60fcccedda7ed7bacd"
+                "reference": "8cd8ae14d0f12f92080b18a629ca44bfa2694930"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2521,7 +2521,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-12-03 15:35:48"
+            "time": "2019-12-10 07:15:25"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -3049,6 +3049,29 @@
                 "zf2"
             ],
             "time": "2015-03-12 07:10:33"
+        },
+        {
+            "name": "sharengo-web/bankart",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@git.sharengo.it/cup-it/bankart.git",
+                "reference": "097091bc9fb204fcf52b60faa47c63c0f4a60638"
+            },
+            "require": {
+                "doctrine/doctrine-orm-module": "0.*",
+                "php": ">=5.4.0",
+                "sharengo-web/cartasi": "dev-master",
+                "zendframework/zendframework": "2.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Bankart": "src/"
+                }
+            },
+            "description": "Bankart module for Sharengo",
+            "time": "2019-11-25 15:00:35"
         },
         {
             "name": "sharengo-web/cartasi",
@@ -6374,6 +6397,12 @@
                 "url": "https://github.com/smsgatewayme/client-php.git",
                 "reference": "864f326ad6951599b487aab3cc350a966c5cbd86"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smsgatewayme/client-php/zipball/864f326ad6951599b487aab3cc350a966c5cbd86",
+                "reference": "864f326ad6951599b487aab3cc350a966c5cbd86",
+                "shasum": ""
+            },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
@@ -6391,6 +6420,7 @@
                     "SMSGatewayMe\\Client\\": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache v2"
             ],
@@ -6407,7 +6437,7 @@
                 "sdk",
                 "swagger"
             ],
-            "time": "2018-05-16 00:07:48"
+            "time": "2018-05-16 00:13:09"
         },
         {
             "name": "symfony/debug",
@@ -6584,7 +6614,8 @@
         "mvlabs/zf2-multilanguage": 20,
         "matteocontrini/comuni-json": 20,
         "sharengo-web/gpwebpay": 20,
-        "sharengo-web/mollie": 20
+        "sharengo-web/mollie": 20,
+        "sharengo-web/bankart": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

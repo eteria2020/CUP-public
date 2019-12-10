@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-09 15:06+0100\n"
-"PO-Revision-Date: 2019-12-09 15:07+0100\n"
+"POT-Creation-Date: 2019-12-09 18:05+0100\n"
+"PO-Revision-Date: 2019-12-09 18:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -11,21 +11,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ../../..\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
-"%100<=4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,247,-1,-1,-1\n"
-"X-Poedit-SearchPath-0: module/Application/src\n"
-"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-0: module/Application/view\n"
+"X-Poedit-SearchPath-1: module/Application/src/Application\n"
+"X-Poedit-SearchPath-2: module/Application/config\n"
+"X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
+"X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
+"X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
+"X-Poedit-SearchPath-6: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2730
+#: module/Application/config/module.config.php:2731
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "profil"
 
-#: module/Application/config/module.config.php:2735
+#: module/Application/config/module.config.php:2736
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -34,34 +37,34 @@ msgstr "profil"
 msgid "Patente"
 msgstr "vozniško dovoljenje"
 
-#: module/Application/config/module.config.php:2740
+#: module/Application/config/module.config.php:2741
 #: module/Application/view/application/user-area/pin.phtml:16
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2745
+#: module/Application/config/module.config.php:2746
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Cene"
 
-#: module/Application/config/module.config.php:2750
+#: module/Application/config/module.config.php:2751
 msgid "Promo e pacchetti"
 msgstr "Promo in paketi"
 
-#: module/Application/config/module.config.php:2760
+#: module/Application/config/module.config.php:2761
 msgid "Bonus minuti"
 msgstr "Bonus minute"
 
-#: module/Application/config/module.config.php:2765
-#, fuzzy
+#: module/Application/config/module.config.php:2766
 msgid "Corse completate"
 msgstr "Zaključena vožnja"
 
-#: module/Application/config/module.config.php:2770
+#: module/Application/config/module.config.php:2771
 msgid "Dati di pagamento"
 msgstr "Podatki o plačilu"
 
-#: module/Application/config/module.config.php:2775
+#: module/Application/config/module.config.php:2776
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "računi"
@@ -91,7 +94,6 @@ msgid "Pacchetto non valido"
 msgstr "Neveljaven paket"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:169
-#, fuzzy
 msgid "Punti ossigeno insufficienti"
 msgstr "Premalo točk"
 
@@ -809,16 +811,12 @@ msgstr ""
 "odpoved pogodbe), 17 (pritožbe), 18 (kazni), 20 (pristojno sodišče)."
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:136
-#: module/Application/src/Application/Form/NewUserFieldset.php:169
+#: module/Application/src/Application/Form/NewUserFieldset.php:166
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Polje ne sme biti prazno."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:144
-msgid "Il massimo valore inseribile è stato superato:"
-msgstr ""
-
-#: module/Application/src/Application/Form/NewUserFieldset.php:186
-#: module/Application/src/Application/Form/NewUserFieldset.php:210
+#: module/Application/src/Application/Form/NewUserFieldset.php:183
+#: module/Application/src/Application/Form/NewUserFieldset.php:207
 msgid "Il dato è richiesto per procedere"
 msgstr "Za nadaljevanje je potrebna potrditev."
 
@@ -1249,6 +1247,7 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Morate biti polnoletni"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Identifikacijska številka ni pravilna"
 
@@ -1305,10 +1304,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Davčna številka je napačna"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Neveljavna davčna številka"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Starost ni primerna za vožnjo"
 
@@ -1334,6 +1335,7 @@ msgid "La partita IVA non è valida"
 msgstr "Davčna številka ni veljavna"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Nepravilna poštna številka"
 
@@ -1353,112 +1355,137 @@ msgstr "UPORABNIK USPEŠNO REGISTRIRAN"
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "MED REGISTRACIJO JE PRIŠLO DO NAPAKE"
 
-#: public/js/index.map.js:397
-msgid "nouse_label_map"
-msgstr ""
+#: vendor/cup-web/public-business-module/config/module.config.php:249
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:8
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:9
+msgid "Azienda"
+msgstr "podjetje"
 
-#: public/js/index.map.js:400
-msgid "unplug_label_map"
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:89
+msgid ""
+"Operazione avvenuta con successo! Appena verrai confermato riceverai una "
+"email con le istruzioni"
 msgstr ""
+"Operacija je uspešno zaključena! Takoj ko boste potrjeni, boste prejeli e-"
+"pošto z navodili"
 
-#: public/js/jquery.cookiesdirective.js:199
-#: public/js/jquery.cookiesdirective.js:207
-msgid "cookies_directive_here"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:95
+msgid "Il codice inserito non è valido"
+msgstr "Vnesena koda ni veljavna"
 
-#: public/js/moment.min.js:6
-msgid "\n"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:97
+msgid "Non puoi essere associato a questa azienda"
+msgstr "Ne morete biti povezani s tem podjetjem"
 
-#: public/js/signup.js:48
-msgid "sms_send"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:99
+msgid "Sei già associato a questa azienda"
+msgstr "S tem podjetjem ste že povezani"
 
-#: public/js/signup.js:56
-msgid "sms_wait"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
+msgid "Sei già associato ad un'altra azienda"
+msgstr "Ste že povezani z drugim podjetjem"
 
-#: public/js/signup.js:63
-msgid "sms_sended"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr "E-poštni naslov ni sprejet"
 
-#: public/js/signup.js:71
-msgid "sms_error_send"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr "Rfid: %s - Koda: %s"
 
-#: public/js/signup.js:76
-msgid "sms_error_wrong_number"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "Si"
+msgstr "to"
 
-#: public/js/signup.js:81
-msgid "sms_error_alredy_present"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "No"
+msgstr "Ne"
 
-#: public/js/signup.js:90
-msgid "sms_button"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr "notranja"
 
-#: public/js/signup.js:104
-msgid "sms_insert"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Esterna"
+msgstr "zunanji"
 
-#: public/js/signup.js:359
-msgid "send_code"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr "map"
 
-#: public/js/signup.js:360
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr "(Črna škatla)"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr "Med shranjevanjem konfiguracije je prišlo do napake"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+msgid "Completata"
+msgstr "končan"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+msgid "Non Completata"
+msgstr "Ni dokončano"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
+msgid "Codice promo non valido."
+msgstr "Neveljavna promocijska koda."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
+msgid "Codice promo già associato a questo account."
+msgstr "Promocijska koda je že povezana s tem računom."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
+msgid "Codice fiscale, genere "
+msgstr "Davčna številka, spol "
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
+msgid "Codice fiscale, data di nascita "
+msgstr "Davčna številka, datum rojstva "
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr "Davčna številka in kraj rojstva se ne ujemata."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
+msgid "Codice fiscale, sintassi incongruente."
+msgstr "Davčna številka, neskladna oblika."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
+msgid "Codice fiscale, sintassi errata."
+msgstr "Davčna številka, napačen način zapisa."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
+msgstr "NAČIN REZERVACIJE"
+
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
+#: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
+msgid "Transazione non valida"
+msgstr "Neveljavna transakcija"
+
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
 #, fuzzy
-#| msgid "Promo code"
-msgid "promo_code"
-msgstr "Promo koda"
-
-#: public/js/signup.js:361
-msgid "general_condition_title"
-msgstr ""
-
-#: public/js/signup.js:362
-msgid "general_condition_link"
-msgstr ""
-
-#: public/js/signup.js:363
-msgid "general_condition1"
-msgstr ""
-
-#: public/js/signup.js:364
-msgid "general_condition2"
-msgstr ""
-
-#: public/js/signup.js:365
-msgid "regulation_condition"
-msgstr ""
-
-#: public/js/signup.js:366
-msgid "privacy_condition_link"
-msgstr ""
-
-#: public/js/signup.js:367
-msgid "privacy_condition_title"
-msgstr ""
-
-#: public/js/signup.js:369
-msgid "cancel_button"
-msgstr ""
-
-#: public/js/signup.js:371
-msgid "privacy_policy_title"
-msgstr ""
-
-#: public/js/signup.js:372
-msgid "privacy_policy_text"
-msgstr ""
-
-#: public/js/signup.js:392 public/js/signup.js:399 public/js/signup.js:422
-msgid "verify_promocode_button"
-msgstr ""
-
-#: public/js/signup.js:426
-msgid "verify_promocode_invalid"
-msgstr ""
+#| msgid "Transazione non valida"
+msgid "Transazione non valida (id non trovato)"
+msgstr "Neveljavna transakcija"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
@@ -2293,10 +2320,19 @@ msgstr ""
 
 #: module/Application/view/application/payment/pay-success.phtml:27
 #: module/Application/view/application/user/signup-score-completion.phtml:27
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:11
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:26
 msgid "Attivazione completata"
 msgstr "Aktivacija je končana"
 
 #: module/Application/view/application/payment/pay-success.phtml:28
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:12
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:12
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:12
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:12
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:27
 msgid "Ti confermiamo la ricezione del pagamento"
 msgstr "Potrjujemo prejem plačila"
 
@@ -2545,9 +2581,9 @@ msgid ""
 msgstr "V svojem profilu še niste vnesli kreditne ali predplačniške kartice."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:156
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:165
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:165
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:165
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
 #: module/Application/view/application/user/new-signup.phtml:147
 #: module/Application/view/application/user/signup-nl1.phtml:152
 #: module/Application/view/application/user/signup-si1.phtml:151
@@ -2556,9 +2592,9 @@ msgid "ATTENZIONE"
 msgstr "POZOR"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:169
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:169
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:169
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:167
 msgid ""
 "Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
 "verr&agrave; immediatamente rimborsata al termine della procedura."
@@ -2567,16 +2603,16 @@ msgstr ""
 "ob koncu postopka."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:176
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:180
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:176
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:176
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:178
 msgid "PROCEDI"
 msgstr "NADALJUJTE"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:177
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:178
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:178
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:181
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:179
 msgid "CHIUDI"
 msgstr "ZAPRTO"
 
@@ -2653,6 +2689,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Inizio"
 msgstr "Domov"
 
@@ -2661,6 +2698,7 @@ msgstr "Domov"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Fine"
 msgstr "konec"
 
@@ -2669,6 +2707,7 @@ msgstr "konec"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Durata (min.)"
 msgstr "Trajanje (min.)"
 
@@ -2677,6 +2716,7 @@ msgstr "Trajanje (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Sosta (min.)"
 msgstr "Ustavite (min.)"
 
@@ -2893,7 +2933,7 @@ msgstr "Podatki o rojstvu"
 #: module/Application/view/application/user/signup-sk2.phtml:164
 #: module/Application/view/application/user/signup.phtml:265
 msgid "Provincia di nascita"
-msgstr "Pokrajina rojstva"
+msgstr "Regija"
 
 #: module/Application/view/application/user-area/index.phtml:118
 #: module/Application/view/application/user-area/index.phtml:343
@@ -3396,35 +3436,43 @@ msgstr ""
 "a>."
 
 #: module/Application/view/application/user-area/pin.phtml:27
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:27
 msgid ""
 "QUESTO &Egrave; IL PIN CHE TI SERVIR&Agrave; PER UTILIZZARE UNA SHARE&#39;NGO"
 msgstr "TO JE PIN, KI GA BOSTE POTREBOVALI ZA UPORABO STORITVE SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:37
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:37
 msgid "ATTENZIONE: MEMORIZZALO IN LUOGO SICURO E NON DARLO AD ALTRI"
 msgstr "POZOR: SKLADIŠČITE ga na varnem mestu in ga ne delite z drugimi"
 
 #: module/Application/view/application/user-area/pin.phtml:45
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:45
 msgid "Guarda come si usa"
 msgstr "Poglejte, kako se uporablja"
 
 #: module/Application/view/application/user-area/pin.phtml:51
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
 msgstr "Ali želite z vašim računom povezati tudi kartico za odpiranje vrat?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
 msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "KLIKNITE NA SLIKO KARTICE"
 
 #: module/Application/view/application/user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
 msgid "per inoltrare la tua richiesta"
 msgstr "za posredovanje vaše zahteve"
 
 #: module/Application/view/application/user-area/pin.phtml:55
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "ZAHTEVEK ZA KARTICO SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3440,7 +3488,7 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:114
 #: module/Application/view/application/user/signup.phtml:306
 msgid "Indirizzo di residenza"
-msgstr "Naslov"
+msgstr "Ulica"
 
 #: module/Application/view/application/user-area/rates.phtml:50
 msgid "Il tuo piano tariffario personale"
@@ -3484,10 +3532,12 @@ msgstr ""
 "€), da se varno vrnejo domov in plačajo le 0,10 €;"
 
 #: module/Application/view/application/user-area/rents.phtml:21
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:21
 msgid "Le mie corse"
 msgstr "Moje vožnje"
 
 #: module/Application/view/application/user-area/rents.phtml:43
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:44
 msgid "Periodo"
 msgstr "obdobje"
 
@@ -3504,14 +3554,17 @@ msgstr ""
 "vaše osebne tarife."
 
 #: module/Application/view/application/user-area/rents.phtml:82
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Totale"
 msgstr "skupaj"
 
 #: module/Application/view/application/user-area/rents.phtml:83
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Da saldare"
 msgstr "Za plačilo"
 
 #: module/Application/view/application/user-area/rents.phtml:94
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
 msgid "Attenzione"
 msgstr "Opozorilo"
 
@@ -3530,6 +3583,7 @@ msgstr ""
 "stranke SHARE'NGO."
 
 #: module/Application/view/application/user-area/rents.phtml:104
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
 msgid "Nessuna corsa effettuata finora"
 msgstr "Zaenkrat še niste opravili nobene vožnje"
 
@@ -3975,18 +4029,40 @@ msgid "Pagamento avvenuto!"
 msgstr "Plačilo je končano!"
 
 #: module/Application/view/application/user/optional.phtml:26
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:22
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:22
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:22
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
 msgid "Si è verificato un problema"
 msgstr "Prišlo je do težave"
 
 #: module/Application/view/application/user/optional.phtml:27
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:23
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:23
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:23
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
 msgid "Il pagamento non è andato a buon fine."
 msgstr "Plačilo ni bilo uspešno."
 
 #: module/Application/view/application/user/optional.phtml:28
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
 msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "Sporočilo o napaki, ki smo ga prejeli, je:"
 
 #: module/Application/view/application/user/optional.phtml:29
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:25
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:31
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
 msgid "Contattare l'assistenza per maggiori informazioni"
 msgstr "Za več informacij se obrnite na podporo"
 
@@ -4010,6 +4086,8 @@ msgstr ""
 "brezplačnimi minutami."
 
 #: module/Application/view/application/user/optional.phtml:92
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Pojdite na uporabniški profil"
 
@@ -4045,7 +4123,7 @@ msgstr "30 minut za samo 10 €;"
 #: module/Application/view/application/user/signup-si2.phtml:102
 #: module/Application/view/application/user/signup-sk2.phtml:102
 msgid "Citt&agrave; residenza"
-msgstr "Mesto prebivališča"
+msgstr "Mesto"
 
 #: module/Application/view/application/user/signup-nl2.phtml:223
 msgid "BSN"
@@ -5951,125 +6029,112 @@ msgstr "Vaš e-poštni naslov"
 msgid "Password dimenticata ?"
 msgstr "Ste pozabili geslo?"
 
-#~ msgid "Azienda"
-#~ msgstr "podjetje"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:16
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:17
+msgid "Associazione con azienda"
+msgstr "Povezava s podjetjem"
 
-#~ msgid ""
-#~ "Operazione avvenuta con successo! Appena verrai confermato riceverai una "
-#~ "email con le istruzioni"
-#~ msgstr ""
-#~ "Operacija je uspešno zaključena! Takoj ko boste potrjeni, boste prejeli e-"
-#~ "pošto z navodili"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:19
+msgid "Sei associato alla seguente azienda:"
+msgstr "Povezani ste z naslednjim podjetjem:"
 
-#~ msgid "Il codice inserito non è valido"
-#~ msgstr "Vnesena koda ni veljavna"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:22
+msgid "Stato associazione: "
+msgstr "Stanje povezanosti: "
 
-#~ msgid "Non puoi essere associato a questa azienda"
-#~ msgstr "Ne morete biti povezani s tem podjetjem"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:25
+msgid "Nome: "
+msgstr "ime: "
 
-#~ msgid "Sei già associato a questa azienda"
-#~ msgstr "S tem podjetjem ste že povezani"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:28
+msgid "Email: "
+msgstr "E-pošta: "
 
-#~ msgid "Sei già associato ad un'altra azienda"
-#~ msgstr "Ste že povezani z drugim podjetjem"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:31
+msgid "Telefono: "
+msgstr "Telefon: "
 
-#~ msgid "Indirizzo email non accettato"
-#~ msgstr "E-poštni naslov ni sprejet"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:34
+msgid "Data richiesta: "
+msgstr "Zahtevani datum: "
 
-#, php-format
-#~ msgid "Rfid: %s - Codice: %s"
-#~ msgstr "Rfid: %s - Koda: %s"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:37
+msgid "Data conferma: "
+msgstr "Datum potrditve: "
 
-#~ msgid "Si"
-#~ msgstr "to"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:22
+msgid "Inserisci il codice aziendale che ti è stato comunicato"
+msgstr "Vnesite kodo podjetja, ki vam je bila sporočena"
 
-#~ msgid "No"
-#~ msgstr "Ne"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:32
+msgid "Associa"
+msgstr "sodelavec"
 
-#~ msgid "Interna"
-#~ msgstr "notranja"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
+msgid ""
+"Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo di "
+"partenza e d&#39;arrivo, il consumo di minuti bonus e le gratuit&agrave; "
+"qualora ti siano state riconosciute. In fondo alla tabella trovi il totale "
+"degli addebiti del mese applicando la tua tariffa personale."
+msgstr ""
+"S preprostim pritiskom miške na vsako potovanje lahko vidite začetne in "
+"končne naslove, porabo bonus minut in brezplačnih vozovnic; . Na dnu tabele "
+"najdete skupne stroške za mesec, ki so izračunani glede na vam prilagojeno "
+"ceno."
 
-#~ msgid "Esterna"
-#~ msgstr "zunanji"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
+msgid "Targa"
+msgstr "Targa"
 
-#~ msgid "Mappa"
-#~ msgstr "map"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:81
+msgid "Tipologia"
+msgstr "Vrsta"
 
-#~ msgid "(Black Box)"
-#~ msgstr "(Črna škatla)"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:97
+msgid ""
+"l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
+"saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
+"problemi di addebito sulla tua carta di credito e che il tuo account è "
+"temporaneamente sospeso. Contatta il Customer Service di SHARE'NGO per la "
+"riattivazione."
+msgstr ""
+"vožnje se običajno zaračunajo naslednji dan. Če danes ne morete opraviti "
+"vožnje, obstajajo težave z bremenitvijo vaše kreditne kartice in vaš račun "
+"je začasno zaustavljen. Za ponovno aktivacijo se obrnite na službo za "
+"stranke SHARE'NGO."
 
-#~ msgid ""
-#~ "Si è verificato un errore durante il salvataggio della configurazione"
-#~ msgstr "Med shranjevanjem konfiguracije je prišlo do napake"
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
+msgid "Cambio carta completato"
+msgstr "Sprememba kartice je končana"
 
-#~ msgid "Completata"
-#~ msgstr "končan"
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
+msgid "Verifica cambio di carta in corso."
+msgstr "Poteka preverjanje izmenjane papirologije."
 
-#~ msgid "Non Completata"
-#~ msgstr "Ni dokončano"
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:13
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:13
+msgid "(attendere prego)"
+msgstr "(prosim počakajte)"
 
-#~ msgid "Codice promo non valido."
-#~ msgstr "Neveljavna promocijska koda."
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
+msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
+msgstr "Potrjujemo prejem vaših novih podatkov."
 
-#~ msgid "Codice promo già associato a questo account."
-#~ msgstr "Promocijska koda je že povezana s tem računom."
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
+msgid "Verifica transazione in corso."
+msgstr "Preverite transakcijo, ki poteka."
 
-#~ msgid "Codice fiscale, genere "
-#~ msgstr "Davčna številka, spol "
-
-#~ msgid "Codice fiscale, data di nascita "
-#~ msgstr "Davčna številka, datum rojstva "
-
-#~ msgid "Codice fiscale, luogo di nascita incongruente."
-#~ msgstr "Davčna številka in kraj rojstva se ne ujemata."
-
-#~ msgid "Codice fiscale, sintassi incongruente."
-#~ msgstr "Davčna številka, neskladna oblika."
-
-#~ msgid "Codice fiscale, sintassi errata."
-#~ msgstr "Davčna številka, napačen način zapisa."
-
-#~ msgid "PRENOTAZIONE DI SISTEMA"
-#~ msgstr "NAČIN REZERVACIJE"
-
-#~ msgid "Transazione non valida"
-#~ msgstr "Neveljavna transakcija"
+#, fuzzy
+#~| msgid "Promo code"
+#~ msgid "promo_code"
+#~ msgstr "Promo koda"
 
 #~ msgid "per aiuto."
 #~ msgstr "za pomoč."
 
 #~ msgid "for help."
 #~ msgstr "za pomoč."
-
-#~ msgid "Associazione con azienda"
-#~ msgstr "Povezava s podjetjem"
-
-#~ msgid "Sei associato alla seguente azienda:"
-#~ msgstr "Povezani ste z naslednjim podjetjem:"
-
-#~ msgid "Stato associazione: "
-#~ msgstr "Stanje povezanosti: "
-
-#~ msgid "Nome: "
-#~ msgstr "ime: "
-
-#~ msgid "Email: "
-#~ msgstr "E-pošta: "
-
-#~ msgid "Telefono: "
-#~ msgstr "Telefon: "
-
-#~ msgid "Data richiesta: "
-#~ msgstr "Zahtevani datum: "
-
-#~ msgid "Data conferma: "
-#~ msgstr "Datum potrditve: "
-
-#~ msgid "Inserisci il codice aziendale che ti è stato comunicato"
-#~ msgstr "Vnesite kodo podjetja, ki vam je bila sporočena"
-
-#~ msgid "Associa"
-#~ msgstr "sodelavec"
 
 #, fuzzy
 #~| msgid ""
@@ -6082,51 +6147,10 @@ msgstr "Ste pozabili geslo?"
 #~ "Na zahtevo bo v roku enega tedna brezplačno prispela na vaš dom, lahko pa "
 #~ "jo prevzamete tudi v naših poslovalnicah"
 
-#~ msgid ""
-#~ "Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo "
-#~ "di partenza e d&#39;arrivo, il consumo di minuti bonus e le "
-#~ "gratuit&agrave; qualora ti siano state riconosciute. In fondo alla "
-#~ "tabella trovi il totale degli addebiti del mese applicando la tua tariffa "
-#~ "personale."
-#~ msgstr ""
-#~ "S preprostim pritiskom miške na vsako potovanje lahko vidite začetne in "
-#~ "končne naslove, porabo bonus minut in brezplačnih vozovnic; . Na dnu "
-#~ "tabele najdete skupne stroške za mesec, ki so izračunani glede na vam "
-#~ "prilagojeno ceno."
-
-#~ msgid "Targa"
-#~ msgstr "Targa"
-
-#~ msgid "Tipologia"
-#~ msgstr "Vrsta"
-
-#~ msgid ""
-#~ "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse "
-#~ "da saldare non effettuate nella giornata di oggi vuol dire che ci sono "
-#~ "stati problemi di addebito sulla tua carta di credito e che il tuo "
-#~ "account è temporaneamente sospeso. Contatta il Customer Service di "
-#~ "SHARE'NGO per la riattivazione."
-#~ msgstr ""
-#~ "vožnje se običajno zaračunajo naslednji dan. Če danes ne morete opraviti "
-#~ "vožnje, obstajajo težave z bremenitvijo vaše kreditne kartice in vaš "
-#~ "račun je začasno zaustavljen. Za ponovno aktivacijo se obrnite na službo "
-#~ "za stranke SHARE'NGO."
-
-#~ msgid "Verifica cambio di carta in corso."
-#~ msgstr "Poteka preverjanje izmenjane papirologije."
-
-#~ msgid "(attendere prego)"
-#~ msgstr "(prosim počakajte)"
-
-#~ msgid "Cambio carta completato"
-#~ msgstr "Sprememba kartice je končana"
-
-#~ msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
-#~ msgstr "Potrjujemo prejem vaših novih podatkov."
-
-#~ msgid "Verifica transazione in corso."
-#~ msgstr "Preverite transakcijo, ki poteka."
-
+#, fuzzy
+#~| msgid ""
+#~| "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
+#~| "ritirarla presso i nostri uffici"
 #~ msgid "Sede operativa"
 #~ msgstr "Operativni štab"
 
