@@ -342,7 +342,7 @@ function addFinalRow(
         // create fourth column
         var $parkingMinutesCol = $('<div>')
             .appendTo($row);
-        $parkingMinutesCol.html('<strong>Totali periodo</strong>');
+        $parkingMinutesCol.html('<strong>' + translate("period_total") + '</strong>');
         $parkingMinutesCol.addClass(columnClass1);
         $parkingMinutesCol.addClass(columnClass2);
 

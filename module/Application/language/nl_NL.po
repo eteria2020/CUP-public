@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-09 18:04+0100\n"
-"PO-Revision-Date: 2019-12-09 18:04+0100\n"
+"POT-Creation-Date: 2019-12-10 09:32+0100\n"
+"PO-Revision-Date: 2019-12-10 09:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -19,8 +19,9 @@ msgstr ""
 "X-Poedit-SearchPath-2: module/Application/config\n"
 "X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
 "X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
-"X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
-"X-Poedit-SearchPath-6: vendor/sharengo-web/bankart\n"
+"X-Poedit-SearchPath-5: vendor/sharengo-web/gpwebpay\n"
+"X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
+"X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
 #: module/Application/config/module.config.php:2731
 #: module/Application/view/application/user-area/index.phtml:28
@@ -819,8 +820,6 @@ msgstr ""
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:136
 #: module/Application/src/Application/Form/NewUserFieldset.php:166
-#, fuzzy
-#| msgid "Il dato è richiesto e non può essere vuoto"
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Dit is een verplicht veld en mag niet leeg zijn"
 
@@ -1494,8 +1493,6 @@ msgstr "Verbonden met bedrijf"
 
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
-#, fuzzy
-#| msgid "Transazione non valida"
 msgid "Transazione non valida (id non trovato)"
 msgstr "Verbonden met bedrijf"
 
@@ -2341,6 +2338,8 @@ msgstr ""
 #: module/Application/view/application/user/signup-score-completion.phtml:27
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:11
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:11
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:11
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:11
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:11
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:26
 msgid "Attivazione completata"
@@ -2350,6 +2349,8 @@ msgstr "Activering voltooid"
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:12
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:12
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:12
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:12
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:12
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:12
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:27
 msgid "Ti confermiamo la ricezione del pagamento"
@@ -3161,43 +3162,42 @@ msgstr "KG CO"
 msgid "Grazie!"
 msgstr "Bedankt!"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:34
-msgid ""
-"Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "
-"Ogni fattura raccoglie tutti i viaggi completati il mese precedente alla "
-"data del documento."
-msgstr "Let op: vanaf 02.03.2018 worden facturen maandelijks uitgegeven."
+#: module/Application/view/application/user-area/invoices-list.phtml:38
+#: module/Application/view/application/user-area/rents.phtml:43
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:44
+msgid "Periodo"
+msgstr "Periode"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:69
+#: module/Application/view/application/user-area/invoices-list.phtml:68
 msgid "N&deg; Fattura"
 msgstr "Factuurnr."
 
-#: module/Application/view/application/user-area/invoices-list.phtml:70
+#: module/Application/view/application/user-area/invoices-list.phtml:69
 #: module/Application/view/application/user-area/trips.phtml:50
 msgid "Data"
 msgstr "Datum"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:71
+#: module/Application/view/application/user-area/invoices-list.phtml:70
 msgid "Tipo"
 msgstr "Type"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:72
+#: module/Application/view/application/user-area/invoices-list.phtml:71
 msgid "Netto (&euro;)"
 msgstr "Netto (€)"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:73
+#: module/Application/view/application/user-area/invoices-list.phtml:72
 msgid "IVA (&euro;)"
 msgstr "BTW (€)"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:74
+#: module/Application/view/application/user-area/invoices-list.phtml:73
 msgid "Totale (&euro;)"
 msgstr "Totaal (€)"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:75
+#: module/Application/view/application/user-area/invoices-list.phtml:74
 msgid "Download"
 msgstr "Download"
 
-#: module/Application/view/application/user-area/invoices-list.phtml:93
+#: module/Application/view/application/user-area/invoices-list.phtml:92
 msgid "Nessuna fattura emessa finora"
 msgstr "Tot nu toe geen factuur uitgegeven"
 
@@ -3508,11 +3508,6 @@ msgstr ""
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:21
 msgid "Le mie corse"
 msgstr "Mijn ritten"
-
-#: module/Application/view/application/user-area/rents.phtml:43
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:44
-msgid "Periodo"
-msgstr "Periode"
 
 #: module/Application/view/application/user-area/rents.phtml:69
 msgid ""
@@ -4000,6 +3995,9 @@ msgstr "Betaling voltooid!"
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:22
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:22
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:22
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:33
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:22
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:22
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
@@ -4010,6 +4008,9 @@ msgstr "Er heeft zich een probleem voorgedaan"
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:23
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:23
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:23
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:34
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:23
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:23
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
@@ -4020,6 +4021,8 @@ msgstr "De betaling is niet gelukt."
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:24
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:24
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
 msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "De foutmelding die we hebben ontvangen is: \""
@@ -4028,6 +4031,9 @@ msgstr "De foutmelding die we hebben ontvangen is: \""
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:25
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:25
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:25
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:35
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:25
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:31
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
@@ -6004,6 +6010,12 @@ msgstr ""
 "Met deze auto SHARENGO_UNPLUG_MINUTES gratis minuten rijden! Vergeet niet de "
 "stekker uit het stopcontact te trekken!"
 
+#: module/Application/view/partials/translations.phtml:274
+#, fuzzy
+#| msgid "Totale (&euro;)"
+msgid "Totali periodo"
+msgstr "Totaal (€)"
+
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"
 msgstr "Open de applicatie"
@@ -6096,9 +6108,15 @@ msgstr ""
 "heractivering."
 
 #: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:11
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:21
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
 msgid "Cambio carta completato"
 msgstr "Voltooide ritten"
+
+#: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:22
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
+msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
+msgstr "We bevestigen de ontvangst van de betaling"
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
 msgid "Verifica cambio di carta in corso."
@@ -6109,13 +6127,15 @@ msgstr "Controleert hij verandering van papier bezig."
 msgid "(attendere prego)"
 msgstr "(Bijwonen ik bid)"
 
-#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
-msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
-msgstr "We bevestigen de ontvangst van de betaling"
-
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
+
+#~ msgid ""
+#~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "
+#~ "Ogni fattura raccoglie tutti i viaggi completati il mese precedente alla "
+#~ "data del documento."
+#~ msgstr "Let op: vanaf 02.03.2018 worden facturen maandelijks uitgegeven."
 
 #, fuzzy
 #~| msgid "Promo code"

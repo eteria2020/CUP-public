@@ -31,12 +31,11 @@
                         // check if there are any invoices
                         if (!empty($availableDates)) {
                     ?>
-                    <h6><?= $this->translate("Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. Ogni fattura raccoglie tutti i viaggi completati il mese precedente alla data del documento.") ?></h6>
                     <!-- Filter -->
                     <div class="invoices-filter">
 
                         <!-- Header -->
-                        <p class="invoices-filter-title">Periodo</p>
+                        <p class="invoices-filter-title"><?= $this->translate("Periodo") ?></p>
 
                         <!-- Select box -->
                         <select id="invoices-filter-select" class="invoices-filter-select">
