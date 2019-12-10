@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-09 15:09+0100\n"
-"PO-Revision-Date: 2019-12-09 15:09+0100\n"
+"POT-Creation-Date: 2019-12-09 18:04+0100\n"
+"PO-Revision-Date: 2019-12-09 18:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -14,15 +14,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-0: module/Application/view\n"
+"X-Poedit-SearchPath-1: module/Application/src/Application\n"
+"X-Poedit-SearchPath-2: module/Application/config\n"
+"X-Poedit-SearchPath-3: vendor/cup-web/public-business-module\n"
+"X-Poedit-SearchPath-4: vendor/mvlabs/sharengo-coremodule\n"
+"X-Poedit-SearchPath-5: vendor/sharengo-web/mollie\n"
+"X-Poedit-SearchPath-6: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2730
+#: module/Application/config/module.config.php:2731
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profiel"
 
-#: module/Application/config/module.config.php:2735
+#: module/Application/config/module.config.php:2736
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -31,33 +37,34 @@ msgstr "Profiel"
 msgid "Patente"
 msgstr "Rijbewijs"
 
-#: module/Application/config/module.config.php:2740
+#: module/Application/config/module.config.php:2741
 #: module/Application/view/application/user-area/pin.phtml:16
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2745
+#: module/Application/config/module.config.php:2746
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Tarieven"
 
-#: module/Application/config/module.config.php:2750
+#: module/Application/config/module.config.php:2751
 msgid "Promo e pacchetti"
 msgstr "Aanbiedingen  en pakketten"
 
-#: module/Application/config/module.config.php:2760
+#: module/Application/config/module.config.php:2761
 msgid "Bonus minuti"
 msgstr "Bonusminuten"
 
-#: module/Application/config/module.config.php:2765
+#: module/Application/config/module.config.php:2766
 msgid "Corse completate"
 msgstr "Voltooide ritten"
 
-#: module/Application/config/module.config.php:2770
+#: module/Application/config/module.config.php:2771
 msgid "Dati di pagamento"
 msgstr "Betalingsgegevens"
 
-#: module/Application/config/module.config.php:2775
+#: module/Application/config/module.config.php:2776
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Facturen"
@@ -811,18 +818,14 @@ msgstr ""
 "(bevoegde rechtbank)."
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:136
-#: module/Application/src/Application/Form/NewUserFieldset.php:169
+#: module/Application/src/Application/Form/NewUserFieldset.php:166
 #, fuzzy
 #| msgid "Il dato è richiesto e non può essere vuoto"
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Dit is een verplicht veld en mag niet leeg zijn"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:144
-msgid "Il massimo valore inseribile è stato superato:"
-msgstr ""
-
-#: module/Application/src/Application/Form/NewUserFieldset.php:186
-#: module/Application/src/Application/Form/NewUserFieldset.php:210
+#: module/Application/src/Application/Form/NewUserFieldset.php:183
+#: module/Application/src/Application/Form/NewUserFieldset.php:207
 msgid "Il dato è richiesto per procedere"
 msgstr "Vul gegevens in om door te kunnen gaan"
 
@@ -1252,6 +1255,7 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Je moet meerderjarig zijn"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Het identificatienummer is onjuist"
 
@@ -1308,10 +1312,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Het BSN is onjuist"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Ongeldig BSN"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Ongeldige leeftijd om te mogen rijden"
 
@@ -1341,6 +1347,7 @@ msgid "La partita IVA non è valida"
 msgstr "Het BTW-nummer is ongeldig"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Postcode is onjuist"
 
@@ -1360,112 +1367,137 @@ msgstr "GEBRUIKER IS SUCCESVOL GEREGISTREERD"
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "ER IS EEN FOUT OPGETREDEN TIJDENS DE REGISTRATIE"
 
-#: public/js/index.map.js:397
-msgid "nouse_label_map"
-msgstr ""
+#: vendor/cup-web/public-business-module/config/module.config.php:249
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:8
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:9
+msgid "Azienda"
+msgstr "Bedrijf"
 
-#: public/js/index.map.js:400
-msgid "unplug_label_map"
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:89
+msgid ""
+"Operazione avvenuta con successo! Appena verrai confermato riceverai una "
+"email con le istruzioni"
 msgstr ""
+"Handeling succesvol voltooid! Zodra alles is bevestigd, ontvang je een e-"
+"mail met instructies"
 
-#: public/js/jquery.cookiesdirective.js:199
-#: public/js/jquery.cookiesdirective.js:207
-msgid "cookies_directive_here"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:95
+msgid "Il codice inserito non è valido"
+msgstr "De ingevoerde code is ongeldig"
 
-#: public/js/moment.min.js:6
-msgid "\n"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:97
+msgid "Non puoi essere associato a questa azienda"
+msgstr "Je kunt niet aan dit bedrijf gerelateerd worden"
 
-#: public/js/signup.js:48
-msgid "sms_send"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:99
+msgid "Sei già associato a questa azienda"
+msgstr "Je bent al gerelateerd aan dit bedrijf"
 
-#: public/js/signup.js:56
-msgid "sms_wait"
-msgstr ""
+#: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
+msgid "Sei già associato ad un'altra azienda"
+msgstr "Je bent al gerelateerd aan een ander bedrijf"
 
-#: public/js/signup.js:63
-msgid "sms_sended"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr "E-mail adres niet geaccepteerd"
 
-#: public/js/signup.js:71
-msgid "sms_error_send"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr "RFID: %s-code: %s"
 
-#: public/js/signup.js:76
-msgid "sms_error_wrong_number"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "Si"
+msgstr "Ja"
 
-#: public/js/signup.js:81
-msgid "sms_error_alredy_present"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "No"
+msgstr "Nee"
 
-#: public/js/signup.js:90
-msgid "sms_button"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr "Intern"
 
-#: public/js/signup.js:104
-msgid "sms_insert"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Esterna"
+msgstr "Extern"
 
-#: public/js/signup.js:359
-msgid "send_code"
-msgstr ""
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr "Plattegrond"
 
-#: public/js/signup.js:360
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr "(Black Box)"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr "Er is een fout opgetreden tijdens het opslaan van de configuratie"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+msgid "Completata"
+msgstr "Voltooid"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+msgid "Non Completata"
+msgstr "Niet voltooid"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
+msgid "Codice promo non valido."
+msgstr "Ongeldige promotiecode."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
+msgid "Codice promo già associato a questo account."
+msgstr "Promotiecode is al gerelateerd aan dit account."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
+msgid "Codice fiscale, genere "
+msgstr "BSN, geslacht "
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
+msgid "Codice fiscale, data di nascita "
+msgstr "BSN, geboortedatum "
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr "BSN, geboorteplaats tegenstrijdig."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
+msgid "Codice fiscale, sintassi incongruente."
+msgstr "BSN, syntax tegenstrijdig."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
+msgid "Codice fiscale, sintassi errata."
+msgstr "BSN, syntax onjuist."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
+msgstr "RESERVERINSSYSTEEM"
+
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
+#: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
+msgid "Transazione non valida"
+msgstr "Verbonden met bedrijf"
+
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
 #, fuzzy
-#| msgid "Promo code"
-msgid "promo_code"
-msgstr "Promotiecode"
-
-#: public/js/signup.js:361
-msgid "general_condition_title"
-msgstr ""
-
-#: public/js/signup.js:362
-msgid "general_condition_link"
-msgstr ""
-
-#: public/js/signup.js:363
-msgid "general_condition1"
-msgstr ""
-
-#: public/js/signup.js:364
-msgid "general_condition2"
-msgstr ""
-
-#: public/js/signup.js:365
-msgid "regulation_condition"
-msgstr ""
-
-#: public/js/signup.js:366
-msgid "privacy_condition_link"
-msgstr ""
-
-#: public/js/signup.js:367
-msgid "privacy_condition_title"
-msgstr ""
-
-#: public/js/signup.js:369
-msgid "cancel_button"
-msgstr ""
-
-#: public/js/signup.js:371
-msgid "privacy_policy_title"
-msgstr ""
-
-#: public/js/signup.js:372
-msgid "privacy_policy_text"
-msgstr ""
-
-#: public/js/signup.js:392 public/js/signup.js:399 public/js/signup.js:422
-msgid "verify_promocode_button"
-msgstr ""
-
-#: public/js/signup.js:426
-msgid "verify_promocode_invalid"
-msgstr ""
+#| msgid "Transazione non valida"
+msgid "Transazione non valida (id non trovato)"
+msgstr "Verbonden met bedrijf"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
@@ -2307,10 +2339,19 @@ msgstr ""
 
 #: module/Application/view/application/payment/pay-success.phtml:27
 #: module/Application/view/application/user/signup-score-completion.phtml:27
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:11
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:26
 msgid "Attivazione completata"
 msgstr "Activering voltooid"
 
 #: module/Application/view/application/payment/pay-success.phtml:28
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:12
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:12
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:12
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:12
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:27
 msgid "Ti confermiamo la ricezione del pagamento"
 msgstr "We bevestigen de ontvangst van de betaling"
 
@@ -2557,9 +2598,9 @@ msgid ""
 msgstr "Je hebt nog geen creditcard of betaalkaart in je profiel ingevoerd."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:156
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:165
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:165
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:165
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
 #: module/Application/view/application/user/new-signup.phtml:147
 #: module/Application/view/application/user/signup-nl1.phtml:152
 #: module/Application/view/application/user/signup-si1.phtml:151
@@ -2568,9 +2609,9 @@ msgid "ATTENZIONE"
 msgstr "LET OP"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:169
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:169
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:169
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:167
 msgid ""
 "Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
 "verr&agrave; immediatamente rimborsata al termine della procedura."
@@ -2579,16 +2620,16 @@ msgstr ""
 "het einde van de procedure onmiddellijk terugbetaald zal worden."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:176
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:180
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:176
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:176
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:178
 msgid "PROCEDI"
 msgstr "GA VERDER"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:177
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:178
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:178
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:181
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:179
 msgid "CHIUDI"
 msgstr "AFSLUITEN"
 
@@ -2666,6 +2707,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Inizio"
 msgstr "Begin"
 
@@ -2674,6 +2716,7 @@ msgstr "Begin"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Fine"
 msgstr "Einde"
 
@@ -2682,6 +2725,7 @@ msgstr "Einde"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Durata (min.)"
 msgstr "Tijsduur (min.)"
 
@@ -2690,6 +2734,7 @@ msgstr "Tijsduur (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Sosta (min.)"
 msgstr "Tussenstop (min.)"
 
@@ -3365,35 +3410,43 @@ msgid ""
 msgstr "???"
 
 #: module/Application/view/application/user-area/pin.phtml:27
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:27
 msgid ""
 "QUESTO &Egrave; IL PIN CHE TI SERVIR&Agrave; PER UTILIZZARE UNA SHARE&#39;NGO"
 msgstr "DIT IS DE PINCODE DIE JE NODIG HEBT OM GEBRUIK TE MAKEN VAN SHARENGO"
 
 #: module/Application/view/application/user-area/pin.phtml:37
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:37
 msgid "ATTENZIONE: MEMORIZZALO IN LUOGO SICURO E NON DARLO AD ALTRI"
 msgstr "LET OP: OP EEN VEILIGE PLAATS BEWAREN EN AAN NIEMAND GEVEN"
 
 #: module/Application/view/application/user-area/pin.phtml:45
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:45
 msgid "Guarda come si usa"
 msgstr "Zo gebruik je hem"
 
 #: module/Application/view/application/user-area/pin.phtml:51
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
 msgstr "Wil je ook een TOEGANGSPAS die gekoppeld is aan je account?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
 msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "KLIK OP DE AFBEELDING"
 
 #: module/Application/view/application/user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
 msgid "per inoltrare la tua richiesta"
 msgstr "om je verzoek in te dienen"
 
 #: module/Application/view/application/user-area/pin.phtml:55
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "AANVRAAG SHARENGO CARD"
 
 #: module/Application/view/application/user-area/pin.phtml:60
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3452,10 +3505,12 @@ msgstr ""
 "(30 minuten voor € 3), om veilig thuis te komen, voor slechts 0,10 € / min."
 
 #: module/Application/view/application/user-area/rents.phtml:21
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:21
 msgid "Le mie corse"
 msgstr "Mijn ritten"
 
 #: module/Application/view/application/user-area/rents.phtml:43
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:44
 msgid "Periodo"
 msgstr "Periode"
 
@@ -3472,14 +3527,17 @@ msgstr ""
 "je maandelijkse kosten vinden."
 
 #: module/Application/view/application/user-area/rents.phtml:82
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Totale"
 msgstr "Totaal"
 
 #: module/Application/view/application/user-area/rents.phtml:83
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Da saldare"
 msgstr "Te vereffenen"
 
 #: module/Application/view/application/user-area/rents.phtml:94
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
 msgid "Attenzione"
 msgstr "Let op"
 
@@ -3498,6 +3556,7 @@ msgstr ""
 "heractivering."
 
 #: module/Application/view/application/user-area/rents.phtml:104
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
 msgid "Nessuna corsa effettuata finora"
 msgstr "Tot nu toe geen ritten gemaakt"
 
@@ -3938,18 +3997,40 @@ msgid "Pagamento avvenuto!"
 msgstr "Betaling voltooid!"
 
 #: module/Application/view/application/user/optional.phtml:26
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:22
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:22
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:22
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:29
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:22
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:29
 msgid "Si è verificato un problema"
 msgstr "Er heeft zich een probleem voorgedaan"
 
 #: module/Application/view/application/user/optional.phtml:27
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:23
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:23
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:23
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:30
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:23
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:30
 msgid "Il pagamento non è andato a buon fine."
 msgstr "De betaling is niet gelukt."
 
 #: module/Application/view/application/user/optional.phtml:28
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
 msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "De foutmelding die we hebben ontvangen is: \""
 
 #: module/Application/view/application/user/optional.phtml:29
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:25
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:31
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:31
 msgid "Contattare l'assistenza per maggiori informazioni"
 msgstr "Neem contact op met de assistentie voor meer informatie"
 
@@ -3975,6 +4056,8 @@ msgstr ""
 "minuten gratis als beloning."
 
 #: module/Application/view/application/user/optional.phtml:92
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Ga naar je persoonlijke omgeving"
 
@@ -5937,125 +6020,113 @@ msgstr "Je e-mail"
 msgid "Password dimenticata ?"
 msgstr "Wachtwoord vergeten?"
 
-#~ msgid "Azienda"
-#~ msgstr "Bedrijf"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:16
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:17
+msgid "Associazione con azienda"
+msgstr "Verbonden met bedrijf"
 
-#~ msgid ""
-#~ "Operazione avvenuta con successo! Appena verrai confermato riceverai una "
-#~ "email con le istruzioni"
-#~ msgstr ""
-#~ "Handeling succesvol voltooid! Zodra alles is bevestigd, ontvang je een e-"
-#~ "mail met instructies"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:19
+msgid "Sei associato alla seguente azienda:"
+msgstr "Je bent verbonden met het volgende bedrijf:"
 
-#~ msgid "Il codice inserito non è valido"
-#~ msgstr "De ingevoerde code is ongeldig"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:22
+msgid "Stato associazione: "
+msgstr "Status verbondenheid: "
 
-#~ msgid "Non puoi essere associato a questa azienda"
-#~ msgstr "Je kunt niet aan dit bedrijf gerelateerd worden"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:25
+msgid "Nome: "
+msgstr "Naam: "
 
-#~ msgid "Sei già associato a questa azienda"
-#~ msgstr "Je bent al gerelateerd aan dit bedrijf"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:28
+msgid "Email: "
+msgstr "E-mail "
 
-#~ msgid "Sei già associato ad un'altra azienda"
-#~ msgstr "Je bent al gerelateerd aan een ander bedrijf"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:31
+msgid "Telefono: "
+msgstr "Telefoon: "
 
-#~ msgid "Indirizzo email non accettato"
-#~ msgstr "E-mail adres niet geaccepteerd"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:34
+msgid "Data richiesta: "
+msgstr "Aanvraagdatum: "
 
-#, php-format
-#~ msgid "Rfid: %s - Codice: %s"
-#~ msgstr "RFID: %s-code: %s"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:37
+msgid "Data conferma: "
+msgstr "Bevestigingsdatum: "
 
-#~ msgid "Si"
-#~ msgstr "Ja"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:22
+msgid "Inserisci il codice aziendale che ti è stato comunicato"
+msgstr "Voer de toegestuurde bedrijfscode in"
 
-#~ msgid "No"
-#~ msgstr "Nee"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-association.phtml:32
+msgid "Associa"
+msgstr "Word lid"
 
-#~ msgid "Interna"
-#~ msgstr "Intern"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:71
+msgid ""
+"Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo di "
+"partenza e d&#39;arrivo, il consumo di minuti bonus e le gratuit&agrave; "
+"qualora ti siano state riconosciute. In fondo alla tabella trovi il totale "
+"degli addebiti del mese applicando la tua tariffa personale."
+msgstr ""
+"Met een simpele mouse-over op elke rit zie je het begin- en eindadres, het "
+"verbruik van bonusminuten, en alle voordeeltjes die je hebt ontvangen. "
+"Onderaan de tabel kun je met je persoonlijk tarief het totaal van je "
+"maandelijkse kosten vinden."
 
-#~ msgid "Esterna"
-#~ msgstr "Extern"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
+msgid "Targa"
+msgstr "Kenteken"
 
-#~ msgid "Mappa"
-#~ msgstr "Plattegrond"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:81
+msgid "Tipologia"
+msgstr "Type"
 
-#~ msgid "(Black Box)"
-#~ msgstr "(Black Box)"
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:97
+msgid ""
+"l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
+"saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
+"problemi di addebito sulla tua carta di credito e che il tuo account è "
+"temporaneamente sospeso. Contatta il Customer Service di SHARE'NGO per la "
+"riattivazione."
+msgstr ""
+"de kosten van de ritten worden doorgaans de volgende dag in rekening "
+"gebracht. Als er op die dag geen ritten zijn afgeschreven, betekent dat dat "
+"er problemen zijn met je creditcard en dat je account tijdelijk is "
+"opgeschort. Neem contact op met de Klantenservice van SHARENGO voor "
+"heractivering."
 
-#~ msgid ""
-#~ "Si è verificato un errore durante il salvataggio della configurazione"
-#~ msgstr "Er is een fout opgetreden tijdens het opslaan van de configuratie"
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:11
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
+msgid "Cambio carta completato"
+msgstr "Voltooide ritten"
 
-#~ msgid "Completata"
-#~ msgstr "Voltooid"
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
+msgid "Verifica cambio di carta in corso."
+msgstr "Controleert hij verandering van papier bezig."
 
-#~ msgid "Non Completata"
-#~ msgstr "Niet voltooid"
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:13
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:13
+msgid "(attendere prego)"
+msgstr "(Bijwonen ik bid)"
 
-#~ msgid "Codice promo non valido."
-#~ msgstr "Ongeldige promotiecode."
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
+msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
+msgstr "We bevestigen de ontvangst van de betaling"
 
-#~ msgid "Codice promo già associato a questo account."
-#~ msgstr "Promotiecode is al gerelateerd aan dit account."
+#: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
+msgid "Verifica transazione in corso."
+msgstr "Controleert hij transactie bezig."
 
-#~ msgid "Codice fiscale, genere "
-#~ msgstr "BSN, geslacht "
-
-#~ msgid "Codice fiscale, data di nascita "
-#~ msgstr "BSN, geboortedatum "
-
-#~ msgid "Codice fiscale, luogo di nascita incongruente."
-#~ msgstr "BSN, geboorteplaats tegenstrijdig."
-
-#~ msgid "Codice fiscale, sintassi incongruente."
-#~ msgstr "BSN, syntax tegenstrijdig."
-
-#~ msgid "Codice fiscale, sintassi errata."
-#~ msgstr "BSN, syntax onjuist."
-
-#~ msgid "PRENOTAZIONE DI SISTEMA"
-#~ msgstr "RESERVERINSSYSTEEM"
-
-#~ msgid "Transazione non valida"
-#~ msgstr "Verbonden met bedrijf"
+#, fuzzy
+#~| msgid "Promo code"
+#~ msgid "promo_code"
+#~ msgstr "Promotiecode"
 
 #~ msgid "per aiuto."
 #~ msgstr "voor hulp."
 
 #~ msgid "for help."
 #~ msgstr "voor hulp."
-
-#~ msgid "Associazione con azienda"
-#~ msgstr "Verbonden met bedrijf"
-
-#~ msgid "Sei associato alla seguente azienda:"
-#~ msgstr "Je bent verbonden met het volgende bedrijf:"
-
-#~ msgid "Stato associazione: "
-#~ msgstr "Status verbondenheid: "
-
-#~ msgid "Nome: "
-#~ msgstr "Naam: "
-
-#~ msgid "Email: "
-#~ msgstr "E-mail "
-
-#~ msgid "Telefono: "
-#~ msgstr "Telefoon: "
-
-#~ msgid "Data richiesta: "
-#~ msgstr "Aanvraagdatum: "
-
-#~ msgid "Data conferma: "
-#~ msgstr "Bevestigingsdatum: "
-
-#~ msgid "Inserisci il codice aziendale che ti è stato comunicato"
-#~ msgstr "Voer de toegestuurde bedrijfscode in"
-
-#~ msgid "Associa"
-#~ msgstr "Word lid"
 
 #, fuzzy
 #~| msgid ""
@@ -6067,52 +6138,6 @@ msgstr "Wachtwoord vergeten?"
 #~ msgstr ""
 #~ "Op verzoek kun je de card gratis binnen een week thuis gestuurd krijgen, "
 #~ "of kun je hem ophalen op ons kantoor"
-
-#~ msgid ""
-#~ "Con un semplice mouse-over per ogni singola corsa puoi vedere l'indirizzo "
-#~ "di partenza e d&#39;arrivo, il consumo di minuti bonus e le "
-#~ "gratuit&agrave; qualora ti siano state riconosciute. In fondo alla "
-#~ "tabella trovi il totale degli addebiti del mese applicando la tua tariffa "
-#~ "personale."
-#~ msgstr ""
-#~ "Met een simpele mouse-over op elke rit zie je het begin- en eindadres, "
-#~ "het verbruik van bonusminuten, en alle voordeeltjes die je hebt "
-#~ "ontvangen. Onderaan de tabel kun je met je persoonlijk tarief het totaal "
-#~ "van je maandelijkse kosten vinden."
-
-#~ msgid "Targa"
-#~ msgstr "Kenteken"
-
-#~ msgid "Tipologia"
-#~ msgstr "Type"
-
-#~ msgid ""
-#~ "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse "
-#~ "da saldare non effettuate nella giornata di oggi vuol dire che ci sono "
-#~ "stati problemi di addebito sulla tua carta di credito e che il tuo "
-#~ "account è temporaneamente sospeso. Contatta il Customer Service di "
-#~ "SHARE'NGO per la riattivazione."
-#~ msgstr ""
-#~ "de kosten van de ritten worden doorgaans de volgende dag in rekening "
-#~ "gebracht. Als er op die dag geen ritten zijn afgeschreven, betekent dat "
-#~ "dat er problemen zijn met je creditcard en dat je account tijdelijk is "
-#~ "opgeschort. Neem contact op met de Klantenservice van SHARENGO voor "
-#~ "heractivering."
-
-#~ msgid "Verifica cambio di carta in corso."
-#~ msgstr "Controleert hij verandering van papier bezig."
-
-#~ msgid "(attendere prego)"
-#~ msgstr "(Bijwonen ik bid)"
-
-#~ msgid "Cambio carta completato"
-#~ msgstr "Voltooide ritten"
-
-#~ msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
-#~ msgstr "We bevestigen de ontvangst van de betaling"
-
-#~ msgid "Verifica transazione in corso."
-#~ msgstr "Controleert hij transactie bezig."
 
 #~ msgid "Sede operativa"
 #~ msgstr "Operationeel kantoor"

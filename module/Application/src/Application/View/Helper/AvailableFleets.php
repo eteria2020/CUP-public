@@ -57,7 +57,6 @@ class AvailableFleets extends AbstractHelper
                     <li>
                         <a class="js-show-element" data-longitude="%s" data-latitude="%s"  data-id="%s">
                             <span>%s</span>
-                            <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="js-collapse-box block-available-languages hidden">',
             $currentFleet->getLongitude(),

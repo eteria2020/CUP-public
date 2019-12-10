@@ -112,7 +112,7 @@
                                 <!-- Confirm button -->
                                 <div class="block-wrapper-button content-align-center margin-top-custom">
                                     <?php if(is_null($contract)) { ?>
-                                        <a href="<?= $this->url('mollie/first-trip-payment-multi') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
+                                        <a href="<?= $this->url('bankart/first-trip-payment-multi') ?>"><button><?= $this->translate("Pagamento corse"); ?></button></a>
                                     <?php } else { ?>
                                         <a href="<?= $this->url('area-utente/debt-collection-payment', [], ['query' => ['mobile' => $this->mobile]]) ?>"><button onclick="return confirm('Procedere con il pagamento?')"><?= $this->translate("Pagamento corse"); ?></button></a>
                                     <?php }?>
@@ -178,7 +178,7 @@
                                           <!-- Confirm button -->
                                           <div class="block-wrapper-button content-align-center margin-top-custom">
                                               <?php if(is_null($contract)) { ?>
-                                                  <a href="<?= $this->url('mollie/first-extra-payment-multi') ?>"><button><?= $this->translate("Pagamento penali"); ?></button></a>
+                                                  <a href="<?= $this->url('bankart/first-extra-payment-multi') ?>"><button><?= $this->translate("Pagamento penali"); ?></button></a>
                                               <?php } else { ?>
                                                   <a href="<?= $this->url('area-utente/debt-collection-extra-payment', [], ['query' => ['mobile' => $this->mobile]]) ?>"><button onclick="return confirm('Procedere con il pagamento?')"><?= $this->translate("Pagamento penali"); ?></button></a>
                                               <?php }?>
@@ -199,10 +199,10 @@
                         <br>
                         <!-- Confirm button -->
                         <div class="module-wrapper-button margin-bottom content-align-center">
-                            <a href="<?= $this->url('mollie/first-payment', [], ['query' => ['customer' => $this->customer->getId()]]); ?>" class="btn-link x-large ct2"><?= $this->translate('Pacchetto Benvenuto'); ?> <i class="fa fa-plus-circle"></i></a>
+                            <a href="<?= $this->url('bankart/first-payment', [], ['query' => ['customer' => $this->customer->getId()]]); ?>" class="btn-link x-large ct2"><?= $this->translate('Pacchetto Benvenuto'); ?> <i class="fa fa-plus-circle"></i></a>
                         </div>
                         <!-- confirm button -->
-                        <?php echo $this->partial('partials/credit-card-refuse'); ?>
+
                         <?php } ?>
                     </div>
                     <!-- description -->

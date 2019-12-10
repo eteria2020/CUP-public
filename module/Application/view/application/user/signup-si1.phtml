@@ -239,7 +239,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     });
 
     var addLoader = function() {
-        $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "</i></p></div></div>");
+        $("#outer").prepend("<div class=\"load-overlay\"><div>" + "<p><i class=\"fa fa-refresh fa-spin\">" + "<\/i><\/p><\/div><\/div>");
     };
     var removeLoader = function() {
         $("#outer > div.load-overlay").remove();

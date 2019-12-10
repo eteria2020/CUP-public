@@ -140,8 +140,6 @@
                     </div>
                     <!-- block-form -->
                 </div>
-                <!-- module-manage-card -->
-                <?php echo $this->partial('partials/credit-card-refuse'); ?>
             </div>
         </div>
         <!-- module-column-app dx -->
@@ -175,7 +173,7 @@
                                         // TODO: change link in
                                         // $urlChangeCard = $this->url('bankart/change-card', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
 
-                                        $urlChangeCard = $this->url('mollie/change-card', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
+                                        $urlChangeCard = $this->url('bankart/change-card', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
                                     ?>
                                     <a href="<?= $urlChangeCard;?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
                                     <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("CHIUDI") ?></button></a>

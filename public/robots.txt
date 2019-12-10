@@ -6,5 +6,7 @@ Disallow: /gpwebpay
 Disallow: /gpwebpay/first-payment
 Disallow: /mollie
 Disallow: /mollie/first-payment
+Disallow: /bankart
+Disallow: /bankart/first-payment
 Disallow: /pdf/
 Disallow: /zone

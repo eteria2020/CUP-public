@@ -54,6 +54,11 @@ class SuccessfulPaymentListener implements SharedListenerAggregateInterface
             'successfulPayment',
             [$this, 'successfulPayment']
         );
+        $this->listeners[] = $events->attach(
+            'Bankart\Controller\BankartPaymentsController',
+            'successfulPayment',
+            [$this, 'successfulPayment']
+        );
     }
 
     public function detachShared(SharedEventManagerInterface $events)
