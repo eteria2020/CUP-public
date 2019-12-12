@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-10 09:34+0100\n"
-"PO-Revision-Date: 2019-12-10 09:35+0100\n"
+"POT-Creation-Date: 2019-12-10 18:30+0100\n"
+"PO-Revision-Date: 2019-12-10 18:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -186,13 +186,13 @@ msgstr "Napačna telefonska številka"
 #: module/Application/src/Application/Controller/UserController.php:804
 #: module/Application/src/Application/Controller/UserController.php:1140
 #: module/Application/src/Application/Controller/UserController.php:1230
-#: module/Application/src/Application/Controller/UserController.php:1348
-#: module/Application/src/Application/Controller/UserController.php:1438
-#: module/Application/src/Application/Controller/UserController.php:1577
-#: module/Application/src/Application/Controller/UserController.php:1610
-#: module/Application/src/Application/Controller/UserController.php:1886
-#: module/Application/src/Application/Controller/UserController.php:1929
-#: module/Application/src/Application/Controller/UserController.php:2082
+#: module/Application/src/Application/Controller/UserController.php:1349
+#: module/Application/src/Application/Controller/UserController.php:1439
+#: module/Application/src/Application/Controller/UserController.php:1578
+#: module/Application/src/Application/Controller/UserController.php:1611
+#: module/Application/src/Application/Controller/UserController.php:1887
+#: module/Application/src/Application/Controller/UserController.php:1930
+#: module/Application/src/Application/Controller/UserController.php:2083
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Seja je potekla. Ponoviti je treba postopek registracije"
@@ -1100,16 +1100,12 @@ msgid "123456789"
 msgstr "123456789"
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
-#, fuzzy
-#| msgid "1234567890"
 msgid "1234567890123"
-msgstr "1234567890"
+msgstr ""
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:276
-#, fuzzy
-#| msgid "123456789"
 msgid "12345678"
-msgstr "123456789"
+msgstr ""
 
 #: module/Application/src/Application/Form/UserFieldset.php:82
 msgid "Inserisci di nuovo la email"
@@ -2199,7 +2195,6 @@ msgid "120 km di autonomia e velocità di 80 km/h"
 msgstr "120 km avtonomije in hitrosti do 80 km / h"
 
 #: module/Application/view/application/index/index.phtml:124
-#, fuzzy
 msgid "Raggio di sterzo di 4 mt (con servosterzo)"
 msgstr "Polmer krmila 4 mt (s servo krmiljenjem)"
 
@@ -6022,10 +6017,8 @@ msgstr ""
 "pozabite potegniti čepa!"
 
 #: module/Application/view/partials/translations.phtml:274
-#, fuzzy
-#| msgid "Totale (&euro;)"
 msgid "Totali periodo"
-msgstr "Skupaj (& euro;)"
+msgstr "Obdobje sešteje"
 
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"

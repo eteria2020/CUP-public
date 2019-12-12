@@ -1240,8 +1240,9 @@ class UserController extends AbstractActionController {
             $customer->setName($data['name']);
             $customer->setSurname($data['surname']);
             $customer->setTown($data['town']);
-            $customer->setLanguage('sk');
+            $customer->setLanguage('si');
 
+            $customer->setCountry('si');
 //            $customer->setCountry($data['country']);
 //            $customer->setProvince($data['province']);
 
