@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-10 09:31+0100\n"
-"PO-Revision-Date: 2019-12-10 09:32+0100\n"
+"POT-Creation-Date: 2019-12-10 18:16+0100\n"
+"PO-Revision-Date: 2019-12-10 18:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -185,13 +185,13 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:804
 #: module/Application/src/Application/Controller/UserController.php:1140
 #: module/Application/src/Application/Controller/UserController.php:1230
-#: module/Application/src/Application/Controller/UserController.php:1348
-#: module/Application/src/Application/Controller/UserController.php:1438
-#: module/Application/src/Application/Controller/UserController.php:1577
-#: module/Application/src/Application/Controller/UserController.php:1610
-#: module/Application/src/Application/Controller/UserController.php:1886
-#: module/Application/src/Application/Controller/UserController.php:1929
-#: module/Application/src/Application/Controller/UserController.php:2082
+#: module/Application/src/Application/Controller/UserController.php:1349
+#: module/Application/src/Application/Controller/UserController.php:1439
+#: module/Application/src/Application/Controller/UserController.php:1578
+#: module/Application/src/Application/Controller/UserController.php:1611
+#: module/Application/src/Application/Controller/UserController.php:1887
+#: module/Application/src/Application/Controller/UserController.php:1930
+#: module/Application/src/Application/Controller/UserController.php:2083
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -6128,7 +6128,7 @@ msgstr ""
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:21
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:26
 msgid "Cambio carta completato"
-msgstr "Completed trips"
+msgstr "Card change completed"
 
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:22
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
