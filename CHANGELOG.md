@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
+
+## [1.0.19] - 2019-12-13
+
+### added
+
+- To send the forgot password' email, with the link with the right translation, we add the follow files: 
+    - file forgot-password-nl_NL.phtml
+    - file forgot-password-sk_SL.phtml
+    - file forgot-password-sl_SI.phtml
+
+Note: remember to update file config/autoload/goalioforgotpassword.local.php
+
+## [1.0.18] - 2019-12-12
+
+### Changed
+
+- Module SharengoCore
+- Module Bankart
+- Fix bug inside subscription for country
+- Update translations
+
 ## [1.0.17] - 2019-12-10
 
 ### Changed
