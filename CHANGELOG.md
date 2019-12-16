@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.20] - 2019-12-13
+
+### Changed
+
+- In NewUserFieldset.php, remove the fleet of Modena from fleets array
+- In new-signup.phtml and login.phtm, add 'autocomplete' attribute for email and password field
+
 ## [1.0.19] - 2019-12-13
 
-### added
+### Added
 
 - To send the forgot password' email, with the link with the right translation, we add the follow files: 
     - file forgot-password-nl_NL.phtml
