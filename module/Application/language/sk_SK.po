@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-10 09:33+0100\n"
-"PO-Revision-Date: 2019-12-10 09:33+0100\n"
+"POT-Creation-Date: 2019-12-16 09:26+0100\n"
+"PO-Revision-Date: 2019-12-16 09:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -186,13 +186,13 @@ msgstr "Nesprávne telefónne číslo"
 #: module/Application/src/Application/Controller/UserController.php:804
 #: module/Application/src/Application/Controller/UserController.php:1140
 #: module/Application/src/Application/Controller/UserController.php:1230
-#: module/Application/src/Application/Controller/UserController.php:1348
-#: module/Application/src/Application/Controller/UserController.php:1438
-#: module/Application/src/Application/Controller/UserController.php:1577
-#: module/Application/src/Application/Controller/UserController.php:1610
-#: module/Application/src/Application/Controller/UserController.php:1886
-#: module/Application/src/Application/Controller/UserController.php:1929
-#: module/Application/src/Application/Controller/UserController.php:2082
+#: module/Application/src/Application/Controller/UserController.php:1349
+#: module/Application/src/Application/Controller/UserController.php:1439
+#: module/Application/src/Application/Controller/UserController.php:1578
+#: module/Application/src/Application/Controller/UserController.php:1611
+#: module/Application/src/Application/Controller/UserController.php:1887
+#: module/Application/src/Application/Controller/UserController.php:1930
+#: module/Application/src/Application/Controller/UserController.php:2083
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -293,7 +293,7 @@ msgstr "Priezvisko"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:119
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:124
-#: module/Application/src/Application/Form/NewUserFieldset.php:63
+#: module/Application/src/Application/Form/NewUserFieldset.php:64
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:86
 #: module/Application/view/application/user-area/index.phtml:52
@@ -509,10 +509,8 @@ msgstr "holandský"
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:267
 #: module/Application/src/Application/Form/UserFieldset.php:349
 #: module/Application/src/Application/View/Helper/LongLanguage.php:34
-#, fuzzy
-#| msgid "Slovenia"
 msgid "sloveno"
-msgstr "Slovínsko"
+msgstr "slovinčina"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:320
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
@@ -758,12 +756,12 @@ msgstr "Je potrebné mať Estero ako provinciu narodenia"
 msgid "Digita la tua email"
 msgstr "Zadaj svoj e-mail"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:72
+#: module/Application/src/Application/Form/NewUserFieldset.php:73
 #: module/Application/src/Application/Form/UserFieldset.php:95
 msgid "Imposta la tua password"
 msgstr "Zadaj svoje heslo"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:76
+#: module/Application/src/Application/Form/NewUserFieldset.php:78
 #: module/Application/src/Application/Form/UserFieldset.php:99
 #: module/Application/view/application/user-area/index.phtml:616
 #: module/Application/view/application/user-area/index.phtml:651
@@ -778,7 +776,7 @@ msgstr "Zadaj svoje heslo"
 msgid "Password"
 msgstr "Heslo"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:96
+#: module/Application/src/Application/Form/NewUserFieldset.php:106
 msgid ""
 "Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
 "sia cartacee che digitali relative al servizio, ai prodotti e alle "
@@ -787,7 +785,7 @@ msgstr ""
 "Súhlasím so spracovaním svojich osobných údajov pre papierovú aj digitálnu "
 "komunikáciu súvisiacu so službou, produktmi a akciami Sharengo."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:116
+#: module/Application/src/Application/Form/NewUserFieldset.php:126
 msgid ""
 "Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
 "che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del "
@@ -813,13 +811,13 @@ msgstr ""
 "(poistenie), 16 (dátum začiatku, trvanie, obnovenie, pozastavenie, zrušenie, "
 "ukončenie zmluvy), 17 (sťažnosti), 18 (sankcie), 20 (jurisdikcia)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:136
-#: module/Application/src/Application/Form/NewUserFieldset.php:166
+#: module/Application/src/Application/Form/NewUserFieldset.php:146
+#: module/Application/src/Application/Form/NewUserFieldset.php:176
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:183
-#: module/Application/src/Application/Form/NewUserFieldset.php:207
+#: module/Application/src/Application/Form/NewUserFieldset.php:193
+#: module/Application/src/Application/Form/NewUserFieldset.php:217
 msgid "Il dato è richiesto per procedere"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
@@ -1337,19 +1335,27 @@ msgstr "Platnosť licencie nemôže uplynúť"
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Poštové smerovacie číslo"
 
-#: module/Application/src/Application/Service/RegistrationService.php:451
+#: module/Application/src/Application/Service/RegistrationService.php:296
+msgid "NUOVA REGISTRAZIONE"
+msgstr "NOVÁ REGISTRÁCIA"
+
+#: module/Application/src/Application/Service/RegistrationService.php:309
+msgid "ERRORE NUOVA REGISTRAZIONE"
+msgstr "NOVÁ CHYBA REGISTRÁCIE"
+
+#: module/Application/src/Application/Service/RegistrationService.php:452
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "PREDBEŽNÁ REGISTRÁCIA VYPRŠALA"
 
-#: module/Application/src/Application/Service/RegistrationService.php:455
+#: module/Application/src/Application/Service/RegistrationService.php:456
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "POUŽÍVATEĽ UŽ ZAREGISTROVANÝ"
 
-#: module/Application/src/Application/Service/RegistrationService.php:466
+#: module/Application/src/Application/Service/RegistrationService.php:467
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "POUŽÍVATEĽ ÚSPEŠNE ZAREGISTROVANÝ"
 
-#: module/Application/src/Application/Service/RegistrationService.php:469
+#: module/Application/src/Application/Service/RegistrationService.php:470
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "VYSKYTOL SA PROBLÉM POČAS REGISTRÁCIE"
 
@@ -4459,6 +4465,9 @@ msgstr "Ak chceš dokončiť aktiváciu služby, vykonaj platbu pomocou Cartasi.
 msgid "Esegui il pagamento"
 msgstr "Vykonať platbu"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:2
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:2
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:2
 #: module/Application/view/emails/forgot-password.phtml:2
 msgid ""
 "Gentile cliente,\n"
@@ -4474,6 +4483,9 @@ msgstr ""
 "\n"
 "Kliknutím na nasledujúci odkaz ho obnovíš.\n"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:27
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:27
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:27
 #: module/Application/view/emails/forgot-password.phtml:22
 msgid ""
 "\n"
@@ -6014,10 +6026,8 @@ msgstr ""
 "vytiahnuť zástrčku!"
 
 #: module/Application/view/partials/translations.phtml:274
-#, fuzzy
-#| msgid "Totale (&euro;)"
 msgid "Totali periodo"
-msgstr "Celkom (Eur)"
+msgstr "Súčty za obdobie"
 
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"

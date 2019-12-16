@@ -293,7 +293,7 @@ final class RegistrationService
     {
         $this->emailService->sendEmail(
             $this->emailSettings['sharengoNotices'],
-            'NUOVA REGISTRAZIONE DA SITO',
+            $this->translator->translate('NUOVA REGISTRAZIONE'),
             json_encode($data)
         );
     }
@@ -305,7 +305,7 @@ final class RegistrationService
     {
         $this->emailService->sendEmail(
             $this->emailSettings['sharengoNotices'],
-            'ERRORE NUOVA REGISTRAZIONE DA SITO',
+            $this->translator->translate('ERRORE NUOVA REGISTRAZIONE'),
             $message
         );
     }

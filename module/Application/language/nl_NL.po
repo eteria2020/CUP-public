@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-10 09:32+0100\n"
-"PO-Revision-Date: 2019-12-10 09:33+0100\n"
+"POT-Creation-Date: 2019-12-16 09:24+0100\n"
+"PO-Revision-Date: 2019-12-16 09:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -188,13 +188,13 @@ msgstr "Telefoonnummer onjuist"
 #: module/Application/src/Application/Controller/UserController.php:804
 #: module/Application/src/Application/Controller/UserController.php:1140
 #: module/Application/src/Application/Controller/UserController.php:1230
-#: module/Application/src/Application/Controller/UserController.php:1348
-#: module/Application/src/Application/Controller/UserController.php:1438
-#: module/Application/src/Application/Controller/UserController.php:1577
-#: module/Application/src/Application/Controller/UserController.php:1610
-#: module/Application/src/Application/Controller/UserController.php:1886
-#: module/Application/src/Application/Controller/UserController.php:1929
-#: module/Application/src/Application/Controller/UserController.php:2082
+#: module/Application/src/Application/Controller/UserController.php:1349
+#: module/Application/src/Application/Controller/UserController.php:1439
+#: module/Application/src/Application/Controller/UserController.php:1578
+#: module/Application/src/Application/Controller/UserController.php:1611
+#: module/Application/src/Application/Controller/UserController.php:1887
+#: module/Application/src/Application/Controller/UserController.php:1930
+#: module/Application/src/Application/Controller/UserController.php:2083
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "De sessie is verlopen. Je moet de registratieprocedure herhalen"
@@ -294,7 +294,7 @@ msgstr "Achternaam"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:119
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:124
-#: module/Application/src/Application/Form/NewUserFieldset.php:63
+#: module/Application/src/Application/Form/NewUserFieldset.php:64
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:86
 #: module/Application/view/application/user-area/index.phtml:52
@@ -510,10 +510,8 @@ msgstr "Olandese"
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:267
 #: module/Application/src/Application/Form/UserFieldset.php:349
 #: module/Application/src/Application/View/Helper/LongLanguage.php:34
-#, fuzzy
-#| msgid "slovacco"
 msgid "sloveno"
-msgstr "Slowaaks"
+msgstr "Sloveens"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:320
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
@@ -761,12 +759,12 @@ msgstr "Je moet de verklaring bevestigen en ondertekenen"
 msgid "Digita la tua email"
 msgstr "Voer je email in"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:72
+#: module/Application/src/Application/Form/NewUserFieldset.php:73
 #: module/Application/src/Application/Form/UserFieldset.php:95
 msgid "Imposta la tua password"
 msgstr "Stel je wachtwoord in"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:76
+#: module/Application/src/Application/Form/NewUserFieldset.php:78
 #: module/Application/src/Application/Form/UserFieldset.php:99
 #: module/Application/view/application/user-area/index.phtml:616
 #: module/Application/view/application/user-area/index.phtml:651
@@ -781,7 +779,7 @@ msgstr "Stel je wachtwoord in"
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:96
+#: module/Application/src/Application/Form/NewUserFieldset.php:106
 msgid ""
 "Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
 "sia cartacee che digitali relative al servizio, ai prodotti e alle "
@@ -791,7 +789,7 @@ msgstr ""
 "schriftelijke als digitale communicatie met betrekking tot de dienst, "
 "producten en promoties van Sharengo."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:116
+#: module/Application/src/Application/Form/NewUserFieldset.php:126
 msgid ""
 "Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
 "che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del "
@@ -818,13 +816,13 @@ msgstr ""
 "intrekking, beëindiging van het contract), 17 (klachten), 18 (boetes), 20 "
 "(bevoegde rechtbank)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:136
-#: module/Application/src/Application/Form/NewUserFieldset.php:166
+#: module/Application/src/Application/Form/NewUserFieldset.php:146
+#: module/Application/src/Application/Form/NewUserFieldset.php:176
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Dit is een verplicht veld en mag niet leeg zijn"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:183
-#: module/Application/src/Application/Form/NewUserFieldset.php:207
+#: module/Application/src/Application/Form/NewUserFieldset.php:193
+#: module/Application/src/Application/Form/NewUserFieldset.php:217
 msgid "Il dato è richiesto per procedere"
 msgstr "Vul gegevens in om door te kunnen gaan"
 
@@ -1107,16 +1105,12 @@ msgid "123456789"
 msgstr "1234567890"
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:262
-#, fuzzy
-#| msgid "1234567890"
 msgid "1234567890123"
-msgstr "1234567890"
+msgstr ""
 
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:276
-#, fuzzy
-#| msgid "123456789"
 msgid "12345678"
-msgstr "1234567890"
+msgstr ""
 
 #: module/Application/src/Application/Form/UserFieldset.php:82
 msgid "Inserisci di nuovo la email"
@@ -1350,19 +1344,27 @@ msgstr "Het BTW-nummer is ongeldig"
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Postcode is onjuist"
 
-#: module/Application/src/Application/Service/RegistrationService.php:451
+#: module/Application/src/Application/Service/RegistrationService.php:296
+msgid "NUOVA REGISTRAZIONE"
+msgstr "NIEUWE REGISTRATIE"
+
+#: module/Application/src/Application/Service/RegistrationService.php:309
+msgid "ERRORE NUOVA REGISTRAZIONE"
+msgstr "NIEUWE REGISTRATIEFOUT"
+
+#: module/Application/src/Application/Service/RegistrationService.php:452
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "VOORREGISTRATIE VERLOPEN"
 
-#: module/Application/src/Application/Service/RegistrationService.php:455
+#: module/Application/src/Application/Service/RegistrationService.php:456
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "GEBRUIKER IS AL GEREGISTREERD"
 
-#: module/Application/src/Application/Service/RegistrationService.php:466
+#: module/Application/src/Application/Service/RegistrationService.php:467
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "GEBRUIKER IS SUCCESVOL GEREGISTREERD"
 
-#: module/Application/src/Application/Service/RegistrationService.php:469
+#: module/Application/src/Application/Service/RegistrationService.php:470
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "ER IS EEN FOUT OPGETREDEN TIJDENS DE REGISTRATIE"
 
@@ -4446,6 +4448,9 @@ msgstr ""
 msgid "Esegui il pagamento"
 msgstr "Voer de betaling uit"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:2
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:2
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:2
 #: module/Application/view/emails/forgot-password.phtml:2
 msgid ""
 "Gentile cliente,\n"
@@ -4463,6 +4468,9 @@ msgstr ""
 "\n"
 "\n"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:27
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:27
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:27
 #: module/Application/view/emails/forgot-password.phtml:22
 msgid ""
 "\n"
@@ -6011,10 +6019,8 @@ msgstr ""
 "stekker uit het stopcontact te trekken!"
 
 #: module/Application/view/partials/translations.phtml:274
-#, fuzzy
-#| msgid "Totale (&euro;)"
 msgid "Totali periodo"
-msgstr "Totaal (€)"
+msgstr "Periode totalen"
 
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"
