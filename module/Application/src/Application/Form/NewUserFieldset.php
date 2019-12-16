@@ -57,7 +57,8 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             'attributes' => [
                 'id' => 'email',
                 'placeholder' => $this->translator->translate('Digita la tua email'),
-                'class' => 'required'
+                'class' => 'required',
+                'autocomplete' => 'username'
             ],
             'options' => [
                 'label' => $this->translator->translate('Email')
@@ -70,12 +71,23 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             'attributes' => [
                 'id' => 'password',
                 'placeholder' => $this->translator->translate('Imposta la tua password'),
-                'class' => 'required'
+                'class' => 'required',
+                'autocomplete' => 'current-password'
             ],
             'options' => [
                 'label' => $this->translator->translate('Password')
             ]
         ]);
+
+        $fleets = $fleetService->getFleetsSelectorArrayNoDummy(
+            [0 => '---']
+        );
+
+        foreach($fleets as $key => $fleet) {
+            if($fleet=='Modena') {
+                unset($fleets[$key]);
+            }
+        }
 
         $this->add([
             'name' => 'fleet',
@@ -84,9 +96,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
                 'id' => 'fleet'
             ],
             'options' => [
-                'value_options' => $fleetService->getFleetsSelectorArrayNoDummy(
-                        [0 => '---']
-                )
+                'value_options' => $fleets
             ]
         ]);
         $this->add([
