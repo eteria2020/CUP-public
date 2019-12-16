@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 09:22+0100\n"
-"PO-Revision-Date: 2019-12-16 09:24+0100\n"
+"POT-Creation-Date: 2019-12-16 12:19+0100\n"
+"PO-Revision-Date: 2019-12-16 12:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1335,23 +1335,23 @@ msgstr "ZIP code incorrect"
 msgid "NUOVA REGISTRAZIONE"
 msgstr "NEW REGISTRATION"
 
-#: module/Application/src/Application/Service/RegistrationService.php:309
+#: module/Application/src/Application/Service/RegistrationService.php:308
 msgid "ERRORE NUOVA REGISTRAZIONE"
 msgstr "NEW REGISTRATION ERROR"
 
-#: module/Application/src/Application/Service/RegistrationService.php:452
+#: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "EXPIRED EXPRESS"
 
-#: module/Application/src/Application/Service/RegistrationService.php:456
+#: module/Application/src/Application/Service/RegistrationService.php:455
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "ALREADY REGISTERED USER"
 
-#: module/Application/src/Application/Service/RegistrationService.php:467
+#: module/Application/src/Application/Service/RegistrationService.php:466
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "REGISTERED USER WITH SUCCESS"
 
-#: module/Application/src/Application/Service/RegistrationService.php:470
+#: module/Application/src/Application/Service/RegistrationService.php:469
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "SI & Egrave; VERIFIED A PROBLEM DURING REGISTRATION"
 
@@ -4132,7 +4132,9 @@ msgstr ""
 "conclude the contract."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-msgid "30 minuti a soli 10&euro;"
+#: module/Application/view/application/user/signup-si2.phtml:35
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "30 minuti a soli 5&euro;"
 msgstr "30 minutes only 5&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
@@ -4206,11 +4208,6 @@ msgstr "Free registration!"
 #: module/Application/view/application/user/signup-si1.phtml:83
 msgid "Luogo preferito"
 msgstr "Favourite place"
-
-#: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "30 minuti a soli 5&euro;"
-msgstr "30 minutes only 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
@@ -6155,6 +6152,9 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
+
+#~ msgid "30 minuti a soli 10&euro;"
+#~ msgstr "30 minutes only 5&euro;"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "

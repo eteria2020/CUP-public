@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+
+## [1.0.22] - 2019-12-16
+
+### Changed
+
+- Fix translation in signup-nl2.phtml
+- Update all file *.po
+
 ## [1.0.21] - 2019-12-16
 
 ### Changed
