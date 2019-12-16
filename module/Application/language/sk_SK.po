@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 09:26+0100\n"
-"PO-Revision-Date: 2019-12-16 09:28+0100\n"
+"POT-Creation-Date: 2019-12-16 12:22+0100\n"
+"PO-Revision-Date: 2019-12-16 12:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -1339,23 +1339,23 @@ msgstr "Poštové smerovacie číslo"
 msgid "NUOVA REGISTRAZIONE"
 msgstr "NOVÁ REGISTRÁCIA"
 
-#: module/Application/src/Application/Service/RegistrationService.php:309
+#: module/Application/src/Application/Service/RegistrationService.php:308
 msgid "ERRORE NUOVA REGISTRAZIONE"
 msgstr "NOVÁ CHYBA REGISTRÁCIE"
 
-#: module/Application/src/Application/Service/RegistrationService.php:452
+#: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "PREDBEŽNÁ REGISTRÁCIA VYPRŠALA"
 
-#: module/Application/src/Application/Service/RegistrationService.php:456
+#: module/Application/src/Application/Service/RegistrationService.php:455
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "POUŽÍVATEĽ UŽ ZAREGISTROVANÝ"
 
-#: module/Application/src/Application/Service/RegistrationService.php:467
+#: module/Application/src/Application/Service/RegistrationService.php:466
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "POUŽÍVATEĽ ÚSPEŠNE ZAREGISTROVANÝ"
 
-#: module/Application/src/Application/Service/RegistrationService.php:470
+#: module/Application/src/Application/Service/RegistrationService.php:469
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "VYSKYTOL SA PROBLÉM POČAS REGISTRÁCIE"
 
@@ -4122,7 +4122,9 @@ msgstr ""
 "dochádza k uzavretiu zmluvy."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-msgid "30 minuti a soli 10&euro;"
+#: module/Application/view/application/user/signup-si2.phtml:35
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "30 minuti a soli 5&euro;"
 msgstr "30 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
@@ -4197,11 +4199,6 @@ msgstr "Bezplatná registrácia!"
 #: module/Application/view/application/user/signup-si1.phtml:83
 msgid "Luogo preferito"
 msgstr "Obľúbené miesto"
-
-#: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "30 minuti a soli 5&euro;"
-msgstr "30 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
@@ -6142,6 +6139,9 @@ msgstr "(počkajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
+
+#~ msgid "30 minuti a soli 10&euro;"
+#~ msgstr "30 minút len ​​za 5&euro;"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "

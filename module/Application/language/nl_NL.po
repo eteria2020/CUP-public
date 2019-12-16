@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 09:24+0100\n"
-"PO-Revision-Date: 2019-12-16 09:26+0100\n"
+"POT-Creation-Date: 2019-12-16 12:20+0100\n"
+"PO-Revision-Date: 2019-12-16 12:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1348,23 +1348,23 @@ msgstr "Postcode is onjuist"
 msgid "NUOVA REGISTRAZIONE"
 msgstr "NIEUWE REGISTRATIE"
 
-#: module/Application/src/Application/Service/RegistrationService.php:309
+#: module/Application/src/Application/Service/RegistrationService.php:308
 msgid "ERRORE NUOVA REGISTRAZIONE"
 msgstr "NIEUWE REGISTRATIEFOUT"
 
-#: module/Application/src/Application/Service/RegistrationService.php:452
+#: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "VOORREGISTRATIE VERLOPEN"
 
-#: module/Application/src/Application/Service/RegistrationService.php:456
+#: module/Application/src/Application/Service/RegistrationService.php:455
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "GEBRUIKER IS AL GEREGISTREERD"
 
-#: module/Application/src/Application/Service/RegistrationService.php:467
+#: module/Application/src/Application/Service/RegistrationService.php:466
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "GEBRUIKER IS SUCCESVOL GEREGISTREERD"
 
-#: module/Application/src/Application/Service/RegistrationService.php:470
+#: module/Application/src/Application/Service/RegistrationService.php:469
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "ER IS EEN FOUT OPGETREDEN TIJDENS DE REGISTRATIE"
 
@@ -4095,8 +4095,10 @@ msgstr ""
 "van de instemming betreft het sluiten van het contract."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-msgid "30 minuti a soli 10&euro;"
-msgstr "30 minuten voor slechts 10 euro"
+#: module/Application/view/application/user/signup-si2.phtml:35
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "30 minuti a soli 5&euro;"
+msgstr "30 minuten voor slechts 5&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
 #: module/Application/view/application/user/signup-si2.phtml:102
@@ -4169,11 +4171,6 @@ msgstr "Gratis registratie!"
 #: module/Application/view/application/user/signup-si1.phtml:83
 msgid "Luogo preferito"
 msgstr "Favoriete plek"
-
-#: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "30 minuti a soli 5&euro;"
-msgstr "30 minuten voor slechts 10 euro"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
@@ -6136,6 +6133,9 @@ msgstr "(Bijwonen ik bid)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
+
+#~ msgid "30 minuti a soli 10&euro;"
+#~ msgstr "30 minuten voor slechts 10 euro"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "

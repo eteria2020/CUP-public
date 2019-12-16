@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 09:28+0100\n"
-"PO-Revision-Date: 2019-12-16 09:29+0100\n"
+"POT-Creation-Date: 2019-12-16 12:23+0100\n"
+"PO-Revision-Date: 2019-12-16 12:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -1340,23 +1340,23 @@ msgstr "Nepravilna poštna številka"
 msgid "NUOVA REGISTRAZIONE"
 msgstr "NOVA PRIJAVA"
 
-#: module/Application/src/Application/Service/RegistrationService.php:309
+#: module/Application/src/Application/Service/RegistrationService.php:308
 msgid "ERRORE NUOVA REGISTRAZIONE"
 msgstr "NOVA NAPAKA PRIJAVE"
 
-#: module/Application/src/Application/Service/RegistrationService.php:452
+#: module/Application/src/Application/Service/RegistrationService.php:451
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "POSEBNA PRIJAVA"
 
-#: module/Application/src/Application/Service/RegistrationService.php:456
+#: module/Application/src/Application/Service/RegistrationService.php:455
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "UPORABNIK JE ŽE REGISTRIRAN"
 
-#: module/Application/src/Application/Service/RegistrationService.php:467
+#: module/Application/src/Application/Service/RegistrationService.php:466
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "UPORABNIK USPEŠNO REGISTRIRAN"
 
-#: module/Application/src/Application/Service/RegistrationService.php:470
+#: module/Application/src/Application/Service/RegistrationService.php:469
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "MED REGISTRACIJO JE PRIŠLO DO NAPAKE"
 
@@ -4127,8 +4127,10 @@ msgstr ""
 "pogoje in se zaveda, da sprejema pogodbo."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-msgid "30 minuti a soli 10&euro;"
-msgstr "30 minut za samo 10 €;"
+#: module/Application/view/application/user/signup-si2.phtml:35
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "30 minuti a soli 5&euro;"
+msgstr "30 minut za samo 5&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
 #: module/Application/view/application/user/signup-si2.phtml:102
@@ -4196,11 +4198,6 @@ msgstr "Brezplačna registracija!"
 #: module/Application/view/application/user/signup-si1.phtml:83
 msgid "Luogo preferito"
 msgstr "Priljubljeno mesto"
-
-#: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "30 minuti a soli 5&euro;"
-msgstr "30 minut za samo 5 €;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
@@ -6147,6 +6144,9 @@ msgstr "(prosim počakajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Preverite transakcijo, ki poteka."
+
+#~ msgid "30 minuti a soli 10&euro;"
+#~ msgstr "30 minut za samo 10 €;"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "
