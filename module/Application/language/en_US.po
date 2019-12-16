@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-10 18:16+0100\n"
-"PO-Revision-Date: 2019-12-10 18:17+0100\n"
+"POT-Creation-Date: 2019-12-16 09:22+0100\n"
+"PO-Revision-Date: 2019-12-16 09:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -292,7 +292,7 @@ msgstr "Last Name"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:119
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:124
-#: module/Application/src/Application/Form/NewUserFieldset.php:63
+#: module/Application/src/Application/Form/NewUserFieldset.php:64
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:86
 #: module/Application/view/application/user-area/index.phtml:52
@@ -754,12 +754,12 @@ msgstr "It is necessary to have Estero as a Province of birth"
 msgid "Digita la tua email"
 msgstr "Insert your email"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:72
+#: module/Application/src/Application/Form/NewUserFieldset.php:73
 #: module/Application/src/Application/Form/UserFieldset.php:95
 msgid "Imposta la tua password"
 msgstr "Set your password"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:76
+#: module/Application/src/Application/Form/NewUserFieldset.php:78
 #: module/Application/src/Application/Form/UserFieldset.php:99
 #: module/Application/view/application/user-area/index.phtml:616
 #: module/Application/view/application/user-area/index.phtml:651
@@ -774,7 +774,7 @@ msgstr "Set your password"
 msgid "Password"
 msgstr "Password"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:96
+#: module/Application/src/Application/Form/NewUserFieldset.php:106
 msgid ""
 "Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
 "sia cartacee che digitali relative al servizio, ai prodotti e alle promozioni "
@@ -783,7 +783,7 @@ msgstr ""
 "I consent to the processing of my personal data for both paper and digital "
 "communications relating to the service, products and promotions Sharengo."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:116
+#: module/Application/src/Application/Form/NewUserFieldset.php:126
 msgid ""
 "Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali che "
 "regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del Codice "
@@ -809,13 +809,13 @@ msgstr ""
 "duration, renewal) , suspension, withdrawal, termination of the contract), 17 "
 "(complaints), 18 (penalties), 20 (jurisdiction)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:136
-#: module/Application/src/Application/Form/NewUserFieldset.php:166
+#: module/Application/src/Application/Form/NewUserFieldset.php:146
+#: module/Application/src/Application/Form/NewUserFieldset.php:176
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "The data is required to proceed"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:183
-#: module/Application/src/Application/Form/NewUserFieldset.php:207
+#: module/Application/src/Application/Form/NewUserFieldset.php:193
+#: module/Application/src/Application/Form/NewUserFieldset.php:217
 msgid "Il dato è richiesto per procedere"
 msgstr "The data is required to proceed"
 
@@ -1331,19 +1331,27 @@ msgstr "The VAT number is invalid"
 msgid "Codice Avviamento Postale non corretto"
 msgstr "ZIP code incorrect"
 
-#: module/Application/src/Application/Service/RegistrationService.php:451
+#: module/Application/src/Application/Service/RegistrationService.php:296
+msgid "NUOVA REGISTRAZIONE"
+msgstr "NEW REGISTRATION"
+
+#: module/Application/src/Application/Service/RegistrationService.php:309
+msgid "ERRORE NUOVA REGISTRAZIONE"
+msgstr "NEW REGISTRATION ERROR"
+
+#: module/Application/src/Application/Service/RegistrationService.php:452
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "EXPIRED EXPRESS"
 
-#: module/Application/src/Application/Service/RegistrationService.php:455
+#: module/Application/src/Application/Service/RegistrationService.php:456
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "ALREADY REGISTERED USER"
 
-#: module/Application/src/Application/Service/RegistrationService.php:466
+#: module/Application/src/Application/Service/RegistrationService.php:467
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "REGISTERED USER WITH SUCCESS"
 
-#: module/Application/src/Application/Service/RegistrationService.php:469
+#: module/Application/src/Application/Service/RegistrationService.php:470
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "SI & Egrave; VERIFIED A PROBLEM DURING REGISTRATION"
 
@@ -1401,16 +1409,12 @@ msgstr "Yes"
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-#, fuzzy
-#| msgid "Nome"
 msgid "No"
-msgstr "First Name"
+msgstr "No"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-#, fuzzy
-#| msgid "Esterna"
 msgid "Interna"
-msgstr "Username"
+msgstr "Inside"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
 msgid "Esterna"
@@ -1478,10 +1482,8 @@ msgstr "Invalid transaction"
 
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
-#, fuzzy
-#| msgid "Transazione non valida"
 msgid "Transazione non valida (id non trovato)"
-msgstr "Invalid transaction"
+msgstr "Invalid transaction (id not found)"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "promo e pacchetti"
@@ -4471,6 +4473,9 @@ msgstr "To complete the activation of the service, make the payment via Cartasi.
 msgid "Esegui il pagamento"
 msgstr "Make payment"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:2
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:2
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:2
 #: module/Application/view/emails/forgot-password.phtml:2
 msgid ""
 "Gentile cliente,\n"
@@ -4487,6 +4492,9 @@ msgstr ""
 "Click the following link to reset it.\n"
 "\n"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:27
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:27
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:27
 #: module/Application/view/emails/forgot-password.phtml:22
 msgid ""
 "\n"

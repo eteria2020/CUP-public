@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-10 18:30+0100\n"
-"PO-Revision-Date: 2019-12-10 18:30+0100\n"
+"POT-Creation-Date: 2019-12-16 09:28+0100\n"
+"PO-Revision-Date: 2019-12-16 09:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -292,7 +292,7 @@ msgstr "priimek"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:119
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:124
-#: module/Application/src/Application/Form/NewUserFieldset.php:63
+#: module/Application/src/Application/Form/NewUserFieldset.php:64
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:86
 #: module/Application/view/application/user-area/index.phtml:52
@@ -755,12 +755,12 @@ msgstr "Deklaracijo je potrebno potrditi in podpisati"
 msgid "Digita la tua email"
 msgstr "Vnesite svoj e-poštni naslov"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:72
+#: module/Application/src/Application/Form/NewUserFieldset.php:73
 #: module/Application/src/Application/Form/UserFieldset.php:95
 msgid "Imposta la tua password"
 msgstr "Nastavite geslo"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:76
+#: module/Application/src/Application/Form/NewUserFieldset.php:78
 #: module/Application/src/Application/Form/UserFieldset.php:99
 #: module/Application/view/application/user-area/index.phtml:616
 #: module/Application/view/application/user-area/index.phtml:651
@@ -775,7 +775,7 @@ msgstr "Nastavite geslo"
 msgid "Password"
 msgstr "geslo"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:96
+#: module/Application/src/Application/Form/NewUserFieldset.php:106
 msgid ""
 "Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
 "sia cartacee che digitali relative al servizio, ai prodotti e alle "
@@ -784,7 +784,7 @@ msgstr ""
 "Strinjam se z obdelavo svojih osebnih podatkov tako za papirno kot digitalno "
 "komunikacijo v zvezi s storitvijo Sharengo, izdelki in promocijami."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:116
+#: module/Application/src/Application/Form/NewUserFieldset.php:126
 #, fuzzy
 msgid ""
 "Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
@@ -811,13 +811,13 @@ msgstr ""
 "(zavarovanje), 16 (datum začetka, trajanje, obnova) , prekinitev, odstop, "
 "odpoved pogodbe), 17 (pritožbe), 18 (kazni), 20 (pristojno sodišče)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:136
-#: module/Application/src/Application/Form/NewUserFieldset.php:166
+#: module/Application/src/Application/Form/NewUserFieldset.php:146
+#: module/Application/src/Application/Form/NewUserFieldset.php:176
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Polje ne sme biti prazno."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:183
-#: module/Application/src/Application/Form/NewUserFieldset.php:207
+#: module/Application/src/Application/Form/NewUserFieldset.php:193
+#: module/Application/src/Application/Form/NewUserFieldset.php:217
 msgid "Il dato è richiesto per procedere"
 msgstr "Za nadaljevanje je potrebna potrditev."
 
@@ -1336,19 +1336,27 @@ msgstr "Davčna številka ni veljavna"
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Nepravilna poštna številka"
 
-#: module/Application/src/Application/Service/RegistrationService.php:451
+#: module/Application/src/Application/Service/RegistrationService.php:296
+msgid "NUOVA REGISTRAZIONE"
+msgstr "NOVA PRIJAVA"
+
+#: module/Application/src/Application/Service/RegistrationService.php:309
+msgid "ERRORE NUOVA REGISTRAZIONE"
+msgstr "NOVA NAPAKA PRIJAVE"
+
+#: module/Application/src/Application/Service/RegistrationService.php:452
 msgid "PREREGISTRAZIONE SCADUTA"
 msgstr "POSEBNA PRIJAVA"
 
-#: module/Application/src/Application/Service/RegistrationService.php:455
+#: module/Application/src/Application/Service/RegistrationService.php:456
 msgid "UTENTE GIA' REGISTRATO"
 msgstr "UPORABNIK JE ŽE REGISTRIRAN"
 
-#: module/Application/src/Application/Service/RegistrationService.php:466
+#: module/Application/src/Application/Service/RegistrationService.php:467
 msgid "UTENTE REGISTRATO CON SUCCESSO"
 msgstr "UPORABNIK USPEŠNO REGISTRIRAN"
 
-#: module/Application/src/Application/Service/RegistrationService.php:469
+#: module/Application/src/Application/Service/RegistrationService.php:470
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
 msgstr "MED REGISTRACIJO JE PRIŠLO DO NAPAKE"
 
@@ -4456,6 +4464,9 @@ msgstr "Če želite dokončati aktivacijo storitve, plačajte prek Cartasija."
 msgid "Esegui il pagamento"
 msgstr "Izvedite plačilo"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:2
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:2
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:2
 #: module/Application/view/emails/forgot-password.phtml:2
 msgid ""
 "Gentile cliente,\n"
@@ -4472,6 +4483,9 @@ msgstr ""
 "Kliknite na spodnjo povezavo, da ga ponastavite.\n"
 "\n"
 
+#: module/Application/view/emails/forgot-password-nl_NL.phtml:27
+#: module/Application/view/emails/forgot-password-sk_SK.phtml:27
+#: module/Application/view/emails/forgot-password-sl_SI.phtml:27
 #: module/Application/view/emails/forgot-password.phtml:22
 msgid ""
 "\n"
