@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.23] - 2019-12-17
+
+### Changed
+
+- Disabled re-new of discounts and enabled the disable old discounts
 
 ## [1.0.22] - 2019-12-16
 
