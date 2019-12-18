@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 12:19+0100\n"
-"PO-Revision-Date: 2019-12-16 12:20+0100\n"
+"POT-Creation-Date: 2019-12-18 16:26+0100\n"
+"PO-Revision-Date: 2019-12-18 16:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1240,7 +1240,6 @@ msgid "E' necessario essere maggiorenni"
 msgstr "It is necessary to be of age"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "The tax code is not correct"
 
@@ -1297,12 +1296,10 @@ msgid "Il codice fiscale non è corretto"
 msgstr "The tax code is not correct"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Fiscal Code not valid"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Age not allowed for driving"
 
@@ -1327,7 +1324,6 @@ msgid "La partita IVA non è valida"
 msgstr "The VAT number is invalid"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "ZIP code incorrect"
 
@@ -1384,95 +1380,6 @@ msgstr "You are already associated with this company"
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
 msgstr "You are already associated with another company"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "Email address not accepted"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
-#, php-format
-msgid "Rfid: %s - Codice: %s"
-msgstr ""
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "Si"
-msgstr "Yes"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "No"
-msgstr "No"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Interna"
-msgstr "Inside"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Esterna"
-msgstr "Username"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
-msgid "Mappa"
-msgstr "Map"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
-msgid "(Black Box)"
-msgstr ""
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
-msgid "Si è verificato un errore durante il salvataggio della configurazione"
-msgstr "An application error has occurred. We apologize for the inconvenience"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
-msgid "Completata"
-msgstr "Completed trips"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
-msgid "Non Completata"
-msgstr "Not Completed"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
-msgid "Codice promo non valido."
-msgstr "Fiscal Code not valid"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
-msgid "Codice promo già associato a questo account."
-msgstr "You are already associated with this company"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
-msgid "Codice fiscale, genere "
-msgstr "Fiscal Code"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
-msgid "Codice fiscale, data di nascita "
-msgstr "Fiscal Code and VAT Number"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
-msgid "Codice fiscale, luogo di nascita incongruente."
-msgstr "Tax code, incongruous place of birth."
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
-msgid "Codice fiscale, sintassi incongruente."
-msgstr "Fiscal Code not valid"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
-msgid "Codice fiscale, sintassi errata."
-msgstr "Fiscal Code not valid"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
-msgid "PRENOTAZIONE DI SISTEMA"
-msgstr "SYSTEM BOOKING"
 
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
@@ -2931,6 +2838,20 @@ msgstr "Edit"
 #: module/Application/view/application/user-area/profile.phtml:46
 msgid "I tuoi dati personali"
 msgstr "My personal data"
+
+#: module/Application/view/application/user-area/index.phtml:63
+#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/profile.phtml:66
+#: module/Application/view/application/user-area/profile.phtml:257
+msgid "Signore"
+msgstr "Mr"
+
+#: module/Application/view/application/user-area/index.phtml:63
+#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/profile.phtml:66
+#: module/Application/view/application/user-area/profile.phtml:257
+msgid "Signora"
+msgstr "Mrs"
 
 #: module/Application/view/application/user-area/index.phtml:81
 #: module/Application/view/application/user-area/index.phtml:275
@@ -6152,6 +6073,57 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
+
+#~ msgid "Indirizzo email non accettato"
+#~ msgstr "Email address not accepted"
+
+#~ msgid "Si"
+#~ msgstr "Yes"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "Interna"
+#~ msgstr "Inside"
+
+#~ msgid "Esterna"
+#~ msgstr "Username"
+
+#~ msgid "Mappa"
+#~ msgstr "Map"
+
+#~ msgid "Si è verificato un errore durante il salvataggio della configurazione"
+#~ msgstr "An application error has occurred. We apologize for the inconvenience"
+
+#~ msgid "Completata"
+#~ msgstr "Completed trips"
+
+#~ msgid "Non Completata"
+#~ msgstr "Not Completed"
+
+#~ msgid "Codice promo non valido."
+#~ msgstr "Fiscal Code not valid"
+
+#~ msgid "Codice promo già associato a questo account."
+#~ msgstr "You are already associated with this company"
+
+#~ msgid "Codice fiscale, genere "
+#~ msgstr "Fiscal Code"
+
+#~ msgid "Codice fiscale, data di nascita "
+#~ msgstr "Fiscal Code and VAT Number"
+
+#~ msgid "Codice fiscale, luogo di nascita incongruente."
+#~ msgstr "Tax code, incongruous place of birth."
+
+#~ msgid "Codice fiscale, sintassi incongruente."
+#~ msgstr "Fiscal Code not valid"
+
+#~ msgid "Codice fiscale, sintassi errata."
+#~ msgstr "Fiscal Code not valid"
+
+#~ msgid "PRENOTAZIONE DI SISTEMA"
+#~ msgstr "SYSTEM BOOKING"
 
 #~ msgid "30 minuti a soli 10&euro;"
 #~ msgstr "30 minutes only 5&euro;"

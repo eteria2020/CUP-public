@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 12:22+0100\n"
-"PO-Revision-Date: 2019-12-16 12:23+0100\n"
+"POT-Creation-Date: 2019-12-18 16:37+0100\n"
+"PO-Revision-Date: 2019-12-18 16:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -1243,7 +1243,6 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Je potrebné mať vek"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Formát dátumu nie je správny"
 
@@ -1300,12 +1299,10 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Formát dátumu nie je správny"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Rodné číslo"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Vek nie je povolený na jazdu"
 
@@ -1331,7 +1328,6 @@ msgid "La partita IVA non è valida"
 msgstr "Platnosť licencie nemôže uplynúť"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Poštové smerovacie číslo"
 
@@ -1388,96 +1384,6 @@ msgstr "Už si priradený k tejto spoločnosti"
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
 msgstr "Už si priradený k inej spoločnosti"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "E-mailová adresa nebola prijatá"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
-#, php-format
-msgid "Rfid: %s - Codice: %s"
-msgstr ""
-
-# in slovacco non finisce con . perche non e una abbreviazione
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "Si"
-msgstr "Pán"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "No"
-msgstr "Názov"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Interna"
-msgstr "Interný"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Esterna"
-msgstr "Užívateľské meno"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
-msgid "Mappa"
-msgstr "Mapa"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
-msgid "(Black Box)"
-msgstr ""
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
-msgid "Si è verificato un errore durante il salvataggio della configurazione"
-msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
-msgid "Completata"
-msgstr "Dokončené jazdy"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
-msgid "Non Completata"
-msgstr "Aktivácia kompletná"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
-msgid "Codice promo non valido."
-msgstr "Rodné číslo"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
-msgid "Codice promo già associato a questo account."
-msgstr "Už si priradený k tejto spoločnosti"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
-msgid "Codice fiscale, genere "
-msgstr "Rodné číslo"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
-msgid "Codice fiscale, data di nascita "
-msgstr "Daňový kód a DIČ"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
-msgid "Codice fiscale, luogo di nascita incongruente."
-msgstr "Rodné číslo"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
-msgid "Codice fiscale, sintassi incongruente."
-msgstr "Rodné číslo"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
-msgid "Codice fiscale, sintassi errata."
-msgstr "Rodné číslo"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
-msgid "PRENOTAZIONE DI SISTEMA"
-msgstr ""
 
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
@@ -2926,6 +2832,20 @@ msgstr "Zmeniť"
 #: module/Application/view/application/user-area/profile.phtml:46
 msgid "I tuoi dati personali"
 msgstr "Tvoje osobné údaje"
+
+#: module/Application/view/application/user-area/index.phtml:63
+#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/profile.phtml:66
+#: module/Application/view/application/user-area/profile.phtml:257
+msgid "Signore"
+msgstr "Pán"
+
+#: module/Application/view/application/user-area/index.phtml:63
+#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/profile.phtml:66
+#: module/Application/view/application/user-area/profile.phtml:257
+msgid "Signora"
+msgstr "Pani"
 
 #: module/Application/view/application/user-area/index.phtml:81
 #: module/Application/view/application/user-area/index.phtml:275
@@ -6139,6 +6059,56 @@ msgstr "(počkajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
+
+#~ msgid "Indirizzo email non accettato"
+#~ msgstr "E-mailová adresa nebola prijatá"
+
+# in slovacco non finisce con . perche non e una abbreviazione
+#~ msgid "Si"
+#~ msgstr "Pán"
+
+#~ msgid "No"
+#~ msgstr "Názov"
+
+#~ msgid "Interna"
+#~ msgstr "Interný"
+
+#~ msgid "Esterna"
+#~ msgstr "Užívateľské meno"
+
+#~ msgid "Mappa"
+#~ msgstr "Mapa"
+
+#~ msgid ""
+#~ "Si è verificato un errore durante il salvataggio della configurazione"
+#~ msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
+
+#~ msgid "Completata"
+#~ msgstr "Dokončené jazdy"
+
+#~ msgid "Non Completata"
+#~ msgstr "Aktivácia kompletná"
+
+#~ msgid "Codice promo non valido."
+#~ msgstr "Rodné číslo"
+
+#~ msgid "Codice promo già associato a questo account."
+#~ msgstr "Už si priradený k tejto spoločnosti"
+
+#~ msgid "Codice fiscale, genere "
+#~ msgstr "Rodné číslo"
+
+#~ msgid "Codice fiscale, data di nascita "
+#~ msgstr "Daňový kód a DIČ"
+
+#~ msgid "Codice fiscale, luogo di nascita incongruente."
+#~ msgstr "Rodné číslo"
+
+#~ msgid "Codice fiscale, sintassi incongruente."
+#~ msgstr "Rodné číslo"
+
+#~ msgid "Codice fiscale, sintassi errata."
+#~ msgstr "Rodné číslo"
 
 #~ msgid "30 minuti a soli 10&euro;"
 #~ msgstr "30 minút len ​​za 5&euro;"

@@ -60,7 +60,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-1-4">
                                     <label><?= $this->translate("Titolo"); ?></label>
-                                    <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
+                                    <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? $this->translate('Signore') : $this->translate('Signora'); ?>" >
                                 </div>
                                 <div class="block-field bw-f w-3-4 last">
                                     <div class="block-field bw-f w-2-4">
@@ -241,7 +241,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
                                 <div class="block-field bw-f w-1-4">
                                     <label><?= $this->translate("Titolo"); ?></label>
-                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? 'Signore' : 'Signora'; ?>" >
+                                        <input type="text" name="" class="required disabled" value="<?= $this->customer->getGender() == 'male' ? $this->translate('Signore') : $this->translate('Signora'); ?>" >
                                 </div>
 
                                 <div class="block-field bw-f w-3-4 last">

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-16 12:20+0100\n"
-"PO-Revision-Date: 2019-12-16 12:22+0100\n"
+"POT-Creation-Date: 2019-12-18 16:33+0100\n"
+"PO-Revision-Date: 2019-12-18 16:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1248,7 +1248,6 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Je moet meerderjarig zijn"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Het identificatienummer is onjuist"
 
@@ -1305,12 +1304,10 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Het BSN is onjuist"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Ongeldig BSN"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Ongeldige leeftijd om te mogen rijden"
 
@@ -1340,7 +1337,6 @@ msgid "La partita IVA non è valida"
 msgstr "Het BTW-nummer is ongeldig"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Postcode is onjuist"
 
@@ -1397,95 +1393,6 @@ msgstr "Je bent al gerelateerd aan dit bedrijf"
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:101
 msgid "Sei già associato ad un'altra azienda"
 msgstr "Je bent al gerelateerd aan een ander bedrijf"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
-msgid "Indirizzo email non accettato"
-msgstr "E-mail adres niet geaccepteerd"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
-#, php-format
-msgid "Rfid: %s - Codice: %s"
-msgstr "RFID: %s-code: %s"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "Si"
-msgstr "Ja"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
-msgid "No"
-msgstr "Nee"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Interna"
-msgstr "Intern"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
-msgid "Esterna"
-msgstr "Extern"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
-msgid "Mappa"
-msgstr "Plattegrond"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
-msgid "(Black Box)"
-msgstr "(Black Box)"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
-msgid "Si è verificato un errore durante il salvataggio della configurazione"
-msgstr "Er is een fout opgetreden tijdens het opslaan van de configuratie"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
-msgid "Completata"
-msgstr "Voltooid"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
-msgid "Non Completata"
-msgstr "Niet voltooid"
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
-msgid "Codice promo non valido."
-msgstr "Ongeldige promotiecode."
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
-msgid "Codice promo già associato a questo account."
-msgstr "Promotiecode is al gerelateerd aan dit account."
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
-msgid "Codice fiscale, genere "
-msgstr "BSN, geslacht "
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
-msgid "Codice fiscale, data di nascita "
-msgstr "BSN, geboortedatum "
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
-msgid "Codice fiscale, luogo di nascita incongruente."
-msgstr "BSN, geboorteplaats tegenstrijdig."
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
-msgid "Codice fiscale, sintassi incongruente."
-msgstr "BSN, syntax tegenstrijdig."
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
-msgid "Codice fiscale, sintassi errata."
-msgstr "BSN, syntax onjuist."
-
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
-msgid "PRENOTAZIONE DI SISTEMA"
-msgstr "RESERVERINSSYSTEEM"
 
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
 #: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
@@ -2938,6 +2845,20 @@ msgstr "Wijzigen"
 #: module/Application/view/application/user-area/profile.phtml:46
 msgid "I tuoi dati personali"
 msgstr "Je persoonlijke gegevens"
+
+#: module/Application/view/application/user-area/index.phtml:63
+#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/profile.phtml:66
+#: module/Application/view/application/user-area/profile.phtml:257
+msgid "Signore"
+msgstr "Dhr."
+
+#: module/Application/view/application/user-area/index.phtml:63
+#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/profile.phtml:66
+#: module/Application/view/application/user-area/profile.phtml:257
+msgid "Signora"
+msgstr "Mevr."
 
 #: module/Application/view/application/user-area/index.phtml:81
 #: module/Application/view/application/user-area/index.phtml:275
@@ -6133,6 +6054,65 @@ msgstr "(Bijwonen ik bid)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
+
+#~ msgid "Indirizzo email non accettato"
+#~ msgstr "E-mail adres niet geaccepteerd"
+
+#, php-format
+#~ msgid "Rfid: %s - Codice: %s"
+#~ msgstr "RFID: %s-code: %s"
+
+#~ msgid "Si"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nee"
+
+#~ msgid "Interna"
+#~ msgstr "Intern"
+
+#~ msgid "Esterna"
+#~ msgstr "Extern"
+
+#~ msgid "Mappa"
+#~ msgstr "Plattegrond"
+
+#~ msgid "(Black Box)"
+#~ msgstr "(Black Box)"
+
+#~ msgid ""
+#~ "Si è verificato un errore durante il salvataggio della configurazione"
+#~ msgstr "Er is een fout opgetreden tijdens het opslaan van de configuratie"
+
+#~ msgid "Completata"
+#~ msgstr "Voltooid"
+
+#~ msgid "Non Completata"
+#~ msgstr "Niet voltooid"
+
+#~ msgid "Codice promo non valido."
+#~ msgstr "Ongeldige promotiecode."
+
+#~ msgid "Codice promo già associato a questo account."
+#~ msgstr "Promotiecode is al gerelateerd aan dit account."
+
+#~ msgid "Codice fiscale, genere "
+#~ msgstr "BSN, geslacht "
+
+#~ msgid "Codice fiscale, data di nascita "
+#~ msgstr "BSN, geboortedatum "
+
+#~ msgid "Codice fiscale, luogo di nascita incongruente."
+#~ msgstr "BSN, geboorteplaats tegenstrijdig."
+
+#~ msgid "Codice fiscale, sintassi incongruente."
+#~ msgstr "BSN, syntax tegenstrijdig."
+
+#~ msgid "Codice fiscale, sintassi errata."
+#~ msgstr "BSN, syntax onjuist."
+
+#~ msgid "PRENOTAZIONE DI SISTEMA"
+#~ msgstr "RESERVERINSSYSTEEM"
 
 #~ msgid "30 minuti a soli 10&euro;"
 #~ msgstr "30 minuten voor slechts 10 euro"
