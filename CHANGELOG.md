@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.24] - 2019-12-18
+
+### Changed
+
+- Remove the link "maggiori info" from dati-pagamento.phtml of server instance not Italian
+
 ## [1.0.23] - 2019-12-17
 
 ### Changed
