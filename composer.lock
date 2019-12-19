@@ -3140,7 +3140,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/gpwebpay.git",
-                "reference": "9f1c2b548a3bdd0754a0576130a7e3d934a2f0b0"
+                "reference": "6c00ba707e13cb4aeb16216222533e1296f7d34f"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3155,7 +3155,7 @@
                 }
             },
             "description": "GPWebpay module for Sharengo",
-            "time": "2019-09-24 06:05:17"
+            "time": "2019-12-19 09:46:28"
         },
         {
             "name": "sharengo-web/mollie",

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+
+## [1.0.26] - 2019-12-19
+
+### Changed
+
+- Update module Gpwebpay
+
 ## [1.0.25] - 2019-12-18
 
 ### Changed
