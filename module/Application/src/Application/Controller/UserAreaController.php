@@ -361,6 +361,7 @@ class UserAreaController extends AbstractActionController {
         }
         // if not, continue with index action
         $this->setFormsData($this->customer);
+        $hasCartasiContract = $this->cartasiContractsService->hasCartasiContract($this->customer);
         $editForm = true;
 
         if ($this->getRequest()->isPost()) {
@@ -406,6 +407,7 @@ class UserAreaController extends AbstractActionController {
             'typeForm' => $this->typeForm,
             'editLimiter' => $this->editLimiter(),
             'serverInstance' => $serverInstance,
+            'hasCartasiContract' => $hasCartasiContract
         ]);
 
     }

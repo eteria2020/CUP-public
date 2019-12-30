@@ -1,3 +1,8 @@
+<?php
+
+use Zend\Form\Element\Text;
+
+?>
 <script>
     var server_instance = "<?= !is_null($this->serverInstance) ? substr($this->serverInstance,0,2) : 'it' ?>";
 </script>
@@ -462,14 +467,27 @@ $this->headLink()
                                         ?>
                                     </p>
                                 </div>
-
                                 <div class="block-field bw-f w-1-4">
                                     <p><label><?= $this->translate("Citt&agrave; preferita"); ?></label>
                                         <?php
-                                        $fleet = $this->profileForm->get('customer')->get('fleet');
-                                        $fleet->setValue($this->customer->getFleet()->getId());
-                                        echo $this->formElement($fleet->setAttribute('class', 'required'));
-                                        echo $this->formElementErrors($fleet, ['class' => 'error-sign-up']);
+
+                                        if ($this->hasCartasiContract) {  // if customer has a contract vavid, we can't chancge the fleet, because are  linked with patyner anc the payment
+                                            $fleet = new Zend\Form\Element\Text('fleet');
+                                            $fleet->setValue($this->customer->getFleet()->getName());
+                                            echo $this->formElement($fleet->setAttribute('class', 'required disabled'));
+
+                                            $fleetHidden = new Zend\Form\Element\Hidden('customer[fleet]');
+                                            $fleetHidden->setValue($this->customer->getFleet()->getId());
+                                            echo $this->formElement($fleetHidden);
+
+                                        } else { // no contract valid, we can chenge the fleet
+                                            $fleet = $this->profileForm->get('customer')->get('fleet');
+                                            $fleet->setValue($this->customer->getFleet()->getId());
+                                            echo $this->formElement($fleet->setAttribute('class', 'required'));
+                                            echo $this->formElementErrors($fleet, ['class' => 'error-sign-up']);
+                                        }
+
+
                                         ?>
                                     </p>
                                 </div>
