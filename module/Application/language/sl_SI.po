@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-18 10:58+0100\n"
-"PO-Revision-Date: 2019-12-18 10:59+0100\n"
+"POT-Creation-Date: 2020-01-07 10:20+0100\n"
+"PO-Revision-Date: 2020-01-07 10:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -1244,6 +1244,7 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Morate biti polnoletni"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Identifikacijska številka ni pravilna"
 
@@ -1300,10 +1301,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Davčna številka je napačna"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Neveljavna davčna številka"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Starost ni primerna za vožnjo"
 
@@ -1329,6 +1332,7 @@ msgid "La partita IVA non è valida"
 msgstr "Davčna številka ni veljavna"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Nepravilna poštna številka"
 
@@ -1386,14 +1390,128 @@ msgstr "S tem podjetjem ste že povezani"
 msgid "Sei già associato ad un'altra azienda"
 msgstr "Ste že povezani z drugim podjetjem"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#, fuzzy
+#| msgid "Sig."
+msgid "Si"
+msgstr "g."
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#, fuzzy
+#| msgid "Nome"
+msgid "No"
+msgstr "Ime"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+#, fuzzy
+#| msgid "Username"
+msgid "Esterna"
+msgstr "Uporabniško ime"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+#, fuzzy
+#| msgid ""
+#| "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr "Prišlo je do napake v aplikaciji. Opravičujemo se za nevšečnosti"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+#, fuzzy
+#| msgid "Corse completate"
+msgid "Completata"
+msgstr "Zgodovina Najemov"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+#, fuzzy
+#| msgid "Attivazione completata"
+msgid "Non Completata"
+msgstr "Aktivacija je končana"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice promo non valido."
+msgstr "Neveljavna davčna številka"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
+#, fuzzy
+#| msgid "Sei già associato a questa azienda"
+msgid "Codice promo già associato a questo account."
+msgstr "S tem podjetjem ste že povezani"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
+#, fuzzy
+#| msgid "Codice fiscale"
+msgid "Codice fiscale, genere "
+msgstr "Davčna številka"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
+#, fuzzy
+#| msgid "Codice Fiscale e Partita IVA"
+msgid "Codice fiscale, data di nascita "
+msgstr "Davčna številka in davčna številka"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice fiscale, sintassi incongruente."
+msgstr "Neveljavna davčna številka"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
+#, fuzzy
+#| msgid "Codice fiscale non valido"
+msgid "Codice fiscale, sintassi errata."
+msgstr "Neveljavna davčna številka"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
+msgstr ""
+
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:206
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:256
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Neveljavna transakcija"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:231
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:273
 #, fuzzy
 #| msgid "Transazione non valida"
 msgid "Transazione non valida (id non trovato)"
@@ -2698,8 +2816,8 @@ msgstr ""
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
-"5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;"
-"min invece di 0,28&euro;min) e provi subito la tua Sharengo."
+"5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;/"
+"min invece di 0,28&euro;/min) e provi subito la tua Sharengo."
 msgstr ""
 "dobrodošli v Sharengo! Če želite aktivirati svoj račun, morate s "
 "predplačniško kreditno kartico kupiti paket dobrodošlice: plačate 5 evrov in "
@@ -3120,7 +3238,7 @@ msgstr "OPRAVIČUJEMO SE ZA NEVŠEČNOSTI, STRAN BO V KRATKEM SPET DOSTOPNA."
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
-"10&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,33&euro;"
+"10&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,33&euro;/"
 "min) e provi subito la tua Sharengo."
 msgstr ""
 "dobrodošli v Sharengo! Za aktiviranje računa je potrebno, da s predplačniško "
@@ -3511,8 +3629,8 @@ msgstr "Zaenkrat še niste opravili nobene vožnje"
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
-"5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;"
-"min invece di 0,21&euro;min) e provi subito la tua Sharengo."
+"5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;/"
+"min invece di 0,21&euro;/min) e provi subito la tua Sharengo."
 msgstr ""
 "dobrodošli v Share'ngo! Če želite aktivirati svoj račun, morate s kreditno "
 "ali predplačniško kartico kupiti paket dobrodošlice: s 5 &euro; evri imate "
@@ -4046,10 +4164,8 @@ msgstr ""
 "pogoje in se zaveda, da sprejema pogodbo."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-#: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "30 minuti a soli 5&euro;"
-msgstr "30 minut za samo 5&euro;"
+msgid "30 minuti a soli 10&euro;"
+msgstr "30 minut za samo 10&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
 #: module/Application/view/application/user/signup-si2.phtml:102
@@ -4117,6 +4233,11 @@ msgstr "Brezplačna registracija!"
 #: module/Application/view/application/user/signup-si1.phtml:83
 msgid "Luogo preferito"
 msgstr "Priljubljeno mesto"
+
+#: module/Application/view/application/user/signup-si2.phtml:35
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "30 minuti a soli 5&euro;"
+msgstr "30 minut za samo 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
@@ -6062,9 +6183,6 @@ msgstr "(prosim počakajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Preverite transakcijo, ki poteka."
-
-#~ msgid "30 minuti a soli 10&euro;"
-#~ msgstr "30 minut za samo 10 €;"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "

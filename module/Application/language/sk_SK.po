@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-12-18 16:37+0100\n"
-"PO-Revision-Date: 2019-12-18 16:38+0100\n"
+"POT-Creation-Date: 2020-01-07 10:19+0100\n"
+"PO-Revision-Date: 2020-01-07 10:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -1243,6 +1243,7 @@ msgid "E' necessario essere maggiorenni"
 msgstr "Je potrebné mať vek"
 
 #: module/Application/src/Application/Form/Validator/IdNumber.php:26
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCodeSi.php:31
 msgid "Il numero identificativo non è corretto"
 msgstr "Formát dátumu nie je správny"
 
@@ -1299,10 +1300,12 @@ msgid "Il codice fiscale non è corretto"
 msgstr "Formát dátumu nie je správny"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:21
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:21
 msgid "Codice fiscale non valido"
 msgstr "Rodné číslo"
 
 #: module/Application/src/Application/Form/Validator/TaxCodeSignup.php:22
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/TaxCode.php:22
 msgid "Età non consentita per la guida"
 msgstr "Vek nie je povolený na jazdu"
 
@@ -1328,6 +1331,7 @@ msgid "La partita IVA non è valida"
 msgstr "Platnosť licencie nemôže uplynúť"
 
 #: module/Application/src/Application/Form/Validator/ZipCode.php:28
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/ZipCode.php:18
 msgid "Codice Avviamento Postale non corretto"
 msgstr "Poštové smerovacie číslo"
 
@@ -1385,14 +1389,104 @@ msgstr "Už si priradený k tejto spoločnosti"
 msgid "Sei già associato ad un'altra azienda"
 msgstr "Už si priradený k inej spoločnosti"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
+msgid "Indirizzo email non accettato"
+msgstr "E-mailová adresa nebola prijatá"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
+#, php-format
+msgid "Rfid: %s - Codice: %s"
+msgstr ""
+
+# in slovacco non finisce con . perche non e una abbreviazione
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "Si"
+msgstr "Pán"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+msgid "No"
+msgstr "Názov"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Interna"
+msgstr "Interný"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:204
+msgid "Esterna"
+msgstr "Užívateľské meno"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:544
+msgid "Mappa"
+msgstr "Mapa"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CarsService.php:556
+msgid "(Black Box)"
+msgstr ""
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ConfigurationsService.php:97
+msgid "Si è verificato un errore durante il salvataggio della configurazione"
+msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+msgid "Completata"
+msgstr "Dokončené jazdy"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:349
+msgid "Non Completata"
+msgstr "Aktivácia kompletná"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:570
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:596
+msgid "Codice promo non valido."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
+msgid "Codice promo già associato a questo account."
+msgstr "Už si priradený k tejto spoločnosti"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
+msgid "Codice fiscale, genere "
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
+msgid "Codice fiscale, data di nascita "
+msgstr "Daňový kód a DIČ"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
+msgid "Codice fiscale, luogo di nascita incongruente."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
+msgid "Codice fiscale, sintassi incongruente."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
+msgid "Codice fiscale, sintassi errata."
+msgstr "Rodné číslo"
+
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
+msgid "PRENOTAZIONE DI SISTEMA"
+msgstr ""
+
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:206
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:256
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Združenie so spoločnosťou"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:231
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:273
 msgid "Transazione non valida (id non trovato)"
 msgstr "Združenie so spoločnosťou"
 
@@ -2701,8 +2795,8 @@ msgstr ""
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
-"5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;"
-"min invece di 0,28&euro;min) e provi subito la tua Sharengo."
+"5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata (0,24&euro;/"
+"min invece di 0,28&euro;/min) e provi subito la tua Sharengo."
 msgstr ""
 "Vitajte na stránkach Sharengo! Ak chcete aktivovať svoj účet, je potrebné, "
 "aby ste si predplatenou kreditnou kartou zakúpili uvítací balíček: s 5 a "
@@ -3125,7 +3219,7 @@ msgstr "OSPRAVEDLŇUJEME SA ZA DOČASNÝ VÝPADOK, STRÁNKA BUDE ONEDLHO FUNKČN
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
-"10&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,33&euro;"
+"10&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,33&euro;/"
 "min) e provi subito la tua Sharengo."
 msgstr ""
 "Vitajte na stránkach Sharengo! Ak chcete aktivovať svoj účet, je potrebné, "
@@ -3506,8 +3600,8 @@ msgstr "Zatiaľ neboli vykonané žiadne jazdy"
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
 "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
-"5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;"
-"min invece di 0,21&euro;min) e provi subito la tua Sharengo."
+"5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata (0,17&euro;/"
+"min invece di 0,21&euro;/min) e provi subito la tua Sharengo."
 msgstr ""
 "vitaj v Sharengo! Ak si chceš aktivovať svoj účet, je potrebné, aby si si "
 "zakúpil s platobnou kartou uvítací balíček: za 5 € máš prvých 30 minút jazdy "
@@ -4042,10 +4136,8 @@ msgstr ""
 "dochádza k uzavretiu zmluvy."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
-#: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "30 minuti a soli 5&euro;"
-msgstr "30 minút len ​​za 5&euro;"
+msgid "30 minuti a soli 10&euro;"
+msgstr "30 minút len ​​za 10&euro;"
 
 #: module/Application/view/application/user/signup-nl2.phtml:102
 #: module/Application/view/application/user/signup-si2.phtml:102
@@ -4119,6 +4211,11 @@ msgstr "Bezplatná registrácia!"
 #: module/Application/view/application/user/signup-si1.phtml:83
 msgid "Luogo preferito"
 msgstr "Obľúbené miesto"
+
+#: module/Application/view/application/user/signup-si2.phtml:35
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "30 minuti a soli 5&euro;"
+msgstr "30 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
@@ -6060,58 +6157,22 @@ msgstr "(počkajte)"
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
 
-#~ msgid "Indirizzo email non accettato"
-#~ msgstr "E-mailová adresa nebola prijatá"
-
-# in slovacco non finisce con . perche non e una abbreviazione
-#~ msgid "Si"
-#~ msgstr "Pán"
-
-#~ msgid "No"
-#~ msgstr "Názov"
-
-#~ msgid "Interna"
-#~ msgstr "Interný"
-
-#~ msgid "Esterna"
-#~ msgstr "Užívateľské meno"
-
-#~ msgid "Mappa"
-#~ msgstr "Mapa"
-
+#, fuzzy
+#~| msgid ""
+#~| "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
+#~| "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: "
+#~| "con 5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata "
+#~| "(0,17&euro;min invece di 0,21&euro;min) e provi subito la tua Sharengo."
 #~ msgid ""
-#~ "Si è verificato un errore durante il salvataggio della configurazione"
-#~ msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
-
-#~ msgid "Completata"
-#~ msgstr "Dokončené jazdy"
-
-#~ msgid "Non Completata"
-#~ msgstr "Aktivácia kompletná"
-
-#~ msgid "Codice promo non valido."
-#~ msgstr "Rodné číslo"
-
-#~ msgid "Codice promo già associato a questo account."
-#~ msgstr "Už si priradený k tejto spoločnosti"
-
-#~ msgid "Codice fiscale, genere "
-#~ msgstr "Rodné číslo"
-
-#~ msgid "Codice fiscale, data di nascita "
-#~ msgstr "Daňový kód a DIČ"
-
-#~ msgid "Codice fiscale, luogo di nascita incongruente."
-#~ msgstr "Rodné číslo"
-
-#~ msgid "Codice fiscale, sintassi incongruente."
-#~ msgstr "Rodné číslo"
-
-#~ msgid "Codice fiscale, sintassi errata."
-#~ msgstr "Rodné číslo"
-
-#~ msgid "30 minuti a soli 10&euro;"
-#~ msgstr "30 minút len ​​za 5&euro;"
+#~ "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
+#~ "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: "
+#~ "con 5&euro; hai i primi 30 minuti di corsa ad una tariffa scontata "
+#~ "(0,17&euro;min invece di 0,21&euro;/min) e provi subito la tua Sharengo."
+#~ msgstr ""
+#~ "vitaj v Sharengo! Ak si chceš aktivovať svoj účet, je potrebné, aby si si "
+#~ "zakúpil s platobnou kartou uvítací balíček: za 5 € máš prvých 30 minút "
+#~ "jazdy so zľavnenou sadzbou (0,17 €, min namiesto 0,21 € / min) a vyskúšaj "
+#~ "hneď svoje Sharengo."
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "
