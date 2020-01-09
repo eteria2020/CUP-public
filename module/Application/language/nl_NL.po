@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-07 10:24+0100\n"
-"PO-Revision-Date: 2020-01-07 10:25+0100\n"
+"POT-Creation-Date: 2020-01-09 12:13+0100\n"
+"PO-Revision-Date: 2020-01-09 12:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -160,6 +160,19 @@ msgstr ""
 
 #: module/Application/src/Application/Controller/UserAreaController.php:870
 msgid ""
+"Sei disabilitato perchè il nostro dipartimento amministrativo sta "
+"verificando la validità dei tuoi dati personali e della patente di guida. "
+"Dopo l'approvazione, il tuo account verrà attivato automaticamente e "
+"riceverai una e-mail a riguardo. Ti chiediamo gentilmente di attendere, non "
+"devi fare nient'altro."
+msgstr ""
+"U bent uitgeschakeld omdat onze administratieve afdeling de geldigheid van "
+"uw persoonlijke gegevens en rijbewijs verifieert. Na goedkeuring wordt uw "
+"account automatisch geactiveerd en ontvangt u hierover een e-mail. We vragen "
+"u vriendelijk om te wachten, u hoeft niets anders te doen."
+
+#: module/Application/src/Application/Controller/UserAreaController.php:873
+msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
 msgstr ""
@@ -167,7 +180,7 @@ msgstr ""
 "controleer en wijzig de ingevoerde gegevens in onderstaand formulier en/of "
 "in het gedeelte 'Rijbewijs'."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:875
+#: module/Application/src/Application/Controller/UserAreaController.php:881
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Je bent gedeactiveerd omdat je rijbewijs is verlopen; voer de nieuwe "

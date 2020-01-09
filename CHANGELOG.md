@@ -7,11 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+
+## [1.0.28] - 2020-01-09
+
+### Changed
+
+- Modify the warning message in user area, for customers driver license invalid or checking process 
+
+## [1.0.27] - 2020-01-07
+
+### Changed
+
+- Change the subscription message's amount from 5 € to 10 € for Holland instance 
+- Fix some translation in user area
+
 ## [1.0.26] - 2020-01-03
 
 ### Changed
 
-- added some images to send mails 
+- Added some images to send mails 
 
 ## [1.0.26] - 2019-12-19
 
