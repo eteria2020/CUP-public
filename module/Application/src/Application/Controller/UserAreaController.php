@@ -867,7 +867,13 @@ class UserAreaController extends AbstractActionController {
                         return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
                         break;
                     case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
-                        $this->flashMessenger()->addErrorMessage($this->translator->translate("Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."));
+                        $driverLicenseProblem = $this->translator->translate("Sei disabilitato perchè il nostro dipartimento amministrativo sta verificando la validità dei tuoi dati personali e della patente di guida. Dopo l'approvazione, il tuo account verrà attivato automaticamente e riceverai una e-mail a riguardo. Ti chiediamo gentilmente di attendere, non devi fare nient'altro.");
+
+                        if ($this->serverInstance["id"]=="" && !$customer->hasForeignDriverLicense()) { // if Italian server instance and not foreing driver license
+                            $driverLicenseProblem = $this->translator->translate("Sei disabilitato perchè hai inserito una patente non valida, controlla e modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'.");
+                        }
+
+                        $this->flashMessenger()->addErrorMessage($driverLicenseProblem);
                         $returnRedirect = false;
                         //return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
                         break;

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-07 10:20+0100\n"
-"PO-Revision-Date: 2020-01-07 10:20+0100\n"
+"POT-Creation-Date: 2020-01-09 12:15+0100\n"
+"PO-Revision-Date: 2020-01-09 12:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -159,13 +159,26 @@ msgstr ""
 
 #: module/Application/src/Application/Controller/UserAreaController.php:870
 msgid ""
+"Sei disabilitato perchè il nostro dipartimento amministrativo sta "
+"verificando la validità dei tuoi dati personali e della patente di guida. "
+"Dopo l'approvazione, il tuo account verrà attivato automaticamente e "
+"riceverai una e-mail a riguardo. Ti chiediamo gentilmente di attendere, non "
+"devi fare nient'altro."
+msgstr ""
+"Onemogočeni ste, ker naš upravni oddelek preverja veljavnost vaših osebnih "
+"podatkov in vozniškega dovoljenja. Po odobritvi se bo vaš račun samodejno "
+"aktiviral in prejeli boste e-poštno sporočilo o njem. Vljudno vas prosimo, "
+"da počakate, ni vam treba storiti ničesar drugega."
+
+#: module/Application/src/Application/Controller/UserAreaController.php:873
+msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
 msgstr ""
 "Onemogočeni ste, ker ste vnesli neveljavno licenco, preverite in spremenite "
 "vnesene podatke v spodnjem obrazcu in / ali v območju „Licenca“."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:875
+#: module/Application/src/Application/Controller/UserAreaController.php:881
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Zaradi pretečenega vozniškega dovoljenja ste onemogočeni, vstavite nove "

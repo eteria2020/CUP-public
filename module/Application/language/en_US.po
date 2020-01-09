@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-07 10:21+0100\n"
-"PO-Revision-Date: 2020-01-07 10:23+0100\n"
+"POT-Creation-Date: 2020-01-09 12:10+0100\n"
+"PO-Revision-Date: 2020-01-09 12:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -160,13 +160,26 @@ msgstr ""
 
 #: module/Application/src/Application/Controller/UserAreaController.php:870
 msgid ""
+"Sei disabilitato perchè il nostro dipartimento amministrativo sta verificando "
+"la validità dei tuoi dati personali e della patente di guida. Dopo "
+"l'approvazione, il tuo account verrà attivato automaticamente e riceverai una "
+"e-mail a riguardo. Ti chiediamo gentilmente di attendere, non devi fare "
+"nient'altro."
+msgstr ""
+"You are disabled because our administrative department is verifying the "
+"validity of your personal data and driving license. After approval, your "
+"account will be activated automatically and you will receive an email about "
+"it. We kindly ask you to wait, you don't have to do anything else."
+
+#: module/Application/src/Application/Controller/UserAreaController.php:873
+msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
 msgstr ""
 "You are disabled because you have entered an invalid license, check and modify "
 "the data entered in the form below and / or in the 'License' area."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:875
+#: module/Application/src/Application/Controller/UserAreaController.php:881
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
