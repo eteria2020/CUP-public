@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.29] - 2020-01-10
+
+### Changed
+
+- Changed clean_commands.sh, for customer_logs table, shorted the retention period from 10 months to 8 month
+- Changed checkAlarmsAction, put the flush() inside the loop
 
 ## [1.0.28] - 2020-01-09
 
