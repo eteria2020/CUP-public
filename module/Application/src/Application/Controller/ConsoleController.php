@@ -292,21 +292,24 @@ class ConsoleController extends AbstractActionController {
                 $isAlarm = $car->getNogps() == true;
             }
 
-            $strLog = sprintf("%s;INF;checkAlarmsAction;%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;unplug=%s;status=%s\n",
-                date('ymd-His'),
-                $car->getPlate(),
-                $car->getBattery(),
-                $softwareVerNum,
-                $firmwareVerNum,
-                (($car->getLastContact()) ? $car->getLastContact()->format('Y-m-d H:i:s') : ''),
-                (($car->getCharging()) ? 'YES' : 'NO'),
-                (($this->carsService->isCarOutOfBounds($car)) ? 'YES':'NO'),
-                (($isAlarm) ? 'YES' : 'NO'),
-                (($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()) ? 'YES' : 'NO'),
-                $status
+            if ($this->verbose) {
+                $strLog = sprintf("%s;INF;checkAlarmsAction;%s;bat=%s;ver s/f=%s/%s;last=%s;charging=%s;out bounds=%s;alarm=%s;unplug=%s;status=%s\n",
+                    date('ymd-His'),
+                    $car->getPlate(),
+                    $car->getBattery(),
+                    $softwareVerNum,
+                    $firmwareVerNum,
+                    (($car->getLastContact()) ? $car->getLastContact()->format('Y-m-d H:i:s') : ''),
+                    (($car->getCharging()) ? 'YES' : 'NO'),
+                    (($this->carsService->isCarOutOfBounds($car)) ? 'YES':'NO'),
+                    (($isAlarm) ? 'YES' : 'NO'),
+                    (($car->getBattery() < $this->batteryUnplug || !$car->getCarsBonusUnplugEnable()) ? 'YES' : 'NO'),
+                    $status
                 );
 
-            $this->writeToConsole($strLog);
+                $this->writeToConsole($strLog);
+            }
+
             // the car should have a maintainer's reservation
             if ($isAlarm) {
                 // create reservation if !exists
@@ -318,8 +321,9 @@ class ConsoleController extends AbstractActionController {
                     $flagPersist = true;
                     if ($this->verbose) {
                         array_push($carsToMaintenance, $car->getPlate());
+                        $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";status changed to " . self::NON_OPERATIVE_STATUS . "\n");
                     }
-                    $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";status changed to " . self::NON_OPERATIVE_STATUS . "\n");
+
                 }
                 // the car should be operative
             } elseif ($status == self::NON_OPERATIVE_STATUS) {
@@ -330,33 +334,31 @@ class ConsoleController extends AbstractActionController {
                 $flagPersist = true;
                 if ($this->verbose) {
                     array_push($carsToOperative, $car->getPlate());
+                    $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";status changed to " . self::OPERATIVE_STATUS . "\n");
                 }
-                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";status changed to " . self::OPERATIVE_STATUS . "\n");
             }
 
-            if ($flagPersist) {
+            if (!$dryRun && $flagPersist) {
                 $this->entityManager->persist($car);
-                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";persist\n");
-            }
-
-            if (!$dryRun) {
                 $this->entityManager->flush();
-                $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";flush\n");
+                if ($this->verbose) {
+                    $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;".$car->getPlate().";persist\n");
+                }
             }
-    }
+        }
 
         if ($this->verbose) {
             $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Cars set to " . self::OPERATIVE_STATUS . ";" . count($carsToOperative) . ";");
             foreach ($carsToOperative as $key => $value) {
                 $this->writeToConsole($value . ";");
             }
-            $this->writeToConsole($value . "\n");
+            $this->writeToConsole("\n");
 
             $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;Cars set to " . self::NON_OPERATIVE_STATUS . ";" . count($carsToMaintenance) . ";");
             foreach ($carsToMaintenance as $key => $value) {
                 $this->writeToConsole($value . ";");
             }
-            $this->writeToConsole($value . "\n");
+            $this->writeToConsole("\n");
         }
 
         $this->writeToConsole(date('ymd-His').";INF;checkAlarmsAction;end;\n");

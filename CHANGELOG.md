@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.30] - 2020-01-13
+
+### Changed 
+
+- Changed checkAlarmsAction, move flush inside persist branch
+
 ## [1.0.29] - 2020-01-10
 
 ### Changed
