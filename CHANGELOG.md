@@ -7,84 +7,90 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-## [1.0.30] - 2020-01-13
+## [1.0.34] - 2020-01-13
+
+### Changed 
+
+- Update contract for NL (see [ticket 617](https://sharengo.freshdesk.com/a/tickets/617))
+
+## [1.0.33] - 2020-01-13
 
 ### Changed 
 
 - Changed checkAlarmsAction, move flush inside persist branch
 
-## [1.0.29] - 2020-01-10
+## [1.0.32] - 2020-01-10
 
 ### Changed
 
 - Changed clean_commands.sh, for customer_logs table, shorted the retention period from 10 months to 8 month
 - Changed checkAlarmsAction, put the flush() inside the loop
 
-## [1.0.28] - 2020-01-09
+## [1.0.31] - 2020-01-09
 
 ### Changed
 
 - Modify the warning message in user area, for customers driver license invalid or checking process 
 
-## [1.0.27] - 2020-01-07
+## [1.0.30] - 2020-01-07
 
 ### Changed
 
 - Change the subscription message's amount from 5 € to 10 € for Holland instance 
 - Fix some translation in user area
 
-## [1.0.26] - 2020-01-03
+## [1.0.29] - 2020-01-03
 
 ### Changed
 
 - Added some images to send mails 
 
-## [1.0.26] - 2019-12-19
+## [1.0.28] - 2019-12-19
 
 ### Changed
 
 - Update module Gpwebpay
 
-## [1.0.25] - 2019-12-18
+## [1.0.27] - 2019-12-18
 
 ### Changed
 
 - Various labels translated into User Area
 
-## [1.0.24] - 2019-12-18
+## [1.0.26] - 2019-12-18
 
 ### Changed
 
 - Remove the link "maggiori info" from dati-pagamento.phtml of server instance not Italian
 
-## [1.0.23] - 2019-12-17
+## [1.0.25] - 2019-12-17
 
 ### Changed
 
 - Disabled re-new of discounts and enabled the disable old discounts
 
-## [1.0.22] - 2019-12-16
+## [1.0.24] - 2019-12-16
 
 ### Changed
 
 - Fix translation in signup-nl2.phtml
 - Update all file *.po
 
-## [1.0.21] - 2019-12-16
+## [1.0.23] - 2019-12-16
 
 ### Changed
 
 - Add a translation inside RegistrationService.notifySharengoByMail()
 - Update all file *.po
 
-## [1.0.20] - 2019-12-13
+## [1.0.22] - 2019-12-13
 
 ### Changed
 
 - In NewUserFieldset.php, remove the fleet of Modena from fleets array
 - In new-signup.phtml and login.phtm, add 'autocomplete' attribute for email and password field
 
-## [1.0.19] - 2019-12-13
+## [1.0.21] - 2019-12-13
 
 ### Added
 
@@ -95,7 +101,7 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 
 Note: remember to update file config/autoload/goalioforgotpassword.local.php
 
-## [1.0.18] - 2019-12-12
+## [1.0.20] - 2019-12-12
 
 ### Changed
 
@@ -104,14 +110,14 @@ Note: remember to update file config/autoload/goalioforgotpassword.local.php
 - Fix bug inside subscription for country
 - Update translations
 
-## [1.0.17] - 2019-12-10
+## [1.0.19] - 2019-12-10
 
 ### Changed
 
 - Fix some problem on the page Trip inside  user area
 
 
-## [1.0.16] - 2019-12-10
+## [1.0.18] - 2019-12-10
 
 ### Added
 
@@ -121,20 +127,20 @@ Note: remember to update file config/autoload/goalioforgotpassword.local.php
 
 - Module SharengoCore for new payment gateway
 
-## [1.0.15] - 2019-12-09
+## [1.0.17] - 2019-12-09
 
 ### Changed
 
 - Fix the translation of strings in the footer (ticket 397)
 
-## [1.0.14] - 2019-12-04
+## [1.0.16] - 2019-12-04
 
 ### Changed
 
 - Fix Signup (ticket 377)
 - Remove files about Intercom and criteo 
 
-## [1.0.13] - 2019-12-03
+## [1.0.15] - 2019-12-03
 
 ### Changed
 
