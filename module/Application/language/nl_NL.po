@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-09 12:13+0100\n"
-"PO-Revision-Date: 2020-01-09 12:14+0100\n"
+"POT-Creation-Date: 2020-01-15 16:38+0100\n"
+"PO-Revision-Date: 2020-01-15 16:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3665,6 +3665,7 @@ msgid "Auto disponibili vicino a te giorno e notte"
 msgstr "Auto's overal bij jou in de buurt"
 
 #: module/Application/view/application/user/new-signup.phtml:20
+#: module/Application/view/application/user/signup-nl1.phtml:25
 msgid "Pacchetti fino a 22 centesimi al minuto"
 msgstr "Pakketten tot 22 cent per minuut"
 
@@ -4097,11 +4098,6 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Ga naar je persoonlijke omgeving"
 
-#: module/Application/view/application/user/signup-nl1.phtml:25
-#: module/Application/view/application/user/signup-sk1.phtml:33
-msgid "Pacchetti fino a 16 centesimi al minuto"
-msgstr "Pakketten tot 16 cent per minuut"
-
 #: module/Application/view/application/user/signup-nl1.phtml:115
 #: module/Application/view/application/user/signup-si1.phtml:113
 #: module/Application/view/application/user/signup-sk1.phtml:123
@@ -4206,6 +4202,10 @@ msgstr "30 minuten voor slechts 5&euro;"
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Doorgaan met registreren"
+
+#: module/Application/view/application/user/signup-sk1.phtml:33
+msgid "Pacchetti fino a 16 centesimi al minuto"
+msgstr "Pakketten tot 16 cent per minuut"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""

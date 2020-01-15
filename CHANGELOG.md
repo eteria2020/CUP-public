@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+
+## [1.0.35] - 2020-01-15
+
+### Changed 
+
+- Update signup-nl1.phtml, cost from 16 to 22 cent par minute
+- Update all translations (file *.po)
+- Removed discounterSite from local.php
+
 ## [1.0.34] - 2020-01-13
 
 ### Changed 
