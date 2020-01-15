@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-09 12:15+0100\n"
-"PO-Revision-Date: 2020-01-09 12:16+0100\n"
+"POT-Creation-Date: 2020-01-15 16:43+0100\n"
+"PO-Revision-Date: 2020-01-15 16:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -3717,6 +3717,7 @@ msgid "Auto disponibili vicino a te giorno e notte"
 msgstr "Avtomobili, ki so vam na voljo podnevi in ponoči"
 
 #: module/Application/view/application/user/new-signup.phtml:20
+#: module/Application/view/application/user/signup-nl1.phtml:25
 msgid "Pacchetti fino a 22 centesimi al minuto"
 msgstr "Paketi do 22 centov na minuto"
 
@@ -4152,11 +4153,6 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Pojdite na uporabniški profil"
 
-#: module/Application/view/application/user/signup-nl1.phtml:25
-#: module/Application/view/application/user/signup-sk1.phtml:33
-msgid "Pacchetti fino a 16 centesimi al minuto"
-msgstr "Paketi do 16 centov na minuto"
-
 #: module/Application/view/application/user/signup-nl1.phtml:115
 #: module/Application/view/application/user/signup-si1.phtml:113
 #: module/Application/view/application/user/signup-sk1.phtml:123
@@ -4255,6 +4251,10 @@ msgstr "30 minut za samo 5&euro;"
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Nadaljuj z registracijo"
+
+#: module/Application/view/application/user/signup-sk1.phtml:33
+msgid "Pacchetti fino a 16 centesimi al minuto"
+msgstr "Paketi do 16 centov na minuto"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""

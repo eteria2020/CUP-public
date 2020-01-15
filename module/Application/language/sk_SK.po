@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-09 12:14+0100\n"
-"PO-Revision-Date: 2020-01-09 12:15+0100\n"
+"POT-Creation-Date: 2020-01-15 16:40+0100\n"
+"PO-Revision-Date: 2020-01-15 16:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -3687,6 +3687,7 @@ msgid "Auto disponibili vicino a te giorno e notte"
 msgstr "Autá k dispozícii blízko teba vo dne i v noci"
 
 #: module/Application/view/application/user/new-signup.phtml:20
+#: module/Application/view/application/user/signup-nl1.phtml:25
 msgid "Pacchetti fino a 22 centesimi al minuto"
 msgstr "Balíčky od 22 centov za minútu"
 
@@ -4123,11 +4124,6 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Choď do vyhradenej zóny"
 
-#: module/Application/view/application/user/signup-nl1.phtml:25
-#: module/Application/view/application/user/signup-sk1.phtml:33
-msgid "Pacchetti fino a 16 centesimi al minuto"
-msgstr "Balíčky od 16 centov za minútu"
-
 #: module/Application/view/application/user/signup-nl1.phtml:115
 #: module/Application/view/application/user/signup-si1.phtml:113
 #: module/Application/view/application/user/signup-sk1.phtml:123
@@ -4233,6 +4229,10 @@ msgstr "30 minút len ​​za 5&euro;"
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Pokračujte v registrácii"
+
+#: module/Application/view/application/user/signup-sk1.phtml:33
+msgid "Pacchetti fino a 16 centesimi al minuto"
+msgstr "Balíčky od 16 centov za minútu"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
