@@ -327,15 +327,7 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function eqSharingAction()
-    {
-        return (new viewModel())->setTerminal(true);
-    }
 
-    public function bikemiAction()
-    {
-        return (new viewModel())->setTerminal(true);
-    }
 
     public function teatroElfoAction()
     {
