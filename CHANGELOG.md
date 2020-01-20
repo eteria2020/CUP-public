@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.36] - 2020-01-17
+
+### Changed 
+
+- Update UserController in co2Action, check customer id param via post method
 
 ## [1.0.35] - 2020-01-15
 

@@ -474,8 +474,16 @@ class UserController extends AbstractActionController {
     public function co2Action() {
 
         //get $customerId param in post && get customer from $customerId && get all trip from $customerId
-        $customerId = $this->params()->fromPost('id');
+        $customerId = intval($this->params()->fromPost('id'));
         $customer = $this->customersService->findById($customerId);
+
+        if (!($customer instanceof Customers)){
+            $response = $this->getResponse();
+            $response->setStatusCode(200);
+            $response->setContent(-1);
+            return $response;
+        }
+
         $trips = $this->tripsService->getTripsByCustomerCO2($customerId);
 
         $kgOfCo2Save = "";
