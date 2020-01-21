@@ -14,8 +14,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 47 00   * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 52 00   1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 
-40 02  * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/clean.sh
+20 02  * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/clean_mongo.sh
 30 02  * * *    sharengo        /srv/apps/sharengo-publicsite/scripts/cron/clean_commands.sh
+40 02  * * *    root            /srv/apps/sharengo-publicsite/scripts/cron/clean.sh
 50 02 11 * *    root            /etc/init.d/ntp restart
 
 # every minute
