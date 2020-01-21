@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.37] - 2020-01-21
+
+### Added 
+
+- Add new script shell clean_mongo.sh, remove old data from Mongo collections (12 months)
+
 ## [1.0.36] - 2020-01-17
 
 ### Changed 
