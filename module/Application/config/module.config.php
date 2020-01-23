@@ -2117,9 +2117,9 @@ return [
                 'icon' => 'fa fa-money',
             ],
             [
-                'label' => $translator->translate("Promo e pacchetti"),
+                'label' => $translator->translate("Ricarica"),
                 'route' => 'area-utente/additional-services',
-                'icon' => 'fa fa-plus',
+                'icon' => 'fa fa-shopping-cart',
             ],
 //            [
 //                'label' => $translator->translate("Gift Card"),
@@ -2127,9 +2127,9 @@ return [
 //                'icon' => 'fa fa-gift',
 //            ],
             [
-                'label' => $translator->translate("Bonus minuti"),
+                'label' => $translator->translate("Wallet"),
                 'route' => 'area-utente/bonus',
-                'icon' => 'fa fa-trophy',
+                'icon' => 'fa fa-folder',
             ],
             [
                 'label' => $translator->translate("Corse completate"),
@@ -2144,7 +2144,7 @@ return [
             [
                 'label' => $translator->translate("Fatture"),
                 'route' => 'area-utente/invoices-list',
-                'icon' => 'fa fa-file-o',
+                'icon' => 'fa fa-file-pdf-o',
             ],
         ],
     ],

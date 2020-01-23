@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.38] - 2020-01-23
+
+### Changed
+
+- Wallet, we change:
+    - additional-services.phtml
+    - package.phtml
+    - bonus.phtml
+
+### Deleted
+- styles.css
+    
+
 ## [1.0.37] - 2020-01-21
 
 ### Added 

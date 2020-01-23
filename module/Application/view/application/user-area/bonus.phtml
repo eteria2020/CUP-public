@@ -13,7 +13,7 @@
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('BONUS'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('Wallet'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
@@ -25,7 +25,7 @@
                             <h2><i class="fa fa-slideshare"></i> <?= $this->translate('Invita un amico!'); ?></h2>
                         </div>
                         <div style="text-align: justify">
-                            <?= $this->translate("Invia il codice che vedi sotto ad un amico, ad un parente, ad un collega, appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi riceverete 30 minuti gratis come premio.") ?><br>
+                            <?= $this->translate("Invia il codice che vedi sotto ad un amico, ad un parente, ad un collega, appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi riceverete 30 crediti gratis come premio.") ?><br>
                         </div>
 
                             <table align="center" style="text-align: center;margin-top: 30px; margin-bottom: 30px">
@@ -39,20 +39,20 @@
                     <?php } ?>
                     <div class="block-form bw-f w-4-4 clearfix">
                         <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-trophy"></i> <?= $this->translate('Bonus'); ?></h2>
+                            <h2><i class="fa fa-folder"></i> <?= $this->translate('Wallet'); ?></h2>
                         </div>
 
                     <?php if(count($this->listBonus) > 0): ?>
                         <div class="pull-right w-1-3 last clearfix">
                             <div class="block-total-bonus clearfix">
                                 <div class="block-total-bonus-count clearfix">
-                                    <i class="fa fa-trophy"></i>
+                                    <i class="fa fa-folder"></i>
                                     <span class="block-total-bonus-count-value" style="width: 150px !important;">
                                         <?= $this->customer->getResidualBonuses(); ?>
                                     </span>
                                 </div>
                                 <div class=block-total-bonus-count-legend>
-                                    <?= $this->translate('Totale minuti attualmente utilizzabili'); ?>
+                                    <?= $this->translate('Totale crediti utilizzabili'); ?>
                                 </div>
                             </div>
                         </div>
@@ -68,13 +68,13 @@
                                     <?= $this->translate('Descrizione'); ?>
                                 </div>
                                 <div class="block-data-table-th cw-3-12 text-align-center">
-                                    <?= $this->translate('Minuti restanti'); ?>
+                                    <?= $this->translate('Crediti restanti'); ?>
                                 </div>
                                 <div class="block-data-table-th cw-3-12 text-align-center">
-                                    <?= $this->translate('Minuti utilizzati'); ?>
+                                    <?= $this->translate('Crediti utilizzati'); ?>
                                 </div>
                                 <div class="block-data-table-th cw-3-12 text-align-center">
-                                    <?= $this->translate('Accredito minuti'); ?>
+                                    <?= $this->translate('Totale crediti'); ?>
                                 </div>
                             </div>
                             <?php
@@ -104,7 +104,7 @@
                         </div>
                     <?php else: ?>
                         <div class="block-alert margin-bottom info">
-                            <p><?= $this->translate('Non hai ancora bonus associati al tuo account'); ?>.</p>
+                            <p><?= $this->translate('Non hai ancora crediti associati al tuo account'); ?>.</p>
                         </div>
                     <?php endif; ?>
                     </div>

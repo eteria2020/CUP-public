@@ -25,7 +25,7 @@ $end = date_create('2018-03-09 04:55:00');
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('promo e pacchetti'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('Ricarica wallet'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
@@ -41,13 +41,13 @@ $end = date_create('2018-03-09 04:55:00');
 
                         <!-- Title -->
                         <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Acquista Pacchetti'); ?></h2>
+                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Ricarica wallet'); ?></h2>
                         </div>
                         <!-- title -->
 
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
-                                <?= $this->translate('Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle nostre tariffe scontate.') ?>
+                                <?= $this->translate('Ricarica il tuo wallet con il Pacchetto crediti pi&ugrave; adatto a te ed approfitta delle nostre tariffe scontate.') ?>
                             </span>
                             <br>
                             <span class="block-sub-title">
@@ -59,7 +59,7 @@ $end = date_create('2018-03-09 04:55:00');
                         <div class="block-data-table clearboth clearfix">
                         <?php
                             foreach ($bonusPackages as $package) {
-                                if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti"){
+                                if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti" || $package->getType()==="Ricarica"){
                                     $hour = date("Gi");
                                     $hour = intval($hour);
                                     if($gender=="male" && $package->getCode()=="WOMEN" ){
@@ -141,19 +141,19 @@ $end = date_create('2018-03-09 04:55:00');
                         <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
                             <!-- Table header -->
                             <div class="block-data-table-row clearfix">
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Nome'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista/Converti'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Nome'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Crediti'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Prezzo'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Valido dal'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Valido fino'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Disponibile fino'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Acquista'); ?></div>
                             </div>
                             <!-- table header -->
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
-                                    if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti"){
+                                    if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti" || $package->getType()==="Ricarica" ){
                                         if($gender=="male" && $package->getCode()=="WOMEN" ){
                                             continue;
                                         }
@@ -170,17 +170,17 @@ $end = date_create('2018-03-09 04:55:00');
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
-                                <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
-                                <?php if($package->getType()==="Pacchetto"){ ?>
-                                    <div class="block-data-table-td cw-1-7"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $this->translate($package->getName()) ?></div>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $package->getMinutes() ?></div>
+                                <?php if($package->getType()==="Pacchetto" || $package->getType()==="Ricarica"){ ?>
+                                    <div class="block-data-table-td cw-1-7 text-center"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <?php }else{ ?>
-                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.0f &euro;", 0) ?></div>
+                                    <div class="block-data-table-td cw-1-7 text-center"><?= sprintf("%.0f &euro;", 0) ?></div>
                                 <?php } ?>
-                                <div class="block-data-table-td cw-1-7"><?= $validFrom ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-7">
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $validFrom ?></div>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $validTo ?></div>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
+                                <div class="block-data-table-td cw-1-7 text-center">
                                     <?php if ($package->getCode()=="WOMEN" && $verifyWomenVoucher>=1) { ?>
                                     <a onclick="verify()">
                                         <i class="fa fa-cart-plus"></i>
