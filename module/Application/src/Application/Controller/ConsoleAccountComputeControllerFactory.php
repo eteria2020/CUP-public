@@ -16,12 +16,14 @@ class ConsoleAccountComputeControllerFactory implements FactoryInterface
         $tripsService = $sharedServiceManager->get('SharengoCore\Service\TripsService');
         $tripCostService = $sharedServiceManager->get('SharengoCore\Service\TripCostService');
         $logger = $sharedServiceManager->get('SharengoCore\Service\SimpleLoggerService');
+        $customerDeactivationService = $sharedServiceManager->get('SharengoCore\Service\CustomerDeactivationService');
 
         return new ConsoleAccountComputeController(
             $customerService,
             $accountTripsService,
             $tripsService,
             $tripCostService,
+            $customerDeactivationService,
             $logger
         );
     }
