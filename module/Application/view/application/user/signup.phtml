@@ -35,16 +35,16 @@ $this->headLink()
                 <div class="block-form-section content-align-center margin-bottom margin-top" style="border-bottom: none;">
                     <img src="<?= $this->basePath('images/banner_benvenuto.jpg') ?>"/>
                     <label class="small-form content-align-center" style="line-height: 1;color:#000000">
-                        <!-- <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni standard, salvo promozioni).'); ?> -->
+                        <!-- <?= $this->translate('L’iscrizione al servizio costa 10 euro con 30 crediti (condizioni standard, salvo promozioni).'); ?> -->
                         <?php
                         /* 1 euro subscription CSD-1406 */
                         $now = new DateTime();
                         $startdate = new DateTime("2017-11-01 00:00:00");
                         $enddate = new DateTime("2017-12-31 23:59:59");
                         if ($startdate <= $now && $now <= $enddate) {
-                            echo $this->translate('Costo iscrizione 1 euro con 15 minuti bonus.');
+                            echo $this->translate('Costo iscrizione 1 euro con 15 crediti.');
                         } else {
-                            echo $this->translate('Costo iscrizione 5 euro con 15 minuti bonus, salvo promozioni.');
+                            echo $this->translate('Costo iscrizione 5 euro con 15 crediti, salvo promozioni.');
                         }
                         ?>
                     </label>

@@ -67,7 +67,7 @@
                                         <td style="text-align: right">&euro; <?= $motionCostPerMinute ?></td>
                                     </tr>
 
-                                    <?php if(isset($this->faresArray['MotionCostHourly'])) {?>
+                                    <?php if(isset($this->faresArray['MotionCostHourly']) && false) {?>
                                     <tr>
                                         <td><?= $this->translate('Tariffa oraria') ?></td>
                                         <td style="text-align: right">&euro;  <?= $motionCostHourlyDiscount ?></td>
@@ -75,7 +75,7 @@
                                     </tr>
                                     <?php }?>
 
-                                    <?php if(isset($this->faresArray['MotionCostDaily']) && false) {?>
+                                    <?php if(isset($this->faresArray['MotionCostDaily'])) {?>
                                     <tr>
                                         <td><?= $this->translate('Tariffa giornaliera') ?></td>
                                         <td style="text-align: right">&euro;  <?= $motionCostDailyDiscount ?></td>
@@ -93,7 +93,7 @@
                         </div>
 
                         <ul>
-                            <li><?= $this->translate('Il giorno del tuo compleanno ricevi 30 minuti bonus (per una settimana)') ?></li>
+                            <li><?= $this->translate('Il giorno del tuo compleanno ricevi 30 crediti (per una settimana)') ?></li>
                             <?php if ($this->customer->getGender() === 'female'): ?>
                                 <li><?= $this->translate('Di notte, dall’1 alle 5, le donne possono acquistare un Women Night Voucher (30 minuti a 3 &euro;), per tornare a casa in piena sicurezza pagando 0,10 &euro;/min.') ?></li>
                             <?php endif; ?>

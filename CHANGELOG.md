@@ -15,9 +15,11 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
     - additional-services.phtml
     - package.phtml
     - bonus.phtml
+- Renamed all messages contain " ... bonus minuti ..." to "crediti"
 
 ### Deleted
 - styles.css
+- Oxygen points (Punti Ossigeno)
     
 
 ## [1.0.37] - 2020-01-21
