@@ -19,14 +19,14 @@ VALUES(
        30,
        'Ricarica',
        now(),
-       90,
+       30,
        null,
-       '2021-12-31 00:00:00',
+       '2022-01-31 00:00:00',
        'Ricarica crediti wallet 10 €',
        1000,
-       'Con questa ricarica potrai guidate la tua Sharengo a 0,33 €/min. I 30 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 3 mesi.',
+       'Con questa ricarica potrai guidate la tua Sharengo a 0,33 €/min. I 30 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 30 giorni.',
        'WALLET30',
-       30 );
+       40 );
 
 INSERT INTO customers_bonus_packages (id, code, inserted_ts, minutes, type, valid_from, duration, valid_to, buyable_until, description, cost, notes, name, display_priority)
 VALUES(
@@ -36,14 +36,14 @@ VALUES(
           200,
           'Ricarica',
           now(),
-          90,
+          30,
           null,
-          '2021-12-31 00:00:00',
+          '2022-01-31 00:00:00',
           'Ricarica crediti wallet 60 €',
           6000,
-          'Con questa ricarica potrai guidate la tua Sharengo a 0,3 €/min. I 200 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 3 mesi.',
+          'Con questa ricarica potrai guidate la tua Sharengo a 0,3 €/min. I 200 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 30 giorni.',
           'WALLET200',
-          200 );
+          20 );
 
 INSERT INTO customers_bonus_packages (id, code, inserted_ts, minutes, type, valid_from, duration, valid_to, buyable_until, description, cost, notes, name, display_priority)
 VALUES(
@@ -53,11 +53,11 @@ VALUES(
           500,
           'Ricarica',
           now(),
-          90,
+          30,
           null,
-          '2021-12-31 00:00:00',
+          '2022-01-31 00:00:00',
           'Ricarica crediti wallet 120 €',
           6000,
-          'Con questa ricarica potrai guidate la tua Sharengo a 0,24 €/min. I 500 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 3 mesi.',
+          'Con questa ricarica potrai guidate la tua Sharengo a 0,24 €/min. I 500 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 30 giorni.',
           'WALLET500',
-          500 );
+          10 );

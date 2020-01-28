@@ -1,14 +1,10 @@
 <?php
 $form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
-$gender = $this->customer->getGender();
+
 $verifyWomenVoucher = $this->verifyWomenVoucher; //verify number of one month trip
 $mobile = $this->mobile;
 
-/* 8 marzo  CSD-2139 */
-$nowFree = date_create();
-$start = date_create('2018-03-08 06:00:00');
-$end = date_create('2018-03-09 04:55:00');
 ?>
 <!-- main -->
 <div id="main" class="detect-window-height">
@@ -48,93 +44,11 @@ $end = date_create('2018-03-09 04:55:00');
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
                                 <?= $this->translate('Ricarica il tuo wallet con il Pacchetto crediti pi&ugrave; adatto a te ed approfitta delle nostre tariffe scontate.') ?>
-                            </span>
-                            <br>
-                            <span class="block-sub-title">
+                                <br>
                                 <?= $this->translate('Prima di scegliere il tuo preferito assicurati di aver completato la tua registrazione con l\'acquisto del Pacchetto Benvenuto.'); ?>
                             </span>    
                         </div>
                         <br><br>
-                        <!-- packages -->
-                        <div class="block-data-table clearboth clearfix">
-                        <?php
-                            foreach ($bonusPackages as $package) {
-                                if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti" || $package->getType()==="Ricarica"){
-                                    $hour = date("Gi");
-                                    $hour = intval($hour);
-                                    if($gender=="male" && $package->getCode()=="WOMEN" ){
-                                        continue;
-                                    }
-                                    if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
-                                        continue;
-                                    }
-                        ?>
-                            <div class="bw-f w-1-4 clearfix">
-                                <div class="bw-f w-1-2 clearfix">
-                                    <img style="width:110px;" src="<?= $this->basePath('images/pacco_regalo.png') ?>" alt="">
-                                </div>
-                                <div class="bw-f w-1-2 clearfix">
-                                    <div class="content-align-center">
-                                        <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?>
-                                            <?= $package->getCode()=="CODE13" ? 'style="color:red"' :''?>><?= strtoupper($this->translate($package->getName())) ?></p>
-                                        <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
-                                        <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
-                                        <?php if($package->getType()==="Pacchetto"){ ?>
-                                            <p class="block-sub-title"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ?  $this->translate("GRATUITO") : $this->translate('a ').sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
-
-                                            <p class="block-sub-title">
-                                            <?php
-                                            if($package->getMinutes()>0 && !($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end))) {
-                                                $cost = ($package->getCost()/100) / $package->getMinutes();
-                                                $cost_round = sprintf("%.2f", $cost);
-                                                if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
-                                                    $cost_round = substr($cost_round,0,strlen($cost_round)-1);
-                                                }
-                                                if($package->getName()=="ESTATE") {
-                                                    $cost_round = "0,22";
-                                                }
-                                                echo sprintf("%s &euro;/", $cost_round).$this->translate('min');
-
-                                            }
-                                            ?>
-                                            </p>
-                                            <p class="block-sub-title"><?= $this->translate('Validità') ?>
-                                                <?php
-                                                    // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
-                                                    $months = floor($package->getDuration() / 30);
-                                                    if ($months>0) {
-                                                        echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
-                                                    } else {
-                                                        echo ' '.$package->getDuration().' '.($package->getDuration() > 1 ? $this->translate('giorni') : $this->translate('giorno'));
-                                                    }
-
-                                                ?>
-                                            </p>
-                                        <?php }else{?>
-                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f", $package->getCost()) ?></p>
-                                            <p class="block-sub-title">
-                                            <?php
-                                                $cost_round = "0,0";
-                                                echo sprintf("%.1f &euro;/", $cost_round).$this->translate('min');
-                                            ?>
-                                            </p>
-                                            <p class="block-sub-title"><?= $this->translate('Validità') ?>
-                                                <?php
-                                                    // Duration is expressed in days for packet points
-                                                    $day = floor($package->getDuration());
-                                                    echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
-                                                ?>
-                                            </p>
-                                        <?php }?>  
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                                }   // enf if
-                            }   // end foreach
-                        ?>
-                        </div>
-                        <!-- packages -->
 
                         <!-- description -->
                         <!-- Table -->
@@ -147,14 +61,14 @@ $end = date_create('2018-03-09 04:55:00');
                                 <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Valido dal'); ?></div>
                                 <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Valido fino'); ?></div>
                                 <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Disponibile fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7 text-center"><?= $this->translate('Acquista'); ?></div>
+                                <div class="block-data-table-th cw-1-7 text-center"></div>
                             </div>
                             <!-- table header -->
                             <?php
                                 $i = 1;
                                 foreach ($bonusPackages as $package) {
                                     if($package->getType()==="Pacchetto" || $package->getType()==="PacchettoPunti" || $package->getType()==="Ricarica" ){
-                                        if($gender=="male" && $package->getCode()=="WOMEN" ){
+                                        if($this->customer->getGender()=="male" && $package->getCode()=="WOMEN" ){
                                             continue;
                                         }
                                         if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
@@ -164,16 +78,13 @@ $end = date_create('2018-03-09 04:55:00');
                                         $i++;
                                         $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
                                         $validFrom = $package->validFromOrToday()->format("d-m-Y");
-                                        if($package->getName()=="ESTATE"){
-                                            $validTo = "31 agosto 2018";
-                                        }
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7 text-center"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7 text-center"><?= $package->getMinutes() ?></div>
                                 <?php if($package->getType()==="Pacchetto" || $package->getType()==="Ricarica"){ ?>
-                                    <div class="block-data-table-td cw-1-7 text-center"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                    <div class="block-data-table-td cw-1-7 text-center"><?= ($package->getCode()=="WOMEN") ? "GRATUITO" : sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <?php }else{ ?>
                                     <div class="block-data-table-td cw-1-7 text-center"><?= sprintf("%.0f &euro;", 0) ?></div>
                                 <?php } ?>
@@ -183,11 +94,11 @@ $end = date_create('2018-03-09 04:55:00');
                                 <div class="block-data-table-td cw-1-7 text-center">
                                     <?php if ($package->getCode()=="WOMEN" && $verifyWomenVoucher>=1) { ?>
                                     <a onclick="verify()">
-                                        <i class="fa fa-cart-plus"></i>
+                                        <i class="fa fa-plus" title="<?= $this->translate('Acquista'); ?>"></i>
                                     </a>
                                     <?php } else { ?>
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
-                                        <i class="fa fa-cart-plus"></i>
+                                        <i class="fa fa-plus" title="<?= $this->translate('Acquista'); ?>"></i>
                                     </a>
                                     <?php } ?>
                                 </div>
@@ -230,7 +141,6 @@ $end = date_create('2018-03-09 04:55:00');
                                                 $promoCode = $form->get('promocode')->get('promocode');
                                                 echo $this->formElement($promoCode->setAttribute('class', 'required'));
                                                 echo $this->formElementErrors($promoCode, ['class' => 'errors']);
-
                                                 echo $this->form()->openTag($form);
                                                 ?>
                                     </div>
@@ -242,10 +152,8 @@ $end = date_create('2018-03-09 04:55:00');
                         <?php echo $this->form()->closeTag(); ?>
                     </div>
                     <!-- promo code section -->
-
                 </div>
             </div>
-
         </div>
         <!-- module-column-app dx -->
     </div>
@@ -255,13 +163,13 @@ $end = date_create('2018-03-09 04:55:00');
         <div class="table">
             <div class="cell">
                 <div class="box" style="background:#fff;">
-                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden">Chiudi</span></a>
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden"><?= $this->translate('Chiudi') ?></span></a>
                     <div id="sng-overlay-content1">
                         <div class="content-more" style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
-                            <h3 style="background: #07ba50;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ATTENZIONE</h3>
+                            <h3 style="background: #07ba50;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->translate('ATTENZIONE') ?></h3>
                             <br>
                             <ul>
-                                <p style="color:black;text-align: center; font-weight: 500;">Il voucher &eacute; disponibile per un solo acquisto giornaliero.</p>
+                                <p style="color:black;text-align: center; font-weight: 500;"><?= $this->translate('Il voucher &eacute; disponibile per un solo acquisto giornaliero.') ?></p>
                             </ul>
                         </div>
                     </div>
