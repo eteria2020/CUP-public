@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-## [1.0.38] - 2020-01-23
+
+## [1.0.39] - 2020-01-29
 
 ### Changed
 
@@ -18,9 +19,15 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 - Renamed all messages contain " ... bonus minuti ..." to "crediti"
 
 ### Deleted
+
 - styles.css
-- Oxygen points (Punti Ossigeno)
-    
+- Oxygen Points (Punti Ossigeno)
+
+## [1.0.38] - 2020-01-29
+
+### Changed
+
+- Modified amount of change card to 0,01 euro
 
 ## [1.0.37] - 2020-01-21
 

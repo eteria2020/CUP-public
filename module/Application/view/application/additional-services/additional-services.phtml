@@ -2,7 +2,6 @@
 $form = $this->promoCodeForm->prepare();
 $bonusPackages = $this->bonusPackages;
 
-$verifyWomenVoucher = $this->verifyWomenVoucher; //verify number of one month trip
 $mobile = $this->mobile;
 
 ?>
@@ -41,6 +40,7 @@ $mobile = $this->mobile;
                         </div>
                         <!-- title -->
 
+                        <!-- Description -->
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
                                 <?= $this->translate('Ricarica il tuo wallet con il Pacchetto crediti pi&ugrave; adatto a te ed approfitta delle nostre tariffe scontate.') ?>
@@ -48,9 +48,8 @@ $mobile = $this->mobile;
                                 <?= $this->translate('Prima di scegliere il tuo preferito assicurati di aver completato la tua registrazione con l\'acquisto del Pacchetto Benvenuto.'); ?>
                             </span>    
                         </div>
-                        <br><br>
+                        <!-- Description -->
 
-                        <!-- description -->
                         <!-- Table -->
                         <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
                             <!-- Table header -->
@@ -74,37 +73,44 @@ $mobile = $this->mobile;
                                         if ($package->getCode()=="BENVENUTO" && !$this->showWelcomePackage){
                                             continue;
                                         }
+
+                                        $cost= sprintf("%.0f &euro;", 0);
+                                        if($package->getType()==="Pacchetto" || $package->getType()==="Ricarica"){
+                                            if($package->getCode()=="WOMEN") {
+                                                $cost= "GRATUITO";
+                                            }else {
+                                                $cost = sprintf("%.2f &euro;", $package->getCost() / 100);
+                                            }
+                                        }
+
+                                        $validFrom = $package->validFromOrToday()->format("d-m-Y");
+                                        $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
+                                        $buyableUntil = $package->getBuyableUntil()->format("d-m-Y");
+
+                                        $buyLink =sprintf('<a href="%s" class="buyPackage"><i class="fa fa-plus" title="%s"></i></a>',
+                                            $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]),
+                                            $this->translate('Acquista'));
+
+                                        if ($package->getCode()=="WOMEN" && $this->verifyWomenVoucher>=1) { //verify number of one month trip
+                                            $buyLink =sprintf('<a onclick="verify()"><i class="fa fa-plus" title="%s"></i></a>',
+                                                $this->translate('Acquista'));
+                                        }
+
                                         $oddOrEven = ($i % 2) ? 'even' : 'odd';
                                         $i++;
-                                        $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
-                                        $validFrom = $package->validFromOrToday()->format("d-m-Y");
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
                                 <div class="block-data-table-td cw-1-7 text-center"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7 text-center"><?= $package->getMinutes() ?></div>
-                                <?php if($package->getType()==="Pacchetto" || $package->getType()==="Ricarica"){ ?>
-                                    <div class="block-data-table-td cw-1-7 text-center"><?= ($package->getCode()=="WOMEN") ? "GRATUITO" : sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <?php }else{ ?>
-                                    <div class="block-data-table-td cw-1-7 text-center"><?= sprintf("%.0f &euro;", 0) ?></div>
-                                <?php } ?>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $cost ?></div>
                                 <div class="block-data-table-td cw-1-7 text-center"><?= $validFrom ?></div>
                                 <div class="block-data-table-td cw-1-7 text-center"><?= $validTo ?></div>
-                                <div class="block-data-table-td cw-1-7 text-center"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-7 text-center">
-                                    <?php if ($package->getCode()=="WOMEN" && $verifyWomenVoucher>=1) { ?>
-                                    <a onclick="verify()">
-                                        <i class="fa fa-plus" title="<?= $this->translate('Acquista'); ?>"></i>
-                                    </a>
-                                    <?php } else { ?>
-                                    <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
-                                        <i class="fa fa-plus" title="<?= $this->translate('Acquista'); ?>"></i>
-                                    </a>
-                                    <?php } ?>
-                                </div>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $buyableUntil ?></div>
+                                <div class="block-data-table-td cw-1-7 text-center"><?= $buyLink ?></div>
                             </div>
                             <div class="block-data-table-row data-info clearfix" style="display: table-row; border: none;">
-                                <div class="block-data-table-td cw-6-6"><?= $package->getNotes() ?></div>
+                                <div class="block-data-table-td cw-7-7" style="text-align:justify"><?= $package->getNotes() ?></div>
                             </div>
                             <!-- table body -->
                             <?php
