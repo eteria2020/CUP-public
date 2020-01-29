@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-15 16:43+0100\n"
-"PO-Revision-Date: 2020-01-15 16:44+0100\n"
+"POT-Creation-Date: 2020-01-29 12:37+0100\n"
+"PO-Revision-Date: 2020-01-29 12:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2731
+#: module/Application/config/module.config.php:2100
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Uporabniški profil"
 
-#: module/Application/config/module.config.php:2736
+#: module/Application/config/module.config.php:2105
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -38,34 +38,34 @@ msgstr "Uporabniški profil"
 msgid "Patente"
 msgstr "vozniško dovoljenje"
 
-#: module/Application/config/module.config.php:2741
+#: module/Application/config/module.config.php:2110
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2746
+#: module/Application/config/module.config.php:2115
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Cenik"
 
-#: module/Application/config/module.config.php:2751
+#: module/Application/config/module.config.php:2120
 msgid "Promo e pacchetti"
 msgstr "Paketi In promocije"
 
-#: module/Application/config/module.config.php:2761
+#: module/Application/config/module.config.php:2130
 msgid "Bonus minuti"
 msgstr "Bonus minute"
 
-#: module/Application/config/module.config.php:2766
+#: module/Application/config/module.config.php:2135
 msgid "Corse completate"
 msgstr "Zgodovina Najemov"
 
-#: module/Application/config/module.config.php:2771
+#: module/Application/config/module.config.php:2140
 msgid "Dati di pagamento"
 msgstr "Podatki o plačilu"
 
-#: module/Application/config/module.config.php:2776
+#: module/Application/config/module.config.php:2145
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "računi"
@@ -184,28 +184,28 @@ msgstr ""
 "Zaradi pretečenega vozniškega dovoljenja ste onemogočeni, vstavite nove "
 "podatke."
 
-#: module/Application/src/Application/Controller/UserController.php:667
-#: module/Application/src/Application/Controller/UserController.php:686
-#: module/Application/src/Application/Controller/UserController.php:698
+#: module/Application/src/Application/Controller/UserController.php:675
+#: module/Application/src/Application/Controller/UserController.php:694
 #: module/Application/src/Application/Controller/UserController.php:706
-#: module/Application/src/Application/Controller/UserController.php:718
+#: module/Application/src/Application/Controller/UserController.php:714
+#: module/Application/src/Application/Controller/UserController.php:726
 msgid "Errore invio sms"
 msgstr "Napaka pri pošiljanju sms-a"
 
-#: module/Application/src/Application/Controller/UserController.php:678
+#: module/Application/src/Application/Controller/UserController.php:686
 msgid "Numero di telefono non corretto"
 msgstr "Napačna telefonska številka"
 
-#: module/Application/src/Application/Controller/UserController.php:804
-#: module/Application/src/Application/Controller/UserController.php:1140
-#: module/Application/src/Application/Controller/UserController.php:1230
-#: module/Application/src/Application/Controller/UserController.php:1349
-#: module/Application/src/Application/Controller/UserController.php:1439
-#: module/Application/src/Application/Controller/UserController.php:1578
-#: module/Application/src/Application/Controller/UserController.php:1611
-#: module/Application/src/Application/Controller/UserController.php:1887
-#: module/Application/src/Application/Controller/UserController.php:1930
-#: module/Application/src/Application/Controller/UserController.php:2083
+#: module/Application/src/Application/Controller/UserController.php:812
+#: module/Application/src/Application/Controller/UserController.php:1148
+#: module/Application/src/Application/Controller/UserController.php:1238
+#: module/Application/src/Application/Controller/UserController.php:1357
+#: module/Application/src/Application/Controller/UserController.php:1447
+#: module/Application/src/Application/Controller/UserController.php:1586
+#: module/Application/src/Application/Controller/UserController.php:1619
+#: module/Application/src/Application/Controller/UserController.php:1895
+#: module/Application/src/Application/Controller/UserController.php:1938
+#: module/Application/src/Application/Controller/UserController.php:2091
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Seja je potekla. Ponoviti je treba postopek registracije"
@@ -2635,15 +2635,12 @@ msgid "ATTENZIONE"
 msgstr "POZOR"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:167
 msgid ""
-"Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
-"verr&agrave; immediatamente rimborsata al termine della procedura."
+"Il cambio di carta prevede il pagamento della cifra di un centesimo di euro "
+"che verr&agrave; immediatamente rimborsata al termine della procedura."
 msgstr ""
-"Zamenjava kartice vključuje plačilo zneska 1 &euro; ki vam bo vrnjen takoj "
-"ob koncu postopka."
+"Zamenjava kartice vključuje plačilo zneska 0,01 &euro; ki vam bo vrnjen "
+"takoj ob koncu postopka."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:176
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:176
@@ -3246,6 +3243,16 @@ msgid ""
 "CI SCUSIAMO PER IL TEMPORANEO DISSERVIZIO, LA PAGINA TORNER&Agrave; PRESTO "
 "ONLINE."
 msgstr "OPRAVIČUJEMO SE ZA NEVŠEČNOSTI, STRAN BO V KRATKEM SPET DOSTOPNA."
+
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:167
+msgid ""
+"Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
+"verr&agrave; immediatamente rimborsata al termine della procedura."
+msgstr ""
+"Zamenjava kartice vključuje plačilo zneska 1 &euro; ki vam bo vrnjen takoj "
+"ob koncu postopka."
 
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:197
 msgid ""

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-15 16:39+0100\n"
-"PO-Revision-Date: 2020-01-15 16:39+0100\n"
+"POT-Creation-Date: 2020-01-29 12:32+0100\n"
+"PO-Revision-Date: 2020-01-29 12:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2731
+#: module/Application/config/module.config.php:2100
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2736
+#: module/Application/config/module.config.php:2105
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -38,34 +38,34 @@ msgstr "Profile"
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2741
+#: module/Application/config/module.config.php:2110
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2746
+#: module/Application/config/module.config.php:2115
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2751
+#: module/Application/config/module.config.php:2120
 msgid "Promo e pacchetti"
 msgstr "Promos and packages"
 
-#: module/Application/config/module.config.php:2761
+#: module/Application/config/module.config.php:2130
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2766
+#: module/Application/config/module.config.php:2135
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2771
+#: module/Application/config/module.config.php:2140
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2776
+#: module/Application/config/module.config.php:2145
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -183,28 +183,28 @@ msgstr ""
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr "You are disabled by expired driving license, enter the new data."
 
-#: module/Application/src/Application/Controller/UserController.php:667
-#: module/Application/src/Application/Controller/UserController.php:686
-#: module/Application/src/Application/Controller/UserController.php:698
+#: module/Application/src/Application/Controller/UserController.php:675
+#: module/Application/src/Application/Controller/UserController.php:694
 #: module/Application/src/Application/Controller/UserController.php:706
-#: module/Application/src/Application/Controller/UserController.php:718
+#: module/Application/src/Application/Controller/UserController.php:714
+#: module/Application/src/Application/Controller/UserController.php:726
 msgid "Errore invio sms"
 msgstr "Error sending sms"
 
-#: module/Application/src/Application/Controller/UserController.php:678
+#: module/Application/src/Application/Controller/UserController.php:686
 msgid "Numero di telefono non corretto"
 msgstr "Phone number incorrect"
 
-#: module/Application/src/Application/Controller/UserController.php:804
-#: module/Application/src/Application/Controller/UserController.php:1140
-#: module/Application/src/Application/Controller/UserController.php:1230
-#: module/Application/src/Application/Controller/UserController.php:1349
-#: module/Application/src/Application/Controller/UserController.php:1439
-#: module/Application/src/Application/Controller/UserController.php:1578
-#: module/Application/src/Application/Controller/UserController.php:1611
-#: module/Application/src/Application/Controller/UserController.php:1887
-#: module/Application/src/Application/Controller/UserController.php:1930
-#: module/Application/src/Application/Controller/UserController.php:2083
+#: module/Application/src/Application/Controller/UserController.php:812
+#: module/Application/src/Application/Controller/UserController.php:1148
+#: module/Application/src/Application/Controller/UserController.php:1238
+#: module/Application/src/Application/Controller/UserController.php:1357
+#: module/Application/src/Application/Controller/UserController.php:1447
+#: module/Application/src/Application/Controller/UserController.php:1586
+#: module/Application/src/Application/Controller/UserController.php:1619
+#: module/Application/src/Application/Controller/UserController.php:1895
+#: module/Application/src/Application/Controller/UserController.php:1938
+#: module/Application/src/Application/Controller/UserController.php:2091
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -2621,15 +2621,12 @@ msgid "ATTENZIONE"
 msgstr "CAUTION"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:167
 msgid ""
-"Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
-"verr&agrave; immediatamente rimborsata al termine della procedura."
+"Il cambio di carta prevede il pagamento della cifra di un centesimo di euro "
+"che verr&agrave; immediatamente rimborsata al termine della procedura."
 msgstr ""
-"The change of card provides for the payment of a sum of 1 €; that will come; "
-"immediately repaid at the end of the procedure."
+"The change of card provides for the payment of a sum of 0,01 &euro; that will "
+"come; immediately repaid at the end of the procedure."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:176
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:176
@@ -3233,6 +3230,16 @@ msgid ""
 "ONLINE."
 msgstr ""
 "WE CHALLEN FOR THE TEMPORARY DISSERVICE, THE TORNER PAGE & Agrave; SOON ONLINE."
+
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:167
+msgid ""
+"Il cambio di carta prevede il pagamento della cifra di un 1 &euro; che "
+"verr&agrave; immediatamente rimborsata al termine della procedura."
+msgstr ""
+"The change of card provides for the payment of a sum of 1 €; that will come; "
+"immediately repaid at the end of the procedure."
 
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:197
 msgid ""

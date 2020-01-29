@@ -3079,7 +3079,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/cartasi.git",
-                "reference": "5519c82cf40c6a5666cdca9fa42db9f193d60d30"
+                "reference": "e1cf0a7d36843b96a36d4a7134a829686d9119ee"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3093,7 +3093,7 @@
                 }
             },
             "description": "Cartasi module for Sharengo",
-            "time": "2019-09-05 12:15:46"
+            "time": "2020-01-29 13:19:32"
         },
         {
             "name": "sharengo-web/drivers-license-validation",
@@ -3911,6 +3911,7 @@
                 "module",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-developer-tools",
             "time": "2015-11-24 11:08:25"
         },
         {
@@ -4028,6 +4029,7 @@
                 "framework",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-mvc-skeleton",
             "time": "2016-05-09 20:54:25"
         },
         {
@@ -4073,6 +4075,7 @@
                 "xml",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-xml",
             "time": "2016-02-04 21:02:08"
         },
         {
