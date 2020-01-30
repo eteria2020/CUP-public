@@ -61,3 +61,7 @@ VALUES(
           'Con questa ricarica potrai guidate la tua Sharengo a 0,24 €/min. I 500 crediti acquistati si aggiungono al tuo wallet e sono utilizzabili entro i prossimi 30 giorni.',
           'WALLET500',
           10 );
+
+UPDATE customers_bonus_packages
+SET description='Con questa ricarica potrai guidare per 30 minuti una Sharengo a soli 0,10€/min. Lo acquisti quando vuoi e lo utilizzi alla prima corsa notturna dall’1 alle 6 del mattino. Scade entro un mese.'
+WHERE code='WOMEN';

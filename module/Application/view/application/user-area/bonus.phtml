@@ -6,37 +6,16 @@
 
         <!-- module-column-app sx -->
         <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
-
         <!-- module-column-app sx -->
 
         <!-- module-column-app dx -->
         <div class="module-column-app side-dx">
-
             <div class="module-heading-app">
                 <h1 class="module-main-title"><?= $this->translate('Wallet'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
-
             <div class="module-column-app-content clearfix">
                 <div class="module-bonus-resmume padding-top">
-                    <?php if(is_null($this->serverInstance) || $this->serverInstance != "sk_SK"){ ?>
-                    <div class="block-form bw-f w-4-4 clearfix">
-                        <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-slideshare"></i> <?= $this->translate('Invita un amico!'); ?></h2>
-                        </div>
-                        <div style="text-align: justify">
-                            <?= $this->translate("Invia il codice che vedi sotto ad un amico, ad un parente, ad un collega, appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi riceverete 30 crediti gratis come premio.") ?><br>
-                        </div>
-
-                            <table align="center" style="text-align: center;margin-top: 30px; margin-bottom: 30px">
-                                <tr>
-                                    <td style="background-color: #ffffff; color: #ff0000; border-style:solid; border-color: #000000; font-weight: 600; font-size: 25px; width: 190px">
-                                        <?php echo $this->promocodeMemberGetMember; ?>
-                                    </td>
-                                </tr>
-                            </table>
-                    </div>
-                    <?php } ?>
                     <div class="block-form bw-f w-4-4 clearfix">
                         <div class="block-form-section content-align-center margin-bottom">
                             <h2><i class="fa fa-folder"></i> <?= $this->translate('Wallet'); ?></h2>
@@ -82,10 +61,10 @@
                             foreach($this->listBonus as $bonus): ?>
                                 <div class="block-data-table-row odd clearfix">
                                     <div class="block-data-table-td cw-3-12 text-align-center">
-                                        <?= is_object($bonus->getValidFrom()) ? $bonus->getValidFrom()->format('d-m-Y H:i:s') : ''; ?>
+                                        <?= is_object($bonus->getValidFrom()) ? $bonus->getValidFrom()->format('d-m-y H:i:s') : ''; ?>
                                     </div>
                                     <div class="block-data-table-td cw-3-12 text-align-center">
-                                        <?= is_object($bonus->getValidTo()) ? $bonus->getValidTo()->format('d-m-Y H:i:s') : ''; ?>
+                                        <?= is_object($bonus->getValidTo()) ? $bonus->getValidTo()->format('d-m-y H:i:s') : ''; ?>
                                     </div>
                                     <div class="block-data-table-td cw-3-12 text-align-center">
                                         <?= $bonus->getDescription(); ?>
@@ -108,6 +87,26 @@
                         </div>
                     <?php endif; ?>
                     </div>
+
+                    <?php if(is_null($this->serverInstance) || $this->serverInstance != "sk_SK"){ ?>
+                        <div class="block-form bw-f w-4-4 clearfix"  style="margin-top: 20px;">
+                            <div class="block-form-section content-align-center margin-bottom">
+                                <h2><i class="fa fa-slideshare"></i> <?= $this->translate('Invita un amico!'); ?></h2>
+                            </div>
+                            <div style="text-align: justify">
+                                <?= $this->translate("Invia il codice che vedi sotto ad un amico, ad un parente, ad un collega, appena uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi riceverete 30 crediti gratis come premio.") ?><br>
+                            </div>
+
+                            <table align="center" style="text-align: center;margin-top: 30px; margin-bottom: 30px">
+                                <tr>
+                                    <td style="background-color: #ffffff; color: #ff0000; border-style:solid; border-color: #000000; font-weight: 600; font-size: 25px; width: 190px">
+                                        <?php echo $this->promocodeMemberGetMember; ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>

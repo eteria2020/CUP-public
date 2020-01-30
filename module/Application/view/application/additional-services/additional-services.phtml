@@ -74,13 +74,9 @@ $mobile = $this->mobile;
                                             continue;
                                         }
 
-                                        $cost= sprintf("%.0f &euro;", 0);
-                                        if($package->getType()==="Pacchetto" || $package->getType()==="Ricarica"){
-                                            if($package->getCode()=="WOMEN") {
-                                                $cost= "GRATUITO";
-                                            }else {
-                                                $cost = sprintf("%.2f &euro;", $package->getCost() / 100);
-                                            }
+                                        $cost = sprintf("%.2f &euro;", $package->getCost() / 100);
+                                        if($package->getCost()==0) {
+                                            $cost= $this->translate('GRATUITO');
                                         }
 
                                         $validFrom = $package->validFromOrToday()->format("d-m-Y");
