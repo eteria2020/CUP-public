@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-29 12:32+0100\n"
-"PO-Revision-Date: 2020-01-29 12:35+0100\n"
+"POT-Creation-Date: 2020-01-30 10:49+0100\n"
+"PO-Revision-Date: 2020-01-30 10:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -3554,7 +3554,7 @@ msgstr "Basic fare of the race"
 
 #: module/Application/view/application/user-area/rates.phtml:72
 msgid "Tariffa oraria"
-msgstr "Daily fare"
+msgstr "Hourly rate"
 
 #: module/Application/view/application/user-area/rates.phtml:80
 msgid "Tariffa giornaliera"

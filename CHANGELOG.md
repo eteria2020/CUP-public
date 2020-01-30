@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.39] - 2020-01-30
+
+### Changed
+
+- Modified rates page (see [ticket 681](https://sharengo.freshdesk.com/a/tickets/681))
+
 ## [1.0.38] - 2020-01-29
 
 ### Changed
