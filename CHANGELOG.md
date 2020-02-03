@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.40] - 2020-02-03
+
+### Changed
+
+- In new-signup change the checkbox form (see [ticket 622](https://sharengo.freshdesk.com/a/tickets/622))
+    - privacy (mandatory), in db *customers.privacy_information*
+    - vexatious clauses (mandatory), in db *customers.general_condition2*
+    - new letter (optional), in db *customers.newsletter*
+    - insurance info (optional), in db *customers.general_condition1*
+
 ## [1.0.39] - 2020-01-30
 
 ### Changed
@@ -18,7 +28,6 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 ### Changed
 
 - Modified amount of change card to 0,01 euro
-
 
 ## [1.0.37] - 2020-01-21
 
