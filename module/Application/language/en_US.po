@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-30 10:49+0100\n"
-"PO-Revision-Date: 2020-01-30 10:50+0100\n"
+"POT-Creation-Date: 2020-02-03 09:03+0100\n"
+"PO-Revision-Date: 2020-02-03 09:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -788,47 +788,59 @@ msgid "Password"
 msgstr "Password"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:106
-msgid ""
-"Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
-"sia cartacee che digitali relative al servizio, ai prodotti e alle promozioni "
-"Sharengo."
-msgstr ""
-"I consent to the processing of my personal data for both paper and digital "
-"communications relating to the service, products and promotions Sharengo."
+msgid "Accetto espressamente i Termini e le Condizioni Privacy "
+msgstr "I hereby accept  Privacy Terms and Conditions "
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:126
+#: module/Application/src/Application/Form/NewUserFieldset.php:119
 msgid ""
-"Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali che "
+"Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, ai "
+"prodotti, ai vantaggi offerti da Sharengo e dai  Partner Sharengo "
+"(facoltativo)."
+msgstr ""
+"I agree to receive paper and digital communications related to service, "
+"products, offers and benefit  from Sharengo and from Sharengo partners "
+"(optional)."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:139
+msgid ""
+"Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
+"antifrode e prevenzione sinistri (facoltativo)."
+msgstr ""
+"I authorize the processing of my personal data, for insurance, anti-fraud and "
+"accident prevention purposes (optional)."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:152
+msgid ""
+"Il Cliente, dopo aver preso visione dei Termini e Condizioni Contrattuali che "
 "regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del Codice "
 "Civile Italiano, di accettare integralmente e specificatamente le clausole dei "
 "seguenti articoli: 3 (oggetto e parti del contratto), 4 (modifica unilaterale "
-"del Contratto), 5 (iscrizione e prenotazione online del Car Sharing Sharengo), "
-"6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 "
-"(esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. "
-"Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 (furti e "
-"vandalismi), 13 (sanzioni in materia di circolazione stradale), 14 "
+"del Contratto), 5 (iscrizione e prenotazione online), 6 (tariffe e "
+"fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di "
+"responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli, clausola "
+"risolutiva espressa), 11 (fine del noleggio), 12 (sinistri e avaria del "
+"veicolo) 13 (sanzioni in materia di circolazione stradale), 14 "
 "(assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, "
 "risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente)."
 msgstr ""
-"The Client, after having read the Contractual Terms and Conditions governing "
-"the relationship, declares, pursuant to articles 1341 and 1342 of the Italian "
-"Civil Code, to accept fully and specifically the clauses of the following "
-"articles: 3 (object and parts of the contract), 4 (unilateral modification of "
-"the Contract), 5 (registration and online booking of the Sharengo Sharing "
-"Car), 6 (tariffs and invoicing), 7 (sublease and assignment prohibition), 8 "
-"(exemption from liability), 9 (driving permit) , 10 (use of vehicles, express "
-"cancellation clause), 11 (vehicle accident or damage), 12 (theft and "
-"vandalism), 13 (road traffic penalties), 14 (insurance), 16 (start date, "
-"duration, renewal) , suspension, withdrawal, termination of the contract), 17 "
-"(complaints), 18 (penalties), 20 (jurisdiction)."
+"After having carefully read these Terms and Conditions, the Customer declares, "
+"pursuant to Articles 1341 and 1342 of the Italian Civil Code, to integrally "
+"accept and specifically approve the following articles: 3 (subject and parts "
+"of the contract), 4 (unilateral modification of the contract), 5 (registration "
+"and online booking ), 6 (rates and invoices), 7 (sublease and assignment "
+"prohibition), 8 (disclaimer), 9 (driving licence) , 10 (use of vehicles,  "
+"expressed resolutory clause), 11 (  rental end )  12 (vehicles damages and "
+"breakdown), 13 (fines), 14 (insurance), 16 (start date, duration, renewal, "
+"account suspension, withdrawal, termination of the contract), 17 (complaints), "
+"18 (penalties), 20 (jurisdiction)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:146
-#: module/Application/src/Application/Form/NewUserFieldset.php:176
+#: module/Application/src/Application/Form/NewUserFieldset.php:172
+#: module/Application/src/Application/Form/NewUserFieldset.php:202
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "The data is required to proceed"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:193
-#: module/Application/src/Application/Form/NewUserFieldset.php:217
+#: module/Application/src/Application/Form/NewUserFieldset.php:219
+#: module/Application/src/Application/Form/NewUserFieldset.php:246
 msgid "Il dato è richiesto per procedere"
 msgstr "The data is required to proceed"
 
@@ -1239,7 +1251,7 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "A user already exists with the same email address"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:246
+#: module/Application/view/application/user/new-signup.phtml:265
 msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "A user already exists with the same email address"
 
@@ -2613,7 +2625,7 @@ msgstr "You have not yet entered a credit card or prepaid card on your profile."
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
-#: module/Application/view/application/user/new-signup.phtml:147
+#: module/Application/view/application/user/new-signup.phtml:166
 #: module/Application/view/application/user/signup-nl1.phtml:152
 #: module/Application/view/application/user/signup-si1.phtml:151
 #: module/Application/view/application/user/signup-sk1.phtml:160
@@ -3689,32 +3701,25 @@ msgid "Non hai ancora effettuato alcun noleggio"
 msgstr "You have not made any rentals yet"
 
 #: module/Application/view/application/user/new-signup.phtml:15
-#: module/Application/view/application/user/signup-nl1.phtml:21
-#: module/Application/view/application/user/signup-sk1.phtml:29
-msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
-msgstr "Electric car sharing <br> does not pollute and suit you!"
+msgid "Il car sharing elettrico che non inquina"
+msgstr "Electric and non-polluting car sharing"
 
 #: module/Application/view/application/user/new-signup.phtml:18
-msgid "Area C/ZTL/Tridente Roma + park gratis"
-msgstr "Area C / ZTL / Tridente Roma + park free"
+msgid "Solo auto elettriche, disponibili giorno e notte, vicino a te."
+msgstr "No limit in Area C/B/ZTL /Rome Tridente"
 
 #: module/Application/view/application/user/new-signup.phtml:19
-#: module/Application/view/application/user/signup-nl1.phtml:24
-#: module/Application/view/application/user/signup-si1.phtml:22
-#: module/Application/view/application/user/signup-sk1.phtml:32
-msgid "Auto disponibili vicino a te giorno e notte"
-msgstr "Cars available near you day and night"
+msgid "Vai senza limiti in Area C e B/  ZTL Firenze/ ZTL e Tridente Roma."
+msgstr "Only electric cars available day and night near you"
 
 #: module/Application/view/application/user/new-signup.phtml:20
-#: module/Application/view/application/user/signup-nl1.phtml:25
-msgid "Pacchetti fino a 22 centesimi al minuto"
-msgstr "Packages up to 22 cents a minute"
+msgid ""
+"Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti."
+msgstr "Free park in public lots and in those reserved to residents"
 
 #: module/Application/view/application/user/new-signup.phtml:26
-#: module/Application/view/application/user/signup-nl1.phtml:31
-#: module/Application/view/application/user/signup-sk1.phtml:39
-msgid "Iscriverti non ti costa nulla!"
-msgstr "Subscribing does not cost you anything!"
+msgid "ISCRIVERTI NON TI COSTA NULLA!"
+msgstr "Sign up is free!"
 
 #: module/Application/view/application/user/new-signup.phtml:76
 #: module/Application/view/application/user/signup-nl1.phtml:81
@@ -3723,33 +3728,24 @@ msgstr "Subscribing does not cost you anything!"
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 characters, a capital letter and a number"
 
-#: module/Application/view/application/user/new-signup.phtml:108
+#: module/Application/view/application/user/new-signup.phtml:100
+msgid "(clicca qui)."
+msgstr "(click here)."
+
+#: module/Application/view/application/user/new-signup.phtml:132
 #: module/Application/view/application/user/signup-nl1.phtml:113
 #: module/Application/view/application/user/signup-si1.phtml:111
 #: module/Application/view/application/user/signup-sk1.phtml:121
 msgid "CREA IL TUO ACCOUNT"
 msgstr "CREATE YOUR ACCOUNT"
 
-#: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
-msgid "Cliccando sul tasto Iscriviti accetti"
-msgstr "By clicking on the Subscribe button you accept"
+#: module/Application/view/application/user/new-signup.phtml:134
+msgid ""
+"Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo"
+msgstr "By clicking the bottom you agree to Sharengo Terms and Conditions"
 
-#: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
-msgid "l'Informativa sulla Privacy"
-msgstr "Privacy Policy"
-
-#: module/Application/view/application/user/new-signup.phtml:110
-msgid "Condizioni Contrattuali"
-msgstr "Contractual conditions"
-
-#: module/Application/view/application/user/new-signup.phtml:143
-#: module/Application/view/application/user/new-signup.phtml:168
+#: module/Application/view/application/user/new-signup.phtml:162
+#: module/Application/view/application/user/new-signup.phtml:187
 #: module/Application/view/application/user/new-signup2.phtml:417
 #: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/new-signup2.phtml:465
@@ -3763,7 +3759,7 @@ msgstr "Contractual conditions"
 msgid "Chiudi"
 msgstr "Close"
 
-#: module/Application/view/application/user/new-signup.phtml:150
+#: module/Application/view/application/user/new-signup.phtml:169
 #: module/Application/view/application/user/signup-nl1.phtml:155
 #: module/Application/view/application/user/signup-si1.phtml:154
 #: module/Application/view/application/user/signup-sk1.phtml:163
@@ -3778,12 +3774,12 @@ msgstr ""
 "procedures. The licenses will still be validated within the luned & igrave; "
 "morning."
 
-#: module/Application/view/application/user/new-signup.phtml:169
+#: module/Application/view/application/user/new-signup.phtml:188
 #: module/Application/view/application/user/new-signup2.phtml:466
 msgid "Sei già iscritto!"
 msgstr "You are already registered!"
 
-#: module/Application/view/application/user/new-signup.phtml:173
+#: module/Application/view/application/user/new-signup.phtml:192
 #: module/Application/view/application/user/new-signup2.phtml:470
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
@@ -4141,6 +4137,38 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Go to the restricted area"
 
+#: module/Application/view/application/user/signup-nl1.phtml:21
+#: module/Application/view/application/user/signup-sk1.phtml:29
+msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
+msgstr "Electric and NON-polluting Car Sharing"
+
+#: module/Application/view/application/user/signup-nl1.phtml:24
+#: module/Application/view/application/user/signup-si1.phtml:22
+#: module/Application/view/application/user/signup-sk1.phtml:32
+msgid "Auto disponibili vicino a te giorno e notte"
+msgstr "Cars available day and night near you"
+
+#: module/Application/view/application/user/signup-nl1.phtml:25
+msgid "Pacchetti fino a 22 centesimi al minuto"
+msgstr "Packages up to 22 cents a minute"
+
+#: module/Application/view/application/user/signup-nl1.phtml:31
+#: module/Application/view/application/user/signup-sk1.phtml:39
+msgid "Iscriverti non ti costa nulla!"
+msgstr "Sign up is free!"
+
+#: module/Application/view/application/user/signup-nl1.phtml:114
+#: module/Application/view/application/user/signup-si1.phtml:112
+#: module/Application/view/application/user/signup-sk1.phtml:122
+msgid "Cliccando sul tasto Iscriviti accetti"
+msgstr "By clicking on the Subscribe button you accept"
+
+#: module/Application/view/application/user/signup-nl1.phtml:114
+#: module/Application/view/application/user/signup-si1.phtml:112
+#: module/Application/view/application/user/signup-sk1.phtml:122
+msgid "l'Informativa sulla Privacy"
+msgstr "Privacy Policy"
+
 #: module/Application/view/application/user/signup-nl1.phtml:115
 #: module/Application/view/application/user/signup-si1.phtml:113
 #: module/Application/view/application/user/signup-sk1.phtml:123
@@ -4414,11 +4442,6 @@ msgid ""
 "Download the self-declaration form, complete your registration and fill and "
 "send the form"
 msgstr ""
-
-#: module/Application/view/application/user/signup2.phtml:145
-#: module/Application/view/application/user/signup2.phtml:146
-msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
-msgstr "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ENG.pdf"
 
 #: module/Application/view/application/user/signup2.phtml:146
 msgid "Inglese"
@@ -6189,6 +6212,28 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
+
+#~ msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
+#~ msgstr "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ENG.pdf"
+
+#~ msgid "Area C/ZTL/Tridente Roma + park gratis"
+#~ msgstr "Area C/B/ZTL /Rome Tridente  + park free"
+
+#~ msgid "(apri qui)"
+#~ msgstr "(click here)"
+
+#~ msgid "Cliccando sul tasto 'CREA IL TUO ACCOUNT' accetti i Termini e le"
+#~ msgstr ""
+#~ "By clicking on the 'CREATE YOUR ACCOUNT' button you accept the Terms and"
+
+#~ msgid "Condizioni"
+#~ msgstr "Conditions"
+
+#~ msgid "di Share'ngo"
+#~ msgstr "of Share'ngo"
+
+#~ msgid "Condizioni Contrattuali"
+#~ msgstr "Contractual conditions"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "

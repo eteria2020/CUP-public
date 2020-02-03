@@ -584,10 +584,12 @@ final class RegistrationService
         $data['driverLicenseReleaseDate'] = null;
         $data['driverLicenseExpire'] = null;
 
-        /* GENERAL CONDITION AND PRIVACY */
-        $data['generalCondition1'] = 1;
-        $data['generalCondition2'] = 1;
-        $data['privacyInformation'] = 1;
+        /* GENERAL CONDITION, PRIVACY AND NEWS LETTER*/
+        $data['generalCondition1'] = is_null( $data['generalCondition1']) ? 'true' : $data['generalCondition1'];
+        $data['generalCondition2'] =  is_null( $data['generalCondition2']) ? 'true' : $data['generalCondition2'];
+        $data['privacyCondition'] = is_null( $data['privacyCondition']) ? 'true' : $data['privacyCondition'];
+        $data['privacyInformation'] = is_null( $data['privacyInformation']) ? 'true' : $data['privacyInformation'];
+        $data['newsletter'] = is_null( $data['newsletter']) ? 'true' : $data['newsletter'];
 
         /* SET REGISTRATION COMPLETE TRUE */
         //$data['registrationCompleted'] = true;
@@ -669,9 +671,12 @@ final class RegistrationService
         $data['id'] = $customer->getId();
         $data['pin'] = $customer->getPin();
         $data['email'] = $customer->getEmail();
-        $data['generalCondition1'] = 1;
-        $data['generalCondition2'] = 1;
-        $data['privacyCondition'] = 1;
+
+        $data['generalCondition1'] = $customer->getGeneralCondition1();
+        $data['generalCondition2'] = $customer->getGeneralCondition2();
+        $data['privacyCondition'] = $customer->getPrivacyCondition();
+        $data['newsletter'] = $customer->getNewsletter();
+
         $data['surname'] = ($data['surname'] == null || $data['surname'] == '') ? $data['driverLicenseSurname'] : $data['surname'];
         $data['name'] = ($data['name'] == null || $data['name'] == '') ? $data['driverLicenseName'] : $data['name'];;
         $data['address'] = $data['address'].' '.$civico;
@@ -731,8 +736,6 @@ final class RegistrationService
             $customer = new Customers();
 
             $customer = $this->hydrator->hydrate($data, $customer);
-            $customer->setNewsletter(true);
-            $customer->setPrivacyInformation(true);
             $customer->setRegistrationCompleted(true);
 
             $this->entityManager->persist($customer);
