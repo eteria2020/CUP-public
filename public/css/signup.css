@@ -77,7 +77,13 @@ h1.module-main-title{
     line-height: 37px !important;
 }
 
-#generalCondition1Text{
+/*#generalCondition1Text{*/
+/*    text-transform: none;*/
+/*    font-size: 10px;*/
+/*    font-weight: 200;*/
+/*}*/
+
+#privacyConditionText, #newsletterText, #generalCondition1Text, #generalCondition2Text{
     text-transform: none;
     font-size: 10px;
     font-weight: 200;

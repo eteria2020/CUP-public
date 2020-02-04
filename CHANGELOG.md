@@ -19,11 +19,24 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 - Inside global.php, changed:
     - "Pacchetto di Benvenuto 21 minuti" to "Pacchetto di Benvenuto 21 credit"
     - "Bonus compleanno" to "Crediti compleanno"
+- Update Welcome Package amount (10 €) and duration (15 minutes)
+    
 
 ### Deleted
 
 - styles.css
 - Oxygen Points (Punti Ossigeno)
+
+## [1.0.40] - 2020-02-03
+
+### Changed
+
+- In new-signup change the checkbox form (see [ticket 662](https://sharengo.freshdesk.com/a/tickets/662))
+    - privacy (mandatory), in db *customers.privacy_information*
+    - vexatious clauses (mandatory), in db *customers.general_condition2*
+    - new letter (optional), in db *customers.newsletter*
+    - insurance info (optional), in db *customers.general_condition1*
+
 
 ## [1.0.39] - 2020-01-30
 

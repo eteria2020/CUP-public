@@ -11,6 +11,9 @@ RewriteRule ^sites/default/files/assets/images/icona_trasparente-modena.svg     
 RewriteRule ^sites/default/files/assets/images/icona_trasparente-roma.png     api/images/icona_trasparente-roma.png
 RewriteRule ^sites/default/files/assets/images/icona_trasparente-roma.svg     api/images/icona_trasparente-roma.svg
 
+#app mobile rules - old PDF
+RewriteRule ^pdf/Informativa_Privacy.pdf  pdf/it/privacy.pdf
+
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
 RewriteCond %{REQUEST_FILENAME} -s [OR]

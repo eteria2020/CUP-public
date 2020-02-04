@@ -38,8 +38,8 @@ return [
         'offset' => 'lang'
     ],
     'subscription-bonus' => [
-        'total' => 21,
-        'description' => 'Pacchetto di Benvenuto 21 minuti',
+        'total' => 15,
+        'description' => 'Pacchetto di Benvenuto 15 minuti',
         'valid-to' => '+ 90 days'
     ],
     'banner-jsonp' => [

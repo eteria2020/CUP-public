@@ -12,18 +12,18 @@ $this->headLink()
 <div id="main">
     <!-- module-section-bookmark -->
     <div class="module-section-bookmark yellow content-align-center">
-        <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico<br>non inquina e ti conviene!"); ?></h1>
+        <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico che non inquina"); ?></h1>
             <div style="display: inline-block;">
             <ul style="text-align: left; margin-top: 10px">
-                <li><?= $this->translate("Area C/ZTL/Tridente Roma + park gratis") ?></li>
-                <li><?= $this->translate("Auto disponibili vicino a te giorno e notte") ?></li>
-                <li><?= $this->translate("Pacchetti fino a 22 centesimi al minuto") ?></li>
+                <li><?= $this->translate("Solo auto elettriche, disponibili giorno e notte, vicino a te.") ?></li>
+                <li><?= $this->translate("Vai senza limiti in Area C e B/  ZTL Firenze/ ZTL e Tridente Roma.") ?></li>
+                <li><?= $this->translate("Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti.") ?></li>
             </ul>
         </div>
     </div>
 
     <div class="module-main-subtitle content-align-center">
-        <p><?= $this->translate("Iscriverti non ti costa nulla!") ?></p>
+        <p><?= $this->translate("ISCRIVERTI NON TI COSTA NULLA!") ?></p>
     </div>
 
     <!-- module-section-bookmark -->
@@ -92,41 +92,60 @@ $this->headLink()
             <div class="block-row-field clearfix">
                 <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
                 <div class="block-field w-4-4" style="text-align: <?= ($this->formElementErrors($privacyCondition)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
-
-
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($privacyCondition) ?>
-                        <span class='control-indicator'
-                              id="generalCondition1Text"><?= $privacyCondition->getLabel(); ?></span>
+                        <span class='control-indicator' id="privacyConditionText" style="vertical-align: text-top;">
+                            <?= $privacyCondition->getLabel(); ?>
+                            <a href='<?= $this->basePath('pdf/it/privacy.pdf'); ?>'>
+                                <?= $this->translate("(clicca qui).") ?>
+                            </a>
+                        </span>
                     </label>
                     <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
 
                 </div>
             </div>
             <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <?php $newsletter = $this->form->get('user')->get('newsletter'); ?>
+                <div class="block-field w-4-4" style="text-align: justify; <?= ($this->formElementErrors($newsletter)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($newsletter) ?>
+                        <span class='control-indicator' id="newsletterText" style="vertical-align: text-top;"><?= $newsletter->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($newsletter, ['class' => 'errors']); ?>
+                </div>
+            </div>
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
+                <div class="block-field w-4-4" style="text-align: justify; <?= ($this->formElementErrors($generalCondition1)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($generalCondition1) ?>
+                        <span class='control-indicator' id="generalCondition1Text" style="vertical-align: text-top;"><?= $generalCondition1->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
+                </div>
+            </div>
+            <!-- block-row-field -->
             <div class="block-wrapper-button content-align-center">
                 <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate("CREA IL TUO ACCOUNT") ?>">
-                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;"><?= $this->translate("Cliccando sul tasto Iscriviti accetti") ?> <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/Informativa_Privacy.pdf'); ?>"><?= $this->translate("l'Informativa sulla Privacy") ?></a> e <br>
-                    le <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $this->basePath('pdf/Contratto_di_servizio_e_tariffe.pdf'); ?>"><?= $this->translate("Condizioni Contrattuali") ?></a> di Share'ngo</p>
+                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">
+                    <?= $this->translate("Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo")?>
+                </p>
             </div>
             <br>
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
-
                 <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
-
                 <div class="block-field w-4-4" style="text-align: justify; <?= ($this->formElementErrors($generalCondition2)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
-
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($generalCondition2) ?>
-                        <span class='control-indicator'
-                              id="generalCondition1Text"><?= $generalCondition2->getLabel(); ?></span>
+                        <span class='control-indicator' id="generalCondition2Text" style="vertical-align: text-top;"><?= $generalCondition2->getLabel(); ?></span>
                     </label>
                     <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
-
                 </div>
             </div>
-            <!-- block-row-field -->
 
             </form>
 
