@@ -327,13 +327,6 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-
-
-    public function teatroElfoAction()
-    {
-        return (new viewModel())->setTerminal(true);
-    }
-
     public function appredAction()
     {
         $plate = $this->params()->fromRoute('plate');

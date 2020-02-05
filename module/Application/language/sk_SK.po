@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-04 16:11+0100\n"
-"PO-Revision-Date: 2020-02-04 16:53+0100\n"
+"POT-Creation-Date: 2020-02-05 15:22+0100\n"
+"PO-Revision-Date: 2020-02-05 15:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: translate\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2100
+#: module/Application/config/module.config.php:2090
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profil"
 
-#: module/Application/config/module.config.php:2105
+#: module/Application/config/module.config.php:2095
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -38,37 +38,66 @@ msgstr "Profil"
 msgid "Patente"
 msgstr "Vodičský preukaz"
 
-#: module/Application/config/module.config.php:2110
+#: module/Application/config/module.config.php:2100
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2115
+#: module/Application/config/module.config.php:2105
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Sadzby"
 
-#: module/Application/config/module.config.php:2120
+#: module/Application/config/module.config.php:2110
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
-#: module/Application/config/module.config.php:2130
+#: module/Application/config/module.config.php:2115
 msgid "Bonus minuti"
 msgstr "Bonusové minúty"
 
-#: module/Application/config/module.config.php:2135
+#: module/Application/config/module.config.php:2120
 msgid "Corse completate"
 msgstr "Dokončené jazdy"
 
-#: module/Application/config/module.config.php:2140
+#: module/Application/config/module.config.php:2125
 msgid "Dati di pagamento"
 msgstr "Údaje platby"
 
-#: module/Application/config/module.config.php:2145
+#: module/Application/config/module.config.php:2130
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Faktúry"
+
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:151
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:160
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:167
+#: module/Application/src/Application/Controller/UserAreaController.php:422
+#: module/Application/src/Application/Controller/UserAreaController.php:557
+#: module/Application/src/Application/Controller/UserAreaController.php:619
+msgid "Operazione completata con successo!"
+msgstr "Operácia bola dokončená úspešne!"
+
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:155
+msgid "Si è verificato un errore applicativo STD."
+msgstr "Vyskytla sa chyba aplikácie STD."
+
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:162
+msgid "Si è verificato un errore applicativo PCO."
+msgstr "Vyskytla sa chyba aplikácie PCO."
+
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:169
+msgid "Promocode non valido."
+msgstr "Neplatný propagačný kód."
+
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:171
+msgid "Promocode già utilizzato."
+msgstr "Používaný propagačný kód."
+
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:173
+msgid "Si è verificato un errore applicativo CR."
+msgstr "Vyskytla sa chyba aplikácie CR."
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:121
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:154
@@ -102,34 +131,28 @@ msgstr "Nedostatok kyslíkových bodov"
 msgid "Pacchetto non acquistabile"
 msgstr "Uvítací balíček"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:277
-#: module/Application/src/Application/Controller/UserAreaController.php:369
+#: module/Application/src/Application/Controller/UserAreaController.php:275
+#: module/Application/src/Application/Controller/UserAreaController.php:367
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Ak chceš znova zmeniť svoje údaje, budeš musieť počkať 10 minút."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:424
 #: module/Application/src/Application/Controller/UserAreaController.php:559
 #: module/Application/src/Application/Controller/UserAreaController.php:621
-msgid "Operazione completata con successo!"
-msgstr "Operácia bola dokončená úspešne!"
-
-#: module/Application/src/Application/Controller/UserAreaController.php:561
-#: module/Application/src/Application/Controller/UserAreaController.php:623
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Vyskytla sa chyba aplikácie. Ospravedlňujeme sa za nepríjemnosti"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:742
-#: module/Application/src/Application/Controller/UserAreaController.php:782
+#: module/Application/src/Application/Controller/UserAreaController.php:740
+#: module/Application/src/Application/Controller/UserAreaController.php:780
 msgid "Pagamento completato con successo"
 msgstr "Platba bola úspešne dokončená"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:744
-#: module/Application/src/Application/Controller/UserAreaController.php:784
+#: module/Application/src/Application/Controller/UserAreaController.php:742
+#: module/Application/src/Application/Controller/UserAreaController.php:782
 msgid "Pagamento fallito"
 msgstr "Platba zlyhala"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:753
-#: module/Application/src/Application/Controller/UserAreaController.php:793
+#: module/Application/src/Application/Controller/UserAreaController.php:751
+#: module/Application/src/Application/Controller/UserAreaController.php:791
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
@@ -141,23 +164,23 @@ msgstr "Platba zlyhala"
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Platba bola dočasne pozastavená. Skús to znova neskôr."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:822
+#: module/Application/src/Application/Controller/UserAreaController.php:820
 msgid "Contratto disabilitato correttamente!"
 msgstr "Zmluva bola zablokovaná správne!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:824
-#: module/Application/src/Application/Controller/UserAreaController.php:827
-#: module/Application/src/Application/Controller/UserAreaController.php:830
+#: module/Application/src/Application/Controller/UserAreaController.php:822
+#: module/Application/src/Application/Controller/UserAreaController.php:825
+#: module/Application/src/Application/Controller/UserAreaController.php:828
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Chyba pri zablkovaní zmluvy"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:866
+#: module/Application/src/Application/Controller/UserAreaController.php:856
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný, pretože vypršala platnosť vloženej karty, zadaj nové údaje."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:870
+#: module/Application/src/Application/Controller/UserAreaController.php:860
 msgid ""
 "Sei disabilitato perchè il nostro dipartimento amministrativo sta "
 "verificando la validità dei tuoi dati personali e della patente di guida. "
@@ -170,7 +193,7 @@ msgstr ""
 "účet automaticky aktivovaný a dostanete o ňom e-mail. Prosíme vás, aby ste "
 "počkali, nemuseli ste robiť nič iné."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:873
+#: module/Application/src/Application/Controller/UserAreaController.php:863
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -178,7 +201,7 @@ msgstr ""
 "Tvoj účet je zablokovaný. Počkaj kým Tvoj profil verifikujeme. O aktivácii "
 "účtu dostaneš potvrdzovací e-mail."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:881
+#: module/Application/src/Application/Controller/UserAreaController.php:871
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Si zablokovaný z dôvodu vypršania platnosti vodičského preukazu, zadaj nové "
@@ -265,7 +288,6 @@ msgstr "Pani"
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
 #: module/Application/view/application/additional-services/additional-services.phtml:144
-#: module/Application/view/application/additional-services/gift-packages.phtml:93
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:250
@@ -812,21 +834,6 @@ msgstr ""
 "proti podvodom a prevencie nehôd (nepovinné)."
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:152
-#, fuzzy
-#| msgid ""
-#| "Il Cliente, dopo aver preso visione  dei Termini e Condizioni "
-#| "Contrattuali che regolano il rapporto, dichiara ai sensi degli articoli "
-#| "1341 e 1342 del Codice Civile Italiano, di accettare integralmente e "
-#| "specificatamente le clausole dei seguenti articoli: 3 (oggetto e parti "
-#| "del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e "
-#| "prenotazione online del Car Sharing Sharengo), 6 (tariffe e "
-#| "fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di "
-#| "responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. "
-#| "Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 "
-#| "(furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), "
-#| "14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, "
-#| "recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro "
-#| "competente)."
 msgid ""
 "Il Cliente, dopo aver preso visione dei Termini e Condizioni Contrattuali "
 "che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del "
@@ -1559,8 +1566,6 @@ msgstr ""
 #: module/Application/view/application/additional-services/additional-services.phtml:81
 #: module/Application/view/application/additional-services/additional-services.phtml:96
 #: module/Application/view/application/additional-services/additional-services.phtml:118
-#: module/Application/view/application/additional-services/gift-packages.phtml:72
-#: module/Application/view/application/additional-services/gift-packages.phtml:75
 msgid "min"
 msgstr "min"
 
@@ -1599,40 +1604,34 @@ msgstr "deň"
 
 # Dipende dal contesto. Quale parola dovrebbe essere la successiva?
 #: module/Application/view/application/additional-services/additional-services.phtml:114
-#: module/Application/view/application/additional-services/gift-packages.phtml:72
 msgid "a"
 msgstr "na"
 
 # Dipende dal contesto. Validita a 30 Minuti....oppure Minuti: 30
 #: module/Application/view/application/additional-services/additional-services.phtml:145
-#: module/Application/view/application/additional-services/gift-packages.phtml:94
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minúty"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:146
-#: module/Application/view/application/additional-services/gift-packages.phtml:95
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Cena"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:147
-#: module/Application/view/application/additional-services/gift-packages.phtml:96
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Platné od"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:148
-#: module/Application/view/application/additional-services/gift-packages.phtml:97
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Trvanie"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:149
-#: module/Application/view/application/additional-services/gift-packages.phtml:98
 msgid "Disponibile fino"
 msgstr "Platné do"
 
@@ -1642,7 +1641,6 @@ msgstr "Kúpiť"
 
 # Non capisco. Cosa significa?
 #: module/Application/view/application/additional-services/additional-services.phtml:165
-#: module/Application/view/application/additional-services/gift-packages.phtml:115
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
@@ -1660,55 +1658,6 @@ msgstr "Vlož zľavový kód"
 #: module/Application/view/application/additional-services/additional-services.phtml:240
 msgid "Valida"
 msgstr "POUŽIŤ"
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:19
-msgid "gift card"
-msgstr "darčeková karta"
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:38
-msgid "Acquista una Gift Card"
-msgstr "Kúpiť darčekovú kartu"
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:44
-msgid "REGALA LA MOBILIT&Agrave; SOSTENIBILE CON GIFT CARD"
-msgstr "PODARUJ UDRŽATEĽNÚ MOBILITU DARČEKOVOU KARTOU"
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:48
-msgid ""
-"Ti stai divertendo un mondo con Share&#39;ngo? Condividi il piacere della "
-"mobilit&agrave; elettrica e condivisa, regalando una Gift Card ad un amico, "
-"un parente o un collega."
-msgstr ""
-"Užívaš si svet so Share'ngo? Podeľ sa s potešením z elektrickej zdieľanej "
-"mobility, zakúpením darčekovej karty priateľovi, príbuznému alebo kolegovi."
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:49
-msgid ""
-"La Gift Card comprende l&#39;iscrizione a Share&#39;ngo con il pacchetto "
-"minuti bonus che scegli tu."
-msgstr ""
-"Darčeková karta obsahuje registráciu do služby Share'ngo s balíkom "
-"bonusových minút, ktorý si vyberieš."
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:51
-msgid "Riceverai la Gift Card via email il giorno dopo l&#39;acquisto."
-msgstr "Darčekovú kartu dostaneš mailom nasledujúci deň po jej zakúpení."
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:54
-msgid ""
-"(chi riceve la Gift Card potr&agrave; attivare il suo account con soli 50 "
-"cent)"
-msgstr ""
-"(ten, kto dostane darčekovú kartu, môže aktivovať svoj účet len za 50 "
-"centov.)"
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:72
-msgid "Iscrizione +"
-msgstr "Registrácia +"
-
-#: module/Application/view/application/additional-services/gift-packages.phtml:99
-msgid "Acquista"
-msgstr "Kúpiť"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:17
 msgid "Riepilogo"
@@ -6184,6 +6133,47 @@ msgstr "(počkajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
+
+#~ msgid "gift card"
+#~ msgstr "darčeková karta"
+
+#~ msgid "Acquista una Gift Card"
+#~ msgstr "Kúpiť darčekovú kartu"
+
+#~ msgid "REGALA LA MOBILIT&Agrave; SOSTENIBILE CON GIFT CARD"
+#~ msgstr "PODARUJ UDRŽATEĽNÚ MOBILITU DARČEKOVOU KARTOU"
+
+#~ msgid ""
+#~ "Ti stai divertendo un mondo con Share&#39;ngo? Condividi il piacere della "
+#~ "mobilit&agrave; elettrica e condivisa, regalando una Gift Card ad un "
+#~ "amico, un parente o un collega."
+#~ msgstr ""
+#~ "Užívaš si svet so Share'ngo? Podeľ sa s potešením z elektrickej zdieľanej "
+#~ "mobility, zakúpením darčekovej karty priateľovi, príbuznému alebo "
+#~ "kolegovi."
+
+#~ msgid ""
+#~ "La Gift Card comprende l&#39;iscrizione a Share&#39;ngo con il pacchetto "
+#~ "minuti bonus che scegli tu."
+#~ msgstr ""
+#~ "Darčeková karta obsahuje registráciu do služby Share'ngo s balíkom "
+#~ "bonusových minút, ktorý si vyberieš."
+
+#~ msgid "Riceverai la Gift Card via email il giorno dopo l&#39;acquisto."
+#~ msgstr "Darčekovú kartu dostaneš mailom nasledujúci deň po jej zakúpení."
+
+#~ msgid ""
+#~ "(chi riceve la Gift Card potr&agrave; attivare il suo account con soli 50 "
+#~ "cent)"
+#~ msgstr ""
+#~ "(ten, kto dostane darčekovú kartu, môže aktivovať svoj účet len za 50 "
+#~ "centov.)"
+
+#~ msgid "Iscrizione +"
+#~ msgstr "Registrácia +"
+
+#~ msgid "Acquista"
+#~ msgstr "Kúpiť"
 
 #~ msgid "Area C/ZTL/Tridente Roma + park gratis"
 #~ msgstr "Zóna C/ZTL/Tridente Roma + park gratis"

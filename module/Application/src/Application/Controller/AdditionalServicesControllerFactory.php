@@ -12,6 +12,7 @@ class AdditionalServicesControllerFactory implements FactoryInterface
     {
         $sharedLocator = $serviceLocator->getServiceLocator();
 
+        $translationService = $serviceLocator->getServiceLocator()->get('Translator');
         $customersService = $sharedLocator->get('SharengoCore\Service\CustomersService');
         $carrefourService = $sharedLocator->get('SharengoCore\Service\CarrefourService');
         $promoCodeForm = $sharedLocator->get('PromoCodeForm');
@@ -24,6 +25,7 @@ class AdditionalServicesControllerFactory implements FactoryInterface
         $config = $sharedLocator->get('Config');
 
         return new AdditionalServicesController(
+            $translationService,
             $customersService,
             $carrefourService,
             $promoCodeForm,

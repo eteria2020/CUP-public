@@ -245,13 +245,11 @@ class UserAreaController extends AbstractActionController {
     {
         $this->redirectFromLogin();
         //if there is mobile param the layout changes
-        $mobile = $this->getRequest()->getUriString();
-        $userAreaMobile = '';
-        $mobileParam = NULL;
-        if (strpos($mobile, 'mobile') !== false) {
+
+        $mobile = null;
+        if (strpos($this->getRequest()->getUriString(), 'mobile') !== false) {
+            $mobile = 'mobile';
             $this->layout('layout/map');
-            $mobileParam = 'mobile';
-            $userAreaMobile = '/' . $mobileParam;
         }
 
         $customer = $this->userService->getIdentity();
@@ -264,7 +262,7 @@ class UserAreaController extends AbstractActionController {
 
         //if ($this->serverInstance["id"] == "sk_SK" || $this->serverInstance["id"] == "nl_NL") {
         if ($this->serverInstance["id"]!="") {
-            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobileParam]));
+            return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/profile', ['mobile' => $mobile]));
         }
 
         // if not, continue with index action
@@ -275,7 +273,7 @@ class UserAreaController extends AbstractActionController {
 
             if($this->editLimiter()){
                 $this->flashMessenger()->addInfoMessage($this->translator->translate("Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."));
-                return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente', ['mobile' => $mobile]));
             }
 
             $postData = $this->getRequest()->getPost()->toArray();
@@ -331,7 +329,7 @@ class UserAreaController extends AbstractActionController {
             }
 
             if ($editForm) {
-                return $this->redirect()->toRoute('area-utente' . $userAreaMobile);
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente', ['mobile' => $mobile]));
             }
         }
         $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
@@ -838,17 +836,9 @@ class UserAreaController extends AbstractActionController {
     }
 
     private function redirectDeactivation(Customers $customer, $mobile){
-        $userAreaMobile = '';
-
-        $mobileParam = NULL;
-        if ($mobile == 'mobile') {
-            $this->layout('layout/map');
-            $mobileParam = 'mobile';
-            $userAreaMobile = '/' . $mobileParam;
-        }
 
         if ($this->redirectRegistrationNotCompleted($customer)){
-            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobileParam]));
+            return $this->redirect()->toUrl($this->url()->fromRoute('new-signup-2', ['mobile' => $mobile]));
         }
         $returnRedirect = true;
 
@@ -860,11 +850,11 @@ class UserAreaController extends AbstractActionController {
                     case CustomerDeactivation::FIRST_PAYMENT_NOT_COMPLETED:
                     case CustomerDeactivation::FAILED_PAYMENT:
                     case CustomerDeactivation::FAILED_EXTRA_PAYMENT:
-                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
                         break;
                     case CustomerDeactivation::EXPIRED_CREDIT_CARD:
                         $this->flashMessenger()->addErrorMessage($this->translator->translate("Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."));
-                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobileParam]));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/dati-pagamento', ['mobile' => $mobile]));
                         break;
                     case CustomerDeactivation::INVALID_DRIVERS_LICENSE:
                         $driverLicenseProblem = $this->translator->translate("Sei disabilitato perchè il nostro dipartimento amministrativo sta verificando la validità dei tuoi dati personali e della patente di guida. Dopo l'approvazione, il tuo account verrà attivato automaticamente e riceverai una e-mail a riguardo. Ti chiediamo gentilmente di attendere, non devi fare nient'altro.");
@@ -879,7 +869,7 @@ class UserAreaController extends AbstractActionController {
                         break;
                     case CustomerDeactivation::EXPIRED_DRIVERS_LICENSE:
                         $this->flashMessenger()->addErrorMessage($this->translator->translate("Sei disabilitato per patente scaduta, inserisci i nuovi dati."));
-                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobileParam]));
+                        return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/patente', ['mobile' => $mobile]));
                         break;
                     /*case 'DISABLED_BY_WEBUSER':
                         return 'Disabilitato manualmente';
@@ -890,9 +880,8 @@ class UserAreaController extends AbstractActionController {
             //DOUBLE CHECK FOR FAILED TRIP PAYMENT & FIRST PAYMENT NOT COMPLETED
             if ($returnRedirect && ($this->tripsService->getTripsToBePayedAndWrong($customer, $paymentsToBePayedAndWrong) > 0 ||
                 (!$customer->getEnabled() && !$customer->getFirstPaymentCompleted()))) {
-                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobileParam]));
-
-        }
+                return $this->redirect()->toUrl($this->url()->fromRoute('area-utente/debt-collection', ['mobile' => $mobile]));
+            }
 
     }
 
