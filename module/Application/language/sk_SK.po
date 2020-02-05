@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-30 10:14+0100\n"
-"PO-Revision-Date: 2020-01-30 10:16+0100\n"
+"POT-Creation-Date: 2020-02-04 16:11+0100\n"
+"PO-Revision-Date: 2020-02-04 16:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -313,10 +313,10 @@ msgstr "Priezvisko"
 #: module/Application/view/application/user-area/index.phtml:224
 #: module/Application/view/application/user-area/profile.phtml:54
 #: module/Application/view/application/user-area/profile.phtml:229
-#: module/Application/view/application/user/new-signup.phtml:59
-#: module/Application/view/application/user/signup-nl1.phtml:64
-#: module/Application/view/application/user/signup-si1.phtml:62
-#: module/Application/view/application/user/signup-sk1.phtml:72
+#: module/Application/view/application/user/new-signup.phtml:45
+#: module/Application/view/application/user/signup-nl1.phtml:44
+#: module/Application/view/application/user/signup-si1.phtml:44
+#: module/Application/view/application/user/signup-sk1.phtml:44
 #: module/Application/view/application/user/signup.phtml:149
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:35
 msgid "Email"
@@ -780,38 +780,65 @@ msgstr "Zadaj svoje heslo"
 #: module/Application/view/application/user-area/index.phtml:651
 #: module/Application/view/application/user-area/profile.phtml:498
 #: module/Application/view/application/user-area/profile.phtml:534
-#: module/Application/view/application/user/new-signup.phtml:69
-#: module/Application/view/application/user/signup-nl1.phtml:74
-#: module/Application/view/application/user/signup-si1.phtml:72
-#: module/Application/view/application/user/signup-sk1.phtml:82
+#: module/Application/view/application/user/new-signup.phtml:55
+#: module/Application/view/application/user/signup-nl1.phtml:54
+#: module/Application/view/application/user/signup-si1.phtml:54
+#: module/Application/view/application/user/signup-sk1.phtml:54
 #: module/Application/view/application/user/signup.phtml:175
 #: module/Application/view/zfc-user/user/login.phtml:51
 msgid "Password"
 msgstr "Heslo"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:106
-msgid ""
-"Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
-"sia cartacee che digitali relative al servizio, ai prodotti e alle "
-"promozioni Sharengo."
-msgstr ""
-"Súhlasím so spracovaním svojich osobných údajov pre papierovú aj digitálnu "
-"komunikáciu súvisiacu so službou, produktmi a akciami Sharengo."
+msgid "Accetto espressamente i Termini e le Condizioni Privacy "
+msgstr "Výslovne súhlasím s podmienkami ochrany osobných údajov"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:126
+#: module/Application/src/Application/Form/NewUserFieldset.php:119
 msgid ""
-"Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
+"Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, "
+"ai prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo "
+"(facoltativo)."
+msgstr ""
+"Súhlasím s prijímaním papierovej a digitálnej komunikácie týkajúcej sa "
+"služby, výrobkov, výhod ponúkaných spoločnosťami Sharengo a Sharengo "
+"Partners (voliteľné)."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:139
+msgid ""
+"Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
+"antifrode e prevenzione sinistri (facoltativo)."
+msgstr ""
+"Súhlasím so spracovaním mojich osobných údajov na účely poistenia, boja "
+"proti podvodom a prevencie nehôd (nepovinné)."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:152
+#, fuzzy
+#| msgid ""
+#| "Il Cliente, dopo aver preso visione  dei Termini e Condizioni "
+#| "Contrattuali che regolano il rapporto, dichiara ai sensi degli articoli "
+#| "1341 e 1342 del Codice Civile Italiano, di accettare integralmente e "
+#| "specificatamente le clausole dei seguenti articoli: 3 (oggetto e parti "
+#| "del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e "
+#| "prenotazione online del Car Sharing Sharengo), 6 (tariffe e "
+#| "fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di "
+#| "responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. "
+#| "Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 "
+#| "(furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), "
+#| "14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, "
+#| "recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro "
+#| "competente)."
+msgid ""
+"Il Cliente, dopo aver preso visione dei Termini e Condizioni Contrattuali "
 "che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del "
 "Codice Civile Italiano, di accettare integralmente e specificatamente le "
 "clausole dei seguenti articoli: 3 (oggetto e parti del contratto), 4 "
-"(modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online "
-"del Car Sharing Sharengo), 6 (tariffe e fatturazione), 7 (divieto di "
-"sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di "
-"guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 "
-"(sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in "
-"materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, "
-"durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 "
-"(reclami), 18 (penali), 20 (foro competente)."
+"(modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online), "
+"6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 "
+"(esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei "
+"veicoli, clausola risolutiva espressa), 11 (fine del noleggio), 12 (sinistri "
+"e avaria del veicolo) 13 (sanzioni in materia di circolazione stradale), 14 "
+"(assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, "
+"risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente)."
 msgstr ""
 "Klient po prečítaní zmluvných podmienok upravujúcich vzťah vyhlasuje, podľa "
 "článkov 1341 a 1342 talianskeho občianskeho zákonníka, úplné a konkrétne "
@@ -824,13 +851,13 @@ msgstr ""
 "(poistenie), 16 (dátum začiatku, trvanie, obnovenie, pozastavenie, zrušenie, "
 "ukončenie zmluvy), 17 (sťažnosti), 18 (sankcie), 20 (jurisdikcia)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:146
-#: module/Application/src/Application/Form/NewUserFieldset.php:176
+#: module/Application/src/Application/Form/NewUserFieldset.php:172
+#: module/Application/src/Application/Form/NewUserFieldset.php:202
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:193
-#: module/Application/src/Application/Form/NewUserFieldset.php:217
+#: module/Application/src/Application/Form/NewUserFieldset.php:219
+#: module/Application/src/Application/Form/NewUserFieldset.php:246
 msgid "Il dato è richiesto per procedere"
 msgstr "Údaje sa vyžadujú na pokračovanie"
 
@@ -1242,7 +1269,10 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:246
+#: module/Application/view/application/user/new-signup.phtml:251
+#: module/Application/view/application/user/signup-nl1.phtml:250
+#: module/Application/view/application/user/signup-si1.phtml:250
+#: module/Application/view/application/user/signup-sk1.phtml:250
 msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "Používateľ už existuje s rovnakou e-mailovou adresou"
 
@@ -1852,9 +1882,6 @@ msgid "Una volta scaricata la nostra App per"
 msgstr "Keď si stiahneš našu aplikáciu pre"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
 msgid "e"
 msgstr "a"
 
@@ -2606,10 +2633,10 @@ msgstr "Ešte si do svojho profilu nezadal platobnú/kreditnú kartu."
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
-#: module/Application/view/application/user/new-signup.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:152
+#: module/Application/view/application/user/new-signup.phtml:152
+#: module/Application/view/application/user/signup-nl1.phtml:151
 #: module/Application/view/application/user/signup-si1.phtml:151
-#: module/Application/view/application/user/signup-sk1.phtml:160
+#: module/Application/view/application/user/signup-sk1.phtml:151
 msgid "ATTENZIONE"
 msgstr "UPOZORNENIE"
 
@@ -3046,9 +3073,10 @@ msgstr "Jazyk"
 #: module/Application/view/application/user-area/index.phtml:499
 #: module/Application/view/application/user-area/profile.phtml:206
 #: module/Application/view/application/user-area/profile.phtml:467
-#: module/Application/view/application/user/new-signup.phtml:80
-#: module/Application/view/application/user/signup-nl1.phtml:85
-#: module/Application/view/application/user/signup-sk1.phtml:93
+#: module/Application/view/application/user/new-signup.phtml:66
+#: module/Application/view/application/user/signup-nl1.phtml:65
+#: module/Application/view/application/user/signup-si1.phtml:65
+#: module/Application/view/application/user/signup-sk1.phtml:65
 msgid "Citt&agrave; preferita"
 msgstr "Preferované mesto"
 
@@ -3677,84 +3705,92 @@ msgid "Non hai ancora effettuato alcun noleggio"
 msgstr "Ešte si nevykonal žiaden prenájom"
 
 #: module/Application/view/application/user/new-signup.phtml:15
-#: module/Application/view/application/user/signup-nl1.phtml:21
-#: module/Application/view/application/user/signup-sk1.phtml:29
-msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
-msgstr "Car sharing elektrických áut<br>neznečisťuje a oplatí sa ti!"
+#: module/Application/view/application/user/signup-nl1.phtml:15
+#: module/Application/view/application/user/signup-si1.phtml:15
+#: module/Application/view/application/user/signup-sk1.phtml:15
+msgid "Il car sharing elettrico che non inquina"
+msgstr "Zdieľanie elektrických vozidiel, ktoré neznečisťuje"
 
 #: module/Application/view/application/user/new-signup.phtml:18
-msgid "Area C/ZTL/Tridente Roma + park gratis"
-msgstr "Zóna C/ZTL/Tridente Roma + park gratis"
+#: module/Application/view/application/user/signup-nl1.phtml:18
+#: module/Application/view/application/user/signup-si1.phtml:18
+#: module/Application/view/application/user/signup-sk1.phtml:18
+msgid "Solo auto elettriche, disponibili giorno e notte, vicino a te."
+msgstr "Iba elektrické vozidlá, k dispozícii vo dne iv noci, vo vašom okolí."
 
 #: module/Application/view/application/user/new-signup.phtml:19
-#: module/Application/view/application/user/signup-nl1.phtml:24
-#: module/Application/view/application/user/signup-si1.phtml:22
-#: module/Application/view/application/user/signup-sk1.phtml:32
-msgid "Auto disponibili vicino a te giorno e notte"
-msgstr "Autá k dispozícii blízko teba vo dne i v noci"
+msgid "Vai senza limiti in Area C e B/ ZTL Firenze/ ZTL e Tridente Roma."
+msgstr ""
 
 #: module/Application/view/application/user/new-signup.phtml:20
-#: module/Application/view/application/user/signup-nl1.phtml:25
-msgid "Pacchetti fino a 22 centesimi al minuto"
-msgstr "Balíčky od 22 centov za minútu"
+#: module/Application/view/application/user/signup-nl1.phtml:19
+#: module/Application/view/application/user/signup-si1.phtml:19
+#: module/Application/view/application/user/signup-sk1.phtml:19
+msgid ""
+"Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti."
+msgstr ""
+"Bezplatné parkovanie na verejných parkovacích miestach a na miestach "
+"vyhradených pre obyvateľov."
 
 #: module/Application/view/application/user/new-signup.phtml:26
-#: module/Application/view/application/user/signup-nl1.phtml:31
-#: module/Application/view/application/user/signup-sk1.phtml:39
-msgid "Iscriverti non ti costa nulla!"
-msgstr "Registrácia ťa nestojí nič!"
+#: module/Application/view/application/user/signup-nl1.phtml:25
+#: module/Application/view/application/user/signup-si1.phtml:25
+#: module/Application/view/application/user/signup-sk1.phtml:25
+msgid "ISCRIVERTI NON TI COSTA NULLA!"
+msgstr "SPOLOČNOSŤ VÁM NEDOSTÁ NÁKLAD!"
 
-#: module/Application/view/application/user/new-signup.phtml:76
-#: module/Application/view/application/user/signup-nl1.phtml:81
-#: module/Application/view/application/user/signup-si1.phtml:79
-#: module/Application/view/application/user/signup-sk1.phtml:89
+#: module/Application/view/application/user/new-signup.phtml:62
+#: module/Application/view/application/user/signup-nl1.phtml:61
+#: module/Application/view/application/user/signup-si1.phtml:61
+#: module/Application/view/application/user/signup-sk1.phtml:61
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 znakov, jedno veľké písmeno a jedno číslo"
 
-#: module/Application/view/application/user/new-signup.phtml:108
-#: module/Application/view/application/user/signup-nl1.phtml:113
-#: module/Application/view/application/user/signup-si1.phtml:111
-#: module/Application/view/application/user/signup-sk1.phtml:121
+#: module/Application/view/application/user/new-signup.phtml:86
+#: module/Application/view/application/user/signup-nl1.phtml:85
+#: module/Application/view/application/user/signup-si1.phtml:85
+#: module/Application/view/application/user/signup-sk1.phtml:85
+msgid "(clicca qui)."
+msgstr "(kliknite sem)."
+
+#: module/Application/view/application/user/new-signup.phtml:118
+#: module/Application/view/application/user/signup-nl1.phtml:117
+#: module/Application/view/application/user/signup-si1.phtml:117
+#: module/Application/view/application/user/signup-sk1.phtml:117
 msgid "CREA IL TUO ACCOUNT"
 msgstr "VYTVOR SI SVOJ ÚČET"
 
-#: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
-msgid "Cliccando sul tasto Iscriviti accetti"
-msgstr "Kliknutím na tlačidlo „Vytvor si svoj účet“ prijímaš"
+#: module/Application/view/application/user/new-signup.phtml:120
+#: module/Application/view/application/user/signup-nl1.phtml:119
+#: module/Application/view/application/user/signup-si1.phtml:119
+#: module/Application/view/application/user/signup-sk1.phtml:119
+msgid ""
+"Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di "
+"Sharengo"
+msgstr "Kliknutím na tlačidlo súhlasíte so zmluvnými podmienkami Sharengo"
 
-#: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
-msgid "l'Informativa sulla Privacy"
-msgstr "Zásady ochrany osobných údajov"
-
-#: module/Application/view/application/user/new-signup.phtml:110
-msgid "Condizioni Contrattuali"
-msgstr "Zmluvné podmienky"
-
-#: module/Application/view/application/user/new-signup.phtml:143
-#: module/Application/view/application/user/new-signup.phtml:168
+#: module/Application/view/application/user/new-signup.phtml:148
+#: module/Application/view/application/user/new-signup.phtml:173
 #: module/Application/view/application/user/new-signup2.phtml:417
 #: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/new-signup2.phtml:465
-#: module/Application/view/application/user/signup-nl1.phtml:148
+#: module/Application/view/application/user/signup-nl1.phtml:147
+#: module/Application/view/application/user/signup-nl1.phtml:172
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
+#: module/Application/view/application/user/signup-si1.phtml:172
 #: module/Application/view/application/user/signup-si2.phtml:379
-#: module/Application/view/application/user/signup-sk1.phtml:156
+#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk1.phtml:172
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
 msgstr "Zavrieť"
 
-#: module/Application/view/application/user/new-signup.phtml:150
-#: module/Application/view/application/user/signup-nl1.phtml:155
+#: module/Application/view/application/user/new-signup.phtml:155
+#: module/Application/view/application/user/signup-nl1.phtml:154
 #: module/Application/view/application/user/signup-si1.phtml:154
-#: module/Application/view/application/user/signup-sk1.phtml:163
+#: module/Application/view/application/user/signup-sk1.phtml:154
 msgid ""
 "Domenica 11 Febbraio dalle ore 7:30 alle ore 13:30 una manutenzione "
 "programmata del sistema di verifica delle patenti potrebbe causare qualche "
@@ -3765,13 +3801,19 @@ msgstr ""
 "vodičských preukazov môže spôsobiť určité spomalenie kontrolných postupov. "
 "Vodičské preukazy budú potvrdené v pndelok  ráno."
 
-#: module/Application/view/application/user/new-signup.phtml:169
+#: module/Application/view/application/user/new-signup.phtml:174
 #: module/Application/view/application/user/new-signup2.phtml:466
+#: module/Application/view/application/user/signup-nl1.phtml:173
+#: module/Application/view/application/user/signup-si1.phtml:173
+#: module/Application/view/application/user/signup-sk1.phtml:173
 msgid "Sei già iscritto!"
 msgstr "Ste už zaregistrovaní!"
 
-#: module/Application/view/application/user/new-signup.phtml:173
+#: module/Application/view/application/user/new-signup.phtml:178
 #: module/Application/view/application/user/new-signup2.phtml:470
+#: module/Application/view/application/user/signup-nl1.phtml:177
+#: module/Application/view/application/user/signup-si1.phtml:177
+#: module/Application/view/application/user/signup-sk1.phtml:177
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr ""
@@ -4131,25 +4173,18 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Choď do vyhradenej zóny"
 
-#: module/Application/view/application/user/signup-nl1.phtml:115
-#: module/Application/view/application/user/signup-si1.phtml:113
-#: module/Application/view/application/user/signup-sk1.phtml:123
-msgid "le Condizioni Contrattuali di Sharengo"
-msgstr "Všeobecné zmluvné podmienky Sharengo"
-
-#: module/Application/view/application/user/signup-nl1.phtml:128
-#: module/Application/view/application/user/signup-si1.phtml:126
-#: module/Application/view/application/user/signup-sk1.phtml:136
+#: module/Application/view/application/user/signup-nl1.phtml:129
+#: module/Application/view/application/user/signup-si1.phtml:129
+#: module/Application/view/application/user/signup-sk1.phtml:129
 msgid ""
-"Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
-"Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che "
-"accetta e approva letteralmente le Condizioni generali e condizioni e assume "
-"consapevole della loro accettazione per concludere il contratto."
+"Il Cliente dichiara, dopo aver preso conoscenza delle Condizioni generali di "
+"contratto sulla base del Codice civile, di accettare le Condizioni generali "
+"e di approvarle integralmente, ed è a conoscenza dell'accordo relativo alla "
+"conclusione del contratto."
 msgstr ""
-"Klient po prečítaní Všeobecných zmluvných podmienok podľa § 43c zákona č. "
-"40/1964 Zb. Občianskeho zákonníka vyhlasuje, že doslovne prijíma a schvaľuje "
-"tieto všeobecné zmluvné podmienky a berie na vedomie, že ich akceptáciou "
-"dochádza k uzavretiu zmluvy."
+"Zákazník prehlasuje, že po prečítaní Všeobecných podmienok na základe "
+"Občianskeho zákonníka prijíma všeobecné podmienky a plne ich schvaľuje, a je "
+"si vedomý dohody týkajúcej sa uzavretia zmluvy."
 
 #: module/Application/view/application/user/signup-nl2.phtml:35
 msgid "30 minuti a soli 10&euro;"
@@ -4210,24 +4245,6 @@ msgstr ""
 msgid "foto dell'utente (selfie)"
 msgstr "Fotka Používateľa (selfie)"
 
-#: module/Application/view/application/user/signup-si1.phtml:19
-msgid ""
-"Condivisione di auto elettriche rispettose dell'ambiente e convenienti per te"
-msgstr ""
-"Zdieľanie ekologických a cenovo dostupných elektrických automobilov za vás"
-
-#: module/Application/view/application/user/signup-si1.phtml:23
-msgid "I pacchetti partono da 0,10 € al minuto"
-msgstr "Balíčky od 10 centov za minútu"
-
-#: module/Application/view/application/user/signup-si1.phtml:29
-msgid "Registrazione gratuita!"
-msgstr "Bezplatná registrácia!"
-
-#: module/Application/view/application/user/signup-si1.phtml:83
-msgid "Luogo preferito"
-msgstr "Obľúbené miesto"
-
 #: module/Application/view/application/user/signup-si2.phtml:35
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
@@ -4236,10 +4253,6 @@ msgstr "30 minút len ​​za 5&euro;"
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Pokračujte v registrácii"
-
-#: module/Application/view/application/user/signup-sk1.phtml:33
-msgid "Pacchetti fino a 16 centesimi al minuto"
-msgstr "Balíčky od 16 centov za minútu"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
@@ -4406,11 +4419,6 @@ msgid ""
 msgstr ""
 "Download the self-declaration form, complete your registration and fill and "
 "send the form"
-
-#: module/Application/view/application/user/signup2.phtml:145
-#: module/Application/view/application/user/signup2.phtml:146
-msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
-msgstr "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ENG.pdf"
 
 #: module/Application/view/application/user/signup2.phtml:146
 msgid "Inglese"
@@ -6176,6 +6184,59 @@ msgstr "(počkajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
+
+#~ msgid "Area C/ZTL/Tridente Roma + park gratis"
+#~ msgstr "Zóna C/ZTL/Tridente Roma + park gratis"
+
+#~ msgid "Auto disponibili vicino a te giorno e notte"
+#~ msgstr "Autá k dispozícii blízko teba vo dne i v noci"
+
+#~ msgid "Pacchetti fino a 22 centesimi al minuto"
+#~ msgstr "Balíčky od 22 centov za minútu"
+
+#~ msgid "Iscriverti non ti costa nulla!"
+#~ msgstr "Registrácia ťa nestojí nič!"
+
+#~ msgid "Cliccando sul tasto Iscriviti accetti"
+#~ msgstr "Kliknutím na tlačidlo „Vytvor si svoj účet“ prijímaš"
+
+#~ msgid "l'Informativa sulla Privacy"
+#~ msgstr "Zásady ochrany osobných údajov"
+
+#~ msgid "Condizioni Contrattuali"
+#~ msgstr "Zmluvné podmienky"
+
+#~ msgid ""
+#~ "Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
+#~ "Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che "
+#~ "accetta e approva letteralmente le Condizioni generali e condizioni e "
+#~ "assume consapevole della loro accettazione per concludere il contratto."
+#~ msgstr ""
+#~ "Klient po prečítaní Všeobecných zmluvných podmienok podľa § 43c zákona č. "
+#~ "40/1964 Zb. Občianskeho zákonníka vyhlasuje, že doslovne prijíma "
+#~ "a schvaľuje tieto všeobecné zmluvné podmienky a berie na vedomie, že ich "
+#~ "akceptáciou dochádza k uzavretiu zmluvy."
+
+#~ msgid ""
+#~ "Condivisione di auto elettriche rispettose dell'ambiente e convenienti "
+#~ "per te"
+#~ msgstr ""
+#~ "Zdieľanie ekologických a cenovo dostupných elektrických automobilov za vás"
+
+#~ msgid "I pacchetti partono da 0,10 € al minuto"
+#~ msgstr "Balíčky od 10 centov za minútu"
+
+#~ msgid "Registrazione gratuita!"
+#~ msgstr "Bezplatná registrácia!"
+
+#~ msgid "Luogo preferito"
+#~ msgstr "Obľúbené miesto"
+
+#~ msgid "Pacchetti fino a 16 centesimi al minuto"
+#~ msgstr "Balíčky od 16 centov za minútu"
+
+#~ msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
+#~ msgstr "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ENG.pdf"
 
 #, fuzzy
 #~| msgid ""

@@ -7,11 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.41] - 2020-02-04
+
+### Changed
+
+- Update PDF privacy document for Italian version
+- Update new-signup.phtml, signup-nl1.phtml, signup-si1.phtml and signup-sk1.phtml
+
 ## [1.0.40] - 2020-02-03
 
 ### Changed
 
-- In new-signup change the checkbox form (see [ticket 622](https://sharengo.freshdesk.com/a/tickets/622))
+- In new-signup change the checkbox form (see [ticket 662](https://sharengo.freshdesk.com/a/tickets/662))
     - privacy (mandatory), in db *customers.privacy_information*
     - vexatious clauses (mandatory), in db *customers.general_condition2*
     - new letter (optional), in db *customers.newsletter*

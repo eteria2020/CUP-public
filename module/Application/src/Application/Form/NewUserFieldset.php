@@ -116,7 +116,7 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'newsletter',
             'options' => [
-                'label' => $translator->translate("Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, ai prodotti, ai vantaggi offerti da Sharengo e dai  Partner Sharengo (facoltativo)."),
+                'label' => $translator->translate("Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, ai prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo (facoltativo)."),
                 'use_hidden_element' => true,
                 'checked_value' => 'on',
                 'unchecked_value' => 'off',
