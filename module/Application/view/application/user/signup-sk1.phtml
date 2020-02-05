@@ -6,52 +6,24 @@ $this->headLink()
     ->appendStylesheet($this->basePath('css/overlay.css'))
     ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
     ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
-
-$privacyLink = $this->basePath('pdf/sk/privacy.pdf'); //default slovakia link
-$contractLink = $this->basePath('pdf/sk/contract.pdf'); //default slovakia contract
-
-if(!is_null($this->serverInstance)){
-    if($this->serverInstance == "sk_SK") {
-        $privacyLink = $this->basePath('pdf/sk/privacy.pdf');
-        $contractLink = $this->basePath('pdf/sk/contract.pdf');
-    } elseif ($this->serverInstance == "nl_NL") {
-        $privacyLink = $this->basePath('pdf/nl/privacy.pdf');
-        $contractLink = $this->basePath('pdf/nl/contract.pdf');
-    }
-}
-
 ?>
 
 <!-- main -->
 <div id="main">
     <!-- module-section-bookmark -->
     <div class="module-section-bookmark yellow content-align-center">
-        <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico<br>non inquina e ti conviene!"); ?></h1>
-            <div style="display: inline-block;">
+        <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico che non inquina"); ?></h1>
+        <div style="display: inline-block;">
             <ul style="text-align: left; margin-top: 10px">
-                <li><?= $this->translate("Auto disponibili vicino a te giorno e notte") ?></li>
-                <li><?= $this->translate("Pacchetti fino a 16 centesimi al minuto") ?></li>
+                <li><?= $this->translate("Solo auto elettriche, disponibili giorno e notte, vicino a te.") ?></li>
+                <li><?= $this->translate("Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti.") ?></li>
             </ul>
         </div>
     </div>
 
     <div class="module-main-subtitle content-align-center">
-        <p><?= $this->translate("Iscriverti non ti costa nulla!") ?></p>
+        <p><?= $this->translate("ISCRIVERTI NON TI COSTA NULLA!") ?></p>
     </div>
-
-    <!-- module-section-bookmark -->
-    <script>//fbq('track', 'Lead');</script>
-
-    <!-- module-wizard -->
-    <!--<div class="module-wizard clearfix">
-        <ul>
-            <li class="active">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li class="last"><i class="icon-auto"></i></li>
-        </ul>
-    </div>-->
-    <!-- module-wizard -->
     <br>
 
     <!-- content -->
@@ -105,41 +77,60 @@ if(!is_null($this->serverInstance)){
             <div class="block-row-field clearfix">
                 <?php $privacyCondition = $this->form->get('user')->get('privacyCondition'); ?>
                 <div class="block-field w-4-4" style="text-align: <?= ($this->formElementErrors($privacyCondition)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
-
-
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($privacyCondition) ?>
-                        <span class='control-indicator'
-                              id="generalCondition1Text"><?= $privacyCondition->getLabel(); ?></span>
+                        <span class='control-indicator' id="privacyConditionText" style="vertical-align: text-top;">
+                            <?= $privacyCondition->getLabel(); ?>
+                            <a href='<?= $this->basePath('pdf/sk/privacy.pdf'); ?>'>
+                                <?= $this->translate("(clicca qui).") ?>
+                            </a>
+                        </span>
                     </label>
                     <?php echo $this->formElementErrors($privacyCondition, ['class' => 'errors']); ?>
 
                 </div>
             </div>
             <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <?php $newsletter = $this->form->get('user')->get('newsletter'); ?>
+                <div class="block-field w-4-4" style="text-align: justify; <?= ($this->formElementErrors($newsletter)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($newsletter) ?>
+                        <span class='control-indicator' id="newsletterText" style="vertical-align: text-top;"><?= $newsletter->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($newsletter, ['class' => 'errors']); ?>
+                </div>
+            </div>
+            <!-- block-row-field -->
+            <div class="block-row-field clearfix">
+                <?php $generalCondition1 = $this->form->get('user')->get('generalCondition1'); ?>
+                <div class="block-field w-4-4" style="text-align: justify; <?= ($this->formElementErrors($generalCondition1)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
+                    <label class='control checkbox small-form'>
+                        <?php echo $this->formElement($generalCondition1) ?>
+                        <span class='control-indicator' id="generalCondition1Text" style="vertical-align: text-top;"><?= $generalCondition1->getLabel(); ?></span>
+                    </label>
+                    <?php echo $this->formElementErrors($generalCondition1, ['class' => 'errors']); ?>
+                </div>
+            </div>
+            <!-- block-row-field -->
             <div class="block-wrapper-button content-align-center">
                 <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate("CREA IL TUO ACCOUNT") ?>">
-                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;"><?= $this->translate("Cliccando sul tasto Iscriviti accetti") ?> <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $privacyLink ?>"><?= $this->translate("l'Informativa sulla Privacy") ?></a> <?= $this->translate("e"); ?> <br>
-                    <a style="font-weight: 400; color: #07BA50; text-decoration: underline;" target="_blank" href="<?= $contractLink; ?>"><?= $this->translate("le Condizioni Contrattuali di Sharengo") ?></a>. </p>
+                <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">
+                    <?= $this->translate("Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo")?>
+                </p>
             </div>
             <br>
             <!-- block-row-field -->
             <div class="block-row-field clearfix">
-
                 <?php $generalCondition2 = $this->form->get('user')->get('generalCondition2'); ?>
-
                 <div class="block-field w-4-4" style="text-align: justify; <?= ($this->formElementErrors($generalCondition2)) ? 'justify; border: solid 1px red; padding: 5px;' : '' ?>">
-
                     <label class='control checkbox small-form'>
                         <?php echo $this->formElement($generalCondition2) ?>
-                        <span class='control-indicator'
-                              id="generalCondition1Text"><?= $this->translate("Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che accetta e approva letteralmente le Condizioni generali e condizioni e assume consapevole della loro accettazione per concludere il contratto."); ?></span>
+                        <span class='control-indicator' id="generalCondition2Text" style="vertical-align: text-top;"><?= $this->translate("Il Cliente dichiara, dopo aver preso conoscenza delle Condizioni generali di contratto sulla base del Codice civile, di accettare le Condizioni generali e di approvarle integralmente, ed è a conoscenza dell'accordo relativo alla conclusione del contratto.") ?></span>
                     </label>
                     <?php echo $this->formElementErrors($generalCondition2, ['class' => 'errors']); ?>
-
                 </div>
             </div>
-            <!-- block-row-field -->
 
             </form>
 
@@ -169,15 +160,39 @@ if(!is_null($this->serverInstance)){
         </div>
     </div>
     <!-- overlay -->
+
+    <!-- overlay already signup -->
+    <div id="sng-overlay" class="overlay-signup" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+        <div class="table">
+            <div class="cell">
+                <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none; text-align: left !important;">
+                            <br>
+                            <p align="right"><a onclick="closeSignup()" style="color:#fff"><b>[X] <?= $this->translate("Chiudi");?></b></a></p>
+                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><?= $this->translate("Sei già iscritto!");?></h2>
+                            <hr style="height:2px;border:none;color:#fff;background-color:#fff;">
+                            <p style="color:#fff;text-align: center; font-weight: 800; font-family: 'Open Sans', sans-serif">
+                                <br>
+                                <?= $this->translate("Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"); ?>
+                            </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+
 </div>
 <!-- main -->
 
-<?
+<?php
 $this->inlineScript()->appendScript(
     '$(document).ready(function() {
 $( ".datepicker-date" ).datepicker({
 dateFormat: "dd-mm-yy",
-regional: "sk",
 changeMonth: true,
 changeYear: true,
 yearRange: "-100:+0",
@@ -193,7 +208,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
         overlay = $('#sng-overlay');
 
-        var now = new Date(<? echo date("Y, n - 1, d, H, i, s"); ?> );
+        var now = new Date(<?php echo date("Y, n - 1, d, H, i, s"); ?> );
         var dateStart = new Date(2018, 1, 11, 7, 0, 0, 0);
         var dateEnd = new Date(2018, 1, 11, 14, 0, 0, 0);
 
@@ -220,16 +235,22 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     var apiGeolocationSuccess = function(position) {
         var arr = [];
-        <?
-            $arr = "";
-            foreach($this->fleets as $f){
-                echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
-                $arr .= "arr[".$f->getId()."]";$arr .= ",";
-            }
+        <?php
+        $arr = "";
+        foreach($this->fleets as $f){
+            echo "arr[".$f->getId()."] = nearBy(".$f->getLatitude().",".$f->getLongitude().",position.coords.latitude,position.coords.longitude);\n";
+            $arr .= "arr[".$f->getId()."]";$arr .= ",";
+        }
         ?>
         var i = arr.indexOf(Math.min(<?= $arr; ?>));
         $('select#fleet>option:eq('+i+')').attr('selected', true);
     };
+
+    <?php // in case taxCode is already present
+    if($this->formElementErrors($this->form->get('user')->get('email')) == "<ul><li>".$this->translate("Esiste già un utente con lo stesso indirizzo email")."</li></ul>"){?>
+    overlay = $('.overlay-signup');
+    overlay.css("visibility", "visible");
+    <?php } ?>
 
     var tryAPIGeolocation = function() {
         jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=<?= $this->googleMapsConfig['key'] ?>", function(success) {
@@ -253,5 +274,13 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     var removeLoader = function() {
         $("#outer > div.load-overlay").remove();
     };
+
+    function closeSignup() {
+        overlay = $('.overlay-signup');
+        overlay.fadeOut(400, function () {
+            overlay.css("visibility", "hidden");
+            overlay.css("display","initial");
+        });
+    }
 
 </script>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-30 10:52+0100\n"
-"PO-Revision-Date: 2020-01-30 10:53+0100\n"
+"POT-Creation-Date: 2020-02-04 15:24+0100\n"
+"PO-Revision-Date: 2020-02-04 15:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -314,8 +314,8 @@ msgstr "Achternaam"
 #: module/Application/view/application/user-area/index.phtml:224
 #: module/Application/view/application/user-area/profile.phtml:54
 #: module/Application/view/application/user-area/profile.phtml:229
-#: module/Application/view/application/user/new-signup.phtml:59
-#: module/Application/view/application/user/signup-nl1.phtml:64
+#: module/Application/view/application/user/new-signup.phtml:45
+#: module/Application/view/application/user/signup-nl1.phtml:44
 #: module/Application/view/application/user/signup-si1.phtml:62
 #: module/Application/view/application/user/signup-sk1.phtml:72
 #: module/Application/view/application/user/signup.phtml:149
@@ -783,8 +783,8 @@ msgstr "Stel je wachtwoord in"
 #: module/Application/view/application/user-area/index.phtml:651
 #: module/Application/view/application/user-area/profile.phtml:498
 #: module/Application/view/application/user-area/profile.phtml:534
-#: module/Application/view/application/user/new-signup.phtml:69
-#: module/Application/view/application/user/signup-nl1.phtml:74
+#: module/Application/view/application/user/new-signup.phtml:55
+#: module/Application/view/application/user/signup-nl1.phtml:54
 #: module/Application/view/application/user/signup-si1.phtml:72
 #: module/Application/view/application/user/signup-sk1.phtml:82
 #: module/Application/view/application/user/signup.phtml:175
@@ -793,29 +793,55 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:106
-msgid ""
-"Do il mio consenso al trattamento dei miei dati personali per comunicazioni "
-"sia cartacee che digitali relative al servizio, ai prodotti e alle "
-"promozioni Sharengo."
-msgstr ""
-"Ik ga akkoord met de verwerking van mijn persoonlijke gegevens voor zowel "
-"schriftelijke als digitale communicatie met betrekking tot de dienst, "
-"producten en promoties van Sharengo."
+msgid "Accetto espressamente i Termini e le Condizioni Privacy "
+msgstr "Ik accepteer uitdrukkelijk de Privacyvoorwaarden"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:126
+#: module/Application/src/Application/Form/NewUserFieldset.php:119
 msgid ""
-"Il Cliente, dopo aver preso visione  dei Termini e Condizioni Contrattuali "
+"Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, "
+"ai prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo "
+"(facoltativo)."
+msgstr ""
+"Ik ga ermee akkoord om papieren en digitale communicatie te ontvangen met "
+"betrekking tot de service, producten, voordelen aangeboden door Sharengo en "
+"Sharengo Partners (optioneel)."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:139
+msgid ""
+"Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
+"antifrode e prevenzione sinistri (facoltativo)."
+msgstr ""
+"Ik geef toestemming voor het gebruik van mijn persoonlijke gegevens voor "
+"verzekering, fraudebestrijding en ongevallenpreventie (optioneel)."
+
+#: module/Application/src/Application/Form/NewUserFieldset.php:152
+#, fuzzy
+#| msgid ""
+#| "Il Cliente, dopo aver preso visione  dei Termini e Condizioni "
+#| "Contrattuali che regolano il rapporto, dichiara ai sensi degli articoli "
+#| "1341 e 1342 del Codice Civile Italiano, di accettare integralmente e "
+#| "specificatamente le clausole dei seguenti articoli: 3 (oggetto e parti "
+#| "del contratto), 4 (modifica unilaterale del Contratto), 5 (iscrizione e "
+#| "prenotazione online del Car Sharing Sharengo), 6 (tariffe e "
+#| "fatturazione), 7 (divieto di sublocazione e di cessione), 8 (esonero di "
+#| "responsabilità), 9 (permesso di guida), 10 (utilizzo dei veicoli. "
+#| "Clausola risolutiva espressa), 11 (sinistro o avaria del veicolo), 12 "
+#| "(furti e vandalismi), 13 (sanzioni in materia di circolazione stradale), "
+#| "14 (assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, "
+#| "recesso, risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro "
+#| "competente)."
+msgid ""
+"Il Cliente, dopo aver preso visione dei Termini e Condizioni Contrattuali "
 "che regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del "
 "Codice Civile Italiano, di accettare integralmente e specificatamente le "
 "clausole dei seguenti articoli: 3 (oggetto e parti del contratto), 4 "
-"(modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online "
-"del Car Sharing Sharengo), 6 (tariffe e fatturazione), 7 (divieto di "
-"sublocazione e di cessione), 8 (esonero di responsabilità), 9 (permesso di "
-"guida), 10 (utilizzo dei veicoli. Clausola risolutiva espressa), 11 "
-"(sinistro o avaria del veicolo), 12 (furti e vandalismi), 13 (sanzioni in "
-"materia di circolazione stradale), 14 (assicurazioni), 16 (decorrenza, "
-"durata, rinnovo, sospensione, recesso, risoluzione del contratto), 17 "
-"(reclami), 18 (penali), 20 (foro competente)."
+"(modifica unilaterale del Contratto), 5 (iscrizione e prenotazione online), "
+"6 (tariffe e fatturazione), 7 (divieto di sublocazione e di cessione), 8 "
+"(esonero di responsabilità), 9 (permesso di guida), 10 (utilizzo dei "
+"veicoli, clausola risolutiva espressa), 11 (fine del noleggio), 12 (sinistri "
+"e avaria del veicolo) 13 (sanzioni in materia di circolazione stradale), 14 "
+"(assicurazioni), 16 (decorrenza, durata, rinnovo, sospensione, recesso, "
+"risoluzione del contratto), 17 (reclami), 18 (penali), 20 (foro competente)."
 msgstr ""
 "De Klant verklaart, na de Algemene Voorwaarden te hebben gelezen, de "
 "clausules van de volgende artikelen volledig en uitdrukkelijk te aanvaarden: "
@@ -829,13 +855,13 @@ msgstr ""
 "intrekking, beëindiging van het contract), 17 (klachten), 18 (boetes), 20 "
 "(bevoegde rechtbank)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:146
-#: module/Application/src/Application/Form/NewUserFieldset.php:176
+#: module/Application/src/Application/Form/NewUserFieldset.php:172
+#: module/Application/src/Application/Form/NewUserFieldset.php:202
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "Dit is een verplicht veld en mag niet leeg zijn"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:193
-#: module/Application/src/Application/Form/NewUserFieldset.php:217
+#: module/Application/src/Application/Form/NewUserFieldset.php:219
+#: module/Application/src/Application/Form/NewUserFieldset.php:246
 msgid "Il dato è richiesto per procedere"
 msgstr "Vul gegevens in om door te kunnen gaan"
 
@@ -1247,7 +1273,8 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "Er bestaat al een gebruiker met hetzelfde rijbewijs"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:246
+#: module/Application/view/application/user/new-signup.phtml:251
+#: module/Application/view/application/user/signup-nl1.phtml:250
 msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "Er bestaat al een gebruiker met hetzelfde e-mailadres"
 
@@ -1862,7 +1889,6 @@ msgid "Una volta scaricata la nostra App per"
 msgstr "Zodra je onze app hebt gedownload"
 
 #: module/Application/view/application/index/comefunziona.phtml:40
-#: module/Application/view/application/user/signup-nl1.phtml:114
 #: module/Application/view/application/user/signup-si1.phtml:112
 #: module/Application/view/application/user/signup-sk1.phtml:122
 msgid "e"
@@ -2617,8 +2643,8 @@ msgstr "Je hebt nog geen creditcard of betaalkaart in je profiel ingevoerd."
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
-#: module/Application/view/application/user/new-signup.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:152
+#: module/Application/view/application/user/new-signup.phtml:152
+#: module/Application/view/application/user/signup-nl1.phtml:151
 #: module/Application/view/application/user/signup-si1.phtml:151
 #: module/Application/view/application/user/signup-sk1.phtml:160
 msgid "ATTENZIONE"
@@ -3058,8 +3084,8 @@ msgstr "Taal"
 #: module/Application/view/application/user-area/index.phtml:499
 #: module/Application/view/application/user-area/profile.phtml:206
 #: module/Application/view/application/user-area/profile.phtml:467
-#: module/Application/view/application/user/new-signup.phtml:80
-#: module/Application/view/application/user/signup-nl1.phtml:85
+#: module/Application/view/application/user/new-signup.phtml:66
+#: module/Application/view/application/user/signup-nl1.phtml:65
 #: module/Application/view/application/user/signup-sk1.phtml:93
 msgid "Citt&agrave; preferita"
 msgstr "Kies een plaats"
@@ -3654,72 +3680,66 @@ msgid "Non hai ancora effettuato alcun noleggio"
 msgstr "Je hebt nog geen enkele keer gehuurd"
 
 #: module/Application/view/application/user/new-signup.phtml:15
-#: module/Application/view/application/user/signup-nl1.phtml:21
-#: module/Application/view/application/user/signup-sk1.phtml:29
-msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
-msgstr "Elektrische carsharing<br>vervuilt niet en is goed voor jou!"
+#: module/Application/view/application/user/signup-nl1.phtml:15
+msgid "Il car sharing elettrico che non inquina"
+msgstr "Elektrisch autodelen dat niet vervuilt"
 
 #: module/Application/view/application/user/new-signup.phtml:18
-#, fuzzy
-msgid "Area C/ZTL/Tridente Roma + park gratis"
-msgstr "???"
+#: module/Application/view/application/user/signup-nl1.phtml:18
+msgid "Solo auto elettriche, disponibili giorno e notte, vicino a te."
+msgstr "Alleen elektrische auto's, dag en nacht beschikbaar, in uw buurt."
 
 #: module/Application/view/application/user/new-signup.phtml:19
-#: module/Application/view/application/user/signup-nl1.phtml:24
-#: module/Application/view/application/user/signup-si1.phtml:22
-#: module/Application/view/application/user/signup-sk1.phtml:32
-msgid "Auto disponibili vicino a te giorno e notte"
-msgstr "Auto's overal bij jou in de buurt"
+msgid "Vai senza limiti in Area C e B/ ZTL Firenze/ ZTL e Tridente Roma."
+msgstr ""
 
 #: module/Application/view/application/user/new-signup.phtml:20
-#: module/Application/view/application/user/signup-nl1.phtml:25
-msgid "Pacchetti fino a 22 centesimi al minuto"
-msgstr "Pakketten tot 22 cent per minuut"
+#: module/Application/view/application/user/signup-nl1.phtml:19
+msgid ""
+"Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti."
+msgstr ""
+"Gratis parkeren op openbare parkeerplaatsen en in die gereserveerd voor "
+"bewoners."
 
 #: module/Application/view/application/user/new-signup.phtml:26
-#: module/Application/view/application/user/signup-nl1.phtml:31
-#: module/Application/view/application/user/signup-sk1.phtml:39
-msgid "Iscriverti non ti costa nulla!"
-msgstr "Registreren gaat heel eenvoudig!"
+#: module/Application/view/application/user/signup-nl1.phtml:25
+msgid "ISCRIVERTI NON TI COSTA NULLA!"
+msgstr "JE AANMELDEN ZAL JE NIET KOSTEN!"
 
-#: module/Application/view/application/user/new-signup.phtml:76
-#: module/Application/view/application/user/signup-nl1.phtml:81
+#: module/Application/view/application/user/new-signup.phtml:62
+#: module/Application/view/application/user/signup-nl1.phtml:61
 #: module/Application/view/application/user/signup-si1.phtml:79
 #: module/Application/view/application/user/signup-sk1.phtml:89
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 tekens, één hoofdletter en één cijfer"
 
-#: module/Application/view/application/user/new-signup.phtml:108
-#: module/Application/view/application/user/signup-nl1.phtml:113
+#: module/Application/view/application/user/new-signup.phtml:86
+#: module/Application/view/application/user/signup-nl1.phtml:85
+msgid "(clicca qui)."
+msgstr "(klik hier)."
+
+#: module/Application/view/application/user/new-signup.phtml:118
+#: module/Application/view/application/user/signup-nl1.phtml:117
 #: module/Application/view/application/user/signup-si1.phtml:111
 #: module/Application/view/application/user/signup-sk1.phtml:121
 msgid "CREA IL TUO ACCOUNT"
 msgstr "MAAK JE ACCOUNT AAN"
 
-#: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
-msgid "Cliccando sul tasto Iscriviti accetti"
-msgstr "Door op de knop 'Registreren' te klikken, ga je akkoord met"
+#: module/Application/view/application/user/new-signup.phtml:120
+#: module/Application/view/application/user/signup-nl1.phtml:119
+msgid ""
+"Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di "
+"Sharengo"
+msgstr ""
+"Door op de knop te klikken, accepteert u de Sharengo Algemene voorwaarden"
 
-#: module/Application/view/application/user/new-signup.phtml:109
-#: module/Application/view/application/user/signup-nl1.phtml:114
-#: module/Application/view/application/user/signup-si1.phtml:112
-#: module/Application/view/application/user/signup-sk1.phtml:122
-msgid "l'Informativa sulla Privacy"
-msgstr "het Privacybeleid"
-
-#: module/Application/view/application/user/new-signup.phtml:110
-msgid "Condizioni Contrattuali"
-msgstr "de Algemene Voorwaarden"
-
-#: module/Application/view/application/user/new-signup.phtml:143
-#: module/Application/view/application/user/new-signup.phtml:168
+#: module/Application/view/application/user/new-signup.phtml:148
+#: module/Application/view/application/user/new-signup.phtml:173
 #: module/Application/view/application/user/new-signup2.phtml:417
 #: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/new-signup2.phtml:465
-#: module/Application/view/application/user/signup-nl1.phtml:148
+#: module/Application/view/application/user/signup-nl1.phtml:147
+#: module/Application/view/application/user/signup-nl1.phtml:172
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
 #: module/Application/view/application/user/signup-si2.phtml:379
@@ -3729,8 +3749,8 @@ msgstr "de Algemene Voorwaarden"
 msgid "Chiudi"
 msgstr "Afsluiten"
 
-#: module/Application/view/application/user/new-signup.phtml:150
-#: module/Application/view/application/user/signup-nl1.phtml:155
+#: module/Application/view/application/user/new-signup.phtml:155
+#: module/Application/view/application/user/signup-nl1.phtml:154
 #: module/Application/view/application/user/signup-si1.phtml:154
 #: module/Application/view/application/user/signup-sk1.phtml:163
 #, fuzzy
@@ -3741,13 +3761,15 @@ msgid ""
 "convalidate entro luned&igrave; mattina."
 msgstr "???"
 
-#: module/Application/view/application/user/new-signup.phtml:169
+#: module/Application/view/application/user/new-signup.phtml:174
 #: module/Application/view/application/user/new-signup2.phtml:466
+#: module/Application/view/application/user/signup-nl1.phtml:173
 msgid "Sei già iscritto!"
 msgstr "Je bent al ingeschreven!"
 
-#: module/Application/view/application/user/new-signup.phtml:173
+#: module/Application/view/application/user/new-signup.phtml:178
 #: module/Application/view/application/user/new-signup2.phtml:470
+#: module/Application/view/application/user/signup-nl1.phtml:177
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr "Om de invoer van je gegevens te voltooien klik je bovenaan op INLOGGEN"
@@ -4105,20 +4127,12 @@ msgstr ""
 msgid "Vai in area riservata"
 msgstr "Ga naar je persoonlijke omgeving"
 
-#: module/Application/view/application/user/signup-nl1.phtml:115
-#: module/Application/view/application/user/signup-si1.phtml:113
-#: module/Application/view/application/user/signup-sk1.phtml:123
-msgid "le Condizioni Contrattuali di Sharengo"
-msgstr "de Algemene Voorwaarden van Sharengo"
-
-#: module/Application/view/application/user/signup-nl1.phtml:128
-#: module/Application/view/application/user/signup-si1.phtml:126
-#: module/Application/view/application/user/signup-sk1.phtml:136
+#: module/Application/view/application/user/signup-nl1.phtml:129
 msgid ""
-"Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
-"Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che "
-"accetta e approva letteralmente le Condizioni generali e condizioni e assume "
-"consapevole della loro accettazione per concludere il contratto."
+"Il Cliente dichiara, dopo aver preso conoscenza delle Condizioni generali di "
+"contratto sulla base del Codice civile, di accettare le Condizioni generali "
+"e di approvarle integralmente, ed è a conoscenza dell'accordo relativo alla "
+"conclusione del contratto."
 msgstr ""
 "De Klant verklaart, na kennis te hebben genomen van de Algemene "
 "Contractvoorwaarden op grond van het Burgerlijk Wetboek, dat hij/zij de "
@@ -4189,6 +4203,11 @@ msgid ""
 "Condivisione di auto elettriche rispettose dell'ambiente e convenienti per te"
 msgstr "Milieuvriendelijke en betaalbare elektrische auto's voor u delen"
 
+#: module/Application/view/application/user/signup-si1.phtml:22
+#: module/Application/view/application/user/signup-sk1.phtml:32
+msgid "Auto disponibili vicino a te giorno e notte"
+msgstr "Auto's overal bij jou in de buurt"
+
 #: module/Application/view/application/user/signup-si1.phtml:23
 msgid "I pacchetti partono da 0,10 € al minuto"
 msgstr "Pakketten tot 10 cent per minuut"
@@ -4201,6 +4220,34 @@ msgstr "Gratis registratie!"
 msgid "Luogo preferito"
 msgstr "Favoriete plek"
 
+#: module/Application/view/application/user/signup-si1.phtml:112
+#: module/Application/view/application/user/signup-sk1.phtml:122
+msgid "Cliccando sul tasto Iscriviti accetti"
+msgstr "Door op de knop 'Registreren' te klikken, ga je akkoord met"
+
+#: module/Application/view/application/user/signup-si1.phtml:112
+#: module/Application/view/application/user/signup-sk1.phtml:122
+msgid "l'Informativa sulla Privacy"
+msgstr "het Privacybeleid"
+
+#: module/Application/view/application/user/signup-si1.phtml:113
+#: module/Application/view/application/user/signup-sk1.phtml:123
+msgid "le Condizioni Contrattuali di Sharengo"
+msgstr "de Algemene Voorwaarden van Sharengo"
+
+#: module/Application/view/application/user/signup-si1.phtml:126
+#: module/Application/view/application/user/signup-sk1.phtml:136
+msgid ""
+"Il Cliente dopo aver letto i Contratti Generali condizioni ai sensi della "
+"Sezione 43c della legge n. 40/1964 Coll. Il codice civile dichiara che "
+"accetta e approva letteralmente le Condizioni generali e condizioni e assume "
+"consapevole della loro accettazione per concludere il contratto."
+msgstr ""
+"De Klant verklaart, na kennis te hebben genomen van de Algemene "
+"Contractvoorwaarden op grond van het Burgerlijk Wetboek, dat hij/zij de "
+"Algemene Voorwaarden aanvaardt en deze volledig goedkeurt, en zich bewust is "
+"van de instemming betreft het sluiten van het contract."
+
 #: module/Application/view/application/user/signup-si2.phtml:35
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
@@ -4210,9 +4257,17 @@ msgstr "30 minuten voor slechts 5&euro;"
 msgid "Continua la registrazione"
 msgstr "Doorgaan met registreren"
 
+#: module/Application/view/application/user/signup-sk1.phtml:29
+msgid "Il car sharing elettrico<br>non inquina e ti conviene!"
+msgstr "Elektrische carsharing<br>vervuilt niet en is goed voor jou!"
+
 #: module/Application/view/application/user/signup-sk1.phtml:33
 msgid "Pacchetti fino a 16 centesimi al minuto"
 msgstr "Pakketten tot 16 cent per minuut"
+
+#: module/Application/view/application/user/signup-sk1.phtml:39
+msgid "Iscriverti non ti costa nulla!"
+msgstr "Registreren gaat heel eenvoudig!"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
@@ -4385,11 +4440,6 @@ msgid ""
 msgstr ""
 "Download het zelfcertificeringsdocument en vul het in na het voltooien van "
 "de registratie."
-
-#: module/Application/view/application/user/signup2.phtml:145
-#: module/Application/view/application/user/signup2.phtml:146
-msgid "AUTOCERTIFICAZIONE_PATENTE_ESTERA_ITA.pdf"
-msgstr ""
 
 #: module/Application/view/application/user/signup2.phtml:146
 msgid "Inglese"
@@ -6171,6 +6221,16 @@ msgstr "(Bijwonen ik bid)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
+
+#, fuzzy
+#~ msgid "Area C/ZTL/Tridente Roma + park gratis"
+#~ msgstr "???"
+
+#~ msgid "Pacchetti fino a 22 centesimi al minuto"
+#~ msgstr "Pakketten tot 22 cent per minuut"
+
+#~ msgid "Condizioni Contrattuali"
+#~ msgstr "de Algemene Voorwaarden"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "
