@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+
+
+
+## [1.0.42] - 2020-02-05
+
+### Changed
+
+- Fix some problems with "mobile" view for app in UserAreaController.php (see [ticket 683](https://sharengo.freshdesk.com/a/tickets/683))
+- Add translator inside AdditionalServicesController.php
+- Update po files
+
+### Deleted
+
+- All reference to gift-packages
+
 ## [1.0.41] - 2020-02-04
 
 ### Changed
