@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.43] - 2020-02-06
 
+### Changed
 
+- Fix html escape char inside translations
 
 ## [1.0.42] - 2020-02-05
 

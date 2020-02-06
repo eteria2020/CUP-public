@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-05 15:18+0100\n"
-"PO-Revision-Date: 2020-02-05 15:19+0100\n"
+"POT-Creation-Date: 2020-02-05 17:38+0100\n"
+"PO-Revision-Date: 2020-02-05 17:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1402,7 +1402,7 @@ msgstr "REGISTERED USER WITH SUCCESS"
 
 #: module/Application/src/Application/Service/RegistrationService.php:469
 msgid "SI &Egrave; VERIFICATO UN PROBLEMA DURANTE LA REGISTRAZIONE"
-msgstr "SI & Egrave; VERIFIED A PROBLEM DURING REGISTRATION"
+msgstr "SI &egrave; VERIFIED A PROBLEM DURING REGISTRATION"
 
 #: vendor/cup-web/public-business-module/config/module.config.php:249
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-association/business-already-associated.phtml:8
@@ -3206,7 +3206,7 @@ msgid ""
 "CI SCUSIAMO PER IL TEMPORANEO DISSERVIZIO, LA PAGINA TORNER&Agrave; PRESTO "
 "ONLINE."
 msgstr ""
-"WE CHALLEN FOR THE TEMPORARY DISSERVICE, THE TORNER PAGE & Agrave; SOON ONLINE."
+"WE CHALLEN FOR THE TEMPORARY DISSERVICE, THE TORNER PAGE &agrave; SOON ONLINE."
 
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:168
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:168
@@ -3255,13 +3255,13 @@ msgid ""
 msgstr ""
 "MySHARE ' NGO  a MONTHLY SUBSCRIPTION with validity; of 30 days that you buy "
 "when you like, like the other packages, in the Reserved Area for 360 €; (300 "
-"€; + VAT). & Nbsp; At the time of purchase you immediately come & nbsp; "
-"credited 45,000 minutes (all the minutes of a month from 30 days) and receive "
-"an email with the directions to arrange the delivery of your car the same day "
-"or the next. <strong> From that day on the car will be  exclusively for you </ "
+"€; + VAT). &nbsp; At the time of purchase you immediately come &nbsp; credited "
+"45,000 minutes (all the minutes of a month from 30 days) and receive an email "
+"with the directions to arrange the delivery of your car the same day or the "
+"next. <strong> From that day on the car will be  exclusively for you </ "
 "strong> with the only charge to manage the recharge at home or an ENEL or A2A "
 "column (and the monthly subscriptions are very favorable). <br> <br> In "
-"practical terms: & nbsp;"
+"practical terms: &nbsp;"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:45
 msgid "Non chiuderete mai la vostra corsa (terrete l&#39;auto in parcheggio)"
@@ -3299,9 +3299,9 @@ msgid ""
 "liberamente in centro.&nbsp;"
 msgstr ""
 "And the cost per minute? Calculate it for the kilometers and the time you will "
-"use your Share ' N Go, & nbsp; remembering that you DO NOT HAVE LIMITS of "
-"mileage or Operating Area or minutes & nbsp; courses and that you enter and "
-"park freely in the center. & nbsp;"
+"use your Share ' N Go, &nbsp; remembering that you DO NOT HAVE LIMITS of "
+"mileage or Operating Area or minutes &nbsp; courses and that you enter and "
+"park freely in the center. &nbsp;"
 
 #: module/Application/view/application/user-area/package-my-sharengo.phtml:56
 msgid ""
@@ -3320,7 +3320,7 @@ msgid ""
 msgstr ""
 "MySHARE ' NGO users will automatically be subscribed to a Priority Club with a "
 "confidential phone number, a special rental agreement and the attention they "
-"deserve our best customers. & Nbsp; "
+"deserve our best customers. &nbsp; "
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:15
 msgid "SECURE CODE"
@@ -3340,7 +3340,7 @@ msgstr ""
 "MasterCard or One Time Password - OTP) a security code for online payments "
 "that many sites require for greater security of transactions on the web. "
 "Whether you regularly make online purchases, or not, use and rely on the "
-"Secure Code  fundamental to why & eacute; It allows to prevent any illegal use "
+"Secure Code  fundamental to why &eacute; It allows to prevent any illegal use "
 "of the card and to avoid unwanted charges."
 
 #: module/Application/view/application/user-area/payment-securecode-cartasi.phtml:46
@@ -3419,7 +3419,7 @@ msgstr ""
 " to activate the Secure Code it is necessary to register in the \"3D Secure\" "
 "area of ​​the Owners portal on the site of <a href = \\ \"https: //titolari."
 "cartasi.it/portal/registrazione/registrazione_step1.xhtml? faces-redirect = "
-"true \\ \"> Cartas & igrave; </a>. The activation process is easy and fast: "
+"true \\ \"> Cartas &igrave; </a>. The activation process is easy and fast: "
 "once you have entered the data you only need to set your own identification "
 "phrase and enter the cell phone number to which it will be sent; sent the SMS "
 "containing a unique security code (6-digit) to be entered at the time of "
@@ -3452,7 +3452,7 @@ msgid ""
 "online che offre Verified by Visa. Per maggiori info leggi le <a href="
 "\"https://www.visaitalia.com/pagare-con-visa/pagamenti-online/\">FAQ</a>."
 msgstr ""
-" you can & ograve; join the service through the bank or the organization "
+" you can &ograve; join the service through the bank or the organization "
 "issuing the Visa card, choosing a password and a personal message. After the "
 "adhesion will be  You can shop at any online store that offers Verified by "
 "Visa. For more info read the <a href=\"https://www.visaitalia.com/pagare-con-"
@@ -3757,7 +3757,7 @@ msgid ""
 msgstr ""
 "Sunday, February 11th from 7:30 am to 1:30 pm a scheduled maintenance of the "
 "license verification system could cause some slowdown in the control "
-"procedures. The licenses will still be validated within the luned & igrave; "
+"procedures. The licenses will still be validated within the luned &igrave; "
 "morning."
 
 #: module/Application/view/application/user/new-signup.phtml:174
@@ -3880,7 +3880,7 @@ msgstr ""
 "aware of the penal sanctions that can be met in case of false declarations, "
 "penal sanctions provided for by the Penal Code and by the special laws on the "
 "matter and expressly referred to in art. 76 of Presidential Decree 445 of "
-"28/12/2000, under his responsibility & agrave"
+"28/12/2000, under his responsibility &agrave;"
 
 #: module/Application/view/application/user/new-signup2.phtml:301
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
@@ -4922,7 +4922,7 @@ msgstr "street"
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:32
 msgid "di essere titolare di patente di guida in corso di validit&agrave n."
-msgstr "to be holder of driving license in validity & agrave n."
+msgstr "to be holder of driving license in validity &agrave; n."
 
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:32
 msgid "rilasciata da"

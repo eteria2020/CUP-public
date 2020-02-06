@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-05 15:20+0100\n"
-"PO-Revision-Date: 2020-02-05 15:22+0100\n"
+"POT-Creation-Date: 2020-02-05 17:41+0100\n"
+"PO-Revision-Date: 2020-02-05 17:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -4948,7 +4948,7 @@ msgstr "Verder"
 
 #: module/Application/view/partials/header/main_head.phtml:23
 msgid "Pacchetti &amp; promo"
-msgstr "Pakketten & aanbiedingen"
+msgstr "Pakketten &amp; aanbiedingen"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
@@ -5002,7 +5002,7 @@ msgstr "Hoe werkt Sharengo"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
 msgid "Pacchetti &amp; promozioni"
-msgstr "Pakketten & aanbiedingen"
+msgstr "Pakketten &amp; aanbiedingen"
 
 #: module/Application/view/partials/translations.phtml:8
 msgid ""
