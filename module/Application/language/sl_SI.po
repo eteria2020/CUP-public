@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-11 09:59+0100\n"
-"PO-Revision-Date: 2020-02-11 10:14+0100\n"
+"POT-Creation-Date: 2020-02-11 11:47+0100\n"
+"PO-Revision-Date: 2020-02-11 11:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -1446,7 +1446,7 @@ msgstr "Ste že povezani z drugim podjetjem"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Form/Validator/DisposableEmail.php:21
 msgid "Indirizzo email non accettato"
-msgstr ""
+msgstr "E-poštni naslov ni sprejet"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:70
 #, php-format
@@ -3488,27 +3488,27 @@ msgid "Guarda come si usa"
 msgstr "Poglejte, kako se uporablja"
 
 #: module/Application/view/application/user-area/pin.phtml:51
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:53
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
 msgstr "Ali želite z vašim računom povezati tudi kartico za odpiranje vrat?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "KLIKNITE NA SLIKO KARTICE"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "per inoltrare la tua richiesta"
 msgstr "za posredovanje vaše zahteve"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:56
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "ZAHTEVEK ZA KARTICO SHARE'NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
