@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.46] - 2020-02-11
+
+### Changed
+
+- Update Slovenian translation
+- Inside public-business-module, hide the card request inside the pin page for Slovakian instance (see [ticket 781](https://sharengo.freshdesk.com/a/tickets/781))
 
 ## [1.0.45] - 2020-02-11
 
