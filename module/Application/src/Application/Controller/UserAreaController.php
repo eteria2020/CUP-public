@@ -2,11 +2,25 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\I18n\Translator;
-use SharengoCore\Entity\CustomerDeactivation;
-use SharengoCore\Service\ExtraPaymentsService;
-use SharengoCore\Service\TripsService;
 use Application\Form\DriverLicenseForm;
+
+use Cartasi\Service\CartasiContractsService;
+use Cartasi\Service\CartasiPaymentsService;
+
+use SharengoCore\Entity\CustomerDeactivation;
+use SharengoCore\Entity\Customers;
+use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\CustomerDeactivationService;
+use SharengoCore\Service\DisableContractService;
+use SharengoCore\Service\ExtraPaymentsService;
+use SharengoCore\Service\FaresService;
+use SharengoCore\Service\InvoicesService;
+use SharengoCore\Service\PaymentScriptRunsService;
+use SharengoCore\Service\PaymentsService;
+use SharengoCore\Service\TripsService;
+use SharengoCore\Service\TripPaymentsService;
+
+use Zend\Mvc\I18n\Translator;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -14,17 +28,6 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\Session\Container;
-use SharengoCore\Service\CustomersService;
-use SharengoCore\Entity\Customers;
-use SharengoCore\Service\InvoicesService;
-use SharengoCore\Service\TripPaymentsService;
-use SharengoCore\Service\DisableContractService;
-use Cartasi\Service\CartasiPaymentsService;
-use Cartasi\Service\CartasiContractsService;
-use SharengoCore\Service\PaymentScriptRunsService;
-use SharengoCore\Service\PaymentsService;
-use SharengoCore\Service\CustomerDeactivationService;
-use SharengoCore\Service\FaresService;
 
 class UserAreaController extends AbstractActionController {
 

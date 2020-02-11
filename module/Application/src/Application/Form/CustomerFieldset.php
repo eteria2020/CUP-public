@@ -308,6 +308,34 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'generalCondition1',
+            'options' => [
+                'label' => $translator->translate("Autorizzo il trattamento dei miei dati personali per finalità assicurative, antifrode e prevenzione sinistri (facoltativo)."),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'newsletter',
+            'options' => [
+                'label' => $translator->translate("Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, ai prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo (facoltativo)."),
+                'use_hidden_element' => true,
+                'checked_value' => 'on',
+                'unchecked_value' => 'off',
+            ],
+            'attributes' => [
+                'value' => 'off'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'taxCode',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => [
@@ -565,6 +593,12 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => 'StringTrim'
                     ]
                 ]
+            ],
+            'generalCondition1' => [
+                'required' => false,
+            ],
+            'newsletter' => [
+                'required' => false,
             ],
             'taxCode' => [
                 'required' => true,
