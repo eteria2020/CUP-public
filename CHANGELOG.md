@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+
+## [1.0.45] - 2020-02-11
+
+### Changed
+
+- Fix Slovenian translation on first page od signup (see [ticket 767](https://sharengo.freshdesk.com/a/tickets/767))
+- Update core module for block email 'bcaoo.com' (see [ticket 778](https://sharengo.freshdesk.com/a/tickets/778))
+
 ## [1.0.44] - 2020-02-07
 
 ### Changed

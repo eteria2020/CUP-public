@@ -2498,7 +2498,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/core.git",
-                "reference": "0f405c5db69e6e331bc4b210a1a0b3961d4aaf7a"
+                "reference": "d6a349074ea255e6af58f35a840f90e3bd33e74f"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -2521,7 +2521,7 @@
                 }
             },
             "description": "Core ZF2 module for Sharengo apps",
-            "time": "2019-12-12 08:22:37"
+            "time": "2020-02-11 08:46:08"
         },
         {
             "name": "mvlabs/zf2-multilanguage",
@@ -4365,6 +4365,7 @@
                 }
             ],
             "description": "Pure PHP key-value storage",
+            "abandoned": true,
             "time": "2015-01-02 14:35:56"
         },
         {
@@ -4684,7 +4685,7 @@
                 "semantic",
                 "version"
             ],
-            "abandoned": true,
+            "abandoned": "kherge/semver",
             "time": "2014-05-27 05:29:25"
         },
         {
