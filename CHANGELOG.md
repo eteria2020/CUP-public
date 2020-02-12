@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.47] - 2020-02-12
+
+### Changed
+
+- the payment retention period has been increased to 30 days instead of 60 days (ticket 494)
+
 ## [1.0.46] - 2020-02-11
 
 ### Changed
