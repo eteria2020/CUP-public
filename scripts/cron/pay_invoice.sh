@@ -14,10 +14,12 @@
 #    exit 1
 #fi
 
+ts=$(date +'%D %T')
+echo "$ts ------------------" >> /var/log/sharengo-publicsite/data/log/generate_locations.log
+php /srv/apps/sharengo-publicsite/public/index.php generate locations | tee -a /var/log/sharengo-publicsite/data/log/generate_locations.log
 
 ts=$(date +'%D %T')
 echo "$ts ------------------" >> /var/log/sharengo-publicsite/data/log/pay_invoice.log
-php /srv/apps/sharengo-publicsite/public/index.php generate locations
 php /srv/apps/sharengo-publicsite/public/index.php pay invoice | tee -a /var/log/sharengo-publicsite/data/log/pay_invoice.log
 
 #ts=$(date +'%D %T')
