@@ -108,7 +108,7 @@ class ConsolePayInvoiceController extends AbstractActionController
     /**
      * @var string
      */
-    private $daysRetrayPayment = '-30 days';
+    private $daysRetryPayment = '-30 days';
     
     /**
      * @param TripPaymentsService $tripPaymentsService
@@ -246,7 +246,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $now = date_create();
         $timestampEndParam = '-48 hours';
         if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
-            $timestampEndParam = $this->daysRetrayPayment; //'-60 days';
+            $timestampEndParam = $this->daysRetryPayment; //'-60 days';
         }
         $tripPaymentsWrong = $this->tripPaymentsService->getTripPaymentsWrong(null, $timestampEndParam);  //TODO only dev put -2 days
         $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;reProcessWrongPayments;count(tripPaymentsWrong);" . count($tripPaymentsWrong) . "\n");
@@ -302,12 +302,12 @@ class ConsolePayInvoiceController extends AbstractActionController
         if ($start == '' && $end == ''){
             $now = date_create();
             if ($now >= date_create('00:00:00') && $now <= date_create('01:00:00')) { // trips old from 2 to 60 days
-                $start = date_create($this->daysRetrayPayment); //'-60 days');
+                $start = date_create($this->daysRetryPayment); //'-60 days');
                 $start = $start->format('Y-m-d H:i:s');
                 $end =  date_create('-2 days');
                 $end = $end->format('Y-m-d H:i:s');
             } elseif ($now >= date_create('17:59:00') && $now <= date_create('19:10:00')){
-                $start = date_create($this->daysRetrayPayment); //'-60 days');
+                $start = date_create($this->daysRetryPayment); //'-60 days');
                 $start = $start->format('Y-m-d H:i:s');
                 $end = $now->format('Y-m-d H:i:s');
             } else {
@@ -424,7 +424,7 @@ class ConsolePayInvoiceController extends AbstractActionController
         $now = date_create();
         $timestampEndParam = '-48 hours';
         if ($now >= date_create('18:59:00') && $now <= date_create('19:10:00')){
-            $timestampEndParam = $this->daysRetrayPayment; //'-60 days';
+            $timestampEndParam = $this->daysRetryPayment; //'-60 days';
         }
         $extraPaymentsWrong = $this->extraPaymentsService->getExtraPaymentsWrong(null, $timestampEndParam);  //TODO only dev put -2 days
         $this->logger->log(date_create()->format('H:i:s').";INF;reProcessWrongExtra;count(extraPaymentsWrong);" . count($extraPaymentsWrong) . "\n");
@@ -465,7 +465,7 @@ class ConsolePayInvoiceController extends AbstractActionController
 
         if ($start == '' && $end == '') {
             $now = date_create();
-            $start = date_create($this->daysRetrayPayment); //'-60 days');
+            $start = date_create($this->daysRetryPayment); //'-60 days');
             $start = $start->format('Y-m-d H:i:s');
             $end = $now->format('Y-m-d H:i:s');
         }
