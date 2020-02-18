@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-18 15:40+0100\n"
-"PO-Revision-Date: 2020-02-18 15:45+0100\n"
+"POT-Creation-Date: 2020-02-18 17:16+0100\n"
+"PO-Revision-Date: 2020-02-18 17:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -3845,8 +3845,9 @@ msgstr ""
 "CONTACT THE CUSTOMER SERVICE"
 
 #: module/Application/view/application/user/new-signup2.phtml:264
-msgid "&Egrave; obbligatoria patente B/B1 o superiore (no patente A)"
-msgstr "driving license B/B1 or higher is mandatory (no driving license A)"
+msgid ""
+"&Egrave; obbligatoria una patente valida per quadricicli pesanti categoria L7e"
+msgstr "A license valid for heavy quadricycles category L7e is mandatory"
 
 #: module/Application/view/application/user/new-signup2.phtml:268
 msgid "Scadenza patente"
