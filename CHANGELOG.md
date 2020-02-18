@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+# [1.0.49] - 2020-02-18
+
+### Changed
+
+- Improvements inside AddressController (update trip's address non payable, filter some latitude or longitude invalid)
+
+
 ## [1.0.48] - 2020-02-14
 
 ### Changed

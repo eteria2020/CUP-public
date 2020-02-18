@@ -120,18 +120,14 @@ class DisableCustomerController extends AbstractActionController
         $debug = $request->getParam('debug-mode') || $request->getParam('dm');
         $this->prepareLogger();
         $customers = $this->customersService->getCustomersExpiredLicense();
-        $this->logger->log("\nStarted time = " . date_create()->format('Y-m-d H:i:s') . " - Count expired: ". count($customers)."\n");
-
-        if ($debug) {
-            $this->logger->log("Debug mode: \n");
-        }
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;expiredDriversLicenseAction;start;".count($customers).";".$debug."\n");
 
         foreach ($customers as $customer) {
             if (!$customer instanceof Customers) {
                continue;
             }
 
-            $this->logger->log(date('Y-m-d H:i:s').";". $customer->getId() .";". $customer->getDriverLicenseExpire()->format('Y-m-d') ."\n");
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;expiredDriversLicenseAction;".$customer->getId().";".$customer->getDriverLicenseExpire()->format('Y-m-d')."\n");
 
             if ($debug) {
                 continue;
@@ -141,10 +137,9 @@ class DisableCustomerController extends AbstractActionController
                 $customer,
                 "Messaggio di sistema: utente disattivato per patente scaduta.",
                 10);
-
         }
 
-        $this->logger->log("\nEnd time = " . date_create()->format('Y-m-d H:i:s') ."\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;expiredDriversLicenseAction;end;\n");
     }
 
     /**
