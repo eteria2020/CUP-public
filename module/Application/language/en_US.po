@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-06 17:01+0100\n"
-"PO-Revision-Date: 2020-02-06 17:03+0100\n"
+"POT-Creation-Date: 2020-02-18 15:40+0100\n"
+"PO-Revision-Date: 2020-02-18 15:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -770,8 +770,8 @@ msgstr "Country code"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:292
 #: module/Application/src/Application/Form/UserFieldset.php:400
 #: module/Application/src/Application/Form/UserFieldset.php:403
-#: module/Application/view/application/user-area/index.phtml:596
-#: module/Application/view/application/user-area/index.phtml:628
+#: module/Application/view/application/user-area/index.phtml:597
+#: module/Application/view/application/user-area/index.phtml:629
 #: module/Application/view/application/user/new-signup2.phtml:204
 #: module/Application/view/application/user/signup-nl2.phtml:209
 #: module/Application/view/application/user/signup-si2.phtml:210
@@ -815,8 +815,8 @@ msgstr "Set your password"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:78
 #: module/Application/src/Application/Form/UserFieldset.php:99
-#: module/Application/view/application/user-area/index.phtml:682
-#: module/Application/view/application/user-area/index.phtml:717
+#: module/Application/view/application/user-area/index.phtml:683
+#: module/Application/view/application/user-area/index.phtml:718
 #: module/Application/view/application/user-area/profile.phtml:498
 #: module/Application/view/application/user-area/profile.phtml:534
 #: module/Application/view/application/user/new-signup.phtml:55
@@ -1498,16 +1498,16 @@ msgstr "Promo code not valid."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:574
 msgid "Codice promo già associato a questo account."
-msgstr "You are already associated with this company"
+msgstr "You are already associated with this company."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1104
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1108
 msgid "Codice fiscale, genere "
-msgstr "Fiscal Code"
+msgstr "Fiscal Code "
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1115
 msgid "Codice fiscale, data di nascita "
-msgstr "Fiscal Code and VAT Number"
+msgstr "Fiscal Code and VAT Number "
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1121
 msgid "Codice fiscale, luogo di nascita incongruente."
@@ -1515,11 +1515,11 @@ msgstr "Tax code, incongruous place of birth."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1129
 msgid "Codice fiscale, sintassi incongruente."
-msgstr "Fiscal Code not valid"
+msgstr "Fiscal Code not valid."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CustomersService.php:1134
 msgid "Codice fiscale, sintassi errata."
-msgstr "Fiscal Code not valid"
+msgstr "Fiscal Code not valid."
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:128
 msgid "PRENOTAZIONE DI SISTEMA"
@@ -2851,9 +2851,9 @@ msgstr "Foreign Driver's License?"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:241
 #: module/Application/view/application/user-area/driving-licence.phtml:290
-#: module/Application/view/application/user-area/index.phtml:577
-#: module/Application/view/application/user-area/index.phtml:666
-#: module/Application/view/application/user-area/index.phtml:739
+#: module/Application/view/application/user-area/index.phtml:578
+#: module/Application/view/application/user-area/index.phtml:667
+#: module/Application/view/application/user-area/index.phtml:740
 #: module/Application/view/application/user-area/profile.phtml:480
 #: module/Application/view/application/user-area/profile.phtml:556
 #: module/Application/view/partials/car-popup.phtml:96
@@ -2864,9 +2864,9 @@ msgstr "Cancel"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:242
 #: module/Application/view/application/user-area/driving-licence.phtml:291
-#: module/Application/view/application/user-area/index.phtml:578
-#: module/Application/view/application/user-area/index.phtml:667
-#: module/Application/view/application/user-area/index.phtml:740
+#: module/Application/view/application/user-area/index.phtml:579
+#: module/Application/view/application/user-area/index.phtml:668
+#: module/Application/view/application/user-area/index.phtml:741
 #: module/Application/view/application/user-area/profile.phtml:481
 #: module/Application/view/application/user-area/profile.phtml:557
 msgid "Salva modifiche"
@@ -3046,15 +3046,15 @@ msgstr "Contractual terms"
 msgid "Modifica profilo"
 msgstr "Edit profile"
 
-#: module/Application/view/application/user-area/index.phtml:586
+#: module/Application/view/application/user-area/index.phtml:587
 msgid "Il tuo numero di telefono"
 msgstr "My phone number"
 
-#: module/Application/view/application/user-area/index.phtml:604
+#: module/Application/view/application/user-area/index.phtml:605
 msgid "Modifica Numero"
 msgstr "Change Number"
 
-#: module/Application/view/application/user-area/index.phtml:619
+#: module/Application/view/application/user-area/index.phtml:620
 #: module/Application/view/application/user/new-signup2.phtml:196
 #: module/Application/view/application/user/signup-nl2.phtml:201
 #: module/Application/view/application/user/signup-si2.phtml:201
@@ -3063,7 +3063,7 @@ msgstr "Change Number"
 msgid "Prefisso"
 msgstr "Prefix"
 
-#: module/Application/view/application/user-area/index.phtml:641
+#: module/Application/view/application/user-area/index.phtml:642
 #: module/Application/view/application/user/new-signup2.phtml:215
 #: module/Application/view/application/user/signup.phtml:623
 #: module/Application/view/partials/translations.phtml:3
@@ -3071,96 +3071,96 @@ msgstr "Prefix"
 msgid "INVIA CODICE"
 msgstr "SEND CODE"
 
-#: module/Application/view/application/user-area/index.phtml:650
+#: module/Application/view/application/user-area/index.phtml:651
 #: module/Application/view/application/user/new-signup2.phtml:224
 #: module/Application/view/application/user/signup.phtml:635
 msgid "Codice di Verifica"
 msgstr "Verification code"
 
-#: module/Application/view/application/user-area/index.phtml:660
+#: module/Application/view/application/user-area/index.phtml:661
 #: module/Application/view/application/user/signup.phtml:645
 msgid "Inserisci qui il codice di verifica inviato via sms"
 msgstr "Enter the verification code sent via SMS here"
 
-#: module/Application/view/application/user-area/index.phtml:673
+#: module/Application/view/application/user-area/index.phtml:674
 #: module/Application/view/application/user-area/profile.phtml:489
 msgid "I tuoi dati per l'accesso"
 msgstr "My data access"
 
-#: module/Application/view/application/user-area/index.phtml:689
+#: module/Application/view/application/user-area/index.phtml:690
 #: module/Application/view/application/user-area/profile.phtml:506
 msgid "Modifica Password"
 msgstr "Change Password"
 
-#: module/Application/view/application/user-area/index.phtml:705
+#: module/Application/view/application/user-area/index.phtml:706
 #: module/Application/view/application/user-area/profile.phtml:522
 msgid "Vecchia Password"
 msgstr "Old password"
 
-#: module/Application/view/application/user-area/index.phtml:727
+#: module/Application/view/application/user-area/index.phtml:728
 #: module/Application/view/application/user-area/profile.phtml:544
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:48
 msgid "Ripeti Password"
 msgstr "Repeat the password"
 
-#: module/Application/view/application/user-area/index.phtml:759
+#: module/Application/view/application/user-area/index.phtml:760
 #: module/Application/view/application/user-area/profile.phtml:576
 msgid "I tuoi minuti Bonus"
 msgstr "Free bonus minutes"
 
-#: module/Application/view/application/user-area/index.phtml:769
+#: module/Application/view/application/user-area/index.phtml:770
 #: module/Application/view/application/user-area/profile.phtml:586
 msgid "Accreditati"
 msgstr "Credited"
 
-#: module/Application/view/application/user-area/index.phtml:773
+#: module/Application/view/application/user-area/index.phtml:774
 #: module/Application/view/application/user-area/profile.phtml:590
 msgid "Utilizzati"
 msgstr "Used"
 
-#: module/Application/view/application/user-area/index.phtml:777
+#: module/Application/view/application/user-area/index.phtml:778
 #: module/Application/view/application/user-area/profile.phtml:594
 msgid "Rimanenti"
 msgstr "Left"
 
-#: module/Application/view/application/user-area/index.phtml:786
+#: module/Application/view/application/user-area/index.phtml:787
 #: module/Application/view/application/user-area/profile.phtml:603
 msgid "Punti OSSIGENO"
 msgstr "Oxigen Points"
 
-#: module/Application/view/application/user-area/index.phtml:796
+#: module/Application/view/application/user-area/index.phtml:797
 #: module/Application/view/application/user-area/profile.phtml:613
 msgid "Accreditati questo mese"
 msgstr "Points gained this month"
 
-#: module/Application/view/application/user-area/index.phtml:800
+#: module/Application/view/application/user-area/index.phtml:801
 #: module/Application/view/application/user-area/profile.phtml:617
 msgid "Utilizzabili"
 msgstr "Available"
 
-#: module/Application/view/application/user-area/index.phtml:808
+#: module/Application/view/application/user-area/index.phtml:809
 #: module/Application/view/application/user-area/profile.phtml:625
 msgid "Contributo ambientale"
 msgstr "My environmental contribution"
 
-#: module/Application/view/application/user-area/index.phtml:823
+#: module/Application/view/application/user-area/index.phtml:824
 #: module/Application/view/application/user-area/profile.phtml:652
 msgid "Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso."
 msgstr ""
 "I have not yet paid my subscription to the service and I would like to do it "
 "now."
 
-#: module/Application/view/application/user-area/index.phtml:933
+#: module/Application/view/application/user-area/index.phtml:934
 #: module/Application/view/application/user-area/profile.phtml:757
 msgid "Hai risparmiato"
 msgstr "You saved"
 
-#: module/Application/view/application/user-area/index.phtml:933
+#: module/Application/view/application/user-area/index.phtml:934
 #: module/Application/view/application/user-area/profile.phtml:757
 msgid "KG di CO"
 msgstr "KG of CO"
 
-#: module/Application/view/application/user-area/index.phtml:933
+#: module/Application/view/application/user-area/index.phtml:934
 #: module/Application/view/application/user-area/profile.phtml:757
 msgid "Grazie!"
 msgstr " Thank you!"
@@ -3482,27 +3482,27 @@ msgid "Guarda come si usa"
 msgstr "See how it is used"
 
 #: module/Application/view/application/user-area/pin.phtml:51
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:53
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
 msgstr "Do you also want an APRIPORTA CARD associated with your account?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "CLICK ON THE PAPER IMAGE"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "per inoltrare la tua richiesta"
 msgstr "to submit your request"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:56
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "REQUEST OF CARD SHARE ' NGO"
 
 #: module/Application/view/application/user-area/pin.phtml:60
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3684,11 +3684,11 @@ msgstr "Electric and non-polluting car sharing"
 #: module/Application/view/application/user/signup-si1.phtml:18
 #: module/Application/view/application/user/signup-sk1.phtml:18
 msgid "Solo auto elettriche, disponibili giorno e notte, vicino a te."
-msgstr "Only electric cars available day and night near you"
+msgstr "Only electric cars available day and night near you."
 
 #: module/Application/view/application/user/new-signup.phtml:19
 msgid "Vai senza limiti in Area C e B/ ZTL Firenze/ ZTL e Tridente Roma."
-msgstr "No limit in Area C/B/ZTL /Rome Tridente"
+msgstr "No limit in Area C/B/ZTL /Rome Tridente."
 
 #: module/Application/view/application/user/new-signup.phtml:20
 #: module/Application/view/application/user/signup-nl1.phtml:19
@@ -3845,11 +3845,8 @@ msgstr ""
 "CONTACT THE CUSTOMER SERVICE"
 
 #: module/Application/view/application/user/new-signup2.phtml:264
-#: module/Application/view/application/user/signup-nl2.phtml:242
-#: module/Application/view/application/user/signup-si2.phtml:247
-#: module/Application/view/application/user/signup-sk2.phtml:243
-msgid "Assicurati che sia dell’ultima patente rilasciata."
-msgstr "Make sure it is of the last driver's license issued."
+msgid "&Egrave; obbligatoria patente B/B1 o superiore (no patente A)"
+msgstr "driving license B/B1 or higher is mandatory (no driving license A)"
 
 #: module/Application/view/application/user/new-signup2.phtml:268
 msgid "Scadenza patente"
@@ -4162,6 +4159,12 @@ msgstr "City residence"
 #: module/Application/view/application/user/signup-nl2.phtml:223
 msgid "BSN"
 msgstr ""
+
+#: module/Application/view/application/user/signup-nl2.phtml:242
+#: module/Application/view/application/user/signup-si2.phtml:247
+#: module/Application/view/application/user/signup-sk2.phtml:243
+msgid "Assicurati che sia dell’ultima patente rilasciata."
+msgstr "Make sure it is of the last driver's license issued."
 
 #: module/Application/view/application/user/signup-nl2.phtml:246
 #: module/Application/view/application/user/signup-si2.phtml:251
@@ -6137,7 +6140,7 @@ msgstr "Card change completed"
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:22
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:27
 msgid "Ti confermiamo la ricezione dei tuoi nuovi dati."
-msgstr "We confirm the receipt of payment"
+msgstr "We confirm the receipt of payment."
 
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:12
 msgid "Verifica cambio di carta in corso."
