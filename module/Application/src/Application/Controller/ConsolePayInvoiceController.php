@@ -108,7 +108,7 @@ class ConsolePayInvoiceController extends AbstractActionController
     /**
      * @var string
      */
-    private $daysRetryPayment = '-30 days';
+    private $daysRetryPayment = '-60 days';
     
     /**
      * @param TripPaymentsService $tripPaymentsService

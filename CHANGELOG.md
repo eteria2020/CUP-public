@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+# [1.0.50] - 2020-02-18
+
+### Changed
+
+- changed label on new-signup2 page, for Italian drivers (B/B1 dirver license mandatory)
+- restore retry payments to 60 day
+
 # [1.0.49] - 2020-02-18
 
 ### Changed
