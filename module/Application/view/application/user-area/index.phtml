@@ -178,7 +178,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-2-4">
-                                    <label><?= $this->translate("Codice Fiscale"); ?></label>
+                                    <label><?= $this->translate("Codice fiscale"); ?></label>
                                     <input type="text" name="" class="required disabled" value="<?= $this->customer->getTaxCode(); ?>" >
                                 </div>
                             </div>
@@ -488,7 +488,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-2-4">
-                                    <label><?= $this->translate("Codice Fiscale"); ?></label>
+                                    <label><?= $this->translate("Codice fiscale"); ?></label>
                                         <?php
                                         $taxCode = $this->profileForm->get('customer')->get('taxCode');
                                         $taxCode->setValue($this->customer->getTaxCode());
@@ -703,7 +703,7 @@ $this->headLink()
                             <div class="block-row-field clearfix">
 
                                 <div class="block-field bw-f w-1-4">
-                                    <p> <label><?= $this->translate("Vecchia Password"); ?></label>
+                                    <p> <label><?= $this->translate("Vecchia password"); ?></label>
                                         <?php
                                         $oldPassword = $this->passwordForm->get('oldPassword');
                                         echo $this->formElement($oldPassword->setAttribute('class', 'required'));
@@ -725,7 +725,7 @@ $this->headLink()
                                     </div>
 
                                     <div class="block-field bw-f w-2-4">
-                                        <p> <label><?= $this->translate("Ripeti Password"); ?></label>
+                                        <p> <label><?= $this->translate("Ripeti password"); ?></label>
                                             <?php
                                             $password2 = $this->passwordForm->get('password2');
                                             echo $this->formElement($password2->setAttribute('class', 'required'));
