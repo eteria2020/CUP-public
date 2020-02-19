@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-18 17:16+0100\n"
-"PO-Revision-Date: 2020-02-18 17:46+0100\n"
+"POT-Creation-Date: 2020-02-19 12:15+0100\n"
+"PO-Revision-Date: 2020-02-19 12:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1274,7 +1274,7 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "A user already exists with the same email address"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:251
+#: module/Application/view/application/user/new-signup.phtml:277
 #: module/Application/view/application/user/signup-nl1.phtml:250
 #: module/Application/view/application/user/signup-si1.phtml:250
 #: module/Application/view/application/user/signup-sk1.phtml:250
@@ -2449,6 +2449,7 @@ msgstr "to complete the activation of the service"
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:44
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:44
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:44
+#: module/Application/view/application/user/new-signup.phtml:198
 msgid "Attenzione!"
 msgstr "Warning!"
 
@@ -3734,24 +3735,6 @@ msgid ""
 "Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo"
 msgstr "By clicking the bottom you agree to Sharengo Terms and Conditions"
 
-#: module/Application/view/application/user/new-signup.phtml:148
-#: module/Application/view/application/user/new-signup.phtml:173
-#: module/Application/view/application/user/new-signup2.phtml:417
-#: module/Application/view/application/user/new-signup2.phtml:444
-#: module/Application/view/application/user/new-signup2.phtml:465
-#: module/Application/view/application/user/signup-nl1.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:172
-#: module/Application/view/application/user/signup-nl2.phtml:365
-#: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si1.phtml:172
-#: module/Application/view/application/user/signup-si2.phtml:379
-#: module/Application/view/application/user/signup-sk1.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:172
-#: module/Application/view/application/user/signup-sk2.phtml:375
-#: module/Application/view/partials/car-popup.phtml:101
-msgid "Chiudi"
-msgstr "Close"
-
 #: module/Application/view/application/user/new-signup.phtml:155
 #: module/Application/view/application/user/signup-nl1.phtml:154
 #: module/Application/view/application/user/signup-si1.phtml:154
@@ -3783,6 +3766,10 @@ msgstr "You are already registered!"
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr "To complete the insertion of your data click on LOGIN"
+
+#: module/Application/view/application/user/new-signup.phtml:202
+msgid "Il servizio a Milano è temporaneamente sospeso"
+msgstr "The service in Milan is temporarily suspended"
 
 #: module/Application/view/application/user/new-signup2.phtml:29
 msgid "21 minuti a soli 5&euro;"
@@ -4003,6 +3990,22 @@ msgstr ""
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Keep it going"
+
+#: module/Application/view/application/user/new-signup2.phtml:417
+#: module/Application/view/application/user/new-signup2.phtml:444
+#: module/Application/view/application/user/new-signup2.phtml:465
+#: module/Application/view/application/user/signup-nl1.phtml:147
+#: module/Application/view/application/user/signup-nl1.phtml:172
+#: module/Application/view/application/user/signup-nl2.phtml:365
+#: module/Application/view/application/user/signup-si1.phtml:147
+#: module/Application/view/application/user/signup-si1.phtml:172
+#: module/Application/view/application/user/signup-si2.phtml:379
+#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk1.phtml:172
+#: module/Application/view/application/user/signup-sk2.phtml:375
+#: module/Application/view/partials/car-popup.phtml:101
+msgid "Chiudi"
+msgstr "Close"
 
 #: module/Application/view/application/user/new-signup2.phtml:419
 msgid "Prima di procedere verifica:"
