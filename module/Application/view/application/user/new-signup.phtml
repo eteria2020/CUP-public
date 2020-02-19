@@ -141,11 +141,11 @@ $this->headLink()
     </div>
     <!-- content -->
     <!-- overlay -->
-    <div id="sng-overlay" style="visibility: hidden">
+    <div id="sng-overlay-maintenance" style="visibility: hidden">
         <div class="table">
             <div class="cell">
                 <div class="box" style="background:#fff;">
-                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden"><?= $this->translate("Chiudi") ?></span></a>
+                    <a href="#" class="sng-overlay-close" title="Chiudi"><span class="hidden"><i class="fa fa-close"></i></span></a>
                     <div id="sng-overlay-content1">
                         <div class="content-more"
                              style="background-color:rgba(102, 102, 102, 0.40); background-image: none;">
@@ -163,14 +163,14 @@ $this->headLink()
     <!-- overlay -->
 
     <!-- overlay already signup -->
-    <div id="sng-overlay" class="overlay-signup" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+    <div id="sng-overlay" class="sng-overlay" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
         <div class="table">
             <div class="cell">
                 <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
                     <div id="sng-overlay-content1">
                         <div class="content-more" style="background-image: none; text-align: left !important;">
                             <br>
-                            <p align="right"><a onclick="closeSignup()" style="color:#fff"><b>[X] <?= $this->translate("Chiudi");?></b></a></p>
+                            <p align="right"><a onclick="closeSignup()" style="color:#fff"><i class="fa fa-close"></i></a></p>
                             <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><?= $this->translate("Sei già iscritto!");?></h2>
                             <hr style="height:2px;border:none;color:#fff;background-color:#fff;">
                             <p style="color:#fff;text-align: center; font-weight: 800; font-family: 'Open Sans', sans-serif">
@@ -185,6 +185,31 @@ $this->headLink()
         </div>
     </div>
     <!-- overlay -->
+
+    <!-- overlay already signup -->
+    <div id="sng-overlay-suspended" class="sng-overlay" style="visibility: hidden; background: rgba(0, 0, 0, 0.3);">
+        <div class="table">
+            <div class="cell">
+                <div class="box" id="popup" style="background:#45ad4e !important; max-width: 800px; border-radius: 50px; padding-top: 10px; font-family: 'Open Sans', sans-serif;">
+                    <div id="sng-overlay-content1">
+                        <div class="content-more" style="background-image: none; text-align: left !important;">
+                            <br>
+                            <p align="right"><a onclick="closeSignup()" style="color:#fff"><i class="fa fa-close"></i></a></p>
+                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><?= $this->translate("Attenzione!");?></h2>
+                            <hr style="height:2px;border:none;color:#fff;background-color:#fff;">
+                            <p style="color:#fff;text-align: center; font-weight: 800; font-family: 'Open Sans', sans-serif">
+                                <br>
+                                <?= $this->translate("Il servizio a Milano è temporaneamente sospeso"); ?>
+                            </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay -->
+
 
 </div>
 <!-- main -->
@@ -206,6 +231,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 <script type="text/javascript">
     $(document).ready(function () {
         tryAPIGeolocation();
+        suspendedFleet();
 
         overlay = $('#sng-overlay');
 
@@ -249,7 +275,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     <?php // in case taxCode is already present
     if($this->formElementErrors($this->form->get('user')->get('email')) == "<ul><li>".$this->translate("Esiste già un utente con lo stesso indirizzo email")."</li></ul>"){?>
-    overlay = $('.overlay-signup');
+    overlay = $('#sng-overlay');
     overlay.css("visibility", "visible");
     <?php } ?>
 
@@ -264,6 +290,12 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     $(function() {
         $('#registration-form').on('submit', function(e) {
+            if( $( "#fleet option:selected" ).text()=='Milano') {
+                let overlay = $('#sng-overlay-suspended');
+                overlay.css("visibility", "visible");
+                e.preventDefault();
+                return false;
+            }
             $("#nextBtn").attr("disabled", true);
             addLoader();
         });
@@ -277,11 +309,21 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     };
 
     function closeSignup() {
-        overlay = $('.overlay-signup');
+        overlay = $('.sng-overlay');
         overlay.fadeOut(400, function () {
             overlay.css("visibility", "hidden");
             overlay.css("display","initial");
         });
     }
 
+    function suspendedFleet() {
+        $("#fleet").change(
+            function () {
+                if( $( "#fleet option:selected" ).text()=='Milano') {
+                    let overlay = $('#sng-overlay-suspended');
+                    overlay.css("visibility", "visible");
+                }
+            }
+        );
+    }
 </script>

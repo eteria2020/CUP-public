@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Comfortaa:700);
 
-#sng-overlay
+.sng-overlay
 {
     position: fixed;
     top: 0;
@@ -11,21 +11,21 @@
     background: rgba(0, 0, 0, 0.75);
 }
 
-#sng-overlay > .table
+.sng-overlay > .table
 {
     display: table;
     width: 100%;
     height: 100%;
 }
 
-#sng-overlay > .table > .cell
+.sng-overlay > .table > .cell
 {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
 }
 
-#sng-overlay > .table > .cell > .box
+.sng-overlay > .table > .cell > .box
 {
     display: inline-block;
     width: 100%;
@@ -38,7 +38,7 @@
     overflow: hidden;
 }
 
-#sng-overlay > .table > .cell > .box > .sng-overlay-close
+.sng-overlay > .table > .cell > .box > .sng-overlay-close
 {
     position: absolute;
     right: 10px;
@@ -54,30 +54,30 @@
     transition: all .3s ease;
 }
 
-#sng-overlay > .table > .cell > .box > .sng-overlay-close:hover
+.sng-overlay > .table > .cell > .box > .sng-overlay-close:hover
 {
     filter: alpha(opacity=50);
     opacity: .5;
 }
 
-#sng-overlay > .table > .cell > .box > .table
+.sng-overlay > .table > .cell > .box > .table
 {
     width: 100%;
     position: relative;
     z-index: 1;
 }
 
-#sng-overlay > .table > .cell > .box > .table > .cell
+.sng-overlay > .table > .cell > .box > .table > .cell
 {
     float: left;
 }
 
-#sng-overlay .content-left
+.sng-overlay .content-left
 {
     width: 45%;
 }
 
-#sng-overlay .content-left h1
+.sng-overlay .content-left h1
 {
     font-family: 'Comfortaa', cursive;
     color: #1c2849;
@@ -89,7 +89,7 @@
     padding: 30px;
 }
 
-#sng-overlay .content-right
+.sng-overlay .content-right
 {
     background: #1c2849;
     color: #fff;
@@ -97,7 +97,7 @@
     width: 55%;
 }
 
-#sng-overlay .content-right h2
+.sng-overlay .content-right h2
 {
     font-family: 'Comfortaa', cursive;
     color: #fff;
@@ -108,7 +108,7 @@
     margin: 15px 0;
 }
 
-#sng-overlay .content-right h4
+.sng-overlay .content-right h4
 {
     color: #fff;
     font-weight: 600;
@@ -118,7 +118,7 @@
     margin: 15px 0;
 }
 
-#sng-overlay .content-right p
+.sng-overlay .content-right p
 {
     text-align: center;
     margin: 15px 0;
@@ -126,7 +126,7 @@
     line-height: 120%;
 }
 
-#sng-overlay .content-right p.upper
+.sng-overlay .content-right p.upper
 {
     text-transform: uppercase;
     font-weight: 600;
@@ -135,7 +135,7 @@
     line-height: 120%;
 }
 
-#sng-overlay .content-right .sng-overlay-button
+.sng-overlay .content-right .sng-overlay-button
 {
     display: block;
     background: #ffed00;
@@ -158,52 +158,52 @@
     transition: background .3s ease;
 }
 
-#sng-overlay .content-right .sng-overlay-button:hover
+.sng-overlay .content-right .sng-overlay-button:hover
 {
     background: #FFFD47;
 }
 
-#sng-overlay .content-right .sng-overlay-button-cyan
+.sng-overlay .content-right .sng-overlay-button-cyan
 {
     background: #72a0c0;
 }
 
-#sng-overlay .content-right .sng-overlay-button-cyan:hover
+.sng-overlay .content-right .sng-overlay-button-cyan:hover
 {
     background: #87BADA;
 }
 
-#sng-overlay .content-right > :first-child { margin-top: 0 }
-#sng-overlay .content-right > :last-child { margin-bottom: 0 }
+.sng-overlay .content-right > :first-child { margin-top: 0 }
+.sng-overlay .content-right > :last-child { margin-bottom: 0 }
 
-#sng-overlay-content2
+.sng-overlay-content2
 {
     display: none;
 }
 
-#sng-overlay-slider
+.sng-overlay-slider
 {
     margin: 0;
     width: 100%;
 }
 
-#sng-overlay-slider > .slide
+.sng-overlay-slider > .slide
 {
     display: none;
 }
 
-#sng-overlay-slider > .slide:first-child
+.sng-overlay-slider > .slide:first-child
 {
     display: block;
 }
 
-#sng-overlay-slider .slide
+.sng-overlay-slider .slide
 {
     background: no-repeat 50% 50%;
     background-size: cover;
 }
 
-#sng-overlay .content-more
+.sng-overlay .content-more
 {
     padding: 0 30px 30px;
     background: no-repeat url(../images/overlay/bg.jpg) 50% 50%;
@@ -211,7 +211,7 @@
     text-align: center;
 }
 
-#sng-overlay .content-more h3
+.sng-overlay .content-more h3
 {
     background: #ffed00;
     color: #1c2849;
@@ -226,7 +226,7 @@
     margin: 0 10px;
 }
 
-#sng-overlay .content-more ul
+.sng-overlay .content-more ul
 {
     list-style: none;
     margin: 0;
@@ -234,14 +234,14 @@
     text-align: left;
 }
 
-#sng-overlay .content-more ul > li
+.sng-overlay .content-more ul > li
 {
     margin: 20px 0 45px;
     position: relative;
     padding-left: 230px;
 }
 
-#sng-overlay .content-more ul > li > img
+.sng-overlay .content-more ul > li > img
 {
     position: absolute;
     left: 0;
@@ -251,23 +251,23 @@
     margin-top: -100px;
 }
 
-#sng-overlay .content-more ul > li.item1 > img
+.sng-overlay .content-more ul > li.item1 > img
 {
     top: 0;
     margin-top: 0;
 }
 
-#sng-overlay .content-more ul > li.item2
+.sng-overlay .content-more ul > li.item2
 {
     margin-left: 80px;
 }
 
-#sng-overlay .content-more ul > li.item3 > img
+.sng-overlay .content-more ul > li.item3 > img
 {
     top: 30%;
 }
 
-#sng-overlay .content-more h4
+.sng-overlay .content-more h4
 {
     font-weight: 700;
     font-size: 28px;
@@ -275,14 +275,14 @@
     margin: 0;
 }
 
-#sng-overlay .content-more p
+.sng-overlay .content-more p
 {
     margin: 0;
     font-size: 18px;
     line-height: 130%;
 }
 
-#sng-overlay .content-more .sng-overlay-button
+.sng-overlay .content-more .sng-overlay-button
 {
     display: inline-block;
     background: #ffed00;
@@ -304,14 +304,14 @@
     transition: background .3s ease;
 }
 
-#sng-overlay .content-more .sng-overlay-button:hover
+.sng-overlay .content-more .sng-overlay-button:hover
 {
     background: #FFFD47;
 }
 
 @media only screen and (max-width: 1099px)
 {
-    #sng-overlay > .table > .cell > .box
+    .sng-overlay > .table > .cell > .box
     {
         width: 1024px;
     }
@@ -319,33 +319,33 @@
 
 @media only screen and (max-width: 1023px)
 {
-    #sng-overlay > .table > .cell > .box
+    .sng-overlay > .table > .cell > .box
     {
         width: 768px;
     }
 
-    #sng-overlay .content-right
+    .sng-overlay .content-right
     {
         width: 100%;
     }
 
-    #sng-overlay .content-left
+    .sng-overlay .content-left
     {
         width: 100%;
     }
 
-    #sng-overlay .content-left h1
+    .sng-overlay .content-left h1
     {
         font-size: 44px;
         line-height: 100%;
     }
 
-    #sng-overlay .content-left h1 br
+    .sng-overlay .content-left h1 br
     {
         display: none;
     }
 
-    #sng-overlay .content-right h2
+    .sng-overlay .content-right h2
     {
         font-size: 30px;
         line-height: 100%;
@@ -353,7 +353,7 @@
         text-align: center;
     }
 
-    #sng-overlay .content-right h4
+    .sng-overlay .content-right h4
     {
         font-size: 22px;
         line-height: 110%;
@@ -361,21 +361,21 @@
         text-align: center;
     }
 
-    #sng-overlay .content-right p
+    .sng-overlay .content-right p
     {
         margin: 10px 0;
         font-size: 15px;
         line-height: 120%;
     }
 
-    #sng-overlay .content-right p.upper
+    .sng-overlay .content-right p.upper
     {
         text-align: center;
         font-size: 17px;
         line-height: 120%;
     }
 
-    #sng-overlay .content-right .sng-overlay-button
+    .sng-overlay .content-right .sng-overlay-button
     {
         font-size: 18px;
         line-height: 120%;
@@ -383,36 +383,36 @@
         max-width: 350px;
     }
 
-    #sng-overlay .content-right > :first-child { margin-top: 0 }
-    #sng-overlay .content-right > :last-child { margin-bottom: 0 }
+    .sng-overlay .content-right > :first-child { margin-top: 0 }
+    .sng-overlay .content-right > :last-child { margin-bottom: 0 }
 
-    #sng-overlay .content-more ul > li
+    .sng-overlay .content-more ul > li
     {
         margin: 40px 0;
     }
 
-    #sng-overlay .content-more ul > li.item1 > img
+    .sng-overlay .content-more ul > li.item1 > img
     {
         top: 0;
     }
 
-    #sng-overlay .content-more ul > li.item2
+    .sng-overlay .content-more ul > li.item2
     {
         margin-left: 90px;
     }
 
-    #sng-overlay .content-more ul > li.item3 > img
+    .sng-overlay .content-more ul > li.item3 > img
     {
         top: 30%;
     }
 
-    #sng-overlay .content-more h4
+    .sng-overlay .content-more h4
     {
         font-size: 26px;
         line-height: 110%;
     }
 
-    #sng-overlay .content-more p
+    .sng-overlay .content-more p
     {
         font-size: 15px;
         line-height: 130%;
@@ -421,7 +421,7 @@
 
 @media only screen and (max-width: 1023px) and (min-width: 768px)
 {
-    #sng-overlay-slider .slide
+    .sng-overlay-slider .slide
     {
         height: 500px !important;
     }
@@ -429,34 +429,34 @@
 
 @media only screen and (max-width: 767px)
 {
-    #sng-overlay > .table > .cell > .box
+    .sng-overlay > .table > .cell > .box
     {
         width: 480px;
     }
 
-    #sng-overlay .content-left h1
+    .sng-overlay .content-left h1
     {
         font-size: 26px;
         line-height: 120%;
         padding: 15px;
     }
 
-    #sng-overlay .content-right
+    .sng-overlay .content-right
     {
         width: 55%;
     }
 
-    #sng-overlay .content-left
+    .sng-overlay .content-left
     {
         width: 45%;
     }
 
-    #sng-overlay .content-right
+    .sng-overlay .content-right
     {
         padding: 15px;
     }
 
-    #sng-overlay .content-right h2
+    .sng-overlay .content-right h2
     {
         font-size: 24px;
         line-height: 120%;
@@ -464,7 +464,7 @@
         text-align: left;
     }
 
-    #sng-overlay .content-right h4
+    .sng-overlay .content-right h4
     {
         font-size: 16px;
         line-height: 120%;
@@ -472,21 +472,21 @@
         text-align: left;
     }
 
-    #sng-overlay .content-right p
+    .sng-overlay .content-right p
     {
         margin: 10px 0;
         font-size: 13px;
         line-height: 140%;
     }
 
-    #sng-overlay .content-right p.upper
+    .sng-overlay .content-right p.upper
     {
         text-align: left;
         font-size: 14px;
         line-height: 140%;
     }
 
-    #sng-overlay .content-right .sng-overlay-button
+    .sng-overlay .content-right .sng-overlay-button
     {
         font-size: 15px;
         line-height: 140%;
@@ -494,28 +494,28 @@
         max-width: none;
     }
 
-    #sng-overlay .content-right > :first-child { margin-top: 0 }
-    #sng-overlay .content-right > :last-child { margin-bottom: 0 }
+    .sng-overlay .content-right > :first-child { margin-top: 0 }
+    .sng-overlay .content-right > :last-child { margin-bottom: 0 }
 
-    #sng-overlay .content-more
+    .sng-overlay .content-more
     {
         padding: 0 15px 15px;
     }
 
-    #sng-overlay .content-more h3
+    .sng-overlay .content-more h3
     {
         font-size: 15px;
         line-height: 110%;
         margin: 0 20px 0 0;
     }
 
-    #sng-overlay .content-more ul > li
+    .sng-overlay .content-more ul > li
     {
         margin: 10px 0;
         padding-left: 130px;
     }
 
-    #sng-overlay .content-more ul > li > img
+    .sng-overlay .content-more ul > li > img
     {
         width: 120px;
         height: 120px;
@@ -523,34 +523,34 @@
         margin-top: 0;
     }
 
-    #sng-overlay .content-more ul > li.item1 > img
+    .sng-overlay .content-more ul > li.item1 > img
     {
         top: 0;
     }
 
-    #sng-overlay .content-more ul > li.item2
+    .sng-overlay .content-more ul > li.item2
     {
         margin-left: 0;
     }
 
-    #sng-overlay .content-more ul > li.item3 > img
+    .sng-overlay .content-more ul > li.item3 > img
     {
         top: 0;
     }
 
-    #sng-overlay .content-more h4
+    .sng-overlay .content-more h4
     {
         font-size: 16px;
         line-height: 110%;
     }
 
-    #sng-overlay .content-more p
+    .sng-overlay .content-more p
     {
         font-size: 12px;
         line-height: 110%;
     }
 
-    #sng-overlay .content-more .sng-overlay-button
+    .sng-overlay .content-more .sng-overlay-button
     {
         font-size: 16px;
         line-height: 120%;
@@ -559,39 +559,39 @@
 
 @media only screen and (max-width: 479px)
 {
-    #sng-overlay-slider .slide
+    .sng-overlay-slider .slide
     {
         height: 240px !important;
     }
 
-    #sng-overlay > .table > .cell > .box
+    .sng-overlay > .table > .cell > .box
     {
         width: 320px;
     }
 
-    #sng-overlay .content-left h1
+    .sng-overlay .content-left h1
     {
         font-size: 20px;
         line-height: 110%;
         padding: 20px 10px 0;
     }
 
-    #sng-overlay .content-right
+    .sng-overlay .content-right
     {
         width: 100%;
     }
 
-    #sng-overlay .content-left
+    .sng-overlay .content-left
     {
         width: 100%;
     }
 
-    #sng-overlay .content-right
+    .sng-overlay .content-right
     {
         padding: 15px;
     }
 
-    #sng-overlay .content-right h2
+    .sng-overlay .content-right h2
     {
         font-size: 20px;
         line-height: 110%;
@@ -599,7 +599,7 @@
         text-align: center;
     }
 
-    #sng-overlay .content-right h4
+    .sng-overlay .content-right h4
     {
         font-size: 13px;
         line-height: 110%;
@@ -607,43 +607,43 @@
         text-align: center;
     }
 
-    #sng-overlay .content-right p
+    .sng-overlay .content-right p
     {
         margin: 5px 0;
         font-size: 11px;
         line-height: 110%;
     }
 
-    #sng-overlay .content-right p.upper
+    .sng-overlay .content-right p.upper
     {
         text-align: center;
         font-size: 12px;
         line-height: 110%;
     }
 
-    #sng-overlay .content-right .sng-overlay-button
+    .sng-overlay .content-right .sng-overlay-button
     {
         font-size: 13px;
         line-height: 120%;
         margin: 5px auto;
     }
 
-    #sng-overlay .content-right > :first-child { margin-top: 0 }
-    #sng-overlay .content-right > :last-child { margin-bottom: 0 }
+    .sng-overlay .content-right > :first-child { margin-top: 0 }
+    .sng-overlay .content-right > :last-child { margin-bottom: 0 }
 
-    #sng-overlay .content-more h3
+    .sng-overlay .content-more h3
     {
         font-size: 15px;
         line-height: 110%;
     }
 
-    #sng-overlay .content-more ul > li
+    .sng-overlay .content-more ul > li
     {
         padding-left: 70px;
         margin: 10px 0;
     }
 
-    #sng-overlay .content-more ul > li > img
+    .sng-overlay .content-more ul > li > img
     {
         width: 60px;
         height: 60px;
@@ -651,30 +651,30 @@
         top: 0;
     }
 
-    #sng-overlay .content-more ul > li.item1 > img
+    .sng-overlay .content-more ul > li.item1 > img
     {
         top: 0;
     }
 
-    #sng-overlay .content-more ul > li.item3 > img
+    .sng-overlay .content-more ul > li.item3 > img
     {
         top: 0;
     }
 
-    #sng-overlay .content-more h4
+    .sng-overlay .content-more h4
     {
         font-size: 14px;
         line-height: 110%;
         margin: 0 0 3px;
     }
 
-    #sng-overlay .content-more p
+    .sng-overlay .content-more p
     {
         font-size: 10px;
         line-height: 120%;
     }
 
-    #sng-overlay .content-more .sng-overlay-button
+    .sng-overlay .content-more .sng-overlay-button
     {
         display: block;
         font-size: 14px;
