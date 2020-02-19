@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-05 17:41+0100\n"
-"PO-Revision-Date: 2020-02-05 17:41+0100\n"
+"POT-Creation-Date: 2020-02-19 15:14+0100\n"
+"PO-Revision-Date: 2020-02-19 15:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -35,6 +35,8 @@ msgstr "Profiel"
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
 #: module/Application/src/Application/Form/SignupSI2Fieldset.php:319
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:306
+#: module/Application/view/application/user-area/driving-licence-international.phtml:24
+#: module/Application/view/application/user-area/driving-licence.phtml:24
 msgid "Patente"
 msgstr "Rijbewijs"
 
@@ -50,6 +52,7 @@ msgid "Tariffe"
 msgstr "Tarieven"
 
 #: module/Application/config/module.config.php:2110
+#: module/Application/view/application/additional-services/additional-services.phtml:28
 msgid "Promo e pacchetti"
 msgstr "Aanbiedingen  en pakketten"
 
@@ -73,9 +76,9 @@ msgstr "Facturen"
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:151
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:160
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:167
-#: module/Application/src/Application/Controller/UserAreaController.php:422
-#: module/Application/src/Application/Controller/UserAreaController.php:557
-#: module/Application/src/Application/Controller/UserAreaController.php:619
+#: module/Application/src/Application/Controller/UserAreaController.php:425
+#: module/Application/src/Application/Controller/UserAreaController.php:560
+#: module/Application/src/Application/Controller/UserAreaController.php:622
 msgid "Operazione completata con successo!"
 msgstr "Handeling succesvol afgerond!"
 
@@ -132,28 +135,28 @@ msgstr "Onvoldoende zuurstofpunten"
 msgid "Pacchetto non acquistabile"
 msgstr "Pakket niet verkrijgbaar"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:275
-#: module/Application/src/Application/Controller/UserAreaController.php:367
+#: module/Application/src/Application/Controller/UserAreaController.php:278
+#: module/Application/src/Application/Controller/UserAreaController.php:370
 msgid "Per modificare nuovamente i tuoi dati dovrai attendere 10 minuti."
 msgstr "Om je gegevens opnieuw te wijzigen moet je 10 minuten wachten."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:559
-#: module/Application/src/Application/Controller/UserAreaController.php:621
+#: module/Application/src/Application/Controller/UserAreaController.php:562
+#: module/Application/src/Application/Controller/UserAreaController.php:624
 msgid "Si è verificato un errore applicativo. Ci scusiamo per l'inconveniente"
 msgstr "Er is een toepassingsfout opgetreden. Onze excuses voor het ongemak"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:740
-#: module/Application/src/Application/Controller/UserAreaController.php:780
+#: module/Application/src/Application/Controller/UserAreaController.php:743
+#: module/Application/src/Application/Controller/UserAreaController.php:783
 msgid "Pagamento completato con successo"
 msgstr "Betaling succesvol afgerond"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:742
-#: module/Application/src/Application/Controller/UserAreaController.php:782
+#: module/Application/src/Application/Controller/UserAreaController.php:745
+#: module/Application/src/Application/Controller/UserAreaController.php:785
 msgid "Pagamento fallito"
 msgstr "Betaling mislukt"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:751
-#: module/Application/src/Application/Controller/UserAreaController.php:791
+#: module/Application/src/Application/Controller/UserAreaController.php:754
+#: module/Application/src/Application/Controller/UserAreaController.php:794
 #: module/Application/view/application/user-area/debt-collection.phtml:108
 #: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
@@ -165,23 +168,23 @@ msgstr "Betaling mislukt"
 msgid "Pagamento momentaneamente sospeso, riprova più tardi."
 msgstr "Betaling tijdelijk opgeschort. Probeer het later opnieuw."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:820
+#: module/Application/src/Application/Controller/UserAreaController.php:823
 msgid "Contratto disabilitato correttamente!"
 msgstr "Contract correct gedeactiveerd!"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:822
 #: module/Application/src/Application/Controller/UserAreaController.php:825
 #: module/Application/src/Application/Controller/UserAreaController.php:828
+#: module/Application/src/Application/Controller/UserAreaController.php:831
 msgid "Errore durante la disabilitazione del contratto"
 msgstr "Fout bij het deactiveren van het contract"
 
-#: module/Application/src/Application/Controller/UserAreaController.php:856
+#: module/Application/src/Application/Controller/UserAreaController.php:859
 msgid ""
 "Sei disabilitato perchè la carta inserita è scaduta, inserisci i nuovi dati."
 msgstr ""
 "Je bent gedeactiveerd omdat je card is verlopen; voer de nieuwe gegevens in."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:860
+#: module/Application/src/Application/Controller/UserAreaController.php:863
 msgid ""
 "Sei disabilitato perchè il nostro dipartimento amministrativo sta "
 "verificando la validità dei tuoi dati personali e della patente di guida. "
@@ -194,7 +197,7 @@ msgstr ""
 "account automatisch geactiveerd en ontvangt u hierover een e-mail. We vragen "
 "u vriendelijk om te wachten, u hoeft niets anders te doen."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:863
+#: module/Application/src/Application/Controller/UserAreaController.php:866
 msgid ""
 "Sei disabilitato perchè hai inserito una patente non valida, controlla e "
 "modifica i dati inseriti nel modulo sottostante e/o nell'area 'Patente'."
@@ -203,7 +206,7 @@ msgstr ""
 "controleer en wijzig de ingevoerde gegevens in onderstaand formulier en/of "
 "in het gedeelte 'Rijbewijs'."
 
-#: module/Application/src/Application/Controller/UserAreaController.php:871
+#: module/Application/src/Application/Controller/UserAreaController.php:874
 msgid "Sei disabilitato per patente scaduta, inserisci i nuovi dati."
 msgstr ""
 "Je bent gedeactiveerd omdat je rijbewijs is verlopen; voer de nieuwe "
@@ -242,7 +245,7 @@ msgstr "De sessie is verlopen. Je moet de registratieprocedure herhalen"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:90
 #: module/Application/src/Application/Form/UserFieldset.php:120
 #: module/Application/view/application/user-area/index.phtml:62
-#: module/Application/view/application/user-area/index.phtml:243
+#: module/Application/view/application/user-area/index.phtml:269
 #: module/Application/view/application/user-area/profile.phtml:65
 #: module/Application/view/application/user-area/profile.phtml:256
 #: module/Application/view/application/user/signup-nl2.phtml:74
@@ -288,10 +291,10 @@ msgstr "Mevr."
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:108
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:144
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
-#: module/Application/view/application/user-area/index.phtml:250
+#: module/Application/view/application/user-area/index.phtml:276
 #: module/Application/view/application/user-area/profile.phtml:71
 #: module/Application/view/application/user-area/profile.phtml:264
 #: module/Application/view/application/user/signup-nl2.phtml:83
@@ -317,7 +320,7 @@ msgstr "Naam"
 #: module/Application/src/Application/Form/UserFieldset.php:150
 #: module/Application/src/Application/Form/UserFieldset.php:154
 #: module/Application/view/application/user-area/index.phtml:71
-#: module/Application/view/application/user-area/index.phtml:260
+#: module/Application/view/application/user-area/index.phtml:286
 #: module/Application/view/application/user-area/profile.phtml:76
 #: module/Application/view/application/user-area/profile.phtml:275
 #: module/Application/view/application/user/signup-nl2.phtml:93
@@ -333,7 +336,7 @@ msgstr "Achternaam"
 #: module/Application/src/Application/Form/UserFieldset.php:72
 #: module/Application/src/Application/Form/UserFieldset.php:86
 #: module/Application/view/application/user-area/index.phtml:52
-#: module/Application/view/application/user-area/index.phtml:224
+#: module/Application/view/application/user-area/index.phtml:250
 #: module/Application/view/application/user-area/profile.phtml:54
 #: module/Application/view/application/user-area/profile.phtml:229
 #: module/Application/view/application/user/new-signup.phtml:45
@@ -348,6 +351,7 @@ msgstr "Email"
 #: module/Application/src/Application/Form/CustomerFieldset.php:133
 #: module/Application/src/Application/Form/ForeignCustomerFieldset.php:138
 #: module/Application/view/application/user-area/profile.phtml:240
+#: module/Application/view/application/user/signup.phtml:159
 msgid "Ripeti Email"
 msgstr "Herhaal e-mail"
 
@@ -358,7 +362,7 @@ msgstr "Herhaal e-mail"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:194
 #: module/Application/src/Application/Form/UserFieldset.php:169
 #: module/Application/view/application/user-area/index.phtml:109
-#: module/Application/view/application/user-area/index.phtml:329
+#: module/Application/view/application/user-area/index.phtml:355
 #: module/Application/view/application/user-area/profile.phtml:120
 #: module/Application/view/application/user-area/profile.phtml:347
 #: module/Application/view/application/user/signup-nl2.phtml:144
@@ -375,7 +379,7 @@ msgstr "Geboortedatum"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:207
 #: module/Application/src/Application/Form/UserFieldset.php:182
 #: module/Application/view/application/user-area/index.phtml:90
-#: module/Application/view/application/user-area/index.phtml:283
+#: module/Application/view/application/user-area/index.phtml:309
 #: module/Application/view/application/user-area/profile.phtml:96
 #: module/Application/view/application/user-area/profile.phtml:299
 #: module/Application/view/application/user/signup-nl2.phtml:154
@@ -420,7 +424,7 @@ msgstr "Geboorteplaats"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:252
 #: module/Application/src/Application/Form/UserFieldset.php:278
 #: module/Application/view/application/user-area/index.phtml:99
-#: module/Application/view/application/user-area/index.phtml:304
+#: module/Application/view/application/user-area/index.phtml:330
 #: module/Application/view/application/user-area/profile.phtml:108
 #: module/Application/view/application/user-area/profile.phtml:321
 #: module/Application/view/application/user/signup-nl2.phtml:174
@@ -548,32 +552,58 @@ msgstr "Olandese"
 msgid "sloveno"
 msgstr "Sloveens"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:320
+#: module/Application/src/Application/Form/CustomerFieldset.php:314
+#: module/Application/src/Application/Form/NewUserFieldset.php:139
+msgid ""
+"Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
+"antifrode e prevenzione sinistri (facoltativo)."
+msgstr ""
+"Ik geef toestemming voor het gebruik van mijn persoonlijke gegevens voor "
+"verzekering, fraudebestrijding en ongevallenpreventie (optioneel)."
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:328
+#: module/Application/src/Application/Form/NewUserFieldset.php:119
+msgid ""
+"Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, "
+"ai prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo "
+"(facoltativo)."
+msgstr ""
+"Ik ga ermee akkoord om papieren en digitale communicatie te ontvangen met "
+"betrekking tot de service, producten, voordelen aangeboden door Sharengo en "
+"Sharengo Partners (optioneel)."
+
+#: module/Application/src/Application/Form/CustomerFieldset.php:348
 #: module/Application/src/Application/Form/NewUserFieldset2.php:248
 #: module/Application/src/Application/Form/UserFieldset.php:377
+#: module/Application/view/application/user-area/index.phtml:181
+#: module/Application/view/application/user-area/index.phtml:491
+#: module/Application/view/application/user-area/profile.phtml:183
+#: module/Application/view/application/user-area/profile.phtml:431
+#: module/Application/view/application/user/new-signup2.phtml:246
+#: module/Application/view/application/user/signup.phtml:360
 msgid "Codice fiscale"
 msgstr "Burgerservicenummer"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:333
+#: module/Application/src/Application/Form/CustomerFieldset.php:361
 #: module/Application/src/Application/Form/UserFieldset.php:390
 msgid "Partita IVA (opzionale)"
 msgstr "BTW-nummer (optioneel)"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:343
-#: module/Application/src/Application/Form/CustomerFieldset.php:346
+#: module/Application/src/Application/Form/CustomerFieldset.php:371
+#: module/Application/src/Application/Form/CustomerFieldset.php:374
 #: module/Application/view/layout/layout.phtml:161
 msgid "Telefono"
 msgstr "Telefoon"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:373
+#: module/Application/src/Application/Form/CustomerFieldset.php:401
 msgid "PEC"
 msgstr "Gecertif. E-mail"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:383
+#: module/Application/src/Application/Form/CustomerFieldset.php:411
 msgid "ABCDEFG"
 msgstr "ABCDEFG"
 
-#: module/Application/src/Application/Form/CustomerFieldset.php:386
+#: module/Application/src/Application/Form/CustomerFieldset.php:414
 msgid "Cod. destinatario"
 msgstr "Code ontvanger"
 
@@ -590,8 +620,8 @@ msgid "XX123412341223"
 msgstr "XX123412341223"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:68
-msgid "Rilasciato da (autorità)"
-msgstr "Afgeven door (instantie)"
+msgid "Rilasciato da autorit&agrave;"
+msgstr "Vrijgegeven door autoriteiten"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:81
 #: module/Application/src/Application/Form/DriverFieldset.php:158
@@ -753,8 +783,8 @@ msgstr "Landnummer"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:292
 #: module/Application/src/Application/Form/UserFieldset.php:400
 #: module/Application/src/Application/Form/UserFieldset.php:403
-#: module/Application/view/application/user-area/index.phtml:530
-#: module/Application/view/application/user-area/index.phtml:562
+#: module/Application/view/application/user-area/index.phtml:597
+#: module/Application/view/application/user-area/index.phtml:629
 #: module/Application/view/application/user/new-signup2.phtml:204
 #: module/Application/view/application/user/signup-nl2.phtml:209
 #: module/Application/view/application/user/signup-si2.phtml:210
@@ -801,8 +831,8 @@ msgstr "Stel je wachtwoord in"
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:78
 #: module/Application/src/Application/Form/UserFieldset.php:99
-#: module/Application/view/application/user-area/index.phtml:616
-#: module/Application/view/application/user-area/index.phtml:651
+#: module/Application/view/application/user-area/index.phtml:683
+#: module/Application/view/application/user-area/index.phtml:718
 #: module/Application/view/application/user-area/profile.phtml:498
 #: module/Application/view/application/user-area/profile.phtml:534
 #: module/Application/view/application/user/new-signup.phtml:55
@@ -817,24 +847,6 @@ msgstr "Wachtwoord"
 #: module/Application/src/Application/Form/NewUserFieldset.php:106
 msgid "Accetto espressamente i Termini e le Condizioni Privacy "
 msgstr "Ik accepteer uitdrukkelijk de Privacyvoorwaarden"
-
-#: module/Application/src/Application/Form/NewUserFieldset.php:119
-msgid ""
-"Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, "
-"ai prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo "
-"(facoltativo)."
-msgstr ""
-"Ik ga ermee akkoord om papieren en digitale communicatie te ontvangen met "
-"betrekking tot de service, producten, voordelen aangeboden door Sharengo en "
-"Sharengo Partners (optioneel)."
-
-#: module/Application/src/Application/Form/NewUserFieldset.php:139
-msgid ""
-"Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
-"antifrode e prevenzione sinistri (facoltativo)."
-msgstr ""
-"Ik geef toestemming voor het gebruik van mijn persoonlijke gegevens voor "
-"verzekering, fraudebestrijding en ongevallenpreventie (optioneel)."
 
 #: module/Application/src/Application/Form/NewUserFieldset.php:152
 #, fuzzy
@@ -896,7 +908,7 @@ msgstr "Vul gegevens in om door te kunnen gaan"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:146
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:150
 #: module/Application/view/application/user-area/index.phtml:145
-#: module/Application/view/application/user-area/index.phtml:396
+#: module/Application/view/application/user-area/index.phtml:422
 msgid "Indirizzo"
 msgstr "Adres"
 
@@ -1145,15 +1157,21 @@ msgstr ""
 "mails en nieuwsbrieven van Sharengo."
 
 #: module/Application/src/Application/Form/PasswordForm.php:53
+#: module/Application/view/application/user-area/index.phtml:706
+#: module/Application/view/application/user-area/profile.phtml:522
 msgid "Vecchia password"
 msgstr "Oud wachtwoord"
 
 #: module/Application/src/Application/Form/PasswordForm.php:67
+#: module/Application/view/goalio-forgot-password/forgot/reset.phtml:33
 msgid "Nuova password"
 msgstr "Nieuw wachtwoord"
 
 #: module/Application/src/Application/Form/PasswordForm.php:81
+#: module/Application/view/application/user-area/index.phtml:728
+#: module/Application/view/application/user-area/profile.phtml:544
 #: module/Application/view/application/user/signup.phtml:185
+#: module/Application/view/goalio-forgot-password/forgot/reset.phtml:48
 msgid "Ripeti password"
 msgstr "Herhaal wachtwoord"
 
@@ -1295,7 +1313,7 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "Er bestaat al een gebruiker met hetzelfde rijbewijs"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:251
+#: module/Application/view/application/user/new-signup.phtml:277
 #: module/Application/view/application/user/signup-nl1.phtml:250
 #: module/Application/view/application/user/signup-si1.phtml:250
 #: module/Application/view/application/user/signup-sk1.phtml:250
@@ -1562,15 +1580,15 @@ msgstr "Verbonden met bedrijf"
 msgid "Transazione non valida (id non trovato)"
 msgstr "Verbonden met bedrijf"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:28
-msgid "promo e pacchetti"
-msgstr "aanbiedingen en pakketten"
+#: module/Application/view/application/additional-services/additional-services.phtml:35
+msgid "Attenzione! Il servizio a Milano è temporaneamente sospeso."
+msgstr ""
 
-#: module/Application/view/application/additional-services/additional-services.phtml:44
+#: module/Application/view/application/additional-services/additional-services.phtml:46
 msgid "Acquista Pacchetti"
 msgstr "Pakketten kopen"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:50
+#: module/Application/view/application/additional-services/additional-services.phtml:52
 msgid ""
 "Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle "
 "nostre tariffe scontate."
@@ -1578,7 +1596,7 @@ msgstr ""
 "Koop het minutenpakket dat het beste bij je past en profiteer van onze "
 "kortingen."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:54
+#: module/Application/view/application/additional-services/additional-services.phtml:56
 msgid ""
 "Prima di scegliere il tuo preferito assicurati di aver completato la tua "
 "registrazione con l'acquisto del Pacchetto Benvenuto."
@@ -1586,97 +1604,95 @@ msgstr ""
 "Voordat je jouw favoriete pakket kiest, moet je eerst je registratie met het "
 "welkomstpakket hebben voltooid."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:81
-#: module/Application/view/application/additional-services/additional-services.phtml:96
-#: module/Application/view/application/additional-services/additional-services.phtml:118
+#: module/Application/view/application/additional-services/additional-services.phtml:83
+#: module/Application/view/application/additional-services/additional-services.phtml:98
+#: module/Application/view/application/additional-services/additional-services.phtml:120
 msgid "min"
 msgstr "min"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:83
+#: module/Application/view/application/additional-services/additional-services.phtml:85
 #: module/Application/view/application/customer-bonus-packages/package.phtml:33
 msgid "GRATUITO"
 msgstr "GRATIS"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:83
-#, fuzzy
-msgid "a "
-msgstr "Naar ?"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:101
-#: module/Application/view/application/additional-services/additional-services.phtml:121
-msgid "Validità"
-msgstr "Geldigheid"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:106
-msgid "mesi"
-msgstr "maanden"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:106
-msgid "mese"
-msgstr "maand"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:108
-#: module/Application/view/application/additional-services/additional-services.phtml:125
-msgid "giorni"
-msgstr "dagen"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:108
-#: module/Application/view/application/additional-services/additional-services.phtml:125
-msgid "giorno"
-msgstr "dag"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:114
+#: module/Application/view/application/additional-services/additional-services.phtml:85
+#: module/Application/view/application/additional-services/additional-services.phtml:116
 #, fuzzy
 msgid "a"
 msgstr "Naar ?"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:145
+#: module/Application/view/application/additional-services/additional-services.phtml:103
+#: module/Application/view/application/additional-services/additional-services.phtml:123
+msgid "Validità"
+msgstr "Geldigheid"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:108
+msgid "mesi"
+msgstr "maanden"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:108
+msgid "mese"
+msgstr "maand"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:110
+#: module/Application/view/application/additional-services/additional-services.phtml:127
+msgid "giorni"
+msgstr "dagen"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:110
+#: module/Application/view/application/additional-services/additional-services.phtml:127
+msgid "giorno"
+msgstr "dag"
+
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minuten"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Prijs"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:147
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Geldig van"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:148
+#: module/Application/view/application/additional-services/additional-services.phtml:150
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Geldig tot"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:149
+#: module/Application/view/application/additional-services/additional-services.phtml:151
 msgid "Disponibile fino"
 msgstr "Beschikbaar tot"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:150
+#: module/Application/view/application/additional-services/additional-services.phtml:152
 msgid "Acquista/Converti"
 msgstr "Kopen/omzetten"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:165
+#: module/Application/view/application/additional-services/additional-services.phtml:167
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
 msgid "per %d gg"
 msgstr "voor %d dagen"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:222
-msgid "Codice Promo"
+#: module/Application/view/application/additional-services/additional-services.phtml:224
+#: module/Application/view/application/user/signup.phtml:89
+#: module/Application/view/partials/translations.phtml:4
+msgid "Codice promo"
 msgstr "Promotiecode"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:228
+#: module/Application/view/application/additional-services/additional-services.phtml:230
 msgid "Inserisci il codice promo"
 msgstr "Voer de promotiecode in"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:240
+#: module/Application/view/application/additional-services/additional-services.phtml:242
 msgid "Valida"
 msgstr "Goedkeuren"
 
@@ -2143,8 +2159,13 @@ msgid "Contattare l'assistenza"
 msgstr "Neem contact op de assistentie"
 
 #: module/Application/view/application/index/crawler.phtml:85
-msgid "Ciao "
-msgstr "Hallo "
+#: module/Application/view/application/user-area/debt-collection.phtml:43
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:43
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:43
+#: module/Application/view/partials/welcome-user-area.phtml:3
+msgid "Ciao"
+msgstr "Hallo"
 
 #: module/Application/view/application/index/crawler.phtml:86
 msgid ""
@@ -2461,6 +2482,7 @@ msgstr "om de activering van de dienst te voltooien"
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:44
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:44
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:44
+#: module/Application/view/application/user/new-signup.phtml:198
 msgid "Attenzione!"
 msgstr "Let op!"
 
@@ -2538,7 +2560,7 @@ msgstr "Vervaldatum"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:98
 #: module/Application/view/application/user-area/index.phtml:126
-#: module/Application/view/application/user-area/index.phtml:351
+#: module/Application/view/application/user-area/index.phtml:377
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:107
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:107
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:107
@@ -2642,14 +2664,6 @@ msgstr "AFSLUITEN"
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:32
 msgid "Pagamenti in sospeso"
 msgstr "Uitstaande betalingen"
-
-#: module/Application/view/application/user-area/debt-collection.phtml:43
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:43
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:43
-#: module/Application/view/partials/welcome-user-area.phtml:3
-msgid "Ciao"
-msgstr "Hallo"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:46
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:46
@@ -2815,11 +2829,6 @@ msgstr ""
 "een gereduceerd tarief (&euro; 0,24/min in plaats van &euro; 0,28/min) en "
 "kun je meteen Share’ngo uitproberen."
 
-#: module/Application/view/application/user-area/driving-licence-international.phtml:24
-#: module/Application/view/application/user-area/driving-licence.phtml:24
-msgid "PATENTE"
-msgstr "RIJBEWIJS"
-
 #: module/Application/view/application/user-area/driving-licence-international.phtml:39
 #: module/Application/view/application/user-area/driving-licence.phtml:39
 msgid "I dati della tua patente"
@@ -2868,9 +2877,9 @@ msgstr "Buitenlands rijbewijs?"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:241
 #: module/Application/view/application/user-area/driving-licence.phtml:290
-#: module/Application/view/application/user-area/index.phtml:512
-#: module/Application/view/application/user-area/index.phtml:600
-#: module/Application/view/application/user-area/index.phtml:673
+#: module/Application/view/application/user-area/index.phtml:578
+#: module/Application/view/application/user-area/index.phtml:667
+#: module/Application/view/application/user-area/index.phtml:740
 #: module/Application/view/application/user-area/profile.phtml:480
 #: module/Application/view/application/user-area/profile.phtml:556
 #: module/Application/view/partials/car-popup.phtml:96
@@ -2881,9 +2890,9 @@ msgstr "Annuleren"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:242
 #: module/Application/view/application/user-area/driving-licence.phtml:291
-#: module/Application/view/application/user-area/index.phtml:513
-#: module/Application/view/application/user-area/index.phtml:601
-#: module/Application/view/application/user-area/index.phtml:674
+#: module/Application/view/application/user-area/index.phtml:579
+#: module/Application/view/application/user-area/index.phtml:668
+#: module/Application/view/application/user-area/index.phtml:741
 #: module/Application/view/application/user-area/profile.phtml:481
 #: module/Application/view/application/user-area/profile.phtml:557
 msgid "Salva modifiche"
@@ -2940,28 +2949,28 @@ msgid "I tuoi dati personali"
 msgstr "Je persoonlijke gegevens"
 
 #: module/Application/view/application/user-area/index.phtml:63
-#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/index.phtml:270
 #: module/Application/view/application/user-area/profile.phtml:66
 #: module/Application/view/application/user-area/profile.phtml:257
 msgid "Signore"
 msgstr "Dhr."
 
 #: module/Application/view/application/user-area/index.phtml:63
-#: module/Application/view/application/user-area/index.phtml:244
+#: module/Application/view/application/user-area/index.phtml:270
 #: module/Application/view/application/user-area/profile.phtml:66
 #: module/Application/view/application/user-area/profile.phtml:257
 msgid "Signora"
 msgstr "Mevr."
 
 #: module/Application/view/application/user-area/index.phtml:81
-#: module/Application/view/application/user-area/index.phtml:275
+#: module/Application/view/application/user-area/index.phtml:301
 #: module/Application/view/application/user-area/profile.phtml:87
 #: module/Application/view/application/user-area/profile.phtml:291
 msgid "Dati di nascita"
 msgstr "Geboortedatum"
 
 #: module/Application/view/application/user-area/index.phtml:95
-#: module/Application/view/application/user-area/index.phtml:293
+#: module/Application/view/application/user-area/index.phtml:319
 #: module/Application/view/application/user-area/profile.phtml:102
 #: module/Application/view/application/user-area/profile.phtml:310
 #: module/Application/view/application/user/signup-nl2.phtml:164
@@ -2972,19 +2981,19 @@ msgid "Provincia di nascita"
 msgstr "Geboorteprovincie"
 
 #: module/Application/view/application/user-area/index.phtml:118
-#: module/Application/view/application/user-area/index.phtml:343
+#: module/Application/view/application/user-area/index.phtml:369
 #: module/Application/view/application/user-area/profile.phtml:130
 #: module/Application/view/application/user-area/profile.phtml:362
 msgid "Dati di residenza"
 msgstr "Adresgegevens"
 
 #: module/Application/view/application/user-area/index.phtml:131
-#: module/Application/view/application/user-area/index.phtml:361
+#: module/Application/view/application/user-area/index.phtml:387
 msgid "Provincia"
 msgstr "Provincie"
 
 #: module/Application/view/application/user-area/index.phtml:135
-#: module/Application/view/application/user-area/index.phtml:370
+#: module/Application/view/application/user-area/index.phtml:396
 #: module/Application/view/application/user-area/profile.phtml:139
 #: module/Application/view/application/user-area/profile.phtml:370
 #: module/Application/view/application/user/new-signup2.phtml:130
@@ -2993,12 +3002,12 @@ msgid "Citt&agrave;"
 msgstr "Plaats"
 
 #: module/Application/view/application/user-area/index.phtml:149
-#: module/Application/view/application/user-area/index.phtml:407
+#: module/Application/view/application/user-area/index.phtml:433
 msgid "Civico"
 msgstr "Huisnr."
 
 #: module/Application/view/application/user-area/index.phtml:153
-#: module/Application/view/application/user-area/index.phtml:416
+#: module/Application/view/application/user-area/index.phtml:442
 #: module/Application/view/application/user-area/profile.phtml:151
 #: module/Application/view/application/user-area/profile.phtml:392
 #: module/Application/view/application/user/new-signup2.phtml:171
@@ -3010,42 +3019,33 @@ msgid "Cap"
 msgstr "Postcode"
 
 #: module/Application/view/application/user-area/index.phtml:163
-#: module/Application/view/application/user-area/index.phtml:442
+#: module/Application/view/application/user-area/index.phtml:468
 msgid "Info aggiuntive"
 msgstr "Overige informatie"
 
 #: module/Application/view/application/user-area/index.phtml:172
-#: module/Application/view/application/user-area/index.phtml:456
+#: module/Application/view/application/user-area/index.phtml:482
 #: module/Application/view/application/user-area/profile.phtml:174
 #: module/Application/view/application/user-area/profile.phtml:422
 msgid "Dati fiscali"
 msgstr "Fiscale gegevens"
 
-#: module/Application/view/application/user-area/index.phtml:181
-#: module/Application/view/application/user-area/index.phtml:465
-#: module/Application/view/application/user-area/profile.phtml:183
-#: module/Application/view/application/user-area/profile.phtml:431
-#: module/Application/view/application/user/new-signup2.phtml:246
-#: module/Application/view/application/user/signup.phtml:360
-msgid "Codice Fiscale"
-msgstr "Burgerservicenummer"
-
 #: module/Application/view/application/user-area/index.phtml:190
-#: module/Application/view/application/user-area/index.phtml:480
+#: module/Application/view/application/user-area/index.phtml:506
 #: module/Application/view/application/user-area/profile.phtml:193
 #: module/Application/view/application/user-area/profile.phtml:447
 msgid "Preferenze"
 msgstr "Voorkeuren"
 
 #: module/Application/view/application/user-area/index.phtml:198
-#: module/Application/view/application/user-area/index.phtml:489
+#: module/Application/view/application/user-area/index.phtml:515
 #: module/Application/view/application/user-area/profile.phtml:201
 #: module/Application/view/application/user-area/profile.phtml:456
 msgid "Lingua"
 msgstr "Taal"
 
 #: module/Application/view/application/user-area/index.phtml:202
-#: module/Application/view/application/user-area/index.phtml:499
+#: module/Application/view/application/user-area/index.phtml:525
 #: module/Application/view/application/user-area/profile.phtml:206
 #: module/Application/view/application/user-area/profile.phtml:467
 #: module/Application/view/application/user/new-signup.phtml:66
@@ -3055,20 +3055,25 @@ msgstr "Taal"
 msgid "Citt&agrave; preferita"
 msgstr "Kies een plaats"
 
-#: module/Application/view/application/user-area/index.phtml:208
+#: module/Application/view/application/user-area/index.phtml:212
+#: module/Application/view/application/user-area/index.phtml:539
+msgid "Condizioni contrattuali"
+msgstr "Contractuele voorwaarden"
+
+#: module/Application/view/application/user-area/index.phtml:232
 #: module/Application/view/application/user-area/profile.phtml:213
 msgid "Modifica profilo"
 msgstr "Wijzig profiel"
 
-#: module/Application/view/application/user-area/index.phtml:520
+#: module/Application/view/application/user-area/index.phtml:587
 msgid "Il tuo numero di telefono"
 msgstr "Jouw telefoonnummer"
 
-#: module/Application/view/application/user-area/index.phtml:538
+#: module/Application/view/application/user-area/index.phtml:605
 msgid "Modifica Numero"
 msgstr "Wijzigen nummer"
 
-#: module/Application/view/application/user-area/index.phtml:553
+#: module/Application/view/application/user-area/index.phtml:620
 #: module/Application/view/application/user/new-signup2.phtml:196
 #: module/Application/view/application/user/signup-nl2.phtml:201
 #: module/Application/view/application/user/signup-si2.phtml:201
@@ -3077,7 +3082,7 @@ msgstr "Wijzigen nummer"
 msgid "Prefisso"
 msgstr "Voorvoegsel"
 
-#: module/Application/view/application/user-area/index.phtml:575
+#: module/Application/view/application/user-area/index.phtml:642
 #: module/Application/view/application/user/new-signup2.phtml:215
 #: module/Application/view/application/user/signup.phtml:623
 #: module/Application/view/partials/translations.phtml:3
@@ -3085,96 +3090,85 @@ msgstr "Voorvoegsel"
 msgid "INVIA CODICE"
 msgstr "CODE VERSTUREN"
 
-#: module/Application/view/application/user-area/index.phtml:584
+#: module/Application/view/application/user-area/index.phtml:651
 #: module/Application/view/application/user/new-signup2.phtml:224
 #: module/Application/view/application/user/signup.phtml:635
 msgid "Codice di Verifica"
 msgstr "Verificatiecode"
 
-#: module/Application/view/application/user-area/index.phtml:594
+#: module/Application/view/application/user-area/index.phtml:661
 #: module/Application/view/application/user/signup.phtml:645
 msgid "Inserisci qui il codice di verifica inviato via sms"
 msgstr "Voer hier de verificatiecode in die via sms verzonden is"
 
-#: module/Application/view/application/user-area/index.phtml:607
+#: module/Application/view/application/user-area/index.phtml:674
 #: module/Application/view/application/user-area/profile.phtml:489
 msgid "I tuoi dati per l'accesso"
 msgstr "Je toegangsgegevens"
 
-#: module/Application/view/application/user-area/index.phtml:623
+#: module/Application/view/application/user-area/index.phtml:690
 #: module/Application/view/application/user-area/profile.phtml:506
 msgid "Modifica Password"
 msgstr "Wijzigen Wachtwoord"
 
-#: module/Application/view/application/user-area/index.phtml:639
-#: module/Application/view/application/user-area/profile.phtml:522
-msgid "Vecchia Password"
-msgstr "Oud Wachtwoord"
-
-#: module/Application/view/application/user-area/index.phtml:661
-#: module/Application/view/application/user-area/profile.phtml:544
-#: module/Application/view/goalio-forgot-password/forgot/reset.phtml:48
-msgid "Ripeti Password"
-msgstr "Herhaal Wachtwoord"
-
-#: module/Application/view/application/user-area/index.phtml:693
+#: module/Application/view/application/user-area/index.phtml:760
 #: module/Application/view/application/user-area/profile.phtml:576
 msgid "I tuoi minuti Bonus"
 msgstr "Jouw Bonusminuten"
 
-#: module/Application/view/application/user-area/index.phtml:703
+#: module/Application/view/application/user-area/index.phtml:770
 #: module/Application/view/application/user-area/profile.phtml:586
 msgid "Accreditati"
 msgstr "Bijgeschreven"
 
-#: module/Application/view/application/user-area/index.phtml:707
+#: module/Application/view/application/user-area/index.phtml:774
 #: module/Application/view/application/user-area/profile.phtml:590
 msgid "Utilizzati"
 msgstr "Gebruikt"
 
-#: module/Application/view/application/user-area/index.phtml:711
+#: module/Application/view/application/user-area/index.phtml:778
 #: module/Application/view/application/user-area/profile.phtml:594
 msgid "Rimanenti"
 msgstr "Resterend"
 
-#: module/Application/view/application/user-area/index.phtml:720
+#: module/Application/view/application/user-area/index.phtml:787
 #: module/Application/view/application/user-area/profile.phtml:603
 msgid "Punti OSSIGENO"
 msgstr "ZUURSTOF-punten"
 
-#: module/Application/view/application/user-area/index.phtml:730
+#: module/Application/view/application/user-area/index.phtml:797
 #: module/Application/view/application/user-area/profile.phtml:613
 msgid "Accreditati questo mese"
 msgstr "Deze maand bijgeschreven"
 
-#: module/Application/view/application/user-area/index.phtml:734
+#: module/Application/view/application/user-area/index.phtml:801
 #: module/Application/view/application/user-area/profile.phtml:617
 msgid "Utilizzabili"
 msgstr "Te gebruiken"
 
-#: module/Application/view/application/user-area/index.phtml:742
+#: module/Application/view/application/user-area/index.phtml:809
 #: module/Application/view/application/user-area/profile.phtml:625
 msgid "Contributo ambientale"
 msgstr "Bijdrage aan het milieu"
 
-#: module/Application/view/application/user-area/index.phtml:757
+#: module/Application/view/application/user-area/index.phtml:824
 #: module/Application/view/application/user-area/profile.phtml:652
 msgid ""
 "Non ho ancora pagato la mia iscrizione al servizio e vorrei farlo adesso."
 msgstr ""
 "Ik heb nog niet betaald voor mijn inschrijving en zou dat nu willen doen."
 
-#: module/Application/view/application/user-area/index.phtml:867
+#: module/Application/view/application/user-area/index.phtml:934
 #: module/Application/view/application/user-area/profile.phtml:757
 msgid "Hai risparmiato"
 msgstr "Jouw besparing is"
 
-#: module/Application/view/application/user-area/index.phtml:867
+#: module/Application/view/application/user-area/index.phtml:934
 #: module/Application/view/application/user-area/profile.phtml:757
 msgid "KG di CO"
 msgstr "KG CO"
 
-#: module/Application/view/application/user-area/index.phtml:867
+#: module/Application/view/application/user-area/index.phtml:934
 #: module/Application/view/application/user-area/profile.phtml:757
 msgid "Grazie!"
 msgstr "Bedankt!"
@@ -3454,27 +3448,27 @@ msgid "Guarda come si usa"
 msgstr "Zo gebruik je hem"
 
 #: module/Application/view/application/user-area/pin.phtml:51
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:51
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:53
 msgid "Vuoi anche una CARD APRIPORTA associata al tuo account?"
 msgstr "Wil je ook een TOEGANGSPAS die gekoppeld is aan je account?"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "CLICCA SULL’IMMAGINE DELLA CARTA"
 msgstr "KLIK OP DE AFBEELDING"
 
 #: module/Application/view/application/user-area/pin.phtml:52
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:52
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
 msgid "per inoltrare la tua richiesta"
 msgstr "om je verzoek in te dienen"
 
 #: module/Application/view/application/user-area/pin.phtml:55
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:54
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:56
 msgid "RICHIESTA DI CARD SHARE&#39;NGO"
 msgstr "AANVRAAG SHARENGO CARD"
 
 #: module/Application/view/application/user-area/pin.phtml:60
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:61
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:63
 msgid ""
 "Ti arriver&agrave; su richiesta gratuitamente a casa, oppure puoi anche "
 "ritirarla presso i nostri uffici"
@@ -3710,24 +3704,6 @@ msgid ""
 msgstr ""
 "Door op de knop te klikken, accepteert u de Sharengo Algemene voorwaarden"
 
-#: module/Application/view/application/user/new-signup.phtml:148
-#: module/Application/view/application/user/new-signup.phtml:173
-#: module/Application/view/application/user/new-signup2.phtml:417
-#: module/Application/view/application/user/new-signup2.phtml:444
-#: module/Application/view/application/user/new-signup2.phtml:465
-#: module/Application/view/application/user/signup-nl1.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:172
-#: module/Application/view/application/user/signup-nl2.phtml:365
-#: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si1.phtml:172
-#: module/Application/view/application/user/signup-si2.phtml:379
-#: module/Application/view/application/user/signup-sk1.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:172
-#: module/Application/view/application/user/signup-sk2.phtml:375
-#: module/Application/view/partials/car-popup.phtml:101
-msgid "Chiudi"
-msgstr "Afsluiten"
-
 #: module/Application/view/application/user/new-signup.phtml:155
 #: module/Application/view/application/user/signup-nl1.phtml:154
 #: module/Application/view/application/user/signup-si1.phtml:154
@@ -3756,6 +3732,10 @@ msgstr "Je bent al ingeschreven!"
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr "Om de invoer van je gegevens te voltooien klik je bovenaan op INLOGGEN"
+
+#: module/Application/view/application/user/new-signup.phtml:202
+msgid "Il servizio a Milano è temporaneamente sospeso"
+msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:29
 msgid "21 minuti a soli 5&euro;"
@@ -3818,11 +3798,10 @@ msgstr ""
 "NIET ONTVANGT, NEEM DAN CONTACT OP MET DE KLANTENSERVICE"
 
 #: module/Application/view/application/user/new-signup2.phtml:264
-#: module/Application/view/application/user/signup-nl2.phtml:242
-#: module/Application/view/application/user/signup-si2.phtml:247
-#: module/Application/view/application/user/signup-sk2.phtml:243
-msgid "Assicurati che sia dell’ultima patente rilasciata."
-msgstr "Controleer of je rijbewijs niet verlopen is."
+msgid ""
+"&Egrave; obbligatoria una patente valida per quadricicli pesanti categoria "
+"L7e"
+msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:268
 msgid "Scadenza patente"
@@ -3976,6 +3955,22 @@ msgstr "Na activering wordt je rijbewijs nog gecontroleerd."
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Ga verder"
+
+#: module/Application/view/application/user/new-signup2.phtml:417
+#: module/Application/view/application/user/new-signup2.phtml:444
+#: module/Application/view/application/user/new-signup2.phtml:465
+#: module/Application/view/application/user/signup-nl1.phtml:147
+#: module/Application/view/application/user/signup-nl1.phtml:172
+#: module/Application/view/application/user/signup-nl2.phtml:365
+#: module/Application/view/application/user/signup-si1.phtml:147
+#: module/Application/view/application/user/signup-si1.phtml:172
+#: module/Application/view/application/user/signup-si2.phtml:379
+#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk1.phtml:172
+#: module/Application/view/application/user/signup-sk2.phtml:375
+#: module/Application/view/partials/car-popup.phtml:101
+msgid "Chiudi"
+msgstr "Afsluiten"
 
 #: module/Application/view/application/user/new-signup2.phtml:419
 msgid "Prima di procedere verifica:"
@@ -4138,6 +4133,12 @@ msgstr "Plaats; woonplaats"
 msgid "BSN"
 msgstr "BSN"
 
+#: module/Application/view/application/user/signup-nl2.phtml:242
+#: module/Application/view/application/user/signup-si2.phtml:247
+#: module/Application/view/application/user/signup-sk2.phtml:243
+msgid "Assicurati che sia dell’ultima patente rilasciata."
+msgstr "Controleer of je rijbewijs niet verlopen is."
+
 #: module/Application/view/application/user/signup-nl2.phtml:246
 #: module/Application/view/application/user/signup-si2.phtml:251
 #: module/Application/view/application/user/signup-sk2.phtml:247
@@ -4224,11 +4225,6 @@ msgstr "Registration fee is 1€ with 15 bonus minutes."
 msgid "Registration fee 5 euro with 15 bonus minutes, except for promotion."
 msgstr "Registration fee 5 euro with 15 bonus minutes, except for promotion."
 
-#: module/Application/view/application/user/signup.phtml:89
-#: module/Application/view/partials/translations.phtml:4
-msgid "Codice promo"
-msgstr "Promotiecode"
-
 #: module/Application/view/application/user/signup.phtml:124
 msgid "Citt&agrave; preferita - Favourite city"
 msgstr "Favoriete stad - Favoriete stad"
@@ -4237,10 +4233,6 @@ msgstr "Favoriete stad - Favoriete stad"
 msgid "Inserisci i dati che userai per accedere al servizio"
 msgstr ""
 "Voer de gegevens in die je wilt gebruiken om toegang te krijgen tot de dienst"
-
-#: module/Application/view/application/user/signup.phtml:159
-msgid "Ripeti l'email"
-msgstr "Herhaal e-mail"
 
 #: module/Application/view/application/user/signup.phtml:198
 msgid "Inserisci i tuoi dati personali"
@@ -4308,8 +4300,8 @@ msgid "Assicurati di inserire quello dell’ultima patente rilasciata."
 msgstr "Zorg ervoor dat je het laatst afgegeven rijbewijs invoert."
 
 #: module/Application/view/application/user/signup2.phtml:63
-msgid "Rilascio da autorit&agrave;"
-msgstr "Afgegeven door instantie"
+msgid "Rilasciato da (autorità)"
+msgstr "Afgeven door (instantie)"
 
 #: module/Application/view/application/user/signup2.phtml:64
 #, fuzzy
@@ -4568,7 +4560,8 @@ msgstr ""
 "WACHTWOORD TE VERANDEREN"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
-msgid "Recupero Password"
+#: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
+msgid "Recupero password"
 msgstr "Wachtwoord herstellen"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:13
@@ -4584,17 +4577,9 @@ msgstr "Nu kun je inloggen met je nieuwe wachtwoord."
 msgid "Cambia Password per %s"
 msgstr "Wachtwoord wijzigen voor %s"
 
-#: module/Application/view/goalio-forgot-password/forgot/reset.phtml:33
-msgid "Nuova Password"
-msgstr "Nieuw wachtwoord"
-
 #: module/Application/view/goalio-forgot-password/forgot/reset.phtml:61
 msgid "Salva"
 msgstr "Opslaan"
-
-#: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
-msgid "Recupero password"
-msgstr "Wachtwoord herstellen"
 
 #: module/Application/view/goalio-forgot-password/forgot/sent.phtml:19
 #, php-format
@@ -4947,7 +4932,10 @@ msgid "Avanti"
 msgstr "Verder"
 
 #: module/Application/view/partials/header/main_head.phtml:23
-msgid "Pacchetti &amp; promo"
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:23
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:23
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:23
+msgid "Pacchetti &amp; promozioni"
 msgstr "Pakketten &amp; aanbiedingen"
 
 #: module/Application/view/partials/header/main_head.phtml:24
@@ -4997,12 +4985,6 @@ msgstr "Registreren"
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:22
 msgid "Come funziona Sharengo"
 msgstr "Hoe werkt Sharengo"
-
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:23
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:23
-#: module/Application/view/partials/header/main_head_sl_SI.phtml:23
-msgid "Pacchetti &amp; promozioni"
-msgstr "Pakketten &amp; aanbiedingen"
 
 #: module/Application/view/partials/translations.phtml:8
 msgid ""
@@ -6144,6 +6126,46 @@ msgstr "(Bijwonen ik bid)"
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
 
+#~ msgid "promo e pacchetti"
+#~ msgstr "aanbiedingen en pakketten"
+
+#, fuzzy
+#~ msgid "a "
+#~ msgstr "Naar ?"
+
+#~ msgid "Codice Promo"
+#~ msgstr "Promotiecode"
+
+#~ msgid "Ciao "
+#~ msgstr "Hallo "
+
+#~ msgid "PATENTE"
+#~ msgstr "RIJBEWIJS"
+
+#~ msgid "Codice Fiscale"
+#~ msgstr "Burgerservicenummer"
+
+#~ msgid "Vecchia Password"
+#~ msgstr "Oud Wachtwoord"
+
+#~ msgid "Ripeti Password"
+#~ msgstr "Herhaal Wachtwoord"
+
+#~ msgid "Ripeti l'email"
+#~ msgstr "Herhaal e-mail"
+
+#~ msgid "Rilascio da autorit&agrave;"
+#~ msgstr "Afgegeven door instantie"
+
+#~ msgid "Recupero Password"
+#~ msgstr "Wachtwoord herstellen"
+
+#~ msgid "Nuova Password"
+#~ msgstr "Nieuw wachtwoord"
+
+#~ msgid "Pacchetti &amp; promo"
+#~ msgstr "Pakketten &amp; aanbiedingen"
+
 #~ msgid "gift card"
 #~ msgstr "Giftcard"
 
@@ -6237,9 +6259,6 @@ msgstr "Controleert hij transactie bezig."
 
 #~ msgid "Pacchetti fino a 22 centesimi al minuto"
 #~ msgstr "Pakketten tot 22 cent per minuut"
-
-#~ msgid "Condizioni Contrattuali"
-#~ msgstr "de Algemene Voorwaarden"
 
 #~ msgid ""
 #~ "Attenzione: a partire dal 02.03.2018 le fatture sono emesse mensilmente. "

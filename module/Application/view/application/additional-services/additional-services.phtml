@@ -25,13 +25,15 @@ $end = date_create('2018-03-09 04:55:00');
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('promo e pacchetti'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('Promo e pacchetti'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
             <div class="module-column-app-content clearfix">
                 <div class="module-manage-driver-license padding-top">
-
+                <div class="block-alert error" style="text-align: center;">
+                    <i class="fa fa-warning"></i> <?= $this->translate('Attenzione! Il servizio a Milano è temporaneamente sospeso.')?>
+                </div>
                     <?php
                         if (count($bonusPackages) > 0) {
                     ?>
@@ -80,7 +82,7 @@ $end = date_create('2018-03-09 04:55:00');
                                         <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
                                         <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
                                         <?php if($package->getType()==="Pacchetto"){ ?>
-                                            <p class="block-sub-title"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ?  $this->translate("GRATUITO") : $this->translate('a ').sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+                                            <p class="block-sub-title"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ?  $this->translate("GRATUITO") : $this->translate('a').' '.sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
 
                                             <p class="block-sub-title">
                                             <?php
@@ -219,7 +221,7 @@ $end = date_create('2018-03-09 04:55:00');
                         <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
 
                         <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice Promo'); ?></h2>
+                            <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice promo'); ?></h2>
                         </div>
                         <?= $this->form()->openTag($form); ?>
                             <div class="block-row-field clearfix">

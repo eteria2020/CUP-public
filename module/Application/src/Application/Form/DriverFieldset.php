@@ -65,7 +65,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Rilasciato da (autorità)'),
+                'label' => $translator->translate('Rilasciato da autorit&agrave;'),
                 'value_options' => $this->authorityService->getAllAuthorities()
             ]
 

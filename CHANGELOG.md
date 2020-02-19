@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-# [1.0.51] - 2020-02-20
+# [1.0.52] - 2020-02-19
+### Added
+
+- In additional-services.phtml add a warning message for Milan fleet
+
+### Changed
+
+- Changed some similar labels to optimize the translation
+
+# [1.0.51] - 2020-02-19
 
 ### Changed
 
