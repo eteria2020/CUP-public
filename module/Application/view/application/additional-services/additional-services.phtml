@@ -5,10 +5,12 @@ $gender = $this->customer->getGender();
 $verifyWomenVoucher = $this->verifyWomenVoucher; //verify number of one month trip
 $mobile = $this->mobile;
 
-/* 8 marzo  CSD-2139 */
-$nowFree = date_create();
-$start = date_create('2018-03-08 06:00:00');
-$end = date_create('2018-03-09 04:55:00');
+
+$displayNonePackages = "";
+if(is_null($this->serverInstance)){
+    $displayNonePackages = "display: none;";
+}
+
 ?>
 <!-- main -->
 <div id="main" class="detect-window-height">
@@ -31,16 +33,12 @@ $end = date_create('2018-03-09 04:55:00');
 
             <div class="module-column-app-content clearfix">
                 <div class="module-manage-driver-license padding-top">
-                    <? if(is_null($this->serverInstance)) {?>
-                    <div class="block-alert error" style="text-align: center;">
-                        <i class="fa fa-warning"></i> <?= $this->translate('Attenzione! Il servizio a Milano è temporaneamente sospeso.')?>
-                    </div>
-                    <? }
+                    <?
                         if (count($bonusPackages) > 0) {
                     ?>
 
                     <!-- Bonus packages section -->
-                    <div class="block-form bw-f w-3-3  clearfix">
+                    <div class="block-form bw-f w-3-3  clearfix" style="<?=$displayNonePackages ?>">
 
                         <!-- Title -->
                         <div class="block-form-section content-align-center margin-bottom">
@@ -83,11 +81,11 @@ $end = date_create('2018-03-09 04:55:00');
                                         <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
                                         <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
                                         <?php if($package->getType()==="Pacchetto"){ ?>
-                                            <p class="block-sub-title"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ?  $this->translate("GRATUITO") : $this->translate('a').' '.sprintf("%.0f &euro;", $package->getCost() / 100) ?></p>
+                                            <p class="block-sub-title"><?= sprintf("%s %.0f &euro;", $this->translate('a'),$package->getCost() / 100) ?></p>
 
                                             <p class="block-sub-title">
                                             <?php
-                                            if($package->getMinutes()>0 && !($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end))) {
+                                            if($package->getMinutes()>0) {
                                                 $cost = ($package->getCost()/100) / $package->getMinutes();
                                                 $cost_round = sprintf("%.2f", $cost);
                                                 if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
@@ -176,7 +174,7 @@ $end = date_create('2018-03-09 04:55:00');
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
                                 <?php if($package->getType()==="Pacchetto"){ ?>
-                                    <div class="block-data-table-td cw-1-7"><?= ($package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? "GRATUITO" : sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
+                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
                                 <?php }else{ ?>
                                     <div class="block-data-table-td cw-1-7"><?= sprintf("%.0f &euro;", 0) ?></div>
                                 <?php } ?>
