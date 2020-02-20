@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+# [1.0.53] - 2020-02-20
+
+### Changed
+
+- Fix Security "Sharengo web portals [WA-PT 3343]"
+
+- Description  
+  The software generates an error message that includes sensitive information about its environment, users, or associated data.
+
+- Remediation  
+  Handle exceptions internally and do not display errors containing potentially sensitive information to a user.
+
+- Solution  
+  the following lines have been changed in the "module.config.php" file
+    - 'display_not_found_reason' => false,
+    - 'display_exceptions' => false,
+
+
 # [1.0.52] - 2020-02-19
 ### Added
 
