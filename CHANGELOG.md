@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+# [1.0.53] - 2020-02-25
+
+### Changed
+
+- fix send mail on woring payments
+- update html of mail 5 (profilo sospeso)
+- fix log on pay invoice
+
 # [1.0.53] - 2020-02-20
 
 ### Changed
