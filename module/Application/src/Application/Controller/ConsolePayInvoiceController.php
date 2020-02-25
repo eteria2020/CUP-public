@@ -164,6 +164,12 @@ class ConsolePayInvoiceController extends AbstractActionController
         $this->avoidCartasi = $request->getParam('no-cartasi') || $request->getParam('c');
         $this->avoidPersistance = $request->getParam('no-db') || $request->getParam('d');
 
+        $this->logger->log(sprintf( "%s;INF;payInvoiceAction;start;%s;%s;%s\n",
+            date_create()->format('y-m-d H:i:s'),
+            $this->avoidEmails,
+            $this->avoidCartasi,
+            $this->avoidPersistance));
+
         if (!$this->paymentScriptRunsService->isRunning()) {
             $scriptId = $this->paymentScriptRunsService->scriptStarted();
             $this->processPayments();
@@ -175,8 +181,10 @@ class ConsolePayInvoiceController extends AbstractActionController
 
             //$this->generateInvoices();
         } else {
-            $this->logger->log("\nError: Pay invoice is running\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
+            $this->logger->log(date_create()->format('y-m-d H:i:s') . ";ERR;payInvoiceAction;Error Retry: Pay invoice is running\n");
         }
+
+        $this->logger->log(date_create()->format('y-m-d H:i:s') . ";INF;payInvoiceAction;end\n");
     }
 
     /*
@@ -209,11 +217,10 @@ class ConsolePayInvoiceController extends AbstractActionController
 
     private function processPayments()
     {
-        $this->logger->log("\nStarted processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
         //$tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-40 days');
         $verify = $this->tripPaymentsService->getTripPaymentsForPaymentDetails('180 days')[0];
         $count = $verify["count"];
-        $this->logger->log("Processing payments for " . $count . " TOTAL trips\n");
+        $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;processPayments;total;" . $count . "\n");
         $limit = 200;
         $lastId = null;
         while ($count > 0){
@@ -224,7 +231,7 @@ class ConsolePayInvoiceController extends AbstractActionController
             $tripPayments = $this->tripPaymentsService->getTripPaymentsForPayment(null, '-180 days', $lastId, $limit);
             $lastId = $verify["last"];
             $count = $verify["count"];
-            $this->logger->log("Processing payments for " . count($tripPayments) . " trips\n");
+            $this->logger->log(date_create()->format('y-m-d H:i:s').";INF;processPayments;count;" . count($tripPayments) . "\n");
             $this->processPaymentsService->processPayments(
                 $tripPayments,
                 $this->avoidEmails,
@@ -237,7 +244,6 @@ class ConsolePayInvoiceController extends AbstractActionController
 
         $this->processPaymentsService->processPaymentsCompleted($this->avoidEmails);
 
-        $this->logger->log("Done processing payments\ntime = " . date_create()->format('Y-m-d H:i:s') . "\n\n");
     }
 
     private function reProcessWrongPayments()
