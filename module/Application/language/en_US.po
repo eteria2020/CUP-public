@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-26 10:52+0100\n"
-"PO-Revision-Date: 2020-02-26 10:53+0100\n"
+"POT-Creation-Date: 2020-03-02 12:26+0100\n"
+"PO-Revision-Date: 2020-03-02 12:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2090
+#: module/Application/config/module.config.php:2121
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2095
+#: module/Application/config/module.config.php:2126
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profile"
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2100
+#: module/Application/config/module.config.php:2131
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2105
+#: module/Application/config/module.config.php:2136
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2110
+#: module/Application/config/module.config.php:2141
 #: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Promos and packages"
 
-#: module/Application/config/module.config.php:2115
+#: module/Application/config/module.config.php:2146
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2120
+#: module/Application/config/module.config.php:2151
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2125
+#: module/Application/config/module.config.php:2156
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2130
+#: module/Application/config/module.config.php:2161
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -289,7 +289,7 @@ msgstr "Mrs"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:108
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:145
+#: module/Application/view/application/additional-services/additional-services.phtml:143
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -1541,14 +1541,14 @@ msgstr "Fiscal Code not valid."
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr "SYSTEM BOOKING"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:206
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:256
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:209
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:259
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Invalid transaction"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:231
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:273
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:234
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:276
 msgid "Transazione non valida (id non trovato)"
 msgstr "Invalid transaction (id not found)"
 
@@ -1573,88 +1573,88 @@ msgstr ""
 "with the purchase of the Welcome Package."
 
 #: module/Application/view/application/additional-services/additional-services.phtml:82
-#: module/Application/view/application/additional-services/additional-services.phtml:97
-#: module/Application/view/application/additional-services/additional-services.phtml:119
+#: module/Application/view/application/additional-services/additional-services.phtml:95
+#: module/Application/view/application/additional-services/additional-services.phtml:117
 msgid "min"
 msgstr "min"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:84
-#: module/Application/view/application/additional-services/additional-services.phtml:115
+#: module/Application/view/application/additional-services/additional-services.phtml:113
 msgid "a"
 msgstr "to"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:102
-#: module/Application/view/application/additional-services/additional-services.phtml:122
+#: module/Application/view/application/additional-services/additional-services.phtml:100
+#: module/Application/view/application/additional-services/additional-services.phtml:120
 msgid "Validità"
 msgstr "Validity"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:107
+#: module/Application/view/application/additional-services/additional-services.phtml:105
 msgid "mesi"
 msgstr "months"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:107
+#: module/Application/view/application/additional-services/additional-services.phtml:105
 msgid "mese"
 msgstr "month"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:109
-#: module/Application/view/application/additional-services/additional-services.phtml:126
+#: module/Application/view/application/additional-services/additional-services.phtml:107
+#: module/Application/view/application/additional-services/additional-services.phtml:124
 msgid "giorni"
 msgstr "days"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:109
-#: module/Application/view/application/additional-services/additional-services.phtml:126
+#: module/Application/view/application/additional-services/additional-services.phtml:107
+#: module/Application/view/application/additional-services/additional-services.phtml:124
 msgid "giorno"
 msgstr "day"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/additional-services/additional-services.phtml:144
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minutes"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:147
+#: module/Application/view/application/additional-services/additional-services.phtml:145
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Price"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:148
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Valid from"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:149
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Valid until"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:150
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 msgid "Disponibile fino"
 msgstr "Available up"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:151
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 msgid "Acquista/Converti"
 msgstr "Buy / Convert"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:166
+#: module/Application/view/application/additional-services/additional-services.phtml:164
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
 msgid "per %d gg"
 msgstr "for %d dd"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:223
+#: module/Application/view/application/additional-services/additional-services.phtml:218
 #: module/Application/view/application/user/signup.phtml:89
 #: module/Application/view/partials/translations.phtml:4
 msgid "Codice promo"
 msgstr "Promo code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:229
+#: module/Application/view/application/additional-services/additional-services.phtml:224
 msgid "Inserisci il codice promo"
 msgstr "Enter the promo code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:241
+#: module/Application/view/application/additional-services/additional-services.phtml:236
 msgid "Valida"
 msgstr "Valid"
 
@@ -2160,6 +2160,14 @@ msgid ""
 msgstr ""
 "Your profile is deactivated, please contact Customer Service to be "
 "rehabilitated."
+
+#: module/Application/view/application/index/document.phtml:10
+msgid "Documentazione"
+msgstr "Documentation"
+
+#: module/Application/view/application/index/document.phtml:14
+msgid "Attenzione. Documento non trovato."
+msgstr "Caution. Document not found."
 
 #: module/Application/view/application/index/index.phtml:54
 msgid "PER SAPERNE DI PIU' (FAQ)"
@@ -4593,7 +4601,7 @@ msgid "Share'NGo - the new mobility"
 msgstr "Share'NGo - the new mobility"
 
 #: module/Application/view/layout/layout.phtml:80
-#: module/Application/view/layout/map.phtml:109
+#: module/Application/view/layout/map.phtml:110
 msgid ""
 "Stai usando un browser <strong>non supportato</strong>. Per favore <a href="
 "\"http://browsehappy.com/\">aggiorna il tuo browser</a> o <a href=\"http://www."
