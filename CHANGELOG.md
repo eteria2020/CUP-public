@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-# [1.0.53] - 2020-02-25
+## [1.0.55] - 2020-02-26
+
+### Changed
+
+- update pricing for Slovakia server instance
+- fix problem on overlay class "sng-overlay"
+
+## [1.0.54] - 2020-02-25
 
 ### Changed
 
@@ -15,7 +22,7 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 - update html of mail 5 (profilo sospeso)
 - fix log on pay invoice
 
-# [1.0.53] - 2020-02-20
+## [1.0.53] - 2020-02-20
 
 ### Changed
 
@@ -32,8 +39,7 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
     - 'display_not_found_reason' => false,
     - 'display_exceptions' => false,
 
-
-# [1.0.52] - 2020-02-19
+## [1.0.52] - 2020-02-19
 ### Added
 
 - In additional-services.phtml add a warning message for Milan fleet
@@ -42,20 +48,20 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 
 - Changed some similar labels to optimize the translation
 
-# [1.0.51] - 2020-02-19
+## [1.0.51] - 2020-02-19
 
 ### Changed
 
 - In new-signup, add a warning message that appear if a customer select Milan fleet or try to submit width
 
-# [1.0.50] - 2020-02-18
+## [1.0.50] - 2020-02-18
 
 ### Changed
 
 - changed label on new-signup2 page, for Italian drivers (B/B1 dirver license mandatory)
 - restore retry payments to 60 day
 
-# [1.0.49] - 2020-02-18
+## [1.0.49] - 2020-02-18
 
 ### Changed
 

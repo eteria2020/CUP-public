@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-19 15:08+0100\n"
-"PO-Revision-Date: 2020-02-19 15:13+0100\n"
+"POT-Creation-Date: 2020-02-26 10:52+0100\n"
+"PO-Revision-Date: 2020-02-26 10:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -52,7 +52,7 @@ msgid "Tariffe"
 msgstr "Rates"
 
 #: module/Application/config/module.config.php:2110
-#: module/Application/view/application/additional-services/additional-services.phtml:28
+#: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Promos and packages"
 
@@ -289,7 +289,7 @@ msgstr "Mrs"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:108
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/additional-services/additional-services.phtml:145
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -1552,15 +1552,11 @@ msgstr "Invalid transaction"
 msgid "Transazione non valida (id non trovato)"
 msgstr "Invalid transaction (id not found)"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:35
-msgid "Attenzione! Il servizio a Milano è temporaneamente sospeso."
-msgstr "Warning! The service in Milan is temporarily suspended."
-
-#: module/Application/view/application/additional-services/additional-services.phtml:46
+#: module/Application/view/application/additional-services/additional-services.phtml:45
 msgid "Acquista Pacchetti"
 msgstr "Buy Packages"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:52
+#: module/Application/view/application/additional-services/additional-services.phtml:51
 msgid ""
 "Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle nostre "
 "tariffe scontate."
@@ -1568,7 +1564,7 @@ msgstr ""
 "Buy the Minuti piu pive package; suitable for you and take advantage of our "
 "discounted rates."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:56
+#: module/Application/view/application/additional-services/additional-services.phtml:55
 msgid ""
 "Prima di scegliere il tuo preferito assicurati di aver completato la tua "
 "registrazione con l'acquisto del Pacchetto Benvenuto."
@@ -1576,94 +1572,89 @@ msgstr ""
 "Before choosing your favorite make sure you have completed your registration "
 "with the purchase of the Welcome Package."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:83
-#: module/Application/view/application/additional-services/additional-services.phtml:98
-#: module/Application/view/application/additional-services/additional-services.phtml:120
+#: module/Application/view/application/additional-services/additional-services.phtml:82
+#: module/Application/view/application/additional-services/additional-services.phtml:97
+#: module/Application/view/application/additional-services/additional-services.phtml:119
 msgid "min"
 msgstr "min"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:85
-#: module/Application/view/application/customer-bonus-packages/package.phtml:33
-msgid "GRATUITO"
-msgstr "FREE"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:85
-#: module/Application/view/application/additional-services/additional-services.phtml:116
+#: module/Application/view/application/additional-services/additional-services.phtml:84
+#: module/Application/view/application/additional-services/additional-services.phtml:115
 msgid "a"
 msgstr "to"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:103
-#: module/Application/view/application/additional-services/additional-services.phtml:123
+#: module/Application/view/application/additional-services/additional-services.phtml:102
+#: module/Application/view/application/additional-services/additional-services.phtml:122
 msgid "Validità"
 msgstr "Validity"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:107
 msgid "mesi"
 msgstr "months"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:107
 msgid "mese"
 msgstr "month"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:110
-#: module/Application/view/application/additional-services/additional-services.phtml:127
+#: module/Application/view/application/additional-services/additional-services.phtml:109
+#: module/Application/view/application/additional-services/additional-services.phtml:126
 msgid "giorni"
 msgstr "days"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:110
-#: module/Application/view/application/additional-services/additional-services.phtml:127
+#: module/Application/view/application/additional-services/additional-services.phtml:109
+#: module/Application/view/application/additional-services/additional-services.phtml:126
 msgid "giorno"
 msgstr "day"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:147
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minutes"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:148
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Price"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:149
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Valid from"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:150
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Valid until"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:151
+#: module/Application/view/application/additional-services/additional-services.phtml:150
 msgid "Disponibile fino"
 msgstr "Available up"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:152
+#: module/Application/view/application/additional-services/additional-services.phtml:151
 msgid "Acquista/Converti"
 msgstr "Buy / Convert"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:167
+#: module/Application/view/application/additional-services/additional-services.phtml:166
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
 msgid "per %d gg"
 msgstr "for %d dd"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:224
+#: module/Application/view/application/additional-services/additional-services.phtml:223
 #: module/Application/view/application/user/signup.phtml:89
 #: module/Application/view/partials/translations.phtml:4
 msgid "Codice promo"
 msgstr "Promo code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:230
+#: module/Application/view/application/additional-services/additional-services.phtml:229
 msgid "Inserisci il codice promo"
 msgstr "Enter the promo code"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:242
+#: module/Application/view/application/additional-services/additional-services.phtml:241
 msgid "Valida"
 msgstr "Valid"
 
@@ -1674,6 +1665,10 @@ msgstr "Summary"
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
 msgid "Descrizione:"
 msgstr "Description:"
+
+#: module/Application/view/application/customer-bonus-packages/package.phtml:33
+msgid "GRATUITO"
+msgstr "FREE"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:41
 msgid "Valido dal:"
@@ -2150,8 +2145,13 @@ msgid "Contattare l'assistenza"
 msgstr "Contact support for more information"
 
 #: module/Application/view/application/index/crawler.phtml:85
-msgid "Ciao "
-msgstr "Hello "
+#: module/Application/view/application/user-area/debt-collection.phtml:43
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:43
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:43
+#: module/Application/view/partials/welcome-user-area.phtml:3
+msgid "Ciao"
+msgstr "Hello"
 
 #: module/Application/view/application/index/crawler.phtml:86
 msgid ""
@@ -2642,14 +2642,6 @@ msgstr "CLOSE"
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:32
 msgid "Pagamenti in sospeso"
 msgstr "Pending payments"
-
-#: module/Application/view/application/user-area/debt-collection.phtml:43
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:43
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:43
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:43
-#: module/Application/view/partials/welcome-user-area.phtml:3
-msgid "Ciao"
-msgstr "Hello"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:46
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:46
@@ -4206,13 +4198,16 @@ msgid "foto dell'utente (selfie)"
 msgstr "user photo (selfie)"
 
 #: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minutes only 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Continue registration"
+
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "45 minuti a soli 19,90&euro;"
+msgstr "45 minutes only 19,90&euro;"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
@@ -6129,6 +6124,12 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
+
+#~ msgid "Attenzione! Il servizio a Milano è temporaneamente sospeso."
+#~ msgstr "Warning! The service in Milan is temporarily suspended."
+
+#~ msgid "Ciao "
+#~ msgstr "Hello "
 
 #~ msgid "Codice Promo"
 #~ msgstr "Promo Code"

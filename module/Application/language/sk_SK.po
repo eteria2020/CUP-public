@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-19 15:17+0100\n"
-"PO-Revision-Date: 2020-02-19 15:18+0100\n"
+"POT-Creation-Date: 2020-02-26 10:53+0100\n"
+"PO-Revision-Date: 2020-02-26 10:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -52,7 +52,7 @@ msgid "Tariffe"
 msgstr "Sadzby"
 
 #: module/Application/config/module.config.php:2110
-#: module/Application/view/application/additional-services/additional-services.phtml:28
+#: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
@@ -290,7 +290,7 @@ msgstr "Pani"
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:108
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/additional-services/additional-services.phtml:145
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -1558,22 +1558,18 @@ msgstr "Združenie so spoločnosťou"
 msgid "Transazione non valida (id non trovato)"
 msgstr "Združenie so spoločnosťou"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:35
-msgid "Attenzione! Il servizio a Milano è temporaneamente sospeso."
-msgstr ""
-
-#: module/Application/view/application/additional-services/additional-services.phtml:46
+#: module/Application/view/application/additional-services/additional-services.phtml:45
 msgid "Acquista Pacchetti"
 msgstr "Zakúpiť balíčky"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:52
+#: module/Application/view/application/additional-services/additional-services.phtml:51
 msgid ""
 "Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle "
 "nostre tariffe scontate."
 msgstr ""
 "Kúp si pre seba najvhodnejší minútový balíček a využi naše zľavnené sadzby."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:56
+#: module/Application/view/application/additional-services/additional-services.phtml:55
 msgid ""
 "Prima di scegliere il tuo preferito assicurati di aver completato la tua "
 "registrazione con l'acquisto del Pacchetto Benvenuto."
@@ -1581,97 +1577,92 @@ msgstr ""
 "Predtým než si vyberieš svoj najobľubenejší, uisti sa, že si ukončil svoju "
 "registráciu zakúpením uvítacieho balíčka."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:83
-#: module/Application/view/application/additional-services/additional-services.phtml:98
-#: module/Application/view/application/additional-services/additional-services.phtml:120
+#: module/Application/view/application/additional-services/additional-services.phtml:82
+#: module/Application/view/application/additional-services/additional-services.phtml:97
+#: module/Application/view/application/additional-services/additional-services.phtml:119
 msgid "min"
 msgstr "min"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:85
-#: module/Application/view/application/customer-bonus-packages/package.phtml:33
-msgid "GRATUITO"
-msgstr "ZDARMA"
-
 # Dipende dal contesto. Quale parola dovrebbe essere la successiva?
-#: module/Application/view/application/additional-services/additional-services.phtml:85
-#: module/Application/view/application/additional-services/additional-services.phtml:116
+#: module/Application/view/application/additional-services/additional-services.phtml:84
+#: module/Application/view/application/additional-services/additional-services.phtml:115
 msgid "a"
 msgstr "na"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:103
-#: module/Application/view/application/additional-services/additional-services.phtml:123
+#: module/Application/view/application/additional-services/additional-services.phtml:102
+#: module/Application/view/application/additional-services/additional-services.phtml:122
 msgid "Validità"
 msgstr "Platnosť"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:107
 msgid "mesi"
 msgstr "mesiace"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:107
 msgid "mese"
 msgstr "mesiac"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:110
-#: module/Application/view/application/additional-services/additional-services.phtml:127
+#: module/Application/view/application/additional-services/additional-services.phtml:109
+#: module/Application/view/application/additional-services/additional-services.phtml:126
 msgid "giorni"
 msgstr "dní"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:110
-#: module/Application/view/application/additional-services/additional-services.phtml:127
+#: module/Application/view/application/additional-services/additional-services.phtml:109
+#: module/Application/view/application/additional-services/additional-services.phtml:126
 msgid "giorno"
 msgstr "deň"
 
 # Dipende dal contesto. Validita a 30 Minuti....oppure Minuti: 30
-#: module/Application/view/application/additional-services/additional-services.phtml:147
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minúty"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:148
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Cena"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:149
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Platné od"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:150
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Trvanie"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:151
+#: module/Application/view/application/additional-services/additional-services.phtml:150
 msgid "Disponibile fino"
 msgstr "Platné do"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:152
+#: module/Application/view/application/additional-services/additional-services.phtml:151
 msgid "Acquista/Converti"
 msgstr "Kúpiť"
 
 # Non capisco. Cosa significa?
-#: module/Application/view/application/additional-services/additional-services.phtml:167
+#: module/Application/view/application/additional-services/additional-services.phtml:166
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
 msgid "per %d gg"
 msgstr "%d dní"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:224
+#: module/Application/view/application/additional-services/additional-services.phtml:223
 #: module/Application/view/application/user/signup.phtml:89
 #: module/Application/view/partials/translations.phtml:4
 msgid "Codice promo"
 msgstr "Zľavový kód"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:230
+#: module/Application/view/application/additional-services/additional-services.phtml:229
 msgid "Inserisci il codice promo"
 msgstr "Vlož zľavový kód"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:242
+#: module/Application/view/application/additional-services/additional-services.phtml:241
 msgid "Valida"
 msgstr "POUŽIŤ"
 
@@ -1682,6 +1673,10 @@ msgstr "Zhrnutie"
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
 msgid "Descrizione:"
 msgstr "Popis:"
+
+#: module/Application/view/application/customer-bonus-packages/package.phtml:33
+msgid "GRATUITO"
+msgstr "ZDARMA"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:41
 msgid "Valido dal:"
@@ -4196,13 +4191,16 @@ msgid "foto dell'utente (selfie)"
 msgstr "Fotka Používateľa (selfie)"
 
 #: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minút len ​​za 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Pokračujte v registrácii"
+
+#: module/Application/view/application/user/signup-sk2.phtml:35
+msgid "45 minuti a soli 19,90&euro;"
+msgstr "45 minút len ​​za 19,90&euro;"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
