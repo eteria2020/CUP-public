@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.57] - 2020-03-02
+
+### Add
+
+- New documentation management through views and pages are stored on database (this for FAQ, legal notes, etc.) (see [ticket 650](https://sharengo.freshdesk.com/a/tickets/650)) 
+
 ## [1.0.56] - 2020-03-02
 
 ### Changed
@@ -24,8 +30,8 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 
 ### Changed
 
-- fix send mail on woring payments
-- update html of mail 5 (profilo sospeso)
+- fix send mail on wrong payments
+- update html of mail 5 ('profilo sospeso')
 - fix log on pay invoice
 
 ## [1.0.53] - 2020-02-20
@@ -46,6 +52,7 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
     - 'display_exceptions' => false,
 
 ## [1.0.52] - 2020-02-19
+
 ### Added
 
 - In additional-services.phtml add a warning message for Milan fleet
@@ -330,7 +337,7 @@ Note: remember to update file config/autoload/goalioforgotpassword.local.php
 
 ### Changed
 
-- fix left menu userarea (ticket 306)
+- fix left menu user area (ticket 306)
 
 
 ## [1.0.11] - 2019-11-27
@@ -350,23 +357,23 @@ Note: remember to update file config/autoload/goalioforgotpassword.local.php
 
 ### Added
 
-- add migration file for penalities table 201911261620_alter_penalties_logistic.sql
+- add migration file for penalties table 201911261620_alter_penalties_logistic.sql
 
 ## [1.0.8] - 2019-11-15
 
 ### Changed
 
 - change legal conditions in sigup2 for Slovenia (ticket 244)
-- change gender traslation in sigup2 for Slovenia (ticket 253)
+- change gender translation in sigup2 for Slovenia (ticket 253)
 
 ## [1.0.7] - 2019-11-13
 
 ### Changed
 
-- fix coocky traslation for Slovenian language (ticket 112)
+- fix coocky translation for Slovenian language (ticket 112)
 - update the contract (ticket 222)
 - update link https://site.sharengo.si/kako-deluje-sharengo/ (ticket 223)
-- update the lableb PAKETI IN PROMOCIJE (ticket 226)
+- update the label PAKETI IN PROMOCIJE (ticket 226)
 - language menu show only two languages (the instance and English language)
 
 ## [1.0.6] - 2019-11-12
@@ -409,7 +416,7 @@ Note: remember to update file config/autoload/goalioforgotpassword.local.php
 - Slovenian traslation
 - Link of header solenia
 - criteo.js remove personal email
-- map.phtm remove comented ref to carsUrl
+- map.phtm remove commented ref to carsUrl
 - signup changed (see ticket 171)
 
 

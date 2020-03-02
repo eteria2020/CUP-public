@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-19 15:14+0100\n"
-"PO-Revision-Date: 2020-02-19 15:16+0100\n"
+"POT-Creation-Date: 2020-03-02 12:37+0100\n"
+"PO-Revision-Date: 2020-03-02 12:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2090
+#: module/Application/config/module.config.php:2121
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profiel"
 
-#: module/Application/config/module.config.php:2095
+#: module/Application/config/module.config.php:2126
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profiel"
 msgid "Patente"
 msgstr "Rijbewijs"
 
-#: module/Application/config/module.config.php:2100
+#: module/Application/config/module.config.php:2131
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2105
+#: module/Application/config/module.config.php:2136
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Tarieven"
 
-#: module/Application/config/module.config.php:2110
-#: module/Application/view/application/additional-services/additional-services.phtml:28
+#: module/Application/config/module.config.php:2141
+#: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Aanbiedingen  en pakketten"
 
-#: module/Application/config/module.config.php:2115
+#: module/Application/config/module.config.php:2146
 msgid "Bonus minuti"
 msgstr "Bonusminuten"
 
-#: module/Application/config/module.config.php:2120
+#: module/Application/config/module.config.php:2151
 msgid "Corse completate"
 msgstr "Voltooide ritten"
 
-#: module/Application/config/module.config.php:2125
+#: module/Application/config/module.config.php:2156
 msgid "Dati di pagamento"
 msgstr "Betalingsgegevens"
 
-#: module/Application/config/module.config.php:2130
+#: module/Application/config/module.config.php:2161
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Facturen"
@@ -291,7 +291,7 @@ msgstr "Mevr."
 #: module/Application/src/Application/Form/SignupSK2Fieldset.php:108
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
-#: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/additional-services/additional-services.phtml:143
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -1569,26 +1569,22 @@ msgstr "BSN, syntax onjuist."
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr "RESERVERINSSYSTEEM"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:206
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:256
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:209
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:259
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Verbonden met bedrijf"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:231
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:273
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:234
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:276
 msgid "Transazione non valida (id non trovato)"
 msgstr "Verbonden met bedrijf"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:35
-msgid "Attenzione! Il servizio a Milano è temporaneamente sospeso."
-msgstr ""
-
-#: module/Application/view/application/additional-services/additional-services.phtml:46
+#: module/Application/view/application/additional-services/additional-services.phtml:45
 msgid "Acquista Pacchetti"
 msgstr "Pakketten kopen"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:52
+#: module/Application/view/application/additional-services/additional-services.phtml:51
 msgid ""
 "Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle "
 "nostre tariffe scontate."
@@ -1596,7 +1592,7 @@ msgstr ""
 "Koop het minutenpakket dat het beste bij je past en profiteer van onze "
 "kortingen."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:56
+#: module/Application/view/application/additional-services/additional-services.phtml:55
 msgid ""
 "Prima di scegliere il tuo preferito assicurati di aver completato la tua "
 "registrazione con l'acquisto del Pacchetto Benvenuto."
@@ -1604,95 +1600,90 @@ msgstr ""
 "Voordat je jouw favoriete pakket kiest, moet je eerst je registratie met het "
 "welkomstpakket hebben voltooid."
 
-#: module/Application/view/application/additional-services/additional-services.phtml:83
-#: module/Application/view/application/additional-services/additional-services.phtml:98
-#: module/Application/view/application/additional-services/additional-services.phtml:120
+#: module/Application/view/application/additional-services/additional-services.phtml:82
+#: module/Application/view/application/additional-services/additional-services.phtml:95
+#: module/Application/view/application/additional-services/additional-services.phtml:117
 msgid "min"
 msgstr "min"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:85
-#: module/Application/view/application/customer-bonus-packages/package.phtml:33
-msgid "GRATUITO"
-msgstr "GRATIS"
-
-#: module/Application/view/application/additional-services/additional-services.phtml:85
-#: module/Application/view/application/additional-services/additional-services.phtml:116
+#: module/Application/view/application/additional-services/additional-services.phtml:84
+#: module/Application/view/application/additional-services/additional-services.phtml:113
 #, fuzzy
 msgid "a"
 msgstr "Naar ?"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:103
-#: module/Application/view/application/additional-services/additional-services.phtml:123
+#: module/Application/view/application/additional-services/additional-services.phtml:100
+#: module/Application/view/application/additional-services/additional-services.phtml:120
 msgid "Validità"
 msgstr "Geldigheid"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:105
 msgid "mesi"
 msgstr "maanden"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:108
+#: module/Application/view/application/additional-services/additional-services.phtml:105
 msgid "mese"
 msgstr "maand"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:110
-#: module/Application/view/application/additional-services/additional-services.phtml:127
+#: module/Application/view/application/additional-services/additional-services.phtml:107
+#: module/Application/view/application/additional-services/additional-services.phtml:124
 msgid "giorni"
 msgstr "dagen"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:110
-#: module/Application/view/application/additional-services/additional-services.phtml:127
+#: module/Application/view/application/additional-services/additional-services.phtml:107
+#: module/Application/view/application/additional-services/additional-services.phtml:124
 msgid "giorno"
 msgstr "dag"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:147
+#: module/Application/view/application/additional-services/additional-services.phtml:144
 #: module/Application/view/application/customer-bonus-packages/package.phtml:27
 #: module/Application/view/application/landing-page/acceptpack.phtml:69
 msgid "Minuti"
 msgstr "Minuten"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:148
+#: module/Application/view/application/additional-services/additional-services.phtml:145
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
 msgstr "Prijs"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:149
+#: module/Application/view/application/additional-services/additional-services.phtml:146
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
 msgstr "Geldig van"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:150
+#: module/Application/view/application/additional-services/additional-services.phtml:147
 #: module/Application/view/application/landing-page/acceptpack.phtml:89
 msgid "Valido fino"
 msgstr "Geldig tot"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:151
+#: module/Application/view/application/additional-services/additional-services.phtml:148
 msgid "Disponibile fino"
 msgstr "Beschikbaar tot"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:152
+#: module/Application/view/application/additional-services/additional-services.phtml:149
 msgid "Acquista/Converti"
 msgstr "Kopen/omzetten"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:167
+#: module/Application/view/application/additional-services/additional-services.phtml:164
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
 msgid "per %d gg"
 msgstr "voor %d dagen"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:224
+#: module/Application/view/application/additional-services/additional-services.phtml:218
 #: module/Application/view/application/user/signup.phtml:89
 #: module/Application/view/partials/translations.phtml:4
 msgid "Codice promo"
 msgstr "Promotiecode"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:230
+#: module/Application/view/application/additional-services/additional-services.phtml:224
 msgid "Inserisci il codice promo"
 msgstr "Voer de promotiecode in"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:242
+#: module/Application/view/application/additional-services/additional-services.phtml:236
 msgid "Valida"
 msgstr "Goedkeuren"
 
@@ -1703,6 +1694,10 @@ msgstr "Overzicht"
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
 msgid "Descrizione:"
 msgstr "Omschrijving:"
+
+#: module/Application/view/application/customer-bonus-packages/package.phtml:33
+msgid "GRATUITO"
+msgstr "GRATIS"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:41
 msgid "Valido dal:"
@@ -2174,6 +2169,14 @@ msgid ""
 msgstr ""
 "Je profiel is gedeactiveerd, neem contact op met de klantenservice om het te "
 "herstellen."
+
+#: module/Application/view/application/index/document.phtml:10
+msgid "Documentazione"
+msgstr "Documentatie"
+
+#: module/Application/view/application/index/document.phtml:14
+msgid "Attenzione. Documento non trovato."
+msgstr "Waarschuwing. Document niet gevonden."
 
 #: module/Application/view/application/index/index.phtml:54
 msgid "PER SAPERNE DI PIU' (FAQ)"
@@ -4185,13 +4188,18 @@ msgid "foto dell'utente (selfie)"
 msgstr "foto van de gebruiker (selfie)"
 
 #: module/Application/view/application/user/signup-si2.phtml:35
-#: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "30 minuti a soli 5&euro;"
 msgstr "30 minuten voor slechts 5&euro;"
 
 #: module/Application/view/application/user/signup-si2.phtml:359
 msgid "Continua la registrazione"
 msgstr "Doorgaan met registreren"
+
+#: module/Application/view/application/user/signup-sk2.phtml:35
+#, fuzzy
+#| msgid "30 minuti a soli 10&euro;"
+msgid "45 minuti a soli 19,90&euro;"
+msgstr "30 minuten voor slechts 10&euro;"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
@@ -4592,7 +4600,7 @@ msgid "Share'NGo - the new mobility"
 msgstr "Sharengo - the new mobility"
 
 #: module/Application/view/layout/layout.phtml:80
-#: module/Application/view/layout/map.phtml:109
+#: module/Application/view/layout/map.phtml:110
 msgid ""
 "Stai usando un browser <strong>non supportato</strong>. Per favore <a href="
 "\"http://browsehappy.com/\">aggiorna il tuo browser</a> o <a href=\"http://"

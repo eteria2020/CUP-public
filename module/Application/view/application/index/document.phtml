@@ -1,0 +1,25 @@
+<!-- main -->
+<div id="main">
+
+    <!-- content -->
+    <div class="content">
+    <br><br>
+    <? if(is_null($this->document)) { ?>
+         <h1 class="block-title">
+             <i class="fa fa-book"></i>
+             <?= $this->translate('Documentazione'); ?>
+         </h1>
+        <p>
+            <i class="fa fa-warning"></i>
+            <?= $this->translate('Attenzione. Documento non trovato.'); ?>
+        </p>
+    <? } else { ?>
+        <h1 class="block-title"><?= $this->document->getTitle(); ?></h1>
+        <p><?= $this->document->getContent(); ?></p>
+    <? } ?>
+
+    </div>
+    <!-- content -->
+
+</div>
+<!-- main -->

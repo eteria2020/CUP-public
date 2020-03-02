@@ -148,6 +148,7 @@ return [
                     ],
                 ]
             ],*/
+
             'outstandingPayments' => [
                 'type' => 'Segment',
                 'options' => [
@@ -256,6 +257,36 @@ return [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action' => 'banner',
+                    ],
+                ]
+            ],
+            'document' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{document}/[:documentId][/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'document',
+                    ],
+                    'constraints' => [
+                        'documentId' => '[0-9&]+',
+                        'mobile' => 'mobile'
+                    ],
+                ]
+            ],
+            'docukey' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/{docukey}/[:documentKey][/:documentCountry][/:mobile]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'docukey',
+                    ],
+                    'constraints' => [
+                        'documentKey' => '[a-zA-Z0-9-]*',
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
