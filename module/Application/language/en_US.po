@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-02 12:26+0100\n"
-"PO-Revision-Date: 2020-03-02 12:27+0100\n"
+"POT-Creation-Date: 2020-03-02 15:53+0100\n"
+"PO-Revision-Date: 2020-03-02 15:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -3603,6 +3603,17 @@ msgid "Nessuna corsa effettuata finora"
 msgstr "No travel performed so far"
 
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
+msgid ""
+"benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, "
+"con carta di credito anche prepagata, il Pacchetto Benvenuto: con 9,90 &euro; "
+"hai i primi 45 minuti di corsa ad una tariffa scontata (0,22 &euro;/min invece "
+"di 0,29&euro;/min) e provi subito la tua Sharengo."
+msgstr ""
+"welcome to Sharengo! To activate your account it is necessary that you "
+"purchase, with a prepaid credit card, the Welcome Package: with 9,90 &euro; "
+"you have the first 45 minutes of travel at a discounted rate (0.22 &euro;/min "
+"instead of 0.29 &euro;/min) and try your Sharengo right away."
+
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:197
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che acquisti, "
@@ -4214,8 +4225,8 @@ msgid "Continua la registrazione"
 msgstr "Continue registration"
 
 #: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "45 minuti a soli 19,90&euro;"
-msgstr "45 minutes only 19,90&euro;"
+msgid "45 minuti a soli 9,90&euro;"
+msgstr "45 minutes only 9,90&euro;"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""

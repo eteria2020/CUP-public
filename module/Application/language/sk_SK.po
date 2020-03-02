@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-02 12:36+0100\n"
-"PO-Revision-Date: 2020-03-02 12:36+0100\n"
+"POT-Creation-Date: 2020-03-02 15:36+0100\n"
+"PO-Revision-Date: 2020-03-02 15:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -1587,7 +1587,7 @@ msgstr "min"
 #: module/Application/view/application/additional-services/additional-services.phtml:84
 #: module/Application/view/application/additional-services/additional-services.phtml:113
 msgid "a"
-msgstr "na"
+msgstr "za"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:100
 #: module/Application/view/application/additional-services/additional-services.phtml:120
@@ -3590,6 +3590,17 @@ msgid "Nessuna corsa effettuata finora"
 msgstr "Zatiaľ neboli vykonané žiadne jazdy"
 
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
+msgid ""
+"benvenuto in Sharengo! Per attivare il tuo account è necessario che "
+"acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
+"9,90 &euro; hai i primi 45 minuti di corsa ad una tariffa scontata (0,22 "
+"&euro;/min invece di 0,29&euro;/min) e provi subito la tua Sharengo."
+msgstr ""
+"Vitajte na stránkach Sharengo! Ak chcete aktivovať svoj účet, je potrebné, "
+"aby ste si predplatenou kreditnou kartou zakúpili uvítací balíček: s 9,90 a "
+"&euro; máte prvých 45 minút chodu so zľavnenou sadzbou (0,22 a &euro; min "
+"namiesto 0,29 &euro; min) a ihneď vyskúšajte svoje Sharengo."
+
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:197
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
@@ -4207,8 +4218,8 @@ msgid "Continua la registrazione"
 msgstr "Pokračujte v registrácii"
 
 #: module/Application/view/application/user/signup-sk2.phtml:35
-msgid "45 minuti a soli 19,90&euro;"
-msgstr "45 minút len ​​za 19,90&euro;"
+msgid "45 minuti a soli 9,90&euro;"
+msgstr "45 minút len ​​za 9,90&euro;"
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
