@@ -81,7 +81,7 @@ if(is_null($this->serverInstance)){
                                         <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
                                         <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
                                         <?php if($package->getType()==="Pacchetto"){ ?>
-                                            <p class="block-sub-title"><?= sprintf("%s %.0f &euro;", $this->translate('a'),$package->getCost() / 100) ?></p>
+                                            <p class="block-sub-title"><?= sprintf("%s %.2f &euro;", $this->translate('a'),$package->getCost() / 100) ?></p>
 
                                             <p class="block-sub-title">
                                             <?php
@@ -91,9 +91,7 @@ if(is_null($this->serverInstance)){
                                                 if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
                                                     $cost_round = substr($cost_round,0,strlen($cost_round)-1);
                                                 }
-                                                if($package->getName()=="ESTATE") {
-                                                    $cost_round = "0,22";
-                                                }
+
                                                 echo sprintf("%s &euro;/", $cost_round).$this->translate('min');
 
                                             }
@@ -141,7 +139,7 @@ if(is_null($this->serverInstance)){
                         <!-- Table -->
                         <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
                             <!-- Table header -->
-                            <div class="block-data-table-row clearfix">
+                            <div class="block-data-table-row clearfix" style="text-align: center;">
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Nome'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
                                 <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
@@ -165,12 +163,9 @@ if(is_null($this->serverInstance)){
                                         $i++;
                                         $validTo = sprintf($this->translate("per %d gg"), $package->getDuration());
                                         $validFrom = $package->validFromOrToday()->format("d-m-Y");
-                                        if($package->getName()=="ESTATE"){
-                                            $validTo = "31 agosto 2018";
-                                        }
                             ?>
                             <!-- Table body -->
-                            <div class="block-data-table-row clearfix <?= $oddOrEven ?>">
+                            <div class="block-data-table-row clearfix <?= $oddOrEven ?>" style="text-align: center;">
                                 <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
                                 <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
                                 <?php if($package->getType()==="Pacchetto"){ ?>
@@ -193,7 +188,7 @@ if(is_null($this->serverInstance)){
                                     <?php } ?>
                                 </div>
                             </div>
-                            <div class="block-data-table-row data-info clearfix" style="display: table-row; border: none;">
+                            <div class="block-data-table-row data-info clearfix" style="display: table-row; border: none; text-align: justify">
                                 <div class="block-data-table-td cw-6-6"><?= $package->getNotes() ?></div>
                             </div>
                             <!-- table body -->
