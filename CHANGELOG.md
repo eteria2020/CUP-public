@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.58] - 2020-03-03
+
+### Changed
+
+- Fix some bug on overlay in signup-nl1.phtml, signup-si1.phtml, signup-sk1.phtml 
+
 ## [1.0.57] - 2020-03-02
 
 ### Add
