@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-02 15:53+0100\n"
-"PO-Revision-Date: 2020-03-02 15:54+0100\n"
+"POT-Creation-Date: 2020-03-03 15:18+0100\n"
+"PO-Revision-Date: 2020-03-03 15:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1541,14 +1541,14 @@ msgstr "Fiscal Code not valid."
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr "SYSTEM BOOKING"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:209
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:259
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:211
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:260
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Invalid transaction"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:234
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:276
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:236
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:277
 msgid "Transazione non valida (id non trovato)"
 msgstr "Invalid transaction (id not found)"
 
@@ -3769,8 +3769,8 @@ msgid ""
 msgstr "To complete the insertion of your data click on LOGIN"
 
 #: module/Application/view/application/user/new-signup.phtml:202
-msgid "Il servizio a Milano è temporaneamente sospeso"
-msgstr "The service in Milan is temporarily suspended"
+msgid "Il servizio è temporaneamente sospeso a Milano e a Roma"
+msgstr "The service is temporarily suspended in Milan and Rome"
 
 #: module/Application/view/application/user/new-signup2.phtml:29
 msgid "21 minuti a soli 5&euro;"
@@ -3996,13 +3996,10 @@ msgstr "Keep it going"
 #: module/Application/view/application/user/new-signup2.phtml:444
 #: module/Application/view/application/user/new-signup2.phtml:465
 #: module/Application/view/application/user/signup-nl1.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:172
 #: module/Application/view/application/user/signup-nl2.phtml:365
 #: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si1.phtml:172
 #: module/Application/view/application/user/signup-si2.phtml:379
 #: module/Application/view/application/user/signup-sk1.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:172
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"

@@ -171,7 +171,7 @@ $this->headLink()
                         <div class="content-more" style="background-image: none; text-align: left !important;">
                             <br>
                             <p align="right"><a onclick="closeSignup()" style="color:#fff"><i class="fa fa-close"></i></a></p>
-                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><?= $this->translate("Sei già iscritto!");?></h2>
+                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><i class="fa fa-warning"></i> <?= $this->translate("Sei già iscritto!");?></h2>
                             <hr style="height:2px;border:none;color:#fff;background-color:#fff;">
                             <p style="color:#fff;text-align: center; font-weight: 800; font-family: 'Open Sans', sans-serif">
                                 <br>
@@ -195,11 +195,11 @@ $this->headLink()
                         <div class="content-more" style="background-image: none; text-align: left !important;">
                             <br>
                             <p align="right"><a onclick="closeSignup()" style="color:#fff"><i class="fa fa-close"></i></a></p>
-                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><?= $this->translate("Attenzione!");?></h2>
+                            <h2 style="color:#fff;text-align: center; font-weight: 800;font-family: 'Open Sans', sans-serif"><i class="fa fa-warning"></i> <?= $this->translate("Attenzione!");?></h2>
                             <hr style="height:2px;border:none;color:#fff;background-color:#fff;">
                             <p style="color:#fff;text-align: center; font-weight: 800; font-family: 'Open Sans', sans-serif">
                                 <br>
-                                <?= $this->translate("Il servizio a Milano è temporaneamente sospeso"); ?>
+                                <?= $this->translate("Il servizio è temporaneamente sospeso a Milano e a Roma"); ?>
                             </p>
                             <br>
                         </div>
@@ -290,7 +290,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     $(function() {
         $('#registration-form').on('submit', function(e) {
-            if( $( "#fleet option:selected" ).text()=='Milano') {
+            if( $("#fleet option:selected" ).text()=='Milano' || $("#fleet option:selected" ).text()=='Roma') {
                 let overlay = $('#sng-overlay-suspended');
                 overlay.css("visibility", "visible");
                 e.preventDefault();
@@ -319,7 +319,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
     function suspendedFleet() {
         $("#fleet").change(
             function () {
-                if( $( "#fleet option:selected" ).text()=='Milano') {
+                if( $("#fleet option:selected" ).text()=='Milano' || $("#fleet option:selected" ).text()=='Roma') {
                     let overlay = $('#sng-overlay-suspended');
                     overlay.css("visibility", "visible");
                 }
