@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.61] - 2020-03-05
+
+### Added
+
+- Add migration for cars_bonus table
+
+### Changed
+
+- On CarsBonus entity, the method getUnplugEnable() manage the null value
+
 ## [1.0.60] - 2020-03-04
 
 ### Added
