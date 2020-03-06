@@ -41,7 +41,7 @@
                                     <?= $this->translate("per completare l&#39;attivazione del servizio"); ?>.
                                 </p><br>
                                 <p>
-                                    <font color="red"><?= $this->translate('Attenzione!') ?></font>
+                                    <font color="red"><?= $this->translate('Attenzione') ?></font>
                                     <?= $this->translate(' Per completare il pagamento e registrare la tua carta di credito (o prepagata) potrebbe esserti chiesto il Secure Code (il codice di sicurezza per i pagamenti online).'); ?>
                                 </p><br>
                                 <p>
@@ -160,7 +160,7 @@
                     <div class="box" style="background:#fff;">
                         <div id="sng-overlay-content1">
                             <div class="content-more" style="background-image: none;">
-                                <h3 style="background: #43a34c;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->translate("ATTENZIONE") ?></h3>
+                                <h3 style="background: #43a34c;color: #fff;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->translate("Attenzione") ?></h3>
                                 <br>
                                 <ul>
                                     <p style="color:black;text-align: center; font-weight: 500;">
@@ -176,7 +176,7 @@
                                         $urlChangeCard = $this->url('bankart/change-card', [], ['query' => ['customer' => $this->customer->getId(), 'contract' => $contract]]);
                                     ?>
                                     <a href="<?= $urlChangeCard;?>"><button type="button" id="js-edit-form"><?= $this->translate("PROCEDI") ?></button></a>
-                                    <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("CHIUDI") ?></button></a>
+                                    <a href="#" class="sng-overlay-close" title="Chiudi"><button type="button" id="js-edit-form" onclick="closeChangeCard()"><?= $this->translate("Chiudi") ?></button></a>
                                 </div>
                             </div>
                         </div>

@@ -132,7 +132,7 @@ class CustomerBonusPackagesController extends AbstractActionController
             if ($success) {
                 $this->flashMessenger()->addSuccessMessage($this->translator->translate('Acquisto del pacchetto completato correttamente'));
             } else {
-                $this->flashMessenger()->addErrorMessage('Si è verificato un errore durante l\'acquisto del pacchetto richiesto');
+                $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore durante l'acquisto del pacchetto richiesto"));
             }
         }
 

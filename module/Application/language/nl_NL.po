@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-02 12:37+0100\n"
-"PO-Revision-Date: 2020-03-02 12:38+0100\n"
+"POT-Creation-Date: 2020-03-06 15:33+0100\n"
+"PO-Revision-Date: 2020-03-06 15:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2121
+#: module/Application/config/module.config.php:2099
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profiel"
 
-#: module/Application/config/module.config.php:2126
+#: module/Application/config/module.config.php:2104
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profiel"
 msgid "Patente"
 msgstr "Rijbewijs"
 
-#: module/Application/config/module.config.php:2131
+#: module/Application/config/module.config.php:2109
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2136
+#: module/Application/config/module.config.php:2114
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Tarieven"
 
-#: module/Application/config/module.config.php:2141
+#: module/Application/config/module.config.php:2119
 #: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Aanbiedingen  en pakketten"
 
-#: module/Application/config/module.config.php:2146
+#: module/Application/config/module.config.php:2124
 msgid "Bonus minuti"
 msgstr "Bonusminuten"
 
-#: module/Application/config/module.config.php:2151
+#: module/Application/config/module.config.php:2129
 msgid "Corse completate"
 msgstr "Voltooide ritten"
 
-#: module/Application/config/module.config.php:2156
+#: module/Application/config/module.config.php:2134
 msgid "Dati di pagamento"
 msgstr "Betalingsgegevens"
 
-#: module/Application/config/module.config.php:2161
+#: module/Application/config/module.config.php:2139
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Facturen"
@@ -118,6 +118,10 @@ msgstr ""
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:133
 msgid "Acquisto del pacchetto completato correttamente"
 msgstr "Aankoop van het pakket met succes voltooid"
+
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:135
+msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
+msgstr "Er is een fout opgetreden bij het kopen van het gevraagde pakket"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:158
 msgid "Utente non riconosciuto"
@@ -669,8 +673,14 @@ msgstr "Achternaam op het rijbewijs"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:146
 #: module/Application/src/Application/Form/NewUserFieldset2.php:315
-msgid "Rilasciata da (nazione)"
-msgstr "Afgegeven door (land)"
+#: module/Application/view/application/user-area/driving-licence-international.phtml:116
+#: module/Application/view/application/user-area/driving-licence-international.phtml:228
+#: module/Application/view/application/user-area/driving-licence.phtml:114
+#: module/Application/view/application/user-area/driving-licence.phtml:250
+#: module/Application/view/application/user/new-signup2.phtml:277
+#: module/Application/view/application/user/signup2.phtml:151
+msgid "Rilasciata (nazione)"
+msgstr "Afgegeven (land)"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:162
 #: module/Application/src/Application/Form/NewUserFieldset2.php:302
@@ -1569,14 +1579,14 @@ msgstr "BSN, syntax onjuist."
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr "RESERVERINSSYSTEEM"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:209
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:259
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:211
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:260
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Verbonden met bedrijf"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:234
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:276
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:236
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:277
 msgid "Transazione non valida (id non trovato)"
 msgstr "Verbonden met bedrijf"
 
@@ -1648,6 +1658,7 @@ msgid "Prezzo"
 msgstr "Prijs"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/customer-bonus-packages/package.phtml:41
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
@@ -1692,20 +1703,22 @@ msgid "Riepilogo"
 msgstr "Overzicht"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
-msgid "Descrizione:"
-msgstr "Omschrijving:"
+#: module/Application/view/application/user-area/bonus.phtml:68
+#: module/Application/view/application/user-area/debt-collection.phtml:138
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:138
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:138
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:138
+msgid "Descrizione"
+msgstr "Omschrijving"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:33
 msgid "GRATUITO"
 msgstr "GRATIS"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:41
-msgid "Valido dal:"
-msgstr "Geldig van:"
-
 #: module/Application/view/application/customer-bonus-packages/package.phtml:45
-msgid "Valido al:"
-msgstr "Geldig tot:"
+#: module/Application/view/application/user-area/bonus.phtml:65
+msgid "Valido al"
+msgstr "Geldig tot"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:57
 msgid "Vuoi confermare questo pacchetto?"
@@ -2107,44 +2120,6 @@ msgstr ""
 msgid " oppure all’indirizzo email "
 msgstr " of via het e-mailadres "
 
-#: module/Application/view/application/index/cosae.phtml:10
-msgid "Chi &egrave Share'nGo?"
-msgstr "Wie is Sharengo?"
-
-#: module/Application/view/application/index/cosae.phtml:13
-#, fuzzy, php-format
-msgid ""
-"<strong>SHARE'NGO</strong>  è  una piattaforma nazionale per lo sviluppo "
-"della mobilità elettrica e sostenibile ideata e gestita da CS GROUP che "
-"offre servizi di car sharing free floating nelle più grandi città italiane, "
-"car sharing dislocato nelle città italiane di medie dimensioni (SHARE ‘NGO "
-"POINT) e courtesy car per il settore turistico-alberghiero con la propria "
-"divisione SHARE’NGO RENTAL oppure in noleggio a lungo termine, in "
-"partnership con ELETTRONLT.<br><br>Per <strong>SHARE'NGO</strong> la sfida "
-"più importante è quella di occuparsi del bisogno di mobilità urbana - che "
-"non può essere soddisfatto a piedi, in bicicletta o con i mezzi pubblici - "
-"offrendo un servizio di car sharing  a impatto zero e a prezzi finalmente "
-"accessibili a tutti.<br><br>Questa ispirazione e questa visione hanno "
-"portato Share'NGO alla scelta di NON avere un prezzo uguale per tutti, ma un "
-"prezzo individuale che si crea con una analisi del bisogno di mobilità e di "
-"premio allo stile di vita che precede la registrazione e genera uno sconto  "
-"fino al 50% delle tariffe nominali e quindi un sistema tariffario personale."
-"<br><br>Per questo, in tutte le città italiane ed europee dove opereremo "
-"servizi di car sharing le nostre auto si chiameranno EQUOMOBILI, con "
-"l’ambizione di rendere l’auto condivisa una abitudine di massa e l’uso in "
-"città di un’auto termica di proprietà un ricordo del passato.<br><br>Le auto "
-"scelte da SHARE’NGO sono microcar al 100%  elettriche e ad alte prestazioni, "
-"con oltre 100 KM di autonomia e gli equipaggiamenti tipici di una citycar: 2 "
-"posti, 300 litri di bagagliaio, servofreno, servosterzo, sensore posteriore "
-"di parcheggio, condizionatore, sedili regolabili, l’invidiabile ripresa ai "
-"semafori tipica delle macchine elettriche… e un sistema di navigazione "
-"basato su un computer di bordo mai visto su auto di questa classe. "
-"<br><br>Prodotte per noi dalla Xindayang del gruppo Geely Motor co, le "
-"Equomobili sono state progettate in Italia e in CS GROUP sono state "
-"assorbite le competenze meccaniche, elettroniche ed energetiche che hanno "
-"contribuito al loro sviluppo."
-msgstr "???"
-
 #: module/Application/view/application/index/crawler.phtml:77
 msgid "Caricamento"
 msgstr "Opladen"
@@ -2260,42 +2235,39 @@ msgstr "FOOTPRINT van slechts 4,5 m2"
 
 #: module/Application/view/application/index/index.phtml:164
 #: module/Application/view/application/index/map.phtml:40
-#: module/Application/view/application/index/map2.phtml:67
+#: module/Application/view/application/index/map2.phtml:70
 msgid "L\\'auto è occupata"
 msgstr "De auto is bezet"
 
 #: module/Application/view/application/index/index.phtml:165
 #: module/Application/view/application/index/map.phtml:41
-#: module/Application/view/application/index/map2.phtml:68
+#: module/Application/view/application/index/map2.phtml:71
 msgid "Annulla prenotazione"
 msgstr "Annuleer reservering"
 
 #: module/Application/view/application/index/index.phtml:166
 #: module/Application/view/application/index/map.phtml:42
-#: module/Application/view/application/index/map2.phtml:69
+#: module/Application/view/application/index/map2.phtml:72
 msgid "Prenota l\\'auto"
 msgstr "Reserveer de auto"
 
 #: module/Application/view/application/index/index.phtml:167
 #: module/Application/view/application/index/map.phtml:43
-#: module/Application/view/application/index/map2.phtml:70
+#: module/Application/view/application/index/map2.phtml:73
 msgid "Registrati e prenota"
 msgstr "Registreer en boek"
 
 #: module/Application/view/application/index/index.phtml:168
 #: module/Application/view/application/index/map.phtml:44
+#: module/Application/view/application/index/map2.phtml:34
 msgid "Cerca indirizzo"
 msgstr "Zoek adres"
 
-#: module/Application/view/application/index/map2.phtml:34
-msgid "CERCA INDIRIZZO"
-msgstr "ZOEK ADRES"
-
-#: module/Application/view/application/index/map2.phtml:49
+#: module/Application/view/application/index/map2.phtml:50
 msgid "Riduci la mappa"
 msgstr "Verklein de kaart"
 
-#: module/Application/view/application/index/map2.phtml:50
+#: module/Application/view/application/index/map2.phtml:51
 msgid "Estendi la mappa"
 msgstr "Vergroot de kaart"
 
@@ -2411,18 +2383,6 @@ msgstr "Bonus"
 msgid "Totale minuti attualmente utilizzabili"
 msgstr "Totaal aantal beschikbare minuten"
 
-#: module/Application/view/application/user-area/bonus.phtml:65
-msgid "Valido al"
-msgstr "Geldig tot"
-
-#: module/Application/view/application/user-area/bonus.phtml:68
-#: module/Application/view/application/user-area/debt-collection.phtml:138
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:138
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:138
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:138
-msgid "Descrizione"
-msgstr "Omschrijving"
-
 #: module/Application/view/application/user-area/bonus.phtml:71
 msgid "Minuti restanti"
 msgstr "Resterende minuten"
@@ -2482,12 +2442,30 @@ msgid "per completare l&#39;attivazione del servizio"
 msgstr "om de activering van de dienst te voltooien"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:39
+#: module/Application/view/application/user-area/dati-pagamento.phtml:156
+#: module/Application/view/application/user-area/debt-collection.phtml:108
+#: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:174
+#: module/Application/view/application/user-area/rents.phtml:94
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:108
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:174
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
+#: module/Application/view/application/user/new-signup.phtml:152
 #: module/Application/view/application/user/new-signup.phtml:198
-msgid "Attenzione!"
-msgstr "Let op!"
+#: module/Application/view/application/user/signup-nl1.phtml:151
+#: module/Application/view/application/user/signup-si1.phtml:151
+#: module/Application/view/application/user/signup-sk1.phtml:151
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
+msgid "Attenzione"
+msgstr "Let op"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:39
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:45
@@ -2606,7 +2584,7 @@ msgid ""
 "Clicca su <button class=\"medium red\" onclick=\"openChangeCard()\">CAMBIA "
 "CARTA</button> per inserirne una nuova."
 msgstr ""
-"Klik op <button class = \"medium rood\" onclick = \"openChangeCard "
+"Klik op <button class = \"medium red\" onclick=\"openChangeCard "
 "()\">WIJZIGEN KAART</button> om een nieuwe in te voeren."
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:122
@@ -2628,17 +2606,6 @@ msgid ""
 "Non hai ancora inserito una carta di credito o prepagata sul tuo profilo."
 msgstr "Je hebt nog geen creditcard of betaalkaart in je profiel ingevoerd."
 
-#: module/Application/view/application/user-area/dati-pagamento.phtml:156
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
-#: module/Application/view/application/user/new-signup.phtml:152
-#: module/Application/view/application/user/signup-nl1.phtml:151
-#: module/Application/view/application/user/signup-si1.phtml:151
-#: module/Application/view/application/user/signup-sk1.phtml:151
-msgid "ATTENZIONE"
-msgstr "LET OP"
-
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
 msgid ""
 "Il cambio di carta prevede il pagamento della cifra di un centesimo di euro "
@@ -2658,8 +2625,18 @@ msgstr "GA VERDER"
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:179
-msgid "CHIUDI"
-msgstr "AFSLUITEN"
+#: module/Application/view/application/user/new-signup2.phtml:417
+#: module/Application/view/application/user/new-signup2.phtml:444
+#: module/Application/view/application/user/new-signup2.phtml:465
+#: module/Application/view/application/user/signup-nl1.phtml:147
+#: module/Application/view/application/user/signup-nl2.phtml:365
+#: module/Application/view/application/user/signup-si1.phtml:147
+#: module/Application/view/application/user/signup-si2.phtml:379
+#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk2.phtml:375
+#: module/Application/view/partials/car-popup.phtml:101
+msgid "Chiudi"
+msgstr "Afsluiten"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:32
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:32
@@ -2780,17 +2757,6 @@ msgstr "Bedrag"
 msgid "TOTALE"
 msgstr "TOTAAL"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:108
-#: module/Application/view/application/user-area/debt-collection.phtml:174
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:174
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:108
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:174
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
-msgid "Attenzione:"
-msgstr "Let op:"
-
 #: module/Application/view/application/user-area/debt-collection.phtml:124
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:124
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:124
@@ -2848,15 +2814,6 @@ msgstr "De gegevens van je rijbewijs"
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
 msgstr "Rijbewijsnummer"
-
-#: module/Application/view/application/user-area/driving-licence-international.phtml:116
-#: module/Application/view/application/user-area/driving-licence-international.phtml:228
-#: module/Application/view/application/user-area/driving-licence.phtml:114
-#: module/Application/view/application/user-area/driving-licence.phtml:250
-#: module/Application/view/application/user/new-signup2.phtml:277
-#: module/Application/view/application/user/signup2.phtml:151
-msgid "Rilasciata (nazione)"
-msgstr "Afgegeven (land)"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:150
 #: module/Application/view/application/user-area/driving-licence.phtml:53
@@ -3556,11 +3513,6 @@ msgstr "Totaal"
 msgid "Da saldare"
 msgstr "Te vereffenen"
 
-#: module/Application/view/application/user-area/rents.phtml:94
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
-msgid "Attenzione"
-msgstr "Let op"
-
 #: module/Application/view/application/user-area/rents.phtml:95
 msgid ""
 ": l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse "
@@ -3581,6 +3533,23 @@ msgid "Nessuna corsa effettuata finora"
 msgstr "Tot nu toe geen ritten gemaakt"
 
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:197
+#, fuzzy
+#| msgid ""
+#| "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
+#| "acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: "
+#| "con 5&euro; hai i primi 21 minuti di corsa ad una tariffa scontata "
+#| "(0,24&euro;/min invece di 0,28&euro;/min) e provi subito la tua Sharengo."
+msgid ""
+"benvenuto in Sharengo! Per attivare il tuo account è necessario che "
+"acquisti, con carta di credito anche prepagata, il Pacchetto Benvenuto: con "
+"9,90 &euro; hai i primi 45 minuti di corsa ad una tariffa scontata (0,22 "
+"&euro;/min invece di 0,29&euro;/min) e provi subito la tua Sharengo."
+msgstr ""
+"welkom bij Sharengo! Om je account te activeren, dien je met een creditcard "
+"het welkomstpakket te kopen: met 5 euro heb je de eerste 21 minuten tegen "
+"een gereduceerd tarief (&euro; 0,24/min in plaats van &euro; 0,28/min) en "
+"kun je meteen Share’ngo uitproberen."
+
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:197
 msgid ""
 "benvenuto in Sharengo! Per attivare il tuo account è necessario che "
@@ -3737,7 +3706,7 @@ msgid ""
 msgstr "Om de invoer van je gegevens te voltooien klik je bovenaan op INLOGGEN"
 
 #: module/Application/view/application/user/new-signup.phtml:202
-msgid "Il servizio a Milano è temporaneamente sospeso"
+msgid "Il servizio è temporaneamente sospeso a Milano e a Roma"
 msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:29
@@ -3958,22 +3927,6 @@ msgstr "Na activering wordt je rijbewijs nog gecontroleerd."
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Ga verder"
-
-#: module/Application/view/application/user/new-signup2.phtml:417
-#: module/Application/view/application/user/new-signup2.phtml:444
-#: module/Application/view/application/user/new-signup2.phtml:465
-#: module/Application/view/application/user/signup-nl1.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:172
-#: module/Application/view/application/user/signup-nl2.phtml:365
-#: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si1.phtml:172
-#: module/Application/view/application/user/signup-si2.phtml:379
-#: module/Application/view/application/user/signup-sk1.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:172
-#: module/Application/view/application/user/signup-sk2.phtml:375
-#: module/Application/view/partials/car-popup.phtml:101
-msgid "Chiudi"
-msgstr "Afsluiten"
 
 #: module/Application/view/application/user/new-signup2.phtml:419
 msgid "Prima di procedere verifica:"
@@ -4198,7 +4151,7 @@ msgstr "Doorgaan met registreren"
 #: module/Application/view/application/user/signup-sk2.phtml:35
 #, fuzzy
 #| msgid "30 minuti a soli 10&euro;"
-msgid "45 minuti a soli 19,90&euro;"
+msgid "45 minuti a soli 9,90&euro;"
 msgstr "30 minuten voor slechts 10&euro;"
 
 #: module/Application/view/application/user/signup.phtml:38
@@ -4544,8 +4497,10 @@ msgid "Login"
 msgstr "Inloggen"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:28
-msgid "Recupera la password"
-msgstr "Herstel het wachtwoord"
+#: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
+#: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
+msgid "Recupero password"
+msgstr "Wachtwoord herstellen"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:38
 msgid "Inserisci la tua email"
@@ -4566,11 +4521,6 @@ msgid ""
 msgstr ""
 "CONTROLEER NA HET VERZENDEN VAN HET VERZOEK JE E-MAIL EN VOLG DE LINK OM HET "
 "WACHTWOORD TE VERANDEREN"
-
-#: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
-#: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
-msgid "Recupero password"
-msgstr "Wachtwoord herstellen"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:13
 msgid "La tua password è stata cambiata."
@@ -4596,6 +4546,10 @@ msgstr "Controleer de e-mail die we naar je e-mailadres %s hebben gestuurd."
 
 #: module/Application/view/layout/layout.phtml:10
 #: module/Application/view/layout/layout.phtml:95
+#: module/Application/view/layout/layout.phtml:155
+#: module/Application/view/layout/layout2.phtml:10
+#: module/Application/view/layout/map.phtml:10
+#: module/Application/view/layout/map2.phtml:10
 msgid "Share'NGo - the new mobility"
 msgstr "Sharengo - the new mobility"
 
@@ -4621,8 +4575,12 @@ msgid "Car sharing"
 msgstr "Carsharing"
 
 #: module/Application/view/layout/layout.phtml:111
-msgid "Chi &egrave; Share'n GO?"
-msgstr "Wie is Sharengo?"
+#: module/Application/view/partials/header/main_head.phtml:25
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:25
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:24
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:24
+msgid "Chi è SharenGo"
+msgstr "Wie is Sharengo"
 
 #: module/Application/view/layout/layout.phtml:114
 #: module/Application/view/layout/layout.phtml:182
@@ -4654,10 +4612,6 @@ msgstr "Persoonlijke omgeving"
 #: module/Application/view/layout/layout.phtml:129
 msgid "Log out"
 msgstr "Uitloggen"
-
-#: module/Application/view/layout/layout.phtml:155
-msgid "Share 'N Go"
-msgstr "Sharengo"
 
 #: module/Application/view/layout/layout.phtml:156
 msgid "è un servizio di C.S. Group S.p.A."
@@ -4718,12 +4672,6 @@ msgstr ""
 "Cookies helpen ons bij het verlenen van onze diensten. Door deze diensten te "
 "gebruiken, ga je akkoord met ons gebruik van cookies. Klik voor meer "
 "informatie"
-
-#: module/Application/view/layout/layout2.phtml:10
-#: module/Application/view/layout/map.phtml:10
-#: module/Application/view/layout/map2.phtml:10
-msgid "Share'ngo"
-msgstr "Sharengo"
 
 #: module/Application/view/partials/car-popup.phtml:34
 msgid "Auto scelta"
@@ -4950,13 +4898,6 @@ msgstr "Pakketten &amp; aanbiedingen"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
 msgid "La città cambia"
 msgstr "De stad verandert"
-
-#: module/Application/view/partials/header/main_head.phtml:25
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:25
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:24
-#: module/Application/view/partials/header/main_head_sl_SI.phtml:24
-msgid "Chi è SharenGo"
-msgstr "Wie is Sharengo"
 
 #: module/Application/view/partials/header/main_head.phtml:26
 msgid "Vantaggi per te"
@@ -6133,6 +6074,82 @@ msgstr "(Bijwonen ik bid)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Controleert hij transactie bezig."
+
+#~ msgid "Attenzione!"
+#~ msgstr "Let op!"
+
+#~ msgid "ATTENZIONE"
+#~ msgstr "LET OP"
+
+#~ msgid "Rilasciata da (nazione)"
+#~ msgstr "Afgegeven door (land)"
+
+#~ msgid "Descrizione:"
+#~ msgstr "Omschrijving:"
+
+#~ msgid "Valido dal:"
+#~ msgstr "Geldig van:"
+
+#~ msgid "Valido al:"
+#~ msgstr "Geldig tot:"
+
+#~ msgid "Attenzione:"
+#~ msgstr "Let op:"
+
+#~ msgid "Recupera la password"
+#~ msgstr "Herstel het wachtwoord"
+
+#~ msgid "Chi &egrave Share'nGo?"
+#~ msgstr "Wie is Sharengo?"
+
+#, fuzzy, php-format
+#~ msgid ""
+#~ "<strong>SHARE'NGO</strong>  è  una piattaforma nazionale per lo sviluppo "
+#~ "della mobilità elettrica e sostenibile ideata e gestita da CS GROUP che "
+#~ "offre servizi di car sharing free floating nelle più grandi città "
+#~ "italiane, car sharing dislocato nelle città italiane di medie dimensioni "
+#~ "(SHARE ‘NGO POINT) e courtesy car per il settore turistico-alberghiero "
+#~ "con la propria divisione SHARE’NGO RENTAL oppure in noleggio a lungo "
+#~ "termine, in partnership con ELETTRONLT.<br><br>Per <strong>SHARE'NGO</"
+#~ "strong> la sfida più importante è quella di occuparsi del bisogno di "
+#~ "mobilità urbana - che non può essere soddisfatto a piedi, in bicicletta o "
+#~ "con i mezzi pubblici - offrendo un servizio di car sharing  a impatto "
+#~ "zero e a prezzi finalmente accessibili a tutti.<br><br>Questa ispirazione "
+#~ "e questa visione hanno portato Share'NGO alla scelta di NON avere un "
+#~ "prezzo uguale per tutti, ma un prezzo individuale che si crea con una "
+#~ "analisi del bisogno di mobilità e di premio allo stile di vita che "
+#~ "precede la registrazione e genera uno sconto  fino al 50% delle tariffe "
+#~ "nominali e quindi un sistema tariffario personale.<br><br>Per questo, in "
+#~ "tutte le città italiane ed europee dove opereremo servizi di car sharing "
+#~ "le nostre auto si chiameranno EQUOMOBILI, con l’ambizione di rendere "
+#~ "l’auto condivisa una abitudine di massa e l’uso in città di un’auto "
+#~ "termica di proprietà un ricordo del passato.<br><br>Le auto scelte da "
+#~ "SHARE’NGO sono microcar al 100%  elettriche e ad alte prestazioni, con "
+#~ "oltre 100 KM di autonomia e gli equipaggiamenti tipici di una citycar: 2 "
+#~ "posti, 300 litri di bagagliaio, servofreno, servosterzo, sensore "
+#~ "posteriore di parcheggio, condizionatore, sedili regolabili, "
+#~ "l’invidiabile ripresa ai semafori tipica delle macchine elettriche… e un "
+#~ "sistema di navigazione basato su un computer di bordo mai visto su auto "
+#~ "di questa classe. <br><br>Prodotte per noi dalla Xindayang del gruppo "
+#~ "Geely Motor co, le Equomobili sono state progettate in Italia e in CS "
+#~ "GROUP sono state assorbite le competenze meccaniche, elettroniche ed "
+#~ "energetiche che hanno contribuito al loro sviluppo."
+#~ msgstr "???"
+
+#~ msgid "CERCA INDIRIZZO"
+#~ msgstr "ZOEK ADRES"
+
+#~ msgid "CHIUDI"
+#~ msgstr "AFSLUITEN"
+
+#~ msgid "Chi &egrave; Share'n GO?"
+#~ msgstr "Wie is Sharengo?"
+
+#~ msgid "Share 'N Go"
+#~ msgstr "Sharengo"
+
+#~ msgid "Share'ngo"
+#~ msgstr "Sharengo"
 
 #~ msgid "promo e pacchetti"
 #~ msgstr "aanbiedingen en pakketten"

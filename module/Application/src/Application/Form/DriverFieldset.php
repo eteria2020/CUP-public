@@ -143,7 +143,7 @@ class DriverFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'required'
             ],
             'options' => [
-                'label' => $translator->translate('Rilasciata da (nazione)'),
+                'label' => $translator->translate('Rilasciata (nazione)'),
                 'value_options' => $mondoService->getAllCountries()
             ]
         ]);

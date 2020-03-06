@@ -90,28 +90,6 @@ return [
                     ],
                 ],
             ],
-            /* 'carsharing' => [
-              'type' => 'Segment',
-              'options' => [
-              'route' => '/{carsharing}',
-              'defaults' => [
-              '__NAMESPACE__' => 'Application\Controller',
-              'controller' => 'Index',
-              'action'     => 'carsharing',
-              ],
-              ]
-              ],
-              'cosae' => [
-              'type' => 'Segment',
-              'options' => [
-              'route' => '/{cosa-e-sharengo}',
-              'defaults' => [
-              '__NAMESPACE__' => 'Application\Controller',
-              'controller' => 'Index',
-              'action'     => 'cosae',
-              ],
-              ]
-              ], */
             'map' => [
                 'type' => 'Segment',
                 'options' => [

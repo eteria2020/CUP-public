@@ -18,7 +18,7 @@ $end = date_create('2018-03-09 04:55:00');
             <div class="sng-separator-line"></div>
 
             <div class="sng-summary">
-                <h2 class="sng-headers"><?= $this->translate("Descrizione:") ?></h2>
+                <h2 class="sng-headers"><?= $this->translate("Descrizione") ?>:</h2>
                 <p id="description" class="sng-text"><?= $this->package->getDescription() ?></p>
 
                 <table class="sng-table">
@@ -38,11 +38,11 @@ $end = date_create('2018-03-09 04:55:00');
                     </tr>
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2><?= $this->translate("Valido dal:") ?></h2>
+                            <h2><?= $this->translate("Valido dal") ?>:</h2>
                             <p id="valid-from" class="sng-text"><?= $validFrom ?></p>
                         </td>
                         <td class="sng-w-1-2">
-                            <h2><?= $this->translate("Valido al:") ?></h2>
+                            <h2><?= $this->translate("Valido al") ?>:</h2>
                             <p id="valid-to" class="sng-text"><?= $validTo ?></p>
                         </td>
                     </tr>

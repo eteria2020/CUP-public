@@ -322,19 +322,6 @@ class IndexController extends AbstractActionController
         );
     }
 
-    public function carsharingAction()
-    {
-        $view = new ViewModel();
-        $view->setTemplate('application/index/index');
-
-        return $view;
-    }
-
-    public function cosaeAction()
-    {
-        return new ViewModel();
-    }
-
     public function quantocostaAction()
     {
         return new ViewModel();
