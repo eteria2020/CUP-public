@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-02 15:36+0100\n"
-"PO-Revision-Date: 2020-03-02 15:53+0100\n"
+"POT-Creation-Date: 2020-03-06 15:34+0100\n"
+"PO-Revision-Date: 2020-03-06 15:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2121
+#: module/Application/config/module.config.php:2099
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profil"
 
-#: module/Application/config/module.config.php:2126
+#: module/Application/config/module.config.php:2104
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profil"
 msgid "Patente"
 msgstr "Vodičský preukaz"
 
-#: module/Application/config/module.config.php:2131
+#: module/Application/config/module.config.php:2109
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2136
+#: module/Application/config/module.config.php:2114
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Sadzby"
 
-#: module/Application/config/module.config.php:2141
+#: module/Application/config/module.config.php:2119
 #: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
-#: module/Application/config/module.config.php:2146
+#: module/Application/config/module.config.php:2124
 msgid "Bonus minuti"
 msgstr "Bonusové minúty"
 
-#: module/Application/config/module.config.php:2151
+#: module/Application/config/module.config.php:2129
 msgid "Corse completate"
 msgstr "Dokončené jazdy"
 
-#: module/Application/config/module.config.php:2156
+#: module/Application/config/module.config.php:2134
 msgid "Dati di pagamento"
 msgstr "Údaje platby"
 
-#: module/Application/config/module.config.php:2161
+#: module/Application/config/module.config.php:2139
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Faktúry"
@@ -117,6 +117,10 @@ msgstr "Pred zakúpením balíka musíte zakúpiť uvítací balík"
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:133
 msgid "Acquisto del pacchetto completato correttamente"
 msgstr "Nákup balíčka bol úspešne dokončený"
+
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:135
+msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
+msgstr "Pri nákupe požadovaného balíka sa vyskytla chyba"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:158
 msgid "Utente non riconosciuto"
@@ -669,8 +673,14 @@ msgstr "Priezvisko vo vodičskom preukaze"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:146
 #: module/Application/src/Application/Form/NewUserFieldset2.php:315
-msgid "Rilasciata da (nazione)"
-msgstr "Vydané (krajina)"
+#: module/Application/view/application/user-area/driving-licence-international.phtml:116
+#: module/Application/view/application/user-area/driving-licence-international.phtml:228
+#: module/Application/view/application/user-area/driving-licence.phtml:114
+#: module/Application/view/application/user-area/driving-licence.phtml:250
+#: module/Application/view/application/user/new-signup2.phtml:277
+#: module/Application/view/application/user/signup2.phtml:151
+msgid "Rilasciata (nazione)"
+msgstr "Vydaný(krajina)"
 
 #: module/Application/src/Application/Form/DriverFieldset.php:162
 #: module/Application/src/Application/Form/NewUserFieldset2.php:302
@@ -1547,14 +1557,14 @@ msgstr "Rodné číslo"
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr ""
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:209
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:259
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:211
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:260
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Združenie so spoločnosťou"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:234
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:276
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:236
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:277
 msgid "Transazione non valida (id non trovato)"
 msgstr "Združenie so spoločnosťou"
 
@@ -1626,6 +1636,7 @@ msgid "Prezzo"
 msgstr "Cena"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:146
+#: module/Application/view/application/customer-bonus-packages/package.phtml:41
 #: module/Application/view/application/landing-page/acceptpack.phtml:85
 #: module/Application/view/application/user-area/bonus.phtml:62
 msgid "Valido dal"
@@ -1671,20 +1682,23 @@ msgid "Riepilogo"
 msgstr "Zhrnutie"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
-msgid "Descrizione:"
-msgstr "Popis:"
+#: module/Application/view/application/user-area/bonus.phtml:68
+#: module/Application/view/application/user-area/debt-collection.phtml:138
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:138
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:138
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:138
+msgid "Descrizione"
+msgstr "Popis"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:33
 msgid "GRATUITO"
 msgstr "ZDARMA"
 
-#: module/Application/view/application/customer-bonus-packages/package.phtml:41
-msgid "Valido dal:"
-msgstr "Platný od:"
-
+# valido si riferisce a bonus?
 #: module/Application/view/application/customer-bonus-packages/package.phtml:45
-msgid "Valido al:"
-msgstr "Platný do:"
+#: module/Application/view/application/user-area/bonus.phtml:65
+msgid "Valido al"
+msgstr "Platný na"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:57
 msgid "Vuoi confermare questo pacchetto?"
@@ -2084,44 +2098,6 @@ msgstr ""
 msgid " oppure all’indirizzo email "
 msgstr " alebo na email "
 
-#: module/Application/view/application/index/cosae.phtml:10
-msgid "Chi &egrave Share'nGo?"
-msgstr "Kto je Share'nGo?"
-
-#: module/Application/view/application/index/cosae.phtml:13
-#, php-format
-msgid ""
-"<strong>SHARE'NGO</strong>  è  una piattaforma nazionale per lo sviluppo "
-"della mobilità elettrica e sostenibile ideata e gestita da CS GROUP che "
-"offre servizi di car sharing free floating nelle più grandi città italiane, "
-"car sharing dislocato nelle città italiane di medie dimensioni (SHARE ‘NGO "
-"POINT) e courtesy car per il settore turistico-alberghiero con la propria "
-"divisione SHARE’NGO RENTAL oppure in noleggio a lungo termine, in "
-"partnership con ELETTRONLT.<br><br>Per <strong>SHARE'NGO</strong> la sfida "
-"più importante è quella di occuparsi del bisogno di mobilità urbana - che "
-"non può essere soddisfatto a piedi, in bicicletta o con i mezzi pubblici - "
-"offrendo un servizio di car sharing  a impatto zero e a prezzi finalmente "
-"accessibili a tutti.<br><br>Questa ispirazione e questa visione hanno "
-"portato Share'NGO alla scelta di NON avere un prezzo uguale per tutti, ma un "
-"prezzo individuale che si crea con una analisi del bisogno di mobilità e di "
-"premio allo stile di vita che precede la registrazione e genera uno sconto  "
-"fino al 50% delle tariffe nominali e quindi un sistema tariffario personale."
-"<br><br>Per questo, in tutte le città italiane ed europee dove opereremo "
-"servizi di car sharing le nostre auto si chiameranno EQUOMOBILI, con "
-"l’ambizione di rendere l’auto condivisa una abitudine di massa e l’uso in "
-"città di un’auto termica di proprietà un ricordo del passato.<br><br>Le auto "
-"scelte da SHARE’NGO sono microcar al 100%  elettriche e ad alte prestazioni, "
-"con oltre 100 KM di autonomia e gli equipaggiamenti tipici di una citycar: 2 "
-"posti, 300 litri di bagagliaio, servofreno, servosterzo, sensore posteriore "
-"di parcheggio, condizionatore, sedili regolabili, l’invidiabile ripresa ai "
-"semafori tipica delle macchine elettriche… e un sistema di navigazione "
-"basato su un computer di bordo mai visto su auto di questa classe. "
-"<br><br>Prodotte per noi dalla Xindayang del gruppo Geely Motor co, le "
-"Equomobili sono state progettate in Italia e in CS GROUP sono state "
-"assorbite le competenze meccaniche, elettroniche ed energetiche che hanno "
-"contribuito al loro sviluppo."
-msgstr ""
-
 #: module/Application/view/application/index/crawler.phtml:77
 msgid "Caricamento"
 msgstr "Údaje platby"
@@ -2237,42 +2213,39 @@ msgstr "FOOTPRINT len 4,5 M2"
 
 #: module/Application/view/application/index/index.phtml:164
 #: module/Application/view/application/index/map.phtml:40
-#: module/Application/view/application/index/map2.phtml:67
+#: module/Application/view/application/index/map2.phtml:70
 msgid "L\\'auto è occupata"
 msgstr "Auto je obsadené"
 
 #: module/Application/view/application/index/index.phtml:165
 #: module/Application/view/application/index/map.phtml:41
-#: module/Application/view/application/index/map2.phtml:68
+#: module/Application/view/application/index/map2.phtml:71
 msgid "Annulla prenotazione"
 msgstr "Zrušit rezerváciu"
 
 #: module/Application/view/application/index/index.phtml:166
 #: module/Application/view/application/index/map.phtml:42
-#: module/Application/view/application/index/map2.phtml:69
+#: module/Application/view/application/index/map2.phtml:72
 msgid "Prenota l\\'auto"
 msgstr "Rezervovať auto"
 
 #: module/Application/view/application/index/index.phtml:167
 #: module/Application/view/application/index/map.phtml:43
-#: module/Application/view/application/index/map2.phtml:70
+#: module/Application/view/application/index/map2.phtml:73
 msgid "Registrati e prenota"
 msgstr "Zaregistruj sa a rezervuj"
 
 #: module/Application/view/application/index/index.phtml:168
 #: module/Application/view/application/index/map.phtml:44
+#: module/Application/view/application/index/map2.phtml:34
 msgid "Cerca indirizzo"
 msgstr "Hľadať adresu"
 
-#: module/Application/view/application/index/map2.phtml:34
-msgid "CERCA INDIRIZZO"
-msgstr "HĽADAŤ ADRESU"
-
-#: module/Application/view/application/index/map2.phtml:49
+#: module/Application/view/application/index/map2.phtml:50
 msgid "Riduci la mappa"
 msgstr "Zmenšiť mapu"
 
-#: module/Application/view/application/index/map2.phtml:50
+#: module/Application/view/application/index/map2.phtml:51
 msgid "Estendi la mappa"
 msgstr "Zväčšiť mapu"
 
@@ -2387,19 +2360,6 @@ msgstr "Bonus"
 msgid "Totale minuti attualmente utilizzabili"
 msgstr "Celkový počet minút k dispozícii"
 
-# valido si riferisce a bonus?
-#: module/Application/view/application/user-area/bonus.phtml:65
-msgid "Valido al"
-msgstr "Platný na"
-
-#: module/Application/view/application/user-area/bonus.phtml:68
-#: module/Application/view/application/user-area/debt-collection.phtml:138
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:138
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:138
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:138
-msgid "Descrizione"
-msgstr "Popis"
-
 #: module/Application/view/application/user-area/bonus.phtml:71
 msgid "Minuti restanti"
 msgstr "Zostávajúce minúty"
@@ -2459,12 +2419,30 @@ msgid "per completare l&#39;attivazione del servizio"
 msgstr "na dokončenie aktivácie služby"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:39
+#: module/Application/view/application/user-area/dati-pagamento.phtml:156
+#: module/Application/view/application/user-area/debt-collection.phtml:108
+#: module/Application/view/application/user-area/debt-collection.phtml:174
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
+#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:174
+#: module/Application/view/application/user-area/rents.phtml:94
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:108
+#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:174
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:44
+#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
+#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
+#: module/Application/view/application/user/new-signup.phtml:152
 #: module/Application/view/application/user/new-signup.phtml:198
-msgid "Attenzione!"
-msgstr "Pozor!"
+#: module/Application/view/application/user/signup-nl1.phtml:151
+#: module/Application/view/application/user/signup-si1.phtml:151
+#: module/Application/view/application/user/signup-sk1.phtml:151
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
+msgid "Attenzione"
+msgstr "Upozornenie"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:39
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:45
@@ -2582,7 +2560,7 @@ msgid ""
 "CARTA</button> per inserirne una nuova."
 msgstr ""
 "Ak chceš vložiť novú kartu klikni na  <button class=\"medium red\" onclick="
-"\"openChangeCard()\">ZMENIŤ KARTU."
+"\"openChangeCard()\">ZMENIŤ KARTU</button>"
 
 #: module/Application/view/application/user-area/dati-pagamento.phtml:122
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:131
@@ -2603,17 +2581,6 @@ msgid ""
 "Non hai ancora inserito una carta di credito o prepagata sul tuo profilo."
 msgstr "Ešte si do svojho profilu nezadal platobnú/kreditnú kartu."
 
-#: module/Application/view/application/user-area/dati-pagamento.phtml:156
-#: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:164
-#: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:164
-#: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
-#: module/Application/view/application/user/new-signup.phtml:152
-#: module/Application/view/application/user/signup-nl1.phtml:151
-#: module/Application/view/application/user/signup-si1.phtml:151
-#: module/Application/view/application/user/signup-sk1.phtml:151
-msgid "ATTENZIONE"
-msgstr "UPOZORNENIE"
-
 #: module/Application/view/application/user-area/dati-pagamento.phtml:160
 msgid ""
 "Il cambio di carta prevede il pagamento della cifra di un centesimo di euro "
@@ -2633,8 +2600,18 @@ msgstr "POKRAČOVAŤ"
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:179
-msgid "CHIUDI"
-msgstr "ZAVRIEŤ"
+#: module/Application/view/application/user/new-signup2.phtml:417
+#: module/Application/view/application/user/new-signup2.phtml:444
+#: module/Application/view/application/user/new-signup2.phtml:465
+#: module/Application/view/application/user/signup-nl1.phtml:147
+#: module/Application/view/application/user/signup-nl2.phtml:365
+#: module/Application/view/application/user/signup-si1.phtml:147
+#: module/Application/view/application/user/signup-si2.phtml:379
+#: module/Application/view/application/user/signup-sk1.phtml:147
+#: module/Application/view/application/user/signup-sk2.phtml:375
+#: module/Application/view/partials/car-popup.phtml:101
+msgid "Chiudi"
+msgstr "Zavrieť"
 
 #: module/Application/view/application/user-area/debt-collection.phtml:32
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:32
@@ -2754,17 +2731,6 @@ msgstr "Čiastka"
 msgid "TOTALE"
 msgstr "CELKOM"
 
-#: module/Application/view/application/user-area/debt-collection.phtml:108
-#: module/Application/view/application/user-area/debt-collection.phtml:174
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:108
-#: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:174
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:108
-#: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:174
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
-#: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
-msgid "Attenzione:"
-msgstr "Upozornenie:"
-
 #: module/Application/view/application/user-area/debt-collection.phtml:124
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:124
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:124
@@ -2822,15 +2788,6 @@ msgstr "Údaje tvojho vodičského preukazu"
 #: module/Application/view/application/user/signup2.phtml:49
 msgid "Numero patente"
 msgstr "Číslo vodičského preukazu"
-
-#: module/Application/view/application/user-area/driving-licence-international.phtml:116
-#: module/Application/view/application/user-area/driving-licence-international.phtml:228
-#: module/Application/view/application/user-area/driving-licence.phtml:114
-#: module/Application/view/application/user-area/driving-licence.phtml:250
-#: module/Application/view/application/user/new-signup2.phtml:277
-#: module/Application/view/application/user/signup2.phtml:151
-msgid "Rilasciata (nazione)"
-msgstr "Vydaný(krajina)"
 
 #: module/Application/view/application/user-area/driving-licence-international.phtml:150
 #: module/Application/view/application/user-area/driving-licence.phtml:53
@@ -3566,11 +3523,6 @@ msgstr "Celkom"
 msgid "Da saldare"
 msgstr "Na uhradenie"
 
-#: module/Application/view/application/user-area/rents.phtml:94
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
-msgid "Attenzione"
-msgstr "Upozornenie"
-
 #: module/Application/view/application/user-area/rents.phtml:95
 msgid ""
 ": l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse "
@@ -3759,7 +3711,7 @@ msgstr ""
 "Ak chcete dokončiť vloženie vašich dát kliknite na prihlásenie a prihláste sa"
 
 #: module/Application/view/application/user/new-signup.phtml:202
-msgid "Il servizio a Milano è temporaneamente sospeso"
+msgid "Il servizio è temporaneamente sospeso a Milano e a Roma"
 msgstr ""
 
 #: module/Application/view/application/user/new-signup2.phtml:29
@@ -3984,22 +3936,6 @@ msgstr "Aktivácia zahŕňa kontrolu vodičského preukazu na Ministerstve vnút
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Pokračovať"
-
-#: module/Application/view/application/user/new-signup2.phtml:417
-#: module/Application/view/application/user/new-signup2.phtml:444
-#: module/Application/view/application/user/new-signup2.phtml:465
-#: module/Application/view/application/user/signup-nl1.phtml:147
-#: module/Application/view/application/user/signup-nl1.phtml:172
-#: module/Application/view/application/user/signup-nl2.phtml:365
-#: module/Application/view/application/user/signup-si1.phtml:147
-#: module/Application/view/application/user/signup-si1.phtml:172
-#: module/Application/view/application/user/signup-si2.phtml:379
-#: module/Application/view/application/user/signup-sk1.phtml:147
-#: module/Application/view/application/user/signup-sk1.phtml:172
-#: module/Application/view/application/user/signup-sk2.phtml:375
-#: module/Application/view/partials/car-popup.phtml:101
-msgid "Chiudi"
-msgstr "Zavrieť"
 
 #: module/Application/view/application/user/new-signup2.phtml:419
 msgid "Prima di procedere verifica:"
@@ -4551,8 +4487,10 @@ msgid "Login"
 msgstr "Login"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:28
-msgid "Recupera la password"
-msgstr "Zadaj svoje heslo"
+#: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
+#: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
+msgid "Recupero password"
+msgstr "Obnova hesla"
 
 #: module/Application/view/goalio-forgot-password/forgot/forgot.phtml:38
 msgid "Inserisci la tua email"
@@ -4570,11 +4508,6 @@ msgid ""
 "CAMBIARE LA PASSWORD"
 msgstr ""
 "PO ODOSLANÍ POŽIADAVKY SKONTROLUJ SVOJ E-MAIL A POUŽI LINK NA OBNOVENIE HESLA"
-
-#: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:3
-#: module/Application/view/goalio-forgot-password/forgot/sent.phtml:9
-msgid "Recupero password"
-msgstr "Obnova hesla"
 
 #: module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:13
 msgid "La tua password è stata cambiata."
@@ -4600,6 +4533,10 @@ msgstr "Skontroluj e-mail ktorý sme ti poslali na tvoju adresu %s."
 
 #: module/Application/view/layout/layout.phtml:10
 #: module/Application/view/layout/layout.phtml:95
+#: module/Application/view/layout/layout.phtml:155
+#: module/Application/view/layout/layout2.phtml:10
+#: module/Application/view/layout/map.phtml:10
+#: module/Application/view/layout/map2.phtml:10
 msgid "Share'NGo - the new mobility"
 msgstr "Share'NGo - the new mobility"
 
@@ -4625,8 +4562,12 @@ msgid "Car sharing"
 msgstr "Car sharing"
 
 #: module/Application/view/layout/layout.phtml:111
-msgid "Chi &egrave; Share'n GO?"
-msgstr "Kto je Share'n GO?"
+#: module/Application/view/partials/header/main_head.phtml:25
+#: module/Application/view/partials/header/main_head_nl_NL.phtml:25
+#: module/Application/view/partials/header/main_head_sk_SK.phtml:24
+#: module/Application/view/partials/header/main_head_sl_SI.phtml:24
+msgid "Chi è SharenGo"
+msgstr "O NÁS"
 
 #: module/Application/view/layout/layout.phtml:114
 #: module/Application/view/layout/layout.phtml:182
@@ -4658,10 +4599,6 @@ msgstr "Vyhradená oblasť"
 #: module/Application/view/layout/layout.phtml:129
 msgid "Log out"
 msgstr "Log out"
-
-#: module/Application/view/layout/layout.phtml:155
-msgid "Share 'N Go"
-msgstr "Share 'N Go"
 
 #: module/Application/view/layout/layout.phtml:156
 msgid "è un servizio di C.S. Group S.p.A."
@@ -4721,12 +4658,6 @@ msgstr ""
 "Cookies nám pomáhajú poskytovať naše služby. Používaním týchto služieb "
 "akceptujete používanie cookies z našej strany. Pre viac informácií kliknite "
 "prosím"
-
-#: module/Application/view/layout/layout2.phtml:10
-#: module/Application/view/layout/map.phtml:10
-#: module/Application/view/layout/map2.phtml:10
-msgid "Share'ngo"
-msgstr "Share'ngo"
 
 #: module/Application/view/partials/car-popup.phtml:34
 msgid "Auto scelta"
@@ -4954,13 +4885,6 @@ msgstr "AKCIE A BALIKY"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
 msgid "La città cambia"
 msgstr "Mesto sa mení"
-
-#: module/Application/view/partials/header/main_head.phtml:25
-#: module/Application/view/partials/header/main_head_nl_NL.phtml:25
-#: module/Application/view/partials/header/main_head_sk_SK.phtml:24
-#: module/Application/view/partials/header/main_head_sl_SI.phtml:24
-msgid "Chi è SharenGo"
-msgstr "O NÁS"
 
 #: module/Application/view/partials/header/main_head.phtml:26
 msgid "Vantaggi per te"
@@ -6132,6 +6056,48 @@ msgstr "(počkajte)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "(Verification code)"
+
+#~ msgid "Attenzione!"
+#~ msgstr "Pozor!"
+
+#~ msgid "ATTENZIONE"
+#~ msgstr "UPOZORNENIE"
+
+#~ msgid "Rilasciata da (nazione)"
+#~ msgstr "Vydané (krajina)"
+
+#~ msgid "Descrizione:"
+#~ msgstr "Popis:"
+
+#~ msgid "Valido dal:"
+#~ msgstr "Platný od:"
+
+#~ msgid "Valido al:"
+#~ msgstr "Platný do:"
+
+#~ msgid "Attenzione:"
+#~ msgstr "Upozornenie:"
+
+#~ msgid "Recupera la password"
+#~ msgstr "Zadaj svoje heslo"
+
+#~ msgid "Chi &egrave Share'nGo?"
+#~ msgstr "Kto je Share'nGo?"
+
+#~ msgid "CERCA INDIRIZZO"
+#~ msgstr "HĽADAŤ ADRESU"
+
+#~ msgid "CHIUDI"
+#~ msgstr "ZAVRIEŤ"
+
+#~ msgid "Chi &egrave; Share'n GO?"
+#~ msgstr "Kto je Share'n GO?"
+
+#~ msgid "Share 'N Go"
+#~ msgstr "Share 'N Go"
+
+#~ msgid "Share'ngo"
+#~ msgstr "Share'ngo"
 
 #~ msgid "promo e pacchetti"
 #~ msgstr "akcie a balíčky"
