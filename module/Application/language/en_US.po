@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-06 15:32+0100\n"
-"PO-Revision-Date: 2020-03-06 15:33+0100\n"
+"POT-Creation-Date: 2020-03-10 12:34+0100\n"
+"PO-Revision-Date: 2020-03-10 12:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -230,11 +230,11 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:1238
 #: module/Application/src/Application/Controller/UserController.php:1357
 #: module/Application/src/Application/Controller/UserController.php:1447
-#: module/Application/src/Application/Controller/UserController.php:1586
-#: module/Application/src/Application/Controller/UserController.php:1619
-#: module/Application/src/Application/Controller/UserController.php:1895
-#: module/Application/src/Application/Controller/UserController.php:1938
-#: module/Application/src/Application/Controller/UserController.php:2091
+#: module/Application/src/Application/Controller/UserController.php:1594
+#: module/Application/src/Application/Controller/UserController.php:1627
+#: module/Application/src/Application/Controller/UserController.php:1903
+#: module/Application/src/Application/Controller/UserController.php:1946
+#: module/Application/src/Application/Controller/UserController.php:2099
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -4138,6 +4138,22 @@ msgstr "Continue registration"
 msgid "45 minuti a soli 9,90&euro;"
 msgstr "45 minutes only 9,90&euro;"
 
+#: module/Application/view/application/user/signup-suspended.phtml:4
+msgid "Iscrizione"
+msgstr "Subscription"
+
+#: module/Application/view/application/user/signup-suspended.phtml:10
+msgid "Servizio sospeso"
+msgstr "Service suspended"
+
+#: module/Application/view/application/user/signup-suspended.phtml:17
+msgid ""
+"Attenzione. Il servizio di iscrizione a Share'n Go è temporanemente sospeso. "
+"Ci scusiamo per il disagio."
+msgstr ""
+"Caution. The registration service for Share'n Go is temporarily suspended. We "
+"apologize for the inconvenience."
+
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
 "L’iscrizione al servizio costa 10 euro con 30 minuti bonus (condizioni "
@@ -6145,9 +6161,6 @@ msgstr "Check transaction in progress."
 #~ "energetic skills that have contributed to their development have been "
 #~ "absorbed."
 
-#~ msgid "Attenzione! Il servizio a Milano è temporaneamente sospeso."
-#~ msgstr "Warning! The service in Milan is temporarily suspended."
-
 #~ msgid "Ciao "
 #~ msgstr "Hello "
 
@@ -6221,9 +6234,6 @@ msgstr "Check transaction in progress."
 #~ msgstr ""
 #~ "(whoever receives the Gift Card will be able to activate his account with "
 #~ "only 50 cents)"
-
-#~ msgid "Iscrizione +"
-#~ msgstr "Registration +"
 
 #~ msgid "Acquista"
 #~ msgstr "Buy"
