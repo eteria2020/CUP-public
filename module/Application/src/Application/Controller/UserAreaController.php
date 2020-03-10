@@ -250,9 +250,14 @@ class UserAreaController extends AbstractActionController {
         //if there is mobile param the layout changes
 
         $mobile = null;
-        if (strpos($this->getRequest()->getUriString(), 'mobile') !== false) {
+        if (strpos($this->getRequest()->getUriString(), 'mobile') !== false ) {
             $mobile = 'mobile';
             $this->layout('layout/map');
+        } else {
+            if(isset($this->request->getCookie()->mobile)){     // for manage the cookie in login page
+                $mobile = 'mobile';
+                $this->redirect()->toRoute('area-utente/mobile');
+            }
         }
 
         $customer = $this->userService->getIdentity();

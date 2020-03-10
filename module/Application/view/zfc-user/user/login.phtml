@@ -29,6 +29,7 @@
             $form->prepare();
             $form->setAttribute('action', $this->url('zfcuser/login'));
             $form->setAttribute('method', 'post');
+            $form->setAttribute('autocomplete', 'off');
             ?>
 
             <?php echo $this->form()->openTag($form) ?>
@@ -81,6 +82,10 @@
 </div>
 <!-- main -->
 <?php $this->headStyle()->captureStart() ?>
+
+
+
+
 .error-login {
     list-style-type: none;
 }
@@ -88,3 +93,17 @@
     color: red;
 }
 <?php $this->headStyle()->captureEnd() ?>
+<script>
+    $(document).ready(function() {
+        if(window.location.href.search('mobile')!==-1) {
+            document.cookie = "mobile=mobile; path=/";
+            $('.main_head').css("display","none");
+            $('#outer').css("padding-top","0px");
+            $('.block-languages').css("display","none");
+            $('.main_foot').css("display","none");
+        } else {
+            document.cookie = "mobile=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+    });
+
+</script>
