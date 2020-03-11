@@ -6026,6 +6026,7 @@ screen and (min-resolution: 1dppx) {
     border-right: 1px solid #efefef;
     color: #fff;
     font-weight: 600;
+    text-align: center;
     vertical-align: middle
 }
 .block-data-table .block-data-table-th:last-child {

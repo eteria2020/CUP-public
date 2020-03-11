@@ -200,8 +200,9 @@
 
 .rents-message {
     float: left;
-    width: 80%;
+    width: 100%;
     margin-bottom: 20px;
+    text-align:justify;
 }
 #footer .badge-green-number {
     position: relative;

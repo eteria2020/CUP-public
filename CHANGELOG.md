@@ -7,11 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-## [1.0.63] - 2020-03-10
+## [1.0.64] - 2020-03-11
 
 ### Changed
 
 - modified login page to manage the view for apps (hide header and footer)
+- fix some CSS for text justified in rents page
+
+## [1.0.63] - 2020-03-10
+
+### Changed
+
+- For Italian server instance, warning message for subscription suspended.
 
 ## [1.0.62] - 2020-03-06
 
