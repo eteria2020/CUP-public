@@ -330,11 +330,14 @@ return [
             'login' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/{login}',
+                    'route' => '/{login}[/:mobile]',
                     'defaults' => [
                         '__NAMESPACE__' => null,
                         'controller' => 'zfcuser',
                         'action' => 'login',
+                    ],
+                    'constraints' => [
+                        'mobile' => 'mobile'
                     ],
                 ]
             ],
