@@ -1,24 +1,16 @@
-<div id="main">
-    <!-- module-section-bookmark -->
-    <div class="module-section-bookmark yellow content-align-center">
-        <h1 class="module-main-title"><?= $this->translate("Iscrizione"); ?></h1>
-    </div>
-    <div class="content">
-        <div class="block-form w-2-4 auto-margin clearfix">
-            <div class="block-form-section content-align-center margin-bottom">
-                <h2>
-                    <i class="fa fa-warning"></i> <?= $this->translate("Servizio sospeso"); ?>
-                </h2>
-            </div>
-        </div>
-        <div class="block-form w-2-4 auto-margin clearfix">
-            <div class="block-field bw-f w-4-4" style="text-align: justify">
-                <label>
-                    <?= $this->translate("Attenzione. Il servizio di iscrizione a Share'n Go è temporanemente sospeso. Ci scusiamo per il disagio."); ?>
-                </label>
-            </div>
-        </div>
-    </div>
+<?php
+$this->headLink()
+    ->appendStylesheet($this->basePath('css/jquery-ui-1.8.22.custom.css'))
+    ->appendStylesheet($this->basePath('css/signup.css?v=0.1'));
+?>
 
+<!-- main -->
+<div id="main">
+    <div class="module-section-bookmark yellow content-align-center" style="padding:20px 10px 20px 10px">
+        <h1 class="module-main-title"><?= $this->translate("Iscrizione al servizio al momento non disponibile"); ?></h1>
+    </div>
+    <div style="display: inline-block; text-align: justify; color: #1c2329; font-size:1.2em; font-weight:700; padding: 10px 10px 0px 10px ">
+        <?= $this->translate("Stiamo lavorando ad un nuovo ed innovativo servizio di mobilità elettrica e sostenibile che lanceremo a breve e di cui presto ti daremo notizia sul sito Sharengo, sull' App e sulle nostre pagine social.") ?>
+    </div>
 </div>
 <!-- main -->
