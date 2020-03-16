@@ -116,7 +116,9 @@ $this->headLink()
             <div class="block-wrapper-button content-align-center">
                 <input type="submit" name="nextBtn" id="nextBtn" value="<?= $this->translate("CREA IL TUO ACCOUNT") ?>">
                 <p style="font-size: 12px; font-weight: 300; color: #07BA50; padding-top: 15px;">
-                    <?= $this->translate("Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo")?>
+                    <a href='<?= $this->basePath('pdf/nl/contract.pdf'); ?>'>
+                        <?= $this->translate("Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo")?>
+                    </a>
                 </p>
             </div>
             <br>
