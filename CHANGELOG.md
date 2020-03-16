@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.64] - 2020-03-16
+### Changed
+- Added link to PDF file on "Terms and Conditions" messaage from signup form
+
 ## [1.0.63] - 2020-03-10
 
 ### Changed
