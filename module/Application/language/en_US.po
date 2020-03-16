@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-10 12:34+0100\n"
-"PO-Revision-Date: 2020-03-10 12:39+0100\n"
+"POT-Creation-Date: 2020-03-13 17:34+0100\n"
+"PO-Revision-Date: 2020-03-13 17:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2099
+#: module/Application/config/module.config.php:2102
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2104
+#: module/Application/config/module.config.php:2107
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profile"
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2109
+#: module/Application/config/module.config.php:2112
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2114
+#: module/Application/config/module.config.php:2117
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2119
+#: module/Application/config/module.config.php:2122
 #: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Promos and packages"
 
-#: module/Application/config/module.config.php:2124
+#: module/Application/config/module.config.php:2127
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2129
+#: module/Application/config/module.config.php:2132
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2134
+#: module/Application/config/module.config.php:2137
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2139
+#: module/Application/config/module.config.php:2142
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -1571,8 +1571,7 @@ msgid ""
 "Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle nostre "
 "tariffe scontate."
 msgstr ""
-"Buy the Minuti piu pive package; suitable for you and take advantage of our "
-"discounted rates."
+"Buy the package that best suits you and take advantage of our discounted rates."
 
 #: module/Application/view/application/additional-services/additional-services.phtml:55
 msgid ""
@@ -2424,7 +2423,7 @@ msgstr "to complete the activation of the service"
 #: module/Application/view/application/user/signup-nl1.phtml:151
 #: module/Application/view/application/user/signup-si1.phtml:151
 #: module/Application/view/application/user/signup-sk1.phtml:151
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:99
 msgid "Attenzione"
 msgstr "Caution"
 
@@ -2660,7 +2659,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Inizio"
 msgstr "Start"
 
@@ -2669,7 +2668,7 @@ msgstr "Start"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Fine"
 msgstr "End"
 
@@ -2678,7 +2677,7 @@ msgstr "End"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Durata (min.)"
 msgstr "Duration (min.)"
 
@@ -2687,7 +2686,7 @@ msgstr "Duration (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:88
 msgid "Sosta (min.)"
 msgstr "Stop (min.)"
 
@@ -3501,12 +3500,12 @@ msgstr ""
 "amount of the charges for the month by applying your personal rate."
 
 #: module/Application/view/application/user-area/rents.phtml:82
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:89
 msgid "Totale"
 msgstr "Total"
 
 #: module/Application/view/application/user-area/rents.phtml:83
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:90
 msgid "Da saldare"
 msgstr "Pending payment"
 
@@ -3524,7 +3523,7 @@ msgstr ""
 "of Sharengo for reactivation."
 
 #: module/Application/view/application/user-area/rents.phtml:104
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:109
 msgid "Nessuna corsa effettuata finora"
 msgstr "No travel performed so far"
 
@@ -4138,21 +4137,19 @@ msgstr "Continue registration"
 msgid "45 minuti a soli 9,90&euro;"
 msgstr "45 minutes only 9,90&euro;"
 
-#: module/Application/view/application/user/signup-suspended.phtml:4
-msgid "Iscrizione"
-msgstr "Subscription"
-
 #: module/Application/view/application/user/signup-suspended.phtml:10
-msgid "Servizio sospeso"
-msgstr "Service suspended"
+msgid "Iscrizione al servizio al momento non disponibile"
+msgstr "Service subscription currently unavailable"
 
-#: module/Application/view/application/user/signup-suspended.phtml:17
+#: module/Application/view/application/user/signup-suspended.phtml:13
 msgid ""
-"Attenzione. Il servizio di iscrizione a Share'n Go è temporanemente sospeso. "
-"Ci scusiamo per il disagio."
+"Stiamo lavorando ad un nuovo ed innovativo servizio di mobilità elettrica e "
+"sostenibile che lanceremo a breve e di cui presto ti daremo notizia sul sito "
+"Sharengo, sull' App e sulle nostre pagine social."
 msgstr ""
-"Caution. The registration service for Share'n Go is temporarily suspended. We "
-"apologize for the inconvenience."
+"We are working on a new and innovative electric and sustainable mobility "
+"service that we will launch shortly and which we will soon inform you about on "
+"the Sharengo site, on the App and on our social pages."
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
@@ -6013,15 +6010,15 @@ msgstr ""
 "recognized. At the bottom of the table you will find the total amount of the "
 "charges for the month by applying your personal rate."
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Targa"
 msgstr "Plate"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:81
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Tipologia"
 msgstr "Type"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:97
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:100
 msgid ""
 "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
 "saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
@@ -6057,6 +6054,19 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
+
+#~ msgid "Iscrizione"
+#~ msgstr "Subscription"
+
+#~ msgid "Servizio sospeso"
+#~ msgstr "Service suspended"
+
+#~ msgid ""
+#~ "Attenzione. Il servizio di iscrizione a Share'n Go è temporanemente "
+#~ "sospeso. Ci scusiamo per il disagio."
+#~ msgstr ""
+#~ "Caution. The registration service for Share'n Go is temporarily suspended. "
+#~ "We apologize for the inconvenience."
 
 #~ msgid "Attenzione!"
 #~ msgstr "Warning!"
