@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-13 17:34+0100\n"
-"PO-Revision-Date: 2020-03-13 17:37+0100\n"
+"POT-Creation-Date: 2020-03-16 11:56+0100\n"
+"PO-Revision-Date: 2020-03-16 12:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1438,6 +1438,52 @@ msgstr "SI &egrave; VERIFIED A PROBLEM DURING REGISTRATION"
 msgid "Azienda"
 msgstr "Company"
 
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:47
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:49
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:62
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:63
+#: module/Application/view/partials/translations.phtml:278
+msgid "Gratis"
+msgstr "Free"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:51
+#: module/Application/view/partials/translations.phtml:279
+msgid "Privata"
+msgstr "Private"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:55
+#: module/Application/view/partials/translations.phtml:280
+msgid "Aziendale"
+msgstr "Company"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:277
+#: module/Application/view/application/user-area/trips.phtml:56
+#: module/Application/view/partials/translations.phtml:276
+msgid "Partenza"
+msgstr "Departure"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:295
+#: module/Application/view/application/user-area/trips.phtml:132
+#: module/Application/view/partials/translations.phtml:277
+msgid "Destinazione"
+msgstr "Destination"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:326
+#: module/Application/view/partials/translations.phtml:281
+msgid "Minuti bonus consumati"
+msgstr "Bonus minutes used"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:338
+#: module/Application/view/partials/translations.phtml:282
+msgid "Minuti gratuiti fruiti"
+msgstr "Free minutes used"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:401
+#, fuzzy
+#| msgid "Periodo"
+msgid "period_total"
+msgstr "Period"
+
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:89
 msgid ""
 "Operazione avvenuta con successo! Appena verrai confermato riceverai una email "
@@ -2423,7 +2469,7 @@ msgstr "to complete the activation of the service"
 #: module/Application/view/application/user/signup-nl1.phtml:151
 #: module/Application/view/application/user/signup-si1.phtml:151
 #: module/Application/view/application/user/signup-sk1.phtml:151
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:99
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:98
 msgid "Attenzione"
 msgstr "Caution"
 
@@ -2659,7 +2705,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Inizio"
 msgstr "Start"
 
@@ -2668,7 +2714,7 @@ msgstr "Start"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Fine"
 msgstr "End"
 
@@ -2677,7 +2723,7 @@ msgstr "End"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Durata (min.)"
 msgstr "Duration (min.)"
 
@@ -2686,7 +2732,7 @@ msgstr "Duration (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:88
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Sosta (min.)"
 msgstr "Stop (min.)"
 
@@ -3500,12 +3546,12 @@ msgstr ""
 "amount of the charges for the month by applying your personal rate."
 
 #: module/Application/view/application/user-area/rents.phtml:82
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:89
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:88
 msgid "Totale"
 msgstr "Total"
 
 #: module/Application/view/application/user-area/rents.phtml:83
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:90
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:89
 msgid "Da saldare"
 msgstr "Pending payment"
 
@@ -3523,7 +3569,7 @@ msgstr ""
 "of Sharengo for reactivation."
 
 #: module/Application/view/application/user-area/rents.phtml:104
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:109
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:108
 msgid "Nessuna corsa effettuata finora"
 msgstr "No travel performed so far"
 
@@ -3559,10 +3605,6 @@ msgstr "RENTALS"
 msgid "Ora"
 msgstr "Now"
 
-#: module/Application/view/application/user-area/trips.phtml:56
-msgid "Partenza"
-msgstr "Departure"
-
 #: module/Application/view/application/user-area/trips.phtml:59
 msgid "Netto"
 msgstr "Net"
@@ -3590,10 +3632,6 @@ msgstr "Duration of stay"
 #: module/Application/view/application/user-area/trips.phtml:121
 msgid "Distanza tot"
 msgstr "Distance tot"
-
-#: module/Application/view/application/user-area/trips.phtml:132
-msgid "Destinazione"
-msgstr "Destination"
 
 #: module/Application/view/application/user-area/trips.phtml:145
 msgid "Non hai ancora effettuato alcun noleggio"
@@ -6010,15 +6048,15 @@ msgstr ""
 "recognized. At the bottom of the table you will find the total amount of the "
 "charges for the month by applying your personal rate."
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Targa"
 msgstr "Plate"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Tipologia"
 msgstr "Type"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:100
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:99
 msgid ""
 "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
 "saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
@@ -6054,6 +6092,31 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
+
+#, fuzzy
+#~| msgid "Bonus minuti"
+#~ msgid "bonus_minutes_used"
+#~ msgstr "Bonus minutes"
+
+#, fuzzy
+#~| msgid "Registrati"
+#~ msgid "gratis"
+#~ msgstr "Sign in"
+
+#, fuzzy
+#~| msgid "Fatture"
+#~ msgid "departure"
+#~ msgstr "Invoices"
+
+#, fuzzy
+#~| msgid "Destinazione"
+#~ msgid "destination"
+#~ msgstr "Destination"
+
+#, fuzzy
+#~| msgid "Totali periodo"
+#~ msgid "total_period"
+#~ msgstr "Period totals"
 
 #~ msgid "Iscrizione"
 #~ msgstr "Subscription"

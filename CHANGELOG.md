@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-## [1.0.64] - 2020-03-16
+## [1.0.65] - 2020-03-18
 ### Changed
-- Added link to PDF file on "Terms and Conditions" messaage from signup form
+
+- Update Bankart module (for Transaction Indicator)
+- Update Public Business Module (for fix some translation)
+
+
+## [1.0.64] - 2020-03-17
+### Changed
+- Added link to PDF file on "Terms and Conditions" message from signup form
 
 ## [1.0.63] - 2020-03-10
 

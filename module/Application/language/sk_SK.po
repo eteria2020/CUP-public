@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-06 15:34+0100\n"
-"PO-Revision-Date: 2020-03-06 15:34+0100\n"
+"POT-Creation-Date: 2020-03-16 12:34+0100\n"
+"PO-Revision-Date: 2020-03-16 12:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2099
+#: module/Application/config/module.config.php:2102
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profil"
 
-#: module/Application/config/module.config.php:2104
+#: module/Application/config/module.config.php:2107
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profil"
 msgid "Patente"
 msgstr "Vodičský preukaz"
 
-#: module/Application/config/module.config.php:2109
+#: module/Application/config/module.config.php:2112
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2114
+#: module/Application/config/module.config.php:2117
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Sadzby"
 
-#: module/Application/config/module.config.php:2119
+#: module/Application/config/module.config.php:2122
 #: module/Application/view/application/additional-services/additional-services.phtml:30
 msgid "Promo e pacchetti"
 msgstr "Propagácie a balíčky"
 
-#: module/Application/config/module.config.php:2124
+#: module/Application/config/module.config.php:2127
 msgid "Bonus minuti"
 msgstr "Bonusové minúty"
 
-#: module/Application/config/module.config.php:2129
+#: module/Application/config/module.config.php:2132
 msgid "Corse completate"
 msgstr "Dokončené jazdy"
 
-#: module/Application/config/module.config.php:2134
+#: module/Application/config/module.config.php:2137
 msgid "Dati di pagamento"
 msgstr "Údaje platby"
 
-#: module/Application/config/module.config.php:2139
+#: module/Application/config/module.config.php:2142
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Faktúry"
@@ -231,11 +231,11 @@ msgstr "Nesprávne telefónne číslo"
 #: module/Application/src/Application/Controller/UserController.php:1238
 #: module/Application/src/Application/Controller/UserController.php:1357
 #: module/Application/src/Application/Controller/UserController.php:1447
-#: module/Application/src/Application/Controller/UserController.php:1586
-#: module/Application/src/Application/Controller/UserController.php:1619
-#: module/Application/src/Application/Controller/UserController.php:1895
-#: module/Application/src/Application/Controller/UserController.php:1938
-#: module/Application/src/Application/Controller/UserController.php:2091
+#: module/Application/src/Application/Controller/UserController.php:1594
+#: module/Application/src/Application/Controller/UserController.php:1627
+#: module/Application/src/Application/Controller/UserController.php:1903
+#: module/Application/src/Application/Controller/UserController.php:1946
+#: module/Application/src/Application/Controller/UserController.php:2099
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr "Relácia vypršala. Postup registrácie je potrebné zopakovať"
@@ -1443,6 +1443,50 @@ msgstr "VYSKYTOL SA PROBLÉM POČAS REGISTRÁCIE"
 msgid "Azienda"
 msgstr "Spoločnosť"
 
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:47
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:49
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:62
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:63
+#: module/Application/view/partials/translations.phtml:278
+msgid "Gratis"
+msgstr "Zadarmo"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:51
+#: module/Application/view/partials/translations.phtml:279
+msgid "Privata"
+msgstr "Súkromie"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:55
+#: module/Application/view/partials/translations.phtml:280
+msgid "Aziendale"
+msgstr "Obchodné"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:277
+#: module/Application/view/application/user-area/trips.phtml:56
+#: module/Application/view/partials/translations.phtml:276
+msgid "Partenza"
+msgstr "Odjazd"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:295
+#: module/Application/view/application/user-area/trips.phtml:132
+#: module/Application/view/partials/translations.phtml:277
+msgid "Destinazione"
+msgstr "Cieľ"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:326
+#: module/Application/view/partials/translations.phtml:281
+msgid "Minuti bonus consumati"
+msgstr "Strávené bonusové minúty"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:338
+#: module/Application/view/partials/translations.phtml:282
+msgid "Minuti gratuiti fruiti"
+msgstr "Využité voľné minúty"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:401
+msgid "period_total"
+msgstr "Obdobie"
+
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:89
 msgid ""
 "Operazione avvenuta con successo! Appena verrai confermato riceverai una "
@@ -2440,7 +2484,7 @@ msgstr "na dokončenie aktivácie služby"
 #: module/Application/view/application/user/signup-nl1.phtml:151
 #: module/Application/view/application/user/signup-si1.phtml:151
 #: module/Application/view/application/user/signup-sk1.phtml:151
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:98
 msgid "Attenzione"
 msgstr "Upozornenie"
 
@@ -2678,7 +2722,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Inizio"
 msgstr "Začiatok"
 
@@ -2687,7 +2731,7 @@ msgstr "Začiatok"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Fine"
 msgstr "Koniec"
 
@@ -2696,7 +2740,7 @@ msgstr "Koniec"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Durata (min.)"
 msgstr "Trvanie (min.)"
 
@@ -2705,7 +2749,7 @@ msgstr "Trvanie (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Sosta (min.)"
 msgstr "Zastávka (min.)"
 
@@ -3514,12 +3558,12 @@ msgstr ""
 "tvojej osobnej sadzby."
 
 #: module/Application/view/application/user-area/rents.phtml:82
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:88
 msgid "Totale"
 msgstr "Celkom"
 
 #: module/Application/view/application/user-area/rents.phtml:83
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:89
 msgid "Da saldare"
 msgstr "Na uhradenie"
 
@@ -3537,7 +3581,7 @@ msgstr ""
 "Obráť sa na zákaznícky servis SHARENGO pre opätovnú aktiváciu."
 
 #: module/Application/view/application/user-area/rents.phtml:104
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:108
 msgid "Nessuna corsa effettuata finora"
 msgstr "Zatiaľ neboli vykonané žiadne jazdy"
 
@@ -3573,10 +3617,6 @@ msgstr "PRENÁJMY"
 msgid "Ora"
 msgstr "Hodina"
 
-#: module/Application/view/application/user-area/trips.phtml:56
-msgid "Partenza"
-msgstr "Odjazd"
-
 #: module/Application/view/application/user-area/trips.phtml:59
 msgid "Netto"
 msgstr "Bez DPH"
@@ -3604,10 +3644,6 @@ msgstr "Trvanie zastavenia"
 #: module/Application/view/application/user-area/trips.phtml:121
 msgid "Distanza tot"
 msgstr "Celková vzdialenosť"
-
-#: module/Application/view/application/user-area/trips.phtml:132
-msgid "Destinazione"
-msgstr "Cieľ"
 
 #: module/Application/view/application/user-area/trips.phtml:145
 msgid "Non hai ancora effettuato alcun noleggio"
@@ -4156,6 +4192,17 @@ msgstr "Pokračujte v registrácii"
 #: module/Application/view/application/user/signup-sk2.phtml:35
 msgid "45 minuti a soli 9,90&euro;"
 msgstr "45 minút len ​​za 9,90&euro;"
+
+#: module/Application/view/application/user/signup-suspended.phtml:10
+msgid "Iscrizione al servizio al momento non disponibile"
+msgstr ""
+
+#: module/Application/view/application/user/signup-suspended.phtml:13
+msgid ""
+"Stiamo lavorando ad un nuovo ed innovativo servizio di mobilità elettrica e "
+"sostenibile che lanceremo a breve e di cui presto ti daremo notizia sul sito "
+"Sharengo, sull' App e sulle nostre pagine social."
+msgstr ""
 
 #: module/Application/view/application/user/signup.phtml:38
 msgid ""
@@ -6012,15 +6059,15 @@ msgstr ""
 "spodnej časti tabuľky nájdeš celkovú sumu poplatkov za mesiac použitím "
 "tvojej osobnej sadzby."
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Targa"
 msgstr "ŠPZ"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:81
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Tipologia"
 msgstr "Typológia"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:97
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:99
 msgid ""
 "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
 "saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
