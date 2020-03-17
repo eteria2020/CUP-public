@@ -512,7 +512,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/public-business-module.git",
-                "reference": "1c715a199240d25dee605e3b3061448c1b7dc2cd"
+                "reference": "ccada00cf733a7b5cafa37bce299d25fd6705bd9"
             },
             "require": {
                 "php": ">=5.4",
@@ -529,7 +529,7 @@
                 }
             },
             "description": "Business area in Admin",
-            "time": "2020-02-11 10:40:37"
+            "time": "2020-03-17 15:27:42"
         },
         {
             "name": "dmregister/zf2-resque",
@@ -2085,7 +2085,7 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs Team",
+                    "name": "KNPLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -3056,7 +3056,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/bankart.git",
-                "reference": "b513bc01fecd8e5e8fa72ec4b7595df46b9cef93"
+                "reference": "1b9e7caf362d85345d8ef8169314b1b52a682d54"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3071,7 +3071,7 @@
                 }
             },
             "description": "Bankart module for Sharengo",
-            "time": "2020-03-06 15:09:55"
+            "time": "2020-03-17 15:17:39"
         },
         {
             "name": "sharengo-web/cartasi",
