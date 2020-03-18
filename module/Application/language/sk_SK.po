@@ -4656,8 +4656,8 @@ msgid "Sede Legale"
 msgstr "Sídlo"
 
 #: module/Application/view/layout/layout.phtml:158
-msgid "Via dei Pelaghi 162, 57124 - Livorno (LI)"
-msgstr "Via dei Pelaghi 162, 57124 - Livorno (LI)"
+msgid "Scali Cerere n. 3, 57122 - Livorno (LI)"
+msgstr "Scali Cerere n. 3, 57122 - Livorno (LI)"
 
 #: module/Application/view/layout/layout.phtml:159
 msgid "Codice Fiscale e Partita IVA"
