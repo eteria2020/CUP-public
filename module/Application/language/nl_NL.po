@@ -4671,7 +4671,7 @@ msgid "Sede Legale"
 msgstr "Hoofdkantoor"
 
 #: module/Application/view/layout/layout.phtml:158
-msgid "Via dei Pelaghi 162, 57124 - Livorno (LI)"
+msgid "Scali Cerere n. 3, 57122 - Livorno (LI)"
 msgstr "Newtonweg 2 - 2952 BH  Alblasserdam"
 
 #: module/Application/view/layout/layout.phtml:159
