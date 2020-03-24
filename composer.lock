@@ -3056,7 +3056,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@git.sharengo.it/cup-it/bankart.git",
-                "reference": "1b9e7caf362d85345d8ef8169314b1b52a682d54"
+                "reference": "5c03491040865b349119b93fdc1c8d5422106baf"
             },
             "require": {
                 "doctrine/doctrine-orm-module": "0.*",
@@ -3071,7 +3071,7 @@
                 }
             },
             "description": "Bankart module for Sharengo",
-            "time": "2020-03-17 15:17:39"
+            "time": "2020-03-24 08:58:37"
         },
         {
             "name": "sharengo-web/cartasi",
