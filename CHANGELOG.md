@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.68] - 2020-03-30
+### Changed
+- Ticket 961: the 3 registration pages have been modified. 
+  To better find the changes I made, I inserted the string MYSHARENGO in the code. 
+
 ## [1.0.67] - 2020-03-24
 ### Changed
 - Update Bankart module
