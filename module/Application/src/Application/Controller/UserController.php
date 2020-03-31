@@ -1531,14 +1531,6 @@ class UserController extends AbstractActionController {
             return $this->redirect()->toRoute('signupNL1', ['mobile' => $mobile],['query' => ['lang' => 'nl_NL']]);
         } elseif($this->serverInstance["id"]=="sl_SI") {
             return $this->redirect()->toRoute('signupSI1', ['mobile' => $mobile],['query' => ['lang' => 'sl_SI']]);
-        } else  {
-            if ($mobile) {
-                $this->layout('layout/map');
-            }
-            $view = new ViewModel(['mobile' => $mobile]);
-            $view->setTemplate('application/user/signup-suspended');
-
-            return $view;
         }
 
         $customerSession = $this->registrationService->getSignupCustomerSession();
