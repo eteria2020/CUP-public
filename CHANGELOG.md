@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.69] - 2020-03-31
+### Changed
+- Public is back online. 
+  
 ## [1.0.68] - 2020-03-30
 ### Changed
 - Ticket 961: the 3 registration pages have been modified. 
