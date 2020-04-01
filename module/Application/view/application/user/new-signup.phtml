@@ -241,7 +241,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 <script type="text/javascript">
     $(document).ready(function () {
         tryAPIGeolocation();
-        suspendedFleet();
+        //suspendedFleet();
 
         overlay = $('#sng-overlay');
 
@@ -300,12 +300,12 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     $(function() {
         $('#registration-form').on('submit', function(e) {
-            if( $("#fleet option:selected" ).text()=='Milano' || $("#fleet option:selected" ).text()=='Roma') {
-                let overlay = $('#sng-overlay-suspended');
-                overlay.css("visibility", "visible");
-                e.preventDefault();
-                return false;
-            }
+            // if( $("#fleet option:selected" ).text()=='Milano' || $("#fleet option:selected" ).text()=='Roma') {
+            //     let overlay = $('#sng-overlay-suspended');
+            //     overlay.css("visibility", "visible");
+            //     e.preventDefault();
+            //     return false;
+            // }
             $("#nextBtn").attr("disabled", true);
             addLoader();
         });
