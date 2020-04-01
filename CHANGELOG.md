@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.70] - 2020-04-01
+### Changed
+- Removed message on sign up for fleet suspended 
+
 ## [1.0.69] - 2020-03-31
 ### Changed
 - Public is back online. 
