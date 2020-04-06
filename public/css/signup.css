@@ -237,3 +237,33 @@ div.load-overlay > div > p > i {
 #nextBtn{
     z-index: unset !important;
 }
+
+.optional_signup {
+    border-radius: 0 0 0 0 !important;
+    background: #289941 !important;
+    border: 1px solid #289941 !important;
+    font-weight: bold;
+    width: auto;
+    text-align: center;
+    line-height: 1em;
+    height: 40px;
+    display: inline-block;
+    padding: 12px 20px 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+    -webkit-appearance: button;
+}
+
+.optional_signup:hover {
+    box-shadow: 0 0 8px #fff;
+    -moz-box-shadow: 0 0 8px #fff;
+    -webkit-box-shadow: 0 0 8px #fff
+}

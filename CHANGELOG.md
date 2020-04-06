@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.72] - 2020-04-06
+### Changed
+- The "Prenotala oggi" button has been modified to open a link to a pdf instead of submitting the form
+
 ## [1.0.71] - 2020-04-02
 ### Changed
 - Updated privacy.pdf (#974) 
