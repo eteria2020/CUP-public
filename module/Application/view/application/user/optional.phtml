@@ -96,7 +96,8 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
                 </div>
                 -->
                 <div class="block-wrapper-button content-align-center">
-                    <input type="submit" name="" value="<?= $this->translate('Prenotala Oggi');?>">
+                    <a target="_blank" class="optional_signup"  href="https://site.sharengo.it/wp-content/uploads/2020/04/Form-online-PRENOTA-ORA-02.04.20.pdf" ><?= $this->translate('Prenotala Oggi');?></a>
+                    <!--input type="submit" name="" value="<?= $this->translate('Prenotala Oggi');?>"-->
                 </div>
                 
                 </form>
@@ -110,7 +111,7 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
     </div>
     <!-- main -->
 
-    <?
+    <?php
     $this->inlineScript()->appendScript(
         '$(document).ready(function() {
             $( "#driverLicenseReleaseDate" ).datepicker({
