@@ -9,7 +9,7 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 
 ## [1.0.73] - 2020-04-07
 ### Changed
-- Updated main_head menu for MySharengo project (#987) 
+- Updated main_head menu and main_foot for MySharengo project (#987) 
 
 ## [1.0.72] - 2020-04-06
 ### Changed
