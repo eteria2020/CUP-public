@@ -5,12 +5,6 @@ $gender = $this->customer->getGender();
 $verifyWomenVoucher = $this->verifyWomenVoucher; //verify number of one month trip
 $mobile = $this->mobile;
 
-
-$displayNonePackages = "";
-if(is_null($this->serverInstance)){
-    $displayNonePackages = "display: none;";
-}
-
 ?>
 <!-- main -->
 <div id="main" class="detect-window-height">
@@ -22,12 +16,12 @@ if(is_null($this->serverInstance)){
         <?php echo $this->navigation('navigation')->menu()->setPartial('partials/left-menu-user-area'); ?>
 
         <!-- module-column-app sx -->
-
+        
         <!-- module-column-app dx -->
         <div class="module-column-app side-dx">
 
             <div class="module-heading-app">
-                <h1 class="module-main-title"><?= $this->translate('Promo e pacchetti'); ?></h1>
+                <h1 class="module-main-title"><?= $this->translate('Canoni e Tariffe'); ?></h1>
                 <?php echo $this->partial('partials/welcome-user-area'); ?>
             </div>
 
@@ -38,21 +32,20 @@ if(is_null($this->serverInstance)){
                     ?>
 
                     <!-- Bonus packages section -->
-                    <div class="block-form bw-f w-3-3  clearfix" style="<?=$displayNonePackages ?>">
+                    <div class="block-form bw-f w-3-3  clearfix">
 
-                        <!-- Title -->
+                        <!-- Title MYSHARENGO -->
                         <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-shopping-cart"></i> <?= $this->translate('Acquista Pacchetti'); ?></h2>
+                            <h2><?= $this->translate('Prenota ora il tuo Abbonamento'); ?></h2>
                         </div>
-                        <!-- title -->
-
+                        <!-- title MYSHARENGO-->
                         <div class="block-field block-avatar-app content-align-center">
                             <span class="block-sub-title">
-                                <?= $this->translate('Acquista il Pacchetto Minuti pi&ugrave; adatto a te e approfitta delle nostre tariffe scontate.') ?>
+                                <?= $this->translate('Con la nuova mobilità di MYSHARENGO puoi disporre di una Sharengo tutta per te  per il tempo che ti serve,') ?>
                             </span>
                             <br>
                             <span class="block-sub-title">
-                                <?= $this->translate('Prima di scegliere il tuo preferito assicurati di aver completato la tua registrazione con l\'acquisto del Pacchetto Benvenuto.'); ?>
+                                <?= $this->translate('scegli  tra le opzioni di tempo e di tariffe quella più adatta a te.'); ?>
                             </span>    
                         </div>
                         <br><br>
@@ -78,27 +71,11 @@ if(is_null($this->serverInstance)){
                                     <div class="content-align-center">
                                         <p class=<?= $package->getCode()=="WOMEN" ? 'women-voucher' : '"fa-2x highlight font-weight bold"'; ?>
                                             <?= $package->getCode()=="CODE13" ? 'style="color:red"' :''?>><?= strtoupper($this->translate($package->getName())) ?></p>
-                                        <span style="font-size: 2.2rem"><?= $package->getMinutes() ?></span>
-                                        <span style="font-size: 1.5rem;"><?= $this->translate('min') ?></span>
-                                        <?php if($package->getType()==="Pacchetto"){ ?>
-                                            <p class="block-sub-title"><?= sprintf("%s %.2f &euro;", $this->translate('a'),$package->getCost() / 100) ?></p>
-
-                                            <p class="block-sub-title">
+                                        
+                                        <!-- title -->
+                                        <span style="font-size: 2.2rem">
+                                            
                                             <?php
-                                            if($package->getMinutes()>0) {
-                                                $cost = ($package->getCost()/100) / $package->getMinutes();
-                                                $cost_round = sprintf("%.2f", $cost);
-                                                if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
-                                                    $cost_round = substr($cost_round,0,strlen($cost_round)-1);
-                                                }
-
-                                                echo sprintf("%s &euro;/", $cost_round).$this->translate('min');
-
-                                            }
-                                            ?>
-                                            </p>
-                                            <p class="block-sub-title"><?= $this->translate('Validità') ?>
-                                                <?php
                                                     // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
                                                     $months = floor($package->getDuration() / 30);
                                                     if ($months>0) {
@@ -108,23 +85,27 @@ if(is_null($this->serverInstance)){
                                                     }
 
                                                 ?>
-                                            </p>
-                                        <?php }else{?>
-                                            <p class="block-sub-title"><?= $this->translate('a') ?> <?= sprintf("%.0f", $package->getCost()) ?></p>
-                                            <p class="block-sub-title">
+                                            
+                                        </span>
+                                        
+                                            <p class="block-sub-title" style="font-size: 1.5rem"><?= sprintf("%s %.0f &euro;", $this->translate('a'),$package->getCost() / 100) ?></p>
+
+                                            <p class="block-sub-title" style="font-size: 1.2rem; margin-top: 0.5rem">
                                             <?php
-                                                $cost_round = "0,0";
-                                                echo sprintf("%.1f &euro;/", $cost_round).$this->translate('min');
+                                            if($package->getDuration()>0) {
+                                                $cost = ($package->getCost()/100) / 30; //$package->getDuration();
+                                                $cost_round = sprintf("%.1f", $cost);
+                                                if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
+                                                    $cost_round = substr($cost_round,0,strlen($cost_round)-2);
+                                                }
+
+                                                echo sprintf("%s &euro;/", $cost_round).$this->translate('giorno');
+
+                                            }
                                             ?>
                                             </p>
-                                            <p class="block-sub-title"><?= $this->translate('Validità') ?>
-                                                <?php
-                                                    // Duration is expressed in days for packet points
-                                                    $day = floor($package->getDuration());
-                                                    echo ' '.$day.' '.($day > 1 ? $this->translate('giorni') : $this->translate('giorno'));
-                                                ?>
-                                            </p>
-                                        <?php }?>  
+                                            
+                                          
                                     </div>
                                 </div>
                             </div>
@@ -140,13 +121,11 @@ if(is_null($this->serverInstance)){
                         <div class="block-data-table clearboth clearfix margin-top-custom" style="box-sizing: border-box;">
                             <!-- Table header -->
                             <div class="block-data-table-row clearfix" style="text-align: center;">
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Nome'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Minuti'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Prezzo'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido dal'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Valido fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Disponibile fino'); ?></div>
-                                <div class="block-data-table-th cw-1-7"><?= $this->translate('Acquista/Converti'); ?></div>
+                                <div class="block-data-table-th cw-1-5"><?= $this->translate('Nome'); ?></div>
+                                <div class="block-data-table-th cw-1-5"><?= $this->translate('Mesi'); ?></div>
+                                <div class="block-data-table-th cw-1-5"><?= $this->translate('Prezzo (IVA Inclusa)'); ?></div>
+                                <div class="block-data-table-th cw-1-5"><?= $this->translate('Prezzo al giorno (IVA Inclusa)'); ?></div>
+                                <div class="block-data-table-th cw-1-5"><?= $this->translate('Prenota'); ?></div>
                             </div>
                             <!-- table header -->
                             <?php
@@ -166,26 +145,38 @@ if(is_null($this->serverInstance)){
                             ?>
                             <!-- Table body -->
                             <div class="block-data-table-row clearfix <?= $oddOrEven ?>" style="text-align: center;">
-                                <div class="block-data-table-td cw-1-7"><?= $this->translate($package->getName()) ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getMinutes() . (" min.") ?></div>
-                                <?php if($package->getType()==="Pacchetto"){ ?>
-                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.2f &euro;", $package->getCost() / 100) ?></div>
-                                <?php }else{ ?>
-                                    <div class="block-data-table-td cw-1-7"><?= sprintf("%.0f &euro;", 0) ?></div>
-                                <?php } ?>
-                                <div class="block-data-table-td cw-1-7"><?= $validFrom ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $validTo ?></div>
-                                <div class="block-data-table-td cw-1-7"><?= $package->getBuyableUntil()->format("d-m-Y") ?></div>
-                                <div class="block-data-table-td cw-1-7">
-                                    <?php if ($package->getCode()=="WOMEN" && $verifyWomenVoucher>=1) { ?>
-                                    <a onclick="verify()">
-                                        <i class="fa fa-cart-plus"></i>
-                                    </a>
-                                    <?php } else { ?>
+                                <div class="block-data-table-td cw-1-5"><?= $this->translate($package->getName()) ?></div>
+                                <div class="block-data-table-td cw-1-5">
+                                    <?php
+                                        
+                                        // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
+                                        $months = floor($package->getDuration() / 30);
+                                        if ($months>0) {
+                                            echo ' '.$months.' '.($months > 1 ? $this->translate('mesi') : $this->translate('mese'));
+                                        } else {
+                                            echo ' '.$package->getDuration().' '.($package->getDuration() > 1 ? $this->translate('giorni') : $this->translate('giorno'));
+                                        }
+                                    ?>
+                                </div>
+                                <div class="block-data-table-td cw-1-5"><?= sprintf("%.0f &euro;", $package->getCost() / 100) ?></div>
+                                <div class="block-data-table-td cw-1-5">
+                                            <?php
+                                            if($package->getDuration()>0) {
+                                                $cost = ($package->getCost()/100) / 30; //$package->getDuration();
+                                                $cost_round = sprintf("%.1f", $cost);
+                                                if(substr($cost_round, -1)==='0'){ // if last char is a '0', then remove
+                                                    $cost_round = substr($cost_round,0,strlen($cost_round)-2);
+                                                }
+
+                                                echo sprintf("%s &euro;/", $cost_round).$this->translate('giorno');
+
+                                            }
+                                            ?>
+                                </div>
+                                <div class="block-data-table-td cw-1-5">
                                     <a href="<?= $this->url('area-utente/bonus-package', ['id' => $package->getId()], ['force_canonical' => true]) ?>" class="buyPackage">
                                         <i class="fa fa-cart-plus"></i>
                                     </a>
-                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="block-data-table-row data-info clearfix" style="display: table-row; border: none; text-align: justify">
@@ -206,38 +197,6 @@ if(is_null($this->serverInstance)){
                     <?php
                         }
                     ?>
-
-                    <div class="block-form bw-f margin-separator"></div>
-
-                    <!-- Promo code section -->
-                    <div class="block-form bw-f w-3-3  clearfix">
-
-                        <?php echo $this->partial('partials/flash-messages.phtml', []); ?>
-
-                        <div class="block-form-section content-align-center margin-bottom">
-                            <h2><i class="fa fa-gift"></i> <?= $this->translate('Codice promo'); ?></h2>
-                        </div>
-                        <?= $this->form()->openTag($form); ?>
-                            <div class="block-row-field clearfix">
-                                <div class="block-field bw-f w-4-4">
-                                    <div>
-                                        <label><?= $this->translate('Inserisci il codice promo'); ?></label>
-                                        <?php
-                                                $promoCode = $form->get('promocode')->get('promocode');
-                                                echo $this->formElement($promoCode->setAttribute('class', 'required'));
-                                                echo $this->formElementErrors($promoCode, ['class' => 'errors']);
-
-                                                echo $this->form()->openTag($form);
-                                                ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block-wrapper-button content-align-center">
-                                <input type="submit" name="" value="<?= $this->translate('Valida'); ?>">
-                            </div>
-                        <?php echo $this->form()->closeTag(); ?>
-                    </div>
-                    <!-- promo code section -->
 
                 </div>
             </div>

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.75] - 2020-04-08
+### Changed
+- The page dedicated to the purchase of packages in the user area has been modified 
+
 ## [1.0.74] - 2020-04-08
 ### Changed
 - Reactivated Modena fleet for MySharengo project (#998) 
