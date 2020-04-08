@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-30 11:53+0200\n"
-"PO-Revision-Date: 2020-03-30 12:01+0200\n"
+"POT-Creation-Date: 2020-04-08 14:53+0200\n"
+"PO-Revision-Date: 2020-04-08 15:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2102
+#: module/Application/config/module.config.php:2103
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2107
+#: module/Application/config/module.config.php:2108
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profile"
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2112
+#: module/Application/config/module.config.php:2113
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2117
+#: module/Application/config/module.config.php:2118
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2122
-#: module/Application/view/application/additional-services/additional-services.phtml:30
-msgid "Promo e pacchetti"
-msgstr "Promos and packages"
+#: module/Application/config/module.config.php:2123
+#: module/Application/view/application/additional-services/my-additional-services.phtml:30
+msgid "Canoni e Tariffe"
+msgstr "Packages &amp; Promotions"
 
-#: module/Application/config/module.config.php:2127
+#: module/Application/config/module.config.php:2128
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2132
+#: module/Application/config/module.config.php:2133
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2137
+#: module/Application/config/module.config.php:2138
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2142
+#: module/Application/config/module.config.php:2143
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -76,6 +76,9 @@ msgstr "Invoices"
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:151
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:160
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:167
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:237
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:246
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:253
 #: module/Application/src/Application/Controller/UserAreaController.php:425
 #: module/Application/src/Application/Controller/UserAreaController.php:560
 #: module/Application/src/Application/Controller/UserAreaController.php:622
@@ -83,31 +86,37 @@ msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:155
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:241
 msgid "Si è verificato un errore applicativo STD."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:162
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:248
 msgid "Si è verificato un errore applicativo PCO."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:169
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:255
 msgid "Promocode non valido."
 msgstr "Promo code not valid."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:171
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:257
 msgid "Promocode già utilizzato."
 msgstr "The promo code has already been used."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:173
+#: module/Application/src/Application/Controller/AdditionalServicesController.php:259
 msgid "Si è verificato un errore applicativo CR."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:121
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:154
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:214
 msgid "Impossibile completare l'acquisto del pacchetto richiesto"
 msgstr "The purchase of the requested package can not be completed"
 
 #: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:127
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:166
 #: module/Application/view/application/customer-bonus-packages/package.phtml:64
 msgid ""
 "Occorre effettuare l'acquisto del Pacchetto Benvenuto prima di poter "
@@ -123,19 +132,37 @@ msgstr "Purchase of the package completed successfully"
 msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
 msgstr "An error occurred while purchasing the requested package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:158
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:159
+#, fuzzy
+#| msgid "Impossibile completare l'acquisto del pacchetto richiesto"
+msgid "Impossibile completare la prenotazione del pacchetto richiesto"
+msgstr "The purchase of the requested package can not be completed"
+
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:176
+#, fuzzy
+#| msgid "Acquisto del pacchetto completato correttamente"
+msgid "Prenotazione del pacchetto completata correttamente"
+msgstr "Purchase of the package completed successfully"
+
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:178
+#, fuzzy
+#| msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
+msgid "Si è verificato un errore durante la prenotazione del pacchetto richiesto"
+msgstr "An error occurred while purchasing the requested package"
+
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:218
 msgid "Utente non riconosciuto"
 msgstr "User not recognized"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:162
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:222
 msgid "Pacchetto non valido"
 msgstr "Invalid package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:169
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:229
 msgid "Punti ossigeno insufficienti"
 msgstr "Insufficient oxygen points"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:172
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:232
 msgid "Pacchetto non acquistabile"
 msgstr "Package not buyable"
 
@@ -230,11 +257,11 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:1238
 #: module/Application/src/Application/Controller/UserController.php:1357
 #: module/Application/src/Application/Controller/UserController.php:1447
-#: module/Application/src/Application/Controller/UserController.php:1594
-#: module/Application/src/Application/Controller/UserController.php:1627
-#: module/Application/src/Application/Controller/UserController.php:1903
-#: module/Application/src/Application/Controller/UserController.php:1946
-#: module/Application/src/Application/Controller/UserController.php:2100
+#: module/Application/src/Application/Controller/UserController.php:1586
+#: module/Application/src/Application/Controller/UserController.php:1619
+#: module/Application/src/Application/Controller/UserController.php:1895
+#: module/Application/src/Application/Controller/UserController.php:1938
+#: module/Application/src/Application/Controller/UserController.php:2091
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -294,6 +321,7 @@ msgstr "Mrs"
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
 #: module/Application/view/application/additional-services/additional-services.phtml:143
+#: module/Application/view/application/additional-services/my-additional-services.phtml:130
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -1562,6 +1590,10 @@ msgstr "Invalid transaction"
 msgid "Transazione non valida (id non trovato)"
 msgstr "Invalid transaction (id not found)"
 
+#: module/Application/view/application/additional-services/additional-services.phtml:30
+msgid "Promo e pacchetti"
+msgstr "Promos and packages"
+
 #: module/Application/view/application/additional-services/additional-services.phtml:45
 msgid "Acquista Pacchetti"
 msgstr "Buy Packages"
@@ -1589,29 +1621,43 @@ msgstr "min"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:84
 #: module/Application/view/application/additional-services/additional-services.phtml:113
+#: module/Application/view/application/additional-services/my-additional-services.phtml:97
 msgid "a"
 msgstr "to"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:100
 #: module/Application/view/application/additional-services/additional-services.phtml:120
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:27
 msgid "Validità"
 msgstr "Validity"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:105
+#: module/Application/view/application/additional-services/my-additional-services.phtml:88
+#: module/Application/view/application/additional-services/my-additional-services.phtml:161
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:33
 msgid "mesi"
 msgstr "months"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:105
+#: module/Application/view/application/additional-services/my-additional-services.phtml:88
+#: module/Application/view/application/additional-services/my-additional-services.phtml:161
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:33
 msgid "mese"
 msgstr "month"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:107
 #: module/Application/view/application/additional-services/additional-services.phtml:124
+#: module/Application/view/application/additional-services/my-additional-services.phtml:90
+#: module/Application/view/application/additional-services/my-additional-services.phtml:163
 msgid "giorni"
 msgstr "days"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:107
 #: module/Application/view/application/additional-services/additional-services.phtml:124
+#: module/Application/view/application/additional-services/my-additional-services.phtml:90
+#: module/Application/view/application/additional-services/my-additional-services.phtml:108
+#: module/Application/view/application/additional-services/my-additional-services.phtml:163
+#: module/Application/view/application/additional-services/my-additional-services.phtml:177
 msgid "giorno"
 msgstr "day"
 
@@ -1622,6 +1668,7 @@ msgid "Minuti"
 msgstr "Minutes"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:145
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:42
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
@@ -1648,6 +1695,8 @@ msgid "Acquista/Converti"
 msgstr "Buy / Convert"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:164
+#: module/Application/view/application/additional-services/my-additional-services.phtml:149
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:3
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
@@ -1668,10 +1717,44 @@ msgstr "Enter the promo code"
 msgid "Valida"
 msgstr "Valid"
 
+#: module/Application/view/application/additional-services/my-additional-services.phtml:45
+msgid "Prenota ora il tuo Abbonamento"
+msgstr "Book your subscription now"
+
+#: module/Application/view/application/additional-services/my-additional-services.phtml:50
+msgid ""
+"Con la nuova mobilità di MYSHARENGO puoi disporre di una Sharengo tutta per "
+"te  per il tempo che ti serve,"
+msgstr ""
+"With the new mobility of MYSHARENGO you can have a Sharengo all for you for "
+"the time you need,"
+
+#: module/Application/view/application/additional-services/my-additional-services.phtml:54
+msgid "scegli  tra le opzioni di tempo e di tariffe quella più adatta a te."
+msgstr "choose the most suitable options for time and rates."
+
+#: module/Application/view/application/additional-services/my-additional-services.phtml:131
+msgid "Mesi"
+msgstr "Months"
+
+#: module/Application/view/application/additional-services/my-additional-services.phtml:132
+msgid "Prezzo (IVA Inclusa)"
+msgstr "Price (VAT included)"
+
+#: module/Application/view/application/additional-services/my-additional-services.phtml:133
+msgid "Prezzo al giorno (IVA Inclusa)"
+msgstr "Price per day (VAT included)"
+
+#: module/Application/view/application/additional-services/my-additional-services.phtml:134
+msgid "Prenota"
+msgstr "Book"
+
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:17
 #: module/Application/view/application/customer-bonus-packages/package.phtml:17
 msgid "Riepilogo"
 msgstr "Summary"
 
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:21
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
 #: module/Application/view/application/user-area/bonus.phtml:68
 #: module/Application/view/application/user-area/debt-collection.phtml:138
@@ -1681,9 +1764,23 @@ msgstr "Summary"
 msgid "Descrizione"
 msgstr "Description"
 
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:44
 #: module/Application/view/application/customer-bonus-packages/package.phtml:33
 msgid "GRATUITO"
 msgstr "FREE"
+
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:55
+msgid "Per prenotare clicca su CONFERMA e verrai contattato dal Servizio Clienti"
+msgstr ""
+"To book click on CONFIRM and you will be contacted by the Customer Service"
+
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:56
+#: module/Application/view/application/customer-bonus-packages/package.phtml:61
+#: module/Application/view/application/customer-bonus-packages/package.phtml:68
+#: module/Application/view/application/customer-bonus-packages/package.phtml:71
+#: module/Application/view/partials/car-popup.phtml:136
+msgid "Conferma"
+msgstr "Confirmation"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:45
 #: module/Application/view/application/user-area/bonus.phtml:65
@@ -1697,13 +1794,6 @@ msgstr "Do you want to confirm this package?"
 #: module/Application/view/application/customer-bonus-packages/package.phtml:59
 msgid "Confermare l'acquisto utilizzando carta di credito?"
 msgstr "Confirm the purchase using a credit card?"
-
-#: module/Application/view/application/customer-bonus-packages/package.phtml:61
-#: module/Application/view/application/customer-bonus-packages/package.phtml:68
-#: module/Application/view/application/customer-bonus-packages/package.phtml:71
-#: module/Application/view/partials/car-popup.phtml:136
-msgid "Conferma"
-msgstr "Confirmation"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:66
 msgid "Confermare l'acquisto registrando una carta di credito"
@@ -4078,6 +4168,7 @@ msgid "Vai in area riservata"
 msgstr "Go to the restricted area"
 
 #: module/Application/view/application/user/optional.phtml:99
+#: module/Application/view/application/user/optional.phtml:100
 #, fuzzy
 #| msgid "Prenota l\\'auto"
 msgid "Prenotala Oggi"

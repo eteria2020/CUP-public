@@ -213,4 +213,90 @@ class AdditionalServicesController extends AbstractActionController {
             'serverInstance' => $serverInstance,
         ]);
     }
+    
+    public function myAdditionalServicesAction() {
+        //if there is mobile param change layout
+        $mobile = $this->params()->fromRoute('mobile');
+        if ($mobile) {
+            $this->layout('layout/map');
+        }
+        $form = $this->promoCodeForm;
+
+        if ($this->getRequest()->isPost()) {
+            $customer = $this->authService->getIdentity();
+            $postData = $this->getRequest()->getPost()->toArray();
+            $form->setData($postData);
+
+            if ($form->isValid()) {
+                $code = $postData['promocode']['promocode'];
+
+                if ($this->promoCodeService->isStandardPromoCode($code)) {
+                    try {
+                        $promoCode = $this->promoCodeService->getPromoCode($code);
+                        $this->customersService->addBonusFromPromoCode($customer, $promoCode);
+                        $this->flashMessenger()->addSuccessMessage($this->translator->translate('Operazione completata con successo!'));
+                    } catch (BonusAssignmentException $e) {
+                        $this->flashMessenger()->addErrorMessage($e->getMessage());
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate('Si è verificato un errore applicativo STD.'));
+                    }
+                } elseif ($this->promoCodeOnceService->isValid($code)) {
+                    try {
+                        $this->promoCodeOnceService->usePromoCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage($this->translator->translate('Operazione completata con successo!'));
+                    } catch (\Exception $ex) {
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate('Si è verificato un errore applicativo PCO.'));
+                    }
+                } else {
+                    try {
+                        $this->carrefourService->addFromCode($customer, $code);
+                        $this->flashMessenger()->addSuccessMessage($this->translator->translate('Operazione completata con successo!'));
+                    } catch (NotAValidCodeException $ex) {
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate('Promocode non valido.'));
+                    } catch (CodeAlreadyUsedException $ex) {
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate('Promocode già utilizzato.'));
+                    } catch (\Exception $e) {
+                        $this->flashMessenger()->addErrorMessage($this->translator->translate('Si è verificato un errore applicativo CR.'));
+                    }
+                }
+
+                return $this->redirect()->toRoute('area-utente/additional-services');
+            }
+
+        }
+
+        $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
+        $customer = $this->authService->getIdentity();
+
+        $verifyWomenVoucher = count($this->bonusService->verifyWomenBonusPackage($customer));
+
+        /* Benvenuto Package */
+        $verifyWelcomePackage = count($this->bonusService->verifyWelcomeBonusPackage($customer));
+        $firstTrip = $this->tripsService->getFirstTripInvoicedByCustomer($customer);
+        $verifyFirstTrip = false;
+        if (count($firstTrip) == 1) {
+            $now = new \DateTime();
+            $firstTripDate = clone $firstTrip->getTimestampBeginning();
+            $firstTripDateYear = $firstTrip->getTimestampBeginning()->add(new \DateInterval("P1Y")); //first invoiced trip + 1 year
+            if ($now >= $firstTripDate && $now <= $firstTripDateYear) {
+                $verifyFirstTrip = true;
+            }
+        }
+        $showWelcomePackage = false;
+        if ($verifyWelcomePackage == 0 && $customer->getFirstPaymentCompleted() && $verifyFirstTrip) {
+            $showWelcomePackage = true;
+        }
+
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
+        return new ViewModel([
+            'promoCodeForm' => $form,
+            'bonusPackages' => $bonusPackages,
+            'customer' => $customer,
+            'verifyWomenVoucher' => $verifyWomenVoucher,
+            'mobile' => $mobile,
+            'showWelcomePackage' => $showWelcomePackage,
+            'serverInstance' => $serverInstance,
+        ]);
+    }
 }
