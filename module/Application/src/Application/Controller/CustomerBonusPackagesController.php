@@ -138,7 +138,67 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         return new JsonModel();
     }
+    
+    // MYSHARENGO
+    public function myBuyPackageAction()
+    {
+        $packageId = $this->params()->fromPost('packageId');
+        $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
+        
+        $customer = $this->identity();
 
+        $exceptionMessage = $this->checkBonusPackagesRequest($customer, $package);
+
+        if(!is_null($exceptionMessage)) {
+            $this->flashMessenger()->addErrorMessage($exceptionMessage);
+            throw new PackageNotFoundException();
+        }
+
+        // The customer could not be identified
+        if (!$customer instanceof Customers) {
+            $this->flashMessenger()->addErrorMessage($this->translator->translate('Impossibile completare la prenotazione del pacchetto richiesto'));
+            throw new CustomerNotFoundException();
+        }
+
+        
+        // The customer did not pay the first payment
+        if (!$customer->getFirstPaymentCompleted()) {
+            $this->flashMessenger()->addErrorMessage($this->translator->translate('Occorre effettuare l\'acquisto del Pacchetto Benvenuto prima di poter acquistare un pacchetto'));
+
+        } else {
+            $success = $this->buyCustomerBonusPackage($customer, $package, true);
+
+            if ($success) {
+                
+                $this->sendEmail($customer->getEmail(), $package, $customer->getLanguage(), 21);
+                $this->sendNotify($customer, $package);
+                
+                $this->flashMessenger()->addSuccessMessage($this->translator->translate('Prenotazione del pacchetto completata correttamente'));
+            } else {
+                $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore durante la prenotazione del pacchetto richiesto"));
+            }
+        }
+
+        return new JsonModel();
+    }
+    public function myPackageAction()
+    {
+        $packageId = $this->params('id');
+        $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
+        $customer = $this->identity();
+        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+
+        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
+
+        $viewModel = new ViewModel([
+            'package' => $package,
+            'hasContract' => $contract instanceof Contracts,
+            'serverInstance' => $serverInstance,
+        ]);
+
+        return $viewModel->setTerminal(true);
+    }
+    
     /**
      * Check the data before to assign package
      * 
@@ -173,5 +233,44 @@ class CustomerBonusPackagesController extends AbstractActionController
         }
 
         return $result;
+    }
+    
+    private function sendEmail($email, CustomersBonusPackages $package, $language, $category) {
+        //$writeTo = $this->emailSettings['from'];
+        $mail = $this->emailService->getMail($category, $language);
+        $content = sprintf(
+                $mail->getContent(), $package->getName()
+        );
+
+        //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+
+        $attachments = [
+                //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+        ];
+        $this->emailService->sendEmail(
+                $email, //send to
+                $mail->getSubject(), //'Share’ngo: bonus 5 minuti',//object email
+                $content, $attachments
+        );
+    }
+    
+    private function sendNotify(Customers $customer, CustomersBonusPackages $package) {
+        //$writeTo = $this->emailSettings['from'];
+        $content = sprintf('Il cliente %1$s con l\'id %2$s ha prenotato il pacchetto %3$s con il codice %4$s.', 
+                $customer->getName(),
+                $customer->getId(),
+                $package->getName(),
+                $package->getCode()
+        );
+        //file_get_contents(__DIR__.'/../../../view/emails/parkbonus_pois-it_IT.html'),
+
+        $attachments = [
+                //'bannerphono.jpg' => __DIR__.'/../../../../../public/images/bannerphono.jpg'
+        ];
+        $this->emailService->sendEmail(
+                'mysharengo@sharengo.eu', //send to
+                'MYSHARENGO: Notifica avvenuta prenotazione canone', //'Share’ngo: bonus 5 minuti',//object email
+                $content, $attachments
+        );
     }
 }

@@ -70,7 +70,17 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
                 
                 <!-- block-row-field -->
                 <div class="block-row-field clearfix">
-                    <!-- MYSHARENGO 
+                    
+                    <!-- MYSHARENGO -->
+                    
+                    
+                    <?php if(is_null($this->serverInstance)){ ?>
+                    
+                    <div class="module-main-subtitle content-align-center">
+                        <p><?= $this->translate('Scegli MYSHARENGO, non inquini e viaggi sicuro!');?></p>
+                    </div>
+                    
+                    <?php } else { ?> 
                     <div class="module-main-subtitle content-align-center">
                         <p>Invita un amico!</p>
                     </div>
@@ -84,22 +94,26 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
                             </tr>
                         </table>
                     </div>
-                    -->
-                    <div class="module-main-subtitle content-align-center">
-                        <p><?= $this->translate('Scegli MYSHARENGO, non inquini e viaggi sicuro!');?></p>
-                    </div>
+                    <?php } ?>
+                    
+                    
                 </div>
                 <!-- block-row-field -->
-                <!-- MYSHARENGO 
+                <!-- MYSHARENGO -->
+                <?php if(is_null($this->serverInstance)){ ?>
+                
                 <div class="block-wrapper-button content-align-center">
-                    <input type="submit" name="" value="<?= $this->translate('Vai in area riservata');?>">
-                </div>
-                -->
-                <div class="block-wrapper-button content-align-center">
-                    <a target="_blank" class="optional_signup"  href="https://site.sharengo.it/wp-content/uploads/2020/04/Form-online-PRENOTA-ORA-02.04.20.pdf" ><?= $this->translate('Prenotala Oggi');?></a>
+                    <a target="_blank" class="optional_signup"  href="https://site.sharengo.it/wp-content/uploads/2020/04/Form_PRENOTALA_OGGI.pdf" ><?= $this->translate('Prenotala Oggi');?></a>
                     <!--input type="submit" name="" value="<?= $this->translate('Prenotala Oggi');?>"-->
                 </div>
                 
+                <?php } else { ?> 
+                
+                <div class="block-wrapper-button content-align-center">
+                    <input type="submit" name="" value="<?= $this->translate('Vai in area riservata');?>">
+                </div>
+                
+                <?php } ?>
                 </form>
 
             </div>
