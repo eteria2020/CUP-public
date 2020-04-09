@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.77] - 2020-04-09
+### Changed
+- The word "pacchetto" with "canone" has been changed in system responses 
+
 ## [1.0.76] - 2020-04-09
 ### Changed
 - Added images for mails

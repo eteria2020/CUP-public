@@ -165,7 +165,7 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         // The customer could not be identified
         if (!$customer instanceof Customers) {
-            $this->flashMessenger()->addErrorMessage($this->translator->translate('Impossibile completare la prenotazione del pacchetto richiesto'));
+            $this->flashMessenger()->addErrorMessage($this->translator->translate('Impossibile completare la prenotazione del canone richiesto'));
             throw new CustomerNotFoundException();
         }
         
@@ -176,9 +176,9 @@ class CustomerBonusPackagesController extends AbstractActionController
             $this->sendEmail($customer->getEmail(), $package, $customer->getLanguage(), 21);
             $this->sendNotify($customer, $package);
 
-            $this->flashMessenger()->addSuccessMessage($this->translator->translate('Prenotazione del pacchetto completata correttamente'));
+            $this->flashMessenger()->addSuccessMessage($this->translator->translate('Prenotazione del canone completata correttamente'));
         } else {
-            $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore durante la prenotazione del pacchetto richiesto"));
+            $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore durante la prenotazione del canone richiesto"));
         }
 
         return new JsonModel();
