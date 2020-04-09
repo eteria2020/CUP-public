@@ -14,18 +14,18 @@ $end = date_create('2018-03-09 04:55:00');
             <!-- Top-right button to close popup -->
             <a id="close-btn" class="sng-close-btn"><i class="fa fa-close"></i></a>
 
-            <h1 class="sng-headers sng-w-1-1 sng-padding-top"><?= $this->translate("Riepilogo") ?></h1>
+            <h1 class="sng-headers sng-w-1-1 sng-padding-top" style="font-size: 17px;padding-bottom: 0px !important;"><?= $this->translate("Riepilogo") ?></h1>
             <div class="sng-separator-line"></div>
 
             <div class="sng-summary">
-                <h2 class="sng-headers"><?= $this->translate("Descrizione") ?>:</h2>
-                <p id="description" class="sng-text"><?= $this->package->getDescription() ?></p>
+                <h2 class="sng-headers" style="font-size: 17px;padding-bottom: 0px !important;"><?= $this->translate("Descrizione") ?>:</h2>
+                <p id="description" style="font-size: 16px;" class="sng-text"><?= $this->package->getDescription() ?></p>
 
                 <table class="sng-table">
                     <tr>
                         <td class="sng-w-1-2">
-                            <h2><?= $this->translate("Validità") ?>:</h2>
-                            <p id="minutes" class="sng-text">
+                            <h2 style="margin-bottom: 2px;font-size: 17px;padding-bottom: 0px !important;"><?= $this->translate("Validità") ?>:</h2>
+                            <p id="minutes" class="sng-text" style="font-size: 20px;">
                             <?php
                                 // Duration is expressed in 30-days multiplies (ex. 30, 60, 90 etc...)
                                 $months = floor($this->package->getDuration() / 30);
@@ -39,12 +39,8 @@ $end = date_create('2018-03-09 04:55:00');
                             </p>
                         </td>
                         <td class="sng-w-1-2">
-                            <h2><?= $this->translate("Prezzo") ?>:</h2>
-                            <?php if($this->package->getType() === "Pacchetto"){ ?>
-                                <p id="cost" class="sng-text"><?= ($this->package->getCode()=="WOMEN" && ($nowFree >= $start && $nowFree <= $end)) ? $this->translate("GRATUITO") : "&euro; ".number_format($this->package->getCost() / 100, 0, ',', '.') ?></p>
-                            <?php }else{ ?>
-                                <p id="cost" class="sng-text">&euro; 0</p>
-                            <?php } ?>
+                            <h2 style="margin-bottom: 2px;font-size: 17px;padding-bottom: 0px !important;"><?= $this->translate("Prezzo") ?>:</h2>
+                            <p id="cost" class="sng-text" style="font-size: 20px;"><?= "&euro; ".number_format($this->package->getCost() / 100, 0, ',', '.') ?></p>
                         </td>
                     </tr>
                 </table>
@@ -52,7 +48,7 @@ $end = date_create('2018-03-09 04:55:00');
             </div>
 
             <div class="sng-footer">
-                <p class="sng-text"><?= $this->translate("Per prenotare clicca su CONFERMA e verrai contattato dal Servizio Clienti") ?></p>
+                <p class="sng-text" style="font-size: 16px;margin-bottom: 5px;"><?= $this->translate("Per prenotare clicca su CONFERMA e verrai contattato dal Servizio Clienti") ?></p>
                 <button id="confirm-btn" class="big green" data-href="<?= $this->url('area-utente/buy-package') ?>" data-package-id="<?= $this->package->getId() ?>"><?= $this->translate("Conferma") ?></button>    
             </div>
 
