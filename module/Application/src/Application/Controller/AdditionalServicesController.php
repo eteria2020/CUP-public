@@ -272,16 +272,16 @@ class AdditionalServicesController extends AbstractActionController {
 
         /* Benvenuto Package */
         $verifyWelcomePackage = count($this->bonusService->verifyWelcomeBonusPackage($customer));
-        $firstTrip = $this->tripsService->getFirstTripInvoicedByCustomer($customer);
-        $verifyFirstTrip = false;
-        if (count($firstTrip) == 1) {
-            $now = new \DateTime();
-            $firstTripDate = clone $firstTrip->getTimestampBeginning();
-            $firstTripDateYear = $firstTrip->getTimestampBeginning()->add(new \DateInterval("P1Y")); //first invoiced trip + 1 year
-            if ($now >= $firstTripDate && $now <= $firstTripDateYear) {
-                $verifyFirstTrip = true;
-            }
-        }
+        //$firstTrip = $this->tripsService->getFirstTripInvoicedByCustomer($customer);
+        $verifyFirstTrip = true;
+//        if (count($firstTrip) == 1) {
+//            $now = new \DateTime();
+//            $firstTripDate = clone $firstTrip->getTimestampBeginning();
+//            $firstTripDateYear = $firstTrip->getTimestampBeginning()->add(new \DateInterval("P1Y")); //first invoiced trip + 1 year
+//            if ($now >= $firstTripDate && $now <= $firstTripDateYear) {
+//                $verifyFirstTrip = true;
+//            }
+//        }
         $showWelcomePackage = false;
         if ($verifyWelcomePackage == 0 && $customer->getFirstPaymentCompleted() && $verifyFirstTrip) {
             $showWelcomePackage = true;
