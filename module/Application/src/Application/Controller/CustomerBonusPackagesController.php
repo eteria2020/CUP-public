@@ -3,6 +3,7 @@
 namespace Application\Controller;
 
 use SharengoCore\Service\CustomersService;
+use SharengoCore\Service\EmailService;
 use SharengoCore\Service\CustomersBonusPackagesService;
 use SharengoCore\Entity\CustomersBonusPackages;
 use SharengoCore\Entity\Customers;
@@ -60,11 +61,17 @@ class CustomerBonusPackagesController extends AbstractActionController
     private $serverInstance = "";
 
     /**
+     * @var EmailService
+     */
+    private $emailService;
+    
+    /**
      * @param CustomersService $customersService
      * @param CustomersBonusPackagesService $customersBonusPackagesService
      * @param BuyCustomerBonusPackage $buyCustomerBonusPackage
      * @param CartasiContractsService $cartasiContractsService
      * @param Zend\Mvc\I18n\Translator $translator
+     * @param EmailService $emailService
      * @param array $config
      */
     public function __construct(
@@ -72,12 +79,14 @@ class CustomerBonusPackagesController extends AbstractActionController
         BuyCustomerBonusPackage $buyCustomerBonusPackage,
         CartasiContractsService $cartasiContractsService,
         Translator $translator,
+        EmailService $emailService,
         array $config
     ) {
         $this->customersBonusPackagesService = $customersBonusPackagesService;
         $this->buyCustomerBonusPackage = $buyCustomerBonusPackage;
         $this->cartasiContractsService = $cartasiContractsService;
         $this->translator = $translator;
+        $this->emailService = $emailService;
         $this->config = $config;
 
         if(isset($this->config['serverInstance'])) {
@@ -186,13 +195,12 @@ class CustomerBonusPackagesController extends AbstractActionController
         $packageId = $this->params('id');
         $package = $this->customersBonusPackagesService->getBonusPackageById($packageId);
         $customer = $this->identity();
-        $contract = $this->cartasiContractsService->getCartasiContract($customer);
+        //$contract = $this->cartasiContractsService->getCartasiContract($customer);
 
         $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
 
         $viewModel = new ViewModel([
             'package' => $package,
-            'hasContract' => $contract instanceof Contracts,
             'serverInstance' => $serverInstance,
         ]);
 
