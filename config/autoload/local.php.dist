@@ -42,4 +42,47 @@ return [
     'serverInstance' => [
         'id' => ''
     ],
+    /* for MYSHARENGO
+     * 'router' => [
+        'routes' => [
+            'area-utente' => [      //override public-business-module
+                'child_routes' => [
+                    'additional-services' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/{servizi-aggiuntivi}[/:mobile]',
+                            'defaults' => [
+                                'controller' => 'AdditionalServices',
+                                'action' => 'my-additional-services'
+                            ],
+                            'constraints' => [
+                                'mobile' => 'mobile'
+                            ]
+                        ]
+                    ],
+                    'bonus-package' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/package/:id',
+                            'defaults' => [
+                                'controller' => 'CustomerBonusPackages',
+                                'action' => 'my-package'
+                            ]
+                        ]
+                    ],
+                    'buy-package' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => 'buy-package',
+                            'defaults' => [
+                                'controller' => 'CustomerBonusPackages',
+                                'action' => 'my-buy-package'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+     */
 ];

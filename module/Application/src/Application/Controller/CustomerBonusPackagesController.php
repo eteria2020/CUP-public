@@ -168,24 +168,17 @@ class CustomerBonusPackagesController extends AbstractActionController
             $this->flashMessenger()->addErrorMessage($this->translator->translate('Impossibile completare la prenotazione del pacchetto richiesto'));
             throw new CustomerNotFoundException();
         }
-
         
-        // The customer did not pay the first payment
-        if (!$customer->getFirstPaymentCompleted()) {
-            $this->flashMessenger()->addErrorMessage($this->translator->translate('Occorre effettuare l\'acquisto del Pacchetto Benvenuto prima di poter acquistare un pacchetto'));
+        $success = $this->buyCustomerBonusPackage($customer, $package, true);
 
+        if ($success) {
+
+            $this->sendEmail($customer->getEmail(), $package, $customer->getLanguage(), 21);
+            $this->sendNotify($customer, $package);
+
+            $this->flashMessenger()->addSuccessMessage($this->translator->translate('Prenotazione del pacchetto completata correttamente'));
         } else {
-            $success = $this->buyCustomerBonusPackage($customer, $package, true);
-
-            if ($success) {
-                
-                $this->sendEmail($customer->getEmail(), $package, $customer->getLanguage(), 21);
-                $this->sendNotify($customer, $package);
-                
-                $this->flashMessenger()->addSuccessMessage($this->translator->translate('Prenotazione del pacchetto completata correttamente'));
-            } else {
-                $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore durante la prenotazione del pacchetto richiesto"));
-            }
+            $this->flashMessenger()->addErrorMessage($this->translator->translate("Si è verificato un errore durante la prenotazione del pacchetto richiesto"));
         }
 
         return new JsonModel();
