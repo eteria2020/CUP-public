@@ -9,7 +9,8 @@ This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language
 
 ## [1.0.78] - 2020-04-20
 ### Changed
-- Updated English translations for MySharengo project (#1021)  
+- Updated English translations for MySharengo project on signup pages (#1021)  
+- Updated English translations for MySharengo project on header menu (#1021)  
 
 ## [1.0.77] - 2020-04-09
 ### Changed

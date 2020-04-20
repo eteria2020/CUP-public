@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-04-20 13:59+0200\n"
-"PO-Revision-Date: 2020-04-20 14:03+0200\n"
+"PO-Revision-Date: 2020-04-20 16:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -1839,7 +1839,7 @@ msgstr "Confirm the purchase by registering a credit card"
 #: module/Application/view/layout/layout.phtml:113
 #: module/Application/view/partials/header/main_head.phtml:22
 msgid "MySharengo"
-msgstr "How it works"
+msgstr "MySharengo"
 
 #: module/Application/view/application/index/comefunziona.phtml:13
 msgid "Iscrizione a Share’ngo"
@@ -4712,7 +4712,7 @@ msgstr "Car sharing"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:24
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:24
 msgid "Chi siamo"
-msgstr "Who is Sharengo"
+msgstr "About us"
 
 #: module/Application/view/layout/layout.phtml:114
 #: module/Application/view/layout/layout.phtml:182
@@ -5022,16 +5022,16 @@ msgstr "Forward"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
 msgid "Canoni e tariffe"
-msgstr "Packages &amp; promotions"
+msgstr "Rent &amp; Rates"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
 msgid "Sharengo Point"
-msgstr "City changes"
+msgstr "Sharengo Point"
 
 #: module/Application/view/partials/header/main_head.phtml:26
 msgid "SharenGo"
-msgstr "Benefits for you"
+msgstr "SharenGo"
 
 #: module/Application/view/partials/header/main_head.phtml:27
 msgid "Aziende"
