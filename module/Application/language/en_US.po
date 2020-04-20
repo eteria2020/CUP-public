@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-04-08 14:53+0200\n"
-"PO-Revision-Date: 2020-04-08 15:08+0200\n"
+"POT-Creation-Date: 2020-04-20 13:59+0200\n"
+"PO-Revision-Date: 2020-04-20 14:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -52,7 +52,7 @@ msgid "Tariffe"
 msgstr "Rates"
 
 #: module/Application/config/module.config.php:2123
-#: module/Application/view/application/additional-services/my-additional-services.phtml:30
+#: module/Application/view/application/additional-services/my-additional-services.phtml:24
 msgid "Canoni e Tariffe"
 msgstr "Packages &amp; Promotions"
 
@@ -76,9 +76,6 @@ msgstr "Invoices"
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:151
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:160
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:167
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:237
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:246
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:253
 #: module/Application/src/Application/Controller/UserAreaController.php:425
 #: module/Application/src/Application/Controller/UserAreaController.php:560
 #: module/Application/src/Application/Controller/UserAreaController.php:622
@@ -86,37 +83,31 @@ msgid "Operazione completata con successo!"
 msgstr "Operation completed successfully!"
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:155
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:241
 msgid "Si è verificato un errore applicativo STD."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:162
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:248
 msgid "Si è verificato un errore applicativo PCO."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:169
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:255
 msgid "Promocode non valido."
 msgstr "Promo code not valid."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:171
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:257
 msgid "Promocode già utilizzato."
 msgstr "The promo code has already been used."
 
 #: module/Application/src/Application/Controller/AdditionalServicesController.php:173
-#: module/Application/src/Application/Controller/AdditionalServicesController.php:259
 msgid "Si è verificato un errore applicativo CR."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:121
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:214
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:130
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:215
 msgid "Impossibile completare l'acquisto del pacchetto richiesto"
 msgstr "The purchase of the requested package can not be completed"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:127
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:166
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:136
 #: module/Application/view/application/customer-bonus-packages/package.phtml:64
 msgid ""
 "Occorre effettuare l'acquisto del Pacchetto Benvenuto prima di poter "
@@ -124,45 +115,45 @@ msgid ""
 msgstr ""
 "You need to purchase the Welcome Package before you can purchase a package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:133
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:142
 msgid "Acquisto del pacchetto completato correttamente"
 msgstr "Purchase of the package completed successfully"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:135
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:144
 msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
 msgstr "An error occurred while purchasing the requested package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:159
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:168
 #, fuzzy
 #| msgid "Impossibile completare l'acquisto del pacchetto richiesto"
-msgid "Impossibile completare la prenotazione del pacchetto richiesto"
+msgid "Impossibile completare la prenotazione del canone richiesto"
 msgstr "The purchase of the requested package can not be completed"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:176
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:179
 #, fuzzy
 #| msgid "Acquisto del pacchetto completato correttamente"
-msgid "Prenotazione del pacchetto completata correttamente"
+msgid "Prenotazione del canone completata correttamente"
 msgstr "Purchase of the package completed successfully"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:178
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:181
 #, fuzzy
 #| msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
-msgid "Si è verificato un errore durante la prenotazione del pacchetto richiesto"
+msgid "Si è verificato un errore durante la prenotazione del canone richiesto"
 msgstr "An error occurred while purchasing the requested package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:218
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:219
 msgid "Utente non riconosciuto"
 msgstr "User not recognized"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:222
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:223
 msgid "Pacchetto non valido"
 msgstr "Invalid package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:229
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:230
 msgid "Punti ossigeno insufficienti"
 msgstr "Insufficient oxygen points"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:232
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:233
 msgid "Pacchetto non acquistabile"
 msgstr "Package not buyable"
 
@@ -321,7 +312,7 @@ msgstr "Mrs"
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
 #: module/Application/view/application/additional-services/additional-services.phtml:143
-#: module/Application/view/application/additional-services/my-additional-services.phtml:130
+#: module/Application/view/application/additional-services/my-additional-services.phtml:124
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -369,7 +360,7 @@ msgstr "Last Name"
 #: module/Application/view/application/user-area/index.phtml:250
 #: module/Application/view/application/user-area/profile.phtml:54
 #: module/Application/view/application/user-area/profile.phtml:229
-#: module/Application/view/application/user/new-signup.phtml:55
+#: module/Application/view/application/user/new-signup.phtml:56
 #: module/Application/view/application/user/signup-nl1.phtml:44
 #: module/Application/view/application/user/signup-si1.phtml:44
 #: module/Application/view/application/user/signup-sk1.phtml:44
@@ -583,7 +574,7 @@ msgid "sloveno"
 msgstr "Slovenia"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:314
-#: module/Application/src/Application/Form/NewUserFieldset.php:139
+#: module/Application/src/Application/Form/NewUserFieldset.php:143
 msgid ""
 "Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
 "antifrode e prevenzione sinistri (facoltativo)."
@@ -592,7 +583,7 @@ msgstr ""
 "accident prevention purposes (optional)."
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:328
-#: module/Application/src/Application/Form/NewUserFieldset.php:119
+#: module/Application/src/Application/Form/NewUserFieldset.php:123
 msgid ""
 "Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, ai "
 "prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo (facoltativo)."
@@ -867,7 +858,7 @@ msgstr "Set your password"
 #: module/Application/view/application/user-area/index.phtml:718
 #: module/Application/view/application/user-area/profile.phtml:498
 #: module/Application/view/application/user-area/profile.phtml:534
-#: module/Application/view/application/user/new-signup.phtml:65
+#: module/Application/view/application/user/new-signup.phtml:66
 #: module/Application/view/application/user/signup-nl1.phtml:54
 #: module/Application/view/application/user/signup-si1.phtml:54
 #: module/Application/view/application/user/signup-sk1.phtml:54
@@ -876,11 +867,11 @@ msgstr "Set your password"
 msgid "Password"
 msgstr "Password"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:106
+#: module/Application/src/Application/Form/NewUserFieldset.php:110
 msgid "Accetto espressamente i Termini e le Condizioni Privacy "
 msgstr "I hereby accept  Privacy Terms and Conditions "
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:152
+#: module/Application/src/Application/Form/NewUserFieldset.php:156
 msgid ""
 "Il Cliente, dopo aver preso visione dei Termini e Condizioni Contrattuali che "
 "regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del Codice "
@@ -905,13 +896,13 @@ msgstr ""
 "account suspension, withdrawal, termination of the contract), 17 (complaints), "
 "18 (penalties), 20 (jurisdiction)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:172
-#: module/Application/src/Application/Form/NewUserFieldset.php:202
+#: module/Application/src/Application/Form/NewUserFieldset.php:176
+#: module/Application/src/Application/Form/NewUserFieldset.php:206
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "The data is required to proceed"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:219
-#: module/Application/src/Application/Form/NewUserFieldset.php:246
+#: module/Application/src/Application/Form/NewUserFieldset.php:223
+#: module/Application/src/Application/Form/NewUserFieldset.php:250
 msgid "Il dato è richiesto per procedere"
 msgstr "The data is required to proceed"
 
@@ -1328,7 +1319,7 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "A user already exists with the same email address"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:287
+#: module/Application/view/application/user/new-signup.phtml:288
 #: module/Application/view/application/user/signup-nl1.phtml:252
 #: module/Application/view/application/user/signup-si1.phtml:252
 #: module/Application/view/application/user/signup-sk1.phtml:252
@@ -1466,6 +1457,52 @@ msgstr "SI &egrave; VERIFIED A PROBLEM DURING REGISTRATION"
 msgid "Azienda"
 msgstr "Company"
 
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:47
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:49
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:62
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:63
+#: module/Application/view/partials/translations.phtml:278
+msgid "Gratis"
+msgstr "Free"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:51
+#: module/Application/view/partials/translations.phtml:279
+msgid "Privata"
+msgstr "Private"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:55
+#: module/Application/view/partials/translations.phtml:280
+msgid "Aziendale"
+msgstr "Company"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:277
+#: module/Application/view/application/user-area/trips.phtml:56
+#: module/Application/view/partials/translations.phtml:276
+msgid "Partenza"
+msgstr "Departure"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:295
+#: module/Application/view/application/user-area/trips.phtml:132
+#: module/Application/view/partials/translations.phtml:277
+msgid "Destinazione"
+msgstr "Destination"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:326
+#: module/Application/view/partials/translations.phtml:281
+msgid "Minuti bonus consumati"
+msgstr "Bonus minutes used"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:338
+#: module/Application/view/partials/translations.phtml:282
+msgid "Minuti gratuiti fruiti"
+msgstr "Free minutes used"
+
+#: vendor/cup-web/public-business-module/public/js/business-rents.js:401
+#, fuzzy
+#| msgid "Periodo"
+msgid "period_total"
+msgstr "Period"
+
 #: vendor/cup-web/public-business-module/src/Controller/BusinessAssociationController.php:89
 msgid ""
 "Operazione avvenuta con successo! Appena verrai confermato riceverai una email "
@@ -1502,18 +1539,18 @@ msgstr ""
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:221
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:235
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:245
 msgid "Si"
 msgstr "Yes"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:221
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:235
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:245
 msgid "No"
 msgstr "No"
 
@@ -1579,14 +1616,14 @@ msgstr "Fiscal Code not valid."
 msgid "PRENOTAZIONE DI SISTEMA"
 msgstr "SYSTEM BOOKING"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:197
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:249
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:211
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:260
 #: vendor/sharengo-web/mollie/src/Mollie/Controller/MolliePaymentsController.php:198
 msgid "Transazione non valida"
 msgstr "Invalid transaction"
 
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:223
-#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:266
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:236
+#: vendor/sharengo-web/bankart/src/Bankart/Controller/BankartPaymentsController.php:277
 msgid "Transazione non valida (id non trovato)"
 msgstr "Invalid transaction (id not found)"
 
@@ -1621,7 +1658,7 @@ msgstr "min"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:84
 #: module/Application/view/application/additional-services/additional-services.phtml:113
-#: module/Application/view/application/additional-services/my-additional-services.phtml:97
+#: module/Application/view/application/additional-services/my-additional-services.phtml:91
 msgid "a"
 msgstr "to"
 
@@ -1632,32 +1669,32 @@ msgid "Validità"
 msgstr "Validity"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:105
-#: module/Application/view/application/additional-services/my-additional-services.phtml:88
-#: module/Application/view/application/additional-services/my-additional-services.phtml:161
+#: module/Application/view/application/additional-services/my-additional-services.phtml:82
+#: module/Application/view/application/additional-services/my-additional-services.phtml:155
 #: module/Application/view/application/customer-bonus-packages/my-package.phtml:33
 msgid "mesi"
 msgstr "months"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:105
-#: module/Application/view/application/additional-services/my-additional-services.phtml:88
-#: module/Application/view/application/additional-services/my-additional-services.phtml:161
+#: module/Application/view/application/additional-services/my-additional-services.phtml:82
+#: module/Application/view/application/additional-services/my-additional-services.phtml:155
 #: module/Application/view/application/customer-bonus-packages/my-package.phtml:33
 msgid "mese"
 msgstr "month"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:107
 #: module/Application/view/application/additional-services/additional-services.phtml:124
-#: module/Application/view/application/additional-services/my-additional-services.phtml:90
-#: module/Application/view/application/additional-services/my-additional-services.phtml:163
+#: module/Application/view/application/additional-services/my-additional-services.phtml:84
+#: module/Application/view/application/additional-services/my-additional-services.phtml:157
 msgid "giorni"
 msgstr "days"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:107
 #: module/Application/view/application/additional-services/additional-services.phtml:124
-#: module/Application/view/application/additional-services/my-additional-services.phtml:90
-#: module/Application/view/application/additional-services/my-additional-services.phtml:108
-#: module/Application/view/application/additional-services/my-additional-services.phtml:163
-#: module/Application/view/application/additional-services/my-additional-services.phtml:177
+#: module/Application/view/application/additional-services/my-additional-services.phtml:84
+#: module/Application/view/application/additional-services/my-additional-services.phtml:102
+#: module/Application/view/application/additional-services/my-additional-services.phtml:157
+#: module/Application/view/application/additional-services/my-additional-services.phtml:171
 msgid "giorno"
 msgstr "day"
 
@@ -1695,7 +1732,7 @@ msgid "Acquista/Converti"
 msgstr "Buy / Convert"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:164
-#: module/Application/view/application/additional-services/my-additional-services.phtml:149
+#: module/Application/view/application/additional-services/my-additional-services.phtml:143
 #: module/Application/view/application/customer-bonus-packages/my-package.phtml:3
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
@@ -1717,11 +1754,11 @@ msgstr "Enter the promo code"
 msgid "Valida"
 msgstr "Valid"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:45
+#: module/Application/view/application/additional-services/my-additional-services.phtml:39
 msgid "Prenota ora il tuo Abbonamento"
 msgstr "Book your subscription now"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:50
+#: module/Application/view/application/additional-services/my-additional-services.phtml:44
 msgid ""
 "Con la nuova mobilità di MYSHARENGO puoi disporre di una Sharengo tutta per "
 "te  per il tempo che ti serve,"
@@ -1729,23 +1766,23 @@ msgstr ""
 "With the new mobility of MYSHARENGO you can have a Sharengo all for you for "
 "the time you need,"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:54
+#: module/Application/view/application/additional-services/my-additional-services.phtml:48
 msgid "scegli  tra le opzioni di tempo e di tariffe quella più adatta a te."
 msgstr "choose the most suitable options for time and rates."
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:131
+#: module/Application/view/application/additional-services/my-additional-services.phtml:125
 msgid "Mesi"
 msgstr "Months"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:132
+#: module/Application/view/application/additional-services/my-additional-services.phtml:126
 msgid "Prezzo (IVA Inclusa)"
 msgstr "Price (VAT included)"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:133
+#: module/Application/view/application/additional-services/my-additional-services.phtml:127
 msgid "Prezzo al giorno (IVA Inclusa)"
 msgstr "Price per day (VAT included)"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:134
+#: module/Application/view/application/additional-services/my-additional-services.phtml:128
 msgid "Prenota"
 msgstr "Book"
 
@@ -1764,23 +1801,22 @@ msgstr "Summary"
 msgid "Descrizione"
 msgstr "Description"
 
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:44
-#: module/Application/view/application/customer-bonus-packages/package.phtml:33
-msgid "GRATUITO"
-msgstr "FREE"
-
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:55
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:51
 msgid "Per prenotare clicca su CONFERMA e verrai contattato dal Servizio Clienti"
 msgstr ""
 "To book click on CONFIRM and you will be contacted by the Customer Service"
 
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:56
+#: module/Application/view/application/customer-bonus-packages/my-package.phtml:52
 #: module/Application/view/application/customer-bonus-packages/package.phtml:61
 #: module/Application/view/application/customer-bonus-packages/package.phtml:68
 #: module/Application/view/application/customer-bonus-packages/package.phtml:71
 #: module/Application/view/partials/car-popup.phtml:136
 msgid "Conferma"
 msgstr "Confirmation"
+
+#: module/Application/view/application/customer-bonus-packages/package.phtml:33
+msgid "GRATUITO"
+msgstr "FREE"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:45
 #: module/Application/view/application/user-area/bonus.phtml:65
@@ -2508,12 +2544,12 @@ msgstr "to complete the activation of the service"
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
-#: module/Application/view/application/user/new-signup.phtml:162
-#: module/Application/view/application/user/new-signup.phtml:208
+#: module/Application/view/application/user/new-signup.phtml:163
+#: module/Application/view/application/user/new-signup.phtml:209
 #: module/Application/view/application/user/signup-nl1.phtml:153
 #: module/Application/view/application/user/signup-si1.phtml:153
 #: module/Application/view/application/user/signup-sk1.phtml:153
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:96
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:98
 msgid "Attenzione"
 msgstr "Caution"
 
@@ -2749,7 +2785,7 @@ msgstr "ID"
 #: module/Application/view/application/user-area/rents.phtml:78
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:63
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:63
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
 msgid "Inizio"
 msgstr "Start"
 
@@ -2758,7 +2794,7 @@ msgstr "Start"
 #: module/Application/view/application/user-area/rents.phtml:79
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:64
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:64
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
 msgid "Fine"
 msgstr "End"
 
@@ -2767,7 +2803,7 @@ msgstr "End"
 #: module/Application/view/application/user-area/rents.phtml:80
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:65
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:65
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:84
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
 msgid "Durata (min.)"
 msgstr "Duration (min.)"
 
@@ -2776,7 +2812,7 @@ msgstr "Duration (min.)"
 #: module/Application/view/application/user-area/rents.phtml:81
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:66
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:66
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:85
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
 msgid "Sosta (min.)"
 msgstr "Stop (min.)"
 
@@ -3051,7 +3087,7 @@ msgstr "Language"
 #: module/Application/view/application/user-area/index.phtml:525
 #: module/Application/view/application/user-area/profile.phtml:206
 #: module/Application/view/application/user-area/profile.phtml:467
-#: module/Application/view/application/user/new-signup.phtml:76
+#: module/Application/view/application/user/new-signup.phtml:77
 #: module/Application/view/application/user/signup-nl1.phtml:65
 #: module/Application/view/application/user/signup-si1.phtml:65
 #: module/Application/view/application/user/signup-sk1.phtml:65
@@ -3590,12 +3626,12 @@ msgstr ""
 "amount of the charges for the month by applying your personal rate."
 
 #: module/Application/view/application/user-area/rents.phtml:82
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:86
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:88
 msgid "Totale"
 msgstr "Total"
 
 #: module/Application/view/application/user-area/rents.phtml:83
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:87
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:89
 msgid "Da saldare"
 msgstr "Pending payment"
 
@@ -3613,7 +3649,7 @@ msgstr ""
 "of Sharengo for reactivation."
 
 #: module/Application/view/application/user-area/rents.phtml:104
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:106
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:108
 msgid "Nessuna corsa effettuata finora"
 msgstr "No travel performed so far"
 
@@ -3649,11 +3685,6 @@ msgstr "RENTALS"
 msgid "Ora"
 msgstr "Now"
 
-#: module/Application/view/application/user-area/trips.phtml:56
-#: module/Application/view/partials/translations.phtml:276
-msgid "Partenza"
-msgstr "Departure"
-
 #: module/Application/view/application/user-area/trips.phtml:59
 msgid "Netto"
 msgstr "Net"
@@ -3681,11 +3712,6 @@ msgstr "Duration of stay"
 #: module/Application/view/application/user-area/trips.phtml:121
 msgid "Distanza tot"
 msgstr "Distance tot"
-
-#: module/Application/view/application/user-area/trips.phtml:132
-#: module/Application/view/partials/translations.phtml:277
-msgid "Destinazione"
-msgstr "Destination"
 
 #: module/Application/view/application/user-area/trips.phtml:145
 msgid "Non hai ancora effettuato alcun noleggio"
@@ -3718,57 +3744,59 @@ msgid ""
 msgstr "Free park in public lots and in those reserved to residents"
 
 #: module/Application/view/application/user/new-signup.phtml:25
-#: module/Application/view/application/user/optional.phtml:89
+#: module/Application/view/application/user/optional.phtml:80
 msgid "Scegli MYSHARENGO, non inquini e viaggi sicuro!"
-msgstr "Choose MYSHARENGO, do not pollute and travel safe!"
+msgstr "Try MYSHARENGO, do not pollute and drive safely!"
 
 #: module/Application/view/application/user/new-signup.phtml:28
 msgid ""
 "Un’auto tutta tua, per  il tempo che ti serve, da un mese fino ad un anno."
-msgstr "A car of your own, for the time you need, from a month to a year."
+msgstr "A car for you only, for the time you need, from one month to a year"
 
 #: module/Application/view/application/user/new-signup.phtml:29
 msgid "Elettrica, senza emissioni, sanificata e con gel disinfettante a bordo."
-msgstr "Electric, emission-free, sanitized and with disinfectant gel on board."
+msgstr ""
+"Only electric, no emissions, sanitized, a family member can drive the car"
 
 #: module/Application/view/application/user/new-signup.phtml:30
-#, fuzzy
-#| msgid ""
-#| "Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti."
 msgid ""
 "Vai in centro senza limiti e parcheggi gratis nei posteggi pubblici e in "
 "quelli riservati ai residenti."
-msgstr "Free park in public lots and in those reserved to residents"
+msgstr "Free entrance in Town Center and free parking in public paying lots"
 
-#: module/Application/view/application/user/new-signup.phtml:36
+#: module/Application/view/application/user/new-signup.phtml:31
+msgid "Puoi utilizzarlo come servizio di consegna per la tua attività."
+msgstr "You’re allowed to use it as delivery service for your business."
+
+#: module/Application/view/application/user/new-signup.phtml:37
 #: module/Application/view/application/user/signup-nl1.phtml:25
 #: module/Application/view/application/user/signup-si1.phtml:25
 #: module/Application/view/application/user/signup-sk1.phtml:25
 msgid "ISCRIVERTI NON TI COSTA NULLA!"
 msgstr "Sign up is free!"
 
-#: module/Application/view/application/user/new-signup.phtml:72
+#: module/Application/view/application/user/new-signup.phtml:73
 #: module/Application/view/application/user/signup-nl1.phtml:61
 #: module/Application/view/application/user/signup-si1.phtml:61
 #: module/Application/view/application/user/signup-sk1.phtml:61
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 characters, a capital letter and a number"
 
-#: module/Application/view/application/user/new-signup.phtml:96
+#: module/Application/view/application/user/new-signup.phtml:97
 #: module/Application/view/application/user/signup-nl1.phtml:85
 #: module/Application/view/application/user/signup-si1.phtml:85
 #: module/Application/view/application/user/signup-sk1.phtml:85
 msgid "(clicca qui)."
 msgstr "(click here)."
 
-#: module/Application/view/application/user/new-signup.phtml:128
+#: module/Application/view/application/user/new-signup.phtml:129
 #: module/Application/view/application/user/signup-nl1.phtml:117
 #: module/Application/view/application/user/signup-si1.phtml:117
 #: module/Application/view/application/user/signup-sk1.phtml:117
 msgid "CREA IL TUO ACCOUNT"
 msgstr "CREATE YOUR ACCOUNT"
 
-#: module/Application/view/application/user/new-signup.phtml:130
+#: module/Application/view/application/user/new-signup.phtml:131
 #: module/Application/view/application/user/signup-nl1.phtml:120
 #: module/Application/view/application/user/signup-si1.phtml:120
 #: module/Application/view/application/user/signup-sk1.phtml:120
@@ -3776,7 +3804,7 @@ msgid ""
 "Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo"
 msgstr "By clicking the bottom you agree to Sharengo Terms and Conditions"
 
-#: module/Application/view/application/user/new-signup.phtml:165
+#: module/Application/view/application/user/new-signup.phtml:166
 #: module/Application/view/application/user/signup-nl1.phtml:156
 #: module/Application/view/application/user/signup-si1.phtml:156
 #: module/Application/view/application/user/signup-sk1.phtml:156
@@ -3791,7 +3819,7 @@ msgstr ""
 "procedures. The licenses will still be validated within the luned &igrave; "
 "morning."
 
-#: module/Application/view/application/user/new-signup.phtml:184
+#: module/Application/view/application/user/new-signup.phtml:185
 #: module/Application/view/application/user/new-signup2.phtml:474
 #: module/Application/view/application/user/signup-nl1.phtml:175
 #: module/Application/view/application/user/signup-si1.phtml:175
@@ -3799,7 +3827,7 @@ msgstr ""
 msgid "Sei già iscritto!"
 msgstr "You are already registered!"
 
-#: module/Application/view/application/user/new-signup.phtml:188
+#: module/Application/view/application/user/new-signup.phtml:189
 #: module/Application/view/application/user/new-signup2.phtml:478
 #: module/Application/view/application/user/signup-nl1.phtml:179
 #: module/Application/view/application/user/signup-si1.phtml:179
@@ -3808,7 +3836,7 @@ msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr "To complete the insertion of your data click on LOGIN"
 
-#: module/Application/view/application/user/new-signup.phtml:212
+#: module/Application/view/application/user/new-signup.phtml:213
 msgid "Il servizio è temporaneamente sospeso a Milano e a Roma"
 msgstr "The service is temporarily suspended in Milan and Rome"
 
@@ -3822,11 +3850,11 @@ msgstr "21 minutes only 5&euro;"
 #: module/Application/view/application/user/signup-si2.phtml:36
 #: module/Application/view/application/user/signup-sk2.phtml:36
 msgid "e guidi subito la tua Sharengo!"
-msgstr "and drive your Sharengo right away!"
+msgstr "Now you can finally drive your Sharengo!"
 
 #: module/Application/view/application/user/new-signup2.phtml:35
 msgid "Iscriverti ti costa solo 1€"
-msgstr "Signing up costs you only € 1"
+msgstr "Signing up'll cost you only 1€"
 
 #: module/Application/view/application/user/new-signup2.phtml:44
 #: module/Application/view/application/user/signup-nl2.phtml:42
@@ -3840,7 +3868,7 @@ msgstr "Welcome"
 #: module/Application/view/application/user/signup-si2.phtml:43
 #: module/Application/view/application/user/signup-sk2.phtml:43
 msgid "Pochi istanti per completare il tuo profilo"
-msgstr "A few moments to complete your profile"
+msgstr "Just few minutes to complete your profile"
 
 #: module/Application/view/application/user/new-signup2.phtml:77
 msgid "Nome Patente"
@@ -4120,9 +4148,6 @@ msgid "Il pagamento non è andato a buon fine."
 msgstr "The payment was not successful."
 
 #: module/Application/view/application/user/optional.phtml:28
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:24
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:24
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
@@ -4130,9 +4155,9 @@ msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "The error message we received is: \\ \""
 
 #: module/Application/view/application/user/optional.phtml:29
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:25
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:25
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:35
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:25
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:25
@@ -4149,9 +4174,9 @@ msgstr "It will be possible to redo the payment in the Reserved Area"
 #: module/Application/view/application/user/optional.phtml:62
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:47
 msgid "Scarica l'App Sharengo"
-msgstr "Download Sharengo App"
+msgstr "Download the Sharengo App"
 
-#: module/Application/view/application/user/optional.phtml:78
+#: module/Application/view/application/user/optional.phtml:88
 msgid ""
 "Invia il codice che vedi sotto a un amico, a un parente, a un collega, appena "
 "uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi "
@@ -4161,18 +4186,16 @@ msgstr ""
 "of them has purchased his Welcome Package, you will both receive 30 minutes "
 "free as a prize."
 
-#: module/Application/view/application/user/optional.phtml:95
+#: module/Application/view/application/user/optional.phtml:106
+#: module/Application/view/application/user/optional.phtml:107
+msgid "Prenotala Oggi"
+msgstr "Book Now"
+
+#: module/Application/view/application/user/optional.phtml:113
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Go to the restricted area"
-
-#: module/Application/view/application/user/optional.phtml:99
-#: module/Application/view/application/user/optional.phtml:100
-#, fuzzy
-#| msgid "Prenota l\\'auto"
-msgid "Prenotala Oggi"
-msgstr "Book the car"
 
 #: module/Application/view/application/user/signup-nl1.phtml:131
 #: module/Application/view/application/user/signup-si1.phtml:131
@@ -5034,7 +5057,7 @@ msgstr "Login"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:32
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:32
 msgid "Iscriviti"
-msgstr "Subscribe"
+msgstr "Sign Up"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:22
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:22
@@ -6068,26 +6091,6 @@ msgstr ""
 msgid "Totali periodo"
 msgstr "Period totals"
 
-#: module/Application/view/partials/translations.phtml:278
-msgid "Gratis"
-msgstr "Free"
-
-#: module/Application/view/partials/translations.phtml:279
-msgid "Privata"
-msgstr "Private"
-
-#: module/Application/view/partials/translations.phtml:280
-msgid "Aziendale"
-msgstr "Company"
-
-#: module/Application/view/partials/translations.phtml:281
-msgid "Minuti bonus consumati"
-msgstr "Bonus minutes used"
-
-#: module/Application/view/partials/translations.phtml:282
-msgid "Minuti gratuiti fruiti"
-msgstr "Free minutes used"
-
 #: module/Application/view/zfc-user/user/login.phtml:17
 msgid "Accedi all'applicazione"
 msgstr "Access the application"
@@ -6157,15 +6160,15 @@ msgstr ""
 "recognized. At the bottom of the table you will find the total amount of the "
 "charges for the month by applying your personal rate."
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:80
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:82
 msgid "Targa"
 msgstr "Plate"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:81
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:83
 msgid "Tipologia"
 msgstr "Type"
 
-#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:97
+#: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:99
 msgid ""
 "l'addebito delle corse avviene di regola il giorno dopo. Se ci sono corse da "
 "saldare non effettuate nella giornata di oggi vuol dire che ci sono stati "
@@ -6201,11 +6204,6 @@ msgstr "(Please wait)"
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:12
 msgid "Verifica transazione in corso."
 msgstr "Check transaction in progress."
-
-#, fuzzy
-#~| msgid "Periodo"
-#~ msgid "period_total"
-#~ msgstr "Period"
 
 #, fuzzy
 #~| msgid "Bonus minuti"
