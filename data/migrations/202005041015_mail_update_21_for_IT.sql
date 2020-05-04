@@ -1,0 +1,1 @@
+UPDATE mails SET category=30 WHERE id=21;

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
+## [1.0.79] - 2020-05-04
+### Changed
+- Updated sendEmail category in myBuyPackageAction for MySharengo project
+- Added SQL script for DB updating
+
 ## [1.0.78] - 2020-04-20
 ### Changed
 - Updated English translations for MySharengo project on signup pages (#1021)  
