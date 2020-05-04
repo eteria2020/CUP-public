@@ -173,7 +173,7 @@ class CustomerBonusPackagesController extends AbstractActionController
 
         if ($success) {
 
-            $this->sendEmail($customer->getEmail(), $package, $customer->getLanguage(), 21);
+            $this->sendEmail($customer->getEmail(), $package, $customer->getLanguage(), 30);
             $this->sendNotify($customer, $package);
 
             $this->flashMessenger()->addSuccessMessage($this->translator->translate('Prenotazione del canone completata correttamente'));
