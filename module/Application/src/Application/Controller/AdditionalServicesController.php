@@ -213,47 +213,4 @@ class AdditionalServicesController extends AbstractActionController {
             'serverInstance' => $serverInstance,
         ]);
     }
-    
-    public function myAdditionalServicesAction() {
-        //if there is mobile param change layout
-        $mobile = $this->params()->fromRoute('mobile');
-        if ($mobile) {
-            $this->layout('layout/map');
-        }
-        $form = $this->promoCodeForm;
-
-        $bonusPackages = $this->customersBonusPackagesService->getAvailableBonusPackges();
-        $customer = $this->authService->getIdentity();
-
-        $verifyWomenVoucher = count($this->bonusService->verifyWomenBonusPackage($customer));
-
-        /* Benvenuto Package */
-        $verifyWelcomePackage = count($this->bonusService->verifyWelcomeBonusPackage($customer));
-        //$firstTrip = $this->tripsService->getFirstTripInvoicedByCustomer($customer);
-        $verifyFirstTrip = true;
-//        if (count($firstTrip) == 1) {
-//            $now = new \DateTime();
-//            $firstTripDate = clone $firstTrip->getTimestampBeginning();
-//            $firstTripDateYear = $firstTrip->getTimestampBeginning()->add(new \DateInterval("P1Y")); //first invoiced trip + 1 year
-//            if ($now >= $firstTripDate && $now <= $firstTripDateYear) {
-//                $verifyFirstTrip = true;
-//            }
-//        }
-        $showWelcomePackage = false;
-        if ($verifyWelcomePackage == 0 && $customer->getFirstPaymentCompleted() && $verifyFirstTrip) {
-            $showWelcomePackage = true;
-        }
-
-        $serverInstance = (isset($this->serverInstance["id"])) ? $this->serverInstance["id"] : null;
-
-        return new ViewModel([
-            'promoCodeForm' => $form,
-            'bonusPackages' => $bonusPackages,
-            'customer' => $customer,
-            'verifyWomenVoucher' => $verifyWomenVoucher,
-            'mobile' => $mobile,
-            'showWelcomePackage' => $showWelcomePackage,
-            'serverInstance' => $serverInstance,
-        ]);
-    }
 }

@@ -67,20 +67,9 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
                     <a href="https://play.google.com/store/apps/details?id=it.sharengo.eteria" target="_blank"><img class="app-link" src="../images/footer_gplay_icn.png"></a>
                 </div>
                 <br>
-                
+
                 <!-- block-row-field -->
                 <div class="block-row-field clearfix">
-                    
-                    <!-- MYSHARENGO -->
-                    
-                    
-                    <?php if(is_null($this->serverInstance)){ ?>
-                    
-                    <div class="module-main-subtitle content-align-center">
-                        <p><?= $this->translate('Scegli MYSHARENGO, non inquini e viaggi sicuro!');?></p>
-                    </div>
-                    
-                    <?php } else { ?> 
                     <div class="module-main-subtitle content-align-center">
                         <p>Invita un amico!</p>
                     </div>
@@ -94,26 +83,15 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
                             </tr>
                         </table>
                     </div>
-                    <?php } ?>
-                    
-                    
+
+
                 </div>
                 <!-- block-row-field -->
-                <!-- MYSHARENGO -->
-                <?php if(is_null($this->serverInstance)){ ?>
-                
-                <div class="block-wrapper-button content-align-center">
-                    <a target="_blank" class="optional_signup"  href="https://site.sharengo.it/wp-content/uploads/2020/04/Form_PRENOTALA_OGGI.pdf" ><?= $this->translate('Prenotala Oggi');?></a>
-                    <!--input type="submit" name="" value="<?= $this->translate('Prenotala Oggi');?>"-->
-                </div>
-                
-                <?php } else { ?> 
-                
+
                 <div class="block-wrapper-button content-align-center">
                     <input type="submit" name="" value="<?= $this->translate('Vai in area riservata');?>">
                 </div>
-                
-                <?php } ?>
+
                 </form>
 
             </div>
@@ -125,7 +103,7 @@ $this->placeholder('facebook-pixel')->set('<script>fbq(\'track\', \'Purchase\', 
     </div>
     <!-- main -->
 
-    <?php
+    <?
     $this->inlineScript()->appendScript(
         '$(document).ready(function() {
             $( "#driverLicenseReleaseDate" ).datepicker({

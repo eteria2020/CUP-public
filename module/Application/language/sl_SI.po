@@ -1773,7 +1773,7 @@ msgstr "Nakup potrdite z registracijo kreditne kartice"
 #: module/Application/view/application/index/comefunziona.phtml:10
 #: module/Application/view/layout/layout.phtml:113
 #: module/Application/view/partials/header/main_head.phtml:22
-msgid "MySharengo"
+msgid "Come funziona"
 msgstr "Kako deluje"
 
 #: module/Application/view/application/index/comefunziona.phtml:13
@@ -4624,7 +4624,7 @@ msgstr "Izmenjava avtomobilov"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:25
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:24
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:24
-msgid "Chi siamo"
+msgid "Chi è SharenGo"
 msgstr "Kdo je SharenGo"
 
 #: module/Application/view/layout/layout.phtml:114
@@ -4934,16 +4934,16 @@ msgstr "Naslednja"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:23
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
-msgid "Canoni e tariffe"
+msgid "Pacchetti &amp; promozioni"
 msgstr "Paketi in promocije"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
-msgid "Sharengo Point"
+msgid "La città cambia"
 msgstr "Sprememba mesta"
 
 #: module/Application/view/partials/header/main_head.phtml:26
-msgid "SharenGo"
+msgid "Vantaggi per te"
 msgstr "Prednosti za vas"
 
 #: module/Application/view/partials/header/main_head.phtml:27

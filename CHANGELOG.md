@@ -7,58 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This file is in [Markdown](https://www.markdownguide.org/basic-syntax/) language.
 
-## [1.0.79] - 2020-05-04
-### Changed
-- Updated sendEmail category in myBuyPackageAction for MySharengo project
-- Added SQL script for DB updating
-
-## [1.0.78] - 2020-04-20
-### Changed
-- Updated English translations for MySharengo project on signup pages (#1021)  
-- Updated English translations for MySharengo project on header menu (#1021)  
-
-## [1.0.77] - 2020-04-09
-### Changed
-- The word "pacchetto" with "canone" has been changed in system responses 
-
-## [1.0.76] - 2020-04-09
-### Changed
-- Added images for mails
-- Fix dimensions of the "select packet" banner 
-
-## [1.0.75] - 2020-04-08
-### Changed
-- The page dedicated to the purchase of packages in the user area has been modified 
-
-## [1.0.74] - 2020-04-08
-### Changed
-- Reactivated Modena fleet for MySharengo project (#998) 
-
-## [1.0.73] - 2020-04-07
-### Changed
-- Updated main_head menu and main_foot for MySharengo project (#987) 
-
-## [1.0.72] - 2020-04-06
-### Changed
-- The "Prenotala oggi" button has been modified to open a link to a pdf instead of submitting the form
-
-## [1.0.71] - 2020-04-02
-### Changed
-- Updated privacy.pdf (#974) 
-
-## [1.0.70] - 2020-04-01
-### Changed
-- Removed message on sign up for fleet suspended 
-
-## [1.0.69] - 2020-03-31
-### Changed
-- Public is back online. 
-  
-## [1.0.68] - 2020-03-30
-### Changed
-- Ticket 961: the 3 registration pages have been modified. 
-  To better find the changes I made, I inserted the string MYSHARENGO in the code. 
-
 ## [1.0.67] - 2020-03-24
 ### Changed
 - Update Bankart module

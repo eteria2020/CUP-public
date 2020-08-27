@@ -83,15 +83,11 @@ class NewUserFieldset extends Fieldset implements InputFilterProviderInterface {
             [0 => '---']
         );
 
-        // MySharengo version //
-        /*
         foreach($fleets as $key => $fleet) {
             if($fleet=='Modena') {
                 unset($fleets[$key]);
             }
         }
-        */
-        // end MySharengo version //
 
         $this->add([
             'name' => 'fleet',

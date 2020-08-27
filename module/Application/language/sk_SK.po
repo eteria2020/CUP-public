@@ -1766,7 +1766,7 @@ msgstr "Potvrdiť nákup registráciou platobnej karty"
 #: module/Application/view/application/index/comefunziona.phtml:10
 #: module/Application/view/layout/layout.phtml:113
 #: module/Application/view/partials/header/main_head.phtml:22
-msgid "MySharengo"
+msgid "Come funziona"
 msgstr "Ako to funguje"
 
 #: module/Application/view/application/index/comefunziona.phtml:13
@@ -4613,7 +4613,7 @@ msgstr "Car sharing"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:25
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:24
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:24
-msgid "Chi siamo"
+msgid "Chi è SharenGo"
 msgstr "O NÁS"
 
 #: module/Application/view/layout/layout.phtml:114
@@ -4925,16 +4925,16 @@ msgstr "Ďalej"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:23
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
-msgid "Canoni e tariffe"
+msgid "Pacchetti &amp; promozioni"
 msgstr "AKCIE A BALIKY"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
-msgid "Sharengo Point"
+msgid "La città cambia"
 msgstr "Mesto sa mení"
 
 #: module/Application/view/partials/header/main_head.phtml:26
-msgid "SharenGo"
+msgid "Vantaggi per te"
 msgstr "Výhody pre teba"
 
 #: module/Application/view/partials/header/main_head.phtml:27

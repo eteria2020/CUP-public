@@ -11,7 +11,6 @@ $translator = new \Zend\I18n\Translator\Translator();
 // Getting the siteroot path ( = sharengo-admin folder)
 $baseDir = realpath(__DIR__ . '/../../../');
 
-
 return [
     'router' => [
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
@@ -2120,7 +2119,7 @@ return [
                 'icon' => 'fa fa-money',
             ],
             [
-                'label' => $translator->translate("Canoni e Tariffe"),
+                'label' => $translator->translate("Promo e pacchetti"),
                 'route' => 'area-utente/additional-services',
                 'icon' => 'fa fa-plus',
             ],

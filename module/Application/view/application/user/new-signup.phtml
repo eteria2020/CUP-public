@@ -12,29 +12,18 @@ $this->headLink()
 <div id="main">
     <!-- module-section-bookmark -->
     <div class="module-section-bookmark yellow content-align-center">
-        <!-- MYSHARENGO 
         <h1 class="module-main-title"><?= $this->translate("Il car sharing elettrico che non inquina"); ?></h1>
-        <div style="display: inline-block;">
+            <div style="display: inline-block;">
             <ul style="text-align: left; margin-top: 10px">
                 <li><?= $this->translate("Solo auto elettriche, disponibili giorno e notte, vicino a te.") ?></li>
                 <li><?= $this->translate("Vai senza limiti in Area C e B/ ZTL Firenze/ ZTL e Tridente Roma.") ?></li>
                 <li><?= $this->translate("Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti.") ?></li>
             </ul>
         </div>
-        -->
-        <h1 class="module-main-title"><?= $this->translate("Scegli MYSHARENGO, non inquini e viaggi sicuro!"); ?></h1>
-        <div style="display: inline-block;">
-            <ul style="text-align: left; margin-top: 10px">
-                <li><?= $this->translate("Un’auto tutta tua, per  il tempo che ti serve, da un mese fino ad un anno.") ?></li>
-                <li><?= $this->translate("Elettrica, senza emissioni, sanificata e con gel disinfettante a bordo.") ?></li>
-                <li><?= $this->translate("Vai in centro senza limiti e parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti.") ?></li>
-                <li><?= $this->translate("Puoi utilizzarlo come servizio di consegna per la tua attività.") ?></li>
-            </ul>
-        </div>
     </div>
 
     <div class="module-main-subtitle content-align-center">
-        <!-- MYSHARENGO<p><?= $this->translate("ISCRIVERTI NON TI COSTA NULLA!") ?></p>-->
+        <p><?= $this->translate("ISCRIVERTI NON TI COSTA NULLA!") ?></p>
     </div>
     <br>
 
@@ -242,7 +231,7 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 <script type="text/javascript">
     $(document).ready(function () {
         tryAPIGeolocation();
-        //suspendedFleet();
+        suspendedFleet();
 
         overlay = $('#sng-overlay');
 
@@ -301,12 +290,12 @@ maxDate: new Date(new Date().getFullYear(), 11, 31)
 
     $(function() {
         $('#registration-form').on('submit', function(e) {
-            // if( $("#fleet option:selected" ).text()=='Milano' || $("#fleet option:selected" ).text()=='Roma') {
-            //     let overlay = $('#sng-overlay-suspended');
-            //     overlay.css("visibility", "visible");
-            //     e.preventDefault();
-            //     return false;
-            // }
+            if( $("#fleet option:selected" ).text()=='Milano' || $("#fleet option:selected" ).text()=='Roma') {
+                let overlay = $('#sng-overlay-suspended');
+                overlay.css("visibility", "visible");
+                e.preventDefault();
+                return false;
+            }
             $("#nextBtn").attr("disabled", true);
             addLoader();
         });

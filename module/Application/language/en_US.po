@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-04-20 13:59+0200\n"
-"PO-Revision-Date: 2020-04-20 16:14+0200\n"
+"POT-Creation-Date: 2020-03-16 11:56+0100\n"
+"PO-Revision-Date: 2020-03-16 12:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -23,13 +23,13 @@ msgstr ""
 "X-Poedit-SearchPath-6: vendor/sharengo-web/mollie\n"
 "X-Poedit-SearchPath-7: vendor/sharengo-web/bankart\n"
 
-#: module/Application/config/module.config.php:2103
+#: module/Application/config/module.config.php:2102
 #: module/Application/view/application/user-area/index.phtml:28
 #: module/Application/view/application/user-area/profile.phtml:30
 msgid "Profilo"
 msgstr "Profile"
 
-#: module/Application/config/module.config.php:2108
+#: module/Application/config/module.config.php:2107
 #: module/Application/src/Application/Form/DriverFieldset.php:55
 #: module/Application/src/Application/Form/NewUserFieldset2.php:287
 #: module/Application/src/Application/Form/SignupNL2Fieldset.php:284
@@ -40,35 +40,35 @@ msgstr "Profile"
 msgid "Patente"
 msgstr "Driver's license"
 
-#: module/Application/config/module.config.php:2113
+#: module/Application/config/module.config.php:2112
 #: module/Application/view/application/user-area/pin.phtml:16
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/pin.phtml:16
 msgid "PIN"
 msgstr "PIN"
 
-#: module/Application/config/module.config.php:2118
+#: module/Application/config/module.config.php:2117
 #: module/Application/view/application/user-area/rates.phtml:37
 msgid "Tariffe"
 msgstr "Rates"
 
-#: module/Application/config/module.config.php:2123
-#: module/Application/view/application/additional-services/my-additional-services.phtml:24
-msgid "Canoni e Tariffe"
-msgstr "Packages &amp; Promotions"
+#: module/Application/config/module.config.php:2122
+#: module/Application/view/application/additional-services/additional-services.phtml:30
+msgid "Promo e pacchetti"
+msgstr "Promos and packages"
 
-#: module/Application/config/module.config.php:2128
+#: module/Application/config/module.config.php:2127
 msgid "Bonus minuti"
 msgstr "Bonus minutes"
 
-#: module/Application/config/module.config.php:2133
+#: module/Application/config/module.config.php:2132
 msgid "Corse completate"
 msgstr "Completed trips"
 
-#: module/Application/config/module.config.php:2138
+#: module/Application/config/module.config.php:2137
 msgid "Dati di pagamento"
 msgstr "Payment details"
 
-#: module/Application/config/module.config.php:2143
+#: module/Application/config/module.config.php:2142
 #: module/Application/view/application/user-area/invoices-list.phtml:21
 msgid "Fatture"
 msgstr "Invoices"
@@ -102,12 +102,12 @@ msgstr "The promo code has already been used."
 msgid "Si è verificato un errore applicativo CR."
 msgstr "An application error has occurred. We apologize for the inconvenience."
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:130
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:215
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:121
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:154
 msgid "Impossibile completare l'acquisto del pacchetto richiesto"
 msgstr "The purchase of the requested package can not be completed"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:136
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:127
 #: module/Application/view/application/customer-bonus-packages/package.phtml:64
 msgid ""
 "Occorre effettuare l'acquisto del Pacchetto Benvenuto prima di poter "
@@ -115,45 +115,27 @@ msgid ""
 msgstr ""
 "You need to purchase the Welcome Package before you can purchase a package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:142
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:133
 msgid "Acquisto del pacchetto completato correttamente"
 msgstr "Purchase of the package completed successfully"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:144
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:135
 msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
 msgstr "An error occurred while purchasing the requested package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:168
-#, fuzzy
-#| msgid "Impossibile completare l'acquisto del pacchetto richiesto"
-msgid "Impossibile completare la prenotazione del canone richiesto"
-msgstr "The purchase of the requested package can not be completed"
-
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:179
-#, fuzzy
-#| msgid "Acquisto del pacchetto completato correttamente"
-msgid "Prenotazione del canone completata correttamente"
-msgstr "Purchase of the package completed successfully"
-
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:181
-#, fuzzy
-#| msgid "Si è verificato un errore durante l'acquisto del pacchetto richiesto"
-msgid "Si è verificato un errore durante la prenotazione del canone richiesto"
-msgstr "An error occurred while purchasing the requested package"
-
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:219
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:158
 msgid "Utente non riconosciuto"
 msgstr "User not recognized"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:223
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:162
 msgid "Pacchetto non valido"
 msgstr "Invalid package"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:230
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:169
 msgid "Punti ossigeno insufficienti"
 msgstr "Insufficient oxygen points"
 
-#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:233
+#: module/Application/src/Application/Controller/CustomerBonusPackagesController.php:172
 msgid "Pacchetto non acquistabile"
 msgstr "Package not buyable"
 
@@ -248,11 +230,11 @@ msgstr "Phone number incorrect"
 #: module/Application/src/Application/Controller/UserController.php:1238
 #: module/Application/src/Application/Controller/UserController.php:1357
 #: module/Application/src/Application/Controller/UserController.php:1447
-#: module/Application/src/Application/Controller/UserController.php:1586
-#: module/Application/src/Application/Controller/UserController.php:1619
-#: module/Application/src/Application/Controller/UserController.php:1895
-#: module/Application/src/Application/Controller/UserController.php:1938
-#: module/Application/src/Application/Controller/UserController.php:2091
+#: module/Application/src/Application/Controller/UserController.php:1594
+#: module/Application/src/Application/Controller/UserController.php:1627
+#: module/Application/src/Application/Controller/UserController.php:1903
+#: module/Application/src/Application/Controller/UserController.php:1946
+#: module/Application/src/Application/Controller/UserController.php:2099
 msgid ""
 "La sessione è scaduta. E' necessario ripetere la procedura di registrazione"
 msgstr ""
@@ -312,7 +294,6 @@ msgstr "Mrs"
 #: module/Application/src/Application/Form/UserFieldset.php:135
 #: module/Application/src/Application/Form/UserFieldset.php:139
 #: module/Application/view/application/additional-services/additional-services.phtml:143
-#: module/Application/view/application/additional-services/my-additional-services.phtml:124
 #: module/Application/view/application/landing-page/acceptpack.phtml:65
 #: module/Application/view/application/user-area/index.phtml:67
 #: module/Application/view/application/user-area/index.phtml:276
@@ -360,7 +341,7 @@ msgstr "Last Name"
 #: module/Application/view/application/user-area/index.phtml:250
 #: module/Application/view/application/user-area/profile.phtml:54
 #: module/Application/view/application/user-area/profile.phtml:229
-#: module/Application/view/application/user/new-signup.phtml:56
+#: module/Application/view/application/user/new-signup.phtml:45
 #: module/Application/view/application/user/signup-nl1.phtml:44
 #: module/Application/view/application/user/signup-si1.phtml:44
 #: module/Application/view/application/user/signup-sk1.phtml:44
@@ -457,7 +438,7 @@ msgstr "Birth Town"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:202
 #: module/Application/src/Application/Form/NewUserFieldset2.php:139
-#: module/Application/view/application/user/new-signup2.phtml:120
+#: module/Application/view/application/user/new-signup2.phtml:112
 msgid "Stato di residenza"
 msgstr "Residence data"
 
@@ -574,7 +555,7 @@ msgid "sloveno"
 msgstr "Slovenia"
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:314
-#: module/Application/src/Application/Form/NewUserFieldset.php:143
+#: module/Application/src/Application/Form/NewUserFieldset.php:139
 msgid ""
 "Autorizzo il trattamento dei miei dati personali per finalità assicurative, "
 "antifrode e prevenzione sinistri (facoltativo)."
@@ -583,7 +564,7 @@ msgstr ""
 "accident prevention purposes (optional)."
 
 #: module/Application/src/Application/Form/CustomerFieldset.php:328
-#: module/Application/src/Application/Form/NewUserFieldset.php:123
+#: module/Application/src/Application/Form/NewUserFieldset.php:119
 msgid ""
 "Accetto di ricevere comunicazioni cartacee e digitali relative al servizio, ai "
 "prodotti, ai vantaggi offerti da Sharengo e dai Partner Sharengo (facoltativo)."
@@ -599,7 +580,7 @@ msgstr ""
 #: module/Application/view/application/user-area/index.phtml:491
 #: module/Application/view/application/user-area/profile.phtml:183
 #: module/Application/view/application/user-area/profile.phtml:431
-#: module/Application/view/application/user/new-signup2.phtml:254
+#: module/Application/view/application/user/new-signup2.phtml:246
 #: module/Application/view/application/user/signup.phtml:360
 msgid "Codice fiscale"
 msgstr "Fiscal Code"
@@ -693,7 +674,7 @@ msgstr "Driver's license surname"
 #: module/Application/view/application/user-area/driving-licence-international.phtml:228
 #: module/Application/view/application/user-area/driving-licence.phtml:114
 #: module/Application/view/application/user-area/driving-licence.phtml:250
-#: module/Application/view/application/user/new-signup2.phtml:285
+#: module/Application/view/application/user/new-signup2.phtml:277
 #: module/Application/view/application/user/signup2.phtml:151
 msgid "Rilasciata (nazione)"
 msgstr "Country of issue"
@@ -811,7 +792,7 @@ msgstr "Country code"
 #: module/Application/src/Application/Form/UserFieldset.php:403
 #: module/Application/view/application/user-area/index.phtml:597
 #: module/Application/view/application/user-area/index.phtml:629
-#: module/Application/view/application/user/new-signup2.phtml:212
+#: module/Application/view/application/user/new-signup2.phtml:204
 #: module/Application/view/application/user/signup-nl2.phtml:209
 #: module/Application/view/application/user/signup-si2.phtml:210
 #: module/Application/view/application/user/signup-sk2.phtml:210
@@ -858,7 +839,7 @@ msgstr "Set your password"
 #: module/Application/view/application/user-area/index.phtml:718
 #: module/Application/view/application/user-area/profile.phtml:498
 #: module/Application/view/application/user-area/profile.phtml:534
-#: module/Application/view/application/user/new-signup.phtml:66
+#: module/Application/view/application/user/new-signup.phtml:55
 #: module/Application/view/application/user/signup-nl1.phtml:54
 #: module/Application/view/application/user/signup-si1.phtml:54
 #: module/Application/view/application/user/signup-sk1.phtml:54
@@ -867,11 +848,11 @@ msgstr "Set your password"
 msgid "Password"
 msgstr "Password"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:110
+#: module/Application/src/Application/Form/NewUserFieldset.php:106
 msgid "Accetto espressamente i Termini e le Condizioni Privacy "
 msgstr "I hereby accept  Privacy Terms and Conditions "
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:156
+#: module/Application/src/Application/Form/NewUserFieldset.php:152
 msgid ""
 "Il Cliente, dopo aver preso visione dei Termini e Condizioni Contrattuali che "
 "regolano il rapporto, dichiara ai sensi degli articoli 1341 e 1342 del Codice "
@@ -896,13 +877,13 @@ msgstr ""
 "account suspension, withdrawal, termination of the contract), 17 (complaints), "
 "18 (penalties), 20 (jurisdiction)."
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:176
-#: module/Application/src/Application/Form/NewUserFieldset.php:206
+#: module/Application/src/Application/Form/NewUserFieldset.php:172
+#: module/Application/src/Application/Form/NewUserFieldset.php:202
 msgid "Il valore è richiesto e non può essere vuoto"
 msgstr "The data is required to proceed"
 
-#: module/Application/src/Application/Form/NewUserFieldset.php:223
-#: module/Application/src/Application/Form/NewUserFieldset.php:250
+#: module/Application/src/Application/Form/NewUserFieldset.php:219
+#: module/Application/src/Application/Form/NewUserFieldset.php:246
 msgid "Il dato è richiesto per procedere"
 msgstr "The data is required to proceed"
 
@@ -1319,15 +1300,15 @@ msgid "Esiste già un utente con la stessa patente"
 msgstr "A user already exists with the same email address"
 
 #: module/Application/src/Application/Form/Validator/DuplicateEmail.php:30
-#: module/Application/view/application/user/new-signup.phtml:288
-#: module/Application/view/application/user/signup-nl1.phtml:252
-#: module/Application/view/application/user/signup-si1.phtml:252
-#: module/Application/view/application/user/signup-sk1.phtml:252
+#: module/Application/view/application/user/new-signup.phtml:277
+#: module/Application/view/application/user/signup-nl1.phtml:250
+#: module/Application/view/application/user/signup-si1.phtml:250
+#: module/Application/view/application/user/signup-sk1.phtml:250
 msgid "Esiste già un utente con lo stesso indirizzo email"
 msgstr "A user already exists with the same email address"
 
 #: module/Application/src/Application/Form/Validator/DuplicateTaxCode.php:32
-#: module/Application/view/application/user/new-signup2.phtml:646
+#: module/Application/view/application/user/new-signup2.phtml:638
 msgid "Esiste già un utente con lo stesso codice fiscale"
 msgstr "A user already exists with the same tax code"
 
@@ -1539,18 +1520,18 @@ msgstr ""
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:221
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:235
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:245
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
 msgid "Si"
 msgstr "Yes"
 
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:97
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/CardsService.php:99
 #: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/ReservationsService.php:129
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:221
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:235
-#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:245
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:215
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:229
+#: vendor/mvlabs/sharengo-coremodule/src/SharengoCore/Service/TripsService.php:239
 msgid "No"
 msgstr "No"
 
@@ -1627,10 +1608,6 @@ msgstr "Invalid transaction"
 msgid "Transazione non valida (id non trovato)"
 msgstr "Invalid transaction (id not found)"
 
-#: module/Application/view/application/additional-services/additional-services.phtml:30
-msgid "Promo e pacchetti"
-msgstr "Promos and packages"
-
 #: module/Application/view/application/additional-services/additional-services.phtml:45
 msgid "Acquista Pacchetti"
 msgstr "Buy Packages"
@@ -1658,43 +1635,29 @@ msgstr "min"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:84
 #: module/Application/view/application/additional-services/additional-services.phtml:113
-#: module/Application/view/application/additional-services/my-additional-services.phtml:91
 msgid "a"
 msgstr "to"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:100
 #: module/Application/view/application/additional-services/additional-services.phtml:120
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:27
 msgid "Validità"
 msgstr "Validity"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:105
-#: module/Application/view/application/additional-services/my-additional-services.phtml:82
-#: module/Application/view/application/additional-services/my-additional-services.phtml:155
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:33
 msgid "mesi"
 msgstr "months"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:105
-#: module/Application/view/application/additional-services/my-additional-services.phtml:82
-#: module/Application/view/application/additional-services/my-additional-services.phtml:155
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:33
 msgid "mese"
 msgstr "month"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:107
 #: module/Application/view/application/additional-services/additional-services.phtml:124
-#: module/Application/view/application/additional-services/my-additional-services.phtml:84
-#: module/Application/view/application/additional-services/my-additional-services.phtml:157
 msgid "giorni"
 msgstr "days"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:107
 #: module/Application/view/application/additional-services/additional-services.phtml:124
-#: module/Application/view/application/additional-services/my-additional-services.phtml:84
-#: module/Application/view/application/additional-services/my-additional-services.phtml:102
-#: module/Application/view/application/additional-services/my-additional-services.phtml:157
-#: module/Application/view/application/additional-services/my-additional-services.phtml:171
 msgid "giorno"
 msgstr "day"
 
@@ -1705,7 +1668,6 @@ msgid "Minuti"
 msgstr "Minutes"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:145
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:42
 #: module/Application/view/application/customer-bonus-packages/package.phtml:31
 #: module/Application/view/application/landing-page/acceptpack.phtml:73
 msgid "Prezzo"
@@ -1732,8 +1694,6 @@ msgid "Acquista/Converti"
 msgstr "Buy / Convert"
 
 #: module/Application/view/application/additional-services/additional-services.phtml:164
-#: module/Application/view/application/additional-services/my-additional-services.phtml:143
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:3
 #: module/Application/view/application/customer-bonus-packages/package.phtml:3
 #: module/Application/view/application/landing-page/acceptpack.phtml:38
 #, php-format
@@ -1754,44 +1714,10 @@ msgstr "Enter the promo code"
 msgid "Valida"
 msgstr "Valid"
 
-#: module/Application/view/application/additional-services/my-additional-services.phtml:39
-msgid "Prenota ora il tuo Abbonamento"
-msgstr "Book your subscription now"
-
-#: module/Application/view/application/additional-services/my-additional-services.phtml:44
-msgid ""
-"Con la nuova mobilità di MYSHARENGO puoi disporre di una Sharengo tutta per "
-"te  per il tempo che ti serve,"
-msgstr ""
-"With the new mobility of MYSHARENGO you can have a Sharengo all for you for "
-"the time you need,"
-
-#: module/Application/view/application/additional-services/my-additional-services.phtml:48
-msgid "scegli  tra le opzioni di tempo e di tariffe quella più adatta a te."
-msgstr "choose the most suitable options for time and rates."
-
-#: module/Application/view/application/additional-services/my-additional-services.phtml:125
-msgid "Mesi"
-msgstr "Months"
-
-#: module/Application/view/application/additional-services/my-additional-services.phtml:126
-msgid "Prezzo (IVA Inclusa)"
-msgstr "Price (VAT included)"
-
-#: module/Application/view/application/additional-services/my-additional-services.phtml:127
-msgid "Prezzo al giorno (IVA Inclusa)"
-msgstr "Price per day (VAT included)"
-
-#: module/Application/view/application/additional-services/my-additional-services.phtml:128
-msgid "Prenota"
-msgstr "Book"
-
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:17
 #: module/Application/view/application/customer-bonus-packages/package.phtml:17
 msgid "Riepilogo"
 msgstr "Summary"
 
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:21
 #: module/Application/view/application/customer-bonus-packages/package.phtml:21
 #: module/Application/view/application/user-area/bonus.phtml:68
 #: module/Application/view/application/user-area/debt-collection.phtml:138
@@ -1800,19 +1726,6 @@ msgstr "Summary"
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:138
 msgid "Descrizione"
 msgstr "Description"
-
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:51
-msgid "Per prenotare clicca su CONFERMA e verrai contattato dal Servizio Clienti"
-msgstr ""
-"To book click on CONFIRM and you will be contacted by the Customer Service"
-
-#: module/Application/view/application/customer-bonus-packages/my-package.phtml:52
-#: module/Application/view/application/customer-bonus-packages/package.phtml:61
-#: module/Application/view/application/customer-bonus-packages/package.phtml:68
-#: module/Application/view/application/customer-bonus-packages/package.phtml:71
-#: module/Application/view/partials/car-popup.phtml:136
-msgid "Conferma"
-msgstr "Confirmation"
 
 #: module/Application/view/application/customer-bonus-packages/package.phtml:33
 msgid "GRATUITO"
@@ -1831,6 +1744,13 @@ msgstr "Do you want to confirm this package?"
 msgid "Confermare l'acquisto utilizzando carta di credito?"
 msgstr "Confirm the purchase using a credit card?"
 
+#: module/Application/view/application/customer-bonus-packages/package.phtml:61
+#: module/Application/view/application/customer-bonus-packages/package.phtml:68
+#: module/Application/view/application/customer-bonus-packages/package.phtml:71
+#: module/Application/view/partials/car-popup.phtml:136
+msgid "Conferma"
+msgstr "Confirmation"
+
 #: module/Application/view/application/customer-bonus-packages/package.phtml:66
 msgid "Confermare l'acquisto registrando una carta di credito"
 msgstr "Confirm the purchase by registering a credit card"
@@ -1838,8 +1758,8 @@ msgstr "Confirm the purchase by registering a credit card"
 #: module/Application/view/application/index/comefunziona.phtml:10
 #: module/Application/view/layout/layout.phtml:113
 #: module/Application/view/partials/header/main_head.phtml:22
-msgid "MySharengo"
-msgstr "MySharengo"
+msgid "Come funziona"
+msgstr "How it works"
 
 #: module/Application/view/application/index/comefunziona.phtml:13
 msgid "Iscrizione a Share’ngo"
@@ -2391,7 +2311,7 @@ msgstr "Pay a penalty"
 #: module/Application/view/application/user-area/nl_NL/debt-collection.phtml:202
 #: module/Application/view/application/user-area/sk_SK/debt-collection.phtml:202
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:202
-#: module/Application/view/application/user/new-signup2.phtml:27
+#: module/Application/view/application/user/new-signup2.phtml:26
 #: module/Application/view/application/user/signup-nl2.phtml:32
 #: module/Application/view/application/user/signup-si2.phtml:32
 #: module/Application/view/application/user/signup-sk2.phtml:32
@@ -2544,11 +2464,11 @@ msgstr "to complete the activation of the service"
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:163
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:108
 #: module/Application/view/application/user-area/sl_SI/debt-collection.phtml:174
-#: module/Application/view/application/user/new-signup.phtml:163
-#: module/Application/view/application/user/new-signup.phtml:209
-#: module/Application/view/application/user/signup-nl1.phtml:153
-#: module/Application/view/application/user/signup-si1.phtml:153
-#: module/Application/view/application/user/signup-sk1.phtml:153
+#: module/Application/view/application/user/new-signup.phtml:152
+#: module/Application/view/application/user/new-signup.phtml:198
+#: module/Application/view/application/user/signup-nl1.phtml:151
+#: module/Application/view/application/user/signup-si1.phtml:151
+#: module/Application/view/application/user/signup-sk1.phtml:151
 #: vendor/cup-web/public-business-module/view/cup-public-business-module/business-user-area/rents.phtml:98
 msgid "Attenzione"
 msgstr "Caution"
@@ -2707,14 +2627,14 @@ msgstr "PROCEED"
 #: module/Application/view/application/user-area/nl_NL/dati-pagamento.phtml:177
 #: module/Application/view/application/user-area/sk_SK/dati-pagamento.phtml:177
 #: module/Application/view/application/user-area/sl_SI/dati-pagamento.phtml:179
-#: module/Application/view/application/user/new-signup2.phtml:425
-#: module/Application/view/application/user/new-signup2.phtml:452
-#: module/Application/view/application/user/new-signup2.phtml:473
-#: module/Application/view/application/user/signup-nl1.phtml:149
+#: module/Application/view/application/user/new-signup2.phtml:417
+#: module/Application/view/application/user/new-signup2.phtml:444
+#: module/Application/view/application/user/new-signup2.phtml:465
+#: module/Application/view/application/user/signup-nl1.phtml:147
 #: module/Application/view/application/user/signup-nl2.phtml:365
-#: module/Application/view/application/user/signup-si1.phtml:149
+#: module/Application/view/application/user/signup-si1.phtml:147
 #: module/Application/view/application/user/signup-si2.phtml:379
-#: module/Application/view/application/user/signup-sk1.phtml:149
+#: module/Application/view/application/user/signup-sk1.phtml:147
 #: module/Application/view/application/user/signup-sk2.phtml:375
 #: module/Application/view/partials/car-popup.phtml:101
 msgid "Chiudi"
@@ -2888,7 +2808,7 @@ msgstr "The data of your license"
 #: module/Application/view/application/user-area/driving-licence-international.phtml:140
 #: module/Application/view/application/user-area/driving-licence.phtml:47
 #: module/Application/view/application/user-area/driving-licence.phtml:162
-#: module/Application/view/application/user/new-signup2.phtml:265
+#: module/Application/view/application/user/new-signup2.phtml:257
 #: module/Application/view/application/user/signup-nl2.phtml:235
 #: module/Application/view/application/user/signup-si2.phtml:240
 #: module/Application/view/application/user/signup-sk2.phtml:236
@@ -3035,7 +2955,7 @@ msgstr "Province"
 #: module/Application/view/application/user-area/index.phtml:396
 #: module/Application/view/application/user-area/profile.phtml:139
 #: module/Application/view/application/user-area/profile.phtml:370
-#: module/Application/view/application/user/new-signup2.phtml:138
+#: module/Application/view/application/user/new-signup2.phtml:130
 #: module/Application/view/application/user/signup.phtml:334
 msgid "Citt&agrave;"
 msgstr "City"
@@ -3049,7 +2969,7 @@ msgstr "Street number"
 #: module/Application/view/application/user-area/index.phtml:442
 #: module/Application/view/application/user-area/profile.phtml:151
 #: module/Application/view/application/user-area/profile.phtml:392
-#: module/Application/view/application/user/new-signup2.phtml:179
+#: module/Application/view/application/user/new-signup2.phtml:171
 #: module/Application/view/application/user/signup-nl2.phtml:132
 #: module/Application/view/application/user/signup-si2.phtml:132
 #: module/Application/view/application/user/signup-sk2.phtml:132
@@ -3087,7 +3007,7 @@ msgstr "Language"
 #: module/Application/view/application/user-area/index.phtml:525
 #: module/Application/view/application/user-area/profile.phtml:206
 #: module/Application/view/application/user-area/profile.phtml:467
-#: module/Application/view/application/user/new-signup.phtml:77
+#: module/Application/view/application/user/new-signup.phtml:66
 #: module/Application/view/application/user/signup-nl1.phtml:65
 #: module/Application/view/application/user/signup-si1.phtml:65
 #: module/Application/view/application/user/signup-sk1.phtml:65
@@ -3113,7 +3033,7 @@ msgid "Modifica Numero"
 msgstr "Change Number"
 
 #: module/Application/view/application/user-area/index.phtml:620
-#: module/Application/view/application/user/new-signup2.phtml:204
+#: module/Application/view/application/user/new-signup2.phtml:196
 #: module/Application/view/application/user/signup-nl2.phtml:201
 #: module/Application/view/application/user/signup-si2.phtml:201
 #: module/Application/view/application/user/signup-sk2.phtml:201
@@ -3122,7 +3042,7 @@ msgid "Prefisso"
 msgstr "Prefix"
 
 #: module/Application/view/application/user-area/index.phtml:642
-#: module/Application/view/application/user/new-signup2.phtml:223
+#: module/Application/view/application/user/new-signup2.phtml:215
 #: module/Application/view/application/user/signup.phtml:623
 #: module/Application/view/partials/translations.phtml:3
 #: module/Application/view/partials/translations.phtml:25
@@ -3130,7 +3050,7 @@ msgid "INVIA CODICE"
 msgstr "SEND CODE"
 
 #: module/Application/view/application/user-area/index.phtml:651
-#: module/Application/view/application/user/new-signup2.phtml:232
+#: module/Application/view/application/user/new-signup2.phtml:224
 #: module/Application/view/application/user/signup.phtml:635
 msgid "Codice di Verifica"
 msgstr "Verification code"
@@ -3559,7 +3479,7 @@ msgstr ""
 
 #: module/Application/view/application/user-area/profile.phtml:145
 #: module/Application/view/application/user-area/profile.phtml:381
-#: module/Application/view/application/user/new-signup2.phtml:162
+#: module/Application/view/application/user/new-signup2.phtml:154
 #: module/Application/view/application/user/signup-nl2.phtml:114
 #: module/Application/view/application/user/signup-si2.phtml:114
 #: module/Application/view/application/user/signup-sk2.phtml:114
@@ -3717,25 +3637,25 @@ msgstr "Distance tot"
 msgid "Non hai ancora effettuato alcun noleggio"
 msgstr "You have not made any rentals yet"
 
-#: module/Application/view/application/user/new-signup.phtml:16
+#: module/Application/view/application/user/new-signup.phtml:15
 #: module/Application/view/application/user/signup-nl1.phtml:15
 #: module/Application/view/application/user/signup-si1.phtml:15
 #: module/Application/view/application/user/signup-sk1.phtml:15
 msgid "Il car sharing elettrico che non inquina"
 msgstr "Electric and non-polluting car sharing"
 
-#: module/Application/view/application/user/new-signup.phtml:19
+#: module/Application/view/application/user/new-signup.phtml:18
 #: module/Application/view/application/user/signup-nl1.phtml:18
 #: module/Application/view/application/user/signup-si1.phtml:18
 #: module/Application/view/application/user/signup-sk1.phtml:18
 msgid "Solo auto elettriche, disponibili giorno e notte, vicino a te."
 msgstr "Only electric cars available day and night near you."
 
-#: module/Application/view/application/user/new-signup.phtml:20
+#: module/Application/view/application/user/new-signup.phtml:19
 msgid "Vai senza limiti in Area C e B/ ZTL Firenze/ ZTL e Tridente Roma."
 msgstr "No limit in Area C/B/ZTL /Rome Tridente."
 
-#: module/Application/view/application/user/new-signup.phtml:21
+#: module/Application/view/application/user/new-signup.phtml:20
 #: module/Application/view/application/user/signup-nl1.phtml:19
 #: module/Application/view/application/user/signup-si1.phtml:19
 #: module/Application/view/application/user/signup-sk1.phtml:19
@@ -3743,71 +3663,46 @@ msgid ""
 "Parcheggi gratis nei posteggi pubblici e in quelli riservati ai residenti."
 msgstr "Free park in public lots and in those reserved to residents"
 
-#: module/Application/view/application/user/new-signup.phtml:25
-#: module/Application/view/application/user/optional.phtml:80
-msgid "Scegli MYSHARENGO, non inquini e viaggi sicuro!"
-msgstr "Try MYSHARENGO, do not pollute and drive safely!"
-
-#: module/Application/view/application/user/new-signup.phtml:28
-msgid ""
-"Un’auto tutta tua, per  il tempo che ti serve, da un mese fino ad un anno."
-msgstr "A car for you only, for the time you need, from one month to a year"
-
-#: module/Application/view/application/user/new-signup.phtml:29
-msgid "Elettrica, senza emissioni, sanificata e con gel disinfettante a bordo."
-msgstr ""
-"Only electric, no emissions, sanitized, a family member can drive the car"
-
-#: module/Application/view/application/user/new-signup.phtml:30
-msgid ""
-"Vai in centro senza limiti e parcheggi gratis nei posteggi pubblici e in "
-"quelli riservati ai residenti."
-msgstr "Free entrance in Town Center and free parking in public paying lots"
-
-#: module/Application/view/application/user/new-signup.phtml:31
-msgid "Puoi utilizzarlo come servizio di consegna per la tua attività."
-msgstr "You’re allowed to use it as delivery service for your business."
-
-#: module/Application/view/application/user/new-signup.phtml:37
+#: module/Application/view/application/user/new-signup.phtml:26
 #: module/Application/view/application/user/signup-nl1.phtml:25
 #: module/Application/view/application/user/signup-si1.phtml:25
 #: module/Application/view/application/user/signup-sk1.phtml:25
 msgid "ISCRIVERTI NON TI COSTA NULLA!"
 msgstr "Sign up is free!"
 
-#: module/Application/view/application/user/new-signup.phtml:73
+#: module/Application/view/application/user/new-signup.phtml:62
 #: module/Application/view/application/user/signup-nl1.phtml:61
 #: module/Application/view/application/user/signup-si1.phtml:61
 #: module/Application/view/application/user/signup-sk1.phtml:61
 msgid "min. 8 caratteri, una maiuscola e un numero"
 msgstr "min. 8 characters, a capital letter and a number"
 
-#: module/Application/view/application/user/new-signup.phtml:97
+#: module/Application/view/application/user/new-signup.phtml:86
 #: module/Application/view/application/user/signup-nl1.phtml:85
 #: module/Application/view/application/user/signup-si1.phtml:85
 #: module/Application/view/application/user/signup-sk1.phtml:85
 msgid "(clicca qui)."
 msgstr "(click here)."
 
-#: module/Application/view/application/user/new-signup.phtml:129
+#: module/Application/view/application/user/new-signup.phtml:118
 #: module/Application/view/application/user/signup-nl1.phtml:117
 #: module/Application/view/application/user/signup-si1.phtml:117
 #: module/Application/view/application/user/signup-sk1.phtml:117
 msgid "CREA IL TUO ACCOUNT"
 msgstr "CREATE YOUR ACCOUNT"
 
-#: module/Application/view/application/user/new-signup.phtml:131
-#: module/Application/view/application/user/signup-nl1.phtml:120
-#: module/Application/view/application/user/signup-si1.phtml:120
-#: module/Application/view/application/user/signup-sk1.phtml:120
+#: module/Application/view/application/user/new-signup.phtml:120
+#: module/Application/view/application/user/signup-nl1.phtml:119
+#: module/Application/view/application/user/signup-si1.phtml:119
+#: module/Application/view/application/user/signup-sk1.phtml:119
 msgid ""
 "Cliccando sul tasto accetti i Termini e le Condizioni contrattuali di Sharengo"
 msgstr "By clicking the bottom you agree to Sharengo Terms and Conditions"
 
-#: module/Application/view/application/user/new-signup.phtml:166
-#: module/Application/view/application/user/signup-nl1.phtml:156
-#: module/Application/view/application/user/signup-si1.phtml:156
-#: module/Application/view/application/user/signup-sk1.phtml:156
+#: module/Application/view/application/user/new-signup.phtml:155
+#: module/Application/view/application/user/signup-nl1.phtml:154
+#: module/Application/view/application/user/signup-si1.phtml:154
+#: module/Application/view/application/user/signup-sk1.phtml:154
 msgid ""
 "Domenica 11 Febbraio dalle ore 7:30 alle ore 13:30 una manutenzione "
 "programmata del sistema di verifica delle patenti potrebbe causare qualche "
@@ -3819,85 +3714,80 @@ msgstr ""
 "procedures. The licenses will still be validated within the luned &igrave; "
 "morning."
 
-#: module/Application/view/application/user/new-signup.phtml:185
-#: module/Application/view/application/user/new-signup2.phtml:474
-#: module/Application/view/application/user/signup-nl1.phtml:175
-#: module/Application/view/application/user/signup-si1.phtml:175
-#: module/Application/view/application/user/signup-sk1.phtml:175
+#: module/Application/view/application/user/new-signup.phtml:174
+#: module/Application/view/application/user/new-signup2.phtml:466
+#: module/Application/view/application/user/signup-nl1.phtml:173
+#: module/Application/view/application/user/signup-si1.phtml:173
+#: module/Application/view/application/user/signup-sk1.phtml:173
 msgid "Sei già iscritto!"
 msgstr "You are already registered!"
 
-#: module/Application/view/application/user/new-signup.phtml:189
-#: module/Application/view/application/user/new-signup2.phtml:478
-#: module/Application/view/application/user/signup-nl1.phtml:179
-#: module/Application/view/application/user/signup-si1.phtml:179
-#: module/Application/view/application/user/signup-sk1.phtml:179
+#: module/Application/view/application/user/new-signup.phtml:178
+#: module/Application/view/application/user/new-signup2.phtml:470
+#: module/Application/view/application/user/signup-nl1.phtml:177
+#: module/Application/view/application/user/signup-si1.phtml:177
+#: module/Application/view/application/user/signup-sk1.phtml:177
 msgid ""
 "Per completare l'inserimento dei tuoi dati clicca sopra su ACCEDI e fai LOGIN"
 msgstr "To complete the insertion of your data click on LOGIN"
 
-#: module/Application/view/application/user/new-signup.phtml:213
+#: module/Application/view/application/user/new-signup.phtml:202
 msgid "Il servizio è temporaneamente sospeso a Milano e a Roma"
 msgstr "The service is temporarily suspended in Milan and Rome"
 
-#: module/Application/view/application/user/new-signup2.phtml:30
+#: module/Application/view/application/user/new-signup2.phtml:29
 msgid "21 minuti a soli 5&euro;"
 msgstr "21 minutes only 5&euro;"
 
-#: module/Application/view/application/user/new-signup2.phtml:31
-#: module/Application/view/application/user/new-signup2.phtml:38
+#: module/Application/view/application/user/new-signup2.phtml:30
 #: module/Application/view/application/user/signup-nl2.phtml:36
 #: module/Application/view/application/user/signup-si2.phtml:36
 #: module/Application/view/application/user/signup-sk2.phtml:36
 msgid "e guidi subito la tua Sharengo!"
-msgstr "Now you can finally drive your Sharengo!"
+msgstr "and drive your Sharengo right away!"
 
-#: module/Application/view/application/user/new-signup2.phtml:35
-msgid "Iscriverti ti costa solo 1€"
-msgstr "Signing up'll cost you only 1€"
-
-#: module/Application/view/application/user/new-signup2.phtml:44
+#: module/Application/view/application/user/new-signup2.phtml:36
 #: module/Application/view/application/user/signup-nl2.phtml:42
 #: module/Application/view/application/user/signup-si2.phtml:42
 #: module/Application/view/application/user/signup-sk2.phtml:42
 msgid "Benvenuto"
 msgstr "Welcome"
 
-#: module/Application/view/application/user/new-signup2.phtml:45
+#: module/Application/view/application/user/new-signup2.phtml:37
 #: module/Application/view/application/user/signup-nl2.phtml:43
 #: module/Application/view/application/user/signup-si2.phtml:43
 #: module/Application/view/application/user/signup-sk2.phtml:43
 msgid "Pochi istanti per completare il tuo profilo"
-msgstr "Just few minutes to complete your profile"
+msgstr "A few moments to complete your profile"
 
-#: module/Application/view/application/user/new-signup2.phtml:77
+#: module/Application/view/application/user/new-signup2.phtml:69
 msgid "Nome Patente"
 msgstr "Driver's license first name"
 
-#: module/Application/view/application/user/new-signup2.phtml:86
+#: module/Application/view/application/user/new-signup2.phtml:78
 msgid "Cognome Patente"
 msgstr "Driver's license surname"
 
-#: module/Application/view/application/user/new-signup2.phtml:100
+#: module/Application/view/application/user/new-signup2.phtml:92
 msgid "Nome codice fiscale"
 msgstr "Tax code first name"
 
-#: module/Application/view/application/user/new-signup2.phtml:108
+#: module/Application/view/application/user/new-signup2.phtml:100
 msgid "Cognome codice fiscale"
 msgstr "Tax code surname"
 
-#: module/Application/view/application/user/new-signup2.phtml:130
+#: module/Application/view/application/user/new-signup2.phtml:122
 msgid "Provincia di residenza"
 msgstr "Province"
 
-#: module/Application/view/application/user/new-signup2.phtml:170
+#: module/Application/view/application/user/new-signup2.phtml:162
 #: module/Application/view/application/user/signup-nl2.phtml:123
 #: module/Application/view/application/user/signup-si2.phtml:123
 #: module/Application/view/application/user/signup-sk2.phtml:123
 msgid "N. civico"
 msgstr "Street number"
 
-#: module/Application/view/application/user/new-signup2.phtml:243
+#: module/Application/view/application/user/new-signup2.phtml:235
 msgid ""
 "INSERISCI QUI IL CODICE DI VERIFICA INVIATO VIA SMS, SE NON RICEVI IL "
 "MESSAGGIO, CONTATTA IL SERVIZIO CLIENTI"
@@ -3905,37 +3795,37 @@ msgstr ""
 "ENTER THE VERIFICATION CODE SENT BY SMS, IF YOU DO NOT RECEIVE THE MESSAGE, "
 "CONTACT THE CUSTOMER SERVICE"
 
-#: module/Application/view/application/user/new-signup2.phtml:272
+#: module/Application/view/application/user/new-signup2.phtml:264
 msgid ""
 "&Egrave; obbligatoria una patente valida per quadricicli pesanti categoria L7e"
 msgstr "A license valid for heavy quadricycles category L7e is mandatory"
 
-#: module/Application/view/application/user/new-signup2.phtml:276
+#: module/Application/view/application/user/new-signup2.phtml:268
 msgid "Scadenza patente"
 msgstr "Driver's license expiration date"
 
-#: module/Application/view/application/user/new-signup2.phtml:300
+#: module/Application/view/application/user/new-signup2.phtml:292
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "DICHIARAZIONE SOSTITUTIVA DELL'ATTO DI NOTORIETA'"
 msgstr "DECLARATION SUBSTITUTING THE ACT OF NOTORIETA '"
 
-#: module/Application/view/application/user/new-signup2.phtml:300
+#: module/Application/view/application/user/new-signup2.phtml:292
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:8
 msgid "CERTIFICAZIONE DISPONIBILITA' PATENTE DI GUIDA"
 msgstr "AVAILABILITY CERTIFICATION DRIVING LICENSE"
 
-#: module/Application/view/application/user/new-signup2.phtml:301
+#: module/Application/view/application/user/new-signup2.phtml:293
 msgid "(Artt. 21 comma 1 - 38 comma 2 e 3 del D.P.R. N. 445 del 28.12.2000)"
 msgstr ""
 "(Article 21 paragraph 1 - 38 paragraph 2 and 3 of the D.P.R. N. 445 of "
 "28.12.2000)"
 
-#: module/Application/view/application/user/new-signup2.phtml:303
+#: module/Application/view/application/user/new-signup2.phtml:295
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:12
 msgid "Il sottoscritto"
 msgstr "The undersigned"
 
-#: module/Application/view/application/user/new-signup2.phtml:306
+#: module/Application/view/application/user/new-signup2.phtml:298
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:27
 msgid ""
 "consapevole delle sanzioni penali cui pu&ograve andare incontro in caso di "
@@ -3948,16 +3838,16 @@ msgstr ""
 "matter and expressly referred to in art. 76 of Presidential Decree 445 of "
 "28/12/2000, under his responsibility &agrave;"
 
-#: module/Application/view/application/user/new-signup2.phtml:309
+#: module/Application/view/application/user/new-signup2.phtml:301
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:30
 msgid "DICHIARA"
 msgstr "DECLARES"
 
-#: module/Application/view/application/user/new-signup2.phtml:311
+#: module/Application/view/application/user/new-signup2.phtml:303
 msgid "di essere titolare di patente di guida in corso di validit&agrave "
 msgstr "to be the holder of a driving license in the course of validity "
 
-#: module/Application/view/application/user/new-signup2.phtml:312
+#: module/Application/view/application/user/new-signup2.phtml:304
 #: module/Application/view/partials/foreign-drivers-license-form.phtml:33
 msgid ""
 "E altresì dichiara che suddetto documento di guida è valido, in relazione alle "
@@ -3970,7 +3860,7 @@ msgstr ""
 "the foreign citizen on Italian territory and to the duration of the same), for "
 "the purpose of driving on the Italian territory."
 
-#: module/Application/view/application/user/new-signup2.phtml:319
+#: module/Application/view/application/user/new-signup2.phtml:311
 #: module/Application/view/application/user/signup-nl2.phtml:268
 #: module/Application/view/application/user/signup-si2.phtml:273
 #: module/Application/view/application/user/signup-sk2.phtml:269
@@ -3978,7 +3868,7 @@ msgstr ""
 msgid "Letto, confermato e sottoscritto"
 msgstr "Read, confirmed and signed"
 
-#: module/Application/view/application/user/new-signup2.phtml:330
+#: module/Application/view/application/user/new-signup2.phtml:322
 #: module/Application/view/application/user/signup-nl2.phtml:278
 #: module/Application/view/application/user/signup-si2.phtml:283
 #: module/Application/view/application/user/signup-sk2.phtml:279
@@ -3996,7 +3886,7 @@ msgstr ""
 "finalities and conditions established by current regulations and are processed "
 "and kept exclusively by the office responsible for method."
 
-#: module/Application/view/application/user/new-signup2.phtml:333
+#: module/Application/view/application/user/new-signup2.phtml:325
 #: module/Application/view/application/user/signup-nl2.phtml:281
 #: module/Application/view/application/user/signup-si2.phtml:286
 #: module/Application/view/application/user/signup-sk2.phtml:282
@@ -4004,7 +3894,7 @@ msgstr ""
 msgid "Esente da Autentica"
 msgstr "Free from Authentic"
 
-#: module/Application/view/application/user/new-signup2.phtml:337
+#: module/Application/view/application/user/new-signup2.phtml:329
 #: module/Application/view/application/user/signup-si2.phtml:290
 #: module/Application/view/application/user/signup-sk2.phtml:286
 msgid ""
@@ -4014,44 +3904,44 @@ msgstr ""
 "You must attach a photocopy copy, even if not authenticated, of the driving "
 "license and of the identity card, both front and back"
 
-#: module/Application/view/application/user/new-signup2.phtml:340
+#: module/Application/view/application/user/new-signup2.phtml:332
 #: module/Application/view/application/user/signup-nl2.phtml:297
 #: module/Application/view/application/user/signup-si2.phtml:302
 #: module/Application/view/application/user/signup-sk2.phtml:298
 msgid "fronte patente di guida"
 msgstr "front driving license"
 
-#: module/Application/view/application/user/new-signup2.phtml:347
+#: module/Application/view/application/user/new-signup2.phtml:339
 #: module/Application/view/application/user/signup-nl2.phtml:304
 #: module/Application/view/application/user/signup-si2.phtml:311
 #: module/Application/view/application/user/signup-sk2.phtml:307
 msgid "retro patente di guida"
 msgstr "retro driving license"
 
-#: module/Application/view/application/user/new-signup2.phtml:356
+#: module/Application/view/application/user/new-signup2.phtml:348
 #: module/Application/view/application/user/signup-nl2.phtml:314
 #: module/Application/view/application/user/signup-si2.phtml:322
 #: module/Application/view/application/user/signup-sk2.phtml:318
 msgid "fronte carta di identità"
 msgstr "front of identity card"
 
-#: module/Application/view/application/user/new-signup2.phtml:363
+#: module/Application/view/application/user/new-signup2.phtml:355
 #: module/Application/view/application/user/signup-nl2.phtml:321
 #: module/Application/view/application/user/signup-si2.phtml:331
 #: module/Application/view/application/user/signup-sk2.phtml:327
 msgid "retro carta di identità"
 msgstr "retro identity card"
 
-#: module/Application/view/application/user/new-signup2.phtml:375
+#: module/Application/view/application/user/new-signup2.phtml:367
 msgid "INSERISCI QUI SE HAI UN CODICE PROMO"
 msgstr "INSERT HERE IF YOU HAVE A PROMO CODE"
 
-#: module/Application/view/application/user/new-signup2.phtml:389
+#: module/Application/view/application/user/new-signup2.phtml:381
 #: module/Application/view/partials/translations.phtml:30
 msgid "Applica"
 msgstr "Apply"
 
-#: module/Application/view/application/user/new-signup2.phtml:400
+#: module/Application/view/application/user/new-signup2.phtml:392
 msgid ""
 "Attivazione include il controllo della Patente<br>con il Ministero dei "
 "Trasporti."
@@ -4059,21 +3949,21 @@ msgstr ""
 "Activation includes the control of the driving license <br> with the Ministry "
 "of Transport."
 
-#: module/Application/view/application/user/new-signup2.phtml:403
+#: module/Application/view/application/user/new-signup2.phtml:395
 #: module/Application/view/application/user/signup-nl2.phtml:345
 #: module/Application/view/application/user/signup-sk2.phtml:355
 msgid "Continua"
 msgstr "Keep it going"
 
-#: module/Application/view/application/user/new-signup2.phtml:427
+#: module/Application/view/application/user/new-signup2.phtml:419
 msgid "Prima di procedere verifica:"
 msgstr "Check below before proceeding:"
 
-#: module/Application/view/application/user/new-signup2.phtml:428
+#: module/Application/view/application/user/new-signup2.phtml:420
 msgid "Hai una patente europea senza scadenza?"
 msgstr "Do you have a European license with no expiry date?"
 
-#: module/Application/view/application/user/new-signup2.phtml:429
+#: module/Application/view/application/user/new-signup2.phtml:421
 msgid ""
 "Se la tua patente europea non ha una scadenza compila l'autocertificazione che "
 "ti invieremo via email. E nel caso tu sia residente in Italia da più di 2 anni "
@@ -4083,11 +3973,11 @@ msgstr ""
 "self-certification form we'll send you by mail. In case you’re resident in "
 "Italy for more than 2 years you must convert it into an Italian one. "
 
-#: module/Application/view/application/user/new-signup2.phtml:431
+#: module/Application/view/application/user/new-signup2.phtml:423
 msgid "Hai una patente estera non europea?"
 msgstr "Do you have a non-European foreign license?"
 
-#: module/Application/view/application/user/new-signup2.phtml:432
+#: module/Application/view/application/user/new-signup2.phtml:424
 msgid ""
 "Per registrarti devi disporre di una patente internazionale o di una "
 "traduzione giurata del documento e compilare il modulo di autocertificazione "
@@ -4099,14 +3989,14 @@ msgstr ""
 "you by mail as well. If you’re resident in Italy for more than 1 year, you "
 "must convert it into an Italian one."
 
-#: module/Application/view/application/user/new-signup2.phtml:454
+#: module/Application/view/application/user/new-signup2.phtml:446
 #: module/Application/view/application/user/signup-nl2.phtml:367
 #: module/Application/view/application/user/signup-si2.phtml:381
 #: module/Application/view/application/user/signup-sk2.phtml:377
 msgid "I file inseriti superano la dimensione massima caricabile."
 msgstr "The selected files are too big."
 
-#: module/Application/view/application/user/new-signup2.phtml:505
+#: module/Application/view/application/user/new-signup2.phtml:497
 #: module/Application/view/application/user/signup-nl2.phtml:394
 #: module/Application/view/application/user/signup-si2.phtml:408
 #: module/Application/view/application/user/signup-sk2.phtml:404
@@ -4148,6 +4038,9 @@ msgid "Il pagamento non è andato a buon fine."
 msgstr "The payment was not successful."
 
 #: module/Application/view/application/user/optional.phtml:28
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:24
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:24
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment-multi.phtml:24
@@ -4155,9 +4048,9 @@ msgid "Il messaggio di errore che abbiamo ricevuto è: \""
 msgstr "The error message we received is: \\ \""
 
 #: module/Application/view/application/user/optional.phtml:29
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:24
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:24
-#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:24
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-change-card-payment.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment-multi.phtml:25
+#: vendor/sharengo-web/bankart/view/bankart/bankart-payments/return-first-payment.phtml:25
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-change-card-payment.phtml:35
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment-multi.phtml:25
 #: vendor/sharengo-web/gpwebpay/view/gp-webpay/gp-webpay-payments/return-first-payment.phtml:25
@@ -4174,9 +4067,9 @@ msgstr "It will be possible to redo the payment in the Reserved Area"
 #: module/Application/view/application/user/optional.phtml:62
 #: module/Application/view/partials/footer/main_foot_nl_NL.phtml:47
 msgid "Scarica l'App Sharengo"
-msgstr "Download the Sharengo App"
+msgstr "Download Sharengo App"
 
-#: module/Application/view/application/user/optional.phtml:88
+#: module/Application/view/application/user/optional.phtml:77
 msgid ""
 "Invia il codice che vedi sotto a un amico, a un parente, a un collega, appena "
 "uno di loro avr&agrave; acquistato il suo Pacchetto Benvenuto, entrambi "
@@ -4186,20 +4079,15 @@ msgstr ""
 "of them has purchased his Welcome Package, you will both receive 30 minutes "
 "free as a prize."
 
-#: module/Application/view/application/user/optional.phtml:106
-#: module/Application/view/application/user/optional.phtml:107
-msgid "Prenotala Oggi"
-msgstr "Book Now"
-
-#: module/Application/view/application/user/optional.phtml:113
+#: module/Application/view/application/user/optional.phtml:92
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-change-card-payment.phtml:15
 #: vendor/sharengo-web/mollie/view/mollie/mollie-payments/return-first-payment.phtml:15
 msgid "Vai in area riservata"
 msgstr "Go to the restricted area"
 
-#: module/Application/view/application/user/signup-nl1.phtml:131
-#: module/Application/view/application/user/signup-si1.phtml:131
-#: module/Application/view/application/user/signup-sk1.phtml:131
+#: module/Application/view/application/user/signup-nl1.phtml:129
+#: module/Application/view/application/user/signup-si1.phtml:129
+#: module/Application/view/application/user/signup-sk1.phtml:129
 msgid ""
 "Il Cliente dichiara, dopo aver preso conoscenza delle Condizioni generali di "
 "contratto sulla base del Codice civile, di accettare le Condizioni generali e "
@@ -4711,8 +4599,8 @@ msgstr "Car sharing"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:25
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:24
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:24
-msgid "Chi siamo"
-msgstr "About us"
+msgid "Chi è SharenGo"
+msgstr "Who is Sharengo"
 
 #: module/Application/view/layout/layout.phtml:114
 #: module/Application/view/layout/layout.phtml:182
@@ -5021,17 +4909,17 @@ msgstr "Forward"
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:23
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:23
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:23
-msgid "Canoni e tariffe"
-msgstr "Rent &amp; Rates"
+msgid "Pacchetti &amp; promozioni"
+msgstr "Packages &amp; promotions"
 
 #: module/Application/view/partials/header/main_head.phtml:24
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:24
-msgid "Sharengo Point"
-msgstr "Sharengo Point"
+msgid "La città cambia"
+msgstr "City changes"
 
 #: module/Application/view/partials/header/main_head.phtml:26
-msgid "SharenGo"
-msgstr "SharenGo"
+msgid "Vantaggi per te"
+msgstr "Benefits for you"
 
 #: module/Application/view/partials/header/main_head.phtml:27
 msgid "Aziende"
@@ -5057,7 +4945,7 @@ msgstr "Login"
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:32
 #: module/Application/view/partials/header/main_head_sl_SI.phtml:32
 msgid "Iscriviti"
-msgstr "Sign Up"
+msgstr "Subscribe"
 
 #: module/Application/view/partials/header/main_head_nl_NL.phtml:22
 #: module/Application/view/partials/header/main_head_sk_SK.phtml:22
@@ -6285,6 +6173,7 @@ msgstr "Check transaction in progress."
 #~ msgid "Chi &egrave Share'nGo?"
 #~ msgstr "Who is it Share'nGo?"
 
+#, php-format
 #~ msgid ""
 #~ "<strong>SHARE'NGO</strong>  è  una piattaforma nazionale per lo sviluppo "
 #~ "della mobilità elettrica e sostenibile ideata e gestita da CS GROUP che "
@@ -6464,6 +6353,9 @@ msgstr "Check transaction in progress."
 
 #~ msgid "Pacchetti fino a 16 centesimi al minuto"
 #~ msgstr "Packages up to 16 cents a minute"
+
+#~ msgid "Iscriverti non ti costa nulla!"
+#~ msgstr "Sign up is free!"
 
 #~ msgid "Pacchetti fino a 22 centesimi al minuto"
 #~ msgstr "Packages up to 22 cents a minute"
