@@ -27,11 +27,17 @@ return [
     'mobile' => [
         'url' => 'http://mobile.sharengo.it'
     ],
-    'export' => [
+/**    'export' => [
         'path' => 'data/export/',
         'server' => 'dev.sharengo.it',
         'name' => 'fatture',
         'password' => 'f477ur3!'
+    ], */
+	'export' => [
+        'path' => 'invoices/',
+        'server' => 'ftp.sharengo.si',
+        'name' => 'invoices@sharengo.si',
+        'password' => 'wrS7^q7tYd{['
     ],
     'languageSession' => [
         'session' => 'user',
